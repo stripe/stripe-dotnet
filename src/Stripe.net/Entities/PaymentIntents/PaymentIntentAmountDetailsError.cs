@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentAmountDetailsError : StripeEntity<PaymentIntentAmountDetailsError>
     {
         /// <summary>
@@ -14,18 +14,14 @@ namespace Stripe
         /// <c>amount_details_tax_shipping_discount_greater_than_amount</c>.
         /// </summary>
         [JsonProperty("code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("code")]
-#endif
         public string Code { get; set; }
 
         /// <summary>
         /// A message providing more details about the error.
         /// </summary>
         [JsonProperty("message")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("message")]
-#endif
         public string Message { get; set; }
     }
 }

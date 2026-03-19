@@ -300,7 +300,7 @@ namespace StripeTests
                 {
                     Data = new TestOptions
                     {
-                        Enum = TestOptions.TestEnum.TestOne,
+                        Enum = "test_one",
                     },
                     Want = "enum=test_one",
                 },
@@ -308,7 +308,7 @@ namespace StripeTests
                 {
                     Data = new TestOptions
                     {
-                        Enum = TestOptions.TestEnum.TestTwo,
+                        Enum = "TestTwo",
                     },
                     Want = "enum=TestTwo",
                 },
@@ -417,7 +417,7 @@ namespace StripeTests
         {
             var options = new TestOptions
             {
-                Enum = TestOptions.TestEnum.TestTwo,
+                Enum = "TestTwo",
             };
             Assert.Equal("enum=TestTwo", ContentEncoder.CreateQueryString(options));
         }
@@ -427,7 +427,7 @@ namespace StripeTests
         {
             var options = new TestOptions
             {
-                Enum = TestOptions.TestEnum.TestOne,
+                Enum = "test_one",
             };
             Assert.Contains("enum=test_one", ContentEncoder.CreateQueryString(options));
         }

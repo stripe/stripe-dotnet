@@ -9,9 +9,7 @@ namespace StripeTests.Wholesome
     using Stripe;
     using Stripe.Infrastructure;
     using Xunit;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// This wholesome test ensures that `JsonProperty` attributes in entity and options classes
@@ -79,7 +77,6 @@ namespace StripeTests.Wholesome
                         hasCorrectJsonPropertyName = true;
                     }
 
-#if NET6_0_OR_GREATER
                     var stjsJsonPropertyNameAttribute = property.GetCustomAttribute<STJS.JsonPropertyNameAttribute>();
 
                     // Only check if there is a stjs property name attribute; another test will check
@@ -92,7 +89,7 @@ namespace StripeTests.Wholesome
                             hasCorrectJsonPropertyName = false;
                         }
                     }
-#endif
+
                     if (hasCorrectJsonPropertyName)
                     {
                         continue;

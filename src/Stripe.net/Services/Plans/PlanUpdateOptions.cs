@@ -3,19 +3,17 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PlanUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Whether the plan is currently available for new subscriptions.
         /// </summary>
         [JsonProperty("active")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("active")]
-#endif
         public bool? Active { get; set; }
 
         /// <summary>
@@ -25,18 +23,14 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A brief description of the plan, hidden from customers.
         /// </summary>
         [JsonProperty("nickname")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("nickname")]
-#endif
         public string Nickname { get; set; }
 
         /// <summary>
@@ -44,9 +38,7 @@ namespace Stripe
         /// subscription or subscription schedule.
         /// </summary>
         [JsonProperty("product")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product")]
-#endif
         public string Product { get; set; }
 
         /// <summary>
@@ -54,9 +46,7 @@ namespace Stripe
         /// href="https://docs.stripe.com/api#create_subscription-trial_from_plan"><c>trial_from_plan=true</c></a>.
         /// </summary>
         [JsonProperty("trial_period_days")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial_period_days")]
-#endif
         public long? TrialPeriodDays { get; set; }
     }
 }

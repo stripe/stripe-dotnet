@@ -2,10 +2,10 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionPaymentMethodOptionsCustomerBalanceOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Checkout
         /// <c>bank_transfer</c>.
         /// </summary>
         [JsonProperty("bank_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_transfer")]
-#endif
         public SessionPaymentMethodOptionsCustomerBalanceBankTransferOptions BankTransfer { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.Checkout
         /// balance. Permitted values include: <c>bank_transfer</c>.
         /// </summary>
         [JsonProperty("funding_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("funding_type")]
-#endif
         public string FundingType { get; set; }
 
         /// <summary>
@@ -49,9 +45,7 @@ namespace Stripe.Checkout
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
     }
 }

@@ -3,19 +3,17 @@ namespace Stripe.FinancialConnections
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountUnsubscribeOptions : BaseOptions
     {
         /// <summary>
         /// The list of account features from which you would like to unsubscribe.
         /// </summary>
         [JsonProperty("features")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("features")]
-#endif
         public List<string> Features { get; set; }
     }
 }

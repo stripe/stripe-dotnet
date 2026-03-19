@@ -2,10 +2,10 @@
 namespace Stripe.TestHelpers.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class TransactionCreateForceCaptureOptions : BaseOptions
     {
         /// <summary>
@@ -14,18 +14,14 @@ namespace Stripe.TestHelpers.Issuing
         /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
         /// Card associated with this transaction.
         /// </summary>
         [JsonProperty("card")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]
-#endif
         public string Card { get; set; }
 
         /// <summary>
@@ -35,9 +31,7 @@ namespace Stripe.TestHelpers.Issuing
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -45,18 +39,14 @@ namespace Stripe.TestHelpers.Issuing
         /// authorization happened.
         /// </summary>
         [JsonProperty("merchant_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("merchant_data")]
-#endif
         public TransactionMerchantDataOptions MerchantData { get; set; }
 
         /// <summary>
         /// Additional purchase information that is optionally provided by the merchant.
         /// </summary>
         [JsonProperty("purchase_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("purchase_details")]
-#endif
         public TransactionPurchaseDetailsOptions PurchaseDetails { get; set; }
     }
 }

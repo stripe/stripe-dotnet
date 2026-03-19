@@ -5,10 +5,9 @@ namespace Stripe.Checkout
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionSubscriptionDataOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
@@ -20,9 +19,7 @@ namespace Stripe.Checkout
         /// href="https://stripe.com/docs/connect/subscriptions#collecting-fees-on-subscriptions">documentation</a>.
         /// </summary>
         [JsonProperty("application_fee_percent")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_fee_percent")]
-#endif
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
@@ -31,19 +28,15 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_cycle_anchor")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>
         /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
         /// </summary>
         [JsonProperty("billing_mode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_mode")]
-#endif
         public SessionSubscriptionDataBillingModeOptions BillingMode { get; set; }
 
         /// <summary>
@@ -52,9 +45,7 @@ namespace Stripe.Checkout
         /// populated from the subscription.
         /// </summary>
         [JsonProperty("default_tax_rates")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_tax_rates")]
-#endif
         public List<string> DefaultTaxRates { get; set; }
 
         /// <summary>
@@ -63,18 +54,14 @@ namespace Stripe.Checkout
         /// href="https://docs.stripe.com/customer-management">customer portal</a>.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
         /// All invoices will be billed using the specified settings.
         /// </summary>
         [JsonProperty("invoice_settings")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_settings")]
-#endif
         public SessionSubscriptionDataInvoiceSettingsOptions InvoiceSettings { get; set; }
 
         /// <summary>
@@ -84,18 +71,14 @@ namespace Stripe.Checkout
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The account on behalf of which to charge, for each of the subscription's invoices.
         /// </summary>
         [JsonProperty("on_behalf_of")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("on_behalf_of")]
-#endif
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -104,9 +87,7 @@ namespace Stripe.Checkout
         /// One of: <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_behavior")]
-#endif
         public string ProrationBehavior { get; set; }
 
         /// <summary>
@@ -115,9 +96,7 @@ namespace Stripe.Checkout
         /// charges.
         /// </summary>
         [JsonProperty("transfer_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfer_data")]
-#endif
         public SessionSubscriptionDataTransferDataOptions TransferData { get; set; }
 
         /// <summary>
@@ -126,10 +105,8 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial_end")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? TrialEnd { get; set; }
 
         /// <summary>
@@ -137,18 +114,14 @@ namespace Stripe.Checkout
         /// the first time. Has to be at least 1.
         /// </summary>
         [JsonProperty("trial_period_days")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial_period_days")]
-#endif
         public long? TrialPeriodDays { get; set; }
 
         /// <summary>
         /// Settings related to subscription trials.
         /// </summary>
         [JsonProperty("trial_settings")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial_settings")]
-#endif
         public SessionSubscriptionDataTrialSettingsOptions TrialSettings { get; set; }
     }
 }

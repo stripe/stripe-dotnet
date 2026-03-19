@@ -3,19 +3,17 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceScheduleDetailsOptions : INestedOptions
     {
         /// <summary>
         /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
         /// </summary>
         [JsonProperty("billing_mode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_mode")]
-#endif
         public InvoiceScheduleDetailsBillingModeOptions BillingMode { get; set; }
 
         /// <summary>
@@ -27,9 +25,7 @@ namespace Stripe
         /// One of: <c>cancel</c>, or <c>release</c>.
         /// </summary>
         [JsonProperty("end_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("end_behavior")]
-#endif
         public string EndBehavior { get; set; }
 
         /// <summary>
@@ -38,9 +34,7 @@ namespace Stripe
         /// <c>end_date</c> of one phase will always equal the <c>start_date</c> of the next phase.
         /// </summary>
         [JsonProperty("phases")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phases")]
-#endif
         public List<InvoiceScheduleDetailsPhaseOptions> Phases { get; set; }
 
         /// <summary>
@@ -49,9 +43,7 @@ namespace Stripe
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_behavior")]
-#endif
         public string ProrationBehavior { get; set; }
     }
 }

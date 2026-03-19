@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountSessionComponentsPayoutsFeatures : StripeEntity<AccountSessionComponentsPayoutsFeatures>
     {
         /// <summary>
@@ -16,9 +16,7 @@ namespace Stripe
         /// <c>true</c> and <c>disable_stripe_user_authentication</c> defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("disable_stripe_user_authentication")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("disable_stripe_user_authentication")]
-#endif
         public bool DisableStripeUserAuthentication { get; set; }
 
         /// <summary>
@@ -27,9 +25,7 @@ namespace Stripe
         /// <c>false</c>.
         /// </summary>
         [JsonProperty("edit_payout_schedule")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("edit_payout_schedule")]
-#endif
         public bool EditPayoutSchedule { get; set; }
 
         /// <summary>
@@ -39,9 +35,7 @@ namespace Stripe
         /// is <c>true</c>.
         /// </summary>
         [JsonProperty("external_account_collection")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("external_account_collection")]
-#endif
         public bool ExternalAccountCollection { get; set; }
 
         /// <summary>
@@ -50,9 +44,7 @@ namespace Stripe
         /// otherwise.
         /// </summary>
         [JsonProperty("instant_payouts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("instant_payouts")]
-#endif
         public bool InstantPayouts { get; set; }
 
         /// <summary>
@@ -61,9 +53,7 @@ namespace Stripe
         /// <c>false</c>.
         /// </summary>
         [JsonProperty("standard_payouts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("standard_payouts")]
-#endif
         public bool StandardPayouts { get; set; }
     }
 }

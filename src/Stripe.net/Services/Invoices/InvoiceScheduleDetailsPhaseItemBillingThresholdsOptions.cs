@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceScheduleDetailsPhaseItemBillingThresholdsOptions : INestedOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe
         /// threshold</a>).
         /// </summary>
         [JsonProperty("usage_gte")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("usage_gte")]
-#endif
         public long? UsageGte { get; set; }
     }
 }

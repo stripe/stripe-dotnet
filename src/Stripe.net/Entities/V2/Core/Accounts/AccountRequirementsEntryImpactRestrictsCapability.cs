@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountRequirementsEntryImpactRestrictsCapability : StripeEntity<AccountRequirementsEntryImpactRestrictsCapability>
     {
         /// <summary>
@@ -30,9 +30,7 @@ namespace Stripe.V2.Core
         /// <c>zip_payments</c>.
         /// </summary>
         [JsonProperty("capability")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capability")]
-#endif
         public string Capability { get; set; }
 
         /// <summary>
@@ -40,9 +38,7 @@ namespace Stripe.V2.Core
         /// One of: <c>customer</c>, <c>merchant</c>, or <c>recipient</c>.
         /// </summary>
         [JsonProperty("configuration")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("configuration")]
-#endif
         public string Configuration { get; set; }
 
         /// <summary>
@@ -50,9 +46,7 @@ namespace Stripe.V2.Core
         /// avoid the Capability restriction.
         /// </summary>
         [JsonProperty("deadline")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("deadline")]
-#endif
         public AccountRequirementsEntryImpactRestrictsCapabilityDeadline Deadline { get; set; }
     }
 }

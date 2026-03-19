@@ -3,28 +3,24 @@ namespace Stripe.V2.Core
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountRequirements : StripeEntity<AccountRequirements>
     {
         /// <summary>
         /// A list of requirements for the Account.
         /// </summary>
         [JsonProperty("entries")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("entries")]
-#endif
         public List<AccountRequirementsEntry> Entries { get; set; }
 
         /// <summary>
         /// An object containing an overview of requirements for the Account.
         /// </summary>
         [JsonProperty("summary")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("summary")]
-#endif
         public AccountRequirementsSummary Summary { get; set; }
     }
 }

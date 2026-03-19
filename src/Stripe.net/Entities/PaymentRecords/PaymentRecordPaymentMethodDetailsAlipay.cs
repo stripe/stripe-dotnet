@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentRecordPaymentMethodDetailsAlipay : StripeEntity<PaymentRecordPaymentMethodDetailsAlipay>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// whether two Alipay accounts are the same.
         /// </summary>
         [JsonProperty("buyer_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("buyer_id")]
-#endif
         public string BuyerId { get; set; }
 
         /// <summary>
@@ -23,18 +21,14 @@ namespace Stripe
         /// whether two Alipay accounts are the same.
         /// </summary>
         [JsonProperty("fingerprint")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fingerprint")]
-#endif
         public string Fingerprint { get; set; }
 
         /// <summary>
         /// Transaction ID of this particular Alipay transaction.
         /// </summary>
         [JsonProperty("transaction_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction_id")]
-#endif
         public string TransactionId { get; set; }
     }
 }

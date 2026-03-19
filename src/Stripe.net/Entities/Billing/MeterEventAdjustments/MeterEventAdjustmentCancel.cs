@@ -2,19 +2,17 @@
 namespace Stripe.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class MeterEventAdjustmentCancel : StripeEntity<MeterEventAdjustmentCancel>
     {
         /// <summary>
         /// Unique identifier for the event.
         /// </summary>
         [JsonProperty("identifier")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("identifier")]
-#endif
         public string Identifier { get; set; }
     }
 }

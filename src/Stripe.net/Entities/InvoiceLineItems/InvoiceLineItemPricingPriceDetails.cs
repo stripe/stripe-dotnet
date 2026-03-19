@@ -2,28 +2,52 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class InvoiceLineItemPricingPriceDetails : StripeEntity<InvoiceLineItemPricingPriceDetails>
     {
+        #region Expandable Price
+
         /// <summary>
+        /// (ID of the Price)
         /// The ID of the price this item is associated with.
         /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public string PriceId
+        {
+            get => this.InternalPrice?.Id;
+            set => this.InternalPrice = SetExpandableFieldId(value, this.InternalPrice);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the price this item is associated with.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public Price Price
+        {
+            get => this.InternalPrice?.ExpandedObject;
+            set => this.InternalPrice = SetExpandableFieldObject(value, this.InternalPrice);
+        }
+
         [JsonProperty("price")]
-#if NET6_0_OR_GREATER
+        [JsonConverter(typeof(ExpandableFieldConverter<Price>))]
         [STJS.JsonPropertyName("price")]
-#endif
-        public string Price { get; set; }
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Price>))]
+        internal ExpandableField<Price> InternalPrice { get; set; }
+        #endregion
 
         /// <summary>
         /// The ID of the product this item is associated with.
         /// </summary>
         [JsonProperty("product")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product")]
-#endif
         public string Product { get; set; }
     }
 }

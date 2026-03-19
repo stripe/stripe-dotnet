@@ -1,40 +1,46 @@
 namespace StripeTests
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
+    using Stripe;
     using StripeTests.Infrastructure.TestData;
     using Xunit;
 
     public class EnumDeserializationTest : BaseStripeTest
     {
         [Fact]
-        public void EnumDecodeValueWithEnumMember()
+        public void DeserializeKnownValue()
         {
             var json = "{\"enum\": \"test_one\"}";
-            TestOptions obj = JsonConvert.DeserializeObject<TestOptions>(json);
+            TestOptions obj = JsonSerializer.Deserialize<TestOptions>(
+                json, StripeConfiguration.SerializerOptions);
 
             Assert.NotNull(obj);
-            Assert.Equal(TestOptions.TestEnum.TestOne, obj.Enum);
+            Assert.Equal("test_one", obj.Enum);
         }
 
         [Fact]
-        public void EnumDecodeValueWithoutEnumMember()
+        public void DeserializeUnknownValue()
         {
-            var json = "{\"enum\": \"TestTwo\"}";
-            TestOptions obj = JsonConvert.DeserializeObject<TestOptions>(json);
-
-            Assert.NotNull(obj);
-            Assert.Equal(TestOptions.TestEnum.TestTwo, obj.Enum);
-        }
-
-        [Fact]
-        public void DecodingShouldThrowIfValueNotDeclaredInEnum()
-        {
+            // Unlike C# enums, string enums accept any value without throwing.
+            // This matches the real SDK behavior where the API may return new
+            // enum values that the SDK doesn't yet know about.
             var json = "{\"enum\": \"unknown_value\"}";
+            TestOptions obj = JsonSerializer.Deserialize<TestOptions>(
+                json, StripeConfiguration.SerializerOptions);
 
-            var exception = Assert.Throws<Newtonsoft.Json.JsonSerializationException>(() =>
-                JsonConvert.DeserializeObject<TestOptions>(json));
+            Assert.NotNull(obj);
+            Assert.Equal("unknown_value", obj.Enum);
+        }
 
-            Assert.Contains("Error converting value \"unknown_value\"", exception.Message);
+        [Fact]
+        public void DeserializeNull()
+        {
+            var json = "{\"enum\": null}";
+            TestOptions obj = JsonSerializer.Deserialize<TestOptions>(
+                json, StripeConfiguration.SerializerOptions);
+
+            Assert.NotNull(obj);
+            Assert.Null(obj.Enum);
         }
     }
 }

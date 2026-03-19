@@ -2,7 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Net;
-    using Newtonsoft.Json.Linq;
+    using System.Text.Json;
 
     public class StripeException : Exception
     {
@@ -40,13 +40,17 @@ namespace Stripe
 
         public StripeResponse StripeResponse { get; set; }
 
-        internal static StripeException ParseV2Exception(string type, StripeResponse response, JToken body)
+        internal static StripeException ParseV2Exception(string type, StripeResponse response, JsonElement body)
         {
             var httpStatusCode = response.StatusCode;
             StripeException ret;
             switch (type)
             {
                 // The beginning of the section generated from our OpenAPI spec
+                case "rate_limit":
+                    ret = Stripe.V2.RateLimitException.Parse(httpStatusCode, body);
+                    break;
+
                 case "temporary_session_expired":
                     ret = Stripe.V2.TemporarySessionExpiredException.Parse(httpStatusCode, body);
                     break;

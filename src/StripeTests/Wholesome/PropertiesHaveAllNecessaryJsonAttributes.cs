@@ -4,7 +4,10 @@ namespace StripeTests.Wholesome
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
+    using System.Text.Json.Serialization;
+    using Newtonsoft.Json;
     using Stripe;
+    using Stripe.Infrastructure;
     using Xunit;
 
     /// <summary>
@@ -34,17 +37,33 @@ namespace StripeTests.Wholesome
                         continue;
                     }
 
+                    if (property.PropertyType == typeof(decimal) || property.PropertyType == typeof(decimal?))
+                    {
+                        var jsonAttribute = property.GetCustomAttribute(typeof(Newtonsoft.Json.JsonConverterAttribute), false) as Newtonsoft.Json.JsonConverterAttribute;
+                        var stjAttribute = property.GetCustomAttribute(typeof(JsonNumberHandlingAttribute)) as JsonNumberHandlingAttribute;
+                        if (jsonAttribute?.ConverterType == typeof(DecimalStringConverter))
+                        {
+                            var hasCorrectAttributes =
+                                (stjAttribute.Handling & (JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString)) != 0;
+
+                            if (!hasCorrectAttributes)
+                            {
+                                results.Add($"{type.FullName}.{property.Name}");
+                            }
+
+                            continue;
+                        }
+                    }
+
                     foreach (Attribute attribute in property.GetCustomAttributes())
                     {
                         if (attribute.GetType().Namespace.StartsWith("Newtonsoft", true, null))
                         {
-#if NET6_0_OR_GREATER
                             bool hasCorrectAttributes = SystemTextJsonTestUtils.HasCorrectAttributes(attribute, property.GetCustomAttributes(), property.IsNotPublic);
                             if (!hasCorrectAttributes)
                             {
                                 results.Add($"{type.FullName}.{property.Name}");
                             }
-#endif
                         }
                     }
                 }

@@ -2,10 +2,10 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PhysicalBundleListOptions : ListOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Issuing
         /// One of: <c>active</c>, <c>inactive</c>, or <c>review</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.Issuing
         /// One of: <c>custom</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

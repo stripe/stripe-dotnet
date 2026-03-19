@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CustomerSessionComponentsCustomerSheetFeaturesOptions : INestedOptions
     {
         /// <summary>
@@ -21,9 +21,7 @@ namespace Stripe
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("payment_method_allow_redisplay_filters")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_allow_redisplay_filters")]
-#endif
         public List<string> PaymentMethodAllowRedisplayFilters { get; set; }
 
         /// <summary>
@@ -38,9 +36,7 @@ namespace Stripe
         /// One of: <c>disabled</c>, or <c>enabled</c>.
         /// </summary>
         [JsonProperty("payment_method_remove")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_remove")]
-#endif
         public string PaymentMethodRemove { get; set; }
     }
 }

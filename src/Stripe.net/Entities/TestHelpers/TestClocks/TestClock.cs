@@ -4,9 +4,7 @@ namespace Stripe.TestHelpers
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// A test clock enables deterministic control over objects in testmode. With a test clock,
@@ -16,24 +14,21 @@ namespace Stripe.TestHelpers
     /// the current state of your scenario (and test more complex scenarios), or keep advancing
     /// forward in time.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TestClock : StripeEntity<TestClock>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -41,20 +36,16 @@ namespace Stripe.TestHelpers
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("deleted")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
-#endif
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -62,10 +53,8 @@ namespace Stripe.TestHelpers
         /// </summary>
         [JsonProperty("deletes_after")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("deletes_after")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime DeletesAfter { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -73,10 +62,8 @@ namespace Stripe.TestHelpers
         /// </summary>
         [JsonProperty("frozen_time")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("frozen_time")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime FrozenTime { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -84,18 +71,14 @@ namespace Stripe.TestHelpers
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
         /// The custom name supplied at creation.
         /// </summary>
         [JsonProperty("name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
-#endif
         public string Name { get; set; }
 
         /// <summary>
@@ -103,15 +86,11 @@ namespace Stripe.TestHelpers
         /// One of: <c>advancing</c>, <c>internal_failure</c>, or <c>ready</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         [JsonProperty("status_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_details")]
-#endif
         public TestClockStatusDetails StatusDetails { get; set; }
     }
 }

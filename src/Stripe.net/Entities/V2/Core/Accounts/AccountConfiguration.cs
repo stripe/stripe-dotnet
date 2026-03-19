@@ -2,19 +2,17 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountConfiguration : StripeEntity<AccountConfiguration>
     {
         /// <summary>
         /// The Customer Configuration allows the Account to be used in inbound payment flows.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public AccountConfigurationCustomer Customer { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe.V2.Core
         /// on_behalf_of set.
         /// </summary>
         [JsonProperty("merchant")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("merchant")]
-#endif
         public AccountConfigurationMerchant Merchant { get; set; }
 
         /// <summary>
@@ -36,9 +32,7 @@ namespace Stripe.V2.Core
         /// Charges &amp; Transfers, or Destination Charges without on_behalf_of set.
         /// </summary>
         [JsonProperty("recipient")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recipient")]
-#endif
         public AccountConfigurationRecipient Recipient { get; set; }
     }
 }

@@ -96,6 +96,13 @@ namespace StripeTests.Wholesome
                         continue;
                     }
 
+                    // if we have a DecimalStringConverter on a decimal type, assume its good.
+                    if ((property.PropertyType == typeof(decimal) || property.PropertyType == typeof(decimal?))
+                         && actualConverterName == "DecimalStringConverter")
+                    {
+                        continue;
+                    }
+
                     results.Add(
                         $"{stripeClass.Name}.{property.Name}, expected = {expectedConverterName}, "
                             + $"actual = {actualConverterName}");

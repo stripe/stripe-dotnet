@@ -2,10 +2,10 @@
 namespace Stripe.TestHelpers.Terminal
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ReaderSucceedInputCollectionOptions : BaseOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.TestHelpers.Terminal
         /// One of: <c>all</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("skip_non_required_inputs")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("skip_non_required_inputs")]
-#endif
         public string SkipNonRequiredInputs { get; set; }
     }
 }

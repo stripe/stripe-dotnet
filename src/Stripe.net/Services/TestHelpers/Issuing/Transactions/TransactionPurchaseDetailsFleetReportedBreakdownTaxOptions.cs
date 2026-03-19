@@ -2,10 +2,10 @@
 namespace Stripe.TestHelpers.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class TransactionPurchaseDetailsFleetReportedBreakdownTaxOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,9 @@ namespace Stripe.TestHelpers.Issuing
         /// reported by merchant or not subject to tax.
         /// </summary>
         [JsonProperty("local_amount_decimal")]
-#if NET6_0_OR_GREATER
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("local_amount_decimal")]
-#endif
         public decimal? LocalAmountDecimal { get; set; }
 
         /// <summary>
@@ -23,9 +23,9 @@ namespace Stripe.TestHelpers.Issuing
         /// reported by merchant or not subject to tax.
         /// </summary>
         [JsonProperty("national_amount_decimal")]
-#if NET6_0_OR_GREATER
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("national_amount_decimal")]
-#endif
         public decimal? NationalAmountDecimal { get; set; }
     }
 }

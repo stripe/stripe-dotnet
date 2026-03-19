@@ -4,9 +4,8 @@ namespace Stripe.V2.Core
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// An Account v2 object represents a company, individual, or other entity that interacts
@@ -19,15 +18,14 @@ namespace Stripe.V2.Core
     /// to pay subscription fees to a platform. An Account v1 required a separate Customer
     /// object to pay subscription fees.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Account : StripeEntity<Account>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the Account.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -35,9 +33,7 @@ namespace Stripe.V2.Core
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -45,18 +41,14 @@ namespace Stripe.V2.Core
         /// One of: <c>customer</c>, <c>merchant</c>, or <c>recipient</c>.
         /// </summary>
         [JsonProperty("applied_configurations")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("applied_configurations")]
-#endif
         public List<string> AppliedConfigurations { get; set; }
 
         /// <summary>
         /// Indicates whether the account has been closed.
         /// </summary>
         [JsonProperty("closed")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("closed")]
-#endif
         public bool? Closed { get; set; }
 
         /// <summary>
@@ -66,9 +58,7 @@ namespace Stripe.V2.Core
         /// later.
         /// </summary>
         [JsonProperty("configuration")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("configuration")]
-#endif
         public AccountConfiguration Configuration { get; set; }
 
         /// <summary>
@@ -76,18 +66,14 @@ namespace Stripe.V2.Core
         /// as a merchant or recipient.
         /// </summary>
         [JsonProperty("contact_email")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("contact_email")]
-#endif
         public string ContactEmail { get; set; }
 
         /// <summary>
         /// The default contact phone for the Account.
         /// </summary>
         [JsonProperty("contact_phone")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("contact_phone")]
-#endif
         public string ContactPhone { get; set; }
 
         /// <summary>
@@ -95,9 +81,7 @@ namespace Stripe.V2.Core
         /// value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -106,18 +90,14 @@ namespace Stripe.V2.Core
         /// One of: <c>express</c>, <c>full</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("dashboard")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dashboard")]
-#endif
         public string Dashboard { get; set; }
 
         /// <summary>
         /// Default values for settings shared across Account configurations.
         /// </summary>
         [JsonProperty("defaults")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("defaults")]
-#endif
         public AccountDefaults Defaults { get; set; }
 
         /// <summary>
@@ -125,9 +105,7 @@ namespace Stripe.V2.Core
         /// and on any invoices sent to the Account.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -135,18 +113,14 @@ namespace Stripe.V2.Core
         /// effect, including what information needs to be collected, and by when.
         /// </summary>
         [JsonProperty("future_requirements")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("future_requirements")]
-#endif
         public AccountFutureRequirements FutureRequirements { get; set; }
 
         /// <summary>
         /// Information about the company, individual, and business represented by the Account.
         /// </summary>
         [JsonProperty("identity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("identity")]
-#endif
         public AccountIdentity Identity { get; set; }
 
         /// <summary>
@@ -154,9 +128,7 @@ namespace Stripe.V2.Core
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -164,9 +136,7 @@ namespace Stripe.V2.Core
         /// additional information about the object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -174,9 +144,7 @@ namespace Stripe.V2.Core
         /// needs to be collected, and by when.
         /// </summary>
         [JsonProperty("requirements")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("requirements")]
-#endif
         public AccountRequirements Requirements { get; set; }
     }
 }

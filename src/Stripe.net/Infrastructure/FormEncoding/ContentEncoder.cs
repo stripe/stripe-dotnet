@@ -9,7 +9,8 @@ namespace Stripe.Infrastructure.FormEncoding
     using System.Net;
     using System.Net.Http;
     using System.Reflection;
-    using Newtonsoft.Json;
+    using System.Runtime.Serialization;
+    using STJS = System.Text.Json.Serialization;
 
     internal enum ArrayEncoding
     {
@@ -166,7 +167,10 @@ namespace Stripe.Infrastructure.FormEncoding
                     break;
 
                 case Enum e:
-                    flatParams = SingleParam(keyPrefix, JsonUtils.SerializeObject(e).Trim('"'));
+                    var enumMember = e.GetType().GetField(e.ToString())
+                        ?.GetCustomAttribute<EnumMemberAttribute>();
+                    var enumValue = enumMember?.Value ?? e.ToString();
+                    flatParams = SingleParam(keyPrefix, enumValue);
                     break;
 
                 case bool b:
@@ -236,20 +240,33 @@ namespace Stripe.Infrastructure.FormEncoding
 
             foreach (var property in options.GetType().GetRuntimeProperties())
             {
-                // `[JsonExtensionData]` tells the serializer to write the values contained in
-                // the collection as if they were class properties.
-                var extensionAttribute = property.GetCustomAttribute<JsonExtensionDataAttribute>();
-                if (extensionAttribute != null)
+                // Check STJ [JsonExtensionData] first, fall back to Newtonsoft
+                var stjExtension = property.GetCustomAttribute<STJS.JsonExtensionDataAttribute>();
+                var nsjExtension = property.GetCustomAttribute<Newtonsoft.Json.JsonExtensionDataAttribute>();
+                if (stjExtension != null || nsjExtension != null)
                 {
                     var extensionValue = property.GetValue(options, null) as IDictionary;
-
                     flatParams.AddRange(FlattenParamsDictionary(extensionValue, keyPrefix, arrayEncoding));
                     continue;
                 }
 
-                // Skip properties not annotated with `[JsonProperty]`
-                var attribute = property.GetCustomAttribute<JsonPropertyAttribute>();
-                if (attribute == null)
+                // Check STJ [JsonPropertyName] first, fall back to Newtonsoft [JsonProperty]
+                string key = null;
+                var stjAttribute = property.GetCustomAttribute<STJS.JsonPropertyNameAttribute>();
+                if (stjAttribute != null)
+                {
+                    key = stjAttribute.Name;
+                }
+                else
+                {
+                    var nsjAttribute = property.GetCustomAttribute<Newtonsoft.Json.JsonPropertyAttribute>();
+                    if (nsjAttribute != null)
+                    {
+                        key = nsjAttribute.PropertyName;
+                    }
+                }
+
+                if (key == null)
                 {
                     continue;
                 }
@@ -263,7 +280,6 @@ namespace Stripe.Infrastructure.FormEncoding
                     continue;
                 }
 
-                string key = attribute.PropertyName;
                 string newPrefix = NewPrefix(key, keyPrefix);
 
                 flatParams.AddRange(FlattenParamsValue(value, newPrefix, arrayEncoding));

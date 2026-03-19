@@ -2,16 +2,14 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CardholderBilling : StripeEntity<CardholderBilling>
     {
         [JsonProperty("address")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
-#endif
         public Address Address { get; set; }
     }
 }

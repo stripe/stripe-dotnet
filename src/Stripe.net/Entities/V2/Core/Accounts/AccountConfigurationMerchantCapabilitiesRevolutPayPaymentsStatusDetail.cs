@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountConfigurationMerchantCapabilitiesRevolutPayPaymentsStatusDetail : StripeEntity<AccountConfigurationMerchantCapabilitiesRevolutPayPaymentsStatusDetail>
     {
         /// <summary>
@@ -17,9 +17,7 @@ namespace Stripe.V2.Core
         /// <c>unsupported_entity_type</c>.
         /// </summary>
         [JsonProperty("code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("code")]
-#endif
         public string Code { get; set; }
 
         /// <summary>
@@ -27,9 +25,7 @@ namespace Stripe.V2.Core
         /// One of: <c>contact_stripe</c>, <c>no_resolution</c>, or <c>provide_info</c>.
         /// </summary>
         [JsonProperty("resolution")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("resolution")]
-#endif
         public string Resolution { get; set; }
     }
 }

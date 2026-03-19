@@ -2,10 +2,10 @@
 namespace Stripe.Radar
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentEvaluationPaymentDetailsOptions : INestedOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.Radar
         /// zero-decimal currency).
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -26,54 +24,42 @@ namespace Stripe.Radar
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
         /// Details about the payment's customer presence and type.
         /// </summary>
         [JsonProperty("money_movement_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("money_movement_details")]
-#endif
         public PaymentEvaluationPaymentDetailsMoneyMovementDetailsOptions MoneyMovementDetails { get; set; }
 
         /// <summary>
         /// Details about the payment method to use for the payment.
         /// </summary>
         [JsonProperty("payment_method_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_details")]
-#endif
         public PaymentEvaluationPaymentDetailsPaymentMethodDetailsOptions PaymentMethodDetails { get; set; }
 
         /// <summary>
         /// Shipping details for the payment evaluation.
         /// </summary>
         [JsonProperty("shipping_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_details")]
-#endif
         public PaymentEvaluationPaymentDetailsShippingDetailsOptions ShippingDetails { get; set; }
 
         /// <summary>
         /// Payment statement descriptor.
         /// </summary>
         [JsonProperty("statement_descriptor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor")]
-#endif
         public string StatementDescriptor { get; set; }
     }
 }

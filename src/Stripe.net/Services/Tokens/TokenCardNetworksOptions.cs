@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class TokenCardNetworksOptions : INestedOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe
         /// One of: <c>cartes_bancaires</c>, <c>mastercard</c>, or <c>visa</c>.
         /// </summary>
         [JsonProperty("preferred")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preferred")]
-#endif
         public string Preferred { get; set; }
     }
 }

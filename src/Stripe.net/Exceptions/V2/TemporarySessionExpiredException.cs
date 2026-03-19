@@ -2,7 +2,10 @@
 namespace Stripe.V2
 {
     using System.Net;
-    using Newtonsoft.Json.Linq;
+    using System.Text.Json;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
 
     public class TemporarySessionExpiredException : StripeException
     {
@@ -16,7 +19,7 @@ namespace Stripe.V2
 
         internal static TemporarySessionExpiredException Parse(
             HttpStatusCode httpStatusCode,
-            JToken body)
+            JsonElement body)
         {
             var stripeError = StripeError.FromJson<StripeError>(body);
             return new TemporarySessionExpiredException(httpStatusCode, stripeError, stripeError.Message);

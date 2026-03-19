@@ -3,10 +3,10 @@ namespace Stripe.Issuing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CardholderRequirements : StripeEntity<CardholderRequirements>
     {
         /// <summary>
@@ -16,9 +16,7 @@ namespace Stripe.Issuing
         /// <c>under_review</c>.
         /// </summary>
         [JsonProperty("disabled_reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("disabled_reason")]
-#endif
         public string DisabledReason { get; set; }
 
         /// <summary>
@@ -31,9 +29,7 @@ namespace Stripe.Issuing
         /// <c>individual.last_name</c>, or <c>individual.verification.document</c>.
         /// </summary>
         [JsonProperty("past_due")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("past_due")]
-#endif
         public List<string> PastDue { get; set; }
     }
 }

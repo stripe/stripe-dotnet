@@ -5,13 +5,10 @@ namespace StripeTests.Wholesome
     using System.Linq;
     using System.Reflection;
     using Stripe;
-    using Xunit;
-
-#if NET6_0_OR_GREATER
     using Stripe.Infrastructure;
     using Stripe.Infrastructure.FormEncoding;
+    using Xunit;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// This wholesome test ensures that if a class has Newtonsoft JSON attributes, it also has
@@ -39,7 +36,6 @@ namespace StripeTests.Wholesome
                 }
 
                 var hasCorrectAttributes = true;
-#if NET6_0_OR_GREATER
                 var isIEnumerable = typeof(System.Collections.IEnumerable).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo());
                 var isEntity = typeof(StripeEntity).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo());
 
@@ -71,7 +67,6 @@ namespace StripeTests.Wholesome
                         hasCorrectAttributes = false;
                     }
                 }
-#endif
 
                 if (hasCorrectAttributes)
                 {
@@ -80,14 +75,12 @@ namespace StripeTests.Wholesome
                     {
                         if (attribute.GetType().Namespace.StartsWith("Newtonsoft", true, null))
                         {
-#if NET6_0_OR_GREATER
                             // we assume classes are public if they have json attributes
                             hasCorrectAttributes = SystemTextJsonTestUtils.HasCorrectAttributes(attribute, attributes, true);
                             if (!hasCorrectAttributes)
                             {
                                 break;
                             }
-#endif
                         }
                     }
                 }

@@ -3,19 +3,17 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class BalanceIssuing : StripeEntity<BalanceIssuing>
     {
         /// <summary>
         /// Funds that are available for use.
         /// </summary>
         [JsonProperty("available")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("available")]
-#endif
         public List<BalanceAmount> Available { get; set; }
     }
 }

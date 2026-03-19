@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SetupIntentPaymentMethodDataKlarnaOptions : INestedOptions
     {
         /// <summary>
         /// Customer's date of birth.
         /// </summary>
         [JsonProperty("dob")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dob")]
-#endif
         public SetupIntentPaymentMethodDataKlarnaDobOptions Dob { get; set; }
     }
 }

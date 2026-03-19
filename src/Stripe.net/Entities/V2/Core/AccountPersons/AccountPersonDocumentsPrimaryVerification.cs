@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountPersonDocumentsPrimaryVerification : StripeEntity<AccountPersonDocumentsPrimaryVerification>
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe.V2.Core
         /// tokens for the front and back of the verification document.
         /// </summary>
         [JsonProperty("front_back")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("front_back")]
-#endif
         public AccountPersonDocumentsPrimaryVerificationFrontBack FrontBack { get; set; }
 
         /// <summary>
         /// The format of the verification document. Currently supports <c>front_back</c> only.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

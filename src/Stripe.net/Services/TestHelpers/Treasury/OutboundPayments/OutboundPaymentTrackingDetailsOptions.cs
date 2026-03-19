@@ -2,19 +2,17 @@
 namespace Stripe.TestHelpers.Treasury
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OutboundPaymentTrackingDetailsOptions : INestedOptions
     {
         /// <summary>
         /// ACH network tracking details.
         /// </summary>
         [JsonProperty("ach")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ach")]
-#endif
         public OutboundPaymentTrackingDetailsAchOptions Ach { get; set; }
 
         /// <summary>
@@ -22,18 +20,14 @@ namespace Stripe.TestHelpers.Treasury
         /// One of: <c>ach</c>, or <c>us_domestic_wire</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
         /// US domestic wire network tracking details.
         /// </summary>
         [JsonProperty("us_domestic_wire")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_domestic_wire")]
-#endif
         public OutboundPaymentTrackingDetailsUsDomesticWireOptions UsDomesticWire { get; set; }
     }
 }

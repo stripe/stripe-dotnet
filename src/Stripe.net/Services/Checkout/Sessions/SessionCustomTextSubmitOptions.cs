@@ -2,19 +2,17 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionCustomTextSubmitOptions : INestedOptions
     {
         /// <summary>
         /// Text can be up to 1200 characters in length.
         /// </summary>
         [JsonProperty("message")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("message")]
-#endif
         public string Message { get; set; }
     }
 }

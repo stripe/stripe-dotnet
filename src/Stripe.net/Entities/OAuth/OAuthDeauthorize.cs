@@ -1,9 +1,7 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     public class OAuthDeauthorize : StripeEntity<OAuthDeauthorize>
     {
@@ -13,9 +11,7 @@ namespace Stripe
         /// returned, the revocation was successful.
         /// </summary>
         [JsonProperty("stripe_user_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stripe_user_id")]
-#endif
         public string StripeUserId { get; set; }
     }
 }

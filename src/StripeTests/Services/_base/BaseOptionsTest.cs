@@ -1,7 +1,6 @@
 namespace StripeTests
 {
-    using System.Linq;
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe;
     using Xunit;
 
@@ -15,14 +14,20 @@ namespace StripeTests
             options.AddExtraParam("foo", "String!");
             options.AddExtraParam("bar", 234L);
 
-            var json = JsonConvert.SerializeObject(options);
-            var deserialized = JsonConvert.DeserializeObject<BaseOptions>(json);
+            var json = JsonSerializer.Serialize(options);
+            var deserialized = JsonSerializer.Deserialize<BaseOptions>(json);
 
             Assert.Equal(options.Expand, deserialized.Expand);
             Assert.True(options.ExtraParams.Count == deserialized.ExtraParams.Count);
-            Assert.All(
-                deserialized.ExtraParams,
-                kvp => Assert.Equal(options.ExtraParams[kvp.Key], deserialized.ExtraParams[kvp.Key]));
+
+            // STJ deserializes extension data values as JsonElement, so compare
+            // by converting both sides to strings for type-agnostic comparison.
+            foreach (var kvp in deserialized.ExtraParams)
+            {
+                Assert.Equal(
+                    options.ExtraParams[kvp.Key].ToString(),
+                    kvp.Value is JsonElement el ? el.ToString() : kvp.Value.ToString());
+            }
         }
     }
 }

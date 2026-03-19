@@ -1,6 +1,6 @@
 namespace StripeTests
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe;
     using Xunit;
 
@@ -15,7 +15,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/transfers/tr_123/reversals/trr_123");
-            var transferReversal = JsonConvert.DeserializeObject<TransferReversal>(json);
+            var transferReversal = JsonSerializer.Deserialize<TransferReversal>(json);
             Assert.NotNull(transferReversal);
             Assert.IsType<TransferReversal>(transferReversal);
             Assert.NotNull(transferReversal.Id);
@@ -34,7 +34,7 @@ namespace StripeTests
             };
 
             string json = this.GetFixture("/v1/transfers/tr_123/reversals/trr_123", expansions);
-            var transferReversal = JsonConvert.DeserializeObject<TransferReversal>(json);
+            var transferReversal = JsonSerializer.Deserialize<TransferReversal>(json);
             Assert.NotNull(transferReversal);
             Assert.IsType<TransferReversal>(transferReversal);
             Assert.NotNull(transferReversal.Id);

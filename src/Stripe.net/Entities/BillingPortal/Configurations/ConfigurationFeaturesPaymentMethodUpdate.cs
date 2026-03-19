@@ -2,19 +2,17 @@
 namespace Stripe.BillingPortal
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ConfigurationFeaturesPaymentMethodUpdate : StripeEntity<ConfigurationFeaturesPaymentMethodUpdate>
     {
         /// <summary>
         /// Whether the feature is enabled.
         /// </summary>
         [JsonProperty("enabled")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
-#endif
         public bool Enabled { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.BillingPortal
         /// configuration. If not set, the default payment method configuration is used.
         /// </summary>
         [JsonProperty("payment_method_configuration")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_configuration")]
-#endif
         public string PaymentMethodConfiguration { get; set; }
     }
 }

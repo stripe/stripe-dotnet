@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class BalanceSettingsPaymentsPayoutsSchedule : StripeEntity<BalanceSettingsPaymentsPayoutsSchedule>
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe
         /// One of: <c>daily</c>, <c>manual</c>, <c>monthly</c>, or <c>weekly</c>.
         /// </summary>
         [JsonProperty("interval")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval")]
-#endif
         public string Interval { get; set; }
 
         /// <summary>
@@ -26,9 +24,7 @@ namespace Stripe
         /// shorter months.
         /// </summary>
         [JsonProperty("monthly_payout_days")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("monthly_payout_days")]
-#endif
         public List<long> MonthlyPayoutDays { get; set; }
 
         /// <summary>
@@ -38,9 +34,7 @@ namespace Stripe
         /// <c>wednesday</c>.
         /// </summary>
         [JsonProperty("weekly_payout_days")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("weekly_payout_days")]
-#endif
         public List<string> WeeklyPayoutDays { get; set; }
     }
 }
