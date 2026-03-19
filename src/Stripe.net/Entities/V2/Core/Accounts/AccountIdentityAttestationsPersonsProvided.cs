@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountIdentityAttestationsPersonsProvided : StripeEntity<AccountIdentityAttestationsPersonsProvided>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Core
         /// href="https://docs.stripe.com/api/v2/core/accounts/createperson">Persons API</a>.
         /// </summary>
         [JsonProperty("directors")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("directors")]
-#endif
         public bool? Directors { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe.V2.Core
         /// href="https://docs.stripe.com/api/v2/core/accounts/createperson">Persons API</a>.
         /// </summary>
         [JsonProperty("executives")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("executives")]
-#endif
         public bool? Executives { get; set; }
 
         /// <summary>
@@ -36,9 +32,7 @@ namespace Stripe.V2.Core
         /// href="https://docs.stripe.com/api/v2/core/accounts/createperson">Persons API</a>.
         /// </summary>
         [JsonProperty("owners")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("owners")]
-#endif
         public bool? Owners { get; set; }
 
         /// <summary>
@@ -47,9 +41,7 @@ namespace Stripe.V2.Core
         /// <c>qualifies_as_financial_institution</c>.
         /// </summary>
         [JsonProperty("ownership_exemption_reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ownership_exemption_reason")]
-#endif
         public string OwnershipExemptionReason { get; set; }
     }
 }

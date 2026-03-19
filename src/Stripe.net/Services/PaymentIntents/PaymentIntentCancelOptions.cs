@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentCancelOptions : BaseOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe
         /// <c>requested_by_customer</c>.
         /// </summary>
         [JsonProperty("cancellation_reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancellation_reason")]
-#endif
         public string CancellationReason { get; set; }
     }
 }

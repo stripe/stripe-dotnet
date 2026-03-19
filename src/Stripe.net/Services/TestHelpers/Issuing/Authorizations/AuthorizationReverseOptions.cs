@@ -2,10 +2,10 @@
 namespace Stripe.TestHelpers.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AuthorizationReverseOptions : BaseOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.TestHelpers.Issuing
         /// <a href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("reverse_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reverse_amount")]
-#endif
         public long? ReverseAmount { get; set; }
     }
 }

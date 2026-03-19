@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountCreateConfigurationCustomerCapabilitiesOptions : INestedOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Core
         /// to enable automatic tax calculation on this customer's invoices or subscriptions.
         /// </summary>
         [JsonProperty("automatic_indirect_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("automatic_indirect_tax")]
-#endif
         public AccountCreateConfigurationCustomerCapabilitiesAutomaticIndirectTaxOptions AutomaticIndirectTax { get; set; }
     }
 }

@@ -3,10 +3,10 @@ namespace Stripe.Identity
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class VerificationSessionCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Identity
         /// and can be used to reconcile this verification with your internal systems.
         /// </summary>
         [JsonProperty("client_reference_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client_reference_id")]
-#endif
         public string ClientReferenceId { get; set; }
 
         /// <summary>
@@ -26,63 +24,49 @@ namespace Stripe.Identity
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A set of options for the session’s verification checks.
         /// </summary>
         [JsonProperty("options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("options")]
-#endif
         public VerificationSessionOptionsOptions Options { get; set; }
 
         /// <summary>
         /// Details provided about the user being verified. These details may be shown to the user.
         /// </summary>
         [JsonProperty("provided_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("provided_details")]
-#endif
         public VerificationSessionProvidedDetailsOptions ProvidedDetails { get; set; }
 
         /// <summary>
         /// Customer ID.
         /// </summary>
         [JsonProperty("related_customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("related_customer")]
-#endif
         public string RelatedCustomer { get; set; }
 
         /// <summary>
         /// The ID of the Account representing a customer.
         /// </summary>
         [JsonProperty("related_customer_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("related_customer_account")]
-#endif
         public string RelatedCustomerAccount { get; set; }
 
         /// <summary>
         /// Tokens referencing a Person resource and it's associated account.
         /// </summary>
         [JsonProperty("related_person")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("related_person")]
-#endif
         public VerificationSessionRelatedPersonOptions RelatedPerson { get; set; }
 
         /// <summary>
         /// The URL that the user will be redirected to upon completing the verification flow.
         /// </summary>
         [JsonProperty("return_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("return_url")]
-#endif
         public string ReturnUrl { get; set; }
 
         /// <summary>
@@ -92,9 +76,7 @@ namespace Stripe.Identity
         /// One of: <c>document</c>, or <c>id_number</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
@@ -102,9 +84,7 @@ namespace Stripe.Identity
         /// https://docs.stripe.com/identity/verification-flows.
         /// </summary>
         [JsonProperty("verification_flow")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification_flow")]
-#endif
         public string VerificationFlow { get; set; }
     }
 }

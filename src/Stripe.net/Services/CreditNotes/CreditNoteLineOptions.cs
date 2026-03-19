@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CreditNoteLineOptions : INestedOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe
         /// exclusive.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe
         /// <c>custom_line_item</c>.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -35,49 +31,41 @@ namespace Stripe
         /// <c>invoice_line_item</c>.
         /// </summary>
         [JsonProperty("invoice_line_item")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_line_item")]
-#endif
         public string InvoiceLineItem { get; set; }
 
         /// <summary>
         /// The line item quantity to credit.
         /// </summary>
         [JsonProperty("quantity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
-#endif
         public long? Quantity { get; set; }
 
         /// <summary>
-        /// A list of up to 10 tax amounts for the credit note line item. Cannot be mixed with
-        /// <c>tax_rates</c>.
+        /// A list of up to 10 tax amounts for the credit note line item. Not valid when
+        /// <c>tax_rates</c> is used or if invoice is set up with
+        /// <c>automatic_tax[enabled]=true</c>.
         /// </summary>
         [JsonProperty("tax_amounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_amounts")]
-#endif
         public List<CreditNoteLineTaxAmountOptions> TaxAmounts { get; set; }
 
         /// <summary>
         /// The tax rates which apply to the credit note line item. Only valid when the <c>type</c>
-        /// is <c>custom_line_item</c> and cannot be mixed with <c>tax_amounts</c>.
+        /// is <c>custom_line_item</c> and <c>tax_amounts</c> is not used.
         /// </summary>
         [JsonProperty("tax_rates")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rates")]
-#endif
         public List<string> TaxRates { get; set; }
 
         /// <summary>
         /// Type of the credit note line item, one of <c>invoice_line_item</c> or
-        /// <c>custom_line_item</c>.
+        /// <c>custom_line_item</c>. <c>custom_line_item</c> is not valid when the invoice is set up
+        /// with <c>automatic_tax[enabled]=true</c>.
         /// One of: <c>custom_line_item</c>, or <c>invoice_line_item</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
@@ -86,9 +74,7 @@ namespace Stripe
         /// credit for this line item. Only valid when <c>type</c> is <c>custom_line_item</c>.
         /// </summary>
         [JsonProperty("unit_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_amount")]
-#endif
         public long? UnitAmount { get; set; }
 
         /// <summary>
@@ -97,9 +83,9 @@ namespace Stripe
         /// <c>unit_amount_decimal</c> can be set.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
-#if NET6_0_OR_GREATER
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("unit_amount_decimal")]
-#endif
         public decimal? UnitAmountDecimal { get; set; }
     }
 }

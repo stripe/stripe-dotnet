@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CustomerSessionComponentsPaymentElementFeatures : StripeEntity<CustomerSessionComponentsPaymentElementFeatures>
     {
         /// <summary>
@@ -21,9 +21,7 @@ namespace Stripe
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("payment_method_allow_redisplay_filters")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_allow_redisplay_filters")]
-#endif
         public List<string> PaymentMethodAllowRedisplayFilters { get; set; }
 
         /// <summary>
@@ -32,9 +30,7 @@ namespace Stripe
         /// One of: <c>disabled</c>, or <c>enabled</c>.
         /// </summary>
         [JsonProperty("payment_method_redisplay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_redisplay")]
-#endif
         public string PaymentMethodRedisplay { get; set; }
 
         /// <summary>
@@ -42,9 +38,7 @@ namespace Stripe
         /// This parameter defaults to <c>3</c>. The maximum redisplay limit is <c>10</c>.
         /// </summary>
         [JsonProperty("payment_method_redisplay_limit")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_redisplay_limit")]
-#endif
         public long? PaymentMethodRedisplayLimit { get; set; }
 
         /// <summary>
@@ -59,9 +53,7 @@ namespace Stripe
         /// One of: <c>disabled</c>, or <c>enabled</c>.
         /// </summary>
         [JsonProperty("payment_method_remove")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_remove")]
-#endif
         public string PaymentMethodRemove { get; set; }
 
         /// <summary>
@@ -77,9 +69,7 @@ namespace Stripe
         /// One of: <c>disabled</c>, or <c>enabled</c>.
         /// </summary>
         [JsonProperty("payment_method_save")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_save")]
-#endif
         public string PaymentMethodSave { get; set; }
 
         /// <summary>
@@ -94,9 +84,7 @@ namespace Stripe
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("payment_method_save_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_save_usage")]
-#endif
         public string PaymentMethodSaveUsage { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceLineTaxAmountTaxRateDataOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// 3166-1 alpha-2</a>).
         /// </summary>
         [JsonProperty("country")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
-#endif
         public string Country { get; set; }
 
         /// <summary>
@@ -23,27 +21,21 @@ namespace Stripe
         /// visible to your customers.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
         /// The display name of the tax rate, which will be shown to users.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
         /// This specifies if the tax rate is inclusive or exclusive.
         /// </summary>
         [JsonProperty("inclusive")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inclusive")]
-#endif
         public bool? Inclusive { get; set; }
 
         /// <summary>
@@ -51,9 +43,7 @@ namespace Stripe
         /// purposes. It also appears on your customer’s invoice.
         /// </summary>
         [JsonProperty("jurisdiction")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("jurisdiction")]
-#endif
         public string Jurisdiction { get; set; }
 
         /// <summary>
@@ -62,9 +52,7 @@ namespace Stripe
         /// <c>state</c>.
         /// </summary>
         [JsonProperty("jurisdiction_level")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("jurisdiction_level")]
-#endif
         public string JurisdictionLevel { get; set; }
 
         /// <summary>
@@ -74,9 +62,7 @@ namespace Stripe
         /// <c>amount</c> of the tax is also zero.
         /// </summary>
         [JsonProperty("percentage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("percentage")]
-#endif
         public decimal? Percentage { get; set; }
 
         /// <summary>
@@ -84,9 +70,7 @@ namespace Stripe
         /// without country prefix. For example, "NY" for New York, United States.
         /// </summary>
         [JsonProperty("state")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("state")]
-#endif
         public string State { get; set; }
 
         /// <summary>
@@ -97,9 +81,7 @@ namespace Stripe
         /// <c>vat</c>.
         /// </summary>
         [JsonProperty("tax_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_type")]
-#endif
         public string TaxType { get; set; }
     }
 }

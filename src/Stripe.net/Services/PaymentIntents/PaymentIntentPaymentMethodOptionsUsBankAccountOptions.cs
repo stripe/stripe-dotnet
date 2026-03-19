@@ -2,48 +2,32 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentPaymentMethodOptionsUsBankAccountOptions : INestedOptions
     {
         /// <summary>
         /// Additional fields for Financial Connections Session creation.
         /// </summary>
         [JsonProperty("financial_connections")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_connections")]
-#endif
         public PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions FinancialConnections { get; set; }
 
         /// <summary>
         /// Additional fields for Mandate creation.
         /// </summary>
         [JsonProperty("mandate_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate_options")]
-#endif
         public PaymentIntentPaymentMethodOptionsUsBankAccountMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>
         /// Additional fields for network related functions.
         /// </summary>
         [JsonProperty("networks")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("networks")]
-#endif
         public PaymentIntentPaymentMethodOptionsUsBankAccountNetworksOptions Networks { get; set; }
-
-        /// <summary>
-        /// Preferred transaction settlement speed.
-        /// One of: <c>fastest</c>, or <c>standard</c>.
-        /// </summary>
-        [JsonProperty("preferred_settlement_speed")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("preferred_settlement_speed")]
-#endif
-        public string PreferredSettlementSpeed { get; set; }
 
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
@@ -71,9 +55,7 @@ namespace Stripe
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -82,19 +64,23 @@ namespace Stripe
         /// and 15 calendar days from now.
         /// </summary>
         [JsonProperty("target_date")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("target_date")]
-#endif
         public string TargetDate { get; set; }
+
+        /// <summary>
+        /// The purpose of the transaction.
+        /// One of: <c>goods</c>, <c>other</c>, <c>services</c>, or <c>unspecified</c>.
+        /// </summary>
+        [JsonProperty("transaction_purpose")]
+        [STJS.JsonPropertyName("transaction_purpose")]
+        public string TransactionPurpose { get; set; }
 
         /// <summary>
         /// Bank account verification method.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
         /// </summary>
         [JsonProperty("verification_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification_method")]
-#endif
         public string VerificationMethod { get; set; }
     }
 }

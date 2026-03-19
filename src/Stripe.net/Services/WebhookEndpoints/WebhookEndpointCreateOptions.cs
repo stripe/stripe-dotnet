@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class WebhookEndpointCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -43,12 +43,10 @@ namespace Stripe
         /// <c>2025-03-31.basil</c>, <c>2025-04-30.basil</c>, <c>2025-05-28.basil</c>,
         /// <c>2025-06-30.basil</c>, <c>2025-07-30.basil</c>, <c>2025-08-27.basil</c>,
         /// <c>2025-09-30.clover</c>, <c>2025-10-29.clover</c>, <c>2025-11-17.clover</c>,
-        /// <c>2025-12-15.clover</c>, or <c>2026-01-28.clover</c>.
+        /// <c>2025-12-15.clover</c>, <c>2026-01-28.clover</c>, or <c>2026-02-25.clover</c>.
         /// </summary>
         [JsonProperty("api_version")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("api_version")]
-#endif
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -56,18 +54,14 @@ namespace Stripe
         /// from your account (<c>false</c>). Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("connect")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("connect")]
-#endif
         public bool? Connect { get; set; }
 
         /// <summary>
         /// An optional description of what the webhook is used for.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -79,7 +73,8 @@ namespace Stripe
         /// <c>account.updated</c>, <c>application_fee.created</c>,
         /// <c>application_fee.refund.updated</c>, <c>application_fee.refunded</c>,
         /// <c>balance.available</c>, <c>balance_settings.updated</c>,
-        /// <c>billing.alert.triggered</c>, <c>billing_portal.configuration.created</c>,
+        /// <c>billing.alert.triggered</c>, <c>billing.credit_grant.created</c>,
+        /// <c>billing_portal.configuration.created</c>,
         /// <c>billing_portal.configuration.updated</c>, <c>billing_portal.session.created</c>,
         /// <c>capability.updated</c>, <c>cash_balance.funds_available</c>, <c>charge.captured</c>,
         /// <c>charge.dispute.closed</c>, <c>charge.dispute.created</c>,
@@ -160,7 +155,10 @@ namespace Stripe
         /// <c>radar.early_fraud_warning.created</c>, <c>radar.early_fraud_warning.updated</c>,
         /// <c>refund.created</c>, <c>refund.failed</c>, <c>refund.updated</c>,
         /// <c>reporting.report_run.failed</c>, <c>reporting.report_run.succeeded</c>,
-        /// <c>reporting.report_type.updated</c>, <c>review.closed</c>, <c>review.opened</c>,
+        /// <c>reporting.report_type.updated</c>, <c>reserve.hold.created</c>,
+        /// <c>reserve.hold.updated</c>, <c>reserve.plan.created</c>, <c>reserve.plan.disabled</c>,
+        /// <c>reserve.plan.expired</c>, <c>reserve.plan.updated</c>,
+        /// <c>reserve.release.created</c>, <c>review.closed</c>, <c>review.opened</c>,
         /// <c>setup_intent.canceled</c>, <c>setup_intent.created</c>,
         /// <c>setup_intent.requires_action</c>, <c>setup_intent.setup_failed</c>,
         /// <c>setup_intent.succeeded</c>, <c>sigma.scheduled_query_run.created</c>,
@@ -197,15 +195,12 @@ namespace Stripe
         /// <c>treasury.outbound_transfer.tracking_details_updated</c>,
         /// <c>treasury.received_credit.created</c>, <c>treasury.received_credit.failed</c>,
         /// <c>treasury.received_credit.succeeded</c>, <c>treasury.received_debit.created</c>,
-        /// <c>billing.credit_balance_transaction.created</c>, <c>billing.credit_grant.created</c>,
-        /// <c>billing.credit_grant.updated</c>, <c>billing.meter.created</c>,
-        /// <c>billing.meter.deactivated</c>, <c>billing.meter.reactivated</c>,
-        /// <c>billing.meter.updated</c>, or <c>ping</c>.
+        /// <c>billing.credit_balance_transaction.created</c>, <c>billing.credit_grant.updated</c>,
+        /// <c>billing.meter.created</c>, <c>billing.meter.deactivated</c>,
+        /// <c>billing.meter.reactivated</c>, <c>billing.meter.updated</c>, or <c>ping</c>.
         /// </summary>
         [JsonProperty("enabled_events")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled_events")]
-#endif
         public List<string> EnabledEvents { get; set; }
 
         /// <summary>
@@ -215,18 +210,14 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The URL of the webhook endpoint.
         /// </summary>
         [JsonProperty("url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("url")]
-#endif
         public string Url { get; set; }
     }
 }

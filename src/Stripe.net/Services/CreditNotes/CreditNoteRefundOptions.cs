@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CreditNoteRefundOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// Defaults to the entire refund amount.
         /// </summary>
         [JsonProperty("amount_refunded")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_refunded")]
-#endif
         public long? AmountRefunded { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// is <c>payment_record_refund</c>.
         /// </summary>
         [JsonProperty("payment_record_refund")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_record_refund")]
-#endif
         public CreditNoteRefundPaymentRecordRefundOptions PaymentRecordRefund { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe
         /// <c>refund</c>.
         /// </summary>
         [JsonProperty("refund")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refund")]
-#endif
         public string Refund { get; set; }
 
         /// <summary>
@@ -44,9 +38,7 @@ namespace Stripe
         /// One of: <c>payment_record_refund</c>, or <c>refund</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

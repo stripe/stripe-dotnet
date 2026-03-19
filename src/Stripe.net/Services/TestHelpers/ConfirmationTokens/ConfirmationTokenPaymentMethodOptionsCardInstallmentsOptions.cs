@@ -2,10 +2,10 @@
 namespace Stripe.TestHelpers
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ConfirmationTokenPaymentMethodOptionsCardInstallmentsOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.TestHelpers
         /// be provided during confirmation.
         /// </summary>
         [JsonProperty("plan")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("plan")]
-#endif
         public ConfirmationTokenPaymentMethodOptionsCardInstallmentsPlanOptions Plan { get; set; }
     }
 }

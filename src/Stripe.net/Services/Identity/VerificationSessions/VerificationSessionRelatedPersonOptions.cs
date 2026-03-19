@@ -2,10 +2,10 @@
 namespace Stripe.Identity
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class VerificationSessionRelatedPersonOptions : INestedOptions
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe.Identity
         /// required and must be associated with the account.
         /// </summary>
         [JsonProperty("account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account")]
-#endif
         public string Account { get; set; }
 
         /// <summary>
         /// A token referencing a Person resource that this verification is being used to verify.
         /// </summary>
         [JsonProperty("person")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("person")]
-#endif
         public string Person { get; set; }
     }
 }

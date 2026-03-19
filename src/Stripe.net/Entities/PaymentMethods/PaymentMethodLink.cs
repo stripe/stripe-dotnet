@@ -3,19 +3,17 @@ namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentMethodLink : StripeEntity<PaymentMethodLink>
     {
         /// <summary>
         /// Account owner's email address.
         /// </summary>
         [JsonProperty("email")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("email")]
-#endif
         public string Email { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// </summary>
         [Obsolete("This property is deprecated, please refer to the description for details.")]
         [JsonProperty("persistent_token")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("persistent_token")]
-#endif
         public string PersistentToken { get; set; }
     }
 }

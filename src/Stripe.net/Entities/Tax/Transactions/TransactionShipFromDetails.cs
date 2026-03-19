@@ -2,16 +2,14 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TransactionShipFromDetails : StripeEntity<TransactionShipFromDetails>
     {
         [JsonProperty("address")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
-#endif
         public TransactionShipFromDetailsAddress Address { get; set; }
     }
 }

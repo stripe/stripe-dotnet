@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountRequirementsEntryError : StripeEntity<AccountRequirementsEntryError>
     {
         /// <summary>
@@ -76,18 +76,14 @@ namespace Stripe.V2.Core
         /// <c>verification_token_stale</c>.
         /// </summary>
         [JsonProperty("code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("code")]
-#endif
         public string Code { get; set; }
 
         /// <summary>
         /// Human-readable description of the error.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
     }
 }

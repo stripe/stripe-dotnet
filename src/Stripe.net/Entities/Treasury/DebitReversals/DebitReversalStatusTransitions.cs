@@ -4,10 +4,9 @@ namespace Stripe.Treasury
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class DebitReversalStatusTransitions : StripeEntity<DebitReversalStatusTransitions>
     {
         /// <summary>
@@ -15,10 +14,8 @@ namespace Stripe.Treasury
         /// </summary>
         [JsonProperty("completed_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("completed_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? CompletedAt { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SetupIntentNextActionCashappHandleRedirectOrDisplayQrCode : StripeEntity<SetupIntentNextActionCashappHandleRedirectOrDisplayQrCode>
     {
         /// <summary>
@@ -13,24 +13,18 @@ namespace Stripe
         /// QR code, and supports QR code refreshing on expiration.
         /// </summary>
         [JsonProperty("hosted_instructions_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hosted_instructions_url")]
-#endif
         public string HostedInstructionsUrl { get; set; }
 
         /// <summary>
         /// The url for mobile redirect based auth.
         /// </summary>
         [JsonProperty("mobile_auth_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mobile_auth_url")]
-#endif
         public string MobileAuthUrl { get; set; }
 
         [JsonProperty("qr_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("qr_code")]
-#endif
         public SetupIntentNextActionCashappHandleRedirectOrDisplayQrCodeQrCode QrCode { get; set; }
     }
 }

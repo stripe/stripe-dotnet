@@ -3,10 +3,10 @@ namespace Stripe.Checkout
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionPaymentMethodOptionsCardRestrictionsOptions : INestedOptions
     {
         /// <summary>
@@ -16,9 +16,7 @@ namespace Stripe.Checkout
         /// <c>visa</c>.
         /// </summary>
         [JsonProperty("brands_blocked")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("brands_blocked")]
-#endif
         public List<string> BrandsBlocked { get; set; }
     }
 }

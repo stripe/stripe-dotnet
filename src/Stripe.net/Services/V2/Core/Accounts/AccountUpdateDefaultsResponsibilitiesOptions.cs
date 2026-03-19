@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountUpdateDefaultsResponsibilitiesOptions : INestedOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Core
         /// <c>stripe</c>.
         /// </summary>
         [JsonProperty("fees_collector")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fees_collector")]
-#endif
         public string FeesCollector { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe.V2.Core
         /// One of: <c>application</c>, or <c>stripe</c>.
         /// </summary>
         [JsonProperty("losses_collector")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("losses_collector")]
-#endif
         public string LossesCollector { get; set; }
     }
 }

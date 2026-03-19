@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoicePaymentSettingsPaymentMethodOptionsPaytoMandateOptionsOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// maximum, then there is no limit.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -26,9 +24,7 @@ namespace Stripe
         /// or <c>utility</c>.
         /// </summary>
         [JsonProperty("purpose")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("purpose")]
-#endif
         public string Purpose { get; set; }
     }
 }

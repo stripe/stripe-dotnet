@@ -2,10 +2,10 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionPaymentMethodOptionsKlarnaSubscriptionOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Checkout
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
         /// </summary>
         [JsonProperty("interval")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval")]
-#endif
         public string Interval { get; set; }
 
         /// <summary>
@@ -24,27 +22,21 @@ namespace Stripe.Checkout
         /// charges every 3 months.
         /// </summary>
         [JsonProperty("interval_count")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval_count")]
-#endif
         public long? IntervalCount { get; set; }
 
         /// <summary>
         /// Name for subscription.
         /// </summary>
         [JsonProperty("name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
-#endif
         public string Name { get; set; }
 
         /// <summary>
         /// Describes the upcoming charge for this subscription.
         /// </summary>
         [JsonProperty("next_billing")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("next_billing")]
-#endif
         public SessionPaymentMethodOptionsKlarnaSubscriptionNextBillingOptions NextBilling { get; set; }
 
         /// <summary>
@@ -52,9 +44,7 @@ namespace Stripe.Checkout
         /// a value that persists across subscription charges.
         /// </summary>
         [JsonProperty("reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
-#endif
         public string Reference { get; set; }
     }
 }

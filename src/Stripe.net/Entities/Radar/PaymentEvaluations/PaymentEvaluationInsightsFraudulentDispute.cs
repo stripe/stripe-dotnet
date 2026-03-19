@@ -2,10 +2,10 @@
 namespace Stripe.Radar
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentEvaluationInsightsFraudulentDispute : StripeEntity<PaymentEvaluationInsightsFraudulentDispute>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Radar
         /// One of: <c>block</c>, or <c>continue</c>.
         /// </summary>
         [JsonProperty("recommended_action")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recommended_action")]
-#endif
         public string RecommendedAction { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.Radar
         /// evaluated payments are between 0 and 100, with higher scores indicating higher risk.
         /// </summary>
         [JsonProperty("risk_score")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("risk_score")]
-#endif
         public long RiskScore { get; set; }
     }
 }

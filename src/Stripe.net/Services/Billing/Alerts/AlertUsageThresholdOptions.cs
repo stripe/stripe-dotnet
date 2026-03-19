@@ -3,10 +3,10 @@ namespace Stripe.Billing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AlertUsageThresholdOptions : INestedOptions
     {
         /// <summary>
@@ -14,18 +14,14 @@ namespace Stripe.Billing
         /// one filter at this time.
         /// </summary>
         [JsonProperty("filters")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("filters")]
-#endif
         public List<AlertUsageThresholdFilterOptions> Filters { get; set; }
 
         /// <summary>
-        /// Defines at which value the alert will fire.
+        /// Defines the threshold value that triggers the alert.
         /// </summary>
         [JsonProperty("gte")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gte")]
-#endif
         public long? Gte { get; set; }
 
         /// <summary>
@@ -33,18 +29,14 @@ namespace Stripe.Billing
         /// monitored.
         /// </summary>
         [JsonProperty("meter")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("meter")]
-#endif
         public string Meter { get; set; }
 
         /// <summary>
         /// Defines how the alert will behave.
         /// </summary>
         [JsonProperty("recurrence")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recurrence")]
-#endif
         public string Recurrence { get; set; }
     }
 }

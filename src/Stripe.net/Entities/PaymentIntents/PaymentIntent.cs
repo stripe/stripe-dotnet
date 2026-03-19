@@ -5,9 +5,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// A PaymentIntent guides you through the process of collecting a payment from your
@@ -23,27 +21,21 @@ namespace Stripe
     /// Related guide: <a href="https://docs.stripe.com/payments/payment-intents">Payment
     /// Intents API</a>.
     /// </summary>
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntent : StripeEntity<PaymentIntent>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -57,33 +49,25 @@ namespace Stripe
         /// 99999999 for a USD charge of $999,999.99).
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         /// <summary>
         /// Amount that can be captured from this PaymentIntent.
         /// </summary>
         [JsonProperty("amount_capturable")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_capturable")]
-#endif
         public long AmountCapturable { get; set; }
 
         [JsonProperty("amount_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_details")]
-#endif
         public PaymentIntentAmountDetails AmountDetails { get; set; }
 
         /// <summary>
         /// Amount that this PaymentIntent collects.
         /// </summary>
         [JsonProperty("amount_received")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_received")]
-#endif
         public long AmountReceived { get; set; }
 
         #region Expandable Application
@@ -93,9 +77,7 @@ namespace Stripe
         /// ID of the Connect application that created the PaymentIntent.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string ApplicationId
         {
             get => this.InternalApplication?.Id;
@@ -109,9 +91,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Application Application
         {
             get => this.InternalApplication?.ExpandedObject;
@@ -120,10 +100,8 @@ namespace Stripe
 
         [JsonProperty("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Application>))]
-#endif
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
 
@@ -136,9 +114,7 @@ namespace Stripe
         /// accounts</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_fee_amount")]
-#endif
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -146,9 +122,7 @@ namespace Stripe
         /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
         /// </summary>
         [JsonProperty("automatic_payment_methods")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("automatic_payment_methods")]
-#endif
         public PaymentIntentAutomaticPaymentMethods AutomaticPaymentMethods { get; set; }
 
         /// <summary>
@@ -157,10 +131,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("canceled_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("canceled_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? CanceledAt { get; set; }
 
         /// <summary>
@@ -173,9 +145,7 @@ namespace Stripe
         /// <c>void_invoice</c>.
         /// </summary>
         [JsonProperty("cancellation_reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancellation_reason")]
-#endif
         public string CancellationReason { get; set; }
 
         /// <summary>
@@ -183,9 +153,7 @@ namespace Stripe
         /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
         /// </summary>
         [JsonProperty("capture_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capture_method")]
-#endif
         public string CaptureMethod { get; set; }
 
         /// <summary>
@@ -201,9 +169,7 @@ namespace Stripe
         /// payment</a> and learn about how <c>client_secret</c> should be handled.
         /// </summary>
         [JsonProperty("client_secret")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client_secret")]
-#endif
         public string ClientSecret { get; set; }
 
         /// <summary>
@@ -212,9 +178,7 @@ namespace Stripe
         /// One of: <c>automatic</c>, or <c>manual</c>.
         /// </summary>
         [JsonProperty("confirmation_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("confirmation_method")]
-#endif
         public string ConfirmationMethod { get; set; }
 
         /// <summary>
@@ -222,10 +186,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -234,9 +196,7 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         #region Expandable Customer
@@ -257,9 +217,7 @@ namespace Stripe
         /// payment method representing the card is created and attached to the Customer instead.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string CustomerId
         {
             get => this.InternalCustomer?.Id;
@@ -284,9 +242,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Customer Customer
         {
             get => this.InternalCustomer?.ExpandedObject;
@@ -295,10 +251,8 @@ namespace Stripe
 
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
-#endif
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
@@ -318,18 +272,14 @@ namespace Stripe
         /// payment method representing the card is created and attached to the Account instead.
         /// </summary>
         [JsonProperty("customer_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_account")]
-#endif
         public string CustomerAccount { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -347,15 +297,11 @@ namespace Stripe
         /// <c>zip</c>.
         /// </summary>
         [JsonProperty("excluded_payment_method_types")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("excluded_payment_method_types")]
-#endif
         public List<string> ExcludedPaymentMethodTypes { get; set; }
 
         [JsonProperty("hooks")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hooks")]
-#endif
         public PaymentIntentHooks Hooks { get; set; }
 
         /// <summary>
@@ -363,9 +309,7 @@ namespace Stripe
         /// cleared if the PaymentIntent is later updated for any reason.
         /// </summary>
         [JsonProperty("last_payment_error")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last_payment_error")]
-#endif
         public StripeError LastPaymentError { get; set; }
 
         #region Expandable LatestCharge
@@ -377,9 +321,7 @@ namespace Stripe
         /// attempted.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string LatestChargeId
         {
             get => this.InternalLatestCharge?.Id;
@@ -395,9 +337,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Charge LatestCharge
         {
             get => this.InternalLatestCharge?.ExpandedObject;
@@ -406,10 +346,8 @@ namespace Stripe
 
         [JsonProperty("latest_charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("latest_charge")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Charge>))]
-#endif
         internal ExpandableField<Charge> InternalLatestCharge { get; set; }
         #endregion
 
@@ -418,9 +356,7 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -431,9 +367,7 @@ namespace Stripe
         /// information in metadata</a>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -441,9 +375,7 @@ namespace Stripe
         /// customer to fulfill a payment using the provided source.
         /// </summary>
         [JsonProperty("next_action")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("next_action")]
-#endif
         public PaymentIntentNextAction NextAction { get; set; }
 
         #region Expandable OnBehalfOf
@@ -456,9 +388,7 @@ namespace Stripe
         /// accounts</a> for details.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string OnBehalfOfId
         {
             get => this.InternalOnBehalfOf?.Id;
@@ -475,9 +405,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Account OnBehalfOf
         {
             get => this.InternalOnBehalfOf?.ExpandedObject;
@@ -486,17 +414,13 @@ namespace Stripe
 
         [JsonProperty("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("on_behalf_of")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
-#endif
         internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
 
         [JsonProperty("payment_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_details")]
-#endif
         public PaymentIntentPaymentDetails PaymentDetails { get; set; }
 
         #region Expandable PaymentMethod
@@ -506,9 +430,7 @@ namespace Stripe
         /// ID of the payment method used in this PaymentIntent.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string PaymentMethodId
         {
             get => this.InternalPaymentMethod?.Id;
@@ -522,9 +444,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public PaymentMethod PaymentMethod
         {
             get => this.InternalPaymentMethod?.ExpandedObject;
@@ -533,10 +453,8 @@ namespace Stripe
 
         [JsonProperty("payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentMethod>))]
-#endif
         internal ExpandableField<PaymentMethod> InternalPaymentMethod { get; set; }
         #endregion
 
@@ -546,18 +464,14 @@ namespace Stripe
         /// configuration</a> used for this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_configuration_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_configuration_details")]
-#endif
         public PaymentIntentPaymentMethodConfigurationDetails PaymentMethodConfigurationDetails { get; set; }
 
         /// <summary>
         /// Payment-method-specific configuration for this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_options")]
-#endif
         public PaymentIntentPaymentMethodOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -566,24 +480,18 @@ namespace Stripe
         /// href="https://docs.stripe.com/api/payment_methods/object#payment_method_object-type">here</a>.
         /// </summary>
         [JsonProperty("payment_method_types")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_types")]
-#endif
         public List<string> PaymentMethodTypes { get; set; }
 
         [JsonProperty("presentment_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("presentment_details")]
-#endif
         public PaymentIntentPresentmentDetails PresentmentDetails { get; set; }
 
         /// <summary>
         /// If present, this property tells you about the processing state of the payment.
         /// </summary>
         [JsonProperty("processing")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("processing")]
-#endif
         public PaymentIntentProcessing Processing { get; set; }
 
         /// <summary>
@@ -593,9 +501,7 @@ namespace Stripe
         /// settings</a>.
         /// </summary>
         [JsonProperty("receipt_email")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("receipt_email")]
-#endif
         public string ReceiptEmail { get; set; }
 
         #region Expandable Review
@@ -605,9 +511,7 @@ namespace Stripe
         /// ID of the review associated with this PaymentIntent, if any.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string ReviewId
         {
             get => this.InternalReview?.Id;
@@ -621,9 +525,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Review Review
         {
             get => this.InternalReview?.ExpandedObject;
@@ -632,10 +534,8 @@ namespace Stripe
 
         [JsonProperty("review")]
         [JsonConverter(typeof(ExpandableFieldConverter<Review>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("review")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Review>))]
-#endif
         internal ExpandableField<Review> InternalReview { get; set; }
         #endregion
 
@@ -661,18 +561,14 @@ namespace Stripe
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
         /// Shipping information for this PaymentIntent.
         /// </summary>
         [JsonProperty("shipping")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping")]
-#endif
         public Shipping Shipping { get; set; }
 
         #region Expandable Source
@@ -683,9 +579,7 @@ namespace Stripe
         /// object that is associated with this PaymentIntent, if one was supplied.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string SourceId
         {
             get => this.InternalSource?.Id;
@@ -700,9 +594,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public IPaymentSource Source
         {
             get => this.InternalSource?.ExpandedObject;
@@ -711,10 +603,8 @@ namespace Stripe
 
         [JsonProperty("source")]
         [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<IPaymentSource>))]
-#endif
         internal ExpandableField<IPaymentSource> InternalSource { get; set; }
         #endregion
 
@@ -730,9 +620,7 @@ namespace Stripe
         /// instead.
         /// </summary>
         [JsonProperty("statement_descriptor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor")]
-#endif
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -742,9 +630,7 @@ namespace Stripe
         /// customer's statement.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor_suffix")]
-#endif
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
@@ -758,9 +644,7 @@ namespace Stripe
         /// or <c>succeeded</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
@@ -769,9 +653,7 @@ namespace Stripe
         /// connected accounts</a>.
         /// </summary>
         [JsonProperty("transfer_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfer_data")]
-#endif
         public PaymentIntentTransferData TransferData { get; set; }
 
         /// <summary>
@@ -780,9 +662,7 @@ namespace Stripe
         /// connected accounts</a>.
         /// </summary>
         [JsonProperty("transfer_group")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfer_group")]
-#endif
         public string TransferGroup { get; set; }
     }
 }

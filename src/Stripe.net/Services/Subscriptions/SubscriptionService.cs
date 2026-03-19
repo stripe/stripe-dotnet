@@ -203,11 +203,11 @@ namespace Stripe
 
         /// <summary>
         /// <p>Initiates resumption of a paused subscription, optionally resetting the billing cycle
-        /// anchor and creating prorations. If a resumption invoice is generated, it must be paid or
-        /// marked uncollectible before the subscription will be unpaused. If payment succeeds the
-        /// subscription will become <c>active</c>, and if payment fails the subscription will be
-        /// <c>past_due</c>. The resumption invoice will void automatically if not paid by the
-        /// expiration date.</p>.
+        /// anchor and creating prorations. If no resumption invoice is generated, the subscription
+        /// becomes <c>active</c> immediately. If a resumption invoice is generated, the
+        /// subscription remains <c>paused</c> until the invoice is paid or marked uncollectible. If
+        /// the invoice is not paid by the expiration date, it is voided and the subscription
+        /// remains <c>paused</c>.</p>.
         /// </summary>
         public virtual Subscription Resume(string id, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null)
         {
@@ -216,11 +216,11 @@ namespace Stripe
 
         /// <summary>
         /// <p>Initiates resumption of a paused subscription, optionally resetting the billing cycle
-        /// anchor and creating prorations. If a resumption invoice is generated, it must be paid or
-        /// marked uncollectible before the subscription will be unpaused. If payment succeeds the
-        /// subscription will become <c>active</c>, and if payment fails the subscription will be
-        /// <c>past_due</c>. The resumption invoice will void automatically if not paid by the
-        /// expiration date.</p>.
+        /// anchor and creating prorations. If no resumption invoice is generated, the subscription
+        /// becomes <c>active</c> immediately. If a resumption invoice is generated, the
+        /// subscription remains <c>paused</c> until the invoice is paid or marked uncollectible. If
+        /// the invoice is not paid by the expiration date, it is voided and the subscription
+        /// remains <c>paused</c>.</p>.
         /// </summary>
         public virtual Task<Subscription> ResumeAsync(string id, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

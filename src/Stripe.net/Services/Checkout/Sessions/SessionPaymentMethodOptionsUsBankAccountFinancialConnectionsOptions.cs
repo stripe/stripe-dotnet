@@ -3,10 +3,10 @@ namespace Stripe.Checkout
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions : INestedOptions
     {
         /// <summary>
@@ -17,9 +17,7 @@ namespace Stripe.Checkout
         /// <c>transactions</c>.
         /// </summary>
         [JsonProperty("permissions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("permissions")]
-#endif
         public List<string> Permissions { get; set; }
 
         /// <summary>
@@ -27,9 +25,7 @@ namespace Stripe.Checkout
         /// One of: <c>balances</c>, <c>ownership</c>, or <c>transactions</c>.
         /// </summary>
         [JsonProperty("prefetch")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prefetch")]
-#endif
         public List<string> Prefetch { get; set; }
     }
 }

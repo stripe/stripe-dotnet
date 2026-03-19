@@ -3,10 +3,10 @@ namespace Stripe.FinancialConnections
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionFiltersOptions : INestedOptions
     {
         /// <summary>
@@ -17,18 +17,14 @@ namespace Stripe.FinancialConnections
         /// <c>savings</c>.
         /// </summary>
         [JsonProperty("account_subcategories")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_subcategories")]
-#endif
         public List<string> AccountSubcategories { get; set; }
 
         /// <summary>
         /// List of countries from which to collect accounts.
         /// </summary>
         [JsonProperty("countries")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("countries")]
-#endif
         public List<string> Countries { get; set; }
     }
 }
