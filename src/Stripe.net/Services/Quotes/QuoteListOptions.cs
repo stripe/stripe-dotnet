@@ -2,28 +2,24 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class QuoteListOptions : ListOptions
     {
         /// <summary>
         /// The ID of the customer whose quotes you're retrieving.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
         /// The ID of the account representing the customer whose quotes you're retrieving.
         /// </summary>
         [JsonProperty("customer_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_account")]
-#endif
         public string CustomerAccount { get; set; }
 
         /// <summary>
@@ -31,9 +27,7 @@ namespace Stripe
         /// One of: <c>accepted</c>, <c>canceled</c>, <c>draft</c>, or <c>open</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
@@ -42,9 +36,7 @@ namespace Stripe
         /// not set.
         /// </summary>
         [JsonProperty("test_clock")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("test_clock")]
-#endif
         public string TestClock { get; set; }
     }
 }

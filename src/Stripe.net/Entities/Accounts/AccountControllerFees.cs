@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountControllerFees : StripeEntity<AccountControllerFees>
     {
         /// <summary>
@@ -17,9 +17,7 @@ namespace Stripe
         /// <c>application_express</c>.
         /// </summary>
         [JsonProperty("payer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payer")]
-#endif
         public string Payer { get; set; }
     }
 }

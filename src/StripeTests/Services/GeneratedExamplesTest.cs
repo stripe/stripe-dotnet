@@ -6701,6 +6701,25 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestRateLimitError()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/accounts",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"rate_limit\",\"code\":\"account_rate_limit_exceeded\"}}");
+            var exception = Assert.Throws<Stripe.V2.RateLimitException>(
+            () =>
+            {
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.Core.Accounts;
+                Stripe.V2.StripeList<Stripe.V2.Core.Account> accounts = service
+                    .List();
+            });
+            this.AssertRequest(HttpMethod.Get, "/v2/core/accounts");
+        }
+
+        [Fact]
         public void TestTemporarySessionExpiredError()
         {
             this.StubRequest(

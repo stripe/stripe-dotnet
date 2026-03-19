@@ -2,10 +2,10 @@
 namespace Stripe.TestHelpers.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AuthorizationFinalizeAmountOptions : BaseOptions
     {
         /// <summary>
@@ -14,27 +14,21 @@ namespace Stripe.TestHelpers.Issuing
         /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("final_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("final_amount")]
-#endif
         public long? FinalAmount { get; set; }
 
         /// <summary>
         /// Fleet-specific information for authorizations using Fleet cards.
         /// </summary>
         [JsonProperty("fleet")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fleet")]
-#endif
         public AuthorizationFleetOptions Fleet { get; set; }
 
         /// <summary>
         /// Information about fuel that was purchased with this transaction.
         /// </summary>
         [JsonProperty("fuel")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fuel")]
-#endif
         public AuthorizationFuelOptions Fuel { get; set; }
     }
 }

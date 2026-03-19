@@ -3,19 +3,17 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionAddInvoiceItemOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// The coupons to redeem into discounts for the item.
         /// </summary>
         [JsonProperty("discounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
-#endif
         public List<SubscriptionAddInvoiceItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -36,18 +32,14 @@ namespace Stripe
         /// <c>min_item_period_end</c>.
         /// </summary>
         [JsonProperty("period")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("period")]
-#endif
         public SubscriptionAddInvoiceItemPeriodOptions Period { get; set; }
 
         /// <summary>
         /// The ID of the price object. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price")]
-#endif
         public string Price { get; set; }
 
         /// <summary>
@@ -55,18 +47,14 @@ namespace Stripe
         /// object inline. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price_data")]
-#endif
         public SubscriptionAddInvoiceItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
         /// Quantity for this item. Defaults to 1.
         /// </summary>
         [JsonProperty("quantity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
-#endif
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -74,9 +62,7 @@ namespace Stripe
         /// apply to this item.
         /// </summary>
         [JsonProperty("tax_rates")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rates")]
-#endif
         public List<string> TaxRates { get; set; }
     }
 }

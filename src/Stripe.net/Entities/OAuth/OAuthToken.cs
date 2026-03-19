@@ -2,9 +2,7 @@ namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     public class OAuthToken : StripeEntity<OAuthToken>
     {
@@ -27,9 +25,7 @@ namespace Stripe
         /// </remarks>
         [Obsolete("Use StripeUserId instead.")]
         [JsonProperty("access_token")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("access_token")]
-#endif
         public string AccessToken { get; set; }
 
         /// <summary>
@@ -41,9 +37,7 @@ namespace Stripe
         /// <para>Depends on the mode of the secret API key used to make the request.</para>
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -58,9 +52,7 @@ namespace Stripe
         /// </remarks>
         [Obsolete("Use StripeUserId instead.")]
         [JsonProperty("refresh_token")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refresh_token")]
-#endif
         public string RefreshToken { get; set; }
 
         /// <summary>
@@ -68,9 +60,7 @@ namespace Stripe
         /// and <c>scope</c> parameter.
         /// </summary>
         [JsonProperty("scope")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("scope")]
-#endif
         public string Scope { get; set; }
 
         /// <summary>
@@ -84,25 +74,19 @@ namespace Stripe
         /// </remarks>
         [Obsolete("Use StripeUserId instead.")]
         [JsonProperty("stripe_publishable_key")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stripe_publishable_key")]
-#endif
         public string StripePublishableKey { get; set; }
 
         /// <summary>
         /// The unique id of the account you have been granted access to, as a string.
         /// </summary>
         [JsonProperty("stripe_user_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stripe_user_id")]
-#endif
         public string StripeUserId { get; set; }
 
         /// <summary>Will always have a value of <c>bearer</c>.</summary>
         [JsonProperty("token_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("token_type")]
-#endif
         public string TokenType { get; set; }
     }
 }

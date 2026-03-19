@@ -5,7 +5,9 @@ namespace StripeTests
     using Stripe.Infrastructure;
     using Xunit;
 
-    public class StringInt64ConverterTest : BaseStripeTest
+    using STJS = System.Text.Json.Serialization;
+
+    public class Int64StringConverterTest : BaseStripeTest
     {
         [Fact]
         public void DeserializeString()
@@ -37,10 +39,13 @@ namespace StripeTests
             Assert.Equal(expected, obj.ToJson().Replace("\r\n", "\n"));
         }
 
+        [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
         private class TestObject : StripeEntity<TestObject>
         {
             [JsonProperty("divide_by")]
-            [JsonConverter(typeof(StringInt64Converter))]
+            [JsonConverter(typeof(Int64StringConverter))]
+            [STJS.JsonPropertyName("divide_by")]
+            [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
             internal long DivideBy { get; set; }
         }
     }

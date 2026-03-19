@@ -5,34 +5,26 @@ namespace Stripe.Reserve
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// ReserveHolds are used to place a temporary ReserveHold on a merchant's funds.
     /// </summary>
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Hold : StripeEntity<Hold>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -40,18 +32,14 @@ namespace Stripe.Reserve
         /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         /// <summary>
         /// Amount in cents that can be released from this ReserveHold.
         /// </summary>
         [JsonProperty("amount_releasable")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_releasable")]
-#endif
         public long AmountReleasable { get; set; }
 
         /// <summary>
@@ -59,10 +47,8 @@ namespace Stripe.Reserve
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -70,9 +56,7 @@ namespace Stripe.Reserve
         /// One of: <c>application</c>, or <c>stripe</c>.
         /// </summary>
         [JsonProperty("created_by")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created_by")]
-#endif
         public string CreatedBy { get; set; }
 
         /// <summary>
@@ -81,9 +65,7 @@ namespace Stripe.Reserve
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -92,9 +74,7 @@ namespace Stripe.Reserve
         /// funds haven't been fully released yet.
         /// </summary>
         [JsonProperty("is_releasable")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("is_releasable")]
-#endif
         public bool IsReleasable { get; set; }
 
         /// <summary>
@@ -102,9 +82,7 @@ namespace Stripe.Reserve
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -113,9 +91,7 @@ namespace Stripe.Reserve
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -123,15 +99,11 @@ namespace Stripe.Reserve
         /// One of: <c>charge</c>, or <c>standalone</c>.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
-#endif
         public string Reason { get; set; }
 
         [JsonProperty("release_schedule")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("release_schedule")]
-#endif
         public HoldReleaseSchedule ReleaseSchedule { get; set; }
 
         #region Expandable ReservePlan
@@ -141,9 +113,7 @@ namespace Stripe.Reserve
         /// The ReservePlan which produced this ReserveHold (i.e., resplan_123).
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string ReservePlanId
         {
             get => this.InternalReservePlan?.Id;
@@ -157,9 +127,7 @@ namespace Stripe.Reserve
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Plan ReservePlan
         {
             get => this.InternalReservePlan?.ExpandedObject;
@@ -168,10 +136,8 @@ namespace Stripe.Reserve
 
         [JsonProperty("reserve_plan")]
         [JsonConverter(typeof(ExpandableFieldConverter<Plan>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reserve_plan")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Plan>))]
-#endif
         internal ExpandableField<Plan> InternalReservePlan { get; set; }
         #endregion
 
@@ -182,9 +148,7 @@ namespace Stripe.Reserve
         /// The Charge which funded this ReserveHold (e.g., ch_123).
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string SourceChargeId
         {
             get => this.InternalSourceCharge?.Id;
@@ -198,9 +162,7 @@ namespace Stripe.Reserve
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Charge SourceCharge
         {
             get => this.InternalSourceCharge?.ExpandedObject;
@@ -209,10 +171,8 @@ namespace Stripe.Reserve
 
         [JsonProperty("source_charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source_charge")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Charge>))]
-#endif
         internal ExpandableField<Charge> InternalSourceCharge { get; set; }
         #endregion
 
@@ -222,9 +182,7 @@ namespace Stripe.Reserve
         /// One of: <c>bank_account</c>, <c>card</c>, or <c>fpx</c>.
         /// </summary>
         [JsonProperty("source_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source_type")]
-#endif
         public string SourceType { get; set; }
     }
 }

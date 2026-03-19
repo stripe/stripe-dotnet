@@ -2,19 +2,17 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionPhoneNumberCollection : StripeEntity<SessionPhoneNumberCollection>
     {
         /// <summary>
         /// Indicates whether phone number collection is enabled for the session.
         /// </summary>
         [JsonProperty("enabled")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
-#endif
         public bool Enabled { get; set; }
     }
 }

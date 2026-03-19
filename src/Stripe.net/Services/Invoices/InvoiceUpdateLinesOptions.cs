@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceUpdateLinesOptions : BaseOptions
     {
         /// <summary>
@@ -21,18 +21,14 @@ namespace Stripe
         /// items, where any existing metadata on the invoice line is merged with the incoming data.
         /// </summary>
         [JsonProperty("invoice_metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_metadata")]
-#endif
         public Dictionary<string, string> InvoiceMetadata { get; set; }
 
         /// <summary>
         /// The line items to update.
         /// </summary>
         [JsonProperty("lines")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lines")]
-#endif
         public List<InvoiceLineOptions> Lines { get; set; }
     }
 }

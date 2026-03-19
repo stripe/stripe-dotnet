@@ -1,4 +1,3 @@
-#if NET6_0_OR_GREATER
 namespace Stripe.Infrastructure
 {
     using System;
@@ -27,8 +26,11 @@ namespace Stripe.Infrastructure
         public override bool CanConvert(Type objectType)
         {
             var typeInfo = objectType.GetTypeInfo();
-            return (typeInfo.IsInterface && typeInfo.FullName.StartsWith("Stripe")) ||
-                    typeInfo.FullName.Equals("Stripe.V2.Core.Event");
+
+            // Only handle Stripe interfaces for polymorphic dispatch.
+            // V2.Core.Event is handled by STJV2EventConverter (via class-level attribute)
+            // which performs dispatch on the "type" property instead of "object".
+            return typeInfo.IsInterface && typeInfo.FullName.StartsWith("Stripe");
         }
 
         public override JsonConverter CreateConverter(
@@ -68,7 +70,12 @@ namespace Stripe.Infrastructure
                 }
 
                 var jsonObject = JsonElement.ParseValue(ref reader);
-                var objectValue = jsonObject.GetProperty("object").GetString();
+                if (!jsonObject.TryGetProperty("object", out var objectProperty))
+                {
+                    return null;
+                }
+
+                var objectValue = objectProperty.GetString();
 
                 Type concreteType = StripeTypeRegistry.GetConcreteType(typeToConvert, objectValue);
                 if (concreteType == null)
@@ -82,4 +89,3 @@ namespace Stripe.Infrastructure
         }
     }
 }
-#endif

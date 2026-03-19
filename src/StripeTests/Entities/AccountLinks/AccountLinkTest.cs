@@ -1,6 +1,6 @@
 namespace StripeTests
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe;
     using Xunit;
 
@@ -10,7 +10,7 @@ namespace StripeTests
         public void Deserialize()
         {
             var json = GetResourceAsString("api_fixtures.account_link.json");
-            var accountLink = JsonConvert.DeserializeObject<AccountLink>(json);
+            var accountLink = JsonSerializer.Deserialize<AccountLink>(json);
             Assert.NotNull(accountLink);
             Assert.IsType<AccountLink>(accountLink);
             Assert.Equal("account_link", accountLink.Object);

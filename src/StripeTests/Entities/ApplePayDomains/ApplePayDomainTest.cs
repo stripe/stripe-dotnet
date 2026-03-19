@@ -1,6 +1,6 @@
 namespace StripeTests
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe;
     using Xunit;
 
@@ -15,7 +15,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/apple_pay/domains/apwc_123");
-            var domain = JsonConvert.DeserializeObject<ApplePayDomain>(json);
+            var domain = JsonSerializer.Deserialize<ApplePayDomain>(json);
             Assert.NotNull(domain);
             Assert.IsType<ApplePayDomain>(domain);
             Assert.NotNull(domain.Id);

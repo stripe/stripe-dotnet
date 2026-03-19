@@ -3,10 +3,10 @@ namespace Stripe.Issuing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CardUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Issuing
         /// One of: <c>lost</c>, or <c>stolen</c>.
         /// </summary>
         [JsonProperty("cancellation_reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancellation_reason")]
-#endif
         public string CancellationReason { get; set; }
 
         /// <summary>
@@ -26,33 +24,25 @@ namespace Stripe.Issuing
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("personalization_design")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("personalization_design")]
-#endif
         public string PersonalizationDesign { get; set; }
 
         /// <summary>
         /// The desired new PIN for this card.
         /// </summary>
         [JsonProperty("pin")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pin")]
-#endif
         public CardPinOptions Pin { get; set; }
 
         /// <summary>
         /// Updated shipping information for the card.
         /// </summary>
         [JsonProperty("shipping")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping")]
-#endif
         public CardShippingOptions Shipping { get; set; }
 
         /// <summary>
@@ -61,9 +51,7 @@ namespace Stripe.Issuing
         /// more details.
         /// </summary>
         [JsonProperty("spending_controls")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("spending_controls")]
-#endif
         public CardSpendingControlsOptions SpendingControls { get; set; }
 
         /// <summary>
@@ -74,9 +62,7 @@ namespace Stripe.Issuing
         /// One of: <c>active</c>, <c>canceled</c>, or <c>inactive</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

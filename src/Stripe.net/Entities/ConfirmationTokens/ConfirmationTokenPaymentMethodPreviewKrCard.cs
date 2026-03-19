@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ConfirmationTokenPaymentMethodPreviewKrCard : StripeEntity<ConfirmationTokenPaymentMethodPreviewKrCard>
     {
         /// <summary>
@@ -17,18 +17,14 @@ namespace Stripe
         /// <c>woori</c>.
         /// </summary>
         [JsonProperty("brand")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("brand")]
-#endif
         public string Brand { get; set; }
 
         /// <summary>
         /// The last four digits of the card. This may not be present for American Express cards.
         /// </summary>
         [JsonProperty("last4")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last4")]
-#endif
         public string Last4 { get; set; }
     }
 }

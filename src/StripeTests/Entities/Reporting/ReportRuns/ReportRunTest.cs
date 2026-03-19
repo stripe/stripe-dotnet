@@ -1,6 +1,6 @@
 namespace StripeTests.Reporting
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe.Reporting;
     using Xunit;
 
@@ -15,7 +15,7 @@ namespace StripeTests.Reporting
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/reporting/report_runs/frr_123");
-            var reportRun = JsonConvert.DeserializeObject<ReportRun>(json);
+            var reportRun = JsonSerializer.Deserialize<ReportRun>(json);
             Assert.NotNull(reportRun);
             Assert.IsType<ReportRun>(reportRun);
             Assert.NotNull(reportRun.Id);

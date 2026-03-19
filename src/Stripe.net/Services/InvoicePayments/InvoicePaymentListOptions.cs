@@ -4,10 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoicePaymentListOptions : ListOptions
     {
         /// <summary>
@@ -15,28 +14,22 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
         /// The identifier of the invoice whose payments to return.
         /// </summary>
         [JsonProperty("invoice")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice")]
-#endif
         public string Invoice { get; set; }
 
         /// <summary>
         /// The payment details of the invoice payments to return.
         /// </summary>
         [JsonProperty("payment")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment")]
-#endif
         public InvoicePaymentPaymentOptions Payment { get; set; }
 
         /// <summary>
@@ -44,9 +37,7 @@ namespace Stripe
         /// One of: <c>canceled</c>, <c>open</c>, or <c>paid</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

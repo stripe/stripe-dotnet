@@ -3,19 +3,17 @@ namespace Stripe.Terminal
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ReaderCollectInputsOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// List of inputs to be collected from the customer using the Reader. Maximum 5 inputs.
         /// </summary>
         [JsonProperty("inputs")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inputs")]
-#endif
         public List<ReaderInputOptions> Inputs { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe.Terminal
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

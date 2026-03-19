@@ -6,9 +6,7 @@ namespace Stripe.Events
     using System.Threading.Tasks;
     using Newtonsoft.Json;
     using Stripe.V2.Core;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// Represents an EventNotification that is valid, but that the SDK doesn't have types for. May have a RelatedObject and can be used to fetch the corresponding full event.
@@ -20,9 +18,7 @@ namespace Stripe.Events
         /// [Optional] Object containing the reference to API resource relevant to the event.
         /// </summary>
         [JsonProperty("related_object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("related_object")]
-#endif
         public EventNotificationRelatedObject? RelatedObject { get; internal set; }
 
         public V2.Core.Event FetchEvent()

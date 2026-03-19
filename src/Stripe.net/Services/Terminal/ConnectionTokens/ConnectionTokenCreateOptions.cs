@@ -2,10 +2,10 @@
 namespace Stripe.Terminal
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ConnectionTokenCreateOptions : BaseOptions
     {
         /// <summary>
@@ -17,9 +17,7 @@ namespace Stripe.Terminal
         /// docs on scoping connection tokens</a>.
         /// </summary>
         [JsonProperty("location")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("location")]
-#endif
         public string Location { get; set; }
     }
 }

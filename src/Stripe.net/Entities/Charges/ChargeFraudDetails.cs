@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ChargeFraudDetails : StripeEntity<ChargeFraudDetails>
     {
         /// <summary>
         /// Assessments from Stripe. If set, the value is <c>fraudulent</c>.
         /// </summary>
         [JsonProperty("stripe_report")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stripe_report")]
-#endif
         public string StripeReport { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe
         /// <c>fraudulent</c>.
         /// </summary>
         [JsonProperty("user_report")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("user_report")]
-#endif
         public string UserReport { get; set; }
     }
 }

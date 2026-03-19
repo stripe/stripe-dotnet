@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class BalanceSettingsPayments : StripeEntity<BalanceSettingsPayments>
     {
         /// <summary>
@@ -16,24 +16,18 @@ namespace Stripe
         /// is <c>application</c>, which includes Custom accounts, otherwise <c>true</c>.
         /// </summary>
         [JsonProperty("debit_negative_balances")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("debit_negative_balances")]
-#endif
         public bool? DebitNegativeBalances { get; set; }
 
         /// <summary>
         /// Settings specific to the account's payouts.
         /// </summary>
         [JsonProperty("payouts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payouts")]
-#endif
         public BalanceSettingsPaymentsPayouts Payouts { get; set; }
 
         [JsonProperty("settlement_timing")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("settlement_timing")]
-#endif
         public BalanceSettingsPaymentsSettlementTiming SettlementTiming { get; set; }
     }
 }

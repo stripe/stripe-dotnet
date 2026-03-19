@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionPaymentSettingsOptions : INestedOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe
         /// subscription.
         /// </summary>
         [JsonProperty("payment_method_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_options")]
-#endif
         public SubscriptionPaymentSettingsPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -38,9 +36,7 @@ namespace Stripe
         /// <c>us_bank_account</c>, or <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_types")]
-#endif
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
@@ -49,9 +45,7 @@ namespace Stripe
         /// One of: <c>off</c>, or <c>on_subscription</c>.
         /// </summary>
         [JsonProperty("save_default_payment_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("save_default_payment_method")]
-#endif
         public string SaveDefaultPaymentMethod { get; set; }
     }
 }

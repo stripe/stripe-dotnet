@@ -1,4 +1,3 @@
-#if NET6_0_OR_GREATER
 namespace StripeTests.Wholesome
 {
     using System;
@@ -60,4 +59,3 @@ namespace StripeTests.Wholesome
         }
     }
 }
-#endif

@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class BankAccountVerifyOptions : BaseOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe
         /// to the bank account.
         /// </summary>
         [JsonProperty("amounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amounts")]
-#endif
         public List<long> Amounts { get; set; }
     }
 }

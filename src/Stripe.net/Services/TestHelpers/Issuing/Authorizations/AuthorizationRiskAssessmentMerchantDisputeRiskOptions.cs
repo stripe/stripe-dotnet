@@ -2,10 +2,10 @@
 namespace Stripe.TestHelpers.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AuthorizationRiskAssessmentMerchantDisputeRiskOptions : INestedOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.TestHelpers.Issuing
         /// authorization is disputed. Takes on values between 0 and 100.
         /// </summary>
         [JsonProperty("dispute_rate")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dispute_rate")]
-#endif
         public long? DisputeRate { get; set; }
 
         /// <summary>
@@ -27,9 +25,7 @@ namespace Stripe.TestHelpers.Issuing
         /// or <c>unknown</c>.
         /// </summary>
         [JsonProperty("risk_level")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("risk_level")]
-#endif
         public string RiskLevel { get; set; }
     }
 }

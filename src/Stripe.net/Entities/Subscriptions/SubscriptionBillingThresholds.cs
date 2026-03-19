@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SubscriptionBillingThresholds : StripeEntity<SubscriptionBillingThresholds>
     {
         /// <summary>
         /// Monetary threshold that triggers the subscription to create an invoice.
         /// </summary>
         [JsonProperty("amount_gte")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_gte")]
-#endif
         public long? AmountGte { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe
         /// <c>aggregate_usage=last_ever</c>.
         /// </summary>
         [JsonProperty("reset_billing_cycle_anchor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reset_billing_cycle_anchor")]
-#endif
         public bool? ResetBillingCycleAnchor { get; set; }
     }
 }

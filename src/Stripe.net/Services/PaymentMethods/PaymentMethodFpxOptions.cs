@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentMethodFpxOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// One of: <c>company</c>, or <c>individual</c>.
         /// </summary>
         [JsonProperty("account_holder_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_holder_type")]
-#endif
         public string AccountHolderType { get; set; }
 
         /// <summary>
@@ -27,9 +25,7 @@ namespace Stripe
         /// <c>public_bank</c>, <c>rhb</c>, <c>standard_chartered</c>, or <c>uob</c>.
         /// </summary>
         [JsonProperty("bank")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank")]
-#endif
         public string Bank { get; set; }
     }
 }

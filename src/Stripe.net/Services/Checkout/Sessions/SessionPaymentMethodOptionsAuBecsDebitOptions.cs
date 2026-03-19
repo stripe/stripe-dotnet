@@ -2,10 +2,10 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionPaymentMethodOptionsAuBecsDebitOptions : INestedOptions
     {
         /// <summary>
@@ -29,9 +29,7 @@ namespace Stripe.Checkout
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -40,9 +38,7 @@ namespace Stripe.Checkout
         /// and 15 calendar days from now.
         /// </summary>
         [JsonProperty("target_date")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("target_date")]
-#endif
         public string TargetDate { get; set; }
     }
 }

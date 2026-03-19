@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountSessionComponentsFinancialAccountFeatures : StripeEntity<AccountSessionComponentsFinancialAccountFeatures>
     {
         /// <summary>
@@ -16,9 +16,7 @@ namespace Stripe
         /// <c>true</c> and <c>disable_stripe_user_authentication</c> defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("disable_stripe_user_authentication")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("disable_stripe_user_authentication")]
-#endif
         public bool DisableStripeUserAuthentication { get; set; }
 
         /// <summary>
@@ -28,27 +26,21 @@ namespace Stripe
         /// is <c>true</c>.
         /// </summary>
         [JsonProperty("external_account_collection")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("external_account_collection")]
-#endif
         public bool ExternalAccountCollection { get; set; }
 
         /// <summary>
         /// Whether to allow sending money.
         /// </summary>
         [JsonProperty("send_money")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("send_money")]
-#endif
         public bool SendMoney { get; set; }
 
         /// <summary>
         /// Whether to allow transferring balance.
         /// </summary>
         [JsonProperty("transfer_balance")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfer_balance")]
-#endif
         public bool TransferBalance { get; set; }
     }
 }

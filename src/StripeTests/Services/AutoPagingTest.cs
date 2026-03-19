@@ -5,11 +5,11 @@ namespace StripeTests
     using System.Linq;
     using System.Net;
     using System.Net.Http;
+    using System.Text.Json.Serialization;
     using System.Threading;
     using System.Threading.Tasks;
     using Moq;
     using Moq.Protected;
-    using Newtonsoft.Json;
     using Stripe;
     using Xunit;
 
@@ -643,7 +643,7 @@ namespace StripeTests
 
         public class PageableModel : StripeEntity<PageableModel>, IHasId
         {
-            [JsonProperty("id")]
+            [JsonPropertyName("id")]
             public string Id { get; set; }
         }
 

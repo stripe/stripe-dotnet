@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class InvoiceTotalTax : StripeEntity<InvoiceTotalTax>
     {
         /// <summary>
         /// The amount of the tax, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe
         /// One of: <c>exclusive</c>, or <c>inclusive</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_behavior")]
-#endif
         public string TaxBehavior { get; set; }
 
         /// <summary>
@@ -32,9 +28,7 @@ namespace Stripe
         /// <c>tax_rate_details</c>.
         /// </summary>
         [JsonProperty("tax_rate_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rate_details")]
-#endif
         public InvoiceTotalTaxTaxRateDetails TaxRateDetails { get; set; }
 
         /// <summary>
@@ -48,27 +42,21 @@ namespace Stripe
         /// <c>zero_rated</c>.
         /// </summary>
         [JsonProperty("taxability_reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("taxability_reason")]
-#endif
         public string TaxabilityReason { get; set; }
 
         /// <summary>
         /// The amount on which tax is calculated, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("taxable_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("taxable_amount")]
-#endif
         public long? TaxableAmount { get; set; }
 
         /// <summary>
         /// The type of tax information.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

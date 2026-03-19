@@ -2,28 +2,24 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountIdentityBusinessDetailsScriptAddresses : StripeEntity<AccountIdentityBusinessDetailsScriptAddresses>
     {
         /// <summary>
         /// Kana Address.
         /// </summary>
         [JsonProperty("kana")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("kana")]
-#endif
         public AccountIdentityBusinessDetailsScriptAddressesKana Kana { get; set; }
 
         /// <summary>
         /// Kanji Address.
         /// </summary>
         [JsonProperty("kanji")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("kanji")]
-#endif
         public AccountIdentityBusinessDetailsScriptAddressesKanji Kanji { get; set; }
     }
 }

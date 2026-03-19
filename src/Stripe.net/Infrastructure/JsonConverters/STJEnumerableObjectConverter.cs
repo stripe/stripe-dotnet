@@ -1,4 +1,3 @@
-#if NET6_0_OR_GREATER
 namespace Stripe.Infrastructure
 {
     using System;
@@ -47,20 +46,8 @@ namespace Stripe.Infrastructure
             return converter;
         }
 
-        internal class STJEnumerableObjectConverterInner<T> : JsonConverter<T>
+        internal class STJEnumerableObjectConverterInner<T> : STJDefaultConverter<T>
         {
-            /// <summary>
-            /// Reads the JSON representation of the object.
-            /// </summary>
-            /// <param name="reader">The <see cref="Utf8JsonReader"/> to read from.</param>
-            /// <param name="typeToConvert">Type of the object.</param>
-            /// <param name="options">The calling serializer's options.</param>
-            /// <returns>The object value.</returns>
-            public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-            {
-                throw new NotSupportedException("STJEnumerableObjectConverter should only be used while serializing.");
-            }
-
             /// <summary>
             /// Writes the JSON representation of the object.
             /// </summary>
@@ -96,4 +83,3 @@ namespace Stripe.Infrastructure
         }
     }
 }
-#endif
