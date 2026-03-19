@@ -3,10 +3,10 @@ namespace Stripe.V2.MoneyManagement
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class RecipientVerificationStatusTransitions : StripeEntity<RecipientVerificationStatusTransitions>
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.V2.MoneyManagement
         /// example: 2022-09-18T13:22:18.123Z.
         /// </summary>
         [JsonProperty("acknowledged_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("acknowledged_at")]
-#endif
         public DateTime? AcknowledgedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -26,9 +24,7 @@ namespace Stripe.V2.MoneyManagement
         /// example: 2022-09-18T13:22:18.123Z.
         /// </summary>
         [JsonProperty("consumed_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("consumed_at")]
-#endif
         public DateTime? ConsumedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

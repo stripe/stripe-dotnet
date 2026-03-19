@@ -22,9 +22,7 @@ namespace Stripe
         /// whether two PayPal accounts are the same.
         /// </summary>
         [JsonProperty("fingerprint")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fingerprint")]
-#endif
         public string Fingerprint { get; set; }
 
         /// <summary>
@@ -47,9 +45,7 @@ namespace Stripe
         /// supported) at the time of authorization or settlement. They cannot be set or mutated.
         /// </summary>
         [JsonProperty("verified_email")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verified_email")]
-#endif
         public string VerifiedEmail { get; set; }
     }
 }

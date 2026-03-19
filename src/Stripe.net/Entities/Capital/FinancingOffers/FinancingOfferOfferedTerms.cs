@@ -2,10 +2,10 @@
 namespace Stripe.Capital
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FinancingOfferOfferedTerms : StripeEntity<FinancingOfferOfferedTerms>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Capital
         /// 100000.
         /// </summary>
         [JsonProperty("advance_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("advance_amount")]
-#endif
         public long AdvanceAmount { get; set; }
 
         /// <summary>
@@ -24,27 +22,21 @@ namespace Stripe.Capital
         /// <c>repeat_user</c>.
         /// </summary>
         [JsonProperty("campaign_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("campaign_type")]
-#endif
         public string CampaignType { get; set; }
 
         /// <summary>
         /// Currency that the financing offer is transacted in. For example, <c>usd</c>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// Fixed fee amount, in minor units. For example, 100 USD is represented as 10000.
         /// </summary>
         [JsonProperty("fee_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fee_amount")]
-#endif
         public long FeeAmount { get; set; }
 
         /// <summary>
@@ -54,18 +46,14 @@ namespace Stripe.Capital
         /// will be computed as the multiple of this rate and the remaining fee.
         /// </summary>
         [JsonProperty("previous_financing_fee_discount_rate")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("previous_financing_fee_discount_rate")]
-#endif
         public decimal? PreviousFinancingFeeDiscountRate { get; set; }
 
         /// <summary>
         /// Per-transaction rate at which Stripe withholds funds to repay the financing.
         /// </summary>
         [JsonProperty("withhold_rate")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("withhold_rate")]
-#endif
         public decimal WithholdRate { get; set; }
     }
 }

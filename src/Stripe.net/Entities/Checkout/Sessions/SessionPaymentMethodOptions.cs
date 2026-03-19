@@ -172,10 +172,6 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("twint")]
         public SessionPaymentMethodOptionsTwint Twint { get; set; }
 
-        [JsonProperty("upi")]
-        [STJS.JsonPropertyName("upi")]
-        public SessionPaymentMethodOptionsUpi Upi { get; set; }
-
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]
         public SessionPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }

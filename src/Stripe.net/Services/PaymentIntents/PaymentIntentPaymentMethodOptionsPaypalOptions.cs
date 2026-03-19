@@ -20,9 +20,7 @@ namespace Stripe
         /// The line items purchased by the customer.
         /// </summary>
         [JsonProperty("line_items")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("line_items")]
-#endif
         public List<PaymentIntentPaymentMethodOptionsPaypalLineItemOptions> LineItems { get; set; }
 
         /// <summary>
@@ -52,9 +50,7 @@ namespace Stripe
         /// settings to block multiple payments per invoice ID.
         /// </summary>
         [JsonProperty("reference_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference_id")]
-#endif
         public string ReferenceId { get; set; }
 
         /// <summary>
@@ -100,9 +96,7 @@ namespace Stripe
         /// and transfers</a> are used.
         /// </summary>
         [JsonProperty("subsellers")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subsellers")]
-#endif
         public List<string> Subsellers { get; set; }
     }
 }

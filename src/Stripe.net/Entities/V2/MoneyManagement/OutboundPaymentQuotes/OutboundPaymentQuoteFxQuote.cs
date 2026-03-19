@@ -4,10 +4,10 @@ namespace Stripe.V2.MoneyManagement
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class OutboundPaymentQuoteFxQuote : StripeEntity<OutboundPaymentQuoteFxQuote>
     {
         /// <summary>
@@ -16,9 +16,7 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>five_minutes</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("lock_duration")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lock_duration")]
-#endif
         public string LockDuration { get; set; }
 
         /// <summary>
@@ -26,9 +24,7 @@ namespace Stripe.V2.MoneyManagement
         /// when rate locking is not supported.
         /// </summary>
         [JsonProperty("lock_expires_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lock_expires_at")]
-#endif
         public DateTime? LockExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -37,27 +33,21 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>active</c>, <c>expired</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("lock_status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lock_status")]
-#endif
         public string LockStatus { get; set; }
 
         /// <summary>
         /// Key pair: from currency Value: exchange rate going from_currency -&gt; to_currency.
         /// </summary>
         [JsonProperty("rates")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rates")]
-#endif
         public Dictionary<string, OutboundPaymentQuoteFxQuoteRates> Rates { get; set; }
 
         /// <summary>
         /// The currency that the transaction is exchanging to.
         /// </summary>
         [JsonProperty("to_currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("to_currency")]
-#endif
         public string ToCurrency { get; set; }
     }
 }

@@ -58,8 +58,8 @@ namespace Stripe
         ///
         /// <p>If you create a manual payout on a Stripe account that uses multiple payment source
         /// types, you need to specify the source type balance that the payout draws from. The <a
-        /// href="https://stripe.com/api/balances/object">balance object</a> details available and
-        /// pending amounts by source type.</p>.
+        /// href="https://stripe.com/docs/api#balance_object">balance object</a> details available
+        /// and pending amounts by source type.</p>.
         /// </summary>
         public virtual Payout Create(PayoutCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -76,8 +76,8 @@ namespace Stripe
         ///
         /// <p>If you create a manual payout on a Stripe account that uses multiple payment source
         /// types, you need to specify the source type balance that the payout draws from. The <a
-        /// href="https://stripe.com/api/balances/object">balance object</a> details available and
-        /// pending amounts by source type.</p>.
+        /// href="https://stripe.com/docs/api#balance_object">balance object</a> details available
+        /// and pending amounts by source type.</p>.
         /// </summary>
         public virtual Task<Payout> CreateAsync(PayoutCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

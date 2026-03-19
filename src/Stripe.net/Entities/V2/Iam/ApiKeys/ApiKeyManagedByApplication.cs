@@ -2,19 +2,17 @@
 namespace Stripe.V2.Iam
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ApiKeyManagedByApplication : StripeEntity<ApiKeyManagedByApplication>, IHasId
     {
         /// <summary>
         /// Identifier of the application.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
     }
 }

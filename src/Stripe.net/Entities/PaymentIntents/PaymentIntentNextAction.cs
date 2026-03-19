@@ -71,10 +71,6 @@ namespace Stripe
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
 
-        [JsonProperty("upi_handle_redirect_or_display_qr_code")]
-        [STJS.JsonPropertyName("upi_handle_redirect_or_display_qr_code")]
-        public PaymentIntentNextActionUpiHandleRedirectOrDisplayQrCode UpiHandleRedirectOrDisplayQrCode { get; set; }
-
         /// <summary>
         /// When confirming a PaymentIntent with Stripe.js, Stripe.js depends on the contents of
         /// this dictionary to invoke authentication flows. The shape of the contents is subject to
@@ -101,9 +97,7 @@ namespace Stripe
         public PaymentIntentNextActionWechatPayRedirectToIosApp WechatPayRedirectToIosApp { get; set; }
 
         [JsonProperty("crypto_display_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("crypto_display_details")]
-#endif
         public PaymentIntentNextActionCryptoDisplayDetails CryptoDisplayDetails { get; set; }
     }
 }

@@ -3,19 +3,17 @@ namespace Stripe.V2.Billing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class RateCardCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// The currency of this RateCard.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.V2.Billing
         /// of 250 characters.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe.V2.Billing
         /// characters.
         /// </summary>
         [JsonProperty("lookup_key")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_key")]
-#endif
         public string LookupKey { get; set; }
 
         /// <summary>
@@ -45,9 +39,7 @@ namespace Stripe.V2.Billing
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -59,9 +51,7 @@ namespace Stripe.V2.Billing
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
         /// </summary>
         [JsonProperty("service_interval")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("service_interval")]
-#endif
         public string ServiceInterval { get; set; }
 
         /// <summary>
@@ -69,9 +59,7 @@ namespace Stripe.V2.Billing
         /// <c>service_interval</c> to <c>"month"</c> in order to specify quarterly service.
         /// </summary>
         [JsonProperty("service_interval_count")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("service_interval_count")]
-#endif
         public long? ServiceIntervalCount { get; set; }
 
         /// <summary>
@@ -79,9 +67,7 @@ namespace Stripe.V2.Billing
         /// One of: <c>exclusive</c>, or <c>inclusive</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_behavior")]
-#endif
         public string TaxBehavior { get; set; }
     }
 }

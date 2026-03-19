@@ -25,9 +25,7 @@ namespace Stripe.Checkout
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_decremental_authorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_decremental_authorization")]
-#endif
         public string RequestDecrementalAuthorization { get; set; }
 
         /// <summary>

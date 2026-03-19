@@ -63,8 +63,15 @@ namespace Stripe.Radar
         public List<PaymentEvaluationEvent> Events { get; set; }
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Collection of scores and insights for this payment evaluation.
+        /// </summary>
+        [JsonProperty("insights")]
+        [STJS.JsonPropertyName("insights")]
+        public PaymentEvaluationInsights Insights { get; set; }
+
+        /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -92,21 +99,5 @@ namespace Stripe.Radar
         [JsonProperty("payment_details")]
         [STJS.JsonPropertyName("payment_details")]
         public PaymentEvaluationPaymentDetails PaymentDetails { get; set; }
-
-        /// <summary>
-        /// Recommended action based on the score of the fraudulent_payment signal. Possible values
-        /// are <c>block</c> and <c>continue</c>.
-        /// One of: <c>block</c>, or <c>continue</c>.
-        /// </summary>
-        [JsonProperty("recommended_action")]
-        [STJS.JsonPropertyName("recommended_action")]
-        public string RecommendedAction { get; set; }
-
-        /// <summary>
-        /// Collection of signals for this payment evaluation.
-        /// </summary>
-        [JsonProperty("signals")]
-        [STJS.JsonPropertyName("signals")]
-        public PaymentEvaluationSignals Signals { get; set; }
     }
 }

@@ -18,9 +18,7 @@ namespace Stripe
         public string BillingAgreementId { get; set; }
 
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -30,9 +28,7 @@ namespace Stripe
         /// and transfers</a> are used.
         /// </summary>
         [JsonProperty("subsellers")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subsellers")]
-#endif
         public List<string> Subsellers { get; set; }
     }
 }

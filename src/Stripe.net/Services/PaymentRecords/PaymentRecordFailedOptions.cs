@@ -26,9 +26,7 @@ namespace Stripe
         /// <c>payment_method_provider_unknown_outcome</c>.
         /// </summary>
         [JsonProperty("failure_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("failure_code")]
-#endif
         public string FailureCode { get; set; }
     }
 }

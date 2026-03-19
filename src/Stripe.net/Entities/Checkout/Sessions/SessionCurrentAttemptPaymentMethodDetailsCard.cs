@@ -2,10 +2,10 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionCurrentAttemptPaymentMethodDetailsCard : StripeEntity<SessionCurrentAttemptPaymentMethodDetailsCard>
     {
         /// <summary>
@@ -17,9 +17,7 @@ namespace Stripe.Checkout
         /// <c>unionpay</c>, <c>unknown</c>, or <c>visa</c>.
         /// </summary>
         [JsonProperty("brand")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("brand")]
-#endif
         public string Brand { get; set; }
 
         /// <summary>
@@ -27,27 +25,21 @@ namespace Stripe.Checkout
         /// to get a sense of the international breakdown of cards you've collected.
         /// </summary>
         [JsonProperty("country")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
-#endif
         public string Country { get; set; }
 
         /// <summary>
         /// Two-digit number representing the card's expiration month.
         /// </summary>
         [JsonProperty("exp_month")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exp_month")]
-#endif
         public long ExpMonth { get; set; }
 
         /// <summary>
         /// Four-digit number representing the card's expiration year.
         /// </summary>
         [JsonProperty("exp_year")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exp_year")]
-#endif
         public long ExpYear { get; set; }
 
         /// <summary>
@@ -60,9 +52,7 @@ namespace Stripe.Checkout
         /// fingerprints for the same card---one for India and one for the rest of the world.</em>.
         /// </summary>
         [JsonProperty("fingerprint")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fingerprint")]
-#endif
         public string Fingerprint { get; set; }
 
         /// <summary>
@@ -71,9 +61,7 @@ namespace Stripe.Checkout
         /// One of: <c>credit</c>, <c>debit</c>, <c>prepaid</c>, or <c>unknown</c>.
         /// </summary>
         [JsonProperty("funding")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("funding")]
-#endif
         public string Funding { get; set; }
 
         /// <summary>
@@ -81,27 +69,21 @@ namespace Stripe.Checkout
         /// available in standard API requests.).
         /// </summary>
         [JsonProperty("iin")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("iin")]
-#endif
         public string Iin { get; set; }
 
         /// <summary>
         /// The last four digits of the card.
         /// </summary>
         [JsonProperty("last4")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last4")]
-#endif
         public string Last4 { get; set; }
 
         /// <summary>
         /// If this Card is part of a card wallet, this contains the details of the card wallet.
         /// </summary>
         [JsonProperty("wallet")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("wallet")]
-#endif
         public SessionCurrentAttemptPaymentMethodDetailsCardWallet Wallet { get; set; }
     }
 }

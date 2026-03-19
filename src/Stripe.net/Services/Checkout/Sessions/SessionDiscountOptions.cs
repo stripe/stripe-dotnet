@@ -22,9 +22,7 @@ namespace Stripe.Checkout
         /// discounts.
         /// </summary>
         [JsonProperty("coupon_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("coupon_data")]
-#endif
         public SessionDiscountCouponDataOptions CouponData { get; set; }
 
         /// <summary>

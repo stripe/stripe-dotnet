@@ -17,9 +17,7 @@ namespace Stripe
         public long? Amount { get; set; }
 
         [JsonProperty("application_fee_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_fee_amount")]
-#endif
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -52,9 +50,7 @@ namespace Stripe
         /// destination currency.
         /// </summary>
         [JsonProperty("fx_quote")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fx_quote")]
-#endif
         public string FxQuote { get; set; }
 
         /// <summary>

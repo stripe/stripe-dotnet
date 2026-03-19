@@ -176,9 +176,7 @@ namespace Stripe
         /// One of: <c>discounts</c>, <c>pricing</c>, or <c>quantity</c>.
         /// </summary>
         [JsonProperty("frozen_fields")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("frozen_fields")]
-#endif
         public List<string> FrozenFields { get; set; }
 
         #region Expandable Invoice
@@ -217,8 +215,8 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -232,9 +230,7 @@ namespace Stripe
         /// invoice do not apply to this invoice item.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public List<string> MarginIds
         {
             get => this.InternalMargins?.Select((x) => x.Id).ToList();
@@ -249,9 +245,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public List<Margin> Margins
         {
             get => this.InternalMargins?.Select((x) => x.ExpandedObject).ToList();
@@ -259,9 +253,7 @@ namespace Stripe
         }
 
         [JsonProperty("margins", ItemConverterType = typeof(ExpandableFieldConverter<Margin>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("margins")]
-#endif
         internal List<ExpandableField<Margin>> InternalMargins { get; set; }
         #endregion
 
@@ -313,25 +305,12 @@ namespace Stripe
         public InvoiceItemProrationDetails ProrationDetails { get; set; }
 
         /// <summary>
-        /// Quantity of units for the invoice item in integer format, with any decimal precision
-        /// truncated. For the item's full-precision decimal quantity, use <c>quantity_decimal</c>.
-        /// This field will be deprecated in favor of <c>quantity_decimal</c> in a future version.
-        /// If the invoice item is a proration, the quantity of the subscription that the proration
-        /// was computed for.
+        /// Quantity of units for the invoice item. If the invoice item is a proration, the quantity
+        /// of the subscription that the proration was computed for.
         /// </summary>
         [JsonProperty("quantity")]
         [STJS.JsonPropertyName("quantity")]
         public long Quantity { get; set; }
-
-        /// <summary>
-        /// Non-negative decimal with at most 12 decimal places. The quantity of units for the
-        /// invoice item.
-        /// </summary>
-        [JsonProperty("quantity_decimal")]
-        [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
-        [STJS.JsonPropertyName("quantity_decimal")]
-        public decimal QuantityDecimal { get; set; }
 
         /// <summary>
         /// The tax rates which apply to the invoice item. When set, the <c>default_tax_rates</c> on

@@ -54,9 +54,7 @@ namespace Stripe
         /// The automatic_indirect_tax capability.
         /// </summary>
         [JsonProperty("automatic_indirect_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("automatic_indirect_tax")]
-#endif
         public AccountCapabilitiesAutomaticIndirectTaxOptions AutomaticIndirectTax { get; set; }
 
         /// <summary>
@@ -168,9 +166,7 @@ namespace Stripe
         /// The gopay_payments capability.
         /// </summary>
         [JsonProperty("gopay_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gopay_payments")]
-#endif
         public AccountCapabilitiesGopayPaymentsOptions GopayPayments { get; set; }
 
         /// <summary>
@@ -184,18 +180,14 @@ namespace Stripe
         /// The id_bank_transfer_payments capability.
         /// </summary>
         [JsonProperty("id_bank_transfer_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_bank_transfer_payments")]
-#endif
         public AccountCapabilitiesIdBankTransferPaymentsOptions IdBankTransferPayments { get; set; }
 
         /// <summary>
         /// The id_bank_transfer_payments_bca capability.
         /// </summary>
         [JsonProperty("id_bank_transfer_payments_bca")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_bank_transfer_payments_bca")]
-#endif
         public AccountCapabilitiesIdBankTransferPaymentsBcaOptions IdBankTransferPaymentsBca { get; set; }
 
         /// <summary>
@@ -349,18 +341,14 @@ namespace Stripe
         /// The paypal_payments capability.
         /// </summary>
         [JsonProperty("paypal_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypal_payments")]
-#endif
         public AccountCapabilitiesPaypalPaymentsOptions PaypalPayments { get; set; }
 
         /// <summary>
         /// The paypay_payments capability.
         /// </summary>
         [JsonProperty("paypay_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypay_payments")]
-#endif
         public AccountCapabilitiesPaypayPaymentsOptions PaypayPayments { get; set; }
 
         /// <summary>
@@ -388,18 +376,14 @@ namespace Stripe
         /// The qris_payments capability.
         /// </summary>
         [JsonProperty("qris_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("qris_payments")]
-#endif
         public AccountCapabilitiesQrisPaymentsOptions QrisPayments { get; set; }
 
         /// <summary>
         /// The rechnung_payments capability.
         /// </summary>
         [JsonProperty("rechnung_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rechnung_payments")]
-#endif
         public AccountCapabilitiesRechnungPaymentsOptions RechnungPayments { get; set; }
 
         /// <summary>
@@ -441,9 +425,7 @@ namespace Stripe
         /// The shopeepay_payments capability.
         /// </summary>
         [JsonProperty("shopeepay_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shopeepay_payments")]
-#endif
         public AccountCapabilitiesShopeepayPaymentsOptions ShopeepayPayments { get; set; }
 
         /// <summary>
@@ -457,9 +439,7 @@ namespace Stripe
         /// The stripe_balance_payments capability.
         /// </summary>
         [JsonProperty("stripe_balance_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stripe_balance_payments")]
-#endif
         public AccountCapabilitiesStripeBalancePaymentsOptions StripeBalancePayments { get; set; }
 
         /// <summary>
@@ -501,27 +481,21 @@ namespace Stripe
         /// The treasury_evolve capability.
         /// </summary>
         [JsonProperty("treasury_evolve")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("treasury_evolve")]
-#endif
         public AccountCapabilitiesTreasuryEvolveOptions TreasuryEvolve { get; set; }
 
         /// <summary>
         /// The treasury_fifth_third capability.
         /// </summary>
         [JsonProperty("treasury_fifth_third")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("treasury_fifth_third")]
-#endif
         public AccountCapabilitiesTreasuryFifthThirdOptions TreasuryFifthThird { get; set; }
 
         /// <summary>
         /// The treasury_goldman_sachs capability.
         /// </summary>
         [JsonProperty("treasury_goldman_sachs")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("treasury_goldman_sachs")]
-#endif
         public AccountCapabilitiesTreasuryGoldmanSachsOptions TreasuryGoldmanSachs { get; set; }
 
         /// <summary>
@@ -530,13 +504,6 @@ namespace Stripe
         [JsonProperty("twint_payments")]
         [STJS.JsonPropertyName("twint_payments")]
         public AccountCapabilitiesTwintPaymentsOptions TwintPayments { get; set; }
-
-        /// <summary>
-        /// The upi_payments capability.
-        /// </summary>
-        [JsonProperty("upi_payments")]
-        [STJS.JsonPropertyName("upi_payments")]
-        public AccountCapabilitiesUpiPaymentsOptions UpiPayments { get; set; }
 
         /// <summary>
         /// The us_bank_account_ach_payments capability.

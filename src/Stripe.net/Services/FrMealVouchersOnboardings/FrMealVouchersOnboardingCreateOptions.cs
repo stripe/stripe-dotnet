@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class FrMealVouchersOnboardingCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -17,27 +17,21 @@ namespace Stripe
         /// changed after creation of this object.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Name of the restaurant. This cannot be changed after creation of this object.
         /// </summary>
         [JsonProperty("name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
-#endif
         public string Name { get; set; }
 
         /// <summary>
         /// Postal code of the restaurant.
         /// </summary>
         [JsonProperty("postal_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("postal_code")]
-#endif
         public string PostalCode { get; set; }
 
         /// <summary>
@@ -45,9 +39,7 @@ namespace Stripe
         /// this object.
         /// </summary>
         [JsonProperty("siret")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("siret")]
-#endif
         public string Siret { get; set; }
     }
 }

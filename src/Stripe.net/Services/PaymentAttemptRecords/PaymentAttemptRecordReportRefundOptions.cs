@@ -5,10 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentAttemptRecordReportRefundOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -18,9 +17,7 @@ namespace Stripe
         /// unrefunded amount of the payment.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public PaymentAttemptRecordAmountOptions Amount { get; set; }
 
         /// <summary>
@@ -28,10 +25,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("initiated_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("initiated_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? InitiatedAt { get; set; }
 
         /// <summary>
@@ -41,36 +36,28 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The outcome of the reported refund.
         /// </summary>
         [JsonProperty("outcome")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("outcome")]
-#endif
         public string Outcome { get; set; }
 
         /// <summary>
         /// Processor information for this refund.
         /// </summary>
         [JsonProperty("processor_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("processor_details")]
-#endif
         public PaymentAttemptRecordProcessorDetailsOptions ProcessorDetails { get; set; }
 
         /// <summary>
         /// Information about the payment attempt refund.
         /// </summary>
         [JsonProperty("refunded")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refunded")]
-#endif
         public PaymentAttemptRecordRefundedOptions Refunded { get; set; }
     }
 }

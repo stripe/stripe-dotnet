@@ -2,22 +2,18 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class BalanceTransferSourceBalance : StripeEntity<BalanceTransferSourceBalance>
     {
         [JsonProperty("issuing")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuing")]
-#endif
         public BalanceTransferSourceBalanceIssuing Issuing { get; set; }
 
         [JsonProperty("payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payments")]
-#endif
         public BalanceTransferSourceBalancePayments Payments { get; set; }
 
         /// <summary>
@@ -25,9 +21,7 @@ namespace Stripe
         /// <c>issuing</c>, or <c>allocated_funds</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

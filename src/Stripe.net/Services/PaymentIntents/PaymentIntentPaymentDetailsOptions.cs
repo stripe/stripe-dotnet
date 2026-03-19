@@ -13,27 +13,21 @@ namespace Stripe
         /// Benefit details for this PaymentIntent.
         /// </summary>
         [JsonProperty("benefit")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("benefit")]
-#endif
         public PaymentIntentPaymentDetailsBenefitOptions Benefit { get; set; }
 
         /// <summary>
         /// Car rental details for this PaymentIntent.
         /// </summary>
         [JsonProperty("car_rental")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("car_rental")]
-#endif
         public PaymentIntentPaymentDetailsCarRentalOptions CarRental { get; set; }
 
         /// <summary>
         /// Car rental data for this PaymentIntent.
         /// </summary>
         [JsonProperty("car_rental_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("car_rental_data")]
-#endif
         public List<PaymentIntentPaymentDetailsCarRentalDatumOptions> CarRentalData { get; set; }
 
         /// <summary>
@@ -50,45 +44,35 @@ namespace Stripe
         /// Event details for this PaymentIntent.
         /// </summary>
         [JsonProperty("event_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("event_details")]
-#endif
         public PaymentIntentPaymentDetailsEventDetailsOptions EventDetails { get; set; }
 
         /// <summary>
         /// Flight reservation details for this PaymentIntent.
         /// </summary>
         [JsonProperty("flight")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flight")]
-#endif
         public PaymentIntentPaymentDetailsFlightOptions Flight { get; set; }
 
         /// <summary>
         /// Flight data for this PaymentIntent.
         /// </summary>
         [JsonProperty("flight_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flight_data")]
-#endif
         public List<PaymentIntentPaymentDetailsFlightDatumOptions> FlightData { get; set; }
 
         /// <summary>
         /// Lodging reservation details for this PaymentIntent.
         /// </summary>
         [JsonProperty("lodging")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lodging")]
-#endif
         public PaymentIntentPaymentDetailsLodgingOptions Lodging { get; set; }
 
         /// <summary>
         /// Lodging data for this PaymentIntent.
         /// </summary>
         [JsonProperty("lodging_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lodging_data")]
-#endif
         public List<PaymentIntentPaymentDetailsLodgingDatumOptions> LodgingData { get; set; }
 
         /// <summary>
@@ -111,9 +95,7 @@ namespace Stripe
         /// Subscription details for this PaymentIntent.
         /// </summary>
         [JsonProperty("subscription")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription")]
-#endif
         public PaymentIntentPaymentDetailsSubscriptionOptions Subscription { get; set; }
     }
 }

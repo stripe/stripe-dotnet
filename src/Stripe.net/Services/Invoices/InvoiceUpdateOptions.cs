@@ -23,9 +23,7 @@ namespace Stripe
         /// <c>collection_method=send_invoice</c>.
         /// </summary>
         [JsonProperty("amounts_due")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amounts_due")]
-#endif
         public List<InvoiceAmountsDueOptions> AmountsDue { get; set; }
 
         /// <summary>
@@ -98,9 +96,7 @@ namespace Stripe
         /// <c>margins</c>.
         /// </summary>
         [JsonProperty("default_margins")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_margins")]
-#endif
         public List<string> DefaultMargins { get; set; }
 
         /// <summary>

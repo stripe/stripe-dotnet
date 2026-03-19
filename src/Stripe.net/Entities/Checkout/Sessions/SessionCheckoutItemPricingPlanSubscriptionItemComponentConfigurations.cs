@@ -2,22 +2,18 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionCheckoutItemPricingPlanSubscriptionItemComponentConfigurations : StripeEntity<SessionCheckoutItemPricingPlanSubscriptionItemComponentConfigurations>
     {
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         [JsonProperty("license_fee_component")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("license_fee_component")]
-#endif
         public SessionCheckoutItemPricingPlanSubscriptionItemComponentConfigurationsLicenseFeeComponent LicenseFeeComponent { get; set; }
     }
 }

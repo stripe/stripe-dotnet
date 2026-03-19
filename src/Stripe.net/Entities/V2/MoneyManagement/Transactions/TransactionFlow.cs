@@ -2,10 +2,10 @@
 namespace Stripe.V2.MoneyManagement
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TransactionFlow : StripeEntity<TransactionFlow>
     {
         /// <summary>
@@ -19,45 +19,35 @@ namespace Stripe.V2.MoneyManagement
         /// <c>transfer_reversal</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the Adjustment that created this Transaction.
         /// </summary>
         [JsonProperty("adjustment")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("adjustment")]
-#endif
         public string Adjustment { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the Application Fee that created this Transaction.
         /// </summary>
         [JsonProperty("application_fee")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_fee")]
-#endif
         public string ApplicationFee { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the Application Fee Refund that created this Transaction.
         /// </summary>
         [JsonProperty("application_fee_refund")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_fee_refund")]
-#endif
         public string ApplicationFeeRefund { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the Charge that created this Transaction.
         /// </summary>
         [JsonProperty("charge")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("charge")]
-#endif
         public string Charge { get; set; }
 
         /// <summary>
@@ -65,135 +55,105 @@ namespace Stripe.V2.MoneyManagement
         /// Transaction. For now, this field is always null.
         /// </summary>
         [JsonProperty("currency_conversion")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency_conversion")]
-#endif
         public string CurrencyConversion { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the Dispute that created this Transaction.
         /// </summary>
         [JsonProperty("dispute")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dispute")]
-#endif
         public string Dispute { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the FeeTransaction that created this Transaction.
         /// </summary>
         [JsonProperty("fee_transaction")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fee_transaction")]
-#endif
         public string FeeTransaction { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the InboundTransfer that created this Transaction.
         /// </summary>
         [JsonProperty("inbound_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inbound_transfer")]
-#endif
         public string InboundTransfer { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the OutboundPayment that created this Transaction.
         /// </summary>
         [JsonProperty("outbound_payment")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("outbound_payment")]
-#endif
         public string OutboundPayment { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the OutboundTransfer that created this Transaction.
         /// </summary>
         [JsonProperty("outbound_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("outbound_transfer")]
-#endif
         public string OutboundTransfer { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the Payout that created this Transaction.
         /// </summary>
         [JsonProperty("payout")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payout")]
-#endif
         public string Payout { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the ReceivedCredit that created this Transaction.
         /// </summary>
         [JsonProperty("received_credit")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("received_credit")]
-#endif
         public string ReceivedCredit { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the ReceivedDebit that created this Transaction.
         /// </summary>
         [JsonProperty("received_debit")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("received_debit")]
-#endif
         public string ReceivedDebit { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the Refund that created this Transaction.
         /// </summary>
         [JsonProperty("refund")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refund")]
-#endif
         public string Refund { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the Reserve Hold that created this Transaction.
         /// </summary>
         [JsonProperty("reserve_hold")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reserve_hold")]
-#endif
         public string ReserveHold { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the Reserve Release that created this Transaction.
         /// </summary>
         [JsonProperty("reserve_release")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reserve_release")]
-#endif
         public string ReserveRelease { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the Topup that created this Transaction.
         /// </summary>
         [JsonProperty("topup")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("topup")]
-#endif
         public string Topup { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the Transfer that created this Transaction.
         /// </summary>
         [JsonProperty("transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfer")]
-#endif
         public string Transfer { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the Transfer Reversal that created this Transaction.
         /// </summary>
         [JsonProperty("transfer_reversal")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfer_reversal")]
-#endif
         public string TransferReversal { get; set; }
     }
 }

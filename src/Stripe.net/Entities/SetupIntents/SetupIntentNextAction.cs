@@ -14,9 +14,7 @@ namespace Stripe
         public SetupIntentNextActionCashappHandleRedirectOrDisplayQrCode CashappHandleRedirectOrDisplayQrCode { get; set; }
 
         [JsonProperty("pix_display_qr_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pix_display_qr_code")]
-#endif
         public SetupIntentNextActionPixDisplayQrCode PixDisplayQrCode { get; set; }
 
         [JsonProperty("redirect_to_url")]
@@ -32,10 +30,6 @@ namespace Stripe
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
-
-        [JsonProperty("upi_handle_redirect_or_display_qr_code")]
-        [STJS.JsonPropertyName("upi_handle_redirect_or_display_qr_code")]
-        public SetupIntentNextActionUpiHandleRedirectOrDisplayQrCode UpiHandleRedirectOrDisplayQrCode { get; set; }
 
         /// <summary>
         /// When confirming a SetupIntent with Stripe.js, Stripe.js depends on the contents of this

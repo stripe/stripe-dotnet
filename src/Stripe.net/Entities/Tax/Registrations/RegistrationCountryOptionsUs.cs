@@ -9,33 +9,23 @@ namespace Stripe.Tax
     public class RegistrationCountryOptionsUs : StripeEntity<RegistrationCountryOptionsUs>
     {
         [JsonProperty("admissions_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("admissions_tax")]
-#endif
         public RegistrationCountryOptionsUsAdmissionsTax AdmissionsTax { get; set; }
 
         [JsonProperty("attendance_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("attendance_tax")]
-#endif
         public RegistrationCountryOptionsUsAttendanceTax AttendanceTax { get; set; }
 
         [JsonProperty("entertainment_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("entertainment_tax")]
-#endif
         public RegistrationCountryOptionsUsEntertainmentTax EntertainmentTax { get; set; }
 
         [JsonProperty("gross_receipts_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gross_receipts_tax")]
-#endif
         public RegistrationCountryOptionsUsGrossReceiptsTax GrossReceiptsTax { get; set; }
 
         [JsonProperty("hospitality_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hospitality_tax")]
-#endif
         public RegistrationCountryOptionsUsHospitalityTax HospitalityTax { get; set; }
 
         [JsonProperty("local_amusement_tax")]
@@ -47,15 +37,11 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsUsLocalLeaseTax LocalLeaseTax { get; set; }
 
         [JsonProperty("luxury_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("luxury_tax")]
-#endif
         public RegistrationCountryOptionsUsLuxuryTax LuxuryTax { get; set; }
 
         [JsonProperty("resort_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("resort_tax")]
-#endif
         public RegistrationCountryOptionsUsResortTax ResortTax { get; set; }
 
         /// <summary>
@@ -71,9 +57,7 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsUsStateSalesTax StateSalesTax { get; set; }
 
         [JsonProperty("tourism_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tourism_tax")]
-#endif
         public RegistrationCountryOptionsUsTourismTax TourismTax { get; set; }
 
         /// <summary>
@@ -89,9 +73,7 @@ namespace Stripe.Tax
         public string Type { get; set; }
 
         [JsonProperty("home_rule_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("home_rule_tax")]
-#endif
         public RegistrationCountryOptionsUsHomeRuleTax HomeRuleTax { get; set; }
     }
 }

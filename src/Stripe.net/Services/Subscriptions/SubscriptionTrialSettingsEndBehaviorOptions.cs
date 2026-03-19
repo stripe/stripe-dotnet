@@ -14,9 +14,7 @@ namespace Stripe
         /// One of: <c>now</c>, or <c>unchanged</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_cycle_anchor")]
-#endif
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>

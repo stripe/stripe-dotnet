@@ -4,15 +4,12 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
     /// A line item.
     /// </summary>
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class LineItem : StripeEntity<LineItem>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -94,9 +91,7 @@ namespace Stripe
         public List<LineItemDiscount> Discounts { get; set; }
 
         [JsonProperty("display")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display")]
-#endif
         public LineItemDisplay Display { get; set; }
 
         /// <summary>
@@ -124,9 +119,7 @@ namespace Stripe
         /// This will always be the same as <c>price.product</c>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string ProductId
         {
             get => this.InternalProduct?.Id;
@@ -142,9 +135,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Product Product
         {
             get => this.InternalProduct?.ExpandedObject;
@@ -153,10 +144,8 @@ namespace Stripe
 
         [JsonProperty("product")]
         [JsonConverter(typeof(ExpandableFieldConverter<Product>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Product>))]
-#endif
         internal ExpandableField<Product> InternalProduct { get; set; }
         #endregion
 
@@ -171,9 +160,7 @@ namespace Stripe
         /// The tax calculation identifiers of the line item.
         /// </summary>
         [JsonProperty("tax_calculation_reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_calculation_reference")]
-#endif
         public LineItemTaxCalculationReference TaxCalculationReference { get; set; }
 
         /// <summary>

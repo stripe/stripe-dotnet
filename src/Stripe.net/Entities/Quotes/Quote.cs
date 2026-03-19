@@ -35,9 +35,7 @@ namespace Stripe
         /// <c>starts_at</c> and now.
         /// </summary>
         [JsonProperty("allow_backdated_lines")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allow_backdated_lines")]
-#endif
         public bool? AllowBackdatedLines { get; set; }
 
         /// <summary>
@@ -350,9 +348,7 @@ namespace Stripe
         /// accepted.
         /// </summary>
         [JsonProperty("lines")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lines")]
-#endif
         public List<string> Lines { get; set; }
 
         /// <summary>
@@ -432,9 +428,7 @@ namespace Stripe
         /// Details on when and why a quote has been marked as stale or canceled.
         /// </summary>
         [JsonProperty("status_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_details")]
-#endif
         public QuoteStatusDetails StatusDetails { get; set; }
 
         [JsonProperty("status_transitions")]
@@ -485,9 +479,7 @@ namespace Stripe
         /// subscription schedules.
         /// </summary>
         [JsonProperty("subscription_data_overrides")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_data_overrides")]
-#endif
         public List<QuoteSubscriptionDataOverride> SubscriptionDataOverrides { get; set; }
 
         #region Expandable SubscriptionSchedule
@@ -529,9 +521,7 @@ namespace Stripe
         /// The subscription schedules that were created or updated from this quote.
         /// </summary>
         [JsonProperty("subscription_schedules")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_schedules")]
-#endif
         public List<QuoteSubscriptionSchedule> SubscriptionSchedules { get; set; }
 
         #region Expandable TestClock

@@ -50,9 +50,7 @@ namespace Stripe.Treasury
         /// The ReceivedCredit that Capital withheld from.
         /// </summary>
         [JsonProperty("received_credit_capital_withholding")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("received_credit_capital_withholding")]
-#endif
         public string ReceivedCreditCapitalWithholding { get; set; }
 
         /// <summary>

@@ -84,9 +84,7 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("pix")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pix")]
-#endif
         public SetupIntentPaymentMethodOptionsPixOptions Pix { get; set; }
 
         /// <summary>
@@ -96,14 +94,6 @@ namespace Stripe
         [JsonProperty("sepa_debit")]
         [STJS.JsonPropertyName("sepa_debit")]
         public SetupIntentPaymentMethodOptionsSepaDebitOptions SepaDebit { get; set; }
-
-        /// <summary>
-        /// If this is a <c>upi</c> SetupIntent, this sub-hash contains details about the UPI
-        /// payment method options.
-        /// </summary>
-        [JsonProperty("upi")]
-        [STJS.JsonPropertyName("upi")]
-        public SetupIntentPaymentMethodOptionsUpiOptions Upi { get; set; }
 
         /// <summary>
         /// If this is a <c>us_bank_account</c> SetupIntent, this sub-hash contains details about

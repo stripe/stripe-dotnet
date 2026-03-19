@@ -56,9 +56,7 @@ namespace Stripe
         /// location.
         /// </summary>
         [JsonProperty("tax_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_details")]
-#endif
         public PaymentLinkLineItemPriceDataProductDataTaxDetailsOptions TaxDetails { get; set; }
 
         /// <summary>

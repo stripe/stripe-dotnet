@@ -14,9 +14,7 @@ namespace Stripe
         /// equal to the disputed amount.
         /// </summary>
         [JsonProperty("amount_to_counter")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_to_counter")]
-#endif
         public long? AmountToCounter { get; set; }
 
         /// <summary>
@@ -34,9 +32,7 @@ namespace Stripe
         /// <c>smart_disputes</c>.
         /// </summary>
         [JsonProperty("intended_submission_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("intended_submission_method")]
-#endif
         public string IntendedSubmissionMethod { get; set; }
 
         /// <summary>

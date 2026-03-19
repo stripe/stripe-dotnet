@@ -27,9 +27,7 @@ namespace Stripe
         /// collection</a>.
         /// </summary>
         [JsonProperty("pause_collection")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pause_collection")]
-#endif
         public InvoiceParentSubscriptionDetailsPauseCollection PauseCollection { get; set; }
 
         #region Expandable Subscription

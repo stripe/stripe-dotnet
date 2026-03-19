@@ -153,8 +153,8 @@ namespace Stripe
         public SourceKlarna Klarna { get; set; }
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -186,9 +186,7 @@ namespace Stripe
         public SourceP24 P24 { get; set; }
 
         [JsonProperty("paypal")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypal")]
-#endif
         public SourcePaypal Paypal { get; set; }
 
         [JsonProperty("receiver")]

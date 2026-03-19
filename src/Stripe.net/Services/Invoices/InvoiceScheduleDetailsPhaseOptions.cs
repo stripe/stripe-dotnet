@@ -129,9 +129,7 @@ namespace Stripe
         /// One of: <c>billing_period_start</c>, or <c>phase_start</c>.
         /// </summary>
         [JsonProperty("effective_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("effective_at")]
-#endif
         public string EffectiveAt { get; set; }
 
         /// <summary>
@@ -188,9 +186,7 @@ namespace Stripe
         /// collection</a>.
         /// </summary>
         [JsonProperty("pause_collection")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pause_collection")]
-#endif
         public InvoiceScheduleDetailsPhasePauseCollectionOptions PauseCollection { get; set; }
 
         /// <summary>
@@ -238,9 +234,7 @@ namespace Stripe
         /// One of: <c>continue</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("trial_continuation")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial_continuation")]
-#endif
         public string TrialContinuation { get; set; }
 
         /// <summary>
@@ -257,9 +251,7 @@ namespace Stripe
         /// Settings related to subscription trials.
         /// </summary>
         [JsonProperty("trial_settings")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial_settings")]
-#endif
         public InvoiceScheduleDetailsPhaseTrialSettingsOptions TrialSettings { get; set; }
     }
 }

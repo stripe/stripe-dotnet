@@ -280,17 +280,15 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         [JsonProperty("managed_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("managed_payments")]
-#endif
         public SetupIntentManagedPayments ManagedPayments { get; set; }
 
         #region Expandable Mandate
@@ -447,9 +445,7 @@ namespace Stripe
         public List<string> PaymentMethodTypes { get; set; }
 
         [JsonProperty("setup_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_details")]
-#endif
         public SetupIntentSetupDetails SetupDetails { get; set; }
 
         #region Expandable SingleUseMandate

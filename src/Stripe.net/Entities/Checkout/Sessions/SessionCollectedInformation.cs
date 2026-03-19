@@ -20,9 +20,7 @@ namespace Stripe.Checkout
         /// Customer’s email for this Checkout Session.
         /// </summary>
         [JsonProperty("email")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("email")]
-#endif
         public string Email { get; set; }
 
         /// <summary>
@@ -36,9 +34,7 @@ namespace Stripe.Checkout
         /// Customer’s phone number for this Checkout Session.
         /// </summary>
         [JsonProperty("phone")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone")]
-#endif
         public string Phone { get; set; }
 
         /// <summary>
@@ -52,9 +48,7 @@ namespace Stripe.Checkout
         /// Customer’s tax ids for this Checkout Session.
         /// </summary>
         [JsonProperty("tax_ids")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_ids")]
-#endif
         public List<SessionCollectedInformationTaxId> TaxIds { get; set; }
     }
 }

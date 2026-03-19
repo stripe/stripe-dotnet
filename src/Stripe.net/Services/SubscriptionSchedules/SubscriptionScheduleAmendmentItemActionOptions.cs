@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionScheduleAmendmentItemActionOptions : INestedOptions
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe
         /// it will be replaced by this new item. Otherwise, it adds the new item.
         /// </summary>
         [JsonProperty("add")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("add")]
-#endif
         public SubscriptionScheduleAmendmentItemActionAddOptions Add { get; set; }
 
         /// <summary>
         /// Details of the subscription item to remove.
         /// </summary>
         [JsonProperty("remove")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("remove")]
-#endif
         public SubscriptionScheduleAmendmentItemActionRemoveOptions Remove { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe
         /// existing values for the configuration item.
         /// </summary>
         [JsonProperty("set")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("set")]
-#endif
         public SubscriptionScheduleAmendmentItemActionSetOptions Set { get; set; }
 
         /// <summary>
@@ -44,9 +38,7 @@ namespace Stripe
         /// One of: <c>add</c>, <c>remove</c>, or <c>set</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

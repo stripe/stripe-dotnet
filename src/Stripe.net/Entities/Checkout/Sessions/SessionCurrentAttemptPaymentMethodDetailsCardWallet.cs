@@ -2,10 +2,10 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionCurrentAttemptPaymentMethodDetailsCardWallet : StripeEntity<SessionCurrentAttemptPaymentMethodDetailsCardWallet>
     {
         /// <summary>
@@ -16,9 +16,7 @@ namespace Stripe.Checkout
         /// <c>masterpass</c>, <c>meta_pay</c>, <c>samsung_pay</c>, or <c>visa_checkout</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

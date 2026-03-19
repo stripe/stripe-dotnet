@@ -2,28 +2,24 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class QuoteSubscriptionDataOverrideBillOnAcceptance : StripeEntity<QuoteSubscriptionDataOverrideBillOnAcceptance>
     {
         /// <summary>
         /// The start of the period to bill from when the Quote is accepted.
         /// </summary>
         [JsonProperty("bill_from")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bill_from")]
-#endif
         public QuoteSubscriptionDataOverrideBillOnAcceptanceBillFrom BillFrom { get; set; }
 
         /// <summary>
         /// The end of the period to bill until when the Quote is accepted.
         /// </summary>
         [JsonProperty("bill_until")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bill_until")]
-#endif
         public QuoteSubscriptionDataOverrideBillOnAcceptanceBillUntil BillUntil { get; set; }
     }
 }

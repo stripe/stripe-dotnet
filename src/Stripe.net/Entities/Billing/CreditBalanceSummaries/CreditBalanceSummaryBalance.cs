@@ -17,9 +17,7 @@ namespace Stripe.Billing
         public CreditBalanceSummaryBalanceLedgerBalance LedgerBalance { get; set; }
 
         [JsonProperty("balance_update_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("balance_update_details")]
-#endif
         public CreditBalanceSummaryBalanceBalanceUpdateDetails BalanceUpdateDetails { get; set; }
     }
 }

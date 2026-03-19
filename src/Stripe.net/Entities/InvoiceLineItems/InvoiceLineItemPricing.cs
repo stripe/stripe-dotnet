@@ -9,9 +9,7 @@ namespace Stripe
     public class InvoiceLineItemPricing : StripeEntity<InvoiceLineItemPricing>
     {
         [JsonProperty("license_fee_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("license_fee_details")]
-#endif
         public InvoiceLineItemPricingLicenseFeeDetails LicenseFeeDetails { get; set; }
 
         [JsonProperty("price_details")]
@@ -19,15 +17,11 @@ namespace Stripe
         public InvoiceLineItemPricingPriceDetails PriceDetails { get; set; }
 
         [JsonProperty("rate_card_custom_pricing_unit_overage_rate_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rate_card_custom_pricing_unit_overage_rate_details")]
-#endif
         public InvoiceLineItemPricingRateCardCustomPricingUnitOverageRateDetails RateCardCustomPricingUnitOverageRateDetails { get; set; }
 
         [JsonProperty("rate_card_rate_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rate_card_rate_details")]
-#endif
         public InvoiceLineItemPricingRateCardRateDetails RateCardRateDetails { get; set; }
 
         /// <summary>

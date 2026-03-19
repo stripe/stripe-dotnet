@@ -2,19 +2,17 @@
 namespace Stripe.V2.Billing.RateCards
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class RateListOptions : V2.ListOptions
     {
         /// <summary>
         /// Optionally filter by a Metered Item.
         /// </summary>
         [JsonProperty("metered_item")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metered_item")]
-#endif
         public string MeteredItem { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe.V2.Billing.RateCards
         /// version.
         /// </summary>
         [JsonProperty("rate_card_version")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rate_card_version")]
-#endif
         public string RateCardVersion { get; set; }
     }
 }

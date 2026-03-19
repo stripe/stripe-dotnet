@@ -4,10 +4,9 @@ namespace Stripe.Radar
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class IssuingAuthorizationEvaluationSignalsFraudRiskData : StripeEntity<IssuingAuthorizationEvaluationSignalsFraudRiskData>
     {
         /// <summary>
@@ -15,10 +14,8 @@ namespace Stripe.Radar
         /// </summary>
         [JsonProperty("evaluated_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("evaluated_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime EvaluatedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -27,9 +24,7 @@ namespace Stripe.Radar
         /// or <c>unknown</c>.
         /// </summary>
         [JsonProperty("level")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("level")]
-#endif
         public string Level { get; set; }
 
         /// <summary>
@@ -37,9 +32,7 @@ namespace Stripe.Radar
         /// decimal float, with higher scores indicating a higher likelihood of fraud.
         /// </summary>
         [JsonProperty("score")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("score")]
-#endif
         public decimal Score { get; set; }
     }
 }

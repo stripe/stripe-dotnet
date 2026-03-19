@@ -56,7 +56,7 @@ namespace Stripe.Checkout
         public string TargetDate { get; set; }
 
         /// <summary>
-        /// Bank account verification method. The default value is <c>automatic</c>.
+        /// Bank account verification method.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
         /// </summary>
         [JsonProperty("verification_method")]

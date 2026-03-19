@@ -145,9 +145,7 @@ namespace Stripe
         public ConfirmationTokenPaymentMethodPreviewGiropay Giropay { get; set; }
 
         [JsonProperty("gopay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gopay")]
-#endif
         public ConfirmationTokenPaymentMethodPreviewGopay Gopay { get; set; }
 
         [JsonProperty("grabpay")]
@@ -155,9 +153,7 @@ namespace Stripe
         public ConfirmationTokenPaymentMethodPreviewGrabpay Grabpay { get; set; }
 
         [JsonProperty("id_bank_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_bank_transfer")]
-#endif
         public ConfirmationTokenPaymentMethodPreviewIdBankTransfer IdBankTransfer { get; set; }
 
         [JsonProperty("ideal")]
@@ -233,9 +229,7 @@ namespace Stripe
         public ConfirmationTokenPaymentMethodPreviewPaypal Paypal { get; set; }
 
         [JsonProperty("paypay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypay")]
-#endif
         public ConfirmationTokenPaymentMethodPreviewPaypay Paypay { get; set; }
 
         [JsonProperty("payto")]
@@ -251,15 +245,11 @@ namespace Stripe
         public ConfirmationTokenPaymentMethodPreviewPromptpay Promptpay { get; set; }
 
         [JsonProperty("qris")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("qris")]
-#endif
         public ConfirmationTokenPaymentMethodPreviewQris Qris { get; set; }
 
         [JsonProperty("rechnung")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rechnung")]
-#endif
         public ConfirmationTokenPaymentMethodPreviewRechnung Rechnung { get; set; }
 
         [JsonProperty("revolut_pay")]
@@ -279,9 +269,7 @@ namespace Stripe
         public ConfirmationTokenPaymentMethodPreviewSepaDebit SepaDebit { get; set; }
 
         [JsonProperty("shopeepay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shopeepay")]
-#endif
         public ConfirmationTokenPaymentMethodPreviewShopeepay Shopeepay { get; set; }
 
         [JsonProperty("sofort")]
@@ -289,9 +277,7 @@ namespace Stripe
         public ConfirmationTokenPaymentMethodPreviewSofort Sofort { get; set; }
 
         [JsonProperty("stripe_balance")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stripe_balance")]
-#endif
         public ConfirmationTokenPaymentMethodPreviewStripeBalance StripeBalance { get; set; }
 
         [JsonProperty("swish")]
@@ -323,10 +309,6 @@ namespace Stripe
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
-
-        [JsonProperty("upi")]
-        [STJS.JsonPropertyName("upi")]
-        public ConfirmationTokenPaymentMethodPreviewUpi Upi { get; set; }
 
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]

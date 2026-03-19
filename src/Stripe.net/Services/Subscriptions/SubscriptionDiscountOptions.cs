@@ -26,9 +26,7 @@ namespace Stripe
         /// Details to determine how long the discount should be applied for.
         /// </summary>
         [JsonProperty("discount_end")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discount_end")]
-#endif
         public SubscriptionDiscountDiscountEndOptions DiscountEnd { get; set; }
 
         /// <summary>
@@ -42,9 +40,7 @@ namespace Stripe
         /// Settings for discount application including service period anchoring.
         /// </summary>
         [JsonProperty("settings")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("settings")]
-#endif
         public SubscriptionDiscountSettingsOptions Settings { get; set; }
     }
 }

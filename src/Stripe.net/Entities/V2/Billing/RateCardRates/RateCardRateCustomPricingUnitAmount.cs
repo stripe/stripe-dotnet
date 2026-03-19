@@ -2,37 +2,31 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class RateCardRateCustomPricingUnitAmount : StripeEntity<RateCardRateCustomPricingUnitAmount>, IHasId
     {
         /// <summary>
         /// The Custom Pricing Unit object.
         /// </summary>
         [JsonProperty("custom_pricing_unit_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_pricing_unit_details")]
-#endif
         public CustomPricingUnit CustomPricingUnitDetails { get; set; }
 
         /// <summary>
         /// The id of the custom pricing unit.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// The unit value for the custom pricing unit, as a string.
         /// </summary>
         [JsonProperty("value")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value")]
-#endif
         public string Value { get; set; }
     }
 }

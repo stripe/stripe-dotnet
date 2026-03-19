@@ -2,37 +2,31 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class IntentActionSubscribePricingPlanSubscriptionDetailsComponentConfiguration : StripeEntity<IntentActionSubscribePricingPlanSubscriptionDetailsComponentConfiguration>
     {
         /// <summary>
         /// Quantity of the component to be used.
         /// </summary>
         [JsonProperty("quantity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
-#endif
         public long? Quantity { get; set; }
 
         /// <summary>
         /// Lookup key for the pricing plan component.
         /// </summary>
         [JsonProperty("lookup_key")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_key")]
-#endif
         public string LookupKey { get; set; }
 
         /// <summary>
         /// ID of the pricing plan component.
         /// </summary>
         [JsonProperty("pricing_plan_component")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pricing_plan_component")]
-#endif
         public string PricingPlanComponent { get; set; }
     }
 }

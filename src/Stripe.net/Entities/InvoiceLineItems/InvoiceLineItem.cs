@@ -113,8 +113,8 @@ namespace Stripe
         public string Invoice { get; set; }
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -124,9 +124,7 @@ namespace Stripe
         /// The amount of margin calculated per margin for this line item.
         /// </summary>
         [JsonProperty("margin_amounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("margin_amounts")]
-#endif
         public List<InvoiceLineItemMarginAmount> MarginAmounts { get; set; }
 
         #region Expandable Margins
@@ -138,9 +136,7 @@ namespace Stripe
         /// margin.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public List<string> MarginIds
         {
             get => this.InternalMargins?.Select((x) => x.Id).ToList();
@@ -156,9 +152,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public List<Margin> Margins
         {
             get => this.InternalMargins?.Select((x) => x.ExpandedObject).ToList();
@@ -166,9 +160,7 @@ namespace Stripe
         }
 
         [JsonProperty("margins", ItemConverterType = typeof(ExpandableFieldConverter<Margin>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("margins")]
-#endif
         internal List<ExpandableField<Margin>> InternalMargins { get; set; }
         #endregion
 
@@ -211,25 +203,11 @@ namespace Stripe
         public InvoiceLineItemPricing Pricing { get; set; }
 
         /// <summary>
-        /// Quantity of units for the invoice line item in integer format, with any decimal
-        /// precision truncated. For the line item's full-precision decimal quantity, use
-        /// <c>quantity_decimal</c>. This field will be deprecated in favor of
-        /// <c>quantity_decimal</c> in a future version. If the line item is a proration or
-        /// subscription, the quantity of the subscription that the proration was computed for.
+        /// The quantity of the subscription, if the line item is a subscription or a proration.
         /// </summary>
         [JsonProperty("quantity")]
         [STJS.JsonPropertyName("quantity")]
         public long? Quantity { get; set; }
-
-        /// <summary>
-        /// Non-negative decimal with at most 12 decimal places. The quantity of units for the line
-        /// item.
-        /// </summary>
-        [JsonProperty("quantity_decimal")]
-        [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
-        [STJS.JsonPropertyName("quantity_decimal")]
-        public decimal? QuantityDecimal { get; set; }
 
         #region Expandable Subscription
 
@@ -268,9 +246,7 @@ namespace Stripe
         /// The tax calculation identifiers of the line item.
         /// </summary>
         [JsonProperty("tax_calculation_reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_calculation_reference")]
-#endif
         public InvoiceLineItemTaxCalculationReference TaxCalculationReference { get; set; }
 
         /// <summary>

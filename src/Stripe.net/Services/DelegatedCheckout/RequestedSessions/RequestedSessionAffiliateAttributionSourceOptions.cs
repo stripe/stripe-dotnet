@@ -2,19 +2,17 @@
 namespace Stripe.DelegatedCheckout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class RequestedSessionAffiliateAttributionSourceOptions : INestedOptions
     {
         /// <summary>
         /// The platform where the attribution originated.
         /// </summary>
         [JsonProperty("platform")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("platform")]
-#endif
         public string Platform { get; set; }
 
         /// <summary>
@@ -22,18 +20,14 @@ namespace Stripe.DelegatedCheckout
         /// One of: <c>platform</c>, or <c>url</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
         /// The URL where the attribution originated.
         /// </summary>
         [JsonProperty("url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("url")]
-#endif
         public string Url { get; set; }
     }
 }

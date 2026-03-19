@@ -13,9 +13,7 @@ namespace Stripe
         /// Only return invoices for the cadence specified by this billing cadence ID.
         /// </summary>
         [JsonProperty("billing_cadence")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_cadence")]
-#endif
         public string BillingCadence { get; set; }
 
         /// <summary>

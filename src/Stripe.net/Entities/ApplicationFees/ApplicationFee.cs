@@ -211,9 +211,7 @@ namespace Stripe
         /// funding source.
         /// </summary>
         [JsonProperty("funding_source")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("funding_source")]
-#endif
         public ApplicationFeeFundingSource FundingSource { get; set; }
 
         /// <summary>
@@ -282,9 +280,7 @@ namespace Stripe
         /// One of: <c>gross_settled</c>, or <c>net_settled</c>.
         /// </summary>
         [JsonProperty("settlement_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("settlement_type")]
-#endif
         public string SettlementType { get; set; }
     }
 }

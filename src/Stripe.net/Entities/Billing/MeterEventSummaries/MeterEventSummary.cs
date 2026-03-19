@@ -45,9 +45,7 @@ namespace Stripe.Billing
         /// Key-value pairs of dimension values for event summaries with grouping on dimensions.
         /// </summary>
         [JsonProperty("dimensions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dimensions")]
-#endif
         public Dictionary<string, string> Dimensions { get; set; }
 
         /// <summary>
@@ -61,8 +59,8 @@ namespace Stripe.Billing
         public DateTime EndTime { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

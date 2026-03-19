@@ -3,10 +3,10 @@ namespace Stripe.Billing.Analytics
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class MeterUsageMeterOptions : INestedOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.Billing.Analytics
         /// matching usage events.
         /// </summary>
         [JsonProperty("dimension_filters")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dimension_filters")]
-#endif
         public Dictionary<string, List<string>> DimensionFilters { get; set; }
 
         /// <summary>
@@ -25,18 +23,14 @@ namespace Stripe.Billing.Analytics
         /// the given meter dimension key's values.
         /// </summary>
         [JsonProperty("dimension_group_by_keys")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dimension_group_by_keys")]
-#endif
         public List<string> DimensionGroupByKeys { get; set; }
 
         /// <summary>
         /// Meter id to query usage for.
         /// </summary>
         [JsonProperty("meter")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("meter")]
-#endif
         public string Meter { get; set; }
 
         /// <summary>
@@ -45,9 +39,7 @@ namespace Stripe.Billing.Analytics
         /// is filtered for matching usage events.
         /// </summary>
         [JsonProperty("tenant_filters")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tenant_filters")]
-#endif
         public Dictionary<string, List<string>> TenantFilters { get; set; }
 
         /// <summary>
@@ -55,9 +47,7 @@ namespace Stripe.Billing.Analytics
         /// will be grouped by the given tenant dimension key's values.
         /// </summary>
         [JsonProperty("tenant_group_by_keys")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tenant_group_by_keys")]
-#endif
         public List<string> TenantGroupByKeys { get; set; }
     }
 }

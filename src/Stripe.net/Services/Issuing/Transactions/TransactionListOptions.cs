@@ -36,9 +36,7 @@ namespace Stripe.Issuing
         /// Only return transactions that are associated with the given settlement.
         /// </summary>
         [JsonProperty("settlement")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("settlement")]
-#endif
         public string Settlement { get; set; }
 
         /// <summary>

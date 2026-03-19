@@ -22,9 +22,7 @@ namespace Stripe
         /// commerce settings</a> embedded component.
         /// </summary>
         [JsonProperty("agentic_commerce_settings")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("agentic_commerce_settings")]
-#endif
         public AccountSessionComponentsAgenticCommerceSettings AgenticCommerceSettings { get; set; }
 
         [JsonProperty("balances")]
@@ -32,21 +30,15 @@ namespace Stripe
         public AccountSessionComponentsBalances Balances { get; set; }
 
         [JsonProperty("capital_financing")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capital_financing")]
-#endif
         public AccountSessionComponentsCapitalFinancing CapitalFinancing { get; set; }
 
         [JsonProperty("capital_financing_application")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capital_financing_application")]
-#endif
         public AccountSessionComponentsCapitalFinancingApplication CapitalFinancingApplication { get; set; }
 
         [JsonProperty("capital_financing_promotion")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capital_financing_promotion")]
-#endif
         public AccountSessionComponentsCapitalFinancingPromotion CapitalFinancingPromotion { get; set; }
 
         /// <summary>
@@ -55,9 +47,7 @@ namespace Stripe
         /// scanning</a> embedded component.
         /// </summary>
         [JsonProperty("check_scanning")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("check_scanning")]
-#endif
         public AccountSessionComponentsCheckScanning CheckScanning { get; set; }
 
         [JsonProperty("disputes_list")]
@@ -94,9 +84,7 @@ namespace Stripe
         /// cost passthrough report</a> embedded component.
         /// </summary>
         [JsonProperty("network_cost_passthrough_report")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_cost_passthrough_report")]
-#endif
         public AccountSessionComponentsNetworkCostPassthroughReport NetworkCostPassthroughReport { get; set; }
 
         [JsonProperty("notification_banner")]
@@ -141,9 +129,7 @@ namespace Stripe
         /// hardware orders</a> embedded component.
         /// </summary>
         [JsonProperty("terminal_hardware_orders")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("terminal_hardware_orders")]
-#endif
         public AccountSessionComponentsTerminalHardwareOrders TerminalHardwareOrders { get; set; }
 
         /// <summary>
@@ -152,9 +138,7 @@ namespace Stripe
         /// hardware shop</a> embedded component.
         /// </summary>
         [JsonProperty("terminal_hardware_shop")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("terminal_hardware_shop")]
-#endif
         public AccountSessionComponentsTerminalHardwareShop TerminalHardwareShop { get; set; }
     }
 }

@@ -9,9 +9,7 @@ namespace Stripe
     public class ConfirmationTokenPaymentMethodPreviewCard : StripeEntity<ConfirmationTokenPaymentMethodPreviewCard>
     {
         [JsonProperty("benefits")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("benefits")]
-#endif
         public ConfirmationTokenPaymentMethodPreviewCardBenefits Benefits { get; set; }
 
         /// <summary>

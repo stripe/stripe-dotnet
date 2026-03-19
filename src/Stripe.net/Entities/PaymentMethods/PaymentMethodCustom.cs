@@ -26,9 +26,7 @@ namespace Stripe
         /// A reference to an external payment method, such as a PayPal Billing Agreement ID.
         /// </summary>
         [JsonProperty("payment_method_reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_reference")]
-#endif
         public string PaymentMethodReference { get; set; }
 
         /// <summary>
@@ -42,9 +40,7 @@ namespace Stripe
         /// Indicates whether the payment method supports off-session payments.
         /// </summary>
         [JsonProperty("usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("usage")]
-#endif
         public string Usage { get; set; }
     }
 }

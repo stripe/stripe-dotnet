@@ -2,19 +2,17 @@
 namespace Stripe.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AlertCreditBalanceThresholdFilterCreditGrantsApplicabilityConfigOptions : INestedOptions
     {
         /// <summary>
         /// Specify the scope of this applicability config.
         /// </summary>
         [JsonProperty("scope")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("scope")]
-#endif
         public AlertCreditBalanceThresholdFilterCreditGrantsApplicabilityConfigScopeOptions Scope { get; set; }
     }
 }

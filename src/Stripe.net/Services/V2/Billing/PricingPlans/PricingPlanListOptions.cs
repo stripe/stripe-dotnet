@@ -3,19 +3,17 @@ namespace Stripe.V2.Billing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PricingPlanListOptions : V2.ListOptions
     {
         /// <summary>
         /// Filter for active/inactive PricingPlans. Mutually exclusive with <c>lookup_keys</c>.
         /// </summary>
         [JsonProperty("active")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("active")]
-#endif
         public bool? Active { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Billing
         /// lookup keys.
         /// </summary>
         [JsonProperty("lookup_keys")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_keys")]
-#endif
         public List<string> LookupKeys { get; set; }
     }
 }

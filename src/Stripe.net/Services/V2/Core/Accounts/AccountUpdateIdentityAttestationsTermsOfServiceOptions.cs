@@ -21,9 +21,7 @@ namespace Stripe.V2.Core
         /// Details on the Account's acceptance of Issuing-specific terms of service.
         /// </summary>
         [JsonProperty("card_creator")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_creator")]
-#endif
         public AccountUpdateIdentityAttestationsTermsOfServiceCardCreatorOptions CardCreator { get; set; }
 
         /// <summary>

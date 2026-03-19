@@ -21,9 +21,7 @@ namespace Stripe.Billing
         /// Filter results to only include alerts for the given customer.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>

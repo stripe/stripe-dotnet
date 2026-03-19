@@ -3,10 +3,10 @@ namespace Stripe.V2.MoneyManagement
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FinancialAccountStorage : StripeEntity<FinancialAccountStorage>
     {
         /// <summary>
@@ -15,18 +15,14 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>business</c>, or <c>consumer</c>.
         /// </summary>
         [JsonProperty("funds_usage_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("funds_usage_type")]
-#endif
         public string FundsUsageType { get; set; }
 
         /// <summary>
         /// The currencies that this FinancialAccount can hold.
         /// </summary>
         [JsonProperty("holds_currencies")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("holds_currencies")]
-#endif
         public List<string> HoldsCurrencies { get; set; }
     }
 }

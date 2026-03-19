@@ -13,9 +13,7 @@ namespace Stripe
         /// Allocated Funds configuration for this PaymentIntent.
         /// </summary>
         [JsonProperty("allocated_funds")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allocated_funds")]
-#endif
         public PaymentIntentAllocatedFundsOptions AllocatedFunds { get; set; }
 
         /// <summary>
@@ -34,9 +32,7 @@ namespace Stripe
         /// accounts</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_fee_amount")]
-#endif
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -97,9 +93,7 @@ namespace Stripe
         /// settlement amount.
         /// </summary>
         [JsonProperty("fx_quote")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fx_quote")]
-#endif
         public string FxQuote { get; set; }
 
         /// <summary>
@@ -239,9 +233,7 @@ namespace Stripe
         /// ID of the SharedPaymentToken used to confirm this PaymentIntent.
         /// </summary>
         [JsonProperty("shared_payment_granted_token")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shared_payment_granted_token")]
-#endif
         public string SharedPaymentGrantedToken { get; set; }
 
         /// <summary>

@@ -172,9 +172,7 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("gopay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gopay")]
-#endif
         public PaymentIntentPaymentMethodOptionsGopayOptions Gopay { get; set; }
 
         /// <summary>
@@ -190,9 +188,7 @@ namespace Stripe
         /// the Indonesia Bank Transfer payment method options.
         /// </summary>
         [JsonProperty("id_bank_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_bank_transfer")]
-#endif
         public PaymentIntentPaymentMethodOptionsIdBankTransferOptions IdBankTransfer { get; set; }
 
         /// <summary>
@@ -344,9 +340,7 @@ namespace Stripe
         /// PayPay payment method options.
         /// </summary>
         [JsonProperty("paypay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypay")]
-#endif
         public PaymentIntentPaymentMethodOptionsPaypayOptions Paypay { get; set; }
 
         /// <summary>
@@ -378,9 +372,7 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("qris")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("qris")]
-#endif
         public PaymentIntentPaymentMethodOptionsQrisOptions Qris { get; set; }
 
         /// <summary>
@@ -388,9 +380,7 @@ namespace Stripe
         /// Rechnung payment method options.
         /// </summary>
         [JsonProperty("rechnung")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rechnung")]
-#endif
         public PaymentIntentPaymentMethodOptionsRechnungOptions Rechnung { get; set; }
 
         /// <summary>
@@ -430,9 +420,7 @@ namespace Stripe
         /// ShopeePay payment method options.
         /// </summary>
         [JsonProperty("shopeepay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shopeepay")]
-#endif
         public PaymentIntentPaymentMethodOptionsShopeepayOptions Shopeepay { get; set; }
 
         /// <summary>
@@ -448,9 +436,7 @@ namespace Stripe
         /// the Stripe Balance payment method options.
         /// </summary>
         [JsonProperty("stripe_balance")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stripe_balance")]
-#endif
         public PaymentIntentPaymentMethodOptionsStripeBalanceOptions StripeBalance { get; set; }
 
         /// <summary>
@@ -468,14 +454,6 @@ namespace Stripe
         [JsonProperty("twint")]
         [STJS.JsonPropertyName("twint")]
         public PaymentIntentPaymentMethodOptionsTwintOptions Twint { get; set; }
-
-        /// <summary>
-        /// If this is a <c>upi</c> PaymentIntent, this sub-hash contains details about the UPI
-        /// payment method options.
-        /// </summary>
-        [JsonProperty("upi")]
-        [STJS.JsonPropertyName("upi")]
-        public PaymentIntentPaymentMethodOptionsUpiOptions Upi { get; set; }
 
         /// <summary>
         /// If this is a <c>us_bank_account</c> PaymentMethod, this sub-hash contains details about

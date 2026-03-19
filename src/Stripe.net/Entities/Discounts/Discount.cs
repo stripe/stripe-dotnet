@@ -160,15 +160,11 @@ namespace Stripe
         /// particular subscription schedule.
         /// </summary>
         [JsonProperty("schedule")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("schedule")]
-#endif
         public string Schedule { get; set; }
 
         [JsonProperty("service_period_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("service_period_details")]
-#endif
         public DiscountServicePeriodDetails ServicePeriodDetails { get; set; }
 
         [JsonProperty("source")]

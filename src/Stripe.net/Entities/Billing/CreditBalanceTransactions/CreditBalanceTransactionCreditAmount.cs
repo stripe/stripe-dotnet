@@ -12,9 +12,7 @@ namespace Stripe.Billing
         /// The custom pricing unit amount.
         /// </summary>
         [JsonProperty("custom_pricing_unit")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_pricing_unit")]
-#endif
         public CreditBalanceTransactionCreditAmountCustomPricingUnit CustomPricingUnit { get; set; }
 
         /// <summary>

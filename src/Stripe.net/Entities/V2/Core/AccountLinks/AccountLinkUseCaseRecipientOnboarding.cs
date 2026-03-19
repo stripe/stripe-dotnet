@@ -3,10 +3,10 @@ namespace Stripe.V2.Core
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountLinkUseCaseRecipientOnboarding : StripeEntity<AccountLinkUseCaseRecipientOnboarding>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Core
         /// flow.
         /// </summary>
         [JsonProperty("collection_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("collection_options")]
-#endif
         public AccountLinkUseCaseRecipientOnboardingCollectionOptions CollectionOptions { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe.V2.Core
         /// specified v2/core/account configuration/s.
         /// </summary>
         [JsonProperty("configurations")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("configurations")]
-#endif
         public List<string> Configurations { get; set; }
 
         /// <summary>
@@ -40,18 +36,14 @@ namespace Stripe.V2.Core
         /// leaked to a third party.
         /// </summary>
         [JsonProperty("refresh_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refresh_url")]
-#endif
         public string RefreshUrl { get; set; }
 
         /// <summary>
         /// The URL that the user will be redirected to upon completing the linked flow.
         /// </summary>
         [JsonProperty("return_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("return_url")]
-#endif
         public string ReturnUrl { get; set; }
     }
 }

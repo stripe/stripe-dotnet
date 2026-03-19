@@ -29,8 +29,8 @@ namespace Stripe
 
         /// <summary>
         /// Why this subscription was canceled.
-        /// One of: <c>canceled_by_retention_policy</c>, <c>cancellation_requested</c>,
-        /// <c>payment_disputed</c>, or <c>payment_failed</c>.
+        /// One of: <c>cancellation_requested</c>, <c>payment_disputed</c>, or
+        /// <c>payment_failed</c>.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

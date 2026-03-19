@@ -12,18 +12,14 @@ namespace Stripe
         /// Details about the rate card subscription that generated this invoice item.
         /// </summary>
         [JsonProperty("rate_card_subscription_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rate_card_subscription_details")]
-#endif
         public InvoiceItemParentRateCardSubscriptionDetails RateCardSubscriptionDetails { get; set; }
 
         /// <summary>
         /// Details about the subscription schedule that generated this invoice item.
         /// </summary>
         [JsonProperty("schedule_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("schedule_details")]
-#endif
         public InvoiceItemParentScheduleDetails ScheduleDetails { get; set; }
 
         /// <summary>
@@ -46,9 +42,7 @@ namespace Stripe
         /// Details about the pricing plan subscription that generated this invoice item.
         /// </summary>
         [JsonProperty("pricing_plan_subscription_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pricing_plan_subscription_details")]
-#endif
         public InvoiceItemParentPricingPlanSubscriptionDetails PricingPlanSubscriptionDetails { get; set; }
     }
 }

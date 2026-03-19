@@ -2,10 +2,10 @@
 namespace Stripe.V2.Payments
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OffSessionPaymentCaptureTransferDataOptions : INestedOptions
     {
         /// <summary>
@@ -18,9 +18,7 @@ namespace Stripe.V2.Payments
         /// currency unit (e.g., 100 cents to charge $1.00).
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
     }
 }

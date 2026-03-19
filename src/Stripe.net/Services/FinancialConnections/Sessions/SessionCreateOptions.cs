@@ -27,27 +27,21 @@ namespace Stripe.FinancialConnections
         /// Settings for hosted Sessions. Required if <c>ui_mode</c> is <c>hosted</c>.
         /// </summary>
         [JsonProperty("hosted")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hosted")]
-#endif
         public SessionHostedOptions Hosted { get; set; }
 
         /// <summary>
         /// Settings for configuring Session-specific limits.
         /// </summary>
         [JsonProperty("limits")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("limits")]
-#endif
         public SessionLimitsOptions Limits { get; set; }
 
         /// <summary>
         /// Customize manual entry behavior.
         /// </summary>
         [JsonProperty("manual_entry")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("manual_entry")]
-#endif
         public SessionManualEntryOptions ManualEntry { get; set; }
 
         /// <summary>
@@ -75,9 +69,7 @@ namespace Stripe.FinancialConnections
         /// Options for specifying a Session targeted to relinking an authorization.
         /// </summary>
         [JsonProperty("relink_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("relink_options")]
-#endif
         public SessionRelinkOptionsOptions RelinkOptions { get; set; }
 
         /// <summary>
@@ -93,9 +85,7 @@ namespace Stripe.FinancialConnections
         /// One of: <c>hosted</c>, or <c>modal</c>.
         /// </summary>
         [JsonProperty("ui_mode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ui_mode")]
-#endif
         public string UiMode { get; set; }
     }
 }

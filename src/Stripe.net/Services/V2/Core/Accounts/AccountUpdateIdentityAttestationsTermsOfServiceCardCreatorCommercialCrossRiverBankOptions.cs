@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountUpdateIdentityAttestationsTermsOfServiceCardCreatorCommercialCrossRiverBankOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Core
         /// Bank as BIN sponsor.
         /// </summary>
         [JsonProperty("apple_pay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("apple_pay")]
-#endif
         public AccountUpdateIdentityAttestationsTermsOfServiceCardCreatorCommercialCrossRiverBankApplePayOptions ApplePay { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Core
         /// as BIN sponsor.
         /// </summary>
         [JsonProperty("charge_card")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("charge_card")]
-#endif
         public AccountUpdateIdentityAttestationsTermsOfServiceCardCreatorCommercialCrossRiverBankChargeCardOptions ChargeCard { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe.V2.Core
         /// as BIN sponsor.
         /// </summary>
         [JsonProperty("prepaid_card")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prepaid_card")]
-#endif
         public AccountUpdateIdentityAttestationsTermsOfServiceCardCreatorCommercialCrossRiverBankPrepaidCardOptions PrepaidCard { get; set; }
 
         /// <summary>
@@ -43,9 +37,7 @@ namespace Stripe.V2.Core
         /// BIN sponsor.
         /// </summary>
         [JsonProperty("spend_card")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("spend_card")]
-#endif
         public AccountUpdateIdentityAttestationsTermsOfServiceCardCreatorCommercialCrossRiverBankSpendCardOptions SpendCard { get; set; }
     }
 }

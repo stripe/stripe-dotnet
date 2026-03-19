@@ -71,9 +71,7 @@ namespace Stripe.Issuing
         /// Filter cards by wallet settings.
         /// </summary>
         [JsonProperty("wallets")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("wallets")]
-#endif
         public CardWalletsOptions Wallets { get; set; }
     }
 }

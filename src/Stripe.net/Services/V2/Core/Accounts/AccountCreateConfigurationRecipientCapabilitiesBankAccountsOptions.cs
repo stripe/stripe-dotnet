@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountCreateConfigurationRecipientCapabilitiesBankAccountsOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Core
         /// rails.
         /// </summary>
         [JsonProperty("instant")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("instant")]
-#endif
         public AccountCreateConfigurationRecipientCapabilitiesBankAccountsInstantOptions Instant { get; set; }
 
         /// <summary>
@@ -23,18 +21,14 @@ namespace Stripe.V2.Core
         /// networks.
         /// </summary>
         [JsonProperty("local")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("local")]
-#endif
         public AccountCreateConfigurationRecipientCapabilitiesBankAccountsLocalOptions Local { get; set; }
 
         /// <summary>
         /// Enables this Account to receive OutboundPayments to linked bank accounts over wire.
         /// </summary>
         [JsonProperty("wire")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("wire")]
-#endif
         public AccountCreateConfigurationRecipientCapabilitiesBankAccountsWireOptions Wire { get; set; }
     }
 }

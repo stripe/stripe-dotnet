@@ -13,9 +13,7 @@ namespace Stripe
         /// Allocated Funds configuration for this PaymentIntent.
         /// </summary>
         [JsonProperty("allocated_funds")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allocated_funds")]
-#endif
         public PaymentIntentAllocatedFundsOptions AllocatedFunds { get; set; }
 
         /// <summary>
@@ -189,9 +187,7 @@ namespace Stripe
         /// settlement amount.
         /// </summary>
         [JsonProperty("fx_quote")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fx_quote")]
-#endif
         public string FxQuote { get; set; }
 
         /// <summary>
@@ -315,9 +311,7 @@ namespace Stripe
         /// that you configure in the dashboard.
         /// </summary>
         [JsonProperty("payments_orchestration")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payments_orchestration")]
-#endif
         public PaymentIntentPaymentsOrchestrationOptions PaymentsOrchestration { get; set; }
 
         /// <summary>
@@ -354,9 +348,7 @@ namespace Stripe
         /// One of: <c>optional</c>, or <c>required</c>.
         /// </summary>
         [JsonProperty("secret_key_confirmation")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("secret_key_confirmation")]
-#endif
         public string SecretKeyConfirmation { get; set; }
 
         /// <summary>
@@ -388,9 +380,7 @@ namespace Stripe
         /// ID of the SharedPaymentToken used to confirm this PaymentIntent.
         /// </summary>
         [JsonProperty("shared_payment_granted_token")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shared_payment_granted_token")]
-#endif
         public string SharedPaymentGrantedToken { get; set; }
 
         /// <summary>

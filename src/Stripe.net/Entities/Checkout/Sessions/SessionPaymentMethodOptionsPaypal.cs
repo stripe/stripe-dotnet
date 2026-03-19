@@ -64,9 +64,7 @@ namespace Stripe.Checkout
         /// and transfers</a> are used.
         /// </summary>
         [JsonProperty("subsellers")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subsellers")]
-#endif
         public List<string> Subsellers { get; set; }
     }
 }

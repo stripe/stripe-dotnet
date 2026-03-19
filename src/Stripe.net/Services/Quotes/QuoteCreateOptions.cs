@@ -15,9 +15,7 @@ namespace Stripe
         /// paused between <c>starts_at</c> and now.
         /// </summary>
         [JsonProperty("allow_backdated_lines")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allow_backdated_lines")]
-#endif
         public bool? AllowBackdatedLines { get; set; }
 
         /// <summary>
@@ -164,9 +162,7 @@ namespace Stripe
         /// accepted.
         /// </summary>
         [JsonProperty("lines")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lines")]
-#endif
         public List<QuoteLineOptions> Lines { get; set; }
 
         /// <summary>
@@ -202,9 +198,7 @@ namespace Stripe
         /// subscription schedules.
         /// </summary>
         [JsonProperty("subscription_data_overrides")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_data_overrides")]
-#endif
         public List<QuoteSubscriptionDataOverrideOptions> SubscriptionDataOverrides { get; set; }
 
         /// <summary>

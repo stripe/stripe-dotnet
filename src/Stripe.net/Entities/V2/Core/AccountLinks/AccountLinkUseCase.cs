@@ -38,9 +38,7 @@ namespace Stripe.V2.Core
         /// recipient.
         /// </summary>
         [JsonProperty("recipient_onboarding")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recipient_onboarding")]
-#endif
         public AccountLinkUseCaseRecipientOnboarding RecipientOnboarding { get; set; }
 
         /// <summary>
@@ -48,9 +46,7 @@ namespace Stripe.V2.Core
         /// recipient.
         /// </summary>
         [JsonProperty("recipient_update")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recipient_update")]
-#endif
         public AccountLinkUseCaseRecipientUpdate RecipientUpdate { get; set; }
     }
 }

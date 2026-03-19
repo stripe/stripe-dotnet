@@ -2,19 +2,17 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class IntentCreateCadenceDataPayerBillingProfileDataOptions : INestedOptions
     {
         /// <summary>
         /// The customer to associate with the profile.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Billing
         /// create the profile.
         /// </summary>
         [JsonProperty("default_payment_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_payment_method")]
-#endif
         public string DefaultPaymentMethod { get; set; }
     }
 }

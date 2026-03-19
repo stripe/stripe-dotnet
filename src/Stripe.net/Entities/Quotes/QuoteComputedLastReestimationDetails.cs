@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class QuoteComputedLastReestimationDetails : StripeEntity<QuoteComputedLastReestimationDetails>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// failure.
         /// </summary>
         [JsonProperty("failed")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("failed")]
-#endif
         public QuoteComputedLastReestimationDetailsFailed Failed { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// One of: <c>failed</c>, <c>in_progress</c>, or <c>succeeded</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

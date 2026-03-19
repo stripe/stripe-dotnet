@@ -89,9 +89,7 @@ namespace Stripe.Checkout
         /// One of: <c>auto</c>, or <c>manual</c>.
         /// </summary>
         [JsonProperty("approval_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("approval_method")]
-#endif
         public string ApprovalMethod { get; set; }
 
         [JsonProperty("automatic_tax")]
@@ -120,9 +118,7 @@ namespace Stripe.Checkout
         public string CancelUrl { get; set; }
 
         [JsonProperty("checkout_items")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("checkout_items")]
-#endif
         public List<SessionCheckoutItem> CheckoutItems { get; set; }
 
         /// <summary>
@@ -199,9 +195,7 @@ namespace Stripe.Checkout
         /// about the customer and their payment details.
         /// </summary>
         [JsonProperty("current_attempt")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("current_attempt")]
-#endif
         public SessionCurrentAttempt CurrentAttempt { get; set; }
 
         /// <summary>
@@ -319,14 +313,6 @@ namespace Stripe.Checkout
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
-        /// <summary>
-        /// The integration identifier for this Checkout Session. Multiple Checkout Sessions can
-        /// have the same integration identifier.
-        /// </summary>
-        [JsonProperty("integration_identifier")]
-        [STJS.JsonPropertyName("integration_identifier")]
-        public string IntegrationIdentifier { get; set; }
-
         #region Expandable Invoice
 
         /// <summary>
@@ -377,8 +363,8 @@ namespace Stripe.Checkout
         public StripeList<LineItem> LineItems { get; set; }
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -405,9 +391,7 @@ namespace Stripe.Checkout
         /// href="https://stripe.com/api/subscriptions/object">Subscriptions</a>.
         /// </summary>
         [JsonProperty("managed_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("managed_payments")]
-#endif
         public SessionManagedPayments ManagedPayments { get; set; }
 
         /// <summary>
@@ -761,8 +745,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The UI mode of the Session. Defaults to <c>hosted</c>.
-        /// One of: <c>custom</c>, <c>elements</c>, <c>embedded</c>, <c>embedded_page</c>,
-        /// <c>form</c>, <c>hosted</c>, or <c>hosted_page</c>.
+        /// One of: <c>custom</c>, <c>embedded</c>, or <c>hosted</c>.
         /// </summary>
         [JsonProperty("ui_mode")]
         [STJS.JsonPropertyName("ui_mode")]

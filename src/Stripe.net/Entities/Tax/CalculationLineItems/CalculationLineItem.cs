@@ -25,7 +25,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The line item amount in the <a
-        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a>. If
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>. If
         /// <c>tax_behavior=inclusive</c>, then this amount includes taxes. Otherwise, taxes were
         /// calculated on top of this amount.
         /// </summary>
@@ -35,15 +35,15 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The amount of tax calculated for this line item, in the <a
-        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_tax")]
         [STJS.JsonPropertyName("amount_tax")]
         public long AmountTax { get; set; }
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -65,9 +65,7 @@ namespace Stripe.Tax
         /// requirement, it overrides the customer address.
         /// </summary>
         [JsonProperty("performance_location")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("performance_location")]
-#endif
         public string PerformanceLocation { get; set; }
 
         /// <summary>

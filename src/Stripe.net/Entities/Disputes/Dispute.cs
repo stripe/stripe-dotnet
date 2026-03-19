@@ -45,9 +45,7 @@ namespace Stripe
         /// the entire disputed amount is contested.
         /// </summary>
         [JsonProperty("amount_to_counter")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_to_counter")]
-#endif
         public long AmountToCounter { get; set; }
 
         /// <summary>
@@ -133,9 +131,7 @@ namespace Stripe
         /// <c>smart_disputes</c>.
         /// </summary>
         [JsonProperty("intended_submission_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("intended_submission_method")]
-#endif
         public string IntendedSubmissionMethod { get; set; }
 
         /// <summary>
@@ -148,8 +144,8 @@ namespace Stripe
         public bool IsChargeRefundable { get; set; }
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -224,9 +220,7 @@ namespace Stripe
         public string Reason { get; set; }
 
         [JsonProperty("smart_disputes")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("smart_disputes")]
-#endif
         public DisputeSmartDisputes SmartDisputes { get; set; }
 
         /// <summary>

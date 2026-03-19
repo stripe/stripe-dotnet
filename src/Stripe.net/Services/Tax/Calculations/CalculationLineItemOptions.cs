@@ -11,7 +11,7 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// A positive integer representing the line item's total price in the <a
-        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a>. If
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>. If
         /// <c>tax_behavior=inclusive</c>, then this amount includes taxes. Otherwise, taxes are
         /// calculated on top of this amount.
         /// </summary>
@@ -34,9 +34,7 @@ namespace Stripe.Tax
         /// code</a>, this is required, optional, or not supported.
         /// </summary>
         [JsonProperty("performance_location")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("performance_location")]
-#endif
         public string PerformanceLocation { get; set; }
 
         /// <summary>

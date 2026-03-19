@@ -28,9 +28,7 @@ namespace Stripe.Billing
         /// event payload.
         /// </summary>
         [JsonProperty("dimension_payload_keys")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dimension_payload_keys")]
-#endif
         public List<string> DimensionPayloadKeys { get; set; }
 
         /// <summary>

@@ -13,9 +13,7 @@ namespace Stripe.Identity
         /// Only return VerificationReports that were blocked by this BlocklistEntry id.
         /// </summary>
         [JsonProperty("blocked_by_entry")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("blocked_by_entry")]
-#endif
         public string BlockedByEntry { get; set; }
 
         /// <summary>

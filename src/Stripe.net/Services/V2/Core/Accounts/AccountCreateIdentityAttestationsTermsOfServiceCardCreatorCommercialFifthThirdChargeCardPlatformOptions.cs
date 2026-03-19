@@ -3,10 +3,10 @@ namespace Stripe.V2.Core
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountCreateIdentityAttestationsTermsOfServiceCardCreatorCommercialFifthThirdChargeCardPlatformOptions : INestedOptions
     {
         /// <summary>
@@ -15,18 +15,14 @@ namespace Stripe.V2.Core
         /// 2022-09-18T13:22:18.123Z.
         /// </summary>
         [JsonProperty("date")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("date")]
-#endif
         public DateTime? Date { get; set; }
 
         /// <summary>
         /// The IP address from which the Account's representative accepted the terms of service.
         /// </summary>
         [JsonProperty("ip")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ip")]
-#endif
         public string Ip { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe.V2.Core
         /// of service.
         /// </summary>
         [JsonProperty("user_agent")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("user_agent")]
-#endif
         public string UserAgent { get; set; }
     }
 }

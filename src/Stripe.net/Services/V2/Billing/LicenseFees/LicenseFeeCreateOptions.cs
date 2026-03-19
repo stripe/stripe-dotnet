@@ -3,19 +3,17 @@ namespace Stripe.V2.Billing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class LicenseFeeCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -24,18 +22,14 @@ namespace Stripe.V2.Billing
         /// of 250 characters.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
         /// The Licensed Item that this License Fee binds to.
         /// </summary>
         [JsonProperty("licensed_item")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("licensed_item")]
-#endif
         public string LicensedItem { get; set; }
 
         /// <summary>
@@ -43,9 +37,7 @@ namespace Stripe.V2.Billing
         /// 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_key")]
-#endif
         public string LookupKey { get; set; }
 
         /// <summary>
@@ -54,9 +46,7 @@ namespace Stripe.V2.Billing
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -68,9 +58,7 @@ namespace Stripe.V2.Billing
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
         /// </summary>
         [JsonProperty("service_interval")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("service_interval")]
-#endif
         public string ServiceInterval { get; set; }
 
         /// <summary>
@@ -78,9 +66,7 @@ namespace Stripe.V2.Billing
         /// <c>service_interval</c> to <c>"month"</c> in order to specify quarterly service.
         /// </summary>
         [JsonProperty("service_interval_count")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("service_interval_count")]
-#endif
         public long? ServiceIntervalCount { get; set; }
 
         /// <summary>
@@ -88,9 +74,7 @@ namespace Stripe.V2.Billing
         /// One of: <c>exclusive</c>, or <c>inclusive</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_behavior")]
-#endif
         public string TaxBehavior { get; set; }
 
         /// <summary>
@@ -101,18 +85,14 @@ namespace Stripe.V2.Billing
         /// One of: <c>graduated</c>, or <c>volume</c>.
         /// </summary>
         [JsonProperty("tiering_mode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tiering_mode")]
-#endif
         public string TieringMode { get; set; }
 
         /// <summary>
         /// Each element represents a pricing tier. Cannot be set if <c>unit_amount</c> is provided.
         /// </summary>
         [JsonProperty("tiers")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tiers")]
-#endif
         public List<LicenseFeeCreateTierOptions> Tiers { get; set; }
 
         /// <summary>
@@ -120,9 +100,7 @@ namespace Stripe.V2.Billing
         /// billed.
         /// </summary>
         [JsonProperty("transform_quantity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transform_quantity")]
-#endif
         public LicenseFeeCreateTransformQuantityOptions TransformQuantity { get; set; }
 
         /// <summary>
@@ -130,9 +108,7 @@ namespace Stripe.V2.Billing
         /// units with at most 12 decimal places. Cannot be set if <c>tiers</c> is provided.
         /// </summary>
         [JsonProperty("unit_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_amount")]
-#endif
         public string UnitAmount { get; set; }
     }
 }

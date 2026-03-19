@@ -20,9 +20,7 @@ namespace Stripe
         /// Filter for subscriptions that have the specified billing cadence.
         /// </summary>
         [JsonProperty("billing_cadence")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_cadence")]
-#endif
         public string BillingCadence { get; set; }
 
         /// <summary>

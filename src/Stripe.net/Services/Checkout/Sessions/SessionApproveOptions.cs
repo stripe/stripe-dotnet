@@ -2,19 +2,17 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionApproveOptions : BaseOptions
     {
         /// <summary>
         /// The ID of the customer's attempt to pay to approve.
         /// </summary>
         [JsonProperty("attempt")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("attempt")]
-#endif
         public string Attempt { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe.Checkout
         /// <c>payment</c> mode.
         /// </summary>
         [JsonProperty("payment_intent_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_intent_data")]
-#endif
         public SessionPaymentIntentDataOptions PaymentIntentData { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe.Checkout
         /// <c>checkout.confirm()</c> in Stripe.js.
         /// </summary>
         [JsonProperty("return_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("return_url")]
-#endif
         public string ReturnUrl { get; set; }
 
         /// <summary>
@@ -44,9 +38,7 @@ namespace Stripe.Checkout
         /// <c>subscription</c> mode.
         /// </summary>
         [JsonProperty("subscription_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_data")]
-#endif
         public SessionSubscriptionDataOptions SubscriptionData { get; set; }
     }
 }

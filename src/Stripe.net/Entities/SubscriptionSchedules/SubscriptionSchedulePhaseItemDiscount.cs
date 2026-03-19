@@ -82,9 +82,7 @@ namespace Stripe
         /// Details to determine how long the discount should be applied for.
         /// </summary>
         [JsonProperty("discount_end")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discount_end")]
-#endif
         public SubscriptionSchedulePhaseItemDiscountDiscountEnd DiscountEnd { get; set; }
 
         #region Expandable PromotionCode
@@ -123,9 +121,7 @@ namespace Stripe
         #endregion
 
         [JsonProperty("settings")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("settings")]
-#endif
         public SubscriptionSchedulePhaseItemDiscountSettings Settings { get; set; }
     }
 }

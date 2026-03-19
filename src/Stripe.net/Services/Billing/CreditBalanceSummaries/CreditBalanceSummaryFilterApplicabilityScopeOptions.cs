@@ -15,9 +15,7 @@ namespace Stripe.Billing
         /// <c>prices</c>.
         /// </summary>
         [JsonProperty("billable_items")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billable_items")]
-#endif
         public List<CreditBalanceSummaryFilterApplicabilityScopeBillableItemOptions> BillableItems { get; set; }
 
         /// <summary>

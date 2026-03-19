@@ -2,28 +2,24 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CustomerSessionComponentsTaxIdElementOptions : INestedOptions
     {
         /// <summary>
         /// Whether the Tax ID Element is enabled.
         /// </summary>
         [JsonProperty("enabled")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
-#endif
         public bool? Enabled { get; set; }
 
         /// <summary>
         /// This hash defines whether the Tax ID Element supports certain features.
         /// </summary>
         [JsonProperty("features")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("features")]
-#endif
         public CustomerSessionComponentsTaxIdElementFeaturesOptions Features { get; set; }
     }
 }

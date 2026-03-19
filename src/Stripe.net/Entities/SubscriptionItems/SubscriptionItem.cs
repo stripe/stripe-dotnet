@@ -34,10 +34,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billed_until")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billed_until")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? BilledUntil { get; set; }
 
         /// <summary>
@@ -79,9 +77,7 @@ namespace Stripe
         /// The current trial that is applied to this subscription item.
         /// </summary>
         [JsonProperty("current_trial")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("current_trial")]
-#endif
         public SubscriptionItemCurrentTrial CurrentTrial { get; set; }
 
         /// <summary>
@@ -210,9 +206,7 @@ namespace Stripe
         /// Options that configure the trial on the subscription item.
         /// </summary>
         [JsonProperty("trial")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial")]
-#endif
         public SubscriptionItemTrial Trial { get; set; }
     }
 }

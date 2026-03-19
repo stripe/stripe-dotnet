@@ -18,14 +18,13 @@ namespace Stripe.Radar
 
         /// <summary>
         /// Type of the items in the value list. One of <c>card_fingerprint</c>, <c>card_bin</c>,
-        /// <c>crypto_fingerprint</c>, <c>email</c>, <c>ip_address</c>, <c>country</c>,
-        /// <c>string</c>, <c>case_sensitive_string</c>, <c>customer_id</c>,
-        /// <c>sepa_debit_fingerprint</c>, or <c>us_bank_account_fingerprint</c>. Use <c>string</c>
-        /// if the item type is unknown or mixed.
+        /// <c>email</c>, <c>ip_address</c>, <c>country</c>, <c>string</c>,
+        /// <c>case_sensitive_string</c>, <c>customer_id</c>, <c>sepa_debit_fingerprint</c>, or
+        /// <c>us_bank_account_fingerprint</c>. Use <c>string</c> if the item type is unknown or
+        /// mixed.
         /// One of: <c>card_bin</c>, <c>card_fingerprint</c>, <c>case_sensitive_string</c>,
-        /// <c>country</c>, <c>crypto_fingerprint</c>, <c>customer_id</c>, <c>email</c>,
-        /// <c>ip_address</c>, <c>sepa_debit_fingerprint</c>, <c>string</c>, or
-        /// <c>us_bank_account_fingerprint</c>.
+        /// <c>country</c>, <c>customer_id</c>, <c>email</c>, <c>ip_address</c>,
+        /// <c>sepa_debit_fingerprint</c>, <c>string</c>, or <c>us_bank_account_fingerprint</c>.
         /// </summary>
         [JsonProperty("item_type")]
         [STJS.JsonPropertyName("item_type")]

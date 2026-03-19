@@ -3,13 +3,13 @@ namespace Stripe.V2.Billing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// A set of component subscriptions for a Pricing Plan Subscription.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PricingPlanSubscriptionComponents : StripeEntity<PricingPlanSubscriptionComponents>, IHasObject
     {
         /// <summary>
@@ -17,18 +17,14 @@ namespace Stripe.V2.Billing
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// The component subscriptions of the Pricing Plan Subscription.
         /// </summary>
         [JsonProperty("components")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("components")]
-#endif
         public List<PricingPlanSubscriptionComponentsComponent> Components { get; set; }
 
         /// <summary>
@@ -36,9 +32,7 @@ namespace Stripe.V2.Billing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
     }
 }

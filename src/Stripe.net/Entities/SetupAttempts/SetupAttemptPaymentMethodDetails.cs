@@ -45,9 +45,7 @@ namespace Stripe
         public SetupAttemptPaymentMethodDetailsCashapp Cashapp { get; set; }
 
         [JsonProperty("id_bank_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_bank_transfer")]
-#endif
         public SetupAttemptPaymentMethodDetailsIdBankTransfer IdBankTransfer { get; set; }
 
         [JsonProperty("ideal")]
@@ -87,9 +85,7 @@ namespace Stripe
         public SetupAttemptPaymentMethodDetailsPayto Payto { get; set; }
 
         [JsonProperty("pix")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pix")]
-#endif
         public SetupAttemptPaymentMethodDetailsPix Pix { get; set; }
 
         [JsonProperty("revolut_pay")]
@@ -105,9 +101,7 @@ namespace Stripe
         public SetupAttemptPaymentMethodDetailsSofort Sofort { get; set; }
 
         [JsonProperty("stripe_balance")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stripe_balance")]
-#endif
         public SetupAttemptPaymentMethodDetailsStripeBalance StripeBalance { get; set; }
 
         /// <summary>
@@ -118,10 +112,6 @@ namespace Stripe
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
-
-        [JsonProperty("upi")]
-        [STJS.JsonPropertyName("upi")]
-        public SetupAttemptPaymentMethodDetailsUpi Upi { get; set; }
 
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]

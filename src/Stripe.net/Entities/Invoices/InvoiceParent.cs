@@ -12,9 +12,7 @@ namespace Stripe
         /// Details about the billing cadence that generated this invoice.
         /// </summary>
         [JsonProperty("billing_cadence_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_cadence_details")]
-#endif
         public InvoiceParentBillingCadenceDetails BillingCadenceDetails { get; set; }
 
         /// <summary>
@@ -28,9 +26,7 @@ namespace Stripe
         /// Details about the schedule that generated this invoice.
         /// </summary>
         [JsonProperty("schedule_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("schedule_details")]
-#endif
         public InvoiceParentScheduleDetails ScheduleDetails { get; set; }
 
         /// <summary>

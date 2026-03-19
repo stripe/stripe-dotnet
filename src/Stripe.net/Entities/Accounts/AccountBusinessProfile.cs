@@ -66,9 +66,7 @@ namespace Stripe
         /// Transaction Act. Only used for accounts in Japan.
         /// </summary>
         [JsonProperty("specified_commercial_transactions_act_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("specified_commercial_transactions_act_url")]
-#endif
         public string SpecifiedCommercialTransactionsActUrl { get; set; }
 
         /// <summary>

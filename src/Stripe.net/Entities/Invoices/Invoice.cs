@@ -159,9 +159,7 @@ namespace Stripe
         /// invoices where collection_method=charge_automatically.
         /// </summary>
         [JsonProperty("amounts_due")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amounts_due")]
-#endif
         public List<InvoiceAmountsDue> AmountsDue { get; set; }
 
         #region Expandable Application
@@ -427,9 +425,7 @@ namespace Stripe
         /// <c>expand[]=default_margins</c> to expand each margin.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public List<string> DefaultMarginIds
         {
             get => this.InternalDefaultMargins?.Select((x) => x.Id).ToList();
@@ -444,9 +440,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public List<Margin> DefaultMargins
         {
             get => this.InternalDefaultMargins?.Select((x) => x.ExpandedObject).ToList();
@@ -454,9 +448,7 @@ namespace Stripe
         }
 
         [JsonProperty("default_margins", ItemConverterType = typeof(ExpandableFieldConverter<Margin>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_margins")]
-#endif
         internal List<ExpandableField<Margin>> InternalDefaultMargins { get; set; }
         #endregion
 
@@ -716,8 +708,8 @@ namespace Stripe
         public StripeList<InvoiceLineItem> Lines { get; set; }
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -993,9 +985,7 @@ namespace Stripe
         /// The aggregate amounts calculated per margin across all line items.
         /// </summary>
         [JsonProperty("total_margin_amounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("total_margin_amounts")]
-#endif
         public List<InvoiceTotalMarginAmount> TotalMarginAmounts { get; set; }
 
         /// <summary>

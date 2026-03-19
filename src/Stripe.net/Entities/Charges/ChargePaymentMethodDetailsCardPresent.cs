@@ -239,9 +239,7 @@ namespace Stripe
         /// Whether the PaymentIntent can be reauthorized or not.
         /// </summary>
         [JsonProperty("reauthorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reauthorization")]
-#endif
         public ChargePaymentMethodDetailsCardPresentReauthorization Reauthorization { get; set; }
 
         /// <summary>
@@ -250,10 +248,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("reauthorize_before")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reauthorize_before")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? ReauthorizeBefore { get; set; }
     }
 }

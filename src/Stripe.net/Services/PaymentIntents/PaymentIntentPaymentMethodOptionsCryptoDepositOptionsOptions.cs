@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentPaymentMethodOptionsCryptoDepositOptionsOptions : INestedOptions
     {
         /// <summary>
@@ -16,9 +16,7 @@ namespace Stripe
         /// One of: <c>base</c>, <c>solana</c>, or <c>tempo</c>.
         /// </summary>
         [JsonProperty("networks")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("networks")]
-#endif
         public List<string> Networks { get; set; }
     }
 }

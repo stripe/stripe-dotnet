@@ -51,15 +51,6 @@ namespace Stripe.Issuing
         public string FinancialAccount { get; set; }
 
         /// <summary>
-        /// Rules that control the lifecycle of this card, such as automatic cancellation. Refer to
-        /// our <a href="https://stripe.com/issuing/controls/lifecycle-controls">documentation</a>
-        /// for more details.
-        /// </summary>
-        [JsonProperty("lifecycle_controls")]
-        [STJS.JsonPropertyName("lifecycle_controls")]
-        public CardLifecycleControlsOptions LifecycleControls { get; set; }
-
-        /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to

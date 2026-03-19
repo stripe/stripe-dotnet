@@ -26,9 +26,7 @@ namespace Stripe
         /// Transfer ID that created this application fee.
         /// </summary>
         [JsonProperty("transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfer")]
-#endif
         public string Transfer { get; set; }
 
         /// <summary>

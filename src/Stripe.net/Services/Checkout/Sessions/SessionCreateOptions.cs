@@ -44,9 +44,7 @@ namespace Stripe.Checkout
         /// One of: <c>auto</c>, or <c>manual</c>.
         /// </summary>
         [JsonProperty("approval_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("approval_method")]
-#endif
         public string ApprovalMethod { get; set; }
 
         /// <summary>
@@ -84,9 +82,7 @@ namespace Stripe.Checkout
         public string CancelUrl { get; set; }
 
         [JsonProperty("checkout_items")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("checkout_items")]
-#endif
         public List<SessionCheckoutItemOptions> CheckoutItems { get; set; }
 
         /// <summary>
@@ -245,14 +241,6 @@ namespace Stripe.Checkout
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
-        /// The integration identifier for this Checkout Session. Multiple Checkout Sessions can
-        /// have the same integration identifier.
-        /// </summary>
-        [JsonProperty("integration_identifier")]
-        [STJS.JsonPropertyName("integration_identifier")]
-        public string IntegrationIdentifier { get; set; }
-
-        /// <summary>
         /// Generate a post-purchase Invoice for one-time payments.
         /// </summary>
         [JsonProperty("invoice_creation")]
@@ -296,9 +284,7 @@ namespace Stripe.Checkout
         /// href="https://stripe.com/api/subscriptions/object">Subscriptions</a>.
         /// </summary>
         [JsonProperty("managed_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("managed_payments")]
-#endif
         public SessionManagedPaymentsOptions ManagedPayments { get; set; }
 
         /// <summary>
@@ -563,8 +549,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The UI mode of the Session. Defaults to <c>hosted</c>.
-        /// One of: <c>custom</c>, <c>elements</c>, <c>embedded</c>, <c>embedded_page</c>,
-        /// <c>form</c>, <c>hosted</c>, or <c>hosted_page</c>.
+        /// One of: <c>custom</c>, <c>embedded</c>, or <c>hosted</c>.
         /// </summary>
         [JsonProperty("ui_mode")]
         [STJS.JsonPropertyName("ui_mode")]

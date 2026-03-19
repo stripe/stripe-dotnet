@@ -56,9 +56,7 @@ namespace Stripe
         #region Expandable ApplicationFee
 
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string ApplicationFeeId
         {
             get => this.InternalApplicationFee?.Id;
@@ -66,9 +64,7 @@ namespace Stripe
         }
 
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public ApplicationFee ApplicationFee
         {
             get => this.InternalApplicationFee?.ExpandedObject;
@@ -77,17 +73,13 @@ namespace Stripe
 
         [JsonProperty("application_fee")]
         [JsonConverter(typeof(ExpandableFieldConverter<ApplicationFee>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_fee")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<ApplicationFee>))]
-#endif
         internal ExpandableField<ApplicationFee> InternalApplicationFee { get; set; }
         #endregion
 
         [JsonProperty("application_fee_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_fee_amount")]
-#endif
         public long? ApplicationFeeAmount { get; set; }
 
         #region Expandable BalanceTransaction
@@ -226,9 +218,7 @@ namespace Stripe
         /// The FX Quote used for the transfer.
         /// </summary>
         [JsonProperty("fx_quote")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fx_quote")]
-#endif
         public string FxQuote { get; set; }
 
         /// <summary>

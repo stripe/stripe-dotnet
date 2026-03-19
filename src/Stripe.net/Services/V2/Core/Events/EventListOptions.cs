@@ -20,9 +20,7 @@ namespace Stripe.V2.Core
         /// Additional fields to include in the response.
         /// </summary>
         [JsonProperty("include")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("include")]
-#endif
         public List<string> Include { get; set; }
 
         /// <summary>

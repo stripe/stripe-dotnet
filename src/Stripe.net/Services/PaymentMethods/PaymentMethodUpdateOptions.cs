@@ -40,9 +40,7 @@ namespace Stripe
         /// payment method.
         /// </summary>
         [JsonProperty("custom")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom")]
-#endif
         public PaymentMethodCustomOptions Custom { get; set; }
 
         /// <summary>

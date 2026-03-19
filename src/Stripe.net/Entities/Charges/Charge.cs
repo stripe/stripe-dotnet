@@ -35,9 +35,7 @@ namespace Stripe
         /// Funds that are in transit and destined for another balance or another connected account.
         /// </summary>
         [JsonProperty("allocated_funds")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allocated_funds")]
-#endif
         public TransitBalance AllocatedFunds { get; set; }
 
         /// <summary>
@@ -349,8 +347,8 @@ namespace Stripe
         public ChargeLevel3 Level3 { get; set; }
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

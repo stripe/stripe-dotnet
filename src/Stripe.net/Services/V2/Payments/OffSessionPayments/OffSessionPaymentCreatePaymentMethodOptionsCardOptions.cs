@@ -2,10 +2,10 @@
 namespace Stripe.V2.Payments
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OffSessionPaymentCreatePaymentMethodOptionsCardOptions : INestedOptions
     {
         /// <summary>
@@ -20,9 +20,7 @@ namespace Stripe.V2.Payments
         /// Merchant-Initiated Transaction (MIT).
         /// </summary>
         [JsonProperty("network_transaction_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_transaction_id")]
-#endif
         public string NetworkTransactionId { get; set; }
     }
 }

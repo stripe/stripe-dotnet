@@ -65,9 +65,7 @@ namespace Stripe
         public MandatePaymentMethodDetailsPayto Payto { get; set; }
 
         [JsonProperty("pix")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pix")]
-#endif
         public MandatePaymentMethodDetailsPix Pix { get; set; }
 
         [JsonProperty("revolut_pay")]
@@ -86,10 +84,6 @@ namespace Stripe
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
-
-        [JsonProperty("upi")]
-        [STJS.JsonPropertyName("upi")]
-        public MandatePaymentMethodDetailsUpi Upi { get; set; }
 
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]

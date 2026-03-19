@@ -45,9 +45,7 @@ namespace Stripe
         /// to pass to the invoice’s PaymentIntent.
         /// </summary>
         [JsonProperty("id_bank_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_bank_transfer")]
-#endif
         public SubscriptionPaymentSettingsPaymentMethodOptionsIdBankTransferOptions IdBankTransfer { get; set; }
 
         /// <summary>
@@ -71,9 +69,7 @@ namespace Stripe
         /// invoice’s PaymentIntent.
         /// </summary>
         [JsonProperty("pix")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pix")]
-#endif
         public SubscriptionPaymentSettingsPaymentMethodOptionsPixOptions Pix { get; set; }
 
         /// <summary>
@@ -89,9 +85,7 @@ namespace Stripe
         /// invoice’s PaymentIntent.
         /// </summary>
         [JsonProperty("upi")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("upi")]
-#endif
         public SubscriptionPaymentSettingsPaymentMethodOptionsUpiOptions Upi { get; set; }
 
         /// <summary>

@@ -35,9 +35,7 @@ namespace Stripe
         /// The number of iterations of prebilling to apply.
         /// </summary>
         [JsonProperty("prebilling_iterations")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prebilling_iterations")]
-#endif
         public long? PrebillingIterations { get; set; }
 
         /// <summary>

@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ClaimableSandboxCreateOptions : BaseOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Core
         /// href="https://docs.stripe.com/mcp">Stripe's MCP server</a>.
         /// </summary>
         [JsonProperty("enable_mcp_access")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enable_mcp_access")]
-#endif
         public bool? EnableMcpAccess { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Core
         /// sandbox, they will be able to update these values.
         /// </summary>
         [JsonProperty("prefill")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prefill")]
-#endif
         public ClaimableSandboxCreatePrefillOptions Prefill { get; set; }
     }
 }

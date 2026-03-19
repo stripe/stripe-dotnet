@@ -19,9 +19,7 @@ namespace Stripe
         /// Settings specific to bank BCA onboarding for Indonesia bank transfers payments method.
         /// </summary>
         [JsonProperty("bank_bca_onboarding")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_bca_onboarding")]
-#endif
         public AccountSettingsBankBcaOnboardingOptions BankBcaOnboarding { get; set; }
 
         /// <summary>
@@ -36,9 +34,7 @@ namespace Stripe
         /// Settings specific to the account's use of the Capital product.
         /// </summary>
         [JsonProperty("capital")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capital")]
-#endif
         public AccountSettingsCapitalOptions Capital { get; set; }
 
         /// <summary>
@@ -80,27 +76,21 @@ namespace Stripe
         /// Settings specific to the PayPay payments method.
         /// </summary>
         [JsonProperty("paypay_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypay_payments")]
-#endif
         public AccountSettingsPaypayPaymentsOptions PaypayPayments { get; set; }
 
         /// <summary>
         /// Settings specific to the account's use of Smart Disputes.
         /// </summary>
         [JsonProperty("smart_disputes")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("smart_disputes")]
-#endif
         public AccountSettingsSmartDisputesOptions SmartDisputes { get; set; }
 
         /// <summary>
         /// Settings specific to the account's tax forms.
         /// </summary>
         [JsonProperty("tax_forms")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_forms")]
-#endif
         public AccountSettingsTaxFormsOptions TaxForms { get; set; }
 
         /// <summary>

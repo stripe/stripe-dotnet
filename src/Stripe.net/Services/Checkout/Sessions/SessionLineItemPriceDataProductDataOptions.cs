@@ -56,9 +56,7 @@ namespace Stripe.Checkout
         /// location.
         /// </summary>
         [JsonProperty("tax_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_details")]
-#endif
         public SessionLineItemPriceDataProductDataTaxDetailsOptions TaxDetails { get; set; }
 
         /// <summary>

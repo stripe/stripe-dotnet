@@ -4,24 +4,22 @@ namespace Stripe.V2.Billing
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// A Metered Item represents a billable item whose pricing is based on usage, measured by a
     /// meter. You can use rate cards to specify the pricing and create subscriptions to these
     /// items.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class MeteredItem : StripeEntity<MeteredItem>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -29,18 +27,14 @@ namespace Stripe.V2.Billing
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// Timestamp of when the object was created.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -48,18 +42,14 @@ namespace Stripe.V2.Billing
         /// characters.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
         /// Optional array of Meter dimensions to group event dimension keys for invoice line items.
         /// </summary>
         [JsonProperty("invoice_presentation_dimensions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_presentation_dimensions")]
-#endif
         public List<string> InvoicePresentationDimensions { get; set; }
 
         /// <summary>
@@ -67,9 +57,7 @@ namespace Stripe.V2.Billing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -77,9 +65,7 @@ namespace Stripe.V2.Billing
         /// 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_key")]
-#endif
         public string LookupKey { get; set; }
 
         /// <summary>
@@ -88,36 +74,28 @@ namespace Stripe.V2.Billing
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// ID of the Meter that measures usage for this Metered Item.
         /// </summary>
         [JsonProperty("meter")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("meter")]
-#endif
         public string Meter { get; set; }
 
         /// <summary>
         /// Optional array of Meter segments to filter event dimension keys for billing.
         /// </summary>
         [JsonProperty("meter_segment_conditions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("meter_segment_conditions")]
-#endif
         public List<MeteredItemMeterSegmentCondition> MeterSegmentConditions { get; set; }
 
         /// <summary>
         /// Stripe Tax details.
         /// </summary>
         [JsonProperty("tax_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_details")]
-#endif
         public MeteredItemTaxDetails TaxDetails { get; set; }
 
         /// <summary>
@@ -127,9 +105,7 @@ namespace Stripe.V2.Billing
         /// length of 100 characters.
         /// </summary>
         [JsonProperty("unit_label")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_label")]
-#endif
         public string UnitLabel { get; set; }
     }
 }

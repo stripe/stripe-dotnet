@@ -4,19 +4,16 @@ namespace Stripe.Billing
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AlertRecovered : StripeEntity<AlertRecovered>, IHasObject
     {
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -25,9 +22,7 @@ namespace Stripe.Billing
         /// certain user made 100 API requests.
         /// </summary>
         [JsonProperty("alert")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("alert")]
-#endif
         public Alert Alert { get; set; }
 
         /// <summary>
@@ -35,46 +30,36 @@ namespace Stripe.Billing
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Currency for the threshold value.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// Custom pricing unit for the threshold value.
         /// </summary>
         [JsonProperty("custom_pricing_unit")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_pricing_unit")]
-#endif
         public string CustomPricingUnit { get; set; }
 
         /// <summary>
         /// ID of customer for which the alert recovered.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
         /// External customer ID for the customer for which the alert recovered.
         /// </summary>
         [JsonProperty("external_customer_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("external_customer_id")]
-#endif
         public string ExternalCustomerId { get; set; }
 
         /// <summary>
@@ -82,18 +67,16 @@ namespace Stripe.Billing
         /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
         /// The value at which the alert recovered.
         /// </summary>
         [JsonProperty("value")]
-#if NET6_0_OR_GREATER
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("value")]
-#endif
         public decimal Value { get; set; }
     }
 }

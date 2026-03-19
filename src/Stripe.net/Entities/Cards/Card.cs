@@ -135,9 +135,7 @@ namespace Stripe
         public List<string> AvailablePayoutMethods { get; set; }
 
         [JsonProperty("benefits")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("benefits")]
-#endif
         public CardBenefits Benefits { get; set; }
 
         /// <summary>
@@ -155,9 +153,7 @@ namespace Stripe
         /// only and not typically available in standard API requests.).
         /// </summary>
         [JsonProperty("brand_product")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("brand_product")]
-#endif
         public string BrandProduct { get; set; }
 
         /// <summary>

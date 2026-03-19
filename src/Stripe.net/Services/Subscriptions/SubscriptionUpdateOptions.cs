@@ -46,9 +46,7 @@ namespace Stripe
         /// that Cadence.
         /// </summary>
         [JsonProperty("billing_cadence")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_cadence")]
-#endif
         public string BillingCadence { get; set; }
 
         /// <summary>
@@ -66,9 +64,7 @@ namespace Stripe
         /// Sets the billing schedules for the subscription.
         /// </summary>
         [JsonProperty("billing_schedules")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_schedules")]
-#endif
         public List<SubscriptionBillingScheduleOptions> BillingSchedules { get; set; }
 
         /// <summary>
@@ -272,7 +268,7 @@ namespace Stripe
 
         /// <summary>
         /// Specifies an interval for how often to bill for any pending invoice items. It is
-        /// analogous to calling <a href="https://stripe.com/api/invoices/create">Create an
+        /// analogous to calling <a href="https://docs.stripe.com/api#create_invoice">Create an
         /// invoice</a> for the given subscription at the specified interval.
         /// </summary>
         [JsonProperty("pending_invoice_item_interval")]
@@ -284,9 +280,7 @@ namespace Stripe
         /// now.
         /// </summary>
         [JsonProperty("prebilling")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prebilling")]
-#endif
         public SubscriptionPrebillingOptions Prebilling { get; set; }
 
         /// <summary>

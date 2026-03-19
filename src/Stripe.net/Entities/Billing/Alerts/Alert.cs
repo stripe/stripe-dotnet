@@ -40,9 +40,7 @@ namespace Stripe.Billing
         /// Encapsulates configuration of the alert to monitor billing credit balance.
         /// </summary>
         [JsonProperty("credit_balance_threshold")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("credit_balance_threshold")]
-#endif
         public AlertCreditBalanceThreshold CreditBalanceThreshold { get; set; }
 
         /// <summary>
@@ -57,9 +55,7 @@ namespace Stripe.Billing
         /// Encapsulates the alert's configuration to monitor spend on pricing plan subscriptions.
         /// </summary>
         [JsonProperty("spend_threshold")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("spend_threshold")]
-#endif
         public AlertSpendThreshold SpendThreshold { get; set; }
 
         /// <summary>

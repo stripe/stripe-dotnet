@@ -197,9 +197,7 @@ namespace Stripe
         /// Provides industry-specific information about the SetupIntent.
         /// </summary>
         [JsonProperty("setup_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_details")]
-#endif
         public SetupIntentSetupDetailsOptions SetupDetails { get; set; }
 
         /// <summary>

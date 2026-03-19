@@ -2,19 +2,17 @@
 namespace Stripe.ProductCatalog
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class TrialOfferEndBehaviorTransitionOptions : INestedOptions
     {
         /// <summary>
         /// The price to transition the recurring item to when the trial offer ends.
         /// </summary>
         [JsonProperty("price")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price")]
-#endif
         public string Price { get; set; }
     }
 }

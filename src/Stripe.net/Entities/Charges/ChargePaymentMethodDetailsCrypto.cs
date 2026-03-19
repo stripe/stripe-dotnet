@@ -17,7 +17,7 @@ namespace Stripe
 
         /// <summary>
         /// The blockchain network that the transaction was sent on.
-        /// One of: <c>base</c>, <c>ethereum</c>, <c>polygon</c>, <c>solana</c>, or <c>tempo</c>.
+        /// One of: <c>base</c>, <c>ethereum</c>, <c>polygon</c>, or <c>solana</c>.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]

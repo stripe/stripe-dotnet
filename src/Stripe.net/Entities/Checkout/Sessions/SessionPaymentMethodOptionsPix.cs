@@ -24,9 +24,7 @@ namespace Stripe.Checkout
         public long? ExpiresAfterSeconds { get; set; }
 
         [JsonProperty("mandate_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate_options")]
-#endif
         public SessionPaymentMethodOptionsPixMandateOptions MandateOptions { get; set; }
 
         /// <summary>

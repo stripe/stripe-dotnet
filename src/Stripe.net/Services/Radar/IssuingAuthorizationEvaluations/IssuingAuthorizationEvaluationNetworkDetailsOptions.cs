@@ -2,10 +2,10 @@
 namespace Stripe.Radar
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class IssuingAuthorizationEvaluationNetworkDetailsOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Radar
         /// provided by the network; in this case, the value will be null.
         /// </summary>
         [JsonProperty("acquiring_institution_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("acquiring_institution_id")]
-#endif
         public string AcquiringInstitutionId { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.Radar
         /// <c>other</c>, <c>plus</c>, or <c>visa</c>.
         /// </summary>
         [JsonProperty("routed_network")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("routed_network")]
-#endif
         public string RoutedNetwork { get; set; }
     }
 }

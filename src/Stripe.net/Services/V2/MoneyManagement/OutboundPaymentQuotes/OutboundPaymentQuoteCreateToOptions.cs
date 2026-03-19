@@ -2,10 +2,10 @@
 namespace Stripe.V2.MoneyManagement
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OutboundPaymentQuoteCreateToOptions : INestedOptions
     {
         /// <summary>
@@ -17,27 +17,21 @@ namespace Stripe.V2.MoneyManagement
         /// and presentment currency are supported, we pick the FA currency to minimize FX.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// The payout method which the OutboundPayment uses to send payout.
         /// </summary>
         [JsonProperty("payout_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payout_method")]
-#endif
         public string PayoutMethod { get; set; }
 
         /// <summary>
         /// To which account the OutboundPayment is sent.
         /// </summary>
         [JsonProperty("recipient")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recipient")]
-#endif
         public string Recipient { get; set; }
     }
 }

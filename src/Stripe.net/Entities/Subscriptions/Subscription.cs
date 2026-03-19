@@ -87,9 +87,7 @@ namespace Stripe
         /// that Cadence.
         /// </summary>
         [JsonProperty("billing_cadence")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_cadence")]
-#endif
         public string BillingCadence { get; set; }
 
         /// <summary>
@@ -123,9 +121,7 @@ namespace Stripe
         /// Billing schedules for this subscription.
         /// </summary>
         [JsonProperty("billing_schedules")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_schedules")]
-#endif
         public List<SubscriptionBillingSchedule> BillingSchedules { get; set; }
 
         /// <summary>
@@ -422,9 +418,7 @@ namespace Stripe
         /// Details of the most recent price migration that failed for the subscription.
         /// </summary>
         [JsonProperty("last_price_migration_error")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last_price_migration_error")]
-#endif
         public SubscriptionLastPriceMigrationError LastPriceMigrationError { get; set; }
 
         #region Expandable LatestInvoice
@@ -465,8 +459,8 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -478,9 +472,7 @@ namespace Stripe
         /// href="https://stripe.com/api/payment_intents/object">PaymentIntents</a>.
         /// </summary>
         [JsonProperty("managed_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("managed_payments")]
-#endif
         public SubscriptionManagedPayments ManagedPayments { get; set; }
 
         /// <summary>
@@ -562,7 +554,7 @@ namespace Stripe
 
         /// <summary>
         /// Specifies an interval for how often to bill for any pending invoice items. It is
-        /// analogous to calling <a href="https://stripe.com/api/invoices/create">Create an
+        /// analogous to calling <a href="https://docs.stripe.com/api#create_invoice">Create an
         /// invoice</a> for the given subscription at the specified interval.
         /// </summary>
         [JsonProperty("pending_invoice_item_interval")]
@@ -627,9 +619,7 @@ namespace Stripe
         /// Time period and invoice for a Subscription billed in advance.
         /// </summary>
         [JsonProperty("prebilling")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prebilling")]
-#endif
         public SubscriptionPrebilling Prebilling { get; set; }
 
         #region Expandable Schedule

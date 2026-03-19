@@ -47,9 +47,7 @@ namespace Stripe
         /// codes</a> require a tax location of type <c>performance</c> to calculate tax correctly.
         /// </summary>
         [JsonProperty("requirements")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("requirements")]
-#endif
         public TaxCodeRequirements Requirements { get; set; }
     }
 }

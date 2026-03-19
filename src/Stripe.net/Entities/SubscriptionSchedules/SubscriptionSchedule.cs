@@ -76,9 +76,7 @@ namespace Stripe
         /// One of: <c>prorate_on_next_phase</c>, or <c>prorate_up_front</c>.
         /// </summary>
         [JsonProperty("billing_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_behavior")]
-#endif
         public string BillingBehavior { get; set; }
 
         /// <summary>
@@ -92,9 +90,7 @@ namespace Stripe
         /// Billing schedules for this subscription schedule.
         /// </summary>
         [JsonProperty("billing_schedules")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_schedules")]
-#endif
         public List<SubscriptionScheduleBillingSchedule> BillingSchedules { get; set; }
 
         /// <summary>
@@ -196,9 +192,7 @@ namespace Stripe
         /// Details of the most recent price migration that failed for the subscription schedule.
         /// </summary>
         [JsonProperty("last_price_migration_error")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last_price_migration_error")]
-#endif
         public SubscriptionScheduleLastPriceMigrationError LastPriceMigrationError { get; set; }
 
         #region Expandable LatestInvoice
@@ -208,9 +202,7 @@ namespace Stripe
         /// The most recent invoice this subscription schedule has generated.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string LatestInvoiceId
         {
             get => this.InternalLatestInvoice?.Id;
@@ -224,9 +216,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Invoice LatestInvoice
         {
             get => this.InternalLatestInvoice?.ExpandedObject;
@@ -235,10 +225,8 @@ namespace Stripe
 
         [JsonProperty("latest_invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("latest_invoice")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Invoice>))]
-#endif
         internal ExpandableField<Invoice> InternalLatestInvoice { get; set; }
         #endregion
 
@@ -270,9 +258,7 @@ namespace Stripe
         /// Time period and invoice for a Subscription billed in advance.
         /// </summary>
         [JsonProperty("prebilling")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prebilling")]
-#endif
         public SubscriptionSchedulePrebilling Prebilling { get; set; }
 
         /// <summary>

@@ -56,15 +56,11 @@ namespace Stripe.FinancialConnections
         /// Settings for the Hosted UI mode.
         /// </summary>
         [JsonProperty("hosted")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hosted")]
-#endif
         public SessionHosted Hosted { get; set; }
 
         [JsonProperty("limits")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("limits")]
-#endif
         public SessionLimits Limits { get; set; }
 
         /// <summary>
@@ -76,9 +72,7 @@ namespace Stripe.FinancialConnections
         public bool Livemode { get; set; }
 
         [JsonProperty("manual_entry")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("manual_entry")]
-#endif
         public SessionManualEntry ManualEntry { get; set; }
 
         /// <summary>
@@ -100,15 +94,11 @@ namespace Stripe.FinancialConnections
         public List<string> Prefetch { get; set; }
 
         [JsonProperty("relink_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("relink_options")]
-#endif
         public SessionRelinkOptions RelinkOptions { get; set; }
 
         [JsonProperty("relink_result")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("relink_result")]
-#endif
         public SessionRelinkResult RelinkResult { get; set; }
 
         /// <summary>
@@ -124,15 +114,11 @@ namespace Stripe.FinancialConnections
         /// One of: <c>cancelled</c>, <c>failed</c>, <c>pending</c>, or <c>succeeded</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         [JsonProperty("status_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_details")]
-#endif
         public SessionStatusDetails StatusDetails { get; set; }
 
         /// <summary>
@@ -140,9 +126,7 @@ namespace Stripe.FinancialConnections
         /// One of: <c>hosted</c>, or <c>modal</c>.
         /// </summary>
         [JsonProperty("ui_mode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ui_mode")]
-#endif
         public string UiMode { get; set; }
 
         /// <summary>
@@ -151,9 +135,7 @@ namespace Stripe.FinancialConnections
         /// the <c>ui_mode</c> is <c>hosted</c>.
         /// </summary>
         [JsonProperty("url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("url")]
-#endif
         public string Url { get; set; }
     }
 }

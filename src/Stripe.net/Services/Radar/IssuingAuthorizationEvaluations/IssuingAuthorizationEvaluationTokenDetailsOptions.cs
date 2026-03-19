@@ -4,10 +4,9 @@ namespace Stripe.Radar
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class IssuingAuthorizationEvaluationTokenDetailsOptions : INestedOptions
     {
         /// <summary>
@@ -15,10 +14,8 @@ namespace Stripe.Radar
         /// </summary>
         [JsonProperty("created_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? CreatedAt { get; set; }
 
         /// <summary>
@@ -26,9 +23,7 @@ namespace Stripe.Radar
         /// or internal reference).
         /// </summary>
         [JsonProperty("reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
-#endif
         public string Reference { get; set; }
 
         /// <summary>
@@ -37,9 +32,7 @@ namespace Stripe.Radar
         /// One of: <c>apple_pay</c>, <c>google_pay</c>, or <c>samsung_pay</c>.
         /// </summary>
         [JsonProperty("wallet")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("wallet")]
-#endif
         public string Wallet { get; set; }
     }
 }

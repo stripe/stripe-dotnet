@@ -2,10 +2,10 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class RateCardSubscriptionListOptions : V2.ListOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Billing
         /// <c>rate_card</c>, and <c>rate_card_version</c>.
         /// </summary>
         [JsonProperty("billing_cadence")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_cadence")]
-#endif
         public string BillingCadence { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.V2.Billing
         /// <c>rate_card</c>, and <c>rate_card_version</c>.
         /// </summary>
         [JsonProperty("payer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payer")]
-#endif
         public RateCardSubscriptionListPayerOptions Payer { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe.V2.Billing
         /// <c>payers</c>, and <c>rate_card_version</c>.
         /// </summary>
         [JsonProperty("rate_card")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rate_card")]
-#endif
         public string RateCard { get; set; }
 
         /// <summary>
@@ -44,9 +38,7 @@ namespace Stripe.V2.Billing
         /// <c>payers</c>, and <c>rate_card</c>.
         /// </summary>
         [JsonProperty("rate_card_version")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rate_card_version")]
-#endif
         public string RateCardVersion { get; set; }
 
         /// <summary>
@@ -54,9 +46,7 @@ namespace Stripe.V2.Billing
         /// One of: <c>active</c>, <c>canceled</c>, <c>paused</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("servicing_status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("servicing_status")]
-#endif
         public string ServicingStatus { get; set; }
     }
 }

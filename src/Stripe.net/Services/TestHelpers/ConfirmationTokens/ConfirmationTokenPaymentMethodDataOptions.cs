@@ -177,9 +177,7 @@ namespace Stripe.TestHelpers
         /// method.
         /// </summary>
         [JsonProperty("gopay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gopay")]
-#endif
         public ConfirmationTokenPaymentMethodDataGopayOptions Gopay { get; set; }
 
         /// <summary>
@@ -195,9 +193,7 @@ namespace Stripe.TestHelpers
         /// IdBankTransfer payment method.
         /// </summary>
         [JsonProperty("id_bank_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_bank_transfer")]
-#endif
         public ConfirmationTokenPaymentMethodDataIdBankTransferOptions IdBankTransfer { get; set; }
 
         /// <summary>
@@ -359,9 +355,7 @@ namespace Stripe.TestHelpers
         /// payment method.
         /// </summary>
         [JsonProperty("paypay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypay")]
-#endif
         public ConfirmationTokenPaymentMethodDataPaypayOptions Paypay { get; set; }
 
         /// <summary>
@@ -393,9 +387,7 @@ namespace Stripe.TestHelpers
         /// payment method.
         /// </summary>
         [JsonProperty("qris")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("qris")]
-#endif
         public ConfirmationTokenPaymentMethodDataQrisOptions Qris { get; set; }
 
         /// <summary>
@@ -412,9 +404,7 @@ namespace Stripe.TestHelpers
         /// Rechnung payment method.
         /// </summary>
         [JsonProperty("rechnung")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rechnung")]
-#endif
         public ConfirmationTokenPaymentMethodDataRechnungOptions Rechnung { get; set; }
 
         /// <summary>
@@ -454,9 +444,7 @@ namespace Stripe.TestHelpers
         /// payment method.
         /// </summary>
         [JsonProperty("shopeepay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shopeepay")]
-#endif
         public ConfirmationTokenPaymentMethodDataShopeepayOptions Shopeepay { get; set; }
 
         /// <summary>
@@ -471,9 +459,7 @@ namespace Stripe.TestHelpers
         /// This hash contains details about the Stripe balance payment method.
         /// </summary>
         [JsonProperty("stripe_balance")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stripe_balance")]
-#endif
         public ConfirmationTokenPaymentMethodDataStripeBalanceOptions StripeBalance { get; set; }
 
         /// <summary>
@@ -512,14 +498,6 @@ namespace Stripe.TestHelpers
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
-
-        /// <summary>
-        /// If this is a <c>upi</c> PaymentMethod, this hash contains details about the UPI payment
-        /// method.
-        /// </summary>
-        [JsonProperty("upi")]
-        [STJS.JsonPropertyName("upi")]
-        public ConfirmationTokenPaymentMethodDataUpiOptions Upi { get; set; }
 
         /// <summary>
         /// If this is an <c>us_bank_account</c> PaymentMethod, this hash contains details about the

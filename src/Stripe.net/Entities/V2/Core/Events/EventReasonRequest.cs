@@ -12,9 +12,7 @@ namespace Stripe.V2.Core
         /// The client details that made the request.
         /// </summary>
         [JsonProperty("client")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client")]
-#endif
         public EventReasonRequestClient Client { get; set; }
 
         /// <summary>

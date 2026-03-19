@@ -42,9 +42,7 @@ namespace Stripe
         /// Allocated Funds configuration for this PaymentIntent.
         /// </summary>
         [JsonProperty("allocated_funds")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allocated_funds")]
-#endif
         public PaymentIntentAllocatedFunds AllocatedFunds { get; set; }
 
         /// <summary>
@@ -127,9 +125,7 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         [JsonProperty("async_workflows")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("async_workflows")]
-#endif
         public PaymentIntentAsyncWorkflows AsyncWorkflows { get; set; }
 
         /// <summary>
@@ -320,9 +316,7 @@ namespace Stripe
         /// The FX Quote used for the PaymentIntent.
         /// </summary>
         [JsonProperty("fx_quote")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fx_quote")]
-#endif
         public string FxQuote { get; set; }
 
         [JsonProperty("hooks")]
@@ -377,8 +371,8 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -388,9 +382,7 @@ namespace Stripe
         /// Settings for Managed Payments.
         /// </summary>
         [JsonProperty("managed_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("managed_payments")]
-#endif
         public PaymentIntentManagedPayments ManagedPayments { get; set; }
 
         /// <summary>
@@ -522,9 +514,7 @@ namespace Stripe
         /// that you configure in the dashboard.
         /// </summary>
         [JsonProperty("payments_orchestration")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payments_orchestration")]
-#endif
         public PaymentIntentPaymentsOrchestration PaymentsOrchestration { get; set; }
 
         [JsonProperty("presentment_details")]
@@ -589,9 +579,7 @@ namespace Stripe
         /// One of: <c>optional</c>, or <c>required</c>.
         /// </summary>
         [JsonProperty("secret_key_confirmation")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("secret_key_confirmation")]
-#endif
         public string SecretKeyConfirmation { get; set; }
 
         /// <summary>
@@ -623,9 +611,7 @@ namespace Stripe
         /// ID of the shared payment token granted to be used in this PaymentIntent.
         /// </summary>
         [JsonProperty("shared_payment_granted_token")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shared_payment_granted_token")]
-#endif
         public string SharedPaymentGrantedToken { get; set; }
 
         /// <summary>

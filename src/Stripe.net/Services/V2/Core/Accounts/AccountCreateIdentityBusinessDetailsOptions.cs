@@ -28,9 +28,7 @@ namespace Stripe.V2.Core
         /// and practices.
         /// </summary>
         [JsonProperty("compliance_screening_description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("compliance_screening_description")]
-#endif
         public string ComplianceScreeningDescription { get; set; }
 
         /// <summary>

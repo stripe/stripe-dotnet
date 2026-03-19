@@ -43,9 +43,7 @@ namespace Stripe.Checkout
         /// settings to block multiple payments per invoice ID.
         /// </summary>
         [JsonProperty("reference_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference_id")]
-#endif
         public string ReferenceId { get; set; }
 
         /// <summary>
@@ -91,9 +89,7 @@ namespace Stripe.Checkout
         /// and transfers</a> are used.
         /// </summary>
         [JsonProperty("subsellers")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subsellers")]
-#endif
         public List<string> Subsellers { get; set; }
     }
 }

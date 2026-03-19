@@ -184,9 +184,7 @@ namespace Stripe
         public PaymentMethodGiropay Giropay { get; set; }
 
         [JsonProperty("gopay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gopay")]
-#endif
         public PaymentMethodGopay Gopay { get; set; }
 
         [JsonProperty("grabpay")]
@@ -194,9 +192,7 @@ namespace Stripe
         public PaymentMethodGrabpay Grabpay { get; set; }
 
         [JsonProperty("id_bank_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_bank_transfer")]
-#endif
         public PaymentMethodIdBankTransfer IdBankTransfer { get; set; }
 
         [JsonProperty("ideal")]
@@ -228,9 +224,7 @@ namespace Stripe
         /// method.
         /// </summary>
         [JsonProperty("latest_active_mandate")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("latest_active_mandate")]
-#endif
         public Mandate LatestActiveMandate { get; set; }
 
         [JsonProperty("link")]
@@ -238,8 +232,8 @@ namespace Stripe
         public PaymentMethodLink Link { get; set; }
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -299,9 +293,7 @@ namespace Stripe
         public PaymentMethodPaypal Paypal { get; set; }
 
         [JsonProperty("paypay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypay")]
-#endif
         public PaymentMethodPaypay Paypay { get; set; }
 
         [JsonProperty("payto")]
@@ -317,9 +309,7 @@ namespace Stripe
         public PaymentMethodPromptpay Promptpay { get; set; }
 
         [JsonProperty("qris")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("qris")]
-#endif
         public PaymentMethodQris Qris { get; set; }
 
         /// <summary>
@@ -332,9 +322,7 @@ namespace Stripe
         public PaymentMethodRadarOptions RadarOptions { get; set; }
 
         [JsonProperty("rechnung")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rechnung")]
-#endif
         public PaymentMethodRechnung Rechnung { get; set; }
 
         [JsonProperty("revolut_pay")]
@@ -354,9 +342,7 @@ namespace Stripe
         public PaymentMethodSepaDebit SepaDebit { get; set; }
 
         [JsonProperty("shopeepay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shopeepay")]
-#endif
         public PaymentMethodShopeepay Shopeepay { get; set; }
 
         [JsonProperty("sofort")]
@@ -364,9 +350,7 @@ namespace Stripe
         public PaymentMethodSofort Sofort { get; set; }
 
         [JsonProperty("stripe_balance")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stripe_balance")]
-#endif
         public PaymentMethodStripeBalance StripeBalance { get; set; }
 
         [JsonProperty("swish")]
@@ -398,10 +382,6 @@ namespace Stripe
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
-
-        [JsonProperty("upi")]
-        [STJS.JsonPropertyName("upi")]
-        public PaymentMethodUpi Upi { get; set; }
 
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]

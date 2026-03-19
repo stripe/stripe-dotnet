@@ -39,12 +39,8 @@ namespace Stripe.V2.Core
         public string EventPayload { get; set; }
 
         /// <summary>
-        /// Specifies which accounts' events route to this destination. <c>@self</c>: Receive events
-        /// from the account that owns the event destination. <c>@accounts</c>: Receive events
-        /// emitted from other accounts you manage which includes your v1 and v2 accounts.
-        /// <c>@organization_members</c>: Receive events from accounts directly linked to the
-        /// organization. <c>@organization_members/@accounts</c>: Receive events from all accounts
-        /// connected to any platform accounts in the organization.
+        /// Where events should be routed from.
+        /// One of: <c>other_accounts</c>, or <c>self</c>.
         /// </summary>
         [JsonProperty("events_from")]
         [STJS.JsonPropertyName("events_from")]

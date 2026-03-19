@@ -22,9 +22,7 @@ namespace Stripe
         /// The trial offer to apply to this subscription item.
         /// </summary>
         [JsonProperty("current_trial")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("current_trial")]
-#endif
         public SubscriptionItemCurrentTrialOptions CurrentTrial { get; set; }
 
         /// <summary>
@@ -116,7 +114,7 @@ namespace Stripe
         /// <summary>
         /// If set, the proration will be calculated as though the subscription was updated at the
         /// given time. This can be used to apply the same proration that was previewed with the <a
-        /// href="https://stripe.com/api/invoices/create_preview">upcoming invoice</a> endpoint.
+        /// href="https://api.stripe.com#retrieve_customer_invoice">upcoming invoice</a> endpoint.
         /// </summary>
         [JsonProperty("proration_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -153,9 +151,7 @@ namespace Stripe
         /// Options that configure the trial on the subscription item.
         /// </summary>
         [JsonProperty("trial")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial")]
-#endif
         public SubscriptionItemTrialOptions Trial { get; set; }
     }
 }

@@ -22,9 +22,7 @@ namespace Stripe.Billing
         /// summaries will be generated with only matching meter events.
         /// </summary>
         [JsonProperty("dimension_filters")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dimension_filters")]
-#endif
         public Dictionary<string, string> DimensionFilters { get; set; }
 
         /// <summary>
@@ -32,9 +30,7 @@ namespace Stripe.Billing
         /// grouped by the given dimension payload key values.
         /// </summary>
         [JsonProperty("dimension_group_by_keys")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dimension_group_by_keys")]
-#endif
         public List<string> DimensionGroupByKeys { get; set; }
 
         /// <summary>

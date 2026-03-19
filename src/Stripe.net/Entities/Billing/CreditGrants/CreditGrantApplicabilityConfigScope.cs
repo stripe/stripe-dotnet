@@ -14,9 +14,7 @@ namespace Stripe.Billing
         /// billable items. Cannot be used in combination with <c>price_type</c> or <c>prices</c>.
         /// </summary>
         [JsonProperty("billable_items")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billable_items")]
-#endif
         public List<CreditGrantApplicabilityConfigScopeBillableItem> BillableItems { get; set; }
 
         /// <summary>

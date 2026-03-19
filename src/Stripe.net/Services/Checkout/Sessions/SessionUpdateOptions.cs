@@ -14,9 +14,7 @@ namespace Stripe.Checkout
         /// subscriptions.
         /// </summary>
         [JsonProperty("automatic_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("automatic_tax")]
-#endif
         public SessionAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -31,18 +29,14 @@ namespace Stripe.Checkout
         /// List of coupons and promotion codes attached to the Checkout Session.
         /// </summary>
         [JsonProperty("discounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
-#endif
         public List<SessionDiscountOptions> Discounts { get; set; }
 
         /// <summary>
         /// Generate a post-purchase Invoice for one-time payments.
         /// </summary>
         [JsonProperty("invoice_creation")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_creation")]
-#endif
         public SessionInvoiceCreationOptions InvoiceCreation { get; set; }
 
         /// <summary>
@@ -88,9 +82,7 @@ namespace Stripe.Checkout
         /// <c>subscription</c> mode.
         /// </summary>
         [JsonProperty("subscription_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_data")]
-#endif
         public SessionSubscriptionDataOptions SubscriptionData { get; set; }
     }
 }

@@ -2,28 +2,24 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountConfigurationCardCreatorCapabilities : StripeEntity<AccountConfigurationCardCreatorCapabilities>
     {
         /// <summary>
         /// Can create cards for commercial issuing use cases.
         /// </summary>
         [JsonProperty("commercial")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("commercial")]
-#endif
         public AccountConfigurationCardCreatorCapabilitiesCommercial Commercial { get; set; }
 
         /// <summary>
         /// Can create cards for consumer issuing use cases.
         /// </summary>
         [JsonProperty("consumer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("consumer")]
-#endif
         public AccountConfigurationCardCreatorCapabilitiesConsumer Consumer { get; set; }
     }
 }

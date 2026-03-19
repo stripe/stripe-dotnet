@@ -4,10 +4,10 @@ namespace Stripe.V2.MoneyManagement
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OutboundTransferListOptions : V2.ListOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.V2.MoneyManagement
         /// time value, for example: 2022-09-18T13:22:00Z.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime? Created { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe.V2.MoneyManagement
         /// time value, for example: 2022-09-18T13:22:00Z.
         /// </summary>
         [JsonProperty("created_gt")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created_gt")]
-#endif
         public DateTime? CreatedGt { get; set; }
 
         /// <summary>
@@ -35,9 +31,7 @@ namespace Stripe.V2.MoneyManagement
         /// &amp; time value, for example: 2022-09-18T13:22:00Z.
         /// </summary>
         [JsonProperty("created_gte")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created_gte")]
-#endif
         public DateTime? CreatedGte { get; set; }
 
         /// <summary>
@@ -45,9 +39,7 @@ namespace Stripe.V2.MoneyManagement
         /// &amp; time value, for example: 2022-09-18T13:22:00Z.
         /// </summary>
         [JsonProperty("created_lt")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created_lt")]
-#endif
         public DateTime? CreatedLt { get; set; }
 
         /// <summary>
@@ -55,9 +47,7 @@ namespace Stripe.V2.MoneyManagement
         /// date &amp; time value, for example: 2022-09-18T13:22:00Z.
         /// </summary>
         [JsonProperty("created_lte")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created_lte")]
-#endif
         public DateTime? CreatedLte { get; set; }
 
         /// <summary>
@@ -66,9 +56,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>returned</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public List<string> Status { get; set; }
     }
 }

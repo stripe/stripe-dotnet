@@ -3,19 +3,17 @@ namespace Stripe.Issuing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CreditUnderwritingRecordDecisionApplicationRejectedOptions : INestedOptions
     {
         /// <summary>
         /// Details about the <c>reasons.other</c> when present.
         /// </summary>
         [JsonProperty("reason_other_explanation")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason_other_explanation")]
-#endif
         public string ReasonOtherExplanation { get; set; }
 
         /// <summary>
@@ -55,9 +53,7 @@ namespace Stripe.Issuing
         /// <c>unprofitable</c>, or <c>unsupportable_business_type</c>.
         /// </summary>
         [JsonProperty("reasons")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reasons")]
-#endif
         public List<string> Reasons { get; set; }
     }
 }

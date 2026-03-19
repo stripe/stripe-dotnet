@@ -2,19 +2,17 @@
 namespace Stripe.Radar
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountEvaluationSignalsMultiAccounting : StripeEntity<AccountEvaluationSignalsMultiAccounting>
     {
         /// <summary>
         /// Score for this signal (float between 0.0-100.0).
         /// </summary>
         [JsonProperty("score")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("score")]
-#endif
         public decimal Score { get; set; }
     }
 }

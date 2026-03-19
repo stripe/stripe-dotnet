@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FxQuoteUsagePayment : StripeEntity<FxQuoteUsagePayment>
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe
         /// transfer_data[destination] field.
         /// </summary>
         [JsonProperty("destination")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("destination")]
-#endif
         public string Destination { get; set; }
 
         /// <summary>
@@ -27,9 +25,7 @@ namespace Stripe
         /// on_behalf_of field.
         /// </summary>
         [JsonProperty("on_behalf_of")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("on_behalf_of")]
-#endif
         public string OnBehalfOf { get; set; }
     }
 }

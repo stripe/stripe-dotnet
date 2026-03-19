@@ -20,9 +20,7 @@ namespace Stripe.Billing
         /// The aggregation period for which this alert triggered.
         /// </summary>
         [JsonProperty("aggregation_period")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("aggregation_period")]
-#endif
         public AlertTriggeredAggregationPeriod AggregationPeriod { get; set; }
 
         /// <summary>
@@ -47,18 +45,14 @@ namespace Stripe.Billing
         /// Currency for the threshold value.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// Custom pricing unit for the threshold value.
         /// </summary>
         [JsonProperty("custom_pricing_unit")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_pricing_unit")]
-#endif
         public string CustomPricingUnit { get; set; }
 
         /// <summary>
@@ -72,9 +66,7 @@ namespace Stripe.Billing
         /// External customer ID for the customer for which the alert triggered.
         /// </summary>
         [JsonProperty("external_customer_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("external_customer_id")]
-#endif
         public string ExternalCustomerId { get; set; }
 
         /// <summary>
@@ -82,9 +74,7 @@ namespace Stripe.Billing
         /// the exceeded spend.
         /// </summary>
         [JsonProperty("group_by")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("group_by")]
-#endif
         public AlertTriggeredGroupBy GroupBy { get; set; }
 
         /// <summary>
@@ -100,18 +90,17 @@ namespace Stripe.Billing
         /// </summary>
         [JsonProperty("triggered_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("triggered_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? TriggeredAt { get; set; }
 
         /// <summary>
         /// The value triggering the alert.
         /// </summary>
         [JsonProperty("value")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("value")]
-#endif
         public decimal Value { get; set; }
     }
 }

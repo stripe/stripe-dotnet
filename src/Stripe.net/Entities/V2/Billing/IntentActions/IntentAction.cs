@@ -3,9 +3,8 @@ namespace Stripe.V2.Billing
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// A Billing Intent Action represents a specific operation within a Billing Intent, such as
@@ -13,15 +12,14 @@ namespace Stripe.V2.Billing
     /// service. Each action has a specific type and associated details that define what change
     /// will be made when the Intent is committed.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class IntentAction : StripeEntity<IntentAction>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -29,36 +27,28 @@ namespace Stripe.V2.Billing
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// Details for an apply action.
         /// </summary>
         [JsonProperty("apply")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("apply")]
-#endif
         public IntentActionApply Apply { get; set; }
 
         /// <summary>
         /// Time at which the object was created.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Details for a deactivate action.
         /// </summary>
         [JsonProperty("deactivate")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("deactivate")]
-#endif
         public IntentActionDeactivate Deactivate { get; set; }
 
         /// <summary>
@@ -66,36 +56,28 @@ namespace Stripe.V2.Billing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
         /// Details for a modify action.
         /// </summary>
         [JsonProperty("modify")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("modify")]
-#endif
         public IntentActionModify Modify { get; set; }
 
         /// <summary>
         /// Details for a remove action.
         /// </summary>
         [JsonProperty("remove")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("remove")]
-#endif
         public IntentActionRemove Remove { get; set; }
 
         /// <summary>
         /// Details for a subscribe action.
         /// </summary>
         [JsonProperty("subscribe")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscribe")]
-#endif
         public IntentActionSubscribe Subscribe { get; set; }
 
         /// <summary>
@@ -104,9 +86,7 @@ namespace Stripe.V2.Billing
         /// <c>subscribe</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

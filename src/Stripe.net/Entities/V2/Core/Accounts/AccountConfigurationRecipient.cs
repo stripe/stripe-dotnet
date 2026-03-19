@@ -30,9 +30,7 @@ namespace Stripe.V2.Core
         /// PayoutMethod to be omitted on OutboundPayments made through the dashboard or APIs.
         /// </summary>
         [JsonProperty("default_outbound_destination")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_outbound_destination")]
-#endif
         public AccountConfigurationRecipientDefaultOutboundDestination DefaultOutboundDestination { get; set; }
     }
 }

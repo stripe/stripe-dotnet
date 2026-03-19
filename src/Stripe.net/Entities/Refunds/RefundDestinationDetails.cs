@@ -77,9 +77,7 @@ namespace Stripe
         public RefundDestinationDetailsGrabpay Grabpay { get; set; }
 
         [JsonProperty("id_bank_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_bank_transfer")]
-#endif
         public RefundDestinationDetailsIdBankTransfer IdBankTransfer { get; set; }
 
         [JsonProperty("jp_bank_transfer")]

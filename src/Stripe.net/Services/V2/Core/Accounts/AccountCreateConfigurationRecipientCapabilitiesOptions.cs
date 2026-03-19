@@ -12,27 +12,21 @@ namespace Stripe.V2.Core
         /// Capabilities that enable OutboundPayments to a bank account linked to this Account.
         /// </summary>
         [JsonProperty("bank_accounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_accounts")]
-#endif
         public AccountCreateConfigurationRecipientCapabilitiesBankAccountsOptions BankAccounts { get; set; }
 
         /// <summary>
         /// Capabilities that enable OutboundPayments to a card linked to this Account.
         /// </summary>
         [JsonProperty("cards")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cards")]
-#endif
         public AccountCreateConfigurationRecipientCapabilitiesCardsOptions Cards { get; set; }
 
         /// <summary>
         /// Capabilities that enable OutboundPayments to a crypto wallet linked to this Account.
         /// </summary>
         [JsonProperty("crypto_wallets")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("crypto_wallets")]
-#endif
         public AccountCreateConfigurationRecipientCapabilitiesCryptoWalletsOptions CryptoWallets { get; set; }
 
         /// <summary>

@@ -2,19 +2,17 @@
 namespace Stripe.V2.Payments
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OffSessionPaymentCreatePaymentMethodDataOptions : INestedOptions
     {
         /// <summary>
         /// Billing information associated with the payment method.
         /// </summary>
         [JsonProperty("billing_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_details")]
-#endif
         public OffSessionPaymentCreatePaymentMethodDataBillingDetailsOptions BillingDetails { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Payments
         /// PaymentMethod type.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe.V2.Payments
         /// users.
         /// </summary>
         [JsonProperty("card")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]
-#endif
         public OffSessionPaymentCreatePaymentMethodDataCardOptions Card { get; set; }
     }
 }

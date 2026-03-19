@@ -17,9 +17,7 @@ namespace Stripe
         /// <c>true</c>.
         /// </summary>
         [JsonProperty("external_account_collection")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("external_account_collection")]
-#endif
         public bool? ExternalAccountCollection { get; set; }
 
         /// <summary>

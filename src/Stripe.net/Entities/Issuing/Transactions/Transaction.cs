@@ -246,8 +246,8 @@ namespace Stripe.Issuing
         #endregion
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -305,9 +305,7 @@ namespace Stripe.Issuing
         /// to which this transaction belongs.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string SettlementId
         {
             get => this.InternalSettlement?.Id;
@@ -322,9 +320,7 @@ namespace Stripe.Issuing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Settlement Settlement
         {
             get => this.InternalSettlement?.ExpandedObject;
@@ -333,10 +329,8 @@ namespace Stripe.Issuing
 
         [JsonProperty("settlement")]
         [JsonConverter(typeof(ExpandableFieldConverter<Settlement>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("settlement")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Settlement>))]
-#endif
         internal ExpandableField<Settlement> InternalSettlement { get; set; }
         #endregion
 

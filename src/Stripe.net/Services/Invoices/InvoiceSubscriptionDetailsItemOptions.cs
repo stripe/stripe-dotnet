@@ -30,9 +30,7 @@ namespace Stripe
         /// The trial offer to apply to this subscription item.
         /// </summary>
         [JsonProperty("current_trial")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("current_trial")]
-#endif
         public InvoiceSubscriptionDetailsItemCurrentTrialOptions CurrentTrial { get; set; }
 
         /// <summary>

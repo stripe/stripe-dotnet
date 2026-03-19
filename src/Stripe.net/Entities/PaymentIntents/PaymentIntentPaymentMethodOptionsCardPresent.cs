@@ -48,9 +48,7 @@ namespace Stripe
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_reauthorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_reauthorization")]
-#endif
         public string RequestReauthorization { get; set; }
     }
 }

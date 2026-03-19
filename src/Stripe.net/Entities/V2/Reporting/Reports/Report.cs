@@ -3,23 +3,21 @@ namespace Stripe.V2.Reporting
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// The Report resource represents a customizable report template that provides insights
     /// into various aspects of your Stripe integration.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Report : StripeEntity<Report>, IHasId, IHasObject
     {
         /// <summary>
         /// The unique identifier of the <c>Report</c> object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -27,9 +25,7 @@ namespace Stripe.V2.Reporting
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -37,18 +33,14 @@ namespace Stripe.V2.Reporting
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
         /// The human-readable name of the <c>Report</c>.
         /// </summary>
         [JsonProperty("name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
-#endif
         public string Name { get; set; }
 
         /// <summary>
@@ -56,9 +48,7 @@ namespace Stripe.V2.Reporting
         /// parameter's name, description, whether it is required, and any validations performed.
         /// </summary>
         [JsonProperty("parameters")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("parameters")]
-#endif
         public Dictionary<string, ReportParameters> Parameters { get; set; }
     }
 }

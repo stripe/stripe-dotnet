@@ -13,9 +13,7 @@ namespace Stripe
         /// Allocated Funds configuration for this PaymentIntent.
         /// </summary>
         [JsonProperty("allocated_funds")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allocated_funds")]
-#endif
         public PaymentIntentAllocatedFundsOptions AllocatedFunds { get; set; }
 
         /// <summary>
@@ -136,9 +134,7 @@ namespace Stripe
         /// settlement amount.
         /// </summary>
         [JsonProperty("fx_quote")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fx_quote")]
-#endif
         public string FxQuote { get; set; }
 
         /// <summary>
@@ -152,9 +148,7 @@ namespace Stripe
         /// This hash contains details about the Mandate to create.
         /// </summary>
         [JsonProperty("mandate_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate_data")]
-#endif
         public PaymentIntentMandateDataOptions MandateData { get; set; }
 
         /// <summary>

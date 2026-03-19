@@ -14,7 +14,7 @@ namespace Stripe
     /// href="https://api.stripe.com#invoices">invoices</a>, <a
     /// href="https://docs.stripe.com/api/checkout/sessions">checkout sessions</a>, <a
     /// href="https://api.stripe.com#quotes">quotes</a>, and more. Coupons do not work with
-    /// conventional one-off <a href="https://stripe.com/api/charges/create">charges</a> or <a
+    /// conventional one-off <a href="https://api.stripe.com#create_charge">charges</a> or <a
     /// href="https://docs.stripe.com/api/payment_intents">payment intents</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
@@ -99,8 +99,8 @@ namespace Stripe
         public long? DurationInMonths { get; set; }
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -154,15 +154,11 @@ namespace Stripe
         /// calculate the discount.
         /// </summary>
         [JsonProperty("script")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("script")]
-#endif
         public CouponScript Script { get; set; }
 
         [JsonProperty("service_period")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("service_period")]
-#endif
         public CouponServicePeriod ServicePeriod { get; set; }
 
         /// <summary>
@@ -178,9 +174,7 @@ namespace Stripe
         /// One of: <c>amount_off</c>, <c>percent_off</c>, or <c>script</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>

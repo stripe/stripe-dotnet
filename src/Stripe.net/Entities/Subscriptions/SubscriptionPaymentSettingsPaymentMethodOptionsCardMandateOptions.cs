@@ -9,7 +9,7 @@ namespace Stripe
     public class SubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptions : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptions>
     {
         /// <summary>
-        /// Amount to be charged for future payments, specified in the presentment currency.
+        /// Amount to be charged for future payments.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]

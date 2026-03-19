@@ -10,7 +10,7 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// A positive integer in the <a
-        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a>
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>
         /// representing the shipping charge. If <c>tax_behavior=inclusive</c>, then this amount
         /// includes taxes. Otherwise, taxes are calculated on top of this amount.
         /// </summary>

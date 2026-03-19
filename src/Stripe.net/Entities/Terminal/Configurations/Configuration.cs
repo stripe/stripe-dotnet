@@ -56,8 +56,8 @@ namespace Stripe.Terminal
         public bool? IsAccountDefault { get; set; }
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -75,9 +75,7 @@ namespace Stripe.Terminal
         public ConfigurationOffline Offline { get; set; }
 
         [JsonProperty("reader_security")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reader_security")]
-#endif
         public ConfigurationReaderSecurity ReaderSecurity { get; set; }
 
         [JsonProperty("reboot_window")]

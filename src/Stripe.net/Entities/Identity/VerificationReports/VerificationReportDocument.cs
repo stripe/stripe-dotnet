@@ -4,12 +4,9 @@ namespace Stripe.Identity
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class VerificationReportDocument : StripeEntity<VerificationReportDocument>
     {
         /// <summary>
@@ -27,9 +24,7 @@ namespace Stripe.Identity
         /// token of the BlocklistEntry that blocked it.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string BlockedByEntryId
         {
             get => this.InternalBlockedByEntry?.Id;
@@ -44,9 +39,7 @@ namespace Stripe.Identity
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public BlocklistEntry BlockedByEntry
         {
             get => this.InternalBlockedByEntry?.ExpandedObject;
@@ -55,10 +48,8 @@ namespace Stripe.Identity
 
         [JsonProperty("blocked_by_entry")]
         [JsonConverter(typeof(ExpandableFieldConverter<BlocklistEntry>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("blocked_by_entry")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BlocklistEntry>))]
-#endif
         internal ExpandableField<BlocklistEntry> InternalBlockedByEntry { get; set; }
         #endregion
 

@@ -155,9 +155,7 @@ namespace Stripe
         public PaymentMethodConfigurationGooglePay GooglePay { get; set; }
 
         [JsonProperty("gopay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gopay")]
-#endif
         public PaymentMethodConfigurationGopay Gopay { get; set; }
 
         [JsonProperty("grabpay")]
@@ -165,9 +163,7 @@ namespace Stripe
         public PaymentMethodConfigurationGrabpay Grabpay { get; set; }
 
         [JsonProperty("id_bank_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_bank_transfer")]
-#endif
         public PaymentMethodConfigurationIdBankTransfer IdBankTransfer { get; set; }
 
         [JsonProperty("ideal")]
@@ -207,8 +203,8 @@ namespace Stripe
         public PaymentMethodConfigurationLink Link { get; set; }
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -273,9 +269,7 @@ namespace Stripe
         public PaymentMethodConfigurationPaypal Paypal { get; set; }
 
         [JsonProperty("paypay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypay")]
-#endif
         public PaymentMethodConfigurationPaypay Paypay { get; set; }
 
         [JsonProperty("payto")]
@@ -291,9 +285,7 @@ namespace Stripe
         public PaymentMethodConfigurationPromptpay Promptpay { get; set; }
 
         [JsonProperty("qris")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("qris")]
-#endif
         public PaymentMethodConfigurationQris Qris { get; set; }
 
         [JsonProperty("revolut_pay")]
@@ -313,9 +305,7 @@ namespace Stripe
         public PaymentMethodConfigurationSepaDebit SepaDebit { get; set; }
 
         [JsonProperty("shopeepay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shopeepay")]
-#endif
         public PaymentMethodConfigurationShopeepay Shopeepay { get; set; }
 
         [JsonProperty("sofort")]
@@ -329,10 +319,6 @@ namespace Stripe
         [JsonProperty("twint")]
         [STJS.JsonPropertyName("twint")]
         public PaymentMethodConfigurationTwint Twint { get; set; }
-
-        [JsonProperty("upi")]
-        [STJS.JsonPropertyName("upi")]
-        public PaymentMethodConfigurationUpi Upi { get; set; }
 
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]

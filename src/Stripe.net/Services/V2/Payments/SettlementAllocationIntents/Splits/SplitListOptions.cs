@@ -2,10 +2,10 @@
 namespace Stripe.V2.Payments.SettlementAllocationIntents
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SplitListOptions : V2.ListOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Payments.SettlementAllocationIntents
         /// One of: <c>canceled</c>, <c>pending</c>, or <c>settled</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

@@ -53,9 +53,7 @@ namespace Stripe.Tax
         /// Options for the home rule tax registration.
         /// </summary>
         [JsonProperty("home_rule_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("home_rule_tax")]
-#endif
         public RegistrationCountryOptionsUsHomeRuleTaxOptions HomeRuleTax { get; set; }
     }
 }

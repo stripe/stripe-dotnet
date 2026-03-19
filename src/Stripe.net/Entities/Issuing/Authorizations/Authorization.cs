@@ -163,8 +163,8 @@ namespace Stripe.Issuing
         public AuthorizationFuel Fuel { get; set; }
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -280,9 +280,7 @@ namespace Stripe.Issuing
         #endregion
 
         [JsonProperty("token_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("token_details")]
-#endif
         public AuthorizationTokenDetails TokenDetails { get; set; }
 
         /// <summary>
