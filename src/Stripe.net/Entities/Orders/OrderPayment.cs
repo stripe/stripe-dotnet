@@ -3,13 +3,9 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class OrderPayment : StripeEntity<OrderPayment>
     {
         #region Expandable PaymentIntent
@@ -19,9 +15,7 @@ namespace Stripe
         /// ID of the payment intent associated with this order. Null when the order is <c>open</c>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string PaymentIntentId
         {
             get => this.InternalPaymentIntent?.Id;
@@ -35,9 +29,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public PaymentIntent PaymentIntent
         {
             get => this.InternalPaymentIntent?.ExpandedObject;
@@ -46,10 +38,8 @@ namespace Stripe
 
         [JsonProperty("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_intent")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentIntent>))]
-#endif
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
@@ -57,9 +47,7 @@ namespace Stripe
         /// Settings describing how the order should configure generated PaymentIntents.
         /// </summary>
         [JsonProperty("settings")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("settings")]
-#endif
         public OrderPaymentSettings Settings { get; set; }
 
         /// <summary>
@@ -70,9 +58,7 @@ namespace Stripe
         /// <c>requires_payment_method</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

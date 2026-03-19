@@ -2,25 +2,21 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FxQuoteRates : StripeEntity<FxQuoteRates>
     {
         /// <summary>
         /// The rate that includes the FX fee rate.
         /// </summary>
         [JsonProperty("exchange_rate")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exchange_rate")]
-#endif
         public decimal ExchangeRate { get; set; }
 
         [JsonProperty("rate_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rate_details")]
-#endif
         public FxQuoteRatesRateDetails RateDetails { get; set; }
     }
 }

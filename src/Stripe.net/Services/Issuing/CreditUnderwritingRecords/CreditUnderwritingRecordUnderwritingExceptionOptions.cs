@@ -2,19 +2,17 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CreditUnderwritingRecordUnderwritingExceptionOptions : INestedOptions
     {
         /// <summary>
         /// Written explanation for the exception.
         /// </summary>
         [JsonProperty("explanation")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("explanation")]
-#endif
         public string Explanation { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.Issuing
         /// <c>no_changes</c>, or <c>withdrawn_by_applicant</c>.
         /// </summary>
         [JsonProperty("original_decision_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("original_decision_type")]
-#endif
         public string OriginalDecisionType { get; set; }
     }
 }

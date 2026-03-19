@@ -2,10 +2,10 @@
 namespace Stripe.Terminal
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReaderActionConfirmPaymentIntentConfirmConfig : StripeEntity<ReaderActionConfirmPaymentIntentConfirmConfig>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Terminal
         /// URL after completion.
         /// </summary>
         [JsonProperty("return_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("return_url")]
-#endif
         public string ReturnUrl { get; set; }
     }
 }

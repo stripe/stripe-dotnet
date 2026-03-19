@@ -2,10 +2,10 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionSubscriptionDataTrialSettingsEndBehaviorOptions : INestedOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Checkout
         /// One of: <c>cancel</c>, <c>create_invoice</c>, or <c>pause</c>.
         /// </summary>
         [JsonProperty("missing_payment_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("missing_payment_method")]
-#endif
         public string MissingPaymentMethod { get; set; }
     }
 }

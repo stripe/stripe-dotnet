@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentDecrementAuthorizationOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe
         /// captured amount.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -29,27 +27,21 @@ namespace Stripe
         /// accounts</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_fee_amount")]
-#endif
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
         /// Automations to be run during the PaymentIntent lifecycle.
         /// </summary>
         [JsonProperty("hooks")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hooks")]
-#endif
         public PaymentIntentHooksOptions Hooks { get; set; }
 
         /// <summary>
@@ -59,9 +51,7 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -70,9 +60,7 @@ namespace Stripe
         /// case for connected accounts</a>.
         /// </summary>
         [JsonProperty("transfer_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfer_data")]
-#endif
         public PaymentIntentTransferDataOptions TransferData { get; set; }
     }
 }

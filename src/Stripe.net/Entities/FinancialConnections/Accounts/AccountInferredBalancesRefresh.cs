@@ -4,10 +4,9 @@ namespace Stripe.FinancialConnections
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountInferredBalancesRefresh : StripeEntity<AccountInferredBalancesRefresh>
     {
         /// <summary>
@@ -16,10 +15,8 @@ namespace Stripe.FinancialConnections
         /// </summary>
         [JsonProperty("last_attempted_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last_attempted_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime LastAttemptedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -29,10 +26,8 @@ namespace Stripe.FinancialConnections
         /// </summary>
         [JsonProperty("next_refresh_available_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("next_refresh_available_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? NextRefreshAvailableAt { get; set; }
 
         /// <summary>
@@ -40,9 +35,7 @@ namespace Stripe.FinancialConnections
         /// One of: <c>failed</c>, <c>pending</c>, or <c>succeeded</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

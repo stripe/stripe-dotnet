@@ -4,9 +4,8 @@ namespace Stripe.Events
     using System;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     public class V2CoreHealthEventGenerationFailureResolvedEventData : StripeEntity<V2CoreHealthEventGenerationFailureResolvedEventData>
     {
@@ -14,45 +13,35 @@ namespace Stripe.Events
         /// The alert ID.
         /// </summary>
         [JsonProperty("alert_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("alert_id")]
-#endif
         public string AlertId { get; set; }
 
         /// <summary>
         /// The grouping key for the alert.
         /// </summary>
         [JsonProperty("grouping_key")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("grouping_key")]
-#endif
         public string GroupingKey { get; set; }
 
         /// <summary>
         /// The user impact.
         /// </summary>
         [JsonProperty("impact")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("impact")]
-#endif
         public V2CoreHealthEventGenerationFailureResolvedEventDataImpact Impact { get; set; }
 
         /// <summary>
         /// The time when the user experience has returned to expected levels.
         /// </summary>
         [JsonProperty("resolved_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("resolved_at")]
-#endif
         public DateTime ResolvedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// A short description of the alert.
         /// </summary>
         [JsonProperty("summary")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("summary")]
-#endif
         public string Summary { get; set; }
     }
 }

@@ -2,25 +2,21 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentAttemptRecordPaymentMethodDetailsAlma : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsAlma>
     {
         [JsonProperty("installments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("installments")]
-#endif
         public PaymentAttemptRecordPaymentMethodDetailsAlmaInstallments Installments { get; set; }
 
         /// <summary>
         /// The Alma transaction ID associated with this payment.
         /// </summary>
         [JsonProperty("transaction_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction_id")]
-#endif
         public string TransactionId { get; set; }
     }
 }

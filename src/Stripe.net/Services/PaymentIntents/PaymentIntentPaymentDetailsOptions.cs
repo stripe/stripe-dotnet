@@ -3,28 +3,24 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentPaymentDetailsOptions : INestedOptions
     {
         /// <summary>
         /// Car rental details for this PaymentIntent.
         /// </summary>
         [JsonProperty("car_rental")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("car_rental")]
-#endif
         public PaymentIntentPaymentDetailsCarRentalOptions CarRental { get; set; }
 
         /// <summary>
         /// Car rental data for this PaymentIntent.
         /// </summary>
         [JsonProperty("car_rental_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("car_rental_data")]
-#endif
         public List<PaymentIntentPaymentDetailsCarRentalDatumOptions> CarRentalData { get; set; }
 
         /// <summary>
@@ -34,54 +30,42 @@ namespace Stripe
         /// sent to card networks.
         /// </summary>
         [JsonProperty("customer_reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_reference")]
-#endif
         public string CustomerReference { get; set; }
 
         /// <summary>
         /// Event details for this PaymentIntent.
         /// </summary>
         [JsonProperty("event_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("event_details")]
-#endif
         public PaymentIntentPaymentDetailsEventDetailsOptions EventDetails { get; set; }
 
         /// <summary>
         /// Flight reservation details for this PaymentIntent.
         /// </summary>
         [JsonProperty("flight")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flight")]
-#endif
         public PaymentIntentPaymentDetailsFlightOptions Flight { get; set; }
 
         /// <summary>
         /// Flight data for this PaymentIntent.
         /// </summary>
         [JsonProperty("flight_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flight_data")]
-#endif
         public List<PaymentIntentPaymentDetailsFlightDatumOptions> FlightData { get; set; }
 
         /// <summary>
         /// Lodging reservation details for this PaymentIntent.
         /// </summary>
         [JsonProperty("lodging")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lodging")]
-#endif
         public PaymentIntentPaymentDetailsLodgingOptions Lodging { get; set; }
 
         /// <summary>
         /// Lodging data for this PaymentIntent.
         /// </summary>
         [JsonProperty("lodging_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lodging_data")]
-#endif
         public List<PaymentIntentPaymentDetailsLodgingDatumOptions> LodgingData { get; set; }
 
         /// <summary>
@@ -97,18 +81,14 @@ namespace Stripe
         /// characters and is visible to customers when they view the order in the Klarna app.
         /// </summary>
         [JsonProperty("order_reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("order_reference")]
-#endif
         public string OrderReference { get; set; }
 
         /// <summary>
         /// Subscription details for this PaymentIntent.
         /// </summary>
         [JsonProperty("subscription")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription")]
-#endif
         public PaymentIntentPaymentDetailsSubscriptionOptions Subscription { get; set; }
     }
 }

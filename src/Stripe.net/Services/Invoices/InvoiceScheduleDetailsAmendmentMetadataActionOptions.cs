@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceScheduleDetailsAmendmentMetadataActionOptions : INestedOptions
     {
         /// <summary>
@@ -14,18 +14,14 @@ namespace Stripe
         /// schedule phase metadata.
         /// </summary>
         [JsonProperty("add")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("add")]
-#endif
         public Dictionary<string, string> Add { get; set; }
 
         /// <summary>
         /// Keys to remove from schedule phase metadata.
         /// </summary>
         [JsonProperty("remove")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("remove")]
-#endif
         public List<string> Remove { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe
         /// be overwritten.
         /// </summary>
         [JsonProperty("set")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("set")]
-#endif
         public Dictionary<string, string> Set { get; set; }
 
         /// <summary>
@@ -44,9 +38,7 @@ namespace Stripe
         /// One of: <c>add</c>, <c>remove</c>, or <c>set</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

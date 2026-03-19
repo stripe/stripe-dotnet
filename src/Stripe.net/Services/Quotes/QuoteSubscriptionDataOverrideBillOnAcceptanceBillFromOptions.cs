@@ -4,19 +4,16 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class QuoteSubscriptionDataOverrideBillOnAcceptanceBillFromOptions : INestedOptions
     {
         /// <summary>
         /// Details of a Quote line to start the bill period from.
         /// </summary>
         [JsonProperty("line_starts_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("line_starts_at")]
-#endif
         public QuoteSubscriptionDataOverrideBillOnAcceptanceBillFromLineStartsAtOptions LineStartsAt { get; set; }
 
         /// <summary>
@@ -24,10 +21,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("timestamp")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("timestamp")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? Timestamp { get; set; }
 
         /// <summary>
@@ -36,9 +31,7 @@ namespace Stripe
         /// <c>quote_acceptance_date</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

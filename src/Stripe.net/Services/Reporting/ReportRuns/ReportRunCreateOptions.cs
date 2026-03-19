@@ -2,10 +2,10 @@
 namespace Stripe.Reporting
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ReportRunCreateOptions : BaseOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.Reporting
         /// documentation.
         /// </summary>
         [JsonProperty("parameters")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("parameters")]
-#endif
         public ReportRunParametersOptions Parameters { get; set; }
 
         /// <summary>
@@ -26,9 +24,7 @@ namespace Stripe.Reporting
         /// run, such as <c>"balance.summary.1"</c>.
         /// </summary>
         [JsonProperty("report_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("report_type")]
-#endif
         public string ReportType { get; set; }
     }
 }

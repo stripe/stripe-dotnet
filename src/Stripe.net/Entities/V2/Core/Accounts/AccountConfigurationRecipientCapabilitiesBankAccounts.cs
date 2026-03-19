@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountConfigurationRecipientCapabilitiesBankAccounts : StripeEntity<AccountConfigurationRecipientCapabilitiesBankAccounts>
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe.V2.Core
         /// networks.
         /// </summary>
         [JsonProperty("local")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("local")]
-#endif
         public AccountConfigurationRecipientCapabilitiesBankAccountsLocal Local { get; set; }
 
         /// <summary>
         /// Enables this Account to receive OutboundPayments to linked bank accounts over wire.
         /// </summary>
         [JsonProperty("wire")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("wire")]
-#endif
         public AccountConfigurationRecipientCapabilitiesBankAccountsWire Wire { get; set; }
     }
 }

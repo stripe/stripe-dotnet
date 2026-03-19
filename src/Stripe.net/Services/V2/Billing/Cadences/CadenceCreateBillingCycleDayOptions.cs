@@ -2,10 +2,10 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CadenceCreateBillingCycleDayOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Billing
         /// it will default to the time at which the cadence was created in UTC timezone.
         /// </summary>
         [JsonProperty("time")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("time")]
-#endif
         public CadenceCreateBillingCycleDayTimeOptions Time { get; set; }
     }
 }

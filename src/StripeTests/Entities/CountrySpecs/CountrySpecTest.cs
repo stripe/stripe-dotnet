@@ -1,6 +1,6 @@
 namespace StripeTests
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe;
     using Xunit;
 
@@ -15,7 +15,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/country_specs/US");
-            var countrySpec = JsonConvert.DeserializeObject<CountrySpec>(json);
+            var countrySpec = JsonSerializer.Deserialize<CountrySpec>(json);
             Assert.NotNull(countrySpec);
             Assert.IsType<CountrySpec>(countrySpec);
             Assert.NotNull(countrySpec.Id);

@@ -1,24 +1,27 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Reflection;
     using System.Runtime.CompilerServices;
+    using System.Text.Json;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using Stripe.Infrastructure;
-
-#if NET6_0_OR_GREATER
     using STJ = System.Text.Json;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     [JsonObject(MemberSerialization.OptIn)]
     [JsonConverter(typeof(StripeEntityConverter))]
-    [NoSystemTextJsonAttributesNeeded("Converter is only needed for deserialization in Stripe.net.  Member serialization opt-in is implemented in STJMemberSerializationOptIn, which is placed on the concrete classes")]
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public abstract class StripeEntity : IStripeEntity
     {
+        private string rawJsonString;
+        private JObject rawJObject;
+        private STJ.JsonElement? rawJsonElement;
+
         /// <summary>
         /// Gets the raw <see cref="JObject">JObject</see> exposed by the Newtonsoft.Json library.
         /// This can be used to access properties that are not directly exposed by Stripe's .NET
@@ -33,15 +36,63 @@ namespace Stripe
         /// </remarks>
         /// <returns>The raw <see cref="JObject">JObject</see>.</returns>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
-        public JObject RawJObject { get; protected set; }
+        [Obsolete("Use RawJsonElement instead. RawJObject will be removed in a future major version.")]
+#pragma warning disable CS0618 // Type or member is obsolete
+        public JObject RawJObject
+        {
+            get
+            {
+                if (this.rawJObject == null && this.rawJsonString != null)
+                {
+                    this.rawJObject = JObject.Parse(this.rawJsonString);
+                }
+
+                return this.rawJObject;
+            }
+
+            protected set
+            {
+                this.rawJObject = value;
+
+                // Clear the raw string if someone sets the JObject directly
+                this.rawJsonString = null;
+            }
+        }
+#pragma warning restore CS0618 // Type or member is obsolete
+
+        /// <summary>
+        /// Gets the raw JSON returned by Stripe's API as a <see cref="System.Text.Json.JsonElement"/>.
+        /// The <see cref="System.Text.Json.JsonElement"/> is lazily parsed from the stored raw JSON
+        /// string on first access to avoid pinning a <see cref="System.Text.Json.JsonDocument"/>
+        /// buffer in memory for every entity.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public STJ.JsonElement? RawJsonElement
+        {
+            get
+            {
+                if (this.rawJsonElement == null && this.rawJsonString != null)
+                {
+                    // Parse on demand. The returned JsonElement is backed by a
+                    // JsonDocument that is never disposed — this is intentional,
+                    // as the element escapes the scope and the caller may hold
+                    // a reference to it indefinitely.
+                    this.rawJsonElement = STJ.JsonDocument.Parse(this.rawJsonString).RootElement;
+                }
+
+                return this.rawJsonElement;
+            }
+
+            protected set
+            {
+                this.rawJsonElement = value;
+            }
+        }
 
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public StripeResponse StripeResponse { get; set; }
 
         /// <summary>
@@ -52,7 +103,8 @@ namespace Stripe
         /// <returns>The deserialized Stripe object from the JSON string.</returns>
         public static IHasObject FromJson(string value)
         {
-            return JsonUtils.DeserializeObject<IHasObject>(value, StripeConfiguration.SerializerSettings);
+            return STJ.JsonSerializer.Deserialize<IHasObject>(
+                value, StripeConfiguration.SerializerOptions);
         }
 
         /// <summary>Deserializes the JSON to the specified Stripe object type.</summary>
@@ -62,7 +114,8 @@ namespace Stripe
         public static T FromJson<T>(string value)
             where T : IStripeEntity
         {
-            return JsonUtils.DeserializeObject<T>(value, StripeConfiguration.SerializerSettings);
+            return STJ.JsonSerializer.Deserialize<T>(
+                value, StripeConfiguration.SerializerOptions);
         }
 
         /// <summary>Deserializes the JSON to the specified Stripe object type.</summary>
@@ -76,15 +129,24 @@ namespace Stripe
             return JsonUtils.DeserializeObject<T>(value, settings);
         }
 
-        internal static T FromJson<T>(JToken value)
+        internal static T FromJson<T>(JsonElement value)
             where T : IStripeEntity
         {
-            return JsonUtils.DeserializeObject<T>(value, StripeConfiguration.SerializerSettings);
+            // return JsonUtils.DeserializeObject<T>(value, StripeConfiguration.SerializerSettings);
+            return STJ.JsonSerializer.Deserialize<T>(
+                value, StripeConfiguration.SerializerOptions);
         }
 
         internal void SetRawJObject(JObject rawJObject)
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             this.RawJObject = rawJObject;
+#pragma warning restore CS0618 // Type or member is obsolete
+        }
+
+        internal void SetRawJsonString(string rawJson)
+        {
+            this.rawJsonString = rawJson;
         }
 
         /// <summary>Reports a Stripe object as a string.</summary>
@@ -110,10 +172,10 @@ namespace Stripe
         /// <returns>An indented JSON string represensation of the object.</returns>
         public string ToJson()
         {
-            return JsonUtils.SerializeObject(
+            return STJ.JsonSerializer.Serialize(
                 this,
-                Formatting.Indented,
-                StripeConfiguration.SerializerSettings);
+                this.GetType(),
+                StripeConfiguration.IndentedSerializerOptions);
         }
 
         /// <summary>
@@ -215,6 +277,11 @@ namespace Stripe
         /// <param name="value">The object to deserialize.</param>
         /// <returns>The deserialized Stripe object from the JSON string.</returns>
         public static new T FromJson(string value)
+        {
+            return StripeEntity.FromJson<T>(value);
+        }
+
+        internal static T FromJson(JsonElement value)
         {
             return StripeEntity.FromJson<T>(value);
         }

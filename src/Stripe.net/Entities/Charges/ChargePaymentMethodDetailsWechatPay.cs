@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ChargePaymentMethodDetailsWechatPay : StripeEntity<ChargePaymentMethodDetailsWechatPay>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// check whether two WeChat accounts are the same.
         /// </summary>
         [JsonProperty("fingerprint")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fingerprint")]
-#endif
         public string Fingerprint { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// this transaction's reader is assigned to.
         /// </summary>
         [JsonProperty("location")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("location")]
-#endif
         public string Location { get; set; }
 
         /// <summary>
@@ -33,18 +29,14 @@ namespace Stripe
         /// transaction was made on.
         /// </summary>
         [JsonProperty("reader")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reader")]
-#endif
         public string Reader { get; set; }
 
         /// <summary>
         /// Transaction ID of this particular WeChat Pay transaction.
         /// </summary>
         [JsonProperty("transaction_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction_id")]
-#endif
         public string TransactionId { get; set; }
     }
 }

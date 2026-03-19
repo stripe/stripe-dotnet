@@ -2,10 +2,10 @@
 namespace Stripe.Radar
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentEvaluationEventUserInterventionRaisedCustom : StripeEntity<PaymentEvaluationEventUserInterventionRaisedCustom>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Radar
         /// for the type of intervention performed.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

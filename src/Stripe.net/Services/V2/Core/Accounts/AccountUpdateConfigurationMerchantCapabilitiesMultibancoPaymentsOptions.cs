@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountUpdateConfigurationMerchantCapabilitiesMultibancoPaymentsOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Core
         /// requested Capability becomes active.
         /// </summary>
         [JsonProperty("requested")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("requested")]
-#endif
         public bool? Requested { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class QuoteSubscriptionDataBillingModeFlexible : StripeEntity<QuoteSubscriptionDataBillingModeFlexible>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// One of: <c>included</c>, or <c>itemized</c>.
         /// </summary>
         [JsonProperty("proration_discounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_discounts")]
-#endif
         public string ProrationDiscounts { get; set; }
     }
 }

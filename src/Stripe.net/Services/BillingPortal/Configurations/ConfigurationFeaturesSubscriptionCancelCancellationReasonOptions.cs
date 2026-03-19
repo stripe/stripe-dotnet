@@ -3,19 +3,17 @@ namespace Stripe.BillingPortal
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ConfigurationFeaturesSubscriptionCancelCancellationReasonOptions : INestedOptions
     {
         /// <summary>
         /// Whether the feature is enabled.
         /// </summary>
         [JsonProperty("enabled")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
-#endif
         public bool? Enabled { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe.BillingPortal
         /// <c>unused</c>.
         /// </summary>
         [JsonProperty("options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("options")]
-#endif
         public List<string> Options { get; set; }
     }
 }

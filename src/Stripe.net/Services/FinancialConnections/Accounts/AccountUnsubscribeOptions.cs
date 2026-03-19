@@ -3,10 +3,10 @@ namespace Stripe.FinancialConnections
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountUnsubscribeOptions : BaseOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.FinancialConnections
         /// One of: <c>balance</c>, <c>inferred_balances</c>, or <c>transactions</c>.
         /// </summary>
         [JsonProperty("features")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("features")]
-#endif
         public List<string> Features { get; set; }
     }
 }

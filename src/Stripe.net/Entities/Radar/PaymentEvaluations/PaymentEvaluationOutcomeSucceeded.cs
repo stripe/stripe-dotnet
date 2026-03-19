@@ -2,19 +2,17 @@
 namespace Stripe.Radar
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentEvaluationOutcomeSucceeded : StripeEntity<PaymentEvaluationOutcomeSucceeded>
     {
         /// <summary>
         /// Details of an succeeded card outcome attached to this payment evaluation.
         /// </summary>
         [JsonProperty("card")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]
-#endif
         public PaymentEvaluationOutcomeSucceededCard Card { get; set; }
     }
 }

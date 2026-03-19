@@ -1,6 +1,6 @@
 namespace StripeTests.Radar
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe;
     using Stripe.Radar;
     using Xunit;
@@ -16,7 +16,7 @@ namespace StripeTests.Radar
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/radar/early_fraud_warnings/issfr_123");
-            var warning = JsonConvert.DeserializeObject<EarlyFraudWarning>(json);
+            var warning = JsonSerializer.Deserialize<EarlyFraudWarning>(json);
             Assert.NotNull(warning);
             Assert.IsType<EarlyFraudWarning>(warning);
             Assert.NotNull(warning.Id);
@@ -32,7 +32,7 @@ namespace StripeTests.Radar
             };
 
             string json = this.GetFixture("/v1/radar/early_fraud_warnings/issfr_123", expansions);
-            var warning = JsonConvert.DeserializeObject<EarlyFraudWarning>(json);
+            var warning = JsonSerializer.Deserialize<EarlyFraudWarning>(json);
             Assert.NotNull(warning);
             Assert.IsType<EarlyFraudWarning>(warning);
             Assert.NotNull(warning.Id);

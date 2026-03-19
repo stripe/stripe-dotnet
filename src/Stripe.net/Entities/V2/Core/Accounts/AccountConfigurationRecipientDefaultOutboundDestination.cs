@@ -2,33 +2,32 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountConfigurationRecipientDefaultOutboundDestination : StripeEntity<AccountConfigurationRecipientDefaultOutboundDestination>, IHasId
     {
         /// <summary>
         /// The payout method ID of the default outbound destination.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// Closed Enum. The payout method type of the default outbound destination.
         /// One of: <c>ae_bank_account</c>, <c>ag_bank_account</c>, <c>al_bank_account</c>,
-        /// <c>am_bank_account</c>, <c>at_bank_account</c>, <c>au_bank_account</c>,
-        /// <c>ba_bank_account</c>, <c>be_bank_account</c>, <c>bg_bank_account</c>,
-        /// <c>bh_bank_account</c>, <c>bj_bank_account</c>, <c>bn_bank_account</c>,
-        /// <c>bs_bank_account</c>, <c>bt_bank_account</c>, <c>bw_bank_account</c>, <c>card</c>,
-        /// <c>ca_bank_account</c>, <c>ch_bank_account</c>, <c>ci_bank_account</c>,
-        /// <c>crypto_wallet</c>, <c>cr_bank_account</c>, <c>cy_bank_account</c>,
-        /// <c>cz_bank_account</c>, <c>de_bank_account</c>, <c>dk_bank_account</c>,
-        /// <c>do_bank_account</c>, <c>dz_bank_account</c>, <c>ec_bank_account</c>,
-        /// <c>ee_bank_account</c>, <c>es_bank_account</c>, <c>et_bank_account</c>,
+        /// <c>am_bank_account</c>, <c>ar_bank_account</c>, <c>at_bank_account</c>,
+        /// <c>au_bank_account</c>, <c>ba_bank_account</c>, <c>be_bank_account</c>,
+        /// <c>bg_bank_account</c>, <c>bh_bank_account</c>, <c>bj_bank_account</c>,
+        /// <c>bn_bank_account</c>, <c>bs_bank_account</c>, <c>bt_bank_account</c>,
+        /// <c>bw_bank_account</c>, <c>card</c>, <c>ca_bank_account</c>, <c>ch_bank_account</c>,
+        /// <c>ci_bank_account</c>, <c>co_bank_account</c>, <c>crypto_wallet</c>,
+        /// <c>cr_bank_account</c>, <c>cy_bank_account</c>, <c>cz_bank_account</c>,
+        /// <c>de_bank_account</c>, <c>dk_bank_account</c>, <c>do_bank_account</c>,
+        /// <c>dz_bank_account</c>, <c>ec_bank_account</c>, <c>ee_bank_account</c>,
+        /// <c>eg_bank_account</c>, <c>es_bank_account</c>, <c>et_bank_account</c>,
         /// <c>fi_bank_account</c>, <c>fr_bank_account</c>, <c>gb_bank_account</c>,
         /// <c>gm_bank_account</c>, <c>gr_bank_account</c>, <c>gt_bank_account</c>,
         /// <c>gy_bank_account</c>, <c>hk_bank_account</c>, <c>hr_bank_account</c>,
@@ -55,9 +54,7 @@ namespace Stripe.V2.Core
         /// <c>za_bank_account</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

@@ -4,23 +4,21 @@ namespace Stripe.V2.MoneyManagement
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// OutboundPayment represents a single money movement from one FinancialAccount you own to
     /// a payout method someone else owns.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class OutboundPayment : StripeEntity<OutboundPayment>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the OutboundPayment.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -28,27 +26,21 @@ namespace Stripe.V2.MoneyManagement
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// The "presentment amount" for the OutboundPayment.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
-        public OutboundPaymentAmount Amount { get; set; }
+        public V2.Amount Amount { get; set; }
 
         /// <summary>
         /// Returns true if the OutboundPayment can be canceled, and false otherwise.
         /// </summary>
         [JsonProperty("cancelable")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancelable")]
-#endif
         public bool Cancelable { get; set; }
 
         /// <summary>
@@ -56,18 +48,14 @@ namespace Stripe.V2.MoneyManagement
         /// UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Delivery options to be used to send the OutboundPayment.
         /// </summary>
         [JsonProperty("delivery_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("delivery_options")]
-#endif
         public OutboundPaymentDeliveryOptions DeliveryOptions { get; set; }
 
         /// <summary>
@@ -75,9 +63,7 @@ namespace Stripe.V2.MoneyManagement
         /// users.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -87,18 +73,14 @@ namespace Stripe.V2.MoneyManagement
         /// example: 2022-09-18T13:22:18.123Z.
         /// </summary>
         [JsonProperty("expected_arrival_date")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expected_arrival_date")]
-#endif
         public DateTime? ExpectedArrivalDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The FinancialAccount that funds were pulled from.
         /// </summary>
         [JsonProperty("from")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("from")]
-#endif
         public OutboundPaymentFrom From { get; set; }
 
         /// <summary>
@@ -106,9 +88,7 @@ namespace Stripe.V2.MoneyManagement
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -116,9 +96,7 @@ namespace Stripe.V2.MoneyManagement
         /// additional information about the object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -126,18 +104,14 @@ namespace Stripe.V2.MoneyManagement
         /// to display fee estimates before OutboundPayment creation.
         /// </summary>
         [JsonProperty("outbound_payment_quote")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("outbound_payment_quote")]
-#endif
         public string OutboundPaymentQuote { get; set; }
 
         /// <summary>
         /// The purpose of the OutboundPayment.
         /// </summary>
         [JsonProperty("purpose")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("purpose")]
-#endif
         public string Purpose { get; set; }
 
         /// <summary>
@@ -146,18 +120,14 @@ namespace Stripe.V2.MoneyManagement
         /// will expire and the receipt url value will be null.
         /// </summary>
         [JsonProperty("receipt_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("receipt_url")]
-#endif
         public string ReceiptUrl { get; set; }
 
         /// <summary>
         /// Details about the OutboundPayment notification settings for recipient.
         /// </summary>
         [JsonProperty("recipient_notification")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recipient_notification")]
-#endif
         public OutboundPaymentRecipientNotification RecipientNotification { get; set; }
 
         /// <summary>
@@ -166,9 +136,7 @@ namespace Stripe.V2.MoneyManagement
         /// on the account settings.
         /// </summary>
         [JsonProperty("statement_descriptor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor")]
-#endif
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -182,46 +150,36 @@ namespace Stripe.V2.MoneyManagement
         /// <c>returned</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
         /// Status details for an OutboundPayment in a <c>failed</c> or <c>returned</c> state.
         /// </summary>
         [JsonProperty("status_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_details")]
-#endif
         public OutboundPaymentStatusDetails StatusDetails { get; set; }
 
         /// <summary>
         /// Hash containing timestamps of when the object transitioned to a particular status.
         /// </summary>
         [JsonProperty("status_transitions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_transitions")]
-#endif
         public OutboundPaymentStatusTransitions StatusTransitions { get; set; }
 
         /// <summary>
         /// To which payout method the OutboundPayment was sent.
         /// </summary>
         [JsonProperty("to")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("to")]
-#endif
         public OutboundPaymentTo To { get; set; }
 
         /// <summary>
         /// A unique identifier that can be used to track this OutboundPayment with recipient bank.
-        /// Banks might call this a “reference number” or something similar.
+        /// Banks might call this a "reference number" or something similar.
         /// </summary>
         [JsonProperty("trace_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trace_id")]
-#endif
         public OutboundPaymentTraceId TraceId { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 namespace Stripe.Privacy
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class RedactionJobListOptions : ListOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Privacy
         /// <c>redacting</c>, <c>succeeded</c>, or <c>validating</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

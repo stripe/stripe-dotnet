@@ -10,6 +10,7 @@ namespace StripeTests
     using Newtonsoft.Json;
     using Stripe;
     using Xunit;
+    using STJS = System.Text.Json.Serialization;
 
     public class ServiceTest : BaseStripeTest
     {
@@ -255,6 +256,7 @@ namespace StripeTests
         private class TestEntity : StripeEntity, IHasId
         {
             [JsonProperty("id")]
+            [STJS.JsonPropertyName("id")]
             public string Id { get; set; }
         }
 

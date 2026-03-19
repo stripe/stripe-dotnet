@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class BalanceSettingsPaymentsSettlementTimingOptions : INestedOptions
     {
         /// <summary>
@@ -17,9 +17,7 @@ namespace Stripe
         /// delay days</a>.
         /// </summary>
         [JsonProperty("delay_days_override")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("delay_days_override")]
-#endif
         public long? DelayDaysOverride { get; set; }
     }
 }

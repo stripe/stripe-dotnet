@@ -3,10 +3,10 @@ namespace Stripe.Treasury
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OutboundPaymentDestinationPaymentMethodDataOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Treasury
         /// particular types of payment methods.
         /// </summary>
         [JsonProperty("billing_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_details")]
-#endif
         public OutboundPaymentDestinationPaymentMethodDataBillingDetailsOptions BillingDetails { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.Treasury
         /// funds to.
         /// </summary>
         [JsonProperty("financial_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_account")]
-#endif
         public string FinancialAccount { get; set; }
 
         /// <summary>
@@ -36,9 +32,7 @@ namespace Stripe.Treasury
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -48,18 +42,14 @@ namespace Stripe.Treasury
         /// One of: <c>financial_account</c>, or <c>us_bank_account</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
         /// Required hash if type is set to <c>us_bank_account</c>.
         /// </summary>
         [JsonProperty("us_bank_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_bank_account")]
-#endif
         public OutboundPaymentDestinationPaymentMethodDataUsBankAccountOptions UsBankAccount { get; set; }
     }
 }

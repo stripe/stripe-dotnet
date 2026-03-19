@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class DisputePaymentMethodDetailsAmazonPay : StripeEntity<DisputePaymentMethodDetailsAmazonPay>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// One of: <c>chargeback</c>, or <c>claim</c>.
         /// </summary>
         [JsonProperty("dispute_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dispute_type")]
-#endif
         public string DisputeType { get; set; }
     }
 }

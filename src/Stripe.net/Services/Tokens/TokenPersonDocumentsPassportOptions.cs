@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class TokenPersonDocumentsPassportOptions : INestedOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe
         /// upload</a> with a <c>purpose</c> value of <c>account_requirement</c>.
         /// </summary>
         [JsonProperty("files")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("files")]
-#endif
         public List<string> Files { get; set; }
     }
 }

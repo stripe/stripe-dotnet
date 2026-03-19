@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentDetailsCarRentalDelivery : StripeEntity<PaymentIntentPaymentDetailsCarRentalDelivery>
     {
         /// <summary>
@@ -13,15 +13,11 @@ namespace Stripe
         /// One of: <c>email</c>, <c>phone</c>, <c>pickup</c>, or <c>post</c>.
         /// </summary>
         [JsonProperty("mode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mode")]
-#endif
         public string Mode { get; set; }
 
         [JsonProperty("recipient")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recipient")]
-#endif
         public PaymentIntentPaymentDetailsCarRentalDeliveryRecipient Recipient { get; set; }
     }
 }

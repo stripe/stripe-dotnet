@@ -4,6 +4,8 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Configuration;
     using System.Runtime.Serialization;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -103,7 +105,23 @@ namespace Stripe
         /// otherwise Stripe.net will no longer be able to deserialize polymorphic resources
         /// represented by interfaces (e.g. <see cref="IPaymentSource"/>).
         /// </summary>
+        [Obsolete("Use SerializerOptions instead. SerializerSettings will be removed in a future major version.")]
+#pragma warning disable CS0618 // Type or member is obsolete
         public static JsonSerializerSettings SerializerSettings { get; set; } = DefaultSerializerSettings();
+#pragma warning restore CS0618 // Type or member is obsolete
+
+        /// <summary>
+        /// Gets or sets the System.Text.Json options used for serialization and deserialization.
+        /// </summary>
+        public static JsonSerializerOptions SerializerOptions { get; set; } = DefaultStjSerializerOptions();
+
+        /// <summary>
+        /// Cached options instance for indented JSON output (used by ToJson()).
+        /// </summary>
+        internal static JsonSerializerOptions IndentedSerializerOptions { get; } = new JsonSerializerOptions(DefaultStjSerializerOptions())
+        {
+            WriteIndented = true,
+        };
 
         /// <summary>
         /// Gets or sets the maximum number of times that the library will retry requests that
@@ -204,6 +222,7 @@ namespace Stripe
         /// the default settings used by Stripe.net.
         /// </summary>
         /// <returns>A <see cref="Newtonsoft.Json.JsonSerializerSettings"/> instance.</returns>
+        [Obsolete("Use DefaultStjSerializerOptions() instead. DefaultSerializerSettings() will be removed in a future major version.")]
         public static JsonSerializerSettings DefaultSerializerSettings()
         {
             return DefaultSerializerSettings(null);
@@ -224,7 +243,7 @@ namespace Stripe
 
                 // Re-enable the warning.
 #pragma warning restore SYSLIB0050
-                Converters = new List<JsonConverter>
+                Converters = new List<Newtonsoft.Json.JsonConverter>
                 {
                     new StripeObjectConverter(),
                 },
@@ -245,6 +264,25 @@ namespace Stripe
         public static void SetApiKey(string newApiKey)
         {
             ApiKey = newApiKey;
+        }
+
+        /// <summary>
+        /// Returns a new instance of <see cref="System.Text.Json.JsonSerializerOptions"/> with
+        /// the default settings used by Stripe.net for System.Text.Json serialization.
+        /// </summary>
+        /// <returns>A <see cref="System.Text.Json.JsonSerializerOptions"/> instance.</returns>
+        public static JsonSerializerOptions DefaultStjSerializerOptions()
+        {
+            return new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = false,
+                MaxDepth = 128,
+                ReadCommentHandling = JsonCommentHandling.Disallow,
+                AllowTrailingCommas = false,
+                DefaultIgnoreCondition = JsonIgnoreCondition.Never,
+
+                Converters = { },
+            };
         }
 
         private static IStripeClient BuildDefaultStripeClient()

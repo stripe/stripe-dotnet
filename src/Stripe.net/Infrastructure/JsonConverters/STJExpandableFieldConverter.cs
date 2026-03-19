@@ -1,4 +1,3 @@
-#if NET6_0_OR_GREATER
 namespace Stripe.Infrastructure
 {
     using System;
@@ -134,4 +133,3 @@ namespace Stripe.Infrastructure
         }
     }
 }
-#endif

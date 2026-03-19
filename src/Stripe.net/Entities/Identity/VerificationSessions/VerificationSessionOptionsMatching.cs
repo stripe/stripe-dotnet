@@ -2,10 +2,10 @@
 namespace Stripe.Identity
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class VerificationSessionOptionsMatching : StripeEntity<VerificationSessionOptionsMatching>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Identity
         /// One of: <c>none</c>, or <c>similar</c>.
         /// </summary>
         [JsonProperty("dob")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dob")]
-#endif
         public string Dob { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.Identity
         /// One of: <c>none</c>, or <c>similar</c>.
         /// </summary>
         [JsonProperty("name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
-#endif
         public string Name { get; set; }
     }
 }

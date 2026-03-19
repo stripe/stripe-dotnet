@@ -4,28 +4,23 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceScheduleDetailsPrebillingBillUntilOptions : INestedOptions
     {
         /// <summary>
         /// End the prebilled period when a specified amendment ends.
         /// </summary>
         [JsonProperty("amendment_end")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amendment_end")]
-#endif
         public InvoiceScheduleDetailsPrebillingBillUntilAmendmentEndOptions AmendmentEnd { get; set; }
 
         /// <summary>
         /// Time span for prebilling, starting from <c>bill_from</c>.
         /// </summary>
         [JsonProperty("duration")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("duration")]
-#endif
         public InvoiceScheduleDetailsPrebillingBillUntilDurationOptions Duration { get; set; }
 
         /// <summary>
@@ -33,10 +28,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("timestamp")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("timestamp")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? Timestamp { get; set; }
 
         /// <summary>
@@ -44,9 +37,7 @@ namespace Stripe
         /// One of: <c>amendment_end</c>, <c>duration</c>, <c>schedule_end</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

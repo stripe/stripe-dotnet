@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountPersonListOptions : ListOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// account's company.
         /// </summary>
         [JsonProperty("relationship")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("relationship")]
-#endif
         public AccountPersonRelationshipOptions Relationship { get; set; }
     }
 }

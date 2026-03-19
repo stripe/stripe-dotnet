@@ -2,10 +2,10 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionBrandingSettingsIconOptions : INestedOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Checkout
         /// disallowed otherwise.
         /// </summary>
         [JsonProperty("file")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("file")]
-#endif
         public string File { get; set; }
 
         /// <summary>
@@ -24,18 +22,14 @@ namespace Stripe.Checkout
         /// One of: <c>file</c>, or <c>url</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
         /// The URL of the image. Required if <c>type</c> is <c>url</c> and disallowed otherwise.
         /// </summary>
         [JsonProperty("url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("url")]
-#endif
         public string Url { get; set; }
     }
 }
