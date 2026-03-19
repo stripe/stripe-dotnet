@@ -7,6 +7,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using Stripe.V2.Core;
 
     /// <summary>
@@ -227,6 +228,15 @@ namespace Stripe
             long tolerance = EventUtility.DefaultTimeTolerance)
         {
             EventUtility.ValidateSignature(json, stripeSignatureHeader, secret, tolerance, DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+
+            var parsed = JObject.Parse(json);
+            var objectValue = (string)parsed["object"];
+            if (objectValue == "event")
+            {
+                throw new ArgumentException(
+                    "You passed a webhook payload to ParseEventNotification, which expects "
+                    + "an event notification. Use EventUtility.ConstructEvent instead.");
+            }
 
             return EventNotification.FromJson(json, this);
         }
