@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentAttemptRecordPaymentMethodDetailsCardThreeDSecure : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsCardThreeDSecure>
     {
         /// <summary>
@@ -14,10 +14,40 @@ namespace Stripe
         /// One of: <c>challenge</c>, or <c>frictionless</c>.
         /// </summary>
         [JsonProperty("authentication_flow")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authentication_flow")]
-#endif
         public string AuthenticationFlow { get; set; }
+
+        /// <summary>
+        /// The 3D Secure cryptogram, also known as the "authentication value" (AAV, CAVV or AEVV).
+        /// </summary>
+        [JsonProperty("cryptogram")]
+        [STJS.JsonPropertyName("cryptogram")]
+        public string Cryptogram { get; set; }
+
+        /// <summary>
+        /// The Electronic Commerce Indicator (ECI). A protocol-level field indicating what degree
+        /// of authentication was performed.
+        /// One of: <c>01</c>, <c>02</c>, <c>03</c>, <c>04</c>, <c>05</c>, <c>06</c>, or <c>07</c>.
+        /// </summary>
+        [JsonProperty("electronic_commerce_indicator")]
+        [STJS.JsonPropertyName("electronic_commerce_indicator")]
+        public string ElectronicCommerceIndicator { get; set; }
+
+        /// <summary>
+        /// The exemption requested via 3DS and accepted by the issuer at authentication time.
+        /// One of: <c>low_risk</c>, or <c>none</c>.
+        /// </summary>
+        [JsonProperty("exemption_indicator")]
+        [STJS.JsonPropertyName("exemption_indicator")]
+        public string ExemptionIndicator { get; set; }
+
+        /// <summary>
+        /// Whether Stripe requested the value of <c>exemption_indicator</c> in the transaction.
+        /// This will depend on the outcome of Stripe's internal risk assessment.
+        /// </summary>
+        [JsonProperty("exemption_indicator_applied")]
+        [STJS.JsonPropertyName("exemption_indicator_applied")]
+        public bool? ExemptionIndicatorApplied { get; set; }
 
         /// <summary>
         /// Indicates the outcome of 3D Secure authentication.
@@ -25,9 +55,7 @@ namespace Stripe
         /// <c>failed</c>, <c>not_supported</c>, or <c>processing_error</c>.
         /// </summary>
         [JsonProperty("result")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("result")]
-#endif
         public string Result { get; set; }
 
         /// <summary>
@@ -37,9 +65,7 @@ namespace Stripe
         /// <c>network_not_supported</c>, <c>protocol_error</c>, or <c>rejected</c>.
         /// </summary>
         [JsonProperty("result_reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("result_reason")]
-#endif
         public string ResultReason { get; set; }
 
         /// <summary>
@@ -47,9 +73,7 @@ namespace Stripe
         /// One of: <c>1.0.2</c>, <c>2.1.0</c>, or <c>2.2.0</c>.
         /// </summary>
         [JsonProperty("version")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("version")]
-#endif
         public string Version { get; set; }
     }
 }

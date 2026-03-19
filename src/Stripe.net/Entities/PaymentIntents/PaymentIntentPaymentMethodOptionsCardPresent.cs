@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentMethodOptionsCardPresent : StripeEntity<PaymentIntentPaymentMethodOptionsCardPresent>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// One of: <c>manual</c>, or <c>manual_preferred</c>.
         /// </summary>
         [JsonProperty("capture_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capture_method")]
-#endif
         public string CaptureMethod { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe
         /// validity window</a>.
         /// </summary>
         [JsonProperty("request_extended_authorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_extended_authorization")]
-#endif
         public bool? RequestExtendedAuthorization { get; set; }
 
         /// <summary>
@@ -38,15 +34,11 @@ namespace Stripe
         /// response to verify support.
         /// </summary>
         [JsonProperty("request_incremental_authorization_support")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_incremental_authorization_support")]
-#endif
         public bool? RequestIncrementalAuthorizationSupport { get; set; }
 
         [JsonProperty("routing")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("routing")]
-#endif
         public PaymentIntentPaymentMethodOptionsCardPresentRouting Routing { get; set; }
 
         /// <summary>

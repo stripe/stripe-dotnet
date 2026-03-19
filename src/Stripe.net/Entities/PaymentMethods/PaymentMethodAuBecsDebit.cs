@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentMethodAuBecsDebit : StripeEntity<PaymentMethodAuBecsDebit>
     {
         /// <summary>
         /// Six-digit number identifying bank and branch associated with this bank account.
         /// </summary>
         [JsonProperty("bsb_number")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bsb_number")]
-#endif
         public string BsbNumber { get; set; }
 
         /// <summary>
@@ -22,18 +20,14 @@ namespace Stripe
         /// whether two bank accounts are the same.
         /// </summary>
         [JsonProperty("fingerprint")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fingerprint")]
-#endif
         public string Fingerprint { get; set; }
 
         /// <summary>
         /// Last four digits of the bank account number.
         /// </summary>
         [JsonProperty("last4")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last4")]
-#endif
         public string Last4 { get; set; }
     }
 }

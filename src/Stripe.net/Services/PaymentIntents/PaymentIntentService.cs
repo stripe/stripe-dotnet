@@ -63,9 +63,10 @@ namespace Stripe
         /// <c>status</c> of <c>requires_capture</c>, the remaining <c>amount_capturable</c> is
         /// automatically refunded. </p>.
         ///
-        /// <p>You can’t cancel the PaymentIntent for a Checkout Session. <a
-        /// href="https://stripe.com/docs/api/checkout/sessions/expire">Expire the Checkout
-        /// Session</a> instead.</p>.
+        /// <p>You can directly cancel the PaymentIntent for a Checkout Session only when the
+        /// PaymentIntent has a status of <c>requires_capture</c>. Otherwise, you must <a
+        /// href="https://stripe.com/docs/api/checkout/sessions/expire">expire the Checkout
+        /// Session</a>.</p>.
         /// </summary>
         public virtual PaymentIntent Cancel(string id, PaymentIntentCancelOptions options = null, RequestOptions requestOptions = null)
         {
@@ -83,9 +84,10 @@ namespace Stripe
         /// <c>status</c> of <c>requires_capture</c>, the remaining <c>amount_capturable</c> is
         /// automatically refunded. </p>.
         ///
-        /// <p>You can’t cancel the PaymentIntent for a Checkout Session. <a
-        /// href="https://stripe.com/docs/api/checkout/sessions/expire">Expire the Checkout
-        /// Session</a> instead.</p>.
+        /// <p>You can directly cancel the PaymentIntent for a Checkout Session only when the
+        /// PaymentIntent has a status of <c>requires_capture</c>. Otherwise, you must <a
+        /// href="https://stripe.com/docs/api/checkout/sessions/expire">expire the Checkout
+        /// Session</a>.</p>.
         /// </summary>
         public virtual Task<PaymentIntent> CancelAsync(string id, PaymentIntentCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

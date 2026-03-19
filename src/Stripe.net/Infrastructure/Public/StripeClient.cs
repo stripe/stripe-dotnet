@@ -26,7 +26,9 @@ namespace Stripe
         internal StripeClient(ApiRequestor requestor)
         {
             this.Requestor = requestor;
+#pragma warning disable CS0618 // Type or member is obsolete
             this.jsonSerializerSettings = StripeConfiguration.DefaultSerializerSettings(requestor);
+#pragma warning restore CS0618 // Type or member is obsolete
         }
 
         /// <summary>Initializes a new instance of the <see cref="StripeClient"/> class.</summary>

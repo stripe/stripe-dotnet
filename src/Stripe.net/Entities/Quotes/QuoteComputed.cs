@@ -6,8 +6,8 @@ namespace Stripe
     using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class QuoteComputed : StripeEntity<QuoteComputed>
     {
         /// <summary>
@@ -27,9 +27,7 @@ namespace Stripe
         /// with recurring prices.
         /// </summary>
         [JsonProperty("recurring")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recurring")]
-#endif
         public QuoteComputedRecurring Recurring { get; set; }
 
         /// <summary>
@@ -44,9 +42,7 @@ namespace Stripe
         public DateTime? UpdatedAt { get; set; }
 
         [JsonProperty("upfront")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("upfront")]
-#endif
         public QuoteComputedUpfront Upfront { get; set; }
     }
 }

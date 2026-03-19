@@ -1,6 +1,6 @@
 namespace StripeTests
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe;
     using Xunit;
 
@@ -16,7 +16,7 @@ namespace StripeTests
         {
             // Using a fixture as there's no GET API for now on SetupAttempt
             var json = GetResourceAsString("api_fixtures.setup_attempt.json");
-            var attempt = JsonConvert.DeserializeObject<SetupAttempt>(json);
+            var attempt = JsonSerializer.Deserialize<SetupAttempt>(json);
             Assert.NotNull(attempt);
             Assert.IsType<SetupAttempt>(attempt);
             Assert.NotNull(attempt.Id);

@@ -3,31 +3,27 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// Base class for Stripe options classes, i.e. classes representing parameters for Stripe
     /// API requests.
     /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class BaseOptions : INestedOptions
     {
         /// <summary>Specifies which fields in the response should be expanded.</summary>
         [JsonProperty("expand", NullValueHandling = NullValueHandling.Ignore)]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expand")]
 
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
-#endif
         public List<string> Expand { get; set; }
 
         /// <summary>Dictionary containing extra request parameters.</summary>
         [JsonExtensionData]
-#if NET6_0_OR_GREATER
         [STJS.JsonExtensionData]
-#endif
         public IDictionary<string, object> ExtraParams { get; set; }
             = new Dictionary<string, object>();
 

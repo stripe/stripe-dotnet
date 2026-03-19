@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionScheduleUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -36,9 +36,7 @@ namespace Stripe
         /// Object representing the subscription schedule's default settings.
         /// </summary>
         [JsonProperty("default_settings")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_settings")]
-#endif
         public SubscriptionScheduleDefaultSettingsOptions DefaultSettings { get; set; }
 
         /// <summary>
@@ -50,9 +48,7 @@ namespace Stripe
         /// One of: <c>cancel</c>, <c>none</c>, <c>release</c>, or <c>renew</c>.
         /// </summary>
         [JsonProperty("end_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("end_behavior")]
-#endif
         public string EndBehavior { get; set; }
 
         /// <summary>
@@ -62,9 +58,7 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -74,9 +68,7 @@ namespace Stripe
         /// Note that past phases can be omitted.
         /// </summary>
         [JsonProperty("phases")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phases")]
-#endif
         public List<SubscriptionSchedulePhaseOptions> Phases { get; set; }
 
         /// <summary>
@@ -96,9 +88,7 @@ namespace Stripe
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_behavior")]
-#endif
         public string ProrationBehavior { get; set; }
     }
 }

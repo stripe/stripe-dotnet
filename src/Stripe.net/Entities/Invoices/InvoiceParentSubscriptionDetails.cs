@@ -5,13 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class InvoiceParentSubscriptionDetails : StripeEntity<InvoiceParentSubscriptionDetails>, IHasMetadata
     {
         /// <summary>
@@ -21,9 +17,7 @@ namespace Stripe
         /// populated only for invoices created on or after June 29, 2023.</em>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -45,9 +39,7 @@ namespace Stripe
         /// The subscription that generated this invoice.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string SubscriptionId
         {
             get => this.InternalSubscription?.Id;
@@ -61,9 +53,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Subscription Subscription
         {
             get => this.InternalSubscription?.ExpandedObject;
@@ -72,10 +62,8 @@ namespace Stripe
 
         [JsonProperty("subscription")]
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Subscription>))]
-#endif
         internal ExpandableField<Subscription> InternalSubscription { get; set; }
         #endregion
 
@@ -85,10 +73,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("subscription_proration_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_proration_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime SubscriptionProrationDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

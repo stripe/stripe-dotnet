@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentPaymentDetailsOptions : INestedOptions
     {
         /// <summary>
@@ -43,9 +43,7 @@ namespace Stripe
         /// sent to card networks.
         /// </summary>
         [JsonProperty("customer_reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_reference")]
-#endif
         public string CustomerReference { get; set; }
 
         /// <summary>
@@ -106,9 +104,7 @@ namespace Stripe
         /// characters and is visible to customers when they view the order in the Klarna app.
         /// </summary>
         [JsonProperty("order_reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("order_reference")]
-#endif
         public string OrderReference { get; set; }
 
         /// <summary>

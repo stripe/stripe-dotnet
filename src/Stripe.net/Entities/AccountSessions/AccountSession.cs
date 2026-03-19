@@ -4,9 +4,7 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// An AccountSession allows a Connect platform to grant access to a connected account in
@@ -20,24 +18,21 @@ namespace Stripe
     /// href="https://docs.stripe.com/connect/get-started-connect-embedded-components">Connect
     /// embedded components</a>.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountSession : StripeEntity<AccountSession>, IHasObject
     {
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// The ID of the account the AccountSession was created for.
         /// </summary>
         [JsonProperty("account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account")]
-#endif
         public string Account { get; set; }
 
         /// <summary>
@@ -54,15 +49,11 @@ namespace Stripe
         /// handled.
         /// </summary>
         [JsonProperty("client_secret")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client_secret")]
-#endif
         public string ClientSecret { get; set; }
 
         [JsonProperty("components")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("components")]
-#endif
         public AccountSessionComponents Components { get; set; }
 
         /// <summary>
@@ -70,20 +61,16 @@ namespace Stripe
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
     }
 }

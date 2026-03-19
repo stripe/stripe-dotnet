@@ -1,12 +1,9 @@
 namespace StripeTests.Terminal
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe.Terminal;
     using Xunit;
-#if NET6_0_OR_GREATER
-    using System.Text.Json;
-#endif
 
     public class ReaderTest : BaseStripeTest
     {
@@ -19,7 +16,7 @@ namespace StripeTests.Terminal
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/terminal/readers/ds_123");
-            var reader = JsonConvert.DeserializeObject<Reader>(json);
+            var reader = JsonSerializer.Deserialize<Reader>(json);
             Assert.NotNull(reader);
             Assert.IsType<Reader>(reader);
             Assert.NotNull(reader.Id);
@@ -50,7 +47,7 @@ namespace StripeTests.Terminal
 }}";
 
             // This should now work correctly with the updated converter
-            var reader = JsonConvert.DeserializeObject<Reader>(json);
+            var reader = JsonSerializer.Deserialize<Reader>(json);
 
             Assert.NotNull(reader);
             Assert.NotNull(reader.LastSeenAt);
@@ -82,7 +79,7 @@ namespace StripeTests.Terminal
                 ""status"": ""online""
             }}";
 
-            var reader = JsonConvert.DeserializeObject<Reader>(json);
+            var reader = JsonSerializer.Deserialize<Reader>(json);
 
             Assert.NotNull(reader);
             Assert.NotNull(reader.LastSeenAt);
@@ -93,7 +90,6 @@ namespace StripeTests.Terminal
             Assert.Equal(expectedDate, reader.LastSeenAt.Value);
         }
 
-#if NET6_0_OR_GREATER
         [Fact]
         public void DeserializeWithLastSeenAtInMilliseconds_SystemTextJson()
         {
@@ -117,7 +113,7 @@ namespace StripeTests.Terminal
             }}";
 
             // This should now work correctly with the updated STJ converter
-            var reader = System.Text.Json.JsonSerializer.Deserialize<Reader>(json);
+            var reader = JsonSerializer.Deserialize<Reader>(json);
 
             Assert.NotNull(reader);
             Assert.NotNull(reader.LastSeenAt);
@@ -148,7 +144,7 @@ namespace StripeTests.Terminal
                 ""status"": ""online""
             }}";
 
-            var reader = System.Text.Json.JsonSerializer.Deserialize<Reader>(json);
+            var reader = JsonSerializer.Deserialize<Reader>(json);
 
             Assert.NotNull(reader);
             Assert.NotNull(reader.LastSeenAt);
@@ -158,6 +154,5 @@ namespace StripeTests.Terminal
             var expectedDate = new DateTime(2023, 11, 13, 18, 26, 40, DateTimeKind.Utc);
             Assert.Equal(expectedDate, reader.LastSeenAt.Value);
         }
-#endif
     }
 }

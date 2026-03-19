@@ -4,10 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class BalanceTransactionListOptions : ListOptions
     {
         /// <summary>
@@ -15,10 +14,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
@@ -28,9 +25,7 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -38,18 +33,14 @@ namespace Stripe
         /// specified payout ID.
         /// </summary>
         [JsonProperty("payout")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payout")]
-#endif
         public string Payout { get; set; }
 
         /// <summary>
         /// Only returns transactions associated with the given object.
         /// </summary>
         [JsonProperty("source")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source")]
-#endif
         public string Source { get; set; }
 
         /// <summary>
@@ -71,9 +62,7 @@ namespace Stripe
         /// <c>transfer_cancel</c>, <c>transfer_failure</c>, or <c>transfer_refund</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

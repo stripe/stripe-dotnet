@@ -2,10 +2,10 @@
 namespace Stripe.Identity
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class VerificationReportPhoneError : StripeEntity<VerificationReportPhoneError>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Identity
         /// One of: <c>phone_unverified_other</c>, or <c>phone_verification_declined</c>.
         /// </summary>
         [JsonProperty("code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("code")]
-#endif
         public string Code { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.Identity
         /// to your users.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
-#endif
         public string Reason { get; set; }
     }
 }

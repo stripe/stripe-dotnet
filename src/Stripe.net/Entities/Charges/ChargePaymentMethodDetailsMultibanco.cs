@@ -2,28 +2,24 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ChargePaymentMethodDetailsMultibanco : StripeEntity<ChargePaymentMethodDetailsMultibanco>
     {
         /// <summary>
         /// Entity number associated with this Multibanco payment.
         /// </summary>
         [JsonProperty("entity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("entity")]
-#endif
         public string Entity { get; set; }
 
         /// <summary>
         /// Reference number associated with this Multibanco payment.
         /// </summary>
         [JsonProperty("reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
-#endif
         public string Reference { get; set; }
     }
 }

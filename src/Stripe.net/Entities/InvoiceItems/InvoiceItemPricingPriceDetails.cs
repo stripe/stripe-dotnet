@@ -5,7 +5,6 @@ namespace Stripe
     using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
 #if NET6_0_OR_GREATER
     [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
@@ -57,9 +56,7 @@ namespace Stripe
         /// The ID of the product this item is associated with.
         /// </summary>
         [JsonProperty("product")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product")]
-#endif
         public string Product { get; set; }
     }
 }

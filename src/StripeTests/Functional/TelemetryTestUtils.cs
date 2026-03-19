@@ -7,11 +7,11 @@ namespace StripeTests
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text;
+    using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;
     using Moq;
     using Moq.Protected;
-    using Newtonsoft.Json.Linq;
     using Stripe;
     using Xunit;
 
@@ -30,15 +30,17 @@ namespace StripeTests
 
             var payload = headers.GetValues("X-Stripe-Client-Telemetry").First();
 
-            var deserialized = JToken.Parse(payload);
-            var requestId = (string)deserialized["last_request_metrics"]["request_id"];
-            var duration = (long)deserialized["last_request_metrics"]["request_duration_ms"];
-            var usageRaw = deserialized["last_request_metrics"]["usage"];
+            using var doc = JsonDocument.Parse(payload);
+            var metrics = doc.RootElement.GetProperty("last_request_metrics");
+            var requestId = metrics.GetProperty("request_id").GetString();
+            var duration = metrics.GetProperty("request_duration_ms").GetInt64();
 
             List<string> usage = null;
-            if (usageRaw != null)
+            if (metrics.TryGetProperty("usage", out var usageRaw))
             {
-                usage = usageRaw.Select(x => (string)x).ToList();
+                usage = usageRaw.ValueKind == JsonValueKind.Null
+                    ? new List<string>()
+                    : usageRaw.EnumerateArray().Select(x => x.GetString()).ToList();
             }
 
             return requestIdMatcher(requestId) && durationMatcher(duration) && usageMatcher(usage);

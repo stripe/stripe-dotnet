@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class TokenPiiOptions : INestedOptions
     {
         /// <summary>
         /// The <c>id_number</c> for the PII, in string form.
         /// </summary>
         [JsonProperty("id_number")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_number")]
-#endif
         public string IdNumber { get; set; }
     }
 }

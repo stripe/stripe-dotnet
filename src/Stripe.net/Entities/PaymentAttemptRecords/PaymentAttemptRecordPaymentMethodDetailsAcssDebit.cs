@@ -2,28 +2,24 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentAttemptRecordPaymentMethodDetailsAcssDebit : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsAcssDebit>
     {
         /// <summary>
         /// Name of the bank associated with the bank account.
         /// </summary>
         [JsonProperty("bank_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_name")]
-#endif
         public string BankName { get; set; }
 
         /// <summary>
         /// Estimated date to debit the customer's bank account. A date string in YYYY-MM-DD format.
         /// </summary>
         [JsonProperty("expected_debit_date")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expected_debit_date")]
-#endif
         public string ExpectedDebitDate { get; set; }
 
         /// <summary>
@@ -31,45 +27,35 @@ namespace Stripe
         /// whether two bank accounts are the same.
         /// </summary>
         [JsonProperty("fingerprint")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fingerprint")]
-#endif
         public string Fingerprint { get; set; }
 
         /// <summary>
         /// Institution number of the bank account.
         /// </summary>
         [JsonProperty("institution_number")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("institution_number")]
-#endif
         public string InstitutionNumber { get; set; }
 
         /// <summary>
         /// Last four digits of the bank account number.
         /// </summary>
         [JsonProperty("last4")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last4")]
-#endif
         public string Last4 { get; set; }
 
         /// <summary>
         /// ID of the mandate used to make this payment.
         /// </summary>
         [JsonProperty("mandate")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate")]
-#endif
         public string Mandate { get; set; }
 
         /// <summary>
         /// Transit number of the bank account.
         /// </summary>
         [JsonProperty("transit_number")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transit_number")]
-#endif
         public string TransitNumber { get; set; }
     }
 }

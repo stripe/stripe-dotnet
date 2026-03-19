@@ -3,19 +3,17 @@ namespace Stripe.Tax
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class RegistrationCountryOptionsUsStateSalesTax : StripeEntity<RegistrationCountryOptionsUsStateSalesTax>
     {
         /// <summary>
         /// Elections for the state sales tax registration.
         /// </summary>
         [JsonProperty("elections")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("elections")]
-#endif
         public List<RegistrationCountryOptionsUsStateSalesTaxElection> Elections { get; set; }
     }
 }

@@ -56,7 +56,7 @@ namespace Stripe
         ///
         /// <p>Any pending invoice items that you’ve created are still charged at the end of the
         /// period, unless manually <a
-        /// href="https://stripe.com/docs/api#delete_invoiceitem">deleted</a>. If you’ve set the
+        /// href="https://stripe.com/api/invoiceitems/delete">deleted</a>. If you’ve set the
         /// subscription to cancel at the end of the period, any pending prorations are also left in
         /// place and collected at the end of the period. But if the subscription is set to cancel
         /// immediately, pending prorations are removed if <c>invoice_now</c> and <c>prorate</c> are
@@ -81,7 +81,7 @@ namespace Stripe
         ///
         /// <p>Any pending invoice items that you’ve created are still charged at the end of the
         /// period, unless manually <a
-        /// href="https://stripe.com/docs/api#delete_invoiceitem">deleted</a>. If you’ve set the
+        /// href="https://stripe.com/api/invoiceitems/delete">deleted</a>. If you’ve set the
         /// subscription to cancel at the end of the period, any pending prorations are also left in
         /// place and collected at the end of the period. But if the subscription is set to cancel
         /// immediately, pending prorations are removed if <c>invoice_now</c> and <c>prorate</c> are

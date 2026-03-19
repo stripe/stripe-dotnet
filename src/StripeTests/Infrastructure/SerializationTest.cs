@@ -1,7 +1,7 @@
 namespace StripeTests
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe;
     using StripeTests.Infrastructure.TestData;
     using Xunit;
@@ -18,7 +18,7 @@ namespace StripeTests
                 Date = roundedDate,
             };
 
-            var reloaded = JsonConvert.DeserializeObject<TestObjectDateTime>(JsonConvert.SerializeObject(obj));
+            var reloaded = JsonSerializer.Deserialize<TestObjectDateTime>(JsonSerializer.Serialize(obj));
             Assert.Equal(reloaded.Date, obj.Date);
         }
 
@@ -30,27 +30,30 @@ namespace StripeTests
                 Date = null,
             };
 
-            var reloaded = JsonConvert.DeserializeObject<TestObjectDateTime>(JsonConvert.SerializeObject(obj));
+            var reloaded = JsonSerializer.Deserialize<TestObjectDateTime>(JsonSerializer.Serialize(obj));
             Assert.Null(reloaded.Date);
         }
 
         [Fact]
         public void Serialize()
         {
+            var opts = StripeConfiguration.SerializerOptions;
+            var indentedOpts = StripeConfiguration.IndentedSerializerOptions;
+
             var json = GetResourceAsString("api_fixtures.events.customer_updated.json");
-            var evt = JsonConvert.DeserializeObject<Event>(json);
-            var serialized = JsonConvert.SerializeObject(evt, Formatting.Indented);
-            var reserialized = JsonConvert.SerializeObject(
-                JsonConvert.DeserializeObject<Event>(serialized),
-                Formatting.Indented);
+            var evt = JsonSerializer.Deserialize<Event>(json, opts);
+            var serialized = JsonSerializer.Serialize(evt, indentedOpts);
+            var reserialized = JsonSerializer.Serialize(
+                JsonSerializer.Deserialize<Event>(serialized, opts),
+                indentedOpts);
             Assert.Equal(serialized, reserialized);
 
             json = GetResourceAsString("api_fixtures.customer_with_expansions.json");
-            var customer = JsonConvert.DeserializeObject<Customer>(json);
-            serialized = JsonConvert.SerializeObject(customer, Formatting.Indented);
-            reserialized = JsonConvert.SerializeObject(
-                JsonConvert.DeserializeObject<Customer>(serialized),
-                Formatting.Indented);
+            var customer = JsonSerializer.Deserialize<Customer>(json, opts);
+            serialized = JsonSerializer.Serialize(customer, indentedOpts);
+            reserialized = JsonSerializer.Serialize(
+                JsonSerializer.Deserialize<Customer>(serialized, opts),
+                indentedOpts);
             Assert.Equal(serialized, reserialized);
         }
     }

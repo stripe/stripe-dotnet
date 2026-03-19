@@ -4,10 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionItemDeleteOptions : BaseOptions
     {
         /// <summary>
@@ -15,9 +14,7 @@ namespace Stripe
         /// <c>usage_type</c> is <c>metered</c>.
         /// </summary>
         [JsonProperty("clear_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("clear_usage")]
-#endif
         public bool? ClearUsage { get; set; }
 
         /// <summary>
@@ -52,9 +49,7 @@ namespace Stripe
         /// or <c>pending_if_incomplete</c>.
         /// </summary>
         [JsonProperty("payment_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_behavior")]
-#endif
         public string PaymentBehavior { get; set; }
 
         /// <summary>
@@ -66,22 +61,18 @@ namespace Stripe
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_behavior")]
-#endif
         public string ProrationBehavior { get; set; }
 
         /// <summary>
         /// If set, the proration will be calculated as though the subscription was updated at the
         /// given time. This can be used to apply the same proration that was previewed with the <a
-        /// href="https://api.stripe.com#retrieve_customer_invoice">upcoming invoice</a> endpoint.
+        /// href="https://stripe.com/api/invoices/create_preview">upcoming invoice</a> endpoint.
         /// </summary>
         [JsonProperty("proration_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? ProrationDate { get; set; }
     }
 }

@@ -4,19 +4,16 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class TaxRateListOptions : ListOptions
     {
         /// <summary>
         /// Optional flag to filter by tax rates that are either active or inactive (archived).
         /// </summary>
         [JsonProperty("active")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("active")]
-#endif
         public bool? Active { get; set; }
 
         /// <summary>
@@ -24,10 +21,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
@@ -35,9 +30,7 @@ namespace Stripe
         /// inclusive).
         /// </summary>
         [JsonProperty("inclusive")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inclusive")]
-#endif
         public bool? Inclusive { get; set; }
     }
 }

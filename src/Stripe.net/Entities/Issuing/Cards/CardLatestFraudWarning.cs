@@ -4,10 +4,9 @@ namespace Stripe.Issuing
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CardLatestFraudWarning : StripeEntity<CardLatestFraudWarning>
     {
         /// <summary>
@@ -15,10 +14,8 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("started_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("started_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? StartedAt { get; set; }
 
         /// <summary>
@@ -29,9 +26,7 @@ namespace Stripe.Issuing
         /// <c>third_party_reported</c>, or <c>user_indicated_fraud</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

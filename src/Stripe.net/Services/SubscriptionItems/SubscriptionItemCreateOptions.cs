@@ -5,10 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionItemCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -16,9 +15,7 @@ namespace Stripe
         /// new billing period. Pass an empty string to remove previously-defined thresholds.
         /// </summary>
         [JsonProperty("billing_thresholds")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_thresholds")]
-#endif
         public SubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
@@ -34,9 +31,7 @@ namespace Stripe
         /// The coupons to redeem into discounts for the subscription item.
         /// </summary>
         [JsonProperty("discounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
-#endif
         public List<SubscriptionItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -46,9 +41,7 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -83,27 +76,21 @@ namespace Stripe
         /// or <c>pending_if_incomplete</c>.
         /// </summary>
         [JsonProperty("payment_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_behavior")]
-#endif
         public string PaymentBehavior { get; set; }
 
         /// <summary>
         /// The identifier of the plan to add to the subscription.
         /// </summary>
         [JsonProperty("plan")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("plan")]
-#endif
         public string Plan { get; set; }
 
         /// <summary>
         /// The ID of the price object.
         /// </summary>
         [JsonProperty("price")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price")]
-#endif
         public string Price { get; set; }
 
         /// <summary>
@@ -111,9 +98,7 @@ namespace Stripe
         /// object inline.
         /// </summary>
         [JsonProperty("price_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price_data")]
-#endif
         public SubscriptionItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
@@ -125,40 +110,32 @@ namespace Stripe
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_behavior")]
-#endif
         public string ProrationBehavior { get; set; }
 
         /// <summary>
         /// If set, the proration will be calculated as though the subscription was updated at the
         /// given time. This can be used to apply the same proration that was previewed with the <a
-        /// href="https://api.stripe.com#retrieve_customer_invoice">upcoming invoice</a> endpoint.
+        /// href="https://stripe.com/api/invoices/create_preview">upcoming invoice</a> endpoint.
         /// </summary>
         [JsonProperty("proration_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? ProrationDate { get; set; }
 
         /// <summary>
         /// The quantity you'd like to apply to the subscription item you're creating.
         /// </summary>
         [JsonProperty("quantity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
-#endif
         public long? Quantity { get; set; }
 
         /// <summary>
         /// The identifier of the subscription to modify.
         /// </summary>
         [JsonProperty("subscription")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription")]
-#endif
         public string Subscription { get; set; }
 
         /// <summary>
@@ -169,9 +146,7 @@ namespace Stripe
         /// tax rates.
         /// </summary>
         [JsonProperty("tax_rates")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rates")]
-#endif
         public List<string> TaxRates { get; set; }
 
         /// <summary>

@@ -1,9 +1,7 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SubscriptionSchedulePhasePlanPriceDataRecurringOptions : INestedOptions
     {
@@ -13,9 +11,7 @@ namespace Stripe
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
         /// </summary>
         [JsonProperty("interval")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval")]
-#endif
         public string Interval { get; set; }
 
         /// <summary>
@@ -24,9 +20,7 @@ namespace Stripe
         /// year interval allowed (1 year, 12 months, or 52 weeks).
         /// </summary>
         [JsonProperty("interval_count")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval_count")]
-#endif
         public long? IntervalCount { get; set; }
     }
 }

@@ -3,11 +3,11 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
-    public class CreditNotePreviewLinesLineOptions : INestedOptions
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
+    public class CreditNotePreviewLinesLineOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// The line item amount to credit. Only valid when <c>type</c> is <c>invoice_line_item</c>.
@@ -15,9 +15,7 @@ namespace Stripe
         /// exclusive.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe
         /// <c>custom_line_item</c>.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -35,18 +31,24 @@ namespace Stripe
         /// <c>invoice_line_item</c>.
         /// </summary>
         [JsonProperty("invoice_line_item")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_line_item")]
-#endif
         public string InvoiceLineItem { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format. Individual keys can be unset by posting an empty value to
+        /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
+        /// </summary>
+        [JsonProperty("metadata")]
+        [STJS.JsonPropertyName("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The line item quantity to credit.
         /// </summary>
         [JsonProperty("quantity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
-#endif
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -55,9 +57,7 @@ namespace Stripe
         /// <c>automatic_tax[enabled]=true</c>.
         /// </summary>
         [JsonProperty("tax_amounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_amounts")]
-#endif
         public List<CreditNotePreviewLinesLineTaxAmountOptions> TaxAmounts { get; set; }
 
         /// <summary>
@@ -65,9 +65,7 @@ namespace Stripe
         /// is <c>custom_line_item</c> and <c>tax_amounts</c> is not used.
         /// </summary>
         [JsonProperty("tax_rates")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rates")]
-#endif
         public List<string> TaxRates { get; set; }
 
         /// <summary>
@@ -77,9 +75,7 @@ namespace Stripe
         /// One of: <c>custom_line_item</c>, or <c>invoice_line_item</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
@@ -88,9 +84,7 @@ namespace Stripe
         /// credit for this line item. Only valid when <c>type</c> is <c>custom_line_item</c>.
         /// </summary>
         [JsonProperty("unit_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_amount")]
-#endif
         public long? UnitAmount { get; set; }
 
         /// <summary>
@@ -99,9 +93,9 @@ namespace Stripe
         /// <c>unit_amount_decimal</c> can be set.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
-#if NET6_0_OR_GREATER
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("unit_amount_decimal")]
-#endif
         public decimal? UnitAmountDecimal { get; set; }
     }
 }

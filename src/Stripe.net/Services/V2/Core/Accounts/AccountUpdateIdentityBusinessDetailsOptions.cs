@@ -3,28 +3,24 @@ namespace Stripe.V2.Core
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountUpdateIdentityBusinessDetailsOptions : INestedOptions
     {
         /// <summary>
         /// The business registration address of the business entity.
         /// </summary>
         [JsonProperty("address")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
-#endif
         public AddressJapanOptions Address { get; set; }
 
         /// <summary>
         /// The business gross annual revenue for its preceding fiscal year.
         /// </summary>
         [JsonProperty("annual_revenue")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("annual_revenue")]
-#endif
         public AccountUpdateIdentityBusinessDetailsAnnualRevenueOptions AnnualRevenue { get; set; }
 
         /// <summary>
@@ -41,9 +37,7 @@ namespace Stripe.V2.Core
         /// A document verifying the business.
         /// </summary>
         [JsonProperty("documents")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("documents")]
-#endif
         public AccountUpdateIdentityBusinessDetailsDocumentsOptions Documents { get; set; }
 
         /// <summary>
@@ -51,72 +45,56 @@ namespace Stripe.V2.Core
         /// employees, contractors, and vendors).
         /// </summary>
         [JsonProperty("estimated_worker_count")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("estimated_worker_count")]
-#endif
         public long? EstimatedWorkerCount { get; set; }
 
         /// <summary>
         /// The ID numbers of a business entity.
         /// </summary>
         [JsonProperty("id_numbers")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_numbers")]
-#endif
         public List<AccountUpdateIdentityBusinessDetailsIdNumberOptions> IdNumbers { get; set; }
 
         /// <summary>
         /// An estimate of the monthly revenue of the business.
         /// </summary>
         [JsonProperty("monthly_estimated_revenue")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("monthly_estimated_revenue")]
-#endif
         public AccountUpdateIdentityBusinessDetailsMonthlyEstimatedRevenueOptions MonthlyEstimatedRevenue { get; set; }
 
         /// <summary>
         /// The phone number of the Business Entity.
         /// </summary>
         [JsonProperty("phone")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone")]
-#endif
         public string Phone { get; set; }
 
         /// <summary>
         /// The business legal name.
         /// </summary>
         [JsonProperty("registered_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("registered_name")]
-#endif
         public string RegisteredName { get; set; }
 
         /// <summary>
         /// When the business was incorporated or registered.
         /// </summary>
         [JsonProperty("registration_date")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("registration_date")]
-#endif
         public AccountUpdateIdentityBusinessDetailsRegistrationDateOptions RegistrationDate { get; set; }
 
         /// <summary>
         /// The business registration address of the business entity in non latin script.
         /// </summary>
         [JsonProperty("script_addresses")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("script_addresses")]
-#endif
         public AccountUpdateIdentityBusinessDetailsScriptAddressesOptions ScriptAddresses { get; set; }
 
         /// <summary>
         /// The business legal name in non latin script.
         /// </summary>
         [JsonProperty("script_names")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("script_names")]
-#endif
         public AccountUpdateIdentityBusinessDetailsScriptNamesOptions ScriptNames { get; set; }
 
         /// <summary>
@@ -134,9 +112,7 @@ namespace Stripe.V2.Core
         /// <c>unincorporated_partnership</c>.
         /// </summary>
         [JsonProperty("structure")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("structure")]
-#endif
         public string Structure { get; set; }
     }
 }

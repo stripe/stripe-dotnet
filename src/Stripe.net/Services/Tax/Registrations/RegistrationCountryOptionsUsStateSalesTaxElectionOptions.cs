@@ -2,10 +2,10 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class RegistrationCountryOptionsUsStateSalesTaxElectionOptions : INestedOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Tax
         /// County) and <c>60000</c> (Philadelphia City).
         /// </summary>
         [JsonProperty("jurisdiction")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("jurisdiction")]
-#endif
         public string Jurisdiction { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe.Tax
         /// <c>single_local_use_tax</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

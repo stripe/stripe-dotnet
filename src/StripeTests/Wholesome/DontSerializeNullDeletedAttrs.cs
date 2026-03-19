@@ -7,9 +7,7 @@ namespace StripeTests.Wholesome
     using Newtonsoft.Json;
     using Stripe;
     using Xunit;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// This test checks that <see cref="Stripe.StripeEntity" /> subclasses that have a
@@ -54,7 +52,6 @@ namespace StripeTests.Wholesome
 
                     // Check that NullValueHanding is set to Ignore
                     bool hasNullValueHandling = attribute.NullValueHandling == NullValueHandling.Ignore;
-#if NET6_0_OR_GREATER
                     if (!skipTheseClasses.Contains(entityClass.FullName))
                     {
                         // This feature is implemented as part of JsonIgnore in STJ; make sure
@@ -64,7 +61,6 @@ namespace StripeTests.Wholesome
                             hasNullValueHandling = false;
                         }
                     }
-#endif
 
                     if (!hasNullValueHandling)
                     {

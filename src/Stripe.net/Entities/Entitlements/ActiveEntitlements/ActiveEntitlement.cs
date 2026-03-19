@@ -3,34 +3,26 @@ namespace Stripe.Entitlements
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// An active entitlement describes access to a feature for a customer.
     /// </summary>
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ActiveEntitlement : StripeEntity<ActiveEntitlement>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         #region Expandable Feature
@@ -41,9 +33,7 @@ namespace Stripe.Entitlements
         /// customer is entitled to.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string FeatureId
         {
             get => this.InternalFeature?.Id;
@@ -58,9 +48,7 @@ namespace Stripe.Entitlements
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Feature Feature
         {
             get => this.InternalFeature?.ExpandedObject;
@@ -69,30 +57,24 @@ namespace Stripe.Entitlements
 
         [JsonProperty("feature")]
         [JsonConverter(typeof(ExpandableFieldConverter<Feature>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("feature")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Feature>))]
-#endif
         internal ExpandableField<Feature> InternalFeature { get; set; }
         #endregion
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
         /// A unique key you provide as your own system identifier. This may be up to 80 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_key")]
-#endif
         public string LookupKey { get; set; }
     }
 }

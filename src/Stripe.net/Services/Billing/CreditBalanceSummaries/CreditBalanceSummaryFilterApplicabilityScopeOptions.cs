@@ -3,10 +3,10 @@ namespace Stripe.Billing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CreditBalanceSummaryFilterApplicabilityScopeOptions : INestedOptions
     {
         /// <summary>
@@ -25,9 +25,7 @@ namespace Stripe.Billing
         /// <c>metered</c> price type. Cannot be used in combination with <c>prices</c>.
         /// </summary>
         [JsonProperty("price_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price_type")]
-#endif
         public string PriceType { get; set; }
 
         /// <summary>
@@ -35,9 +33,7 @@ namespace Stripe.Billing
         /// <c>metered</c> prices. Cannot be used in combination with <c>price_type</c>.
         /// </summary>
         [JsonProperty("prices")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prices")]
-#endif
         public List<CreditBalanceSummaryFilterApplicabilityScopePriceOptions> Prices { get; set; }
     }
 }

@@ -4,9 +4,8 @@ namespace Stripe.Events
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     public class V2CoreAccountLinkReturnedEventData : StripeEntity<V2CoreAccountLinkReturnedEventData>
     {
@@ -14,9 +13,7 @@ namespace Stripe.Events
         /// The ID of the v2 account.
         /// </summary>
         [JsonProperty("account_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_id")]
-#endif
         public string AccountId { get; set; }
 
         /// <summary>
@@ -24,9 +21,7 @@ namespace Stripe.Events
         /// One of: <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or <c>storer</c>.
         /// </summary>
         [JsonProperty("configurations")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("configurations")]
-#endif
         public List<string> Configurations { get; set; }
 
         /// <summary>
@@ -34,9 +29,7 @@ namespace Stripe.Events
         /// One of: <c>account_onboarding</c>, or <c>account_update</c>.
         /// </summary>
         [JsonProperty("use_case")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("use_case")]
-#endif
         public string UseCase { get; set; }
     }
 }

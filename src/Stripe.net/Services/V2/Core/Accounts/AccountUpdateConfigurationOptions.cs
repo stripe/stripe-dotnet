@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountUpdateConfigurationOptions : INestedOptions
     {
         /// <summary>
@@ -21,9 +21,7 @@ namespace Stripe.V2.Core
         /// The Customer Configuration allows the Account to be charged.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public AccountUpdateConfigurationCustomerOptions Customer { get; set; }
 
         /// <summary>
@@ -34,9 +32,7 @@ namespace Stripe.V2.Core
         /// on_behalf_of set.
         /// </summary>
         [JsonProperty("merchant")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("merchant")]
-#endif
         public AccountUpdateConfigurationMerchantOptions Merchant { get; set; }
 
         /// <summary>
@@ -45,9 +41,7 @@ namespace Stripe.V2.Core
         /// Charges &amp; Transfers, or Destination Charges without on_behalf_of set.
         /// </summary>
         [JsonProperty("recipient")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recipient")]
-#endif
         public AccountUpdateConfigurationRecipientOptions Recipient { get; set; }
 
         /// <summary>

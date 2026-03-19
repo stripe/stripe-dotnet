@@ -2,19 +2,17 @@
 namespace Stripe.Terminal
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReaderActionSetReaderDisplay : StripeEntity<ReaderActionSetReaderDisplay>
     {
         /// <summary>
         /// Cart object to be displayed by the reader, including line items, amounts, and currency.
         /// </summary>
         [JsonProperty("cart")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cart")]
-#endif
         public ReaderActionSetReaderDisplayCart Cart { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe.Terminal
         /// supported.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

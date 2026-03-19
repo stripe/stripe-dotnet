@@ -2,32 +2,28 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class TransactionShippingCostOptions : INestedOptions
     {
         /// <summary>
         /// The amount to reverse, in the <a
-        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a> in
+        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a> in
         /// negative.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
         /// The amount of tax to reverse, in the <a
-        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a> in
+        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a> in
         /// negative.
         /// </summary>
         [JsonProperty("amount_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_tax")]
-#endif
         public long? AmountTax { get; set; }
     }
 }

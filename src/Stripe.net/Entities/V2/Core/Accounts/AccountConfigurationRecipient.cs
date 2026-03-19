@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountConfigurationRecipient : StripeEntity<AccountConfigurationRecipient>
     {
         /// <summary>
@@ -15,18 +15,14 @@ namespace Stripe.V2.Core
         /// configuration. It will not delete any of the configuration's other properties.
         /// </summary>
         [JsonProperty("applied")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("applied")]
-#endif
         public bool Applied { get; set; }
 
         /// <summary>
         /// Capabilities that have been requested on the Recipient Configuration.
         /// </summary>
         [JsonProperty("capabilities")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capabilities")]
-#endif
         public AccountConfigurationRecipientCapabilities Capabilities { get; set; }
 
         /// <summary>

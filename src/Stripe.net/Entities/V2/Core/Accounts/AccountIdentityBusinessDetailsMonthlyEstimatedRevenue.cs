@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountIdentityBusinessDetailsMonthlyEstimatedRevenue : StripeEntity<AccountIdentityBusinessDetailsMonthlyEstimatedRevenue>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Core
         /// USD).
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
-        public AccountIdentityBusinessDetailsMonthlyEstimatedRevenueAmount Amount { get; set; }
+        public V2.Amount Amount { get; set; }
     }
 }

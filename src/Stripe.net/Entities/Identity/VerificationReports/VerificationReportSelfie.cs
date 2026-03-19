@@ -5,7 +5,6 @@ namespace Stripe.Identity
     using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
 #if NET6_0_OR_GREATER
     [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
@@ -60,18 +59,14 @@ namespace Stripe.Identity
         /// identity document used in this check.
         /// </summary>
         [JsonProperty("document")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("document")]
-#endif
         public string Document { get; set; }
 
         /// <summary>
         /// Details on the verification error. Present when status is <c>unverified</c>.
         /// </summary>
         [JsonProperty("error")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("error")]
-#endif
         public VerificationReportSelfieError Error { get; set; }
 
         /// <summary>
@@ -79,9 +74,7 @@ namespace Stripe.Identity
         /// selfie used in this check.
         /// </summary>
         [JsonProperty("selfie")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("selfie")]
-#endif
         public string Selfie { get; set; }
 
         /// <summary>
@@ -89,9 +82,7 @@ namespace Stripe.Identity
         /// One of: <c>unverified</c>, or <c>verified</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

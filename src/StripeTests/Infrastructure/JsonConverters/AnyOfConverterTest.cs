@@ -59,7 +59,7 @@ namespace StripeTests
             };
 
             var expected = "{\n  \"any_of\": \"String!\"\n}";
-            Assert.Equal(expected, obj.ToJson().Replace("\r\n", "\n"));
+            Assert.Equal(expected, JsonUtils.SerializeObject(obj, Formatting.Indented).Replace("\r\n", "\n"));
         }
 
         [Fact]
@@ -76,7 +76,7 @@ namespace StripeTests
 
             var expected =
                 "{\n  \"any_of\": {\n    \"id\": \"id_123\",\n    \"bar\": 42\n  }\n}";
-            Assert.Equal(expected, obj.ToJson().Replace("\r\n", "\n"));
+            Assert.Equal(expected, JsonUtils.SerializeObject(obj, Formatting.Indented).Replace("\r\n", "\n"));
         }
 
         [Fact]
@@ -88,7 +88,7 @@ namespace StripeTests
             };
 
             var expected = "{\n  \"any_of\": null\n}";
-            Assert.Equal(expected, obj.ToJson().Replace("\r\n", "\n"));
+            Assert.Equal(expected, JsonUtils.SerializeObject(obj, Formatting.Indented).Replace("\r\n", "\n"));
         }
 
         private class TestSubObject : StripeEntity<TestSubObject>, IHasId

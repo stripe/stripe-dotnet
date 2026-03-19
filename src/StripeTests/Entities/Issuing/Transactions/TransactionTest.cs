@@ -1,6 +1,6 @@
 namespace StripeTests.Issuing
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe.Issuing;
     using Xunit;
 
@@ -15,7 +15,7 @@ namespace StripeTests.Issuing
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/issuing/transactions/ipi_123");
-            var transaction = JsonConvert.DeserializeObject<Transaction>(json);
+            var transaction = JsonSerializer.Deserialize<Transaction>(json);
             Assert.NotNull(transaction);
             Assert.IsType<Transaction>(transaction);
             Assert.NotNull(transaction.Id);

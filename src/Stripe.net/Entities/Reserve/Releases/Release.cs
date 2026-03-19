@@ -5,34 +5,26 @@ namespace Stripe.Reserve
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// ReserveReleases represent the release of funds from a ReserveHold.
     /// </summary>
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Release : StripeEntity<Release>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -40,9 +32,7 @@ namespace Stripe.Reserve
         /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         /// <summary>
@@ -50,10 +40,8 @@ namespace Stripe.Reserve
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -61,9 +49,7 @@ namespace Stripe.Reserve
         /// One of: <c>application</c>, or <c>stripe</c>.
         /// </summary>
         [JsonProperty("created_by")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created_by")]
-#endif
         public string CreatedBy { get; set; }
 
         /// <summary>
@@ -72,19 +58,15 @@ namespace Stripe.Reserve
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -93,9 +75,7 @@ namespace Stripe.Reserve
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -104,9 +84,7 @@ namespace Stripe.Reserve
         /// <c>plan_disabled</c>.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
-#endif
         public string Reason { get; set; }
 
         /// <summary>
@@ -114,10 +92,8 @@ namespace Stripe.Reserve
         /// </summary>
         [JsonProperty("released_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("released_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime ReleasedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         #region Expandable ReserveHold
@@ -127,9 +103,7 @@ namespace Stripe.Reserve
         /// The ReserveHold this ReserveRelease is associated with.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string ReserveHoldId
         {
             get => this.InternalReserveHold?.Id;
@@ -143,9 +117,7 @@ namespace Stripe.Reserve
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Hold ReserveHold
         {
             get => this.InternalReserveHold?.ExpandedObject;
@@ -154,10 +126,8 @@ namespace Stripe.Reserve
 
         [JsonProperty("reserve_hold")]
         [JsonConverter(typeof(ExpandableFieldConverter<Hold>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reserve_hold")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Hold>))]
-#endif
         internal ExpandableField<Hold> InternalReserveHold { get; set; }
         #endregion
 
@@ -170,9 +140,7 @@ namespace Stripe.Reserve
         /// ReservedHold expiry.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string ReservePlanId
         {
             get => this.InternalReservePlan?.Id;
@@ -188,9 +156,7 @@ namespace Stripe.Reserve
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Plan ReservePlan
         {
             get => this.InternalReservePlan?.ExpandedObject;
@@ -199,17 +165,13 @@ namespace Stripe.Reserve
 
         [JsonProperty("reserve_plan")]
         [JsonConverter(typeof(ExpandableFieldConverter<Plan>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reserve_plan")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Plan>))]
-#endif
         internal ExpandableField<Plan> InternalReservePlan { get; set; }
         #endregion
 
         [JsonProperty("source_transaction")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source_transaction")]
-#endif
         public ReleaseSourceTransaction SourceTransaction { get; set; }
     }
 }

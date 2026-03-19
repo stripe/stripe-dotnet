@@ -2,10 +2,10 @@
 namespace Stripe.TestHelpers.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AuthorizationFuelOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.TestHelpers.Issuing
         /// Payment System Product Code</a> identifying the primary fuel product purchased.
         /// </summary>
         [JsonProperty("industry_product_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("industry_product_code")]
-#endif
         public string IndustryProductCode { get; set; }
 
         /// <summary>
@@ -23,9 +21,9 @@ namespace Stripe.TestHelpers.Issuing
         /// with at most 12 decimal places.
         /// </summary>
         [JsonProperty("quantity_decimal")]
-#if NET6_0_OR_GREATER
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("quantity_decimal")]
-#endif
         public decimal? QuantityDecimal { get; set; }
 
         /// <summary>
@@ -35,9 +33,7 @@ namespace Stripe.TestHelpers.Issuing
         /// <c>unleaded_super</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
@@ -48,9 +44,7 @@ namespace Stripe.TestHelpers.Issuing
         /// <c>kilowatt_hour</c>, <c>liter</c>, <c>other</c>, <c>pound</c>, or <c>us_gallon</c>.
         /// </summary>
         [JsonProperty("unit")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit")]
-#endif
         public string Unit { get; set; }
 
         /// <summary>
@@ -58,9 +52,9 @@ namespace Stripe.TestHelpers.Issuing
         /// decimal places.
         /// </summary>
         [JsonProperty("unit_cost_decimal")]
-#if NET6_0_OR_GREATER
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("unit_cost_decimal")]
-#endif
         public decimal? UnitCostDecimal { get; set; }
     }
 }

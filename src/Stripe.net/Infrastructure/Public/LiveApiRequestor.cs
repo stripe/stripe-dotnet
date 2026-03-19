@@ -6,10 +6,10 @@ namespace Stripe
     using System.Linq;
     using System.Net;
     using System.Net.Http;
+    using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
     using Stripe.Infrastructure;
 
     /// <summary>Primary implementation of the ApiRequestor abstract class.</summary>
@@ -44,7 +44,9 @@ namespace Stripe
             this.FilesBase = options.FilesBase ?? DefaultFilesBase;
             this.MeterEventsBase = options.MeterEventsBase ?? DefaultMeterEventsBase;
             this.defaultUsage = defaultUsage ?? new List<string>();
+#pragma warning disable CS0618 // Type or member is obsolete
             this.jsonSerializerSettings = StripeConfiguration.DefaultSerializerSettings(this);
+#pragma warning restore CS0618 // Type or member is obsolete
         }
 
         /// <summary>Default base URL for Stripe's API.</summary>
@@ -140,65 +142,6 @@ namespace Stripe
             return new SystemNetHttpClient();
         }
 
-        private static StripeException BuildV2StripeException(StripeResponse response)
-        {
-            JObject jObject = null;
-
-            try
-            {
-                jObject = JObject.Parse(response.Content);
-            }
-            catch (Newtonsoft.Json.JsonException)
-            {
-                return BuildInvalidResponseException(response);
-            }
-
-            JToken error = (JToken)jObject["error"];
-            string type = (string)error["type"];
-            return StripeException.ParseV2Exception(
-                    type,
-                    response,
-                    error) ?? BuildStripeException(response);
-        }
-
-        private static StripeException BuildStripeException(StripeResponse response)
-        {
-            JObject jObject = null;
-
-            try
-            {
-                jObject = JObject.Parse(response.Content);
-            }
-            catch (Newtonsoft.Json.JsonException)
-            {
-                return BuildInvalidResponseException(response);
-            }
-
-            // If the value of the `error` key is a string, then the error is an OAuth error
-            // and we instantiate the StripeError object with the entire JSON.
-            // Otherwise, it's a regular API error and we instantiate the StripeError object
-            // with just the nested hash contained in the `error` key.
-            var errorToken = jObject["error"];
-            if (errorToken == null)
-            {
-                return BuildInvalidResponseException(response);
-            }
-
-            var stripeError = errorToken.Type == JTokenType.String
-                ? StripeError.FromJson(response.Content)
-                : StripeError.FromJson(errorToken.ToString());
-
-            stripeError.StripeResponse = response;
-
-            return new StripeException(
-                response.StatusCode,
-                stripeError,
-                stripeError.Message ?? stripeError.ErrorDescription)
-            {
-                StripeResponse = response,
-            };
-        }
-
         private static StripeException BuildInvalidResponseException(StripeResponse response)
         {
             return new StripeException(
@@ -208,6 +151,78 @@ namespace Stripe
             {
                 StripeResponse = response,
             };
+        }
+
+        private static StripeException BuildStripeException(StripeResponse response)
+        {
+            JsonDocument document;
+            try
+            {
+                document = JsonDocument.Parse(response.Content);
+            }
+            catch (System.Text.Json.JsonException)
+            {
+                return BuildInvalidResponseException(response);
+            }
+
+            using (document)
+            {
+                var root = document.RootElement;
+
+                // If the value of the `error` key is a string, then the error is an OAuth error
+                // and we instantiate the StripeError object with the entire JSON.
+                // Otherwise, it's a regular API error and we instantiate the StripeError object
+                // with just the nested hash contained in the `error` key.
+                if (!root.TryGetProperty("error", out var errorElement))
+                {
+                    return BuildInvalidResponseException(response);
+                }
+
+                var stripeError = errorElement.ValueKind == JsonValueKind.String
+                    ? StripeError.FromJson(response.Content)
+                    : StripeError.FromJson(errorElement);
+
+                stripeError.StripeResponse = response;
+
+                return new StripeException(
+                    response.StatusCode,
+                    stripeError,
+                    stripeError.Message ?? stripeError.ErrorDescription)
+                {
+                    StripeResponse = response,
+                };
+            }
+        }
+
+        private static StripeException BuildV2StripeException(StripeResponse response)
+        {
+            JsonDocument document;
+            try
+            {
+                document = JsonDocument.Parse(response.Content);
+            }
+            catch (System.Text.Json.JsonException)
+            {
+                return BuildInvalidResponseException(response);
+            }
+
+            using (document)
+            {
+                var root = document.RootElement;
+                if (!root.TryGetProperty("error", out var errorElement))
+                {
+                    return BuildInvalidResponseException(response);
+                }
+
+                string type = null;
+                if (errorElement.TryGetProperty("type", out var typeElement))
+                {
+                    type = typeElement.GetString();
+                }
+
+                return StripeException.ParseV2Exception(type, response, errorElement)
+                    ?? BuildStripeException(response);
+            }
         }
 
         // Note: BaseOptions options really means query params here
@@ -262,14 +277,31 @@ namespace Stripe
             T obj;
             try
             {
-                obj = StripeEntity.FromJson<T>(response.Content, this.jsonSerializerSettings);
+                obj = System.Text.Json.JsonSerializer.Deserialize<T>(
+                    response.Content, StripeConfiguration.SerializerOptions);
             }
-            catch (Newtonsoft.Json.JsonException)
+            catch (System.Text.Json.JsonException)
             {
-                throw BuildInvalidResponseException(response);
+                throw new StripeException(
+                    response.StatusCode,
+                    null,
+                    $"Invalid response object from API: \"{response.Content}\"")
+                {
+                    StripeResponse = response,
+                };
             }
 
             obj.StripeResponse = response;
+
+            // Some deserialized types need a reference to the requestor (e.g. V2
+            // events use it to fetch related objects). Since STJ converters have no
+            // mechanism to pass ambient state during deserialization, we set it here
+            // after the fact. If a new type needs the requestor, add a check below
+            // and ensure the type exposes an internal Requestor property.
+            if (obj is V2.Core.Event v2Event)
+            {
+                v2Event.Requestor = this;
+            }
 
             return obj;
         }

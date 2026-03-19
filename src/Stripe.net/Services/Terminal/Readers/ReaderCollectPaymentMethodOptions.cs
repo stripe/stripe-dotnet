@@ -2,10 +2,10 @@
 namespace Stripe.Terminal
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ReaderCollectPaymentMethodOptions : BaseOptions
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe.Terminal
         /// cancellation settings.
         /// </summary>
         [JsonProperty("collect_config")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("collect_config")]
-#endif
         public ReaderCollectConfigOptions CollectConfig { get; set; }
 
         /// <summary>
         /// The ID of the PaymentIntent to collect a payment method for.
         /// </summary>
         [JsonProperty("payment_intent")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_intent")]
-#endif
         public string PaymentIntent { get; set; }
     }
 }

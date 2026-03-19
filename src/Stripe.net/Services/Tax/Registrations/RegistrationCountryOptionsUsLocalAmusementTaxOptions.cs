@@ -2,10 +2,10 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class RegistrationCountryOptionsUsLocalAmusementTaxOptions : INestedOptions
     {
         /// <summary>
@@ -17,9 +17,7 @@ namespace Stripe.Tax
         /// <c>64421</c> (Riverside), <c>65806</c> (Roselle), and <c>68081</c> (Schiller Park).
         /// </summary>
         [JsonProperty("jurisdiction")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("jurisdiction")]
-#endif
         public string Jurisdiction { get; set; }
     }
 }
