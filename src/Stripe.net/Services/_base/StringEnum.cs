@@ -1,5 +1,7 @@
 namespace Stripe
 {
+    using System.Text.Json.Serialization;
+
     /// <summary>
     /// Abstract base class for string enum parameters.
     /// </summary>
@@ -34,6 +36,7 @@ namespace Stripe
 
         /// <summary>Gets or sets the serialized value.</summary>
         /// <returns>The serialized value.</returns>
+        [JsonPropertyName("Value")]
         public string Value { get; protected set; }
 
         /// <summary>Returns the serialized value.</summary>

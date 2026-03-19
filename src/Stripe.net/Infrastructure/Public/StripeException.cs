@@ -2,7 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Net;
-    using Newtonsoft.Json.Linq;
+    using System.Text.Json;
 
     public class StripeException : Exception
     {
@@ -40,7 +40,7 @@ namespace Stripe
 
         public StripeResponse StripeResponse { get; set; }
 
-        internal static StripeException ParseV2Exception(string type, StripeResponse response, JToken body)
+        internal static StripeException ParseV2Exception(string type, StripeResponse response, JsonElement body)
         {
             var httpStatusCode = response.StatusCode;
             StripeException ret;

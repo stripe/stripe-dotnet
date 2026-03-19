@@ -1,4 +1,3 @@
-#if NET6_0_OR_GREATER
 namespace StripeTests.Wholesome
 {
     using System;
@@ -150,15 +149,15 @@ namespace StripeTests.Wholesome
             }
             else
             {
-                var nonpublicProperties = type.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
-                foreach (var property in nonpublicProperties)
+                if (classTarget != null && typeof(StripeEntity).IsAssignableFrom(type))
                 {
-                    if (property.GetCustomAttribute(typeof(STJS.JsonPropertyNameAttribute), false) != null)
-                    {
-                        expectedConverterType = typeof(STJMemberSerializationOptIn);
-                        attributeTarget = type;
-                        break;
-                    }
+                    expectedConverterType = typeof(STJStripeEntityConverter);
+                    attributeTarget = type;
+                }
+                else if (classTarget != null && typeof(INestedOptions).IsAssignableFrom(type))
+                {
+                    expectedConverterType = typeof(STJStripeOptionsConverter);
+                    attributeTarget = type;
                 }
             }
 
@@ -216,4 +215,3 @@ namespace StripeTests.Wholesome
         }
     }
 }
-#endif

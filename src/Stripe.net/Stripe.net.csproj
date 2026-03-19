@@ -2,14 +2,16 @@
 
   <PropertyGroup>
     <Description>Stripe.net is a sync/async client and portable class library for the Stripe API, supporting .NET Standard 2.0+, .NET Core 3.1+, and .NET Framework 4.6.1+. (Official Library)</Description>
-    <Version>50.5.0-alpha.3</Version>
+    <Version>50.5.0-alpha.4</Version>
     <LangVersion>8</LangVersion>
     <Authors>Stripe, Jayme Davis</Authors>
     <!--
       see: https://docs.stripe.com/sdks/versioning?server=dotnet#stripe-sdk-language-version-support-policy
       net* even numbers are LTS
+
+      Remember to change the justfile format recipe when we retire a version.
     -->
-    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;net9.0;netstandard2.0;net462</TargetFrameworks>
+    <TargetFrameworks>net6.0;net8.0;net9.0;netstandard2.0;net462</TargetFrameworks>
     <PackageTags>stripe;payment;credit;cards;money;gateway;paypal;braintree</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/stripe/stripe-dotnet</PackageProjectUrl>
@@ -45,16 +47,8 @@
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
-  </ItemGroup>
-
   <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
@@ -64,13 +58,17 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.0" />
+    <PackageReference Include="System.Text.Json" Version="6.0.10" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
-    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.0" />
+    <PackageReference Include="System.Text.Json" Version="6.0.10" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0" />
     <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>

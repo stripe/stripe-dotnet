@@ -1,4 +1,3 @@
-#if NET6_0_OR_GREATER
 namespace StripeTests.Wholesome
 {
     using System.Collections.Generic;
@@ -11,7 +10,8 @@ namespace StripeTests.Wholesome
 
     /// <summary>
     /// Checks that classes with non-public properties with Json attributes
-    /// have STJMemberSerializationOptIn custom converter.
+    /// have the correct STJ custom converter (STJStripeEntityConverter for
+    /// entities, STJStripeOptionsConverter for options types).
     /// </summary>
     public class CorrectJsonConvertersForTypesWithNonPublicMembers : WholesomeTest
     {
@@ -43,9 +43,13 @@ namespace StripeTests.Wholesome
                         continue;
                     }
 
-                    // Check the class attributes; JsonConverter must be specified STJMemberSerializationOptIn
+                    // Check the class attributes; JsonConverter must be STJStripeEntityConverter
+                    // for entity types or STJStripeOptionsConverter for options types
                     var jsonConverterAttribute = stripeClass.GetCustomAttribute<JsonConverterAttribute>();
-                    if (jsonConverterAttribute == null || jsonConverterAttribute.ConverterType != typeof(STJMemberSerializationOptIn))
+                    var expectedType = typeof(StripeEntity).IsAssignableFrom(stripeClass)
+                        ? typeof(STJStripeEntityConverter)
+                        : typeof(STJStripeOptionsConverter);
+                    if (jsonConverterAttribute == null || jsonConverterAttribute.ConverterType != expectedType)
                     {
                         results.Add($"{stripeClass.FullName}");
                     }
@@ -60,4 +64,3 @@ namespace StripeTests.Wholesome
         }
     }
 }
-#endif

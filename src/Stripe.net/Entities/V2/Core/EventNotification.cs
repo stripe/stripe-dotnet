@@ -7,53 +7,41 @@ namespace Stripe.V2.Core
     using System.Threading.Tasks;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// An EventNotification, which is delivered to an Event Destination to tell you that an Event has happened.
     /// </summary>
     [JsonConverter(typeof(V2EventNotificationConverter))]
-#if NET6_0_OR_GREATER
     [STJS.JsonConverter(typeof(STJV2EventNotificationConverter))]
-#endif
     public class EventNotification
     {
         /// <summary>
         /// Unique identifier for the event.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; internal set; }
 
         /// <summary>
         /// The type of the event.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; internal set; }
 
         /// <summary>
         /// Time at which the object was created.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; internal set; }
 
         /// <summary>
         /// Livemode indicates if the event is from a production(true) or test(false) account.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; internal set; }
 
 #nullable enable
@@ -61,18 +49,14 @@ namespace Stripe.V2.Core
         /// [Optional] Reason for the event.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
-#endif
         public EventNotificationReason? Reason { get; internal set; }
 
         /// <summary>
         /// [Optional] Authentication context needed to fetch the event or related object.
         /// </summary>
         [JsonProperty("context")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("context")]
-#endif
         public StripeContext? Context { get; internal set; }
 
         protected StripeClient? Client { get; set; }

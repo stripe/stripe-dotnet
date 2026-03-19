@@ -1,9 +1,7 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     public class OAuthAuthorizeUrlStripeUserOptions : INestedOptions
     {
@@ -15,9 +13,7 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("block_kana")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("block_kana")]
-#endif
         public string BlockKana { get; set; }
 
         /// <summary>
@@ -28,9 +24,7 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("block_kanji")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("block_kanji")]
-#endif
         public string BlockKanji { get; set; }
 
         /// <summary>
@@ -41,9 +35,7 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("building_kana")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("building_kana")]
-#endif
         public string BuildingKana { get; set; }
 
         /// <summary>
@@ -54,16 +46,12 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("building_kanji")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("building_kanji")]
-#endif
         public string BuildingKanji { get; set; }
 
         /// <summary>The legal name of the business, also used for the statement descriptor.</summary>
         [JsonProperty("business_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("business_name")]
-#endif
         public string BusinessName { get; set; }
 
         /// <summary>
@@ -74,9 +62,7 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("business_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("business_type")]
-#endif
         public string BusinessType { get; set; }
 
         /// <summary>
@@ -87,9 +73,7 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("city")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("city")]
-#endif
         public string City { get; set; }
 
         /// <summary>
@@ -97,9 +81,7 @@ namespace Stripe
         /// <para>Must be a country that Stripe currently supports.</para>
         /// </summary>
         [JsonProperty("country")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
-#endif
         public string Country { get; set; }
 
         /// <summary>
@@ -111,9 +93,7 @@ namespace Stripe
         /// <para>Must prefill <see cref="Country"/> with the corresponding country.</para>
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -127,9 +107,7 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("dob_day")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dob_day")]
-#endif
         public long? DobDay { get; set; }
 
         /// <summary>
@@ -143,9 +121,7 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("dob_month")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dob_month")]
-#endif
         public long? DobMonth { get; set; }
 
         /// <summary>
@@ -159,24 +135,18 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("dob_year")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dob_year")]
-#endif
         public long? DobYear { get; set; }
 
         /// <summary>The user's email address. Must be a valid email format.</summary>
         /// <remarks>Recommended.</remarks>
         [JsonProperty("email")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("email")]
-#endif
         public string Email { get; set; }
 
         /// <summary>First name of the person who will be filling out a Stripe application.</summary>
         [JsonProperty("first_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("first_name")]
-#endif
         public string FirstName { get; set; }
 
         /// <summary>
@@ -190,9 +160,7 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("first_name_kana")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("first_name_kana")]
-#endif
         public string FirstNameKana { get; set; }
 
         /// <summary>
@@ -206,9 +174,7 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("first_name_kanji")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("first_name_kanji")]
-#endif
         public string FirstNameKanji { get; set; }
 
         /// <summary>
@@ -222,16 +188,12 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("gender")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gender")]
-#endif
         public string Gender { get; set; }
 
         /// <summary>Last name of the person who will be filling out a Stripe application.</summary>
         [JsonProperty("last_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last_name")]
-#endif
         public string LastName { get; set; }
 
         /// <summary>
@@ -245,9 +207,7 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("last_name_kana")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last_name_kana")]
-#endif
         public string LastNameKana { get; set; }
 
         /// <summary>
@@ -261,9 +221,7 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("last_name_kanji")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last_name_kanji")]
-#endif
         public string LastNameKanji { get; set; }
 
         /// <summary>
@@ -271,23 +229,17 @@ namespace Stripe
         /// <para>Must also prefill <see cref="Country"/> with the corresponding country.</para>
         /// </summary>
         [JsonProperty("phone_number")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone_number")]
-#endif
         public string PhoneNumber { get; set; }
 
         /// <summary><c>true</c> if the user sells a physical product, <c>false</c> otherwise.</summary>
         [JsonProperty("physical_product")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("physical_product")]
-#endif
         public bool? PhysicalProduct { get; set; }
 
         /// <summary>A description of what the business is accepting payments for.</summary>
         [JsonProperty("product_description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product_description")]
-#endif
         public string ProductDescription { get; set; }
 
         /// <summary>
@@ -300,16 +252,12 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("state")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("state")]
-#endif
         public string State { get; set; }
 
         /// <summary>Street address of the business.</summary>
         [JsonProperty("street_address")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("street_address")]
-#endif
         public string StreetAddress { get; set; }
 
         /// <summary>
@@ -330,9 +278,7 @@ namespace Stripe
         /// </summary>
         /// <remarks>Recommended.</remarks>
         [JsonProperty("url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("url")]
-#endif
         public string Url { get; set; }
 
         /// <summary>
@@ -343,9 +289,7 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("zip")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("zip")]
-#endif
         public string Zip { get; set; }
     }
 }

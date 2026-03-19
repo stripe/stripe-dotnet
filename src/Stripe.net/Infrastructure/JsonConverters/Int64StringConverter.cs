@@ -4,9 +4,12 @@ namespace Stripe.Infrastructure
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Converts a 64-bit integer to and from a string-encoded JSON integer.
+    /// A Newtonsoft.Json converter for long fields that are transmitted as
+    /// strings in the Stripe API (the <c>int64_string</c> format). This
+    /// ensures parity with the STJ <c>[JsonNumberHandling(AllowReadingFromString
+    /// | WriteAsString)]</c> attribute applied to the same fields.
     /// </summary>
-    public class StringInt64Converter : JsonConverter
+    internal class Int64StringConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {

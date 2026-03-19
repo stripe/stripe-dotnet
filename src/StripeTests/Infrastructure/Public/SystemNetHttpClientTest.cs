@@ -5,6 +5,7 @@ namespace StripeTests
     using System.Net;
     using System.Net.Http;
     using System.Net.Http.Headers;
+    using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;
     using Moq;
@@ -238,15 +239,17 @@ namespace StripeTests
         private bool VerifyHeaders(HttpRequestHeaders headers)
         {
             var userAgent = headers.UserAgent.ToString();
-            var userAgentJson = JObject.Parse(headers.GetValues("X-Stripe-Client-User-Agent").First());
-            var appInfo = userAgentJson["application"];
+            using var doc = JsonDocument.Parse(headers.GetValues("X-Stripe-Client-User-Agent").First());
+            var root = doc.RootElement;
+            var appInfo = root.GetProperty("application");
 
+            var userAgentJson = JObject.Parse(headers.GetValues("X-Stripe-Client-User-Agent").First());
             Assert.Contains("MyAwesomeApp/1.2.34 (https://myawesomeapp.info)", userAgent);
 
-            Assert.Equal("MyAwesomeApp", appInfo.Value<string>("name"));
-            Assert.Equal("pp_123", appInfo.Value<string>("partner_id"));
-            Assert.Equal("1.2.34", appInfo.Value<string>("version"));
-            Assert.Equal("https://myawesomeapp.info", appInfo.Value<string>("url"));
+            Assert.Equal("MyAwesomeApp", appInfo.GetProperty("name").GetString());
+            Assert.Equal("pp_123", appInfo.GetProperty("partner_id").GetString());
+            Assert.Equal("1.2.34", appInfo.GetProperty("version").GetString());
+            Assert.Equal("https://myawesomeapp.info", appInfo.GetProperty("url").GetString());
 
             Assert.Equal(".net", userAgentJson.Value<string>("lang"));
             Assert.NotEqual("?", userAgentJson.Value<string>("lang_version"));
