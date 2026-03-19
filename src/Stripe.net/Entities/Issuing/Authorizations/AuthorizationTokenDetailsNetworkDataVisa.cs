@@ -2,37 +2,31 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AuthorizationTokenDetailsNetworkDataVisa : StripeEntity<AuthorizationTokenDetailsNetworkDataVisa>
     {
         /// <summary>
         /// A unique reference ID from the network to represent the card account number.
         /// </summary>
         [JsonProperty("card_reference_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_reference_id")]
-#endif
         public string CardReferenceId { get; set; }
 
         /// <summary>
         /// The network-unique identifier for the token.
         /// </summary>
         [JsonProperty("token_reference_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("token_reference_id")]
-#endif
         public string TokenReferenceId { get; set; }
 
         /// <summary>
         /// The ID of the entity requesting tokenization.
         /// </summary>
         [JsonProperty("token_requestor_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("token_requestor_id")]
-#endif
         public string TokenRequestorId { get; set; }
 
         /// <summary>
@@ -41,9 +35,7 @@ namespace Stripe.Issuing
         /// Visa.
         /// </summary>
         [JsonProperty("token_risk_score")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("token_risk_score")]
-#endif
         public string TokenRiskScore { get; set; }
     }
 }

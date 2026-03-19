@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CustomerCashBalanceSettingsOptions : INestedOptions
     {
         /// <summary>
@@ -16,9 +16,7 @@ namespace Stripe
         /// One of: <c>automatic</c>, <c>manual</c>, or <c>merchant_default</c>.
         /// </summary>
         [JsonProperty("reconciliation_mode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reconciliation_mode")]
-#endif
         public string ReconciliationMode { get; set; }
     }
 }

@@ -2,16 +2,14 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SetupIntentPaymentMethodOptionsSepaDebit : StripeEntity<SetupIntentPaymentMethodOptionsSepaDebit>
     {
         [JsonProperty("mandate_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate_options")]
-#endif
         public SetupIntentPaymentMethodOptionsSepaDebitMandateOptions MandateOptions { get; set; }
     }
 }

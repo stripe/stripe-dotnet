@@ -2,19 +2,17 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CadenceInvoiceDiscountRulePercentOff : StripeEntity<CadenceInvoiceDiscountRulePercentOff>
     {
         /// <summary>
         /// The maximum applications configuration for this discount.
         /// </summary>
         [JsonProperty("maximum_applications")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("maximum_applications")]
-#endif
         public CadenceInvoiceDiscountRulePercentOffMaximumApplications MaximumApplications { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe.V2.Billing
         /// $100 amount $50 instead.
         /// </summary>
         [JsonProperty("percent_off")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("percent_off")]
-#endif
         public string PercentOff { get; set; }
     }
 }

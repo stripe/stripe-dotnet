@@ -4,9 +4,7 @@ namespace Stripe.Events
     using System.Threading.Tasks;
     using Newtonsoft.Json;
     using Stripe.V2;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// Occurs when a claimable sandbox is activated by the user with the intention to go live
@@ -18,9 +16,7 @@ namespace Stripe.Events
         /// Object containing the reference to API resource relevant to the event.
         /// </summary>
         [JsonProperty("related_object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("related_object")]
-#endif
 
         public V2.Core.EventNotificationRelatedObject RelatedObject { get; set; }
 

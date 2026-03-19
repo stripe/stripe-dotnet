@@ -2,28 +2,26 @@
 namespace Stripe.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AlertCreditBalanceThresholdLteCustomPricingUnitOptions : INestedOptions, IHasId
     {
         /// <summary>
         /// The ID of the custom pricing unit.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// A positive decimal string representing the amount of the custom pricing unit threshold.
         /// </summary>
         [JsonProperty("value")]
-#if NET6_0_OR_GREATER
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("value")]
-#endif
         public decimal? Value { get; set; }
     }
 }

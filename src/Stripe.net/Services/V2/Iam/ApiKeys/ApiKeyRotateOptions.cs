@@ -2,10 +2,10 @@
 namespace Stripe.V2.Iam
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ApiKeyRotateOptions : BaseOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Iam
         /// minutes). If not provided, the current key expires immediately.
         /// </summary>
         [JsonProperty("expire_current_key_in_minutes")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expire_current_key_in_minutes")]
-#endif
         public long? ExpireCurrentKeyInMinutes { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.V2.Iam
         /// keys. Publishable keys are not encrypted and a public key should not be included.
         /// </summary>
         [JsonProperty("public_key")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("public_key")]
-#endif
         public ApiKeyRotatePublicKeyOptions PublicKey { get; set; }
     }
 }

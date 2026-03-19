@@ -4,10 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceScheduleDetailsAmendmentAmendmentStartOptions : INestedOptions
     {
         /// <summary>
@@ -15,18 +14,14 @@ namespace Stripe
         /// should begin.
         /// </summary>
         [JsonProperty("amendment_end")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amendment_end")]
-#endif
         public InvoiceScheduleDetailsAmendmentAmendmentStartAmendmentEndOptions AmendmentEnd { get; set; }
 
         /// <summary>
         /// Use the <c>end</c> time of a given discount.
         /// </summary>
         [JsonProperty("discount_end")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discount_end")]
-#endif
         public InvoiceScheduleDetailsAmendmentAmendmentStartDiscountEndOptions DiscountEnd { get; set; }
 
         /// <summary>
@@ -34,10 +29,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("timestamp")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("timestamp")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? Timestamp { get; set; }
 
         /// <summary>
@@ -46,9 +39,7 @@ namespace Stripe
         /// <c>timestamp</c>, <c>trial_end</c>, <c>trial_start</c>, or <c>upcoming_invoice</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

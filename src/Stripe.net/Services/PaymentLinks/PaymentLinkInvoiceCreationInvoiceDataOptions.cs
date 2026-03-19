@@ -3,46 +3,38 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentLinkInvoiceCreationInvoiceDataOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// The account tax IDs associated with the invoice.
         /// </summary>
         [JsonProperty("account_tax_ids")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_tax_ids")]
-#endif
         public List<string> AccountTaxIds { get; set; }
 
         /// <summary>
         /// Default custom fields to be displayed on invoices for this customer.
         /// </summary>
         [JsonProperty("custom_fields")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_fields")]
-#endif
         public List<PaymentLinkInvoiceCreationInvoiceDataCustomFieldOptions> CustomFields { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
         /// Default footer to be displayed on invoices for this customer.
         /// </summary>
         [JsonProperty("footer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("footer")]
-#endif
         public string Footer { get; set; }
 
         /// <summary>
@@ -50,9 +42,7 @@ namespace Stripe
         /// branding and support information of the specified account.
         /// </summary>
         [JsonProperty("issuer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuer")]
-#endif
         public PaymentLinkInvoiceCreationInvoiceDataIssuerOptions Issuer { get; set; }
 
         /// <summary>
@@ -62,18 +52,14 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Default options for invoice PDF rendering for this customer.
         /// </summary>
         [JsonProperty("rendering_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rendering_options")]
-#endif
         public PaymentLinkInvoiceCreationInvoiceDataRenderingOptionsOptions RenderingOptions { get; set; }
     }
 }

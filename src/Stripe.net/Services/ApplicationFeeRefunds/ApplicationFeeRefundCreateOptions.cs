@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ApplicationFeeRefundCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe
         /// this fee to refund. Can refund only up to the remaining unrefunded amount of the fee.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -26,9 +24,7 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

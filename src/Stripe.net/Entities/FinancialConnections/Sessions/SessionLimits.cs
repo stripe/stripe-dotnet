@@ -2,19 +2,17 @@
 namespace Stripe.FinancialConnections
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionLimits : StripeEntity<SessionLimits>
     {
         /// <summary>
         /// The number of accounts that can be linked in this Session.
         /// </summary>
         [JsonProperty("accounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("accounts")]
-#endif
         public long Accounts { get; set; }
     }
 }

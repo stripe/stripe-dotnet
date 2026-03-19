@@ -2,10 +2,10 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class RegistrationCountryOptionsUsHospitalityTax : StripeEntity<RegistrationCountryOptionsUsHospitalityTax>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Tax
         /// code</a> representing the local jurisdiction.
         /// </summary>
         [JsonProperty("jurisdiction")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("jurisdiction")]
-#endif
         public string Jurisdiction { get; set; }
     }
 }

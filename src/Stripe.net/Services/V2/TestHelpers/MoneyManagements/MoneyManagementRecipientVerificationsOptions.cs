@@ -2,10 +2,10 @@
 namespace Stripe.V2.TestHelpers
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class MoneyManagementRecipientVerificationsOptions : BaseOptions
     {
         /// <summary>
@@ -16,18 +16,14 @@ namespace Stripe.V2.TestHelpers
         /// One of: <c>close_match</c>, <c>match</c>, <c>no_match</c>, or <c>unavailable</c>.
         /// </summary>
         [JsonProperty("match_result")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("match_result")]
-#endif
         public string MatchResult { get; set; }
 
         /// <summary>
         /// ID of the payout method.
         /// </summary>
         [JsonProperty("payout_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payout_method")]
-#endif
         public string PayoutMethod { get; set; }
 
         /// <summary>
@@ -35,9 +31,7 @@ namespace Stripe.V2.TestHelpers
         /// empty if the recipient and sender are the same entity (i.e. for me-to-me payouts).
         /// </summary>
         [JsonProperty("recipient")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recipient")]
-#endif
         public string Recipient { get; set; }
     }
 }

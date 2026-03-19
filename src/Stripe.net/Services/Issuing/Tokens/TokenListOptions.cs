@@ -4,19 +4,16 @@ namespace Stripe.Issuing
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class TokenListOptions : ListOptions
     {
         /// <summary>
         /// The Issuing card identifier to list tokens for.
         /// </summary>
         [JsonProperty("card")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]
-#endif
         public string Card { get; set; }
 
         /// <summary>
@@ -24,10 +21,8 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
@@ -35,9 +30,7 @@ namespace Stripe.Issuing
         /// One of: <c>active</c>, <c>deleted</c>, <c>requested</c>, or <c>suspended</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

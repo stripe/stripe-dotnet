@@ -3,13 +3,9 @@ namespace Stripe.Identity
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class VerificationReportSelfie : StripeEntity<VerificationReportSelfie>
     {
         #region Expandable BlockedByEntry
@@ -20,9 +16,7 @@ namespace Stripe.Identity
         /// BlocklistEntry that blocked it.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string BlockedByEntryId
         {
             get => this.InternalBlockedByEntry?.Id;
@@ -37,9 +31,7 @@ namespace Stripe.Identity
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public BlocklistEntry BlockedByEntry
         {
             get => this.InternalBlockedByEntry?.ExpandedObject;
@@ -48,10 +40,8 @@ namespace Stripe.Identity
 
         [JsonProperty("blocked_by_entry")]
         [JsonConverter(typeof(ExpandableFieldConverter<BlocklistEntry>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("blocked_by_entry")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BlocklistEntry>))]
-#endif
         internal ExpandableField<BlocklistEntry> InternalBlockedByEntry { get; set; }
         #endregion
 
@@ -60,18 +50,14 @@ namespace Stripe.Identity
         /// identity document used in this check.
         /// </summary>
         [JsonProperty("document")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("document")]
-#endif
         public string Document { get; set; }
 
         /// <summary>
         /// Details on the verification error. Present when status is <c>unverified</c>.
         /// </summary>
         [JsonProperty("error")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("error")]
-#endif
         public VerificationReportSelfieError Error { get; set; }
 
         /// <summary>
@@ -79,9 +65,7 @@ namespace Stripe.Identity
         /// selfie used in this check.
         /// </summary>
         [JsonProperty("selfie")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("selfie")]
-#endif
         public string Selfie { get; set; }
 
         /// <summary>
@@ -89,9 +73,7 @@ namespace Stripe.Identity
         /// One of: <c>unverified</c>, or <c>verified</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

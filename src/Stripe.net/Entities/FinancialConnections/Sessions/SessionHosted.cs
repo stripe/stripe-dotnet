@@ -2,10 +2,10 @@
 namespace Stripe.FinancialConnections
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionHosted : StripeEntity<SessionHosted>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.FinancialConnections
         /// One of: <c>email</c>, or <c>url</c>.
         /// </summary>
         [JsonProperty("delivery_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("delivery_method")]
-#endif
         public string DeliveryMethod { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.FinancialConnections
         /// Session. This parameter is required if <c>ui_mode</c> is <c>hosted</c>.
         /// </summary>
         [JsonProperty("return_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("return_url")]
-#endif
         public string ReturnUrl { get; set; }
     }
 }

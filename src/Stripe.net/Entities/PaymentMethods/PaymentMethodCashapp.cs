@@ -2,28 +2,24 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentMethodCashapp : StripeEntity<PaymentMethodCashapp>
     {
         /// <summary>
         /// A unique and immutable identifier assigned by Cash App to every buyer.
         /// </summary>
         [JsonProperty("buyer_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("buyer_id")]
-#endif
         public string BuyerId { get; set; }
 
         /// <summary>
         /// A public identifier for buyers using Cash App.
         /// </summary>
         [JsonProperty("cashtag")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cashtag")]
-#endif
         public string Cashtag { get; set; }
     }
 }

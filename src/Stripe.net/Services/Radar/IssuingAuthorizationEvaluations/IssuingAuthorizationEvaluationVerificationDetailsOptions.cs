@@ -2,10 +2,10 @@
 namespace Stripe.Radar
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class IssuingAuthorizationEvaluationVerificationDetailsOptions : INestedOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Radar
         /// <c>failed</c>, or <c>required</c>.
         /// </summary>
         [JsonProperty("three_d_secure_result")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("three_d_secure_result")]
-#endif
         public string ThreeDSecureResult { get; set; }
     }
 }

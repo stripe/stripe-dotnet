@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class QuoteLineEndsAtDiscountEnd : StripeEntity<QuoteLineEndsAtDiscountEnd>
     {
         /// <summary>
         /// The ID of a specific discount.
         /// </summary>
         [JsonProperty("discount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discount")]
-#endif
         public string Discount { get; set; }
     }
 }

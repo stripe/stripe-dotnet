@@ -2,10 +2,10 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TransactionPurchaseDetailsFleetReportedBreakdownFuel : StripeEntity<TransactionPurchaseDetailsFleetReportedBreakdownFuel>
     {
         /// <summary>
@@ -13,9 +13,9 @@ namespace Stripe.Issuing
         /// of taxes.
         /// </summary>
         [JsonProperty("gross_amount_decimal")]
-#if NET6_0_OR_GREATER
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("gross_amount_decimal")]
-#endif
         public decimal? GrossAmountDecimal { get; set; }
     }
 }

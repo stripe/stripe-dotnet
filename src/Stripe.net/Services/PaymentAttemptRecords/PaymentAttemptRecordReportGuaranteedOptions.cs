@@ -5,10 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentAttemptRecordReportGuaranteedOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -16,10 +15,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("guaranteed_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("guaranteed_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? GuaranteedAt { get; set; }
 
         /// <summary>
@@ -29,9 +26,7 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

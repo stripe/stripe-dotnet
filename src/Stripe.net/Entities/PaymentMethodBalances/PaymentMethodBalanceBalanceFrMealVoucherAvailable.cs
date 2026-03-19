@@ -2,28 +2,24 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentMethodBalanceBalanceFrMealVoucherAvailable : StripeEntity<PaymentMethodBalanceBalanceFrMealVoucherAvailable>
     {
         /// <summary>
         /// The amount of the balance.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         /// <summary>
         /// The currency of the balance.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
     }
 }

@@ -3,10 +3,10 @@ namespace Stripe.TestHelpers.SharedPayment
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class GrantedTokenCreateOptions : BaseOptions
     {
         /// <summary>
@@ -14,18 +14,14 @@ namespace Stripe.TestHelpers.SharedPayment
         /// that the PaymentMethod is attached to if any.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
         /// The PaymentMethod that is going to be shared by the SharedPaymentGrantedToken.
         /// </summary>
         [JsonProperty("payment_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method")]
-#endif
         public string PaymentMethod { get; set; }
 
         /// <summary>
@@ -33,18 +29,14 @@ namespace Stripe.TestHelpers.SharedPayment
         /// attach to the SharedPaymentGrantedToken.
         /// </summary>
         [JsonProperty("shared_metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shared_metadata")]
-#endif
         public Dictionary<string, string> SharedMetadata { get; set; }
 
         /// <summary>
         /// Limits on how this SharedPaymentGrantedToken can be used.
         /// </summary>
         [JsonProperty("usage_limits")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("usage_limits")]
-#endif
         public GrantedTokenUsageLimitsOptions UsageLimits { get; set; }
     }
 }

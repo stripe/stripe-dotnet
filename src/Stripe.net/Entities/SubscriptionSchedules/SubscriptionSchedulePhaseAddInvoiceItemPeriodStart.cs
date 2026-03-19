@@ -4,10 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SubscriptionSchedulePhaseAddInvoiceItemPeriodStart : StripeEntity<SubscriptionSchedulePhaseAddInvoiceItemPeriodStart>
     {
         /// <summary>
@@ -16,10 +15,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("timestamp")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("timestamp")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Timestamp { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -27,9 +24,7 @@ namespace Stripe
         /// One of: <c>max_item_period_start</c>, <c>phase_start</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

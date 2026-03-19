@@ -2,19 +2,17 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountCreateConfigurationStorerCapabilitiesConsumerOptions : INestedOptions
     {
         /// <summary>
         /// Can hold storage-type funds on Stripe in a consumer financial account.
         /// </summary>
         [JsonProperty("holds_currencies")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("holds_currencies")]
-#endif
         public AccountCreateConfigurationStorerCapabilitiesConsumerHoldsCurrenciesOptions HoldsCurrencies { get; set; }
     }
 }

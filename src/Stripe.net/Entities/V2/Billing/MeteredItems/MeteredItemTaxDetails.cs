@@ -2,19 +2,17 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class MeteredItemTaxDetails : StripeEntity<MeteredItemTaxDetails>
     {
         /// <summary>
         /// Product tax code (PTC).
         /// </summary>
         [JsonProperty("tax_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_code")]
-#endif
         public string TaxCode { get; set; }
     }
 }

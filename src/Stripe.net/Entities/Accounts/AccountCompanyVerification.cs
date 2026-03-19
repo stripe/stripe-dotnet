@@ -2,16 +2,14 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountCompanyVerification : StripeEntity<AccountCompanyVerification>
     {
         [JsonProperty("document")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("document")]
-#endif
         public AccountCompanyVerificationDocument Document { get; set; }
     }
 }

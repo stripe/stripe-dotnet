@@ -5,19 +5,16 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class QuoteSubscriptionDataOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// Describes the period to bill for upon accepting the quote.
         /// </summary>
         [JsonProperty("bill_on_acceptance")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bill_on_acceptance")]
-#endif
         public QuoteSubscriptionDataBillOnAcceptanceOptions BillOnAcceptance { get; set; }
 
         /// <summary>
@@ -29,9 +26,7 @@ namespace Stripe
         /// One of: <c>prorate_on_next_phase</c>, or <c>prorate_up_front</c>.
         /// </summary>
         [JsonProperty("billing_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_behavior")]
-#endif
         public string BillingBehavior { get; set; }
 
         /// <summary>
@@ -39,18 +34,14 @@ namespace Stripe
         /// when the quote is accepted.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_cycle_anchor")]
-#endif
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
         /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
         /// </summary>
         [JsonProperty("billing_mode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_mode")]
-#endif
         public QuoteSubscriptionDataBillingModeOptions BillingMode { get; set; }
 
         /// <summary>
@@ -58,9 +49,7 @@ namespace Stripe
         /// created when the quote is accepted.
         /// </summary>
         [JsonProperty("billing_schedules")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_schedules")]
-#endif
         public List<QuoteSubscriptionDataBillingScheduleOptions> BillingSchedules { get; set; }
 
         /// <summary>
@@ -69,9 +58,7 @@ namespace Stripe
         /// and certain local payment methods UIs.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -84,10 +71,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("effective_date")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("effective_date")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, QuoteSubscriptionDataEffectiveDate> EffectiveDate { get; set; }
 
         /// <summary>
@@ -95,9 +80,7 @@ namespace Stripe
         /// One of: <c>cancel</c>, or <c>release</c>.
         /// </summary>
         [JsonProperty("end_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("end_behavior")]
-#endif
         public string EndBehavior { get; set; }
 
         /// <summary>
@@ -106,9 +89,7 @@ namespace Stripe
         /// thresholds) unless overridden.
         /// </summary>
         [JsonProperty("from_subscription")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("from_subscription")]
-#endif
         public string FromSubscription { get; set; }
 
         /// <summary>
@@ -121,9 +102,7 @@ namespace Stripe
         /// metadata, this field is declarative. Updates will clear prior values.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -132,9 +111,7 @@ namespace Stripe
         /// One of: <c>billing_period_start</c>, or <c>phase_start</c>.
         /// </summary>
         [JsonProperty("phase_effective_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phase_effective_at")]
-#endif
         public string PhaseEffectiveAt { get; set; }
 
         /// <summary>
@@ -142,9 +119,7 @@ namespace Stripe
         /// when the quote is accepted. Cannot be used with <c>effective_date</c>.
         /// </summary>
         [JsonProperty("prebilling")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prebilling")]
-#endif
         public QuoteSubscriptionDataPrebillingOptions Prebilling { get; set; }
 
         /// <summary>
@@ -165,9 +140,7 @@ namespace Stripe
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_behavior")]
-#endif
         public string ProrationBehavior { get; set; }
 
         /// <summary>
@@ -175,9 +148,7 @@ namespace Stripe
         /// the first time.
         /// </summary>
         [JsonProperty("trial_period_days")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial_period_days")]
-#endif
         public long? TrialPeriodDays { get; set; }
     }
 }

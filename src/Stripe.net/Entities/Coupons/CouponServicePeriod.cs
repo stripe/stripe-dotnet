@@ -2,28 +2,22 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CouponServicePeriod : StripeEntity<CouponServicePeriod>
     {
         [JsonProperty("interval")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval")]
-#endif
         public string Interval { get; set; }
 
         [JsonProperty("interval_count")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval_count")]
-#endif
         public long IntervalCount { get; set; }
 
         [JsonProperty("iterations")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("iterations")]
-#endif
         public CouponServicePeriodIterations Iterations { get; set; }
     }
 }

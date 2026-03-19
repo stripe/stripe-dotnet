@@ -3,10 +3,10 @@ namespace Stripe.V2.Billing.PricingPlans
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ComponentListOptions : V2.ListOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Billing.PricingPlans
         /// specify up to 10 lookup keys.
         /// </summary>
         [JsonProperty("lookup_keys")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_keys")]
-#endif
         public List<string> LookupKeys { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.V2.Billing.PricingPlans
         /// if not provided. Mutually exclusive with <c>lookup_keys</c>.
         /// </summary>
         [JsonProperty("pricing_plan_version")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pricing_plan_version")]
-#endif
         public string PricingPlanVersion { get; set; }
     }
 }

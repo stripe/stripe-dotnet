@@ -2,10 +2,10 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PricingPlanSubscriptionCancellationDetails : StripeEntity<PricingPlanSubscriptionCancellationDetails>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Billing
         /// was canceled explicitly by the user.
         /// </summary>
         [JsonProperty("comment")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("comment")]
-#endif
         public string Comment { get; set; }
 
         /// <summary>
@@ -26,18 +24,14 @@ namespace Stripe.V2.Billing
         /// <c>unused</c>.
         /// </summary>
         [JsonProperty("feedback")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("feedback")]
-#endif
         public string Feedback { get; set; }
 
         /// <summary>
         /// System-generated reason for cancellation.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
-#endif
         public string Reason { get; set; }
     }
 }

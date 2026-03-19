@@ -5,9 +5,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// A coupon contains information about a percent-off or amount-off discount you might want
@@ -19,24 +17,21 @@ namespace Stripe
     /// conventional one-off <a href="https://api.stripe.com#create_charge">charges</a> or <a
     /// href="https://docs.stripe.com/api/payment_intents">payment intents</a>.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Coupon : StripeEntity<Coupon>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -44,15 +39,11 @@ namespace Stripe
         /// invoices for this customer.
         /// </summary>
         [JsonProperty("amount_off")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_off")]
-#endif
         public long? AmountOff { get; set; }
 
         [JsonProperty("applies_to")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("applies_to")]
-#endif
         public CouponAppliesTo AppliesTo { get; set; }
 
         /// <summary>
@@ -60,10 +51,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -72,9 +61,7 @@ namespace Stripe
         /// take off.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -83,19 +70,15 @@ namespace Stripe
         /// href="https://stripe.com/docs/currencies">supported currency</a>.
         /// </summary>
         [JsonProperty("currency_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency_options")]
-#endif
         public Dictionary<string, CouponCurrencyOptions> CurrencyOptions { get; set; }
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("deleted")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
-#endif
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -104,9 +87,7 @@ namespace Stripe
         /// One of: <c>forever</c>, <c>once</c>, <c>repeating</c>, or <c>service_period</c>.
         /// </summary>
         [JsonProperty("duration")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("duration")]
-#endif
         public string Duration { get; set; }
 
         /// <summary>
@@ -114,9 +95,7 @@ namespace Stripe
         /// coupon <c>duration</c> is <c>forever</c> or <c>once</c>.
         /// </summary>
         [JsonProperty("duration_in_months")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("duration_in_months")]
-#endif
         public long? DurationInMonths { get; set; }
 
         /// <summary>
@@ -124,9 +103,7 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -134,9 +111,7 @@ namespace Stripe
         /// before it is no longer valid.
         /// </summary>
         [JsonProperty("max_redemptions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("max_redemptions")]
-#endif
         public long? MaxRedemptions { get; set; }
 
         /// <summary>
@@ -145,18 +120,14 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Name of the coupon displayed to customers on for instance invoices or receipts.
         /// </summary>
         [JsonProperty("name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
-#endif
         public string Name { get; set; }
 
         /// <summary>
@@ -165,9 +136,7 @@ namespace Stripe
         /// local equivalent)100 invoice $ (or local equivalent)50 instead.
         /// </summary>
         [JsonProperty("percent_off")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("percent_off")]
-#endif
         public decimal? PercentOff { get; set; }
 
         /// <summary>
@@ -175,10 +144,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("redeem_by")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("redeem_by")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? RedeemBy { get; set; }
 
         /// <summary>
@@ -187,24 +154,18 @@ namespace Stripe
         /// calculate the discount.
         /// </summary>
         [JsonProperty("script")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("script")]
-#endif
         public CouponScript Script { get; set; }
 
         [JsonProperty("service_period")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("service_period")]
-#endif
         public CouponServicePeriod ServicePeriod { get; set; }
 
         /// <summary>
         /// Number of times this coupon has been applied to a customer.
         /// </summary>
         [JsonProperty("times_redeemed")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("times_redeemed")]
-#endif
         public long TimesRedeemed { get; set; }
 
         /// <summary>
@@ -213,9 +174,7 @@ namespace Stripe
         /// One of: <c>amount_off</c>, <c>percent_off</c>, or <c>script</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
@@ -223,9 +182,7 @@ namespace Stripe
         /// customer.
         /// </summary>
         [JsonProperty("valid")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("valid")]
-#endif
         public bool Valid { get; set; }
     }
 }

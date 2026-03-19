@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionScheduleAmendmentItemActionAddDiscountSettingsOptions : INestedOptions
     {
         /// <summary>
         /// Configures service period cycle anchoring.
         /// </summary>
         [JsonProperty("service_period_anchor_config")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("service_period_anchor_config")]
-#endif
         public SubscriptionScheduleAmendmentItemActionAddDiscountSettingsServicePeriodAnchorConfigOptions ServicePeriodAnchorConfig { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe
         /// <c>current_period_start</c>.
         /// </summary>
         [JsonProperty("start_date")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("start_date")]
-#endif
         public string StartDate { get; set; }
     }
 }

@@ -2,28 +2,24 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountCreateConfigurationOptions : INestedOptions
     {
         /// <summary>
         /// The CardCreator Configuration allows the Account to create and issue cards to users.
         /// </summary>
         [JsonProperty("card_creator")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_creator")]
-#endif
         public AccountCreateConfigurationCardCreatorOptions CardCreator { get; set; }
 
         /// <summary>
         /// The Customer Configuration allows the Account to be used in inbound payment flows.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public AccountCreateConfigurationCustomerOptions Customer { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe.V2.Core
         /// on_behalf_of set.
         /// </summary>
         [JsonProperty("merchant")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("merchant")]
-#endif
         public AccountCreateConfigurationMerchantOptions Merchant { get; set; }
 
         /// <summary>
@@ -45,9 +39,7 @@ namespace Stripe.V2.Core
         /// Charges &amp; Transfers, or Destination Charges without on_behalf_of set.
         /// </summary>
         [JsonProperty("recipient")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recipient")]
-#endif
         public AccountCreateConfigurationRecipientOptions Recipient { get; set; }
 
         /// <summary>
@@ -55,9 +47,7 @@ namespace Stripe.V2.Core
         /// FinancialAccounts.
         /// </summary>
         [JsonProperty("storer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("storer")]
-#endif
         public AccountCreateConfigurationStorerOptions Storer { get; set; }
     }
 }

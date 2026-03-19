@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CustomerSessionComponentsTaxIdElementFeatures : StripeEntity<CustomerSessionComponentsTaxIdElementFeatures>
     {
         /// <summary>
@@ -17,9 +17,7 @@ namespace Stripe
         /// One of: <c>disabled</c>, or <c>enabled</c>.
         /// </summary>
         [JsonProperty("tax_id_redisplay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_id_redisplay")]
-#endif
         public string TaxIdRedisplay { get; set; }
 
         /// <summary>
@@ -32,9 +30,7 @@ namespace Stripe
         /// One of: <c>disabled</c>, or <c>enabled</c>.
         /// </summary>
         [JsonProperty("tax_id_save")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_id_save")]
-#endif
         public string TaxIdSave { get; set; }
     }
 }

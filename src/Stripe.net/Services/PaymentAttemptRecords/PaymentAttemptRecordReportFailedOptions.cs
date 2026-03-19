@@ -5,10 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentAttemptRecordReportFailedOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -16,10 +15,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("failed_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("failed_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? FailedAt { get; set; }
 
         /// <summary>
@@ -30,9 +27,7 @@ namespace Stripe
         /// <c>payment_method_provider_unknown_outcome</c>.
         /// </summary>
         [JsonProperty("failure_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("failure_code")]
-#endif
         public string FailureCode { get; set; }
 
         /// <summary>
@@ -42,9 +37,7 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

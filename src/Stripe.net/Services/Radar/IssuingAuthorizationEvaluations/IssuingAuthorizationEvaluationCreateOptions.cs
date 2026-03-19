@@ -3,37 +3,31 @@ namespace Stripe.Radar
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class IssuingAuthorizationEvaluationCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Details about the authorization.
         /// </summary>
         [JsonProperty("authorization_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authorization_details")]
-#endif
         public IssuingAuthorizationEvaluationAuthorizationDetailsOptions AuthorizationDetails { get; set; }
 
         /// <summary>
         /// Details about the card used in the authorization.
         /// </summary>
         [JsonProperty("card_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_details")]
-#endif
         public IssuingAuthorizationEvaluationCardDetailsOptions CardDetails { get; set; }
 
         /// <summary>
         /// Details about the cardholder.
         /// </summary>
         [JsonProperty("cardholder_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cardholder_details")]
-#endif
         public IssuingAuthorizationEvaluationCardholderDetailsOptions CardholderDetails { get; set; }
 
         /// <summary>
@@ -41,9 +35,7 @@ namespace Stripe.Radar
         /// authorization happened.
         /// </summary>
         [JsonProperty("merchant_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("merchant_details")]
-#endif
         public IssuingAuthorizationEvaluationMerchantDetailsOptions MerchantDetails { get; set; }
 
         /// <summary>
@@ -53,36 +45,28 @@ namespace Stripe.Radar
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Details about the authorization, such as identifiers, set by the card network.
         /// </summary>
         [JsonProperty("network_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_details")]
-#endif
         public IssuingAuthorizationEvaluationNetworkDetailsOptions NetworkDetails { get; set; }
 
         /// <summary>
         /// Details about the token, if a tokenized payment method was used for the authorization.
         /// </summary>
         [JsonProperty("token_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("token_details")]
-#endif
         public IssuingAuthorizationEvaluationTokenDetailsOptions TokenDetails { get; set; }
 
         /// <summary>
         /// Details about verification data for the authorization.
         /// </summary>
         [JsonProperty("verification_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification_details")]
-#endif
         public IssuingAuthorizationEvaluationVerificationDetailsOptions VerificationDetails { get; set; }
     }
 }

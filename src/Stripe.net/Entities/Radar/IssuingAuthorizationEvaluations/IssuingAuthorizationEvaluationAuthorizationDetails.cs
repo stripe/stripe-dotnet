@@ -4,10 +4,9 @@ namespace Stripe.Radar
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class IssuingAuthorizationEvaluationAuthorizationDetails : StripeEntity<IssuingAuthorizationEvaluationAuthorizationDetails>
     {
         /// <summary>
@@ -15,9 +14,7 @@ namespace Stripe.Radar
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         /// <summary>
@@ -26,9 +23,7 @@ namespace Stripe.Radar
         /// <c>swipe</c>.
         /// </summary>
         [JsonProperty("authorization_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authorization_method")]
-#endif
         public string AuthorizationMethod { get; set; }
 
         /// <summary>
@@ -37,9 +32,7 @@ namespace Stripe.Radar
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -49,18 +42,14 @@ namespace Stripe.Radar
         /// <c>manual</c>, <c>other</c>, or <c>unknown</c>.
         /// </summary>
         [JsonProperty("entry_mode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("entry_mode")]
-#endif
         public string EntryMode { get; set; }
 
         /// <summary>
         /// Raw code indicating the entry mode from the network message.
         /// </summary>
         [JsonProperty("entry_mode_raw_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("entry_mode_raw_code")]
-#endif
         public string EntryModeRawCode { get; set; }
 
         /// <summary>
@@ -68,10 +57,8 @@ namespace Stripe.Radar
         /// </summary>
         [JsonProperty("initiated_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("initiated_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime InitiatedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -81,18 +68,14 @@ namespace Stripe.Radar
         /// <c>pin_entered</c>, or <c>recurring</c>.
         /// </summary>
         [JsonProperty("point_of_sale_condition")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("point_of_sale_condition")]
-#endif
         public string PointOfSaleCondition { get; set; }
 
         /// <summary>
         /// Raw code indicating the point of sale condition from the network message.
         /// </summary>
         [JsonProperty("point_of_sale_condition_raw_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("point_of_sale_condition_raw_code")]
-#endif
         public string PointOfSaleConditionRawCode { get; set; }
 
         /// <summary>
@@ -100,9 +83,7 @@ namespace Stripe.Radar
         /// reference).
         /// </summary>
         [JsonProperty("reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
-#endif
         public string Reference { get; set; }
     }
 }

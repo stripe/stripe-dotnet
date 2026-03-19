@@ -5,9 +5,7 @@ namespace Stripe.SharedPayment
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// SharedPaymentGrantedToken is the view-only resource of a SharedPaymentIssuedToken, which
@@ -15,24 +13,21 @@ namespace Stripe.SharedPayment
     /// SharedPaymentIssuedToken with you, you can view attributes of the shared token using the
     /// SharedPaymentGrantedToken API, and use it with a PaymentIntent.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class GrantedToken : StripeEntity<GrantedToken>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -40,10 +35,8 @@ namespace Stripe.SharedPayment
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -52,10 +45,8 @@ namespace Stripe.SharedPayment
         /// </summary>
         [JsonProperty("deactivated_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("deactivated_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? DeactivatedAt { get; set; }
 
         /// <summary>
@@ -63,9 +54,7 @@ namespace Stripe.SharedPayment
         /// One of: <c>consumed</c>, <c>expired</c>, or <c>revoked</c>.
         /// </summary>
         [JsonProperty("deactivated_reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("deactivated_reason")]
-#endif
         public string DeactivatedReason { get; set; }
 
         /// <summary>
@@ -73,36 +62,28 @@ namespace Stripe.SharedPayment
         /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
         /// Metadata about the SharedPaymentGrantedToken.
         /// </summary>
         [JsonProperty("shared_metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shared_metadata")]
-#endif
         public Dictionary<string, string> SharedMetadata { get; set; }
 
         /// <summary>
         /// Some details about how the SharedPaymentGrantedToken has been used already.
         /// </summary>
         [JsonProperty("usage_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("usage_details")]
-#endif
         public GrantedTokenUsageDetails UsageDetails { get; set; }
 
         /// <summary>
         /// Limits on how this SharedPaymentGrantedToken can be used.
         /// </summary>
         [JsonProperty("usage_limits")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("usage_limits")]
-#endif
         public GrantedTokenUsageLimits UsageLimits { get; set; }
     }
 }

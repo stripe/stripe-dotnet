@@ -2,10 +2,10 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AssociationTaxTransactionAttemptErrored : StripeEntity<AssociationTaxTransactionAttemptErrored>
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.Tax
         /// <c>unique_reference_violation</c>.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
-#endif
         public string Reason { get; set; }
     }
 }

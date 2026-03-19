@@ -2,19 +2,17 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AuthorizationTokenDetailsNetworkDataDevice : StripeEntity<AuthorizationTokenDetailsNetworkDataDevice>
     {
         /// <summary>
         /// The IP address of the device at provisioning time.
         /// </summary>
         [JsonProperty("ip_address")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ip_address")]
-#endif
         public string IpAddress { get; set; }
 
         /// <summary>
@@ -45,18 +43,14 @@ namespace Stripe.Issuing
         /// <c>zu</c>.
         /// </summary>
         [JsonProperty("language")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("language")]
-#endif
         public string Language { get; set; }
 
         /// <summary>
         /// The phone number of the device used for tokenization.
         /// </summary>
         [JsonProperty("phone_number")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone_number")]
-#endif
         public string PhoneNumber { get; set; }
     }
 }

@@ -4,19 +4,16 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentAttemptRecordPaymentMethodDetailsCard : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsCard>
     {
         /// <summary>
         /// The authorization code of the payment.
         /// </summary>
         [JsonProperty("authorization_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authorization_code")]
-#endif
         public string AuthorizationCode { get; set; }
 
         /// <summary>
@@ -28,9 +25,7 @@ namespace Stripe
         /// <c>unionpay</c>, <c>unknown</c>, or <c>visa</c>.
         /// </summary>
         [JsonProperty("brand")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("brand")]
-#endif
         public string Brand { get; set; }
 
         /// <summary>
@@ -39,19 +34,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("capture_before")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capture_before")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime CaptureBefore { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Check results by Card networks on Card address and CVC at time of payment.
         /// </summary>
         [JsonProperty("checks")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("checks")]
-#endif
         public PaymentAttemptRecordPaymentMethodDetailsCardChecks Checks { get; set; }
 
         /// <summary>
@@ -59,36 +50,28 @@ namespace Stripe
         /// to get a sense of the international breakdown of cards you've collected.
         /// </summary>
         [JsonProperty("country")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
-#endif
         public string Country { get; set; }
 
         /// <summary>
         /// A high-level description of the type of cards issued in this range.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
         /// Two-digit number representing the card's expiration month.
         /// </summary>
         [JsonProperty("exp_month")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exp_month")]
-#endif
         public long ExpMonth { get; set; }
 
         /// <summary>
         /// Four-digit number representing the card's expiration year.
         /// </summary>
         [JsonProperty("exp_year")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exp_year")]
-#endif
         public long ExpYear { get; set; }
 
         /// <summary>
@@ -101,9 +84,7 @@ namespace Stripe
         /// fingerprints for the same card---one for India and one for the rest of the world.</em>.
         /// </summary>
         [JsonProperty("fingerprint")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fingerprint")]
-#endif
         public string Fingerprint { get; set; }
 
         /// <summary>
@@ -112,54 +93,42 @@ namespace Stripe
         /// One of: <c>credit</c>, <c>debit</c>, <c>prepaid</c>, or <c>unknown</c>.
         /// </summary>
         [JsonProperty("funding")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("funding")]
-#endif
         public string Funding { get; set; }
 
         /// <summary>
         /// Issuer identification number of the card.
         /// </summary>
         [JsonProperty("iin")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("iin")]
-#endif
         public string Iin { get; set; }
 
         /// <summary>
         /// Installment details for this payment.
         /// </summary>
         [JsonProperty("installments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("installments")]
-#endif
         public PaymentAttemptRecordPaymentMethodDetailsCardInstallments Installments { get; set; }
 
         /// <summary>
         /// The name of the card's issuing bank.
         /// </summary>
         [JsonProperty("issuer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuer")]
-#endif
         public string Issuer { get; set; }
 
         /// <summary>
         /// The last four digits of the card.
         /// </summary>
         [JsonProperty("last4")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last4")]
-#endif
         public string Last4 { get; set; }
 
         /// <summary>
         /// True if this payment was marked as MOTO and out of scope for SCA.
         /// </summary>
         [JsonProperty("moto")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("moto")]
-#endif
         public bool Moto { get; set; }
 
         /// <summary>
@@ -172,27 +141,21 @@ namespace Stripe
         /// <c>unionpay</c>, <c>unknown</c>, or <c>visa</c>.
         /// </summary>
         [JsonProperty("network")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network")]
-#endif
         public string Network { get; set; }
 
         /// <summary>
         /// Advice code from the card network for the failed payment.
         /// </summary>
         [JsonProperty("network_advice_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_advice_code")]
-#endif
         public string NetworkAdviceCode { get; set; }
 
         /// <summary>
         /// Decline code from the card network for the failed payment.
         /// </summary>
         [JsonProperty("network_decline_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_decline_code")]
-#endif
         public string NetworkDeclineCode { get; set; }
 
         /// <summary>
@@ -200,9 +163,7 @@ namespace Stripe
         /// token credentials.
         /// </summary>
         [JsonProperty("network_token")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_token")]
-#endif
         public PaymentAttemptRecordPaymentMethodDetailsCardNetworkToken NetworkToken { get; set; }
 
         /// <summary>
@@ -212,9 +173,7 @@ namespace Stripe
         /// network in the authorization response, and null otherwise.
         /// </summary>
         [JsonProperty("network_transaction_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_transaction_id")]
-#endif
         public string NetworkTransactionId { get; set; }
 
         /// <summary>
@@ -223,27 +182,21 @@ namespace Stripe
         /// One of: <c>recurring</c>, or <c>unscheduled</c>.
         /// </summary>
         [JsonProperty("stored_credential_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stored_credential_usage")]
-#endif
         public string StoredCredentialUsage { get; set; }
 
         /// <summary>
         /// Populated if this transaction used 3D Secure authentication.
         /// </summary>
         [JsonProperty("three_d_secure")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("three_d_secure")]
-#endif
         public PaymentAttemptRecordPaymentMethodDetailsCardThreeDSecure ThreeDSecure { get; set; }
 
         /// <summary>
         /// If this Card is part of a card wallet, this contains the details of the card wallet.
         /// </summary>
         [JsonProperty("wallet")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("wallet")]
-#endif
         public PaymentAttemptRecordPaymentMethodDetailsCardWallet Wallet { get; set; }
     }
 }

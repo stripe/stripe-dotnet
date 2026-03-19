@@ -2,31 +2,25 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionCheckoutItemOptions : INestedOptions
     {
         /// <summary>
         /// One of: <c>rate_card_subscription_item</c>, or <c>pricing_plan_subscription_item</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         [JsonProperty("rate_card_subscription_item")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rate_card_subscription_item")]
-#endif
         public SessionCheckoutItemRateCardSubscriptionItemOptions RateCardSubscriptionItem { get; set; }
 
         [JsonProperty("pricing_plan_subscription_item")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pricing_plan_subscription_item")]
-#endif
         public SessionCheckoutItemPricingPlanSubscriptionItemOptions PricingPlanSubscriptionItem { get; set; }
     }
 }

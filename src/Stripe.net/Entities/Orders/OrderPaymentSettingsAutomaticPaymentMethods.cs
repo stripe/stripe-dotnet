@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class OrderPaymentSettingsAutomaticPaymentMethods : StripeEntity<OrderPaymentSettingsAutomaticPaymentMethods>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
         /// </summary>
         [JsonProperty("enabled")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
-#endif
         public bool Enabled { get; set; }
     }
 }

@@ -3,9 +3,8 @@ namespace Stripe.V2.MoneyManagement
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// Use Transactions to view changes to your FinancialAccount balance over time. Every flow
@@ -14,15 +13,14 @@ namespace Stripe.V2.MoneyManagement
     /// FinancialAccount balance will always be up to date, be aware that Transactions and
     /// TransactionEntries are created shortly after to reflect changes.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Transaction : StripeEntity<Transaction>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -30,18 +28,14 @@ namespace Stripe.V2.MoneyManagement
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// The amount of the Transaction.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public V2.Amount Amount { get; set; }
 
         /// <summary>
@@ -49,9 +43,7 @@ namespace Stripe.V2.MoneyManagement
         /// equal to sum of its TransactionEntries that have <c>effective_at</c>s in the past.
         /// </summary>
         [JsonProperty("balance_impact")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("balance_impact")]
-#endif
         public TransactionBalanceImpact BalanceImpact { get; set; }
 
         /// <summary>
@@ -78,9 +70,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>tax_withholding</c>, <c>transfer_reversal</c>, or <c>unreconciled_customer_funds</c>.
         /// </summary>
         [JsonProperty("category")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("category")]
-#endif
         public string Category { get; set; }
 
         /// <summary>
@@ -88,27 +78,21 @@ namespace Stripe.V2.MoneyManagement
         /// value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Indicates the FinancialAccount affected by this Transaction.
         /// </summary>
         [JsonProperty("financial_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_account")]
-#endif
         public string FinancialAccount { get; set; }
 
         /// <summary>
         /// Details about the Flow object that created the Transaction.
         /// </summary>
         [JsonProperty("flow")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flow")]
-#endif
         public TransactionFlow Flow { get; set; }
 
         /// <summary>
@@ -116,9 +100,7 @@ namespace Stripe.V2.MoneyManagement
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -131,18 +113,14 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>pending</c>, <c>posted</c>, or <c>void</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
         /// Timestamps for when the Transaction transitioned to a particular status.
         /// </summary>
         [JsonProperty("status_transitions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_transitions")]
-#endif
         public TransactionStatusTransitions StatusTransitions { get; set; }
     }
 }

@@ -2,46 +2,38 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class InvoiceLineItemParent : StripeEntity<InvoiceLineItemParent>
     {
         /// <summary>
         /// Details about the invoice item that generated this line item.
         /// </summary>
         [JsonProperty("invoice_item_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_item_details")]
-#endif
         public InvoiceLineItemParentInvoiceItemDetails InvoiceItemDetails { get; set; }
 
         /// <summary>
         /// Details about the rate card subscription that generated this line item.
         /// </summary>
         [JsonProperty("rate_card_subscription_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rate_card_subscription_details")]
-#endif
         public InvoiceLineItemParentRateCardSubscriptionDetails RateCardSubscriptionDetails { get; set; }
 
         /// <summary>
         /// Details about the subscription schedule that generated this line item.
         /// </summary>
         [JsonProperty("schedule_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("schedule_details")]
-#endif
         public InvoiceLineItemParentScheduleDetails ScheduleDetails { get; set; }
 
         /// <summary>
         /// Details about the subscription item that generated this line item.
         /// </summary>
         [JsonProperty("subscription_item_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_item_details")]
-#endif
         public InvoiceLineItemParentSubscriptionItemDetails SubscriptionItemDetails { get; set; }
 
         /// <summary>
@@ -51,18 +43,14 @@ namespace Stripe
         /// <c>subscription_item_details</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
         /// Details about the pricing plan subscription that generated this line item.
         /// </summary>
         [JsonProperty("pricing_plan_subscription_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pricing_plan_subscription_details")]
-#endif
         public InvoiceLineItemParentPricingPlanSubscriptionDetails PricingPlanSubscriptionDetails { get; set; }
     }
 }

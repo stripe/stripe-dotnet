@@ -3,10 +3,10 @@ namespace Stripe.V2.Billing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class LicenseFeeUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.V2.Billing
         /// of 250 characters.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe.V2.Billing
         /// "latest"</c> will set the license fee's <c>live_version</c> to its latest version.
         /// </summary>
         [JsonProperty("live_version")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("live_version")]
-#endif
         public string LiveVersion { get; set; }
 
         /// <summary>
@@ -35,9 +31,7 @@ namespace Stripe.V2.Billing
         /// 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_key")]
-#endif
         public string LookupKey { get; set; }
 
         /// <summary>
@@ -46,9 +40,7 @@ namespace Stripe.V2.Billing
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -59,18 +51,14 @@ namespace Stripe.V2.Billing
         /// One of: <c>graduated</c>, or <c>volume</c>.
         /// </summary>
         [JsonProperty("tiering_mode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tiering_mode")]
-#endif
         public string TieringMode { get; set; }
 
         /// <summary>
         /// Each element represents a pricing tier. Cannot be set if <c>unit_amount</c> is provided.
         /// </summary>
         [JsonProperty("tiers")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tiers")]
-#endif
         public List<LicenseFeeUpdateTierOptions> Tiers { get; set; }
 
         /// <summary>
@@ -78,9 +66,7 @@ namespace Stripe.V2.Billing
         /// billed.
         /// </summary>
         [JsonProperty("transform_quantity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transform_quantity")]
-#endif
         public LicenseFeeUpdateTransformQuantityOptions TransformQuantity { get; set; }
 
         /// <summary>
@@ -88,9 +74,7 @@ namespace Stripe.V2.Billing
         /// units with at most 12 decimal places. Cannot be set if <c>tiers</c> is provided.
         /// </summary>
         [JsonProperty("unit_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_amount")]
-#endif
         public string UnitAmount { get; set; }
     }
 }

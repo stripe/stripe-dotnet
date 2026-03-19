@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentAttemptRecordProcessorDetailsOptions : INestedOptions
     {
         /// <summary>
         /// Information about the custom processor used to make this refund.
         /// </summary>
         [JsonProperty("custom")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom")]
-#endif
         public PaymentAttemptRecordProcessorDetailsCustomOptions Custom { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// processor.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

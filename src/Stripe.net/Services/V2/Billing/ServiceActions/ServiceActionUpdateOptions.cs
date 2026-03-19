@@ -2,10 +2,10 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ServiceActionUpdateOptions : BaseOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Billing
         /// <c>credit_grant</c>.
         /// </summary>
         [JsonProperty("credit_grant")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("credit_grant")]
-#endif
         public ServiceActionUpdateCreditGrantOptions CreditGrant { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Billing
         /// <c>type</c> is <c>credit_grant_per_tenant</c>.
         /// </summary>
         [JsonProperty("credit_grant_per_tenant")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("credit_grant_per_tenant")]
-#endif
         public ServiceActionUpdateCreditGrantPerTenantOptions CreditGrantPerTenant { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe.V2.Billing
         /// characters.
         /// </summary>
         [JsonProperty("lookup_key")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_key")]
-#endif
         public string LookupKey { get; set; }
     }
 }

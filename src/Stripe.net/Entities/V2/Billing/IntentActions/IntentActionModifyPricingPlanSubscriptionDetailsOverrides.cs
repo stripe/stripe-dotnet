@@ -3,19 +3,17 @@ namespace Stripe.V2.Billing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class IntentActionModifyPricingPlanSubscriptionDetailsOverrides : StripeEntity<IntentActionModifyPricingPlanSubscriptionDetailsOverrides>
     {
         /// <summary>
         /// Configurations for behaviors when the action takes effect during the service period.
         /// </summary>
         [JsonProperty("partial_period_behaviors")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("partial_period_behaviors")]
-#endif
         public List<IntentActionModifyPricingPlanSubscriptionDetailsOverridesPartialPeriodBehavior> PartialPeriodBehaviors { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CollectionSettingVersionPaymentMethodOptionsBancontact : StripeEntity<CollectionSettingVersionPaymentMethodOptionsBancontact>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Billing
         /// One of: <c>de</c>, <c>en</c>, <c>fr</c>, or <c>nl</c>.
         /// </summary>
         [JsonProperty("preferred_language")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preferred_language")]
-#endif
         public string PreferredLanguage { get; set; }
     }
 }

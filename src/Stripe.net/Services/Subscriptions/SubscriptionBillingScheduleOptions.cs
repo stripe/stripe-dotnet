@@ -3,28 +3,24 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionBillingScheduleOptions : INestedOptions
     {
         /// <summary>
         /// Configure billing schedule differently for individual subscription items.
         /// </summary>
         [JsonProperty("applies_to")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("applies_to")]
-#endif
         public List<SubscriptionBillingScheduleAppliesToOptions> AppliesTo { get; set; }
 
         /// <summary>
         /// The end date for the billing schedule.
         /// </summary>
         [JsonProperty("bill_until")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bill_until")]
-#endif
         public SubscriptionBillingScheduleBillUntilOptions BillUntil { get; set; }
 
         /// <summary>
@@ -32,9 +28,7 @@ namespace Stripe
         /// up to 200 characters. If not provided, a unique key will be generated.
         /// </summary>
         [JsonProperty("key")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("key")]
-#endif
         public string Key { get; set; }
     }
 }

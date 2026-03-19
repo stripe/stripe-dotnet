@@ -3,19 +3,17 @@ namespace Stripe.DelegatedCheckout
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class RequestedSessionFulfillmentDetailsFulfillmentOptionShipping : StripeEntity<RequestedSessionFulfillmentDetailsFulfillmentOptionShipping>
     {
         /// <summary>
         /// The shipping options.
         /// </summary>
         [JsonProperty("shipping_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_options")]
-#endif
         public List<RequestedSessionFulfillmentDetailsFulfillmentOptionShippingShippingOption> ShippingOptions { get; set; }
     }
 }

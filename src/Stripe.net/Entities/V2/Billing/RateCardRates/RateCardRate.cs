@@ -4,9 +4,8 @@ namespace Stripe.V2.Billing
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// A Rate Card Rate represents a single usage-based price within a Rate Card. Each rate
@@ -14,15 +13,14 @@ namespace Stripe.V2.Billing
     /// either a flat unit amount or tiered pricing. Rates support features like graduated or
     /// volume-based tiering, quantity transformations, and custom pricing units.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class RateCardRate : StripeEntity<RateCardRate>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -30,27 +28,21 @@ namespace Stripe.V2.Billing
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// Timestamp of when the object was created.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The custom pricing unit that this rate binds to.
         /// </summary>
         [JsonProperty("custom_pricing_unit_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_pricing_unit_amount")]
-#endif
         public RateCardRateCustomPricingUnitAmount CustomPricingUnitAmount { get; set; }
 
         /// <summary>
@@ -58,9 +50,7 @@ namespace Stripe.V2.Billing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -69,9 +59,7 @@ namespace Stripe.V2.Billing
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -80,27 +68,21 @@ namespace Stripe.V2.Billing
         /// items.
         /// </summary>
         [JsonProperty("metered_item")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metered_item")]
-#endif
         public MeteredItem MeteredItem { get; set; }
 
         /// <summary>
         /// The ID of the Rate Card it belongs to.
         /// </summary>
         [JsonProperty("rate_card")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rate_card")]
-#endif
         public string RateCard { get; set; }
 
         /// <summary>
         /// The ID of the Rate Card Version it was created on.
         /// </summary>
         [JsonProperty("rate_card_version")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rate_card_version")]
-#endif
         public string RateCardVersion { get; set; }
 
         /// <summary>
@@ -111,18 +93,14 @@ namespace Stripe.V2.Billing
         /// One of: <c>graduated</c>, or <c>volume</c>.
         /// </summary>
         [JsonProperty("tiering_mode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tiering_mode")]
-#endif
         public string TieringMode { get; set; }
 
         /// <summary>
         /// Each element represents a pricing tier. Cannot be set if <c>unit_amount</c> is provided.
         /// </summary>
         [JsonProperty("tiers")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tiers")]
-#endif
         public List<RateCardRateTier> Tiers { get; set; }
 
         /// <summary>
@@ -130,9 +108,7 @@ namespace Stripe.V2.Billing
         /// billed.
         /// </summary>
         [JsonProperty("transform_quantity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transform_quantity")]
-#endif
         public RateCardRateTransformQuantity TransformQuantity { get; set; }
 
         /// <summary>
@@ -140,9 +116,7 @@ namespace Stripe.V2.Billing
         /// units with at most 12 decimal places. Cannot be set if <c>tiers</c> is provided.
         /// </summary>
         [JsonProperty("unit_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_amount")]
-#endif
         public string UnitAmount { get; set; }
     }
 }

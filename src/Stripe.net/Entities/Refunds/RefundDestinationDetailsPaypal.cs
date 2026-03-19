@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class RefundDestinationDetailsPaypal : StripeEntity<RefundDestinationDetailsPaypal>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// indicates the reason the refund failed.
         /// </summary>
         [JsonProperty("network_decline_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_decline_code")]
-#endif
         public string NetworkDeclineCode { get; set; }
     }
 }

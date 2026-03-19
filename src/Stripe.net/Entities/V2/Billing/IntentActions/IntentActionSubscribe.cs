@@ -2,10 +2,10 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class IntentActionSubscribe : StripeEntity<IntentActionSubscribe>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Billing
         /// One of: <c>next_billing_date</c>, or <c>on_effective_at</c>.
         /// </summary>
         [JsonProperty("collect_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("collect_at")]
-#endif
         public string CollectAt { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Billing
         /// on_reserve.
         /// </summary>
         [JsonProperty("effective_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("effective_at")]
-#endif
         public IntentActionSubscribeEffectiveAt EffectiveAt { get; set; }
 
         /// <summary>
@@ -33,27 +29,21 @@ namespace Stripe.V2.Billing
         /// One of: <c>pricing_plan_subscription_details</c>, or <c>v1_subscription_details</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
         /// Details for subscribing to a Pricing Plan.
         /// </summary>
         [JsonProperty("pricing_plan_subscription_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pricing_plan_subscription_details")]
-#endif
         public IntentActionSubscribePricingPlanSubscriptionDetails PricingPlanSubscriptionDetails { get; set; }
 
         /// <summary>
         /// Details for subscribing to a V1 subscription.
         /// </summary>
         [JsonProperty("v1_subscription_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("v1_subscription_details")]
-#endif
         public IntentActionSubscribeV1SubscriptionDetails V1SubscriptionDetails { get; set; }
     }
 }

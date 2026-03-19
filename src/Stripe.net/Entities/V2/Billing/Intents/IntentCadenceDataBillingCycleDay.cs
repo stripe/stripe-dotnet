@@ -2,19 +2,17 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class IntentCadenceDataBillingCycleDay : StripeEntity<IntentCadenceDataBillingCycleDay>
     {
         /// <summary>
         /// The time at which the billing cycle ends.
         /// </summary>
         [JsonProperty("time")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("time")]
-#endif
         public IntentCadenceDataBillingCycleDayTime Time { get; set; }
     }
 }

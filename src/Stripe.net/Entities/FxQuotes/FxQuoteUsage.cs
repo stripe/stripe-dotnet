@@ -2,28 +2,24 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FxQuoteUsage : StripeEntity<FxQuoteUsage>
     {
         /// <summary>
         /// The details required to use an FX Quote for a payment.
         /// </summary>
         [JsonProperty("payment")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment")]
-#endif
         public FxQuoteUsagePayment Payment { get; set; }
 
         /// <summary>
         /// The details required to use an FX Quote for a transfer.
         /// </summary>
         [JsonProperty("transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfer")]
-#endif
         public FxQuoteUsageTransfer Transfer { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe
         /// One of: <c>payment</c>, or <c>transfer</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

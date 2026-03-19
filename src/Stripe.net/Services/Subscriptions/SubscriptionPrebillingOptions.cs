@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionPrebillingOptions : INestedOptions
     {
         /// <summary>
         /// This is used to determine the number of billing cycles to prebill.
         /// </summary>
         [JsonProperty("iterations")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("iterations")]
-#endif
         public long? Iterations { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// One of: <c>prebill</c>, or <c>reset</c>.
         /// </summary>
         [JsonProperty("update_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("update_behavior")]
-#endif
         public string UpdateBehavior { get; set; }
     }
 }

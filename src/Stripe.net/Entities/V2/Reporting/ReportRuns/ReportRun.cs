@@ -4,9 +4,8 @@ namespace Stripe.V2.Reporting
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// The <c>ReportRun</c> object represents an instance of a <c>Report</c> generated with
@@ -14,15 +13,14 @@ namespace Stripe.V2.Reporting
     /// report. When the report has finished running, it will give you a reference to the
     /// results.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReportRun : StripeEntity<ReportRun>, IHasId, IHasObject
     {
         /// <summary>
         /// The unique identifier of the <c>ReportRun</c> object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -30,18 +28,14 @@ namespace Stripe.V2.Reporting
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// Time at which the object was created.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -49,54 +43,42 @@ namespace Stripe.V2.Reporting
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
         /// The unique identifier of the <c>Report</c> object which was run.
         /// </summary>
         [JsonProperty("report")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("report")]
-#endif
         public string Report { get; set; }
 
         /// <summary>
         /// The human-readable name of the <c>Report</c> which was run.
         /// </summary>
         [JsonProperty("report_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("report_name")]
-#endif
         public string ReportName { get; set; }
 
         /// <summary>
         /// The parameters used to customize the generation of the report.
         /// </summary>
         [JsonProperty("report_parameters")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("report_parameters")]
-#endif
         public Dictionary<string, object> ReportParameters { get; set; }
 
         /// <summary>
         /// Details how to retrieve the results of a successfully completed <c>ReportRun</c>.
         /// </summary>
         [JsonProperty("result")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("result")]
-#endif
         public ReportRunResult Result { get; set; }
 
         /// <summary>
         /// The options specified for customizing the output file of the <c>ReportRun</c>.
         /// </summary>
         [JsonProperty("result_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("result_options")]
-#endif
         public ReportRunResultOptions ResultOptions { get; set; }
 
         /// <summary>
@@ -104,9 +86,7 @@ namespace Stripe.V2.Reporting
         /// One of: <c>failed</c>, <c>running</c>, or <c>succeeded</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
@@ -115,9 +95,7 @@ namespace Stripe.V2.Reporting
         /// providing more information about why the report failed to generate successfully.
         /// </summary>
         [JsonProperty("status_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_details")]
-#endif
         public Dictionary<string, ReportRunStatusDetails> StatusDetails { get; set; }
     }
 }

@@ -3,19 +3,17 @@ namespace Stripe.V2.Core
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountCreateConfigurationStorerOptions : INestedOptions
     {
         /// <summary>
         /// Capabilities to request on the Storer Configuration.
         /// </summary>
         [JsonProperty("capabilities")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capabilities")]
-#endif
         public AccountCreateConfigurationStorerCapabilitiesOptions Capabilities { get; set; }
 
         /// <summary>
@@ -30,45 +28,35 @@ namespace Stripe.V2.Core
         /// <c>weapons_firearms_and_explosives</c>.
         /// </summary>
         [JsonProperty("high_risk_activities")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("high_risk_activities")]
-#endif
         public List<string> HighRiskActivities { get; set; }
 
         /// <summary>
         /// Description of the high-risk activities the business offers.
         /// </summary>
         [JsonProperty("high_risk_activities_description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("high_risk_activities_description")]
-#endif
         public string HighRiskActivitiesDescription { get; set; }
 
         /// <summary>
         /// Description of the money services offered by the business.
         /// </summary>
         [JsonProperty("money_services_description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("money_services_description")]
-#endif
         public string MoneyServicesDescription { get; set; }
 
         /// <summary>
         /// Indicates whether the business operates in any prohibited countries.
         /// </summary>
         [JsonProperty("operates_in_prohibited_countries")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("operates_in_prohibited_countries")]
-#endif
         public bool? OperatesInProhibitedCountries { get; set; }
 
         /// <summary>
         /// Indicates whether the business participates in any regulated activity.
         /// </summary>
         [JsonProperty("participates_in_regulated_activity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("participates_in_regulated_activity")]
-#endif
         public bool? ParticipatesInRegulatedActivity { get; set; }
 
         /// <summary>
@@ -81,27 +69,21 @@ namespace Stripe.V2.Core
         /// <c>treasury_management</c>.
         /// </summary>
         [JsonProperty("purpose_of_funds")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("purpose_of_funds")]
-#endif
         public string PurposeOfFunds { get; set; }
 
         /// <summary>
         /// Description of the purpose of the stored funds.
         /// </summary>
         [JsonProperty("purpose_of_funds_description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("purpose_of_funds_description")]
-#endif
         public string PurposeOfFundsDescription { get; set; }
 
         /// <summary>
         /// Details of the regulated activity if the business participates in one.
         /// </summary>
         [JsonProperty("regulated_activity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("regulated_activity")]
-#endif
         public AccountCreateConfigurationStorerRegulatedActivityOptions RegulatedActivity { get; set; }
 
         /// <summary>
@@ -112,18 +94,14 @@ namespace Stripe.V2.Core
         /// <c>tax_refund</c>, <c>third_party_funds</c>, or <c>treasury_reserves</c>.
         /// </summary>
         [JsonProperty("source_of_funds")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source_of_funds")]
-#endif
         public string SourceOfFunds { get; set; }
 
         /// <summary>
         /// Description of the source of funds for the business' account.
         /// </summary>
         [JsonProperty("source_of_funds_description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source_of_funds_description")]
-#endif
         public string SourceOfFundsDescription { get; set; }
     }
 }

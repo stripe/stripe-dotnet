@@ -2,10 +2,10 @@
 namespace Stripe.FinancialConnections
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionRelinkOptions : StripeEntity<SessionRelinkOptions>
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe.FinancialConnections
         /// instead of connecting a different one.
         /// </summary>
         [JsonProperty("account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account")]
-#endif
         public string Account { get; set; }
 
         /// <summary>
         /// The authorization to relink in the Session.
         /// </summary>
         [JsonProperty("authorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authorization")]
-#endif
         public string Authorization { get; set; }
     }
 }

@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class DisputeEvidenceDetailsEnhancedEligibilityVisaCompellingEvidence3 : StripeEntity<DisputeEvidenceDetailsEnhancedEligibilityVisaCompellingEvidence3>
     {
         /// <summary>
@@ -18,9 +18,7 @@ namespace Stripe
         /// <c>missing_prior_undisputed_transactions</c>.
         /// </summary>
         [JsonProperty("required_actions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("required_actions")]
-#endif
         public List<string> RequiredActions { get; set; }
 
         /// <summary>
@@ -28,9 +26,7 @@ namespace Stripe
         /// One of: <c>not_qualified</c>, <c>qualified</c>, or <c>requires_action</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

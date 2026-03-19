@@ -3,28 +3,24 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentNextActionCryptoDisplayDetailsDepositAddressesBase : StripeEntity<PaymentIntentNextActionCryptoDisplayDetailsDepositAddressesBase>
     {
         /// <summary>
         /// Address of the deposit address.
         /// </summary>
         [JsonProperty("address")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
-#endif
         public string Address { get; set; }
 
         /// <summary>
         /// The token currencies supported on this network.
         /// </summary>
         [JsonProperty("supported_tokens")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supported_tokens")]
-#endif
         public List<PaymentIntentNextActionCryptoDisplayDetailsDepositAddressesBaseSupportedToken> SupportedTokens { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 namespace Stripe.FinancialConnections
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionHostedOptions : INestedOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.FinancialConnections
         /// One of: <c>email</c>, or <c>url</c>.
         /// </summary>
         [JsonProperty("delivery_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("delivery_method")]
-#endif
         public string DeliveryMethod { get; set; }
     }
 }

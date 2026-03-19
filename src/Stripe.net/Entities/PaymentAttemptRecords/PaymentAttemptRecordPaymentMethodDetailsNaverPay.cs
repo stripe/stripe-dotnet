@@ -2,28 +2,24 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentAttemptRecordPaymentMethodDetailsNaverPay : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsNaverPay>
     {
         /// <summary>
         /// A unique identifier for the buyer as determined by the local payment processor.
         /// </summary>
         [JsonProperty("buyer_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("buyer_id")]
-#endif
         public string BuyerId { get; set; }
 
         /// <summary>
         /// The Naver Pay transaction ID associated with this payment.
         /// </summary>
         [JsonProperty("transaction_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction_id")]
-#endif
         public string TransactionId { get; set; }
     }
 }

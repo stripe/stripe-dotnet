@@ -3,10 +3,10 @@ namespace Stripe.Issuing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AuthorizationTokenDetailsNetworkDataWalletProvider : StripeEntity<AuthorizationTokenDetailsNetworkDataWalletProvider>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Issuing
         /// score indicates more trustworthy.
         /// </summary>
         [JsonProperty("account_trust_score")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_trust_score")]
-#endif
         public long AccountTrustScore { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.Issuing
         /// One of: <c>app</c>, <c>manual</c>, <c>on_file</c>, or <c>other</c>.
         /// </summary>
         [JsonProperty("card_number_source")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_number_source")]
-#endif
         public string CardNumberSource { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe.Issuing
         /// trustworthy.
         /// </summary>
         [JsonProperty("device_trust_score")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("device_trust_score")]
-#endif
         public long DeviceTrustScore { get; set; }
 
         /// <summary>
@@ -55,9 +49,7 @@ namespace Stripe.Issuing
         /// <c>too_many_recent_attempts</c>, or <c>too_many_recent_tokens</c>.
         /// </summary>
         [JsonProperty("reason_codes")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason_codes")]
-#endif
         public List<string> ReasonCodes { get; set; }
 
         /// <summary>
@@ -65,9 +57,7 @@ namespace Stripe.Issuing
         /// One of: <c>approve</c>, <c>decline</c>, or <c>require_auth</c>.
         /// </summary>
         [JsonProperty("suggested_decision")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("suggested_decision")]
-#endif
         public string SuggestedDecision { get; set; }
     }
 }

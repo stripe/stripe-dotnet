@@ -5,9 +5,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// Balance transfers represent funds moving between balance types on your Stripe account.
@@ -16,33 +14,28 @@ namespace Stripe
     /// href="https://docs.stripe.com/connect/funds-segregation">Allocated Funds</a> balance and
     /// your Stripe balance.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class BalanceTransfer : StripeEntity<BalanceTransfer>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// A positive integer representing how much was transferred in the smallest currency unit.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         /// <summary>
@@ -50,10 +43,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -62,18 +53,14 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// The balance that funds were transferred to.
         /// </summary>
         [JsonProperty("destination_balance")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("destination_balance")]
-#endif
         public BalanceTransferDestinationBalance DestinationBalance { get; set; }
 
         /// <summary>
@@ -82,9 +69,7 @@ namespace Stripe
         /// under Stripe's money transmission licenses.
         /// </summary>
         [JsonProperty("hosted_regulatory_receipt_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hosted_regulatory_receipt_url")]
-#endif
         public string HostedRegulatoryReceiptUrl { get; set; }
 
         /// <summary>
@@ -92,9 +77,7 @@ namespace Stripe
         /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -103,9 +86,7 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -113,9 +94,7 @@ namespace Stripe
         /// <c>bank_account</c>.
         /// </summary>
         [JsonProperty("source_balance")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source_balance")]
-#endif
         public BalanceTransferSourceBalance SourceBalance { get; set; }
     }
 }

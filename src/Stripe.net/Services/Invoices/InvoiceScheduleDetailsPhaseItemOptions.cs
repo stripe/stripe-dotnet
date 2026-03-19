@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceScheduleDetailsPhaseItemOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
@@ -14,18 +14,14 @@ namespace Stripe
         /// new billing period. Pass an empty string to remove previously-defined thresholds.
         /// </summary>
         [JsonProperty("billing_thresholds")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_thresholds")]
-#endif
         public InvoiceScheduleDetailsPhaseItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
         /// The coupons to redeem into discounts for the subscription item.
         /// </summary>
         [JsonProperty("discounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
-#endif
         public List<InvoiceScheduleDetailsPhaseItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -39,9 +35,7 @@ namespace Stripe
         /// configuration item's <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -49,18 +43,14 @@ namespace Stripe
         /// <c>price</c>.
         /// </summary>
         [JsonProperty("plan")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("plan")]
-#endif
         public string Plan { get; set; }
 
         /// <summary>
         /// The ID of the price object.
         /// </summary>
         [JsonProperty("price")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price")]
-#endif
         public string Price { get; set; }
 
         /// <summary>
@@ -68,9 +58,7 @@ namespace Stripe
         /// object inline.
         /// </summary>
         [JsonProperty("price_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price_data")]
-#endif
         public InvoiceScheduleDetailsPhaseItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
@@ -78,9 +66,7 @@ namespace Stripe
         /// <c>licensed</c> and not <c>metered</c>.
         /// </summary>
         [JsonProperty("quantity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
-#endif
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -91,27 +77,21 @@ namespace Stripe
         /// tax rates.
         /// </summary>
         [JsonProperty("tax_rates")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rates")]
-#endif
         public List<string> TaxRates { get; set; }
 
         /// <summary>
         /// Options that configure the trial on the subscription item.
         /// </summary>
         [JsonProperty("trial")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial")]
-#endif
         public InvoiceScheduleDetailsPhaseItemTrialOptions Trial { get; set; }
 
         /// <summary>
         /// The ID of the trial offer to apply to the configuration item.
         /// </summary>
         [JsonProperty("trial_offer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial_offer")]
-#endif
         public string TrialOffer { get; set; }
     }
 }

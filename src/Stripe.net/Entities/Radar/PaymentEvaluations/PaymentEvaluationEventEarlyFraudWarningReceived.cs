@@ -2,10 +2,10 @@
 namespace Stripe.Radar
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentEvaluationEventEarlyFraudWarningReceived : StripeEntity<PaymentEvaluationEventEarlyFraudWarningReceived>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Radar
         /// <c>unauthorized_use_of_card</c>.
         /// </summary>
         [JsonProperty("fraud_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fraud_type")]
-#endif
         public string FraudType { get; set; }
     }
 }

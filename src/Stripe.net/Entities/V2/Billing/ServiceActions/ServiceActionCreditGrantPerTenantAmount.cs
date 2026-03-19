@@ -2,10 +2,10 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ServiceActionCreditGrantPerTenantAmount : StripeEntity<ServiceActionCreditGrantPerTenantAmount>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Billing
         /// One of: <c>custom_pricing_unit</c>, or <c>monetary</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
@@ -24,18 +22,14 @@ namespace Stripe.V2.Billing
         /// <c>custom_pricing_unit</c>.
         /// </summary>
         [JsonProperty("custom_pricing_unit")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_pricing_unit")]
-#endif
         public ServiceActionCreditGrantPerTenantAmountCustomPricingUnit CustomPricingUnit { get; set; }
 
         /// <summary>
         /// The monetary amount of the credit grant. Required if <c>type</c> is <c>monetary</c>.
         /// </summary>
         [JsonProperty("monetary")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("monetary")]
-#endif
         public V2.Amount Monetary { get; set; }
     }
 }

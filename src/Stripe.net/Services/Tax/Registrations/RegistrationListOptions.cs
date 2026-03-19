@@ -2,10 +2,10 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class RegistrationListOptions : ListOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Tax
         /// One of: <c>active</c>, <c>all</c>, <c>expired</c>, or <c>scheduled</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

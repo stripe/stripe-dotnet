@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ClaimableSandboxPrefill : StripeEntity<ClaimableSandboxPrefill>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Core
         /// href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>).
         /// </summary>
         [JsonProperty("country")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
-#endif
         public string Country { get; set; }
 
         /// <summary>
@@ -24,18 +22,14 @@ namespace Stripe.V2.Core
         /// email address before the sandbox expires.
         /// </summary>
         [JsonProperty("email")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("email")]
-#endif
         public string Email { get; set; }
 
         /// <summary>
         /// Name for the sandbox.
         /// </summary>
         [JsonProperty("name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
-#endif
         public string Name { get; set; }
     }
 }

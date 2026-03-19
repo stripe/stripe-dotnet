@@ -2,19 +2,17 @@
 namespace Stripe.Radar
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountEvaluationEventLoginFailed : StripeEntity<AccountEvaluationEventLoginFailed>
     {
         /// <summary>
         /// The reason why this login failed.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
-#endif
         public string Reason { get; set; }
     }
 }

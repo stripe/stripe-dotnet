@@ -3,23 +3,21 @@ namespace Stripe.V2.MoneyManagement
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// Adjustments represent Stripe-initiated credits or debits to a user balance. They might
     /// be used to amend balances due to technical or operational error.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Adjustment : StripeEntity<Adjustment>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -27,27 +25,21 @@ namespace Stripe.V2.MoneyManagement
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// If applicable, contains information about the original flow linked to this Adjustment.
         /// </summary>
         [JsonProperty("adjusted_flow")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("adjusted_flow")]
-#endif
         public AdjustmentAdjustedFlow AdjustedFlow { get; set; }
 
         /// <summary>
         /// The amount of the Adjustment.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public V2.Amount Amount { get; set; }
 
         /// <summary>
@@ -55,27 +47,21 @@ namespace Stripe.V2.MoneyManagement
         /// value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Description of the Adjustment and what it was used for.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
         /// The FinancialAccount that this adjustment is for.
         /// </summary>
         [JsonProperty("financial_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_account")]
-#endif
         public string FinancialAccount { get; set; }
 
         /// <summary>
@@ -83,9 +69,7 @@ namespace Stripe.V2.MoneyManagement
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -95,18 +79,14 @@ namespace Stripe.V2.MoneyManagement
         /// and the receipt url value will be null.
         /// </summary>
         [JsonProperty("receipt_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("receipt_url")]
-#endif
         public string ReceiptUrl { get; set; }
 
         /// <summary>
         /// A reference for the Adjustment that associates it with related records or operations.
         /// </summary>
         [JsonProperty("reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
-#endif
         public string Reference { get; set; }
     }
 }

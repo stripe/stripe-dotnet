@@ -3,19 +3,17 @@ namespace Stripe.Issuing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ProgramUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// If true, makes the specified program the default.
         /// </summary>
         [JsonProperty("is_default")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("is_default")]
-#endif
         public bool? IsDefault { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe.Issuing
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

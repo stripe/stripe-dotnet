@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentPaymentMethodOptionsCardOptions : INestedOptions
     {
         /// <summary>
@@ -19,9 +19,7 @@ namespace Stripe
         /// for this parameter unsets the stored value for this payment method type.
         /// </summary>
         [JsonProperty("capture_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capture_method")]
-#endif
         public string CaptureMethod { get; set; }
 
         /// <summary>
@@ -30,9 +28,7 @@ namespace Stripe
         /// be provided during confirmation.
         /// </summary>
         [JsonProperty("cvc_token")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cvc_token")]
-#endif
         public string CvcToken { get; set; }
 
         /// <summary>
@@ -42,18 +38,14 @@ namespace Stripe
         /// href="https://docs.stripe.com/payments/installments">installments integration guide</a>.
         /// </summary>
         [JsonProperty("installments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("installments")]
-#endif
         public PaymentIntentPaymentMethodOptionsCardInstallmentsOptions Installments { get; set; }
 
         /// <summary>
         /// Configuration options for setting up an eMandate for cards issued in India.
         /// </summary>
         [JsonProperty("mandate_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate_options")]
-#endif
         public PaymentIntentPaymentMethodOptionsCardMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>
@@ -62,9 +54,7 @@ namespace Stripe
         /// provided during confirmation.
         /// </summary>
         [JsonProperty("moto")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("moto")]
-#endif
         public bool? Moto { get; set; }
 
         /// <summary>
@@ -75,9 +65,7 @@ namespace Stripe
         /// <c>mastercard</c>, <c>unionpay</c>, <c>unknown</c>, or <c>visa</c>.
         /// </summary>
         [JsonProperty("network")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network")]
-#endif
         public string Network { get; set; }
 
         /// <summary>
@@ -87,9 +75,7 @@ namespace Stripe
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_decremental_authorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_decremental_authorization")]
-#endif
         public string RequestDecrementalAuthorization { get; set; }
 
         /// <summary>
@@ -99,9 +85,7 @@ namespace Stripe
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_extended_authorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_extended_authorization")]
-#endif
         public string RequestExtendedAuthorization { get; set; }
 
         /// <summary>
@@ -111,9 +95,7 @@ namespace Stripe
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_incremental_authorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_incremental_authorization")]
-#endif
         public string RequestIncrementalAuthorization { get; set; }
 
         /// <summary>
@@ -122,9 +104,7 @@ namespace Stripe
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_multicapture")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_multicapture")]
-#endif
         public string RequestMulticapture { get; set; }
 
         /// <summary>
@@ -134,9 +114,7 @@ namespace Stripe
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_overcapture")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_overcapture")]
-#endif
         public string RequestOvercapture { get; set; }
 
         /// <summary>
@@ -144,9 +122,7 @@ namespace Stripe
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_partial_authorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_partial_authorization")]
-#endif
         public string RequestPartialAuthorization { get; set; }
 
         /// <summary>
@@ -156,9 +132,7 @@ namespace Stripe
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_reauthorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_reauthorization")]
-#endif
         public string RequestReauthorization { get; set; }
 
         /// <summary>
@@ -174,9 +148,7 @@ namespace Stripe
         /// One of: <c>any</c>, <c>automatic</c>, or <c>challenge</c>.
         /// </summary>
         [JsonProperty("request_three_d_secure")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_three_d_secure")]
-#endif
         public string RequestThreeDSecure { get; set; }
 
         /// <summary>
@@ -184,9 +156,7 @@ namespace Stripe
         /// provided again (i.e. using the cvc_token parameter).
         /// </summary>
         [JsonProperty("require_cvc_recollection")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("require_cvc_recollection")]
-#endif
         public bool? RequireCvcRecollection { get; set; }
 
         /// <summary>
@@ -215,9 +185,7 @@ namespace Stripe
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -228,9 +196,7 @@ namespace Stripe
         /// (including separators) will appear truncated to 22 characters.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix_kana")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor_suffix_kana")]
-#endif
         public string StatementDescriptorSuffixKana { get; set; }
 
         /// <summary>
@@ -241,9 +207,7 @@ namespace Stripe
         /// (including separators) will appear truncated to 17 characters.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix_kanji")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor_suffix_kanji")]
-#endif
         public string StatementDescriptorSuffixKanji { get; set; }
 
         /// <summary>
@@ -251,9 +215,7 @@ namespace Stripe
         /// details shown on your customers' statements.
         /// </summary>
         [JsonProperty("statement_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_details")]
-#endif
         public PaymentIntentPaymentMethodOptionsCardStatementDetailsOptions StatementDetails { get; set; }
 
         /// <summary>
@@ -261,9 +223,7 @@ namespace Stripe
         /// authentication details to use for this payment.
         /// </summary>
         [JsonProperty("three_d_secure")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("three_d_secure")]
-#endif
         public PaymentIntentPaymentMethodOptionsCardThreeDSecureOptions ThreeDSecure { get; set; }
     }
 }

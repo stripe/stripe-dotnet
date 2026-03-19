@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceScheduleDetailsDefaultSettingsOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// One of: <c>billing_period_start</c>, or <c>phase_start</c>.
         /// </summary>
         [JsonProperty("phase_effective_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phase_effective_at")]
-#endif
         public string PhaseEffectiveAt { get; set; }
     }
 }

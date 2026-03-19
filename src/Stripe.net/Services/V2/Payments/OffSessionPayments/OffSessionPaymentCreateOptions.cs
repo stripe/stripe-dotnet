@@ -3,19 +3,17 @@ namespace Stripe.V2.Payments
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OffSessionPaymentCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// The “presentment amount” to be collected from the customer.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public V2.Amount Amount { get; set; }
 
         /// <summary>
@@ -23,27 +21,21 @@ namespace Stripe.V2.Payments
         /// One of: <c>recurring</c>, or <c>unscheduled</c>.
         /// </summary>
         [JsonProperty("cadence")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cadence")]
-#endif
         public string Cadence { get; set; }
 
         /// <summary>
         /// Details about the capture configuration for the OffSessionPayment.
         /// </summary>
         [JsonProperty("capture")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capture")]
-#endif
         public OffSessionPaymentCreateCaptureOptions Capture { get; set; }
 
         /// <summary>
         /// ID of the Customer to which this OffSessionPayment belongs.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
@@ -54,27 +46,21 @@ namespace Stripe.V2.Payments
         /// information in metadata</a>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The account (if any) for which the funds of the OffSessionPayment are intended.
         /// </summary>
         [JsonProperty("on_behalf_of")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("on_behalf_of")]
-#endif
         public string OnBehalfOf { get; set; }
 
         /// <summary>
         /// ID of the payment method used in this OffSessionPayment.
         /// </summary>
         [JsonProperty("payment_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method")]
-#endif
         public string PaymentMethod { get; set; }
 
         /// <summary>
@@ -82,36 +68,28 @@ namespace Stripe.V2.Payments
         /// will appear in the payment_method property on the OffSessionPayment.
         /// </summary>
         [JsonProperty("payment_method_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_data")]
-#endif
         public OffSessionPaymentCreatePaymentMethodDataOptions PaymentMethodData { get; set; }
 
         /// <summary>
         /// Payment method options for the off-session payment.
         /// </summary>
         [JsonProperty("payment_method_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_options")]
-#endif
         public OffSessionPaymentCreatePaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
         /// Details about the payments orchestration configuration.
         /// </summary>
         [JsonProperty("payments_orchestration")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payments_orchestration")]
-#endif
         public OffSessionPaymentCreatePaymentsOrchestrationOptions PaymentsOrchestration { get; set; }
 
         /// <summary>
         /// Details about the OffSessionPayment retries.
         /// </summary>
         [JsonProperty("retry_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("retry_details")]
-#endif
         public OffSessionPaymentCreateRetryDetailsOptions RetryDetails { get; set; }
 
         /// <summary>
@@ -122,9 +100,7 @@ namespace Stripe.V2.Payments
         /// Descriptor docs</a>.
         /// </summary>
         [JsonProperty("statement_descriptor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor")]
-#endif
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -134,18 +110,14 @@ namespace Stripe.V2.Payments
         /// customer’s statement.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor_suffix")]
-#endif
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
         /// Test clock that can be used to advance the retry attempts in a sandbox.
         /// </summary>
         [JsonProperty("test_clock")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("test_clock")]
-#endif
         public string TestClock { get; set; }
 
         /// <summary>
@@ -154,9 +126,7 @@ namespace Stripe.V2.Payments
         /// href="https://docs.stripe.com/payments/connected-accounts">connected accounts</a>.
         /// </summary>
         [JsonProperty("transfer_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfer_data")]
-#endif
         public OffSessionPaymentCreateTransferDataOptions TransferData { get; set; }
     }
 }

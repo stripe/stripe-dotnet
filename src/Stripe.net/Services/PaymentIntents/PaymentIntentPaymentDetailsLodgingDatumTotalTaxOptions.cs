@@ -3,28 +3,24 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentPaymentDetailsLodgingDatumTotalTaxOptions : INestedOptions
     {
         /// <summary>
         /// Indicates whether the transaction is tax exempt.
         /// </summary>
         [JsonProperty("tax_exempt_indicator")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_exempt_indicator")]
-#endif
         public bool? TaxExemptIndicator { get; set; }
 
         /// <summary>
         /// Tax details.
         /// </summary>
         [JsonProperty("taxes")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("taxes")]
-#endif
         public List<PaymentIntentPaymentDetailsLodgingDatumTotalTaxTaxOptions> Taxes { get; set; }
     }
 }

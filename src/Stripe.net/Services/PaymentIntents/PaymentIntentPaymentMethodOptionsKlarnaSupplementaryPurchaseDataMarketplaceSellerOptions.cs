@@ -5,55 +5,44 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentPaymentMethodOptionsKlarnaSupplementaryPurchaseDataMarketplaceSellerOptions : INestedOptions
     {
         /// <summary>
         /// The references to line items for purchases with multiple associated sub-sellers.
         /// </summary>
         [JsonProperty("line_item_references")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("line_item_references")]
-#endif
         public List<string> LineItemReferences { get; set; }
 
         /// <summary>
         /// The address of the selling or delivering merchant.
         /// </summary>
         [JsonProperty("marketplace_seller_address")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("marketplace_seller_address")]
-#endif
         public PaymentIntentPaymentMethodOptionsKlarnaSupplementaryPurchaseDataMarketplaceSellerMarketplaceSellerAddressOptions MarketplaceSellerAddress { get; set; }
 
         /// <summary>
         /// The name of the marketplace seller.
         /// </summary>
         [JsonProperty("marketplace_seller_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("marketplace_seller_name")]
-#endif
         public string MarketplaceSellerName { get; set; }
 
         /// <summary>
         /// The unique identifier for the marketplace seller.
         /// </summary>
         [JsonProperty("marketplace_seller_reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("marketplace_seller_reference")]
-#endif
         public string MarketplaceSellerReference { get; set; }
 
         /// <summary>
         /// The number of transactions the sub-seller completed in the last 12 months.
         /// </summary>
         [JsonProperty("number_of_transactions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("number_of_transactions")]
-#endif
         public long? NumberOfTransactions { get; set; }
 
         /// <summary>
@@ -71,9 +60,7 @@ namespace Stripe
         /// <c>toys_and_games</c>, <c>video_games</c>, or <c>women_clothing</c>.
         /// </summary>
         [JsonProperty("product_category")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product_category")]
-#endif
         public string ProductCategory { get; set; }
 
         /// <summary>
@@ -81,10 +68,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("seller_last_login_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("seller_last_login_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? SellerLastLoginAt { get; set; }
 
         /// <summary>
@@ -93,9 +78,7 @@ namespace Stripe
         /// One of: <c>high</c>, <c>low</c>, <c>medium</c>, <c>very_high</c>, or <c>very_low</c>.
         /// </summary>
         [JsonProperty("seller_rating")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("seller_rating")]
-#endif
         public string SellerRating { get; set; }
 
         /// <summary>
@@ -103,10 +86,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("seller_registered_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("seller_registered_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? SellerRegisteredAt { get; set; }
 
         /// <summary>
@@ -114,19 +95,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("seller_updated_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("seller_updated_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? SellerUpdatedAt { get; set; }
 
         /// <summary>
         /// The references to shipping addresses for purchases with multiple associated sub-sellers.
         /// </summary>
         [JsonProperty("shipping_references")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_references")]
-#endif
         public List<string> ShippingReferences { get; set; }
 
         /// <summary>
@@ -135,9 +112,7 @@ namespace Stripe
         /// currency units.
         /// </summary>
         [JsonProperty("volume_of_transactions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("volume_of_transactions")]
-#endif
         public long? VolumeOfTransactions { get; set; }
     }
 }

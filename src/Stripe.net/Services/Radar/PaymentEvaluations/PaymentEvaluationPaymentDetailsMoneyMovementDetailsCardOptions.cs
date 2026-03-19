@@ -2,10 +2,10 @@
 namespace Stripe.Radar
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentEvaluationPaymentDetailsMoneyMovementDetailsCardOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Radar
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("customer_presence")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_presence")]
-#endif
         public string CustomerPresence { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.Radar
         /// <c>setup_recurring</c>.
         /// </summary>
         [JsonProperty("payment_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_type")]
-#endif
         public string PaymentType { get; set; }
     }
 }

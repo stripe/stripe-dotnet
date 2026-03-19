@@ -4,10 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class QuoteSubscriptionDataBillingScheduleBillUntil : StripeEntity<QuoteSubscriptionDataBillingScheduleBillUntil>
     {
         /// <summary>
@@ -15,28 +14,22 @@ namespace Stripe
         /// </summary>
         [JsonProperty("computed_timestamp")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("computed_timestamp")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? ComputedTimestamp { get; set; }
 
         /// <summary>
         /// Specifies the billing period.
         /// </summary>
         [JsonProperty("duration")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("duration")]
-#endif
         public QuoteSubscriptionDataBillingScheduleBillUntilDuration Duration { get; set; }
 
         /// <summary>
         /// Lets you bill the period ending at a particular Quote line.
         /// </summary>
         [JsonProperty("line_ends_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("line_ends_at")]
-#endif
         public QuoteSubscriptionDataBillingScheduleBillUntilLineEndsAt LineEndsAt { get; set; }
 
         /// <summary>
@@ -44,10 +37,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("timestamp")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("timestamp")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? Timestamp { get; set; }
 
         /// <summary>
@@ -57,9 +48,7 @@ namespace Stripe
         /// <c>upcoming_invoice</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

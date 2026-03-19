@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FrMealVouchersOnboardingProvidersConecsRequirements : StripeEntity<FrMealVouchersOnboardingProvidersConecsRequirements>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe
         /// completed.
         /// </summary>
         [JsonProperty("errors")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("errors")]
-#endif
         public List<FrMealVouchersOnboardingProvidersConecsRequirementsError> Errors { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe
         /// One of: <c>postal_code</c>, or <c>siret</c>.
         /// </summary>
         [JsonProperty("past_due")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("past_due")]
-#endif
         public List<string> PastDue { get; set; }
     }
 }

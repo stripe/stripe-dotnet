@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionBillForOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// "now" }</c>.
         /// </summary>
         [JsonProperty("outstanding_usage_through")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("outstanding_usage_through")]
-#endif
         public SubscriptionBillForOutstandingUsageThroughOptions OutstandingUsageThrough { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// }</c>.
         /// </summary>
         [JsonProperty("unused_time_from")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unused_time_from")]
-#endif
         public SubscriptionBillForUnusedTimeFromOptions UnusedTimeFrom { get; set; }
     }
 }

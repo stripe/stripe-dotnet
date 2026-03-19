@@ -2,10 +2,10 @@
 namespace Stripe.Identity
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class BlocklistEntryCreateOptions : BaseOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Identity
         /// verifications.
         /// </summary>
         [JsonProperty("check_existing_verifications")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("check_existing_verifications")]
-#endif
         public bool? CheckExistingVerifications { get; set; }
 
         /// <summary>
@@ -23,18 +21,14 @@ namespace Stripe.Identity
         /// One of: <c>document</c>, or <c>selfie</c>.
         /// </summary>
         [JsonProperty("entry_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("entry_type")]
-#endif
         public string EntryType { get; set; }
 
         /// <summary>
         /// The identifier of the VerificationReport to create the BlocklistEntry from.
         /// </summary>
         [JsonProperty("verification_report")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification_report")]
-#endif
         public string VerificationReport { get; set; }
     }
 }

@@ -4,9 +4,7 @@ namespace Stripe.Identity
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// A BlocklistEntry represents an entry in our identity verification blocklist. It helps
@@ -20,27 +18,21 @@ namespace Stripe.Identity
     /// href="https://docs.stripe.com/identity/review-tools#block-list">Identity Verification
     /// Blocklist</a>.
     /// </summary>
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class BlocklistEntry : StripeEntity<BlocklistEntry>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -48,10 +40,8 @@ namespace Stripe.Identity
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -59,10 +49,8 @@ namespace Stripe.Identity
         /// </summary>
         [JsonProperty("disabled_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("disabled_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? DisabledAt { get; set; }
 
         /// <summary>
@@ -70,10 +58,8 @@ namespace Stripe.Identity
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
@@ -81,9 +67,7 @@ namespace Stripe.Identity
         /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -91,9 +75,7 @@ namespace Stripe.Identity
         /// One of: <c>active</c>, <c>disabled</c>, or <c>redacted</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
@@ -101,9 +83,7 @@ namespace Stripe.Identity
         /// One of: <c>document</c>, or <c>selfie</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         #region Expandable VerificationReport
@@ -113,9 +93,7 @@ namespace Stripe.Identity
         /// The verification report the BlocklistEntry was created from.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string VerificationReportId
         {
             get => this.InternalVerificationReport?.Id;
@@ -129,9 +107,7 @@ namespace Stripe.Identity
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public VerificationReport VerificationReport
         {
             get => this.InternalVerificationReport?.ExpandedObject;
@@ -140,10 +116,8 @@ namespace Stripe.Identity
 
         [JsonProperty("verification_report")]
         [JsonConverter(typeof(ExpandableFieldConverter<VerificationReport>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification_report")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<VerificationReport>))]
-#endif
         internal ExpandableField<VerificationReport> InternalVerificationReport { get; set; }
         #endregion
 
@@ -154,9 +128,7 @@ namespace Stripe.Identity
         /// The verification session the BlocklistEntry was created from.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string VerificationSessionId
         {
             get => this.InternalVerificationSession?.Id;
@@ -170,9 +142,7 @@ namespace Stripe.Identity
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public VerificationSession VerificationSession
         {
             get => this.InternalVerificationSession?.ExpandedObject;
@@ -181,10 +151,8 @@ namespace Stripe.Identity
 
         [JsonProperty("verification_session")]
         [JsonConverter(typeof(ExpandableFieldConverter<VerificationSession>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification_session")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<VerificationSession>))]
-#endif
         internal ExpandableField<VerificationSession> InternalVerificationSession { get; set; }
         #endregion
     }

@@ -2,10 +2,10 @@
 namespace Stripe.V2.MoneyManagement
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OutboundSetupIntentCreateOptions : BaseOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.MoneyManagement
         /// resource.
         /// </summary>
         [JsonProperty("payout_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payout_method")]
-#endif
         public string PayoutMethod { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe.V2.MoneyManagement
         /// credential linked to this setup intent.
         /// </summary>
         [JsonProperty("payout_method_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payout_method_data")]
-#endif
         public OutboundSetupIntentCreatePayoutMethodDataOptions PayoutMethodData { get; set; }
 
         /// <summary>
@@ -36,9 +32,7 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>payment</c>, or <c>transfer</c>.
         /// </summary>
         [JsonProperty("usage_intent")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("usage_intent")]
-#endif
         public string UsageIntent { get; set; }
     }
 }

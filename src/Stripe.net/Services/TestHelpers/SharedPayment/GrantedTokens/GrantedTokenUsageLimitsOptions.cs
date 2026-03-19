@@ -4,10 +4,9 @@ namespace Stripe.TestHelpers.SharedPayment
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class GrantedTokenUsageLimitsOptions : INestedOptions
     {
         /// <summary>
@@ -16,9 +15,7 @@ namespace Stripe.TestHelpers.SharedPayment
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -27,19 +24,15 @@ namespace Stripe.TestHelpers.SharedPayment
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
         /// Max amount that can be captured using this SharedPaymentToken.
         /// </summary>
         [JsonProperty("max_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("max_amount")]
-#endif
         public long? MaxAmount { get; set; }
 
         /// <summary>
@@ -48,9 +41,7 @@ namespace Stripe.TestHelpers.SharedPayment
         /// One of: <c>month</c>, <c>week</c>, or <c>year</c>.
         /// </summary>
         [JsonProperty("recurring_interval")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recurring_interval")]
-#endif
         public string RecurringInterval { get; set; }
     }
 }

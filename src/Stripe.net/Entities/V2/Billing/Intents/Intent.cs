@@ -3,9 +3,8 @@ namespace Stripe.V2.Billing
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// A Billing Intent represents a proposed change to a customer's billing configuration,
@@ -13,15 +12,14 @@ namespace Stripe.V2.Billing
     /// service. Intents follow a draft-reserve-commit workflow where they can be previewed
     /// before committing, allowing you to see the billing impact before changes take effect.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Intent : StripeEntity<Intent>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -29,54 +27,42 @@ namespace Stripe.V2.Billing
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// Breakdown of the amount for this Billing Intent.
         /// </summary>
         [JsonProperty("amount_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_details")]
-#endif
         public IntentAmountDetails AmountDetails { get; set; }
 
         /// <summary>
         /// ID of an existing Cadence to use.
         /// </summary>
         [JsonProperty("cadence")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cadence")]
-#endif
         public string Cadence { get; set; }
 
         /// <summary>
         /// Data for creating a new Cadence.
         /// </summary>
         [JsonProperty("cadence_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cadence_data")]
-#endif
         public IntentCadenceData CadenceData { get; set; }
 
         /// <summary>
         /// Time at which the object was created.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -84,9 +70,7 @@ namespace Stripe.V2.Billing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -94,18 +78,14 @@ namespace Stripe.V2.Billing
         /// One of: <c>canceled</c>, <c>committed</c>, <c>draft</c>, or <c>reserved</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
         /// Timestamps for status transitions of the Billing Intent.
         /// </summary>
         [JsonProperty("status_transitions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_transitions")]
-#endif
         public IntentStatusTransitions StatusTransitions { get; set; }
     }
 }
