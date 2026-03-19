@@ -55,6 +55,24 @@ namespace StripeTests.Wholesome
                         }
                     }
 
+                    if (property.PropertyType == typeof(long) || property.PropertyType == typeof(long?))
+                    {
+                        var jsonAttribute = property.GetCustomAttribute(typeof(Newtonsoft.Json.JsonConverterAttribute), false) as Newtonsoft.Json.JsonConverterAttribute;
+                        var stjAttribute = property.GetCustomAttribute(typeof(JsonNumberHandlingAttribute)) as JsonNumberHandlingAttribute;
+                        if (jsonAttribute?.ConverterType == typeof(Int64StringConverter))
+                        {
+                            var hasCorrectAttributes =
+                                (stjAttribute.Handling & (JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString)) != 0;
+
+                            if (!hasCorrectAttributes)
+                            {
+                                results.Add($"{type.FullName}.{property.Name}");
+                            }
+
+                            continue;
+                        }
+                    }
+
                     foreach (Attribute attribute in property.GetCustomAttributes())
                     {
                         if (attribute.GetType().Namespace.StartsWith("Newtonsoft", true, null))
