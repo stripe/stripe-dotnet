@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountConfigurationRecipientCapabilities : StripeEntity<AccountConfigurationRecipientCapabilities>
     {
         /// <summary>
@@ -30,9 +30,7 @@ namespace Stripe.V2.Core
         /// Capabilities that enable the recipient to manage their Stripe Balance (/v1/balance).
         /// </summary>
         [JsonProperty("stripe_balance")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stripe_balance")]
-#endif
         public AccountConfigurationRecipientCapabilitiesStripeBalance StripeBalance { get; set; }
     }
 }

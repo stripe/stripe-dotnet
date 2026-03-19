@@ -2,10 +2,10 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionBrandingSettingsOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Checkout
         /// Checkout Session.
         /// </summary>
         [JsonProperty("background_color")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("background_color")]
-#endif
         public string BackgroundColor { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.Checkout
         /// One of: <c>pill</c>, <c>rectangular</c>, or <c>rounded</c>.
         /// </summary>
         [JsonProperty("border_style")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("border_style")]
-#endif
         public string BorderStyle { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe.Checkout
         /// Session.
         /// </summary>
         [JsonProperty("button_color")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("button_color")]
-#endif
         public string ButtonColor { get; set; }
 
         /// <summary>
@@ -44,9 +38,7 @@ namespace Stripe.Checkout
         /// and other places.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -62,27 +54,21 @@ namespace Stripe.Checkout
         /// <c>zen_maru_gothic</c>.
         /// </summary>
         [JsonProperty("font_family")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("font_family")]
-#endif
         public string FontFamily { get; set; }
 
         /// <summary>
         /// The icon for the Checkout Session. For best results, use a square image.
         /// </summary>
         [JsonProperty("icon")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("icon")]
-#endif
         public SessionBrandingSettingsIconOptions Icon { get; set; }
 
         /// <summary>
         /// The logo for the Checkout Session.
         /// </summary>
         [JsonProperty("logo")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("logo")]
-#endif
         public SessionBrandingSettingsLogoOptions Logo { get; set; }
     }
 }

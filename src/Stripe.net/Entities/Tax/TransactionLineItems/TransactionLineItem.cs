@@ -3,28 +3,24 @@ namespace Stripe.Tax
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TransactionLineItem : StripeEntity<TransactionLineItem>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe.Tax
         /// calculated on top of this amount.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         /// <summary>
@@ -44,9 +38,7 @@ namespace Stripe.Tax
         /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_tax")]
-#endif
         public long AmountTax { get; set; }
 
         /// <summary>
@@ -54,9 +46,7 @@ namespace Stripe.Tax
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -65,18 +55,14 @@ namespace Stripe.Tax
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The ID of an existing <a href="https://docs.stripe.com/api/products/object">Product</a>.
         /// </summary>
         [JsonProperty("product")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product")]
-#endif
         public string Product { get; set; }
 
         /// <summary>
@@ -84,27 +70,21 @@ namespace Stripe.Tax
         /// reversed.
         /// </summary>
         [JsonProperty("quantity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
-#endif
         public long Quantity { get; set; }
 
         /// <summary>
         /// A custom identifier for this line item in the transaction.
         /// </summary>
         [JsonProperty("reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
-#endif
         public string Reference { get; set; }
 
         /// <summary>
         /// If <c>type=reversal</c>, contains information about what was reversed.
         /// </summary>
         [JsonProperty("reversal")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reversal")]
-#endif
         public TransactionLineItemReversal Reversal { get; set; }
 
         /// <summary>
@@ -113,9 +93,7 @@ namespace Stripe.Tax
         /// One of: <c>exclusive</c>, or <c>inclusive</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_behavior")]
-#endif
         public string TaxBehavior { get; set; }
 
         /// <summary>
@@ -123,9 +101,7 @@ namespace Stripe.Tax
         /// resource.
         /// </summary>
         [JsonProperty("tax_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_code")]
-#endif
         public string TaxCode { get; set; }
 
         /// <summary>
@@ -133,9 +109,7 @@ namespace Stripe.Tax
         /// One of: <c>reversal</c>, or <c>transaction</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

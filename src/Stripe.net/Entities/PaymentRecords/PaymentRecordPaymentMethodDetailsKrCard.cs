@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentRecordPaymentMethodDetailsKrCard : StripeEntity<PaymentRecordPaymentMethodDetailsKrCard>
     {
         /// <summary>
@@ -17,36 +17,28 @@ namespace Stripe
         /// <c>woori</c>.
         /// </summary>
         [JsonProperty("brand")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("brand")]
-#endif
         public string Brand { get; set; }
 
         /// <summary>
         /// A unique identifier for the buyer as determined by the local payment processor.
         /// </summary>
         [JsonProperty("buyer_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("buyer_id")]
-#endif
         public string BuyerId { get; set; }
 
         /// <summary>
         /// The last four digits of the card. This may not be present for American Express cards.
         /// </summary>
         [JsonProperty("last4")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last4")]
-#endif
         public string Last4 { get; set; }
 
         /// <summary>
         /// The Korean Card transaction ID associated with this payment.
         /// </summary>
         [JsonProperty("transaction_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction_id")]
-#endif
         public string TransactionId { get; set; }
     }
 }

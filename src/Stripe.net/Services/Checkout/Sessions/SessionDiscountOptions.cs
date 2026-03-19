@@ -2,10 +2,10 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionDiscountOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Checkout
         /// Session. One of <c>coupon</c> or <c>coupon_data</c> is required when updating discounts.
         /// </summary>
         [JsonProperty("coupon")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("coupon")]
-#endif
         public string Coupon { get; set; }
 
         /// <summary>
@@ -33,9 +31,7 @@ namespace Stripe.Checkout
         /// The ID of a promotion code to apply to this Session.
         /// </summary>
         [JsonProperty("promotion_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("promotion_code")]
-#endif
         public string PromotionCode { get; set; }
     }
 }

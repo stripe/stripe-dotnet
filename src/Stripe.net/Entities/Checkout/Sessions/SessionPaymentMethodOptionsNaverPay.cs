@@ -2,19 +2,17 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionPaymentMethodOptionsNaverPay : StripeEntity<SessionPaymentMethodOptionsNaverPay>
     {
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// </summary>
         [JsonProperty("capture_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capture_method")]
-#endif
         public string CaptureMethod { get; set; }
 
         /// <summary>
@@ -39,9 +37,7 @@ namespace Stripe.Checkout
         /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
     }
 }

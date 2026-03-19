@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountSettingsBacsDebitPayments : StripeEntity<AccountSettingsBacsDebitPayments>
     {
         /// <summary>
@@ -18,9 +18,7 @@ namespace Stripe
         /// as "Stripe" and the account is onboarded to Stripe branding, which is free.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -29,9 +27,7 @@ namespace Stripe
         /// partners.
         /// </summary>
         [JsonProperty("service_user_number")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("service_user_number")]
-#endif
         public string ServiceUserNumber { get; set; }
     }
 }

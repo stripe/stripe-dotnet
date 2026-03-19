@@ -3,10 +3,10 @@ namespace Stripe.V2.Core
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountRequirementsEntryImpact : StripeEntity<AccountRequirementsEntryImpact>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Core
         /// satisfactory to Stripe.
         /// </summary>
         [JsonProperty("restricts_capabilities")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("restricts_capabilities")]
-#endif
         public List<AccountRequirementsEntryImpactRestrictsCapability> RestrictsCapabilities { get; set; }
     }
 }

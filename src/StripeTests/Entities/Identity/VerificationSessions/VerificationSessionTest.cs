@@ -1,6 +1,6 @@
 namespace StripeTests.Identity
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe.Identity;
     using Xunit;
 
@@ -15,7 +15,7 @@ namespace StripeTests.Identity
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/identity/verification_sessions/vs_123");
-            var verificationSession = JsonConvert.DeserializeObject<VerificationSession>(json);
+            var verificationSession = JsonSerializer.Deserialize<VerificationSession>(json);
             Assert.NotNull(verificationSession);
             Assert.IsType<VerificationSession>(verificationSession);
             Assert.NotNull(verificationSession.Id);
@@ -31,7 +31,7 @@ namespace StripeTests.Identity
             };
 
             string json = this.GetFixture("/v1/identity/verification_sessions/vs_123", expansions);
-            var verificationSession = JsonConvert.DeserializeObject<VerificationSession>(json);
+            var verificationSession = JsonSerializer.Deserialize<VerificationSession>(json);
             Assert.NotNull(verificationSession);
             Assert.IsType<VerificationSession>(verificationSession);
             Assert.NotNull(verificationSession.Id);

@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentAttemptRecordPaymentMethodDetailsP24 : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsP24>
     {
         /// <summary>
@@ -27,18 +27,14 @@ namespace Stripe
         /// <c>volkswagen_bank</c>.
         /// </summary>
         [JsonProperty("bank")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank")]
-#endif
         public string Bank { get; set; }
 
         /// <summary>
         /// Unique reference for this Przelewy24 payment.
         /// </summary>
         [JsonProperty("reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
-#endif
         public string Reference { get; set; }
 
         /// <summary>
@@ -47,9 +43,7 @@ namespace Stripe
         /// Przelewy24 rarely provides this information so the attribute is usually empty.
         /// </summary>
         [JsonProperty("verified_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verified_name")]
-#endif
         public string VerifiedName { get; set; }
     }
 }

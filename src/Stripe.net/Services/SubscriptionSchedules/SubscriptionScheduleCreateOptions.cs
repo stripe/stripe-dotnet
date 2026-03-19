@@ -5,10 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionScheduleCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -29,36 +28,28 @@ namespace Stripe
         /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
         /// </summary>
         [JsonProperty("billing_mode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_mode")]
-#endif
         public SubscriptionScheduleBillingModeOptions BillingMode { get; set; }
 
         /// <summary>
         /// The identifier of the customer to create the subscription schedule for.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
         /// The identifier of the account to create the subscription schedule for.
         /// </summary>
         [JsonProperty("customer_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_account")]
-#endif
         public string CustomerAccount { get; set; }
 
         /// <summary>
         /// Object representing the subscription schedule's default settings.
         /// </summary>
         [JsonProperty("default_settings")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_settings")]
-#endif
         public SubscriptionScheduleDefaultSettingsOptions DefaultSettings { get; set; }
 
         /// <summary>
@@ -70,9 +61,7 @@ namespace Stripe
         /// One of: <c>cancel</c>, <c>none</c>, <c>release</c>, or <c>renew</c>.
         /// </summary>
         [JsonProperty("end_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("end_behavior")]
-#endif
         public string EndBehavior { get; set; }
 
         /// <summary>
@@ -83,9 +72,7 @@ namespace Stripe
         /// with other modifications, we recommend making two separate API calls.
         /// </summary>
         [JsonProperty("from_subscription")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("from_subscription")]
-#endif
         public string FromSubscription { get; set; }
 
         /// <summary>
@@ -95,9 +82,7 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -106,9 +91,7 @@ namespace Stripe
         /// <c>end_date</c> of one phase will always equal the <c>start_date</c> of the next phase.
         /// </summary>
         [JsonProperty("phases")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phases")]
-#endif
         public List<SubscriptionSchedulePhaseOptions> Phases { get; set; }
 
         /// <summary>
@@ -129,10 +112,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("start_date")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("start_date")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, SubscriptionScheduleStartDate> StartDate { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 namespace StripeTests.Terminal
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe.Terminal;
     using Xunit;
 
@@ -15,7 +15,7 @@ namespace StripeTests.Terminal
         public void Deserialize()
         {
             var json = GetResourceAsString("api_fixtures.connection_token.json");
-            var connectionToken = JsonConvert.DeserializeObject<ConnectionToken>(json);
+            var connectionToken = JsonSerializer.Deserialize<ConnectionToken>(json);
             Assert.NotNull(connectionToken);
             Assert.IsType<ConnectionToken>(connectionToken);
             Assert.NotNull(connectionToken.Secret);

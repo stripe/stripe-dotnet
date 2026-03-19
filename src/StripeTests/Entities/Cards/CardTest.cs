@@ -1,6 +1,6 @@
 namespace StripeTests
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe;
     using Xunit;
 
@@ -15,7 +15,7 @@ namespace StripeTests
         public void Deserialize()
         {
             var json = GetResourceAsString("api_fixtures.customer_card.json");
-            var card = JsonConvert.DeserializeObject<Card>(json);
+            var card = JsonSerializer.Deserialize<Card>(json);
             Assert.NotNull(card);
             Assert.IsType<Card>(card);
             Assert.NotNull(card.Id);
@@ -26,7 +26,7 @@ namespace StripeTests
         public void DeserializeWithExpansions()
         {
             var json = GetResourceAsString("api_fixtures.customer_card_with_expansion.json");
-            var card = JsonConvert.DeserializeObject<Card>(json);
+            var card = JsonSerializer.Deserialize<Card>(json);
             Assert.NotNull(card);
             Assert.IsType<Card>(card);
             Assert.NotNull(card.Id);

@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class FileCreateOptions : BaseOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// transfers for the <c>multipart/form-data</c> protocol.
         /// </summary>
         [JsonProperty("file")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("file")]
-#endif
         public MultipartFileContent File { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// href="https://api.stripe.com#file_links">file link</a> for the newly created file.
         /// </summary>
         [JsonProperty("file_link_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("file_link_data")]
-#endif
         public FileFileLinkDataOptions FileLinkData { get; set; }
 
         /// <summary>
@@ -39,9 +35,7 @@ namespace Stripe
         /// <c>terminal_wifi_certificate</c>, or <c>terminal_wifi_private_key</c>.
         /// </summary>
         [JsonProperty("purpose")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("purpose")]
-#endif
         public string Purpose { get; set; }
     }
 }

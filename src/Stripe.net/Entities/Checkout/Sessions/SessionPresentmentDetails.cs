@@ -2,10 +2,10 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionPresentmentDetails : StripeEntity<SessionPresentmentDetails>
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe.Checkout
         /// <c>presentment_currency</c>.
         /// </summary>
         [JsonProperty("presentment_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("presentment_amount")]
-#endif
         public long PresentmentAmount { get; set; }
 
         /// <summary>
         /// Currency presented to the customer during payment.
         /// </summary>
         [JsonProperty("presentment_currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("presentment_currency")]
-#endif
         public string PresentmentCurrency { get; set; }
     }
 }

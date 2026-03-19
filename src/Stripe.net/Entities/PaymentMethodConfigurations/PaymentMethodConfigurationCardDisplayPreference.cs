@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentMethodConfigurationCardDisplayPreference : StripeEntity<PaymentMethodConfigurationCardDisplayPreference>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// <c>false</c>, the parent configuration's default is used.
         /// </summary>
         [JsonProperty("overridable")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("overridable")]
-#endif
         public bool? Overridable { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// One of: <c>none</c>, <c>off</c>, or <c>on</c>.
         /// </summary>
         [JsonProperty("preference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preference")]
-#endif
         public string Preference { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe
         /// One of: <c>off</c>, or <c>on</c>.
         /// </summary>
         [JsonProperty("value")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value")]
-#endif
         public string Value { get; set; }
     }
 }

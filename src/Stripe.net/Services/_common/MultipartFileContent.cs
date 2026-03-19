@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System.IO;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// Represents Data and optional Name and Type that will be encoded as multipart form
@@ -14,18 +15,21 @@ namespace Stripe
         /// the name and type from the file name and extension.  If this is not
         /// a FileStream set Name and Type to configure the file upload.
         /// </summary>
+        [JsonPropertyName("Data")]
         public Stream Data { get; set; }
 
         /// <summary>
         /// The optional name to send with this file data.  Uses the file name if omitted
         /// and Data is a FileStream.
         /// </summary>
+        [JsonPropertyName("Name")]
         public string Name { get; set; }
 
         /// <summary>
         /// The optional mime type to use when sending file data.  Uses the type that
         /// matches the file extension from Name (or the file name from Data) if omitted.
         /// </summary>
+        [JsonPropertyName("Type")]
         public string Type { get; set; }
     }
 }

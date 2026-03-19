@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentMethodCardThreeDSecureUsage : StripeEntity<PaymentMethodCardThreeDSecureUsage>
     {
         /// <summary>
         /// Whether 3D Secure is supported on this card.
         /// </summary>
         [JsonProperty("supported")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supported")]
-#endif
         public bool Supported { get; set; }
     }
 }

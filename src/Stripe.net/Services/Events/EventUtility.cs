@@ -65,9 +65,9 @@ namespace Stripe
         /// </remarks>
         public static Event ParseEvent(string json, bool throwOnApiVersionMismatch = true)
         {
-            var stripeEvent = JsonUtils.DeserializeObject<Event>(
+            var stripeEvent = System.Text.Json.JsonSerializer.Deserialize<Event>(
                 json,
-                StripeConfiguration.SerializerSettings);
+                StripeConfiguration.SerializerOptions);
 
             if (throwOnApiVersionMismatch &&
                 !IsCompatibleApiVersion(stripeEvent.ApiVersion))

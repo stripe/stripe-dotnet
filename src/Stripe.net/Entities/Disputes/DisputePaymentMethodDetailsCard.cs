@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class DisputePaymentMethodDetailsCard : StripeEntity<DisputePaymentMethodDetailsCard>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe
         /// <c>visa</c> or <c>unknown</c>.
         /// </summary>
         [JsonProperty("brand")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("brand")]
-#endif
         public string Brand { get; set; }
 
         /// <summary>
@@ -26,9 +24,7 @@ namespace Stripe
         /// <c>resolution</c>.
         /// </summary>
         [JsonProperty("case_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("case_type")]
-#endif
         public string CaseType { get; set; }
 
         /// <summary>
@@ -38,9 +34,7 @@ namespace Stripe
         /// lists all available dispute reason codes by network.
         /// </summary>
         [JsonProperty("network_reason_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_reason_code")]
-#endif
         public string NetworkReasonCode { get; set; }
     }
 }

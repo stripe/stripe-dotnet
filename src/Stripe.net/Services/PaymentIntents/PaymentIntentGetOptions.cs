@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentGetOptions : BaseOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// retrieve the source.
         /// </summary>
         [JsonProperty("client_secret")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client_secret")]
-#endif
         public string ClientSecret { get; set; }
     }
 }

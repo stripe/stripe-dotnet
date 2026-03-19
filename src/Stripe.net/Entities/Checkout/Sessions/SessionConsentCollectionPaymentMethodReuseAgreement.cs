@@ -2,10 +2,10 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionConsentCollectionPaymentMethodReuseAgreement : StripeEntity<SessionConsentCollectionPaymentMethodReuseAgreement>
     {
         /// <summary>
@@ -17,9 +17,7 @@ namespace Stripe.Checkout
         /// One of: <c>auto</c>, or <c>hidden</c>.
         /// </summary>
         [JsonProperty("position")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("position")]
-#endif
         public string Position { get; set; }
     }
 }

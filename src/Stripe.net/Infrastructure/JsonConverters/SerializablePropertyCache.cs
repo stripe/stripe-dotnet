@@ -1,4 +1,3 @@
-#if NET6_0_OR_GREATER
 namespace Stripe.Infrastructure
 {
     using System;
@@ -16,6 +15,7 @@ namespace Stripe.Infrastructure
     {
         private static ConcurrentDictionary<Type, JsonConverter> converterCache = new ConcurrentDictionary<Type, JsonConverter>();
         private static ConcurrentDictionary<Type, List<SerializablePropertyInfo>> propertyCache = new ConcurrentDictionary<Type, List<SerializablePropertyInfo>>();
+        private static ConcurrentDictionary<Type, ExtensionDataInfo> extensionDataCache = new ConcurrentDictionary<Type, ExtensionDataInfo>();
 
         internal static List<SerializablePropertyInfo> GetPropertiesForType(Type type)
         {
@@ -27,14 +27,22 @@ namespace Stripe.Infrastructure
                 var propsToSerialize = new List<SerializablePropertyInfo>();
                 foreach (var prop in rawProps)
                 {
-                    var propertyNameAttribute = prop.GetCustomAttribute(typeof(JsonPropertyNameAttribute), false) as JsonPropertyNameAttribute;
-                    if (propertyNameAttribute == null)
+                    // Skip extension data properties — they're handled separately
+                    if (prop.GetCustomAttribute(typeof(JsonExtensionDataAttribute), false) != null)
                     {
-                        // skip any properties not annotated with JsonPropertyName
                         continue;
                     }
 
-                    var ignoreCondition = default(JsonIgnoreCondition);
+                    var propertyNameAttribute = prop.GetCustomAttribute(typeof(JsonPropertyNameAttribute), false) as JsonPropertyNameAttribute;
+                    string jsonPropertyName = propertyNameAttribute?.Name;
+
+                    if (jsonPropertyName == null)
+                    {
+                        // skip any properties not annotated with [JsonPropertyName]
+                        continue;
+                    }
+
+                    JsonIgnoreCondition? ignoreCondition = null;
                     if (prop.GetCustomAttribute(typeof(JsonIgnoreAttribute), false) is JsonIgnoreAttribute ignoreAttribute)
                     {
                         if (ignoreAttribute.Condition == JsonIgnoreCondition.Always)
@@ -46,18 +54,92 @@ namespace Stripe.Infrastructure
                     }
 
                     var customConverterAttribute = prop.GetCustomAttribute(typeof(JsonConverterAttribute), false) as JsonConverterAttribute;
+                    Type customConverterType = customConverterAttribute?.ConverterType;
+
+                    JsonNumberHandling? numberHandling = null;
+                    if (prop.GetCustomAttribute(typeof(JsonNumberHandlingAttribute), false) is JsonNumberHandlingAttribute numberHandlingAttribute)
+                    {
+                        numberHandling = numberHandlingAttribute.Handling;
+                    }
 
                     propsToSerialize.Add(new SerializablePropertyInfo()
                     {
                         PropertyInfo = prop,
-                        JsonPropertyName = propertyNameAttribute.Name,
+                        JsonPropertyName = jsonPropertyName,
                         IgnoreCondition = ignoreCondition,
-                        CustomConverterType = customConverterAttribute?.ConverterType,
+                        CustomConverterType = customConverterType,
+                        NumberHandling = numberHandling,
                     });
                 }
 
                 return propsToSerialize;
             });
+        }
+
+        /// <summary>
+        /// Returns accessor info for the [JsonExtensionData] property on the type, or null
+        /// if the type has no such property.
+        /// </summary>
+        internal static ExtensionDataInfo GetExtensionDataPropertyForType(Type type)
+        {
+            return extensionDataCache.GetOrAdd(type, (key) =>
+            {
+                var rawProps = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                foreach (var prop in rawProps)
+                {
+                    if (prop.GetCustomAttribute(typeof(JsonExtensionDataAttribute), false) != null)
+                    {
+                        return new ExtensionDataInfo(prop);
+                    }
+                }
+
+                return null;
+            });
+        }
+
+        /// <summary>
+        /// Holds accessor info for a [JsonExtensionData] property.
+        /// The property must be IDictionary&lt;string, object&gt; or
+        /// IDictionary&lt;string, JsonElement&gt;.
+        /// </summary>
+        internal class ExtensionDataInfo
+        {
+            private static MethodInfo createGetDelegateMethod = typeof(SerializablePropertyInfo).GetMethod("CreateGetDelegate", BindingFlags.Static | BindingFlags.NonPublic);
+            private static MethodInfo createSetDelegateMethod = typeof(SerializablePropertyInfo).GetMethod("CreateSetDelegate", BindingFlags.Static | BindingFlags.NonPublic);
+
+            private Func<object, object> getDelegate = null;
+            private Action<object, object> setDelegate = null;
+
+            internal ExtensionDataInfo(PropertyInfo propertyInfo)
+            {
+                this.PropertyInfo = propertyInfo;
+            }
+
+            internal PropertyInfo PropertyInfo { get; }
+
+            internal object Get(object obj)
+            {
+                if (this.getDelegate == null)
+                {
+                    var gm = this.PropertyInfo.GetGetMethod(true);
+                    var getMethod = createGetDelegateMethod.MakeGenericMethod(this.PropertyInfo.DeclaringType, this.PropertyInfo.PropertyType);
+                    this.getDelegate = (Func<object, object>)getMethod.Invoke(null, new object[] { gm });
+                }
+
+                return this.getDelegate(obj);
+            }
+
+            internal void Set(object obj, object value)
+            {
+                if (this.setDelegate == null)
+                {
+                    var sm = this.PropertyInfo.GetSetMethod(true);
+                    var setMethod = createSetDelegateMethod.MakeGenericMethod(this.PropertyInfo.DeclaringType, this.PropertyInfo.PropertyType);
+                    this.setDelegate = (Action<object, object>)setMethod.Invoke(null, new object[] { sm });
+                }
+
+                this.setDelegate(obj, value);
+            }
         }
 
         // Create the various methods stored in SerializablePropertyInfo
@@ -94,6 +176,12 @@ namespace Stripe.Infrastructure
             internal Type CustomConverterType { get; set; }
 
             /// <summary>
+            /// The number handling mode for this property, or null if
+            /// JsonNumberHandling is not found.
+            /// </summary>
+            internal JsonNumberHandling? NumberHandling { get; set; }
+
+            /// <summary>
             /// Gets the converter to use to convert this property, either
             /// a custom one from the attribute or the converter returned
             /// from the STJ serialization options.
@@ -103,19 +191,59 @@ namespace Stripe.Infrastructure
                 if (this.getConverter == null)
                 {
                     var customConverter = default(JsonConverter<object>);
+                    var customConverterFactory = default(JsonConverterFactory);
+
                     if (this.CustomConverterType != null)
                     {
-                        // this assumes any property-level JsonConverter attribute
-                        // specifies a JsonConverter<> type and not a JsonConverterFactory
-                        // type
-                        var baseType = this.CustomConverterType.BaseType;
-                        var cvtGenericMethod = getConverterForTypeMethod.MakeGenericMethod(baseType, baseType.GenericTypeArguments[0]);
-                        customConverter = (JsonConverter<object>)cvtGenericMethod.Invoke(null, new object[] { this.CustomConverterType });
+                        // Check if it's a JsonConverterFactory
+                        if (this.CustomConverterType.BaseType == typeof(JsonConverterFactory))
+                        {
+                            // For factories, store the factory instance
+                            customConverterFactory = (JsonConverterFactory)Activator.CreateInstance(this.CustomConverterType);
+                        }
+                        else
+                        {
+                            // For regular converters, use the existing logic
+                            var baseType = this.CustomConverterType.BaseType;
+                            var cvtGenericMethod = getConverterForTypeMethod.MakeGenericMethod(baseType, baseType.GenericTypeArguments[0]);
+                            customConverter = (JsonConverter<object>)cvtGenericMethod.Invoke(null, new object[] { this.CustomConverterType });
+                        }
                     }
 
                     var defaultCvtGenericMethod = getDefaultConverterMethod.MakeGenericMethod(this.PropertyInfo.PropertyType);
                     var getDefaultConverter = (Func<JsonSerializerOptions, JsonConverter<object>>)defaultCvtGenericMethod.Invoke(null, new object[] { this.PropertyInfo.PropertyType });
-                    this.getConverter = options => customConverter ?? getDefaultConverter(options);
+                    this.getConverter = options =>
+                    {
+                        if (customConverterFactory != null)
+                        {
+                            // Create converter from factory and wrap it in an adapter
+                            var converter = customConverterFactory.CreateConverter(this.PropertyInfo.PropertyType, options);
+                            var converterType = converter.GetType();
+
+                            // Find the JsonConverter<T> base class to get the T type
+                            Type baseType = converterType;
+                            while (baseType != null && (!baseType.IsGenericType || baseType.GetGenericTypeDefinition() != typeof(JsonConverter<>)))
+                            {
+                                baseType = baseType.BaseType;
+                            }
+
+                            if (baseType != null)
+                            {
+                                var valueType = baseType.GetGenericArguments()[0];
+                                var adapterType = typeof(JsonConverterAdapter<,>).MakeGenericType(converterType, valueType);
+                                return (JsonConverter<object>)Activator.CreateInstance(
+                                    adapterType,
+                                    BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic,
+                                    null,
+                                    new object[] { converter },
+                                    null);
+                            }
+
+                            throw new InvalidOperationException($"Unable to determine value type for converter {converterType}");
+                        }
+
+                        return customConverter ?? getDefaultConverter(options);
+                    };
                 }
 
                 return this.getConverter(options);
@@ -206,4 +334,3 @@ namespace Stripe.Infrastructure
         }
     }
 }
-#endif

@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountLinkUseCaseAccountOnboardingCollectionOptions : StripeEntity<AccountLinkUseCaseAccountOnboardingCollectionOptions>
     {
         /// <summary>
@@ -16,9 +16,7 @@ namespace Stripe.V2.Core
         /// One of: <c>currently_due</c>, or <c>eventually_due</c>.
         /// </summary>
         [JsonProperty("fields")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fields")]
-#endif
         public string Fields { get; set; }
 
         /// <summary>
@@ -27,9 +25,7 @@ namespace Stripe.V2.Core
         /// One of: <c>include</c>, or <c>omit</c>.
         /// </summary>
         [JsonProperty("future_requirements")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("future_requirements")]
-#endif
         public string FutureRequirements { get; set; }
     }
 }

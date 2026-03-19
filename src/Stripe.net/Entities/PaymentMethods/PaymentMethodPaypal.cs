@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentMethodPaypal : StripeEntity<PaymentMethodPaypal>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe
         /// or mutated.
         /// </summary>
         [JsonProperty("country")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
-#endif
         public string Country { get; set; }
 
         /// <summary>
@@ -34,18 +32,14 @@ namespace Stripe
         /// authorization or settlement. They cannot be set or mutated.
         /// </summary>
         [JsonProperty("payer_email")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payer_email")]
-#endif
         public string PayerEmail { get; set; }
 
         /// <summary>
         /// PayPal account PayerID. This identifier uniquely identifies the PayPal customer.
         /// </summary>
         [JsonProperty("payer_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payer_id")]
-#endif
         public string PayerId { get; set; }
 
         /// <summary>

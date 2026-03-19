@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ConfirmationTokenPaymentMethodPreviewNaverPay : StripeEntity<ConfirmationTokenPaymentMethodPreviewNaverPay>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// check whether two Naver Pay accounts are the same.
         /// </summary>
         [JsonProperty("buyer_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("buyer_id")]
-#endif
         public string BuyerId { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// One of: <c>card</c>, or <c>points</c>.
         /// </summary>
         [JsonProperty("funding")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("funding")]
-#endif
         public string Funding { get; set; }
     }
 }

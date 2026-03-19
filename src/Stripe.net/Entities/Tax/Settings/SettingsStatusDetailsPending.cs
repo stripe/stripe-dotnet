@@ -3,10 +3,10 @@ namespace Stripe.Tax
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SettingsStatusDetailsPending : StripeEntity<SettingsStatusDetailsPending>
     {
         /// <summary>
@@ -16,9 +16,7 @@ namespace Stripe.Tax
         /// Calculations can fail if missing fields aren't explicitly provided on every call.
         /// </summary>
         [JsonProperty("missing_fields")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("missing_fields")]
-#endif
         public List<string> MissingFields { get; set; }
     }
 }

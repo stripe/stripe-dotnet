@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentAmountDetailsLineItemTax : StripeEntity<PaymentIntentAmountDetailsLineItemTax>
     {
         /// <summary>
@@ -17,9 +17,7 @@ namespace Stripe
         /// <c>amount_details[line_items][#][tax][total_tax_amount]</c> field.
         /// </summary>
         [JsonProperty("total_tax_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("total_tax_amount")]
-#endif
         public long TotalTaxAmount { get; set; }
     }
 }

@@ -1,7 +1,9 @@
-#if NET6_0_OR_GREATER
 namespace Stripe.Infrastructure
 {
     using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Globalization;
     using System.Text.Json;
     using System.Text.Json.Serialization;
     using static Stripe.Infrastructure.SerializablePropertyCache;
@@ -30,7 +32,20 @@ namespace Stripe.Infrastructure
             }
 
             var allProperties = GetPropertiesForType(typeToConvert);
+            var extensionDataInfo = GetExtensionDataPropertyForType(typeToConvert);
             var newInstance = Activator.CreateInstance(typeToConvert);
+
+            // If there's an extension data property, get or create the dictionary
+            IDictionary<string, object> extensionData = null;
+            if (extensionDataInfo != null)
+            {
+                extensionData = extensionDataInfo.Get(newInstance) as IDictionary<string, object>;
+                if (extensionData == null)
+                {
+                    extensionData = new Dictionary<string, object>();
+                    extensionDataInfo.Set(newInstance, extensionData);
+                }
+            }
 
             while (reader.Read())
             {
@@ -54,14 +69,53 @@ namespace Stripe.Infrastructure
                 if (property != null)
                 {
                     var valueType = property.PropertyInfo.PropertyType;
-                    var valueConverter = property.GetConverter(options);
 
-                    // Get the value.
+                    // Check for a custom converter attribute on the property
+                    if (property.CustomConverterType != null)
+                    {
+                        var valueConverter = property.GetConverter(options);
+
+                        // Get the value using the custom converter.
 #pragma warning disable SA1009 // Closing parenthesis should be spaced correctly
-                    object value = valueConverter.Read(ref reader, valueType, options)!;
+                        object value = valueConverter.Read(ref reader, valueType, options)!;
 #pragma warning restore SA1009 // Closing parenthesis should be spaced correctly
 
-                    property.Set(newInstance, value);
+                        property.Set(newInstance, value);
+                    }
+                    else if (property.NumberHandling.HasValue &&
+                             (property.NumberHandling.Value & JsonNumberHandling.AllowReadingFromString) != 0 &&
+                             reader.TokenType == JsonTokenType.String)
+                    {
+                        // Property has [JsonNumberHandling(AllowReadingFromString)] and
+                        // the wire value is a JSON string — parse the number from the string.
+                        var str = reader.GetString();
+                        if (str == null)
+                        {
+                            property.Set(newInstance, null);
+                        }
+                        else
+                        {
+                            // Unwrap Nullable<T> to get the underlying type for Convert.ChangeType
+                            var targetType = Nullable.GetUnderlyingType(valueType) ?? valueType;
+                            property.Set(newInstance, Convert.ChangeType(str, targetType, CultureInfo.InvariantCulture));
+                        }
+                    }
+                    else
+                    {
+                        object value = JsonSerializer.Deserialize(ref reader, valueType, options);
+                        property.Set(newInstance, value);
+                    }
+                }
+                else if (extensionData != null)
+                {
+                    // Store unknown properties in the extension data dictionary
+                    var element = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
+                    extensionData[propertyName] = element;
+                }
+                else
+                {
+                    // Skip unknown properties to keep the reader aligned
+                    reader.Skip();
                 }
             }
 
@@ -76,7 +130,9 @@ namespace Stripe.Infrastructure
         /// <param name="options">The calling serializer's options.</param>
         public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
         {
-            var allProperties = GetPropertiesForType(value.GetType());
+            var type = value.GetType();
+            var allProperties = GetPropertiesForType(type);
+            var extensionDataInfo = GetExtensionDataPropertyForType(type);
 
             writer.WriteStartObject();
             foreach (var property in allProperties)
@@ -86,7 +142,11 @@ namespace Stripe.Infrastructure
                 switch (valueToSerialize)
                 {
                     case null:
-                        if (property.IgnoreCondition != JsonIgnoreCondition.WhenWritingNull)
+                        // Use property-level ignore condition if set, otherwise use global setting
+                        var effectiveIgnoreCondition = property.IgnoreCondition ?? options.DefaultIgnoreCondition;
+
+                        if (effectiveIgnoreCondition != JsonIgnoreCondition.WhenWritingNull &&
+                            effectiveIgnoreCondition != JsonIgnoreCondition.Always)
                         {
                             writer.WritePropertyName(property.JsonPropertyName);
                             writer.WriteNullValue();
@@ -96,10 +156,38 @@ namespace Stripe.Infrastructure
                     default:
                         writer.WritePropertyName(property.JsonPropertyName);
 
-                        var converter = property.GetConverter(options);
-                        converter.Write(writer, valueToSerialize, options);
+                        if (property.NumberHandling.HasValue &&
+                            (property.NumberHandling.Value & JsonNumberHandling.WriteAsString) != 0 &&
+                            valueToSerialize is IConvertible)
+                        {
+                            writer.WriteStringValue(Convert.ToString(valueToSerialize, CultureInfo.InvariantCulture));
+                        }
+                        else
+                        {
+                            var converter = property.GetConverter(options);
+                            converter.Write(writer, valueToSerialize, options);
+                        }
 
                         break;
+                }
+            }
+
+            // Write extension data entries (e.g. ExtraParams) as top-level properties
+            if (extensionDataInfo != null)
+            {
+                if (extensionDataInfo.Get(value) is IDictionary extData)
+                {
+                    foreach (DictionaryEntry entry in extData)
+                    {
+                        var key = entry.Key?.ToString();
+                        if (key == null)
+                        {
+                            continue;
+                        }
+
+                        writer.WritePropertyName(key);
+                        JsonSerializer.Serialize(writer, entry.Value, options);
+                    }
                 }
             }
 
@@ -107,4 +195,3 @@ namespace Stripe.Infrastructure
         }
     }
 }
-#endif

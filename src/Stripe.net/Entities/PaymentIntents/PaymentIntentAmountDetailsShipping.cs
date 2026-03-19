@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentAmountDetailsShipping : StripeEntity<PaymentIntentAmountDetailsShipping>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe
         /// integer greater than or equal to 0.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe
         /// At most 10 alphanumeric characters long, hyphens are allowed.
         /// </summary>
         [JsonProperty("from_postal_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("from_postal_code")]
-#endif
         public string FromPostalCode { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe
         /// most 10 alphanumeric characters long, hyphens are allowed.
         /// </summary>
         [JsonProperty("to_postal_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("to_postal_code")]
-#endif
         public string ToPostalCode { get; set; }
     }
 }

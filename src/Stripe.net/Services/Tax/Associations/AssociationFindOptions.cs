@@ -2,19 +2,17 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AssociationFindOptions : BaseOptions
     {
         /// <summary>
         /// Valid <a href="https://docs.stripe.com/api/payment_intents/object">PaymentIntent</a> id.
         /// </summary>
         [JsonProperty("payment_intent")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_intent")]
-#endif
         public string PaymentIntent { get; set; }
     }
 }

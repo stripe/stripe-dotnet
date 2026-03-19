@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SubscriptionPaymentSettingsPaymentMethodOptions : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptions>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// options to pass to invoices created by the subscription.
         /// </summary>
         [JsonProperty("acss_debit")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("acss_debit")]
-#endif
         public SubscriptionPaymentSettingsPaymentMethodOptionsAcssDebit AcssDebit { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// invoices created by the subscription.
         /// </summary>
         [JsonProperty("bancontact")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bancontact")]
-#endif
         public SubscriptionPaymentSettingsPaymentMethodOptionsBancontact Bancontact { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe
         /// created by the subscription.
         /// </summary>
         [JsonProperty("card")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]
-#endif
         public SubscriptionPaymentSettingsPaymentMethodOptionsCard Card { get; set; }
 
         /// <summary>
@@ -43,9 +37,7 @@ namespace Stripe
         /// invoices created by the subscription.
         /// </summary>
         [JsonProperty("customer_balance")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_balance")]
-#endif
         public SubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalance CustomerBalance { get; set; }
 
         /// <summary>
@@ -63,9 +55,7 @@ namespace Stripe
         /// invoices created by the subscription.
         /// </summary>
         [JsonProperty("konbini")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("konbini")]
-#endif
         public SubscriptionPaymentSettingsPaymentMethodOptionsKonbini Konbini { get; set; }
 
         /// <summary>
@@ -73,9 +63,7 @@ namespace Stripe
         /// invoices created by the subscription.
         /// </summary>
         [JsonProperty("payto")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payto")]
-#endif
         public SubscriptionPaymentSettingsPaymentMethodOptionsPayto Payto { get; set; }
 
         /// <summary>
@@ -93,9 +81,7 @@ namespace Stripe
         /// pass to invoices created by the subscription.
         /// </summary>
         [JsonProperty("sepa_debit")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sepa_debit")]
-#endif
         public SubscriptionPaymentSettingsPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
 
         /// <summary>
@@ -113,9 +99,7 @@ namespace Stripe
         /// to invoices created by the subscription.
         /// </summary>
         [JsonProperty("us_bank_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_bank_account")]
-#endif
         public SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
     }
 }

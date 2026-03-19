@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ShippingRateFixedAmountCurrencyOptionsOptions : INestedOptions
     {
         /// <summary>
         /// A non-negative integer in cents representing how much to charge.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_behavior")]
-#endif
         public string TaxBehavior { get; set; }
     }
 }

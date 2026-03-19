@@ -2,19 +2,17 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountConfigurationMerchantKonbiniPayments : StripeEntity<AccountConfigurationMerchantKonbiniPayments>
     {
         /// <summary>
         /// Support for Konbini payments.
         /// </summary>
         [JsonProperty("support")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("support")]
-#endif
         public AccountConfigurationMerchantKonbiniPaymentsSupport Support { get; set; }
     }
 }

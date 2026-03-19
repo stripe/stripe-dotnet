@@ -5,9 +5,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// This is an object representing a Stripe account. You can retrieve it to see properties
@@ -27,33 +25,28 @@ namespace Stripe
     /// start Connect Onboarding. Learn about the <a
     /// href="https://stripe.com/connect/accounts">differences between accounts</a>.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Account : StripeEntity<Account>, IHasId, IHasMetadata, IHasObject, IPaymentSource
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// Business information about the account.
         /// </summary>
         [JsonProperty("business_profile")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("business_profile")]
-#endif
         public AccountBusinessProfile BusinessProfile { get; set; }
 
         /// <summary>
@@ -62,45 +55,33 @@ namespace Stripe
         /// <c>non_profit</c>.
         /// </summary>
         [JsonProperty("business_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("business_type")]
-#endif
         public string BusinessType { get; set; }
 
         [JsonProperty("capabilities")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capabilities")]
-#endif
         public AccountCapabilities Capabilities { get; set; }
 
         /// <summary>
         /// Whether the account can process charges.
         /// </summary>
         [JsonProperty("charges_enabled")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("charges_enabled")]
-#endif
         public bool ChargesEnabled { get; set; }
 
         [JsonProperty("company")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("company")]
-#endif
         public AccountCompany Company { get; set; }
 
         [JsonProperty("controller")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("controller")]
-#endif
         public AccountController Controller { get; set; }
 
         /// <summary>
         /// The account's country.
         /// </summary>
         [JsonProperty("country")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
-#endif
         public string Country { get; set; }
 
         /// <summary>
@@ -108,10 +89,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -120,19 +99,15 @@ namespace Stripe
         /// account's country</a>.
         /// </summary>
         [JsonProperty("default_currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_currency")]
-#endif
         public string DefaultCurrency { get; set; }
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("deleted")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
-#endif
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -143,9 +118,7 @@ namespace Stripe
         /// account details.
         /// </summary>
         [JsonProperty("details_submitted")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("details_submitted")]
-#endif
         public bool DetailsSubmitted { get; set; }
 
         /// <summary>
@@ -153,9 +126,7 @@ namespace Stripe
         /// Stripe doesn't market to this field without explicit approval from the platform.
         /// </summary>
         [JsonProperty("email")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("email")]
-#endif
         public string Email { get; set; }
 
         /// <summary>
@@ -164,24 +135,18 @@ namespace Stripe
         /// is true.
         /// </summary>
         [JsonProperty("external_accounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("external_accounts")]
-#endif
         public StripeList<IExternalAccount> ExternalAccounts { get; set; }
 
         [JsonProperty("future_requirements")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("future_requirements")]
-#endif
         public AccountFutureRequirements FutureRequirements { get; set; }
 
         /// <summary>
         /// The groups associated with the account.
         /// </summary>
         [JsonProperty("groups")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("groups")]
-#endif
         public AccountGroups Groups { get; set; }
 
         /// <summary>
@@ -200,9 +165,7 @@ namespace Stripe
         /// identity verification with the API</a>.
         /// </summary>
         [JsonProperty("individual")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("individual")]
-#endif
         public Person Individual { get; set; }
 
         /// <summary>
@@ -211,24 +174,18 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Whether the funds in this account can be paid out.
         /// </summary>
         [JsonProperty("payouts_enabled")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payouts_enabled")]
-#endif
         public bool PayoutsEnabled { get; set; }
 
         [JsonProperty("requirements")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("requirements")]
-#endif
         public AccountRequirements Requirements { get; set; }
 
         [JsonProperty("risk_controls")]
@@ -241,15 +198,11 @@ namespace Stripe
         /// Options for customizing how the account functions within Stripe.
         /// </summary>
         [JsonProperty("settings")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("settings")]
-#endif
         public AccountSettings Settings { get; set; }
 
         [JsonProperty("tos_acceptance")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tos_acceptance")]
-#endif
         public AccountTosAcceptance TosAcceptance { get; set; }
 
         /// <summary>
@@ -258,9 +211,7 @@ namespace Stripe
         /// One of: <c>custom</c>, <c>express</c>, <c>none</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

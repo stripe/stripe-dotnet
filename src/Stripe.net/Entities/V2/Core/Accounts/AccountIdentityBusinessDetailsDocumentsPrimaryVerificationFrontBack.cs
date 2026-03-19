@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountIdentityBusinessDetailsDocumentsPrimaryVerificationFrontBack : StripeEntity<AccountIdentityBusinessDetailsDocumentsPrimaryVerificationFrontBack>
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.V2.Core
         /// 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
         /// </summary>
         [JsonProperty("back")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("back")]
-#endif
         public string Back { get; set; }
 
         /// <summary>
@@ -27,9 +25,7 @@ namespace Stripe.V2.Core
         /// 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
         /// </summary>
         [JsonProperty("front")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("front")]
-#endif
         public string Front { get; set; }
     }
 }

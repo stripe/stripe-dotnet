@@ -4,10 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentNextActionKonbiniDisplayDetails : StripeEntity<PaymentIntentNextActionKonbiniDisplayDetails>
     {
         /// <summary>
@@ -15,10 +14,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -26,15 +23,11 @@ namespace Stripe
         /// print a Konbini voucher.
         /// </summary>
         [JsonProperty("hosted_voucher_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hosted_voucher_url")]
-#endif
         public string HostedVoucherUrl { get; set; }
 
         [JsonProperty("stores")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stores")]
-#endif
         public PaymentIntentNextActionKonbiniDisplayDetailsStores Stores { get; set; }
     }
 }

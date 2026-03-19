@@ -1,6 +1,6 @@
 namespace StripeTests
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe;
     using Xunit;
 
@@ -15,7 +15,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/payment_intents/pi_123");
-            var intent = JsonConvert.DeserializeObject<PaymentIntent>(json);
+            var intent = JsonSerializer.Deserialize<PaymentIntent>(json);
             Assert.NotNull(intent);
             Assert.IsType<PaymentIntent>(intent);
             Assert.NotNull(intent.Id);
@@ -37,7 +37,7 @@ namespace StripeTests
             };
 
             string json = this.GetFixture("/v1/payment_intents/pi_123", expansions);
-            var intent = JsonConvert.DeserializeObject<PaymentIntent>(json);
+            var intent = JsonSerializer.Deserialize<PaymentIntent>(json);
             Assert.NotNull(intent);
             Assert.IsType<PaymentIntent>(intent);
             Assert.NotNull(intent.Id);
@@ -61,7 +61,7 @@ namespace StripeTests
         public void DeserializeNextActionNull()
         {
             var json = GetResourceAsString("api_fixtures.payment_intent.action_null.json");
-            var intent = JsonConvert.DeserializeObject<PaymentIntent>(json);
+            var intent = JsonSerializer.Deserialize<PaymentIntent>(json);
 
             Assert.NotNull(intent);
             Assert.IsType<PaymentIntent>(intent);
@@ -75,7 +75,7 @@ namespace StripeTests
         public void DeserializeNextActionRedirectToUrl()
         {
             var json = GetResourceAsString("api_fixtures.payment_intent.action_redirect_to_url.json");
-            var intent = JsonConvert.DeserializeObject<PaymentIntent>(json);
+            var intent = JsonSerializer.Deserialize<PaymentIntent>(json);
 
             Assert.NotNull(intent);
             Assert.IsType<PaymentIntent>(intent);
@@ -92,7 +92,7 @@ namespace StripeTests
         public void DeserializeNextActionUnknown()
         {
             var json = GetResourceAsString("api_fixtures.payment_intent.action_unknown.json");
-            var intent = JsonConvert.DeserializeObject<PaymentIntent>(json);
+            var intent = JsonSerializer.Deserialize<PaymentIntent>(json);
 
             Assert.NotNull(intent);
             Assert.IsType<PaymentIntent>(intent);
@@ -107,7 +107,7 @@ namespace StripeTests
         public void DeserializeLastPaymentError()
         {
             var json = GetResourceAsString("api_fixtures.payment_intent.last_payment_error.json");
-            var intent = JsonConvert.DeserializeObject<PaymentIntent>(json);
+            var intent = JsonSerializer.Deserialize<PaymentIntent>(json);
 
             Assert.NotNull(intent);
             Assert.IsType<PaymentIntent>(intent);
