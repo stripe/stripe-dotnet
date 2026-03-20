@@ -26,6 +26,8 @@ namespace Stripe.V2.Core
         /// The total size of the file in bytes.
         /// </summary>
         [JsonProperty("size")]
+        [JsonConverter(typeof(Int64StringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("size")]
         public long Size { get; set; }
     }

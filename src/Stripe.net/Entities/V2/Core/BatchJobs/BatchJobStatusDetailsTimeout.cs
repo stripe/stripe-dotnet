@@ -12,6 +12,8 @@ namespace Stripe.V2.Core
         /// The total number of records that failed processing.
         /// </summary>
         [JsonProperty("failure_count")]
+        [JsonConverter(typeof(Int64StringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("failure_count")]
         public long FailureCount { get; set; }
 
@@ -27,6 +29,8 @@ namespace Stripe.V2.Core
         /// The total number of records that were successfully processed.
         /// </summary>
         [JsonProperty("success_count")]
+        [JsonConverter(typeof(Int64StringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("success_count")]
         public long SuccessCount { get; set; }
     }

@@ -10,7 +10,7 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// The amount of tax, in the <a
-        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
@@ -23,7 +23,7 @@ namespace Stripe.Tax
         /// <summary>
         /// Indicates whether the jurisdiction was determined by the origin (merchant's address) or
         /// destination (customer's address).
-        /// One of: <c>destination</c>, or <c>origin</c>.
+        /// One of: <c>destination</c>, <c>origin</c>, or <c>performance</c>.
         /// </summary>
         [JsonProperty("sourcing")]
         [STJS.JsonPropertyName("sourcing")]
@@ -52,7 +52,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The amount on which tax is calculated, in the <a
-        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("taxable_amount")]
         [STJS.JsonPropertyName("taxable_amount")]

@@ -493,11 +493,19 @@ namespace Stripe
         /// <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>,
         /// <c>shopeepay</c>, <c>sofort</c>, <c>stripe_balance</c>, <c>swish</c>, <c>twint</c>,
-        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// If this is a <c>upi</c> PaymentMethod, this hash contains details about the UPI payment
+        /// method.
+        /// </summary>
+        [JsonProperty("upi")]
+        [STJS.JsonPropertyName("upi")]
+        public PaymentIntentPaymentMethodDataUpiOptions Upi { get; set; }
 
         /// <summary>
         /// If this is an <c>us_bank_account</c> PaymentMethod, this hash contains details about the

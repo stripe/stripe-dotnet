@@ -51,6 +51,15 @@ namespace Stripe
         public string TaxCode { get; set; }
 
         /// <summary>
+        /// Tax details for this product, including the <a
+        /// href="https://stripe.com/tax/tax-codes">tax code</a> and an optional performance
+        /// location.
+        /// </summary>
+        [JsonProperty("tax_details")]
+        [STJS.JsonPropertyName("tax_details")]
+        public InvoiceLineItemPriceDataProductDataTaxDetailsOptions TaxDetails { get; set; }
+
+        /// <summary>
         /// A label that represents units of this product. When set, this will be included in
         /// customers' receipts, invoices, Checkout, and the customer portal.
         /// </summary>

@@ -53,6 +53,13 @@ namespace Stripe
         public PaymentIntentAmountDetailsShippingOptions Shipping { get; set; }
 
         /// <summary>
+        /// Contains information about the surcharge portion of the amount.
+        /// </summary>
+        [JsonProperty("surcharge")]
+        [STJS.JsonPropertyName("surcharge")]
+        public PaymentIntentAmountDetailsSurchargeOptions Surcharge { get; set; }
+
+        /// <summary>
         /// Contains information about the tax portion of the amount.
         /// </summary>
         [JsonProperty("tax")]

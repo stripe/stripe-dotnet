@@ -11,7 +11,7 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// A positive integer representing the line item's total price in the <a
-        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>. If
+        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a>. If
         /// <c>tax_behavior=inclusive</c>, then this amount includes taxes. Otherwise, taxes are
         /// calculated on top of this amount.
         /// </summary>
@@ -27,6 +27,15 @@ namespace Stripe.Tax
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// A tax location ID. Depending on the <a
+        /// href="https://stripe.com/tax/tax-for-tickets/reference/tax-location-performance">tax
+        /// code</a>, this is required, optional, or not supported.
+        /// </summary>
+        [JsonProperty("performance_location")]
+        [STJS.JsonPropertyName("performance_location")]
+        public string PerformanceLocation { get; set; }
 
         /// <summary>
         /// If provided, the product's <c>tax_code</c> will be used as the line item's

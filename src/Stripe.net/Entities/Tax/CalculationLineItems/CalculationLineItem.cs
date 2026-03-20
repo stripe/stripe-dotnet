@@ -25,7 +25,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The line item amount in the <a
-        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>. If
+        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a>. If
         /// <c>tax_behavior=inclusive</c>, then this amount includes taxes. Otherwise, taxes were
         /// calculated on top of this amount.
         /// </summary>
@@ -35,15 +35,15 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The amount of tax calculated for this line item, in the <a
-        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_tax")]
         [STJS.JsonPropertyName("amount_tax")]
         public long AmountTax { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -57,6 +57,16 @@ namespace Stripe.Tax
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// Indicates the line item represents a performance where the venue location might
+        /// determine the tax, not the customer address. Leave empty if the tax code doesn't require
+        /// a tax location. If you provide this value for tax codes with an <c>optional</c> location
+        /// requirement, it overrides the customer address.
+        /// </summary>
+        [JsonProperty("performance_location")]
+        [STJS.JsonPropertyName("performance_location")]
+        public string PerformanceLocation { get; set; }
 
         /// <summary>
         /// The ID of an existing <a href="https://docs.stripe.com/api/products/object">Product</a>.

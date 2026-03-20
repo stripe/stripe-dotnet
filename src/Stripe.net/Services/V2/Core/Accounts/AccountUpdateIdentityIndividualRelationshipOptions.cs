@@ -36,8 +36,10 @@ namespace Stripe.V2.Core
         /// The percent owned by the person of the account's legal entity.
         /// </summary>
         [JsonProperty("percent_ownership")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("percent_ownership")]
-        public string PercentOwnership { get; set; }
+        public decimal? PercentOwnership { get; set; }
 
         /// <summary>
         /// The person's title (e.g., CEO, Support Engineer).
