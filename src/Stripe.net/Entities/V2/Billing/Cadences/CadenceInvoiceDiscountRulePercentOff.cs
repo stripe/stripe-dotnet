@@ -20,7 +20,9 @@ namespace Stripe.V2.Billing
         /// $100 amount $50 instead.
         /// </summary>
         [JsonProperty("percent_off")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("percent_off")]
-        public string PercentOff { get; set; }
+        public decimal PercentOff { get; set; }
     }
 }
