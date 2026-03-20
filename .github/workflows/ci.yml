@@ -129,7 +129,7 @@ jobs:
       - name: Build
         run: |
           echo "Building ${{ matrix.framework }} using dotnet v$(dotnet --version)"
-          dotnet build src -c Release -f ${{ matrix.framework }} /p:ContinuousIntegrationBuild=true
+          dotnet build src/StripeTests/StripeTests.csproj -c Release -f ${{ matrix.framework }} /p:ContinuousIntegrationBuild=true
 
       - name: Download OpenAPI spec
         uses: actions/download-artifact@v4
@@ -166,7 +166,7 @@ jobs:
       - name: Build
         run: |
           echo "Building net462 using dotnet v$(dotnet --version)"
-          dotnet build src -c Release -f net462 /p:ContinuousIntegrationBuild=true
+          dotnet build src/StripeTests/StripeTests.csproj -c Release -f net462 /p:ContinuousIntegrationBuild=true
 
       - name: Download OpenAPI spec
         uses: actions/download-artifact@v4
@@ -201,7 +201,7 @@ jobs:
         run: dotnet tool restore
 
       - name: Build Release
-        run: dotnet build src -c Release /p:ContinuousIntegrationBuild=true
+        run: dotnet build src/Stripe.net -c Release /p:ContinuousIntegrationBuild=true
 
       - name: Pack
         run: dotnet pack src/Stripe.net -c Release --no-build --output nuget
@@ -211,6 +211,25 @@ jobs:
         with:
           name: nuget
           path: nuget/
+
+  build-examples:
+    name: Build examples
+    needs: prepare-dotnet-versions
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Build examples
+        run: |
+          dotnet build src/Examples/Examples.csproj -c Release
+          dotnet build src/Examples/ExampleWebApp.csproj -c Release
 
   compat:
     name: Compat
