@@ -47,8 +47,10 @@ namespace Stripe.V2.Core.Accounts
         /// The percentage of ownership the person has in the associated legal entity.
         /// </summary>
         [JsonProperty("percent_ownership")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("percent_ownership")]
-        public string PercentOwnership { get; set; }
+        public decimal? PercentOwnership { get; set; }
 
         /// <summary>
         /// Indicates whether the person is a representative of the associated legal entity.
