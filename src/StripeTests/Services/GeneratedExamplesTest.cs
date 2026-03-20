@@ -6641,7 +6641,7 @@ namespace StripeTests
                                     {
                                         Type = "indefinite",
                                     },
-                                    PercentOff = "percent_off",
+                                    PercentOff = 991934883.3333334M,
                                 },
                             },
                             SpendModifierRule = new Stripe.V2.Billing.IntentCreateActionApplySpendModifierRuleOptions
@@ -10260,7 +10260,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/tax/manual_rules",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.tax.manual_rule\",\"products\":[{\"type\":\"licensed_item\"}],\"scheduled_tax_rates\":[{\"rates\":[{\"display_name\":\"display_name\",\"percentage\":\"percentage\"}]}],\"status\":\"active\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.tax.manual_rule\",\"products\":[{\"type\":\"licensed_item\"}],\"scheduled_tax_rates\":[{\"rates\":[{\"display_name\":\"display_name\",\"percentage\":\"614555204\"}]}],\"status\":\"active\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Tax.ManualRules;
             Stripe.V2.StripeList<Stripe.V2.Tax.ManualRule> manualRules = service
@@ -10275,7 +10275,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/tax/manual_rules",
                 (HttpStatusCode)200,
-                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.tax.manual_rule\",\"products\":[{\"type\":\"licensed_item\"}],\"scheduled_tax_rates\":[{\"rates\":[{\"display_name\":\"display_name\",\"percentage\":\"percentage\"}]}],\"status\":\"active\",\"livemode\":true}");
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.tax.manual_rule\",\"products\":[{\"type\":\"licensed_item\"}],\"scheduled_tax_rates\":[{\"rates\":[{\"display_name\":\"display_name\",\"percentage\":\"614555204\"}]}],\"status\":\"active\",\"livemode\":true}");
             var options = new Stripe.V2.Tax.ManualRuleCreateOptions
             {
                 ScheduledTaxRates = new List<Stripe.V2.Tax.ManualRuleCreateScheduledTaxRateOptions>
@@ -10290,7 +10290,7 @@ namespace StripeTests
                                 Description = "description",
                                 DisplayName = "display_name",
                                 Jurisdiction = "jurisdiction",
-                                Percentage = "percentage",
+                                Percentage = 614555204M,
                                 State = "state",
                             },
                         },
@@ -10313,7 +10313,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/tax/manual_rules/id_123",
                 (HttpStatusCode)200,
-                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.tax.manual_rule\",\"products\":[{\"type\":\"licensed_item\"}],\"scheduled_tax_rates\":[{\"rates\":[{\"display_name\":\"display_name\",\"percentage\":\"percentage\"}]}],\"status\":\"active\",\"livemode\":true}");
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.tax.manual_rule\",\"products\":[{\"type\":\"licensed_item\"}],\"scheduled_tax_rates\":[{\"rates\":[{\"display_name\":\"display_name\",\"percentage\":\"614555204\"}]}],\"status\":\"active\",\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Tax.ManualRules;
             Stripe.V2.Tax.ManualRule manualRule = service.Get("id_123");
@@ -10327,7 +10327,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/tax/manual_rules/id_123",
                 (HttpStatusCode)200,
-                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.tax.manual_rule\",\"products\":[{\"type\":\"licensed_item\"}],\"scheduled_tax_rates\":[{\"rates\":[{\"display_name\":\"display_name\",\"percentage\":\"percentage\"}]}],\"status\":\"active\",\"livemode\":true}");
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.tax.manual_rule\",\"products\":[{\"type\":\"licensed_item\"}],\"scheduled_tax_rates\":[{\"rates\":[{\"display_name\":\"display_name\",\"percentage\":\"614555204\"}]}],\"status\":\"active\",\"livemode\":true}");
             var options = new Stripe.V2.Tax.ManualRuleUpdateOptions
             {
                 ScheduledTaxRates = new List<Stripe.V2.Tax.ManualRuleUpdateScheduledTaxRateOptions>
@@ -10342,7 +10342,7 @@ namespace StripeTests
                                 Description = "description",
                                 DisplayName = "display_name",
                                 Jurisdiction = "jurisdiction",
-                                Percentage = "percentage",
+                                Percentage = 614555204M,
                                 State = "state",
                             },
                         },
@@ -10367,7 +10367,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/tax/manual_rules/id_123/deactivate",
                 (HttpStatusCode)200,
-                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.tax.manual_rule\",\"products\":[{\"type\":\"licensed_item\"}],\"scheduled_tax_rates\":[{\"rates\":[{\"display_name\":\"display_name\",\"percentage\":\"percentage\"}]}],\"status\":\"active\",\"livemode\":true}");
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.tax.manual_rule\",\"products\":[{\"type\":\"licensed_item\"}],\"scheduled_tax_rates\":[{\"rates\":[{\"display_name\":\"display_name\",\"percentage\":\"614555204\"}]}],\"status\":\"active\",\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Tax.ManualRules;
             Stripe.V2.Tax.ManualRule manualRule = service.Deactivate("id_123");

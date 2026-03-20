@@ -26,7 +26,9 @@ namespace Stripe.V2.Billing
         /// The value of the credit grant, decimal value represented as a string.
         /// </summary>
         [JsonProperty("value")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("value")]
-        public string Value { get; set; }
+        public decimal Value { get; set; }
     }
 }

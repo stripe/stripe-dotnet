@@ -26,7 +26,9 @@ namespace Stripe.Events
         /// The percentage of impacted requests.
         /// </summary>
         [JsonProperty("impacted_requests_percentage")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("impacted_requests_percentage")]
-        public string ImpactedRequestsPercentage { get; set; }
+        public decimal? ImpactedRequestsPercentage { get; set; }
     }
 }

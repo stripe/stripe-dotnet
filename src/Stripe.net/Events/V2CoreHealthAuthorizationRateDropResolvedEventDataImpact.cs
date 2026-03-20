@@ -21,8 +21,10 @@ namespace Stripe.Events
         /// The current authorization rate percentage.
         /// </summary>
         [JsonProperty("current_percentage")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("current_percentage")]
-        public string CurrentPercentage { get; set; }
+        public decimal CurrentPercentage { get; set; }
 
         /// <summary>
         /// Dimensions that describe what subset of payments are impacted.
@@ -57,7 +59,9 @@ namespace Stripe.Events
         /// The previous authorization rate percentage.
         /// </summary>
         [JsonProperty("previous_percentage")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("previous_percentage")]
-        public string PreviousPercentage { get; set; }
+        public decimal PreviousPercentage { get; set; }
     }
 }

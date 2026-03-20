@@ -29,8 +29,10 @@ namespace Stripe.V2.Billing.RateCards
         /// <c>up_to_decimal</c> and <c>up_to_inf</c> may be set.
         /// </summary>
         [JsonProperty("up_to_decimal")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("up_to_decimal")]
-        public string UpToDecimal { get; set; }
+        public decimal? UpToDecimal { get; set; }
 
         /// <summary>
         /// No upper bound to this tier. Only one of <c>up_to_decimal</c> and <c>up_to_inf</c> may
