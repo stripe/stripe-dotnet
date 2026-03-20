@@ -21,10 +21,6 @@ print_supported_dotnet_versions:
 print_latest_supported_dotnet_version:
   echo "{{_supported_dotnet_versions}}" | grep '\.' | sort -h | tail -n 1
 
-# Print only versions valid for setup-dotnet (excludes legacy framework versions like 462)
-print_supported_dotnet_sdk_versions:
-  echo "{{_supported_dotnet_versions}}" | grep '\.'
-
 # Print the test matrix as a JSON array of target framework monikers
 print_test_matrix_json:
   echo "{{_supported_dotnet_versions}}" | sed 's/^/net/' | jq -Rnc '[inputs | select(length > 0)]'

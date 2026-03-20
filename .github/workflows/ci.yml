@@ -26,18 +26,11 @@ jobs:
     permissions:
       contents: read
     outputs:
-      supported-dotnet-versions: ${{ steps.supported-dotnet-versions.outputs.dotnet_versions }}
       latest-dotnet-version: ${{ steps.latest-dotnet-version.outputs.latest_dotnet_version }}
       test-matrix: ${{ steps.test-matrix.outputs.test_matrix }}
     steps:
       - uses: extractions/setup-just@v2
       - uses: actions/checkout@v6
-      - name: Get supported .NET SDK versions
-        id: supported-dotnet-versions
-        run: |
-          echo "dotnet_versions<<EOF" >> $GITHUB_OUTPUT
-          just print_supported_dotnet_sdk_versions >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
       - name: Get latest .NET version
         id: latest-dotnet-version
         run: |
@@ -112,16 +105,18 @@ jobs:
       - uses: extractions/setup-just@v2
       - uses: actions/checkout@v6
 
-      - name: Determine SDK version
-        id: sdk-version
-        run: echo "channel=${FRAMEWORK#net}" >> $GITHUB_OUTPUT
-        env:
-          FRAMEWORK: ${{ matrix.framework }}
-
-      - name: Setup .NET
+      - name: Setup .NET (latest SDK)
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: "${{ steps.sdk-version.outputs.channel }}.x"
+          dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
+
+      - name: Install target framework runtime
+        run: |
+          channel="${{ matrix.framework }}"
+          channel="${channel#net}"
+          if [ "$channel" != "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}" ]; then
+            ./scripts/dotnet-install.sh --runtime dotnet --channel "$channel" --install-dir "$DOTNET_ROOT"
+          fi
 
       - name: Install tools
         run: dotnet tool restore
@@ -195,7 +190,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.supported-dotnet-versions }}
+          dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
 
       - name: Install tools
         run: dotnet tool restore
@@ -224,7 +219,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: "8.0.x"
+          dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
 
       - name: Build examples
         run: dotnet build src/Examples/Examples.sln -c Release
