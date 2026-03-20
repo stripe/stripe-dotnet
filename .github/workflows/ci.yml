@@ -227,9 +227,7 @@ jobs:
           dotnet-version: "8.0.x"
 
       - name: Build examples
-        run: |
-          dotnet build src/Examples/Examples.csproj -c Release
-          dotnet build src/Examples/ExampleWebApp.csproj -c Release
+        run: dotnet build src/Examples/Examples.sln -c Release
 
   compat:
     name: Compat
