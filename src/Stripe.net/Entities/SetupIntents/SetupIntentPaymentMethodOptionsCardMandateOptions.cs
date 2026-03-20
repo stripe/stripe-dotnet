@@ -11,7 +11,7 @@ namespace Stripe
     public class SetupIntentPaymentMethodOptionsCardMandateOptions : StripeEntity<SetupIntentPaymentMethodOptionsCardMandateOptions>
     {
         /// <summary>
-        /// Amount to be charged for future payments.
+        /// Amount to be charged for future payments, specified in the presentment currency.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]

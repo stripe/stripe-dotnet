@@ -204,6 +204,10 @@ namespace Stripe
         [STJS.JsonPropertyName("twint")]
         public PaymentIntentPaymentMethodOptionsTwint Twint { get; set; }
 
+        [JsonProperty("upi")]
+        [STJS.JsonPropertyName("upi")]
+        public PaymentIntentPaymentMethodOptionsUpi Upi { get; set; }
+
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]
         public PaymentIntentPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
