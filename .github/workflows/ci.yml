@@ -190,7 +190,7 @@ jobs:
 
   pack:
     name: Pack NuGet
-    needs: prepare-dotnet-versions
+    needs: [test, test-net462, prepare-dotnet-versions]
     runs-on: ubuntu-22.04
     permissions:
       contents: read
