@@ -176,13 +176,13 @@ jobs:
           unzip stripe-mock.zip -d stripe-mock
 
           BETA_ARG=""
-          FIXTURES_ARG="-fixtures ${{ github.workspace }}/fixtures.json"
-          SPEC_ARG="-spec ${{ github.workspace }}/latest.json"
           if [[ "${{ github.base_ref || github.ref_name }}" == *"b"* ]]; then
             BETA_ARG="-beta"
           fi
 
-          ./stripe-mock/stripe-mock $BETA_ARG $FIXTURES_ARG $SPEC_ARG -port 12111 -webhook-port 12112 &
+          ./stripe-mock/stripe-mock.exe $BETA_ARG \
+            -fixtures "${{ github.workspace }}/fixtures.json" \
+            -spec "${{ github.workspace }}/latest.json" &
           sleep 5
 
       - name: Run tests
