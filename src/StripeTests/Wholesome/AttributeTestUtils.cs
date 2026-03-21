@@ -22,7 +22,7 @@ namespace StripeTests.Wholesome
                 foreach (var attribute in type.GetCustomAttributes())
                 {
                     var attributeType = attribute.GetType();
-                    if (attributeType.Namespace.StartsWith(nsPrefix, true, null))
+                    if (attributeType.Namespace?.StartsWith(nsPrefix, true, null) == true)
                     {
                         if (!results.Contains(attribute))
                         {
@@ -36,7 +36,7 @@ namespace StripeTests.Wholesome
                     foreach (var attribute in property.GetCustomAttributes())
                     {
                         var attributeType = attribute.GetType();
-                        if (attributeType.Namespace.StartsWith(nsPrefix, true, null))
+                        if (attributeType.Namespace?.StartsWith(nsPrefix, true, null) == true)
                         {
                             if (!results.Contains(attribute))
                             {

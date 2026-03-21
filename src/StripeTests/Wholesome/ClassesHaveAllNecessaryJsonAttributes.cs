@@ -73,7 +73,7 @@ namespace StripeTests.Wholesome
                     var attributes = type.GetCustomAttributes(false).Cast<Attribute>();
                     foreach (Attribute attribute in attributes)
                     {
-                        if (attribute.GetType().Namespace.StartsWith("Newtonsoft", true, null))
+                        if (attribute.GetType().Namespace?.StartsWith("Newtonsoft", true, null) == true)
                         {
                             // we assume classes are public if they have json attributes
                             hasCorrectAttributes = SystemTextJsonTestUtils.HasCorrectAttributes(attribute, attributes, true);
