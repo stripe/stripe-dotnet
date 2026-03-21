@@ -168,11 +168,22 @@ jobs:
         with:
           name: openapi-spec
 
-      - uses: stripe/openapi/actions/stripe-mock@master
-        with:
-          base: ${{ github.base_ref || github.ref_name }}
-          fixtures: "/workspace/fixtures.json"
-          spec_path: "/workspace/latest.json"
+      - name: Start stripe-mock
+        shell: bash
+        run: |
+          MOCK_VERSION=$(curl -s https://api.github.com/repos/stripe/stripe-mock/releases/latest | jq -r '.tag_name' | sed 's/^v//')
+          curl -L "https://github.com/stripe/stripe-mock/releases/download/v${MOCK_VERSION}/stripe-mock_${MOCK_VERSION}_windows_amd64.zip" -o stripe-mock.zip
+          unzip stripe-mock.zip -d stripe-mock
+
+          BETA_ARG=""
+          FIXTURES_ARG="-fixtures ${{ github.workspace }}/fixtures.json"
+          SPEC_ARG="-spec ${{ github.workspace }}/latest.json"
+          if [[ "${{ github.base_ref || github.ref_name }}" == *"b"* ]]; then
+            BETA_ARG="-beta"
+          fi
+
+          ./stripe-mock/stripe-mock $BETA_ARG $FIXTURES_ARG $SPEC_ARG -port 12111 -webhook-port 12112 &
+          sleep 5
 
       - name: Run tests
         run: dotnet test --no-build --configuration Release --framework net462 src/StripeTests/StripeTests.csproj
