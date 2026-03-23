@@ -581,6 +581,10 @@ namespace Stripe
         [STJS.JsonPropertyName("pending_update")]
         public SubscriptionPendingUpdate PendingUpdate { get; set; }
 
+        [JsonProperty("presentment_details")]
+        [STJS.JsonPropertyName("presentment_details")]
+        public SubscriptionPresentmentDetails PresentmentDetails { get; set; }
+
         #region Expandable Schedule
 
         /// <summary>
