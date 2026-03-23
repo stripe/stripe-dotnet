@@ -71,7 +71,7 @@ namespace Stripe
                     objectProp.GetString() == "v2.core.event")
                 {
                     throw new ArgumentException(
-                        "You passed an event notification to ConstructEvent, which expects "
+                        "You passed a thin event notification to ConstructEvent, which expects "
                         + "a webhook payload. Use StripeClient.ParseEventNotification instead.");
                 }
             }

@@ -235,7 +235,7 @@ namespace Stripe
             {
                 throw new ArgumentException(
                     "You passed a webhook payload to ParseEventNotification, which expects "
-                    + "an event notification. Use EventUtility.ConstructEvent instead.");
+                    + "a thin event notification. Use EventUtility.ConstructEvent instead.");
             }
 
             return EventNotification.FromJson(json, this);
