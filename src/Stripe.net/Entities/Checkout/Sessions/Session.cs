@@ -726,9 +726,8 @@ namespace Stripe.Checkout
         public SessionTotalDetails TotalDetails { get; set; }
 
         /// <summary>
-        /// The UI mode of the Session. Defaults to <c>hosted</c>.
-        /// One of: <c>custom</c>, <c>elements</c>, <c>embedded</c>, <c>embedded_page</c>,
-        /// <c>form</c>, <c>hosted</c>, or <c>hosted_page</c>.
+        /// The UI mode of the Session. Defaults to <c>hosted_page</c>.
+        /// One of: <c>elements</c>, <c>embedded_page</c>, <c>form</c>, or <c>hosted_page</c>.
         /// </summary>
         [JsonProperty("ui_mode")]
         [STJS.JsonPropertyName("ui_mode")]

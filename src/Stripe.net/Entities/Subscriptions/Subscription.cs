@@ -611,6 +611,10 @@ namespace Stripe
         [STJS.JsonPropertyName("prebilling")]
         public SubscriptionPrebilling Prebilling { get; set; }
 
+        [JsonProperty("presentment_details")]
+        [STJS.JsonPropertyName("presentment_details")]
+        public SubscriptionPresentmentDetails PresentmentDetails { get; set; }
+
         #region Expandable Schedule
 
         /// <summary>
