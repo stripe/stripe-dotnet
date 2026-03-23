@@ -69,8 +69,9 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// The cardholder’s preferred locales (languages), ordered by preference. Locales can be
-        /// <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, or <c>it</c>. This changes the language of
-        /// the <a href="https://docs.stripe.com/issuing/3d-secure">3D Secure flow</a> and one-time
+        /// <c>da</c>, <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, <c>it</c>, <c>pl</c>, or
+        /// <c>sv</c>. This changes the language of the <a
+        /// href="https://docs.stripe.com/issuing/3d-secure">3D Secure flow</a> and one-time
         /// password messages sent to the cardholder.
         /// One of: <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, or <c>it</c>.
         /// </summary>
