@@ -12,8 +12,10 @@ namespace Stripe
     /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class BaseOptions : INestedOptions
+    public class BaseOptions : INestedOptions, IHasSetTracking
     {
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>Specifies which fields in the response should be expanded.</summary>
         [JsonProperty("expand", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("expand")]
@@ -26,6 +28,11 @@ namespace Stripe
         [STJS.JsonExtensionData]
         public IDictionary<string, object> ExtraParams { get; set; }
             = new Dictionary<string, object>();
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
 
         internal BaseOptions Clone()
         {
