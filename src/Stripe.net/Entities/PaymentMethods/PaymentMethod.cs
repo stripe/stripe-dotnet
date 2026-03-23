@@ -232,8 +232,8 @@ namespace Stripe
         public PaymentMethodLink Link { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -377,11 +377,15 @@ namespace Stripe
         /// <c>paynow</c>, <c>paypal</c>, <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
         /// <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>stripe_balance</c>, <c>swish</c>,
-        /// <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
+
+        [JsonProperty("upi")]
+        [STJS.JsonPropertyName("upi")]
+        public PaymentMethodUpi Upi { get; set; }
 
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]

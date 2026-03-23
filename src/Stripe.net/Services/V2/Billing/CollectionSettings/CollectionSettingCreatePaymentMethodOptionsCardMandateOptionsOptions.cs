@@ -12,6 +12,8 @@ namespace Stripe.V2.Billing
         /// Amount to be charged for future payments.
         /// </summary>
         [JsonProperty("amount")]
+        [JsonConverter(typeof(Int64StringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("amount")]
         public long? Amount { get; set; }
 

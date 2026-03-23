@@ -36,6 +36,10 @@ namespace Stripe
         [STJS.JsonPropertyName("shipping")]
         public PaymentIntentAmountDetailsShipping Shipping { get; set; }
 
+        [JsonProperty("surcharge")]
+        [STJS.JsonPropertyName("surcharge")]
+        public PaymentIntentAmountDetailsSurcharge Surcharge { get; set; }
+
         [JsonProperty("tax")]
         [STJS.JsonPropertyName("tax")]
         public PaymentIntentAmountDetailsTax Tax { get; set; }

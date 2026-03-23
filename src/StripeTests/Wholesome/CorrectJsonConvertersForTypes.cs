@@ -103,6 +103,13 @@ namespace StripeTests.Wholesome
                         continue;
                     }
 
+                    // if we have a Int64StringConverter on a long type, assume its good.
+                    if ((property.PropertyType == typeof(long) || property.PropertyType == typeof(long?))
+                         && actualConverterName == "Int64StringConverter")
+                    {
+                        continue;
+                    }
+
                     results.Add(
                         $"{stripeClass.Name}.{property.Name}, expected = {expectedConverterName}, "
                             + $"actual = {actualConverterName}");

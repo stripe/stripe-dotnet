@@ -57,11 +57,11 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>. For <a
-        /// href="https://docs.stripe.com/api/invoices/line_item#invoice_line_item_object-type">type=subscription</a>
-        /// line items, the incoming metadata specified on the request is directly used to set this
-        /// value, in contrast to <a
-        /// href="api/invoices/line_item#invoice_line_item_object-type">type=invoiceitem</a> line
-        /// items, where any existing metadata on the invoice line is merged with the incoming data.
+        /// href="https://stripe.com/api/invoices/line_item">type=subscription</a> line items, the
+        /// incoming metadata specified on the request is directly used to set this value, in
+        /// contrast to <a href="https://stripe.com/api/invoices/line_item">type=invoiceitem</a>
+        /// line items, where any existing metadata on the invoice line is merged with the incoming
+        /// data.
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
@@ -95,11 +95,23 @@ namespace Stripe
         public InvoiceLineItemPricingOptions Pricing { get; set; }
 
         /// <summary>
-        /// Non-negative integer. The quantity of units for the line item.
+        /// Non-negative integer. The quantity of units for the line item. Use
+        /// <c>quantity_decimal</c> instead to provide decimal precision. This field will be
+        /// deprecated in favor of <c>quantity_decimal</c> in a future version.
         /// </summary>
         [JsonProperty("quantity")]
         [STJS.JsonPropertyName("quantity")]
         public long? Quantity { get; set; }
+
+        /// <summary>
+        /// Non-negative decimal with at most 12 decimal places. The quantity of units for the line
+        /// item.
+        /// </summary>
+        [JsonProperty("quantity_decimal")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonPropertyName("quantity_decimal")]
+        public decimal? QuantityDecimal { get; set; }
 
         /// <summary>
         /// A list of up to 10 tax amounts for this line item. This can be useful if you calculate

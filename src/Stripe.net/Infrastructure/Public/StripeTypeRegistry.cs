@@ -154,6 +154,7 @@ namespace Stripe
                     Privacy.RedactionJobValidationError)
                 },
                 { "product", typeof(Product) },
+                { "product_catalog.trial_offer", typeof(ProductCatalog.TrialOffer) },
                 { "product_feature", typeof(ProductFeature) },
                 { "promotion_code", typeof(PromotionCode) },
                 { "quote", typeof(Quote) },
@@ -189,6 +190,7 @@ namespace Stripe
                 { "tax.calculation", typeof(Tax.Calculation) },
                 { "tax.calculation_line_item", typeof(Tax.CalculationLineItem) },
                 { "tax.form", typeof(Tax.Form) },
+                { "tax.location", typeof(Tax.Location) },
                 { "tax.registration", typeof(Tax.Registration) },
                 { "tax.settings", typeof(Tax.Settings) },
                 { "tax.transaction", typeof(Tax.Transaction) },

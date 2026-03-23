@@ -63,12 +63,13 @@ namespace Stripe.Radar
 
         /// <summary>
         /// The type of items in the value list. One of <c>card_fingerprint</c>, <c>card_bin</c>,
-        /// <c>email</c>, <c>ip_address</c>, <c>country</c>, <c>string</c>,
-        /// <c>case_sensitive_string</c>, <c>customer_id</c>, <c>sepa_debit_fingerprint</c>, or
-        /// <c>us_bank_account_fingerprint</c>.
+        /// <c>crypto_fingerprint</c>, <c>email</c>, <c>ip_address</c>, <c>country</c>,
+        /// <c>string</c>, <c>case_sensitive_string</c>, <c>customer_id</c>,
+        /// <c>sepa_debit_fingerprint</c>, or <c>us_bank_account_fingerprint</c>.
         /// One of: <c>card_bin</c>, <c>card_fingerprint</c>, <c>case_sensitive_string</c>,
-        /// <c>country</c>, <c>customer_id</c>, <c>email</c>, <c>ip_address</c>,
-        /// <c>sepa_debit_fingerprint</c>, <c>string</c>, or <c>us_bank_account_fingerprint</c>.
+        /// <c>country</c>, <c>crypto_fingerprint</c>, <c>customer_id</c>, <c>email</c>,
+        /// <c>ip_address</c>, <c>sepa_debit_fingerprint</c>, <c>string</c>, or
+        /// <c>us_bank_account_fingerprint</c>.
         /// </summary>
         [JsonProperty("item_type")]
         [STJS.JsonPropertyName("item_type")]
@@ -82,8 +83,8 @@ namespace Stripe.Radar
         public StripeList<ValueListItem> ListItems { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

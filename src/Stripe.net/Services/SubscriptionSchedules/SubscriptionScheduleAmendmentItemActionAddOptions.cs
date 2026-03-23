@@ -56,5 +56,12 @@ namespace Stripe
         [JsonProperty("trial")]
         [STJS.JsonPropertyName("trial")]
         public SubscriptionScheduleAmendmentItemActionAddTrialOptions Trial { get; set; }
+
+        /// <summary>
+        /// The ID of the trial offer to apply to the configuration item.
+        /// </summary>
+        [JsonProperty("trial_offer")]
+        [STJS.JsonPropertyName("trial_offer")]
+        public string TrialOffer { get; set; }
     }
 }

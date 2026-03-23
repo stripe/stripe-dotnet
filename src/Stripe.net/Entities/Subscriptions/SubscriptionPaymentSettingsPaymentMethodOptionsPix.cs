@@ -8,6 +8,14 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SubscriptionPaymentSettingsPaymentMethodOptionsPix : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptionsPix>
     {
+        /// <summary>
+        /// The number of seconds (between 10 and 1209600) after which Pix payment will expire.
+        /// Defaults to 86400 seconds.
+        /// </summary>
+        [JsonProperty("expires_after_seconds")]
+        [STJS.JsonPropertyName("expires_after_seconds")]
+        public long ExpiresAfterSeconds { get; set; }
+
         [JsonProperty("mandate_options")]
         [STJS.JsonPropertyName("mandate_options")]
         public SubscriptionPaymentSettingsPaymentMethodOptionsPixMandateOptions MandateOptions { get; set; }

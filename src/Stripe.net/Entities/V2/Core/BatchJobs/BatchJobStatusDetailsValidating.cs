@@ -13,6 +13,8 @@ namespace Stripe.V2.Core
         /// once we have any validation failures we give up.
         /// </summary>
         [JsonProperty("validated_count")]
+        [JsonConverter(typeof(Int64StringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("validated_count")]
         public long ValidatedCount { get; set; }
     }
