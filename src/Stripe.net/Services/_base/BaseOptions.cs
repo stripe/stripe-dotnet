@@ -14,6 +14,8 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class BaseOptions : INestedOptions, IHasSetTracking
     {
+        [JsonIgnore]
+        [STJS.JsonIgnore]
         internal SetTracker SetTracker { get; } = new SetTracker();
 
         /// <summary>Specifies which fields in the response should be expanded.</summary>
