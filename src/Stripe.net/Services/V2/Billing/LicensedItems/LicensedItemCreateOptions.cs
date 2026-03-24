@@ -18,8 +18,8 @@ namespace Stripe.V2.Billing
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// An internal key you can use to search for a particular billable item. Must be unique
-        /// among billable items. Maximum length of 200 characters.
+        /// An internal key you can use to search for a particular licensed item. Must be unique
+        /// among licensed items. Maximum length of 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
         [STJS.JsonPropertyName("lookup_key")]

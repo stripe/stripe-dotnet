@@ -98,6 +98,22 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
+        /// Creates, updates, and/or deletes multiple Rates on a Rate Card atomically.
+        /// </summary>
+        public virtual RateCardVersion ModifyRates(string id, RateCardModifyRatesOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<RateCardVersion>(BaseAddress.Api, HttpMethod.Post, $"/v2/billing/rate_cards/{WebUtility.UrlEncode(id)}/modify_rates", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Creates, updates, and/or deletes multiple Rates on a Rate Card atomically.
+        /// </summary>
+        public virtual Task<RateCardVersion> ModifyRatesAsync(string id, RateCardModifyRatesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<RateCardVersion>(BaseAddress.Api, HttpMethod.Post, $"/v2/billing/rate_cards/{WebUtility.UrlEncode(id)}/modify_rates", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// Update a Rate Card object.
         /// </summary>
         public virtual RateCard Update(string id, RateCardUpdateOptions options, RequestOptions requestOptions = null)

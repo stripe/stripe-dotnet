@@ -73,7 +73,7 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// List all Rates associated with a Rate Card for a specific version (defaults to latest).
+        /// List all Rates associated with a Rate Card for a specific version. Defaults to latest.
         /// Rates remain active for all subsequent versions until a new rate is created for the same
         /// Metered Item.
         /// </summary>
@@ -83,7 +83,7 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// List all Rates associated with a Rate Card for a specific version (defaults to latest).
+        /// List all Rates associated with a Rate Card for a specific version. Defaults to latest.
         /// Rates remain active for all subsequent versions until a new rate is created for the same
         /// Metered Item.
         /// </summary>
@@ -93,7 +93,7 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// List all Rates associated with a Rate Card for a specific version (defaults to latest).
+        /// List all Rates associated with a Rate Card for a specific version. Defaults to latest.
         /// Rates remain active for all subsequent versions until a new rate is created for the same
         /// Metered Item.
         /// </summary>
@@ -103,7 +103,7 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// List all Rates associated with a Rate Card for a specific version (defaults to latest).
+        /// List all Rates associated with a Rate Card for a specific version. Defaults to latest.
         /// Rates remain active for all subsequent versions until a new rate is created for the same
         /// Metered Item.
         /// </summary>

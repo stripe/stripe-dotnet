@@ -16,7 +16,7 @@ namespace Stripe.V2.Billing.PricingPlans
         public string Id { get; set; }
 
         /// <summary>
-        /// The version of the LicenseFee. Defaults to 'latest', if not specified.
+        /// The ID of the License Fee Version. If not specified, defaults to 'latest'.
         /// </summary>
         [JsonProperty("version")]
         [STJS.JsonPropertyName("version")]

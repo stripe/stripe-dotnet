@@ -25,7 +25,7 @@ namespace Stripe.V2.Billing
         public string Price { get; set; }
 
         /// <summary>
-        /// Quantity for this item. If not provided, will default to 1.
+        /// Quantity for this item. If not provided, defaults to 1.
         /// </summary>
         [JsonProperty("quantity")]
         [STJS.JsonPropertyName("quantity")]

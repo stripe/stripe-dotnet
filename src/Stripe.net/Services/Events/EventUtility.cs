@@ -65,6 +65,17 @@ namespace Stripe
         /// </remarks>
         public static Event ParseEvent(string json, bool throwOnApiVersionMismatch = true)
         {
+            using (var doc = System.Text.Json.JsonDocument.Parse(json))
+            {
+                if (doc.RootElement.TryGetProperty("object", out var objectProp) &&
+                    objectProp.GetString() == "v2.core.event")
+                {
+                    throw new ArgumentException(
+                        "You passed a thin event notification to ConstructEvent, which expects "
+                        + "a webhook payload. Use StripeClient.ParseEventNotification instead.");
+                }
+            }
+
             var stripeEvent = System.Text.Json.JsonSerializer.Deserialize<Event>(
                 json,
                 StripeConfiguration.SerializerOptions);

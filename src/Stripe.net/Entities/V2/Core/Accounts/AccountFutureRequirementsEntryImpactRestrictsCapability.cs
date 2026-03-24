@@ -25,7 +25,7 @@ namespace Stripe.V2.Core
         /// <c>commercial.stripe.charge_card</c>, <c>commercial.stripe.prepaid_card</c>,
         /// <c>consumer.celtic.revolving_credit_card</c>,
         /// <c>consumer.cross_river_bank.prepaid_card</c>, <c>consumer.holds_currencies.usd</c>,
-        /// <c>consumer.lead.prepaid_card</c>, <c>crypto</c>, <c>eps_payments</c>,
+        /// <c>consumer.lead.prepaid_card</c>, <c>crypto_wallets</c>, <c>eps_payments</c>,
         /// <c>financial_addresses.bank_accounts</c>, <c>fpx_payments</c>,
         /// <c>gb_bank_transfer_payments</c>, <c>grabpay_payments</c>, <c>holds_currencies.eur</c>,
         /// <c>holds_currencies.gbp</c>, <c>holds_currencies.usd</c>, <c>ideal_payments</c>,

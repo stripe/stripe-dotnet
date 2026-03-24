@@ -8,8 +8,10 @@ namespace Stripe.V2
     public class CoreService : Service
     {
         private V2.Core.AccountService accounts;
+        private V2.Core.AccountEvaluationService accountEvaluations;
         private V2.Core.AccountLinkService accountLinks;
         private V2.Core.AccountTokenService accountTokens;
+        private V2.Core.BatchJobService batchJobs;
         private V2.Core.ClaimableSandboxService claimableSandboxes;
         private V2.Core.ConnectionSessionService connectionSessions;
         private V2.Core.EventService events;
@@ -29,10 +31,16 @@ namespace Stripe.V2
         public virtual V2.Core.AccountService Accounts => this.accounts ??= new V2.Core.AccountService(
             this.Requestor);
 
+        public virtual V2.Core.AccountEvaluationService AccountEvaluations => this.accountEvaluations ??= new V2.Core.AccountEvaluationService(
+            this.Requestor);
+
         public virtual V2.Core.AccountLinkService AccountLinks => this.accountLinks ??= new V2.Core.AccountLinkService(
             this.Requestor);
 
         public virtual V2.Core.AccountTokenService AccountTokens => this.accountTokens ??= new V2.Core.AccountTokenService(
+            this.Requestor);
+
+        public virtual V2.Core.BatchJobService BatchJobs => this.batchJobs ??= new V2.Core.BatchJobService(
             this.Requestor);
 
         public virtual V2.Core.ClaimableSandboxService ClaimableSandboxes => this.claimableSandboxes ??= new V2.Core.ClaimableSandboxService(

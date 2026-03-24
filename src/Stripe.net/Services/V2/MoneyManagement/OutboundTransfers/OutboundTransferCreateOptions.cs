@@ -55,6 +55,15 @@ namespace Stripe.V2.MoneyManagement
         public string RecipientVerification { get; set; }
 
         /// <summary>
+        /// The description that appears on the receiving end for an OutboundTransfer (for example,
+        /// on a bank statement). Must be between 3 and 22 characters long, and not contain
+        /// profanity.
+        /// </summary>
+        [JsonProperty("statement_descriptor")]
+        [STJS.JsonPropertyName("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
+
+        /// <summary>
         /// To which payout method to send the OutboundTransfer.
         /// </summary>
         [JsonProperty("to")]

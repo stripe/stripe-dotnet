@@ -13,7 +13,6 @@ namespace Stripe.V2
         private V2.Billing.CustomPricingUnitService customPricingUnits;
         private V2.Billing.IntentService intents;
         private V2.Billing.LicenseFeeService licenseFees;
-        private V2.Billing.LicenseFeeSubscriptionService licenseFeeSubscriptions;
         private V2.Billing.LicensedItemService licensedItems;
         private V2.Billing.MeterEventService meterEvents;
         private V2.Billing.MeterEventAdjustmentService meterEventAdjustments;
@@ -54,9 +53,6 @@ namespace Stripe.V2
             this.Requestor);
 
         public virtual V2.Billing.LicenseFeeService LicenseFees => this.licenseFees ??= new V2.Billing.LicenseFeeService(
-            this.Requestor);
-
-        public virtual V2.Billing.LicenseFeeSubscriptionService LicenseFeeSubscriptions => this.licenseFeeSubscriptions ??= new V2.Billing.LicenseFeeSubscriptionService(
             this.Requestor);
 
         public virtual V2.Billing.LicensedItemService LicensedItems => this.licensedItems ??= new V2.Billing.LicensedItemService(

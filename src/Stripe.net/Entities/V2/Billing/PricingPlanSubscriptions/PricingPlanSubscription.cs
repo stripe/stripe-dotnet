@@ -70,6 +70,13 @@ namespace Stripe.V2.Billing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// Details about Discounts applied to this subscription.
+        /// </summary>
+        [JsonProperty("discount_details")]
+        [STJS.JsonPropertyName("discount_details")]
+        public List<PricingPlanSubscriptionDiscountDetail> DiscountDetails { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
@@ -92,6 +99,14 @@ namespace Stripe.V2.Billing
         [JsonProperty("pricing_plan")]
         [STJS.JsonPropertyName("pricing_plan")]
         public string PricingPlan { get; set; }
+
+        /// <summary>
+        /// Pricing plan component details for the subscription, populated when
+        /// pricing_plan_component_details is included.
+        /// </summary>
+        [JsonProperty("pricing_plan_component_details")]
+        [STJS.JsonPropertyName("pricing_plan_component_details")]
+        public List<PricingPlanSubscriptionPricingPlanComponentDetail> PricingPlanComponentDetails { get; set; }
 
         /// <summary>
         /// The ID of the Pricing Plan Version for this subscription.

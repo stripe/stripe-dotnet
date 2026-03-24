@@ -2,6 +2,7 @@
 namespace Stripe.V2.Payments
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -10,7 +11,7 @@ namespace Stripe.V2.Payments
     /// SettlementAllocationIntentSplit resource.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SettlementAllocationIntentSplit : StripeEntity<SettlementAllocationIntentSplit>, IHasId, IHasObject
+    public class SettlementAllocationIntentSplit : StripeEntity<SettlementAllocationIntentSplit>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the SettlementAllocationIntentSplit.
@@ -64,7 +65,14 @@ namespace Stripe.V2.Payments
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The ID of the SettlementAllocationIntent that this split belongs too.
+        /// Metadata associated with the SettlementAllocationIntentSplit.
+        /// </summary>
+        [JsonProperty("metadata")]
+        [STJS.JsonPropertyName("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The ID of the SettlementAllocationIntent that this split belongs to.
         /// </summary>
         [JsonProperty("settlement_allocation_intent")]
         [STJS.JsonPropertyName("settlement_allocation_intent")]

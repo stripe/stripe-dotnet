@@ -16,7 +16,7 @@ namespace Stripe.V2.Billing
         public IntentActionApplySpendModifierRuleMaxBillingPeriodSpendAmount Amount { get; set; }
 
         /// <summary>
-        /// The configration for the overage rate for the custom pricing unit.
+        /// The configuration for the overage rate for the custom pricing unit.
         /// </summary>
         [JsonProperty("custom_pricing_unit_overage_rate")]
         [STJS.JsonPropertyName("custom_pricing_unit_overage_rate")]
