@@ -6,8 +6,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class BalanceSettingsPaymentsSettlementTimingOptions : INestedOptions
+    public class BalanceSettingsPaymentsSettlementTimingOptions : INestedOptions, IHasSetTracking
     {
+        private long? delayDaysOverride;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Change <c>delay_days</c> for this account, which determines the number of days charge
         /// funds are held before becoming available. The maximum value is 31. Passing an empty
@@ -18,6 +24,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("delay_days_override")]
         [STJS.JsonPropertyName("delay_days_override")]
-        public long? DelayDaysOverride { get; set; }
+        public long? DelayDaysOverride
+        {
+            get => this.delayDaysOverride;
+            set
+            {
+                this.delayDaysOverride = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

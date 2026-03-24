@@ -8,8 +8,17 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class InvoiceScheduleDetailsPhaseOptions : INestedOptions, IHasMetadata
+    public class InvoiceScheduleDetailsPhaseOptions : INestedOptions, IHasMetadata, IHasSetTracking
     {
+        private InvoiceScheduleDetailsPhaseBillingThresholdsOptions billingThresholds;
+        private List<string> defaultTaxRates;
+        private string description;
+        private List<InvoiceScheduleDetailsPhaseDiscountOptions> discounts;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// A list of prices and quantities that will generate invoice items appended to the next
         /// invoice for this phase. You may pass up to 20 items.
@@ -55,7 +64,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing_thresholds")]
         [STJS.JsonPropertyName("billing_thresholds")]
-        public InvoiceScheduleDetailsPhaseBillingThresholdsOptions BillingThresholds { get; set; }
+        public InvoiceScheduleDetailsPhaseBillingThresholdsOptions BillingThresholds
+        {
+            get => this.billingThresholds;
+            set
+            {
+                this.billingThresholds = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When charging automatically,
@@ -97,7 +114,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("default_tax_rates")]
         [STJS.JsonPropertyName("default_tax_rates")]
-        public List<string> DefaultTaxRates { get; set; }
+        public List<string> DefaultTaxRates
+        {
+            get => this.defaultTaxRates;
+            set
+            {
+                this.defaultTaxRates = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Subscription description, meant to be displayable to the customer. Use this field to
@@ -106,7 +131,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description
+        {
+            get => this.description;
+            set
+            {
+                this.description = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The coupons to redeem into discounts for the schedule phase. If not specified, inherits
@@ -115,7 +148,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
-        public List<InvoiceScheduleDetailsPhaseDiscountOptions> Discounts { get; set; }
+        public List<InvoiceScheduleDetailsPhaseDiscountOptions> Discounts
+        {
+            get => this.discounts;
+            set
+            {
+                this.discounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The number of intervals the phase should last. If set, <c>end_date</c> must not be set.
@@ -220,5 +261,10 @@ namespace Stripe
         [STJS.JsonPropertyName("trial_end")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
         public AnyOf<DateTime?, InvoiceScheduleDetailsPhaseTrialEnd> TrialEnd { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

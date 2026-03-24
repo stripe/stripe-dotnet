@@ -10,13 +10,34 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceUpdateOptions : BaseOptions, IHasMetadata
     {
+        private List<string> accountTaxIds;
+        private List<InvoiceCustomFieldOptions> customFields;
+        private string defaultSource;
+        private List<string> defaultTaxRates;
+        private List<InvoiceDiscountOptions> discounts;
+        private DateTime? effectiveAt;
+        private Dictionary<string, string> metadata;
+        private string number;
+        private string onBehalfOf;
+        private InvoiceShippingCostOptions shippingCost;
+        private InvoiceShippingDetailsOptions shippingDetails;
+        private InvoiceTransferDataOptions transferData;
+
         /// <summary>
         /// The account tax IDs associated with the invoice. Only editable when the invoice is a
         /// draft.
         /// </summary>
         [JsonProperty("account_tax_ids")]
         [STJS.JsonPropertyName("account_tax_ids")]
-        public List<string> AccountTaxIds { get; set; }
+        public List<string> AccountTaxIds
+        {
+            get => this.accountTaxIds;
+            set
+            {
+                this.accountTaxIds = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A fee in cents (or local equivalent) that will be applied to the invoice and transferred
@@ -72,7 +93,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("custom_fields")]
         [STJS.JsonPropertyName("custom_fields")]
-        public List<InvoiceCustomFieldOptions> CustomFields { get; set; }
+        public List<InvoiceCustomFieldOptions> CustomFields
+        {
+            get => this.customFields;
+            set
+            {
+                this.customFields = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The number of days from which the invoice is created until it is due. Only valid for
@@ -99,7 +128,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("default_source")]
         [STJS.JsonPropertyName("default_source")]
-        public string DefaultSource { get; set; }
+        public string DefaultSource
+        {
+            get => this.defaultSource;
+            set
+            {
+                this.defaultSource = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The tax rates that will apply to any line item that does not have <c>tax_rates</c> set.
@@ -107,7 +144,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("default_tax_rates")]
         [STJS.JsonPropertyName("default_tax_rates")]
-        public List<string> DefaultTaxRates { get; set; }
+        public List<string> DefaultTaxRates
+        {
+            get => this.defaultTaxRates;
+            set
+            {
+                this.defaultTaxRates = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
@@ -123,7 +168,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
-        public List<InvoiceDiscountOptions> Discounts { get; set; }
+        public List<InvoiceDiscountOptions> Discounts
+        {
+            get => this.discounts;
+            set
+            {
+                this.discounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The date on which payment for this invoice is due. Only valid for invoices where
@@ -145,7 +198,15 @@ namespace Stripe
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("effective_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime? EffectiveAt { get; set; }
+        public DateTime? EffectiveAt
+        {
+            get => this.effectiveAt;
+            set
+            {
+                this.effectiveAt = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Footer to be displayed on the invoice.
@@ -170,7 +231,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set the number for this invoice. If no number is present then a number will be assigned
@@ -182,7 +251,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("number")]
         [STJS.JsonPropertyName("number")]
-        public string Number { get; set; }
+        public string Number
+        {
+            get => this.number;
+            set
+            {
+                this.number = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The account (if any) for which the funds of the invoice payment are intended. If set,
@@ -192,7 +269,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("on_behalf_of")]
         [STJS.JsonPropertyName("on_behalf_of")]
-        public string OnBehalfOf { get; set; }
+        public string OnBehalfOf
+        {
+            get => this.onBehalfOf;
+            set
+            {
+                this.onBehalfOf = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Configuration settings for the PaymentIntent that is generated when the invoice is
@@ -215,7 +300,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("shipping_cost")]
         [STJS.JsonPropertyName("shipping_cost")]
-        public InvoiceShippingCostOptions ShippingCost { get; set; }
+        public InvoiceShippingCostOptions ShippingCost
+        {
+            get => this.shippingCost;
+            set
+            {
+                this.shippingCost = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Shipping details for the invoice. The Invoice PDF will use the <c>shipping_details</c>
@@ -224,7 +317,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("shipping_details")]
         [STJS.JsonPropertyName("shipping_details")]
-        public InvoiceShippingDetailsOptions ShippingDetails { get; set; }
+        public InvoiceShippingDetailsOptions ShippingDetails
+        {
+            get => this.shippingDetails;
+            set
+            {
+                this.shippingDetails = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Extra information about a charge for the customer's credit card statement. It must
@@ -243,6 +344,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("transfer_data")]
         [STJS.JsonPropertyName("transfer_data")]
-        public InvoiceTransferDataOptions TransferData { get; set; }
+        public InvoiceTransferDataOptions TransferData
+        {
+            get => this.transferData;
+            set
+            {
+                this.transferData = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

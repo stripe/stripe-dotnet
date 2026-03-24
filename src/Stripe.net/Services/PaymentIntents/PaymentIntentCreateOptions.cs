@@ -9,6 +9,8 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentCreateOptions : BaseOptions, IHasMetadata
     {
+        private PaymentIntentMandateDataOptions mandateData;
+
         /// <summary>
         /// Amount intended to be collected by this PaymentIntent. A positive integer representing
         /// how much to charge in the <a
@@ -196,7 +198,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("mandate_data")]
         [STJS.JsonPropertyName("mandate_data")]
-        public PaymentIntentMandateDataOptions MandateData { get; set; }
+        public PaymentIntentMandateDataOptions MandateData
+        {
+            get => this.mandateData;
+            set
+            {
+                this.mandateData = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can

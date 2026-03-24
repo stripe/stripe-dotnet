@@ -7,8 +7,14 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SessionPaymentMethodOptionsKlarnaOptions : INestedOptions
+    public class SessionPaymentMethodOptionsKlarnaOptions : INestedOptions, IHasSetTracking
     {
+        private List<SessionPaymentMethodOptionsKlarnaSubscriptionOptions> subscriptions;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// </summary>
@@ -45,6 +51,19 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("subscriptions")]
         [STJS.JsonPropertyName("subscriptions")]
-        public List<SessionPaymentMethodOptionsKlarnaSubscriptionOptions> Subscriptions { get; set; }
+        public List<SessionPaymentMethodOptionsKlarnaSubscriptionOptions> Subscriptions
+        {
+            get => this.subscriptions;
+            set
+            {
+                this.subscriptions = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

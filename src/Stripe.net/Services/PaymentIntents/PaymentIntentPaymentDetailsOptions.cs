@@ -6,8 +6,15 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentPaymentDetailsOptions : INestedOptions
+    public class PaymentIntentPaymentDetailsOptions : INestedOptions, IHasSetTracking
     {
+        private string customerReference;
+        private string orderReference;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// A unique value to identify the customer. This field is available only for card payments.
         ///
@@ -16,7 +23,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("customer_reference")]
         [STJS.JsonPropertyName("customer_reference")]
-        public string CustomerReference { get; set; }
+        public string CustomerReference
+        {
+            get => this.customerReference;
+            set
+            {
+                this.customerReference = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A unique value assigned by the business to identify the transaction. Required for L2 and
@@ -28,6 +43,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("order_reference")]
         [STJS.JsonPropertyName("order_reference")]
-        public string OrderReference { get; set; }
+        public string OrderReference
+        {
+            get => this.orderReference;
+            set
+            {
+                this.orderReference = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

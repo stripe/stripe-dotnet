@@ -6,27 +6,64 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ConfigurationBusinessProfileOptions : INestedOptions
+    public class ConfigurationBusinessProfileOptions : INestedOptions, IHasSetTracking
     {
+        private string headline;
+        private string privacyPolicyUrl;
+        private string termsOfServiceUrl;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The messaging shown to customers in the portal.
         /// </summary>
         [JsonProperty("headline")]
         [STJS.JsonPropertyName("headline")]
-        public string Headline { get; set; }
+        public string Headline
+        {
+            get => this.headline;
+            set
+            {
+                this.headline = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A link to the business’s publicly available privacy policy.
         /// </summary>
         [JsonProperty("privacy_policy_url")]
         [STJS.JsonPropertyName("privacy_policy_url")]
-        public string PrivacyPolicyUrl { get; set; }
+        public string PrivacyPolicyUrl
+        {
+            get => this.privacyPolicyUrl;
+            set
+            {
+                this.privacyPolicyUrl = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A link to the business’s publicly available terms of service.
         /// </summary>
         [JsonProperty("terms_of_service_url")]
         [STJS.JsonPropertyName("terms_of_service_url")]
-        public string TermsOfServiceUrl { get; set; }
+        public string TermsOfServiceUrl
+        {
+            get => this.termsOfServiceUrl;
+            set
+            {
+                this.termsOfServiceUrl = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }
