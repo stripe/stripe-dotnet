@@ -9,6 +9,10 @@ namespace Stripe.BillingPortal
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ConfigurationUpdateOptions : BaseOptions, IHasMetadata
     {
+        private string defaultReturnUrl;
+        private Dictionary<string, string> metadata;
+        private string name;
+
         /// <summary>
         /// Whether the configuration is active and can be used to create portal sessions.
         /// </summary>
@@ -31,7 +35,15 @@ namespace Stripe.BillingPortal
         /// </summary>
         [JsonProperty("default_return_url")]
         [STJS.JsonPropertyName("default_return_url")]
-        public string DefaultReturnUrl { get; set; }
+        public string DefaultReturnUrl
+        {
+            get => this.defaultReturnUrl;
+            set
+            {
+                this.defaultReturnUrl = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Information about the features available in the portal.
@@ -58,13 +70,29 @@ namespace Stripe.BillingPortal
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The name of the configuration.
         /// </summary>
         [JsonProperty("name")]
         [STJS.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name
+        {
+            get => this.name;
+            set
+            {
+                this.name = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

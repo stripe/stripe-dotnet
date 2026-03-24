@@ -9,6 +9,8 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SetupIntentCreateOptions : BaseOptions, IHasMetadata
     {
+        private SetupIntentMandateDataOptions mandateData;
+
         /// <summary>
         /// If present, the SetupIntent's payment method will be attached to the in-context Stripe
         /// Account.
@@ -119,7 +121,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("mandate_data")]
         [STJS.JsonPropertyName("mandate_data")]
-        public SetupIntentMandateDataOptions MandateData { get; set; }
+        public SetupIntentMandateDataOptions MandateData
+        {
+            get => this.mandateData;
+            set
+            {
+                this.mandateData = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can

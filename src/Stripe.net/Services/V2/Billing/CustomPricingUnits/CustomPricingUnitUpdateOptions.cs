@@ -9,6 +9,8 @@ namespace Stripe.V2.Billing
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CustomPricingUnitUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// Whether the Custom Pricing Unit is active.
         /// </summary>
@@ -35,6 +37,15 @@ namespace Stripe.V2.Billing
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

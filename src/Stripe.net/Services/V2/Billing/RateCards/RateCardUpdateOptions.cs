@@ -9,6 +9,8 @@ namespace Stripe.V2.Billing
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class RateCardUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// Sets whether the RateCard is active. Inactive RateCards cannot be used in new
         /// activations or have new rates added.
@@ -49,6 +51,15 @@ namespace Stripe.V2.Billing
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

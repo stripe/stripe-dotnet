@@ -9,6 +9,8 @@ namespace Stripe.V2.Billing
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PricingPlanSubscriptionUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// When set to true, the <c>servicing_status_transition.will_cancel_at</c> field will be
         /// cleared.
@@ -24,6 +26,15 @@ namespace Stripe.V2.Billing
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

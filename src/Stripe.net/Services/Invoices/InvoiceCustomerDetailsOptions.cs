@@ -7,8 +7,16 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class InvoiceCustomerDetailsOptions : INestedOptions
+    public class InvoiceCustomerDetailsOptions : INestedOptions, IHasSetTracking
     {
+        private AddressOptions address;
+        private ShippingOptions shipping;
+        private string taxExempt;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The customer's address. Learn about <a
         /// href="https://stripe.com/invoicing/taxes?dashboard-or-api=dashboard#set-up-customer">country-specific
@@ -16,14 +24,30 @@ namespace Stripe
         /// </summary>
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
-        public AddressOptions Address { get; set; }
+        public AddressOptions Address
+        {
+            get => this.address;
+            set
+            {
+                this.address = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The customer's shipping information. Appears on invoices emailed to this customer.
         /// </summary>
         [JsonProperty("shipping")]
         [STJS.JsonPropertyName("shipping")]
-        public ShippingOptions Shipping { get; set; }
+        public ShippingOptions Shipping
+        {
+            get => this.shipping;
+            set
+            {
+                this.shipping = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Tax details about the customer.
@@ -38,7 +62,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_exempt")]
         [STJS.JsonPropertyName("tax_exempt")]
-        public string TaxExempt { get; set; }
+        public string TaxExempt
+        {
+            get => this.taxExempt;
+            set
+            {
+                this.taxExempt = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The customer's tax IDs.
@@ -46,5 +78,10 @@ namespace Stripe
         [JsonProperty("tax_ids")]
         [STJS.JsonPropertyName("tax_ids")]
         public List<InvoiceCustomerDetailsTaxIdOptions> TaxIds { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

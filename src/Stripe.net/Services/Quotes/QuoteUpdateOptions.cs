@@ -10,6 +10,17 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class QuoteUpdateOptions : BaseOptions, IHasMetadata
     {
+        private long? applicationFeeAmount;
+        private decimal? applicationFeePercent;
+        private List<string> defaultTaxRates;
+        private string description;
+        private List<QuoteDiscountOptions> discounts;
+        private string footer;
+        private string header;
+        private string onBehalfOf;
+        private List<QuoteSubscriptionDataOverrideOptions> subscriptionDataOverrides;
+        private QuoteTransferDataOptions transferData;
+
         /// <summary>
         /// Set to true to allow quote lines to have <c>starts_at</c> in the past if collection is
         /// paused between <c>starts_at</c> and now.
@@ -25,7 +36,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("application_fee_amount")]
         [STJS.JsonPropertyName("application_fee_amount")]
-        public long? ApplicationFeeAmount { get; set; }
+        public long? ApplicationFeeAmount
+        {
+            get => this.applicationFeeAmount;
+            set
+            {
+                this.applicationFeeAmount = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A non-negative decimal between 0 and 100, with at most two decimal places. This
@@ -35,7 +54,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("application_fee_percent")]
         [STJS.JsonPropertyName("application_fee_percent")]
-        public decimal? ApplicationFeePercent { get; set; }
+        public decimal? ApplicationFeePercent
+        {
+            get => this.applicationFeePercent;
+            set
+            {
+                this.applicationFeePercent = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Settings for automatic tax lookup for this quote and resulting invoices and
@@ -79,21 +106,45 @@ namespace Stripe
         /// </summary>
         [JsonProperty("default_tax_rates")]
         [STJS.JsonPropertyName("default_tax_rates")]
-        public List<string> DefaultTaxRates { get; set; }
+        public List<string> DefaultTaxRates
+        {
+            get => this.defaultTaxRates;
+            set
+            {
+                this.defaultTaxRates = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A description that will be displayed on the quote PDF.
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description
+        {
+            get => this.description;
+            set
+            {
+                this.description = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The discounts applied to the quote.
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
-        public List<QuoteDiscountOptions> Discounts { get; set; }
+        public List<QuoteDiscountOptions> Discounts
+        {
+            get => this.discounts;
+            set
+            {
+                this.discounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A future timestamp on which the quote will be canceled if in <c>open</c> or <c>draft</c>
@@ -110,14 +161,30 @@ namespace Stripe
         /// </summary>
         [JsonProperty("footer")]
         [STJS.JsonPropertyName("footer")]
-        public string Footer { get; set; }
+        public string Footer
+        {
+            get => this.footer;
+            set
+            {
+                this.footer = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A header that will be displayed on the quote PDF.
         /// </summary>
         [JsonProperty("header")]
         [STJS.JsonPropertyName("header")]
-        public string Header { get; set; }
+        public string Header
+        {
+            get => this.header;
+            set
+            {
+                this.header = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// All invoices will be billed using the specified settings.
@@ -159,7 +226,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("on_behalf_of")]
         [STJS.JsonPropertyName("on_behalf_of")]
-        public string OnBehalfOf { get; set; }
+        public string OnBehalfOf
+        {
+            get => this.onBehalfOf;
+            set
+            {
+                this.onBehalfOf = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// When creating a subscription or subscription schedule, the specified configuration data
@@ -178,13 +253,29 @@ namespace Stripe
         /// </summary>
         [JsonProperty("subscription_data_overrides")]
         [STJS.JsonPropertyName("subscription_data_overrides")]
-        public List<QuoteSubscriptionDataOverrideOptions> SubscriptionDataOverrides { get; set; }
+        public List<QuoteSubscriptionDataOverrideOptions> SubscriptionDataOverrides
+        {
+            get => this.subscriptionDataOverrides;
+            set
+            {
+                this.subscriptionDataOverrides = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The data with which to automatically create a Transfer for each of the invoices.
         /// </summary>
         [JsonProperty("transfer_data")]
         [STJS.JsonPropertyName("transfer_data")]
-        public QuoteTransferDataOptions TransferData { get; set; }
+        public QuoteTransferDataOptions TransferData
+        {
+            get => this.transferData;
+            set
+            {
+                this.transferData = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

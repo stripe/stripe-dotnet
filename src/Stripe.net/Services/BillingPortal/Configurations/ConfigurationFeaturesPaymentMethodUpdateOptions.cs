@@ -6,8 +6,14 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ConfigurationFeaturesPaymentMethodUpdateOptions : INestedOptions
+    public class ConfigurationFeaturesPaymentMethodUpdateOptions : INestedOptions, IHasSetTracking
     {
+        private string paymentMethodConfiguration;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Whether the feature is enabled.
         /// </summary>
@@ -24,6 +30,19 @@ namespace Stripe.BillingPortal
         /// </summary>
         [JsonProperty("payment_method_configuration")]
         [STJS.JsonPropertyName("payment_method_configuration")]
-        public string PaymentMethodConfiguration { get; set; }
+        public string PaymentMethodConfiguration
+        {
+            get => this.paymentMethodConfiguration;
+            set
+            {
+                this.paymentMethodConfiguration = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

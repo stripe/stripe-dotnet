@@ -6,13 +6,32 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SetupIntentPaymentMethodOptionsUsBankAccountMandateOptionsOptions : INestedOptions
+    public class SetupIntentPaymentMethodOptionsUsBankAccountMandateOptionsOptions : INestedOptions, IHasSetTracking
     {
+        private string collectionMethod;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The method used to collect offline mandate customer acceptance.
         /// </summary>
         [JsonProperty("collection_method")]
         [STJS.JsonPropertyName("collection_method")]
-        public string CollectionMethod { get; set; }
+        public string CollectionMethod
+        {
+            get => this.collectionMethod;
+            set
+            {
+                this.collectionMethod = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

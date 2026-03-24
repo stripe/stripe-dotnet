@@ -9,6 +9,8 @@ namespace Stripe.V2.Core
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class EventDestinationUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// An optional description of what the event destination is used for.
         /// </summary>
@@ -36,7 +38,16 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Event destination name.

@@ -7,15 +7,32 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class InvoiceSubscriptionDetailsItemOptions : INestedOptions, IHasId, IHasMetadata
+    public class InvoiceSubscriptionDetailsItemOptions : INestedOptions, IHasId, IHasMetadata, IHasSetTracking
     {
+        private InvoiceSubscriptionDetailsItemBillingThresholdsOptions billingThresholds;
+        private List<InvoiceSubscriptionDetailsItemDiscountOptions> discounts;
+        private Dictionary<string, string> metadata;
+        private List<string> taxRates;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period. Pass an empty string to remove previously-defined thresholds.
         /// </summary>
         [JsonProperty("billing_thresholds")]
         [STJS.JsonPropertyName("billing_thresholds")]
-        public InvoiceSubscriptionDetailsItemBillingThresholdsOptions BillingThresholds { get; set; }
+        public InvoiceSubscriptionDetailsItemBillingThresholdsOptions BillingThresholds
+        {
+            get => this.billingThresholds;
+            set
+            {
+                this.billingThresholds = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Delete all usage for a given subscription item. You must pass this when deleting a usage
@@ -45,7 +62,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
-        public List<InvoiceSubscriptionDetailsItemDiscountOptions> Discounts { get; set; }
+        public List<InvoiceSubscriptionDetailsItemDiscountOptions> Discounts
+        {
+            get => this.discounts;
+            set
+            {
+                this.discounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Subscription item to update.
@@ -62,7 +87,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Plan ID for this item, as a string.
@@ -104,6 +137,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_rates")]
         [STJS.JsonPropertyName("tax_rates")]
-        public List<string> TaxRates { get; set; }
+        public List<string> TaxRates
+        {
+            get => this.taxRates;
+            set
+            {
+                this.taxRates = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

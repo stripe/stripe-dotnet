@@ -9,6 +9,10 @@ namespace Stripe.Checkout
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionUpdateOptions : BaseOptions, IHasMetadata
     {
+        private List<SessionDiscountOptions> discounts;
+        private Dictionary<string, string> metadata;
+        private List<SessionShippingOptionOptions> shippingOptions;
+
         /// <summary>
         /// Settings for automatic tax lookup for this session and resulting payments, invoices, and
         /// subscriptions.
@@ -30,7 +34,15 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
-        public List<SessionDiscountOptions> Discounts { get; set; }
+        public List<SessionDiscountOptions> Discounts
+        {
+            get => this.discounts;
+            set
+            {
+                this.discounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Generate a post-purchase Invoice for one-time payments.
@@ -68,14 +80,30 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The shipping rate options to apply to this Session. Up to a maximum of 5.
         /// </summary>
         [JsonProperty("shipping_options")]
         [STJS.JsonPropertyName("shipping_options")]
-        public List<SessionShippingOptionOptions> ShippingOptions { get; set; }
+        public List<SessionShippingOptionOptions> ShippingOptions
+        {
+            get => this.shippingOptions;
+            set
+            {
+                this.shippingOptions = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A subset of parameters to be passed to subscription creation for Checkout Sessions in

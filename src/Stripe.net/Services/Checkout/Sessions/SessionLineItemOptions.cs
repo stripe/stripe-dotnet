@@ -7,8 +7,15 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SessionLineItemOptions : INestedOptions, IHasMetadata, IHasId
+    public class SessionLineItemOptions : INestedOptions, IHasMetadata, IHasId, IHasSetTracking
     {
+        private Dictionary<string, string> metadata;
+        private List<string> taxRates;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// When set, provides configuration for this item’s quantity to be adjusted by the customer
         /// during Checkout.
@@ -42,7 +49,15 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The ID of the <a href="https://docs.stripe.com/api/prices">Price</a> or <a
@@ -76,6 +91,19 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("tax_rates")]
         [STJS.JsonPropertyName("tax_rates")]
-        public List<string> TaxRates { get; set; }
+        public List<string> TaxRates
+        {
+            get => this.taxRates;
+            set
+            {
+                this.taxRates = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

@@ -8,6 +8,8 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoicePayOptions : BaseOptions
     {
+        private string mandate;
+
         /// <summary>
         /// In cases where the source used to pay the invoice has insufficient funds, passing
         /// <c>forgive=true</c> controls whether a charge should be attempted for the full amount
@@ -30,7 +32,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("mandate")]
         [STJS.JsonPropertyName("mandate")]
-        public string Mandate { get; set; }
+        public string Mandate
+        {
+            get => this.mandate;
+            set
+            {
+                this.mandate = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Indicates if a customer is on or off-session while an invoice payment is attempted.

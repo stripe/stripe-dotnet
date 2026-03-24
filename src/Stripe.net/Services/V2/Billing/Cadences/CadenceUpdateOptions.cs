@@ -9,6 +9,8 @@ namespace Stripe.V2.Billing
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CadenceUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// Additional resource to include in the response.
         /// One of: <c>invoice_discount_rules</c>, or <c>settings_data</c>.
@@ -32,7 +34,16 @@ namespace Stripe.V2.Billing
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The payer determines the entity financially responsible for the bill.

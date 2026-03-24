@@ -9,6 +9,8 @@ namespace Stripe.Tax
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class RegistrationUpdateOptions : BaseOptions
     {
+        private AnyOf<DateTime?, RegistrationExpiresAt> expiresAt;
+
         /// <summary>
         /// Time at which the registration becomes active. It can be either <c>now</c> to indicate
         /// the current time, or a timestamp measured in seconds since the Unix epoch.
@@ -28,6 +30,14 @@ namespace Stripe.Tax
         [JsonConverter(typeof(AnyOfConverter))]
         [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-        public AnyOf<DateTime?, RegistrationExpiresAt> ExpiresAt { get; set; }
+        public AnyOf<DateTime?, RegistrationExpiresAt> ExpiresAt
+        {
+            get => this.expiresAt;
+            set
+            {
+                this.expiresAt = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }
