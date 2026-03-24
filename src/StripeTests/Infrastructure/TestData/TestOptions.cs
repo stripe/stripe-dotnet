@@ -11,6 +11,9 @@ namespace StripeTests.Infrastructure.TestData
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class TestOptions : BaseOptions
     {
+        private string emptyableString;
+        private Nested emptyableNested;
+
         [JsonProperty("any_of")]
         [STJS.JsonPropertyName("any_of")]
         [JsonConverter(typeof(AnyOfConverter))]
@@ -64,33 +67,34 @@ namespace StripeTests.Infrastructure.TestData
         [STJS.JsonPropertyName("string_enum")]
         public TestStringEnum StringEnum { get; set; }
 
-        [JsonIgnore]
-        public bool EmptyEmptyStringable
+        [JsonProperty("emptyable_string")]
+        [STJS.JsonPropertyName("emptyable_string")]
+        public string EmptyableString
         {
-            get => this.InternalEmptyStringable?.Empty ?? false;
+            get => this.emptyableString;
             set
             {
-                this.InternalEmptyStringable ??= new Emptyable<Nested>();
-                this.InternalEmptyStringable.Empty = value;
+                this.emptyableString = value;
+                this.SetTracker.Track();
             }
         }
 
-        [JsonIgnore]
-        public Nested EmptyStringable
+        [JsonProperty("emptyable_nested")]
+        [STJS.JsonPropertyName("emptyable_nested")]
+        public Nested EmptyableNested
         {
-            get => this.InternalEmptyStringable?.Value;
+            get => this.emptyableNested;
             set
             {
-                this.InternalEmptyStringable ??= new Emptyable<Nested>();
-                this.InternalEmptyStringable.Value = value;
+                this.emptyableNested = value;
+                this.SetTracker.Track();
             }
         }
 
-        [JsonProperty("empty_stringable")]
-        [STJS.JsonPropertyName("empty_stringable")]
-        [JsonConverter(typeof(EmptyableConverter<Nested>))]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<Nested>))]
-        internal Emptyable<Nested> InternalEmptyStringable { get; set; }
+        [JsonProperty("metadata")]
+        [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
+        public Dictionary<string, string> Metadata { get; set; }
 
         public class TestStringEnum : StringEnum
         {
