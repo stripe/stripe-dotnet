@@ -6,8 +6,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentPaymentMethodOptionsCardInstallmentsOptions : INestedOptions
+    public class PaymentIntentPaymentMethodOptionsCardInstallmentsOptions : INestedOptions, IHasSetTracking
     {
+        private PaymentIntentPaymentMethodOptionsCardInstallmentsPlanOptions plan;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Setting to true enables installments for this PaymentIntent. This will cause the
         /// response to contain a list of available installment plans. Setting to false will prevent
@@ -23,6 +29,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("plan")]
         [STJS.JsonPropertyName("plan")]
-        public PaymentIntentPaymentMethodOptionsCardInstallmentsPlanOptions Plan { get; set; }
+        public PaymentIntentPaymentMethodOptionsCardInstallmentsPlanOptions Plan
+        {
+            get => this.plan;
+            set
+            {
+                this.plan = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

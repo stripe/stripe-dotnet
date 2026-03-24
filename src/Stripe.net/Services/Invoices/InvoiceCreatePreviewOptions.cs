@@ -9,6 +9,9 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceCreatePreviewOptions : BaseOptions
     {
+        private List<InvoiceDiscountOptions> discounts;
+        private string onBehalfOf;
+
         /// <summary>
         /// Settings for automatic tax lookup for this invoice preview.
         /// </summary>
@@ -69,7 +72,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
-        public List<InvoiceDiscountOptions> Discounts { get; set; }
+        public List<InvoiceDiscountOptions> Discounts
+        {
+            get => this.discounts;
+            set
+            {
+                this.discounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// List of invoice items to add or update in the upcoming invoice preview (up to 250).
@@ -94,7 +105,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("on_behalf_of")]
         [STJS.JsonPropertyName("on_behalf_of")]
-        public string OnBehalfOf { get; set; }
+        public string OnBehalfOf
+        {
+            get => this.onBehalfOf;
+            set
+            {
+                this.onBehalfOf = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Customizes the types of values to include when calculating the invoice. Defaults to

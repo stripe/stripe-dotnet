@@ -8,8 +8,16 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class QuoteSubscriptionDataOptions : INestedOptions, IHasMetadata
+    public class QuoteSubscriptionDataOptions : INestedOptions, IHasMetadata, IHasSetTracking
     {
+        private string description;
+        private AnyOf<DateTime?, QuoteSubscriptionDataEffectiveDate> effectiveDate;
+        private long? trialPeriodDays;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Describes the period to bill for upon accepting the quote.
         /// </summary>
@@ -59,7 +67,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description
+        {
+            get => this.description;
+            set
+            {
+                this.description = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// When creating a new subscription, the date of which the subscription schedule will start
@@ -73,7 +89,15 @@ namespace Stripe
         [JsonConverter(typeof(AnyOfConverter))]
         [STJS.JsonPropertyName("effective_date")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-        public AnyOf<DateTime?, QuoteSubscriptionDataEffectiveDate> EffectiveDate { get; set; }
+        public AnyOf<DateTime?, QuoteSubscriptionDataEffectiveDate> EffectiveDate
+        {
+            get => this.effectiveDate;
+            set
+            {
+                this.effectiveDate = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Behavior of the subscription schedule and underlying subscription when it ends.
@@ -149,6 +173,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("trial_period_days")]
         [STJS.JsonPropertyName("trial_period_days")]
-        public long? TrialPeriodDays { get; set; }
+        public long? TrialPeriodDays
+        {
+            get => this.trialPeriodDays;
+            set
+            {
+                this.trialPeriodDays = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

@@ -9,6 +9,8 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionScheduleUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// Configures when the subscription schedule generates prorations for phase transitions.
         /// Possible values are <c>prorate_on_next_phase</c> or <c>prorate_up_front</c> with the
@@ -55,7 +57,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// List representing phases of the subscription schedule. Each phase can be customized to

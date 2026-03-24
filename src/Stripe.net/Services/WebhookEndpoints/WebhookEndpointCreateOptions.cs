@@ -9,6 +9,9 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class WebhookEndpointCreateOptions : BaseOptions, IHasMetadata
     {
+        private string description;
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// Events sent to this endpoint will be generated with this Stripe Version instead of your
         /// account's default Stripe Version.
@@ -62,7 +65,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description
+        {
+            get => this.description;
+            set
+            {
+                this.description = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The list of events to enable for this endpoint. You may specify <c>['*']</c> to enable
@@ -235,7 +246,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The URL of the webhook endpoint.

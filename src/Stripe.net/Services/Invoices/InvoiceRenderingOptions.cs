@@ -6,8 +6,15 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class InvoiceRenderingOptions : INestedOptions
+    public class InvoiceRenderingOptions : INestedOptions, IHasSetTracking
     {
+        private string amountTaxDisplay;
+        private long? templateVersion;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// How line-item prices and amounts will be displayed with respect to tax on invoice PDFs.
         /// One of <c>exclude_tax</c> or <c>include_inclusive_tax</c>. <c>include_inclusive_tax</c>
@@ -18,7 +25,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("amount_tax_display")]
         [STJS.JsonPropertyName("amount_tax_display")]
-        public string AmountTaxDisplay { get; set; }
+        public string AmountTaxDisplay
+        {
+            get => this.amountTaxDisplay;
+            set
+            {
+                this.amountTaxDisplay = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Invoice pdf rendering options.
@@ -39,6 +54,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("template_version")]
         [STJS.JsonPropertyName("template_version")]
-        public long? TemplateVersion { get; set; }
+        public long? TemplateVersion
+        {
+            get => this.templateVersion;
+            set
+            {
+                this.templateVersion = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

@@ -7,22 +7,46 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SubscriptionSchedulePhaseItemOptions : INestedOptions, IHasMetadata
+    public class SubscriptionSchedulePhaseItemOptions : INestedOptions, IHasMetadata, IHasSetTracking
     {
+        private SubscriptionSchedulePhaseItemBillingThresholdsOptions billingThresholds;
+        private List<SubscriptionSchedulePhaseItemDiscountOptions> discounts;
+        private List<string> taxRates;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period. Pass an empty string to remove previously-defined thresholds.
         /// </summary>
         [JsonProperty("billing_thresholds")]
         [STJS.JsonPropertyName("billing_thresholds")]
-        public SubscriptionSchedulePhaseItemBillingThresholdsOptions BillingThresholds { get; set; }
+        public SubscriptionSchedulePhaseItemBillingThresholdsOptions BillingThresholds
+        {
+            get => this.billingThresholds;
+            set
+            {
+                this.billingThresholds = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The coupons to redeem into discounts for the subscription item.
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
-        public List<SubscriptionSchedulePhaseItemDiscountOptions> Discounts { get; set; }
+        public List<SubscriptionSchedulePhaseItemDiscountOptions> Discounts
+        {
+            get => this.discounts;
+            set
+            {
+                this.discounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can

@@ -9,6 +9,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentRecordReportPaymentAttemptInformationalOptions : BaseOptions, IHasMetadata
     {
+        private string description;
+        private Dictionary<string, string> metadata;
+        private PaymentRecordShippingDetailsOptions shippingDetails;
+
         /// <summary>
         /// Customer information for this payment.
         /// </summary>
@@ -21,7 +25,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description
+        {
+            get => this.description;
+            set
+            {
+                this.description = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
@@ -31,13 +43,29 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Shipping information for this payment.
         /// </summary>
         [JsonProperty("shipping_details")]
         [STJS.JsonPropertyName("shipping_details")]
-        public PaymentRecordShippingDetailsOptions ShippingDetails { get; set; }
+        public PaymentRecordShippingDetailsOptions ShippingDetails
+        {
+            get => this.shippingDetails;
+            set
+            {
+                this.shippingDetails = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

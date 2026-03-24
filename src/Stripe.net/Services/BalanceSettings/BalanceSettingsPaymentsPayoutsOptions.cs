@@ -7,8 +7,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class BalanceSettingsPaymentsPayoutsOptions : INestedOptions
+    public class BalanceSettingsPaymentsPayoutsOptions : INestedOptions, IHasSetTracking
     {
+        private Dictionary<string, long?> minimumBalanceByCurrency;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The minimum balance amount to retain per currency after automatic payouts. Only funds
         /// that exceed these amounts are paid out. Learn more about the <a
@@ -17,7 +23,16 @@ namespace Stripe
         /// </summary>
         [JsonProperty("minimum_balance_by_currency")]
         [STJS.JsonPropertyName("minimum_balance_by_currency")]
-        public Dictionary<string, long?> MinimumBalanceByCurrency { get; set; }
+        [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
+        public Dictionary<string, long?> MinimumBalanceByCurrency
+        {
+            get => this.minimumBalanceByCurrency;
+            set
+            {
+                this.minimumBalanceByCurrency = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Details on when funds from charges are available, and when they are paid out to an
@@ -36,5 +51,10 @@ namespace Stripe
         [JsonProperty("statement_descriptor")]
         [STJS.JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

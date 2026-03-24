@@ -10,6 +10,19 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionUpdateOptions : BaseOptions, IHasMetadata
     {
+        private decimal? applicationFeePercent;
+        private SubscriptionBillingThresholdsOptions billingThresholds;
+        private AnyOf<DateTime?, SubscriptionCancelAt> cancelAt;
+        private string defaultSource;
+        private List<string> defaultTaxRates;
+        private string description;
+        private List<SubscriptionDiscountOptions> discounts;
+        private Dictionary<string, string> metadata;
+        private string onBehalfOf;
+        private SubscriptionPauseCollectionOptions pauseCollection;
+        private SubscriptionPendingInvoiceItemIntervalOptions pendingInvoiceItemInterval;
+        private SubscriptionTransferDataOptions transferData;
+
         /// <summary>
         /// A list of prices and quantities that will generate invoice items appended to the next
         /// invoice for this subscription. You may pass up to 20 items.
@@ -28,7 +41,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("application_fee_percent")]
         [STJS.JsonPropertyName("application_fee_percent")]
-        public decimal? ApplicationFeePercent { get; set; }
+        public decimal? ApplicationFeePercent
+        {
+            get => this.applicationFeePercent;
+            set
+            {
+                this.applicationFeePercent = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Automatic tax settings for this subscription. We recommend you only include this
@@ -74,7 +95,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing_thresholds")]
         [STJS.JsonPropertyName("billing_thresholds")]
-        public SubscriptionBillingThresholdsOptions BillingThresholds { get; set; }
+        public SubscriptionBillingThresholdsOptions BillingThresholds
+        {
+            get => this.billingThresholds;
+            set
+            {
+                this.billingThresholds = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A timestamp at which the subscription should cancel. If set to a date before the current
@@ -86,7 +115,15 @@ namespace Stripe
         [JsonConverter(typeof(AnyOfConverter))]
         [STJS.JsonPropertyName("cancel_at")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-        public AnyOf<DateTime?, SubscriptionCancelAt> CancelAt { get; set; }
+        public AnyOf<DateTime?, SubscriptionCancelAt> CancelAt
+        {
+            get => this.cancelAt;
+            set
+            {
+                this.cancelAt = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Indicate whether this subscription should cancel at the end of the current period
@@ -146,7 +183,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("default_source")]
         [STJS.JsonPropertyName("default_source")]
-        public string DefaultSource { get; set; }
+        public string DefaultSource
+        {
+            get => this.defaultSource;
+            set
+            {
+                this.defaultSource = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The tax rates that will apply to any subscription item that does not have
@@ -156,7 +201,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("default_tax_rates")]
         [STJS.JsonPropertyName("default_tax_rates")]
-        public List<string> DefaultTaxRates { get; set; }
+        public List<string> DefaultTaxRates
+        {
+            get => this.defaultTaxRates;
+            set
+            {
+                this.defaultTaxRates = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The subscription's description, meant to be displayable to the customer. Use this field
@@ -165,7 +218,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description
+        {
+            get => this.description;
+            set
+            {
+                this.description = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The coupons to redeem into discounts for the subscription. If not specified or empty,
@@ -173,7 +234,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
-        public List<SubscriptionDiscountOptions> Discounts { get; set; }
+        public List<SubscriptionDiscountOptions> Discounts
+        {
+            get => this.discounts;
+            set
+            {
+                this.discounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// All invoices will be billed using the specified settings.
@@ -197,7 +266,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Indicates if a customer is on or off-session while an invoice payment is attempted.
@@ -212,7 +289,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("on_behalf_of")]
         [STJS.JsonPropertyName("on_behalf_of")]
-        public string OnBehalfOf { get; set; }
+        public string OnBehalfOf
+        {
+            get => this.onBehalfOf;
+            set
+            {
+                this.onBehalfOf = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If specified, payment collection for this subscription will be paused. Note that the
@@ -222,7 +307,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("pause_collection")]
         [STJS.JsonPropertyName("pause_collection")]
-        public SubscriptionPauseCollectionOptions PauseCollection { get; set; }
+        public SubscriptionPauseCollectionOptions PauseCollection
+        {
+            get => this.pauseCollection;
+            set
+            {
+                this.pauseCollection = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Use <c>allow_incomplete</c> to transition the subscription to <c>status=past_due</c> if
@@ -273,7 +366,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("pending_invoice_item_interval")]
         [STJS.JsonPropertyName("pending_invoice_item_interval")]
-        public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval { get; set; }
+        public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval
+        {
+            get => this.pendingInvoiceItemInterval;
+            set
+            {
+                this.pendingInvoiceItemInterval = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If specified, the invoicing for the given billing cycle iterations will be processed
@@ -316,7 +417,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("transfer_data")]
         [STJS.JsonPropertyName("transfer_data")]
-        public SubscriptionTransferDataOptions TransferData { get; set; }
+        public SubscriptionTransferDataOptions TransferData
+        {
+            get => this.transferData;
+            set
+            {
+                this.transferData = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Unix timestamp representing the end of the trial period the customer will get before

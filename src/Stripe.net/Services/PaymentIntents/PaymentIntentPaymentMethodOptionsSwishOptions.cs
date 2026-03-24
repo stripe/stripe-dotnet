@@ -6,14 +6,28 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentPaymentMethodOptionsSwishOptions : INestedOptions
+    public class PaymentIntentPaymentMethodOptionsSwishOptions : INestedOptions, IHasSetTracking
     {
+        private string reference;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// A reference for this payment to be displayed in the Swish app.
         /// </summary>
         [JsonProperty("reference")]
         [STJS.JsonPropertyName("reference")]
-        public string Reference { get; set; }
+        public string Reference
+        {
+            get => this.reference;
+            set
+            {
+                this.reference = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
@@ -42,5 +56,10 @@ namespace Stripe
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

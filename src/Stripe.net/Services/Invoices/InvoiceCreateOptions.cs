@@ -10,13 +10,26 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceCreateOptions : BaseOptions, IHasMetadata
     {
+        private List<string> accountTaxIds;
+        private List<InvoiceCustomFieldOptions> customFields;
+        private List<InvoiceDiscountOptions> discounts;
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// The account tax IDs associated with the invoice. Only editable when the invoice is a
         /// draft.
         /// </summary>
         [JsonProperty("account_tax_ids")]
         [STJS.JsonPropertyName("account_tax_ids")]
-        public List<string> AccountTaxIds { get; set; }
+        public List<string> AccountTaxIds
+        {
+            get => this.accountTaxIds;
+            set
+            {
+                this.accountTaxIds = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// List of expected payments and corresponding due dates. Valid only for invoices where
@@ -88,7 +101,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("custom_fields")]
         [STJS.JsonPropertyName("custom_fields")]
-        public List<InvoiceCustomFieldOptions> CustomFields { get; set; }
+        public List<InvoiceCustomFieldOptions> CustomFields
+        {
+            get => this.customFields;
+            set
+            {
+                this.customFields = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The ID of the customer to bill.
@@ -160,7 +181,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
-        public List<InvoiceDiscountOptions> Discounts { get; set; }
+        public List<InvoiceDiscountOptions> Discounts
+        {
+            get => this.discounts;
+            set
+            {
+                this.discounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The date on which payment for this invoice is due. Valid only for invoices where
@@ -215,7 +244,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set the number for this invoice. If no number is present then a number will be assigned

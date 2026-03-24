@@ -9,6 +9,15 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ProductUpdateOptions : BaseOptions, IHasMetadata
     {
+        private string description;
+        private List<string> images;
+        private List<ProductMarketingFeatureOptions> marketingFeatures;
+        private Dictionary<string, string> metadata;
+        private ProductPackageDimensionsOptions packageDimensions;
+        private string taxCode;
+        private string unitLabel;
+        private string url;
+
         /// <summary>
         /// Whether the product is available for purchase.
         /// </summary>
@@ -31,7 +40,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description
+        {
+            get => this.description;
+            set
+            {
+                this.description = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A list of up to 8 URLs of images for this product, meant to be displayable to the
@@ -39,7 +56,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("images")]
         [STJS.JsonPropertyName("images")]
-        public List<string> Images { get; set; }
+        public List<string> Images
+        {
+            get => this.images;
+            set
+            {
+                this.images = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A list of up to 15 marketing features for this product. These are displayed in <a
@@ -47,7 +72,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("marketing_features")]
         [STJS.JsonPropertyName("marketing_features")]
-        public List<ProductMarketingFeatureOptions> MarketingFeatures { get; set; }
+        public List<ProductMarketingFeatureOptions> MarketingFeatures
+        {
+            get => this.marketingFeatures;
+            set
+            {
+                this.marketingFeatures = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
@@ -57,7 +90,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The product's name, meant to be displayable to the customer.
@@ -71,7 +112,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("package_dimensions")]
         [STJS.JsonPropertyName("package_dimensions")]
-        public ProductPackageDimensionsOptions PackageDimensions { get; set; }
+        public ProductPackageDimensionsOptions PackageDimensions
+        {
+            get => this.packageDimensions;
+            set
+            {
+                this.packageDimensions = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Whether this product is shipped (i.e., physical goods).
@@ -100,7 +149,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_code")]
         [STJS.JsonPropertyName("tax_code")]
-        public string TaxCode { get; set; }
+        public string TaxCode
+        {
+            get => this.taxCode;
+            set
+            {
+                this.taxCode = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Tax details for this product, including the <a
@@ -118,13 +175,29 @@ namespace Stripe
         /// </summary>
         [JsonProperty("unit_label")]
         [STJS.JsonPropertyName("unit_label")]
-        public string UnitLabel { get; set; }
+        public string UnitLabel
+        {
+            get => this.unitLabel;
+            set
+            {
+                this.unitLabel = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A URL of a publicly-accessible webpage for this product.
         /// </summary>
         [JsonProperty("url")]
         [STJS.JsonPropertyName("url")]
-        public string Url { get; set; }
+        public string Url
+        {
+            get => this.url;
+            set
+            {
+                this.url = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

@@ -7,8 +7,16 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class TokenAccountIndividualOptions : INestedOptions, IHasMetadata
+    public class TokenAccountIndividualOptions : INestedOptions, IHasMetadata, IHasSetTracking
     {
+        private DobOptions dob;
+        private List<string> fullNameAliases;
+        private Dictionary<string, string> metadata;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The individual's primary address.
         /// </summary>
@@ -35,7 +43,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("dob")]
         [STJS.JsonPropertyName("dob")]
-        public DobOptions Dob { get; set; }
+        public DobOptions Dob
+        {
+            get => this.dob;
+            set
+            {
+                this.dob = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The individual's email address.
@@ -70,7 +86,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("full_name_aliases")]
         [STJS.JsonPropertyName("full_name_aliases")]
-        public List<string> FullNameAliases { get; set; }
+        public List<string> FullNameAliases
+        {
+            get => this.fullNameAliases;
+            set
+            {
+                this.fullNameAliases = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The individual's gender.
@@ -138,7 +162,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The individual's phone number.
@@ -198,5 +230,10 @@ namespace Stripe
         [JsonProperty("verification")]
         [STJS.JsonPropertyName("verification")]
         public TokenAccountIndividualVerificationOptions Verification { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

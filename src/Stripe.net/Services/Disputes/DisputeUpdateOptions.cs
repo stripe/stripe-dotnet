@@ -9,6 +9,8 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class DisputeUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// If not countering the full disputed amount, specify an alternate amount, less than or
         /// equal to the disputed amount.
@@ -43,7 +45,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Whether to immediately submit evidence to the bank. If <c>false</c>, evidence is staged

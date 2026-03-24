@@ -9,6 +9,8 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentMethodUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// This field indicates whether this payment method can be shown again to its customer in a
         /// checkout flow. Stripe products such as Checkout and Elements use this field to determine
@@ -51,7 +53,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If this is a <c>payto</c> PaymentMethod, this hash contains details about the PayTo

@@ -10,13 +10,25 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionItemCreateOptions : BaseOptions, IHasMetadata
     {
+        private SubscriptionItemBillingThresholdsOptions billingThresholds;
+        private List<SubscriptionItemDiscountOptions> discounts;
+        private List<string> taxRates;
+
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period. Pass an empty string to remove previously-defined thresholds.
         /// </summary>
         [JsonProperty("billing_thresholds")]
         [STJS.JsonPropertyName("billing_thresholds")]
-        public SubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
+        public SubscriptionItemBillingThresholdsOptions BillingThresholds
+        {
+            get => this.billingThresholds;
+            set
+            {
+                this.billingThresholds = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The trial offer to apply to this subscription item.
@@ -30,7 +42,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
-        public List<SubscriptionItemDiscountOptions> Discounts { get; set; }
+        public List<SubscriptionItemDiscountOptions> Discounts
+        {
+            get => this.discounts;
+            set
+            {
+                this.discounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can

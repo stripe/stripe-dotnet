@@ -9,6 +9,14 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentConfirmOptions : BaseOptions
     {
+        private PaymentIntentAmountDetailsOptions amountDetails;
+        private List<string> excludedPaymentMethodTypes;
+        private PaymentIntentMandateDataOptions mandateData;
+        private PaymentIntentPaymentDetailsOptions paymentDetails;
+        private string receiptEmail;
+        private string setupFutureUsage;
+        private ChargeShippingOptions shipping;
+
         /// <summary>
         /// Allocated Funds configuration for this PaymentIntent.
         /// </summary>
@@ -21,7 +29,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("amount_details")]
         [STJS.JsonPropertyName("amount_details")]
-        public PaymentIntentAmountDetailsOptions AmountDetails { get; set; }
+        public PaymentIntentAmountDetailsOptions AmountDetails
+        {
+            get => this.amountDetails;
+            set
+            {
+                this.amountDetails = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The amount of the application fee (if any) that will be requested to be applied to the
@@ -86,7 +102,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("excluded_payment_method_types")]
         [STJS.JsonPropertyName("excluded_payment_method_types")]
-        public List<string> ExcludedPaymentMethodTypes { get; set; }
+        public List<string> ExcludedPaymentMethodTypes
+        {
+            get => this.excludedPaymentMethodTypes;
+            set
+            {
+                this.excludedPaymentMethodTypes = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The FX rate in the quote is validated and used to convert the presentment amount to the
@@ -112,7 +136,15 @@ namespace Stripe
 
         [JsonProperty("mandate_data")]
         [STJS.JsonPropertyName("mandate_data")]
-        public PaymentIntentMandateDataOptions MandateData { get; set; }
+        public PaymentIntentMandateDataOptions MandateData
+        {
+            get => this.mandateData;
+            set
+            {
+                this.mandateData = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set to <c>true</c> to indicate that the customer isn't in your checkout flow during this
@@ -130,7 +162,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payment_details")]
         [STJS.JsonPropertyName("payment_details")]
-        public PaymentIntentPaymentDetailsOptions PaymentDetails { get; set; }
+        public PaymentIntentPaymentDetailsOptions PaymentDetails
+        {
+            get => this.paymentDetails;
+            set
+            {
+                this.paymentDetails = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, or <a
@@ -188,7 +228,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("receipt_email")]
         [STJS.JsonPropertyName("receipt_email")]
-        public string ReceiptEmail { get; set; }
+        public string ReceiptEmail
+        {
+            get => this.receiptEmail;
+            set
+            {
+                this.receiptEmail = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The URL to redirect your customer back to after they authenticate or cancel their
@@ -227,7 +275,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
-        public string SetupFutureUsage { get; set; }
+        public string SetupFutureUsage
+        {
+            get => this.setupFutureUsage;
+            set
+            {
+                this.setupFutureUsage = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// ID of the SharedPaymentToken used to confirm this PaymentIntent.
@@ -241,7 +297,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("shipping")]
         [STJS.JsonPropertyName("shipping")]
-        public ChargeShippingOptions Shipping { get; set; }
+        public ChargeShippingOptions Shipping
+        {
+            get => this.shipping;
+            set
+            {
+                this.shipping = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set to <c>true</c> when confirming server-side and using Stripe.js, iOS, or Android

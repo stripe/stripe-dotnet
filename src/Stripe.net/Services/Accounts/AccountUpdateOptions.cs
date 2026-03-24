@@ -9,6 +9,9 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountUpdateOptions : BaseOptions, IHasMetadata
     {
+        private AnyOf<string, AccountBankAccountOptions, AccountCardOptions> externalAccount;
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// An <a href="https://api.stripe.com#create_account_token">account token</a>, used to
         /// securely provide details to the account.
@@ -114,7 +117,15 @@ namespace Stripe
         [JsonConverter(typeof(AnyOfConverter))]
         [STJS.JsonPropertyName("external_account")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-        public AnyOf<string, AccountBankAccountOptions, AccountCardOptions> ExternalAccount { get; set; }
+        public AnyOf<string, AccountBankAccountOptions, AccountCardOptions> ExternalAccount
+        {
+            get => this.externalAccount;
+            set
+            {
+                this.externalAccount = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A hash of account group type to tokens. These are account groups this account should be
@@ -145,7 +156,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A hash to configure risk controls on the account. Please see <a

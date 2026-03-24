@@ -6,8 +6,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class TokenAccountIndividualRelationshipOptions : INestedOptions
+    public class TokenAccountIndividualRelationshipOptions : INestedOptions, IHasSetTracking
     {
+        private decimal? percentOwnership;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Whether the person is a director of the account's legal entity. Directors are typically
         /// members of the governing board of the company, or responsible for ensuring the company
@@ -37,7 +43,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("percent_ownership")]
         [STJS.JsonPropertyName("percent_ownership")]
-        public decimal? PercentOwnership { get; set; }
+        public decimal? PercentOwnership
+        {
+            get => this.percentOwnership;
+            set
+            {
+                this.percentOwnership = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The person's title (e.g., CEO, Support Engineer).
@@ -45,5 +59,10 @@ namespace Stripe
         [JsonProperty("title")]
         [STJS.JsonPropertyName("title")]
         public string Title { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

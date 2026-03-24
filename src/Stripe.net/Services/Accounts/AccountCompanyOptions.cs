@@ -6,8 +6,16 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountCompanyOptions : INestedOptions
+    public class AccountCompanyOptions : INestedOptions, IHasSetTracking
     {
+        private string ownershipExemptionReason;
+        private AccountCompanyRegistrationDateOptions registrationDate;
+        private string structure;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The company's primary address.
         /// </summary>
@@ -124,7 +132,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("ownership_exemption_reason")]
         [STJS.JsonPropertyName("ownership_exemption_reason")]
-        public string OwnershipExemptionReason { get; set; }
+        public string OwnershipExemptionReason
+        {
+            get => this.ownershipExemptionReason;
+            set
+            {
+                this.ownershipExemptionReason = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The company's phone number (used for verification).
@@ -138,7 +154,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("registration_date")]
         [STJS.JsonPropertyName("registration_date")]
-        public AccountCompanyRegistrationDateOptions RegistrationDate { get; set; }
+        public AccountCompanyRegistrationDateOptions RegistrationDate
+        {
+            get => this.registrationDate;
+            set
+            {
+                this.registrationDate = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The identification number given to a company when it is registered or incorporated, if
@@ -175,7 +199,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("structure")]
         [STJS.JsonPropertyName("structure")]
-        public string Structure { get; set; }
+        public string Structure
+        {
+            get => this.structure;
+            set
+            {
+                this.structure = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The business ID number of the company, as appropriate for the company’s country.
@@ -207,5 +239,10 @@ namespace Stripe
         [JsonProperty("verification")]
         [STJS.JsonPropertyName("verification")]
         public AccountCompanyVerificationOptions Verification { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

@@ -7,14 +7,29 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class QuoteLineItemOptions : INestedOptions, IHasId
+    public class QuoteLineItemOptions : INestedOptions, IHasId, IHasSetTracking
     {
+        private List<QuoteLineItemDiscountOptions> discounts;
+        private List<string> taxRates;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The discounts applied to this line item.
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
-        public List<QuoteLineItemDiscountOptions> Discounts { get; set; }
+        public List<QuoteLineItemDiscountOptions> Discounts
+        {
+            get => this.discounts;
+            set
+            {
+                this.discounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The ID of an existing line item on the quote.
@@ -51,6 +66,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_rates")]
         [STJS.JsonPropertyName("tax_rates")]
-        public List<string> TaxRates { get; set; }
+        public List<string> TaxRates
+        {
+            get => this.taxRates;
+            set
+            {
+                this.taxRates = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }
