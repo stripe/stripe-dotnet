@@ -236,7 +236,7 @@ namespace StripeTests
         public void ConstructEventNotification()
         {
             string payload = @"{
-                ""object"": ""event"",
+                ""object"": ""v2.core.event"",
                 ""type"": ""unknown"",
                 ""data"": {},
                 ""relatedObject"": {

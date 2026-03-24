@@ -24,7 +24,7 @@ namespace StripeTests.V2
         private static string v2UnknownEventPayload =
             @"{
                   ""id"": ""evt_234"",
-                  ""object"": ""event"",
+                  ""object"": ""v2.core.event"",
                   ""type"": ""this.event.doesnt.exist"",
                   ""created"": ""2022-02-15T00:27:45.330Z"",
                   ""livemode"": true,
@@ -45,7 +45,7 @@ namespace StripeTests.V2
         private static string v2KnownEventNoRelatedObjectPayload =
             @"{
                 ""id"": ""evt_234"",
-                ""object"": ""event"",
+                ""object"": ""v2.core.event"",
                 ""type"": ""v1.billing.meter.no_meter_found"",
                 ""created"": ""2022-02-15T00:27:45.330Z"",
                 ""livemode"": true,
@@ -54,7 +54,7 @@ namespace StripeTests.V2
         private static string v2KnownEventPayload =
             @"{
                 ""id"": ""evt_234"",
-                ""object"": ""event"",
+                ""object"": ""v2.core.event"",
                 ""type"": ""v1.billing.meter.error_report_triggered"",
                 ""created"": ""2022-02-15T00:27:45.330Z"",
                 ""context"": ""context 123"",
@@ -70,7 +70,7 @@ namespace StripeTests.V2
         private static string v2KnownEventWithDataPayload =
             @"{
                   ""id"": ""evt_234"",
-                  ""object"": ""event"",
+                  ""object"": ""v2.core.event"",
                   ""type"": ""v1.billing.meter.error_report_triggered"",
                   ""created"": ""2022-02-15T00:27:45.330Z"",
                   ""context"": ""context 123"",
@@ -106,7 +106,7 @@ namespace StripeTests.V2
         private static string v2KnownEventLivemodeFalsePayload =
             @"{
                 ""id"": ""evt_234"",
-                ""object"": ""event"",
+                ""object"": ""v2.core.event"",
                 ""type"": ""v1.billing.meter.no_meter_found"",
                 ""created"": ""2022-02-15T00:27:45.330Z"",
                 ""livemode"": false,
@@ -115,7 +115,7 @@ namespace StripeTests.V2
         private static string v2KnownEventWithReasonPayload =
             @"{
                 ""id"": ""evt_234"",
-                ""object"": ""event"",
+                ""object"": ""v2.core.event"",
                 ""type"": ""v1.billing.meter.no_meter_found"",
                 ""created"": ""2022-02-15T00:27:45.330Z"",
                 ""livemode"": true,
@@ -291,12 +291,33 @@ namespace StripeTests.V2
         }
 
         [Fact]
+        public void RejectV1PayloadInParseEventNotification()
+        {
+            var v1Payload = @"{
+                ""id"": ""evt_123"",
+                ""object"": ""event"",
+                ""type"": ""customer.created"",
+                ""api_version"": ""2017-05-25"",
+                ""created"": 1533204620,
+                ""livemode"": false
+            }";
+
+            var exception = Assert.Throws<ArgumentException>(() =>
+                this.stripeClient.ParseEventNotification(
+                    v1Payload,
+                    GenerateSigHeader(v1Payload),
+                    WebhookSecret));
+
+            Assert.Contains("EventUtility.ConstructEvent", exception.Message);
+        }
+
+        [Fact]
         public void ParseUnknownEventDirectly()
         {
             var stripeEvent = JsonUtils.DeserializeObject<Stripe.V2.Core.Event>(v2UnknownEventPayload);
             Assert.NotNull(stripeEvent);
             Assert.Equal("evt_234", stripeEvent.Id);
-            Assert.Equal("event", stripeEvent.Object);
+            Assert.Equal("v2.core.event", stripeEvent.Object);
             Assert.Equal("this.event.doesnt.exist", stripeEvent.Type);
             Assert.Equal(new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc), stripeEvent.Created);
             Assert.Null(stripeEvent.Requestor);
