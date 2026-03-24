@@ -7,7 +7,6 @@ namespace Stripe.V2.Core.Vault
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Use the GBBankAccounts API to create and manage GB bank account objects.
     /// </summary>

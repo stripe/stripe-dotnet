@@ -7,7 +7,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// To share the contents of a <c>File</c> object with non-Stripe users, you can create a
     /// <c>FileLink</c>. <c>FileLink</c>s contain a URL that you can use to retrieve the

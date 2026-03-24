@@ -8,7 +8,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Invoices are statements of amounts owed by a customer, and are either generated one-off,
     /// or generated periodically from a subscription.

@@ -8,6 +8,5 @@ namespace Stripe.Events
     /// </summary>
     public class V2IamStripeAccessGrantCanceledEvent : V2.Core.Event
     {
-
     }
 }

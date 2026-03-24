@@ -5,7 +5,6 @@ namespace Stripe.Terminal
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Connection Token is used by the Stripe Terminal SDK to connect to a reader.
     ///

@@ -7,7 +7,6 @@ namespace Stripe.Forwarding
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Instructs Stripe to make a request on your behalf using the destination URL. The
     /// destination URL is activated by Stripe at the time of onboarding. Stripe verifies

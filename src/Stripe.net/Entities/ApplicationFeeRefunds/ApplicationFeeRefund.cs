@@ -7,7 +7,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// <c>Application Fee Refund</c> objects allow you to refund an application fee that has
     /// previously been created but not yet refunded. Funds will be refunded to the Stripe

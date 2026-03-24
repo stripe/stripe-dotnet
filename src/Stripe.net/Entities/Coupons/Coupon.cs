@@ -7,7 +7,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A coupon contains information about a percent-off or amount-off discount you might want
     /// to apply to a customer. Coupons may be applied to <a

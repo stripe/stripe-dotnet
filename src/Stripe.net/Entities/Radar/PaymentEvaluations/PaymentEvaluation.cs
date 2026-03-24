@@ -7,7 +7,6 @@ namespace Stripe.Radar
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Payment Evaluations represent the risk lifecycle of an externally processed payment. It
     /// includes the Radar risk score from Stripe, payment outcome taken by the merchant or

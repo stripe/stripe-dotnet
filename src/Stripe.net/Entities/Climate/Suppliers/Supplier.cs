@@ -6,7 +6,6 @@ namespace Stripe.Climate
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A supplier of carbon removal.
     /// </summary>

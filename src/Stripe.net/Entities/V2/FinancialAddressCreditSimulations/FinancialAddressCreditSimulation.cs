@@ -5,7 +5,6 @@ namespace Stripe.V2
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Credit Simulations represent simulated credit transactions applied to financial
     /// addresses for testing purposes.

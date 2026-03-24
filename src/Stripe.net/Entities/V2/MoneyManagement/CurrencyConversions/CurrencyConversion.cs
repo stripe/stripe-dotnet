@@ -6,7 +6,6 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// The CurrencyConversion object. Contains details such as the amount debited and credited
     /// and the FinancialAccount the CurrencyConversion was performed on.

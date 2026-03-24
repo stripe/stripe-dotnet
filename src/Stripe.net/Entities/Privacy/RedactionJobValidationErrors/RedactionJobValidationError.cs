@@ -5,7 +5,6 @@ namespace Stripe.Privacy
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// The Redaction Job validation error object contains information about errors that affect
     /// the ability to redact a specific object in a redaction job.

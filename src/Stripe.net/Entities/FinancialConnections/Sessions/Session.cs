@@ -6,7 +6,6 @@ namespace Stripe.FinancialConnections
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Financial Connections Session is the secure way to programmatically launch the
     /// client-side Stripe.js modal that lets your users link their accounts.

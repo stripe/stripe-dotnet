@@ -7,7 +7,6 @@ namespace Stripe.Reserve
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// ReserveReleases represent the release of funds from a ReserveHold.
     /// </summary>

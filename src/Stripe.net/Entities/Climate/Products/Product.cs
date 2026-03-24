@@ -7,7 +7,6 @@ namespace Stripe.Climate
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Climate product represents a type of carbon removal unit available for reservation.
     /// You can retrieve it to see the current price and availability.

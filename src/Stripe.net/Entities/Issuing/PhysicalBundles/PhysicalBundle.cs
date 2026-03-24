@@ -5,7 +5,6 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Physical Bundle represents the bundle of physical items - card stock, carrier letter,
     /// and envelope - that is shipped to a cardholder when you create a physical card.

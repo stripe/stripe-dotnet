@@ -7,7 +7,6 @@ namespace Stripe.BillingPortal
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A portal configuration describes the functionality and behavior you embed in a portal
     /// session. Related guide: <a

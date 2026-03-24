@@ -6,7 +6,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Funds that are in transit and destined for another balance or another connected account.
     /// </summary>

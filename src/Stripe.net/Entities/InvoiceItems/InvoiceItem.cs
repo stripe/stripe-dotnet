@@ -8,7 +8,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Invoice Items represent the component lines of an <a
     /// href="https://docs.stripe.com/api/invoices">invoice</a>. When you create an invoice item

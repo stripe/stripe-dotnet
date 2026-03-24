@@ -6,7 +6,6 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A fraud liability debit occurs when Stripe debits a platform's account for fraud losses
     /// on Issuing transactions.

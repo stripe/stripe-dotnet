@@ -7,7 +7,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// You can now model subscriptions more flexibly using the <a
     /// href="https://api.stripe.com#prices">Prices API</a>. It replaces the Plans API and is

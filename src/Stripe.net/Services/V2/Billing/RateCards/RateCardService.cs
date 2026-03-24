@@ -26,8 +26,10 @@ namespace Stripe.V2.Billing
 
         public virtual V2.Billing.RateCards.CustomPricingUnitOverageRateService CustomPricingUnitOverageRates => this.customPricingUnitOverageRates ??= new V2.Billing.RateCards.CustomPricingUnitOverageRateService(
             this.Requestor);
+
         public virtual V2.Billing.RateCards.RateService Rates => this.rates ??= new V2.Billing.RateCards.RateService(
             this.Requestor);
+
         public virtual V2.Billing.RateCards.VersionService Versions => this.versions ??= new V2.Billing.RateCards.VersionService(
             this.Requestor);
 

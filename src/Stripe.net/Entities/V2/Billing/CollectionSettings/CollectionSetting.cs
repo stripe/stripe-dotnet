@@ -6,7 +6,6 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Settings that configure and manage the behavior of collecting payments.
     /// </summary>

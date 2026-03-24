@@ -7,7 +7,6 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Rate Card represents a versioned set of usage-based prices (rates). Each rate is
     /// associated with one Metered Item and defines how much to charge for usage of that item.

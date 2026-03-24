@@ -5,7 +5,6 @@ namespace Stripe.Orchestration
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Represents orchestration information for a payment attempt record (e.g. return url).
     /// </summary>

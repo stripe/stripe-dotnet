@@ -24,10 +24,13 @@ namespace Stripe.TestHelpers
 
         public virtual TestHelpers.Issuing.AuthorizationService Authorizations => this.authorizations ??= new TestHelpers.Issuing.AuthorizationService(
             this.Requestor);
+
         public virtual TestHelpers.Issuing.CardService Cards => this.cards ??= new TestHelpers.Issuing.CardService(
             this.Requestor);
+
         public virtual TestHelpers.Issuing.PersonalizationDesignService PersonalizationDesigns => this.personalizationDesigns ??= new TestHelpers.Issuing.PersonalizationDesignService(
             this.Requestor);
+
         public virtual TestHelpers.Issuing.TransactionService Transactions => this.transactions ??= new TestHelpers.Issuing.TransactionService(
             this.Requestor);
     }

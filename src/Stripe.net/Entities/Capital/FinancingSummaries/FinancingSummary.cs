@@ -5,7 +5,6 @@ namespace Stripe.Capital
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A financing summary object describes a connected account's financing status in real
     /// time. A financing status is either <c>accepted</c>, <c>delivered</c>, or <c>none</c>.

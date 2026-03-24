@@ -5,7 +5,6 @@ namespace Stripe.Events
     using Newtonsoft.Json;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Occurs when an error occurs in reconciling a SettlementAllocationIntent.
     /// </summary>
@@ -14,20 +13,14 @@ namespace Stripe.Events
         /// <summary>
         /// Data for the v2.payments.settlement_allocation_intent.errored event.
         /// </summary>
-
-
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]
 
         public V2PaymentsSettlementAllocationIntentErroredEventData Data { get; set; }
 
-
-
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
         /// </summary>
-
-
         [JsonProperty("related_object")]
         [STJS.JsonPropertyName("related_object")]
 
@@ -37,8 +30,6 @@ namespace Stripe.Events
         /// Asynchronously retrieves the related object from the API. Make an API request on every
         /// call.
         /// </summary>
-
-
         public Task<V2.Payments.SettlementAllocationIntent> FetchRelatedObjectAsync()
         {
             return this.FetchRelatedObjectAsync<V2.Payments.SettlementAllocationIntent>(this.RelatedObject);
@@ -47,8 +38,6 @@ namespace Stripe.Events
         /// <summary>
         /// Retrieves the related object from the API. Make an API request on every call.
         /// </summary>
-
-
         public V2.Payments.SettlementAllocationIntent FetchRelatedObject()
         {
             return this.FetchRelatedObject<V2.Payments.SettlementAllocationIntent>(this.RelatedObject);

@@ -31,6 +31,7 @@ namespace Stripe.FinancialConnections
 
         public virtual AccountInferredBalanceService InferredBalances => this.inferredBalances ??= new AccountInferredBalanceService(
             this.Requestor);
+
         public virtual AccountOwnerService Owners => this.owners ??= new AccountOwnerService(
             this.Requestor);
 

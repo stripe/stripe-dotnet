@@ -6,7 +6,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Snapshot events allow you to track and react to activity in your Stripe integration.
     /// When the state of another API resource changes, Stripe creates an <c>Event</c> object

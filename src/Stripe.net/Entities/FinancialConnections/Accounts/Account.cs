@@ -7,7 +7,6 @@ namespace Stripe.FinancialConnections
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Financial Connections Account represents an account that exists outside of Stripe, to
     /// which you have been granted some degree of access.

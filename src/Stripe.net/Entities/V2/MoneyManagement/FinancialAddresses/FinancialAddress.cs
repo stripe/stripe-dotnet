@@ -6,7 +6,6 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Financial Address contains information needed to transfer money to a Financial
     /// Account. A Financial Account can have more than one Financial Address.

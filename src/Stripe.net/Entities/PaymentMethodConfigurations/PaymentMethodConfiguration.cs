@@ -5,7 +5,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// PaymentMethodConfigurations control which payment methods are displayed to your
     /// customers when you don't explicitly specify payment method types. You can have multiple

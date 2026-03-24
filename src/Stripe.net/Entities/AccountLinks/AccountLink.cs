@@ -6,7 +6,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Account Links are the means by which a Connect platform grants a connected account
     /// permission to access Stripe-hosted applications, such as Connect Onboarding.

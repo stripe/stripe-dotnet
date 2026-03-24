@@ -5,6 +5,9 @@ namespace Stripe
     {
         public static readonly SubscriptionTrialEnd Now = new SubscriptionTrialEnd("now");
 
-        private SubscriptionTrialEnd(string value) : base(value) { }
+        private SubscriptionTrialEnd(string value)
+            : base(value)
+        {
+        }
     }
 }

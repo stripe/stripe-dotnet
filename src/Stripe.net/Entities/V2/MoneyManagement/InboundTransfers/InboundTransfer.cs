@@ -7,7 +7,6 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// An InboundTransfer object, representing a money movement from a user owned PaymentMethod
     /// to a FinancialAccount belonging to the same user.

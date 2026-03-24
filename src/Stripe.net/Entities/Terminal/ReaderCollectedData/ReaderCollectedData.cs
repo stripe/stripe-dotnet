@@ -6,7 +6,6 @@ namespace Stripe.Terminal
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Returns data collected by Terminal readers. This data is only stored for 24 hours.
     /// </summary>

@@ -5,7 +5,6 @@ namespace Stripe.Events
     using Newtonsoft.Json;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Occurs when the fraud rate has increased.
     /// </summary>
@@ -14,13 +13,9 @@ namespace Stripe.Events
         /// <summary>
         /// Data for the v2.core.health.fraud_rate.increased event.
         /// </summary>
-
-
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]
 
         public V2CoreHealthFraudRateIncreasedEventData Data { get; set; }
-
-
     }
 }

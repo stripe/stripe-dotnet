@@ -5,7 +5,6 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// You can use Tax <c>Settings</c> to manage configurations used by Stripe Tax
     /// calculations.

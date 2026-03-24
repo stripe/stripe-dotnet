@@ -30,22 +30,31 @@ namespace Stripe.V2
 
         public virtual V2.Core.AccountService Accounts => this.accounts ??= new V2.Core.AccountService(
             this.Requestor);
+
         public virtual V2.Core.AccountEvaluationService AccountEvaluations => this.accountEvaluations ??= new V2.Core.AccountEvaluationService(
             this.Requestor);
+
         public virtual V2.Core.AccountLinkService AccountLinks => this.accountLinks ??= new V2.Core.AccountLinkService(
             this.Requestor);
+
         public virtual V2.Core.AccountTokenService AccountTokens => this.accountTokens ??= new V2.Core.AccountTokenService(
             this.Requestor);
+
         public virtual V2.Core.BatchJobService BatchJobs => this.batchJobs ??= new V2.Core.BatchJobService(
             this.Requestor);
+
         public virtual V2.Core.ClaimableSandboxService ClaimableSandboxes => this.claimableSandboxes ??= new V2.Core.ClaimableSandboxService(
             this.Requestor);
+
         public virtual V2.Core.ConnectionSessionService ConnectionSessions => this.connectionSessions ??= new V2.Core.ConnectionSessionService(
             this.Requestor);
+
         public virtual V2.Core.EventService Events => this.events ??= new V2.Core.EventService(
             this.Requestor);
+
         public virtual V2.Core.EventDestinationService EventDestinations => this.eventDestinations ??= new V2.Core.EventDestinationService(
             this.Requestor);
+
         public virtual V2.Core.VaultService Vault => this.vault ??= new V2.Core.VaultService(
             this.Requestor);
     }

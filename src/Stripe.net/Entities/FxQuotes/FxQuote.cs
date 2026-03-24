@@ -7,7 +7,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// The FX Quotes API provides three functions: - View Stripe's current exchange rate for
     /// any given currency pair. - Extend quoted rates for a 1-hour period or a 24-hour period,

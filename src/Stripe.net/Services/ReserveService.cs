@@ -23,8 +23,10 @@ namespace Stripe
 
         public virtual Reserve.HoldService Holds => this.holds ??= new Reserve.HoldService(
             this.Requestor);
+
         public virtual Reserve.PlanService Plans => this.plans ??= new Reserve.PlanService(
             this.Requestor);
+
         public virtual Reserve.ReleaseService Releases => this.releases ??= new Reserve.ReleaseService(
             this.Requestor);
     }

@@ -6,7 +6,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// You can add one or multiple tax IDs to a <a
     /// href="https://docs.stripe.com/api/customers">customer</a> or account. Customer and

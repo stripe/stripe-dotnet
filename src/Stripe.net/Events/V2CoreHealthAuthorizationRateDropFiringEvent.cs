@@ -5,7 +5,6 @@ namespace Stripe.Events
     using Newtonsoft.Json;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Occurs when an authorization rate drop alert is firing.
     /// </summary>
@@ -14,13 +13,9 @@ namespace Stripe.Events
         /// <summary>
         /// Data for the v2.core.health.authorization_rate_drop.firing event.
         /// </summary>
-
-
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]
 
         public V2CoreHealthAuthorizationRateDropFiringEventData Data { get; set; }
-
-
     }
 }

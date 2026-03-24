@@ -6,7 +6,6 @@ namespace Stripe.V2.Core
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Account Links let a platform create a temporary, single-use URL that an account can use
     /// to access a Stripe-hosted flow for collecting or updating required information.

@@ -7,7 +7,6 @@ namespace Stripe.V2.Iam
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// An API key is used to authenticate API requests.
     /// </summary>

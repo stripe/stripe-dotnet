@@ -5,7 +5,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Options for customizing account balances and payout settings for a Stripe platform’s
     /// connected accounts.

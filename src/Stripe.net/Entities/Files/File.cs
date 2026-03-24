@@ -6,7 +6,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// This object represents files hosted on Stripe's servers. You can upload files with the
     /// <a href="https://api.stripe.com#create_file">create file</a> request (for example, when

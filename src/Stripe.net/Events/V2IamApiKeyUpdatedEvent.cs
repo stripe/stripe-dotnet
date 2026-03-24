@@ -8,6 +8,5 @@ namespace Stripe.Events
     /// </summary>
     public class V2IamApiKeyUpdatedEvent : V2.Core.Event
     {
-
     }
 }

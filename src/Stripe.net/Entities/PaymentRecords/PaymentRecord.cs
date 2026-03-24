@@ -7,7 +7,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Payment Record is a resource that allows you to represent payments that occur on- or
     /// off-Stripe. For example, you can create a Payment Record to model a payment made on a

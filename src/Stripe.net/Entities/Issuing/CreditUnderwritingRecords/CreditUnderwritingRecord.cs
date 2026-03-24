@@ -7,7 +7,6 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Every time an applicant submits an application for a Charge Card product your platform
     /// offers, or every time your platform takes a proactive credit decision on an existing

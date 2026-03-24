@@ -5,7 +5,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Mandate is a record of the permission that your customer gives you to debit their
     /// payment method.

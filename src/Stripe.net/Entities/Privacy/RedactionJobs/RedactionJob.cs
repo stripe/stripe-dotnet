@@ -6,7 +6,6 @@ namespace Stripe.Privacy
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// The Redaction Job object redacts Stripe objects. You can use it to coordinate the
     /// removal of personal information from selected objects, making them permanently

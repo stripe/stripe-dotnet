@@ -6,7 +6,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Tokenization is the process Stripe uses to collect sensitive card or bank account
     /// details, or personally identifiable information (PII), directly from your customers in a

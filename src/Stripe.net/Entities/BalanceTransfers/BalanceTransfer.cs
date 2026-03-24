@@ -7,7 +7,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Balance transfers represent funds moving between balance types on your Stripe account.
     /// They currently support moving funds between your Stripe balance and your <a

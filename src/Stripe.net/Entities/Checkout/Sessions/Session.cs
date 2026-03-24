@@ -7,7 +7,6 @@ namespace Stripe.Checkout
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Checkout Session represents your customer's session as they pay for one-time purchases
     /// or subscriptions through <a

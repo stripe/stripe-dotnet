@@ -7,7 +7,6 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Use the PayoutMethods API to list and interact with PayoutMethod objects.
     /// </summary>

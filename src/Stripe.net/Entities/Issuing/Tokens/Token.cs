@@ -6,7 +6,6 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// An issuing token object is created when an issued card is added to a digital wallet. As
     /// a <a href="https://docs.stripe.com/issuing">card issuer</a>, you can <a

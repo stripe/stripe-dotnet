@@ -7,7 +7,6 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Metered Item represents a billable item whose pricing is based on usage, measured by a
     /// meter. You can use rate cards to specify the pricing and create subscriptions to these

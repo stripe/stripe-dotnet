@@ -5,6 +5,9 @@ namespace Stripe
     {
         public static readonly SubscriptionSchedulePhaseEndDate Now = new SubscriptionSchedulePhaseEndDate("now");
 
-        private SubscriptionSchedulePhaseEndDate(string value) : base(value) { }
+        private SubscriptionSchedulePhaseEndDate(string value)
+            : base(value)
+        {
+        }
     }
 }

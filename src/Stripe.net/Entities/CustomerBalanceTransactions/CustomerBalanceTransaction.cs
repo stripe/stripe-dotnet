@@ -7,7 +7,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Each customer has a <a
     /// href="https://docs.stripe.com/api/customers/object#customer_object-balance">Balance</a>

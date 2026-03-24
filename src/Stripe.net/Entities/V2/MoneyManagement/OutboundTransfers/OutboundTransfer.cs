@@ -7,7 +7,6 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// OutboundTransfer represents a single money movement from one FinancialAccount you own to
     /// a payout method you also own.

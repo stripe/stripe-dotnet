@@ -7,7 +7,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CouponCreateOptions : BaseOptions, IHasId, IHasMetadata
     {

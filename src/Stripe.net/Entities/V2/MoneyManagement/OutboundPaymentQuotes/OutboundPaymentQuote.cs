@@ -7,7 +7,6 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// OutboundPaymentQuote represents a quote that provides fee and amount estimates for
     /// OutboundPayment.

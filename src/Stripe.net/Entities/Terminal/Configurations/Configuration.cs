@@ -5,7 +5,6 @@ namespace Stripe.Terminal
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Configurations object represents how features should be configured for terminal
     /// readers. For information about how to use it, see the <a

@@ -7,7 +7,6 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Any use of an <a href="https://docs.stripe.com/issuing">issued card</a> that results in
     /// funds entering or leaving your Stripe account, such as a completed purchase or refund,

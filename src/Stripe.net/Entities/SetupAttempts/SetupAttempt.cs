@@ -7,7 +7,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A SetupAttempt describes one attempted confirmation of a SetupIntent, whether that
     /// confirmation is successful or unsuccessful. You can use SetupAttempts to inspect details

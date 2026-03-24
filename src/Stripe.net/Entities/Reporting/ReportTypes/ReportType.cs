@@ -7,7 +7,6 @@ namespace Stripe.Reporting
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// The Report Type resource corresponds to a particular type of report, such as the
     /// "Activity summary" or "Itemized payouts" reports. These objects are identified by an ID

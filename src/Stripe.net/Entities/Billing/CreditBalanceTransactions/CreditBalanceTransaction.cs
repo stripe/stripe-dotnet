@@ -6,7 +6,6 @@ namespace Stripe.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A credit balance transaction is a resource representing a transaction (either a credit
     /// or a debit) against an existing credit grant.

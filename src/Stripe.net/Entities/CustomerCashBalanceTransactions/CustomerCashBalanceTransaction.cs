@@ -6,7 +6,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Customers with certain payments enabled have a cash balance, representing funds that
     /// were paid by the customer to a merchant, but have not yet been allocated to a payment.

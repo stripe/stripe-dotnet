@@ -6,7 +6,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A payment link is a shareable URL that will take your customers to a hosted payment
     /// page. A payment link can be shared and used multiple times.

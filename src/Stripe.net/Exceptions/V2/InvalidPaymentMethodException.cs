@@ -1,22 +1,22 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2
 {
+    using System.Net;
+    using System.Text.Json;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-    using System.Net;
-    using System.Text.Json;
     public class InvalidPaymentMethodException : StripeException
     {
         private InvalidPaymentMethodException(
             HttpStatusCode httpStatusCode,
             StripeError stripeError,
             string message,
-            string InvalidParam)
+            string invalidParam)
             : base(httpStatusCode, stripeError)
         {
-            this.InvalidParam = InvalidParam;
+            this.InvalidParam = invalidParam;
         }
 
         /// <summary>

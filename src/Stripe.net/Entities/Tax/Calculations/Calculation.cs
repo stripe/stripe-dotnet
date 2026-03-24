@@ -7,7 +7,6 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Tax Calculation allows you to calculate the tax to collect from your customer.
     ///

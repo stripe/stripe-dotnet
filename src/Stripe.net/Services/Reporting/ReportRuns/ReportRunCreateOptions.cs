@@ -5,7 +5,6 @@ namespace Stripe.Reporting
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ReportRunCreateOptions : BaseOptions
     {

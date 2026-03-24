@@ -7,7 +7,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Refund objects allow you to refund a previously created charge that isn't refunded yet.
     /// Funds are refunded to the credit or debit card that's initially charged.

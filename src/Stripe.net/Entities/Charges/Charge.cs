@@ -7,7 +7,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// The <c>Charge</c> object represents a single attempt to move money into your Stripe
     /// account. PaymentIntent confirmation is the most common way to create Charges, but <a

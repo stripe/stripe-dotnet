@@ -7,7 +7,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Shipping rates describe the price of shipping presented to your customers and applied to
     /// a purchase. For more information, see <a

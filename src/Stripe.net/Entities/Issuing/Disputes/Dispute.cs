@@ -7,7 +7,6 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// As a <a href="https://docs.stripe.com/issuing">card issuer</a>, you can dispute
     /// transactions that the cardholder does not recognize, suspects to be fraudulent, or has

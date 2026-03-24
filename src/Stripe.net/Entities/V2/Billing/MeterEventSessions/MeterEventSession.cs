@@ -6,7 +6,6 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Meter Event Session is an authentication session for the high-throughput meter event
     /// API. Meter Event Sessions provide temporary authentication tokens with expiration times,

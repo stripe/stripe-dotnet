@@ -6,7 +6,6 @@ namespace Stripe.Radar
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// An early fraud warning indicates that the card issuer has notified us that a charge may
     /// be fraudulent.

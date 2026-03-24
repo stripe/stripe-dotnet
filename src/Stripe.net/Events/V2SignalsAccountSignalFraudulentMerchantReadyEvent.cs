@@ -5,7 +5,6 @@ namespace Stripe.Events
     using Newtonsoft.Json;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Occurs when a fraudulent merchant signal is ready for an account.
     /// </summary>
@@ -14,13 +13,9 @@ namespace Stripe.Events
         /// <summary>
         /// Data for the v2.signals.account_signal.fraudulent_merchant_ready event.
         /// </summary>
-
-
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]
 
         public V2SignalsAccountSignalFraudulentMerchantReadyEventData Data { get; set; }
-
-
     }
 }

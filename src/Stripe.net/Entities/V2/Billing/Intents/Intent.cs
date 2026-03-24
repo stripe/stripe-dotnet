@@ -6,7 +6,6 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Billing Intent represents a proposed change to a customer's billing configuration,
     /// such as subscribing to a new service, modifying an existing subscription, or canceling

@@ -7,7 +7,6 @@ namespace Stripe.Identity
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A VerificationSession guides you through the process of collecting and verifying the
     /// identities of your users. It contains details about the type of verification, such as

@@ -6,7 +6,6 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// RecipientVerification represents a verification of recipient you intend to send funds
     /// to.

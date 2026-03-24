@@ -6,7 +6,6 @@ namespace Stripe.Treasury
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// ReceivedDebits represent funds pulled from a <a
     /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a>. These are not

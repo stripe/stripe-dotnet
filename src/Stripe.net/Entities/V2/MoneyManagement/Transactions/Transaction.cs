@@ -6,7 +6,6 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Use Transactions to view changes to your FinancialAccount balance over time. Every flow
     /// that moves money, such as OutboundPayments or ReceivedCredits, will have one or more

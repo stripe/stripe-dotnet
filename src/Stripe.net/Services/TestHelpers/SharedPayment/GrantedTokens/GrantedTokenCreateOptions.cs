@@ -6,7 +6,6 @@ namespace Stripe.TestHelpers.SharedPayment
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class GrantedTokenCreateOptions : BaseOptions
     {

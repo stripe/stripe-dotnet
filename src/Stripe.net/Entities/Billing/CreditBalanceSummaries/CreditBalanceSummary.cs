@@ -6,7 +6,6 @@ namespace Stripe.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Indicates the billing credit balance for billing credits granted to a customer.
     /// </summary>

@@ -5,6 +5,9 @@ namespace Stripe.Tax
     {
         public static readonly RegistrationExpiresAt Now = new RegistrationExpiresAt("now");
 
-        private RegistrationExpiresAt(string value) : base(value) { }
+        private RegistrationExpiresAt(string value)
+            : base(value)
+        {
+        }
     }
 }

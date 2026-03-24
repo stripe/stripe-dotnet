@@ -6,7 +6,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Customer Session allows you to grant Stripe's frontend SDKs (like Stripe.js)
     /// client-side access control over a Customer.

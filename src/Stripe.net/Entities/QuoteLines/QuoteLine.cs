@@ -6,7 +6,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A quote line defines a set of changes, in the order provided, that will be applied upon
     /// quote acceptance.

@@ -5,7 +5,6 @@ namespace Stripe.Privacy
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class RedactionJobValidationErrorErroringObject : StripeEntity<RedactionJobValidationErrorErroringObject>, IHasId
     {

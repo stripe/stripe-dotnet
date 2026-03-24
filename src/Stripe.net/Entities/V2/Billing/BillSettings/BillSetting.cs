@@ -6,7 +6,6 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// BillSetting is responsible for settings which dictate generating bills, which include
     /// settings for calculating totals on bills, tax on bill items, as well as how to generate

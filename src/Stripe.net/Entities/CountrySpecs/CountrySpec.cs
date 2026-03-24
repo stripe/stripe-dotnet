@@ -6,7 +6,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Stripe needs to collect certain pieces of information about each account created. These
     /// requirements can differ depending on the account's country. The Country Specs API makes

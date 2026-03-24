@@ -22,6 +22,7 @@ namespace Stripe.V2
 
         public virtual V2.Payments.OffSessionPaymentService OffSessionPayments => this.offSessionPayments ??= new V2.Payments.OffSessionPaymentService(
             this.Requestor);
+
         public virtual V2.Payments.SettlementAllocationIntentService SettlementAllocationIntents => this.settlementAllocationIntents ??= new V2.Payments.SettlementAllocationIntentService(
             this.Requestor);
     }

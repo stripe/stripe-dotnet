@@ -7,7 +7,6 @@ namespace Stripe.V2.Payments
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// An OffSessionPayment allows you to create your own payment flow for recurring and
     /// unscheduled payments. In a single API request, you can initiate a payment and leverage

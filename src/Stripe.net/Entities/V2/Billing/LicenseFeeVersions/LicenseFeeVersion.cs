@@ -7,7 +7,6 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A License Fee Version represents a specific configuration of a License Fee at a point in
     /// time. Versions are created automatically when you update the pricing structure of a

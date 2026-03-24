@@ -5,7 +5,6 @@ namespace Stripe.BillingPortal
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionFlow : StripeEntity<SessionFlow>
     {

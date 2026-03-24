@@ -6,7 +6,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// The <c>French Meal Vouchers Onboarding</c> resource encapsulates the onboarding status
     /// and other related information for a single restaurant (SIRET number) in the context of

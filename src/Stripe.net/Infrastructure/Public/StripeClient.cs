@@ -22,6 +22,7 @@ namespace Stripe
         // Fields: The beginning of the section generated from our OpenAPI spec
         private V1Services v1;
         private V2Services v2;
+
         // Fields: The end of the section generated from our OpenAPI spec
         internal StripeClient(ApiRequestor requestor)
         {
@@ -124,7 +125,9 @@ namespace Stripe
 
         // Properties: The beginning of the section generated from our OpenAPI spec
         public virtual V1Services V1 => this.v1 ??= new V1Services(this.Requestor);
+
         public virtual V2Services V2 => this.v2 ??= new V2Services(this.Requestor);
+
         // Properties: The end of the section generated from our OpenAPI spec
 
         /// <summary>Deserializes a JSON string into a Stripe object.</summary>

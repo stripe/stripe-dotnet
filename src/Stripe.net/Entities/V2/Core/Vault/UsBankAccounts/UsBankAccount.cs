@@ -7,7 +7,6 @@ namespace Stripe.V2.Core.Vault
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Use the USBankAccounts API to create and manage US bank accounts objects that you can
     /// use to receive funds. Note that these are not interchangeable with v1 Tokens.

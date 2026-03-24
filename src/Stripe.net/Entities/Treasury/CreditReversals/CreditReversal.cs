@@ -7,7 +7,6 @@ namespace Stripe.Treasury
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// You can reverse some <a
     /// href="https://api.stripe.com#received_credits">ReceivedCredits</a> depending on their

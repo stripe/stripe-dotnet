@@ -22,6 +22,7 @@ namespace Stripe.V2
 
         public virtual V2.Reporting.ReportService Reports => this.reports ??= new V2.Reporting.ReportService(
             this.Requestor);
+
         public virtual V2.Reporting.ReportRunService ReportRuns => this.reportRuns ??= new V2.Reporting.ReportRunService(
             this.Requestor);
     }

@@ -6,7 +6,6 @@ namespace Stripe.FinancialConnections
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Describes a snapshot of the owners of an account at a particular point in time.
     /// </summary>

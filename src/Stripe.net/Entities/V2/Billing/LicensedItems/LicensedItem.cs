@@ -7,7 +7,6 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Licensed Item represents a billable item whose pricing is based on license fees. You
     /// can use license fees to specify the pricing and create subscriptions to these items.

@@ -6,7 +6,6 @@ namespace Stripe.Apps
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Secret Store is an API that allows Stripe Apps developers to securely persist secrets
     /// for use by UI Extensions and app backends.

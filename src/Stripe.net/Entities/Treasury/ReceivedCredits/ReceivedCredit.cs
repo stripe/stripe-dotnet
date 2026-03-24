@@ -6,7 +6,6 @@ namespace Stripe.Treasury
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// ReceivedCredits represent funds sent to a <a
     /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a> (for example, via

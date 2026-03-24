@@ -5,7 +5,6 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Tax locations represent venues for services, tickets, or other product types.
     /// </summary>

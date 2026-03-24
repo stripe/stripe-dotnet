@@ -7,7 +7,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A subscription schedule allows you to create and manage the lifecycle of a subscription
     /// by predefining expected changes.

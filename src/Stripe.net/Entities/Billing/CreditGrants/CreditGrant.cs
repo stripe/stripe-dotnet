@@ -7,7 +7,6 @@ namespace Stripe.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A credit grant is an API resource that documents the allocation of some billing credits
     /// to a customer.

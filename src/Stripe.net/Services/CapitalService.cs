@@ -23,8 +23,10 @@ namespace Stripe
 
         public virtual Capital.FinancingOfferService FinancingOffers => this.financingOffers ??= new Capital.FinancingOfferService(
             this.Requestor);
+
         public virtual Capital.FinancingSummaryService FinancingSummary => this.financingSummary ??= new Capital.FinancingSummaryService(
             this.Requestor);
+
         public virtual Capital.FinancingTransactionService FinancingTransactions => this.financingTransactions ??= new Capital.FinancingTransactionService(
             this.Requestor);
     }

@@ -6,7 +6,6 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// TransactionEntries represent individual money movements across different states within a
     /// Transaction.

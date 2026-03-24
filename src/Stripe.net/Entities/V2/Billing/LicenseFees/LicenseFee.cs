@@ -7,7 +7,6 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A License Fee represents a versioned recurring charge for a Licensed Item, typically
     /// used for seat-based or quantity-based pricing. Each License Fee defines the pricing

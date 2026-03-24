@@ -6,7 +6,6 @@ namespace Stripe.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AlertRecovered : StripeEntity<AlertRecovered>, IHasObject
     {

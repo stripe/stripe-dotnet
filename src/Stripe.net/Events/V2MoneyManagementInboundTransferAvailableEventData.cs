@@ -6,7 +6,6 @@ namespace Stripe.Events
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     public class V2MoneyManagementInboundTransferAvailableEventData : StripeEntity<V2MoneyManagementInboundTransferAvailableEventData>
     {
         /// <summary>

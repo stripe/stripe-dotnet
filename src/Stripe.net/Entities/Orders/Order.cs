@@ -8,7 +8,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// An Order describes a purchase being made by a customer, including the products &amp;
     /// quantities being purchased, the order status, the payment information, and the

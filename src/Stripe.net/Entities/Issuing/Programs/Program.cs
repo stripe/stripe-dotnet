@@ -7,7 +7,6 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// An Issuing <c>Program</c> represents a card program that the user has access to.
     /// </summary>

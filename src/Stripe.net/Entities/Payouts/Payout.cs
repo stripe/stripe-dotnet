@@ -7,7 +7,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A <c>Payout</c> object is created when you receive funds from Stripe, or when you
     /// initiate a payout to either a bank account or debit card of a <a

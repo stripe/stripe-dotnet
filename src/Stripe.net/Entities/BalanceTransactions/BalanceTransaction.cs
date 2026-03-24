@@ -7,7 +7,6 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Balance transactions represent funds moving through your Stripe account. Stripe creates
     /// them for every type of transaction that enters or leaves your Stripe account balance.

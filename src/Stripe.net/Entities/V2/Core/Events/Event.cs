@@ -7,7 +7,6 @@ namespace Stripe.V2.Core
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// Code generated portion of V2 Event resource.
     /// </summary>

@@ -7,7 +7,6 @@ namespace Stripe.V2.Core
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// An Account v2 object represents a company, individual, or other entity that interacts
     /// with a platform on Stripe. It contains both identifying information and properties that

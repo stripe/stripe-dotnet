@@ -6,7 +6,6 @@ namespace Stripe.Entitlements
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A feature represents a monetizable ability or functionality in your system. Features can
     /// be assigned to products, and when those products are purchased, Stripe will create an

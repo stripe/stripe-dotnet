@@ -7,7 +7,6 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Meter Event is a usage record that captures billable activity for usage-based billing.
     /// Meter Events contain an event name, timestamp, and payload with customer mapping and

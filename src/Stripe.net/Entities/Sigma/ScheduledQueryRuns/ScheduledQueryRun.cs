@@ -6,7 +6,6 @@ namespace Stripe.Sigma
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// If you have <a href="https://docs.stripe.com/sigma/scheduled-queries">scheduled a Sigma
     /// query</a>, you'll receive a <c>sigma.scheduled_query_run.created</c> webhook each time

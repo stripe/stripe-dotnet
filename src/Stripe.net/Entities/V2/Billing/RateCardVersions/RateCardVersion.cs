@@ -6,7 +6,6 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A Rate Card Version represents a specific configuration of a Rate Card at a point in
     /// time. Versions are created automatically when you add or modify rates on a Rate Card,

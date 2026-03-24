@@ -5,7 +5,6 @@ namespace Stripe.Entitlements
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// An active entitlement describes access to a feature for a customer.
     /// </summary>

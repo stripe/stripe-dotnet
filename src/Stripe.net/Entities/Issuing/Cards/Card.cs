@@ -7,7 +7,6 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// You can <a href="https://docs.stripe.com/issuing">create physical or virtual cards</a>
     /// that are issued to cardholders.

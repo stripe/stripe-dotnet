@@ -6,7 +6,6 @@ namespace Stripe.V2.Core
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-
     /// <summary>
     /// A claimable sandbox represents a Stripe sandbox that is anonymous. When it is created,
     /// it can be prefilled with specific metadata, such as email, name, or country. Claimable
