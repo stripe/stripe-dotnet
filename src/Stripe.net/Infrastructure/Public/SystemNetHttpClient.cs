@@ -70,6 +70,7 @@ namespace Stripe
             ("CODEX_CI", "codex_cli"),
             ("CURSOR_AGENT", "cursor"),
             ("GEMINI_CLI", "gemini_cli"),
+            ("OPENCLAW_SHELL", "openclaw"),
             ("OPENCODE", "open_code"),
 
             // The end of the section generated from our OpenAPI spec
