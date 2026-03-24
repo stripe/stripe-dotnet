@@ -1,13 +1,5 @@
 # Changelog
 
-## Unreleased
-* [#3342](https://github.com/stripe/stripe-dotnet/pull/3342) Replace `Emptyable<T>` with SetTracker pattern for explicit null support
-  * **Breaking:** Removed public interfaces `IEmptyable` and `IEmptyable<T>`, and internal type `Emptyable<T>`. These are replaced by the SetTracker pattern on Options properties: emptyable fields now use standard nullable types with backing-field setters that track explicit assignment.
-  * Emptyable properties on Options classes can now be cleared by simply setting them to `null` — no wrapper type needed
-  * v1 API: setting an emptyable property to `null` sends `field=` (empty string) to clear the value
-  * v2 API: setting a nullable property to `null` sends `"field": null` in JSON
-  * Added `STJNullPreservingDictionaryConverter` for metadata/map properties that need to preserve null values in v2 JSON
-
 ## 50.4.1 - 2026-03-06
 * [#3313](https://github.com/stripe/stripe-dotnet/pull/3313) Add Stripe-Request-Trigger header
 * [#3310](https://github.com/stripe/stripe-dotnet/pull/3310) Add agent information to UserAgent
