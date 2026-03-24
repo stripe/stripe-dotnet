@@ -96,34 +96,6 @@ namespace StripeTests.Infrastructure.TestData
         [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonIgnore]
-        public bool EmptyEmptyStringable
-        {
-            get => this.InternalEmptyStringable?.Empty ?? false;
-            set
-            {
-                this.InternalEmptyStringable ??= new Emptyable<Nested>();
-                this.InternalEmptyStringable.Empty = value;
-            }
-        }
-
-        [JsonIgnore]
-        public Nested EmptyStringable
-        {
-            get => this.InternalEmptyStringable?.Value;
-            set
-            {
-                this.InternalEmptyStringable ??= new Emptyable<Nested>();
-                this.InternalEmptyStringable.Value = value;
-            }
-        }
-
-        [JsonProperty("empty_stringable")]
-        [STJS.JsonPropertyName("empty_stringable")]
-        [JsonConverter(typeof(EmptyableConverter<Nested>))]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<Nested>))]
-        internal Emptyable<Nested> InternalEmptyStringable { get; set; }
-
         public class TestStringEnum : StringEnum
         {
             public static readonly TestStringEnum Foo = new TestStringEnum("foo");
