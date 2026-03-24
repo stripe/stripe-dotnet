@@ -7,8 +7,15 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentPaymentMethodOptionsKlarnaOptions : INestedOptions
+    public class PaymentIntentPaymentMethodOptionsKlarnaOptions : INestedOptions, IHasSetTracking
     {
+        private string captureMethod;
+        private List<PaymentIntentPaymentMethodOptionsKlarnaSubscriptionOptions> subscriptions;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Controls when the funds are captured from the customer's account.
         ///
@@ -21,7 +28,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("capture_method")]
         [STJS.JsonPropertyName("capture_method")]
-        public string CaptureMethod { get; set; }
+        public string CaptureMethod
+        {
+            get => this.captureMethod;
+            set
+            {
+                this.captureMethod = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// On-demand details if setting up or charging an on-demand payment.

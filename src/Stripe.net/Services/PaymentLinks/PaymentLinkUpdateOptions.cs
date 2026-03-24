@@ -9,6 +9,14 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentLinkUpdateOptions : BaseOptions, IHasMetadata
     {
+        private List<PaymentLinkCustomFieldOptions> customFields;
+        private string inactiveMessage;
+        private PaymentLinkNameCollectionOptions nameCollection;
+        private List<PaymentLinkOptionalItemOptions> optionalItems;
+        private List<string> paymentMethodTypes;
+        private PaymentLinkRestrictionsOptions restrictions;
+        private PaymentLinkShippingAddressCollectionOptions shippingAddressCollection;
+
         /// <summary>
         /// Whether the payment link's <c>url</c> is active. If <c>false</c>, customers visiting the
         /// URL will be shown a page saying that the link has been deactivated.
@@ -52,7 +60,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("custom_fields")]
         [STJS.JsonPropertyName("custom_fields")]
-        public List<PaymentLinkCustomFieldOptions> CustomFields { get; set; }
+        public List<PaymentLinkCustomFieldOptions> CustomFields
+        {
+            get => this.customFields;
+            set
+            {
+                this.customFields = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Display additional text for your customers using custom text. You can't set this
@@ -78,7 +94,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("inactive_message")]
         [STJS.JsonPropertyName("inactive_message")]
-        public string InactiveMessage { get; set; }
+        public string InactiveMessage
+        {
+            get => this.inactiveMessage;
+            set
+            {
+                this.inactiveMessage = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Generate a post-purchase Invoice for one-time payments.
@@ -113,7 +137,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("name_collection")]
         [STJS.JsonPropertyName("name_collection")]
-        public PaymentLinkNameCollectionOptions NameCollection { get; set; }
+        public PaymentLinkNameCollectionOptions NameCollection
+        {
+            get => this.nameCollection;
+            set
+            {
+                this.nameCollection = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A list of optional items the customer can add to their order at checkout. Use this
@@ -125,7 +157,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("optional_items")]
         [STJS.JsonPropertyName("optional_items")]
-        public List<PaymentLinkOptionalItemOptions> OptionalItems { get; set; }
+        public List<PaymentLinkOptionalItemOptions> OptionalItems
+        {
+            get => this.optionalItems;
+            set
+            {
+                this.optionalItems = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in
@@ -169,7 +209,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payment_method_types")]
         [STJS.JsonPropertyName("payment_method_types")]
-        public List<string> PaymentMethodTypes { get; set; }
+        public List<string> PaymentMethodTypes
+        {
+            get => this.paymentMethodTypes;
+            set
+            {
+                this.paymentMethodTypes = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Controls phone number collection settings during checkout.
@@ -185,14 +233,30 @@ namespace Stripe
         /// </summary>
         [JsonProperty("restrictions")]
         [STJS.JsonPropertyName("restrictions")]
-        public PaymentLinkRestrictionsOptions Restrictions { get; set; }
+        public PaymentLinkRestrictionsOptions Restrictions
+        {
+            get => this.restrictions;
+            set
+            {
+                this.restrictions = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Configuration for collecting the customer's shipping address.
         /// </summary>
         [JsonProperty("shipping_address_collection")]
         [STJS.JsonPropertyName("shipping_address_collection")]
-        public PaymentLinkShippingAddressCollectionOptions ShippingAddressCollection { get; set; }
+        public PaymentLinkShippingAddressCollectionOptions ShippingAddressCollection
+        {
+            get => this.shippingAddressCollection;
+            set
+            {
+                this.shippingAddressCollection = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Describes the type of transaction being performed in order to customize relevant text on

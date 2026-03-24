@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System;
     using Stripe;
     using Xunit;
 
@@ -151,6 +152,44 @@ namespace StripeTests
         {
             Assert.Throws<StripeException>(() =>
                 EventUtility.ValidateSignature("{}", headerValue, string.Empty));
+        }
+
+        [Fact]
+        public void RejectV2PayloadInParseEvent()
+        {
+            var v2Payload = @"{
+                ""id"": ""evt_234"",
+                ""object"": ""v2.core.event"",
+                ""type"": ""v1.billing.meter.error_report_triggered"",
+                ""created"": ""2022-02-15T00:27:45.330Z"",
+                ""livemode"": true
+            }";
+
+            var exception = Assert.Throws<ArgumentException>(() =>
+                EventUtility.ParseEvent(v2Payload, throwOnApiVersionMismatch: false));
+
+            Assert.Contains("StripeClient.ParseEventNotification", exception.Message);
+        }
+
+        [Fact]
+        public void RejectV2PayloadInConstructEvent()
+        {
+            var v2Payload = @"{
+                ""id"": ""evt_234"",
+                ""object"": ""v2.core.event"",
+                ""type"": ""v1.billing.meter.error_report_triggered"",
+                ""created"": ""2022-02-15T00:27:45.330Z"",
+                ""livemode"": true
+            }";
+
+            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var signature = EventUtility.ComputeSignature(this.secret, timestamp.ToString(), v2Payload);
+            var sigHeader = $"t={timestamp},v1={signature}";
+
+            var exception = Assert.Throws<ArgumentException>(() =>
+                EventUtility.ConstructEvent(v2Payload, sigHeader, this.secret, throwOnApiVersionMismatch: false));
+
+            Assert.Contains("StripeClient.ParseEventNotification", exception.Message);
         }
 
         [Theory]

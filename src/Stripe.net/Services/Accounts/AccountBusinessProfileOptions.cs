@@ -7,8 +7,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountBusinessProfileOptions : INestedOptions
+    public class AccountBusinessProfileOptions : INestedOptions, IHasSetTracking
     {
+        private string supportUrl;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The applicant's gross annual revenue for its preceding fiscal year.
         /// </summary>
@@ -99,7 +105,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("support_url")]
         [STJS.JsonPropertyName("support_url")]
-        public string SupportUrl { get; set; }
+        public string SupportUrl
+        {
+            get => this.supportUrl;
+            set
+            {
+                this.supportUrl = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The business's publicly available website.
@@ -107,5 +121,10 @@ namespace Stripe
         [JsonProperty("url")]
         [STJS.JsonPropertyName("url")]
         public string Url { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

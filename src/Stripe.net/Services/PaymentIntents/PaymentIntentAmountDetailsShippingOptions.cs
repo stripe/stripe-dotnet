@@ -6,8 +6,16 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentAmountDetailsShippingOptions : INestedOptions
+    public class PaymentIntentAmountDetailsShippingOptions : INestedOptions, IHasSetTracking
     {
+        private long? amount;
+        private string fromPostalCode;
+        private string toPostalCode;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// If a physical good is being shipped, the cost of shipping represented in the <a
         /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>. An
@@ -15,7 +23,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
-        public long? Amount { get; set; }
+        public long? Amount
+        {
+            get => this.amount;
+            set
+            {
+                this.amount = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If a physical good is being shipped, the postal code of where it is being shipped from.
@@ -23,7 +39,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("from_postal_code")]
         [STJS.JsonPropertyName("from_postal_code")]
-        public string FromPostalCode { get; set; }
+        public string FromPostalCode
+        {
+            get => this.fromPostalCode;
+            set
+            {
+                this.fromPostalCode = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If a physical good is being shipped, the postal code of where it is being shipped to. At
@@ -31,6 +55,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("to_postal_code")]
         [STJS.JsonPropertyName("to_postal_code")]
-        public string ToPostalCode { get; set; }
+        public string ToPostalCode
+        {
+            get => this.toPostalCode;
+            set
+            {
+                this.toPostalCode = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

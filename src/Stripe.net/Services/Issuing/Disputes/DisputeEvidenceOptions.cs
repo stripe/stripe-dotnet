@@ -6,56 +6,125 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class DisputeEvidenceOptions : INestedOptions
+    public class DisputeEvidenceOptions : INestedOptions, IHasSetTracking
     {
+        private DisputeEvidenceCanceledOptions canceled;
+        private DisputeEvidenceDuplicateOptions duplicate;
+        private DisputeEvidenceFraudulentOptions fraudulent;
+        private DisputeEvidenceMerchandiseNotAsDescribedOptions merchandiseNotAsDescribed;
+        private DisputeEvidenceNoValidAuthorizationOptions noValidAuthorization;
+        private DisputeEvidenceNotReceivedOptions notReceived;
+        private DisputeEvidenceOtherOptions other;
+        private DisputeEvidenceServiceNotAsDescribedOptions serviceNotAsDescribed;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Evidence provided when <c>reason</c> is 'canceled'.
         /// </summary>
         [JsonProperty("canceled")]
         [STJS.JsonPropertyName("canceled")]
-        public DisputeEvidenceCanceledOptions Canceled { get; set; }
+        public DisputeEvidenceCanceledOptions Canceled
+        {
+            get => this.canceled;
+            set
+            {
+                this.canceled = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Evidence provided when <c>reason</c> is 'duplicate'.
         /// </summary>
         [JsonProperty("duplicate")]
         [STJS.JsonPropertyName("duplicate")]
-        public DisputeEvidenceDuplicateOptions Duplicate { get; set; }
+        public DisputeEvidenceDuplicateOptions Duplicate
+        {
+            get => this.duplicate;
+            set
+            {
+                this.duplicate = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Evidence provided when <c>reason</c> is 'fraudulent'.
         /// </summary>
         [JsonProperty("fraudulent")]
         [STJS.JsonPropertyName("fraudulent")]
-        public DisputeEvidenceFraudulentOptions Fraudulent { get; set; }
+        public DisputeEvidenceFraudulentOptions Fraudulent
+        {
+            get => this.fraudulent;
+            set
+            {
+                this.fraudulent = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Evidence provided when <c>reason</c> is 'merchandise_not_as_described'.
         /// </summary>
         [JsonProperty("merchandise_not_as_described")]
         [STJS.JsonPropertyName("merchandise_not_as_described")]
-        public DisputeEvidenceMerchandiseNotAsDescribedOptions MerchandiseNotAsDescribed { get; set; }
+        public DisputeEvidenceMerchandiseNotAsDescribedOptions MerchandiseNotAsDescribed
+        {
+            get => this.merchandiseNotAsDescribed;
+            set
+            {
+                this.merchandiseNotAsDescribed = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Evidence provided when <c>reason</c> is 'no_valid_authorization'.
         /// </summary>
         [JsonProperty("no_valid_authorization")]
         [STJS.JsonPropertyName("no_valid_authorization")]
-        public DisputeEvidenceNoValidAuthorizationOptions NoValidAuthorization { get; set; }
+        public DisputeEvidenceNoValidAuthorizationOptions NoValidAuthorization
+        {
+            get => this.noValidAuthorization;
+            set
+            {
+                this.noValidAuthorization = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Evidence provided when <c>reason</c> is 'not_received'.
         /// </summary>
         [JsonProperty("not_received")]
         [STJS.JsonPropertyName("not_received")]
-        public DisputeEvidenceNotReceivedOptions NotReceived { get; set; }
+        public DisputeEvidenceNotReceivedOptions NotReceived
+        {
+            get => this.notReceived;
+            set
+            {
+                this.notReceived = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Evidence provided when <c>reason</c> is 'other'.
         /// </summary>
         [JsonProperty("other")]
         [STJS.JsonPropertyName("other")]
-        public DisputeEvidenceOtherOptions Other { get; set; }
+        public DisputeEvidenceOtherOptions Other
+        {
+            get => this.other;
+            set
+            {
+                this.other = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The reason for filing the dispute. The evidence should be submitted in the field of the
@@ -73,6 +142,19 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("service_not_as_described")]
         [STJS.JsonPropertyName("service_not_as_described")]
-        public DisputeEvidenceServiceNotAsDescribedOptions ServiceNotAsDescribed { get; set; }
+        public DisputeEvidenceServiceNotAsDescribedOptions ServiceNotAsDescribed
+        {
+            get => this.serviceNotAsDescribed;
+            set
+            {
+                this.serviceNotAsDescribed = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

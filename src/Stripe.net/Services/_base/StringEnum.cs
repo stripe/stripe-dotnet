@@ -1,7 +1,5 @@
 namespace Stripe
 {
-    using System.Text.Json.Serialization;
-
     /// <summary>
     /// Abstract base class for string enum parameters.
     /// </summary>
@@ -25,6 +23,8 @@ namespace Stripe
     /// }
     /// </code>
     /// </example>
+    [Newtonsoft.Json.JsonConverter(typeof(Infrastructure.NewtonsoftStringEnumConverter))]
+    [NoSystemTextJsonAttributesNeeded("STJ converter is on each concrete subclass because STJ does not inherit converter attributes from base classes.")]
     public abstract class StringEnum
     {
         /// <summary>Initializes a new instance of the <see cref="StringEnum"/> class.</summary>
@@ -36,7 +36,7 @@ namespace Stripe
 
         /// <summary>Gets or sets the serialized value.</summary>
         /// <returns>The serialized value.</returns>
-        [JsonPropertyName("Value")]
+        [System.Text.Json.Serialization.JsonPropertyName("Value")]
         public string Value { get; protected set; }
 
         /// <summary>Returns the serialized value.</summary>

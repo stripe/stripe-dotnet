@@ -277,6 +277,14 @@ namespace Stripe.Infrastructure.FormEncoding
                 // reference types), so skip those to avoid encoding them in the request.
                 if (value == null)
                 {
+                    // If this is an emptyable property that was explicitly set to null,
+                    // encode it as an empty string to clear the field on the server.
+                    if (options is IHasSetTracking tracked && tracked.IsPropertySet(property.Name))
+                    {
+                        string newPrefixForNull = NewPrefix(key, keyPrefix);
+                        flatParams.Add(new KeyValuePair<string, object>(newPrefixForNull, string.Empty));
+                    }
+
                     continue;
                 }
 

@@ -9,6 +9,8 @@ namespace Stripe.Terminal
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class LocationCreateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// The full address of the location.
         /// </summary>
@@ -68,7 +70,15 @@ namespace Stripe.Terminal
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The phone number for the location.

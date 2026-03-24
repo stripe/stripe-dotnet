@@ -7,8 +7,17 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentPaymentMethodOptionsKonbiniOptions : INestedOptions
+    public class PaymentIntentPaymentMethodOptionsKonbiniOptions : INestedOptions, IHasSetTracking
     {
+        private string confirmationNumber;
+        private long? expiresAfterDays;
+        private DateTime? expiresAt;
+        private string productDescription;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// An optional 10 to 11 digit numeric-only string determining the confirmation code at
         /// applicable convenience stores. Must not consist of only zeroes and could be rejected in
@@ -16,7 +25,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("confirmation_number")]
         [STJS.JsonPropertyName("confirmation_number")]
-        public string ConfirmationNumber { get; set; }
+        public string ConfirmationNumber
+        {
+            get => this.confirmationNumber;
+            set
+            {
+                this.confirmationNumber = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The number of calendar days (between 1 and 60) after which Konbini payment instructions
@@ -26,7 +43,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("expires_after_days")]
         [STJS.JsonPropertyName("expires_after_days")]
-        public long? ExpiresAfterDays { get; set; }
+        public long? ExpiresAfterDays
+        {
+            get => this.expiresAfterDays;
+            set
+            {
+                this.expiresAfterDays = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The timestamp at which the Konbini payment instructions will expire. Only one of
@@ -36,7 +61,15 @@ namespace Stripe
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime? ExpiresAt { get; set; }
+        public DateTime? ExpiresAt
+        {
+            get => this.expiresAt;
+            set
+            {
+                this.expiresAt = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A product descriptor of up to 22 characters, which will appear to customers at the
@@ -44,7 +77,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("product_description")]
         [STJS.JsonPropertyName("product_description")]
-        public string ProductDescription { get; set; }
+        public string ProductDescription
+        {
+            get => this.productDescription;
+            set
+            {
+                this.productDescription = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
@@ -73,5 +114,10 @@ namespace Stripe
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

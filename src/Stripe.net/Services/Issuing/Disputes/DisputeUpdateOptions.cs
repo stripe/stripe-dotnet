@@ -9,6 +9,8 @@ namespace Stripe.Issuing
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class DisputeUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// The dispute amount in the card's currency and in the <a
         /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
@@ -32,6 +34,14 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

@@ -6,8 +6,17 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentPaymentMethodOptionsCardOptions : INestedOptions
+    public class PaymentIntentPaymentMethodOptionsCardOptions : INestedOptions, IHasSetTracking
     {
+        private string captureMethod;
+        private string setupFutureUsage;
+        private string statementDescriptorSuffixKana;
+        private string statementDescriptorSuffixKanji;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Controls when the funds are captured from the customer's account.
         ///
@@ -20,7 +29,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("capture_method")]
         [STJS.JsonPropertyName("capture_method")]
-        public string CaptureMethod { get; set; }
+        public string CaptureMethod
+        {
+            get => this.captureMethod;
+            set
+            {
+                this.captureMethod = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A single-use <c>cvc_update</c> Token that represents a card CVC value. When provided,
@@ -176,7 +193,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
-        public string SetupFutureUsage { get; set; }
+        public string SetupFutureUsage
+        {
+            get => this.setupFutureUsage;
+            set
+            {
+                this.setupFutureUsage = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Provides information about a card payment that customers see on their statements.
@@ -187,7 +212,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("statement_descriptor_suffix_kana")]
         [STJS.JsonPropertyName("statement_descriptor_suffix_kana")]
-        public string StatementDescriptorSuffixKana { get; set; }
+        public string StatementDescriptorSuffixKana
+        {
+            get => this.statementDescriptorSuffixKana;
+            set
+            {
+                this.statementDescriptorSuffixKana = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Provides information about a card payment that customers see on their statements.
@@ -198,7 +231,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("statement_descriptor_suffix_kanji")]
         [STJS.JsonPropertyName("statement_descriptor_suffix_kanji")]
-        public string StatementDescriptorSuffixKanji { get; set; }
+        public string StatementDescriptorSuffixKanji
+        {
+            get => this.statementDescriptorSuffixKanji;
+            set
+            {
+                this.statementDescriptorSuffixKanji = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Statement details for this payment intent. You can use this to override the merchant
@@ -215,5 +256,10 @@ namespace Stripe
         [JsonProperty("three_d_secure")]
         [STJS.JsonPropertyName("three_d_secure")]
         public PaymentIntentPaymentMethodOptionsCardThreeDSecureOptions ThreeDSecure { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

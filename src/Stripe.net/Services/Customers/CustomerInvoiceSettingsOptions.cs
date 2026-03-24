@@ -7,15 +7,30 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class CustomerInvoiceSettingsOptions : INestedOptions
+    public class CustomerInvoiceSettingsOptions : INestedOptions, IHasSetTracking
     {
+        private List<CustomerInvoiceSettingsCustomFieldOptions> customFields;
+        private CustomerInvoiceSettingsRenderingOptionsOptions renderingOptions;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The list of up to 4 default custom fields to be displayed on invoices for this customer.
         /// When updating, pass an empty string to remove previously-defined fields.
         /// </summary>
         [JsonProperty("custom_fields")]
         [STJS.JsonPropertyName("custom_fields")]
-        public List<CustomerInvoiceSettingsCustomFieldOptions> CustomFields { get; set; }
+        public List<CustomerInvoiceSettingsCustomFieldOptions> CustomFields
+        {
+            get => this.customFields;
+            set
+            {
+                this.customFields = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// ID of a payment method that's attached to the customer, to be used as the customer's
@@ -37,6 +52,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("rendering_options")]
         [STJS.JsonPropertyName("rendering_options")]
-        public CustomerInvoiceSettingsRenderingOptionsOptions RenderingOptions { get; set; }
+        public CustomerInvoiceSettingsRenderingOptionsOptions RenderingOptions
+        {
+            get => this.renderingOptions;
+            set
+            {
+                this.renderingOptions = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

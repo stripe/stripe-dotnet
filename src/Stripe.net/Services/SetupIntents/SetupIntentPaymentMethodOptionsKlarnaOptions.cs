@@ -7,8 +7,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SetupIntentPaymentMethodOptionsKlarnaOptions : INestedOptions
+    public class SetupIntentPaymentMethodOptionsKlarnaOptions : INestedOptions, IHasSetTracking
     {
+        private List<SetupIntentPaymentMethodOptionsKlarnaSubscriptionOptions> subscriptions;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The currency of the SetupIntent. Three letter ISO currency code.
         /// </summary>
@@ -43,6 +49,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("subscriptions")]
         [STJS.JsonPropertyName("subscriptions")]
-        public List<SetupIntentPaymentMethodOptionsKlarnaSubscriptionOptions> Subscriptions { get; set; }
+        public List<SetupIntentPaymentMethodOptionsKlarnaSubscriptionOptions> Subscriptions
+        {
+            get => this.subscriptions;
+            set
+            {
+                this.subscriptions = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

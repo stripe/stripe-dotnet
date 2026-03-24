@@ -9,6 +9,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceItemCreateOptions : BaseOptions, IHasMetadata
     {
+        private List<InvoiceItemDiscountOptions> discounts;
+        private Dictionary<string, string> metadata;
+        private string taxCode;
+
         /// <summary>
         /// The integer amount in cents (or local equivalent) of the charge to be applied to the
         /// upcoming invoice. Passing in a negative <c>amount</c> will reduce the <c>amount_due</c>
@@ -63,7 +67,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
-        public List<InvoiceItemDiscountOptions> Discounts { get; set; }
+        public List<InvoiceItemDiscountOptions> Discounts
+        {
+            get => this.discounts;
+            set
+            {
+                this.discounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The ID of an existing invoice to add this invoice item to. For subscription invoices,
@@ -93,7 +105,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The period associated with this invoice item. When set to different values, the period
@@ -170,7 +190,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_code")]
         [STJS.JsonPropertyName("tax_code")]
-        public string TaxCode { get; set; }
+        public string TaxCode
+        {
+            get => this.taxCode;
+            set
+            {
+                this.taxCode = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The tax rates which apply to the invoice item. When set, the <c>default_tax_rates</c> on

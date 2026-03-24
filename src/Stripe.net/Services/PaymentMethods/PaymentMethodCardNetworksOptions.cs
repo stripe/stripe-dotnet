@@ -6,8 +6,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentMethodCardNetworksOptions : INestedOptions
+    public class PaymentMethodCardNetworksOptions : INestedOptions, IHasSetTracking
     {
+        private string preferred;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The customer's preferred card network for co-branded cards. Supports
         /// <c>cartes_bancaires</c>, <c>mastercard</c>, or <c>visa</c>. Selection of a network that
@@ -16,6 +22,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("preferred")]
         [STJS.JsonPropertyName("preferred")]
-        public string Preferred { get; set; }
+        public string Preferred
+        {
+            get => this.preferred;
+            set
+            {
+                this.preferred = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

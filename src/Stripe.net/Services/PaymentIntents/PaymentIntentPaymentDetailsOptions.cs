@@ -7,8 +7,15 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentPaymentDetailsOptions : INestedOptions
+    public class PaymentIntentPaymentDetailsOptions : INestedOptions, IHasSetTracking
     {
+        private string customerReference;
+        private string orderReference;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Car rental details for this PaymentIntent.
         /// </summary>
@@ -31,7 +38,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("customer_reference")]
         [STJS.JsonPropertyName("customer_reference")]
-        public string CustomerReference { get; set; }
+        public string CustomerReference
+        {
+            get => this.customerReference;
+            set
+            {
+                this.customerReference = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Event details for this PaymentIntent.

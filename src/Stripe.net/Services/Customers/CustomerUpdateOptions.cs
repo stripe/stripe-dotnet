@@ -9,6 +9,13 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CustomerUpdateOptions : BaseOptions, IHasMetadata
     {
+        private AddressOptions address;
+        private string businessName;
+        private string individualName;
+        private Dictionary<string, string> metadata;
+        private ShippingOptions shipping;
+        private string taxExempt;
+
         /// <summary>
         /// The customer's address. Learn about <a
         /// href="https://docs.stripe.com/invoicing/taxes?dashboard-or-api=dashboard#set-up-customer">country-specific
@@ -16,7 +23,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
-        public AddressOptions Address { get; set; }
+        public AddressOptions Address
+        {
+            get => this.address;
+            set
+            {
+                this.address = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// An integer amount in cents (or local equivalent) that represents the customer's current
@@ -33,7 +48,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("business_name")]
         [STJS.JsonPropertyName("business_name")]
-        public string BusinessName { get; set; }
+        public string BusinessName
+        {
+            get => this.businessName;
+            set
+            {
+                this.businessName = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Balance information and default balance settings for this customer.
@@ -79,7 +102,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("individual_name")]
         [STJS.JsonPropertyName("individual_name")]
-        public string IndividualName { get; set; }
+        public string IndividualName
+        {
+            get => this.individualName;
+            set
+            {
+                this.individualName = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The prefix for the customer used to generate unique invoice numbers. Must be 3–12
@@ -104,7 +135,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The customer's full name or business name.
@@ -139,7 +178,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("shipping")]
         [STJS.JsonPropertyName("shipping")]
-        public ShippingOptions Shipping { get; set; }
+        public ShippingOptions Shipping
+        {
+            get => this.shipping;
+            set
+            {
+                this.shipping = value;
+                this.SetTracker.Track();
+            }
+        }
 
         [JsonProperty("source")]
         [JsonConverter(typeof(AnyOfConverter))]
@@ -160,7 +207,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_exempt")]
         [STJS.JsonPropertyName("tax_exempt")]
-        public string TaxExempt { get; set; }
+        public string TaxExempt
+        {
+            get => this.taxExempt;
+            set
+            {
+                this.taxExempt = value;
+                this.SetTracker.Track();
+            }
+        }
 
         [JsonProperty("validate")]
         [STJS.JsonPropertyName("validate")]
