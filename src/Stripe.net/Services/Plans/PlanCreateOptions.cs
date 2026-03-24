@@ -9,6 +9,8 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PlanCreateOptions : BaseOptions, IHasId, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// Whether the plan is currently available for new subscriptions. Defaults to <c>true</c>.
         /// </summary>
@@ -92,7 +94,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The meter tracking the usage of a metered price.

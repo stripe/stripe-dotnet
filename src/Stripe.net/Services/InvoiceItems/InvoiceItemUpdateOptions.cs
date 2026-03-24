@@ -9,6 +9,11 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceItemUpdateOptions : BaseOptions, IHasMetadata
     {
+        private List<InvoiceItemDiscountOptions> discounts;
+        private Dictionary<string, string> metadata;
+        private string taxCode;
+        private List<string> taxRates;
+
         /// <summary>
         /// The integer amount in cents (or local equivalent) of the charge to be applied to the
         /// upcoming invoice. If you want to apply a credit to the customer's account, pass a
@@ -42,7 +47,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
-        public List<InvoiceItemDiscountOptions> Discounts { get; set; }
+        public List<InvoiceItemDiscountOptions> Discounts
+        {
+            get => this.discounts;
+            set
+            {
+                this.discounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
@@ -52,7 +65,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The period associated with this invoice item. When set to different values, the period
@@ -118,7 +139,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_code")]
         [STJS.JsonPropertyName("tax_code")]
-        public string TaxCode { get; set; }
+        public string TaxCode
+        {
+            get => this.taxCode;
+            set
+            {
+                this.taxCode = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The tax rates which apply to the invoice item. When set, the <c>default_tax_rates</c> on
@@ -127,7 +156,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_rates")]
         [STJS.JsonPropertyName("tax_rates")]
-        public List<string> TaxRates { get; set; }
+        public List<string> TaxRates
+        {
+            get => this.taxRates;
+            set
+            {
+                this.taxRates = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The decimal unit amount in cents (or local equivalent) of the charge to be applied to

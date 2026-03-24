@@ -9,6 +9,13 @@ namespace Stripe.Terminal
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class LocationUpdateOptions : BaseOptions, IHasMetadata
     {
+        private string configurationOverrides;
+        private string displayName;
+        private string displayNameKana;
+        private string displayNameKanji;
+        private Dictionary<string, string> metadata;
+        private string phone;
+
         /// <summary>
         /// The full address of the location. You can't change the location's <c>country</c>. If you
         /// need to modify the <c>country</c> field, create a new <c>Location</c> object and
@@ -37,28 +44,60 @@ namespace Stripe.Terminal
         /// </summary>
         [JsonProperty("configuration_overrides")]
         [STJS.JsonPropertyName("configuration_overrides")]
-        public string ConfigurationOverrides { get; set; }
+        public string ConfigurationOverrides
+        {
+            get => this.configurationOverrides;
+            set
+            {
+                this.configurationOverrides = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A name for the location.
         /// </summary>
         [JsonProperty("display_name")]
         [STJS.JsonPropertyName("display_name")]
-        public string DisplayName { get; set; }
+        public string DisplayName
+        {
+            get => this.displayName;
+            set
+            {
+                this.displayName = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The Kana variation of the name for the location (Japan only).
         /// </summary>
         [JsonProperty("display_name_kana")]
         [STJS.JsonPropertyName("display_name_kana")]
-        public string DisplayNameKana { get; set; }
+        public string DisplayNameKana
+        {
+            get => this.displayNameKana;
+            set
+            {
+                this.displayNameKana = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The Kanji variation of the name for the location (Japan only).
         /// </summary>
         [JsonProperty("display_name_kanji")]
         [STJS.JsonPropertyName("display_name_kanji")]
-        public string DisplayNameKanji { get; set; }
+        public string DisplayNameKanji
+        {
+            get => this.displayNameKanji;
+            set
+            {
+                this.displayNameKanji = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
@@ -68,13 +107,29 @@ namespace Stripe.Terminal
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The phone number for the location.
         /// </summary>
         [JsonProperty("phone")]
         [STJS.JsonPropertyName("phone")]
-        public string Phone { get; set; }
+        public string Phone
+        {
+            get => this.phone;
+            set
+            {
+                this.phone = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

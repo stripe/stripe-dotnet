@@ -6,15 +6,33 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class DisputeEvidenceDuplicateOptions : INestedOptions
+    public class DisputeEvidenceDuplicateOptions : INestedOptions, IHasSetTracking
     {
+        private string additionalDocumentation;
+        private string cardStatement;
+        private string cashReceipt;
+        private string checkImage;
+        private string explanation;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>)
         /// Additional documentation supporting the dispute.
         /// </summary>
         [JsonProperty("additional_documentation")]
         [STJS.JsonPropertyName("additional_documentation")]
-        public string AdditionalDocumentation { get; set; }
+        public string AdditionalDocumentation
+        {
+            get => this.additionalDocumentation;
+            set
+            {
+                this.additionalDocumentation = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>) Copy of
@@ -22,7 +40,15 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("card_statement")]
         [STJS.JsonPropertyName("card_statement")]
-        public string CardStatement { get; set; }
+        public string CardStatement
+        {
+            get => this.cardStatement;
+            set
+            {
+                this.cardStatement = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>) Copy of
@@ -30,7 +56,15 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("cash_receipt")]
         [STJS.JsonPropertyName("cash_receipt")]
-        public string CashReceipt { get; set; }
+        public string CashReceipt
+        {
+            get => this.cashReceipt;
+            set
+            {
+                this.cashReceipt = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>) Image of
@@ -38,14 +72,30 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("check_image")]
         [STJS.JsonPropertyName("check_image")]
-        public string CheckImage { get; set; }
+        public string CheckImage
+        {
+            get => this.checkImage;
+            set
+            {
+                this.checkImage = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
         [JsonProperty("explanation")]
         [STJS.JsonPropertyName("explanation")]
-        public string Explanation { get; set; }
+        public string Explanation
+        {
+            get => this.explanation;
+            set
+            {
+                this.explanation = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Transaction (e.g., ipi_...) that the disputed transaction is a duplicate of. Of the two
@@ -54,5 +104,10 @@ namespace Stripe.Issuing
         [JsonProperty("original_transaction")]
         [STJS.JsonPropertyName("original_transaction")]
         public string OriginalTransaction { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

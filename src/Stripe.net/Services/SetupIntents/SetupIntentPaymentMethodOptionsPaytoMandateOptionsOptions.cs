@@ -6,14 +6,34 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SetupIntentPaymentMethodOptionsPaytoMandateOptionsOptions : INestedOptions
+    public class SetupIntentPaymentMethodOptionsPaytoMandateOptionsOptions : INestedOptions, IHasSetTracking
     {
+        private long? amount;
+        private string amountType;
+        private string endDate;
+        private string paymentSchedule;
+        private long? paymentsPerPeriod;
+        private string purpose;
+        private string startDate;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Amount that will be collected. It is required when <c>amount_type</c> is <c>fixed</c>.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
-        public long? Amount { get; set; }
+        public long? Amount
+        {
+            get => this.amount;
+            set
+            {
+                this.amount = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The type of amount that will be collected. The amount charged must be exact or up to the
@@ -23,7 +43,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("amount_type")]
         [STJS.JsonPropertyName("amount_type")]
-        public string AmountType { get; set; }
+        public string AmountType
+        {
+            get => this.amountType;
+            set
+            {
+                this.amountType = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Date, in YYYY-MM-DD format, after which payments will not be collected. Defaults to no
@@ -31,7 +59,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("end_date")]
         [STJS.JsonPropertyName("end_date")]
-        public string EndDate { get; set; }
+        public string EndDate
+        {
+            get => this.endDate;
+            set
+            {
+                this.endDate = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The periodicity at which payments will be collected. Defaults to <c>adhoc</c>.
@@ -40,7 +76,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payment_schedule")]
         [STJS.JsonPropertyName("payment_schedule")]
-        public string PaymentSchedule { get; set; }
+        public string PaymentSchedule
+        {
+            get => this.paymentSchedule;
+            set
+            {
+                this.paymentSchedule = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The number of payments that will be made during a payment period. Defaults to 1 except
@@ -48,7 +92,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payments_per_period")]
         [STJS.JsonPropertyName("payments_per_period")]
-        public long? PaymentsPerPeriod { get; set; }
+        public long? PaymentsPerPeriod
+        {
+            get => this.paymentsPerPeriod;
+            set
+            {
+                this.paymentsPerPeriod = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The purpose for which payments are made. Has a default value based on your merchant
@@ -59,7 +111,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("purpose")]
         [STJS.JsonPropertyName("purpose")]
-        public string Purpose { get; set; }
+        public string Purpose
+        {
+            get => this.purpose;
+            set
+            {
+                this.purpose = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Date, in YYYY-MM-DD format, from which payments will be collected. Defaults to
@@ -67,6 +127,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("start_date")]
         [STJS.JsonPropertyName("start_date")]
-        public string StartDate { get; set; }
+        public string StartDate
+        {
+            get => this.startDate;
+            set
+            {
+                this.startDate = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

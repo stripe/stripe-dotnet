@@ -9,6 +9,15 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentUpdateOptions : BaseOptions, IHasMetadata
     {
+        private PaymentIntentAmountDetailsOptions amountDetails;
+        private long? applicationFeeAmount;
+        private List<string> excludedPaymentMethodTypes;
+        private Dictionary<string, string> metadata;
+        private PaymentIntentPaymentDetailsOptions paymentDetails;
+        private string receiptEmail;
+        private string setupFutureUsage;
+        private ChargeShippingOptions shipping;
+
         /// <summary>
         /// Amount intended to be collected by this PaymentIntent. A positive integer representing
         /// how much to charge in the <a
@@ -28,7 +37,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("amount_details")]
         [STJS.JsonPropertyName("amount_details")]
-        public PaymentIntentAmountDetailsOptions AmountDetails { get; set; }
+        public PaymentIntentAmountDetailsOptions AmountDetails
+        {
+            get => this.amountDetails;
+            set
+            {
+                this.amountDetails = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The amount of the application fee (if any) that will be requested to be applied to the
@@ -40,7 +57,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("application_fee_amount")]
         [STJS.JsonPropertyName("application_fee_amount")]
-        public long? ApplicationFeeAmount { get; set; }
+        public long? ApplicationFeeAmount
+        {
+            get => this.applicationFeeAmount;
+            set
+            {
+                this.applicationFeeAmount = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
@@ -119,7 +144,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("excluded_payment_method_types")]
         [STJS.JsonPropertyName("excluded_payment_method_types")]
-        public List<string> ExcludedPaymentMethodTypes { get; set; }
+        public List<string> ExcludedPaymentMethodTypes
+        {
+            get => this.excludedPaymentMethodTypes;
+            set
+            {
+                this.excludedPaymentMethodTypes = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Automations to be run during the PaymentIntent lifecycle.
@@ -136,14 +169,30 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Provides industry-specific information about the charge.
         /// </summary>
         [JsonProperty("payment_details")]
         [STJS.JsonPropertyName("payment_details")]
-        public PaymentIntentPaymentDetailsOptions PaymentDetails { get; set; }
+        public PaymentIntentPaymentDetailsOptions PaymentDetails
+        {
+            get => this.paymentDetails;
+            set
+            {
+                this.paymentDetails = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, or <a
@@ -200,7 +249,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("receipt_email")]
         [STJS.JsonPropertyName("receipt_email")]
-        public string ReceiptEmail { get; set; }
+        public string ReceiptEmail
+        {
+            get => this.receiptEmail;
+            set
+            {
+                this.receiptEmail = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
@@ -229,14 +286,30 @@ namespace Stripe
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
-        public string SetupFutureUsage { get; set; }
+        public string SetupFutureUsage
+        {
+            get => this.setupFutureUsage;
+            set
+            {
+                this.setupFutureUsage = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Shipping information for this PaymentIntent.
         /// </summary>
         [JsonProperty("shipping")]
         [STJS.JsonPropertyName("shipping")]
-        public ChargeShippingOptions Shipping { get; set; }
+        public ChargeShippingOptions Shipping
+        {
+            get => this.shipping;
+            set
+            {
+                this.shipping = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Text that appears on the customer's statement as the statement descriptor for a non-card
