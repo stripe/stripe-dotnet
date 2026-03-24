@@ -7,8 +7,14 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ConfigurationFeaturesSubscriptionCancelCancellationReasonOptions : INestedOptions
+    public class ConfigurationFeaturesSubscriptionCancelCancellationReasonOptions : INestedOptions, IHasSetTracking
     {
+        private List<string> options;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Whether the feature is enabled.
         /// </summary>
@@ -24,6 +30,19 @@ namespace Stripe.BillingPortal
         /// </summary>
         [JsonProperty("options")]
         [STJS.JsonPropertyName("options")]
-        public List<string> Options { get; set; }
+        public List<string> Options
+        {
+            get => this.options;
+            set
+            {
+                this.options = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

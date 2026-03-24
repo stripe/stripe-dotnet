@@ -9,6 +9,8 @@ namespace Stripe.Issuing
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CardUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// Reason why the <c>status</c> of this card is <c>canceled</c>.
         /// One of: <c>lost</c>, or <c>stolen</c>.
@@ -25,7 +27,15 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         [JsonProperty("personalization_design")]
         [STJS.JsonPropertyName("personalization_design")]

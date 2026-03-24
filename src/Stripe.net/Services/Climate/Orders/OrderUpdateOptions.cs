@@ -9,13 +9,23 @@ namespace Stripe.Climate
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OrderUpdateOptions : BaseOptions, IHasMetadata
     {
+        private OrderBeneficiaryOptions beneficiary;
+
         /// <summary>
         /// Publicly sharable reference for the end beneficiary of carbon removal. Assumed to be the
         /// Stripe account if not set.
         /// </summary>
         [JsonProperty("beneficiary")]
         [STJS.JsonPropertyName("beneficiary")]
-        public OrderBeneficiaryOptions Beneficiary { get; set; }
+        public OrderBeneficiaryOptions Beneficiary
+        {
+            get => this.beneficiary;
+            set
+            {
+                this.beneficiary = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can

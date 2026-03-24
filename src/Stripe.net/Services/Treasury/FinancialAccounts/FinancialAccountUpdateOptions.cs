@@ -9,6 +9,8 @@ namespace Stripe.Treasury
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class FinancialAccountUpdateOptions : BaseOptions, IHasMetadata
     {
+        private string nickname;
+
         /// <summary>
         /// Encodes whether a FinancialAccount has access to a particular feature, with a status
         /// enum and associated <c>status_details</c>. Stripe or the platform may control features
@@ -41,7 +43,15 @@ namespace Stripe.Treasury
         /// </summary>
         [JsonProperty("nickname")]
         [STJS.JsonPropertyName("nickname")]
-        public string Nickname { get; set; }
+        public string Nickname
+        {
+            get => this.nickname;
+            set
+            {
+                this.nickname = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The set of functionalities that the platform can restrict on the FinancialAccount.

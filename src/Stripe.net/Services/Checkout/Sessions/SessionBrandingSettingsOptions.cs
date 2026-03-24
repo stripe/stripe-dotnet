@@ -6,15 +6,32 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SessionBrandingSettingsOptions : INestedOptions
+    public class SessionBrandingSettingsOptions : INestedOptions, IHasSetTracking
     {
+        private string backgroundColor;
+        private string borderStyle;
+        private string buttonColor;
+        private string fontFamily;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// A hex color value starting with <c>#</c> representing the background color for the
         /// Checkout Session.
         /// </summary>
         [JsonProperty("background_color")]
         [STJS.JsonPropertyName("background_color")]
-        public string BackgroundColor { get; set; }
+        public string BackgroundColor
+        {
+            get => this.backgroundColor;
+            set
+            {
+                this.backgroundColor = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The border style for the Checkout Session.
@@ -22,7 +39,15 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("border_style")]
         [STJS.JsonPropertyName("border_style")]
-        public string BorderStyle { get; set; }
+        public string BorderStyle
+        {
+            get => this.borderStyle;
+            set
+            {
+                this.borderStyle = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A hex color value starting with <c>#</c> representing the button color for the Checkout
@@ -30,7 +55,15 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("button_color")]
         [STJS.JsonPropertyName("button_color")]
-        public string ButtonColor { get; set; }
+        public string ButtonColor
+        {
+            get => this.buttonColor;
+            set
+            {
+                this.buttonColor = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A string to override the business name shown on the Checkout Session. This only shows at
@@ -55,7 +88,15 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("font_family")]
         [STJS.JsonPropertyName("font_family")]
-        public string FontFamily { get; set; }
+        public string FontFamily
+        {
+            get => this.fontFamily;
+            set
+            {
+                this.fontFamily = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The icon for the Checkout Session. For best results, use a square image.
@@ -70,5 +111,10 @@ namespace Stripe.Checkout
         [JsonProperty("logo")]
         [STJS.JsonPropertyName("logo")]
         public SessionBrandingSettingsLogoOptions Logo { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

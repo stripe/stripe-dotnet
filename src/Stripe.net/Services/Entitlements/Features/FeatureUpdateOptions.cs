@@ -9,6 +9,8 @@ namespace Stripe.Entitlements
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class FeatureUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// Inactive features cannot be attached to new products and will not be returned from the
         /// features list endpoint.
@@ -23,7 +25,15 @@ namespace Stripe.Entitlements
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The feature's name, for your own purpose, not meant to be displayable to the customer.
