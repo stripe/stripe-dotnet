@@ -6,9 +6,19 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FinancialAccountPayments : StripeEntity<FinancialAccountPayments>
     {
+        /// <summary>
+        /// The balance of the <c>payments</c> FinancialAccount is a mix of payment processing and
+        /// stored value funds, and this field describes the breakdown between the two. The sum will
+        /// match the balance of the FinancialAccount.
+        /// </summary>
+        [JsonProperty("balance_by_funds_type")]
+        [STJS.JsonPropertyName("balance_by_funds_type")]
+        public FinancialAccountPaymentsBalanceByFundsType BalanceByFundsType { get; set; }
+
         /// <summary>
         /// The currency that non-settlement currency payments will be converted to.
         /// </summary>

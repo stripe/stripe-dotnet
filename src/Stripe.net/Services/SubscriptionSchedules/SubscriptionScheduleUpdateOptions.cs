@@ -6,9 +6,11 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionScheduleUpdateOptions : BaseOptions, IHasMetadata
     {
+        private List<SubscriptionScheduleBillingScheduleOptions> billingSchedules;
         private Dictionary<string, string> metadata;
 
         /// <summary>
@@ -28,7 +30,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing_schedules")]
         [STJS.JsonPropertyName("billing_schedules")]
-        public List<SubscriptionScheduleBillingScheduleOptions> BillingSchedules { get; set; }
+        public List<SubscriptionScheduleBillingScheduleOptions> BillingSchedules
+        {
+            get => this.billingSchedules;
+            set
+            {
+                this.billingSchedules = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Object representing the subscription schedule's default settings.

@@ -25,7 +25,6 @@ namespace Stripe.V2.Billing
 
         public virtual V2.Billing.PricingPlans.ComponentService Components => this.components ??= new V2.Billing.PricingPlans.ComponentService(
             this.Requestor);
-
         public virtual V2.Billing.PricingPlans.VersionService Versions => this.versions ??= new V2.Billing.PricingPlans.VersionService(
             this.Requestor);
 

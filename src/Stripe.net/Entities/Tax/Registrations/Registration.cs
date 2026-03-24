@@ -6,6 +6,7 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A Tax <c>Registration</c> lets us know that your business is registered to collect tax
     /// on payments within a region, enabling you to <a

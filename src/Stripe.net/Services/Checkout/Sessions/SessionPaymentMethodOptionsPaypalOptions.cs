@@ -6,6 +6,7 @@ namespace Stripe.Checkout
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionPaymentMethodOptionsPaypalOptions : INestedOptions, IHasSetTracking
     {
@@ -95,7 +96,15 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
-        public string SetupFutureUsage { get; set; }
+        public string SetupFutureUsage
+        {
+            get => this.setupFutureUsage;
+            set
+            {
+                this.setupFutureUsage = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The Stripe connected account IDs of the sellers on the platform for this transaction
@@ -106,5 +115,10 @@ namespace Stripe.Checkout
         [JsonProperty("subsellers")]
         [STJS.JsonPropertyName("subsellers")]
         public List<string> Subsellers { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

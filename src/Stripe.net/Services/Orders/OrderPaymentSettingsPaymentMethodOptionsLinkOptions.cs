@@ -6,9 +6,17 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class OrderPaymentSettingsPaymentMethodOptionsLinkOptions : INestedOptions
+    public class OrderPaymentSettingsPaymentMethodOptionsLinkOptions : INestedOptions, IHasSetTracking
     {
+        private string captureMethod;
+        private string setupFutureUsage;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Controls when the funds are captured from the customer's account.
         ///
@@ -21,7 +29,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("capture_method")]
         [STJS.JsonPropertyName("capture_method")]
-        public string CaptureMethod { get; set; }
+        public string CaptureMethod
+        {
+            get => this.captureMethod;
+            set
+            {
+                this.captureMethod = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// [Deprecated] This is a legacy parameter that no longer has any function.
@@ -58,6 +74,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
-        public string SetupFutureUsage { get; set; }
+        public string SetupFutureUsage
+        {
+            get => this.setupFutureUsage;
+            set
+            {
+                this.setupFutureUsage = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

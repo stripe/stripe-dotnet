@@ -6,6 +6,7 @@ namespace Stripe.V2.Reporting
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReportParametersArrayDetailsEnumDetails : StripeEntity<ReportParametersArrayDetailsEnumDetails>
     {

@@ -1,11 +1,12 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Events
 {
-    using System;
     using System.Threading.Tasks;
+    using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
+
 
     public class V2CoreHealthPaymentMethodErrorResolvedEventData : StripeEntity<V2CoreHealthPaymentMethodErrorResolvedEventData>
     {

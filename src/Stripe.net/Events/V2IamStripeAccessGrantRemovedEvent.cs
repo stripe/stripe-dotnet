@@ -9,5 +9,6 @@ namespace Stripe.Events
     /// </summary>
     public class V2IamStripeAccessGrantRemovedEvent : V2.Core.Event
     {
+
     }
 }

@@ -7,9 +7,16 @@ namespace Stripe.Checkout
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SessionSubscriptionDataOptions : INestedOptions, IHasMetadata
+    public class SessionSubscriptionDataOptions : INestedOptions, IHasMetadata, IHasSetTracking
     {
+        private long? trialPeriodDays;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// A non-negative decimal between 0 and 100, with at most two decimal places. This
         /// represents the percentage of the subscription invoice total that will be transferred to
@@ -115,7 +122,15 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("trial_period_days")]
         [STJS.JsonPropertyName("trial_period_days")]
-        public long? TrialPeriodDays { get; set; }
+        public long? TrialPeriodDays
+        {
+            get => this.trialPeriodDays;
+            set
+            {
+                this.trialPeriodDays = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Settings related to subscription trials.
@@ -123,5 +138,10 @@ namespace Stripe.Checkout
         [JsonProperty("trial_settings")]
         [STJS.JsonPropertyName("trial_settings")]
         public SessionSubscriptionDataTrialSettingsOptions TrialSettings { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

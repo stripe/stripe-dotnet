@@ -5,6 +5,7 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CadenceSettingsDataCollectionPaymentMethodOptionsCardMandateOptions : StripeEntity<CadenceSettingsDataCollectionPaymentMethodOptionsCardMandateOptions>
     {
@@ -12,6 +13,8 @@ namespace Stripe.V2.Billing
         /// Amount to be charged for future payments.
         /// </summary>
         [JsonProperty("amount")]
+        [JsonConverter(typeof(Int64StringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("amount")]
         public long? Amount { get; set; }
 

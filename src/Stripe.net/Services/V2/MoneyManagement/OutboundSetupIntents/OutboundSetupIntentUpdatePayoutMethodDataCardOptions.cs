@@ -5,9 +5,17 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OutboundSetupIntentUpdatePayoutMethodDataCardOptions : INestedOptions
     {
+        /// <summary>
+        /// The currency of the card.
+        /// </summary>
+        [JsonProperty("currency")]
+        [STJS.JsonPropertyName("currency")]
+        public string Currency { get; set; }
+
         /// <summary>
         /// The expiration month of the card.
         /// </summary>

@@ -6,9 +6,13 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ExternalAccountUpdateOptions : BaseOptions, IHasMetadata
     {
+        private string accountHolderType;
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// The name of the person or business that owns the bank account.
         /// </summary>
@@ -23,7 +27,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("account_holder_type")]
         [STJS.JsonPropertyName("account_holder_type")]
-        public string AccountHolderType { get; set; }
+        public string AccountHolderType
+        {
+            get => this.accountHolderType;
+            set
+            {
+                this.accountHolderType = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The bank account type. This can only be <c>checking</c> or <c>savings</c> in most
@@ -112,7 +124,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Cardholder name.

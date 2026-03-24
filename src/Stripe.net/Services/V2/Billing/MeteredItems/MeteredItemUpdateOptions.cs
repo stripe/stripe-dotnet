@@ -6,9 +6,12 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class MeteredItemUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// Description that customers will see in the invoice line item. Maximum length of 250
         /// characters.
@@ -18,7 +21,7 @@ namespace Stripe.V2.Billing
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// An internal key you can use to search for a particular billable item. Maximum length of
+        /// An internal key you can use to search for a particular metered item. Maximum length of
         /// 200 characters. To remove the lookup_key from the object, set it to null in the request.
         /// </summary>
         [JsonProperty("lookup_key")]
@@ -32,7 +35,16 @@ namespace Stripe.V2.Billing
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Stripe Tax details.

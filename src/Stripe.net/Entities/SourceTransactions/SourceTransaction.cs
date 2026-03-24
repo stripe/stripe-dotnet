@@ -6,6 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Some payment methods have no required amount that a customer must send. Customers can be
     /// instructed to send any amount, and it can be made up of multiple transactions. As such,

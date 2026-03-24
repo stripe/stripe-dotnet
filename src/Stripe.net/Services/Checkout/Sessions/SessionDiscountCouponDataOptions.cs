@@ -6,9 +6,16 @@ namespace Stripe.Checkout
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SessionDiscountCouponDataOptions : INestedOptions, IHasMetadata
+    public class SessionDiscountCouponDataOptions : INestedOptions, IHasMetadata, IHasSetTracking
     {
+        private Dictionary<string, string> metadata;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// A positive integer representing the amount to subtract from an invoice total (required
         /// if <c>percent_off</c> is not passed).
@@ -42,7 +49,15 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Name of the coupon displayed to customers on, for instance invoices, or receipts. By
@@ -59,5 +74,10 @@ namespace Stripe.Checkout
         [JsonProperty("percent_off")]
         [STJS.JsonPropertyName("percent_off")]
         public decimal? PercentOff { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

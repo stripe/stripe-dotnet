@@ -6,14 +6,34 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountSessionComponentsAppInstallFeaturesOptions : INestedOptions
+    public class AccountSessionComponentsAppInstallFeaturesOptions : INestedOptions, IHasSetTracking
     {
+        private List<string> allowedApps;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The list of apps allowed to be enabled in the embedded component.
         /// </summary>
         [JsonProperty("allowed_apps")]
         [STJS.JsonPropertyName("allowed_apps")]
-        public List<string> AllowedApps { get; set; }
+        public List<string> AllowedApps
+        {
+            get => this.allowedApps;
+            set
+            {
+                this.allowedApps = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

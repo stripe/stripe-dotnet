@@ -8,6 +8,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Subscriptions allow you to charge a customer on a recurring basis.
     ///

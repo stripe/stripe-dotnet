@@ -7,6 +7,7 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// When an <a href="https://docs.stripe.com/issuing">issued card</a> is used to make a
     /// purchase, an Issuing <c>Authorization</c> object is created. <a

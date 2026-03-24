@@ -6,6 +6,7 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OutboundTransferCreateOptions : BaseOptions, IHasMetadata
     {
@@ -53,6 +54,15 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("recipient_verification")]
         [STJS.JsonPropertyName("recipient_verification")]
         public string RecipientVerification { get; set; }
+
+        /// <summary>
+        /// The description that appears on the receiving end for an OutboundTransfer (for example,
+        /// on a bank statement). Must be between 3 and 22 characters long, and not contain
+        /// profanity.
+        /// </summary>
+        [JsonProperty("statement_descriptor")]
+        [STJS.JsonPropertyName("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
 
         /// <summary>
         /// To which payout method to send the OutboundTransfer.

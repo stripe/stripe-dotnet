@@ -6,6 +6,7 @@ namespace Stripe.FinancialConnections
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// An institution represents a financial institution to which an end user can connect using
     /// the Financial Connections authentication flow.

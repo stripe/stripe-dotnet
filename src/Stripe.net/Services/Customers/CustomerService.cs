@@ -40,22 +40,16 @@ namespace Stripe
 
         public virtual CustomerBalanceTransactionService BalanceTransactions => this.balanceTransactions ??= new CustomerBalanceTransactionService(
             this.Requestor);
-
         public virtual CustomerCashBalanceService CashBalance => this.cashBalance ??= new CustomerCashBalanceService(
             this.Requestor);
-
         public virtual CustomerCashBalanceTransactionService CashBalanceTransactions => this.cashBalanceTransactions ??= new CustomerCashBalanceTransactionService(
             this.Requestor);
-
         public virtual CustomerFundingInstructionsService FundingInstructions => this.fundingInstructions ??= new CustomerFundingInstructionsService(
             this.Requestor);
-
         public virtual CustomerPaymentMethodService PaymentMethods => this.paymentMethods ??= new CustomerPaymentMethodService(
             this.Requestor);
-
         public virtual CustomerPaymentSourceService PaymentSources => this.paymentSources ??= new CustomerPaymentSourceService(
             this.Requestor);
-
         public virtual CustomerTaxIdService TaxIds => this.taxIds ??= new CustomerTaxIdService(
             this.Requestor);
 

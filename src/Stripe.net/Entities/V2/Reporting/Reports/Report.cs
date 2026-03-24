@@ -6,6 +6,7 @@ namespace Stripe.V2.Reporting
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// The Report resource represents a customizable report template that provides insights
     /// into various aspects of your Stripe integration.

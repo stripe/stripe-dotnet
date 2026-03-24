@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A <c>Transfer</c> object is created when you move funds between Stripe accounts as part
     /// of Connect.

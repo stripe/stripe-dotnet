@@ -7,6 +7,7 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A Tax Transaction records the tax collected from or refunded to your customer.
     ///

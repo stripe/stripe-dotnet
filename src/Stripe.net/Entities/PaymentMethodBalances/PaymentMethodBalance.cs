@@ -6,6 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// PaymentMethodBalance objects represent balances available on a payment method. You can
     /// use v1/payment_methods/:id/check_balance to check the balance of a payment method.

@@ -6,6 +6,7 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Represents a record from the card network of a money movement or change in state for an
     /// Issuing dispute. These records are included in the settlement reports that we receive

@@ -5,6 +5,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// <a href="https://stripe.com/docs/tax/tax-categories">Tax codes</a> classify goods and
     /// services for tax purposes.

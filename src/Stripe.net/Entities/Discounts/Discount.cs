@@ -6,6 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A discount represents the actual application of a <a
     /// href="https://api.stripe.com#coupons">coupon</a> or <a

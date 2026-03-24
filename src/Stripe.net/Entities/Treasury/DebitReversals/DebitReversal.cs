@@ -7,6 +7,7 @@ namespace Stripe.Treasury
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// You can reverse some <a href="https://api.stripe.com#received_debits">ReceivedDebits</a>
     /// depending on their network and source flow. Reversing a ReceivedDebit leads to the

@@ -7,6 +7,7 @@ namespace Stripe.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Meter events represent actions that customers take in your system. You can use meter
     /// events to bill a customer based on their usage. Meter events are associated with billing

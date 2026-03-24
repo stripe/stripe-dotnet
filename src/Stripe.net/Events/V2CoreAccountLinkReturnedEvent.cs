@@ -5,6 +5,7 @@ namespace Stripe.Events
     using Newtonsoft.Json;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Occurs when the generated AccountLink is completed.
     /// </summary>
@@ -13,9 +14,13 @@ namespace Stripe.Events
         /// <summary>
         /// Data for the v2.core.account_link.returned event.
         /// </summary>
+
+
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]
 
         public V2CoreAccountLinkReturnedEventData Data { get; set; }
+
+
     }
 }

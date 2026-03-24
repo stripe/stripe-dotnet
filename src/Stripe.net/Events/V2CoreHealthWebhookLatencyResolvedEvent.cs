@@ -5,6 +5,7 @@ namespace Stripe.Events
     using Newtonsoft.Json;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Occurs when a webhook latency alert is resolved.
     /// </summary>
@@ -13,9 +14,13 @@ namespace Stripe.Events
         /// <summary>
         /// Data for the v2.core.health.webhook_latency.resolved event.
         /// </summary>
+
+
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]
 
         public V2CoreHealthWebhookLatencyResolvedEventData Data { get; set; }
+
+
     }
 }

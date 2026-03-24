@@ -7,6 +7,7 @@ namespace Stripe.SharedPayment
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// SharedPaymentGrantedToken is the view-only resource of a SharedPaymentIssuedToken, which
     /// is a limited-use reference to a PaymentMethod. When another Stripe merchant shares a

@@ -6,6 +6,7 @@ namespace Stripe.Treasury
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// TransactionEntries represent individual units of money movements within a single <a
     /// href="https://api.stripe.com#transactions">Transaction</a>.

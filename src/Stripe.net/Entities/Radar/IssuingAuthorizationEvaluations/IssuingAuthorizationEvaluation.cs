@@ -6,6 +6,7 @@ namespace Stripe.Radar
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Authorization Evaluations represent fraud risk assessments for Issuing card
     /// authorizations. They include fraud risk signals and contextual details about the

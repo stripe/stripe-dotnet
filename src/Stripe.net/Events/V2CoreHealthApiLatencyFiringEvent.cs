@@ -5,6 +5,7 @@ namespace Stripe.Events
     using Newtonsoft.Json;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Occurs when an API latency alert is firing.
     /// </summary>
@@ -13,9 +14,13 @@ namespace Stripe.Events
         /// <summary>
         /// Data for the v2.core.health.api_latency.firing event.
         /// </summary>
+
+
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]
 
         public V2CoreHealthApiLatencyFiringEventData Data { get; set; }
+
+
     }
 }

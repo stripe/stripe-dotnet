@@ -7,6 +7,7 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class InboundTransferTransferHistory : StripeEntity<InboundTransferTransferHistory>, IHasId
     {

@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A (partner) margin represents a specific discount distributed in partner reseller
     /// programs to business partners who resell products and services and earn a discount

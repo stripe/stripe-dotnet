@@ -6,6 +6,7 @@ namespace Stripe.V2
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Generated Microdeposits represent verification deposits sent to a financial address for
     /// ownership verification, containing the deposited amounts and status.

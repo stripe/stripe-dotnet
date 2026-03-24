@@ -6,6 +6,7 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A Billing Intent represents a proposed change to a customer's billing configuration,
     /// such as subscribing to a new service, modifying an existing subscription, or canceling
@@ -64,6 +65,14 @@ namespace Stripe.V2.Billing
         [JsonProperty("currency")]
         [STJS.JsonPropertyName("currency")]
         public string Currency { get; set; }
+
+        /// <summary>
+        /// Invoice resources associated with this Billing Intent. Populated when include parameters
+        /// are specified.
+        /// </summary>
+        [JsonProperty("invoice_resources")]
+        [STJS.JsonPropertyName("invoice_resources")]
+        public IntentInvoiceResources InvoiceResources { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if

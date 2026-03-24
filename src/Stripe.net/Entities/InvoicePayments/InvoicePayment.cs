@@ -6,6 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Invoice Payments represent payments made against invoices. Invoice Payments can be
     /// accessed in two ways: 1. By expanding the <c>payments</c> field on the <a

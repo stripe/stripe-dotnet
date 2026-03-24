@@ -5,6 +5,7 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TransactionFlow : StripeEntity<TransactionFlow>
     {
@@ -15,8 +16,12 @@ namespace Stripe.V2.MoneyManagement
         /// <c>charge</c>, <c>currency_conversion</c>, <c>dispute</c>, <c>fee_transaction</c>,
         /// <c>inbound_transfer</c>, <c>outbound_payment</c>, <c>outbound_transfer</c>,
         /// <c>payout</c>, <c>received_credit</c>, <c>received_debit</c>, <c>refund</c>,
-        /// <c>reserve_hold</c>, <c>reserve_release</c>, <c>topup</c>, <c>transfer</c>, or
-        /// <c>transfer_reversal</c>.
+        /// <c>reserve_hold</c>, <c>reserve_release</c>, <c>topup</c>, <c>transfer</c>,
+        /// <c>transfer_reversal</c>, <c>treasury_credit_reversal</c>,
+        /// <c>treasury_debit_reversal</c>, <c>treasury_inbound_transfer</c>,
+        /// <c>treasury_issuing_authorization</c>, <c>treasury_other</c>,
+        /// <c>treasury_outbound_payment</c>, <c>treasury_outbound_transfer</c>,
+        /// <c>treasury_received_credit</c>, or <c>treasury_received_debit</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
@@ -155,5 +160,62 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("transfer_reversal")]
         [STJS.JsonPropertyName("transfer_reversal")]
         public string TransferReversal { get; set; }
+
+        /// <summary>
+        /// If applicable, the ID of the Treasury CreditReversal that created this Transaction.
+        /// </summary>
+        [JsonProperty("treasury_credit_reversal")]
+        [STJS.JsonPropertyName("treasury_credit_reversal")]
+        public string TreasuryCreditReversal { get; set; }
+
+        /// <summary>
+        /// If applicable, the ID of the Treasury DebitReversal that created this Transaction.
+        /// </summary>
+        [JsonProperty("treasury_debit_reversal")]
+        [STJS.JsonPropertyName("treasury_debit_reversal")]
+        public string TreasuryDebitReversal { get; set; }
+
+        /// <summary>
+        /// If applicable, the ID of the Treasury InboundTransfer that created this Transaction.
+        /// </summary>
+        [JsonProperty("treasury_inbound_transfer")]
+        [STJS.JsonPropertyName("treasury_inbound_transfer")]
+        public string TreasuryInboundTransfer { get; set; }
+
+        /// <summary>
+        /// If applicable, the ID of the Treasury IssuingAuthorization that created this
+        /// Transaction.
+        /// </summary>
+        [JsonProperty("treasury_issuing_authorization")]
+        [STJS.JsonPropertyName("treasury_issuing_authorization")]
+        public string TreasuryIssuingAuthorization { get; set; }
+
+        /// <summary>
+        /// If applicable, the ID of the Treasury OutboundPayment that created this Transaction.
+        /// </summary>
+        [JsonProperty("treasury_outbound_payment")]
+        [STJS.JsonPropertyName("treasury_outbound_payment")]
+        public string TreasuryOutboundPayment { get; set; }
+
+        /// <summary>
+        /// If applicable, the ID of the Treasury OutboundTransfer that created this Transaction.
+        /// </summary>
+        [JsonProperty("treasury_outbound_transfer")]
+        [STJS.JsonPropertyName("treasury_outbound_transfer")]
+        public string TreasuryOutboundTransfer { get; set; }
+
+        /// <summary>
+        /// If applicable, the ID of the Treasury ReceivedCredit that created this Transaction.
+        /// </summary>
+        [JsonProperty("treasury_received_credit")]
+        [STJS.JsonPropertyName("treasury_received_credit")]
+        public string TreasuryReceivedCredit { get; set; }
+
+        /// <summary>
+        /// If applicable, the ID of the Treasury ReceivedDebit that created this Transaction.
+        /// </summary>
+        [JsonProperty("treasury_received_debit")]
+        [STJS.JsonPropertyName("treasury_received_debit")]
+        public string TreasuryReceivedDebit { get; set; }
     }
 }

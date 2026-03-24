@@ -5,9 +5,16 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class OrderPaymentSettingsPaymentMethodOptionsAcssDebitOptions : INestedOptions
+    public class OrderPaymentSettingsPaymentMethodOptionsAcssDebitOptions : INestedOptions, IHasSetTracking
     {
+        private string setupFutureUsage;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Additional fields for Mandate creation.
         /// </summary>
@@ -42,7 +49,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
-        public string SetupFutureUsage { get; set; }
+        public string SetupFutureUsage
+        {
+            get => this.setupFutureUsage;
+            set
+            {
+                this.setupFutureUsage = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Controls when Stripe will attempt to debit the funds from the customer's account. The
@@ -60,5 +75,10 @@ namespace Stripe
         [JsonProperty("verification_method")]
         [STJS.JsonPropertyName("verification_method")]
         public string VerificationMethod { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

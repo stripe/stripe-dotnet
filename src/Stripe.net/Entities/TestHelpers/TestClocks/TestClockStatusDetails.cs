@@ -5,6 +5,7 @@ namespace Stripe.TestHelpers
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TestClockStatusDetails : StripeEntity<TestClockStatusDetails>
     {

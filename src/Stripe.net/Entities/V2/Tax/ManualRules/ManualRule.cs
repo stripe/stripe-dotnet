@@ -7,6 +7,7 @@ namespace Stripe.V2.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A ManualRule holds tax rates for a BillableItem. It can hold at most 5 distinct tax
     /// rates.

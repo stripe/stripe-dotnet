@@ -6,9 +6,18 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class OrderPaymentSettingsPaymentMethodOptionsKlarnaOptions : INestedOptions
+    public class OrderPaymentSettingsPaymentMethodOptionsKlarnaOptions : INestedOptions, IHasSetTracking
     {
+        private string captureMethod;
+        private List<OrderPaymentSettingsPaymentMethodOptionsKlarnaSubscriptionOptions> subscriptions;
+        private OrderPaymentSettingsPaymentMethodOptionsKlarnaSupplementaryPurchaseDataOptions supplementaryPurchaseData;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Controls when the funds are captured from the customer's account.
         ///
@@ -21,7 +30,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("capture_method")]
         [STJS.JsonPropertyName("capture_method")]
-        public string CaptureMethod { get; set; }
+        public string CaptureMethod
+        {
+            get => this.captureMethod;
+            set
+            {
+                this.captureMethod = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// On-demand details if setting up or charging an on-demand payment.
@@ -79,13 +96,34 @@ namespace Stripe
         /// </summary>
         [JsonProperty("subscriptions")]
         [STJS.JsonPropertyName("subscriptions")]
-        public List<OrderPaymentSettingsPaymentMethodOptionsKlarnaSubscriptionOptions> Subscriptions { get; set; }
+        public List<OrderPaymentSettingsPaymentMethodOptionsKlarnaSubscriptionOptions> Subscriptions
+        {
+            get => this.subscriptions;
+            set
+            {
+                this.subscriptions = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Supplementary Purchase Data for the corresponding Klarna payment.
         /// </summary>
         [JsonProperty("supplementary_purchase_data")]
         [STJS.JsonPropertyName("supplementary_purchase_data")]
-        public OrderPaymentSettingsPaymentMethodOptionsKlarnaSupplementaryPurchaseDataOptions SupplementaryPurchaseData { get; set; }
+        public OrderPaymentSettingsPaymentMethodOptionsKlarnaSupplementaryPurchaseDataOptions SupplementaryPurchaseData
+        {
+            get => this.supplementaryPurchaseData;
+            set
+            {
+                this.supplementaryPurchaseData = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

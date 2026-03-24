@@ -7,6 +7,7 @@ namespace Stripe.V2.Payments
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// An OffSessionPayment allows you to create your own payment flow for recurring and
     /// unscheduled payments. In a single API request, you can initiate a payment and leverage
@@ -90,8 +91,8 @@ namespace Stripe.V2.Payments
 
         /// <summary>
         /// The reason why the OffSessionPayment failed.
-        /// One of: <c>authorization_expired</c>, <c>rejected_by_partner</c>, or
-        /// <c>retries_exhausted</c>.
+        /// One of: <c>authorization_expired</c>, <c>no_valid_payment_method</c>,
+        /// <c>rejected_by_partner</c>, or <c>retries_exhausted</c>.
         /// </summary>
         [JsonProperty("failure_reason")]
         [STJS.JsonPropertyName("failure_reason")]

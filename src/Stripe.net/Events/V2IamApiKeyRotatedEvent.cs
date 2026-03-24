@@ -5,6 +5,7 @@ namespace Stripe.Events
     using Newtonsoft.Json;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Occurs when an API Key is rotated.
     /// </summary>
@@ -13,9 +14,13 @@ namespace Stripe.Events
         /// <summary>
         /// Data for the v2.iam.api_key.rotated event.
         /// </summary>
+
+
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]
 
         public V2IamApiKeyRotatedEventData Data { get; set; }
+
+
     }
 }

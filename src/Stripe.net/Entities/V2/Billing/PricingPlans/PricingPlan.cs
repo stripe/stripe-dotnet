@@ -7,6 +7,7 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A Pricing Plan represents a bundled collection of billing components that define how
     /// customers are charged. Each plan can include multiple components such as Rate Cards for
@@ -66,13 +67,6 @@ namespace Stripe.V2.Billing
         [JsonProperty("display_name")]
         [STJS.JsonPropertyName("display_name")]
         public string DisplayName { get; set; }
-
-        /// <summary>
-        /// The ID of the latest version of the PricingPlan.
-        /// </summary>
-        [JsonProperty("latest_version")]
-        [STJS.JsonPropertyName("latest_version")]
-        public string LatestVersion { get; set; }
 
         /// <summary>
         /// The ID of the live version of the PricingPlan.

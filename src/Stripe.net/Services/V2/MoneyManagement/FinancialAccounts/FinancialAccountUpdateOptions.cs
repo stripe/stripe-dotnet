@@ -6,9 +6,12 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class FinancialAccountUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// A descriptive name for the FinancialAccount, up to 50 characters long. This name will be
         /// used in the Stripe Dashboard and embedded components.
@@ -22,6 +25,15 @@ namespace Stripe.V2.MoneyManagement
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

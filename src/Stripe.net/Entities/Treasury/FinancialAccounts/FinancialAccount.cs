@@ -7,6 +7,7 @@ namespace Stripe.Treasury
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Stripe Treasury provides users with a container for money called a FinancialAccount that
     /// is separate from their Payments balance. FinancialAccounts serve as the source and

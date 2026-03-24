@@ -6,6 +6,7 @@ namespace Stripe.FinancialConnections
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A Transaction represents a real transaction that affects a Financial Connections Account
     /// balance.

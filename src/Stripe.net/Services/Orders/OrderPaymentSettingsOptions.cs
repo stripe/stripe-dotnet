@@ -6,16 +6,33 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class OrderPaymentSettingsOptions : INestedOptions
+    public class OrderPaymentSettingsOptions : INestedOptions, IHasSetTracking
     {
+        private long? applicationFeeAmount;
+        private string returnUrl;
+        private OrderPaymentSettingsTransferDataOptions transferData;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The amount of the application fee (if any) that will be requested to be applied to the
         /// payment and transferred to the application owner's Stripe account.
         /// </summary>
         [JsonProperty("application_fee_amount")]
         [STJS.JsonPropertyName("application_fee_amount")]
-        public long? ApplicationFeeAmount { get; set; }
+        public long? ApplicationFeeAmount
+        {
+            get => this.applicationFeeAmount;
+            set
+            {
+                this.applicationFeeAmount = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// PaymentMethod-specific configuration to provide to the order's PaymentIntent.
@@ -44,7 +61,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("return_url")]
         [STJS.JsonPropertyName("return_url")]
-        public string ReturnUrl { get; set; }
+        public string ReturnUrl
+        {
+            get => this.returnUrl;
+            set
+            {
+                this.returnUrl = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// For non-card charges, you can use this value as the complete description that appears on
@@ -69,6 +94,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("transfer_data")]
         [STJS.JsonPropertyName("transfer_data")]
-        public OrderPaymentSettingsTransferDataOptions TransferData { get; set; }
+        public OrderPaymentSettingsTransferDataOptions TransferData
+        {
+            get => this.transferData;
+            set
+            {
+                this.transferData = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

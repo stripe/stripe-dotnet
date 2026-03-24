@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A SetupIntent guides you through the process of setting up and saving a customer's
     /// payment credentials for future payments. For example, you can use a SetupIntent to set

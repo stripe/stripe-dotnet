@@ -7,6 +7,7 @@ namespace Stripe.V2.Core
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// The ConnectionSession resource.
     /// </summary>

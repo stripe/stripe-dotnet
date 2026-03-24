@@ -7,6 +7,7 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A rate card custom pricing unit overage rate defines the conversion rate from a custom
     /// pricing unit to fiat currency when credits are exhausted. This enables automatic overage

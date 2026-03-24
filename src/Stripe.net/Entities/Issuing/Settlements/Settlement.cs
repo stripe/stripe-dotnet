@@ -7,6 +7,7 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// When a non-stripe BIN is used, any use of an <a
     /// href="https://docs.stripe.com/issuing">issued card</a> must be settled directly with the

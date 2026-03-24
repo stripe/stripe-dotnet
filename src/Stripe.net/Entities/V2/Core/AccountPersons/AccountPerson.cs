@@ -7,6 +7,7 @@ namespace Stripe.V2.Core
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A Person represents an individual associated with an Account's identity (for example, an
     /// owner, director, executive, or representative). Use Persons to provide and update

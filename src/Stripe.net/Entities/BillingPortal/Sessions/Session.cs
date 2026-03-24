@@ -6,6 +6,7 @@ namespace Stripe.BillingPortal
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// The Billing customer portal is a Stripe-hosted UI for subscription and billing
     /// management.

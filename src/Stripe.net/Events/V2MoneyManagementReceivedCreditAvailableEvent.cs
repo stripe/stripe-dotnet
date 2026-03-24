@@ -5,6 +5,7 @@ namespace Stripe.Events
     using Newtonsoft.Json;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Occurs when a ReceivedCredit's funds are received and are available in your balance.
     /// </summary>
@@ -13,14 +14,20 @@ namespace Stripe.Events
         /// <summary>
         /// Data for the v2.money_management.received_credit.available event.
         /// </summary>
+
+
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]
 
         public V2MoneyManagementReceivedCreditAvailableEventData Data { get; set; }
 
+
+
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
         /// </summary>
+
+
         [JsonProperty("related_object")]
         [STJS.JsonPropertyName("related_object")]
 
@@ -30,6 +37,8 @@ namespace Stripe.Events
         /// Asynchronously retrieves the related object from the API. Make an API request on every
         /// call.
         /// </summary>
+
+
         public Task<V2.MoneyManagement.ReceivedCredit> FetchRelatedObjectAsync()
         {
             return this.FetchRelatedObjectAsync<V2.MoneyManagement.ReceivedCredit>(this.RelatedObject);
@@ -38,6 +47,8 @@ namespace Stripe.Events
         /// <summary>
         /// Retrieves the related object from the API. Make an API request on every call.
         /// </summary>
+
+
         public V2.MoneyManagement.ReceivedCredit FetchRelatedObject()
         {
             return this.FetchRelatedObject<V2.MoneyManagement.ReceivedCredit>(this.RelatedObject);

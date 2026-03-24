@@ -5,6 +5,7 @@ namespace Stripe.V2.Billing.PricingPlans
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ComponentCreateServiceActionOptions : INestedOptions, IHasId
     {

@@ -6,6 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// This is an object representing your Stripe balance. You can retrieve it to see the
     /// balance currently on your Stripe account.

@@ -5,6 +5,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionPaymentSettingsPaymentMethodOptionsOptions : INestedOptions, IHasSetTracking
     {
@@ -12,9 +13,12 @@ namespace Stripe
         private SubscriptionPaymentSettingsPaymentMethodOptionsBancontactOptions bancontact;
         private SubscriptionPaymentSettingsPaymentMethodOptionsCardOptions card;
         private SubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalanceOptions customerBalance;
+        private SubscriptionPaymentSettingsPaymentMethodOptionsIdBankTransferOptions idBankTransfer;
         private SubscriptionPaymentSettingsPaymentMethodOptionsKonbiniOptions konbini;
         private SubscriptionPaymentSettingsPaymentMethodOptionsPaytoOptions payto;
+        private SubscriptionPaymentSettingsPaymentMethodOptionsPixOptions pix;
         private SubscriptionPaymentSettingsPaymentMethodOptionsSepaDebitOptions sepaDebit;
+        private SubscriptionPaymentSettingsPaymentMethodOptionsUpiOptions upi;
         private SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountOptions usBankAccount;
 
         [JsonIgnore]
@@ -91,7 +95,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("id_bank_transfer")]
         [STJS.JsonPropertyName("id_bank_transfer")]
-        public SubscriptionPaymentSettingsPaymentMethodOptionsIdBankTransferOptions IdBankTransfer { get; set; }
+        public SubscriptionPaymentSettingsPaymentMethodOptionsIdBankTransferOptions IdBankTransfer
+        {
+            get => this.idBankTransfer;
+            set
+            {
+                this.idBankTransfer = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// This sub-hash contains details about the Konbini payment method options to pass to the
@@ -131,7 +143,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("pix")]
         [STJS.JsonPropertyName("pix")]
-        public SubscriptionPaymentSettingsPaymentMethodOptionsPixOptions Pix { get; set; }
+        public SubscriptionPaymentSettingsPaymentMethodOptionsPixOptions Pix
+        {
+            get => this.pix;
+            set
+            {
+                this.pix = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// This sub-hash contains details about the SEPA Direct Debit payment method options to
@@ -155,7 +175,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("upi")]
         [STJS.JsonPropertyName("upi")]
-        public SubscriptionPaymentSettingsPaymentMethodOptionsUpiOptions Upi { get; set; }
+        public SubscriptionPaymentSettingsPaymentMethodOptionsUpiOptions Upi
+        {
+            get => this.upi;
+            set
+            {
+                this.upi = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// This sub-hash contains details about the ACH direct debit payment method options to pass

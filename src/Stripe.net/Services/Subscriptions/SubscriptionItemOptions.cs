@@ -6,6 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionItemOptions : INestedOptions, IHasId, IHasMetadata, IHasSetTracking
     {
@@ -128,7 +129,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_rates")]
         [STJS.JsonPropertyName("tax_rates")]
-        public List<string> TaxRates { get; set; }
+        public List<string> TaxRates
+        {
+            get => this.taxRates;
+            set
+            {
+                this.taxRates = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Define options to configure the trial on the subscription item.
@@ -136,5 +145,10 @@ namespace Stripe
         [JsonProperty("trial")]
         [STJS.JsonPropertyName("trial")]
         public SubscriptionItemTrialOptions Trial { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

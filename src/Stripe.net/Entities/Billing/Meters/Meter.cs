@@ -7,6 +7,7 @@ namespace Stripe.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Meters specify how to aggregate meter events over a billing period. Meter events
     /// represent the actions that customers take in your system. Meters attach to prices and

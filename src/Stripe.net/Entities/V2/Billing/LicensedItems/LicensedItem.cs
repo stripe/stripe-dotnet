@@ -7,6 +7,7 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A Licensed Item represents a billable item whose pricing is based on license fees. You
     /// can use license fees to specify the pricing and create subscriptions to these items.
@@ -53,7 +54,7 @@ namespace Stripe.V2.Billing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// An internal key you can use to search for a particular billable item. Maximum length of
+        /// An internal key you can use to search for a particular licensed item. Maximum length of
         /// 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]

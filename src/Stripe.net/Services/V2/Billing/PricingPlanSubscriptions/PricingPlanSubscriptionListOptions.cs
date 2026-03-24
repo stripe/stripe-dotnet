@@ -1,9 +1,11 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Billing
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
+
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PricingPlanSubscriptionListOptions : V2.ListOptions
@@ -17,6 +19,15 @@ namespace Stripe.V2.Billing
         public string BillingCadence { get; set; }
 
         /// <summary>
+        /// Expand to include additional data such as discount_details, billing_cadence_details, or
+        /// pricing_plan_component_details.
+        /// One of: <c>discount_details</c>, or <c>pricing_plan_component_details</c>.
+        /// </summary>
+        [JsonProperty("include")]
+        [STJS.JsonPropertyName("include")]
+        public List<string> Include { get; set; }
+
+        /// <summary>
         /// Filter by payer. Mutually exclusive with <c>billing_cadence</c>, <c>pricing_plan</c>,
         /// and <c>pricing_plan_version</c>.
         /// </summary>
@@ -25,7 +36,7 @@ namespace Stripe.V2.Billing
         public PricingPlanSubscriptionListPayerOptions Payer { get; set; }
 
         /// <summary>
-        /// Filter by PricingPlan ID. Mutually exlcusive with <c>billing_cadence</c>, <c>payer</c>,
+        /// Filter by PricingPlan ID. Mutually exclusive with <c>billing_cadence</c>, <c>payer</c>,
         /// and <c>pricing_plan_version</c>.
         /// </summary>
         [JsonProperty("pricing_plan")]
@@ -33,7 +44,7 @@ namespace Stripe.V2.Billing
         public string PricingPlan { get; set; }
 
         /// <summary>
-        /// Filter by Pricing Plan Version ID. Mutually exlcusive with <c>billing_cadence</c>,
+        /// Filter by Pricing Plan Version ID. Mutually exclusive with <c>billing_cadence</c>,
         /// <c>payer</c>, and <c>pricing_plan</c>.
         /// </summary>
         [JsonProperty("pricing_plan_version")]

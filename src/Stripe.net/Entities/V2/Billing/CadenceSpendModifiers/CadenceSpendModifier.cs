@@ -6,6 +6,7 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A Spend Modifier changes how spend is computed when billing for specific cadence.
     /// </summary>

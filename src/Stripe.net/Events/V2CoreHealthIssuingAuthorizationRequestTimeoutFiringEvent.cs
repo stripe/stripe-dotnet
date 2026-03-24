@@ -5,6 +5,7 @@ namespace Stripe.Events
     using Newtonsoft.Json;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Occurs when an issuing authorization request timeout alert is firing.
     /// </summary>
@@ -13,9 +14,13 @@ namespace Stripe.Events
         /// <summary>
         /// Data for the v2.core.health.issuing_authorization_request_timeout.firing event.
         /// </summary>
+
+
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]
 
         public V2CoreHealthIssuingAuthorizationRequestTimeoutFiringEventData Data { get; set; }
+
+
     }
 }

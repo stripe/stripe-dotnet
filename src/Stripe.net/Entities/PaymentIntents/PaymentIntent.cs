@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A PaymentIntent guides you through the process of collecting a payment from your
     /// customer. We recommend that you create exactly one PaymentIntent for each order or

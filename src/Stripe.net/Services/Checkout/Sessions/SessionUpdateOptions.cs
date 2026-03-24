@@ -6,9 +6,11 @@ namespace Stripe.Checkout
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionUpdateOptions : BaseOptions, IHasMetadata
     {
+        private List<SessionDiscountOptions> discounts;
         private Dictionary<string, string> metadata;
         private List<SessionShippingOptionOptions> shippingOptions;
 
@@ -33,7 +35,15 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
-        public List<SessionDiscountOptions> Discounts { get; set; }
+        public List<SessionDiscountOptions> Discounts
+        {
+            get => this.discounts;
+            set
+            {
+                this.discounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Generate a post-purchase Invoice for one-time payments.
@@ -86,7 +96,15 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("shipping_options")]
         [STJS.JsonPropertyName("shipping_options")]
-        public List<SessionShippingOptionOptions> ShippingOptions { get; set; }
+        public List<SessionShippingOptionOptions> ShippingOptions
+        {
+            get => this.shippingOptions;
+            set
+            {
+                this.shippingOptions = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A subset of parameters to be passed to subscription creation for Checkout Sessions in

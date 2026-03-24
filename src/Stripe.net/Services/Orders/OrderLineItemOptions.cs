@@ -6,9 +6,17 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class OrderLineItemOptions : INestedOptions, IHasId
+    public class OrderLineItemOptions : INestedOptions, IHasId, IHasSetTracking
     {
+        private List<OrderLineItemDiscountOptions> discounts;
+        private List<string> taxRates;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The description for the line item. Will default to the name of the associated product.
         /// </summary>
@@ -21,7 +29,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
-        public List<OrderLineItemDiscountOptions> Discounts { get; set; }
+        public List<OrderLineItemDiscountOptions> Discounts
+        {
+            get => this.discounts;
+            set
+            {
+                this.discounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The ID of an existing line item on the order.
@@ -99,6 +115,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_rates")]
         [STJS.JsonPropertyName("tax_rates")]
-        public List<string> TaxRates { get; set; }
+        public List<string> TaxRates
+        {
+            get => this.taxRates;
+            set
+            {
+                this.taxRates = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

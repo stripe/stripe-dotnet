@@ -6,9 +6,17 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class QuoteSubscriptionDataOverrideOptions : INestedOptions
+    public class QuoteSubscriptionDataOverrideOptions : INestedOptions, IHasSetTracking
     {
+        private QuoteSubscriptionDataOverrideBillOnAcceptanceOptions billOnAcceptance;
+        private string description;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Whether the override applies to an existing Subscription Schedule or a new Subscription
         /// Schedule.
@@ -22,7 +30,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("bill_on_acceptance")]
         [STJS.JsonPropertyName("bill_on_acceptance")]
-        public QuoteSubscriptionDataOverrideBillOnAcceptanceOptions BillOnAcceptance { get; set; }
+        public QuoteSubscriptionDataOverrideBillOnAcceptanceOptions BillOnAcceptance
+        {
+            get => this.billOnAcceptance;
+            set
+            {
+                this.billOnAcceptance = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Configures when the subscription schedule generates prorations for phase transitions.
@@ -59,7 +75,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description
+        {
+            get => this.description;
+            set
+            {
+                this.description = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Behavior of the subscription schedule and underlying subscription when it ends.
@@ -98,5 +122,10 @@ namespace Stripe
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]
         public string ProrationBehavior { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

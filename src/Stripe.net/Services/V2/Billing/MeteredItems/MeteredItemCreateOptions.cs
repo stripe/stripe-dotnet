@@ -6,6 +6,7 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class MeteredItemCreateOptions : BaseOptions, IHasMetadata
     {
@@ -25,8 +26,8 @@ namespace Stripe.V2.Billing
         public List<string> InvoicePresentationDimensions { get; set; }
 
         /// <summary>
-        /// An internal key you can use to search for a particular billable item. Must be unique
-        /// among billable items. Maximum length of 200 characters.
+        /// An internal key you can use to search for a particular metered item. Must be unique
+        /// among metered items. Maximum length of 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
         [STJS.JsonPropertyName("lookup_key")]

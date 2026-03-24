@@ -37,16 +37,12 @@ namespace Stripe
 
         public virtual QuoteComputedUpfrontLineItemsService ComputedUpfrontLineItems => this.computedUpfrontLineItems ??= new QuoteComputedUpfrontLineItemsService(
             this.Requestor);
-
         public virtual QuoteLineService Lines => this.lines ??= new QuoteLineService(
             this.Requestor);
-
         public virtual QuoteLineItemService LineItems => this.lineItems ??= new QuoteLineItemService(
             this.Requestor);
-
         public virtual QuotePreviewInvoiceService PreviewInvoices => this.previewInvoices ??= new QuotePreviewInvoiceService(
             this.Requestor);
-
         public virtual QuotePreviewSubscriptionScheduleService PreviewSubscriptionSchedules => this.previewSubscriptionSchedules ??= new QuotePreviewSubscriptionScheduleService(
             this.Requestor);
 

@@ -5,6 +5,7 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PricingPlanComponentLicenseFee : StripeEntity<PricingPlanComponentLicenseFee>, IHasId
     {
@@ -16,7 +17,7 @@ namespace Stripe.V2.Billing
         public string Id { get; set; }
 
         /// <summary>
-        /// The version of the LicenseFee. Defaults to 'latest', if not specified.
+        /// The ID of the License Fee Version. If not specified, defaults to 'latest'.
         /// </summary>
         [JsonProperty("version")]
         [STJS.JsonPropertyName("version")]

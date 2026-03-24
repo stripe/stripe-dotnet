@@ -7,6 +7,7 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// An Issuing <c>Cardholder</c> object represents an individual or business entity who is
     /// <a href="https://docs.stripe.com/issuing">issued</a> cards.

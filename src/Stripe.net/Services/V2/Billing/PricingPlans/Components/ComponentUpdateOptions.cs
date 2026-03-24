@@ -6,9 +6,12 @@ namespace Stripe.V2.Billing.PricingPlans
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ComponentUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// An identifier that can be used to find this component. Maximum length of 200 characters.
         /// </summary>
@@ -21,6 +24,15 @@ namespace Stripe.V2.Billing.PricingPlans
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

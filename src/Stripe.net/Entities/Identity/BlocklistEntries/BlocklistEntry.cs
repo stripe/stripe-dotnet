@@ -6,6 +6,7 @@ namespace Stripe.Identity
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A BlocklistEntry represents an entry in our identity verification blocklist. It helps
     /// prevent fraudulent users from repeatedly attempting verification with similar

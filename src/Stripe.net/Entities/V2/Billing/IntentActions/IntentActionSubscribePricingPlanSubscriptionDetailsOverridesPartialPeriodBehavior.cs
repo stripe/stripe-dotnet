@@ -5,11 +5,13 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class IntentActionSubscribePricingPlanSubscriptionDetailsOverridesPartialPeriodBehavior : StripeEntity<IntentActionSubscribePricingPlanSubscriptionDetailsOverridesPartialPeriodBehavior>
     {
         /// <summary>
         /// The type of behavior to override.
+        /// One of: <c>license_fee</c>, or <c>recurring_credit_grant</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

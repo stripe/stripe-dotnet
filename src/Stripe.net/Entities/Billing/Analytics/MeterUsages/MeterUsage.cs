@@ -6,6 +6,7 @@ namespace Stripe.Billing.Analytics
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A billing meter usage event represents an aggregated view of a customer’s billing meter
     /// events within a specified timeframe.

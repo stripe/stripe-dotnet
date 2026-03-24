@@ -23,10 +23,8 @@ namespace Stripe
 
         public virtual Identity.BlocklistEntryService BlocklistEntries => this.blocklistEntries ??= new Identity.BlocklistEntryService(
             this.Requestor);
-
         public virtual Identity.VerificationReportService VerificationReports => this.verificationReports ??= new Identity.VerificationReportService(
             this.Requestor);
-
         public virtual Identity.VerificationSessionService VerificationSessions => this.verificationSessions ??= new Identity.VerificationSessionService(
             this.Requestor);
     }

@@ -7,6 +7,7 @@ namespace Stripe.Climate
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Orders represent your intent to purchase a particular Climate product. When you create
     /// an order, the payment is deducted from your merchant balance.

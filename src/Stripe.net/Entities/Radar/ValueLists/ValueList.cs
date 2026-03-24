@@ -7,6 +7,7 @@ namespace Stripe.Radar
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Value lists allow you to group values together which can then be referenced in rules.
     ///

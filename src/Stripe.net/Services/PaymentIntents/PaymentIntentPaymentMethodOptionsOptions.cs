@@ -5,6 +5,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentPaymentMethodOptionsOptions : INestedOptions, IHasSetTracking
     {
@@ -20,7 +21,6 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsBillieOptions billie;
         private PaymentIntentPaymentMethodOptionsBlikOptions blik;
         private PaymentIntentPaymentMethodOptionsBoletoOptions boleto;
-        private PaymentIntentPaymentMethodOptionsCardOptions card;
         private PaymentIntentPaymentMethodOptionsCardPresentOptions cardPresent;
         private PaymentIntentPaymentMethodOptionsCashappOptions cashapp;
         private PaymentIntentPaymentMethodOptionsCryptoOptions crypto;
@@ -28,7 +28,9 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsEpsOptions eps;
         private PaymentIntentPaymentMethodOptionsFpxOptions fpx;
         private PaymentIntentPaymentMethodOptionsGiropayOptions giropay;
+        private PaymentIntentPaymentMethodOptionsGopayOptions gopay;
         private PaymentIntentPaymentMethodOptionsGrabpayOptions grabpay;
+        private PaymentIntentPaymentMethodOptionsIdBankTransferOptions idBankTransfer;
         private PaymentIntentPaymentMethodOptionsIdealOptions ideal;
         private PaymentIntentPaymentMethodOptionsInteracPresentOptions interacPresent;
         private PaymentIntentPaymentMethodOptionsKakaoPayOptions kakaoPay;
@@ -47,17 +49,21 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsPaycoOptions payco;
         private PaymentIntentPaymentMethodOptionsPaynowOptions paynow;
         private PaymentIntentPaymentMethodOptionsPaypalOptions paypal;
+        private PaymentIntentPaymentMethodOptionsPaypayOptions paypay;
         private PaymentIntentPaymentMethodOptionsPaytoOptions payto;
         private PaymentIntentPaymentMethodOptionsPixOptions pix;
         private PaymentIntentPaymentMethodOptionsPromptpayOptions promptpay;
+        private PaymentIntentPaymentMethodOptionsQrisOptions qris;
+        private PaymentIntentPaymentMethodOptionsRechnungOptions rechnung;
         private PaymentIntentPaymentMethodOptionsRevolutPayOptions revolutPay;
         private PaymentIntentPaymentMethodOptionsSamsungPayOptions samsungPay;
         private PaymentIntentPaymentMethodOptionsSatispayOptions satispay;
         private PaymentIntentPaymentMethodOptionsSepaDebitOptions sepaDebit;
+        private PaymentIntentPaymentMethodOptionsShopeepayOptions shopeepay;
         private PaymentIntentPaymentMethodOptionsSofortOptions sofort;
+        private PaymentIntentPaymentMethodOptionsStripeBalanceOptions stripeBalance;
         private PaymentIntentPaymentMethodOptionsSwishOptions swish;
         private PaymentIntentPaymentMethodOptionsTwintOptions twint;
-        private PaymentIntentPaymentMethodOptionsUpiOptions upi;
         private PaymentIntentPaymentMethodOptionsUsBankAccountOptions usBankAccount;
         private PaymentIntentPaymentMethodOptionsWechatPayOptions wechatPay;
         private PaymentIntentPaymentMethodOptionsZipOptions zip;
@@ -263,15 +269,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("card")]
         [STJS.JsonPropertyName("card")]
-        public PaymentIntentPaymentMethodOptionsCardOptions Card
-        {
-            get => this.card;
-            set
-            {
-                this.card = value;
-                this.SetTracker.Track();
-            }
-        }
+        public PaymentIntentPaymentMethodOptionsCardOptions Card { get; set; }
 
         /// <summary>
         /// If this is a <c>card_present</c> PaymentMethod, this sub-hash contains details about the
@@ -391,7 +389,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("gopay")]
         [STJS.JsonPropertyName("gopay")]
-        public PaymentIntentPaymentMethodOptionsGopayOptions Gopay { get; set; }
+        public PaymentIntentPaymentMethodOptionsGopayOptions Gopay
+        {
+            get => this.gopay;
+            set
+            {
+                this.gopay = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If this is a <c>grabpay</c> PaymentMethod, this sub-hash contains details about the
@@ -415,7 +421,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("id_bank_transfer")]
         [STJS.JsonPropertyName("id_bank_transfer")]
-        public PaymentIntentPaymentMethodOptionsIdBankTransferOptions IdBankTransfer { get; set; }
+        public PaymentIntentPaymentMethodOptionsIdBankTransferOptions IdBankTransfer
+        {
+            get => this.idBankTransfer;
+            set
+            {
+                this.idBankTransfer = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If this is a <c>ideal</c> PaymentMethod, this sub-hash contains details about the Ideal
@@ -711,7 +725,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("paypay")]
         [STJS.JsonPropertyName("paypay")]
-        public PaymentIntentPaymentMethodOptionsPaypayOptions Paypay { get; set; }
+        public PaymentIntentPaymentMethodOptionsPaypayOptions Paypay
+        {
+            get => this.paypay;
+            set
+            {
+                this.paypay = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If this is a <c>payto</c> PaymentMethod, this sub-hash contains details about the PayTo
@@ -767,7 +789,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("qris")]
         [STJS.JsonPropertyName("qris")]
-        public PaymentIntentPaymentMethodOptionsQrisOptions Qris { get; set; }
+        public PaymentIntentPaymentMethodOptionsQrisOptions Qris
+        {
+            get => this.qris;
+            set
+            {
+                this.qris = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If this is a <c>rechnung</c> PaymentMethod, this sub-hash contains details about the
@@ -775,7 +805,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("rechnung")]
         [STJS.JsonPropertyName("rechnung")]
-        public PaymentIntentPaymentMethodOptionsRechnungOptions Rechnung { get; set; }
+        public PaymentIntentPaymentMethodOptionsRechnungOptions Rechnung
+        {
+            get => this.rechnung;
+            set
+            {
+                this.rechnung = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If this is a <c>revolut_pay</c> PaymentMethod, this sub-hash contains details about the
@@ -847,7 +885,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("shopeepay")]
         [STJS.JsonPropertyName("shopeepay")]
-        public PaymentIntentPaymentMethodOptionsShopeepayOptions Shopeepay { get; set; }
+        public PaymentIntentPaymentMethodOptionsShopeepayOptions Shopeepay
+        {
+            get => this.shopeepay;
+            set
+            {
+                this.shopeepay = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If this is a <c>sofort</c> PaymentMethod, this sub-hash contains details about the
@@ -871,7 +917,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("stripe_balance")]
         [STJS.JsonPropertyName("stripe_balance")]
-        public PaymentIntentPaymentMethodOptionsStripeBalanceOptions StripeBalance { get; set; }
+        public PaymentIntentPaymentMethodOptionsStripeBalanceOptions StripeBalance
+        {
+            get => this.stripeBalance;
+            set
+            {
+                this.stripeBalance = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If this is a <c>Swish</c> PaymentMethod, this sub-hash contains details about the Swish

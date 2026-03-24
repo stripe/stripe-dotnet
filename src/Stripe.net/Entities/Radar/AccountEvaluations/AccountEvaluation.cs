@@ -7,6 +7,7 @@ namespace Stripe.Radar
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Account Evaluation resource returned by the Radar Account Evaluations API.
     /// </summary>

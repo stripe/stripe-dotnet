@@ -5,6 +5,7 @@ namespace Stripe.V2.Core.Vault
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class UsBankAccountCreateOptions : BaseOptions
     {
@@ -22,6 +23,13 @@ namespace Stripe.V2.Core.Vault
         [JsonProperty("bank_account_type")]
         [STJS.JsonPropertyName("bank_account_type")]
         public string BankAccountType { get; set; }
+
+        /// <summary>
+        /// The currency of the bank account.
+        /// </summary>
+        [JsonProperty("currency")]
+        [STJS.JsonPropertyName("currency")]
+        public string Currency { get; set; }
 
         /// <summary>
         /// The fedwire routing number of the bank account. Note that certain banks have the same

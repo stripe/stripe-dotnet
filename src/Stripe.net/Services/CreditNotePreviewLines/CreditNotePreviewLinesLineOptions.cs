@@ -6,8 +6,9 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class CreditNotePreviewLinesLineOptions : INestedOptions
+    public class CreditNotePreviewLinesLineOptions : INestedOptions, IHasSetTracking
     {
         private List<CreditNotePreviewLinesLineTaxAmountOptions> taxAmounts;
         private List<string> taxRates;

@@ -5,6 +5,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoicePaymentSettingsPaymentMethodOptionsOptions : INestedOptions, IHasSetTracking
     {
@@ -12,9 +13,12 @@ namespace Stripe
         private InvoicePaymentSettingsPaymentMethodOptionsBancontactOptions bancontact;
         private InvoicePaymentSettingsPaymentMethodOptionsCardOptions card;
         private InvoicePaymentSettingsPaymentMethodOptionsCustomerBalanceOptions customerBalance;
+        private InvoicePaymentSettingsPaymentMethodOptionsIdBankTransferOptions idBankTransfer;
         private InvoicePaymentSettingsPaymentMethodOptionsKonbiniOptions konbini;
         private InvoicePaymentSettingsPaymentMethodOptionsPaytoOptions payto;
+        private InvoicePaymentSettingsPaymentMethodOptionsPixOptions pix;
         private InvoicePaymentSettingsPaymentMethodOptionsSepaDebitOptions sepaDebit;
+        private InvoicePaymentSettingsPaymentMethodOptionsUpiOptions upi;
         private InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountOptions usBankAccount;
 
         [JsonIgnore]
@@ -91,7 +95,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("id_bank_transfer")]
         [STJS.JsonPropertyName("id_bank_transfer")]
-        public InvoicePaymentSettingsPaymentMethodOptionsIdBankTransferOptions IdBankTransfer { get; set; }
+        public InvoicePaymentSettingsPaymentMethodOptionsIdBankTransferOptions IdBankTransfer
+        {
+            get => this.idBankTransfer;
+            set
+            {
+                this.idBankTransfer = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If paying by <c>konbini</c>, this sub-hash contains details about the Konbini payment
@@ -131,7 +143,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("pix")]
         [STJS.JsonPropertyName("pix")]
-        public InvoicePaymentSettingsPaymentMethodOptionsPixOptions Pix { get; set; }
+        public InvoicePaymentSettingsPaymentMethodOptionsPixOptions Pix
+        {
+            get => this.pix;
+            set
+            {
+                this.pix = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If paying by <c>sepa_debit</c>, this sub-hash contains details about the SEPA Direct
@@ -155,7 +175,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("upi")]
         [STJS.JsonPropertyName("upi")]
-        public InvoicePaymentSettingsPaymentMethodOptionsUpiOptions Upi { get; set; }
+        public InvoicePaymentSettingsPaymentMethodOptionsUpiOptions Upi
+        {
+            get => this.upi;
+            set
+            {
+                this.upi = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If paying by <c>us_bank_account</c>, this sub-hash contains details about the ACH direct

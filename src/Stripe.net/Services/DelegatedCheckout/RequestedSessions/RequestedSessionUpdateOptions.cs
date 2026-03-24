@@ -6,9 +6,14 @@ namespace Stripe.DelegatedCheckout
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class RequestedSessionUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+        private RequestedSessionPaymentMethodDataOptions paymentMethodData;
+        private Dictionary<string, string> sharedMetadata;
+
         /// <summary>
         /// The details of the fulfillment.
         /// </summary>
@@ -28,7 +33,15 @@ namespace Stripe.DelegatedCheckout
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The payment method for this requested session.
@@ -42,13 +55,29 @@ namespace Stripe.DelegatedCheckout
         /// </summary>
         [JsonProperty("payment_method_data")]
         [STJS.JsonPropertyName("payment_method_data")]
-        public RequestedSessionPaymentMethodDataOptions PaymentMethodData { get; set; }
+        public RequestedSessionPaymentMethodDataOptions PaymentMethodData
+        {
+            get => this.paymentMethodData;
+            set
+            {
+                this.paymentMethodData = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The shared metadata for this requested session.
         /// </summary>
         [JsonProperty("shared_metadata")]
         [STJS.JsonPropertyName("shared_metadata")]
-        public Dictionary<string, string> SharedMetadata { get; set; }
+        public Dictionary<string, string> SharedMetadata
+        {
+            get => this.sharedMetadata;
+            set
+            {
+                this.sharedMetadata = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

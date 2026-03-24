@@ -7,6 +7,7 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A one-time item represents a product that can be charged as a one-time line item, used
     /// for overage charges when custom pricing unit credits are exhausted.

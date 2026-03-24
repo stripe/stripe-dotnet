@@ -27,22 +27,16 @@ namespace Stripe
 
         public virtual Tax.AssociationService Associations => this.associations ??= new Tax.AssociationService(
             this.Requestor);
-
         public virtual Tax.CalculationService Calculations => this.calculations ??= new Tax.CalculationService(
             this.Requestor);
-
         public virtual Tax.FormService Forms => this.forms ??= new Tax.FormService(
             this.Requestor);
-
         public virtual Tax.LocationService Locations => this.locations ??= new Tax.LocationService(
             this.Requestor);
-
         public virtual Tax.RegistrationService Registrations => this.registrations ??= new Tax.RegistrationService(
             this.Requestor);
-
         public virtual Tax.SettingsService Settings => this.settings ??= new Tax.SettingsService(
             this.Requestor);
-
         public virtual Tax.TransactionService Transactions => this.transactions ??= new Tax.TransactionService(
             this.Requestor);
     }

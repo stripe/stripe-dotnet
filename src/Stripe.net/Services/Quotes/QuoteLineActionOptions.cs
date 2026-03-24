@@ -6,9 +6,16 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class QuoteLineActionOptions : INestedOptions
+    public class QuoteLineActionOptions : INestedOptions, IHasSetTracking
     {
+        private Dictionary<string, string> setMetadata;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Details for the <c>add_discount</c> type.
         /// </summary>
@@ -70,7 +77,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("set_metadata")]
         [STJS.JsonPropertyName("set_metadata")]
-        public Dictionary<string, string> SetMetadata { get; set; }
+        public Dictionary<string, string> SetMetadata
+        {
+            get => this.setMetadata;
+            set
+            {
+                this.setMetadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The type of action the quote line performs.
@@ -82,5 +97,10 @@ namespace Stripe
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

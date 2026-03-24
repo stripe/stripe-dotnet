@@ -5,6 +5,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentPaymentMethodOptionsCardOptions : INestedOptions, IHasSetTracking
     {
@@ -12,6 +13,7 @@ namespace Stripe
         private string setupFutureUsage;
         private string statementDescriptorSuffixKana;
         private string statementDescriptorSuffixKanji;
+        private PaymentIntentPaymentMethodOptionsCardStatementDetailsOptions statementDetails;
 
         [JsonIgnore]
         [STJS.JsonIgnore]
@@ -257,7 +259,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("statement_details")]
         [STJS.JsonPropertyName("statement_details")]
-        public PaymentIntentPaymentMethodOptionsCardStatementDetailsOptions StatementDetails { get; set; }
+        public PaymentIntentPaymentMethodOptionsCardStatementDetailsOptions StatementDetails
+        {
+            get => this.statementDetails;
+            set
+            {
+                this.statementDetails = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If 3D Secure authentication was performed with a third-party provider, the

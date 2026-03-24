@@ -7,6 +7,7 @@ namespace Stripe.Reserve
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// ReservePlans are used to automatically place holds on a merchant's funds until the plan
     /// expires. It takes a portion of each incoming Charge (including those resulting from a

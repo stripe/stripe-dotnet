@@ -5,6 +5,7 @@ namespace Stripe.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A billing alert is a resource that notifies you when a certain usage threshold on a
     /// meter is crossed. For example, you might create a billing alert to notify you when a

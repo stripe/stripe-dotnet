@@ -6,6 +6,7 @@ namespace Stripe.Reporting
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// The Report Run object represents an instance of a report type generated with specific
     /// run parameters. Once the object is created, Stripe begins processing the report. When

@@ -5,6 +5,7 @@ namespace Stripe.FinancialConnections
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// An Authorization represents the set of credentials used to connect a group of Financial
     /// Connections Accounts.

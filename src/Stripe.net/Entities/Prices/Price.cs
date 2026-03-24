@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Prices define the unit cost, currency, and (optional) billing cycle for both recurring
     /// and one-time purchases of products. <a

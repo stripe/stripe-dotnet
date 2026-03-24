@@ -6,6 +6,7 @@ namespace Stripe.Events
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     public class V2CoreHealthAuthorizationRateDropFiringEventDataImpactDimension : StripeEntity<V2CoreHealthAuthorizationRateDropFiringEventDataImpactDimension>
     {
         /// <summary>

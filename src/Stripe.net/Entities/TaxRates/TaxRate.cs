@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Tax rates can be applied to <a
     /// href="https://stripe.com/invoicing/taxes/tax-rates">invoices</a>, <a

@@ -5,6 +5,7 @@ namespace Stripe.Entitlements
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A summary of a customer's active entitlements.
     /// </summary>

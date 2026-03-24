@@ -5,6 +5,7 @@ namespace Stripe.ProductCatalog
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Resource for the TrialOffer API, used to describe a subscription item's trial period
     /// settings. Renders a TrialOffer object that describes the price, duration, end_behavior

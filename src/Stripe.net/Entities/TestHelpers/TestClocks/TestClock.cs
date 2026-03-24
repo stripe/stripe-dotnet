@@ -6,6 +6,7 @@ namespace Stripe.TestHelpers
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A test clock enables deterministic control over objects in testmode. With a test clock,
     /// you can create objects at a frozen time in the past or future, and advance to a specific

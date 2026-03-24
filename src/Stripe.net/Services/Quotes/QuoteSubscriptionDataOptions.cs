@@ -7,11 +7,16 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class QuoteSubscriptionDataOptions : INestedOptions, IHasMetadata, IHasSetTracking
     {
+        private QuoteSubscriptionDataBillOnAcceptanceOptions billOnAcceptance;
+        private string billingCycleAnchor;
+        private List<QuoteSubscriptionDataBillingScheduleOptions> billingSchedules;
         private string description;
         private AnyOf<DateTime?, QuoteSubscriptionDataEffectiveDate> effectiveDate;
+        private QuoteSubscriptionDataPrebillingOptions prebilling;
         private long? trialPeriodDays;
 
         [JsonIgnore]
@@ -23,7 +28,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("bill_on_acceptance")]
         [STJS.JsonPropertyName("bill_on_acceptance")]
-        public QuoteSubscriptionDataBillOnAcceptanceOptions BillOnAcceptance { get; set; }
+        public QuoteSubscriptionDataBillOnAcceptanceOptions BillOnAcceptance
+        {
+            get => this.billOnAcceptance;
+            set
+            {
+                this.billOnAcceptance = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Configures when the subscription schedule generates prorations for phase transitions.
@@ -43,7 +56,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [STJS.JsonPropertyName("billing_cycle_anchor")]
-        public string BillingCycleAnchor { get; set; }
+        public string BillingCycleAnchor
+        {
+            get => this.billingCycleAnchor;
+            set
+            {
+                this.billingCycleAnchor = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
@@ -58,7 +79,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing_schedules")]
         [STJS.JsonPropertyName("billing_schedules")]
-        public List<QuoteSubscriptionDataBillingScheduleOptions> BillingSchedules { get; set; }
+        public List<QuoteSubscriptionDataBillingScheduleOptions> BillingSchedules
+        {
+            get => this.billingSchedules;
+            set
+            {
+                this.billingSchedules = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The subscription's description, meant to be displayable to the customer. Use this field
@@ -144,7 +173,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("prebilling")]
         [STJS.JsonPropertyName("prebilling")]
-        public QuoteSubscriptionDataPrebillingOptions Prebilling { get; set; }
+        public QuoteSubscriptionDataPrebillingOptions Prebilling
+        {
+            get => this.prebilling;
+            set
+            {
+                this.prebilling = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Determines how to handle <a

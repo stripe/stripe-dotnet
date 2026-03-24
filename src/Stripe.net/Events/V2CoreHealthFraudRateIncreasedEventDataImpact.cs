@@ -6,6 +6,7 @@ namespace Stripe.Events
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     public class V2CoreHealthFraudRateIncreasedEventDataImpact : StripeEntity<V2CoreHealthFraudRateIncreasedEventDataImpact>
     {
         /// <summary>

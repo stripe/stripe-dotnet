@@ -6,9 +6,11 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountBusinessProfileOptions : INestedOptions, IHasSetTracking
     {
+        private string specifiedCommercialTransactionsActUrl;
         private string supportUrl;
 
         [JsonIgnore]
@@ -77,7 +79,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("specified_commercial_transactions_act_url")]
         [STJS.JsonPropertyName("specified_commercial_transactions_act_url")]
-        public string SpecifiedCommercialTransactionsActUrl { get; set; }
+        public string SpecifiedCommercialTransactionsActUrl
+        {
+            get => this.specifiedCommercialTransactionsActUrl;
+            set
+            {
+                this.specifiedCommercialTransactionsActUrl = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A publicly available mailing address for sending support issues to.

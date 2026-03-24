@@ -7,6 +7,7 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Tax forms are legal documents which are delivered to one or more tax authorities for
     /// information reporting purposes.

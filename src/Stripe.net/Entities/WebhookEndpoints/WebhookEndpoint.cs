@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// You can configure <a href="https://docs.stripe.com/webhooks/">webhook endpoints</a> via
     /// the API to be notified about events that happen in your Stripe account or connected

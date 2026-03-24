@@ -6,6 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Source mandate notifications should be created when a notification related to a source
     /// mandate must be sent to the payer. They will trigger a webhook or deliver an email to

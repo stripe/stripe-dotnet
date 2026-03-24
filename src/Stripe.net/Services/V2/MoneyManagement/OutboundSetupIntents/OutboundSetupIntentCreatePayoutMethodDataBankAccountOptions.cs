@@ -5,6 +5,7 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OutboundSetupIntentCreatePayoutMethodDataBankAccountOptions : INestedOptions
     {
@@ -36,6 +37,13 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("country")]
         [STJS.JsonPropertyName("country")]
         public string Country { get; set; }
+
+        /// <summary>
+        /// The currency of the bank account.
+        /// </summary>
+        [JsonProperty("currency")]
+        [STJS.JsonPropertyName("currency")]
+        public string Currency { get; set; }
 
         /// <summary>
         /// The routing number of the bank account, if present.

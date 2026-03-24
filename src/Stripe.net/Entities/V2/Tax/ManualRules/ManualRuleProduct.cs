@@ -5,6 +5,7 @@ namespace Stripe.V2.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ManualRuleProduct : StripeEntity<ManualRuleProduct>
     {

@@ -6,6 +6,7 @@ namespace Stripe.Checkout
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionCheckoutItemPricingPlanSubscriptionItem : StripeEntity<SessionCheckoutItemPricingPlanSubscriptionItem>, IHasMetadata
     {

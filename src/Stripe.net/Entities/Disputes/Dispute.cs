@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A dispute occurs when a customer questions your charge with their card issuer. When this
     /// happens, you have the opportunity to respond to the dispute with evidence that shows

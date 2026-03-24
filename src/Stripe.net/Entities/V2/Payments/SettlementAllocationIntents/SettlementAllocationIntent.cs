@@ -7,6 +7,7 @@ namespace Stripe.V2.Payments
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// SettlementAllocationIntent resource.
     /// </summary>

@@ -1,13 +1,23 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.MoneyManagement
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PayoutMethodsBankAccountSpecCountriesField : StripeEntity<PayoutMethodsBankAccountSpecCountriesField>
     {
+        /// <summary>
+        /// The currencies supported by the corresponding credentials for bank accounts in the
+        /// specified country.
+        /// </summary>
+        [JsonProperty("currencies")]
+        [STJS.JsonPropertyName("currencies")]
+        public List<string> Currencies { get; set; }
+
         /// <summary>
         /// The local name of the field.
         /// </summary>

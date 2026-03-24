@@ -7,6 +7,7 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A FinancialAccount represents a balance and can be used as the source or destination for
     /// the money management (<c>/v2/money_management</c>) APIs.
@@ -118,6 +119,9 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("status")]
         public string Status { get; set; }
 
+        /// <summary>
+        /// Additional details related to the status of the FinancialAccount.
+        /// </summary>
         [JsonProperty("status_details")]
         [STJS.JsonPropertyName("status_details")]
         public FinancialAccountStatusDetails StatusDetails { get; set; }

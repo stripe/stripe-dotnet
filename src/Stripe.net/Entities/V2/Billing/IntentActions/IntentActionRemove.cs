@@ -5,11 +5,12 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class IntentActionRemove : StripeEntity<IntentActionRemove>
     {
         /// <summary>
-        /// When the remove action will take effect. Defaults to on_reserve if not specified.
+        /// When the remove action will take effect. If not specified, defaults to on_reserve.
         /// </summary>
         [JsonProperty("effective_at")]
         [STJS.JsonPropertyName("effective_at")]

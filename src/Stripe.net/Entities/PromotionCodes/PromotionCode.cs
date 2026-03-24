@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A Promotion Code represents a customer-redeemable code for an underlying promotion. You
     /// can create multiple codes for a single promotion.

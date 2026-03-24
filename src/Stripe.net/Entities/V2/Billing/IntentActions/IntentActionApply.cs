@@ -5,11 +5,12 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class IntentActionApply : StripeEntity<IntentActionApply>
     {
         /// <summary>
-        /// When the apply action will take effect. Defaults to on_reserve if not specified.
+        /// When the apply action will take effect. If not specified, defaults to on_reserve.
         /// </summary>
         [JsonProperty("effective_at")]
         [STJS.JsonPropertyName("effective_at")]
@@ -17,11 +18,18 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// Type of the apply action details.
-        /// One of: <c>invoice_discount_rule</c>, or <c>spend_modifier_rule</c>.
+        /// One of: <c>discount</c>, <c>invoice_discount_rule</c>, or <c>spend_modifier_rule</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// Details for applying a discount.
+        /// </summary>
+        [JsonProperty("discount")]
+        [STJS.JsonPropertyName("discount")]
+        public IntentActionApplyDiscount Discount { get; set; }
 
         /// <summary>
         /// Details for applying a discount rule to future invoices.

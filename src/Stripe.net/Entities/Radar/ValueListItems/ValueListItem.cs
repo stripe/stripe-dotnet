@@ -6,6 +6,7 @@ namespace Stripe.Radar
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Value list items allow you to add specific values to a given Radar value list, which can
     /// then be used in rules.

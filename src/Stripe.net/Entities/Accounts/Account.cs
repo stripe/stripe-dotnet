@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// This is an object representing a Stripe account. You can retrieve it to see properties
     /// on the account like its current requirements or if the account is enabled to make live

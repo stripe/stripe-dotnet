@@ -6,9 +6,21 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class OrderLineItemProductDataOptions : INestedOptions, IHasId, IHasMetadata
+    public class OrderLineItemProductDataOptions : INestedOptions, IHasId, IHasMetadata, IHasSetTracking
     {
+        private string description;
+        private List<string> images;
+        private Dictionary<string, string> metadata;
+        private OrderLineItemProductDataPackageDimensionsOptions packageDimensions;
+        private string taxCode;
+        private string url;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The product's description, meant to be displayable to the customer. Use this field to
         /// optionally store a long form explanation of the product being sold for your own
@@ -16,7 +28,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description
+        {
+            get => this.description;
+            set
+            {
+                this.description = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A unique identifier for this product.
@@ -38,7 +58,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("images")]
         [STJS.JsonPropertyName("images")]
-        public List<string> Images { get; set; }
+        public List<string> Images
+        {
+            get => this.images;
+            set
+            {
+                this.images = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
@@ -48,7 +76,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The product's name, meant to be displayable to the customer.
@@ -62,7 +98,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("package_dimensions")]
         [STJS.JsonPropertyName("package_dimensions")]
-        public OrderLineItemProductDataPackageDimensionsOptions PackageDimensions { get; set; }
+        public OrderLineItemProductDataPackageDimensionsOptions PackageDimensions
+        {
+            get => this.packageDimensions;
+            set
+            {
+                this.packageDimensions = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Whether this product is shipped (i.e., physical goods).
@@ -76,13 +120,34 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_code")]
         [STJS.JsonPropertyName("tax_code")]
-        public string TaxCode { get; set; }
+        public string TaxCode
+        {
+            get => this.taxCode;
+            set
+            {
+                this.taxCode = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A URL of a publicly-accessible webpage for this product.
         /// </summary>
         [JsonProperty("url")]
         [STJS.JsonPropertyName("url")]
-        public string Url { get; set; }
+        public string Url
+        {
+            get => this.url;
+            set
+            {
+                this.url = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

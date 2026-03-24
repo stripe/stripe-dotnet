@@ -5,6 +5,7 @@ namespace Stripe.V2.Billing.CollectionSettings
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class VersionListOptions : V2.ListOptions
     {

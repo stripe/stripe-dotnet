@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Invoice Rendering Templates are used to configure how invoices are rendered on surfaces
     /// like the PDF. Invoice Rendering Templates can be created from within the Dashboard, and

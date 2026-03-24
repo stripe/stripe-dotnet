@@ -6,6 +6,7 @@ namespace Stripe.Capital
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// This is an object representing the details of a transaction on a Capital financing
     /// object.

@@ -6,9 +6,12 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionScheduleAmendOptions : BaseOptions
     {
+        private List<SubscriptionSchedulePrebillingOptions> prebilling;
+
         /// <summary>
         /// Changes to apply to the phases of the subscription schedule, in the order provided.
         /// </summary>
@@ -21,7 +24,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("prebilling")]
         [STJS.JsonPropertyName("prebilling")]
-        public List<SubscriptionSchedulePrebillingOptions> Prebilling { get; set; }
+        public List<SubscriptionSchedulePrebillingOptions> Prebilling
+        {
+            get => this.prebilling;
+            set
+            {
+                this.prebilling = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// In cases where the amendment changes the currently active phase, specifies if and how to

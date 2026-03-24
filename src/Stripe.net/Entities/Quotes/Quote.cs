@@ -8,6 +8,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A Quote is a way to model prices that you'd like to provide to a customer. Once
     /// accepted, it will automatically create an invoice, subscription or subscription

@@ -6,6 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// ConfirmationTokens help transport client side data collected by Stripe JS over to your
     /// server for confirming a PaymentIntent or SetupIntent. If the confirmation is successful,

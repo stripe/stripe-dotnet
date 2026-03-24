@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// This object represents a customer of your business. Use it to <a
     /// href="https://docs.stripe.com/invoicing/customer">create recurring charges</a>, <a

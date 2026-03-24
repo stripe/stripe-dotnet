@@ -7,6 +7,7 @@ namespace Stripe.Terminal
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A Reader represents a physical device for accepting payment details.
     ///

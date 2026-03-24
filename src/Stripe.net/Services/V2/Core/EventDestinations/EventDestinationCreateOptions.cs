@@ -6,6 +6,7 @@ namespace Stripe.V2.Core
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class EventDestinationCreateOptions : BaseOptions, IHasMetadata
     {
@@ -15,6 +16,13 @@ namespace Stripe.V2.Core
         [JsonProperty("amazon_eventbridge")]
         [STJS.JsonPropertyName("amazon_eventbridge")]
         public EventDestinationCreateAmazonEventbridgeOptions AmazonEventbridge { get; set; }
+
+        /// <summary>
+        /// Azure Event Grid configuration.
+        /// </summary>
+        [JsonProperty("azure_event_grid")]
+        [STJS.JsonPropertyName("azure_event_grid")]
+        public EventDestinationCreateAzureEventGridOptions AzureEventGrid { get; set; }
 
         /// <summary>
         /// An optional description of what the event destination is used for.
@@ -39,8 +47,12 @@ namespace Stripe.V2.Core
         public string EventPayload { get; set; }
 
         /// <summary>
-        /// Where events should be routed from.
-        /// One of: <c>other_accounts</c>, or <c>self</c>.
+        /// Specifies which accounts' events route to this destination. <c>@self</c>: Receive events
+        /// from the account that owns the event destination. <c>@accounts</c>: Receive events
+        /// emitted from other accounts you manage which includes your v1 and v2 accounts.
+        /// <c>@organization_members</c>: Receive events from accounts directly linked to the
+        /// organization. <c>@organization_members/@accounts</c>: Receive events from all accounts
+        /// connected to any platform accounts in the organization.
         /// </summary>
         [JsonProperty("events_from")]
         [STJS.JsonPropertyName("events_from")]
@@ -77,7 +89,7 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// Event destination type.
-        /// One of: <c>amazon_eventbridge</c>, or <c>webhook_endpoint</c>.
+        /// One of: <c>amazon_eventbridge</c>, <c>azure_event_grid</c>, or <c>webhook_endpoint</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

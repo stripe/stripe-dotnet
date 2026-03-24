@@ -7,6 +7,7 @@ namespace Stripe.DelegatedCheckout
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A requested session is a session that has been requested by a customer.
     /// </summary>

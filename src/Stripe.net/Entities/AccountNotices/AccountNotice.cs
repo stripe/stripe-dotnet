@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A notice to a Connected account. Notice can be sent by Stripe on your behalf or you can
     /// opt to send the notices yourself.

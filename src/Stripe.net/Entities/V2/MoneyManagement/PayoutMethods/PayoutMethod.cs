@@ -7,6 +7,7 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Use the PayoutMethods API to list and interact with PayoutMethod objects.
     /// </summary>
@@ -85,6 +86,14 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
+
+        /// <summary>
+        /// Whether the Payout Method is currently unusable for money movement, despite potentially
+        /// being correctly set up. Please reach out to Stripe Support for more information.
+        /// </summary>
+        [JsonProperty("restricted")]
+        [STJS.JsonPropertyName("restricted")]
+        public bool Restricted { get; set; }
 
         /// <summary>
         /// Closed Enum. The type of payout method.

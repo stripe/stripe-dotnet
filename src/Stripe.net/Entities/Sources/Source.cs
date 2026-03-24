@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// <c>Source</c> objects allow you to accept a variety of payment methods. They represent a
     /// customer's payment instrument, and can be used with the Stripe API just like a

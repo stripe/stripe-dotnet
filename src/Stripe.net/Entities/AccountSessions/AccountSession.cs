@@ -6,6 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// An AccountSession allows a Connect platform to grant access to a connected account in
     /// Connect embedded components.

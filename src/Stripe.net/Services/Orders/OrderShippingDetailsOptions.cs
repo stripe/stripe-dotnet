@@ -5,9 +5,16 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class OrderShippingDetailsOptions : INestedOptions
+    public class OrderShippingDetailsOptions : INestedOptions, IHasSetTracking
     {
+        private string phone;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The shipping address for the order.
         /// </summary>
@@ -27,6 +34,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("phone")]
         [STJS.JsonPropertyName("phone")]
-        public string Phone { get; set; }
+        public string Phone
+        {
+            get => this.phone;
+            set
+            {
+                this.phone = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

@@ -1,11 +1,12 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Events
 {
-    using System.Collections.Generic;
     using System.Threading.Tasks;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
+
 
     public class V1BillingMeterNoMeterFoundEventDataReasonErrorType : StripeEntity<V1BillingMeterNoMeterFoundEventDataReasonErrorType>
     {

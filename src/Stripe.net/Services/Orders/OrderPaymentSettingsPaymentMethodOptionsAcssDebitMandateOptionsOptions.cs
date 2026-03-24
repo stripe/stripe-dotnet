@@ -5,9 +5,16 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class OrderPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptionsOptions : INestedOptions
+    public class OrderPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptionsOptions : INestedOptions, IHasSetTracking
     {
+        private string customMandateUrl;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// A URL for custom mandate text to render during confirmation step. The URL will be
         /// rendered with additional GET parameters <c>payment_intent</c> and
@@ -17,7 +24,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("custom_mandate_url")]
         [STJS.JsonPropertyName("custom_mandate_url")]
-        public string CustomMandateUrl { get; set; }
+        public string CustomMandateUrl
+        {
+            get => this.customMandateUrl;
+            set
+            {
+                this.customMandateUrl = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Description of the mandate interval. Only required if 'payment_schedule' parameter is
@@ -42,5 +57,10 @@ namespace Stripe
         [JsonProperty("transaction_type")]
         [STJS.JsonPropertyName("transaction_type")]
         public string TransactionType { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

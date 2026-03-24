@@ -8,5 +8,6 @@ namespace Stripe.Events
     /// </summary>
     public class V2IamApiKeyDefaultSecretRevealedEvent : V2.Core.Event
     {
+
     }
 }

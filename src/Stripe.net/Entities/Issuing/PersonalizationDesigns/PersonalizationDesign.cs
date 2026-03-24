@@ -7,6 +7,7 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A Personalization Design is a logical grouping of a Physical Bundle, card logo, and
     /// carrier text that represents a product line.

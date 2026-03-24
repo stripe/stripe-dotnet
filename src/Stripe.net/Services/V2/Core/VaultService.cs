@@ -22,7 +22,6 @@ namespace Stripe.V2.Core
 
         public virtual V2.Core.Vault.GbBankAccountService GbBankAccounts => this.gbBankAccounts ??= new V2.Core.Vault.GbBankAccountService(
             this.Requestor);
-
         public virtual V2.Core.Vault.UsBankAccountService UsBankAccounts => this.usBankAccounts ??= new V2.Core.Vault.UsBankAccountService(
             this.Requestor);
     }

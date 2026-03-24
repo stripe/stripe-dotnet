@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// PaymentMethod objects represent your customer's payment instruments. You can use them
     /// with <a href="https://docs.stripe.com/payments/payment-intents">PaymentIntents</a> to

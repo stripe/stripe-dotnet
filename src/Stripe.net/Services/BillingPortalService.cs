@@ -22,7 +22,6 @@ namespace Stripe
 
         public virtual BillingPortal.ConfigurationService Configurations => this.configurations ??= new BillingPortal.ConfigurationService(
             this.Requestor);
-
         public virtual BillingPortal.SessionService Sessions => this.sessions ??= new BillingPortal.SessionService(
             this.Requestor);
     }

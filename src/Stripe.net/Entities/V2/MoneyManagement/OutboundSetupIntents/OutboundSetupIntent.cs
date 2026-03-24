@@ -6,6 +6,7 @@ namespace Stripe.V2.MoneyManagement
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Use the OutboundSetupIntent API to create and setup usable payout methods.
     /// </summary>

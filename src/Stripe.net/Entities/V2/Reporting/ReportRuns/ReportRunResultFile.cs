@@ -5,6 +5,7 @@ namespace Stripe.V2.Reporting
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReportRunResultFile : StripeEntity<ReportRunResultFile>
     {
@@ -27,6 +28,8 @@ namespace Stripe.V2.Reporting
         /// The total size of the file in bytes.
         /// </summary>
         [JsonProperty("size")]
+        [JsonConverter(typeof(Int64StringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("size")]
         public long Size { get; set; }
     }

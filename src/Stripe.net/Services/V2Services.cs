@@ -28,25 +28,18 @@ namespace Stripe
 
         public virtual V2.BillingService Billing => this.billing ??= new V2.BillingService(
             this.Requestor);
-
         public virtual V2.CoreService Core => this.core ??= new V2.CoreService(
             this.Requestor);
-
         public virtual V2.IamService Iam => this.iam ??= new V2.IamService(
             this.Requestor);
-
         public virtual V2.MoneyManagementService MoneyManagement => this.moneyManagement ??= new V2.MoneyManagementService(
             this.Requestor);
-
         public virtual V2.PaymentService Payments => this.payments ??= new V2.PaymentService(
             this.Requestor);
-
         public virtual V2.ReportingService Reporting => this.reporting ??= new V2.ReportingService(
             this.Requestor);
-
         public virtual V2.TaxService Tax => this.tax ??= new V2.TaxService(
             this.Requestor);
-
         public virtual V2.TestHelperService TestHelpers => this.testHelpers ??= new V2.TestHelperService(
             this.Requestor);
     }

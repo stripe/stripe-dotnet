@@ -6,9 +6,12 @@ namespace Stripe.TestHelpers.SharedPayment
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class GrantedTokenCreateOptions : BaseOptions
     {
+        private Dictionary<string, string> sharedMetadata;
+
         /// <summary>
         /// The Customer that the SharedPaymentGrantedToken belongs to. Should match the Customer
         /// that the PaymentMethod is attached to if any.
@@ -30,7 +33,15 @@ namespace Stripe.TestHelpers.SharedPayment
         /// </summary>
         [JsonProperty("shared_metadata")]
         [STJS.JsonPropertyName("shared_metadata")]
-        public Dictionary<string, string> SharedMetadata { get; set; }
+        public Dictionary<string, string> SharedMetadata
+        {
+            get => this.sharedMetadata;
+            set
+            {
+                this.sharedMetadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Limits on how this SharedPaymentGrantedToken can be used.

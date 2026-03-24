@@ -6,6 +6,7 @@ namespace Stripe.Identity
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A VerificationReport is the result of an attempt to collect and verify data from a user.
     /// The collection of verification checks performed is determined from the <c>type</c> and

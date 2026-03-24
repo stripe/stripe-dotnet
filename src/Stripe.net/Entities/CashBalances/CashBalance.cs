@@ -6,6 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A customer's <c>Cash balance</c> represents real funds. Customers can add funds to their
     /// cash balance by sending a bank transfer. These funds can be used for payment and can
