@@ -50,8 +50,10 @@ namespace Stripe.V2.Core
         /// The percentage of the Account's identity that the individual owns.
         /// </summary>
         [JsonProperty("percent_ownership")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("percent_ownership")]
-        public string PercentOwnership { get; set; }
+        public decimal? PercentOwnership { get; set; }
 
         /// <summary>
         /// Whether the individual is authorized as the primary representative of the Account. This

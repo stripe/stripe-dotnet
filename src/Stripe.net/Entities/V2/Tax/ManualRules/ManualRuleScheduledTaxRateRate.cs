@@ -40,8 +40,10 @@ namespace Stripe.V2.Tax
         /// Percentage of the tax rate. Must be positive and maximum of 4 decimal points.
         /// </summary>
         [JsonProperty("percentage")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("percentage")]
-        public string Percentage { get; set; }
+        public decimal Percentage { get; set; }
 
         /// <summary>
         /// State of the tax rate.
