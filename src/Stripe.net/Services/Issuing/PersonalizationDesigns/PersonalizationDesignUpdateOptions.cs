@@ -9,20 +9,41 @@ namespace Stripe.Issuing
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PersonalizationDesignUpdateOptions : BaseOptions, IHasMetadata
     {
+        private string cardLogo;
+        private PersonalizationDesignCarrierTextOptions carrierText;
+        private string lookupKey;
+        private string name;
+
         /// <summary>
         /// The file for the card logo, for use with physical bundles that support card logos. Must
         /// have a <c>purpose</c> value of <c>issuing_logo</c>.
         /// </summary>
         [JsonProperty("card_logo")]
         [STJS.JsonPropertyName("card_logo")]
-        public string CardLogo { get; set; }
+        public string CardLogo
+        {
+            get => this.cardLogo;
+            set
+            {
+                this.cardLogo = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Hash containing carrier text, for use with physical bundles that support carrier text.
         /// </summary>
         [JsonProperty("carrier_text")]
         [STJS.JsonPropertyName("carrier_text")]
-        public PersonalizationDesignCarrierTextOptions CarrierText { get; set; }
+        public PersonalizationDesignCarrierTextOptions CarrierText
+        {
+            get => this.carrierText;
+            set
+            {
+                this.carrierText = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A lookup key used to retrieve personalization designs dynamically from a static string.
@@ -30,7 +51,15 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("lookup_key")]
         [STJS.JsonPropertyName("lookup_key")]
-        public string LookupKey { get; set; }
+        public string LookupKey
+        {
+            get => this.lookupKey;
+            set
+            {
+                this.lookupKey = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
@@ -47,7 +76,15 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("name")]
         [STJS.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name
+        {
+            get => this.name;
+            set
+            {
+                this.name = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The physical bundle object belonging to this personalization design.

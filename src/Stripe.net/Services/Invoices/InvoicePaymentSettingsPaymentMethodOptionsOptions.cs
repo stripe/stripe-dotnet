@@ -6,15 +6,39 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class InvoicePaymentSettingsPaymentMethodOptionsOptions : INestedOptions
+    public class InvoicePaymentSettingsPaymentMethodOptionsOptions : INestedOptions, IHasSetTracking
     {
+        private InvoicePaymentSettingsPaymentMethodOptionsAcssDebitOptions acssDebit;
+        private InvoicePaymentSettingsPaymentMethodOptionsBancontactOptions bancontact;
+        private InvoicePaymentSettingsPaymentMethodOptionsCardOptions card;
+        private InvoicePaymentSettingsPaymentMethodOptionsCustomerBalanceOptions customerBalance;
+        private InvoicePaymentSettingsPaymentMethodOptionsIdBankTransferOptions idBankTransfer;
+        private InvoicePaymentSettingsPaymentMethodOptionsKonbiniOptions konbini;
+        private InvoicePaymentSettingsPaymentMethodOptionsPaytoOptions payto;
+        private InvoicePaymentSettingsPaymentMethodOptionsPixOptions pix;
+        private InvoicePaymentSettingsPaymentMethodOptionsSepaDebitOptions sepaDebit;
+        private InvoicePaymentSettingsPaymentMethodOptionsUpiOptions upi;
+        private InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountOptions usBankAccount;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// If paying by <c>acss_debit</c>, this sub-hash contains details about the Canadian
         /// pre-authorized debit payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
         [JsonProperty("acss_debit")]
         [STJS.JsonPropertyName("acss_debit")]
-        public InvoicePaymentSettingsPaymentMethodOptionsAcssDebitOptions AcssDebit { get; set; }
+        public InvoicePaymentSettingsPaymentMethodOptionsAcssDebitOptions AcssDebit
+        {
+            get => this.acssDebit;
+            set
+            {
+                this.acssDebit = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If paying by <c>bancontact</c>, this sub-hash contains details about the Bancontact
@@ -22,7 +46,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("bancontact")]
         [STJS.JsonPropertyName("bancontact")]
-        public InvoicePaymentSettingsPaymentMethodOptionsBancontactOptions Bancontact { get; set; }
+        public InvoicePaymentSettingsPaymentMethodOptionsBancontactOptions Bancontact
+        {
+            get => this.bancontact;
+            set
+            {
+                this.bancontact = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If paying by <c>card</c>, this sub-hash contains details about the Card payment method
@@ -30,7 +62,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("card")]
         [STJS.JsonPropertyName("card")]
-        public InvoicePaymentSettingsPaymentMethodOptionsCardOptions Card { get; set; }
+        public InvoicePaymentSettingsPaymentMethodOptionsCardOptions Card
+        {
+            get => this.card;
+            set
+            {
+                this.card = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If paying by <c>customer_balance</c>, this sub-hash contains details about the Bank
@@ -38,7 +78,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("customer_balance")]
         [STJS.JsonPropertyName("customer_balance")]
-        public InvoicePaymentSettingsPaymentMethodOptionsCustomerBalanceOptions CustomerBalance { get; set; }
+        public InvoicePaymentSettingsPaymentMethodOptionsCustomerBalanceOptions CustomerBalance
+        {
+            get => this.customerBalance;
+            set
+            {
+                this.customerBalance = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If paying by <c>id_bank_transfer</c>, this sub-hash contains details about the Indonesia
@@ -46,7 +94,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("id_bank_transfer")]
         [STJS.JsonPropertyName("id_bank_transfer")]
-        public InvoicePaymentSettingsPaymentMethodOptionsIdBankTransferOptions IdBankTransfer { get; set; }
+        public InvoicePaymentSettingsPaymentMethodOptionsIdBankTransferOptions IdBankTransfer
+        {
+            get => this.idBankTransfer;
+            set
+            {
+                this.idBankTransfer = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If paying by <c>konbini</c>, this sub-hash contains details about the Konbini payment
@@ -54,7 +110,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("konbini")]
         [STJS.JsonPropertyName("konbini")]
-        public InvoicePaymentSettingsPaymentMethodOptionsKonbiniOptions Konbini { get; set; }
+        public InvoicePaymentSettingsPaymentMethodOptionsKonbiniOptions Konbini
+        {
+            get => this.konbini;
+            set
+            {
+                this.konbini = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If paying by <c>payto</c>, this sub-hash contains details about the PayTo payment method
@@ -62,7 +126,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payto")]
         [STJS.JsonPropertyName("payto")]
-        public InvoicePaymentSettingsPaymentMethodOptionsPaytoOptions Payto { get; set; }
+        public InvoicePaymentSettingsPaymentMethodOptionsPaytoOptions Payto
+        {
+            get => this.payto;
+            set
+            {
+                this.payto = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If paying by <c>pix</c>, this sub-hash contains details about the Pix payment method
@@ -70,7 +142,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("pix")]
         [STJS.JsonPropertyName("pix")]
-        public InvoicePaymentSettingsPaymentMethodOptionsPixOptions Pix { get; set; }
+        public InvoicePaymentSettingsPaymentMethodOptionsPixOptions Pix
+        {
+            get => this.pix;
+            set
+            {
+                this.pix = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If paying by <c>sepa_debit</c>, this sub-hash contains details about the SEPA Direct
@@ -78,7 +158,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("sepa_debit")]
         [STJS.JsonPropertyName("sepa_debit")]
-        public InvoicePaymentSettingsPaymentMethodOptionsSepaDebitOptions SepaDebit { get; set; }
+        public InvoicePaymentSettingsPaymentMethodOptionsSepaDebitOptions SepaDebit
+        {
+            get => this.sepaDebit;
+            set
+            {
+                this.sepaDebit = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If paying by <c>upi</c>, this sub-hash contains details about the UPI payment method
@@ -86,7 +174,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("upi")]
         [STJS.JsonPropertyName("upi")]
-        public InvoicePaymentSettingsPaymentMethodOptionsUpiOptions Upi { get; set; }
+        public InvoicePaymentSettingsPaymentMethodOptionsUpiOptions Upi
+        {
+            get => this.upi;
+            set
+            {
+                this.upi = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If paying by <c>us_bank_account</c>, this sub-hash contains details about the ACH direct
@@ -94,6 +190,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]
-        public InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountOptions UsBankAccount { get; set; }
+        public InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountOptions UsBankAccount
+        {
+            get => this.usBankAccount;
+            set
+            {
+                this.usBankAccount = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

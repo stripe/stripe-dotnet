@@ -9,6 +9,8 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceRemoveLinesOptions : BaseOptions
     {
+        private Dictionary<string, string> invoiceMetadata;
+
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
@@ -17,7 +19,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("invoice_metadata")]
         [STJS.JsonPropertyName("invoice_metadata")]
-        public Dictionary<string, string> InvoiceMetadata { get; set; }
+        public Dictionary<string, string> InvoiceMetadata
+        {
+            get => this.invoiceMetadata;
+            set
+            {
+                this.invoiceMetadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The line items to remove.

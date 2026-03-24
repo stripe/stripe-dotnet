@@ -6,13 +6,32 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ConfigurationBbposWiseposEOptions : INestedOptions
+    public class ConfigurationBbposWiseposEOptions : INestedOptions, IHasSetTracking
     {
+        private string splashscreen;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// A File ID representing an image to display on the reader.
         /// </summary>
         [JsonProperty("splashscreen")]
         [STJS.JsonPropertyName("splashscreen")]
-        public string Splashscreen { get; set; }
+        public string Splashscreen
+        {
+            get => this.splashscreen;
+            set
+            {
+                this.splashscreen = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

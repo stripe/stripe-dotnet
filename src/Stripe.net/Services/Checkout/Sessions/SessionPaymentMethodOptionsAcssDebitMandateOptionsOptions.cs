@@ -7,8 +7,14 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SessionPaymentMethodOptionsAcssDebitMandateOptionsOptions : INestedOptions
+    public class SessionPaymentMethodOptionsAcssDebitMandateOptionsOptions : INestedOptions, IHasSetTracking
     {
+        private string customMandateUrl;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// A URL for custom mandate text to render during confirmation step. The URL will be
         /// rendered with additional GET parameters <c>payment_intent</c> and
@@ -18,7 +24,15 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("custom_mandate_url")]
         [STJS.JsonPropertyName("custom_mandate_url")]
-        public string CustomMandateUrl { get; set; }
+        public string CustomMandateUrl
+        {
+            get => this.customMandateUrl;
+            set
+            {
+                this.customMandateUrl = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// List of Stripe products where this mandate can be selected automatically. Only usable in
@@ -52,5 +66,10 @@ namespace Stripe.Checkout
         [JsonProperty("transaction_type")]
         [STJS.JsonPropertyName("transaction_type")]
         public string TransactionType { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

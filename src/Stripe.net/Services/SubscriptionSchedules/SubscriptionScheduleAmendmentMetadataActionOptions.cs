@@ -7,8 +7,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SubscriptionScheduleAmendmentMetadataActionOptions : INestedOptions
+    public class SubscriptionScheduleAmendmentMetadataActionOptions : INestedOptions, IHasSetTracking
     {
+        private Dictionary<string, string> set;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Key-value pairs to add to schedule phase metadata. These values will merge with existing
         /// schedule phase metadata.
@@ -30,7 +36,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("set")]
         [STJS.JsonPropertyName("set")]
-        public Dictionary<string, string> Set { get; set; }
+        public Dictionary<string, string> Set
+        {
+            get => this.set;
+            set
+            {
+                this.set = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Select one of three ways to update phase-level <c>metadata</c> on subscription
@@ -40,5 +54,10 @@ namespace Stripe
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

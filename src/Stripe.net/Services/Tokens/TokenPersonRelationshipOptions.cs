@@ -6,8 +6,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class TokenPersonRelationshipOptions : INestedOptions
+    public class TokenPersonRelationshipOptions : INestedOptions, IHasSetTracking
     {
+        private decimal? percentOwnership;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Whether the person is the authorizer of the account's representative.
         /// </summary>
@@ -51,7 +57,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("percent_ownership")]
         [STJS.JsonPropertyName("percent_ownership")]
-        public decimal? PercentOwnership { get; set; }
+        public decimal? PercentOwnership
+        {
+            get => this.percentOwnership;
+            set
+            {
+                this.percentOwnership = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Whether the person is authorized as the primary representative of the account. This is
@@ -70,5 +84,10 @@ namespace Stripe
         [JsonProperty("title")]
         [STJS.JsonPropertyName("title")]
         public string Title { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

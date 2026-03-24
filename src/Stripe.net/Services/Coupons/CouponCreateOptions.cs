@@ -10,6 +10,8 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CouponCreateOptions : BaseOptions, IHasId, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// A positive integer representing the amount to subtract from an invoice total (required
         /// if <c>percent_off</c> is not passed).
@@ -86,7 +88,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Name of the coupon displayed to customers on, for instance invoices, or receipts. By

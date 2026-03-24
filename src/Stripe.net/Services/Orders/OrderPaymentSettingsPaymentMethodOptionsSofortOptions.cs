@@ -6,15 +6,30 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class OrderPaymentSettingsPaymentMethodOptionsSofortOptions : INestedOptions
+    public class OrderPaymentSettingsPaymentMethodOptionsSofortOptions : INestedOptions, IHasSetTracking
     {
+        private string preferredLanguage;
+        private string setupFutureUsage;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Language shown to the payer on redirect.
         /// One of: <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, <c>it</c>, <c>nl</c>, or <c>pl</c>.
         /// </summary>
         [JsonProperty("preferred_language")]
         [STJS.JsonPropertyName("preferred_language")]
-        public string PreferredLanguage { get; set; }
+        public string PreferredLanguage
+        {
+            get => this.preferredLanguage;
+            set
+            {
+                this.preferredLanguage = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
@@ -43,6 +58,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
-        public string SetupFutureUsage { get; set; }
+        public string SetupFutureUsage
+        {
+            get => this.setupFutureUsage;
+            set
+            {
+                this.setupFutureUsage = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }
