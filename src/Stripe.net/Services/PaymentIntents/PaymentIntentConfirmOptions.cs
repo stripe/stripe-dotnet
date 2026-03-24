@@ -10,6 +10,7 @@ namespace Stripe
     public class PaymentIntentConfirmOptions : BaseOptions
     {
         private PaymentIntentAmountDetailsOptions amountDetails;
+        private long? applicationFeeAmount;
         private List<string> excludedPaymentMethodTypes;
         private PaymentIntentMandateDataOptions mandateData;
         private PaymentIntentPaymentDetailsOptions paymentDetails;
@@ -42,7 +43,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("application_fee_amount")]
         [STJS.JsonPropertyName("application_fee_amount")]
-        public long? ApplicationFeeAmount { get; set; }
+        public long? ApplicationFeeAmount
+        {
+            get => this.applicationFeeAmount;
+            set
+            {
+                this.applicationFeeAmount = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.

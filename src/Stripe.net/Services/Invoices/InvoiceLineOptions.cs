@@ -10,6 +10,7 @@ namespace Stripe
     public class InvoiceLineOptions : INestedOptions, IHasMetadata, IHasId, IHasSetTracking
     {
         private List<InvoiceLineDiscountOptions> discounts;
+        private List<string> margins;
         private Dictionary<string, string> metadata;
         private List<InvoiceLineTaxAmountOptions> taxAmounts;
         private List<string> taxRates;
@@ -91,7 +92,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("margins")]
         [STJS.JsonPropertyName("margins")]
-        public List<string> Margins { get; set; }
+        public List<string> Margins
+        {
+            get => this.margins;
+            set
+            {
+                this.margins = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can

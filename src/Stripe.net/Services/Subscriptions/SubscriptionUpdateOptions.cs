@@ -11,6 +11,7 @@ namespace Stripe
     public class SubscriptionUpdateOptions : BaseOptions, IHasMetadata
     {
         private decimal? applicationFeePercent;
+        private List<SubscriptionBillingScheduleOptions> billingSchedules;
         private SubscriptionBillingThresholdsOptions billingThresholds;
         private AnyOf<DateTime?, SubscriptionCancelAt> cancelAt;
         private string defaultSource;
@@ -75,7 +76,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing_schedules")]
         [STJS.JsonPropertyName("billing_schedules")]
-        public List<SubscriptionBillingScheduleOptions> BillingSchedules { get; set; }
+        public List<SubscriptionBillingScheduleOptions> BillingSchedules
+        {
+            get => this.billingSchedules;
+            set
+            {
+                this.billingSchedules = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a

@@ -15,6 +15,7 @@ namespace Stripe
         private Dictionary<string, string> metadata;
         private ProductPackageDimensionsOptions packageDimensions;
         private string taxCode;
+        private ProductTaxDetailsOptions taxDetails;
         private string unitLabel;
         private string url;
 
@@ -166,7 +167,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_details")]
         [STJS.JsonPropertyName("tax_details")]
-        public ProductTaxDetailsOptions TaxDetails { get; set; }
+        public ProductTaxDetailsOptions TaxDetails
+        {
+            get => this.taxDetails;
+            set
+            {
+                this.taxDetails = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A label that represents units of this product. When set, this will be included in

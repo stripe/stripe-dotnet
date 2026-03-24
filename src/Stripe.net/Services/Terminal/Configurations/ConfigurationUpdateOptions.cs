@@ -12,6 +12,7 @@ namespace Stripe.Terminal
         private ConfigurationBbposWiseposEOptions bbposWiseposE;
         private ConfigurationCellularOptions cellular;
         private ConfigurationOfflineOptions offline;
+        private ConfigurationReaderSecurityOptions readerSecurity;
         private ConfigurationRebootWindowOptions rebootWindow;
         private ConfigurationStripeS700Options stripeS700;
         private ConfigurationStripeS710Options stripeS710;
@@ -91,7 +92,15 @@ namespace Stripe.Terminal
         /// </summary>
         [JsonProperty("reader_security")]
         [STJS.JsonPropertyName("reader_security")]
-        public ConfigurationReaderSecurityOptions ReaderSecurity { get; set; }
+        public ConfigurationReaderSecurityOptions ReaderSecurity
+        {
+            get => this.readerSecurity;
+            set
+            {
+                this.readerSecurity = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Reboot time settings for readers. that support customized reboot time configuration.

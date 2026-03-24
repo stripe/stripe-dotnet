@@ -11,7 +11,9 @@ namespace Stripe
     public class InvoiceUpdateOptions : BaseOptions, IHasMetadata
     {
         private List<string> accountTaxIds;
+        private List<InvoiceAmountsDueOptions> amountsDue;
         private List<InvoiceCustomFieldOptions> customFields;
+        private List<string> defaultMargins;
         private string defaultSource;
         private List<string> defaultTaxRates;
         private List<InvoiceDiscountOptions> discounts;
@@ -45,7 +47,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("amounts_due")]
         [STJS.JsonPropertyName("amounts_due")]
-        public List<InvoiceAmountsDueOptions> AmountsDue { get; set; }
+        public List<InvoiceAmountsDueOptions> AmountsDue
+        {
+            get => this.amountsDue;
+            set
+            {
+                this.amountsDue = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A fee in cents (or local equivalent) that will be applied to the invoice and transferred
@@ -126,7 +136,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("default_margins")]
         [STJS.JsonPropertyName("default_margins")]
-        public List<string> DefaultMargins { get; set; }
+        public List<string> DefaultMargins
+        {
+            get => this.defaultMargins;
+            set
+            {
+                this.defaultMargins = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// ID of the default payment method for the invoice. It must belong to the customer

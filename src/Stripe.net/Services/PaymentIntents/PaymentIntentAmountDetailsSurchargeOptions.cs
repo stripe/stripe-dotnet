@@ -6,14 +6,29 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentAmountDetailsSurchargeOptions : INestedOptions
+    public class PaymentIntentAmountDetailsSurchargeOptions : INestedOptions, IHasSetTracking
     {
+        private long? amount;
+        private string enforceValidation;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Portion of the amount that corresponds to a surcharge.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
-        public long? Amount { get; set; }
+        public long? Amount
+        {
+            get => this.amount;
+            set
+            {
+                this.amount = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Indicate whether to enforce validations on the surcharge amount.
@@ -21,6 +36,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("enforce_validation")]
         [STJS.JsonPropertyName("enforce_validation")]
-        public string EnforceValidation { get; set; }
+        public string EnforceValidation
+        {
+            get => this.enforceValidation;
+            set
+            {
+                this.enforceValidation = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

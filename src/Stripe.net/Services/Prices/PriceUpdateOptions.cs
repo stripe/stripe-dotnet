@@ -11,6 +11,7 @@ namespace Stripe
     {
         private Dictionary<string, PriceCurrencyOptionsOptions> currencyOptions;
         private Dictionary<string, string> metadata;
+        private PriceMigrateToOptions migrateTo;
 
         /// <summary>
         /// Whether the price can be used for new purchases. Defaults to <c>true</c>.
@@ -68,7 +69,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("migrate_to")]
         [STJS.JsonPropertyName("migrate_to")]
-        public PriceMigrateToOptions MigrateTo { get; set; }
+        public PriceMigrateToOptions MigrateTo
+        {
+            get => this.migrateTo;
+            set
+            {
+                this.migrateTo = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A brief description of the price, hidden from customers.

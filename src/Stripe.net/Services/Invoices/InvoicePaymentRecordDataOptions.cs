@@ -8,8 +8,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class InvoicePaymentRecordDataOptions : INestedOptions, IHasMetadata
+    public class InvoicePaymentRecordDataOptions : INestedOptions, IHasMetadata, IHasSetTracking
     {
+        private Dictionary<string, string> metadata;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The amount that was paid out of band.
         /// </summary>
@@ -32,7 +38,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The type of money movement for this out of band payment record.
@@ -56,5 +70,10 @@ namespace Stripe
         [JsonProperty("payment_reference")]
         [STJS.JsonPropertyName("payment_reference")]
         public string PaymentReference { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

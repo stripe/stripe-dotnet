@@ -11,6 +11,7 @@ namespace Stripe
     {
         private string captureMethod;
         private List<PaymentIntentPaymentMethodOptionsKlarnaSubscriptionOptions> subscriptions;
+        private PaymentIntentPaymentMethodOptionsKlarnaSupplementaryPurchaseDataOptions supplementaryPurchaseData;
 
         [JsonIgnore]
         [STJS.JsonIgnore]
@@ -94,13 +95,34 @@ namespace Stripe
         /// </summary>
         [JsonProperty("subscriptions")]
         [STJS.JsonPropertyName("subscriptions")]
-        public List<PaymentIntentPaymentMethodOptionsKlarnaSubscriptionOptions> Subscriptions { get; set; }
+        public List<PaymentIntentPaymentMethodOptionsKlarnaSubscriptionOptions> Subscriptions
+        {
+            get => this.subscriptions;
+            set
+            {
+                this.subscriptions = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Supplementary Purchase Data for the corresponding Klarna payment.
         /// </summary>
         [JsonProperty("supplementary_purchase_data")]
         [STJS.JsonPropertyName("supplementary_purchase_data")]
-        public PaymentIntentPaymentMethodOptionsKlarnaSupplementaryPurchaseDataOptions SupplementaryPurchaseData { get; set; }
+        public PaymentIntentPaymentMethodOptionsKlarnaSupplementaryPurchaseDataOptions SupplementaryPurchaseData
+        {
+            get => this.supplementaryPurchaseData;
+            set
+            {
+                this.supplementaryPurchaseData = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

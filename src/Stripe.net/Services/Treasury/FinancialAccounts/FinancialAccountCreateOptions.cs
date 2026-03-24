@@ -9,6 +9,7 @@ namespace Stripe.Treasury
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class FinancialAccountCreateOptions : BaseOptions, IHasMetadata
     {
+        private string displayName;
         private string nickname;
 
         /// <summary>
@@ -18,7 +19,15 @@ namespace Stripe.Treasury
         /// </summary>
         [JsonProperty("display_name")]
         [STJS.JsonPropertyName("display_name")]
-        public string DisplayName { get; set; }
+        public string DisplayName
+        {
+            get => this.displayName;
+            set
+            {
+                this.displayName = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Encodes whether a FinancialAccount has access to a particular feature. Stripe or the

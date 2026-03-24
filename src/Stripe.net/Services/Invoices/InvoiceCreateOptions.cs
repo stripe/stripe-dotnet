@@ -11,6 +11,7 @@ namespace Stripe
     public class InvoiceCreateOptions : BaseOptions, IHasMetadata
     {
         private List<string> accountTaxIds;
+        private List<InvoiceAmountsDueOptions> amountsDue;
         private List<InvoiceCustomFieldOptions> customFields;
         private List<InvoiceDiscountOptions> discounts;
         private Dictionary<string, string> metadata;
@@ -37,7 +38,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("amounts_due")]
         [STJS.JsonPropertyName("amounts_due")]
-        public List<InvoiceAmountsDueOptions> AmountsDue { get; set; }
+        public List<InvoiceAmountsDueOptions> AmountsDue
+        {
+            get => this.amountsDue;
+            set
+            {
+                this.amountsDue = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A fee in cents (or local equivalent) that will be applied to the invoice and transferred

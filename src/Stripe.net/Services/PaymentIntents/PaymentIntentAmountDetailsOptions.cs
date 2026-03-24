@@ -12,6 +12,7 @@ namespace Stripe
         private long? discountAmount;
         private List<PaymentIntentAmountDetailsLineItemOptions> lineItems;
         private PaymentIntentAmountDetailsShippingOptions shipping;
+        private PaymentIntentAmountDetailsSurchargeOptions surcharge;
         private PaymentIntentAmountDetailsTaxOptions tax;
 
         [JsonIgnore]
@@ -90,7 +91,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("surcharge")]
         [STJS.JsonPropertyName("surcharge")]
-        public PaymentIntentAmountDetailsSurchargeOptions Surcharge { get; set; }
+        public PaymentIntentAmountDetailsSurchargeOptions Surcharge
+        {
+            get => this.surcharge;
+            set
+            {
+                this.surcharge = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Contains information about the tax portion of the amount.

@@ -10,6 +10,7 @@ namespace Stripe.Terminal
     {
         private ConfigurationCellularOptions cellular;
         private ConfigurationOfflineOptions offline;
+        private ConfigurationReaderSecurityOptions readerSecurity;
         private ConfigurationTippingOptions tipping;
         private ConfigurationWifiOptions wifi;
 
@@ -69,7 +70,15 @@ namespace Stripe.Terminal
         /// </summary>
         [JsonProperty("reader_security")]
         [STJS.JsonPropertyName("reader_security")]
-        public ConfigurationReaderSecurityOptions ReaderSecurity { get; set; }
+        public ConfigurationReaderSecurityOptions ReaderSecurity
+        {
+            get => this.readerSecurity;
+            set
+            {
+                this.readerSecurity = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Reboot time settings for readers. that support customized reboot time configuration.

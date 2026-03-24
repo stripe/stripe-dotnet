@@ -18,6 +18,7 @@ namespace Stripe
         private string footer;
         private string header;
         private string onBehalfOf;
+        private List<QuoteSubscriptionDataOverrideOptions> subscriptionDataOverrides;
         private QuoteTransferDataOptions transferData;
 
         /// <summary>
@@ -252,7 +253,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("subscription_data_overrides")]
         [STJS.JsonPropertyName("subscription_data_overrides")]
-        public List<QuoteSubscriptionDataOverrideOptions> SubscriptionDataOverrides { get; set; }
+        public List<QuoteSubscriptionDataOverrideOptions> SubscriptionDataOverrides
+        {
+            get => this.subscriptionDataOverrides;
+            set
+            {
+                this.subscriptionDataOverrides = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The data with which to automatically create a Transfer for each of the invoices.
