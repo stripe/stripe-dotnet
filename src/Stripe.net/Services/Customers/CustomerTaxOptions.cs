@@ -6,8 +6,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class CustomerTaxOptions : INestedOptions
+    public class CustomerTaxOptions : INestedOptions, IHasSetTracking
     {
+        private string ipAddress;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// A recent IP address of the customer used for tax reporting and tax location inference.
         /// Stripe recommends updating the IP address when a new PaymentMethod is attached or the
@@ -16,7 +22,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("ip_address")]
         [STJS.JsonPropertyName("ip_address")]
-        public string IpAddress { get; set; }
+        public string IpAddress
+        {
+            get => this.ipAddress;
+            set
+            {
+                this.ipAddress = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A flag that indicates when Stripe should validate the customer tax location. Defaults to
@@ -26,5 +40,10 @@ namespace Stripe
         [JsonProperty("validate_location")]
         [STJS.JsonPropertyName("validate_location")]
         public string ValidateLocation { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

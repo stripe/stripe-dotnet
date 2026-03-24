@@ -6,8 +6,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountGroupsOptions : INestedOptions
+    public class AccountGroupsOptions : INestedOptions, IHasSetTracking
     {
+        private string paymentsPricing;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The group the account is in to determine their payments pricing, and null if the account
         /// is on customized pricing. <a
@@ -16,6 +22,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payments_pricing")]
         [STJS.JsonPropertyName("payments_pricing")]
-        public string PaymentsPricing { get; set; }
+        public string PaymentsPricing
+        {
+            get => this.paymentsPricing;
+            set
+            {
+                this.paymentsPricing = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

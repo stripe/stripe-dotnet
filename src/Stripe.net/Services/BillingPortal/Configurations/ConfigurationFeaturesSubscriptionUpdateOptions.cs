@@ -7,8 +7,15 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ConfigurationFeaturesSubscriptionUpdateOptions : INestedOptions
+    public class ConfigurationFeaturesSubscriptionUpdateOptions : INestedOptions, IHasSetTracking
     {
+        private List<string> defaultAllowedUpdates;
+        private List<ConfigurationFeaturesSubscriptionUpdateProductOptions> products;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Determines the value to use for the billing cycle anchor on subscription updates. Valid
         /// values are <c>now</c> or <c>unchanged</c>, and the default value is <c>unchanged</c>.
@@ -28,7 +35,15 @@ namespace Stripe.BillingPortal
         /// </summary>
         [JsonProperty("default_allowed_updates")]
         [STJS.JsonPropertyName("default_allowed_updates")]
-        public List<string> DefaultAllowedUpdates { get; set; }
+        public List<string> DefaultAllowedUpdates
+        {
+            get => this.defaultAllowedUpdates;
+            set
+            {
+                this.defaultAllowedUpdates = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Whether the feature is enabled.
@@ -42,7 +57,15 @@ namespace Stripe.BillingPortal
         /// </summary>
         [JsonProperty("products")]
         [STJS.JsonPropertyName("products")]
-        public List<ConfigurationFeaturesSubscriptionUpdateProductOptions> Products { get; set; }
+        public List<ConfigurationFeaturesSubscriptionUpdateProductOptions> Products
+        {
+            get => this.products;
+            set
+            {
+                this.products = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Determines how to handle prorations resulting from subscription updates. Valid values
@@ -68,5 +91,10 @@ namespace Stripe.BillingPortal
         [JsonProperty("trial_update_behavior")]
         [STJS.JsonPropertyName("trial_update_behavior")]
         public string TrialUpdateBehavior { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

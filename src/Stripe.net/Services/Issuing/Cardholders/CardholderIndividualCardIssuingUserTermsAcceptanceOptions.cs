@@ -7,8 +7,14 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class CardholderIndividualCardIssuingUserTermsAcceptanceOptions : INestedOptions
+    public class CardholderIndividualCardIssuingUserTermsAcceptanceOptions : INestedOptions, IHasSetTracking
     {
+        private string userAgent;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The Unix timestamp marking when the cardholder accepted the Authorized User Terms.
         /// </summary>
@@ -31,6 +37,19 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("user_agent")]
         [STJS.JsonPropertyName("user_agent")]
-        public string UserAgent { get; set; }
+        public string UserAgent
+        {
+            get => this.userAgent;
+            set
+            {
+                this.userAgent = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

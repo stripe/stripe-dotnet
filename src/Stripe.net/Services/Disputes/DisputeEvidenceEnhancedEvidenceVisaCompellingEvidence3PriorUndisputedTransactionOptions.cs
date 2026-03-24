@@ -6,8 +6,19 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class DisputeEvidenceEnhancedEvidenceVisaCompellingEvidence3PriorUndisputedTransactionOptions : INestedOptions
+    public class DisputeEvidenceEnhancedEvidenceVisaCompellingEvidence3PriorUndisputedTransactionOptions : INestedOptions, IHasSetTracking
     {
+        private string customerAccountId;
+        private string customerDeviceFingerprint;
+        private string customerDeviceId;
+        private string customerEmailAddress;
+        private string customerPurchaseIp;
+        private string productDescription;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Stripe charge ID for the Visa Compelling Evidence 3.0 eligible prior charge.
         /// </summary>
@@ -20,7 +31,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("customer_account_id")]
         [STJS.JsonPropertyName("customer_account_id")]
-        public string CustomerAccountId { get; set; }
+        public string CustomerAccountId
+        {
+            get => this.customerAccountId;
+            set
+            {
+                this.customerAccountId = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Unique identifier of the cardholder’s device derived from a combination of at least two
@@ -28,7 +47,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("customer_device_fingerprint")]
         [STJS.JsonPropertyName("customer_device_fingerprint")]
-        public string CustomerDeviceFingerprint { get; set; }
+        public string CustomerDeviceFingerprint
+        {
+            get => this.customerDeviceFingerprint;
+            set
+            {
+                this.customerDeviceFingerprint = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Unique identifier of the cardholder’s device such as a device serial number (e.g.,
@@ -36,28 +63,60 @@ namespace Stripe
         /// </summary>
         [JsonProperty("customer_device_id")]
         [STJS.JsonPropertyName("customer_device_id")]
-        public string CustomerDeviceId { get; set; }
+        public string CustomerDeviceId
+        {
+            get => this.customerDeviceId;
+            set
+            {
+                this.customerDeviceId = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The email address of the customer.
         /// </summary>
         [JsonProperty("customer_email_address")]
         [STJS.JsonPropertyName("customer_email_address")]
-        public string CustomerEmailAddress { get; set; }
+        public string CustomerEmailAddress
+        {
+            get => this.customerEmailAddress;
+            set
+            {
+                this.customerEmailAddress = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The IP address that the customer used when making the purchase.
         /// </summary>
         [JsonProperty("customer_purchase_ip")]
         [STJS.JsonPropertyName("customer_purchase_ip")]
-        public string CustomerPurchaseIp { get; set; }
+        public string CustomerPurchaseIp
+        {
+            get => this.customerPurchaseIp;
+            set
+            {
+                this.customerPurchaseIp = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A description of the product or service that was sold.
         /// </summary>
         [JsonProperty("product_description")]
         [STJS.JsonPropertyName("product_description")]
-        public string ProductDescription { get; set; }
+        public string ProductDescription
+        {
+            get => this.productDescription;
+            set
+            {
+                this.productDescription = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The address to which a physical product was shipped. All fields are required for Visa
@@ -66,5 +125,10 @@ namespace Stripe
         [JsonProperty("shipping_address")]
         [STJS.JsonPropertyName("shipping_address")]
         public AddressOptions ShippingAddress { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

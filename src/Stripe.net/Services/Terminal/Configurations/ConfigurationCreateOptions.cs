@@ -8,6 +8,11 @@ namespace Stripe.Terminal
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ConfigurationCreateOptions : BaseOptions
     {
+        private ConfigurationCellularOptions cellular;
+        private ConfigurationOfflineOptions offline;
+        private ConfigurationTippingOptions tipping;
+        private ConfigurationWifiOptions wifi;
+
         /// <summary>
         /// An object containing device type specific settings for BBPOS WisePad 3 readers.
         /// </summary>
@@ -27,7 +32,15 @@ namespace Stripe.Terminal
         /// </summary>
         [JsonProperty("cellular")]
         [STJS.JsonPropertyName("cellular")]
-        public ConfigurationCellularOptions Cellular { get; set; }
+        public ConfigurationCellularOptions Cellular
+        {
+            get => this.cellular;
+            set
+            {
+                this.cellular = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Name of the configuration.
@@ -41,7 +54,15 @@ namespace Stripe.Terminal
         /// </summary>
         [JsonProperty("offline")]
         [STJS.JsonPropertyName("offline")]
-        public ConfigurationOfflineOptions Offline { get; set; }
+        public ConfigurationOfflineOptions Offline
+        {
+            get => this.offline;
+            set
+            {
+                this.offline = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Reboot time settings for readers. that support customized reboot time configuration.
@@ -69,7 +90,15 @@ namespace Stripe.Terminal
         /// </summary>
         [JsonProperty("tipping")]
         [STJS.JsonPropertyName("tipping")]
-        public ConfigurationTippingOptions Tipping { get; set; }
+        public ConfigurationTippingOptions Tipping
+        {
+            get => this.tipping;
+            set
+            {
+                this.tipping = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// An object containing device type specific settings for Verifone P400 readers.
@@ -83,6 +112,14 @@ namespace Stripe.Terminal
         /// </summary>
         [JsonProperty("wifi")]
         [STJS.JsonPropertyName("wifi")]
-        public ConfigurationWifiOptions Wifi { get; set; }
+        public ConfigurationWifiOptions Wifi
+        {
+            get => this.wifi;
+            set
+            {
+                this.wifi = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

@@ -6,15 +6,30 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SubscriptionCancellationDetailsOptions : INestedOptions
+    public class SubscriptionCancellationDetailsOptions : INestedOptions, IHasSetTracking
     {
+        private string comment;
+        private string feedback;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Additional comments about why the user canceled the subscription, if the subscription
         /// was canceled explicitly by the user.
         /// </summary>
         [JsonProperty("comment")]
         [STJS.JsonPropertyName("comment")]
-        public string Comment { get; set; }
+        public string Comment
+        {
+            get => this.comment;
+            set
+            {
+                this.comment = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The customer submitted reason for why they canceled, if the subscription was canceled
@@ -25,6 +40,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("feedback")]
         [STJS.JsonPropertyName("feedback")]
-        public string Feedback { get; set; }
+        public string Feedback
+        {
+            get => this.feedback;
+            set
+            {
+                this.feedback = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

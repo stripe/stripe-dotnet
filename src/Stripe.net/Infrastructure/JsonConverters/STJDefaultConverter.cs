@@ -142,11 +142,17 @@ namespace Stripe.Infrastructure
                 switch (valueToSerialize)
                 {
                     case null:
+                        // If this is an emptyable property that was explicitly set to null,
+                        // write null even if the global ignore condition would skip it.
+                        bool forceWriteNull = value is IHasSetTracking tracked
+                            && tracked.IsPropertySet(property.PropertyInfo.Name);
+
                         // Use property-level ignore condition if set, otherwise use global setting
                         var effectiveIgnoreCondition = property.IgnoreCondition ?? options.DefaultIgnoreCondition;
 
-                        if (effectiveIgnoreCondition != JsonIgnoreCondition.WhenWritingNull &&
-                            effectiveIgnoreCondition != JsonIgnoreCondition.Always)
+                        if (forceWriteNull ||
+                            (effectiveIgnoreCondition != JsonIgnoreCondition.WhenWritingNull &&
+                            effectiveIgnoreCondition != JsonIgnoreCondition.Always))
                         {
                             writer.WritePropertyName(property.JsonPropertyName);
                             writer.WriteNullValue();

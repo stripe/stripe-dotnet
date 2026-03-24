@@ -10,6 +10,8 @@ namespace Stripe.Billing
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CreditGrantUpdateOptions : BaseOptions, IHasMetadata
     {
+        private DateTime? expiresAt;
+
         /// <summary>
         /// The time when the billing credits created by this credit grant expire. If set to empty,
         /// the billing credits never expire.
@@ -18,7 +20,15 @@ namespace Stripe.Billing
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime? ExpiresAt { get; set; }
+        public DateTime? ExpiresAt
+        {
+            get => this.expiresAt;
+            set
+            {
+                this.expiresAt = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set of key-value pairs you can attach to an object. You can use this to store additional
