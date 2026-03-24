@@ -8,6 +8,8 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SetupIntentConfirmOptions : BaseOptions
     {
+        private SetupIntentMandateDataOptions mandateData;
+
         [JsonProperty("client_secret")]
         [STJS.JsonPropertyName("client_secret")]
         public string ClientSecret { get; set; }
@@ -25,7 +27,15 @@ namespace Stripe
 
         [JsonProperty("mandate_data")]
         [STJS.JsonPropertyName("mandate_data")]
-        public SetupIntentMandateDataOptions MandateData { get; set; }
+        public SetupIntentMandateDataOptions MandateData
+        {
+            get => this.mandateData;
+            set
+            {
+                this.mandateData = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, or saved Source object) to attach to

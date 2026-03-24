@@ -8,14 +8,33 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class QuoteSubscriptionDataOptions : INestedOptions, IHasMetadata
+    public class QuoteSubscriptionDataOptions : INestedOptions, IHasMetadata, IHasSetTracking
     {
+        private QuoteSubscriptionDataBillOnAcceptanceOptions billOnAcceptance;
+        private string billingCycleAnchor;
+        private string description;
+        private AnyOf<DateTime?, QuoteSubscriptionDataEffectiveDate> effectiveDate;
+        private QuoteSubscriptionDataPrebillingOptions prebilling;
+        private long? trialPeriodDays;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Describes the period to bill for upon accepting the quote.
         /// </summary>
         [JsonProperty("bill_on_acceptance")]
         [STJS.JsonPropertyName("bill_on_acceptance")]
-        public QuoteSubscriptionDataBillOnAcceptanceOptions BillOnAcceptance { get; set; }
+        public QuoteSubscriptionDataBillOnAcceptanceOptions BillOnAcceptance
+        {
+            get => this.billOnAcceptance;
+            set
+            {
+                this.billOnAcceptance = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Configures when the subscription schedule generates prorations for phase transitions.
@@ -35,7 +54,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [STJS.JsonPropertyName("billing_cycle_anchor")]
-        public string BillingCycleAnchor { get; set; }
+        public string BillingCycleAnchor
+        {
+            get => this.billingCycleAnchor;
+            set
+            {
+                this.billingCycleAnchor = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
@@ -51,7 +78,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description
+        {
+            get => this.description;
+            set
+            {
+                this.description = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// When creating a new subscription, the date of which the subscription schedule will start
@@ -65,7 +100,15 @@ namespace Stripe
         [JsonConverter(typeof(AnyOfConverter))]
         [STJS.JsonPropertyName("effective_date")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-        public AnyOf<DateTime?, QuoteSubscriptionDataEffectiveDate> EffectiveDate { get; set; }
+        public AnyOf<DateTime?, QuoteSubscriptionDataEffectiveDate> EffectiveDate
+        {
+            get => this.effectiveDate;
+            set
+            {
+                this.effectiveDate = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Behavior of the subscription schedule and underlying subscription when it ends.
@@ -103,7 +146,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("prebilling")]
         [STJS.JsonPropertyName("prebilling")]
-        public QuoteSubscriptionDataPrebillingOptions Prebilling { get; set; }
+        public QuoteSubscriptionDataPrebillingOptions Prebilling
+        {
+            get => this.prebilling;
+            set
+            {
+                this.prebilling = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Determines how to handle <a
@@ -132,6 +183,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("trial_period_days")]
         [STJS.JsonPropertyName("trial_period_days")]
-        public long? TrialPeriodDays { get; set; }
+        public long? TrialPeriodDays
+        {
+            get => this.trialPeriodDays;
+            set
+            {
+                this.trialPeriodDays = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

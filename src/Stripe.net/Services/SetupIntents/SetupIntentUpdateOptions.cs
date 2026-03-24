@@ -9,6 +9,9 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SetupIntentUpdateOptions : BaseOptions, IHasMetadata
     {
+        private List<string> excludedPaymentMethodTypes;
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// If present, the SetupIntent's payment method will be attached to the in-context Stripe
         /// Account.
@@ -68,7 +71,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("excluded_payment_method_types")]
         [STJS.JsonPropertyName("excluded_payment_method_types")]
-        public List<string> ExcludedPaymentMethodTypes { get; set; }
+        public List<string> ExcludedPaymentMethodTypes
+        {
+            get => this.excludedPaymentMethodTypes;
+            set
+            {
+                this.excludedPaymentMethodTypes = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Indicates the directions of money movement for which this payment method is intended to
@@ -92,7 +103,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, or saved Source object) to attach to

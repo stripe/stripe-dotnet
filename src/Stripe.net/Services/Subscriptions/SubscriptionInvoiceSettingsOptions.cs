@@ -7,15 +7,29 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SubscriptionInvoiceSettingsOptions : INestedOptions
+    public class SubscriptionInvoiceSettingsOptions : INestedOptions, IHasSetTracking
     {
+        private List<string> accountTaxIds;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The account tax IDs associated with the subscription. Will be set on invoices generated
         /// by the subscription.
         /// </summary>
         [JsonProperty("account_tax_ids")]
         [STJS.JsonPropertyName("account_tax_ids")]
-        public List<string> AccountTaxIds { get; set; }
+        public List<string> AccountTaxIds
+        {
+            get => this.accountTaxIds;
+            set
+            {
+                this.accountTaxIds = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The connected account that issues the invoice. The invoice is presented with the
@@ -24,5 +38,10 @@ namespace Stripe
         [JsonProperty("issuer")]
         [STJS.JsonPropertyName("issuer")]
         public SubscriptionInvoiceSettingsIssuerOptions Issuer { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

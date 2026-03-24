@@ -7,8 +7,14 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ConfigurationFeaturesCustomerUpdateOptions : INestedOptions
+    public class ConfigurationFeaturesCustomerUpdateOptions : INestedOptions, IHasSetTracking
     {
+        private List<string> allowedUpdates;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The types of customer updates that are supported. When empty, customers are not
         /// updateable.
@@ -17,7 +23,15 @@ namespace Stripe.BillingPortal
         /// </summary>
         [JsonProperty("allowed_updates")]
         [STJS.JsonPropertyName("allowed_updates")]
-        public List<string> AllowedUpdates { get; set; }
+        public List<string> AllowedUpdates
+        {
+            get => this.allowedUpdates;
+            set
+            {
+                this.allowedUpdates = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Whether the feature is enabled.
@@ -25,5 +39,10 @@ namespace Stripe.BillingPortal
         [JsonProperty("enabled")]
         [STJS.JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

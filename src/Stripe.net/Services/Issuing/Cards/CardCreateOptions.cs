@@ -9,6 +9,8 @@ namespace Stripe.Issuing
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CardCreateOptions : BaseOptions, IHasMetadata
     {
+        private string secondLine;
+
         /// <summary>
         /// The <a href="https://docs.stripe.com/api#issuing_cardholder_object">Cardholder</a>
         /// object with which the card will be associated.
@@ -104,7 +106,15 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("second_line")]
         [STJS.JsonPropertyName("second_line")]
-        public string SecondLine { get; set; }
+        public string SecondLine
+        {
+            get => this.secondLine;
+            set
+            {
+                this.secondLine = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The address where the card will be shipped.

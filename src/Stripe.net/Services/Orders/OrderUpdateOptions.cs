@@ -9,6 +9,13 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OrderUpdateOptions : BaseOptions, IHasMetadata
     {
+        private OrderBillingDetailsOptions billingDetails;
+        private string description;
+        private List<OrderDiscountOptions> discounts;
+        private Dictionary<string, string> metadata;
+        private OrderShippingCostOptions shippingCost;
+        private OrderShippingDetailsOptions shippingDetails;
+
         /// <summary>
         /// Settings for automatic tax calculation for this order.
         /// </summary>
@@ -22,7 +29,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing_details")]
         [STJS.JsonPropertyName("billing_details")]
-        public OrderBillingDetailsOptions BillingDetails { get; set; }
+        public OrderBillingDetailsOptions BillingDetails
+        {
+            get => this.billingDetails;
+            set
+            {
+                this.billingDetails = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
@@ -45,7 +60,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description
+        {
+            get => this.description;
+            set
+            {
+                this.description = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The coupons, promotion codes, and/or discounts to apply to the order. Pass the empty
@@ -53,7 +76,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
-        public List<OrderDiscountOptions> Discounts { get; set; }
+        public List<OrderDiscountOptions> Discounts
+        {
+            get => this.discounts;
+            set
+            {
+                this.discounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The IP address of the purchaser for this order.
@@ -78,7 +109,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Payment information associated with the order, including payment settings.
@@ -92,14 +131,30 @@ namespace Stripe
         /// </summary>
         [JsonProperty("shipping_cost")]
         [STJS.JsonPropertyName("shipping_cost")]
-        public OrderShippingCostOptions ShippingCost { get; set; }
+        public OrderShippingCostOptions ShippingCost
+        {
+            get => this.shippingCost;
+            set
+            {
+                this.shippingCost = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Shipping details for the order.
         /// </summary>
         [JsonProperty("shipping_details")]
         [STJS.JsonPropertyName("shipping_details")]
-        public OrderShippingDetailsOptions ShippingDetails { get; set; }
+        public OrderShippingDetailsOptions ShippingDetails
+        {
+            get => this.shippingDetails;
+            set
+            {
+                this.shippingDetails = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Additional tax details about the purchaser to be used for this order.

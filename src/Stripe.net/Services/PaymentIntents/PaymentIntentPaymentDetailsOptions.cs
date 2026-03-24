@@ -7,8 +7,18 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentPaymentDetailsOptions : INestedOptions
+    public class PaymentIntentPaymentDetailsOptions : INestedOptions, IHasSetTracking
     {
+        private List<PaymentIntentPaymentDetailsCarRentalDatumOptions> carRentalData;
+        private string customerReference;
+        private List<PaymentIntentPaymentDetailsFlightDatumOptions> flightData;
+        private List<PaymentIntentPaymentDetailsLodgingDatumOptions> lodgingData;
+        private string orderReference;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Car rental details for this PaymentIntent.
         /// </summary>
@@ -21,7 +31,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("car_rental_data")]
         [STJS.JsonPropertyName("car_rental_data")]
-        public List<PaymentIntentPaymentDetailsCarRentalDatumOptions> CarRentalData { get; set; }
+        public List<PaymentIntentPaymentDetailsCarRentalDatumOptions> CarRentalData
+        {
+            get => this.carRentalData;
+            set
+            {
+                this.carRentalData = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A unique value to identify the customer. This field is available only for card payments.
@@ -31,7 +49,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("customer_reference")]
         [STJS.JsonPropertyName("customer_reference")]
-        public string CustomerReference { get; set; }
+        public string CustomerReference
+        {
+            get => this.customerReference;
+            set
+            {
+                this.customerReference = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Event details for this PaymentIntent.
@@ -52,7 +78,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("flight_data")]
         [STJS.JsonPropertyName("flight_data")]
-        public List<PaymentIntentPaymentDetailsFlightDatumOptions> FlightData { get; set; }
+        public List<PaymentIntentPaymentDetailsFlightDatumOptions> FlightData
+        {
+            get => this.flightData;
+            set
+            {
+                this.flightData = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Lodging reservation details for this PaymentIntent.
@@ -66,7 +100,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("lodging_data")]
         [STJS.JsonPropertyName("lodging_data")]
-        public List<PaymentIntentPaymentDetailsLodgingDatumOptions> LodgingData { get; set; }
+        public List<PaymentIntentPaymentDetailsLodgingDatumOptions> LodgingData
+        {
+            get => this.lodgingData;
+            set
+            {
+                this.lodgingData = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A unique value assigned by the business to identify the transaction. Required for L2 and
@@ -78,7 +120,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("order_reference")]
         [STJS.JsonPropertyName("order_reference")]
-        public string OrderReference { get; set; }
+        public string OrderReference
+        {
+            get => this.orderReference;
+            set
+            {
+                this.orderReference = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Subscription details for this PaymentIntent.
@@ -86,5 +136,10 @@ namespace Stripe
         [JsonProperty("subscription")]
         [STJS.JsonPropertyName("subscription")]
         public PaymentIntentPaymentDetailsSubscriptionOptions Subscription { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

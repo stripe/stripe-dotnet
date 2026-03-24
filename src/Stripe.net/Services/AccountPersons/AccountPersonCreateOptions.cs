@@ -9,6 +9,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountPersonCreateOptions : BaseOptions, IHasMetadata
     {
+        private AccountPersonDobOptions dob;
+        private List<string> fullNameAliases;
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// Details on the legal guardian's or authorizer's acceptance of the required Stripe
         /// agreements.
@@ -43,7 +47,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("dob")]
         [STJS.JsonPropertyName("dob")]
-        public AccountPersonDobOptions Dob { get; set; }
+        public AccountPersonDobOptions Dob
+        {
+            get => this.dob;
+            set
+            {
+                this.dob = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Documents that may be submitted to satisfy various informational requests.
@@ -85,7 +97,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("full_name_aliases")]
         [STJS.JsonPropertyName("full_name_aliases")]
-        public List<string> FullNameAliases { get; set; }
+        public List<string> FullNameAliases
+        {
+            get => this.fullNameAliases;
+            set
+            {
+                this.fullNameAliases = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The person's gender (International regulations require either "male" or "female").
@@ -152,7 +172,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The country where the person is a national. Two-letter country code (<a

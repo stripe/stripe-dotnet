@@ -6,8 +6,17 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SubscriptionScheduleDefaultSettingsOptions : INestedOptions
+    public class SubscriptionScheduleDefaultSettingsOptions : INestedOptions, IHasSetTracking
     {
+        private SubscriptionScheduleDefaultSettingsBillingThresholdsOptions billingThresholds;
+        private string description;
+        private string onBehalfOf;
+        private SubscriptionScheduleDefaultSettingsTransferDataOptions transferData;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// A non-negative decimal between 0 and 100, with at most two decimal places. This
         /// represents the percentage of the subscription invoice total that will be transferred to
@@ -45,7 +54,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing_thresholds")]
         [STJS.JsonPropertyName("billing_thresholds")]
-        public SubscriptionScheduleDefaultSettingsBillingThresholdsOptions BillingThresholds { get; set; }
+        public SubscriptionScheduleDefaultSettingsBillingThresholdsOptions BillingThresholds
+        {
+            get => this.billingThresholds;
+            set
+            {
+                this.billingThresholds = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When charging automatically,
@@ -75,7 +92,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description
+        {
+            get => this.description;
+            set
+            {
+                this.description = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// All invoices will be billed using the specified settings.
@@ -90,7 +115,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("on_behalf_of")]
         [STJS.JsonPropertyName("on_behalf_of")]
-        public string OnBehalfOf { get; set; }
+        public string OnBehalfOf
+        {
+            get => this.onBehalfOf;
+            set
+            {
+                this.onBehalfOf = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The data with which to automatically create a Transfer for each of the associated
@@ -98,6 +131,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("transfer_data")]
         [STJS.JsonPropertyName("transfer_data")]
-        public SubscriptionScheduleDefaultSettingsTransferDataOptions TransferData { get; set; }
+        public SubscriptionScheduleDefaultSettingsTransferDataOptions TransferData
+        {
+            get => this.transferData;
+            set
+            {
+                this.transferData = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

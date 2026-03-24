@@ -9,6 +9,9 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentCaptureOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+        private PaymentIntentPaymentDetailsOptions paymentDetails;
+
         /// <summary>
         /// Provides industry-specific information about the amount.
         /// </summary>
@@ -62,14 +65,30 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Provides industry-specific information about the charge.
         /// </summary>
         [JsonProperty("payment_details")]
         [STJS.JsonPropertyName("payment_details")]
-        public PaymentIntentPaymentDetailsOptions PaymentDetails { get; set; }
+        public PaymentIntentPaymentDetailsOptions PaymentDetails
+        {
+            get => this.paymentDetails;
+            set
+            {
+                this.paymentDetails = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Text that appears on the customer's statement as the statement descriptor for a non-card
