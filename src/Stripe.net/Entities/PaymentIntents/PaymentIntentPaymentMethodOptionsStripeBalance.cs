@@ -8,10 +8,6 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentMethodOptionsStripeBalance : StripeEntity<PaymentIntentPaymentMethodOptionsStripeBalance>
     {
-        [JsonProperty("mandate_options")]
-        [STJS.JsonPropertyName("mandate_options")]
-        public PaymentIntentPaymentMethodOptionsStripeBalanceMandateOptions MandateOptions { get; set; }
-
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
