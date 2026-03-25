@@ -1,6 +1,9 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(Infrastructure.STJStringEnumConverterFactory))]
     public class SubscriptionCancelAt : StringEnum
     {
         public static readonly SubscriptionCancelAt MaxPeriodEnd = new SubscriptionCancelAt("max_period_end");
