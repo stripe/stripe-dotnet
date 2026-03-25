@@ -6,8 +6,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class InvoiceLineItemPriceDataProductDataTaxDetailsOptions : INestedOptions
+    public class InvoiceLineItemPriceDataProductDataTaxDetailsOptions : INestedOptions, IHasSetTracking
     {
+        private string taxCode;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// A tax location ID. Depending on the <a
         /// href="https://stripe.com/tax/tax-for-tickets/reference/tax-location-performance">tax
@@ -22,6 +28,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_code")]
         [STJS.JsonPropertyName("tax_code")]
-        public string TaxCode { get; set; }
+        public string TaxCode
+        {
+            get => this.taxCode;
+            set
+            {
+                this.taxCode = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

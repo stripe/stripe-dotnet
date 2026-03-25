@@ -313,6 +313,14 @@ namespace Stripe.Checkout
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
+        /// <summary>
+        /// The integration identifier for this Checkout Session. Multiple Checkout Sessions can
+        /// have the same integration identifier.
+        /// </summary>
+        [JsonProperty("integration_identifier")]
+        [STJS.JsonPropertyName("integration_identifier")]
+        public string IntegrationIdentifier { get; set; }
+
         #region Expandable Invoice
 
         /// <summary>
@@ -363,8 +371,8 @@ namespace Stripe.Checkout
         public StripeList<LineItem> LineItems { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -744,8 +752,8 @@ namespace Stripe.Checkout
         public SessionTotalDetails TotalDetails { get; set; }
 
         /// <summary>
-        /// The UI mode of the Session. Defaults to <c>hosted</c>.
-        /// One of: <c>custom</c>, <c>embedded</c>, or <c>hosted</c>.
+        /// The UI mode of the Session. Defaults to <c>hosted_page</c>.
+        /// One of: <c>elements</c>, <c>embedded_page</c>, <c>form</c>, or <c>hosted_page</c>.
         /// </summary>
         [JsonProperty("ui_mode")]
         [STJS.JsonPropertyName("ui_mode")]

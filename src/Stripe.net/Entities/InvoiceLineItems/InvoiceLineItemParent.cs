@@ -16,6 +16,13 @@ namespace Stripe
         public InvoiceLineItemParentInvoiceItemDetails InvoiceItemDetails { get; set; }
 
         /// <summary>
+        /// Details about the pricing plan subscription that generated this line item.
+        /// </summary>
+        [JsonProperty("pricing_plan_subscription_details")]
+        [STJS.JsonPropertyName("pricing_plan_subscription_details")]
+        public InvoiceLineItemParentPricingPlanSubscriptionDetails PricingPlanSubscriptionDetails { get; set; }
+
+        /// <summary>
         /// Details about the rate card subscription that generated this line item.
         /// </summary>
         [JsonProperty("rate_card_subscription_details")]
@@ -45,12 +52,5 @@ namespace Stripe
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
-
-        /// <summary>
-        /// Details about the pricing plan subscription that generated this line item.
-        /// </summary>
-        [JsonProperty("pricing_plan_subscription_details")]
-        [STJS.JsonPropertyName("pricing_plan_subscription_details")]
-        public InvoiceLineItemParentPricingPlanSubscriptionDetails PricingPlanSubscriptionDetails { get; set; }
     }
 }

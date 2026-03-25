@@ -51,7 +51,7 @@ namespace Stripe.SharedPayment
 
         /// <summary>
         /// The reason why the SharedPaymentGrantedToken has been deactivated.
-        /// One of: <c>consumed</c>, <c>expired</c>, or <c>revoked</c>.
+        /// One of: <c>consumed</c>, <c>expired</c>, <c>resolved</c>, or <c>revoked</c>.
         /// </summary>
         [JsonProperty("deactivated_reason")]
         [STJS.JsonPropertyName("deactivated_reason")]

@@ -23,6 +23,13 @@ namespace Stripe.DelegatedCheckout
         public long AmountSubtotal { get; set; }
 
         /// <summary>
+        /// The fulfillment type of the line item.
+        /// </summary>
+        [JsonProperty("fulfillment_type")]
+        [STJS.JsonPropertyName("fulfillment_type")]
+        public string FulfillmentType { get; set; }
+
+        /// <summary>
         /// The key of the line item.
         /// </summary>
         [JsonProperty("key")]
@@ -53,12 +60,5 @@ namespace Stripe.DelegatedCheckout
         [JsonProperty("unit_amount")]
         [STJS.JsonPropertyName("unit_amount")]
         public long UnitAmount { get; set; }
-
-        /// <summary>
-        /// The fulfillment type of the line item.
-        /// </summary>
-        [JsonProperty("fulfillment_type")]
-        [STJS.JsonPropertyName("fulfillment_type")]
-        public string FulfillmentType { get; set; }
     }
 }

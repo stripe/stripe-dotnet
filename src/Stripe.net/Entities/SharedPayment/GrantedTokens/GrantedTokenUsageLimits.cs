@@ -26,7 +26,7 @@ namespace Stripe.SharedPayment
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
         /// Max amount that can be captured using this SharedPaymentToken.
@@ -34,5 +34,14 @@ namespace Stripe.SharedPayment
         [JsonProperty("max_amount")]
         [STJS.JsonPropertyName("max_amount")]
         public long MaxAmount { get; set; }
+
+        /// <summary>
+        /// The recurring interval at which the shared payment token's amount usage restrictions
+        /// reset.
+        /// One of: <c>month</c>, <c>week</c>, or <c>year</c>.
+        /// </summary>
+        [JsonProperty("recurring_interval")]
+        [STJS.JsonPropertyName("recurring_interval")]
+        public string RecurringInterval { get; set; }
     }
 }

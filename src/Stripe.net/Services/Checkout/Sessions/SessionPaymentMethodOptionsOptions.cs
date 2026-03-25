@@ -101,6 +101,13 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsCashappOptions Cashapp { get; set; }
 
         /// <summary>
+        /// contains details about the Crypto payment method options.
+        /// </summary>
+        [JsonProperty("crypto")]
+        [STJS.JsonPropertyName("crypto")]
+        public SessionPaymentMethodOptionsCryptoOptions Crypto { get; set; }
+
+        /// <summary>
         /// contains details about the Customer Balance payment method options.
         /// </summary>
         [JsonProperty("customer_balance")]
@@ -309,6 +316,13 @@ namespace Stripe.Checkout
         [JsonProperty("twint")]
         [STJS.JsonPropertyName("twint")]
         public SessionPaymentMethodOptionsTwintOptions Twint { get; set; }
+
+        /// <summary>
+        /// contains details about the UPI payment method options.
+        /// </summary>
+        [JsonProperty("upi")]
+        [STJS.JsonPropertyName("upi")]
+        public SessionPaymentMethodOptionsUpiOptions Upi { get; set; }
 
         /// <summary>
         /// contains details about the Us Bank Account payment method options.

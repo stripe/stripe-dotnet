@@ -113,8 +113,8 @@ namespace Stripe
         public string Invoice { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -203,11 +203,25 @@ namespace Stripe
         public InvoiceLineItemPricing Pricing { get; set; }
 
         /// <summary>
-        /// The quantity of the subscription, if the line item is a subscription or a proration.
+        /// Quantity of units for the invoice line item in integer format, with any decimal
+        /// precision truncated. For the line item's full-precision decimal quantity, use
+        /// <c>quantity_decimal</c>. This field will be deprecated in favor of
+        /// <c>quantity_decimal</c> in a future version. If the line item is a proration or
+        /// subscription, the quantity of the subscription that the proration was computed for.
         /// </summary>
         [JsonProperty("quantity")]
         [STJS.JsonPropertyName("quantity")]
         public long? Quantity { get; set; }
+
+        /// <summary>
+        /// Non-negative decimal with at most 12 decimal places. The quantity of units for the line
+        /// item.
+        /// </summary>
+        [JsonProperty("quantity_decimal")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonPropertyName("quantity_decimal")]
+        public decimal? QuantityDecimal { get; set; }
 
         #region Expandable Subscription
 

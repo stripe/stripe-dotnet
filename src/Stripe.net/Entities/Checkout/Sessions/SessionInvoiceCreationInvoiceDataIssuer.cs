@@ -45,7 +45,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Type of the account referenced.
-        /// One of: <c>account</c>, or <c>self</c>.
+        /// One of: <c>account</c>, <c>application</c>, or <c>self</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

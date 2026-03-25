@@ -34,6 +34,13 @@ namespace Stripe
         public AccountSignalsDelinquency Delinquency { get; set; }
 
         /// <summary>
+        /// The fraud intent signal of the account.
+        /// </summary>
+        [JsonProperty("fraud_intent")]
+        [STJS.JsonPropertyName("fraud_intent")]
+        public AccountSignalsFraudIntent FraudIntent { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>

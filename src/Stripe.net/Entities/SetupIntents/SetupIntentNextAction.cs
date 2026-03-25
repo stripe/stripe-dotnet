@@ -31,6 +31,10 @@ namespace Stripe
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
 
+        [JsonProperty("upi_handle_redirect_or_display_qr_code")]
+        [STJS.JsonPropertyName("upi_handle_redirect_or_display_qr_code")]
+        public SetupIntentNextActionUpiHandleRedirectOrDisplayQrCode UpiHandleRedirectOrDisplayQrCode { get; set; }
+
         /// <summary>
         /// When confirming a SetupIntent with Stripe.js, Stripe.js depends on the contents of this
         /// dictionary to invoke authentication flows. The shape of the contents is subject to

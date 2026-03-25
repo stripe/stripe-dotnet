@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.DelegatedCheckout
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -42,6 +43,13 @@ namespace Stripe.DelegatedCheckout
         [JsonProperty("latest_delivery_time")]
         [STJS.JsonPropertyName("latest_delivery_time")]
         public long? LatestDeliveryTime { get; set; }
+
+        /// <summary>
+        /// The line item keys associated with this shipping option.
+        /// </summary>
+        [JsonProperty("line_item_keys")]
+        [STJS.JsonPropertyName("line_item_keys")]
+        public List<string> LineItemKeys { get; set; }
 
         /// <summary>
         /// The shipping amount of the shipping option.

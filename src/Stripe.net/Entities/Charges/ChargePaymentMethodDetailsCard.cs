@@ -211,6 +211,23 @@ namespace Stripe
         public ChargePaymentMethodDetailsCardPartialAuthorization PartialAuthorization { get; set; }
 
         /// <summary>
+        /// Whether the PaymentIntent can be reauthorized or not.
+        /// </summary>
+        [JsonProperty("reauthorization")]
+        [STJS.JsonPropertyName("reauthorization")]
+        public ChargePaymentMethodDetailsCardReauthorization Reauthorization { get; set; }
+
+        /// <summary>
+        /// The time at which the associated PaymentIntent will transition to a terminal state if it
+        /// is not reauthorized.
+        /// </summary>
+        [JsonProperty("reauthorize_before")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        [STJS.JsonPropertyName("reauthorize_before")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+        public DateTime? ReauthorizeBefore { get; set; }
+
+        /// <summary>
         /// Status of a card based on the card issuer.
         /// One of: <c>regulated</c>, or <c>unregulated</c>.
         /// </summary>
@@ -231,22 +248,5 @@ namespace Stripe
         [JsonProperty("wallet")]
         [STJS.JsonPropertyName("wallet")]
         public ChargePaymentMethodDetailsCardWallet Wallet { get; set; }
-
-        /// <summary>
-        /// Whether the PaymentIntent can be reauthorized or not.
-        /// </summary>
-        [JsonProperty("reauthorization")]
-        [STJS.JsonPropertyName("reauthorization")]
-        public ChargePaymentMethodDetailsCardReauthorization Reauthorization { get; set; }
-
-        /// <summary>
-        /// The time at which the associated PaymentIntent will transition to a terminal state if it
-        /// is not reauthorized.
-        /// </summary>
-        [JsonProperty("reauthorize_before")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-        [STJS.JsonPropertyName("reauthorize_before")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime? ReauthorizeBefore { get; set; }
     }
 }

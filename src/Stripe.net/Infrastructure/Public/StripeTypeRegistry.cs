@@ -195,6 +195,7 @@ namespace Stripe
                 { "reserve.release", typeof(Reserve.Release) },
                 { "reserve_transaction", typeof(ReserveTransaction) },
                 { "review", typeof(Review) },
+                { "risk_signals", typeof(RiskSignals) },
                 { "scheduled_query_run", typeof(Sigma.ScheduledQueryRun) },
                 { "setup_attempt", typeof(SetupAttempt) },
                 { "setup_intent", typeof(SetupIntent) },
