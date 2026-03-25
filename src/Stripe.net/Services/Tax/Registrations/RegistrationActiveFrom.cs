@@ -1,6 +1,9 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Tax
 {
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(Infrastructure.STJStringEnumConverterFactory))]
     public class RegistrationActiveFrom : StringEnum
     {
         public static readonly RegistrationActiveFrom Now = new RegistrationActiveFrom("now");

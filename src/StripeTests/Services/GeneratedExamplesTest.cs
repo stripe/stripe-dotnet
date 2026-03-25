@@ -8528,7 +8528,7 @@ namespace StripeTests
                 Endpoint = new Stripe.V2.Core.BatchJobCreateEndpointOptions
                 {
                     HttpMethod = "post",
-                    Path = "path",
+                    Path = BatchJobEndpointPath.V1SubscriptionScheduleCreate,
                 },
                 Metadata = new Dictionary<string, string>
                 {
