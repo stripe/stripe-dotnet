@@ -9,6 +9,14 @@ namespace Stripe
     public class SubscriptionPaymentSettingsPaymentMethodOptionsPixOptions : INestedOptions
     {
         /// <summary>
+        /// The number of seconds (between 10 and 1209600) after which Pix payment will expire.
+        /// Defaults to 86400 seconds.
+        /// </summary>
+        [JsonProperty("expires_after_seconds")]
+        [STJS.JsonPropertyName("expires_after_seconds")]
+        public long? ExpiresAfterSeconds { get; set; }
+
+        /// <summary>
         /// Configuration options for setting up a mandate.
         /// </summary>
         [JsonProperty("mandate_options")]

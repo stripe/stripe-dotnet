@@ -24,6 +24,10 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("gross_receipts_tax")]
         public RegistrationCountryOptionsUsGrossReceiptsTax GrossReceiptsTax { get; set; }
 
+        [JsonProperty("home_rule_tax")]
+        [STJS.JsonPropertyName("home_rule_tax")]
+        public RegistrationCountryOptionsUsHomeRuleTax HomeRuleTax { get; set; }
+
         [JsonProperty("hospitality_tax")]
         [STJS.JsonPropertyName("hospitality_tax")]
         public RegistrationCountryOptionsUsHospitalityTax HospitalityTax { get; set; }
@@ -71,9 +75,5 @@ namespace Stripe.Tax
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
-
-        [JsonProperty("home_rule_tax")]
-        [STJS.JsonPropertyName("home_rule_tax")]
-        public RegistrationCountryOptionsUsHomeRuleTax HomeRuleTax { get; set; }
     }
 }

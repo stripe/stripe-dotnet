@@ -8,6 +8,18 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentMethodOptionsCrypto : StripeEntity<PaymentIntentPaymentMethodOptionsCrypto>
     {
+        [JsonProperty("deposit_options")]
+        [STJS.JsonPropertyName("deposit_options")]
+        public PaymentIntentPaymentMethodOptionsCryptoDepositOptions DepositOptions { get; set; }
+
+        /// <summary>
+        /// The mode of the crypto payment.
+        /// One of: <c>default</c>, or <c>deposit</c>.
+        /// </summary>
+        [JsonProperty("mode")]
+        [STJS.JsonPropertyName("mode")]
+        public string Mode { get; set; }
+
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
@@ -31,17 +43,5 @@ namespace Stripe
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
-
-        [JsonProperty("deposit_options")]
-        [STJS.JsonPropertyName("deposit_options")]
-        public PaymentIntentPaymentMethodOptionsCryptoDepositOptions DepositOptions { get; set; }
-
-        /// <summary>
-        /// The mode of the crypto payment.
-        /// One of: <c>default</c>, or <c>deposit</c>.
-        /// </summary>
-        [JsonProperty("mode")]
-        [STJS.JsonPropertyName("mode")]
-        public string Mode { get; set; }
     }
 }

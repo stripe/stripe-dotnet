@@ -17,9 +17,29 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("allow_redisplay")]
         public string AllowRedisplay { get; set; }
 
+        [JsonProperty("au_becs_debit")]
+        [STJS.JsonPropertyName("au_becs_debit")]
+        public SessionCurrentAttemptPaymentMethodDetailsAuBecsDebit AuBecsDebit { get; set; }
+
+        [JsonProperty("bacs_debit")]
+        [STJS.JsonPropertyName("bacs_debit")]
+        public SessionCurrentAttemptPaymentMethodDetailsBacsDebit BacsDebit { get; set; }
+
+        [JsonProperty("boleto")]
+        [STJS.JsonPropertyName("boleto")]
+        public SessionCurrentAttemptPaymentMethodDetailsBoleto Boleto { get; set; }
+
         [JsonProperty("card")]
         [STJS.JsonPropertyName("card")]
         public SessionCurrentAttemptPaymentMethodDetailsCard Card { get; set; }
+
+        [JsonProperty("link")]
+        [STJS.JsonPropertyName("link")]
+        public SessionCurrentAttemptPaymentMethodDetailsLink Link { get; set; }
+
+        [JsonProperty("sepa_debit")]
+        [STJS.JsonPropertyName("sepa_debit")]
+        public SessionCurrentAttemptPaymentMethodDetailsSepaDebit SepaDebit { get; set; }
 
         /// <summary>
         /// The type of payment method the customer is attempting to pay with. An additional hash is
@@ -29,5 +49,9 @@ namespace Stripe.Checkout
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
+
+        [JsonProperty("us_bank_account")]
+        [STJS.JsonPropertyName("us_bank_account")]
+        public SessionCurrentAttemptPaymentMethodDetailsUsBankAccount UsBankAccount { get; set; }
     }
 }

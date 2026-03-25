@@ -59,8 +59,8 @@ namespace Stripe
         public BalanceIssuing Issuing { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -77,6 +77,10 @@ namespace Stripe
         [JsonProperty("refund_and_dispute_prefunding")]
         [STJS.JsonPropertyName("refund_and_dispute_prefunding")]
         public BalanceRefundAndDisputePrefunding RefundAndDisputePrefunding { get; set; }
+
+        [JsonProperty("risk_reserved")]
+        [STJS.JsonPropertyName("risk_reserved")]
+        public BalanceRiskReserved RiskReserved { get; set; }
 
         [JsonProperty("transit_balances_total")]
         [STJS.JsonPropertyName("transit_balances_total")]

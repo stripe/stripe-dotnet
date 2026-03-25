@@ -31,7 +31,10 @@ namespace Stripe.Checkout
         public string Id { get; set; }
 
         /// <summary>
-        /// Information about the payment method the customer is attempting to pay with.
+        /// Information about the payment method the customer is attempting to pay with. Relevant
+        /// payment method information is provided when available. Some payment details are only
+        /// available after the payment has completed and can't be returned in the manual approval
+        /// flow.
         /// </summary>
         [JsonProperty("payment_method_details")]
         [STJS.JsonPropertyName("payment_method_details")]

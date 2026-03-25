@@ -45,10 +45,17 @@ namespace Stripe.DelegatedCheckout
         public string Phone { get; set; }
 
         /// <summary>
-        /// The fulfillment option.
+        /// The selected fulfillment option.
         /// </summary>
         [JsonProperty("selected_fulfillment_option")]
         [STJS.JsonPropertyName("selected_fulfillment_option")]
         public RequestedSessionFulfillmentDetailsSelectedFulfillmentOption SelectedFulfillmentOption { get; set; }
+
+        /// <summary>
+        /// Per-item fulfillment option overrides.
+        /// </summary>
+        [JsonProperty("selected_fulfillment_option_overrides")]
+        [STJS.JsonPropertyName("selected_fulfillment_option_overrides")]
+        public List<RequestedSessionFulfillmentDetailsSelectedFulfillmentOptionOverride> SelectedFulfillmentOptionOverrides { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.DelegatedCheckout
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -35,5 +36,12 @@ namespace Stripe.DelegatedCheckout
         [JsonProperty("key")]
         [STJS.JsonPropertyName("key")]
         public string Key { get; set; }
+
+        /// <summary>
+        /// The line item keys associated with this digital fulfillment option.
+        /// </summary>
+        [JsonProperty("line_item_keys")]
+        [STJS.JsonPropertyName("line_item_keys")]
+        public List<string> LineItemKeys { get; set; }
     }
 }

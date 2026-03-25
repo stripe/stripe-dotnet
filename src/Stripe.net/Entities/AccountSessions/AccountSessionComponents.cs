@@ -62,6 +62,15 @@ namespace Stripe
         [STJS.JsonPropertyName("financial_account")]
         public AccountSessionComponentsFinancialAccount FinancialAccount { get; set; }
 
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/financial-account-rewards/">financial
+        /// account rewards</a> embedded component.
+        /// </summary>
+        [JsonProperty("financial_account_rewards")]
+        [STJS.JsonPropertyName("financial_account_rewards")]
+        public AccountSessionComponentsFinancialAccountRewards FinancialAccountRewards { get; set; }
+
         [JsonProperty("financial_account_transactions")]
         [STJS.JsonPropertyName("financial_account_transactions")]
         public AccountSessionComponentsFinancialAccountTransactions FinancialAccountTransactions { get; set; }
@@ -77,6 +86,15 @@ namespace Stripe
         [JsonProperty("issuing_cards_list")]
         [STJS.JsonPropertyName("issuing_cards_list")]
         public AccountSessionComponentsIssuingCardsList IssuingCardsList { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/nesting-demo/">Nestingdemo</a>
+        /// embedded component.
+        /// </summary>
+        [JsonProperty("nesting_demo")]
+        [STJS.JsonPropertyName("nesting_demo")]
+        public AccountSessionComponentsNestingDemo NestingDemo { get; set; }
 
         /// <summary>
         /// Configuration for the <a

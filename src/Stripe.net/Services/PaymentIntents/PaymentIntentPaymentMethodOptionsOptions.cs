@@ -63,6 +63,7 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsStripeBalanceOptions stripeBalance;
         private PaymentIntentPaymentMethodOptionsSwishOptions swish;
         private PaymentIntentPaymentMethodOptionsTwintOptions twint;
+        private PaymentIntentPaymentMethodOptionsUpiOptions upi;
         private PaymentIntentPaymentMethodOptionsUsBankAccountOptions usBankAccount;
         private PaymentIntentPaymentMethodOptionsWechatPayOptions wechatPay;
         private PaymentIntentPaymentMethodOptionsZipOptions zip;
@@ -954,6 +955,22 @@ namespace Stripe
             set
             {
                 this.twint = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If this is a <c>upi</c> PaymentIntent, this sub-hash contains details about the UPI
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("upi")]
+        [STJS.JsonPropertyName("upi")]
+        public PaymentIntentPaymentMethodOptionsUpiOptions Upi
+        {
+            get => this.upi;
+            set
+            {
+                this.upi = value;
                 this.SetTracker.Track();
             }
         }

@@ -15,6 +15,13 @@ namespace Stripe
         internal SetTracker SetTracker { get; } = new SetTracker();
 
         /// <summary>
+        /// Additional fields for mandate creation.
+        /// </summary>
+        [JsonProperty("mandate_options")]
+        [STJS.JsonPropertyName("mandate_options")]
+        public PaymentIntentPaymentMethodOptionsStripeBalanceMandateOptionsOptions MandateOptions { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///

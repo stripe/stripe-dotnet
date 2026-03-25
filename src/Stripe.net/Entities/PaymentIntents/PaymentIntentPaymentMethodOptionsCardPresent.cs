@@ -37,10 +37,6 @@ namespace Stripe
         [STJS.JsonPropertyName("request_incremental_authorization_support")]
         public bool? RequestIncrementalAuthorizationSupport { get; set; }
 
-        [JsonProperty("routing")]
-        [STJS.JsonPropertyName("routing")]
-        public PaymentIntentPaymentMethodOptionsCardPresentRouting Routing { get; set; }
-
         /// <summary>
         /// Request ability to <a
         /// href="https://docs.stripe.com/payments/reauthorization">reauthorize</a> for this
@@ -50,5 +46,9 @@ namespace Stripe
         [JsonProperty("request_reauthorization")]
         [STJS.JsonPropertyName("request_reauthorization")]
         public string RequestReauthorization { get; set; }
+
+        [JsonProperty("routing")]
+        [STJS.JsonPropertyName("routing")]
+        public PaymentIntentPaymentMethodOptionsCardPresentRouting Routing { get; set; }
     }
 }

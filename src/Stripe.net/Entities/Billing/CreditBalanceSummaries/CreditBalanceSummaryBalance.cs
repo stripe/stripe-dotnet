@@ -12,12 +12,12 @@ namespace Stripe.Billing
         [STJS.JsonPropertyName("available_balance")]
         public CreditBalanceSummaryBalanceAvailableBalance AvailableBalance { get; set; }
 
-        [JsonProperty("ledger_balance")]
-        [STJS.JsonPropertyName("ledger_balance")]
-        public CreditBalanceSummaryBalanceLedgerBalance LedgerBalance { get; set; }
-
         [JsonProperty("balance_update_details")]
         [STJS.JsonPropertyName("balance_update_details")]
         public CreditBalanceSummaryBalanceBalanceUpdateDetails BalanceUpdateDetails { get; set; }
+
+        [JsonProperty("ledger_balance")]
+        [STJS.JsonPropertyName("ledger_balance")]
+        public CreditBalanceSummaryBalanceLedgerBalance LedgerBalance { get; set; }
     }
 }

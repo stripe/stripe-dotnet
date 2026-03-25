@@ -9,6 +9,13 @@ namespace Stripe.DelegatedCheckout
     public class RequestedSessionFulfillmentDetailsSelectedFulfillmentOptionOptions : INestedOptions
     {
         /// <summary>
+        /// The digital fulfillment option.
+        /// </summary>
+        [JsonProperty("digital")]
+        [STJS.JsonPropertyName("digital")]
+        public RequestedSessionFulfillmentDetailsSelectedFulfillmentOptionDigitalOptions Digital { get; set; }
+
+        /// <summary>
         /// The shipping fulfillment option.
         /// </summary>
         [JsonProperty("shipping")]
@@ -21,12 +28,5 @@ namespace Stripe.DelegatedCheckout
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
-
-        /// <summary>
-        /// The digital fulfillment option.
-        /// </summary>
-        [JsonProperty("digital")]
-        [STJS.JsonPropertyName("digital")]
-        public RequestedSessionFulfillmentDetailsSelectedFulfillmentOptionDigitalOptions Digital { get; set; }
     }
 }

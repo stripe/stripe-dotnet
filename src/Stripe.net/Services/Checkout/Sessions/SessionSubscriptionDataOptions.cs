@@ -10,6 +10,7 @@ namespace Stripe.Checkout
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionSubscriptionDataOptions : INestedOptions, IHasMetadata, IHasSetTracking
     {
+        private SessionSubscriptionDataPendingInvoiceItemIntervalOptions pendingInvoiceItemInterval;
         private long? trialPeriodDays;
 
         [JsonIgnore]
@@ -86,6 +87,23 @@ namespace Stripe.Checkout
         [JsonProperty("on_behalf_of")]
         [STJS.JsonPropertyName("on_behalf_of")]
         public string OnBehalfOf { get; set; }
+
+        /// <summary>
+        /// Specifies an interval for how often to bill for any pending invoice items. It is
+        /// analogous to calling <a href="https://docs.stripe.com/api#create_invoice">Create an
+        /// invoice</a> for the given subscription at the specified interval.
+        /// </summary>
+        [JsonProperty("pending_invoice_item_interval")]
+        [STJS.JsonPropertyName("pending_invoice_item_interval")]
+        public SessionSubscriptionDataPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval
+        {
+            get => this.pendingInvoiceItemInterval;
+            set
+            {
+                this.pendingInvoiceItemInterval = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Determines how to handle prorations resulting from the <c>billing_cycle_anchor</c>. If

@@ -9,6 +9,7 @@ namespace Stripe.Privacy
     public class RedactionJobListOptions : ListOptions
     {
         /// <summary>
+        /// If provided, only RedactionJob objects with the given status will be returned.
         /// One of: <c>canceled</c>, <c>canceling</c>, <c>created</c>, <c>failed</c>, <c>ready</c>,
         /// <c>redacting</c>, <c>succeeded</c>, or <c>validating</c>.
         /// </summary>

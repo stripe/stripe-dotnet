@@ -8,6 +8,10 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
+    /// For new integrations, we recommend using the <a
+    /// href="https://stripe.com/api/v2/core/accounts">Accounts v2 API</a>, in place of
+    /// /v1/accounts and /v1/customers to represent a user.
+    ///
     /// This is an object representing a Stripe account. You can retrieve it to see properties
     /// on the account like its current requirements or if the account is enabled to make live
     /// charges or receive payouts.
@@ -191,6 +195,13 @@ namespace Stripe
         [JsonProperty("risk_controls")]
         [STJS.JsonPropertyName("risk_controls")]
         public AccountRiskControls RiskControls { get; set; }
+
+        /// <summary>
+        /// A hash containing information about risk signal collection.
+        /// </summary>
+        [JsonProperty("risk_signals")]
+        [STJS.JsonPropertyName("risk_signals")]
+        public RiskSignals RiskSignals { get; set; }
 
         /// <summary>
         /// Options for customizing how the account functions within Stripe.

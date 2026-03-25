@@ -9,6 +9,13 @@ namespace Stripe.Tax
     public class RegistrationCountryOptionsUsOptions : INestedOptions
     {
         /// <summary>
+        /// Options for the home rule tax registration.
+        /// </summary>
+        [JsonProperty("home_rule_tax")]
+        [STJS.JsonPropertyName("home_rule_tax")]
+        public RegistrationCountryOptionsUsHomeRuleTaxOptions HomeRuleTax { get; set; }
+
+        /// <summary>
         /// Options for the local amusement tax registration.
         /// </summary>
         [JsonProperty("local_amusement_tax")]
@@ -48,12 +55,5 @@ namespace Stripe.Tax
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
-
-        /// <summary>
-        /// Options for the home rule tax registration.
-        /// </summary>
-        [JsonProperty("home_rule_tax")]
-        [STJS.JsonPropertyName("home_rule_tax")]
-        public RegistrationCountryOptionsUsHomeRuleTaxOptions HomeRuleTax { get; set; }
     }
 }

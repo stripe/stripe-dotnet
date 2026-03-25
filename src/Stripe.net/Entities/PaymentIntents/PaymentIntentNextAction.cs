@@ -25,6 +25,10 @@ namespace Stripe
         [STJS.JsonPropertyName("cashapp_handle_redirect_or_display_qr_code")]
         public PaymentIntentNextActionCashappHandleRedirectOrDisplayQrCode CashappHandleRedirectOrDisplayQrCode { get; set; }
 
+        [JsonProperty("crypto_display_details")]
+        [STJS.JsonPropertyName("crypto_display_details")]
+        public PaymentIntentNextActionCryptoDisplayDetails CryptoDisplayDetails { get; set; }
+
         [JsonProperty("display_bank_transfer_instructions")]
         [STJS.JsonPropertyName("display_bank_transfer_instructions")]
         public PaymentIntentNextActionDisplayBankTransferInstructions DisplayBankTransferInstructions { get; set; }
@@ -71,6 +75,10 @@ namespace Stripe
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
 
+        [JsonProperty("upi_handle_redirect_or_display_qr_code")]
+        [STJS.JsonPropertyName("upi_handle_redirect_or_display_qr_code")]
+        public PaymentIntentNextActionUpiHandleRedirectOrDisplayQrCode UpiHandleRedirectOrDisplayQrCode { get; set; }
+
         /// <summary>
         /// When confirming a PaymentIntent with Stripe.js, Stripe.js depends on the contents of
         /// this dictionary to invoke authentication flows. The shape of the contents is subject to
@@ -95,9 +103,5 @@ namespace Stripe
         [JsonProperty("wechat_pay_redirect_to_ios_app")]
         [STJS.JsonPropertyName("wechat_pay_redirect_to_ios_app")]
         public PaymentIntentNextActionWechatPayRedirectToIosApp WechatPayRedirectToIosApp { get; set; }
-
-        [JsonProperty("crypto_display_details")]
-        [STJS.JsonPropertyName("crypto_display_details")]
-        public PaymentIntentNextActionCryptoDisplayDetails CryptoDisplayDetails { get; set; }
     }
 }

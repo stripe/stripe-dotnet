@@ -67,8 +67,8 @@ namespace Stripe.Issuing
         public CardholderIndividual Individual { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -102,10 +102,12 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// The cardholder’s preferred locales (languages), ordered by preference. Locales can be
-        /// <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, or <c>it</c>. This changes the language of
-        /// the <a href="https://docs.stripe.com/issuing/3d-secure">3D Secure flow</a> and one-time
+        /// <c>da</c>, <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, <c>it</c>, <c>pl</c>, or
+        /// <c>sv</c>. This changes the language of the <a
+        /// href="https://docs.stripe.com/issuing/3d-secure">3D Secure flow</a> and one-time
         /// password messages sent to the cardholder.
-        /// One of: <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, or <c>it</c>.
+        /// One of: <c>da</c>, <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, <c>it</c>, <c>pl</c>, or
+        /// <c>sv</c>.
         /// </summary>
         [JsonProperty("preferred_locales")]
         [STJS.JsonPropertyName("preferred_locales")]

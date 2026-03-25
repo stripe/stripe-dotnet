@@ -224,18 +224,6 @@ namespace Stripe
         public string Reader { get; set; }
 
         /// <summary>
-        /// A collection of fields required to be displayed on receipts. Only required for EMV
-        /// transactions.
-        /// </summary>
-        [JsonProperty("receipt")]
-        [STJS.JsonPropertyName("receipt")]
-        public PaymentMethodCardGeneratedFromPaymentMethodDetailsCardPresentReceipt Receipt { get; set; }
-
-        [JsonProperty("wallet")]
-        [STJS.JsonPropertyName("wallet")]
-        public PaymentMethodCardGeneratedFromPaymentMethodDetailsCardPresentWallet Wallet { get; set; }
-
-        /// <summary>
         /// Whether the PaymentIntent can be reauthorized or not.
         /// </summary>
         [JsonProperty("reauthorization")]
@@ -251,5 +239,17 @@ namespace Stripe
         [STJS.JsonPropertyName("reauthorize_before")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
         public DateTime? ReauthorizeBefore { get; set; }
+
+        /// <summary>
+        /// A collection of fields required to be displayed on receipts. Only required for EMV
+        /// transactions.
+        /// </summary>
+        [JsonProperty("receipt")]
+        [STJS.JsonPropertyName("receipt")]
+        public PaymentMethodCardGeneratedFromPaymentMethodDetailsCardPresentReceipt Receipt { get; set; }
+
+        [JsonProperty("wallet")]
+        [STJS.JsonPropertyName("wallet")]
+        public PaymentMethodCardGeneratedFromPaymentMethodDetailsCardPresentWallet Wallet { get; set; }
     }
 }

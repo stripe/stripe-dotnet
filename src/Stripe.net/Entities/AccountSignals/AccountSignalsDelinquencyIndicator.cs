@@ -29,8 +29,8 @@ namespace Stripe
         /// One of: <c>account_balance</c>, <c>aov</c>, <c>charge_concentration</c>,
         /// <c>dispute_window</c>, <c>disputes</c>, <c>duplicates</c>, <c>exposure</c>,
         /// <c>firmographic</c>, <c>lifetime_metrics</c>, <c>payment_processing</c>,
-        /// <c>payment_volume</c>, <c>payouts</c>, <c>refunds</c>, <c>tenure</c>, or
-        /// <c>transfers</c>.
+        /// <c>payment_volume</c>, <c>payouts</c>, <c>refunds</c>, <c>related_accounts</c>,
+        /// <c>tenure</c>, or <c>transfers</c>.
         /// </summary>
         [JsonProperty("indicator")]
         [STJS.JsonPropertyName("indicator")]

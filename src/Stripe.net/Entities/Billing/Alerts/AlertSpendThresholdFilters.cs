@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Billing
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -9,13 +8,6 @@ namespace Stripe.Billing
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AlertSpendThresholdFilters : StripeEntity<AlertSpendThresholdFilters>
     {
-        /// <summary>
-        /// Filter by billable item IDs.
-        /// </summary>
-        [JsonProperty("billable_items")]
-        [STJS.JsonPropertyName("billable_items")]
-        public List<string> BillableItems { get; set; }
-
         /// <summary>
         /// Filter by billing cadence ID.
         /// </summary>
