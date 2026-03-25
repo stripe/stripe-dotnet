@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.MoneyManagement
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -47,5 +48,12 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("last4")]
         [STJS.JsonPropertyName("last4")]
         public string Last4 { get; set; }
+
+        /// <summary>
+        /// The list of currencies supported by this bank account.
+        /// </summary>
+        [JsonProperty("supported_currencies")]
+        [STJS.JsonPropertyName("supported_currencies")]
+        public List<string> SupportedCurrencies { get; set; }
     }
 }

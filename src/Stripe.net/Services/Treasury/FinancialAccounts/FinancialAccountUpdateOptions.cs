@@ -9,6 +9,9 @@ namespace Stripe.Treasury
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class FinancialAccountUpdateOptions : BaseOptions, IHasMetadata
     {
+        private string displayName;
+        private string nickname;
+
         /// <summary>
         /// The display name for the FinancialAccount. Use this field to customize the names of the
         /// FinancialAccounts for your connected accounts. Unlike the <c>nickname</c> field,
@@ -16,7 +19,15 @@ namespace Stripe.Treasury
         /// </summary>
         [JsonProperty("display_name")]
         [STJS.JsonPropertyName("display_name")]
-        public string DisplayName { get; set; }
+        public string DisplayName
+        {
+            get => this.displayName;
+            set
+            {
+                this.displayName = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Encodes whether a FinancialAccount has access to a particular feature, with a status
@@ -50,7 +61,15 @@ namespace Stripe.Treasury
         /// </summary>
         [JsonProperty("nickname")]
         [STJS.JsonPropertyName("nickname")]
-        public string Nickname { get; set; }
+        public string Nickname
+        {
+            get => this.nickname;
+            set
+            {
+                this.nickname = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The set of functionalities that the platform can restrict on the FinancialAccount.

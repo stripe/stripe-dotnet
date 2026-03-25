@@ -31,6 +31,13 @@ namespace Stripe.V2.Billing
         public DateTime? DraftedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// Time at which the Billing Intent will expire.
+        /// </summary>
+        [JsonProperty("expires_at")]
+        [STJS.JsonPropertyName("expires_at")]
+        public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
         /// Time at which the Billing Intent was reserved.
         /// </summary>
         [JsonProperty("reserved_at")]

@@ -275,10 +275,6 @@ namespace Stripe
                 { "v2.billing.intent", typeof(V2.Billing.Intent) },
                 { "v2.billing.intent_action", typeof(V2.Billing.IntentAction) },
                 { "v2.billing.license_fee", typeof(V2.Billing.LicenseFee) },
-                {
-                    "v2.billing.license_fee_subscription", typeof(
-                    V2.Billing.LicenseFeeSubscription)
-                },
                 { "v2.billing.license_fee_version", typeof(V2.Billing.LicenseFeeVersion) },
                 { "v2.billing.licensed_item", typeof(V2.Billing.LicensedItem) },
                 { "v2.billing.meter_event", typeof(V2.Billing.MeterEvent) },
@@ -292,10 +288,6 @@ namespace Stripe
                     "v2.billing.pricing_plan_subscription", typeof(
                     V2.Billing.PricingPlanSubscription)
                 },
-                {
-                    "v2.billing.pricing_plan_subscription_components", typeof(
-                    V2.Billing.PricingPlanSubscriptionComponents)
-                },
                 { "v2.billing.pricing_plan_version", typeof(V2.Billing.PricingPlanVersion) },
                 { "v2.billing.profile", typeof(V2.Billing.Profile) },
                 { "v2.billing.rate_card", typeof(V2.Billing.RateCard) },
@@ -308,10 +300,12 @@ namespace Stripe
                 { "v2.billing.rate_card_version", typeof(V2.Billing.RateCardVersion) },
                 { "v2.billing.service_action", typeof(V2.Billing.ServiceAction) },
                 { "v2.core.account", typeof(V2.Core.Account) },
+                { "v2.core.account_evaluation", typeof(V2.Core.AccountEvaluation) },
                 { "v2.core.account_link", typeof(V2.Core.AccountLink) },
                 { "v2.core.account_person", typeof(V2.Core.AccountPerson) },
                 { "v2.core.account_person_token", typeof(V2.Core.AccountPersonToken) },
                 { "v2.core.account_token", typeof(V2.Core.AccountToken) },
+                { "v2.core.batch_job", typeof(V2.Core.BatchJob) },
                 { "v2.core.claimable_sandbox", typeof(V2.Core.ClaimableSandbox) },
                 { "v2.core.connection_session", typeof(V2.Core.ConnectionSession) },
                 { "v2.core.event", typeof(V2.Core.Event) },
@@ -394,6 +388,10 @@ namespace Stripe
             new Dictionary<string, Type>
             {
                 // V2EventsToTypes: The beginning of the section generated from our OpenAPI spec
+                {
+                    "v1.account_signals[delinquency].created", typeof(
+                    Events.V1AccountSignalsIncludingDelinquencyCreatedEvent)
+                },
                 {
                     "v1.billing.meter.error_report_triggered", typeof(
                     Events.V1BillingMeterErrorReportTriggeredEvent)
@@ -613,6 +611,32 @@ namespace Stripe
                 {
                     "v2.core.account_person.updated", typeof(
                     Events.V2CoreAccountPersonUpdatedEvent)
+                },
+                {
+                    "v2.core.account_signals.fraudulent_website_ready", typeof(
+                    Events.V2CoreAccountSignalsFraudulentWebsiteReadyEvent)
+                },
+                {
+                    "v2.core.batch_job.batch_failed", typeof(
+                    Events.V2CoreBatchJobBatchFailedEvent)
+                },
+                { "v2.core.batch_job.canceled", typeof(Events.V2CoreBatchJobCanceledEvent) },
+                { "v2.core.batch_job.completed", typeof(Events.V2CoreBatchJobCompletedEvent) },
+                { "v2.core.batch_job.created", typeof(Events.V2CoreBatchJobCreatedEvent) },
+                {
+                    "v2.core.batch_job.ready_for_upload", typeof(
+                    Events.V2CoreBatchJobReadyForUploadEvent)
+                },
+                { "v2.core.batch_job.timeout", typeof(Events.V2CoreBatchJobTimeoutEvent) },
+                { "v2.core.batch_job.updated", typeof(Events.V2CoreBatchJobUpdatedEvent) },
+                {
+                    "v2.core.batch_job.upload_timeout", typeof(
+                    Events.V2CoreBatchJobUploadTimeoutEvent)
+                },
+                { "v2.core.batch_job.validating", typeof(Events.V2CoreBatchJobValidatingEvent) },
+                {
+                    "v2.core.batch_job.validation_failed", typeof(
+                    Events.V2CoreBatchJobValidationFailedEvent)
                 },
                 {
                     "v2.core.claimable_sandbox.claimed", typeof(
@@ -1002,6 +1026,10 @@ namespace Stripe
                     "v2.reporting.report_run.updated", typeof(
                     Events.V2ReportingReportRunUpdatedEvent)
                 },
+                {
+                    "v2.signals.account_signal.fraudulent_merchant_ready", typeof(
+                    Events.V2SignalsAccountSignalFraudulentMerchantReadyEvent)
+                },
 
                 // V2EventsToTypes: The end of the section generated from our OpenAPI spec
             });
@@ -1010,6 +1038,10 @@ namespace Stripe
             new Dictionary<string, Type>
             {
                 // V2EventNotificationsToTypes: The beginning of the section generated from our OpenAPI spec
+                {
+                    "v1.account_signals[delinquency].created", typeof(
+                    Events.V1AccountSignalsIncludingDelinquencyCreatedEventNotification)
+                },
                 {
                     "v1.billing.meter.error_report_triggered", typeof(
                     Events.V1BillingMeterErrorReportTriggeredEventNotification)
@@ -1253,6 +1285,50 @@ namespace Stripe
                 {
                     "v2.core.account_person.updated", typeof(
                     Events.V2CoreAccountPersonUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account_signals.fraudulent_website_ready", typeof(
+                    Events.V2CoreAccountSignalsFraudulentWebsiteReadyEventNotification)
+                },
+                {
+                    "v2.core.batch_job.batch_failed", typeof(
+                    Events.V2CoreBatchJobBatchFailedEventNotification)
+                },
+                {
+                    "v2.core.batch_job.canceled", typeof(
+                    Events.V2CoreBatchJobCanceledEventNotification)
+                },
+                {
+                    "v2.core.batch_job.completed", typeof(
+                    Events.V2CoreBatchJobCompletedEventNotification)
+                },
+                {
+                    "v2.core.batch_job.created", typeof(
+                    Events.V2CoreBatchJobCreatedEventNotification)
+                },
+                {
+                    "v2.core.batch_job.ready_for_upload", typeof(
+                    Events.V2CoreBatchJobReadyForUploadEventNotification)
+                },
+                {
+                    "v2.core.batch_job.timeout", typeof(
+                    Events.V2CoreBatchJobTimeoutEventNotification)
+                },
+                {
+                    "v2.core.batch_job.updated", typeof(
+                    Events.V2CoreBatchJobUpdatedEventNotification)
+                },
+                {
+                    "v2.core.batch_job.upload_timeout", typeof(
+                    Events.V2CoreBatchJobUploadTimeoutEventNotification)
+                },
+                {
+                    "v2.core.batch_job.validating", typeof(
+                    Events.V2CoreBatchJobValidatingEventNotification)
+                },
+                {
+                    "v2.core.batch_job.validation_failed", typeof(
+                    Events.V2CoreBatchJobValidationFailedEventNotification)
                 },
                 {
                     "v2.core.claimable_sandbox.claimed", typeof(
@@ -1641,6 +1717,10 @@ namespace Stripe
                 {
                     "v2.reporting.report_run.updated", typeof(
                     Events.V2ReportingReportRunUpdatedEventNotification)
+                },
+                {
+                    "v2.signals.account_signal.fraudulent_merchant_ready", typeof(
+                    Events.V2SignalsAccountSignalFraudulentMerchantReadyEventNotification)
                 },
 
                 // V2EventNotificationsToTypes: The end of the section generated from our OpenAPI spec

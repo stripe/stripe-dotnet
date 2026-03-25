@@ -7,8 +7,15 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class InvoiceScheduleDetailsOptions : INestedOptions
+    public class InvoiceScheduleDetailsOptions : INestedOptions, IHasSetTracking
     {
+        private List<InvoiceScheduleDetailsBillingScheduleOptions> billingSchedules;
+        private List<InvoiceScheduleDetailsPrebillingOptions> prebilling;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Changes to apply to the phases of the subscription schedule, in the order provided.
         /// </summary>
@@ -40,7 +47,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing_schedules")]
         [STJS.JsonPropertyName("billing_schedules")]
-        public List<InvoiceScheduleDetailsBillingScheduleOptions> BillingSchedules { get; set; }
+        public List<InvoiceScheduleDetailsBillingScheduleOptions> BillingSchedules
+        {
+            get => this.billingSchedules;
+            set
+            {
+                this.billingSchedules = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Object representing the subscription schedule's default settings.
@@ -75,7 +90,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("prebilling")]
         [STJS.JsonPropertyName("prebilling")]
-        public List<InvoiceScheduleDetailsPrebillingOptions> Prebilling { get; set; }
+        public List<InvoiceScheduleDetailsPrebillingOptions> Prebilling
+        {
+            get => this.prebilling;
+            set
+            {
+                this.prebilling = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// In cases where the <c>schedule_details</c> params update the currently active phase,
@@ -85,5 +108,10 @@ namespace Stripe
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]
         public string ProrationBehavior { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

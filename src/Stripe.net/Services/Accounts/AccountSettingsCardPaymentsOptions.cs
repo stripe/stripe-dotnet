@@ -6,8 +6,15 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountSettingsCardPaymentsOptions : INestedOptions
+    public class AccountSettingsCardPaymentsOptions : INestedOptions, IHasSetTracking
     {
+        private string statementDescriptorPrefixKana;
+        private string statementDescriptorPrefixKanji;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Automatically declines certain charge types regardless of whether the card issuer
         /// accepted or declined the charge.
@@ -35,7 +42,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("statement_descriptor_prefix_kana")]
         [STJS.JsonPropertyName("statement_descriptor_prefix_kana")]
-        public string StatementDescriptorPrefixKana { get; set; }
+        public string StatementDescriptorPrefixKana
+        {
+            get => this.statementDescriptorPrefixKana;
+            set
+            {
+                this.statementDescriptorPrefixKana = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The Kanji variation of the default text that appears on credit card statements when a
@@ -46,6 +61,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("statement_descriptor_prefix_kanji")]
         [STJS.JsonPropertyName("statement_descriptor_prefix_kanji")]
-        public string StatementDescriptorPrefixKanji { get; set; }
+        public string StatementDescriptorPrefixKanji
+        {
+            get => this.statementDescriptorPrefixKanji;
+            set
+            {
+                this.statementDescriptorPrefixKanji = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

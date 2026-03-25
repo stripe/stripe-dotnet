@@ -38,6 +38,13 @@ namespace Stripe.V2.MoneyManagement
         public string Country { get; set; }
 
         /// <summary>
+        /// The currency of the bank account.
+        /// </summary>
+        [JsonProperty("currency")]
+        [STJS.JsonPropertyName("currency")]
+        public string Currency { get; set; }
+
+        /// <summary>
         /// The routing number of the bank account, if present.
         /// </summary>
         [JsonProperty("routing_number")]

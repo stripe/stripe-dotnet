@@ -6,8 +6,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentPaymentMethodOptionsAlipayOptions : INestedOptions
+    public class PaymentIntentPaymentMethodOptionsAlipayOptions : INestedOptions, IHasSetTracking
     {
+        private string setupFutureUsage;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
@@ -35,6 +41,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
-        public string SetupFutureUsage { get; set; }
+        public string SetupFutureUsage
+        {
+            get => this.setupFutureUsage;
+            set
+            {
+                this.setupFutureUsage = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

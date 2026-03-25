@@ -12,6 +12,8 @@ namespace Stripe.V2.Billing
         /// Divide usage by this number.
         /// </summary>
         [JsonProperty("divide_by")]
+        [JsonConverter(typeof(Int64StringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("divide_by")]
         public long? DivideBy { get; set; }
 

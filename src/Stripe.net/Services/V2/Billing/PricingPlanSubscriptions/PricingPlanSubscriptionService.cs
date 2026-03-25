@@ -10,8 +10,6 @@ namespace Stripe.V2.Billing
 
     public class PricingPlanSubscriptionService : Service
     {
-        private V2.Billing.PricingPlanSubscriptions.ComponentService components;
-
         internal PricingPlanSubscriptionService(ApiRequestor requestor)
             : base(requestor)
         {
@@ -21,9 +19,6 @@ namespace Stripe.V2.Billing
             : base(client)
         {
         }
-
-        public virtual V2.Billing.PricingPlanSubscriptions.ComponentService Components => this.components ??= new V2.Billing.PricingPlanSubscriptions.ComponentService(
-            this.Requestor);
 
         /// <summary>
         /// Retrieve a Pricing Plan Subscription object.
@@ -71,6 +66,22 @@ namespace Stripe.V2.Billing
         public virtual IAsyncEnumerable<PricingPlanSubscription> ListAutoPagingAsync(PricingPlanSubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<PricingPlanSubscription>($"/v2/billing/pricing_plan_subscriptions", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Remove Discounts from a Pricing Plan Subscription.
+        /// </summary>
+        public virtual PricingPlanSubscription RemoveDiscounts(string id, PricingPlanSubscriptionRemoveDiscountsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<PricingPlanSubscription>(BaseAddress.Api, HttpMethod.Post, $"/v2/billing/pricing_plan_subscriptions/{WebUtility.UrlEncode(id)}/remove_discounts", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Remove Discounts from a Pricing Plan Subscription.
+        /// </summary>
+        public virtual Task<PricingPlanSubscription> RemoveDiscountsAsync(string id, PricingPlanSubscriptionRemoveDiscountsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<PricingPlanSubscription>(BaseAddress.Api, HttpMethod.Post, $"/v2/billing/pricing_plan_subscriptions/{WebUtility.UrlEncode(id)}/remove_discounts", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

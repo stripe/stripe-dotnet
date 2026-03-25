@@ -7,8 +7,18 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class InvoiceLineOptions : INestedOptions, IHasMetadata, IHasId
+    public class InvoiceLineOptions : INestedOptions, IHasMetadata, IHasId, IHasSetTracking
     {
+        private List<InvoiceLineDiscountOptions> discounts;
+        private List<string> margins;
+        private Dictionary<string, string> metadata;
+        private List<InvoiceLineTaxAmountOptions> taxAmounts;
+        private List<string> taxRates;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The integer amount in cents (or local equivalent) of the charge to be applied to the
         /// upcoming invoice. If you want to apply a credit to the customer's account, pass a
@@ -51,7 +61,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
-        public List<InvoiceLineDiscountOptions> Discounts { get; set; }
+        public List<InvoiceLineDiscountOptions> Discounts
+        {
+            get => this.discounts;
+            set
+            {
+                this.discounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// ID of an existing line item to remove from this invoice.
@@ -74,7 +92,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("margins")]
         [STJS.JsonPropertyName("margins")]
-        public List<string> Margins { get; set; }
+        public List<string> Margins
+        {
+            get => this.margins;
+            set
+            {
+                this.margins = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
@@ -89,7 +115,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The period associated with this invoice item. When set to different values, the period
@@ -137,7 +171,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_amounts")]
         [STJS.JsonPropertyName("tax_amounts")]
-        public List<InvoiceLineTaxAmountOptions> TaxAmounts { get; set; }
+        public List<InvoiceLineTaxAmountOptions> TaxAmounts
+        {
+            get => this.taxAmounts;
+            set
+            {
+                this.taxAmounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The tax rates which apply to the line item. When set, the <c>default_tax_rates</c> on
@@ -146,6 +188,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_rates")]
         [STJS.JsonPropertyName("tax_rates")]
-        public List<string> TaxRates { get; set; }
+        public List<string> TaxRates
+        {
+            get => this.taxRates;
+            set
+            {
+                this.taxRates = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

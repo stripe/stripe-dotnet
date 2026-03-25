@@ -71,5 +71,12 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("transaction_details")]
         [STJS.JsonPropertyName("transaction_details")]
         public TransactionEntryTransactionDetails TransactionDetails { get; set; }
+
+        /// <summary>
+        /// The v1 Treasury transaction entry associated with this transaction entry.
+        /// </summary>
+        [JsonProperty("treasury_transaction_entry")]
+        [STJS.JsonPropertyName("treasury_transaction_entry")]
+        public string TreasuryTransactionEntry { get; set; }
     }
 }

@@ -9,6 +9,8 @@ namespace Stripe.Issuing
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AuthorizationApproveOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// If the authorization's <c>pending_request.is_amount_controllable</c> property is
         /// <c>true</c>, you may provide this value to control how much to hold for the
@@ -28,6 +30,14 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

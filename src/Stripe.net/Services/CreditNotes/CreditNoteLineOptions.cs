@@ -7,8 +7,15 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class CreditNoteLineOptions : INestedOptions
+    public class CreditNoteLineOptions : INestedOptions, IHasSetTracking
     {
+        private List<CreditNoteLineTaxAmountOptions> taxAmounts;
+        private List<string> taxRates;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The line item amount to credit. Only valid when <c>type</c> is <c>invoice_line_item</c>.
         /// If invoice is set up with <c>automatic_tax[enabled]=true</c>, this amount is tax
@@ -48,7 +55,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_amounts")]
         [STJS.JsonPropertyName("tax_amounts")]
-        public List<CreditNoteLineTaxAmountOptions> TaxAmounts { get; set; }
+        public List<CreditNoteLineTaxAmountOptions> TaxAmounts
+        {
+            get => this.taxAmounts;
+            set
+            {
+                this.taxAmounts = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The tax rates which apply to the credit note line item. Only valid when the <c>type</c>
@@ -56,7 +71,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_rates")]
         [STJS.JsonPropertyName("tax_rates")]
-        public List<string> TaxRates { get; set; }
+        public List<string> TaxRates
+        {
+            get => this.taxRates;
+            set
+            {
+                this.taxRates = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Type of the credit note line item, one of <c>invoice_line_item</c> or
@@ -87,5 +110,10 @@ namespace Stripe
         [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

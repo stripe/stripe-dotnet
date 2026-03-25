@@ -9,6 +9,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PriceUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, PriceCurrencyOptionsOptions> currencyOptions;
+        private Dictionary<string, string> metadata;
+        private PriceMigrateToOptions migrateTo;
+
         /// <summary>
         /// Whether the price can be used for new purchases. Defaults to <c>true</c>.
         /// </summary>
@@ -23,7 +27,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("currency_options")]
         [STJS.JsonPropertyName("currency_options")]
-        public Dictionary<string, PriceCurrencyOptionsOptions> CurrencyOptions { get; set; }
+        public Dictionary<string, PriceCurrencyOptionsOptions> CurrencyOptions
+        {
+            get => this.currencyOptions;
+            set
+            {
+                this.currencyOptions = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A lookup key used to retrieve prices dynamically from a static string. This may be up to
@@ -41,7 +53,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If specified, subscriptions using this price will be updated to use the new referenced
@@ -49,7 +69,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("migrate_to")]
         [STJS.JsonPropertyName("migrate_to")]
-        public PriceMigrateToOptions MigrateTo { get; set; }
+        public PriceMigrateToOptions MigrateTo
+        {
+            get => this.migrateTo;
+            set
+            {
+                this.migrateTo = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A brief description of the price, hidden from customers.

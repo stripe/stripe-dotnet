@@ -7,14 +7,29 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class OrderPaymentSettingsPaymentMethodOptionsPaypalOptions : INestedOptions
+    public class OrderPaymentSettingsPaymentMethodOptionsPaypalOptions : INestedOptions, IHasSetTracking
     {
+        private string captureMethod;
+        private string setupFutureUsage;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// </summary>
         [JsonProperty("capture_method")]
         [STJS.JsonPropertyName("capture_method")]
-        public string CaptureMethod { get; set; }
+        public string CaptureMethod
+        {
+            get => this.captureMethod;
+            set
+            {
+                this.captureMethod = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The line items purchased by the customer.
@@ -87,7 +102,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
-        public string SetupFutureUsage { get; set; }
+        public string SetupFutureUsage
+        {
+            get => this.setupFutureUsage;
+            set
+            {
+                this.setupFutureUsage = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The Stripe connected account IDs of the sellers on the platform for this transaction
@@ -98,5 +121,10 @@ namespace Stripe
         [JsonProperty("subsellers")]
         [STJS.JsonPropertyName("subsellers")]
         public List<string> Subsellers { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

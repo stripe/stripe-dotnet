@@ -74,12 +74,27 @@ namespace Stripe.V2.MoneyManagement
         public string Category { get; set; }
 
         /// <summary>
+        /// Counterparty to this Transaction.
+        /// </summary>
+        [JsonProperty("counterparty")]
+        [STJS.JsonPropertyName("counterparty")]
+        public TransactionCounterparty Counterparty { get; set; }
+
+        /// <summary>
         /// Time at which the object was created. Represented as a RFC 3339 date &amp; time UTC
         /// value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
         /// </summary>
         [JsonProperty("created")]
         [STJS.JsonPropertyName("created")]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// Description of this Transaction. When applicable, the description is copied from the
+        /// Flow object at the time of transaction creation.
+        /// </summary>
+        [JsonProperty("description")]
+        [STJS.JsonPropertyName("description")]
+        public string Description { get; set; }
 
         /// <summary>
         /// Indicates the FinancialAccount affected by this Transaction.
@@ -122,5 +137,12 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("status_transitions")]
         [STJS.JsonPropertyName("status_transitions")]
         public TransactionStatusTransitions StatusTransitions { get; set; }
+
+        /// <summary>
+        /// The v1 Treasury transaction associated with this transaction.
+        /// </summary>
+        [JsonProperty("treasury_transaction")]
+        [STJS.JsonPropertyName("treasury_transaction")]
+        public string TreasuryTransaction { get; set; }
     }
 }

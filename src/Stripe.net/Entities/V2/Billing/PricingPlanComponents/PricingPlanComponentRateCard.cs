@@ -16,7 +16,7 @@ namespace Stripe.V2.Billing
         public string Id { get; set; }
 
         /// <summary>
-        /// The version of the RateCard. Defaults to 'latest', if not specified.
+        /// The ID of the Rate Card Version. If not specified, defaults to 'latest'.
         /// </summary>
         [JsonProperty("version")]
         [STJS.JsonPropertyName("version")]

@@ -9,6 +9,8 @@ namespace Stripe.V2.Core.Accounts
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PersonTokenCreateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// Additional addresses associated with the person.
         /// </summary>
@@ -86,7 +88,16 @@ namespace Stripe.V2.Core.Accounts
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The nationalities (countries) this person is associated with.

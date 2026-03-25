@@ -36,5 +36,12 @@ namespace Stripe.V2.Billing
         [JsonProperty("currency")]
         [STJS.JsonPropertyName("currency")]
         public string Currency { get; set; }
+
+        /// <summary>
+        /// Select additional fields to include in the response.
+        /// </summary>
+        [JsonProperty("include")]
+        [STJS.JsonPropertyName("include")]
+        public List<string> Include { get; set; }
     }
 }

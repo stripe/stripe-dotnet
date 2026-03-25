@@ -53,7 +53,7 @@ namespace Stripe.V2.Billing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// An internal key you can use to search for a particular billable item. Maximum length of
+        /// An internal key you can use to search for a particular licensed item. Maximum length of
         /// 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]

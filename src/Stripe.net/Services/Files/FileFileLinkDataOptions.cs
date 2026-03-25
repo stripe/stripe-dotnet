@@ -8,8 +8,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class FileFileLinkDataOptions : INestedOptions, IHasMetadata
+    public class FileFileLinkDataOptions : INestedOptions, IHasMetadata, IHasSetTracking
     {
+        private Dictionary<string, string> metadata;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Set this to <c>true</c> to create a file link for the newly created file. Creating a
         /// link is only possible when the file's <c>purpose</c> is one of the following:
@@ -39,6 +45,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

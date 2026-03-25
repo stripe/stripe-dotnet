@@ -90,8 +90,8 @@ namespace Stripe.V2.Payments
 
         /// <summary>
         /// The reason why the OffSessionPayment failed.
-        /// One of: <c>authorization_expired</c>, <c>rejected_by_partner</c>, or
-        /// <c>retries_exhausted</c>.
+        /// One of: <c>authorization_expired</c>, <c>no_valid_payment_method</c>,
+        /// <c>rejected_by_partner</c>, or <c>retries_exhausted</c>.
         /// </summary>
         [JsonProperty("failure_reason")]
         [STJS.JsonPropertyName("failure_reason")]
