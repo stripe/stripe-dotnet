@@ -66,14 +66,6 @@ namespace Stripe.V2.Billing
         public string Currency { get; set; }
 
         /// <summary>
-        /// Invoice resources associated with this Billing Intent. Populated when include parameters
-        /// are specified.
-        /// </summary>
-        [JsonProperty("invoice_resources")]
-        [STJS.JsonPropertyName("invoice_resources")]
-        public IntentInvoiceResources InvoiceResources { get; set; }
-
-        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>

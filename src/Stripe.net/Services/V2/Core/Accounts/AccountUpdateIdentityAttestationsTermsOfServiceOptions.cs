@@ -25,6 +25,21 @@ namespace Stripe.V2.Core
         public AccountUpdateIdentityAttestationsTermsOfServiceCardCreatorOptions CardCreator { get; set; }
 
         /// <summary>
+        /// Details on the Account's acceptance of Consumer-privacy-disclosures-specific terms of
+        /// service.
+        /// </summary>
+        [JsonProperty("consumer_privacy_disclosures")]
+        [STJS.JsonPropertyName("consumer_privacy_disclosures")]
+        public AccountUpdateIdentityAttestationsTermsOfServiceConsumerPrivacyDisclosuresOptions ConsumerPrivacyDisclosures { get; set; }
+
+        /// <summary>
+        /// Details on the Account's acceptance of Consumer-storer-specific terms of service.
+        /// </summary>
+        [JsonProperty("consumer_storer")]
+        [STJS.JsonPropertyName("consumer_storer")]
+        public AccountUpdateIdentityAttestationsTermsOfServiceConsumerStorerOptions ConsumerStorer { get; set; }
+
+        /// <summary>
         /// Details on the Account's acceptance of Crypto-storer-specific terms of service.
         /// </summary>
         [JsonProperty("crypto_storer")]

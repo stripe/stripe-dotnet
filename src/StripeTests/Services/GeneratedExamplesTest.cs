@@ -6601,7 +6601,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/intents",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"amount_details\":{\"amount_due\":\"amount_due\",\"currency\":\"usd\",\"customer_balance_applied\":\"customer_balance_applied\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"status\":\"draft\",\"status_transitions\":{\"expires_at\":\"1970-01-10T15:36:51.170Z\"},\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"status\":\"draft\",\"status_transitions\":{\"expires_at\":\"1970-01-10T15:36:51.170Z\"},\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Intents;
             Stripe.V2.StripeList<Stripe.V2.Billing.Intent> intents = service
@@ -6616,7 +6616,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/intents",
                 (HttpStatusCode)200,
-                "{\"amount_details\":{\"amount_due\":\"amount_due\",\"currency\":\"usd\",\"customer_balance_applied\":\"customer_balance_applied\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"status\":\"draft\",\"status_transitions\":{\"expires_at\":\"1970-01-10T15:36:51.170Z\"},\"livemode\":true}");
+                "{\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"status\":\"draft\",\"status_transitions\":{\"expires_at\":\"1970-01-10T15:36:51.170Z\"},\"livemode\":true}");
             var options = new Stripe.V2.Billing.IntentCreateOptions
             {
                 Actions = new List<Stripe.V2.Billing.IntentCreateActionOptions>
@@ -6744,6 +6744,10 @@ namespace StripeTests
                                                 CreditProrationBehavior = "prorated",
                                                 DebitProrationBehavior = "none",
                                             },
+                                            RecurringCreditGrant = new Stripe.V2.Billing.IntentCreateActionModifyPricingPlanSubscriptionDetailsOverridesPartialPeriodBehaviorRecurringCreditGrantOptions
+                                            {
+                                                CreateBehavior = "none",
+                                            },
                                         },
                                     },
                                 },
@@ -6798,6 +6802,10 @@ namespace StripeTests
                                             {
                                                 DebitProrationBehavior = "none",
                                             },
+                                            RecurringCreditGrant = new Stripe.V2.Billing.IntentCreateActionSubscribePricingPlanSubscriptionDetailsOverridesPartialPeriodBehaviorRecurringCreditGrantOptions
+                                            {
+                                                CreateBehavior = "none",
+                                            },
                                         },
                                     },
                                 },
@@ -6842,7 +6850,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/intents/id_123",
                 (HttpStatusCode)200,
-                "{\"amount_details\":{\"amount_due\":\"amount_due\",\"currency\":\"usd\",\"customer_balance_applied\":\"customer_balance_applied\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"status\":\"draft\",\"status_transitions\":{\"expires_at\":\"1970-01-10T15:36:51.170Z\"},\"livemode\":true}");
+                "{\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"status\":\"draft\",\"status_transitions\":{\"expires_at\":\"1970-01-10T15:36:51.170Z\"},\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Intents;
             Stripe.V2.Billing.Intent intent = service.Get("id_123");
@@ -6856,7 +6864,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/intents/id_123/cancel",
                 (HttpStatusCode)200,
-                "{\"amount_details\":{\"amount_due\":\"amount_due\",\"currency\":\"usd\",\"customer_balance_applied\":\"customer_balance_applied\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"status\":\"draft\",\"status_transitions\":{\"expires_at\":\"1970-01-10T15:36:51.170Z\"},\"livemode\":true}");
+                "{\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"status\":\"draft\",\"status_transitions\":{\"expires_at\":\"1970-01-10T15:36:51.170Z\"},\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Intents;
             Stripe.V2.Billing.Intent intent = service.Cancel("id_123");
@@ -6872,7 +6880,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/intents/id_123/commit",
                 (HttpStatusCode)200,
-                "{\"amount_details\":{\"amount_due\":\"amount_due\",\"currency\":\"usd\",\"customer_balance_applied\":\"customer_balance_applied\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"status\":\"draft\",\"status_transitions\":{\"expires_at\":\"1970-01-10T15:36:51.170Z\"},\"livemode\":true}");
+                "{\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"status\":\"draft\",\"status_transitions\":{\"expires_at\":\"1970-01-10T15:36:51.170Z\"},\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Intents;
             Stripe.V2.Billing.Intent intent = service.Commit("id_123");
@@ -6888,7 +6896,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/intents/id_123/release_reservation",
                 (HttpStatusCode)200,
-                "{\"amount_details\":{\"amount_due\":\"amount_due\",\"currency\":\"usd\",\"customer_balance_applied\":\"customer_balance_applied\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"status\":\"draft\",\"status_transitions\":{\"expires_at\":\"1970-01-10T15:36:51.170Z\"},\"livemode\":true}");
+                "{\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"status\":\"draft\",\"status_transitions\":{\"expires_at\":\"1970-01-10T15:36:51.170Z\"},\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Intents;
             Stripe.V2.Billing.Intent intent = service.ReleaseReservation(
@@ -6905,7 +6913,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/intents/id_123/reserve",
                 (HttpStatusCode)200,
-                "{\"amount_details\":{\"amount_due\":\"amount_due\",\"currency\":\"usd\",\"customer_balance_applied\":\"customer_balance_applied\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"status\":\"draft\",\"status_transitions\":{\"expires_at\":\"1970-01-10T15:36:51.170Z\"},\"livemode\":true}");
+                "{\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"status\":\"draft\",\"status_transitions\":{\"expires_at\":\"1970-01-10T15:36:51.170Z\"},\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Intents;
             Stripe.V2.Billing.Intent intent = service.Reserve("id_123");
