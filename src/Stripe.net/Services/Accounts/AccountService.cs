@@ -5,6 +5,7 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
+    using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -202,6 +203,30 @@ namespace Stripe
         public virtual Task<Account> RejectAsync(string id, AccountRejectOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Account>(BaseAddress.Api, HttpMethod.Post, $"/v1/accounts/{WebUtility.UrlEncode(id)}/reject", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Serializes an Account update request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchUpdate(string account, AccountUpdateOptions options = null, RequestOptions requestOptions = null)
+        {
+            var itemId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var item = new Dictionary<string, object>
+            {
+                { "id", itemId },
+                { "path_params", new Dictionary<string, string> { { "account", account } } },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                item["context"] = stripeContext;
+            }
+
+            return JsonSerializer.Serialize(item, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
         }
 
         /// <summary>

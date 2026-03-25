@@ -5,6 +5,7 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
+    using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -158,6 +159,78 @@ namespace Stripe
         public virtual Task<SubscriptionSchedule> ReleaseAsync(string id, SubscriptionScheduleReleaseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/release", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Serializes a SubscriptionSchedule cancel request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchCancel(string schedule, SubscriptionScheduleCancelOptions options = null, RequestOptions requestOptions = null)
+        {
+            var itemId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var item = new Dictionary<string, object>
+            {
+                { "id", itemId },
+                { "path_params", new Dictionary<string, string> { { "schedule", schedule } } },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                item["context"] = stripeContext;
+            }
+
+            return JsonSerializer.Serialize(item, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+        }
+
+        /// <summary>
+        /// Serializes a SubscriptionSchedule create request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchCreate(SubscriptionScheduleCreateOptions options = null, RequestOptions requestOptions = null)
+        {
+            var itemId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var item = new Dictionary<string, object>
+            {
+                { "id", itemId },
+                { "path_params", null },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                item["context"] = stripeContext;
+            }
+
+            return JsonSerializer.Serialize(item, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+        }
+
+        /// <summary>
+        /// Serializes a SubscriptionSchedule update request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchUpdate(string schedule, SubscriptionScheduleUpdateOptions options = null, RequestOptions requestOptions = null)
+        {
+            var itemId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var item = new Dictionary<string, object>
+            {
+                { "id", itemId },
+                { "path_params", new Dictionary<string, string> { { "schedule", schedule } } },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                item["context"] = stripeContext;
+            }
+
+            return JsonSerializer.Serialize(item, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
         }
 
         /// <summary>
