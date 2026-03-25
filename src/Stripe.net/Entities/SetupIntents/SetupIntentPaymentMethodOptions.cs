@@ -52,10 +52,6 @@ namespace Stripe
         [STJS.JsonPropertyName("sepa_debit")]
         public SetupIntentPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
 
-        [JsonProperty("stripe_balance")]
-        [STJS.JsonPropertyName("stripe_balance")]
-        public SetupIntentPaymentMethodOptionsStripeBalance StripeBalance { get; set; }
-
         [JsonProperty("upi")]
         [STJS.JsonPropertyName("upi")]
         public SetupIntentPaymentMethodOptionsUpi Upi { get; set; }
