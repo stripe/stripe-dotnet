@@ -1,5 +1,99 @@
 # Changelog
 
+## 51.1.0-alpha.1 - 2026-03-25
+
+This release changes the pinned API version to 2026-03-25.preview and contains additional breaking changes. See the [GA changelog](https://github.com/stripe/stripe-dotnet/blob/master/CHANGELOG.md#4900---2025-09-30) for more information.
+
+
+* [#3352](https://github.com/stripe/stripe-dotnet/pull/3352) Update generated code for private-preview
+  * Add support for new resource `RiskSignals`
+  * Add support for `FinancialAccountRewards` and `NestingDemo` on `AccountSession.Components`
+  * Add support for `UpiPayments` on `Account.Capabilities` and `AccountCapabilitiesOptions`
+  * Add support for `RiskSignals` on `Account`
+  * Add support for `FraudIntent` on `AccountSignals`
+  * Add support for `RiskReserved` on `Balance`
+  * ⚠️ Remove support for `BillableItems` on `Billing.Alert.SpendThreshold.Filters`
+  * Add support for `Upi` on `Charge.PaymentMethodDetails`, `Checkout.Session.PaymentMethodOptions`, `CheckoutSessionPaymentMethodOptionsOptions`, `ConfirmationToken.PaymentMethodPreview`, `ConfirmationTokenPaymentMethodDataOptions`, `Mandate.PaymentMethodDetails`, `PaymentAttemptRecord.PaymentMethodDetails`, `PaymentIntent.PaymentMethodOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, `PaymentMethodCreateOptions`, `PaymentMethod`, `PaymentRecord.PaymentMethodDetails`, `SetupAttempt.PaymentMethodDetails`, `SetupIntent.PaymentMethodOptions`, `SetupIntentPaymentMethodDataOptions`, and `SetupIntentPaymentMethodOptionsOptions`
+  * ⚠️ Remove support for `SourceType` on `Charge.PaymentMethodDetails.StripeBalance`, `ConfirmationToken.PaymentMethodPreview.StripeBalance`, `ConfirmationTokenPaymentMethodDataStripeBalanceOptions`, `PaymentAttemptRecord.PaymentMethodDetails.StripeBalance`, `PaymentIntentPaymentMethodDataStripeBalanceOptions`, `PaymentMethod.StripeBalance`, `PaymentMethodStripeBalanceOptions`, `PaymentRecord.PaymentMethodDetails.StripeBalance`, and `SetupIntentPaymentMethodDataStripeBalanceOptions`
+  * Add support for `IntegrationIdentifier` on `Checkout.SessionCreateOptions` and `Checkout.Session`
+  * Change type of `CheckoutSessionLineItemPriceDataProductDataTaxDetailsOptions.TaxCode`, `InvoiceLineItemPriceDataProductDataTaxDetailsOptions.TaxCode`, `InvoiceLinePriceDataProductDataTaxDetailsOptions.TaxCode`, `PaymentLinkLineItemPriceDataProductDataTaxDetailsOptions.TaxCode`, `PlanProductTaxDetailsOptions.TaxCode`, `PriceProductDataTaxDetailsOptions.TaxCode`, and `ProductTaxDetailsOptions.TaxCode` from `string` to `emptyable(string)`
+  * Add support for `Crypto` on `CheckoutSessionPaymentMethodOptionsOptions`
+  * Add support for `PendingInvoiceItemInterval` on `CheckoutSessionSubscriptionDataOptions`
+  * Add support for `AuBecsDebit`, `BacsDebit`, `Boleto`, `Link`, `SepaDebit`, and `UsBankAccount` on `Checkout.Session.CurrentAttempt.PaymentMethodDetails`
+  * Add support for `Metadata` on `CreditNoteLineItem` and `CreditNoteLineOptions`
+  * Add support for `SelectedFulfillmentOptionOverrides` on `DelegatedCheckout.RequestedSession.FulfillmentDetails`
+  * Add support for `LineItemKeys` on `DelegatedCheckout.RequestedSession.FulfillmentDetails.FulfillmentOptions.Digital.DigitalOptions` and `DelegatedCheckout.RequestedSession.FulfillmentDetails.FulfillmentOptions.Shipping.ShippingOptions`
+  * Add support for `QuantityDecimal` on `InvoiceInvoiceItemOptions`, `InvoiceItemCreateOptions`, `InvoiceItemUpdateOptions`, `InvoiceItem`, `InvoiceLineItemUpdateOptions`, `InvoiceLineItem`, and `InvoiceLineOptions`
+  * Add support for `ExpiresAfterSeconds` on `Invoice.PaymentSettings.PaymentMethodOptions.Pix`, `InvoicePaymentSettingsPaymentMethodOptionsPixOptions`, `QuotePreviewInvoice.PaymentSettings.PaymentMethodOptions.Pix`, `Subscription.PaymentSettings.PaymentMethodOptions.Pix`, and `SubscriptionPaymentSettingsPaymentMethodOptionsPixOptions`
+  * ⚠️ Add support for `Level` on `IssuingAuthorizationRiskAssessmentCardTestingRiskOptions` and `IssuingAuthorizationRiskAssessmentMerchantDisputeRiskOptions`
+  * ⚠️ Remove support for `RiskLevel` on `IssuingAuthorizationRiskAssessmentCardTestingRiskOptions` and `IssuingAuthorizationRiskAssessmentMerchantDisputeRiskOptions`
+  * Add support for `LifecycleControls` on `Issuing.CardCreateOptions` and `Issuing.Card`
+  * ⚠️ Change type of `PaymentAttemptRecord.PaymentMethodDetails.Card.ExpMonth` and `PaymentRecord.PaymentMethodDetails.Card.ExpMonth` from `longInteger` to `nullable(longInteger)`
+  * ⚠️ Change type of `PaymentAttemptRecord.PaymentMethodDetails.Card.ExpYear` and `PaymentRecord.PaymentMethodDetails.Card.ExpYear` from `longInteger` to `nullable(longInteger)`
+  * ⚠️ Change type of `PaymentAttemptRecord.PaymentMethodDetails.Card.Moto` and `PaymentRecord.PaymentMethodDetails.Card.Moto` from `boolean` to `nullable(boolean)`
+  * Add support for `Cryptogram`, `ElectronicCommerceIndicator`, `ExemptionIndicatorApplied`, and `ExemptionIndicator` on `PaymentAttemptRecord.PaymentMethodDetails.Card.ThreeDSecure` and `PaymentRecord.PaymentMethodDetails.Card.ThreeDSecure`
+  * Add support for `Surcharge` on `PaymentIntent.AmountDetails` and `PaymentIntentAmountDetailsOptions`
+  * Add support for `MandateOptions` on `PaymentIntent.PaymentMethodOptions.StripeBalance` and `PaymentIntentPaymentMethodOptionsStripeBalanceOptions`
+  * Add support for `AmountDetails` and `PaymentDetails` on `PaymentIntentDecrementAuthorizationOptions`
+  * Add support for `UpiHandleRedirectOrDisplayQrCode` on `PaymentIntent.NextAction` and `SetupIntent.NextAction`
+  * Add support for `ManagedPayments` on `PaymentLinkCreateOptions` and `PaymentLink`
+  * Add support for `RecommendedAction` and `Signals` on `Radar.PaymentEvaluation`
+  * ⚠️ Remove support for `Insights` on `Radar.PaymentEvaluation`
+  * Add support for `StripeBalance` on `SetupIntent.PaymentMethodOptions` and `SetupIntentPaymentMethodOptionsOptions`
+  * Add support for `RecurringInterval` on `SharedPayment.GrantedToken.UsageLimits`
+  * ⚠️ Change type of `SharedPayment.GrantedToken.UsageLimits.ExpiresAt` from `DateTime` to `nullable(DateTime)`
+  * Add support for `PresentmentDetails` on `Subscription`
+  * ⚠️ Remove support for `InvoiceResources` on `V2.Billing.Intent`
+  * ⚠️ Remove support for `AmountDue` and `CustomerBalanceApplied` on `V2.Billing.Intent.AmountDetails`
+  * Add support for `RecurringCreditGrant` on `V2.Billing.IntentAction.Modify.PricingPlanSubscriptionDetails.Overrides.PartialPeriodBehavior`, `V2.Billing.IntentAction.Subscribe.PricingPlanSubscriptionDetails.Overrides.PartialPeriodBehavior`, `V2BillingIntentActionModifyPricingPlanSubscriptionDetailsOverridesPartialPeriodBehaviorOptions`, and `V2BillingIntentActionSubscribePricingPlanSubscriptionDetailsOverridesPartialPeriodBehaviorOptions`
+  * Add support for `ConsumerPrivacyDisclosures` and `ConsumerStorer` on `V2.Core.Account.Identity.Attestations.TermsOfService` and `V2CoreAccountIdentityAttestationsTermsOfServiceOptions`
+  * ⚠️ Remove support for `Include` on `V2.Billing.IntentCreateOptions` and `V2.Billing.IntentReserveOptions`
+* [#3351](https://github.com/stripe/stripe-dotnet/pull/3351) Update generated code for private-preview
+  * Release specs are identical.
+* [#3348](https://github.com/stripe/stripe-dotnet/pull/3348) Merge to private-preview
+* [#3345](https://github.com/stripe/stripe-dotnet/pull/3345) Update generated code for private-preview
+  * Add support for new resources `V2.Core.AccountEvaluation` and `V2.Core.BatchJob`
+  * ⚠️ Remove support for resources `V2.Billing.LicenseFeeSubscription` and `V2.Billing.PricingPlanSubscriptionComponents`
+  * Add support for `Cancel`, `Create`, and `Get` methods on resource `V2.Core.BatchJob`
+  * Add support for `Create` method on resource `V2.Core.AccountEvaluation`
+  * ⚠️ Remove support for `Get` method on resources `V2.Billing.LicenseFeeSubscription` and `V2.Billing.PricingPlanSubscriptionComponents`
+  * Add support for `ModifyRates` method on resource `V2.Billing.RateCard`
+  * Add support for `RemoveDiscounts` method on resource `V2.Billing.PricingPlanSubscription`
+  * ⚠️ Change type of `V2.Billing.Cadence.SettingsData.Collection.PaymentMethodOptions.Card.MandateOptions.Amount`, `V2.Billing.CollectionSetting.PaymentMethodOptions.Card.MandateOptions.Amount`, `V2.Billing.CollectionSettingVersion.PaymentMethodOptions.Card.MandateOptions.Amount`, and `V2BillingCollectionSettingPaymentMethodOptionsCardMandateOptionsOptions.Amount` from `longInteger` to `int64_string`
+  * Add support for `InvoiceResources` on `V2.Billing.Intent`
+  * Add support for `AmountDue` and `CustomerBalanceApplied` on `V2.Billing.Intent.AmountDetails`
+  * Add support for `ExpiresAt` on `V2.Billing.Intent.StatusTransitions`
+  * Add support for `Discount` on `V2.Billing.IntentAction.Apply` and `V2BillingIntentActionApplyOptions`
+  * Add support for `Timestamp` on `V2.Billing.IntentAction.Apply.EffectiveAt` and `V2BillingIntentActionApplyEffectiveAtOptions`
+  * ⚠️ Change type of `V2.Billing.IntentAction.Deactivate.PricingPlanSubscriptionDetails.Overrides.PartialPeriodBehavior.Type`, `V2.Billing.IntentAction.Modify.PricingPlanSubscriptionDetails.Overrides.PartialPeriodBehavior.Type`, `V2.Billing.IntentAction.Subscribe.PricingPlanSubscriptionDetails.Overrides.PartialPeriodBehavior.Type`, `V2BillingIntentActionDeactivatePricingPlanSubscriptionDetailsOverridesPartialPeriodBehaviorOptions.Type`, `V2BillingIntentActionModifyPricingPlanSubscriptionDetailsOverridesPartialPeriodBehaviorOptions.Type`, and `V2BillingIntentActionSubscribePricingPlanSubscriptionDetailsOverridesPartialPeriodBehaviorOptions.Type` from `literal('license_fee')` to `enum('license_fee'|'recurring_credit_grant')`
+  * Add support for `ServiceCycle` on `V2.Billing.LicenseFee` and `V2.Billing.RateCard`
+  * ⚠️ Remove support for `LatestVersion` on `V2.Billing.LicenseFee`, `V2.Billing.PricingPlan`, and `V2.Billing.RateCard`
+  * ⚠️ Remove support for `ServiceIntervalCount` and `ServiceInterval` on `V2.Billing.LicenseFee` and `V2.Billing.RateCard`
+  * ⚠️ Change type of `V2.Billing.LicenseFee.TransformQuantity.DivideBy`, `V2.Billing.LicenseFeeVersion.TransformQuantity.DivideBy`, `V2.Billing.RateCardRate.TransformQuantity.DivideBy`, `V2BillingLicenseFeeTransformQuantityOptions.DivideBy`, and `V2BillingRateCardRateTransformQuantityOptions.DivideBy` from `longInteger` to `int64_string`
+  * Add support for `DiscountDetails` and `PricingPlanComponentDetails` on `V2.Billing.PricingPlanSubscription`
+  * Add support for `Timezone` on `V2.Core.Account.Defaults` and `V2CoreAccountDefaultsOptions`
+  * Add support for `AzureEventGrid` on `V2.Core.EventDestinationCreateOptions` and `V2.Core.EventDestination`
+  * Add support for `SupportedCurrencies` on `V2.Core.Vault.GbBankAccount`, `V2.Core.Vault.UsBankAccount`, and `V2.MoneyManagement.PayoutMethod.Card`
+  * Add support for `BalanceByFundsType` on `V2.MoneyManagement.FinancialAccount.Payments`
+  * Add support for `Restricted` on `V2.MoneyManagement.PayoutMethod`
+  * Add support for `Currencies` on `V2.MoneyManagement.PayoutMethodsBankAccountSpec.Countries.Field`
+  * Add support for `TreasuryTransactionEntry` on `V2.MoneyManagement.TransactionEntry`
+  * Add support for `TreasuryCreditReversal`, `TreasuryDebitReversal`, `TreasuryInboundTransfer`, `TreasuryIssuingAuthorization`, `TreasuryOutboundPayment`, `TreasuryOutboundTransfer`, `TreasuryReceivedCredit`, and `TreasuryReceivedDebit` on `V2.MoneyManagement.Transaction.Flow` and `V2.MoneyManagement.TransactionEntry.TransactionDetails.Flow`
+  * Add support for `Counterparty`, `Description`, and `TreasuryTransaction` on `V2.MoneyManagement.Transaction`
+  * Add support for `Metadata` on `V2.Payments.SettlementAllocationIntentSplit`
+  * ⚠️ Change type of `V2.Reporting.ReportRun.Result.File.Size` from `longInteger` to `int64_string`
+  * Add support for `StatementDescriptor` on `V2.MoneyManagement.OutboundPaymentCreateOptions` and `V2.MoneyManagement.OutboundTransferCreateOptions`
+  * ⚠️ Add support for `Currency` on `V2.Core.Vault.GbBankAccountCreateOptions`, `V2.Core.Vault.UsBankAccountCreateOptions`, `V2MoneyManagementOutboundSetupIntentPayoutMethodDataBankAccountOptions`, and `V2MoneyManagementOutboundSetupIntentPayoutMethodDataCardOptions`
+  * Add support for `Include` on `V2.Billing.IntentCreateOptions`, `V2.Billing.IntentReserveOptions`, `V2.Billing.PricingPlanSubscriptionGetOptions`, `V2.Billing.PricingPlanSubscriptionListOptions`, `V2.MoneyManagement.FinancialAccountGetOptions`, and `V2.MoneyManagement.FinancialAccountListOptions`
+  * Add support for `Iban` on `V2.Core.Vault.GbBankAccountCreateOptions`
+  * Add support for event notifications `V1AccountSignalsIncludingDelinquencyCreatedEvent`, `V2CoreAccountSignalsFraudulentWebsiteReadyEvent`, and `V2SignalsAccountSignalFraudulentMerchantReadyEvent`
+  * Add support for event notifications `V2CoreBatchJobBatchFailedEvent`, `V2CoreBatchJobCanceledEvent`, `V2CoreBatchJobCompletedEvent`, `V2CoreBatchJobCreatedEvent`, `V2CoreBatchJobReadyForUploadEvent`, `V2CoreBatchJobTimeoutEvent`, `V2CoreBatchJobUpdatedEvent`, `V2CoreBatchJobUploadTimeoutEvent`, `V2CoreBatchJobValidatingEvent`, and `V2CoreBatchJobValidationFailedEvent` with related object `V2.Core.BatchJob`
+* [#3339](https://github.com/stripe/stripe-dotnet/pull/3339) Update generated code for private-preview
+  * Release specs are identical.
+* [#3326](https://github.com/stripe/stripe-dotnet/pull/3326) Update generated code for private-preview
+  * Release specs are identical.
+* [#3335](https://github.com/stripe/stripe-dotnet/pull/3335) Merge dotnet private preview
+
 ## 50.5.0-alpha.4 - 2026-03-18
 * [#3324](https://github.com/stripe/stripe-dotnet/pull/3324) Update generated code for private-preview
   * Add support for `SimulateCryptoDeposit` test helper method on resource `PaymentIntent`
