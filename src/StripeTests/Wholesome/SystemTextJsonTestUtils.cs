@@ -114,11 +114,6 @@ namespace StripeTests.Wholesome
             {
                 expectedConverterType = typeof(STJUnixDateTimeConverter);
             }
-            else if (typeof(IEmptyable).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()))
-            {
-                expectedConverterType = typeof(STJEmptyableConverter<>);
-                expectedGenericTypeArguments = type.GenericTypeArguments;
-            }
             else if (typeof(IAnyOf).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()))
             {
                 expectedConverterType = typeof(STJAnyOfConverter);
@@ -179,6 +174,16 @@ namespace StripeTests.Wholesome
             var actualConverterName = GetConverterName(
                 actualConverterType,
                 actualGenericTypeArguments);
+
+            // STJNullPreservingDictionaryConverter is applied by codegen to Dictionary
+            // properties where null values need to be preserved (e.g. metadata mutation).
+            // Whether a Dictionary property needs this is determined by API schema
+            // semantics, not the C# type, so accept it on any Dictionary property.
+            if (actualConverterType == typeof(STJNullPreservingDictionaryConverter) &&
+                typeof(IDictionary).IsAssignableFrom(type))
+            {
+                return null;
+            }
 
             if (expectedConverterName == actualConverterName)
             {

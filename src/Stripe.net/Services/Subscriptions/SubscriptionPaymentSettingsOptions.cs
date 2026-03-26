@@ -7,8 +7,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SubscriptionPaymentSettingsOptions : INestedOptions
+    public class SubscriptionPaymentSettingsOptions : INestedOptions, IHasSetTracking
     {
+        private List<string> paymentMethodTypes;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Payment-method-specific configuration to provide to invoices created by the
         /// subscription.
@@ -37,7 +43,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payment_method_types")]
         [STJS.JsonPropertyName("payment_method_types")]
-        public List<string> PaymentMethodTypes { get; set; }
+        public List<string> PaymentMethodTypes
+        {
+            get => this.paymentMethodTypes;
+            set
+            {
+                this.paymentMethodTypes = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Configure whether Stripe updates <c>subscription.default_payment_method</c> when payment
@@ -47,5 +61,10 @@ namespace Stripe
         [JsonProperty("save_default_payment_method")]
         [STJS.JsonPropertyName("save_default_payment_method")]
         public string SaveDefaultPaymentMethod { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

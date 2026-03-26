@@ -6,8 +6,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class CustomerInvoiceSettingsRenderingOptionsOptions : INestedOptions
+    public class CustomerInvoiceSettingsRenderingOptionsOptions : INestedOptions, IHasSetTracking
     {
+        private string amountTaxDisplay;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// How line-item prices and amounts will be displayed with respect to tax on invoice PDFs.
         /// One of <c>exclude_tax</c> or <c>include_inclusive_tax</c>. <c>include_inclusive_tax</c>
@@ -18,7 +24,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("amount_tax_display")]
         [STJS.JsonPropertyName("amount_tax_display")]
-        public string AmountTaxDisplay { get; set; }
+        public string AmountTaxDisplay
+        {
+            get => this.amountTaxDisplay;
+            set
+            {
+                this.amountTaxDisplay = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// ID of the invoice rendering template to use for future invoices.
@@ -26,5 +40,10 @@ namespace Stripe
         [JsonProperty("template")]
         [STJS.JsonPropertyName("template")]
         public string Template { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

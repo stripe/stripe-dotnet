@@ -7,8 +7,18 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentLinkPaymentIntentDataOptions : INestedOptions, IHasMetadata
+    public class PaymentLinkPaymentIntentDataOptions : INestedOptions, IHasMetadata, IHasSetTracking
     {
+        private string description;
+        private Dictionary<string, string> metadata;
+        private string statementDescriptor;
+        private string statementDescriptorSuffix;
+        private string transferGroup;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
@@ -22,7 +32,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description
+        {
+            get => this.description;
+            set
+            {
+                this.description = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that will
@@ -33,7 +51,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Indicates that you intend to <a
@@ -75,7 +101,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("statement_descriptor")]
         [STJS.JsonPropertyName("statement_descriptor")]
-        public string StatementDescriptor { get; set; }
+        public string StatementDescriptor
+        {
+            get => this.statementDescriptor;
+            set
+            {
+                this.statementDescriptor = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Provides information about a card charge. Concatenated to the account's <a
@@ -85,7 +119,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
         [STJS.JsonPropertyName("statement_descriptor_suffix")]
-        public string StatementDescriptorSuffix { get; set; }
+        public string StatementDescriptorSuffix
+        {
+            get => this.statementDescriptorSuffix;
+            set
+            {
+                this.statementDescriptorSuffix = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A string that identifies the resulting payment as part of a group. See the
@@ -95,6 +137,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("transfer_group")]
         [STJS.JsonPropertyName("transfer_group")]
-        public string TransferGroup { get; set; }
+        public string TransferGroup
+        {
+            get => this.transferGroup;
+            set
+            {
+                this.transferGroup = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

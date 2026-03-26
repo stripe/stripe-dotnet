@@ -6,8 +6,15 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentPaymentMethodOptionsUsBankAccountOptions : INestedOptions
+    public class PaymentIntentPaymentMethodOptionsUsBankAccountOptions : INestedOptions, IHasSetTracking
     {
+        private string setupFutureUsage;
+        private string transactionPurpose;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Additional fields for Financial Connections Session creation.
         /// </summary>
@@ -56,7 +63,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
-        public string SetupFutureUsage { get; set; }
+        public string SetupFutureUsage
+        {
+            get => this.setupFutureUsage;
+            set
+            {
+                this.setupFutureUsage = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Controls when Stripe will attempt to debit the funds from the customer's account. The
@@ -73,7 +88,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("transaction_purpose")]
         [STJS.JsonPropertyName("transaction_purpose")]
-        public string TransactionPurpose { get; set; }
+        public string TransactionPurpose
+        {
+            get => this.transactionPurpose;
+            set
+            {
+                this.transactionPurpose = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Bank account verification method. The default value is <c>automatic</c>.
@@ -82,5 +105,10 @@ namespace Stripe
         [JsonProperty("verification_method")]
         [STJS.JsonPropertyName("verification_method")]
         public string VerificationMethod { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

@@ -9,6 +9,9 @@ namespace Stripe.Checkout
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+        private List<SessionShippingOptionOptions> shippingOptions;
+
         /// <summary>
         /// Information about the customer collected within the Checkout Session. Can only be set
         /// when updating <c>embedded</c> or <c>custom</c> sessions.
@@ -46,13 +49,29 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The shipping rate options to apply to this Session. Up to a maximum of 5.
         /// </summary>
         [JsonProperty("shipping_options")]
         [STJS.JsonPropertyName("shipping_options")]
-        public List<SessionShippingOptionOptions> ShippingOptions { get; set; }
+        public List<SessionShippingOptionOptions> ShippingOptions
+        {
+            get => this.shippingOptions;
+            set
+            {
+                this.shippingOptions = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

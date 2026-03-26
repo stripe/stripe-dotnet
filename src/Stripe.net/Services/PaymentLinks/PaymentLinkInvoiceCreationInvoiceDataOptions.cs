@@ -7,21 +7,46 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentLinkInvoiceCreationInvoiceDataOptions : INestedOptions, IHasMetadata
+    public class PaymentLinkInvoiceCreationInvoiceDataOptions : INestedOptions, IHasMetadata, IHasSetTracking
     {
+        private List<string> accountTaxIds;
+        private List<PaymentLinkInvoiceCreationInvoiceDataCustomFieldOptions> customFields;
+        private Dictionary<string, string> metadata;
+        private PaymentLinkInvoiceCreationInvoiceDataRenderingOptionsOptions renderingOptions;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The account tax IDs associated with the invoice.
         /// </summary>
         [JsonProperty("account_tax_ids")]
         [STJS.JsonPropertyName("account_tax_ids")]
-        public List<string> AccountTaxIds { get; set; }
+        public List<string> AccountTaxIds
+        {
+            get => this.accountTaxIds;
+            set
+            {
+                this.accountTaxIds = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Default custom fields to be displayed on invoices for this customer.
         /// </summary>
         [JsonProperty("custom_fields")]
         [STJS.JsonPropertyName("custom_fields")]
-        public List<PaymentLinkInvoiceCreationInvoiceDataCustomFieldOptions> CustomFields { get; set; }
+        public List<PaymentLinkInvoiceCreationInvoiceDataCustomFieldOptions> CustomFields
+        {
+            get => this.customFields;
+            set
+            {
+                this.customFields = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
@@ -53,13 +78,34 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Default options for invoice PDF rendering for this customer.
         /// </summary>
         [JsonProperty("rendering_options")]
         [STJS.JsonPropertyName("rendering_options")]
-        public PaymentLinkInvoiceCreationInvoiceDataRenderingOptionsOptions RenderingOptions { get; set; }
+        public PaymentLinkInvoiceCreationInvoiceDataRenderingOptionsOptions RenderingOptions
+        {
+            get => this.renderingOptions;
+            set
+            {
+                this.renderingOptions = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

@@ -6,8 +6,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class DisputeEvidenceOptions : INestedOptions
+    public class DisputeEvidenceOptions : INestedOptions, IHasSetTracking
     {
+        private DisputeEvidenceEnhancedEvidenceOptions enhancedEvidence;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Any server or activity logs showing proof that the customer accessed or downloaded the
         /// purchased digital product. This information should include IP addresses, corresponding
@@ -118,7 +124,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("enhanced_evidence")]
         [STJS.JsonPropertyName("enhanced_evidence")]
-        public DisputeEvidenceEnhancedEvidenceOptions EnhancedEvidence { get; set; }
+        public DisputeEvidenceEnhancedEvidenceOptions EnhancedEvidence
+        {
+            get => this.enhancedEvidence;
+            set
+            {
+                this.enhancedEvidence = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A description of the product or service that was sold. Has a maximum character count of
@@ -234,5 +248,10 @@ namespace Stripe
         [JsonProperty("uncategorized_text")]
         [STJS.JsonPropertyName("uncategorized_text")]
         public string UncategorizedText { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

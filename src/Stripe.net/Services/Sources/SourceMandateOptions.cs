@@ -6,8 +6,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SourceMandateOptions : INestedOptions
+    public class SourceMandateOptions : INestedOptions, IHasSetTracking
     {
+        private long? amount;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The parameters required to notify Stripe of a mandate acceptance or refusal by the
         /// customer.
@@ -21,7 +27,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
-        public long? Amount { get; set; }
+        public long? Amount
+        {
+            get => this.amount;
+            set
+            {
+                this.amount = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The currency specified by the mandate. (Must match <c>currency</c> of the source).
@@ -53,5 +67,10 @@ namespace Stripe
         [JsonProperty("notification_method")]
         [STJS.JsonPropertyName("notification_method")]
         public string NotificationMethod { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

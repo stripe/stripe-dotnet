@@ -9,12 +9,23 @@ namespace Stripe.Terminal
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ReaderUpdateOptions : BaseOptions, IHasMetadata
     {
+        private string label;
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// The new label of the reader.
         /// </summary>
         [JsonProperty("label")]
         [STJS.JsonPropertyName("label")]
-        public string Label { get; set; }
+        public string Label
+        {
+            get => this.label;
+            set
+            {
+                this.label = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
@@ -24,6 +35,14 @@ namespace Stripe.Terminal
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

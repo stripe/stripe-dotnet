@@ -7,8 +7,15 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class InvoicePaymentSettingsOptions : INestedOptions
+    public class InvoicePaymentSettingsOptions : INestedOptions, IHasSetTracking
     {
+        private string defaultMandate;
+        private List<string> paymentMethodTypes;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// ID of the mandate to be used for this invoice. It must correspond to the payment method
         /// used to pay the invoice, including the invoice's default_payment_method or
@@ -16,7 +23,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("default_mandate")]
         [STJS.JsonPropertyName("default_mandate")]
-        public string DefaultMandate { get; set; }
+        public string DefaultMandate
+        {
+            get => this.defaultMandate;
+            set
+            {
+                this.defaultMandate = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Payment-method-specific configuration to provide to the invoice’s PaymentIntent.
@@ -45,6 +60,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payment_method_types")]
         [STJS.JsonPropertyName("payment_method_types")]
-        public List<string> PaymentMethodTypes { get; set; }
+        public List<string> PaymentMethodTypes
+        {
+            get => this.paymentMethodTypes;
+            set
+            {
+                this.paymentMethodTypes = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

@@ -1,5 +1,50 @@
 # Changelog
 
+## 51.0.0 - 2026-03-25
+
+This release changes the pinned API version to `2026-03-25.dahlia` and contains breaking changes (prefixed with ⚠️ below). There's also a [detailed migration guide](https://github.com/stripe/stripe-dotnet/wiki/Migration-guide-for-v51) to simplify your upgrade process.
+
+Please review details for the breaking changes and alternatives in the [Stripe API changelog](https://docs.stripe.com/changelog/dahlia) before upgrading.
+
+* ⚠️ **Breaking change:** [#3338](https://github.com/stripe/stripe-dotnet/pull/3338) Throw an error when using the wrong webhook parsing method
+* ⚠️ **Breaking change:** [#3328](https://github.com/stripe/stripe-dotnet/pull/3328) Drop support for .NET 5 & 7
+* ⚠️ **Breaking change:** [#3327](https://github.com/stripe/stripe-dotnet/pull/3327) Migrate core deserialization and default JSON library to System.Text.Json
+  - System.Text.Json replaces Newtonsoft Json.NET as the default JSON library used in serialization and deserialization of Stripe.net objects.  This is most likely non-breaking for most users.
+  - Serializing Stripe objects using either System.Text.Json or Newtonsoft Json.NET now represents decimal-format strings as JSON string values to match the Stripe API format.
+* ⚠️ **Breaking change:** [#3342](https://github.com/stripe/stripe-dotnet/pull/3342) Replace Emptyable<T> with SetTracker pattern for explicit null support
+  - ⚠️  Full support for unsetting metadata entries and certain Options properties.  Set the metadata entry or nullable property to `null` and the SDK will send an empty string for V1 APIs and a null value for V2 APIs.
+    - ⚠️  This changes the meaning of setting a property to `null` if that property is defined as nullable in our API Ref.  If you currently pre-initialize your Options values to null this could have unintended consequences.
+  - ⚠️  Removed `IEmptyable`, `IEmptyable<T>`, `Emptyable<T>`, `EmptyableConverter<T>`, and `STJEmptyableConverter<T>` - replaced by SetTracker pattern on Options properties.
+* ⚠️ **Breaking change:** [#3329](https://github.com/stripe/stripe-dotnet/pull/3329) Regenerate with decimal_string enabled for v2 APIs
+  - V2 API decimal fields changed type from `string` to `decimal?`. Code that reads or writes these fields as `string` will need to use `decimal?` instead. Affected fields:
+    - **AccountPersonRelationship**: `PercentOwnership`
+    - **AccountIdentityIndividualRelationship**: `PercentOwnership`
+    - Options: `AccountCreateIdentityIndividualRelationshipOptions`, `AccountUpdateIdentityIndividualRelationshipOptions`, `AccountTokenCreateIdentityIndividualRelationshipOptions`, `PersonCreateRelationshipOptions`, `PersonUpdateRelationshipOptions`, `PersonTokenCreateRelationshipOptions`
+* [#3300](https://github.com/stripe/stripe-dotnet/pull/3300) Add StringEnum JSON converters for batch jobs
+* [#3330](https://github.com/stripe/stripe-dotnet/pull/3330) Bump System.Text.Json from 6.0.0 to 6.0.10
+* [#3321](https://github.com/stripe/stripe-dotnet/pull/3321) Add runtime support for V2 int64 string-encoded fields
+
+### ⚠️ Breaking changes due to changes in the Stripe API
+
+* Generated changes from [#3333](https://github.com/stripe/stripe-dotnet/pull/3333), [#3341](https://github.com/stripe/stripe-dotnet/pull/3341), [#3350](https://github.com/stripe/stripe-dotnet/pull/3350), [#3343](https://github.com/stripe/stripe-dotnet/pull/3343) 
+  * Add support for `UpiPayments` on `Account.Capabilities` and `AccountCapabilitiesOptions`
+  * Add support for `Upi` on `Charge.PaymentMethodDetails`, `Checkout.Session.PaymentMethodOptions`, `CheckoutSessionPaymentMethodOptionsOptions`, `ConfirmationToken.PaymentMethodPreview`, `ConfirmationTokenPaymentMethodDataOptions`, `Mandate.PaymentMethodDetails`, `PaymentAttemptRecord.PaymentMethodDetails`, `PaymentIntent.PaymentMethodOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, `PaymentMethodCreateOptions`, `PaymentMethod`, `PaymentRecord.PaymentMethodDetails`, `SetupAttempt.PaymentMethodDetails`, `SetupIntent.PaymentMethodOptions`, `SetupIntentPaymentMethodDataOptions`, and `SetupIntentPaymentMethodOptionsOptions`
+  * Add support for `IntegrationIdentifier` on `Checkout.SessionCreateOptions` and `Checkout.Session`
+  * Add support for `Crypto` on `CheckoutSessionPaymentMethodOptionsOptions`
+  * Add support for `PendingInvoiceItemInterval` on `CheckoutSessionSubscriptionDataOptions`
+  * Add support for `Metadata` on `CreditNoteLineItem` and `CreditNoteLineOptions`
+  * Add support for `QuantityDecimal` on `InvoiceInvoiceItemOptions`, `InvoiceItemCreateOptions`, `InvoiceItemUpdateOptions`, `InvoiceItem`, `InvoiceLineItemUpdateOptions`, `InvoiceLineItem`, and `InvoiceLineOptions`
+  * ⚠️ Add support for `Level` on `IssuingAuthorizationRiskAssessmentCardTestingRiskOptions` and `IssuingAuthorizationRiskAssessmentMerchantDisputeRiskOptions`
+  * ⚠️ Remove support for `RiskLevel` on `IssuingAuthorizationRiskAssessmentCardTestingRiskOptions` and `IssuingAuthorizationRiskAssessmentMerchantDisputeRiskOptions`
+  * Add support for `LifecycleControls` on `Issuing.CardCreateOptions` and `Issuing.Card`
+  * ⚠️ Change type of `PaymentAttemptRecord.PaymentMethodDetails.Card.ExpMonth` and `PaymentRecord.PaymentMethodDetails.Card.ExpMonth` from `longInteger` to `nullable(longInteger)`
+  * ⚠️ Change type of `PaymentAttemptRecord.PaymentMethodDetails.Card.ExpYear` and `PaymentRecord.PaymentMethodDetails.Card.ExpYear` from `longInteger` to `nullable(longInteger)`
+  * ⚠️ Change type of `PaymentAttemptRecord.PaymentMethodDetails.Card.Moto` and `PaymentRecord.PaymentMethodDetails.Card.Moto` from `boolean` to `nullable(boolean)`
+  * Add support for `Cryptogram`, `ElectronicCommerceIndicator`, `ExemptionIndicatorApplied`, and `ExemptionIndicator` on `PaymentAttemptRecord.PaymentMethodDetails.Card.ThreeDSecure` and `PaymentRecord.PaymentMethodDetails.Card.ThreeDSecure`
+  * Add support for `UpiHandleRedirectOrDisplayQrCode` on `PaymentIntent.NextAction` and `SetupIntent.NextAction`
+  * Add support for `RecommendedAction` and `Signals` on `Radar.PaymentEvaluation`
+  * ⚠️ Remove support for `Insights` on `Radar.PaymentEvaluation`
+
 ## 50.4.1 - 2026-03-06
 * [#3313](https://github.com/stripe/stripe-dotnet/pull/3313) Add Stripe-Request-Trigger header
 * [#3310](https://github.com/stripe/stripe-dotnet/pull/3310) Add agent information to UserAgent

@@ -8,8 +8,15 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class InvoiceSubscriptionDetailsOptions : INestedOptions
+    public class InvoiceSubscriptionDetailsOptions : INestedOptions, IHasSetTracking
     {
+        private AnyOf<DateTime?, InvoiceSubscriptionDetailsCancelAt> cancelAt;
+        private List<string> defaultTaxRates;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// For new subscriptions, a future timestamp to anchor the subscription's <a
         /// href="https://docs.stripe.com/subscriptions/billing-cycle">billing cycle</a>. This is
@@ -40,7 +47,15 @@ namespace Stripe
         [JsonConverter(typeof(AnyOfConverter))]
         [STJS.JsonPropertyName("cancel_at")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-        public AnyOf<DateTime?, InvoiceSubscriptionDetailsCancelAt> CancelAt { get; set; }
+        public AnyOf<DateTime?, InvoiceSubscriptionDetailsCancelAt> CancelAt
+        {
+            get => this.cancelAt;
+            set
+            {
+                this.cancelAt = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Indicate whether this subscription should cancel at the end of the current period
@@ -64,7 +79,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("default_tax_rates")]
         [STJS.JsonPropertyName("default_tax_rates")]
-        public List<string> DefaultTaxRates { get; set; }
+        public List<string> DefaultTaxRates
+        {
+            get => this.defaultTaxRates;
+            set
+            {
+                this.defaultTaxRates = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A list of up to 20 subscription items, each with an attached price.
@@ -127,5 +150,10 @@ namespace Stripe
         [STJS.JsonPropertyName("trial_end")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
         public AnyOf<DateTime?, InvoiceSubscriptionDetailsTrialEnd> TrialEnd { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

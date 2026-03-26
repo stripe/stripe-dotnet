@@ -2,6 +2,6 @@ namespace Stripe
 {
     internal class Version
     {
-        public const string Current = "50.4.1";
+        public const string Current = "51.0.0";
     }
 }

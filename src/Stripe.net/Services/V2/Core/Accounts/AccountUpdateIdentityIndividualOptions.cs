@@ -7,8 +7,14 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountUpdateIdentityIndividualOptions : INestedOptions, IHasMetadata
+    public class AccountUpdateIdentityIndividualOptions : INestedOptions, IHasMetadata, IHasSetTracking
     {
+        private Dictionary<string, string> metadata;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Additional addresses associated with the individual.
         /// </summary>
@@ -79,7 +85,16 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The countries where the individual is a national. Two-letter country code (<a
@@ -131,5 +146,10 @@ namespace Stripe.V2.Core
         [JsonProperty("surname")]
         [STJS.JsonPropertyName("surname")]
         public string Surname { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }
