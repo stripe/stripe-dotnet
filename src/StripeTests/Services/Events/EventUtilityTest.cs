@@ -20,7 +20,7 @@ namespace StripeTests
             this.eventTimestamp = 1533204620;
             this.secret = "webhook_secret";
             this.signature = $"t={this.eventTimestamp},v1=2220f87ef101a04665f11cdf770523143f875572008577fa0f20882ddb9cc3c7,v0=63f3a72374a733066c4be69ed7f8e5ac85c22c9f0a6a612ab9a025a9e4ee7eef";
-            this.json = GetResourceAsString("event_test_signature.json");
+            this.json = GetResourceAsString("event_test_signature.json").Replace("\r\n", "\n");
         }
 
         [Fact]

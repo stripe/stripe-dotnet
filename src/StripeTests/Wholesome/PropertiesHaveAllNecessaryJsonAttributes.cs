@@ -75,7 +75,7 @@ namespace StripeTests.Wholesome
 
                     foreach (Attribute attribute in property.GetCustomAttributes())
                     {
-                        if (attribute.GetType().Namespace.StartsWith("Newtonsoft", true, null))
+                        if (attribute.GetType().Namespace?.StartsWith("Newtonsoft", true, null) == true)
                         {
                             bool hasCorrectAttributes = SystemTextJsonTestUtils.HasCorrectAttributes(attribute, property.GetCustomAttributes(), property.IsNotPublic);
                             if (!hasCorrectAttributes)
