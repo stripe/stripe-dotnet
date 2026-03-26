@@ -188,9 +188,31 @@ jobs:
       - name: Run tests
         run: dotnet test --no-build --configuration Release --framework net462 src/StripeTests/StripeTests.csproj
 
+  build:
+    name: Build
+    needs: [test, test-net462, prepare-dotnet-versions]
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+    steps:
+      - uses: extractions/setup-just@v2
+      - uses: actions/checkout@v6
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
+
+      - name: Install tools
+        run: dotnet tool restore
+
+      - name: Build Release
+        run: dotnet build src/Stripe.net -c Release /p:ContinuousIntegrationBuild=true
+
   pack:
     name: Pack NuGet
-    needs: [test, test-net462, prepare-dotnet-versions]
+    if: (((github.event_name == 'push') || (github.event_name == 'workflow_dispatch')) && startsWith(github.ref, 'refs/tags/v'))
+    needs: [build, prepare-dotnet-versions]
     runs-on: ubuntu-22.04
     permissions:
       contents: read
@@ -254,7 +276,7 @@ jobs:
   publish:
     name: Publish
     if: (((github.event_name == 'push') || (github.event_name == 'workflow_dispatch')) && startsWith(github.ref, 'refs/tags/v'))
-    needs: [test, test-net462, pack, prepare-dotnet-versions]
+    needs: [pack, prepare-dotnet-versions]
     runs-on: ubuntu-latest
     permissions:
       contents: read
