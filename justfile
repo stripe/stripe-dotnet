@@ -12,14 +12,18 @@ prepare: format test
 _supported_dotnet_versions := `
   sed -n 's/.*<TargetFrameworks>\(.*\)<\/TargetFrameworks>.*/\1/p' src/Stripe.net/Stripe.net.csproj \
     | tr ';' '\n' \
-    | sed -n 's/^net\([1-9]\{0,1\}[0-9]\.[^;]*\)$/\1/p' \
+    | sed -n 's/^net\([0-9][0-9.]*\)$/\1/p' \
     | sed '/^$/d'
 `
 print_supported_dotnet_versions:
   echo "{{_supported_dotnet_versions}}"
 
 print_latest_supported_dotnet_version:
-  echo "{{_supported_dotnet_versions}}" | sort -h | tail -n 1
+  echo "{{_supported_dotnet_versions}}" | grep '\.' | sort -h | tail -n 1
+
+# Print the test matrix as a JSON array of target framework monikers
+print_test_matrix_json:
+  echo "{{_supported_dotnet_versions}}" | sed 's/^/net/' | jq -Rnc '[inputs | select(length > 0)]'
 
 _mise_install_dotnet:
   #!/usr/bin/env bash
