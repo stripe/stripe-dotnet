@@ -61,7 +61,7 @@ namespace StripeTests
 
             var indentedExpected = "{\n  \"nested\": \"id_not_expanded\"\n}";
             var options = new JsonSerializerOptions { WriteIndented = true };
-            var indentedActual = JsonSerializer.Serialize(obj, options);
+            var indentedActual = JsonSerializer.Serialize(obj, options).Replace("\r\n", "\n");
             Assert.Equal(indentedExpected, indentedActual);
         }
 
@@ -90,7 +90,7 @@ namespace StripeTests
             var indentedExpected =
                 "{\n  \"nested\": {\n    \"id\": \"id_expanded\",\n    \"bar\": 42\n  }\n}";
             var options = new JsonSerializerOptions { WriteIndented = true };
-            var indentedActual = JsonSerializer.Serialize(obj, options);
+            var indentedActual = JsonSerializer.Serialize(obj, options).Replace("\r\n", "\n");
             Assert.Equal(indentedExpected, indentedActual);
         }
 
@@ -122,7 +122,7 @@ namespace StripeTests
             var indentedExpected =
                 "{\n  \"nested_list\": [\n    {\n      \"id\": \"id_expanded\",\n      \"bar\": 42\n    }\n  ]\n}";
             var options = new JsonSerializerOptions { WriteIndented = true };
-            var indentedActual = JsonSerializer.Serialize(obj, options);
+            var indentedActual = JsonSerializer.Serialize(obj, options).Replace("\r\n", "\n");
             Assert.Equal(indentedExpected, indentedActual);
         }
 
@@ -144,7 +144,7 @@ namespace StripeTests
 
             var indentedExpected = "{\n  \"nested\": null\n}";
             var options = new JsonSerializerOptions { WriteIndented = true };
-            var indentedActual = JsonSerializer.Serialize(obj, options);
+            var indentedActual = JsonSerializer.Serialize(obj, options).Replace("\r\n", "\n");
             Assert.Equal(indentedExpected, indentedActual);
         }
 
