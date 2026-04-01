@@ -17,6 +17,13 @@ namespace Stripe.V2.Payments
         public long? AmountToCapture { get; set; }
 
         /// <summary>
+        /// The amount of the application fee for this capture.
+        /// </summary>
+        [JsonProperty("application_fee_amount")]
+        [STJS.JsonPropertyName("application_fee_amount")]
+        public V2.Amount ApplicationFeeAmount { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Learn more about <a

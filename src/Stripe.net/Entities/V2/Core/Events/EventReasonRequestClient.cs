@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Core
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -36,6 +35,6 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("stripe_action")]
         [STJS.JsonPropertyName("stripe_action")]
-        public Dictionary<string, object> StripeAction { get; set; }
+        public EventReasonRequestClientStripeAction StripeAction { get; set; }
     }
 }

@@ -52,6 +52,13 @@ namespace Stripe.V2.Payments
         public V2.Amount AmountRequested { get; set; }
 
         /// <summary>
+        /// The amount of the application fee requested to be applied to the payment.
+        /// </summary>
+        [JsonProperty("application_fee_amount_requested")]
+        [STJS.JsonPropertyName("application_fee_amount_requested")]
+        public V2.Amount ApplicationFeeAmountRequested { get; set; }
+
+        /// <summary>
         /// The frequency of the underlying payment.
         /// One of: <c>recurring</c>, or <c>unscheduled</c>.
         /// </summary>
