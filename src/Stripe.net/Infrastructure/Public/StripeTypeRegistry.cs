@@ -200,6 +200,7 @@ namespace Stripe
                 { "setup_attempt", typeof(SetupAttempt) },
                 { "setup_intent", typeof(SetupIntent) },
                 { "shared_payment.granted_token", typeof(SharedPayment.GrantedToken) },
+                { "shared_payment.issued_token", typeof(SharedPayment.IssuedToken) },
                 { "shipping_rate", typeof(ShippingRate) },
                 { "source", typeof(Source) },
                 { "source_mandate_notification", typeof(SourceMandateNotification) },
@@ -313,6 +314,7 @@ namespace Stripe
                 { "v2.core.event_destination", typeof(V2.Core.EventDestination) },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },
                 { "v2.core.vault.us_bank_account", typeof(V2.Core.Vault.UsBankAccount) },
+                { "v2.data.reporting.query_run", typeof(V2.Data.Reporting.QueryRun) },
                 { "v2.iam.api_key", typeof(V2.Iam.ApiKey) },
                 { "v2.money_management.adjustment", typeof(V2.MoneyManagement.Adjustment) },
                 {
@@ -743,6 +745,22 @@ namespace Stripe
                     "v2.core.health.webhook_latency.resolved", typeof(
                     Events.V2CoreHealthWebhookLatencyResolvedEvent)
                 },
+                {
+                    "v2.data.reporting.query_run.created", typeof(
+                    Events.V2DataReportingQueryRunCreatedEvent)
+                },
+                {
+                    "v2.data.reporting.query_run.failed", typeof(
+                    Events.V2DataReportingQueryRunFailedEvent)
+                },
+                {
+                    "v2.data.reporting.query_run.succeeded", typeof(
+                    Events.V2DataReportingQueryRunSucceededEvent)
+                },
+                {
+                    "v2.data.reporting.query_run.updated", typeof(
+                    Events.V2DataReportingQueryRunUpdatedEvent)
+                },
                 { "v2.iam.api_key.created", typeof(Events.V2IamApiKeyCreatedEvent) },
                 {
                     "v2.iam.api_key.default_secret_revealed", typeof(
@@ -960,8 +978,16 @@ namespace Stripe
                     Events.V2PaymentsOffSessionPaymentFailedEvent)
                 },
                 {
+                    "v2.payments.off_session_payment.paused", typeof(
+                    Events.V2PaymentsOffSessionPaymentPausedEvent)
+                },
+                {
                     "v2.payments.off_session_payment.requires_capture", typeof(
                     Events.V2PaymentsOffSessionPaymentRequiresCaptureEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.resumed", typeof(
+                    Events.V2PaymentsOffSessionPaymentResumedEvent)
                 },
                 {
                     "v2.payments.off_session_payment.succeeded", typeof(
@@ -1435,6 +1461,22 @@ namespace Stripe
                     "v2.core.health.webhook_latency.resolved", typeof(
                     Events.V2CoreHealthWebhookLatencyResolvedEventNotification)
                 },
+                {
+                    "v2.data.reporting.query_run.created", typeof(
+                    Events.V2DataReportingQueryRunCreatedEventNotification)
+                },
+                {
+                    "v2.data.reporting.query_run.failed", typeof(
+                    Events.V2DataReportingQueryRunFailedEventNotification)
+                },
+                {
+                    "v2.data.reporting.query_run.succeeded", typeof(
+                    Events.V2DataReportingQueryRunSucceededEventNotification)
+                },
+                {
+                    "v2.data.reporting.query_run.updated", typeof(
+                    Events.V2DataReportingQueryRunUpdatedEventNotification)
+                },
                 { "v2.iam.api_key.created", typeof(Events.V2IamApiKeyCreatedEventNotification) },
                 {
                     "v2.iam.api_key.default_secret_revealed", typeof(
@@ -1652,8 +1694,16 @@ namespace Stripe
                     Events.V2PaymentsOffSessionPaymentFailedEventNotification)
                 },
                 {
+                    "v2.payments.off_session_payment.paused", typeof(
+                    Events.V2PaymentsOffSessionPaymentPausedEventNotification)
+                },
+                {
                     "v2.payments.off_session_payment.requires_capture", typeof(
                     Events.V2PaymentsOffSessionPaymentRequiresCaptureEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.resumed", typeof(
+                    Events.V2PaymentsOffSessionPaymentResumedEventNotification)
                 },
                 {
                     "v2.payments.off_session_payment.succeeded", typeof(

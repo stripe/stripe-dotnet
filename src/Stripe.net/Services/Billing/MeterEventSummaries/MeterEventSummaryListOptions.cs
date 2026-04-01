@@ -54,6 +54,32 @@ namespace Stripe.Billing
         public DateTime? StartTime { get; set; }
 
         /// <summary>
+        /// List of tenant payload keys to filter on. Must be used together with tenant_operator and
+        /// tenant_values. Cannot be used with tenant_filters.
+        /// </summary>
+        [JsonProperty("tenant_keys")]
+        [STJS.JsonPropertyName("tenant_keys")]
+        public List<string> TenantKeys { get; set; }
+
+        /// <summary>
+        /// The operator to apply when filtering by tenant values. Must be used together with
+        /// tenant_keys and tenant_values. Cannot be used with tenant_filters.
+        /// One of: <c>excludes</c>, or <c>includes</c>.
+        /// </summary>
+        [JsonProperty("tenant_operator")]
+        [STJS.JsonPropertyName("tenant_operator")]
+        public string TenantOperator { get; set; }
+
+        /// <summary>
+        /// List of value lists corresponding to each key in tenant_keys. Each element contains the
+        /// values to filter on for the corresponding tenant key. Must be used together with
+        /// tenant_operator and tenant_keys. Cannot be used with tenant_filters.
+        /// </summary>
+        [JsonProperty("tenant_values")]
+        [STJS.JsonPropertyName("tenant_values")]
+        public List<List<string>> TenantValues { get; set; }
+
+        /// <summary>
         /// Specifies what granularity to use when generating event summaries. If not specified, a
         /// single event summary would be returned for the specified time range. For hourly
         /// granularity, start and end times must align with hour boundaries (e.g., 00:00, 01:00,

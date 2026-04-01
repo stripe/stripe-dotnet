@@ -17,5 +17,12 @@ namespace Stripe
         [STJS.JsonPropertyName("guaranteed_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
         public DateTime? GuaranteedAt { get; set; }
+
+        /// <summary>
+        /// Processor information for this payment.
+        /// </summary>
+        [JsonProperty("processor_details")]
+        [STJS.JsonPropertyName("processor_details")]
+        public PaymentRecordGuaranteedProcessorDetailsOptions ProcessorDetails { get; set; }
     }
 }

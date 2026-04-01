@@ -59,11 +59,11 @@ namespace Stripe.DelegatedCheckout
         public string PaymentMethod { get; set; }
 
         /// <summary>
-        /// The payment method data for this requested session.
+        /// The payment method options for this requested session.
         /// </summary>
-        [JsonProperty("payment_method_data")]
-        [STJS.JsonPropertyName("payment_method_data")]
-        public RequestedSessionPaymentMethodDataOptions PaymentMethodData { get; set; }
+        [JsonProperty("payment_method_options")]
+        [STJS.JsonPropertyName("payment_method_options")]
+        public RequestedSessionPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
         /// The details of the seller.

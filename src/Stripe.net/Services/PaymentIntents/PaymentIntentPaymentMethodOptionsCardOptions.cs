@@ -87,6 +87,13 @@ namespace Stripe
         public string Network { get; set; }
 
         /// <summary>
+        /// Payment details for payment method specific funding fields.
+        /// </summary>
+        [JsonProperty("payment_details")]
+        [STJS.JsonPropertyName("payment_details")]
+        public PaymentIntentPaymentMethodOptionsCardPaymentDetailsOptions PaymentDetails { get; set; }
+
+        /// <summary>
         /// Request ability to <a
         /// href="https://docs.stripe.com/payments/decremental-authorization">decrement the
         /// authorization</a> for this PaymentIntent.

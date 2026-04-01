@@ -2,11 +2,20 @@
 namespace Stripe.Events
 {
     using System.Threading.Tasks;
+    using Newtonsoft.Json;
+    using STJS = System.Text.Json.Serialization;
 
     /// <summary>
     /// Occurs when an API Key is expired.
     /// </summary>
     public class V2IamApiKeyExpiredEvent : V2.Core.Event
     {
+        /// <summary>
+        /// Data for the v2.iam.api_key.expired event.
+        /// </summary>
+        [JsonProperty("data")]
+        [STJS.JsonPropertyName("data")]
+
+        public V2IamApiKeyExpiredEventData Data { get; set; }
     }
 }

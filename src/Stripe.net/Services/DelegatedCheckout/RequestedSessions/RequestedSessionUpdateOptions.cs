@@ -10,7 +10,6 @@ namespace Stripe.DelegatedCheckout
     public class RequestedSessionUpdateOptions : BaseOptions, IHasMetadata
     {
         private Dictionary<string, string> metadata;
-        private RequestedSessionPaymentMethodDataOptions paymentMethodData;
         private Dictionary<string, string> sharedMetadata;
 
         /// <summary>
@@ -50,19 +49,11 @@ namespace Stripe.DelegatedCheckout
         public string PaymentMethod { get; set; }
 
         /// <summary>
-        /// The payment method data for this requested session.
+        /// The payment method options for this requested session.
         /// </summary>
-        [JsonProperty("payment_method_data")]
-        [STJS.JsonPropertyName("payment_method_data")]
-        public RequestedSessionPaymentMethodDataOptions PaymentMethodData
-        {
-            get => this.paymentMethodData;
-            set
-            {
-                this.paymentMethodData = value;
-                this.SetTracker.Track();
-            }
-        }
+        [JsonProperty("payment_method_options")]
+        [STJS.JsonPropertyName("payment_method_options")]
+        public RequestedSessionPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
         /// The shared metadata for this requested session.

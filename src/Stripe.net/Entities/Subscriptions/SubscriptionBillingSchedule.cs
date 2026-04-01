@@ -17,13 +17,6 @@ namespace Stripe
         public List<SubscriptionBillingScheduleAppliesTo> AppliesTo { get; set; }
 
         /// <summary>
-        /// Specifies the start of the billing period.
-        /// </summary>
-        [JsonProperty("bill_from")]
-        [STJS.JsonPropertyName("bill_from")]
-        public SubscriptionBillingScheduleBillFrom BillFrom { get; set; }
-
-        /// <summary>
         /// Specifies the end of billing period.
         /// </summary>
         [JsonProperty("bill_until")]

@@ -9,18 +9,18 @@ namespace Stripe.V2.Reporting
     public class ReportRunResult : StripeEntity<ReportRunResult>
     {
         /// <summary>
-        /// Contains metadata about the file produced by the <c>ReportRun</c>, including its content
-        /// type, size, and a URL to download its contents.
-        /// </summary>
-        [JsonProperty("file")]
-        [STJS.JsonPropertyName("file")]
-        public ReportRunResultFile File { get; set; }
-
-        /// <summary>
-        /// The type of the <c>ReportRun</c> result.
+        /// The type of the <c>ReportRun</c> or <c>QueryRun</c> result.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// Contains metadata about the file produced by the <c>ReportRun</c> or <c>QueryRun</c>,
+        /// including its content type, size, and a URL to download its contents.
+        /// </summary>
+        [JsonProperty("file")]
+        [STJS.JsonPropertyName("file")]
+        public ReportRunResultFile File { get; set; }
     }
 }

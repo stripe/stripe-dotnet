@@ -67,13 +67,6 @@ namespace Stripe.V2.Payments
         public OffSessionPaymentCapture Capture { get; set; }
 
         /// <summary>
-        /// ID of the owning compartment.
-        /// </summary>
-        [JsonProperty("compartment_id")]
-        [STJS.JsonPropertyName("compartment_id")]
-        public string CompartmentId { get; set; }
-
-        /// <summary>
         /// Creation time of the OffSessionPayment. Represented as a RFC 3339 date &amp; time UTC
         /// value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
         /// </summary>
@@ -90,8 +83,8 @@ namespace Stripe.V2.Payments
 
         /// <summary>
         /// The reason why the OffSessionPayment failed.
-        /// One of: <c>authorization_expired</c>, <c>no_valid_payment_method</c>,
-        /// <c>rejected_by_partner</c>, or <c>retries_exhausted</c>.
+        /// One of: <c>authorization_expired</c>, <c>exceeded_retry_window</c>,
+        /// <c>no_valid_payment_method</c>, <c>rejected_by_partner</c>, or <c>retries_exhausted</c>.
         /// </summary>
         [JsonProperty("failure_reason")]
         [STJS.JsonPropertyName("failure_reason")]
@@ -190,8 +183,8 @@ namespace Stripe.V2.Payments
         /// Status of this OffSessionPayment, one of <c>pending</c>, <c>pending_retry</c>,
         /// <c>processing</c>, <c>failed</c>, <c>canceled</c>, <c>requires_capture</c>, or
         /// <c>succeeded</c>.
-        /// One of: <c>canceled</c>, <c>failed</c>, <c>pending</c>, <c>pending_retry</c>,
-        /// <c>processing</c>, <c>requires_capture</c>, or <c>succeeded</c>.
+        /// One of: <c>canceled</c>, <c>failed</c>, <c>paused</c>, <c>pending</c>,
+        /// <c>pending_retry</c>, <c>processing</c>, <c>requires_capture</c>, or <c>succeeded</c>.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

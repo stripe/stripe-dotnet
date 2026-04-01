@@ -15,8 +15,8 @@ namespace Stripe.Events
         /// <c>holds_currencies.gbp</c>, <c>holds_currencies.usd</c>, <c>holds_currencies.usdc</c>,
         /// <c>inbound_transfers.bank_accounts</c>, <c>outbound_payments.bank_accounts</c>,
         /// <c>outbound_payments.cards</c>, <c>outbound_payments.crypto_wallets</c>,
-        /// <c>outbound_payments.financial_accounts</c>, <c>outbound_transfers.bank_accounts</c>,
-        /// <c>outbound_transfers.crypto_wallets</c>, or
+        /// <c>outbound_payments.financial_accounts</c>, <c>outbound_payments.paper_checks</c>,
+        /// <c>outbound_transfers.bank_accounts</c>, <c>outbound_transfers.crypto_wallets</c>, or
         /// <c>outbound_transfers.financial_accounts</c>.
         /// </summary>
         [JsonProperty("updated_capability")]

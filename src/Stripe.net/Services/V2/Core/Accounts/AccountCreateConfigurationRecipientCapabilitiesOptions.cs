@@ -30,6 +30,13 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationRecipientCapabilitiesCryptoWalletsOptions CryptoWallets { get; set; }
 
         /// <summary>
+        /// Capabilities that enable OutboundPayments via paper check.
+        /// </summary>
+        [JsonProperty("paper_checks")]
+        [STJS.JsonPropertyName("paper_checks")]
+        public AccountCreateConfigurationRecipientCapabilitiesPaperChecksOptions PaperChecks { get; set; }
+
+        /// <summary>
         /// Capabilities that enable the recipient to manage their Stripe Balance (/v1/balance).
         /// </summary>
         [JsonProperty("stripe_balance")]

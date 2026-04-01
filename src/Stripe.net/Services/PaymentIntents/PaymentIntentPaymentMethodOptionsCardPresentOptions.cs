@@ -24,6 +24,13 @@ namespace Stripe
         public string CaptureMethod { get; set; }
 
         /// <summary>
+        /// Payment details for payment method specific funding transaction fields.
+        /// </summary>
+        [JsonProperty("payment_details")]
+        [STJS.JsonPropertyName("payment_details")]
+        public PaymentIntentPaymentMethodOptionsCardPresentPaymentDetailsOptions PaymentDetails { get; set; }
+
+        /// <summary>
         /// Request ability to capture this payment beyond the standard <a
         /// href="https://docs.stripe.com/terminal/features/extended-authorizations#authorization-validity">authorization
         /// validity window</a>.

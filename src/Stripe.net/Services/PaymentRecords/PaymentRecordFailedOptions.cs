@@ -28,5 +28,12 @@ namespace Stripe
         [JsonProperty("failure_code")]
         [STJS.JsonPropertyName("failure_code")]
         public string FailureCode { get; set; }
+
+        /// <summary>
+        /// Processor information for this payment.
+        /// </summary>
+        [JsonProperty("processor_details")]
+        [STJS.JsonPropertyName("processor_details")]
+        public PaymentRecordFailedProcessorDetailsOptions ProcessorDetails { get; set; }
     }
 }

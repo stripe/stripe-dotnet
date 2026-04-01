@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Payments
 {
+    using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -29,5 +30,13 @@ namespace Stripe.V2.Payments
         [JsonProperty("retry_strategy")]
         [STJS.JsonPropertyName("retry_strategy")]
         public string RetryStrategy { get; set; }
+
+        /// <summary>
+        /// The timestamp when this payment is no longer eligible to be retried. When this timestamp
+        /// is reached, the payment will be marked as failed.
+        /// </summary>
+        [JsonProperty("retry_until")]
+        [STJS.JsonPropertyName("retry_until")]
+        public DateTime? RetryUntil { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

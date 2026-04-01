@@ -95,5 +95,13 @@ namespace Stripe
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]
         public SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
+
+        /// <summary>
+        /// This sub-hash contains details about the Check Scan payment method options to pass to
+        /// invoices created by the subscription.
+        /// </summary>
+        [JsonProperty("check_scan")]
+        [STJS.JsonPropertyName("check_scan")]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsCheckScan CheckScan { get; set; }
     }
 }
