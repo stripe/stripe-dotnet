@@ -128,6 +128,13 @@ namespace Stripe.DelegatedCheckout
         public string PaymentMethod { get; set; }
 
         /// <summary>
+        /// The payment method options for this requested session.
+        /// </summary>
+        [JsonProperty("payment_method_options")]
+        [STJS.JsonPropertyName("payment_method_options")]
+        public RequestedSessionPaymentMethodOptions PaymentMethodOptions { get; set; }
+
+        /// <summary>
         /// The preview of the payment method to be created when the requested session is confirmed.
         /// </summary>
         [JsonProperty("payment_method_preview")]
@@ -159,12 +166,40 @@ namespace Stripe.DelegatedCheckout
         [STJS.JsonPropertyName("shared_metadata")]
         public Dictionary<string, string> SharedMetadata { get; set; }
 
+        #region Expandable SharedPaymentIssuedToken
+
         /// <summary>
+        /// (ID of the SharedPayment.IssuedToken)
         /// The SPT used for payment.
         /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public string SharedPaymentIssuedTokenId
+        {
+            get => this.InternalSharedPaymentIssuedToken?.Id;
+            set => this.InternalSharedPaymentIssuedToken = SetExpandableFieldId(value, this.InternalSharedPaymentIssuedToken);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The SPT used for payment.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public SharedPayment.IssuedToken SharedPaymentIssuedToken
+        {
+            get => this.InternalSharedPaymentIssuedToken?.ExpandedObject;
+            set => this.InternalSharedPaymentIssuedToken = SetExpandableFieldObject(value, this.InternalSharedPaymentIssuedToken);
+        }
+
         [JsonProperty("shared_payment_issued_token")]
+        [JsonConverter(typeof(ExpandableFieldConverter<SharedPayment.IssuedToken>))]
         [STJS.JsonPropertyName("shared_payment_issued_token")]
-        public string SharedPaymentIssuedToken { get; set; }
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<SharedPayment.IssuedToken>))]
+        internal ExpandableField<SharedPayment.IssuedToken> InternalSharedPaymentIssuedToken { get; set; }
+        #endregion
 
         /// <summary>
         /// The status of the requested session.

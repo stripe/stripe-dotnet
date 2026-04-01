@@ -9,6 +9,13 @@ namespace Stripe.Events
     public class V2IamApiKeyRotatedEventData : StripeEntity<V2IamApiKeyRotatedEventData>
     {
         /// <summary>
+        /// ID of the old key that was rotated.
+        /// </summary>
+        [JsonProperty("api_key")]
+        [STJS.JsonPropertyName("api_key")]
+        public string ApiKey { get; set; }
+
+        /// <summary>
         /// ID of the new key that was created due to rotation.
         /// </summary>
         [JsonProperty("new_api_key")]

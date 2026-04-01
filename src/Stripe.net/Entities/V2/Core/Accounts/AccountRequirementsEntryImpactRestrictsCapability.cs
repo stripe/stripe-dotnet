@@ -35,14 +35,14 @@ namespace Stripe.V2.Core
         /// <c>mobilepay_payments</c>, <c>multibanco_payments</c>, <c>mx_bank_transfer_payments</c>,
         /// <c>naver_pay_payments</c>, <c>outbound_payments.bank_accounts</c>,
         /// <c>outbound_payments.cards</c>, <c>outbound_payments.financial_accounts</c>,
-        /// <c>outbound_transfers.bank_accounts</c>, <c>outbound_transfers.financial_accounts</c>,
-        /// <c>oxxo_payments</c>, <c>p24_payments</c>, <c>payco_payments</c>,
-        /// <c>paynow_payments</c>, <c>pay_by_bank_payments</c>, <c>promptpay_payments</c>,
-        /// <c>revolut_pay_payments</c>, <c>samsung_pay_payments</c>,
-        /// <c>sepa_bank_transfer_payments</c>, <c>sepa_debit_payments</c>,
-        /// <c>stripe_balance.payouts</c>, <c>stripe_balance.stripe_transfers</c>,
-        /// <c>swish_payments</c>, <c>twint_payments</c>, <c>us_bank_transfer_payments</c>, or
-        /// <c>zip_payments</c>.
+        /// <c>outbound_payments.paper_checks</c>, <c>outbound_transfers.bank_accounts</c>,
+        /// <c>outbound_transfers.financial_accounts</c>, <c>oxxo_payments</c>, <c>p24_payments</c>,
+        /// <c>paper_checks</c>, <c>payco_payments</c>, <c>paynow_payments</c>,
+        /// <c>pay_by_bank_payments</c>, <c>promptpay_payments</c>, <c>revolut_pay_payments</c>,
+        /// <c>samsung_pay_payments</c>, <c>sepa_bank_transfer_payments</c>,
+        /// <c>sepa_debit_payments</c>, <c>stripe_balance.payouts</c>,
+        /// <c>stripe_balance.stripe_transfers</c>, <c>swish_payments</c>, <c>twint_payments</c>,
+        /// <c>us_bank_transfer_payments</c>, or <c>zip_payments</c>.
         /// </summary>
         [JsonProperty("capability")]
         [STJS.JsonPropertyName("capability")]

@@ -10,6 +10,13 @@ namespace Stripe.Events
     public class V2CoreHealthIssuingAuthorizationRequestErrorsFiringEventData : StripeEntity<V2CoreHealthIssuingAuthorizationRequestErrorsFiringEventData>
     {
         /// <summary>
+        /// The alert ID.
+        /// </summary>
+        [JsonProperty("alert_id")]
+        [STJS.JsonPropertyName("alert_id")]
+        public string AlertId { get; set; }
+
+        /// <summary>
         /// The grouping key for the alert.
         /// </summary>
         [JsonProperty("grouping_key")]

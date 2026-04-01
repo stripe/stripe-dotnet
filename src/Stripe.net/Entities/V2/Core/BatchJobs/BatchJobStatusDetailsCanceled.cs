@@ -18,8 +18,8 @@ namespace Stripe.V2.Core
         public long FailureCount { get; set; }
 
         /// <summary>
-        /// The output file details. If BatchJob is cancelled it's provided only if there is already
-        /// output at this point.
+        /// The output file details. If the <c>batch_job</c> is canceled, this is provided only if
+        /// there is already output at this point.
         /// </summary>
         [JsonProperty("output_file")]
         [STJS.JsonPropertyName("output_file")]

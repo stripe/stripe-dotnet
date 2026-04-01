@@ -9,7 +9,7 @@ namespace Stripe
     public class PaymentAttemptRecordProcessorDetailsOptions : INestedOptions
     {
         /// <summary>
-        /// Information about the custom processor used to make this refund.
+        /// Information about the custom processor used to make this payment.
         /// </summary>
         [JsonProperty("custom")]
         [STJS.JsonPropertyName("custom")]

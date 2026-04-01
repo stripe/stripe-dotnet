@@ -11,6 +11,7 @@ namespace Stripe
         private InvoicePaymentSettingsPaymentMethodOptionsAcssDebitOptions acssDebit;
         private InvoicePaymentSettingsPaymentMethodOptionsBancontactOptions bancontact;
         private InvoicePaymentSettingsPaymentMethodOptionsCardOptions card;
+        private InvoicePaymentSettingsPaymentMethodOptionsCheckScanOptions checkScan;
         private InvoicePaymentSettingsPaymentMethodOptionsCustomerBalanceOptions customerBalance;
         private InvoicePaymentSettingsPaymentMethodOptionsIdBankTransferOptions idBankTransfer;
         private InvoicePaymentSettingsPaymentMethodOptionsKonbiniOptions konbini;
@@ -68,6 +69,22 @@ namespace Stripe
             set
             {
                 this.card = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If paying by <c>check_scan</c>, this sub-hash contains details about the Check Scan
+        /// payment method options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("check_scan")]
+        [STJS.JsonPropertyName("check_scan")]
+        public InvoicePaymentSettingsPaymentMethodOptionsCheckScanOptions CheckScan
+        {
+            get => this.checkScan;
+            set
+            {
+                this.checkScan = value;
                 this.SetTracker.Track();
             }
         }

@@ -10,9 +10,11 @@ namespace Stripe.V2.MoneyManagement
     {
         /// <summary>
         /// Open Enum. The <c>failed</c> status reason.
-        /// One of: <c>payout_method_declined</c>, <c>payout_method_does_not_exist</c>,
-        /// <c>payout_method_expired</c>, <c>payout_method_unsupported</c>,
-        /// <c>payout_method_usage_frequency_limit_exceeded</c>, or <c>unknown_failure</c>.
+        /// One of: <c>paper_check_attachment_too_large</c>, <c>paper_check_expired</c>,
+        /// <c>paper_check_undeliverable</c>, <c>payout_method_declined</c>,
+        /// <c>payout_method_does_not_exist</c>, <c>payout_method_expired</c>,
+        /// <c>payout_method_unsupported</c>, <c>payout_method_usage_frequency_limit_exceeded</c>,
+        /// or <c>unknown_failure</c>.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

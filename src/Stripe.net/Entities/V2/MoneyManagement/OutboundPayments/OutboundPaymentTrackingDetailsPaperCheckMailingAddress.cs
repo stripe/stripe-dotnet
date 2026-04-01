@@ -50,12 +50,5 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("state")]
         [STJS.JsonPropertyName("state")]
         public string State { get; set; }
-
-        /// <summary>
-        /// Town or district.
-        /// </summary>
-        [JsonProperty("town")]
-        [STJS.JsonPropertyName("town")]
-        public string Town { get; set; }
     }
 }

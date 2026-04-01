@@ -6,8 +6,15 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CadenceSpendModifierMaxBillingPeriodSpendAmountCustomPricingUnit : StripeEntity<CadenceSpendModifierMaxBillingPeriodSpendAmountCustomPricingUnit>
+    public class CadenceSpendModifierMaxBillingPeriodSpendAmountCustomPricingUnit : StripeEntity<CadenceSpendModifierMaxBillingPeriodSpendAmountCustomPricingUnit>, IHasId
     {
+        /// <summary>
+        /// The id of the custom pricing unit.
+        /// </summary>
+        [JsonProperty("id")]
+        [STJS.JsonPropertyName("id")]
+        public string Id { get; set; }
+
         /// <summary>
         /// The decimal value of custom pricing units, represented as a string.
         /// </summary>

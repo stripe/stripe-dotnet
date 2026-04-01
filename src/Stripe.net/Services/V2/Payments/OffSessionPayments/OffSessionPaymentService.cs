@@ -115,5 +115,37 @@ namespace Stripe.V2.Payments
         {
             return this.ListRequestAutoPagingAsync<OffSessionPayment>($"/v2/payments/off_session_payments", options, requestOptions, cancellationToken);
         }
+
+        /// <summary>
+        /// Pauses an OffSessionPayment that has previously been created.
+        /// </summary>
+        public virtual OffSessionPayment Pause(string id, OffSessionPaymentPauseOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<OffSessionPayment>(BaseAddress.Api, HttpMethod.Post, $"/v2/payments/off_session_payments/{WebUtility.UrlEncode(id)}/pause", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Pauses an OffSessionPayment that has previously been created.
+        /// </summary>
+        public virtual Task<OffSessionPayment> PauseAsync(string id, OffSessionPaymentPauseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<OffSessionPayment>(BaseAddress.Api, HttpMethod.Post, $"/v2/payments/off_session_payments/{WebUtility.UrlEncode(id)}/pause", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Resumes an OffSessionPayment that has previously been paused.
+        /// </summary>
+        public virtual OffSessionPayment Resume(string id, OffSessionPaymentResumeOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<OffSessionPayment>(BaseAddress.Api, HttpMethod.Post, $"/v2/payments/off_session_payments/{WebUtility.UrlEncode(id)}/resume", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Resumes an OffSessionPayment that has previously been paused.
+        /// </summary>
+        public virtual Task<OffSessionPayment> ResumeAsync(string id, OffSessionPaymentResumeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<OffSessionPayment>(BaseAddress.Api, HttpMethod.Post, $"/v2/payments/off_session_payments/{WebUtility.UrlEncode(id)}/resume", options, requestOptions, cancellationToken);
+        }
     }
 }

@@ -36,5 +36,12 @@ namespace Stripe.V2.Core
         [JsonProperty("financial_accounts")]
         [STJS.JsonPropertyName("financial_accounts")]
         public AccountConfigurationStorerCapabilitiesOutboundPaymentsFinancialAccounts FinancialAccounts { get; set; }
+
+        /// <summary>
+        /// Can send funds from a FinancialAccount to someone else via paper check.
+        /// </summary>
+        [JsonProperty("paper_checks")]
+        [STJS.JsonPropertyName("paper_checks")]
+        public AccountConfigurationStorerCapabilitiesOutboundPaymentsPaperChecks PaperChecks { get; set; }
     }
 }

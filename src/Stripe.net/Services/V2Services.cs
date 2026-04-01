@@ -9,6 +9,7 @@ namespace Stripe
     {
         private V2.BillingService billing;
         private V2.CoreService core;
+        private V2.DatumService data;
         private V2.IamService iam;
         private V2.MoneyManagementService moneyManagement;
         private V2.PaymentService payments;
@@ -30,6 +31,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual V2.CoreService Core => this.core ??= new V2.CoreService(
+            this.Requestor);
+
+        public virtual V2.DatumService Data => this.data ??= new V2.DatumService(
             this.Requestor);
 
         public virtual V2.IamService Iam => this.iam ??= new V2.IamService(

@@ -13,6 +13,7 @@ namespace Stripe
         private string customerReference;
         private List<PaymentIntentPaymentDetailsFlightDatumOptions> flightData;
         private List<PaymentIntentPaymentDetailsLodgingDatumOptions> lodgingData;
+        private PaymentIntentPaymentDetailsMoneyServicesOptions moneyServices;
         private string orderReference;
 
         [JsonIgnore]
@@ -113,6 +114,21 @@ namespace Stripe
             set
             {
                 this.lodgingData = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// Money services details for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("money_services")]
+        [STJS.JsonPropertyName("money_services")]
+        public PaymentIntentPaymentDetailsMoneyServicesOptions MoneyServices
+        {
+            get => this.moneyServices;
+            set
+            {
+                this.moneyServices = value;
                 this.SetTracker.Track();
             }
         }

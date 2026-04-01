@@ -52,6 +52,13 @@ namespace Stripe.V2.Payments
         public V2.Amount AmountRequested { get; set; }
 
         /// <summary>
+        /// The amount of the application fee requested to be applied to the payment.
+        /// </summary>
+        [JsonProperty("application_fee_amount_requested")]
+        [STJS.JsonPropertyName("application_fee_amount_requested")]
+        public V2.Amount ApplicationFeeAmountRequested { get; set; }
+
+        /// <summary>
         /// The frequency of the underlying payment.
         /// One of: <c>recurring</c>, or <c>unscheduled</c>.
         /// </summary>
@@ -65,13 +72,6 @@ namespace Stripe.V2.Payments
         [JsonProperty("capture")]
         [STJS.JsonPropertyName("capture")]
         public OffSessionPaymentCapture Capture { get; set; }
-
-        /// <summary>
-        /// ID of the owning compartment.
-        /// </summary>
-        [JsonProperty("compartment_id")]
-        [STJS.JsonPropertyName("compartment_id")]
-        public string CompartmentId { get; set; }
 
         /// <summary>
         /// Creation time of the OffSessionPayment. Represented as a RFC 3339 date &amp; time UTC
@@ -90,8 +90,8 @@ namespace Stripe.V2.Payments
 
         /// <summary>
         /// The reason why the OffSessionPayment failed.
-        /// One of: <c>authorization_expired</c>, <c>no_valid_payment_method</c>,
-        /// <c>rejected_by_partner</c>, or <c>retries_exhausted</c>.
+        /// One of: <c>authorization_expired</c>, <c>exceeded_retry_window</c>,
+        /// <c>no_valid_payment_method</c>, <c>rejected_by_partner</c>, or <c>retries_exhausted</c>.
         /// </summary>
         [JsonProperty("failure_reason")]
         [STJS.JsonPropertyName("failure_reason")]
@@ -190,8 +190,8 @@ namespace Stripe.V2.Payments
         /// Status of this OffSessionPayment, one of <c>pending</c>, <c>pending_retry</c>,
         /// <c>processing</c>, <c>failed</c>, <c>canceled</c>, <c>requires_capture</c>, or
         /// <c>succeeded</c>.
-        /// One of: <c>canceled</c>, <c>failed</c>, <c>pending</c>, <c>pending_retry</c>,
-        /// <c>processing</c>, <c>requires_capture</c>, or <c>succeeded</c>.
+        /// One of: <c>canceled</c>, <c>failed</c>, <c>paused</c>, <c>pending</c>,
+        /// <c>pending_retry</c>, <c>processing</c>, <c>requires_capture</c>, or <c>succeeded</c>.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

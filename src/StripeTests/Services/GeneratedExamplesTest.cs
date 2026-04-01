@@ -723,7 +723,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/events/ll_123",
                 HttpStatusCode.OK,
-                "{\"changes\":{\"int_key\":123,\"string_key\":\"value\",\"boolean_key\":true,\"object_key\":{\"object_int_key\":123,\"object_string_key\":\"value\",\"object_boolean_key\":true},\"array_key\":[1,2,3]},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"object\":\"v2.core.event\",\"reason\":{\"type\":\"request\",\"request\":{\"client\":{\"type\":\"api_key\",\"api_key\":{\"id\":\"obj_123\"},\"dashboard_user\":{\"email\":\"email\",\"ip_address\":\"ip_address\",\"machine_identifier\":\"machine_identifier\"},\"stripe_action\":{\"int_key\":123,\"string_key\":\"value\",\"boolean_key\":true,\"object_key\":{\"object_int_key\":123,\"object_string_key\":\"value\",\"object_boolean_key\":true},\"array_key\":[1,2,3]}},\"id\":\"obj_123\",\"idempotency_key\":\"idempotency_key\"}},\"type\":\"type\"}");
+                "{\"changes\":{\"int_key\":123,\"string_key\":\"value\",\"boolean_key\":true,\"object_key\":{\"object_int_key\":123,\"object_string_key\":\"value\",\"object_boolean_key\":true},\"array_key\":[1,2,3]},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"object\":\"v2.core.event\",\"reason\":{\"type\":\"request\",\"request\":{\"client\":{\"type\":\"api_key\",\"api_key\":{\"id\":\"obj_123\"},\"dashboard_user\":{\"email\":\"email\",\"ip_address\":\"ip_address\",\"machine_identifier\":\"machine_identifier\"},\"stripe_action\":{}},\"id\":\"obj_123\",\"idempotency_key\":\"idempotency_key\"}},\"type\":\"type\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Events;
             Stripe.V2.Core.Event result = service.Get("ll_123");
@@ -6664,6 +6664,7 @@ namespace StripeTests
                                         Type = "custom_pricing_unit",
                                         CustomPricingUnit = new Stripe.V2.Billing.IntentCreateActionApplySpendModifierRuleMaxBillingPeriodSpendAmountCustomPricingUnitOptions
                                         {
+                                            Id = "obj_123",
                                             Value = "value",
                                         },
                                     },
@@ -9058,6 +9059,43 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2DataReportingQueryRunPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/data/reporting/query_runs",
+                (HttpStatusCode)200,
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.data.reporting.query_run\",\"status_details\":{\"key\":{}},\"sql\":\"sql\",\"status\":\"failed\",\"livemode\":true}");
+            var options = new Stripe.V2.Data.Reporting.QueryRunCreateOptions
+            {
+                Sql = "sql",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Data.Reporting.QueryRuns;
+            Stripe.V2.Data.Reporting.QueryRun queryRun = service.Create(
+                options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/data/reporting/query_runs");
+        }
+
+        [Fact]
+        public void TestV2DataReportingQueryRunGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/data/reporting/query_runs/id_123",
+                (HttpStatusCode)200,
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.data.reporting.query_run\",\"status_details\":{\"key\":{}},\"sql\":\"sql\",\"status\":\"failed\",\"livemode\":true}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Data.Reporting.QueryRuns;
+            Stripe.V2.Data.Reporting.QueryRun queryRun = service.Get("id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/data/reporting/query_runs/id_123");
+        }
+
+        [Fact]
         public void TestV2IamApiKeyGet()
         {
             this.StubRequest(
@@ -10055,7 +10093,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/payments/off_session_payments",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"compartment_id\":\"compartment_id\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"object\":\"v2.payments.off_session_payment\",\"payment_method\":\"payment_method\",\"payments_orchestration\":{\"enabled\":true},\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"scheduled\"},\"status\":\"pending\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"object\":\"v2.payments.off_session_payment\",\"payment_method\":\"payment_method\",\"payments_orchestration\":{\"enabled\":true},\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"scheduled\"},\"status\":\"requires_capture\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Payments.OffSessionPayments;
             Stripe.V2.StripeList<Stripe.V2.Payments.OffSessionPayment> offSessionPayments = service
@@ -10072,7 +10110,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/payments/off_session_payments",
                 (HttpStatusCode)200,
-                "{\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"compartment_id\":\"compartment_id\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"object\":\"v2.payments.off_session_payment\",\"payment_method\":\"payment_method\",\"payments_orchestration\":{\"enabled\":true},\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"scheduled\"},\"status\":\"pending\"}");
+                "{\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"object\":\"v2.payments.off_session_payment\",\"payment_method\":\"payment_method\",\"payments_orchestration\":{\"enabled\":true},\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"scheduled\"},\"status\":\"requires_capture\"}");
             var options = new Stripe.V2.Payments.OffSessionPaymentCreateOptions
             {
                 Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
@@ -10099,7 +10137,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/payments/off_session_payments/id_123",
                 (HttpStatusCode)200,
-                "{\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"compartment_id\":\"compartment_id\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"object\":\"v2.payments.off_session_payment\",\"payment_method\":\"payment_method\",\"payments_orchestration\":{\"enabled\":true},\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"scheduled\"},\"status\":\"pending\"}");
+                "{\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"object\":\"v2.payments.off_session_payment\",\"payment_method\":\"payment_method\",\"payments_orchestration\":{\"enabled\":true},\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"scheduled\"},\"status\":\"requires_capture\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Payments.OffSessionPayments;
             Stripe.V2.Payments.OffSessionPayment offSessionPayment = service
@@ -10116,7 +10154,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/payments/off_session_payments/id_123/cancel",
                 (HttpStatusCode)200,
-                "{\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"compartment_id\":\"compartment_id\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"object\":\"v2.payments.off_session_payment\",\"payment_method\":\"payment_method\",\"payments_orchestration\":{\"enabled\":true},\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"scheduled\"},\"status\":\"pending\"}");
+                "{\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"object\":\"v2.payments.off_session_payment\",\"payment_method\":\"payment_method\",\"payments_orchestration\":{\"enabled\":true},\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"scheduled\"},\"status\":\"requires_capture\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Payments.OffSessionPayments;
             Stripe.V2.Payments.OffSessionPayment offSessionPayment = service
@@ -10133,7 +10171,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/payments/off_session_payments/id_123/capture",
                 (HttpStatusCode)200,
-                "{\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"compartment_id\":\"compartment_id\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"object\":\"v2.payments.off_session_payment\",\"payment_method\":\"payment_method\",\"payments_orchestration\":{\"enabled\":true},\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"scheduled\"},\"status\":\"pending\"}");
+                "{\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"object\":\"v2.payments.off_session_payment\",\"payment_method\":\"payment_method\",\"payments_orchestration\":{\"enabled\":true},\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"scheduled\"},\"status\":\"requires_capture\"}");
             var options = new Stripe.V2.Payments.OffSessionPaymentCaptureOptions
             {
                 Metadata = new Dictionary<string, string>
@@ -10148,6 +10186,40 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/payments/off_session_payments/id_123/capture");
+        }
+
+        [Fact]
+        public void TestV2PaymentsOffSessionPaymentPost4()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/payments/off_session_payments/id_123/pause",
+                (HttpStatusCode)200,
+                "{\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"object\":\"v2.payments.off_session_payment\",\"payment_method\":\"payment_method\",\"payments_orchestration\":{\"enabled\":true},\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"scheduled\"},\"status\":\"requires_capture\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Payments.OffSessionPayments;
+            Stripe.V2.Payments.OffSessionPayment offSessionPayment = service
+                .Pause("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/payments/off_session_payments/id_123/pause");
+        }
+
+        [Fact]
+        public void TestV2PaymentsOffSessionPaymentPost5()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/payments/off_session_payments/id_123/resume",
+                (HttpStatusCode)200,
+                "{\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"object\":\"v2.payments.off_session_payment\",\"payment_method\":\"payment_method\",\"payments_orchestration\":{\"enabled\":true},\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"scheduled\"},\"status\":\"requires_capture\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Payments.OffSessionPayments;
+            Stripe.V2.Payments.OffSessionPayment offSessionPayment = service
+                .Resume("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/payments/off_session_payments/id_123/resume");
         }
 
         [Fact]

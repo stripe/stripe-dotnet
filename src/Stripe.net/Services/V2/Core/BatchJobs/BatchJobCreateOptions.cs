@@ -25,7 +25,7 @@ namespace Stripe.V2.Core
         public long? MaximumRps { get; set; }
 
         /// <summary>
-        /// The metadata of the <c>BatchJob</c> object.
+        /// The metadata of the <c>batch_job</c>.
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]

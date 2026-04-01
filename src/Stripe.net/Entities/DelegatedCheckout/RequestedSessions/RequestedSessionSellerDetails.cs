@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.DelegatedCheckout
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -77,5 +78,21 @@ namespace Stripe.DelegatedCheckout
         [JsonProperty("terms_of_service_url")]
         [STJS.JsonPropertyName("terms_of_service_url")]
         public string TermsOfServiceUrl { get; set; }
+
+        /// <summary>
+        /// The card brands supported by the seller.
+        /// One of: <c>american_express</c>, <c>mastercard</c>, or <c>visa</c>.
+        /// </summary>
+        [JsonProperty("card_brands")]
+        [STJS.JsonPropertyName("card_brands")]
+        public List<string> CardBrands { get; set; }
+
+        /// <summary>
+        /// The payment method types supported by the seller.
+        /// One of: <c>affirm</c>, <c>card</c>, or <c>klarna</c>.
+        /// </summary>
+        [JsonProperty("payment_method_types")]
+        [STJS.JsonPropertyName("payment_method_types")]
+        public List<string> PaymentMethodTypes { get; set; }
     }
 }

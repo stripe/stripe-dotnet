@@ -31,6 +31,13 @@ namespace Stripe.SharedPayment
         public string Object { get; set; }
 
         /// <summary>
+        /// Details about the agent that issued this SharedPaymentGrantedToken.
+        /// </summary>
+        [JsonProperty("agent_details")]
+        [STJS.JsonPropertyName("agent_details")]
+        public GrantedTokenAgentDetails AgentDetails { get; set; }
+
+        /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
@@ -64,6 +71,20 @@ namespace Stripe.SharedPayment
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
+
+        /// <summary>
+        /// Details of the PaymentMethod that was shared via this token.
+        /// </summary>
+        [JsonProperty("payment_method_details")]
+        [STJS.JsonPropertyName("payment_method_details")]
+        public GrantedTokenPaymentMethodDetails PaymentMethodDetails { get; set; }
+
+        /// <summary>
+        /// Risk details of the SharedPaymentGrantedToken.
+        /// </summary>
+        [JsonProperty("risk_details")]
+        [STJS.JsonPropertyName("risk_details")]
+        public GrantedTokenRiskDetails RiskDetails { get; set; }
 
         /// <summary>
         /// Metadata about the SharedPaymentGrantedToken.

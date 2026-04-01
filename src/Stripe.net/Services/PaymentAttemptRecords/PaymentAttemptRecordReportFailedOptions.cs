@@ -49,5 +49,12 @@ namespace Stripe
                 this.SetTracker.Track();
             }
         }
+
+        /// <summary>
+        /// Processor information for this payment.
+        /// </summary>
+        [JsonProperty("processor_details")]
+        [STJS.JsonPropertyName("processor_details")]
+        public PaymentAttemptRecordProcessorDetailsOptions ProcessorDetails { get; set; }
     }
 }
