@@ -203,7 +203,7 @@ namespace Stripe.DelegatedCheckout
 
         /// <summary>
         /// The status of the requested session.
-        /// One of: <c>completed</c>, <c>expired</c>, or <c>open</c>.
+        /// One of: <c>completed</c>, <c>expired</c>, <c>open</c>, or <c>requires_action</c>.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

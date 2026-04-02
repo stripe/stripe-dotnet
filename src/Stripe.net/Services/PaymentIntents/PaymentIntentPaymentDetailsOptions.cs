@@ -11,6 +11,7 @@ namespace Stripe
     {
         private List<PaymentIntentPaymentDetailsCarRentalDatumOptions> carRentalData;
         private string customerReference;
+        private List<PaymentIntentPaymentDetailsFleetDatumOptions> fleetData;
         private List<PaymentIntentPaymentDetailsFlightDatumOptions> flightData;
         private List<PaymentIntentPaymentDetailsLodgingDatumOptions> lodgingData;
         private PaymentIntentPaymentDetailsMoneyServicesOptions moneyServices;
@@ -73,6 +74,21 @@ namespace Stripe
         [JsonProperty("event_details")]
         [STJS.JsonPropertyName("event_details")]
         public PaymentIntentPaymentDetailsEventDetailsOptions EventDetails { get; set; }
+
+        /// <summary>
+        /// Fleet data for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("fleet_data")]
+        [STJS.JsonPropertyName("fleet_data")]
+        public List<PaymentIntentPaymentDetailsFleetDatumOptions> FleetData
+        {
+            get => this.fleetData;
+            set
+            {
+                this.fleetData = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Flight reservation details for this PaymentIntent.
