@@ -58,5 +58,12 @@ namespace Stripe
         [JsonProperty("subscription")]
         [STJS.JsonPropertyName("subscription")]
         public PaymentIntentPaymentDetailsSubscription Subscription { get; set; }
+
+        /// <summary>
+        /// Fleet data for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("fleet_data")]
+        [STJS.JsonPropertyName("fleet_data")]
+        public List<PaymentIntentPaymentDetailsFleetDatum> FleetData { get; set; }
     }
 }

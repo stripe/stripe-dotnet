@@ -9254,8 +9254,8 @@ namespace StripeTests
                 {
                     Amount = new Stripe.V2.Amount
                     {
-                        Currency = "USD",
                         Value = 96,
+                        Currency = "USD",
                     },
                     Currency = "usd",
                 },
@@ -9263,8 +9263,8 @@ namespace StripeTests
                 {
                     Amount = new Stripe.V2.Amount
                     {
-                        Currency = "USD",
                         Value = 96,
+                        Currency = "USD",
                     },
                     Currency = "usd",
                 },
@@ -9468,7 +9468,7 @@ namespace StripeTests
                 "{\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"from\":{\"debited\":{\"currency\":\"USD\",\"value\":55},\"payment_method\":{\"type\":\"type\"}},\"id\":\"obj_123\",\"object\":\"v2.money_management.inbound_transfer\",\"to\":{\"credited\":{\"currency\":\"USD\",\"value\":68},\"financial_account\":\"financial_account\"},\"transfer_history\":[{\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"id\":\"obj_123\",\"level\":\"canonical\",\"type\":\"bank_debit_failed\"}],\"livemode\":true}");
             var options = new Stripe.V2.MoneyManagement.InboundTransferCreateOptions
             {
-                Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
+                Amount = new Stripe.V2.Amount { Value = 96, Currency = "USD" },
                 From = new Stripe.V2.MoneyManagement.InboundTransferCreateFromOptions
                 {
                     Currency = "usd",
@@ -9533,7 +9533,7 @@ namespace StripeTests
                 "{\"amount\":{\"currency\":\"USD\",\"value\":96},\"cancelable\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"debited\":{\"currency\":\"USD\",\"value\":55},\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"object\":\"v2.money_management.outbound_payment\",\"recipient_notification\":{\"setting\":\"configured\"},\"statement_descriptor\":\"statement_descriptor\",\"status\":\"canceled\",\"to\":{\"credited\":{\"currency\":\"USD\",\"value\":68},\"payout_method\":\"payout_method\",\"recipient\":\"recipient\"},\"trace_id\":{\"status\":\"pending\"},\"livemode\":true}");
             var options = new Stripe.V2.MoneyManagement.OutboundPaymentCreateOptions
             {
-                Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
+                Amount = new Stripe.V2.Amount { Value = 96, Currency = "USD" },
                 From = new Stripe.V2.MoneyManagement.OutboundPaymentCreateFromOptions
                 {
                     Currency = "usd",
@@ -9599,7 +9599,7 @@ namespace StripeTests
                 "{\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"estimated_fees\":[{\"amount\":{\"currency\":\"USD\",\"value\":96},\"type\":\"next_day_payout_fee\"}],\"from\":{\"debited\":{\"currency\":\"USD\",\"value\":55},\"financial_account\":\"financial_account\"},\"fx_quote\":{\"lock_duration\":\"five_minutes\",\"lock_status\":\"active\",\"rates\":{\"key\":{\"exchange_rate\":\"exchange_rate\"}},\"to_currency\":\"usd\"},\"id\":\"obj_123\",\"object\":\"v2.money_management.outbound_payment_quote\",\"to\":{\"credited\":{\"currency\":\"USD\",\"value\":68},\"payout_method\":\"payout_method\",\"recipient\":\"recipient\"},\"livemode\":true}");
             var options = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateOptions
             {
-                Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
+                Amount = new Stripe.V2.Amount { Value = 96, Currency = "USD" },
                 From = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateFromOptions
                 {
                     Currency = "usd",
@@ -9752,7 +9752,7 @@ namespace StripeTests
                 "{\"amount\":{\"currency\":\"USD\",\"value\":96},\"cancelable\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"debited\":{\"currency\":\"USD\",\"value\":55},\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"object\":\"v2.money_management.outbound_transfer\",\"statement_descriptor\":\"statement_descriptor\",\"status\":\"canceled\",\"to\":{\"credited\":{\"currency\":\"USD\",\"value\":68},\"payout_method\":\"payout_method\"},\"trace_id\":{\"status\":\"pending\"},\"livemode\":true}");
             var options = new Stripe.V2.MoneyManagement.OutboundTransferCreateOptions
             {
-                Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
+                Amount = new Stripe.V2.Amount { Value = 96, Currency = "USD" },
                 From = new Stripe.V2.MoneyManagement.OutboundTransferCreateFromOptions
                 {
                     Currency = "usd",
@@ -10113,7 +10113,7 @@ namespace StripeTests
                 "{\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"object\":\"v2.payments.off_session_payment\",\"payment_method\":\"payment_method\",\"payments_orchestration\":{\"enabled\":true},\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"scheduled\"},\"status\":\"requires_capture\"}");
             var options = new Stripe.V2.Payments.OffSessionPaymentCreateOptions
             {
-                Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
+                Amount = new Stripe.V2.Amount { Value = 96, Currency = "USD" },
                 Cadence = "unscheduled",
                 Customer = "customer",
                 Metadata = new Dictionary<string, string>
@@ -10249,7 +10249,7 @@ namespace StripeTests
                 "{\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"expected_settlement_date\":\"1970-01-22T14:14:13.629Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"linked_credits\":[\"linked_credits\"],\"object\":\"v2.payments.settlement_allocation_intent\",\"reference\":\"reference\",\"status\":\"canceled\",\"livemode\":true}");
             var options = new Stripe.V2.Payments.SettlementAllocationIntentCreateOptions
             {
-                Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
+                Amount = new Stripe.V2.Amount { Value = 96, Currency = "USD" },
                 ExpectedSettlementDate = DateTimeOffset.Parse(
                     "1970-01-22T14:14:13.629Z")
                     .UtcDateTime,
@@ -10362,7 +10362,7 @@ namespace StripeTests
             var options = new Stripe.V2.Payments.SettlementAllocationIntents.SplitCreateOptions
             {
                 Account = "account",
-                Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
+                Amount = new Stripe.V2.Amount { Value = 96, Currency = "USD" },
                 Type = "credit",
             };
             var client = new StripeClient(this.Requestor);
@@ -10604,7 +10604,7 @@ namespace StripeTests
                 "{\"object\":\"financial_address_credit_simulation\",\"status\":\"status\",\"livemode\":true}");
             var options = new Stripe.V2.TestHelpers.FinancialAddressCreditOptions
             {
-                Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
+                Amount = new Stripe.V2.Amount { Value = 96, Currency = "USD" },
                 Network = "ach",
             };
             var client = new StripeClient(this.Requestor);
@@ -10836,7 +10836,7 @@ namespace StripeTests
             {
                 var options = new Stripe.V2.MoneyManagement.OutboundPaymentCreateOptions
                 {
-                    Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
+                    Amount = new Stripe.V2.Amount { Value = 96, Currency = "USD" },
                     From = new Stripe.V2.MoneyManagement.OutboundPaymentCreateFromOptions
                     {
                         Currency = "usd",
@@ -11005,7 +11005,7 @@ namespace StripeTests
             {
                 var options = new Stripe.V2.MoneyManagement.OutboundPaymentCreateOptions
                 {
-                    Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
+                    Amount = new Stripe.V2.Amount { Value = 96, Currency = "USD" },
                     From = new Stripe.V2.MoneyManagement.OutboundPaymentCreateFromOptions
                     {
                         Currency = "usd",

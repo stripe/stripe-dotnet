@@ -9,7 +9,7 @@ namespace Stripe.Radar
     public class CustomerEvaluationEvaluationContextCustomerDetailsOptions : INestedOptions
     {
         /// <summary>
-        /// Stripe customer ID.
+        /// The ID of an existing Customer.
         /// </summary>
         [JsonProperty("customer")]
         [STJS.JsonPropertyName("customer")]

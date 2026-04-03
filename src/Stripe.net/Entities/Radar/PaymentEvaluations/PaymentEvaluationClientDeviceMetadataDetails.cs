@@ -17,5 +17,13 @@ namespace Stripe.Radar
         [JsonProperty("radar_session")]
         [STJS.JsonPropertyName("radar_session")]
         public string RadarSession { get; set; }
+
+        /// <summary>
+        /// Direct client device attributes such as IP address and user agent. Use this as an
+        /// alternative to radar_session when a Radar Session isn't available.
+        /// </summary>
+        [JsonProperty("data")]
+        [STJS.JsonPropertyName("data")]
+        public PaymentEvaluationClientDeviceMetadataDetailsData Data { get; set; }
     }
 }

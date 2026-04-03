@@ -20,13 +20,15 @@ namespace Stripe.Radar
 
         /// <summary>
         /// The risk level for this signal.
+        /// One of: <c>elevated</c>, <c>highest</c>, <c>low</c>, <c>normal</c>, <c>not_assessed</c>,
+        /// or <c>unknown</c>.
         /// </summary>
         [JsonProperty("risk_level")]
         [STJS.JsonPropertyName("risk_level")]
         public string RiskLevel { get; set; }
 
         /// <summary>
-        /// Score for this signal (float between 0.0-100.0).
+        /// Score for this signal (between 0.0 and 100.0).
         /// </summary>
         [JsonProperty("score")]
         [STJS.JsonPropertyName("score")]
