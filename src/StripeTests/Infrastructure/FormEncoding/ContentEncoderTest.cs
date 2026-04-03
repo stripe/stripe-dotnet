@@ -351,6 +351,20 @@ namespace StripeTests
                     Want = "list[0][foo]=bar&list[1][foo]=baz",
                 },
 
+                // Nested list (2D array)
+                new QueryStringTestCase
+                {
+                    Data = new TestOptions
+                    {
+                        List = new List<object>
+                        {
+                            new List<object> { 1, 2 },
+                            new List<object> { 3, 4 },
+                        },
+                    },
+                    Want = "list[0][0]=1&list[0][1]=2&list[1][0]=3&list[1][1]=4",
+                },
+
                 // Long
                 new QueryStringTestCase
                 {
