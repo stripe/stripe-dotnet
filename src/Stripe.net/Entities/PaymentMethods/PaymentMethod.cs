@@ -341,6 +341,13 @@ namespace Stripe
         [STJS.JsonPropertyName("sepa_debit")]
         public PaymentMethodSepaDebit SepaDebit { get; set; }
 
+        /// <summary>
+        /// ID of the shared payment granted token used in the creation of this PaymentMethod.
+        /// </summary>
+        [JsonProperty("shared_payment_granted_token")]
+        [STJS.JsonPropertyName("shared_payment_granted_token")]
+        public string SharedPaymentGrantedToken { get; set; }
+
         [JsonProperty("shopeepay")]
         [STJS.JsonPropertyName("shopeepay")]
         public PaymentMethodShopeepay Shopeepay { get; set; }
