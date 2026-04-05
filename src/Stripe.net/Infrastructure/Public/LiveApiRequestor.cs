@@ -277,8 +277,9 @@ namespace Stripe
             T obj;
             try
             {
-                obj = System.Text.Json.JsonSerializer.Deserialize<T>(
-                    response.Content, StripeConfiguration.SerializerOptions);
+                var opts = new System.Text.Json.JsonSerializerOptions(StripeConfiguration.SerializerOptions);
+                opts.Converters.Insert(0, new STJRequestorInjectionConverterFactory(this));
+                obj = System.Text.Json.JsonSerializer.Deserialize<T>(response.Content, opts);
             }
             catch (System.Text.Json.JsonException)
             {
@@ -292,16 +293,6 @@ namespace Stripe
             }
 
             obj.StripeResponse = response;
-
-            // Some deserialized types need a reference to the requestor (e.g. V2
-            // events use it to fetch related objects). Since STJ converters have no
-            // mechanism to pass ambient state during deserialization, we set it here
-            // after the fact. If a new type needs the requestor, add a check below
-            // and ensure the type exposes an internal Requestor property.
-            if (obj is V2.Core.Event v2Event)
-            {
-                v2Event.Requestor = this;
-            }
 
             return obj;
         }

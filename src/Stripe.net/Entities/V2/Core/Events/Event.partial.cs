@@ -13,15 +13,20 @@ namespace Stripe.V2.Core
     /// </summary>
     [JsonConverter(typeof(V2EventConverter))]
     [STJS.JsonConverter(typeof(STJV2EventConverter))]
-    public partial class Event : StripeEntity<Event>, IHasId, IHasObject
+    public partial class Event : StripeEntity<Event>, IHasId, IHasObject, IHasRequestor
     {
         /// <summary>
         /// Used for .FetchObject and .FetchData helpers.
         /// </summary>
         [JsonIgnore]
         [STJS.JsonIgnore]
-
         internal ApiRequestor Requestor { get; set; }
+
+        ApiRequestor IHasRequestor.Requestor
+        {
+            get => this.Requestor;
+            set => this.Requestor = value;
+        }
 
         /// <summary>
         /// Makes an API request to fetch the object associated with this event.

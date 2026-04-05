@@ -15,7 +15,7 @@ namespace Stripe.V2
     /// </summary>
     /// <typeparam name="T">The type of the referenced Stripe entity.</typeparam>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class Ref<T> : StripeEntity<Ref<T>>, IHasId
+    public class Ref<T> : StripeEntity<Ref<T>>, IHasId, IHasRequestor
         where T : IStripeEntity
     {
         /// <summary>
@@ -39,13 +39,15 @@ namespace Stripe.V2
         [STJS.JsonPropertyName("url")]
         public string Url { get; set; }
 
-        internal StripeClient Client { get; set; }
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        ApiRequestor IHasRequestor.Requestor { get; set; }
 
         /// <summary>
         /// Fetches the full object this reference points to.
         /// </summary>
         /// <returns>The fully populated object.</returns>
-        /// <exception cref="Exception">Thrown when no client has been set on this instance.</exception>
+        /// <exception cref="Exception">Thrown when no requestor has been set on this instance.</exception>
         public T Fetch()
         {
             return this.FetchAsync().ConfigureAwait(false).GetAwaiter().GetResult();
@@ -56,25 +58,23 @@ namespace Stripe.V2
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used to cancel the work.</param>
         /// <returns>A task that represents the asynchronous operation. The task result is the fully populated object.</returns>
-        /// <exception cref="Exception">Thrown when no client has been set on this instance.</exception>
+        /// <exception cref="Exception">Thrown when no requestor has been set on this instance.</exception>
         public async Task<T> FetchAsync(CancellationToken cancellationToken = default)
         {
-            if (this.Client == null)
+            var requestor = ((IHasRequestor)this).Requestor;
+            if (requestor == null)
             {
-                throw new Exception("Ref<T> is trying to make a request with no client.");
+                throw new Exception("Ref<T> is trying to make a request with no requestor.");
             }
 
-            var res = await this.Client.RawRequestAsync(
+            return await requestor.RequestAsync<T>(
+                BaseAddress.Api,
                 HttpMethod.Get,
                 this.Url,
-                requestOptions: new RawRequestOptions
-                {
-                    Usage = new List<string> { "ref_fetch" },
-                },
+                null,
+                new RequestOptions { Usage = new List<string> { "ref_fetch" } },
                 cancellationToken: cancellationToken)
             .ConfigureAwait(false);
-
-            return this.Client.Deserialize<T>(res.Content);
         }
     }
 }
