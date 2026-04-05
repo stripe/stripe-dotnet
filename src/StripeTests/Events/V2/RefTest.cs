@@ -4,10 +4,7 @@ namespace StripeTests.V2
     using System.Net;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using Moq;
-    using Moq.Protected;
     using Stripe;
-    using Stripe.Infrastructure;
     using Stripe.V2;
     using Xunit;
 
@@ -30,7 +27,7 @@ namespace StripeTests.V2
                 ""url"": ""/v2/financial_accounts/fa_123""
             }";
 
-            var refObj = StripeEntity.FromJson<Ref<Stripe.V2.MoneyManagement.FinancialAccount>>(json);
+            var refObj = StripeEntity.FromJson<Ref<Stripe.V2.Core.Account>>(json);
 
             Assert.NotNull(refObj);
             Assert.Equal("fa_123", refObj.Id);
@@ -47,7 +44,7 @@ namespace StripeTests.V2
                 ""url"": ""/v2/financial_accounts/fa_123""
             }";
 
-            var refObj = StripeEntity.FromJson<Ref<Stripe.V2.MoneyManagement.FinancialAccount>>(json);
+            var refObj = StripeEntity.FromJson<Ref<Stripe.V2.Core.Account>>(json);
 
             // Client is null — Fetch() should throw
             var ex = Assert.Throws<Exception>(() => refObj.Fetch());
@@ -63,7 +60,7 @@ namespace StripeTests.V2
                 ""url"": ""/v2/financial_accounts/fa_123""
             }";
 
-            var refObj = StripeEntity.FromJson<Ref<Stripe.V2.MoneyManagement.FinancialAccount>>(json);
+            var refObj = StripeEntity.FromJson<Ref<Stripe.V2.Core.Account>>(json);
 
             // Client is null — FetchAsync() should throw
             var ex = await Assert.ThrowsAsync<Exception>(() => refObj.FetchAsync());
@@ -91,7 +88,7 @@ namespace StripeTests.V2
                 HttpStatusCode.OK,
                 responseJson);
 
-            var refObj = StripeEntity.FromJson<Ref<Stripe.V2.MoneyManagement.FinancialAccount>>(refJson);
+            var refObj = StripeEntity.FromJson<Ref<Stripe.V2.Core.Account>>(refJson);
             refObj.Client = this.stripeClient;
 
             var result = await refObj.FetchAsync();
@@ -123,7 +120,7 @@ namespace StripeTests.V2
                 HttpStatusCode.OK,
                 responseJson);
 
-            var refObj = StripeEntity.FromJson<Ref<Stripe.V2.MoneyManagement.FinancialAccount>>(refJson);
+            var refObj = StripeEntity.FromJson<Ref<Stripe.V2.Core.Account>>(refJson);
             refObj.Client = this.stripeClient;
 
             var result = refObj.Fetch();
