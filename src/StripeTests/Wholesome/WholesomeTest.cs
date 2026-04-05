@@ -176,7 +176,12 @@ namespace StripeTests.Wholesome
             var nonpublicProperties = type.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
             var allProperties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
 
-            return allProperties.Select(p => new ExtendedPropertyInfo(p, nonpublicProperties.Contains(p)));
+            // Explicit interface implementations have a '.' in their name (e.g.
+            // "Stripe.V2.IHasRequestor.Requestor"). They are not serialized fields and cannot
+            // carry Json attributes, so we exclude them from JSON attribute checks.
+            return allProperties
+                .Where(p => !p.Name.Contains('.'))
+                .Select(p => new ExtendedPropertyInfo(p, nonpublicProperties.Contains(p)));
         }
     }
 }

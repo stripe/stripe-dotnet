@@ -399,6 +399,17 @@ namespace StripeTests.Wholesome
             this.CheckOneStripeClass(searchResult, results);
             var searchResultType = searchResult.GetType();
             genericTypes.RemoveAll(gt => searchResultType.FullName.StartsWith(gt.FullName));
+
+            var refObj = new Stripe.V2.Ref<Stripe.V2.Core.Account>
+            {
+                Id = "fa_123",
+                Type = "financial_account",
+                Url = "/v2/financial_accounts/fa_123",
+            };
+
+            this.CheckOneStripeClass(refObj, results);
+            var refType = refObj.GetType();
+            genericTypes.RemoveAll(gt => refType.FullName.StartsWith(gt.FullName));
         }
     }
 }
