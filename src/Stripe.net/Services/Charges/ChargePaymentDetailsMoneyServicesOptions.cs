@@ -9,6 +9,7 @@ namespace Stripe
     public class ChargePaymentDetailsMoneyServicesOptions : INestedOptions, IHasSetTracking
     {
         private ChargePaymentDetailsMoneyServicesAccountFundingOptions accountFunding;
+        private string transactionType;
 
         [JsonIgnore]
         [STJS.JsonIgnore]
@@ -34,7 +35,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("transaction_type")]
         [STJS.JsonPropertyName("transaction_type")]
-        public string TransactionType { get; set; }
+        public string TransactionType
+        {
+            get => this.transactionType;
+            set
+            {
+                this.transactionType = value;
+                this.SetTracker.Track();
+            }
+        }
 
         bool IHasSetTracking.IsPropertySet(string propertyName)
         {
