@@ -97,6 +97,14 @@ namespace Stripe
         public InvoicePaymentSettingsPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
 
         /// <summary>
+        /// If paying by <c>bizum</c>, this sub-hash contains details about the Bizum payment method
+        /// options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("bizum")]
+        [STJS.JsonPropertyName("bizum")]
+        public InvoicePaymentSettingsPaymentMethodOptionsBizum Bizum { get; set; }
+
+        /// <summary>
         /// If paying by <c>check_scan</c>, this sub-hash contains details about the Check Scan
         /// payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
