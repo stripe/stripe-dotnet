@@ -10728,6 +10728,27 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestCannotProceedError()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/payout_methods/id_123/archive",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"cannot_proceed\",\"code\":\"default_payout_method_cannot_be_archived\"}}");
+            var exception = Assert.Throws<Stripe.V2.CannotProceedException>(
+            () =>
+            {
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.MoneyManagement.PayoutMethods;
+                Stripe.V2.MoneyManagement.PayoutMethod payoutMethod = service
+                    .Archive("id_123");
+            });
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/payout_methods/id_123/archive");
+        }
+
+        [Fact]
         public void TestControlledByAlternateResourceError()
         {
             this.StubRequest(
