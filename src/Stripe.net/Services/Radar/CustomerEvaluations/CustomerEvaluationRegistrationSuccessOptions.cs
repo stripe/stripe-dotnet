@@ -9,7 +9,7 @@ namespace Stripe.Radar
     public class CustomerEvaluationRegistrationSuccessOptions : INestedOptions
     {
         /// <summary>
-        /// Stripe customer ID to attach to an entity-less registration evaluation.
+        /// The ID of a Customer to attach to an entity-less registration evaluation.
         /// </summary>
         [JsonProperty("customer")]
         [STJS.JsonPropertyName("customer")]

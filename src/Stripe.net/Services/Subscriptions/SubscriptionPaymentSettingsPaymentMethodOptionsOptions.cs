@@ -10,6 +10,7 @@ namespace Stripe
     {
         private SubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitOptions acssDebit;
         private SubscriptionPaymentSettingsPaymentMethodOptionsBancontactOptions bancontact;
+        private SubscriptionPaymentSettingsPaymentMethodOptionsBizumOptions bizum;
         private SubscriptionPaymentSettingsPaymentMethodOptionsCardOptions card;
         private SubscriptionPaymentSettingsPaymentMethodOptionsCheckScanOptions checkScan;
         private SubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalanceOptions customerBalance;
@@ -53,6 +54,22 @@ namespace Stripe
             set
             {
                 this.bancontact = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// This sub-hash contains details about the Bizum payment method options to pass to the
+        /// invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("bizum")]
+        [STJS.JsonPropertyName("bizum")]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsBizumOptions Bizum
+        {
+            get => this.bizum;
+            set
+            {
+                this.bizum = value;
                 this.SetTracker.Track();
             }
         }

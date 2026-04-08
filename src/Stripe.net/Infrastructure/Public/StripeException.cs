@@ -59,6 +59,10 @@ namespace Stripe
                     ret = Stripe.V2.BlockedByStripeException.Parse(httpStatusCode, body);
                     break;
 
+                case "cannot_proceed":
+                    ret = Stripe.V2.CannotProceedException.Parse(httpStatusCode, body);
+                    break;
+
                 case "controlled_by_alternate_resource":
                     ret = Stripe.V2.ControlledByAlternateResourceException.Parse(httpStatusCode, body);
                     break;

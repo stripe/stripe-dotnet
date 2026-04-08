@@ -66,6 +66,15 @@ namespace Stripe
         public long Quantity { get; set; }
 
         /// <summary>
+        /// The number of decimal places implied in the quantity. For example, if quantity is 10000
+        /// and quantity_precision is 2, the actual quantity is 100.00. Defaults to 0 if not
+        /// provided.
+        /// </summary>
+        [JsonProperty("quantity_precision")]
+        [STJS.JsonPropertyName("quantity_precision")]
+        public long QuantityPrecision { get; set; }
+
+        /// <summary>
         /// Contains information about the tax on the item.
         /// </summary>
         [JsonProperty("tax")]

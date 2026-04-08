@@ -37,7 +37,7 @@ namespace Stripe.Radar
         public DateTime CreatedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The ID of the Stripe customer the customer evaluation is associated with.
+        /// The ID of the Customer to associate with this CustomerEvaluation.
         /// </summary>
         [JsonProperty("customer")]
         [STJS.JsonPropertyName("customer")]
@@ -45,6 +45,7 @@ namespace Stripe.Radar
 
         /// <summary>
         /// The type of evaluation event.
+        /// One of: <c>login</c>, or <c>registration</c>.
         /// </summary>
         [JsonProperty("event_type")]
         [STJS.JsonPropertyName("event_type")]
@@ -66,7 +67,7 @@ namespace Stripe.Radar
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// A hash of signal objects providing Radar's evaluation for the lifecycle event.
+        /// A hash of signal objects providing Radar's evaluation of the customer.
         /// </summary>
         [JsonProperty("signals")]
         [STJS.JsonPropertyName("signals")]
