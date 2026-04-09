@@ -36,7 +36,7 @@ namespace Stripe.Identity
         /// <summary>
         /// The type of <a href="https://docs.stripe.com/identity/verification-checks">verification
         /// check</a> to be performed.
-        /// One of: <c>document</c>, or <c>id_number</c>.
+        /// One of: <c>document</c>, <c>email</c>, or <c>id_number</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
