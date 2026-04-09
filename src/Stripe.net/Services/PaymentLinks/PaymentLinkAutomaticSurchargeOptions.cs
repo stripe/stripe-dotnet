@@ -9,7 +9,7 @@ namespace Stripe
     public class PaymentLinkAutomaticSurchargeOptions : INestedOptions
     {
         /// <summary>
-        /// Determines which amount is used as the basis for calculating the surcharge.
+        /// Determines which amount serves as the basis for calculating the surcharge.
         /// One of: <c>total_after_tax</c>, or <c>total_before_tax</c>.
         /// </summary>
         [JsonProperty("calculation_basis")]
