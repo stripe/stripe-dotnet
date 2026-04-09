@@ -48,6 +48,13 @@ namespace Stripe.Checkout
         public string ApprovalMethod { get; set; }
 
         /// <summary>
+        /// Settings for automatic surcharge calculation for this session.
+        /// </summary>
+        [JsonProperty("automatic_surcharge")]
+        [STJS.JsonPropertyName("automatic_surcharge")]
+        public SessionAutomaticSurchargeOptions AutomaticSurcharge { get; set; }
+
+        /// <summary>
         /// Settings for automatic tax lookup for this session and resulting payments, invoices, and
         /// subscriptions.
         /// </summary>

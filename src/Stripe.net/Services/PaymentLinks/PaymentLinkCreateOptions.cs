@@ -43,6 +43,13 @@ namespace Stripe
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
+        /// Configuration for automatic surcharge calculation.
+        /// </summary>
+        [JsonProperty("automatic_surcharge")]
+        [STJS.JsonPropertyName("automatic_surcharge")]
+        public PaymentLinkAutomaticSurchargeOptions AutomaticSurcharge { get; set; }
+
+        /// <summary>
         /// Configuration for automatic tax collection.
         /// </summary>
         [JsonProperty("automatic_tax")]

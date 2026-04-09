@@ -32,5 +32,12 @@ namespace Stripe.Checkout
         [JsonProperty("breakdown")]
         [STJS.JsonPropertyName("breakdown")]
         public SessionTotalDetailsBreakdown Breakdown { get; set; }
+
+        /// <summary>
+        /// The surcharge amount that was applied to the Checkout Session.
+        /// </summary>
+        [JsonProperty("amount_surcharge")]
+        [STJS.JsonPropertyName("amount_surcharge")]
+        public long AmountSurcharge { get; set; }
     }
 }

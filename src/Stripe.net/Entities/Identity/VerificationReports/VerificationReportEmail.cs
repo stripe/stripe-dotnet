@@ -29,5 +29,12 @@ namespace Stripe.Identity
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
         public string Status { get; set; }
+
+        /// <summary>
+        /// Additional email verification details.
+        /// </summary>
+        [JsonProperty("details")]
+        [STJS.JsonPropertyName("details")]
+        public VerificationReportEmailDetails Details { get; set; }
     }
 }

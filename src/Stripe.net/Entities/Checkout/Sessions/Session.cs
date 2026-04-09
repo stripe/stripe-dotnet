@@ -92,6 +92,10 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("approval_method")]
         public string ApprovalMethod { get; set; }
 
+        [JsonProperty("automatic_surcharge")]
+        [STJS.JsonPropertyName("automatic_surcharge")]
+        public SessionAutomaticSurcharge AutomaticSurcharge { get; set; }
+
         [JsonProperty("automatic_tax")]
         [STJS.JsonPropertyName("automatic_tax")]
         public SessionAutomaticTax AutomaticTax { get; set; }
@@ -739,6 +743,10 @@ namespace Stripe.Checkout
         [JsonProperty("success_url")]
         [STJS.JsonPropertyName("success_url")]
         public string SuccessUrl { get; set; }
+
+        [JsonProperty("surcharge_cost")]
+        [STJS.JsonPropertyName("surcharge_cost")]
+        public SessionSurchargeCost SurchargeCost { get; set; }
 
         [JsonProperty("tax_id_collection")]
         [STJS.JsonPropertyName("tax_id_collection")]
