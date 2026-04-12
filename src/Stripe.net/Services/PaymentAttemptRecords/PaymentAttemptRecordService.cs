@@ -91,6 +91,22 @@ namespace Stripe
         }
 
         /// <summary>
+        /// <p>Report that the specified Payment Attempt Record was authorized.</p>.
+        /// </summary>
+        public virtual PaymentAttemptRecord ReportAuthorized(string id, PaymentAttemptRecordReportAuthorizedOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<PaymentAttemptRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_attempt_records/{WebUtility.UrlEncode(id)}/report_authorized", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Report that the specified Payment Attempt Record was authorized.</p>.
+        /// </summary>
+        public virtual Task<PaymentAttemptRecord> ReportAuthorizedAsync(string id, PaymentAttemptRecordReportAuthorizedOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<PaymentAttemptRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_attempt_records/{WebUtility.UrlEncode(id)}/report_authorized", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Report that the specified Payment Attempt Record was canceled.</p>.
         /// </summary>
         public virtual PaymentAttemptRecord ReportCanceled(string id, PaymentAttemptRecordReportCanceledOptions options = null, RequestOptions requestOptions = null)

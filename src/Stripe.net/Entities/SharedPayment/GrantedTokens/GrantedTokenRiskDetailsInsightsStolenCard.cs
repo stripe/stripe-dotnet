@@ -16,7 +16,7 @@ namespace Stripe.SharedPayment
         public string RecommendedAction { get; set; }
 
         /// <summary>
-        /// Risk score for this insight (integer).
+        /// Risk score for this insight.
         /// </summary>
         [JsonProperty("score")]
         [STJS.JsonPropertyName("score")]

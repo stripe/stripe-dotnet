@@ -530,5 +530,12 @@ namespace Stripe.TestHelpers
         [JsonProperty("zip")]
         [STJS.JsonPropertyName("zip")]
         public ConfirmationTokenPaymentMethodDataZipOptions Zip { get; set; }
+
+        /// <summary>
+        /// ID of the SharedPaymentGrantedToken used to confirm this PaymentIntent.
+        /// </summary>
+        [JsonProperty("shared_payment_granted_token")]
+        [STJS.JsonPropertyName("shared_payment_granted_token")]
+        public string SharedPaymentGrantedToken { get; set; }
     }
 }

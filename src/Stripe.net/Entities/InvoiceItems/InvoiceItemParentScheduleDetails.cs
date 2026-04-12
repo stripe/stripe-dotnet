@@ -14,5 +14,12 @@ namespace Stripe
         [JsonProperty("schedule")]
         [STJS.JsonPropertyName("schedule")]
         public string Schedule { get; set; }
+
+        /// <summary>
+        /// The subscription associated with this schedule.
+        /// </summary>
+        [JsonProperty("subscription")]
+        [STJS.JsonPropertyName("subscription")]
+        public string Subscription { get; set; }
     }
 }

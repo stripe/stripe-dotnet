@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -31,5 +32,14 @@ namespace Stripe
         [JsonProperty("settlement_timing")]
         [STJS.JsonPropertyName("settlement_timing")]
         public BalanceSettingsPaymentsSettlementTimingOptions SettlementTiming { get; set; }
+
+        /// <summary>
+        /// A hash of settlement currencies to update. Each key is an ISO 4217 currency code, and
+        /// the value is either <c>enabled</c> or <c>disabled</c>.
+        /// One of: <c>disabled</c>, or <c>enabled</c>.
+        /// </summary>
+        [JsonProperty("settlement_currencies")]
+        [STJS.JsonPropertyName("settlement_currencies")]
+        public Dictionary<string, string> SettlementCurrencies { get; set; }
     }
 }

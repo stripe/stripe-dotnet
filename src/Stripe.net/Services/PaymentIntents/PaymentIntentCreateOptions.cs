@@ -387,13 +387,6 @@ namespace Stripe
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
-        /// ID of the SharedPaymentToken used to confirm this PaymentIntent.
-        /// </summary>
-        [JsonProperty("shared_payment_granted_token")]
-        [STJS.JsonPropertyName("shared_payment_granted_token")]
-        public string SharedPaymentGrantedToken { get; set; }
-
-        /// <summary>
         /// Shipping information for this PaymentIntent.
         /// </summary>
         [JsonProperty("shipping")]

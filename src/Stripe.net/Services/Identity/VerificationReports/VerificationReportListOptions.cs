@@ -35,7 +35,7 @@ namespace Stripe.Identity
 
         /// <summary>
         /// Only return VerificationReports of this type.
-        /// One of: <c>document</c>, or <c>id_number</c>.
+        /// One of: <c>document</c>, <c>email</c>, or <c>id_number</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

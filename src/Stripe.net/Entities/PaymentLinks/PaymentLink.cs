@@ -105,6 +105,10 @@ namespace Stripe
         [STJS.JsonPropertyName("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
 
+        [JsonProperty("automatic_surcharge")]
+        [STJS.JsonPropertyName("automatic_surcharge")]
+        public PaymentLinkAutomaticSurcharge AutomaticSurcharge { get; set; }
+
         [JsonProperty("automatic_tax")]
         [STJS.JsonPropertyName("automatic_tax")]
         public PaymentLinkAutomaticTax AutomaticTax { get; set; }

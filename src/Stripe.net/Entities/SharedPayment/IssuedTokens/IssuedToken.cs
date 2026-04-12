@@ -73,6 +73,14 @@ namespace Stripe.SharedPayment
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// If present, describes the action required to make this <c>SharedPaymentIssuedToken</c>
+        /// usable for payments. Present when the token is in <c>requires_action</c> state.
+        /// </summary>
+        [JsonProperty("next_action")]
+        [STJS.JsonPropertyName("next_action")]
+        public IssuedTokenNextAction NextAction { get; set; }
+
+        /// <summary>
         /// ID of an existing PaymentMethod.
         /// </summary>
         [JsonProperty("payment_method")]
@@ -115,6 +123,15 @@ namespace Stripe.SharedPayment
         [JsonProperty("shared_metadata")]
         [STJS.JsonPropertyName("shared_metadata")]
         public Dictionary<string, string> SharedMetadata { get; set; }
+
+        /// <summary>
+        /// Status of this SharedPaymentIssuedToken, one of <c>active</c>, <c>requires_action</c>,
+        /// or <c>deactivated</c>.
+        /// One of: <c>active</c>, <c>deactivated</c>, or <c>requires_action</c>.
+        /// </summary>
+        [JsonProperty("status")]
+        [STJS.JsonPropertyName("status")]
+        public string Status { get; set; }
 
         /// <summary>
         /// Usage details of the SharedPaymentIssuedToken.

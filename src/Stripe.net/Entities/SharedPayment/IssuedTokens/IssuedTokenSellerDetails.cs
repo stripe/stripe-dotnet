@@ -23,13 +23,5 @@ namespace Stripe.SharedPayment
         [JsonProperty("network_business_profile")]
         [STJS.JsonPropertyName("network_business_profile")]
         public string NetworkBusinessProfile { get; set; }
-
-        /// <summary>
-        /// The unique and logical string that identifies the seller platform that this SharedToken
-        /// is being created for.
-        /// </summary>
-        [JsonProperty("network_id")]
-        [STJS.JsonPropertyName("network_id")]
-        public string NetworkId { get; set; }
     }
 }

@@ -248,5 +248,9 @@ namespace Stripe
         [JsonProperty("wallet")]
         [STJS.JsonPropertyName("wallet")]
         public ChargePaymentMethodDetailsCardWallet Wallet { get; set; }
+
+        [JsonProperty("account_funding")]
+        [STJS.JsonPropertyName("account_funding")]
+        public ChargePaymentMethodDetailsCardAccountFunding AccountFunding { get; set; }
     }
 }
