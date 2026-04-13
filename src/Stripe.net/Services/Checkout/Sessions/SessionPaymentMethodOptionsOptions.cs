@@ -337,5 +337,12 @@ namespace Stripe.Checkout
         [JsonProperty("wechat_pay")]
         [STJS.JsonPropertyName("wechat_pay")]
         public SessionPaymentMethodOptionsWechatPayOptions WechatPay { get; set; }
+
+        /// <summary>
+        /// contains details about the Bizum payment method options.
+        /// </summary>
+        [JsonProperty("bizum")]
+        [STJS.JsonPropertyName("bizum")]
+        public SessionPaymentMethodOptionsBizumOptions Bizum { get; set; }
     }
 }

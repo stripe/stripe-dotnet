@@ -179,5 +179,9 @@ namespace Stripe.Checkout
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]
         public SessionPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
+
+        [JsonProperty("bizum")]
+        [STJS.JsonPropertyName("bizum")]
+        public SessionPaymentMethodOptionsBizum Bizum { get; set; }
     }
 }
