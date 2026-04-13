@@ -9059,6 +9059,117 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2CoreWorkflowGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/workflows",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"id\":\"obj_123\",\"livemode\":true,\"object\":\"v2.core.workflow\",\"status\":\"draft\",\"triggers\":[{\"type\":\"event_trigger\"}]}],\"next_page_url\":null,\"previous_page_url\":null}",
+                "status[0]=draft");
+            var options = new Stripe.V2.Core.WorkflowListOptions
+            {
+                Status = new List<string> { "draft" },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Workflows;
+            Stripe.V2.StripeList<Stripe.V2.Core.Workflow> workflows = service
+                .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/workflows",
+                "status[0]=draft");
+        }
+
+        [Fact]
+        public void TestV2CoreWorkflowGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/workflows/id_123",
+                (HttpStatusCode)200,
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"id\":\"obj_123\",\"livemode\":true,\"object\":\"v2.core.workflow\",\"status\":\"draft\",\"triggers\":[{\"type\":\"event_trigger\"}]}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Workflows;
+            Stripe.V2.Core.Workflow workflow = service.Get("id_123");
+            this.AssertRequest(HttpMethod.Get, "/v2/core/workflows/id_123");
+        }
+
+        [Fact]
+        public void TestV2CoreWorkflowPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/workflows/id_123/invoke",
+                (HttpStatusCode)200,
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.core.workflow_run\",\"status\":\"failed\",\"status_transitions\":{},\"trigger\":{\"type\":\"event_trigger\"},\"workflow\":\"workflow\",\"livemode\":true}");
+            var options = new Stripe.V2.Core.WorkflowInvokeOptions
+            {
+                InputParameters = new Dictionary<string, object>
+                {
+                    { "int_key", 123 },
+                    { "string_key", "value" },
+                    { "boolean_key", true },
+                    {
+                        "object_key", new Dictionary<string, object>
+                        {
+                            { "object_int_key", 123 },
+                            { "object_string_key", "value" },
+                            { "object_boolean_key", true },
+                        }
+                    },
+                    { "array_key", new List<object> { 1, 2, 3 } },
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Workflows;
+            Stripe.V2.Core.WorkflowRun workflowRun = service.Invoke(
+                "id_123",
+                options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/workflows/id_123/invoke");
+        }
+
+        [Fact]
+        public void TestV2CoreWorkflowRunGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/workflow_runs",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.core.workflow_run\",\"status\":\"failed\",\"status_transitions\":{},\"trigger\":{\"type\":\"event_trigger\"},\"workflow\":\"workflow\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}",
+                "status[0]=failed&workflow[0]=workflow");
+            var options = new Stripe.V2.Core.WorkflowRunListOptions
+            {
+                Status = new List<string> { "failed" },
+                Workflow = new List<string> { "workflow" },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.WorkflowRuns;
+            Stripe.V2.StripeList<Stripe.V2.Core.WorkflowRun> workflowRuns = service
+                .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/workflow_runs",
+                "status[0]=failed&workflow[0]=workflow");
+        }
+
+        [Fact]
+        public void TestV2CoreWorkflowRunGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/workflow_runs/id_123",
+                (HttpStatusCode)200,
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.core.workflow_run\",\"status\":\"failed\",\"status_transitions\":{},\"trigger\":{\"type\":\"event_trigger\"},\"workflow\":\"workflow\",\"livemode\":true}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.WorkflowRuns;
+            Stripe.V2.Core.WorkflowRun workflowRun = service.Get("id_123");
+            this.AssertRequest(HttpMethod.Get, "/v2/core/workflow_runs/id_123");
+        }
+
+        [Fact]
         public void TestV2DataReportingQueryRunPost()
         {
             this.StubRequest(
