@@ -16,15 +16,6 @@ namespace Stripe.V2.MoneyManagement
         public string FromAccount { get; set; }
 
         /// <summary>
-        /// Open Enum. The type of Stripe Money Movement that originated the ReceivedCredit.
-        /// One of: <c>outbound_payment</c>, <c>outbound_transfer</c>, <c>transfer</c>, or
-        /// <c>payout_v1</c>.
-        /// </summary>
-        [JsonProperty("type")]
-        [STJS.JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// The ID of the outbound payment object that originated the ReceivedCredit.
         /// </summary>
         [JsonProperty("outbound_payment")]
@@ -51,5 +42,14 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("transfer")]
         [STJS.JsonPropertyName("transfer")]
         public string Transfer { get; set; }
+
+        /// <summary>
+        /// Open Enum. The type of Stripe Money Movement that originated the ReceivedCredit.
+        /// One of: <c>outbound_payment</c>, <c>outbound_transfer</c>, <c>transfer</c>, or
+        /// <c>payout_v1</c>.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }

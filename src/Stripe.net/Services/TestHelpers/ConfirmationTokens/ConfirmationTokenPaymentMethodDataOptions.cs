@@ -440,6 +440,13 @@ namespace Stripe.TestHelpers
         public ConfirmationTokenPaymentMethodDataSepaDebitOptions SepaDebit { get; set; }
 
         /// <summary>
+        /// ID of the SharedPaymentGrantedToken used to confirm this PaymentIntent.
+        /// </summary>
+        [JsonProperty("shared_payment_granted_token")]
+        [STJS.JsonPropertyName("shared_payment_granted_token")]
+        public string SharedPaymentGrantedToken { get; set; }
+
+        /// <summary>
         /// If this is a Shopeepay PaymentMethod, this hash contains details about the Shopeepay
         /// payment method.
         /// </summary>
@@ -530,12 +537,5 @@ namespace Stripe.TestHelpers
         [JsonProperty("zip")]
         [STJS.JsonPropertyName("zip")]
         public ConfirmationTokenPaymentMethodDataZipOptions Zip { get; set; }
-
-        /// <summary>
-        /// ID of the SharedPaymentGrantedToken used to confirm this PaymentIntent.
-        /// </summary>
-        [JsonProperty("shared_payment_granted_token")]
-        [STJS.JsonPropertyName("shared_payment_granted_token")]
-        public string SharedPaymentGrantedToken { get; set; }
     }
 }

@@ -9,15 +9,6 @@ namespace Stripe.V2.Billing
     public class IntentCreateActionOptions : INestedOptions
     {
         /// <summary>
-        /// Type of the Billing Intent action.
-        /// One of: <c>apply</c>, <c>deactivate</c>, <c>modify</c>, <c>remove</c>, or
-        /// <c>subscribe</c>.
-        /// </summary>
-        [JsonProperty("type")]
-        [STJS.JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// Details for an apply action.
         /// </summary>
         [JsonProperty("apply")]
@@ -51,5 +42,14 @@ namespace Stripe.V2.Billing
         [JsonProperty("subscribe")]
         [STJS.JsonPropertyName("subscribe")]
         public IntentCreateActionSubscribeOptions Subscribe { get; set; }
+
+        /// <summary>
+        /// Type of the Billing Intent action.
+        /// One of: <c>apply</c>, <c>deactivate</c>, <c>modify</c>, <c>remove</c>, or
+        /// <c>subscribe</c>.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }

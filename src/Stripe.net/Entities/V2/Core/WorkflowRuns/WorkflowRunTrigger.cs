@@ -9,14 +9,6 @@ namespace Stripe.V2.Core
     public class WorkflowRunTrigger : StripeEntity<WorkflowRunTrigger>
     {
         /// <summary>
-        /// Which type of trigger this is.
-        /// One of: <c>event_trigger</c>, or <c>manual</c>.
-        /// </summary>
-        [JsonProperty("type")]
-        [STJS.JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// The Workflow Run was launched when Stripe emitted a certain event.
         /// </summary>
         [JsonProperty("event_trigger")]
@@ -30,5 +22,13 @@ namespace Stripe.V2.Core
         [JsonProperty("manual")]
         [STJS.JsonPropertyName("manual")]
         public WorkflowRunTriggerManual Manual { get; set; }
+
+        /// <summary>
+        /// Which type of trigger this is.
+        /// One of: <c>event_trigger</c>, or <c>manual</c>.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }

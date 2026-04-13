@@ -9,14 +9,6 @@ namespace Stripe.V2.MoneyManagement
     public class FinancialAddressCredentials : StripeEntity<FinancialAddressCredentials>
     {
         /// <summary>
-        /// Open Enum. The type of Credentials that are provisioned for the FinancialAddress.
-        /// One of: <c>gb_bank_account</c>, <c>sepa_bank_account</c>, or <c>us_bank_account</c>.
-        /// </summary>
-        [JsonProperty("type")]
-        [STJS.JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// The credentials of the UK Bank Account for the FinancialAddress. This contains unique
         /// banking details such as the sort code, account number, etc. of a UK bank account.
         /// </summary>
@@ -31,6 +23,14 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("sepa_bank_account")]
         [STJS.JsonPropertyName("sepa_bank_account")]
         public FinancialAddressCredentialsSepaBankAccount SepaBankAccount { get; set; }
+
+        /// <summary>
+        /// Open Enum. The type of Credentials that are provisioned for the FinancialAddress.
+        /// One of: <c>gb_bank_account</c>, <c>sepa_bank_account</c>, or <c>us_bank_account</c>.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
 
         /// <summary>
         /// The credentials of the US Bank Account for the FinancialAddress. This contains unique

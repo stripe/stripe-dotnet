@@ -21,22 +21,18 @@ namespace Stripe
         public bool? DebitNegativeBalances { get; set; }
 
         /// <summary>
-        /// Settings specific to the account's payouts.
-        /// </summary>
-        [JsonProperty("payouts")]
-        [STJS.JsonPropertyName("payouts")]
-        public BalanceSettingsPaymentsPayouts Payouts { get; set; }
-
-        [JsonProperty("settlement_timing")]
-        [STJS.JsonPropertyName("settlement_timing")]
-        public BalanceSettingsPaymentsSettlementTiming SettlementTiming { get; set; }
-
-        /// <summary>
         /// The default settlement currency for the account.
         /// </summary>
         [JsonProperty("default_settlement_currency")]
         [STJS.JsonPropertyName("default_settlement_currency")]
         public string DefaultSettlementCurrency { get; set; }
+
+        /// <summary>
+        /// Settings specific to the account's payouts.
+        /// </summary>
+        [JsonProperty("payouts")]
+        [STJS.JsonPropertyName("payouts")]
+        public BalanceSettingsPaymentsPayouts Payouts { get; set; }
 
         /// <summary>
         /// A hash of settlement currencies and their states. Each key is an ISO 4217 currency code,
@@ -47,5 +43,9 @@ namespace Stripe
         [JsonProperty("settlement_currencies")]
         [STJS.JsonPropertyName("settlement_currencies")]
         public Dictionary<string, string> SettlementCurrencies { get; set; }
+
+        [JsonProperty("settlement_timing")]
+        [STJS.JsonPropertyName("settlement_timing")]
+        public BalanceSettingsPaymentsSettlementTiming SettlementTiming { get; set; }
     }
 }

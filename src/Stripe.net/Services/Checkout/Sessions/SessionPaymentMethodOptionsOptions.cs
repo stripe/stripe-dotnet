@@ -80,6 +80,13 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsBillieOptions Billie { get; set; }
 
         /// <summary>
+        /// contains details about the Bizum payment method options.
+        /// </summary>
+        [JsonProperty("bizum")]
+        [STJS.JsonPropertyName("bizum")]
+        public SessionPaymentMethodOptionsBizumOptions Bizum { get; set; }
+
+        /// <summary>
         /// contains details about the Boleto payment method options.
         /// </summary>
         [JsonProperty("boleto")]
@@ -337,12 +344,5 @@ namespace Stripe.Checkout
         [JsonProperty("wechat_pay")]
         [STJS.JsonPropertyName("wechat_pay")]
         public SessionPaymentMethodOptionsWechatPayOptions WechatPay { get; set; }
-
-        /// <summary>
-        /// contains details about the Bizum payment method options.
-        /// </summary>
-        [JsonProperty("bizum")]
-        [STJS.JsonPropertyName("bizum")]
-        public SessionPaymentMethodOptionsBizumOptions Bizum { get; set; }
     }
 }

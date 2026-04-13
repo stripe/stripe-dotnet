@@ -16,14 +16,6 @@ namespace Stripe.V2.Billing
         public IntentCreateActionRemoveEffectiveAtOptions EffectiveAt { get; set; }
 
         /// <summary>
-        /// Type of the remove action.
-        /// One of: <c>invoice_discount_rule</c>, or <c>spend_modifier_rule</c>.
-        /// </summary>
-        [JsonProperty("type")]
-        [STJS.JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// The ID of the discount rule to remove for future invoices.
         /// </summary>
         [JsonProperty("invoice_discount_rule")]
@@ -36,5 +28,13 @@ namespace Stripe.V2.Billing
         [JsonProperty("spend_modifier_rule")]
         [STJS.JsonPropertyName("spend_modifier_rule")]
         public string SpendModifierRule { get; set; }
+
+        /// <summary>
+        /// Type of the remove action.
+        /// One of: <c>invoice_discount_rule</c>, or <c>spend_modifier_rule</c>.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }

@@ -29,6 +29,15 @@ namespace Stripe
         [STJS.JsonPropertyName("balances")]
         public AccountSessionComponentsBalances Balances { get; set; }
 
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/bills/">Bills</a>
+        /// embedded component.
+        /// </summary>
+        [JsonProperty("bills")]
+        [STJS.JsonPropertyName("bills")]
+        public AccountSessionComponentsBills Bills { get; set; }
+
         [JsonProperty("capital_financing")]
         [STJS.JsonPropertyName("capital_financing")]
         public AccountSessionComponentsCapitalFinancing CapitalFinancing { get; set; }
@@ -158,14 +167,5 @@ namespace Stripe
         [JsonProperty("terminal_hardware_shop")]
         [STJS.JsonPropertyName("terminal_hardware_shop")]
         public AccountSessionComponentsTerminalHardwareShop TerminalHardwareShop { get; set; }
-
-        /// <summary>
-        /// Configuration for the <a
-        /// href="https://stripe.com/connect/supported-embedded-components/bills/">Bills</a>
-        /// embedded component.
-        /// </summary>
-        [JsonProperty("bills")]
-        [STJS.JsonPropertyName("bills")]
-        public AccountSessionComponentsBills Bills { get; set; }
     }
 }

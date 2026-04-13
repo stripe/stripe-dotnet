@@ -23,6 +23,13 @@ namespace Stripe.Checkout
         public long? AmountShipping { get; set; }
 
         /// <summary>
+        /// The surcharge amount that was applied to the Checkout Session.
+        /// </summary>
+        [JsonProperty("amount_surcharge")]
+        [STJS.JsonPropertyName("amount_surcharge")]
+        public long AmountSurcharge { get; set; }
+
+        /// <summary>
         /// This is the sum of all the tax amounts.
         /// </summary>
         [JsonProperty("amount_tax")]
@@ -32,12 +39,5 @@ namespace Stripe.Checkout
         [JsonProperty("breakdown")]
         [STJS.JsonPropertyName("breakdown")]
         public SessionTotalDetailsBreakdown Breakdown { get; set; }
-
-        /// <summary>
-        /// The surcharge amount that was applied to the Checkout Session.
-        /// </summary>
-        [JsonProperty("amount_surcharge")]
-        [STJS.JsonPropertyName("amount_surcharge")]
-        public long AmountSurcharge { get; set; }
     }
 }

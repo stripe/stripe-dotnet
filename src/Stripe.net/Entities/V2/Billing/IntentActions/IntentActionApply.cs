@@ -9,26 +9,18 @@ namespace Stripe.V2.Billing
     public class IntentActionApply : StripeEntity<IntentActionApply>
     {
         /// <summary>
-        /// When the apply action will take effect. If not specified, defaults to on_reserve.
-        /// </summary>
-        [JsonProperty("effective_at")]
-        [STJS.JsonPropertyName("effective_at")]
-        public IntentActionApplyEffectiveAt EffectiveAt { get; set; }
-
-        /// <summary>
-        /// Type of the apply action details.
-        /// One of: <c>discount</c>, <c>invoice_discount_rule</c>, or <c>spend_modifier_rule</c>.
-        /// </summary>
-        [JsonProperty("type")]
-        [STJS.JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// Details for applying a discount.
         /// </summary>
         [JsonProperty("discount")]
         [STJS.JsonPropertyName("discount")]
         public IntentActionApplyDiscount Discount { get; set; }
+
+        /// <summary>
+        /// When the apply action will take effect. If not specified, defaults to on_reserve.
+        /// </summary>
+        [JsonProperty("effective_at")]
+        [STJS.JsonPropertyName("effective_at")]
+        public IntentActionApplyEffectiveAt EffectiveAt { get; set; }
 
         /// <summary>
         /// Details for applying a discount rule to future invoices.
@@ -43,5 +35,13 @@ namespace Stripe.V2.Billing
         [JsonProperty("spend_modifier_rule")]
         [STJS.JsonPropertyName("spend_modifier_rule")]
         public IntentActionApplySpendModifierRule SpendModifierRule { get; set; }
+
+        /// <summary>
+        /// Type of the apply action details.
+        /// One of: <c>discount</c>, <c>invoice_discount_rule</c>, or <c>spend_modifier_rule</c>.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }

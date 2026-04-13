@@ -48,6 +48,10 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("billie")]
         public SessionPaymentMethodOptionsBillie Billie { get; set; }
 
+        [JsonProperty("bizum")]
+        [STJS.JsonPropertyName("bizum")]
+        public SessionPaymentMethodOptionsBizum Bizum { get; set; }
+
         [JsonProperty("boleto")]
         [STJS.JsonPropertyName("boleto")]
         public SessionPaymentMethodOptionsBoleto Boleto { get; set; }
@@ -179,9 +183,5 @@ namespace Stripe.Checkout
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]
         public SessionPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
-
-        [JsonProperty("bizum")]
-        [STJS.JsonPropertyName("bizum")]
-        public SessionPaymentMethodOptionsBizum Bizum { get; set; }
     }
 }

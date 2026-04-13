@@ -25,12 +25,28 @@ namespace Stripe
         public QuotePreviewInvoicePaymentSettingsPaymentMethodOptionsBancontact Bancontact { get; set; }
 
         /// <summary>
+        /// If paying by <c>bizum</c>, this sub-hash contains details about the Bizum payment method
+        /// options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("bizum")]
+        [STJS.JsonPropertyName("bizum")]
+        public QuotePreviewInvoicePaymentSettingsPaymentMethodOptionsBizum Bizum { get; set; }
+
+        /// <summary>
         /// If paying by <c>card</c>, this sub-hash contains details about the Card payment method
         /// options to pass to the invoice’s PaymentIntent.
         /// </summary>
         [JsonProperty("card")]
         [STJS.JsonPropertyName("card")]
         public QuotePreviewInvoicePaymentSettingsPaymentMethodOptionsCard Card { get; set; }
+
+        /// <summary>
+        /// If paying by <c>check_scan</c>, this sub-hash contains details about the Check Scan
+        /// payment method options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("check_scan")]
+        [STJS.JsonPropertyName("check_scan")]
+        public QuotePreviewInvoicePaymentSettingsPaymentMethodOptionsCheckScan CheckScan { get; set; }
 
         /// <summary>
         /// If paying by <c>customer_balance</c>, this sub-hash contains details about the Bank
@@ -95,21 +111,5 @@ namespace Stripe
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]
         public QuotePreviewInvoicePaymentSettingsPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
-
-        /// <summary>
-        /// If paying by <c>bizum</c>, this sub-hash contains details about the Bizum payment method
-        /// options to pass to the invoice’s PaymentIntent.
-        /// </summary>
-        [JsonProperty("bizum")]
-        [STJS.JsonPropertyName("bizum")]
-        public QuotePreviewInvoicePaymentSettingsPaymentMethodOptionsBizum Bizum { get; set; }
-
-        /// <summary>
-        /// If paying by <c>check_scan</c>, this sub-hash contains details about the Check Scan
-        /// payment method options to pass to the invoice’s PaymentIntent.
-        /// </summary>
-        [JsonProperty("check_scan")]
-        [STJS.JsonPropertyName("check_scan")]
-        public QuotePreviewInvoicePaymentSettingsPaymentMethodOptionsCheckScan CheckScan { get; set; }
     }
 }

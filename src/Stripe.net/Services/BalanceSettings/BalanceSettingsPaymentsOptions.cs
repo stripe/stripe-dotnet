@@ -27,13 +27,6 @@ namespace Stripe
         public BalanceSettingsPaymentsPayoutsOptions Payouts { get; set; }
 
         /// <summary>
-        /// Settings related to the account's balance settlement timing.
-        /// </summary>
-        [JsonProperty("settlement_timing")]
-        [STJS.JsonPropertyName("settlement_timing")]
-        public BalanceSettingsPaymentsSettlementTimingOptions SettlementTiming { get; set; }
-
-        /// <summary>
         /// A hash of settlement currencies to update. Each key is an ISO 4217 currency code, and
         /// the value is either <c>enabled</c> or <c>disabled</c>.
         /// One of: <c>disabled</c>, or <c>enabled</c>.
@@ -41,5 +34,12 @@ namespace Stripe
         [JsonProperty("settlement_currencies")]
         [STJS.JsonPropertyName("settlement_currencies")]
         public Dictionary<string, string> SettlementCurrencies { get; set; }
+
+        /// <summary>
+        /// Settings related to the account's balance settlement timing.
+        /// </summary>
+        [JsonProperty("settlement_timing")]
+        [STJS.JsonPropertyName("settlement_timing")]
+        public BalanceSettingsPaymentsSettlementTimingOptions SettlementTiming { get; set; }
     }
 }

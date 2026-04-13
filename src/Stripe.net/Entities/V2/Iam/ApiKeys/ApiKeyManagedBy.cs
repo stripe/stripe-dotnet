@@ -9,17 +9,17 @@ namespace Stripe.V2.Iam
     public class ApiKeyManagedBy : StripeEntity<ApiKeyManagedBy>
     {
         /// <summary>
-        /// The type of entity.
-        /// </summary>
-        [JsonProperty("type")]
-        [STJS.JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// An application.
         /// </summary>
         [JsonProperty("application")]
         [STJS.JsonPropertyName("application")]
         public ApiKeyManagedByApplication Application { get; set; }
+
+        /// <summary>
+        /// The type of entity.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }

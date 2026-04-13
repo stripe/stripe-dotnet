@@ -16,6 +16,14 @@ namespace Stripe.V2.Payments
         public OffSessionPaymentCreatePaymentMethodDataBillingDetailsOptions BillingDetails { get; set; }
 
         /// <summary>
+        /// Contains card details that can be used to create a card PaymentMethod for PCI compliant
+        /// users.
+        /// </summary>
+        [JsonProperty("card")]
+        [STJS.JsonPropertyName("card")]
+        public OffSessionPaymentCreatePaymentMethodDataCardOptions Card { get; set; }
+
+        /// <summary>
         /// The type of the PaymentMethod. An additional hash is included on the PaymentMethod with
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
@@ -23,13 +31,5 @@ namespace Stripe.V2.Payments
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
-
-        /// <summary>
-        /// Contains card details that can be used to create a card PaymentMethod for PCI compliant
-        /// users.
-        /// </summary>
-        [JsonProperty("card")]
-        [STJS.JsonPropertyName("card")]
-        public OffSessionPaymentCreatePaymentMethodDataCardOptions Card { get; set; }
     }
 }

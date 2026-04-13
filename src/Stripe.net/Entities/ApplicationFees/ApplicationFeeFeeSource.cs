@@ -16,6 +16,13 @@ namespace Stripe
         public string Charge { get; set; }
 
         /// <summary>
+        /// PaymentRecord ID that created this application fee.
+        /// </summary>
+        [JsonProperty("payment_record")]
+        [STJS.JsonPropertyName("payment_record")]
+        public string PaymentRecord { get; set; }
+
+        /// <summary>
         /// Payout ID that created this application fee.
         /// </summary>
         [JsonProperty("payout")]
@@ -36,12 +43,5 @@ namespace Stripe
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
-
-        /// <summary>
-        /// PaymentRecord ID that created this application fee.
-        /// </summary>
-        [JsonProperty("payment_record")]
-        [STJS.JsonPropertyName("payment_record")]
-        public string PaymentRecord { get; set; }
     }
 }
