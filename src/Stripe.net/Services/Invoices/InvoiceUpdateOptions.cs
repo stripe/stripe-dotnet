@@ -27,8 +27,9 @@ namespace Stripe
         /// The account tax IDs associated with the invoice. Only editable when the invoice is a
         /// draft.
         /// </summary>
-        [JsonProperty("account_tax_ids")]
+        [JsonProperty("account_tax_ids", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("account_tax_ids")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> AccountTaxIds
         {
             get => this.accountTaxIds;
@@ -91,8 +92,9 @@ namespace Stripe
         /// <c>custom_fields</c> is specified, the list specified will replace the existing custom
         /// field list on this invoice. Pass an empty string to remove previously-defined fields.
         /// </summary>
-        [JsonProperty("custom_fields")]
+        [JsonProperty("custom_fields", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("custom_fields")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<InvoiceCustomFieldOptions> CustomFields
         {
             get => this.customFields;
@@ -126,8 +128,9 @@ namespace Stripe
         /// associated with the invoice and be in a chargeable state. If not set, defaults to the
         /// subscription's default source, if any, or to the customer's default source.
         /// </summary>
-        [JsonProperty("default_source")]
+        [JsonProperty("default_source", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("default_source")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string DefaultSource
         {
             get => this.defaultSource;
@@ -142,8 +145,9 @@ namespace Stripe
         /// The tax rates that will apply to any line item that does not have <c>tax_rates</c> set.
         /// Pass an empty string to remove previously-defined tax rates.
         /// </summary>
-        [JsonProperty("default_tax_rates")]
+        [JsonProperty("default_tax_rates", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("default_tax_rates")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> DefaultTaxRates
         {
             get => this.defaultTaxRates;
@@ -166,8 +170,9 @@ namespace Stripe
         /// The discounts that will apply to the invoice. Pass an empty string to remove
         /// previously-defined discounts.
         /// </summary>
-        [JsonProperty("discounts")]
+        [JsonProperty("discounts", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("discounts")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<InvoiceDiscountOptions> Discounts
         {
             get => this.discounts;
@@ -194,9 +199,10 @@ namespace Stripe
         /// When defined, this value replaces the system-generated 'Date of issue' printed on the
         /// invoice PDF and receipt.
         /// </summary>
-        [JsonProperty("effective_at")]
+        [JsonProperty("effective_at", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("effective_at")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
         public DateTime? EffectiveAt
         {
@@ -229,8 +235,9 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;
@@ -249,8 +256,9 @@ namespace Stripe
         /// invoice number using our API. If you use only Stripe for your invoices and do not change
         /// invoice numbers, Stripe handles this aspect of compliance for you automatically.
         /// </summary>
-        [JsonProperty("number")]
+        [JsonProperty("number", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("number")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Number
         {
             get => this.number;
@@ -267,8 +275,9 @@ namespace Stripe
         /// account. See the <a href="https://docs.stripe.com/billing/invoices/connect">Invoices
         /// with Connect</a> documentation for details.
         /// </summary>
-        [JsonProperty("on_behalf_of")]
+        [JsonProperty("on_behalf_of", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("on_behalf_of")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string OnBehalfOf
         {
             get => this.onBehalfOf;
@@ -298,8 +307,9 @@ namespace Stripe
         /// <summary>
         /// Settings for the cost of shipping for this invoice.
         /// </summary>
-        [JsonProperty("shipping_cost")]
+        [JsonProperty("shipping_cost", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("shipping_cost")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoiceShippingCostOptions ShippingCost
         {
             get => this.shippingCost;
@@ -315,8 +325,9 @@ namespace Stripe
         /// value if it is set, otherwise the PDF will render the shipping address from the
         /// customer.
         /// </summary>
-        [JsonProperty("shipping_details")]
+        [JsonProperty("shipping_details", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("shipping_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoiceShippingDetailsOptions ShippingDetails
         {
             get => this.shippingDetails;
@@ -342,8 +353,9 @@ namespace Stripe
         /// ID of the resulting transfer will be found on the invoice's charge. This will be unset
         /// if you POST an empty value.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonProperty("transfer_data", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("transfer_data")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoiceTransferDataOptions TransferData
         {
             get => this.transferData;

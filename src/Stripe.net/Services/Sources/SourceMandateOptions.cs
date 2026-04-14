@@ -25,8 +25,9 @@ namespace Stripe
         /// <summary>
         /// The amount specified by the mandate. (Leave null for a mandate covering all amounts).
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("amount")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public long? Amount
         {
             get => this.amount;

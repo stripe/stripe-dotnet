@@ -65,8 +65,9 @@ namespace Stripe
         /// The coupons and promotion codes to redeem into discounts for the invoice item or invoice
         /// line item.
         /// </summary>
-        [JsonProperty("discounts")]
+        [JsonProperty("discounts", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("discounts")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<InvoiceItemDiscountOptions> Discounts
         {
             get => this.discounts;
@@ -95,8 +96,9 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;
@@ -180,8 +182,9 @@ namespace Stripe
         /// <summary>
         /// A <a href="https://docs.stripe.com/tax/tax-categories">tax code</a> ID.
         /// </summary>
-        [JsonProperty("tax_code")]
+        [JsonProperty("tax_code", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("tax_code")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string TaxCode
         {
             get => this.taxCode;

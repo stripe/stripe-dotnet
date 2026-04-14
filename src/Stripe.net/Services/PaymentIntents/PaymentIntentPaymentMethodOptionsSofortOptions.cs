@@ -19,8 +19,9 @@ namespace Stripe
         /// Language shown to the payer on redirect.
         /// One of: <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, <c>it</c>, <c>nl</c>, or <c>pl</c>.
         /// </summary>
-        [JsonProperty("preferred_language")]
+        [JsonProperty("preferred_language", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("preferred_language")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string PreferredLanguage
         {
             get => this.preferredLanguage;
@@ -56,8 +57,9 @@ namespace Stripe
         /// <c>off_session</c>.
         /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonProperty("setup_future_usage", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("setup_future_usage")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string SetupFutureUsage
         {
             get => this.setupFutureUsage;

@@ -63,8 +63,9 @@ namespace Stripe
         /// <c>tax_rates</c> is used or if invoice is set up with
         /// <c>automatic_tax[enabled]=true</c>.
         /// </summary>
-        [JsonProperty("tax_amounts")]
+        [JsonProperty("tax_amounts", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("tax_amounts")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<CreditNotePreviewLinesLineTaxAmountOptions> TaxAmounts
         {
             get => this.taxAmounts;
@@ -79,8 +80,9 @@ namespace Stripe
         /// The tax rates which apply to the credit note line item. Only valid when the <c>type</c>
         /// is <c>custom_line_item</c> and <c>tax_amounts</c> is not used.
         /// </summary>
-        [JsonProperty("tax_rates")]
+        [JsonProperty("tax_rates", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("tax_rates")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> TaxRates
         {
             get => this.taxRates;

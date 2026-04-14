@@ -21,8 +21,9 @@ namespace Stripe
         /// <summary>
         /// The account tax IDs associated with the invoice.
         /// </summary>
-        [JsonProperty("account_tax_ids")]
+        [JsonProperty("account_tax_ids", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("account_tax_ids")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> AccountTaxIds
         {
             get => this.accountTaxIds;
@@ -36,8 +37,9 @@ namespace Stripe
         /// <summary>
         /// Default custom fields to be displayed on invoices for this customer.
         /// </summary>
-        [JsonProperty("custom_fields")]
+        [JsonProperty("custom_fields", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("custom_fields")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<PaymentLinkInvoiceCreationInvoiceDataCustomFieldOptions> CustomFields
         {
             get => this.customFields;
@@ -76,8 +78,9 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;
@@ -91,8 +94,9 @@ namespace Stripe
         /// <summary>
         /// Default options for invoice PDF rendering for this customer.
         /// </summary>
-        [JsonProperty("rendering_options")]
+        [JsonProperty("rendering_options", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("rendering_options")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentLinkInvoiceCreationInvoiceDataRenderingOptionsOptions RenderingOptions
         {
             get => this.renderingOptions;

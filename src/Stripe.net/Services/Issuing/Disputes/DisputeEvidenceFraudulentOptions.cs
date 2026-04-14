@@ -19,8 +19,9 @@ namespace Stripe.Issuing
         /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>)
         /// Additional documentation supporting the dispute.
         /// </summary>
-        [JsonProperty("additional_documentation")]
+        [JsonProperty("additional_documentation", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("additional_documentation")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string AdditionalDocumentation
         {
             get => this.additionalDocumentation;
@@ -34,8 +35,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
-        [JsonProperty("explanation")]
+        [JsonProperty("explanation", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("explanation")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Explanation
         {
             get => this.explanation;

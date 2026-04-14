@@ -18,8 +18,9 @@ namespace Stripe.Issuing
         /// The file for the card logo, for use with physical bundles that support card logos. Must
         /// have a <c>purpose</c> value of <c>issuing_logo</c>.
         /// </summary>
-        [JsonProperty("card_logo")]
+        [JsonProperty("card_logo", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("card_logo")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string CardLogo
         {
             get => this.cardLogo;
@@ -33,8 +34,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Hash containing carrier text, for use with physical bundles that support carrier text.
         /// </summary>
-        [JsonProperty("carrier_text")]
+        [JsonProperty("carrier_text", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("carrier_text")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PersonalizationDesignCarrierTextOptions CarrierText
         {
             get => this.carrierText;
@@ -49,8 +51,9 @@ namespace Stripe.Issuing
         /// A lookup key used to retrieve personalization designs dynamically from a static string.
         /// This may be up to 200 characters.
         /// </summary>
-        [JsonProperty("lookup_key")]
+        [JsonProperty("lookup_key", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("lookup_key")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string LookupKey
         {
             get => this.lookupKey;
@@ -74,8 +77,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Friendly display name. Providing an empty string will set the field to null.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("name")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Name
         {
             get => this.name;

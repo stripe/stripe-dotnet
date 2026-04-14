@@ -17,8 +17,9 @@ namespace Stripe
         /// <summary>
         /// A reference for this payment to be displayed in the Swish app.
         /// </summary>
-        [JsonProperty("reference")]
+        [JsonProperty("reference", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("reference")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Reference
         {
             get => this.reference;

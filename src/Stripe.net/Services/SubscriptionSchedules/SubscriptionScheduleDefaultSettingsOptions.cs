@@ -52,8 +52,9 @@ namespace Stripe
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period. Pass an empty string to remove previously-defined thresholds.
         /// </summary>
-        [JsonProperty("billing_thresholds")]
+        [JsonProperty("billing_thresholds", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("billing_thresholds")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SubscriptionScheduleDefaultSettingsBillingThresholdsOptions BillingThresholds
         {
             get => this.billingThresholds;
@@ -90,8 +91,9 @@ namespace Stripe
         /// optionally store an explanation of the subscription for rendering in Stripe surfaces and
         /// certain local payment methods UIs.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("description")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Description
         {
             get => this.description;
@@ -113,8 +115,9 @@ namespace Stripe
         /// The account on behalf of which to charge, for each of the associated subscription's
         /// invoices.
         /// </summary>
-        [JsonProperty("on_behalf_of")]
+        [JsonProperty("on_behalf_of", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("on_behalf_of")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string OnBehalfOf
         {
             get => this.onBehalfOf;
@@ -129,8 +132,9 @@ namespace Stripe
         /// The data with which to automatically create a Transfer for each of the associated
         /// subscription's invoices.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonProperty("transfer_data", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("transfer_data")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SubscriptionScheduleDefaultSettingsTransferDataOptions TransferData
         {
             get => this.transferData;

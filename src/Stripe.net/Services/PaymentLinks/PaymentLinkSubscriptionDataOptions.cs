@@ -40,8 +40,9 @@ namespace Stripe
         /// payment link. Unlike object-level metadata, this field is declarative. Updates will
         /// clear prior values.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;
@@ -56,8 +57,9 @@ namespace Stripe
         /// Integer representing the number of trial period days before the customer is charged for
         /// the first time. Has to be at least 1.
         /// </summary>
-        [JsonProperty("trial_period_days")]
+        [JsonProperty("trial_period_days", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("trial_period_days")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public long? TrialPeriodDays
         {
             get => this.trialPeriodDays;
@@ -71,8 +73,9 @@ namespace Stripe
         /// <summary>
         /// Settings related to subscription trials.
         /// </summary>
-        [JsonProperty("trial_settings")]
+        [JsonProperty("trial_settings", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("trial_settings")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentLinkSubscriptionDataTrialSettingsOptions TrialSettings
         {
             get => this.trialSettings;

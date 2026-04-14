@@ -16,9 +16,10 @@ namespace Stripe.Billing
         /// The time when the billing credits created by this credit grant expire. If set to empty,
         /// the billing credits never expire.
         /// </summary>
-        [JsonProperty("expires_at")]
+        [JsonProperty("expires_at", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("expires_at")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
         public DateTime? ExpiresAt
         {

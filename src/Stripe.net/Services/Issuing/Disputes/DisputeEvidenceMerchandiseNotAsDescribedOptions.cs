@@ -24,8 +24,9 @@ namespace Stripe.Issuing
         /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>)
         /// Additional documentation supporting the dispute.
         /// </summary>
-        [JsonProperty("additional_documentation")]
+        [JsonProperty("additional_documentation", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("additional_documentation")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string AdditionalDocumentation
         {
             get => this.additionalDocumentation;
@@ -39,8 +40,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
-        [JsonProperty("explanation")]
+        [JsonProperty("explanation", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("explanation")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Explanation
         {
             get => this.explanation;
@@ -54,9 +56,10 @@ namespace Stripe.Issuing
         /// <summary>
         /// Date when the product was received.
         /// </summary>
-        [JsonProperty("received_at")]
+        [JsonProperty("received_at", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("received_at")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
         public DateTime? ReceivedAt
         {
@@ -71,8 +74,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Description of the cardholder's attempt to return the product.
         /// </summary>
-        [JsonProperty("return_description")]
+        [JsonProperty("return_description", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("return_description")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string ReturnDescription
         {
             get => this.returnDescription;
@@ -87,8 +91,9 @@ namespace Stripe.Issuing
         /// Result of cardholder's attempt to return the product.
         /// One of: <c>merchant_rejected</c>, or <c>successful</c>.
         /// </summary>
-        [JsonProperty("return_status")]
+        [JsonProperty("return_status", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("return_status")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string ReturnStatus
         {
             get => this.returnStatus;
@@ -102,9 +107,10 @@ namespace Stripe.Issuing
         /// <summary>
         /// Date when the product was returned or attempted to be returned.
         /// </summary>
-        [JsonProperty("returned_at")]
+        [JsonProperty("returned_at", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("returned_at")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
         public DateTime? ReturnedAt
         {

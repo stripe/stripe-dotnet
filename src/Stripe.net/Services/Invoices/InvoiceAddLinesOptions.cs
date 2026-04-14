@@ -17,8 +17,9 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("invoice_metadata")]
+        [JsonProperty("invoice_metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("invoice_metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> InvoiceMetadata
         {
             get => this.invoiceMetadata;
