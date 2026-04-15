@@ -30,8 +30,9 @@ namespace Stripe.Terminal
         /// <summary>
         /// Configuration for cellular connectivity.
         /// </summary>
-        [JsonProperty("cellular")]
+        [JsonProperty("cellular", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("cellular")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public ConfigurationCellularOptions Cellular
         {
             get => this.cellular;
@@ -52,8 +53,9 @@ namespace Stripe.Terminal
         /// <summary>
         /// Configurations for collecting transactions offline.
         /// </summary>
-        [JsonProperty("offline")]
+        [JsonProperty("offline", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("offline")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public ConfigurationOfflineOptions Offline
         {
             get => this.offline;
@@ -88,8 +90,9 @@ namespace Stripe.Terminal
         /// <summary>
         /// Tipping configurations for readers that support on-reader tips.
         /// </summary>
-        [JsonProperty("tipping")]
+        [JsonProperty("tipping", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("tipping")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public ConfigurationTippingOptions Tipping
         {
             get => this.tipping;
@@ -110,8 +113,9 @@ namespace Stripe.Terminal
         /// <summary>
         /// Configurations for connecting to a WiFi network.
         /// </summary>
-        [JsonProperty("wifi")]
+        [JsonProperty("wifi", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("wifi")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public ConfigurationWifiOptions Wifi
         {
             get => this.wifi;

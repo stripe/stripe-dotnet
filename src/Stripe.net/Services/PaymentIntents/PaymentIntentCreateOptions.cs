@@ -196,8 +196,9 @@ namespace Stripe
         /// with <a
         /// href="https://docs.stripe.com/api/payment_intents/create#create_payment_intent-confirm"><c>confirm=true</c></a>.
         /// </summary>
-        [JsonProperty("mandate_data")]
+        [JsonProperty("mandate_data", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("mandate_data")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentMandateDataOptions MandateData
         {
             get => this.mandateData;

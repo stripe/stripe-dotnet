@@ -21,8 +21,9 @@ namespace Stripe.Checkout
         /// A hex color value starting with <c>#</c> representing the background color for the
         /// Checkout Session.
         /// </summary>
-        [JsonProperty("background_color")]
+        [JsonProperty("background_color", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("background_color")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string BackgroundColor
         {
             get => this.backgroundColor;
@@ -37,8 +38,9 @@ namespace Stripe.Checkout
         /// The border style for the Checkout Session.
         /// One of: <c>pill</c>, <c>rectangular</c>, or <c>rounded</c>.
         /// </summary>
-        [JsonProperty("border_style")]
+        [JsonProperty("border_style", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("border_style")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string BorderStyle
         {
             get => this.borderStyle;
@@ -53,8 +55,9 @@ namespace Stripe.Checkout
         /// A hex color value starting with <c>#</c> representing the button color for the Checkout
         /// Session.
         /// </summary>
-        [JsonProperty("button_color")]
+        [JsonProperty("button_color", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("button_color")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string ButtonColor
         {
             get => this.buttonColor;
@@ -86,8 +89,9 @@ namespace Stripe.Checkout
         /// <c>source_sans_pro</c>, <c>titillium_web</c>, <c>ubuntu_mono</c>, or
         /// <c>zen_maru_gothic</c>.
         /// </summary>
-        [JsonProperty("font_family")]
+        [JsonProperty("font_family", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("font_family")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string FontFamily
         {
             get => this.fontFamily;

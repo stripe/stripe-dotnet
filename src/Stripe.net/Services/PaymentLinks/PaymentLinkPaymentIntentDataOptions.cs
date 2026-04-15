@@ -30,8 +30,9 @@ namespace Stripe
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("description")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Description
         {
             get => this.description;
@@ -49,8 +50,9 @@ namespace Stripe
         /// this payment link. Unlike object-level metadata, this field is declarative. Updates will
         /// clear prior values.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;
@@ -99,8 +101,9 @@ namespace Stripe
         /// href="https://docs.stripe.com/get-started/account/statement-descriptors#dynamic">statement_descriptor_suffix</a>
         /// instead.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonProperty("statement_descriptor", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("statement_descriptor")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string StatementDescriptor
         {
             get => this.statementDescriptor;
@@ -117,8 +120,9 @@ namespace Stripe
         /// descriptor prefix</a> to form the complete statement descriptor that appears on the
         /// customer's statement.
         /// </summary>
-        [JsonProperty("statement_descriptor_suffix")]
+        [JsonProperty("statement_descriptor_suffix", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("statement_descriptor_suffix")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string StatementDescriptorSuffix
         {
             get => this.statementDescriptorSuffix;
@@ -135,8 +139,9 @@ namespace Stripe
         /// href="https://docs.stripe.com/connect/separate-charges-and-transfers">use case for
         /// connected accounts</a> for details.
         /// </summary>
-        [JsonProperty("transfer_group")]
+        [JsonProperty("transfer_group", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("transfer_group")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string TransferGroup
         {
             get => this.transferGroup;

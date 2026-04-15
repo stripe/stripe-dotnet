@@ -49,8 +49,9 @@ namespace Stripe.Checkout
         /// <summary>
         /// Subscription details if the Checkout Session sets up a future subscription.
         /// </summary>
-        [JsonProperty("subscriptions")]
+        [JsonProperty("subscriptions", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("subscriptions")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<SessionPaymentMethodOptionsKlarnaSubscriptionOptions> Subscriptions
         {
             get => this.subscriptions;

@@ -35,8 +35,9 @@ namespace Stripe.Issuing
         /// The user agent of the browser from which the cardholder accepted the Authorized User
         /// Terms.
         /// </summary>
-        [JsonProperty("user_agent")]
+        [JsonProperty("user_agent", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("user_agent")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string UserAgent
         {
             get => this.userAgent;

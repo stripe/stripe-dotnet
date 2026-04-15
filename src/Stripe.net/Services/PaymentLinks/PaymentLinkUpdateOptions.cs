@@ -58,8 +58,9 @@ namespace Stripe
         /// Collect additional information from your customer using custom fields. Up to 3 fields
         /// are supported. You can't set this parameter if <c>ui_mode</c> is <c>custom</c>.
         /// </summary>
-        [JsonProperty("custom_fields")]
+        [JsonProperty("custom_fields", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("custom_fields")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<PaymentLinkCustomFieldOptions> CustomFields
         {
             get => this.customFields;
@@ -92,8 +93,9 @@ namespace Stripe
         /// The custom message to be displayed to a customer when a payment link is no longer
         /// active.
         /// </summary>
-        [JsonProperty("inactive_message")]
+        [JsonProperty("inactive_message", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("inactive_message")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string InactiveMessage
         {
             get => this.inactiveMessage;
@@ -135,8 +137,9 @@ namespace Stripe
         /// <summary>
         /// Controls settings applied for collecting the customer's name.
         /// </summary>
-        [JsonProperty("name_collection")]
+        [JsonProperty("name_collection", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("name_collection")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentLinkNameCollectionOptions NameCollection
         {
             get => this.nameCollection;
@@ -155,8 +158,9 @@ namespace Stripe
         /// allowed on a payment link apply to the combined number of line items and optional items.
         /// There is a maximum of 20 combined line items and optional items.
         /// </summary>
-        [JsonProperty("optional_items")]
+        [JsonProperty("optional_items", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("optional_items")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<PaymentLinkOptionalItemOptions> OptionalItems
         {
             get => this.optionalItems;
@@ -206,8 +210,9 @@ namespace Stripe
         /// <c>satispay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
         /// <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
-        [JsonProperty("payment_method_types")]
+        [JsonProperty("payment_method_types", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("payment_method_types")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> PaymentMethodTypes
         {
             get => this.paymentMethodTypes;
@@ -230,8 +235,9 @@ namespace Stripe
         /// <summary>
         /// Settings that restrict the usage of a payment link.
         /// </summary>
-        [JsonProperty("restrictions")]
+        [JsonProperty("restrictions", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("restrictions")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentLinkRestrictionsOptions Restrictions
         {
             get => this.restrictions;
@@ -245,8 +251,9 @@ namespace Stripe
         /// <summary>
         /// Configuration for collecting the customer's shipping address.
         /// </summary>
-        [JsonProperty("shipping_address_collection")]
+        [JsonProperty("shipping_address_collection", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("shipping_address_collection")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentLinkShippingAddressCollectionOptions ShippingAddressCollection
         {
             get => this.shippingAddressCollection;

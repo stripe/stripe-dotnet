@@ -26,8 +26,9 @@ namespace Stripe
         /// This field is mutually exclusive with the
         /// <c>amount_details[line_items][#][discount_amount]</c> field.
         /// </summary>
-        [JsonProperty("discount_amount")]
+        [JsonProperty("discount_amount", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("discount_amount")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public long? DiscountAmount
         {
             get => this.discountAmount;
@@ -58,8 +59,9 @@ namespace Stripe
         /// A list of line items, each containing information about a product in the PaymentIntent.
         /// There is a maximum of 200 line items.
         /// </summary>
-        [JsonProperty("line_items")]
+        [JsonProperty("line_items", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("line_items")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<PaymentIntentAmountDetailsLineItemOptions> LineItems
         {
             get => this.lineItems;
@@ -73,8 +75,9 @@ namespace Stripe
         /// <summary>
         /// Contains information about the shipping portion of the amount.
         /// </summary>
-        [JsonProperty("shipping")]
+        [JsonProperty("shipping", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("shipping")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentAmountDetailsShippingOptions Shipping
         {
             get => this.shipping;
@@ -88,8 +91,9 @@ namespace Stripe
         /// <summary>
         /// Contains information about the tax portion of the amount.
         /// </summary>
-        [JsonProperty("tax")]
+        [JsonProperty("tax", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("tax")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentAmountDetailsTaxOptions Tax
         {
             get => this.tax;

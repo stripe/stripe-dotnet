@@ -20,8 +20,9 @@ namespace Stripe
         /// address field on the customer is updated. We recommend against updating this field more
         /// frequently since it could result in unexpected tax location/reporting outcomes.
         /// </summary>
-        [JsonProperty("ip_address")]
+        [JsonProperty("ip_address", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("ip_address")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string IpAddress
         {
             get => this.ipAddress;

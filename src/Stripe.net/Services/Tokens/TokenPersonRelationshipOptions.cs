@@ -55,8 +55,9 @@ namespace Stripe
         /// <summary>
         /// The percent owned by the person of the account's legal entity.
         /// </summary>
-        [JsonProperty("percent_ownership")]
+        [JsonProperty("percent_ownership", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("percent_ownership")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public decimal? PercentOwnership
         {
             get => this.percentOwnership;

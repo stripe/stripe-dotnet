@@ -25,8 +25,9 @@ namespace Stripe.BillingPortal
         /// href="https://docs.stripe.com/api/customer_portal/sessions/create#create_portal_session-return_url">overriden</a>
         /// when creating the session.
         /// </summary>
-        [JsonProperty("default_return_url")]
+        [JsonProperty("default_return_url", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("default_return_url")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string DefaultReturnUrl
         {
             get => this.defaultReturnUrl;
@@ -67,8 +68,9 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// The name of the configuration.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("name")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Name
         {
             get => this.name;

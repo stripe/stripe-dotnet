@@ -130,8 +130,9 @@ namespace Stripe
         /// One of: <c>qualified_entity_exceeds_ownership_threshold</c>, or
         /// <c>qualifies_as_financial_institution</c>.
         /// </summary>
-        [JsonProperty("ownership_exemption_reason")]
+        [JsonProperty("ownership_exemption_reason", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("ownership_exemption_reason")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string OwnershipExemptionReason
         {
             get => this.ownershipExemptionReason;
@@ -152,8 +153,9 @@ namespace Stripe
         /// <summary>
         /// When the business was incorporated or registered.
         /// </summary>
-        [JsonProperty("registration_date")]
+        [JsonProperty("registration_date", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("registration_date")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public AccountCompanyRegistrationDateOptions RegistrationDate
         {
             get => this.registrationDate;
@@ -197,8 +199,9 @@ namespace Stripe
         /// <c>unincorporated_association</c>, <c>unincorporated_non_profit</c>, or
         /// <c>unincorporated_partnership</c>.
         /// </summary>
-        [JsonProperty("structure")]
+        [JsonProperty("structure", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("structure")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Structure
         {
             get => this.structure;

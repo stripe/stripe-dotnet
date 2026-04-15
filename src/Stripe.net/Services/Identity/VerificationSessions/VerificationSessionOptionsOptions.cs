@@ -19,8 +19,9 @@ namespace Stripe.Identity
         /// href="https://docs.stripe.com/identity/verification-checks?type=document">document
         /// check</a>.
         /// </summary>
-        [JsonProperty("document")]
+        [JsonProperty("document", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("document")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public VerificationSessionOptionsDocumentOptions Document
         {
             get => this.document;
