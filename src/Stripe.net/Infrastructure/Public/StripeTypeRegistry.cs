@@ -314,6 +314,8 @@ namespace Stripe
                 { "v2.core.event_destination", typeof(V2.Core.EventDestination) },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },
                 { "v2.core.vault.us_bank_account", typeof(V2.Core.Vault.UsBankAccount) },
+                { "v2.core.workflow", typeof(V2.Core.Workflow) },
+                { "v2.core.workflow_run", typeof(V2.Core.WorkflowRun) },
                 { "v2.data.reporting.query_run", typeof(V2.Data.Reporting.QueryRun) },
                 { "v2.iam.api_key", typeof(V2.Iam.ApiKey) },
                 { "v2.money_management.adjustment", typeof(V2.MoneyManagement.Adjustment) },

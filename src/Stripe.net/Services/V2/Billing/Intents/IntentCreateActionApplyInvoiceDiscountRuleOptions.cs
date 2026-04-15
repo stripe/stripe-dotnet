@@ -16,17 +16,17 @@ namespace Stripe.V2.Billing
         public string AppliesTo { get; set; }
 
         /// <summary>
-        /// Type of the discount rule.
-        /// </summary>
-        [JsonProperty("type")]
-        [STJS.JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// Configuration for percentage off discount.
         /// </summary>
         [JsonProperty("percent_off")]
         [STJS.JsonPropertyName("percent_off")]
         public IntentCreateActionApplyInvoiceDiscountRulePercentOffOptions PercentOff { get; set; }
+
+        /// <summary>
+        /// Type of the discount rule.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }

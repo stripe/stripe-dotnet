@@ -16,17 +16,17 @@ namespace Stripe.V2.Billing
         public string Id { get; set; }
 
         /// <summary>
-        /// The type of the discount.
-        /// </summary>
-        [JsonProperty("type")]
-        [STJS.JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// Details if the discount is a percentage off.
         /// </summary>
         [JsonProperty("percent_off")]
         [STJS.JsonPropertyName("percent_off")]
         public CadenceInvoiceDiscountRulePercentOff PercentOff { get; set; }
+
+        /// <summary>
+        /// The type of the discount.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }

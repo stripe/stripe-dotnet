@@ -18,6 +18,13 @@ namespace Stripe.Identity
         public string ClientReferenceId { get; set; }
 
         /// <summary>
+        /// Confirm and submit the provided details for verification.
+        /// </summary>
+        [JsonProperty("confirm")]
+        [STJS.JsonPropertyName("confirm")]
+        public bool? Confirm { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
@@ -73,7 +80,7 @@ namespace Stripe.Identity
         /// The type of <a href="https://docs.stripe.com/identity/verification-checks">verification
         /// check</a> to be performed. You must provide a <c>type</c> if not passing
         /// <c>verification_flow</c>.
-        /// One of: <c>document</c>, or <c>id_number</c>.
+        /// One of: <c>document</c>, <c>email</c>, or <c>id_number</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

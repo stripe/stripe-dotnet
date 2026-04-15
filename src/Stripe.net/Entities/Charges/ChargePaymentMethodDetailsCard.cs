@@ -9,6 +9,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ChargePaymentMethodDetailsCard : StripeEntity<ChargePaymentMethodDetailsCard>
     {
+        [JsonProperty("account_funding")]
+        [STJS.JsonPropertyName("account_funding")]
+        public ChargePaymentMethodDetailsCardAccountFunding AccountFunding { get; set; }
+
         /// <summary>
         /// The authorized amount.
         /// </summary>

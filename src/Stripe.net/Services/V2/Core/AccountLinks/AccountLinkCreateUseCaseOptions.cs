@@ -9,15 +9,6 @@ namespace Stripe.V2.Core
     public class AccountLinkCreateUseCaseOptions : INestedOptions
     {
         /// <summary>
-        /// Open Enum. The type of Account Link the user is requesting.
-        /// One of: <c>account_onboarding</c>, <c>account_update</c>, <c>recipient_onboarding</c>,
-        /// or <c>recipient_update</c>.
-        /// </summary>
-        [JsonProperty("type")]
-        [STJS.JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// Hash containing configuration options for an Account Link object that onboards a new
         /// account.
         /// </summary>
@@ -48,5 +39,14 @@ namespace Stripe.V2.Core
         [JsonProperty("recipient_update")]
         [STJS.JsonPropertyName("recipient_update")]
         public AccountLinkCreateUseCaseRecipientUpdateOptions RecipientUpdate { get; set; }
+
+        /// <summary>
+        /// Open Enum. The type of Account Link the user is requesting.
+        /// One of: <c>account_onboarding</c>, <c>account_update</c>, <c>recipient_onboarding</c>,
+        /// or <c>recipient_update</c>.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }

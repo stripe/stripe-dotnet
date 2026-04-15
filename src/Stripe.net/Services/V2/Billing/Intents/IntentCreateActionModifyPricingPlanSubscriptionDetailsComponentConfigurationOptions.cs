@@ -9,13 +9,6 @@ namespace Stripe.V2.Billing
     public class IntentCreateActionModifyPricingPlanSubscriptionDetailsComponentConfigurationOptions : INestedOptions
     {
         /// <summary>
-        /// Quantity of the component to be used.
-        /// </summary>
-        [JsonProperty("quantity")]
-        [STJS.JsonPropertyName("quantity")]
-        public long? Quantity { get; set; }
-
-        /// <summary>
         /// Lookup key for the pricing plan component.
         /// </summary>
         [JsonProperty("lookup_key")]
@@ -28,5 +21,12 @@ namespace Stripe.V2.Billing
         [JsonProperty("pricing_plan_component")]
         [STJS.JsonPropertyName("pricing_plan_component")]
         public string PricingPlanComponent { get; set; }
+
+        /// <summary>
+        /// Quantity of the component to be used.
+        /// </summary>
+        [JsonProperty("quantity")]
+        [STJS.JsonPropertyName("quantity")]
+        public long? Quantity { get; set; }
     }
 }

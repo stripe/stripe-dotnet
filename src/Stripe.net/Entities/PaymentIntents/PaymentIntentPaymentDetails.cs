@@ -35,6 +35,13 @@ namespace Stripe
         [STJS.JsonPropertyName("event_details")]
         public PaymentIntentPaymentDetailsEventDetails EventDetails { get; set; }
 
+        /// <summary>
+        /// Fleet data for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("fleet_data")]
+        [STJS.JsonPropertyName("fleet_data")]
+        public List<PaymentIntentPaymentDetailsFleetDatum> FleetData { get; set; }
+
         [JsonProperty("flight_data")]
         [STJS.JsonPropertyName("flight_data")]
         public List<PaymentIntentPaymentDetailsFlightDatum> FlightData { get; set; }
@@ -42,6 +49,10 @@ namespace Stripe
         [JsonProperty("lodging_data")]
         [STJS.JsonPropertyName("lodging_data")]
         public List<PaymentIntentPaymentDetailsLodgingDatum> LodgingData { get; set; }
+
+        [JsonProperty("money_services")]
+        [STJS.JsonPropertyName("money_services")]
+        public PaymentIntentPaymentDetailsMoneyServices MoneyServices { get; set; }
 
         /// <summary>
         /// A unique value assigned by the business to identify the transaction. Required for L2 and
@@ -58,12 +69,5 @@ namespace Stripe
         [JsonProperty("subscription")]
         [STJS.JsonPropertyName("subscription")]
         public PaymentIntentPaymentDetailsSubscription Subscription { get; set; }
-
-        /// <summary>
-        /// Fleet data for this PaymentIntent.
-        /// </summary>
-        [JsonProperty("fleet_data")]
-        [STJS.JsonPropertyName("fleet_data")]
-        public List<PaymentIntentPaymentDetailsFleetDatum> FleetData { get; set; }
     }
 }

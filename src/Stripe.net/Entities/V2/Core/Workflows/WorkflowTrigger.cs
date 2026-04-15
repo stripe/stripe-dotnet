@@ -1,0 +1,34 @@
+// File generated from our OpenAPI spec
+namespace Stripe.V2.Core
+{
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+    public class WorkflowTrigger : StripeEntity<WorkflowTrigger>
+    {
+        /// <summary>
+        /// The Workflow can be launched when Stripe emits a certain event.
+        /// </summary>
+        [JsonProperty("event_trigger")]
+        [STJS.JsonPropertyName("event_trigger")]
+        public WorkflowTriggerEventTrigger EventTrigger { get; set; }
+
+        /// <summary>
+        /// The Workflow can be launched through a direct call, using either the Dashboard or the
+        /// Stripe API.
+        /// </summary>
+        [JsonProperty("manual")]
+        [STJS.JsonPropertyName("manual")]
+        public WorkflowTriggerManual Manual { get; set; }
+
+        /// <summary>
+        /// Which type of trigger this is.
+        /// One of: <c>event_trigger</c>, or <c>manual</c>.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
+    }
+}

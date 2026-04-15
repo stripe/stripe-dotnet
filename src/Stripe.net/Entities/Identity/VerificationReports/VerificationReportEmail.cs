@@ -9,6 +9,13 @@ namespace Stripe.Identity
     public class VerificationReportEmail : StripeEntity<VerificationReportEmail>
     {
         /// <summary>
+        /// Additional email verification details.
+        /// </summary>
+        [JsonProperty("details")]
+        [STJS.JsonPropertyName("details")]
+        public VerificationReportEmailDetails Details { get; set; }
+
+        /// <summary>
         /// Email to be verified.
         /// </summary>
         [JsonProperty("email")]

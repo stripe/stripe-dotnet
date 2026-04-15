@@ -9,14 +9,6 @@ namespace Stripe.V2.Core
     public class EventReasonRequestClient : StripeEntity<EventReasonRequestClient>
     {
         /// <summary>
-        /// The type of the client.
-        /// One of: <c>api_key</c>, <c>dashboard_user</c>, or <c>stripe_action</c>.
-        /// </summary>
-        [JsonProperty("type")]
-        [STJS.JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// API key that triggered the event.
         /// </summary>
         [JsonProperty("api_key")]
@@ -36,5 +28,13 @@ namespace Stripe.V2.Core
         [JsonProperty("stripe_action")]
         [STJS.JsonPropertyName("stripe_action")]
         public EventReasonRequestClientStripeAction StripeAction { get; set; }
+
+        /// <summary>
+        /// The type of the client.
+        /// One of: <c>api_key</c>, <c>dashboard_user</c>, or <c>stripe_action</c>.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }

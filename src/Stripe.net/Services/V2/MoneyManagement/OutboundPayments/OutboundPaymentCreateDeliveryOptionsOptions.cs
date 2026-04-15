@@ -9,14 +9,6 @@ namespace Stripe.V2.MoneyManagement
     public class OutboundPaymentCreateDeliveryOptionsOptions : INestedOptions
     {
         /// <summary>
-        /// Open Enum. Speed of the payout.
-        /// One of: <c>instant</c>, <c>next_business_day</c>, or <c>standard</c>.
-        /// </summary>
-        [JsonProperty("speed")]
-        [STJS.JsonPropertyName("speed")]
-        public string Speed { get; set; }
-
-        /// <summary>
         /// Open Enum. Method for bank account.
         /// One of: <c>automatic</c>, <c>local</c>, or <c>wire</c>.
         /// </summary>
@@ -30,5 +22,13 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("paper_check")]
         [STJS.JsonPropertyName("paper_check")]
         public OutboundPaymentCreateDeliveryOptionsPaperCheckOptions PaperCheck { get; set; }
+
+        /// <summary>
+        /// Open Enum. Speed of the payout.
+        /// One of: <c>instant</c>, <c>next_business_day</c>, or <c>standard</c>.
+        /// </summary>
+        [JsonProperty("speed")]
+        [STJS.JsonPropertyName("speed")]
+        public string Speed { get; set; }
     }
 }

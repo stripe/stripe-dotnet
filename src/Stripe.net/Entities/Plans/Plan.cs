@@ -109,14 +109,6 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         /// <summary>
-        /// A custom identifier for this price, such as a SKU number or product code, that can be
-        /// used to reference records from external systems.
-        /// </summary>
-        [JsonProperty("external_reference")]
-        [STJS.JsonPropertyName("external_reference")]
-        public string ExternalReference { get; set; }
-
-        /// <summary>
         /// The frequency at which a subscription is billed. One of <c>day</c>, <c>week</c>,
         /// <c>month</c> or <c>year</c>.
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.

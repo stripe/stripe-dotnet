@@ -25,19 +25,19 @@ namespace Stripe.V2.Billing
         public IntentActionSubscribeEffectiveAt EffectiveAt { get; set; }
 
         /// <summary>
+        /// Details for subscribing to a Pricing Plan.
+        /// </summary>
+        [JsonProperty("pricing_plan_subscription_details")]
+        [STJS.JsonPropertyName("pricing_plan_subscription_details")]
+        public IntentActionSubscribePricingPlanSubscriptionDetails PricingPlanSubscriptionDetails { get; set; }
+
+        /// <summary>
         /// Type of the action details.
         /// One of: <c>pricing_plan_subscription_details</c>, or <c>v1_subscription_details</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
-
-        /// <summary>
-        /// Details for subscribing to a Pricing Plan.
-        /// </summary>
-        [JsonProperty("pricing_plan_subscription_details")]
-        [STJS.JsonPropertyName("pricing_plan_subscription_details")]
-        public IntentActionSubscribePricingPlanSubscriptionDetails PricingPlanSubscriptionDetails { get; set; }
 
         /// <summary>
         /// Details for subscribing to a V1 subscription.

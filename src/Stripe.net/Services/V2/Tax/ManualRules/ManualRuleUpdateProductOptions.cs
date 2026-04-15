@@ -9,14 +9,6 @@ namespace Stripe.V2.Tax
     public class ManualRuleUpdateProductOptions : INestedOptions
     {
         /// <summary>
-        /// The type of the product.
-        /// One of: <c>licensed_item</c>, <c>metered_item</c>, or <c>tax_code</c>.
-        /// </summary>
-        [JsonProperty("type")]
-        [STJS.JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// The licensed item identifier.
         /// </summary>
         [JsonProperty("licensed_item")]
@@ -36,5 +28,13 @@ namespace Stripe.V2.Tax
         [JsonProperty("tax_code")]
         [STJS.JsonPropertyName("tax_code")]
         public string TaxCode { get; set; }
+
+        /// <summary>
+        /// The type of the product.
+        /// One of: <c>licensed_item</c>, <c>metered_item</c>, or <c>tax_code</c>.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }
