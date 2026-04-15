@@ -6965,7 +6965,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/license_fees",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.billing.license_fee\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"licensed_item\":{\"object\":\"v2.billing.licensed_item\",\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"livemode\":true},\"live_version\":\"live_version\",\"livemode\":true,\"service_cycle\":{\"interval\":\"month\",\"interval_count\":797691627},\"tax_behavior\":\"exclusive\",\"tiers\":[{}]}],\"next_page_url\":null,\"previous_page_url\":null}",
+                "{\"data\":[{\"object\":\"v2.billing.license_fee\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"latest_version\":\"latest_version\",\"licensed_item\":{\"object\":\"v2.billing.licensed_item\",\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"livemode\":true},\"live_version\":\"live_version\",\"livemode\":true,\"service_cycle\":{\"interval\":\"month\",\"interval_count\":797691627},\"service_interval\":\"month\",\"service_interval_count\":1375336415,\"tax_behavior\":\"exclusive\",\"tiers\":[{}]}],\"next_page_url\":null,\"previous_page_url\":null}",
                 "lookup_keys[0]=lookup_keys");
             var options = new Stripe.V2.Billing.LicenseFeeListOptions
             {
@@ -6988,7 +6988,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/license_fees",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.license_fee\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"licensed_item\":{\"object\":\"v2.billing.licensed_item\",\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"livemode\":true},\"live_version\":\"live_version\",\"livemode\":true,\"service_cycle\":{\"interval\":\"month\",\"interval_count\":797691627},\"tax_behavior\":\"exclusive\",\"tiers\":[{}]}");
+                "{\"object\":\"v2.billing.license_fee\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"latest_version\":\"latest_version\",\"licensed_item\":{\"object\":\"v2.billing.licensed_item\",\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"livemode\":true},\"live_version\":\"live_version\",\"livemode\":true,\"service_cycle\":{\"interval\":\"month\",\"interval_count\":797691627},\"service_interval\":\"month\",\"service_interval_count\":1375336415,\"tax_behavior\":\"exclusive\",\"tiers\":[{}]}");
             var options = new Stripe.V2.Billing.LicenseFeeCreateOptions
             {
                 Currency = "usd",
@@ -7011,7 +7011,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/license_fees/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.license_fee\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"licensed_item\":{\"object\":\"v2.billing.licensed_item\",\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"livemode\":true},\"live_version\":\"live_version\",\"livemode\":true,\"service_cycle\":{\"interval\":\"month\",\"interval_count\":797691627},\"tax_behavior\":\"exclusive\",\"tiers\":[{}]}");
+                "{\"object\":\"v2.billing.license_fee\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"latest_version\":\"latest_version\",\"licensed_item\":{\"object\":\"v2.billing.licensed_item\",\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"livemode\":true},\"live_version\":\"live_version\",\"livemode\":true,\"service_cycle\":{\"interval\":\"month\",\"interval_count\":797691627},\"service_interval\":\"month\",\"service_interval_count\":1375336415,\"tax_behavior\":\"exclusive\",\"tiers\":[{}]}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.LicenseFees;
             Stripe.V2.Billing.LicenseFee licenseFee = service.Get("id_123");
@@ -7027,7 +7027,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/license_fees/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.license_fee\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"licensed_item\":{\"object\":\"v2.billing.licensed_item\",\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"livemode\":true},\"live_version\":\"live_version\",\"livemode\":true,\"service_cycle\":{\"interval\":\"month\",\"interval_count\":797691627},\"tax_behavior\":\"exclusive\",\"tiers\":[{}]}");
+                "{\"object\":\"v2.billing.license_fee\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"latest_version\":\"latest_version\",\"licensed_item\":{\"object\":\"v2.billing.licensed_item\",\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"livemode\":true},\"live_version\":\"live_version\",\"livemode\":true,\"service_cycle\":{\"interval\":\"month\",\"interval_count\":797691627},\"service_interval\":\"month\",\"service_interval_count\":1375336415,\"tax_behavior\":\"exclusive\",\"tiers\":[{}]}");
             var options = new Stripe.V2.Billing.LicenseFeeUpdateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.LicenseFees;
@@ -7387,7 +7387,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/pricing_plans",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.billing.pricing_plan\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"livemode\":true,\"tax_behavior\":\"exclusive\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.billing.pricing_plan\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"latest_version\":\"latest_version\",\"livemode\":true,\"tax_behavior\":\"exclusive\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.PricingPlans;
             Stripe.V2.StripeList<Stripe.V2.Billing.PricingPlan> pricingPlans = service
@@ -7402,7 +7402,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/pricing_plans",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.pricing_plan\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"livemode\":true,\"tax_behavior\":\"exclusive\"}");
+                "{\"object\":\"v2.billing.pricing_plan\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"latest_version\":\"latest_version\",\"livemode\":true,\"tax_behavior\":\"exclusive\"}");
             var options = new Stripe.V2.Billing.PricingPlanCreateOptions
             {
                 Currency = "usd",
@@ -7422,7 +7422,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/pricing_plans/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.pricing_plan\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"livemode\":true,\"tax_behavior\":\"exclusive\"}");
+                "{\"object\":\"v2.billing.pricing_plan\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"latest_version\":\"latest_version\",\"livemode\":true,\"tax_behavior\":\"exclusive\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.PricingPlans;
             Stripe.V2.Billing.PricingPlan pricingPlan = service.Get("id_123");
@@ -7438,7 +7438,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/pricing_plans/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.pricing_plan\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"livemode\":true,\"tax_behavior\":\"exclusive\"}");
+                "{\"object\":\"v2.billing.pricing_plan\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"latest_version\":\"latest_version\",\"livemode\":true,\"tax_behavior\":\"exclusive\"}");
             var options = new Stripe.V2.Billing.PricingPlanUpdateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.PricingPlans;
@@ -7723,7 +7723,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/rate_cards",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.billing.rate_card\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"live_version\":\"live_version\",\"livemode\":true,\"service_cycle\":{\"interval\":\"month\",\"interval_count\":797691627},\"tax_behavior\":\"exclusive\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.billing.rate_card\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"service_cycle\":{\"interval\":\"month\",\"interval_count\":797691627},\"service_interval\":\"month\",\"service_interval_count\":1375336415,\"tax_behavior\":\"exclusive\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.RateCards;
             Stripe.V2.StripeList<Stripe.V2.Billing.RateCard> rateCards = service
@@ -7738,7 +7738,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/rate_cards",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.rate_card\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"live_version\":\"live_version\",\"livemode\":true,\"service_cycle\":{\"interval\":\"month\",\"interval_count\":797691627},\"tax_behavior\":\"exclusive\"}");
+                "{\"object\":\"v2.billing.rate_card\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"service_cycle\":{\"interval\":\"month\",\"interval_count\":797691627},\"service_interval\":\"month\",\"service_interval_count\":1375336415,\"tax_behavior\":\"exclusive\"}");
             var options = new Stripe.V2.Billing.RateCardCreateOptions
             {
                 Currency = "usd",
@@ -7760,7 +7760,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/rate_cards/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.rate_card\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"live_version\":\"live_version\",\"livemode\":true,\"service_cycle\":{\"interval\":\"month\",\"interval_count\":797691627},\"tax_behavior\":\"exclusive\"}");
+                "{\"object\":\"v2.billing.rate_card\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"service_cycle\":{\"interval\":\"month\",\"interval_count\":797691627},\"service_interval\":\"month\",\"service_interval_count\":1375336415,\"tax_behavior\":\"exclusive\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.RateCards;
             Stripe.V2.Billing.RateCard rateCard = service.Get("id_123");
@@ -7774,7 +7774,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/rate_cards/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.rate_card\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"live_version\":\"live_version\",\"livemode\":true,\"service_cycle\":{\"interval\":\"month\",\"interval_count\":797691627},\"tax_behavior\":\"exclusive\"}");
+                "{\"object\":\"v2.billing.rate_card\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"service_cycle\":{\"interval\":\"month\",\"interval_count\":797691627},\"service_interval\":\"month\",\"service_interval_count\":1375336415,\"tax_behavior\":\"exclusive\"}");
             var options = new Stripe.V2.Billing.RateCardUpdateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.RateCards;

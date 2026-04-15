@@ -68,6 +68,13 @@ namespace Stripe.V2.Billing
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// The ID of the latest version of the PricingPlan.
+        /// </summary>
+        [JsonProperty("latest_version")]
+        [STJS.JsonPropertyName("latest_version")]
+        public string LatestVersion { get; set; }
+
+        /// <summary>
         /// The ID of the live version of the PricingPlan.
         /// </summary>
         [JsonProperty("live_version")]

@@ -63,6 +63,13 @@ namespace Stripe.V2.Billing
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// The ID of the license fee's most recently created version.
+        /// </summary>
+        [JsonProperty("latest_version")]
+        [STJS.JsonPropertyName("latest_version")]
+        public string LatestVersion { get; set; }
+
+        /// <summary>
         /// A Licensed Item represents a billable item whose pricing is based on license fees. You
         /// can use license fees to specify the pricing and create subscriptions to these items.
         /// </summary>
@@ -109,6 +116,22 @@ namespace Stripe.V2.Billing
         [JsonProperty("service_cycle")]
         [STJS.JsonPropertyName("service_cycle")]
         public LicenseFeeServiceCycle ServiceCycle { get; set; }
+
+        /// <summary>
+        /// The interval for assessing service.
+        /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
+        /// </summary>
+        [JsonProperty("service_interval")]
+        [STJS.JsonPropertyName("service_interval")]
+        public string ServiceInterval { get; set; }
+
+        /// <summary>
+        /// The length of the interval for assessing service. For example, set this to 3 and
+        /// <c>service_interval</c> to <c>"month"</c> in order to specify quarterly service.
+        /// </summary>
+        [JsonProperty("service_interval_count")]
+        [STJS.JsonPropertyName("service_interval_count")]
+        public long ServiceIntervalCount { get; set; }
 
         /// <summary>
         /// The Stripe Tax tax behavior - whether the license fee is inclusive or exclusive of tax.
