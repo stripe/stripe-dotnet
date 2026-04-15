@@ -20,8 +20,9 @@ namespace Stripe.Checkout
         /// <summary>
         /// The account tax IDs associated with the invoice.
         /// </summary>
-        [JsonProperty("account_tax_ids")]
+        [JsonProperty("account_tax_ids", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("account_tax_ids")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> AccountTaxIds
         {
             get => this.accountTaxIds;
@@ -35,8 +36,9 @@ namespace Stripe.Checkout
         /// <summary>
         /// Default custom fields to be displayed on invoices for this customer.
         /// </summary>
-        [JsonProperty("custom_fields")]
+        [JsonProperty("custom_fields", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("custom_fields")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<SessionInvoiceCreationInvoiceDataCustomFieldOptions> CustomFields
         {
             get => this.customFields;
@@ -82,8 +84,9 @@ namespace Stripe.Checkout
         /// <summary>
         /// Default options for invoice PDF rendering for this customer.
         /// </summary>
-        [JsonProperty("rendering_options")]
+        [JsonProperty("rendering_options", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("rendering_options")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SessionInvoiceCreationInvoiceDataRenderingOptionsOptions RenderingOptions
         {
             get => this.renderingOptions;

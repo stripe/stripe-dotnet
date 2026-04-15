@@ -25,8 +25,9 @@ namespace Stripe
         /// <summary>
         /// The selected installment plan to use for this invoice.
         /// </summary>
-        [JsonProperty("plan")]
+        [JsonProperty("plan", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("plan")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoicePaymentSettingsPaymentMethodOptionsCardInstallmentsPlanOptions Plan
         {
             get => this.plan;

@@ -30,8 +30,9 @@ namespace Stripe
         /// used to pay the invoice, including the payment_method param or the invoice's
         /// default_payment_method or default_source, if set.
         /// </summary>
-        [JsonProperty("mandate")]
+        [JsonProperty("mandate", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("mandate")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Mandate
         {
             get => this.mandate;

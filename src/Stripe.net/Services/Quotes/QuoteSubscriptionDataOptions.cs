@@ -30,8 +30,9 @@ namespace Stripe
         /// to optionally store an explanation of the subscription for rendering in Stripe surfaces
         /// and certain local payment methods UIs.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("description")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Description
         {
             get => this.description;
@@ -47,9 +48,10 @@ namespace Stripe
         /// after the quote is accepted. The <c>effective_date</c> is ignored if it is in the past
         /// when the quote is accepted.
         /// </summary>
-        [JsonProperty("effective_date")]
+        [JsonProperty("effective_date", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(AnyOfConverter))]
         [STJS.JsonPropertyName("effective_date")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
         public AnyOf<DateTime?, QuoteSubscriptionDataEffectiveDate> EffectiveDate
         {
@@ -78,8 +80,9 @@ namespace Stripe
         /// Integer representing the number of trial period days before the customer is charged for
         /// the first time.
         /// </summary>
-        [JsonProperty("trial_period_days")]
+        [JsonProperty("trial_period_days", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("trial_period_days")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public long? TrialPeriodDays
         {
             get => this.trialPeriodDays;

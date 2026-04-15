@@ -20,8 +20,9 @@ namespace Stripe.Checkout
         /// <summary>
         /// Custom text that should be displayed after the payment confirmation button.
         /// </summary>
-        [JsonProperty("after_submit")]
+        [JsonProperty("after_submit", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("after_submit")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SessionCustomTextAfterSubmitOptions AfterSubmit
         {
             get => this.afterSubmit;
@@ -35,8 +36,9 @@ namespace Stripe.Checkout
         /// <summary>
         /// Custom text that should be displayed alongside shipping address collection.
         /// </summary>
-        [JsonProperty("shipping_address")]
+        [JsonProperty("shipping_address", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("shipping_address")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SessionCustomTextShippingAddressOptions ShippingAddress
         {
             get => this.shippingAddress;
@@ -50,8 +52,9 @@ namespace Stripe.Checkout
         /// <summary>
         /// Custom text that should be displayed alongside the payment confirmation button.
         /// </summary>
-        [JsonProperty("submit")]
+        [JsonProperty("submit", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("submit")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SessionCustomTextSubmitOptions Submit
         {
             get => this.submit;
@@ -66,8 +69,9 @@ namespace Stripe.Checkout
         /// Custom text that should be displayed in place of the default terms of service agreement
         /// text.
         /// </summary>
-        [JsonProperty("terms_of_service_acceptance")]
+        [JsonProperty("terms_of_service_acceptance", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("terms_of_service_acceptance")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SessionCustomTextTermsOfServiceAcceptanceOptions TermsOfServiceAcceptance
         {
             get => this.termsOfServiceAcceptance;

@@ -104,8 +104,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// The second line to print on the card. Max length: 24 characters.
         /// </summary>
-        [JsonProperty("second_line")]
+        [JsonProperty("second_line", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("second_line")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string SecondLine
         {
             get => this.secondLine;

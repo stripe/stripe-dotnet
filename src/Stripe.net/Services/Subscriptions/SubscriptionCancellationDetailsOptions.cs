@@ -19,8 +19,9 @@ namespace Stripe
         /// Additional comments about why the user canceled the subscription, if the subscription
         /// was canceled explicitly by the user.
         /// </summary>
-        [JsonProperty("comment")]
+        [JsonProperty("comment", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("comment")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Comment
         {
             get => this.comment;
@@ -38,8 +39,9 @@ namespace Stripe
         /// <c>other</c>, <c>switched_service</c>, <c>too_complex</c>, <c>too_expensive</c>, or
         /// <c>unused</c>.
         /// </summary>
-        [JsonProperty("feedback")]
+        [JsonProperty("feedback", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("feedback")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Feedback
         {
             get => this.feedback;

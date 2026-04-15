@@ -41,8 +41,9 @@ namespace Stripe
         /// <summary>
         /// The individual's date of birth.
         /// </summary>
-        [JsonProperty("dob")]
+        [JsonProperty("dob", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("dob")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public DobOptions Dob
         {
             get => this.dob;
@@ -84,8 +85,9 @@ namespace Stripe
         /// <summary>
         /// A list of alternate names or aliases that the individual is known by.
         /// </summary>
-        [JsonProperty("full_name_aliases")]
+        [JsonProperty("full_name_aliases", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("full_name_aliases")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> FullNameAliases
         {
             get => this.fullNameAliases;
@@ -160,8 +162,9 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;

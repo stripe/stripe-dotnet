@@ -22,8 +22,9 @@ namespace Stripe.Checkout
         /// amounts.
         /// One of: <c>exclude_tax</c>, or <c>include_inclusive_tax</c>.
         /// </summary>
-        [JsonProperty("amount_tax_display")]
+        [JsonProperty("amount_tax_display", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("amount_tax_display")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string AmountTaxDisplay
         {
             get => this.amountTaxDisplay;

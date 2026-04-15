@@ -42,8 +42,9 @@ namespace Stripe.Terminal
         /// <summary>
         /// The ID of a configuration that will be used to customize all readers in this location.
         /// </summary>
-        [JsonProperty("configuration_overrides")]
+        [JsonProperty("configuration_overrides", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("configuration_overrides")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string ConfigurationOverrides
         {
             get => this.configurationOverrides;
@@ -57,8 +58,9 @@ namespace Stripe.Terminal
         /// <summary>
         /// A name for the location.
         /// </summary>
-        [JsonProperty("display_name")]
+        [JsonProperty("display_name", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("display_name")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string DisplayName
         {
             get => this.displayName;
@@ -72,8 +74,9 @@ namespace Stripe.Terminal
         /// <summary>
         /// The Kana variation of the name for the location (Japan only).
         /// </summary>
-        [JsonProperty("display_name_kana")]
+        [JsonProperty("display_name_kana", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("display_name_kana")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string DisplayNameKana
         {
             get => this.displayNameKana;
@@ -87,8 +90,9 @@ namespace Stripe.Terminal
         /// <summary>
         /// The Kanji variation of the name for the location (Japan only).
         /// </summary>
-        [JsonProperty("display_name_kanji")]
+        [JsonProperty("display_name_kanji", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("display_name_kanji")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string DisplayNameKanji
         {
             get => this.displayNameKanji;
@@ -105,8 +109,9 @@ namespace Stripe.Terminal
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;
@@ -120,8 +125,9 @@ namespace Stripe.Terminal
         /// <summary>
         /// The phone number for the location.
         /// </summary>
-        [JsonProperty("phone")]
+        [JsonProperty("phone", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("phone")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Phone
         {
             get => this.phone;

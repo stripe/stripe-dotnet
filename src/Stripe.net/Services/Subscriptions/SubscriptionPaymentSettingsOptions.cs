@@ -41,8 +41,9 @@ namespace Stripe
         /// <c>sepa_credit_transfer</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>,
         /// <c>us_bank_account</c>, or <c>wechat_pay</c>.
         /// </summary>
-        [JsonProperty("payment_method_types")]
+        [JsonProperty("payment_method_types", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("payment_method_types")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> PaymentMethodTypes
         {
             get => this.paymentMethodTypes;
