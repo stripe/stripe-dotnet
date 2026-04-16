@@ -22,8 +22,9 @@ namespace Stripe
         /// href="api/invoices/line_item#invoice_line_item_object-type">type=invoiceitem</a> line
         /// items, where any existing metadata on the invoice line is merged with the incoming data.
         /// </summary>
-        [JsonProperty("invoice_metadata")]
+        [JsonProperty("invoice_metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("invoice_metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> InvoiceMetadata
         {
             get => this.invoiceMetadata;

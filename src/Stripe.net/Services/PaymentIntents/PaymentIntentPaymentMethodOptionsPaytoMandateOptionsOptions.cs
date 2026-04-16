@@ -22,8 +22,9 @@ namespace Stripe
         /// <summary>
         /// Amount that will be collected. It is required when <c>amount_type</c> is <c>fixed</c>.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("amount")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public long? Amount
         {
             get => this.amount;
@@ -40,8 +41,9 @@ namespace Stripe
         /// Defaults to <c>maximum</c>.
         /// One of: <c>fixed</c>, or <c>maximum</c>.
         /// </summary>
-        [JsonProperty("amount_type")]
+        [JsonProperty("amount_type", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("amount_type")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string AmountType
         {
             get => this.amountType;
@@ -56,8 +58,9 @@ namespace Stripe
         /// Date, in YYYY-MM-DD format, after which payments will not be collected. Defaults to no
         /// end date.
         /// </summary>
-        [JsonProperty("end_date")]
+        [JsonProperty("end_date", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("end_date")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string EndDate
         {
             get => this.endDate;
@@ -73,8 +76,9 @@ namespace Stripe
         /// One of: <c>adhoc</c>, <c>annual</c>, <c>daily</c>, <c>fortnightly</c>, <c>monthly</c>,
         /// <c>quarterly</c>, <c>semi_annual</c>, or <c>weekly</c>.
         /// </summary>
-        [JsonProperty("payment_schedule")]
+        [JsonProperty("payment_schedule", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("payment_schedule")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string PaymentSchedule
         {
             get => this.paymentSchedule;
@@ -89,8 +93,9 @@ namespace Stripe
         /// The number of payments that will be made during a payment period. Defaults to 1 except
         /// for when <c>payment_schedule</c> is <c>adhoc</c>. In that case, it defaults to no limit.
         /// </summary>
-        [JsonProperty("payments_per_period")]
+        [JsonProperty("payments_per_period", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("payments_per_period")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public long? PaymentsPerPeriod
         {
             get => this.paymentsPerPeriod;
@@ -108,8 +113,9 @@ namespace Stripe
         /// <c>other</c>, <c>pension</c>, <c>personal</c>, <c>retail</c>, <c>salary</c>, <c>tax</c>,
         /// or <c>utility</c>.
         /// </summary>
-        [JsonProperty("purpose")]
+        [JsonProperty("purpose", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("purpose")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Purpose
         {
             get => this.purpose;

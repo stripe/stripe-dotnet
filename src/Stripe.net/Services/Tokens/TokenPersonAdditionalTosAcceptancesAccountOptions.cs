@@ -36,8 +36,9 @@ namespace Stripe
         /// The user agent of the browser from which the account representative accepted the service
         /// agreement.
         /// </summary>
-        [JsonProperty("user_agent")]
+        [JsonProperty("user_agent", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("user_agent")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string UserAgent
         {
             get => this.userAgent;

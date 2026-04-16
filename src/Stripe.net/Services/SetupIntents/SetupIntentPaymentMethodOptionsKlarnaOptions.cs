@@ -47,8 +47,9 @@ namespace Stripe
         /// <summary>
         /// Subscription details if setting up or charging a subscription.
         /// </summary>
-        [JsonProperty("subscriptions")]
+        [JsonProperty("subscriptions", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("subscriptions")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<SetupIntentPaymentMethodOptionsKlarnaSubscriptionOptions> Subscriptions
         {
             get => this.subscriptions;

@@ -21,8 +21,9 @@ namespace Stripe
         /// href="https://docs.stripe.com/invoicing/taxes?dashboard-or-api=dashboard#set-up-customer">country-specific
         /// requirements for calculating tax</a>.
         /// </summary>
-        [JsonProperty("address")]
+        [JsonProperty("address", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("address")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public AddressOptions Address
         {
             get => this.address;
@@ -46,8 +47,9 @@ namespace Stripe
         /// <summary>
         /// The customer's business name. This may be up to <em>150 characters</em>.
         /// </summary>
-        [JsonProperty("business_name")]
+        [JsonProperty("business_name", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("business_name")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string BusinessName
         {
             get => this.businessName;
@@ -100,8 +102,9 @@ namespace Stripe
         /// <summary>
         /// The customer's full name. This may be up to <em>150 characters</em>.
         /// </summary>
-        [JsonProperty("individual_name")]
+        [JsonProperty("individual_name", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("individual_name")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string IndividualName
         {
             get => this.individualName;
@@ -133,8 +136,9 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;
@@ -176,8 +180,9 @@ namespace Stripe
         /// <summary>
         /// The customer's shipping information. Appears on invoices emailed to this customer.
         /// </summary>
-        [JsonProperty("shipping")]
+        [JsonProperty("shipping", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("shipping")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public ShippingOptions Shipping
         {
             get => this.shipping;
@@ -205,8 +210,9 @@ namespace Stripe
         /// The customer's tax exemption. One of <c>none</c>, <c>exempt</c>, or <c>reverse</c>.
         /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
         /// </summary>
-        [JsonProperty("tax_exempt")]
+        [JsonProperty("tax_exempt", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("tax_exempt")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string TaxExempt
         {
             get => this.taxExempt;

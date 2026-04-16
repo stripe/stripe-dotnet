@@ -17,8 +17,9 @@ namespace Stripe
         /// <summary>
         /// The <a href="https://docs.stripe.com/api/tax/calculations">TaxCalculation</a> id.
         /// </summary>
-        [JsonProperty("calculation")]
+        [JsonProperty("calculation", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("calculation")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Calculation
         {
             get => this.calculation;

@@ -21,8 +21,9 @@ namespace Stripe
         /// used to pay the invoice, including the invoice's default_payment_method or
         /// default_source, if set.
         /// </summary>
-        [JsonProperty("default_mandate")]
+        [JsonProperty("default_mandate", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("default_mandate")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string DefaultMandate
         {
             get => this.defaultMandate;
@@ -59,8 +60,9 @@ namespace Stripe
         /// <c>stripe_balance</c>, <c>swish</c>, <c>upi</c>, <c>us_bank_account</c>, or
         /// <c>wechat_pay</c>.
         /// </summary>
-        [JsonProperty("payment_method_types")]
+        [JsonProperty("payment_method_types", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("payment_method_types")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> PaymentMethodTypes
         {
             get => this.paymentMethodTypes;

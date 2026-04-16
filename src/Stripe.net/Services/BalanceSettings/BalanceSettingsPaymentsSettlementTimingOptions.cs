@@ -22,8 +22,9 @@ namespace Stripe
         /// href="https://stripe.com/connect/manage-payout-schedule">Learn more about controlling
         /// delay days</a>.
         /// </summary>
-        [JsonProperty("delay_days_override")]
+        [JsonProperty("delay_days_override", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("delay_days_override")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public long? DelayDaysOverride
         {
             get => this.delayDaysOverride;

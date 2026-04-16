@@ -17,8 +17,9 @@ namespace Stripe.Treasury
         /// <summary>
         /// Optional fields for <c>us_bank_account</c>.
         /// </summary>
-        [JsonProperty("us_bank_account")]
+        [JsonProperty("us_bank_account", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("us_bank_account")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OutboundPaymentDestinationPaymentMethodOptionsUsBankAccountOptions UsBankAccount
         {
             get => this.usBankAccount;

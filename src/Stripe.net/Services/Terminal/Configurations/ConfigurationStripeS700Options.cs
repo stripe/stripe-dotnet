@@ -17,8 +17,9 @@ namespace Stripe.Terminal
         /// <summary>
         /// A File ID representing an image you want to display on the reader.
         /// </summary>
-        [JsonProperty("splashscreen")]
+        [JsonProperty("splashscreen", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("splashscreen")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Splashscreen
         {
             get => this.splashscreen;

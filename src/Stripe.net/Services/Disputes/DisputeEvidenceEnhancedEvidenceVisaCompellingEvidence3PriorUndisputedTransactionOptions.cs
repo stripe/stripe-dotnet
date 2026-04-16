@@ -29,8 +29,9 @@ namespace Stripe
         /// <summary>
         /// User Account ID used to log into business platform. Must be recognizable by the user.
         /// </summary>
-        [JsonProperty("customer_account_id")]
+        [JsonProperty("customer_account_id", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("customer_account_id")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string CustomerAccountId
         {
             get => this.customerAccountId;
@@ -45,8 +46,9 @@ namespace Stripe
         /// Unique identifier of the cardholder’s device derived from a combination of at least two
         /// hardware and software attributes. Must be at least 20 characters.
         /// </summary>
-        [JsonProperty("customer_device_fingerprint")]
+        [JsonProperty("customer_device_fingerprint", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("customer_device_fingerprint")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string CustomerDeviceFingerprint
         {
             get => this.customerDeviceFingerprint;
@@ -61,8 +63,9 @@ namespace Stripe
         /// Unique identifier of the cardholder’s device such as a device serial number (e.g.,
         /// International Mobile Equipment Identity [IMEI]). Must be at least 15 characters.
         /// </summary>
-        [JsonProperty("customer_device_id")]
+        [JsonProperty("customer_device_id", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("customer_device_id")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string CustomerDeviceId
         {
             get => this.customerDeviceId;
@@ -76,8 +79,9 @@ namespace Stripe
         /// <summary>
         /// The email address of the customer.
         /// </summary>
-        [JsonProperty("customer_email_address")]
+        [JsonProperty("customer_email_address", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("customer_email_address")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string CustomerEmailAddress
         {
             get => this.customerEmailAddress;
@@ -91,8 +95,9 @@ namespace Stripe
         /// <summary>
         /// The IP address that the customer used when making the purchase.
         /// </summary>
-        [JsonProperty("customer_purchase_ip")]
+        [JsonProperty("customer_purchase_ip", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("customer_purchase_ip")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string CustomerPurchaseIp
         {
             get => this.customerPurchaseIp;
@@ -106,8 +111,9 @@ namespace Stripe
         /// <summary>
         /// A description of the product or service that was sold.
         /// </summary>
-        [JsonProperty("product_description")]
+        [JsonProperty("product_description", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("product_description")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string ProductDescription
         {
             get => this.productDescription;

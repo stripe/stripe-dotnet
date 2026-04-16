@@ -13,8 +13,9 @@ namespace Stripe
         /// <summary>
         /// The Connect application to filter by.
         /// </summary>
-        [JsonProperty("application")]
+        [JsonProperty("application", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("application")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Application
         {
             get => this.application;

@@ -21,8 +21,9 @@ namespace Stripe
         /// href="https://stripe.com/payouts/minimum-balances-for-automatic-payouts">minimum
         /// balances for automatic payouts</a>.
         /// </summary>
-        [JsonProperty("minimum_balance_by_currency")]
+        [JsonProperty("minimum_balance_by_currency", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("minimum_balance_by_currency")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
         public Dictionary<string, long?> MinimumBalanceByCurrency
         {

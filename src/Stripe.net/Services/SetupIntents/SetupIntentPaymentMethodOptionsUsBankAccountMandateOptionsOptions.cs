@@ -17,8 +17,9 @@ namespace Stripe
         /// <summary>
         /// The method used to collect offline mandate customer acceptance.
         /// </summary>
-        [JsonProperty("collection_method")]
+        [JsonProperty("collection_method", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("collection_method")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string CollectionMethod
         {
             get => this.collectionMethod;
