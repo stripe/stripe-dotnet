@@ -59,8 +59,9 @@ namespace Stripe.Treasury
         /// <summary>
         /// The nickname for the FinancialAccount.
         /// </summary>
-        [JsonProperty("nickname")]
+        [JsonProperty("nickname", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("nickname")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Nickname
         {
             get => this.nickname;

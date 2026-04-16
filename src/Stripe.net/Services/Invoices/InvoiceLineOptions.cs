@@ -59,8 +59,9 @@ namespace Stripe
         /// discounts are applied before invoice discounts. Pass an empty string to remove
         /// previously-defined discounts.
         /// </summary>
-        [JsonProperty("discounts")]
+        [JsonProperty("discounts", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("discounts")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<InvoiceLineDiscountOptions> Discounts
         {
             get => this.discounts;
@@ -113,8 +114,9 @@ namespace Stripe
         /// href="api/invoices/line_item#invoice_line_item_object-type">type=invoiceitem</a> line
         /// items, where any existing metadata on the invoice line is merged with the incoming data.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;
@@ -181,8 +183,9 @@ namespace Stripe
         /// or uses <a href="https://docs.stripe.com/tax/invoicing">automatic tax</a>. Pass an empty
         /// string to remove previously defined tax amounts.
         /// </summary>
-        [JsonProperty("tax_amounts")]
+        [JsonProperty("tax_amounts", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("tax_amounts")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<InvoiceLineTaxAmountOptions> TaxAmounts
         {
             get => this.taxAmounts;
@@ -198,8 +201,9 @@ namespace Stripe
         /// the invoice do not apply to this line item. Pass an empty string to remove
         /// previously-defined tax rates.
         /// </summary>
-        [JsonProperty("tax_rates")]
+        [JsonProperty("tax_rates", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("tax_rates")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> TaxRates
         {
             get => this.taxRates;

@@ -34,8 +34,9 @@ namespace Stripe
         /// information, see the application fees <a
         /// href="https://stripe.com/docs/connect/subscriptions#collecting-fees-on-subscriptions">documentation</a>.
         /// </summary>
-        [JsonProperty("application_fee_percent")]
+        [JsonProperty("application_fee_percent", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("application_fee_percent")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public decimal? ApplicationFeePercent
         {
             get => this.applicationFeePercent;
@@ -116,8 +117,9 @@ namespace Stripe
         /// new billing period. When updating, pass an empty string to remove previously-defined
         /// thresholds.
         /// </summary>
-        [JsonProperty("billing_thresholds")]
+        [JsonProperty("billing_thresholds", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("billing_thresholds")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SubscriptionBillingThresholdsOptions BillingThresholds
         {
             get => this.billingThresholds;
@@ -221,8 +223,9 @@ namespace Stripe
         /// <c>tax_rates</c> set. Invoices created will have their <c>default_tax_rates</c>
         /// populated from the subscription.
         /// </summary>
-        [JsonProperty("default_tax_rates")]
+        [JsonProperty("default_tax_rates", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("default_tax_rates")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> DefaultTaxRates
         {
             get => this.defaultTaxRates;
@@ -246,8 +249,9 @@ namespace Stripe
         /// The coupons to redeem into discounts for the subscription. If not specified or empty,
         /// inherits the discount from the subscription's customer.
         /// </summary>
-        [JsonProperty("discounts")]
+        [JsonProperty("discounts", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("discounts")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<SubscriptionDiscountOptions> Discounts
         {
             get => this.discounts;
@@ -278,8 +282,9 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;
@@ -301,8 +306,9 @@ namespace Stripe
         /// <summary>
         /// The account on behalf of which to charge, for each of the subscription's invoices.
         /// </summary>
-        [JsonProperty("on_behalf_of")]
+        [JsonProperty("on_behalf_of", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("on_behalf_of")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string OnBehalfOf
         {
             get => this.onBehalfOf;
@@ -365,8 +371,9 @@ namespace Stripe
         /// analogous to calling <a href="https://stripe.com/api/invoices/create">Create an
         /// invoice</a> for the given subscription at the specified interval.
         /// </summary>
-        [JsonProperty("pending_invoice_item_interval")]
+        [JsonProperty("pending_invoice_item_interval", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("pending_invoice_item_interval")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval
         {
             get => this.pendingInvoiceItemInterval;

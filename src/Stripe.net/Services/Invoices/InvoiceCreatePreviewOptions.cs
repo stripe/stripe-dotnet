@@ -70,8 +70,9 @@ namespace Stripe
         /// applied to an invoice and coupons applied to a subscription. Pass an empty string to
         /// avoid inheriting any discounts.
         /// </summary>
-        [JsonProperty("discounts")]
+        [JsonProperty("discounts", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("discounts")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<InvoiceDiscountOptions> Discounts
         {
             get => this.discounts;
@@ -103,8 +104,9 @@ namespace Stripe
         /// account. See the <a href="https://docs.stripe.com/billing/invoices/connect">Invoices
         /// with Connect</a> documentation for details.
         /// </summary>
-        [JsonProperty("on_behalf_of")]
+        [JsonProperty("on_behalf_of", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("on_behalf_of")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string OnBehalfOf
         {
             get => this.onBehalfOf;

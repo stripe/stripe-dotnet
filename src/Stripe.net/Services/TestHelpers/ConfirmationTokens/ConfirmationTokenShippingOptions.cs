@@ -31,8 +31,9 @@ namespace Stripe.TestHelpers
         /// <summary>
         /// Recipient phone (including extension).
         /// </summary>
-        [JsonProperty("phone")]
+        [JsonProperty("phone", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("phone")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Phone
         {
             get => this.phone;

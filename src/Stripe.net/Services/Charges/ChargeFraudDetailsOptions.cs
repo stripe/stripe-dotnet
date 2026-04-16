@@ -18,8 +18,9 @@ namespace Stripe
         /// Either <c>safe</c> or <c>fraudulent</c>.
         /// One of: <c>fraudulent</c>, or <c>safe</c>.
         /// </summary>
-        [JsonProperty("user_report")]
+        [JsonProperty("user_report", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("user_report")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string UserReport
         {
             get => this.userReport;

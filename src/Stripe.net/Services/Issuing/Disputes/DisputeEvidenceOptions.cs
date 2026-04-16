@@ -24,8 +24,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Evidence provided when <c>reason</c> is 'canceled'.
         /// </summary>
-        [JsonProperty("canceled")]
+        [JsonProperty("canceled", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("canceled")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public DisputeEvidenceCanceledOptions Canceled
         {
             get => this.canceled;
@@ -39,8 +40,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Evidence provided when <c>reason</c> is 'duplicate'.
         /// </summary>
-        [JsonProperty("duplicate")]
+        [JsonProperty("duplicate", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("duplicate")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public DisputeEvidenceDuplicateOptions Duplicate
         {
             get => this.duplicate;
@@ -54,8 +56,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Evidence provided when <c>reason</c> is 'fraudulent'.
         /// </summary>
-        [JsonProperty("fraudulent")]
+        [JsonProperty("fraudulent", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("fraudulent")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public DisputeEvidenceFraudulentOptions Fraudulent
         {
             get => this.fraudulent;
@@ -69,8 +72,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Evidence provided when <c>reason</c> is 'merchandise_not_as_described'.
         /// </summary>
-        [JsonProperty("merchandise_not_as_described")]
+        [JsonProperty("merchandise_not_as_described", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("merchandise_not_as_described")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public DisputeEvidenceMerchandiseNotAsDescribedOptions MerchandiseNotAsDescribed
         {
             get => this.merchandiseNotAsDescribed;
@@ -84,8 +88,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Evidence provided when <c>reason</c> is 'no_valid_authorization'.
         /// </summary>
-        [JsonProperty("no_valid_authorization")]
+        [JsonProperty("no_valid_authorization", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("no_valid_authorization")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public DisputeEvidenceNoValidAuthorizationOptions NoValidAuthorization
         {
             get => this.noValidAuthorization;
@@ -99,8 +104,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Evidence provided when <c>reason</c> is 'not_received'.
         /// </summary>
-        [JsonProperty("not_received")]
+        [JsonProperty("not_received", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("not_received")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public DisputeEvidenceNotReceivedOptions NotReceived
         {
             get => this.notReceived;
@@ -114,8 +120,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Evidence provided when <c>reason</c> is 'other'.
         /// </summary>
-        [JsonProperty("other")]
+        [JsonProperty("other", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("other")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public DisputeEvidenceOtherOptions Other
         {
             get => this.other;
@@ -140,8 +147,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Evidence provided when <c>reason</c> is 'service_not_as_described'.
         /// </summary>
-        [JsonProperty("service_not_as_described")]
+        [JsonProperty("service_not_as_described", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("service_not_as_described")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public DisputeEvidenceServiceNotAsDescribedOptions ServiceNotAsDescribed
         {
             get => this.serviceNotAsDescribed;

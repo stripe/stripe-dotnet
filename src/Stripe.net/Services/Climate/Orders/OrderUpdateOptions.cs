@@ -15,8 +15,9 @@ namespace Stripe.Climate
         /// Publicly sharable reference for the end beneficiary of carbon removal. Assumed to be the
         /// Stripe account if not set.
         /// </summary>
-        [JsonProperty("beneficiary")]
+        [JsonProperty("beneficiary", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("beneficiary")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderBeneficiaryOptions Beneficiary
         {
             get => this.beneficiary;

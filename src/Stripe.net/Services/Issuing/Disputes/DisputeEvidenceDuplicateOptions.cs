@@ -22,8 +22,9 @@ namespace Stripe.Issuing
         /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>)
         /// Additional documentation supporting the dispute.
         /// </summary>
-        [JsonProperty("additional_documentation")]
+        [JsonProperty("additional_documentation", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("additional_documentation")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string AdditionalDocumentation
         {
             get => this.additionalDocumentation;
@@ -38,8 +39,9 @@ namespace Stripe.Issuing
         /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>) Copy of
         /// the card statement showing that the product had already been paid for.
         /// </summary>
-        [JsonProperty("card_statement")]
+        [JsonProperty("card_statement", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("card_statement")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string CardStatement
         {
             get => this.cardStatement;
@@ -54,8 +56,9 @@ namespace Stripe.Issuing
         /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>) Copy of
         /// the receipt showing that the product had been paid for in cash.
         /// </summary>
-        [JsonProperty("cash_receipt")]
+        [JsonProperty("cash_receipt", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("cash_receipt")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string CashReceipt
         {
             get => this.cashReceipt;
@@ -70,8 +73,9 @@ namespace Stripe.Issuing
         /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>) Image of
         /// the front and back of the check that was used to pay for the product.
         /// </summary>
-        [JsonProperty("check_image")]
+        [JsonProperty("check_image", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("check_image")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string CheckImage
         {
             get => this.checkImage;
@@ -85,8 +89,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
-        [JsonProperty("explanation")]
+        [JsonProperty("explanation", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("explanation")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Explanation
         {
             get => this.explanation;

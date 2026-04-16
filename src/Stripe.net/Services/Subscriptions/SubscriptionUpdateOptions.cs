@@ -40,8 +40,9 @@ namespace Stripe
         /// information, see the application fees <a
         /// href="https://stripe.com/docs/connect/subscriptions#collecting-fees-on-subscriptions">documentation</a>.
         /// </summary>
-        [JsonProperty("application_fee_percent")]
+        [JsonProperty("application_fee_percent", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("application_fee_percent")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public decimal? ApplicationFeePercent
         {
             get => this.applicationFeePercent;
@@ -102,8 +103,9 @@ namespace Stripe
         /// new billing period. When updating, pass an empty string to remove previously-defined
         /// thresholds.
         /// </summary>
-        [JsonProperty("billing_thresholds")]
+        [JsonProperty("billing_thresholds", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("billing_thresholds")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SubscriptionBillingThresholdsOptions BillingThresholds
         {
             get => this.billingThresholds;
@@ -120,9 +122,10 @@ namespace Stripe
         /// <c>proration_behavior</c>. If set during a future period, this will always cause a
         /// proration for that period.
         /// </summary>
-        [JsonProperty("cancel_at")]
+        [JsonProperty("cancel_at", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(AnyOfConverter))]
         [STJS.JsonPropertyName("cancel_at")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
         public AnyOf<DateTime?, SubscriptionCancelAt> CancelAt
         {
@@ -190,8 +193,9 @@ namespace Stripe
         /// or <a
         /// href="https://docs.stripe.com/api/customers/object#customer_object-default_source">default_source</a>.
         /// </summary>
-        [JsonProperty("default_source")]
+        [JsonProperty("default_source", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("default_source")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string DefaultSource
         {
             get => this.defaultSource;
@@ -208,8 +212,9 @@ namespace Stripe
         /// populated from the subscription. Pass an empty string to remove previously-defined tax
         /// rates.
         /// </summary>
-        [JsonProperty("default_tax_rates")]
+        [JsonProperty("default_tax_rates", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("default_tax_rates")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> DefaultTaxRates
         {
             get => this.defaultTaxRates;
@@ -225,8 +230,9 @@ namespace Stripe
         /// to optionally store an explanation of the subscription for rendering in Stripe surfaces
         /// and certain local payment methods UIs.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("description")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Description
         {
             get => this.description;
@@ -241,8 +247,9 @@ namespace Stripe
         /// The coupons to redeem into discounts for the subscription. If not specified or empty,
         /// inherits the discount from the subscription's customer.
         /// </summary>
-        [JsonProperty("discounts")]
+        [JsonProperty("discounts", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("discounts")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<SubscriptionDiscountOptions> Discounts
         {
             get => this.discounts;
@@ -273,8 +280,9 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;
@@ -296,8 +304,9 @@ namespace Stripe
         /// <summary>
         /// The account on behalf of which to charge, for each of the subscription's invoices.
         /// </summary>
-        [JsonProperty("on_behalf_of")]
+        [JsonProperty("on_behalf_of", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("on_behalf_of")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string OnBehalfOf
         {
             get => this.onBehalfOf;
@@ -314,8 +323,9 @@ namespace Stripe
         /// more about <a href="https://docs.stripe.com/billing/subscriptions/pause-payment">pausing
         /// collection</a>.
         /// </summary>
-        [JsonProperty("pause_collection")]
+        [JsonProperty("pause_collection", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("pause_collection")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SubscriptionPauseCollectionOptions PauseCollection
         {
             get => this.pauseCollection;
@@ -373,8 +383,9 @@ namespace Stripe
         /// analogous to calling <a href="https://stripe.com/api/invoices/create">Create an
         /// invoice</a> for the given subscription at the specified interval.
         /// </summary>
-        [JsonProperty("pending_invoice_item_interval")]
+        [JsonProperty("pending_invoice_item_interval", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("pending_invoice_item_interval")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval
         {
             get => this.pendingInvoiceItemInterval;
@@ -424,8 +435,9 @@ namespace Stripe
         /// destination and the ID of the resulting transfers will be found on the resulting
         /// charges. This will be unset if you POST an empty value.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonProperty("transfer_data", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("transfer_data")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SubscriptionTransferDataOptions TransferData
         {
             get => this.transferData;

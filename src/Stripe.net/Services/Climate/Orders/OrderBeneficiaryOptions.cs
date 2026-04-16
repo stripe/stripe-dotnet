@@ -17,8 +17,9 @@ namespace Stripe.Climate
         /// <summary>
         /// Publicly displayable name for the end beneficiary of carbon removal.
         /// </summary>
-        [JsonProperty("public_name")]
+        [JsonProperty("public_name", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("public_name")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string PublicName
         {
             get => this.publicName;

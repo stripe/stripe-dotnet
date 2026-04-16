@@ -33,8 +33,9 @@ namespace Stripe.BillingPortal
         /// updateable.
         /// One of: <c>price</c>, <c>promotion_code</c>, or <c>quantity</c>.
         /// </summary>
-        [JsonProperty("default_allowed_updates")]
+        [JsonProperty("default_allowed_updates", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("default_allowed_updates")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> DefaultAllowedUpdates
         {
             get => this.defaultAllowedUpdates;
@@ -55,8 +56,9 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// The list of up to 10 products that support subscription updates.
         /// </summary>
-        [JsonProperty("products")]
+        [JsonProperty("products", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("products")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<ConfigurationFeaturesSubscriptionUpdateProductOptions> Products
         {
             get => this.products;

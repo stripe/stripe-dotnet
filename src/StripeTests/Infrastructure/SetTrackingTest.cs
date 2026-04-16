@@ -1,6 +1,8 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Text.Json;
+    using Newtonsoft.Json;
     using Stripe;
     using Stripe.Infrastructure.FormEncoding;
     using StripeTests.Infrastructure.TestData;
@@ -158,6 +160,83 @@ namespace StripeTests
             var result = await ContentEncoder.CreateHttpContent(options, ApiMode.V2)
                 .ReadAsStringAsync();
             Assert.Equal("{\"emptyable_string\":null}", result);
+        }
+
+        // Newtonsoft round-trip: unset emptyable properties stay unset
+        // This is the scenario from stripe/stripe-dotnet#3364 — a user
+        // serializes Options via AWS Lambda (Newtonsoft), and the receiving
+        // service deserializes and sends to the API.
+        // Newtonsoft serialization: unset emptyable properties are omitted
+        // This is the core fix for stripe/stripe-dotnet#3364 — third-party
+        // serializers now skip null emptyable properties instead of writing
+        // "mandate_data": null.
+        [Fact]
+        public void NewtonsoftSerialization_UnsetEmptyable_Omitted()
+        {
+            var options = new TestOptions
+            {
+                String = "hello",
+            };
+
+            var json = JsonConvert.SerializeObject(options);
+            Assert.DoesNotContain("emptyable_string", json);
+            Assert.DoesNotContain("emptyable_nested", json);
+            Assert.Contains("\"string\":\"hello\"", json);
+        }
+
+        // Newtonsoft serialization: explicit null is also omitted (known limitation)
+        // Third-party serializers cannot distinguish "set to null" from "unset"
+        // because the NullValueHandling.Ignore attribute skips all nulls.
+        [Fact]
+        public void NewtonsoftSerialization_ExplicitNull_AlsoOmitted()
+        {
+            var options = new TestOptions();
+            options.EmptyableString = null;
+
+            var json = JsonConvert.SerializeObject(options);
+            Assert.DoesNotContain("emptyable_string", json);
+        }
+
+        // Our STJ round-trip: explicit null survives because our converter
+        // checks IsPropertySet and force-writes null.
+        [Fact]
+        public void StjRoundTrip_ExplicitNull_IntentPreserved()
+        {
+            var options = new TestOptions();
+            options.EmptyableString = null;
+
+            var stjOptions = StripeConfiguration.SerializerOptions;
+            var json = System.Text.Json.JsonSerializer.Serialize(options, stjOptions);
+            Assert.Contains("\"emptyable_string\":null", json);
+
+            var deserialized = System.Text.Json.JsonSerializer.Deserialize<TestOptions>(
+                json, stjOptions);
+
+            var result = ContentEncoder.CreateQueryString(deserialized);
+            Assert.Equal("emptyable_string=", result);
+        }
+
+        // Our STJ round-trip: unset emptyable properties stay unset
+        [Fact]
+        public void StjRoundTrip_UnsetEmptyable_StaysUnset()
+        {
+            var options = new TestOptions
+            {
+                String = "hello",
+            };
+
+            var stjOptions = StripeConfiguration.SerializerOptions;
+            var json = System.Text.Json.JsonSerializer.Serialize(options, stjOptions);
+            Assert.DoesNotContain("emptyable_string", json);
+            Assert.DoesNotContain("emptyable_nested", json);
+
+            var deserialized = System.Text.Json.JsonSerializer.Deserialize<TestOptions>(
+                json, stjOptions);
+
+            var result = ContentEncoder.CreateQueryString(deserialized);
+            Assert.Contains("string=hello", result);
+            Assert.DoesNotContain("emptyable_string", result);
+            Assert.DoesNotContain("emptyable_nested", result);
         }
     }
 }
