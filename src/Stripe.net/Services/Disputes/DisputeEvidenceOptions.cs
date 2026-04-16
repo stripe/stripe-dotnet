@@ -122,8 +122,9 @@ namespace Stripe
         /// <summary>
         /// Additional evidence for qualifying evidence programs.
         /// </summary>
-        [JsonProperty("enhanced_evidence")]
+        [JsonProperty("enhanced_evidence", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("enhanced_evidence")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public DisputeEvidenceEnhancedEvidenceOptions EnhancedEvidence
         {
             get => this.enhancedEvidence;

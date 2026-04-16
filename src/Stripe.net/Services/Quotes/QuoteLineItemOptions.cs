@@ -19,8 +19,9 @@ namespace Stripe
         /// <summary>
         /// The discounts applied to this line item.
         /// </summary>
-        [JsonProperty("discounts")]
+        [JsonProperty("discounts", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("discounts")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<QuoteLineItemDiscountOptions> Discounts
         {
             get => this.discounts;
@@ -64,8 +65,9 @@ namespace Stripe
         /// The tax rates which apply to the line item. When set, the <c>default_tax_rates</c> on
         /// the quote do not apply to this line item.
         /// </summary>
-        [JsonProperty("tax_rates")]
+        [JsonProperty("tax_rates", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("tax_rates")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> TaxRates
         {
             get => this.taxRates;

@@ -19,8 +19,9 @@ namespace Stripe.BillingPortal
         /// List of conditions. When any condition is true, the update will be scheduled at the end
         /// of the current period.
         /// </summary>
-        [JsonProperty("conditions")]
+        [JsonProperty("conditions", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("conditions")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<ConfigurationFeaturesSubscriptionUpdateScheduleAtPeriodEndConditionOptions> Conditions
         {
             get => this.conditions;

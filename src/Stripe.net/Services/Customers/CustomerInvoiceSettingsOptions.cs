@@ -20,8 +20,9 @@ namespace Stripe
         /// The list of up to 4 default custom fields to be displayed on invoices for this customer.
         /// When updating, pass an empty string to remove previously-defined fields.
         /// </summary>
-        [JsonProperty("custom_fields")]
+        [JsonProperty("custom_fields", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("custom_fields")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<CustomerInvoiceSettingsCustomFieldOptions> CustomFields
         {
             get => this.customFields;
@@ -50,8 +51,9 @@ namespace Stripe
         /// <summary>
         /// Default options for invoice PDF rendering for this customer.
         /// </summary>
-        [JsonProperty("rendering_options")]
+        [JsonProperty("rendering_options", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("rendering_options")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public CustomerInvoiceSettingsRenderingOptionsOptions RenderingOptions
         {
             get => this.renderingOptions;

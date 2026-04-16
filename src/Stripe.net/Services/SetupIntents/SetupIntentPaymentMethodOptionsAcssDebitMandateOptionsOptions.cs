@@ -22,8 +22,9 @@ namespace Stripe
         /// <c>setup_intent</c> and <c>setup_intent_client_secret</c> when confirming a Setup
         /// Intent.
         /// </summary>
-        [JsonProperty("custom_mandate_url")]
+        [JsonProperty("custom_mandate_url", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("custom_mandate_url")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string CustomMandateUrl
         {
             get => this.customMandateUrl;

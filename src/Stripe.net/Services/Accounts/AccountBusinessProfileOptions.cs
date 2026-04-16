@@ -112,8 +112,9 @@ namespace Stripe
         /// <summary>
         /// A publicly available website for handling support issues.
         /// </summary>
-        [JsonProperty("support_url")]
+        [JsonProperty("support_url", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("support_url")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string SupportUrl
         {
             get => this.supportUrl;

@@ -21,8 +21,9 @@ namespace Stripe.BillingPortal
         /// One of: <c>address</c>, <c>email</c>, <c>name</c>, <c>phone</c>, <c>shipping</c>, or
         /// <c>tax_id</c>.
         /// </summary>
-        [JsonProperty("allowed_updates")]
+        [JsonProperty("allowed_updates", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("allowed_updates")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> AllowedUpdates
         {
             get => this.allowedUpdates;

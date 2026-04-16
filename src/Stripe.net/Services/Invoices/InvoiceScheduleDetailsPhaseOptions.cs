@@ -62,8 +62,9 @@ namespace Stripe
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period. Pass an empty string to remove previously-defined thresholds.
         /// </summary>
-        [JsonProperty("billing_thresholds")]
+        [JsonProperty("billing_thresholds", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("billing_thresholds")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoiceScheduleDetailsPhaseBillingThresholdsOptions BillingThresholds
         {
             get => this.billingThresholds;
@@ -112,8 +113,9 @@ namespace Stripe
         /// href="https://docs.stripe.com/api/invoices/create#create_invoice-default_tax_rates"><c>default_tax_rates</c></a>
         /// for any Invoices issued by the Subscription during this Phase.
         /// </summary>
-        [JsonProperty("default_tax_rates")]
+        [JsonProperty("default_tax_rates", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("default_tax_rates")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> DefaultTaxRates
         {
             get => this.defaultTaxRates;
@@ -129,8 +131,9 @@ namespace Stripe
         /// optionally store an explanation of the subscription for rendering in Stripe surfaces and
         /// certain local payment methods UIs.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("description")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Description
         {
             get => this.description;
@@ -146,8 +149,9 @@ namespace Stripe
         /// the discount from the subscription's customer. Pass an empty string to avoid inheriting
         /// any discounts.
         /// </summary>
-        [JsonProperty("discounts")]
+        [JsonProperty("discounts", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("discounts")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<InvoiceScheduleDetailsPhaseDiscountOptions> Discounts
         {
             get => this.discounts;

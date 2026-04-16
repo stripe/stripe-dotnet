@@ -26,9 +26,10 @@ namespace Stripe.Tax
         /// will be active indefinitely. It can be either <c>now</c> to indicate the current time,
         /// or a timestamp measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("expires_at")]
+        [JsonProperty("expires_at", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(AnyOfConverter))]
         [STJS.JsonPropertyName("expires_at")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
         public AnyOf<DateTime?, RegistrationExpiresAt> ExpiresAt
         {

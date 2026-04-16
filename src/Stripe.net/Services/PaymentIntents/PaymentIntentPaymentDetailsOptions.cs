@@ -56,8 +56,9 @@ namespace Stripe
         /// This field is truncated to 25 alphanumeric characters, excluding spaces, before being
         /// sent to card networks.
         /// </summary>
-        [JsonProperty("customer_reference")]
+        [JsonProperty("customer_reference", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("customer_reference")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string CustomerReference
         {
             get => this.customerReference;
@@ -157,8 +158,9 @@ namespace Stripe
         /// before being sent to card networks. For Klarna, this field is truncated to 255
         /// characters and is visible to customers when they view the order in the Klarna app.
         /// </summary>
-        [JsonProperty("order_reference")]
+        [JsonProperty("order_reference", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("order_reference")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string OrderReference
         {
             get => this.orderReference;

@@ -19,8 +19,9 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// The messaging shown to customers in the portal.
         /// </summary>
-        [JsonProperty("headline")]
+        [JsonProperty("headline", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("headline")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Headline
         {
             get => this.headline;
@@ -34,8 +35,9 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// A link to the business’s publicly available privacy policy.
         /// </summary>
-        [JsonProperty("privacy_policy_url")]
+        [JsonProperty("privacy_policy_url", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("privacy_policy_url")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string PrivacyPolicyUrl
         {
             get => this.privacyPolicyUrl;
@@ -49,8 +51,9 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// A link to the business’s publicly available terms of service.
         /// </summary>
-        [JsonProperty("terms_of_service_url")]
+        [JsonProperty("terms_of_service_url", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("terms_of_service_url")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string TermsOfServiceUrl
         {
             get => this.termsOfServiceUrl;

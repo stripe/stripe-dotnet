@@ -28,8 +28,9 @@ namespace Stripe.BillingPortal
         /// <c>other</c>, <c>switched_service</c>, <c>too_complex</c>, <c>too_expensive</c>, or
         /// <c>unused</c>.
         /// </summary>
-        [JsonProperty("options")]
+        [JsonProperty("options", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("options")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> Options
         {
             get => this.options;

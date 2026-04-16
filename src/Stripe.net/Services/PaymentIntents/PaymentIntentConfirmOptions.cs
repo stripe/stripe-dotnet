@@ -28,8 +28,9 @@ namespace Stripe
         /// <summary>
         /// Provides industry-specific information about the amount.
         /// </summary>
-        [JsonProperty("amount_details")]
+        [JsonProperty("amount_details", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("amount_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentAmountDetailsOptions AmountDetails
         {
             get => this.amountDetails;
@@ -109,8 +110,9 @@ namespace Stripe
         /// <c>shopeepay</c>, <c>sofort</c>, <c>stripe_balance</c>, <c>swish</c>, <c>twint</c>,
         /// <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
-        [JsonProperty("excluded_payment_method_types")]
+        [JsonProperty("excluded_payment_method_types", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("excluded_payment_method_types")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> ExcludedPaymentMethodTypes
         {
             get => this.excludedPaymentMethodTypes;
@@ -143,8 +145,9 @@ namespace Stripe
         [STJS.JsonPropertyName("mandate")]
         public string Mandate { get; set; }
 
-        [JsonProperty("mandate_data")]
+        [JsonProperty("mandate_data", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("mandate_data")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentMandateDataOptions MandateData
         {
             get => this.mandateData;
@@ -169,8 +172,9 @@ namespace Stripe
         /// <summary>
         /// Provides industry-specific information about the charge.
         /// </summary>
-        [JsonProperty("payment_details")]
+        [JsonProperty("payment_details", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("payment_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentDetailsOptions PaymentDetails
         {
             get => this.paymentDetails;
@@ -235,8 +239,9 @@ namespace Stripe
         /// regardless of your <a href="https://dashboard.stripe.com/account/emails">email
         /// settings</a>.
         /// </summary>
-        [JsonProperty("receipt_email")]
+        [JsonProperty("receipt_email", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("receipt_email")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string ReceiptEmail
         {
             get => this.receiptEmail;
@@ -282,8 +287,9 @@ namespace Stripe
         /// <c>off_session</c>.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonProperty("setup_future_usage", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("setup_future_usage")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string SetupFutureUsage
         {
             get => this.setupFutureUsage;
@@ -297,8 +303,9 @@ namespace Stripe
         /// <summary>
         /// Shipping information for this PaymentIntent.
         /// </summary>
-        [JsonProperty("shipping")]
+        [JsonProperty("shipping", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("shipping")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public ChargeShippingOptions Shipping
         {
             get => this.shipping;

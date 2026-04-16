@@ -20,8 +20,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// The footer body text of the carrier letter.
         /// </summary>
-        [JsonProperty("footer_body")]
+        [JsonProperty("footer_body", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("footer_body")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string FooterBody
         {
             get => this.footerBody;
@@ -35,8 +36,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// The footer title text of the carrier letter.
         /// </summary>
-        [JsonProperty("footer_title")]
+        [JsonProperty("footer_title", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("footer_title")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string FooterTitle
         {
             get => this.footerTitle;
@@ -50,8 +52,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// The header body text of the carrier letter.
         /// </summary>
-        [JsonProperty("header_body")]
+        [JsonProperty("header_body", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("header_body")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string HeaderBody
         {
             get => this.headerBody;
@@ -65,8 +68,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// The header title text of the carrier letter.
         /// </summary>
-        [JsonProperty("header_title")]
+        [JsonProperty("header_title", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("header_title")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string HeaderTitle
         {
             get => this.headerTitle;

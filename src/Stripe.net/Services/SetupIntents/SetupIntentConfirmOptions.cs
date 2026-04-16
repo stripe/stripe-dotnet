@@ -25,8 +25,9 @@ namespace Stripe
         [STJS.JsonPropertyName("confirmation_token")]
         public string ConfirmationToken { get; set; }
 
-        [JsonProperty("mandate_data")]
+        [JsonProperty("mandate_data", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("mandate_data")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SetupIntentMandateDataOptions MandateData
         {
             get => this.mandateData;

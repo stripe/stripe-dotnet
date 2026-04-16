@@ -23,8 +23,9 @@ namespace Stripe
         /// applicable convenience stores. Must not consist of only zeroes and could be rejected in
         /// case of insufficient uniqueness. We recommend to use the customer's phone number.
         /// </summary>
-        [JsonProperty("confirmation_number")]
+        [JsonProperty("confirmation_number", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("confirmation_number")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string ConfirmationNumber
         {
             get => this.confirmationNumber;
@@ -41,8 +42,9 @@ namespace Stripe
         /// <c>expires_after_days</c> set to 2 on Monday JST, the instructions will expire on
         /// Wednesday 23:59:59 JST. Defaults to 3 days.
         /// </summary>
-        [JsonProperty("expires_after_days")]
+        [JsonProperty("expires_after_days", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("expires_after_days")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public long? ExpiresAfterDays
         {
             get => this.expiresAfterDays;
@@ -57,9 +59,10 @@ namespace Stripe
         /// The timestamp at which the Konbini payment instructions will expire. Only one of
         /// <c>expires_after_days</c> or <c>expires_at</c> may be set.
         /// </summary>
-        [JsonProperty("expires_at")]
+        [JsonProperty("expires_at", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("expires_at")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
         public DateTime? ExpiresAt
         {
@@ -75,8 +78,9 @@ namespace Stripe
         /// A product descriptor of up to 22 characters, which will appear to customers at the
         /// convenience store.
         /// </summary>
-        [JsonProperty("product_description")]
+        [JsonProperty("product_description", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("product_description")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string ProductDescription
         {
             get => this.productDescription;
