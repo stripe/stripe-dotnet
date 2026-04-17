@@ -36,7 +36,7 @@ namespace Stripe
         /// <c>crypto</c>, <c>custom</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>,
         /// <c>giropay</c>, <c>grabpay</c>, <c>id_bank_transfer</c>, <c>ideal</c>,
         /// <c>jp_credit_transfer</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>,
-        /// <c>kr_card</c>, <c>link</c>, <c>multibanco</c>, <c>naver_pay</c>,
+        /// <c>kr_card</c>, <c>link</c>, <c>momo</c>, <c>multibanco</c>, <c>naver_pay</c>,
         /// <c>nz_bank_account</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>,
         /// <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>,
         /// <c>sepa_credit_transfer</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>stripe_balance</c>,
