@@ -9,14 +9,6 @@ namespace Stripe.V2.MoneyManagement
     public class OutboundSetupIntentUpdatePayoutMethodDataOptions : INestedOptions
     {
         /// <summary>
-        /// Closed Enum. The type of payout method to be created/updated.
-        /// One of: <c>bank_account</c>, <c>card</c>, or <c>crypto_wallet</c>.
-        /// </summary>
-        [JsonProperty("type")]
-        [STJS.JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// The type specific details of the bank account payout method.
         /// </summary>
         [JsonProperty("bank_account")]
@@ -29,5 +21,13 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("card")]
         [STJS.JsonPropertyName("card")]
         public OutboundSetupIntentUpdatePayoutMethodDataCardOptions Card { get; set; }
+
+        /// <summary>
+        /// Closed Enum. The type of payout method to be created/updated.
+        /// One of: <c>bank_account</c>, <c>card</c>, or <c>crypto_wallet</c>.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }

@@ -34,8 +34,9 @@ namespace Stripe
         /// Key-value pairs to set as schedule phase metadata. Existing schedule phase metadata will
         /// be overwritten.
         /// </summary>
-        [JsonProperty("set")]
+        [JsonProperty("set", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("set")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Set
         {
             get => this.set;

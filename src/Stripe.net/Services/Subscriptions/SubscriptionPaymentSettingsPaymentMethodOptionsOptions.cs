@@ -96,8 +96,9 @@ namespace Stripe
         /// This sub-hash contains details about the Indonesia bank transfer payment method options
         /// to pass to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("id_bank_transfer")]
+        [JsonProperty("id_bank_transfer", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("id_bank_transfer")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SubscriptionPaymentSettingsPaymentMethodOptionsIdBankTransferOptions IdBankTransfer
         {
             get => this.idBankTransfer;
@@ -146,8 +147,9 @@ namespace Stripe
         /// This sub-hash contains details about the Pix payment method options to pass to the
         /// invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("pix")]
+        [JsonProperty("pix", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("pix")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SubscriptionPaymentSettingsPaymentMethodOptionsPixOptions Pix
         {
             get => this.pix;
@@ -179,8 +181,9 @@ namespace Stripe
         /// This sub-hash contains details about the UPI payment method options to pass to the
         /// invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("upi")]
+        [JsonProperty("upi", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("upi")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SubscriptionPaymentSettingsPaymentMethodOptionsUpiOptions Upi
         {
             get => this.upi;

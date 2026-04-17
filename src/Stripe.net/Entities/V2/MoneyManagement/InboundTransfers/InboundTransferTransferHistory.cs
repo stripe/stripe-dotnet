@@ -11,6 +11,41 @@ namespace Stripe.V2.MoneyManagement
     public class InboundTransferTransferHistory : StripeEntity<InboundTransferTransferHistory>, IHasId
     {
         /// <summary>
+        /// The history entry for a failed InboundTransfer.
+        /// </summary>
+        [JsonProperty("bank_debit_failed")]
+        [STJS.JsonPropertyName("bank_debit_failed")]
+        public InboundTransferTransferHistoryBankDebitFailed BankDebitFailed { get; set; }
+
+        /// <summary>
+        /// The history entry for a processing InboundTransfer.
+        /// </summary>
+        [JsonProperty("bank_debit_processing")]
+        [STJS.JsonPropertyName("bank_debit_processing")]
+        public Dictionary<string, object> BankDebitProcessing { get; set; }
+
+        /// <summary>
+        /// The history entry for a queued InboundTransfer.
+        /// </summary>
+        [JsonProperty("bank_debit_queued")]
+        [STJS.JsonPropertyName("bank_debit_queued")]
+        public Dictionary<string, object> BankDebitQueued { get; set; }
+
+        /// <summary>
+        /// The history entry for a returned InboundTransfer.
+        /// </summary>
+        [JsonProperty("bank_debit_returned")]
+        [STJS.JsonPropertyName("bank_debit_returned")]
+        public InboundTransferTransferHistoryBankDebitReturned BankDebitReturned { get; set; }
+
+        /// <summary>
+        /// The history entry for a succeeded InboundTransfer.
+        /// </summary>
+        [JsonProperty("bank_debit_succeeded")]
+        [STJS.JsonPropertyName("bank_debit_succeeded")]
+        public Dictionary<string, object> BankDebitSucceeded { get; set; }
+
+        /// <summary>
         /// Creation time of the HistoryEntry in RFC 3339 format and UTC.
         /// </summary>
         [JsonProperty("created")]
@@ -47,40 +82,5 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
-
-        /// <summary>
-        /// The history entry for a failed InboundTransfer.
-        /// </summary>
-        [JsonProperty("bank_debit_failed")]
-        [STJS.JsonPropertyName("bank_debit_failed")]
-        public InboundTransferTransferHistoryBankDebitFailed BankDebitFailed { get; set; }
-
-        /// <summary>
-        /// The history entry for a processing InboundTransfer.
-        /// </summary>
-        [JsonProperty("bank_debit_processing")]
-        [STJS.JsonPropertyName("bank_debit_processing")]
-        public Dictionary<string, object> BankDebitProcessing { get; set; }
-
-        /// <summary>
-        /// The history entry for a queued InboundTransfer.
-        /// </summary>
-        [JsonProperty("bank_debit_queued")]
-        [STJS.JsonPropertyName("bank_debit_queued")]
-        public Dictionary<string, object> BankDebitQueued { get; set; }
-
-        /// <summary>
-        /// The history entry for a returned InboundTransfer.
-        /// </summary>
-        [JsonProperty("bank_debit_returned")]
-        [STJS.JsonPropertyName("bank_debit_returned")]
-        public InboundTransferTransferHistoryBankDebitReturned BankDebitReturned { get; set; }
-
-        /// <summary>
-        /// The history entry for a succeeded InboundTransfer.
-        /// </summary>
-        [JsonProperty("bank_debit_succeeded")]
-        [STJS.JsonPropertyName("bank_debit_succeeded")]
-        public Dictionary<string, object> BankDebitSucceeded { get; set; }
     }
 }

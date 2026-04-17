@@ -25,8 +25,9 @@ namespace Stripe
         /// Billing details for the customer. If a customer is provided, this will be automatically
         /// populated with values from that customer if override values are not provided.
         /// </summary>
-        [JsonProperty("billing_details")]
+        [JsonProperty("billing_details", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("billing_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderBillingDetailsOptions BillingDetails
         {
             get => this.billingDetails;
@@ -63,8 +64,9 @@ namespace Stripe
         /// <summary>
         /// The coupons, promotion codes, and/or discounts to apply to the order.
         /// </summary>
-        [JsonProperty("discounts")]
+        [JsonProperty("discounts", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("discounts")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<OrderDiscountOptions> Discounts
         {
             get => this.discounts;
@@ -110,8 +112,9 @@ namespace Stripe
         /// <summary>
         /// Settings for the customer cost of shipping for this order.
         /// </summary>
-        [JsonProperty("shipping_cost")]
+        [JsonProperty("shipping_cost", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("shipping_cost")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderShippingCostOptions ShippingCost
         {
             get => this.shippingCost;
@@ -125,8 +128,9 @@ namespace Stripe
         /// <summary>
         /// Shipping details for the order.
         /// </summary>
-        [JsonProperty("shipping_details")]
+        [JsonProperty("shipping_details", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("shipping_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderShippingDetailsOptions ShippingDetails
         {
             get => this.shippingDetails;

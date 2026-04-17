@@ -279,7 +279,7 @@ namespace Stripe
         /// <summary>
         /// Configuration for any card payments attempted on this PaymentIntent.
         /// </summary>
-        [JsonProperty("card", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("card")]
         [STJS.JsonPropertyName("card")]
         public PaymentIntentPaymentMethodOptionsCardOptions Card { get; set; }
 
@@ -406,8 +406,9 @@ namespace Stripe
         /// If this is a <c>gopay</c> PaymentMethod, this sub-hash contains details about the Gopay
         /// payment method options.
         /// </summary>
-        [JsonProperty("gopay")]
+        [JsonProperty("gopay", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("gopay")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentMethodOptionsGopayOptions Gopay
         {
             get => this.gopay;
@@ -439,8 +440,9 @@ namespace Stripe
         /// If this is a <c>id_bank_transfer</c> PaymentMethod, this sub-hash contains details about
         /// the Indonesia Bank Transfer payment method options.
         /// </summary>
-        [JsonProperty("id_bank_transfer")]
+        [JsonProperty("id_bank_transfer", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("id_bank_transfer")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentMethodOptionsIdBankTransferOptions IdBankTransfer
         {
             get => this.idBankTransfer;
@@ -761,8 +763,9 @@ namespace Stripe
         /// If this is a <c>paypay</c> PaymentMethod, this sub-hash contains details about the
         /// PayPay payment method options.
         /// </summary>
-        [JsonProperty("paypay")]
+        [JsonProperty("paypay", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("paypay")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentMethodOptionsPaypayOptions Paypay
         {
             get => this.paypay;
@@ -828,8 +831,9 @@ namespace Stripe
         /// If this is a <c>qris</c> PaymentMethod, this sub-hash contains details about the QRIS
         /// payment method options.
         /// </summary>
-        [JsonProperty("qris")]
+        [JsonProperty("qris", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("qris")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentMethodOptionsQrisOptions Qris
         {
             get => this.qris;
@@ -844,8 +848,9 @@ namespace Stripe
         /// If this is a <c>rechnung</c> PaymentMethod, this sub-hash contains details about the
         /// Rechnung payment method options.
         /// </summary>
-        [JsonProperty("rechnung")]
+        [JsonProperty("rechnung", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("rechnung")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentMethodOptionsRechnungOptions Rechnung
         {
             get => this.rechnung;
@@ -928,8 +933,9 @@ namespace Stripe
         /// If this is a <c>shopeepay</c> PaymentMethod, this sub-hash contains details about the
         /// ShopeePay payment method options.
         /// </summary>
-        [JsonProperty("shopeepay")]
+        [JsonProperty("shopeepay", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("shopeepay")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentMethodOptionsShopeepayOptions Shopeepay
         {
             get => this.shopeepay;
@@ -961,8 +967,9 @@ namespace Stripe
         /// If this is a <c>stripe_balance</c> PaymentMethod, this sub-hash contains details about
         /// the Stripe Balance payment method options.
         /// </summary>
-        [JsonProperty("stripe_balance")]
+        [JsonProperty("stripe_balance", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("stripe_balance")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentMethodOptionsStripeBalanceOptions StripeBalance
         {
             get => this.stripeBalance;

@@ -76,8 +76,9 @@ namespace Stripe
         /// A link to the business's publicly available terms related to the Specified Commercial
         /// Transaction Act. Used by the Checkout product and for Japanese payment methods.
         /// </summary>
-        [JsonProperty("specified_commercial_transactions_act_url")]
+        [JsonProperty("specified_commercial_transactions_act_url", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("specified_commercial_transactions_act_url")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string SpecifiedCommercialTransactionsActUrl
         {
             get => this.specifiedCommercialTransactionsActUrl;

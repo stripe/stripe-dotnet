@@ -74,8 +74,9 @@ namespace Stripe
         /// <summary>
         /// Details for the <c>set_metadata</c> type: specify an array of key-value pairs.
         /// </summary>
-        [JsonProperty("set_metadata")]
+        [JsonProperty("set_metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("set_metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> SetMetadata
         {
             get => this.setMetadata;

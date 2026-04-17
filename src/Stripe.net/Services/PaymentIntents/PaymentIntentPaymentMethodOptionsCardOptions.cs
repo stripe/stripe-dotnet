@@ -250,8 +250,9 @@ namespace Stripe
         /// Statement details for this payment intent. You can use this to override the merchant
         /// details shown on your customers' statements.
         /// </summary>
-        [JsonProperty("statement_details")]
+        [JsonProperty("statement_details", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("statement_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentMethodOptionsCardStatementDetailsOptions StatementDetails
         {
             get => this.statementDetails;

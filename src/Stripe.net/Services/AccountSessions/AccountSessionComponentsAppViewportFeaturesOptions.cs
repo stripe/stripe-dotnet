@@ -18,8 +18,9 @@ namespace Stripe
         /// <summary>
         /// The list of apps allowed to be enabled in the embedded component.
         /// </summary>
-        [JsonProperty("allowed_apps")]
+        [JsonProperty("allowed_apps", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("allowed_apps")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> AllowedApps
         {
             get => this.allowedApps;

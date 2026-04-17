@@ -69,8 +69,9 @@ namespace Stripe
         /// If specified, subscriptions using this price will be updated to use the new referenced
         /// price.
         /// </summary>
-        [JsonProperty("migrate_to")]
+        [JsonProperty("migrate_to", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("migrate_to")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PriceMigrateToOptions MigrateTo
         {
             get => this.migrateTo;

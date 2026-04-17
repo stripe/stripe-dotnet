@@ -171,8 +171,9 @@ namespace Stripe
         /// href="https://stripe.com/tax/tax-codes">tax code</a> and an optional performance
         /// location.
         /// </summary>
-        [JsonProperty("tax_details")]
+        [JsonProperty("tax_details", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("tax_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public ProductTaxDetailsOptions TaxDetails
         {
             get => this.taxDetails;

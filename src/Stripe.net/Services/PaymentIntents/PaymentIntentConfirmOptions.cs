@@ -42,8 +42,9 @@ namespace Stripe
         /// href="https://docs.stripe.com/payments/connected-accounts">use case for connected
         /// accounts</a>.
         /// </summary>
-        [JsonProperty("application_fee_amount")]
+        [JsonProperty("application_fee_amount", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("application_fee_amount")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public long? ApplicationFeeAmount
         {
             get => this.applicationFeeAmount;

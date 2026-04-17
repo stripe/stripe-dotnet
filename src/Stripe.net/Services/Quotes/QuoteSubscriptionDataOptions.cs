@@ -24,8 +24,9 @@ namespace Stripe
         /// <summary>
         /// Describes the period to bill for upon accepting the quote.
         /// </summary>
-        [JsonProperty("bill_on_acceptance")]
+        [JsonProperty("bill_on_acceptance", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("bill_on_acceptance")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public QuoteSubscriptionDataBillOnAcceptanceOptions BillOnAcceptance
         {
             get => this.billOnAcceptance;
@@ -52,8 +53,9 @@ namespace Stripe
         /// When specified as <c>reset</c>, the subscription will always start a new billing period
         /// when the quote is accepted.
         /// </summary>
-        [JsonProperty("billing_cycle_anchor")]
+        [JsonProperty("billing_cycle_anchor", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("billing_cycle_anchor")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string BillingCycleAnchor
         {
             get => this.billingCycleAnchor;
@@ -146,8 +148,9 @@ namespace Stripe
         /// If specified, the invoicing for the given billing cycle iterations will be processed
         /// when the quote is accepted. Cannot be used with <c>effective_date</c>.
         /// </summary>
-        [JsonProperty("prebilling")]
+        [JsonProperty("prebilling", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("prebilling")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public QuoteSubscriptionDataPrebillingOptions Prebilling
         {
             get => this.prebilling;

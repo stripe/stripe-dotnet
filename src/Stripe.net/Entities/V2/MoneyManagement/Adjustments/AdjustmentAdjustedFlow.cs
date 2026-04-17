@@ -9,17 +9,6 @@ namespace Stripe.V2.MoneyManagement
     public class AdjustmentAdjustedFlow : StripeEntity<AdjustmentAdjustedFlow>
     {
         /// <summary>
-        /// Closed Enum. If applicable, the type of flow linked to this Adjustment. The field
-        /// matching this value will contain the ID of the flow.
-        /// One of: <c>adjustment</c>, <c>balance_exchange</c>, <c>inbound_payment</c>,
-        /// <c>inbound_transfer</c>, <c>outbound_payment</c>, <c>outbound_transfer</c>,
-        /// <c>received_credit</c>, or <c>received_debit</c>.
-        /// </summary>
-        [JsonProperty("type")]
-        [STJS.JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// If applicable, the ID of the Adjustment linked to this Adjustment.
         /// </summary>
         [JsonProperty("adjustment")]
@@ -60,5 +49,16 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("received_debit")]
         [STJS.JsonPropertyName("received_debit")]
         public string ReceivedDebit { get; set; }
+
+        /// <summary>
+        /// Closed Enum. If applicable, the type of flow linked to this Adjustment. The field
+        /// matching this value will contain the ID of the flow.
+        /// One of: <c>adjustment</c>, <c>balance_exchange</c>, <c>inbound_payment</c>,
+        /// <c>inbound_transfer</c>, <c>outbound_payment</c>, <c>outbound_transfer</c>,
+        /// <c>received_credit</c>, or <c>received_debit</c>.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }
