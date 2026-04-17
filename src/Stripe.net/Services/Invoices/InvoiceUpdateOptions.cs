@@ -46,8 +46,9 @@ namespace Stripe
         /// List of expected payments and corresponding due dates. Valid only for invoices where
         /// <c>collection_method=send_invoice</c>.
         /// </summary>
-        [JsonProperty("amounts_due")]
+        [JsonProperty("amounts_due", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("amounts_due")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<InvoiceAmountsDueOptions> AmountsDue
         {
             get => this.amountsDue;
@@ -136,8 +137,9 @@ namespace Stripe
         /// The ids of the margins to apply to the invoice. Can be overridden by line item
         /// <c>margins</c>.
         /// </summary>
-        [JsonProperty("default_margins")]
+        [JsonProperty("default_margins", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("default_margins")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> DefaultMargins
         {
             get => this.defaultMargins;

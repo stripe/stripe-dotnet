@@ -25,8 +25,9 @@ namespace Stripe
         /// <summary>
         /// Supplementary bus reservation details.
         /// </summary>
-        [JsonProperty("bus_reservation_details")]
+        [JsonProperty("bus_reservation_details", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("bus_reservation_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<PaymentIntentPaymentMethodOptionsKlarnaSupplementaryPurchaseDataBusReservationDetailOptions> BusReservationDetails
         {
             get => this.busReservationDetails;
@@ -40,8 +41,9 @@ namespace Stripe
         /// <summary>
         /// Supplementary event reservation details.
         /// </summary>
-        [JsonProperty("event_reservation_details")]
+        [JsonProperty("event_reservation_details", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("event_reservation_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<PaymentIntentPaymentMethodOptionsKlarnaSupplementaryPurchaseDataEventReservationDetailOptions> EventReservationDetails
         {
             get => this.eventReservationDetails;
@@ -55,8 +57,9 @@ namespace Stripe
         /// <summary>
         /// Supplementary ferry reservation details.
         /// </summary>
-        [JsonProperty("ferry_reservation_details")]
+        [JsonProperty("ferry_reservation_details", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("ferry_reservation_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<PaymentIntentPaymentMethodOptionsKlarnaSupplementaryPurchaseDataFerryReservationDetailOptions> FerryReservationDetails
         {
             get => this.ferryReservationDetails;
@@ -70,8 +73,9 @@ namespace Stripe
         /// <summary>
         /// Supplementary insurance details.
         /// </summary>
-        [JsonProperty("insurances")]
+        [JsonProperty("insurances", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("insurances")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<PaymentIntentPaymentMethodOptionsKlarnaSupplementaryPurchaseDataInsuranceOptions> Insurances
         {
             get => this.insurances;
@@ -85,8 +89,9 @@ namespace Stripe
         /// <summary>
         /// Supplementary marketplace seller details.
         /// </summary>
-        [JsonProperty("marketplace_sellers")]
+        [JsonProperty("marketplace_sellers", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("marketplace_sellers")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<PaymentIntentPaymentMethodOptionsKlarnaSupplementaryPurchaseDataMarketplaceSellerOptions> MarketplaceSellers
         {
             get => this.marketplaceSellers;
@@ -100,8 +105,9 @@ namespace Stripe
         /// <summary>
         /// Supplementary round trip reservation details.
         /// </summary>
-        [JsonProperty("round_trip_reservation_details")]
+        [JsonProperty("round_trip_reservation_details", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("round_trip_reservation_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<PaymentIntentPaymentMethodOptionsKlarnaSupplementaryPurchaseDataRoundTripReservationDetailOptions> RoundTripReservationDetails
         {
             get => this.roundTripReservationDetails;
@@ -115,8 +121,9 @@ namespace Stripe
         /// <summary>
         /// Supplementary train reservation details.
         /// </summary>
-        [JsonProperty("train_reservation_details")]
+        [JsonProperty("train_reservation_details", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("train_reservation_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<PaymentIntentPaymentMethodOptionsKlarnaSupplementaryPurchaseDataTrainReservationDetailOptions> TrainReservationDetails
         {
             get => this.trainReservationDetails;
@@ -130,8 +137,9 @@ namespace Stripe
         /// <summary>
         /// Voucher details, such as a gift card or discount code.
         /// </summary>
-        [JsonProperty("vouchers")]
+        [JsonProperty("vouchers", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("vouchers")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<PaymentIntentPaymentMethodOptionsKlarnaSupplementaryPurchaseDataVoucherOptions> Vouchers
         {
             get => this.vouchers;

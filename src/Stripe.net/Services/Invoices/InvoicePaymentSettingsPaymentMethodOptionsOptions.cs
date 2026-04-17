@@ -64,8 +64,9 @@ namespace Stripe
         /// If paying by <c>bizum</c>, this sub-hash contains details about the Bizum payment method
         /// options to pass to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("bizum")]
+        [JsonProperty("bizum", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("bizum")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoicePaymentSettingsPaymentMethodOptionsBizumOptions Bizum
         {
             get => this.bizum;
@@ -97,8 +98,9 @@ namespace Stripe
         /// If paying by <c>check_scan</c>, this sub-hash contains details about the Check Scan
         /// payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("check_scan")]
+        [JsonProperty("check_scan", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("check_scan")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoicePaymentSettingsPaymentMethodOptionsCheckScanOptions CheckScan
         {
             get => this.checkScan;
@@ -130,8 +132,9 @@ namespace Stripe
         /// If paying by <c>id_bank_transfer</c>, this sub-hash contains details about the Indonesia
         /// bank transfer payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("id_bank_transfer")]
+        [JsonProperty("id_bank_transfer", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("id_bank_transfer")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoicePaymentSettingsPaymentMethodOptionsIdBankTransferOptions IdBankTransfer
         {
             get => this.idBankTransfer;
@@ -180,8 +183,9 @@ namespace Stripe
         /// If paying by <c>pix</c>, this sub-hash contains details about the Pix payment method
         /// options to pass to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("pix")]
+        [JsonProperty("pix", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("pix")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoicePaymentSettingsPaymentMethodOptionsPixOptions Pix
         {
             get => this.pix;
@@ -213,8 +217,9 @@ namespace Stripe
         /// If paying by <c>upi</c>, this sub-hash contains details about the UPI payment method
         /// options to pass to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("upi")]
+        [JsonProperty("upi", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("upi")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoicePaymentSettingsPaymentMethodOptionsUpiOptions Upi
         {
             get => this.upi;

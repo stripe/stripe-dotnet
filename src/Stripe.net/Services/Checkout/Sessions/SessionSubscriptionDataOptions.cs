@@ -93,8 +93,9 @@ namespace Stripe.Checkout
         /// analogous to calling <a href="https://docs.stripe.com/api#create_invoice">Create an
         /// invoice</a> for the given subscription at the specified interval.
         /// </summary>
-        [JsonProperty("pending_invoice_item_interval")]
+        [JsonProperty("pending_invoice_item_interval", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("pending_invoice_item_interval")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SessionSubscriptionDataPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval
         {
             get => this.pendingInvoiceItemInterval;
@@ -137,8 +138,9 @@ namespace Stripe.Checkout
         /// Integer representing the number of trial period days before the customer is charged for
         /// the first time. Has to be at least 1.
         /// </summary>
-        [JsonProperty("trial_period_days")]
+        [JsonProperty("trial_period_days", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("trial_period_days")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public long? TrialPeriodDays
         {
             get => this.trialPeriodDays;

@@ -25,8 +25,9 @@ namespace Stripe
         /// <summary>
         /// Inline identity details for the beneficiary of this account funding transaction.
         /// </summary>
-        [JsonProperty("beneficiary_details")]
+        [JsonProperty("beneficiary_details", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("beneficiary_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentDetailsMoneyServicesAccountFundingBeneficiaryDetailsOptions BeneficiaryDetails
         {
             get => this.beneficiaryDetails;
@@ -47,8 +48,9 @@ namespace Stripe
         /// <summary>
         /// Inline identity details for the sender of this account funding transaction.
         /// </summary>
-        [JsonProperty("sender_details")]
+        [JsonProperty("sender_details", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("sender_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentDetailsMoneyServicesAccountFundingSenderDetailsOptions SenderDetails
         {
             get => this.senderDetails;

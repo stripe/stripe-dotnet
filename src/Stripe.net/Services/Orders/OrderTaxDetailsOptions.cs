@@ -20,8 +20,9 @@ namespace Stripe
         /// <c>reverse</c>.
         /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
         /// </summary>
-        [JsonProperty("tax_exempt")]
+        [JsonProperty("tax_exempt", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("tax_exempt")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string TaxExempt
         {
             get => this.taxExempt;

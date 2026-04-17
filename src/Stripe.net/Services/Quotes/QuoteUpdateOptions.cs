@@ -259,8 +259,9 @@ namespace Stripe
         /// List representing overrides for <c>subscription_data</c> configurations for specific
         /// subscription schedules.
         /// </summary>
-        [JsonProperty("subscription_data_overrides")]
+        [JsonProperty("subscription_data_overrides", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("subscription_data_overrides")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<QuoteSubscriptionDataOverrideOptions> SubscriptionDataOverrides
         {
             get => this.subscriptionDataOverrides;

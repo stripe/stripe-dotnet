@@ -17,8 +17,9 @@ namespace Stripe
         /// <summary>
         /// Details for a staged purchase.
         /// </summary>
-        [JsonProperty("staged_purchase")]
+        [JsonProperty("staged_purchase", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("staged_purchase")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentMethodOptionsCardPresentPaymentDetailsMoneyServicesAccountFundingWalletStagedPurchaseOptions StagedPurchase
         {
             get => this.stagedPurchase;

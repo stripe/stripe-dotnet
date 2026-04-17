@@ -19,8 +19,9 @@ namespace Stripe
         /// consist of only uppercase letters, numbers, spaces, or the following special characters:
         /// '/', '_', '-', '&amp;', '.'. Cannot begin with 'STRIPE'.
         /// </summary>
-        [JsonProperty("reference_prefix")]
+        [JsonProperty("reference_prefix", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("reference_prefix")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string ReferencePrefix
         {
             get => this.referencePrefix;

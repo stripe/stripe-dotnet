@@ -23,6 +23,14 @@ namespace Stripe.DelegatedCheckout
         public string PaymentMethod { get; set; }
 
         /// <summary>
+        /// The URL to redirect your customer back to after they authenticate or complete a payment
+        /// action. Required for redirect-based payment methods such as Affirm or Klarna.
+        /// </summary>
+        [JsonProperty("return_url")]
+        [STJS.JsonPropertyName("return_url")]
+        public string ReturnUrl { get; set; }
+
+        /// <summary>
         /// Risk details/signals associated with the requested session.
         /// </summary>
         [JsonProperty("risk_details")]

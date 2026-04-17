@@ -29,8 +29,9 @@ namespace Stripe.DelegatedCheckout
         /// <summary>
         /// The metadata for this requested session.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;
@@ -58,8 +59,9 @@ namespace Stripe.DelegatedCheckout
         /// <summary>
         /// The shared metadata for this requested session.
         /// </summary>
-        [JsonProperty("shared_metadata")]
+        [JsonProperty("shared_metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("shared_metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> SharedMetadata
         {
             get => this.sharedMetadata;

@@ -45,8 +45,9 @@ namespace Stripe
         /// <summary>
         /// Sets the billing schedules for the subscription schedule.
         /// </summary>
-        [JsonProperty("billing_schedules")]
+        [JsonProperty("billing_schedules", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("billing_schedules")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<InvoiceScheduleDetailsBillingScheduleOptions> BillingSchedules
         {
             get => this.billingSchedules;
@@ -88,8 +89,9 @@ namespace Stripe
         /// <summary>
         /// Provide any time periods to bill in advance.
         /// </summary>
-        [JsonProperty("prebilling")]
+        [JsonProperty("prebilling", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("prebilling")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<InvoiceScheduleDetailsPrebillingOptions> Prebilling
         {
             get => this.prebilling;

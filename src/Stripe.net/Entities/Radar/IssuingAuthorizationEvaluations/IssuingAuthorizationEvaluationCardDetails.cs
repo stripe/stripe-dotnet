@@ -32,7 +32,7 @@ namespace Stripe.Radar
         public string CardType { get; set; }
 
         /// <summary>
-        /// The timestamp when the card was created.
+        /// The timestamp when the card was created, as a Unix timestamp in seconds.
         /// </summary>
         [JsonProperty("created_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

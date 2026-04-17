@@ -17,8 +17,9 @@ namespace Stripe.Treasury
         /// FinancialAccounts for your connected accounts. Unlike the <c>nickname</c> field,
         /// <c>display_name</c> is not internal metadata and will be exposed to connected accounts.
         /// </summary>
-        [JsonProperty("display_name")]
+        [JsonProperty("display_name", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("display_name")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string DisplayName
         {
             get => this.displayName;
