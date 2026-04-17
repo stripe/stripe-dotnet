@@ -20,8 +20,9 @@ namespace Stripe
         /// href="https://docs.stripe.com/connect/platform-pricing-tools">See the Platform pricing
         /// tool documentation</a> for details.
         /// </summary>
-        [JsonProperty("payments_pricing")]
+        [JsonProperty("payments_pricing", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("payments_pricing")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string PaymentsPricing
         {
             get => this.paymentsPricing;

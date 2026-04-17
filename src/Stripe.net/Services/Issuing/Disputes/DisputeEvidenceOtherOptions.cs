@@ -21,8 +21,9 @@ namespace Stripe.Issuing
         /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>)
         /// Additional documentation supporting the dispute.
         /// </summary>
-        [JsonProperty("additional_documentation")]
+        [JsonProperty("additional_documentation", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("additional_documentation")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string AdditionalDocumentation
         {
             get => this.additionalDocumentation;
@@ -36,8 +37,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
-        [JsonProperty("explanation")]
+        [JsonProperty("explanation", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("explanation")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Explanation
         {
             get => this.explanation;
@@ -51,8 +53,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Description of the merchandise or service that was purchased.
         /// </summary>
-        [JsonProperty("product_description")]
+        [JsonProperty("product_description", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("product_description")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string ProductDescription
         {
             get => this.productDescription;
@@ -67,8 +70,9 @@ namespace Stripe.Issuing
         /// Whether the product was a merchandise or service.
         /// One of: <c>merchandise</c>, or <c>service</c>.
         /// </summary>
-        [JsonProperty("product_type")]
+        [JsonProperty("product_type", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("product_type")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string ProductType
         {
             get => this.productType;

@@ -33,8 +33,9 @@ namespace Stripe
         /// payment and transferred to the application owner's Stripe account. There cannot be any
         /// line items with recurring prices when using this field.
         /// </summary>
-        [JsonProperty("application_fee_amount")]
+        [JsonProperty("application_fee_amount", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("application_fee_amount")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public long? ApplicationFeeAmount
         {
             get => this.applicationFeeAmount;
@@ -51,8 +52,9 @@ namespace Stripe
         /// the application owner's Stripe account. There must be at least 1 line item with a
         /// recurring price to use this field.
         /// </summary>
-        [JsonProperty("application_fee_percent")]
+        [JsonProperty("application_fee_percent", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("application_fee_percent")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public decimal? ApplicationFeePercent
         {
             get => this.applicationFeePercent;
@@ -103,8 +105,9 @@ namespace Stripe
         /// <summary>
         /// The tax rates that will apply to any line item that does not have <c>tax_rates</c> set.
         /// </summary>
-        [JsonProperty("default_tax_rates")]
+        [JsonProperty("default_tax_rates", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("default_tax_rates")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> DefaultTaxRates
         {
             get => this.defaultTaxRates;
@@ -121,8 +124,9 @@ namespace Stripe
         /// href="https://dashboard.stripe.com/settings/billing/quote">quote template settings</a>
         /// will be used.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("description")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Description
         {
             get => this.description;
@@ -136,8 +140,9 @@ namespace Stripe
         /// <summary>
         /// The discounts applied to the quote.
         /// </summary>
-        [JsonProperty("discounts")]
+        [JsonProperty("discounts", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("discounts")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<QuoteDiscountOptions> Discounts
         {
             get => this.discounts;
@@ -167,8 +172,9 @@ namespace Stripe
         /// href="https://dashboard.stripe.com/settings/billing/quote">quote template settings</a>
         /// will be used.
         /// </summary>
-        [JsonProperty("footer")]
+        [JsonProperty("footer", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("footer")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Footer
         {
             get => this.footer;
@@ -194,8 +200,9 @@ namespace Stripe
         /// href="https://dashboard.stripe.com/settings/billing/quote">quote template settings</a>
         /// will be used.
         /// </summary>
-        [JsonProperty("header")]
+        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("header")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Header
         {
             get => this.header;
@@ -244,8 +251,9 @@ namespace Stripe
         /// <summary>
         /// The account on behalf of which to charge.
         /// </summary>
-        [JsonProperty("on_behalf_of")]
+        [JsonProperty("on_behalf_of", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("on_behalf_of")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string OnBehalfOf
         {
             get => this.onBehalfOf;
@@ -285,8 +293,9 @@ namespace Stripe
         /// <summary>
         /// The data with which to automatically create a Transfer for each of the invoices.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonProperty("transfer_data", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("transfer_data")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public QuoteTransferDataOptions TransferData
         {
             get => this.transferData;

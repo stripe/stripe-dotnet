@@ -19,8 +19,9 @@ namespace Stripe
         /// The list of default Account Tax IDs to automatically include on invoices. Account Tax
         /// IDs get added when an invoice is finalized.
         /// </summary>
-        [JsonProperty("default_account_tax_ids")]
+        [JsonProperty("default_account_tax_ids", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("default_account_tax_ids")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> DefaultAccountTaxIds
         {
             get => this.defaultAccountTaxIds;

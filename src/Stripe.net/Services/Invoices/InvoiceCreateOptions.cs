@@ -20,8 +20,9 @@ namespace Stripe
         /// The account tax IDs associated with the invoice. Only editable when the invoice is a
         /// draft.
         /// </summary>
-        [JsonProperty("account_tax_ids")]
+        [JsonProperty("account_tax_ids", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("account_tax_ids")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> AccountTaxIds
         {
             get => this.accountTaxIds;
@@ -108,8 +109,9 @@ namespace Stripe
         /// <summary>
         /// A list of up to 4 custom fields to be displayed on the invoice.
         /// </summary>
-        [JsonProperty("custom_fields")]
+        [JsonProperty("custom_fields", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("custom_fields")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<InvoiceCustomFieldOptions> CustomFields
         {
             get => this.customFields;
@@ -188,8 +190,9 @@ namespace Stripe
         /// specified, inherits the discount from the invoice's customer. Pass an empty string to
         /// avoid inheriting any discounts.
         /// </summary>
-        [JsonProperty("discounts")]
+        [JsonProperty("discounts", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("discounts")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<InvoiceDiscountOptions> Discounts
         {
             get => this.discounts;
@@ -251,8 +254,9 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;

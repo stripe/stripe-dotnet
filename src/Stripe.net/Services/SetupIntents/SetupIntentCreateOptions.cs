@@ -119,8 +119,9 @@ namespace Stripe
         /// with <a
         /// href="https://docs.stripe.com/api/setup_intents/create#create_setup_intent-confirm"><c>confirm=true</c></a>.
         /// </summary>
-        [JsonProperty("mandate_data")]
+        [JsonProperty("mandate_data", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("mandate_data")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SetupIntentMandateDataOptions MandateData
         {
             get => this.mandateData;

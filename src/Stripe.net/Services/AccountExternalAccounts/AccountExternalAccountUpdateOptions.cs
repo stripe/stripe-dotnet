@@ -24,8 +24,9 @@ namespace Stripe
         /// <c>company</c>.
         /// One of: <c>company</c>, or <c>individual</c>.
         /// </summary>
-        [JsonProperty("account_holder_type")]
+        [JsonProperty("account_holder_type", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("account_holder_type")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string AccountHolderType
         {
             get => this.accountHolderType;
@@ -121,8 +122,9 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;

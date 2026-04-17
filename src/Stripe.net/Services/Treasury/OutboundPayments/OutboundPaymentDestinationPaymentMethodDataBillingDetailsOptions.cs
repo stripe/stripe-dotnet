@@ -20,8 +20,9 @@ namespace Stripe.Treasury
         /// <summary>
         /// Billing address.
         /// </summary>
-        [JsonProperty("address")]
+        [JsonProperty("address", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("address")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public AddressOptions Address
         {
             get => this.address;
@@ -35,8 +36,9 @@ namespace Stripe.Treasury
         /// <summary>
         /// Email address.
         /// </summary>
-        [JsonProperty("email")]
+        [JsonProperty("email", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("email")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Email
         {
             get => this.email;
@@ -50,8 +52,9 @@ namespace Stripe.Treasury
         /// <summary>
         /// Full name.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("name")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Name
         {
             get => this.name;
@@ -65,8 +68,9 @@ namespace Stripe.Treasury
         /// <summary>
         /// Billing phone number (including extension).
         /// </summary>
-        [JsonProperty("phone")]
+        [JsonProperty("phone", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("phone")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Phone
         {
             get => this.phone;

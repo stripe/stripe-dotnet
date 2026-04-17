@@ -23,8 +23,9 @@ namespace Stripe
         /// amounts.
         /// One of: <c>exclude_tax</c>, or <c>include_inclusive_tax</c>.
         /// </summary>
-        [JsonProperty("amount_tax_display")]
+        [JsonProperty("amount_tax_display", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("amount_tax_display")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string AmountTaxDisplay
         {
             get => this.amountTaxDisplay;
@@ -52,8 +53,9 @@ namespace Stripe
         /// <summary>
         /// The specific version of invoice rendering template to use for this invoice.
         /// </summary>
-        [JsonProperty("template_version")]
+        [JsonProperty("template_version", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("template_version")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public long? TemplateVersion
         {
             get => this.templateVersion;
