@@ -1,5 +1,8 @@
 # Changelog
 
+## 51.1.0-beta.2 - 2026-04-17
+Please review the [changelog for 51.0.1](https://github.com/stripe/stripe-dotnet/blob/master/CHANGELOG.md#5101---2026-04-17) for more information about changes in this release.
+
 ## 51.1.0-beta.1 - 2026-03-25
 
 This release changes the pinned API version to `2026-03-25.preview`. It is built on top of SDK version 51.0.0 which contains breaking changes. Please review the [changelog for 51.0.0](https://github.com/stripe/stripe-dotnet/blob/master/CHANGELOG.md#5100---2026-03-25) if upgrading from older SDK versions.
