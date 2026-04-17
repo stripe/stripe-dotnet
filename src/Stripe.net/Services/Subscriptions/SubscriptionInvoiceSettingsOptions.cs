@@ -19,8 +19,9 @@ namespace Stripe
         /// The account tax IDs associated with the subscription. Will be set on invoices generated
         /// by the subscription.
         /// </summary>
-        [JsonProperty("account_tax_ids")]
+        [JsonProperty("account_tax_ids", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("account_tax_ids")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> AccountTaxIds
         {
             get => this.accountTaxIds;

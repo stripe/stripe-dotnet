@@ -26,8 +26,9 @@ namespace Stripe
         /// <summary>
         /// Describes the period to bill for upon accepting the quote.
         /// </summary>
-        [JsonProperty("bill_on_acceptance")]
+        [JsonProperty("bill_on_acceptance", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("bill_on_acceptance")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public QuoteSubscriptionDataOverrideBillOnAcceptanceOptions BillOnAcceptance
         {
             get => this.billOnAcceptance;
@@ -63,8 +64,9 @@ namespace Stripe
         /// to optionally store an explanation of the subscription for rendering in Stripe surfaces
         /// and certain local payment methods UIs.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("description")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Description
         {
             get => this.description;

@@ -24,8 +24,9 @@ namespace Stripe
         /// <summary>
         /// Describes the period to bill for upon accepting the quote.
         /// </summary>
-        [JsonProperty("bill_on_acceptance")]
+        [JsonProperty("bill_on_acceptance", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("bill_on_acceptance")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public QuoteSubscriptionDataBillOnAcceptanceOptions BillOnAcceptance
         {
             get => this.billOnAcceptance;
@@ -52,8 +53,9 @@ namespace Stripe
         /// When specified as <c>reset</c>, the subscription will always start a new billing period
         /// when the quote is accepted.
         /// </summary>
-        [JsonProperty("billing_cycle_anchor")]
+        [JsonProperty("billing_cycle_anchor", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("billing_cycle_anchor")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string BillingCycleAnchor
         {
             get => this.billingCycleAnchor;
@@ -76,8 +78,9 @@ namespace Stripe
         /// to optionally store an explanation of the subscription for rendering in Stripe surfaces
         /// and certain local payment methods UIs.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("description")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Description
         {
             get => this.description;
@@ -96,9 +99,10 @@ namespace Stripe
         /// current period. The <c>effective_date</c> is ignored if it is in the past when the quote
         /// is accepted.
         /// </summary>
-        [JsonProperty("effective_date")]
+        [JsonProperty("effective_date", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(AnyOfConverter))]
         [STJS.JsonPropertyName("effective_date")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
         public AnyOf<DateTime?, QuoteSubscriptionDataEffectiveDate> EffectiveDate
         {
@@ -144,8 +148,9 @@ namespace Stripe
         /// If specified, the invoicing for the given billing cycle iterations will be processed
         /// when the quote is accepted. Cannot be used with <c>effective_date</c>.
         /// </summary>
-        [JsonProperty("prebilling")]
+        [JsonProperty("prebilling", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("prebilling")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public QuoteSubscriptionDataPrebillingOptions Prebilling
         {
             get => this.prebilling;
@@ -181,8 +186,9 @@ namespace Stripe
         /// Integer representing the number of trial period days before the customer is charged for
         /// the first time.
         /// </summary>
-        [JsonProperty("trial_period_days")]
+        [JsonProperty("trial_period_days", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("trial_period_days")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public long? TrialPeriodDays
         {
             get => this.trialPeriodDays;

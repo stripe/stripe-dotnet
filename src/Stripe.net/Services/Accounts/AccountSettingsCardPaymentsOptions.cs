@@ -40,8 +40,9 @@ namespace Stripe
         /// <c>statement_descriptor_prefix_kana</c> is useful for maximizing descriptor space for
         /// the dynamic portion.
         /// </summary>
-        [JsonProperty("statement_descriptor_prefix_kana")]
+        [JsonProperty("statement_descriptor_prefix_kana", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("statement_descriptor_prefix_kana")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string StatementDescriptorPrefixKana
         {
             get => this.statementDescriptorPrefixKana;
@@ -59,8 +60,9 @@ namespace Stripe
         /// <c>statement_descriptor_prefix_kanji</c> is useful for maximizing descriptor space for
         /// the dynamic portion.
         /// </summary>
-        [JsonProperty("statement_descriptor_prefix_kanji")]
+        [JsonProperty("statement_descriptor_prefix_kanji", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("statement_descriptor_prefix_kanji")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string StatementDescriptorPrefixKanji
         {
             get => this.statementDescriptorPrefixKanji;

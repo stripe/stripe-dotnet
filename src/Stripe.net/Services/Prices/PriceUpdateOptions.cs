@@ -25,8 +25,9 @@ namespace Stripe
         /// href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> and a <a
         /// href="https://stripe.com/docs/currencies">supported currency</a>.
         /// </summary>
-        [JsonProperty("currency_options")]
+        [JsonProperty("currency_options", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("currency_options")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, PriceCurrencyOptionsOptions> CurrencyOptions
         {
             get => this.currencyOptions;
@@ -51,8 +52,9 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;
@@ -67,8 +69,9 @@ namespace Stripe
         /// If specified, subscriptions using this price will be updated to use the new referenced
         /// price.
         /// </summary>
-        [JsonProperty("migrate_to")]
+        [JsonProperty("migrate_to", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("migrate_to")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PriceMigrateToOptions MigrateTo
         {
             get => this.migrateTo;

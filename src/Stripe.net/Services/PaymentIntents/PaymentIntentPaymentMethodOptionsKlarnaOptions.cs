@@ -27,8 +27,9 @@ namespace Stripe
         /// If <c>capture_method</c> is already set on the PaymentIntent, providing an empty value
         /// for this parameter unsets the stored value for this payment method type.
         /// </summary>
-        [JsonProperty("capture_method")]
+        [JsonProperty("capture_method", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("capture_method")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string CaptureMethod
         {
             get => this.captureMethod;
@@ -93,8 +94,9 @@ namespace Stripe
         /// <summary>
         /// Subscription details if setting up or charging a subscription.
         /// </summary>
-        [JsonProperty("subscriptions")]
+        [JsonProperty("subscriptions", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("subscriptions")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<PaymentIntentPaymentMethodOptionsKlarnaSubscriptionOptions> Subscriptions
         {
             get => this.subscriptions;
@@ -108,8 +110,9 @@ namespace Stripe
         /// <summary>
         /// Supplementary Purchase Data for the corresponding Klarna payment.
         /// </summary>
-        [JsonProperty("supplementary_purchase_data")]
+        [JsonProperty("supplementary_purchase_data", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("supplementary_purchase_data")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentMethodOptionsKlarnaSupplementaryPurchaseDataOptions SupplementaryPurchaseData
         {
             get => this.supplementaryPurchaseData;

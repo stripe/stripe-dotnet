@@ -28,8 +28,9 @@ namespace Stripe
         /// If paying by <c>acss_debit</c>, this sub-hash contains details about the Canadian
         /// pre-authorized debit payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("acss_debit")]
+        [JsonProperty("acss_debit", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("acss_debit")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoicePaymentSettingsPaymentMethodOptionsAcssDebitOptions AcssDebit
         {
             get => this.acssDebit;
@@ -44,8 +45,9 @@ namespace Stripe
         /// If paying by <c>bancontact</c>, this sub-hash contains details about the Bancontact
         /// payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("bancontact")]
+        [JsonProperty("bancontact", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("bancontact")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoicePaymentSettingsPaymentMethodOptionsBancontactOptions Bancontact
         {
             get => this.bancontact;
@@ -60,8 +62,9 @@ namespace Stripe
         /// If paying by <c>card</c>, this sub-hash contains details about the Card payment method
         /// options to pass to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("card")]
+        [JsonProperty("card", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("card")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoicePaymentSettingsPaymentMethodOptionsCardOptions Card
         {
             get => this.card;
@@ -76,8 +79,9 @@ namespace Stripe
         /// If paying by <c>customer_balance</c>, this sub-hash contains details about the Bank
         /// transfer payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("customer_balance")]
+        [JsonProperty("customer_balance", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("customer_balance")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoicePaymentSettingsPaymentMethodOptionsCustomerBalanceOptions CustomerBalance
         {
             get => this.customerBalance;
@@ -92,8 +96,9 @@ namespace Stripe
         /// If paying by <c>id_bank_transfer</c>, this sub-hash contains details about the Indonesia
         /// bank transfer payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("id_bank_transfer")]
+        [JsonProperty("id_bank_transfer", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("id_bank_transfer")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoicePaymentSettingsPaymentMethodOptionsIdBankTransferOptions IdBankTransfer
         {
             get => this.idBankTransfer;
@@ -108,8 +113,9 @@ namespace Stripe
         /// If paying by <c>konbini</c>, this sub-hash contains details about the Konbini payment
         /// method options to pass to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("konbini")]
+        [JsonProperty("konbini", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("konbini")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoicePaymentSettingsPaymentMethodOptionsKonbiniOptions Konbini
         {
             get => this.konbini;
@@ -124,8 +130,9 @@ namespace Stripe
         /// If paying by <c>payto</c>, this sub-hash contains details about the PayTo payment method
         /// options to pass to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("payto")]
+        [JsonProperty("payto", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("payto")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoicePaymentSettingsPaymentMethodOptionsPaytoOptions Payto
         {
             get => this.payto;
@@ -140,8 +147,9 @@ namespace Stripe
         /// If paying by <c>pix</c>, this sub-hash contains details about the Pix payment method
         /// options to pass to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("pix")]
+        [JsonProperty("pix", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("pix")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoicePaymentSettingsPaymentMethodOptionsPixOptions Pix
         {
             get => this.pix;
@@ -156,8 +164,9 @@ namespace Stripe
         /// If paying by <c>sepa_debit</c>, this sub-hash contains details about the SEPA Direct
         /// Debit payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("sepa_debit")]
+        [JsonProperty("sepa_debit", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("sepa_debit")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoicePaymentSettingsPaymentMethodOptionsSepaDebitOptions SepaDebit
         {
             get => this.sepaDebit;
@@ -172,8 +181,9 @@ namespace Stripe
         /// If paying by <c>upi</c>, this sub-hash contains details about the UPI payment method
         /// options to pass to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("upi")]
+        [JsonProperty("upi", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("upi")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoicePaymentSettingsPaymentMethodOptionsUpiOptions Upi
         {
             get => this.upi;
@@ -188,8 +198,9 @@ namespace Stripe
         /// If paying by <c>us_bank_account</c>, this sub-hash contains details about the ACH direct
         /// debit payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
-        [JsonProperty("us_bank_account")]
+        [JsonProperty("us_bank_account", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("us_bank_account")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountOptions UsBankAccount
         {
             get => this.usBankAccount;

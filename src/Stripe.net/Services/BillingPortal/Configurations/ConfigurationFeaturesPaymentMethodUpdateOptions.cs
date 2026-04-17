@@ -28,8 +28,9 @@ namespace Stripe.BillingPortal
         /// configuration. If not set or set to an empty string, the default payment method
         /// configuration is used.
         /// </summary>
-        [JsonProperty("payment_method_configuration")]
+        [JsonProperty("payment_method_configuration", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("payment_method_configuration")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string PaymentMethodConfiguration
         {
             get => this.paymentMethodConfiguration;

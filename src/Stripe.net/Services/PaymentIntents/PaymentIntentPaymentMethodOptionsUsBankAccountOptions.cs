@@ -61,8 +61,9 @@ namespace Stripe
         /// <c>off_session</c>.
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonProperty("setup_future_usage", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("setup_future_usage")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string SetupFutureUsage
         {
             get => this.setupFutureUsage;
@@ -86,8 +87,9 @@ namespace Stripe
         /// The purpose of the transaction.
         /// One of: <c>goods</c>, <c>other</c>, <c>services</c>, or <c>unspecified</c>.
         /// </summary>
-        [JsonProperty("transaction_purpose")]
+        [JsonProperty("transaction_purpose", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("transaction_purpose")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string TransactionPurpose
         {
             get => this.transactionPurpose;

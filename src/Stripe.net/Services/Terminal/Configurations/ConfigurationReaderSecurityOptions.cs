@@ -17,8 +17,9 @@ namespace Stripe.Terminal
         /// <summary>
         /// Passcode used to access a reader's admin menu.
         /// </summary>
-        [JsonProperty("admin_menu_passcode")]
+        [JsonProperty("admin_menu_passcode", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("admin_menu_passcode")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string AdminMenuPasscode
         {
             get => this.adminMenuPasscode;

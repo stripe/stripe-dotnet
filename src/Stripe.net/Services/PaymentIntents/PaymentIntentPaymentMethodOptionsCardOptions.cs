@@ -28,8 +28,9 @@ namespace Stripe
         /// If <c>capture_method</c> is already set on the PaymentIntent, providing an empty value
         /// for this parameter unsets the stored value for this payment method type.
         /// </summary>
-        [JsonProperty("capture_method")]
+        [JsonProperty("capture_method", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("capture_method")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string CaptureMethod
         {
             get => this.captureMethod;
@@ -192,8 +193,9 @@ namespace Stripe
         /// <c>off_session</c>.
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonProperty("setup_future_usage", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("setup_future_usage")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string SetupFutureUsage
         {
             get => this.setupFutureUsage;
@@ -211,8 +213,9 @@ namespace Stripe
         /// 22 characters. On card statements, the <em>concatenation</em> of both prefix and suffix
         /// (including separators) will appear truncated to 22 characters.
         /// </summary>
-        [JsonProperty("statement_descriptor_suffix_kana")]
+        [JsonProperty("statement_descriptor_suffix_kana", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("statement_descriptor_suffix_kana")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string StatementDescriptorSuffixKana
         {
             get => this.statementDescriptorSuffixKana;
@@ -230,8 +233,9 @@ namespace Stripe
         /// 17 characters. On card statements, the <em>concatenation</em> of both prefix and suffix
         /// (including separators) will appear truncated to 17 characters.
         /// </summary>
-        [JsonProperty("statement_descriptor_suffix_kanji")]
+        [JsonProperty("statement_descriptor_suffix_kanji", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("statement_descriptor_suffix_kanji")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string StatementDescriptorSuffixKanji
         {
             get => this.statementDescriptorSuffixKanji;
@@ -246,8 +250,9 @@ namespace Stripe
         /// Statement details for this payment intent. You can use this to override the merchant
         /// details shown on your customers' statements.
         /// </summary>
-        [JsonProperty("statement_details")]
+        [JsonProperty("statement_details", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("statement_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentMethodOptionsCardStatementDetailsOptions StatementDetails
         {
             get => this.statementDetails;

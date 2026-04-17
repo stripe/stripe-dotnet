@@ -9,17 +9,17 @@ namespace Stripe.V2.Core
     public class EventReason : StripeEntity<EventReason>
     {
         /// <summary>
-        /// Event reason type.
-        /// </summary>
-        [JsonProperty("type")]
-        [STJS.JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// Information on the API request that instigated the event.
         /// </summary>
         [JsonProperty("request")]
         [STJS.JsonPropertyName("request")]
         public EventReasonRequest Request { get; set; }
+
+        /// <summary>
+        /// Event reason type.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }

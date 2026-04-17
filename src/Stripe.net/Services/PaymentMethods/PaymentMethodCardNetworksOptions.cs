@@ -20,8 +20,9 @@ namespace Stripe
         /// does not apply to the card will be stored as <c>invalid_preference</c> on the card.
         /// One of: <c>cartes_bancaires</c>, <c>mastercard</c>, or <c>visa</c>.
         /// </summary>
-        [JsonProperty("preferred")]
+        [JsonProperty("preferred", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("preferred")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Preferred
         {
             get => this.preferred;

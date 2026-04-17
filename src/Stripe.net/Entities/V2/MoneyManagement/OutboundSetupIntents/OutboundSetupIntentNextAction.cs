@@ -9,17 +9,17 @@ namespace Stripe.V2.MoneyManagement
     public class OutboundSetupIntentNextAction : StripeEntity<OutboundSetupIntentNextAction>
     {
         /// <summary>
-        /// The type of next action.
-        /// </summary>
-        [JsonProperty("type")]
-        [STJS.JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        /// <summary>
         /// Confirmation of Payee details.
         /// </summary>
         [JsonProperty("confirmation_of_payee")]
         [STJS.JsonPropertyName("confirmation_of_payee")]
         public OutboundSetupIntentNextActionConfirmationOfPayee ConfirmationOfPayee { get; set; }
+
+        /// <summary>
+        /// The type of next action.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }

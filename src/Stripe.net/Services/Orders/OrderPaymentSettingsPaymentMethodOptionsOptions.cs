@@ -32,8 +32,9 @@ namespace Stripe
         /// If paying by <c>acss_debit</c>, this sub-hash contains details about the ACSS Debit
         /// payment method options to pass to the order's PaymentIntent.
         /// </summary>
-        [JsonProperty("acss_debit")]
+        [JsonProperty("acss_debit", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("acss_debit")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderPaymentSettingsPaymentMethodOptionsAcssDebitOptions AcssDebit
         {
             get => this.acssDebit;
@@ -48,8 +49,9 @@ namespace Stripe
         /// If paying by <c>afterpay_clearpay</c>, this sub-hash contains details about the
         /// AfterpayClearpay payment method options to pass to the order's PaymentIntent.
         /// </summary>
-        [JsonProperty("afterpay_clearpay")]
+        [JsonProperty("afterpay_clearpay", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("afterpay_clearpay")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderPaymentSettingsPaymentMethodOptionsAfterpayClearpayOptions AfterpayClearpay
         {
             get => this.afterpayClearpay;
@@ -64,8 +66,9 @@ namespace Stripe
         /// If paying by <c>alipay</c>, this sub-hash contains details about the Alipay payment
         /// method options to pass to the order's PaymentIntent.
         /// </summary>
-        [JsonProperty("alipay")]
+        [JsonProperty("alipay", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("alipay")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderPaymentSettingsPaymentMethodOptionsAlipayOptions Alipay
         {
             get => this.alipay;
@@ -80,8 +83,9 @@ namespace Stripe
         /// If paying by <c>bancontact</c>, this sub-hash contains details about the Bancontact
         /// payment method options to pass to the order's PaymentIntent.
         /// </summary>
-        [JsonProperty("bancontact")]
+        [JsonProperty("bancontact", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("bancontact")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderPaymentSettingsPaymentMethodOptionsBancontactOptions Bancontact
         {
             get => this.bancontact;
@@ -96,8 +100,9 @@ namespace Stripe
         /// If paying by <c>card</c>, this sub-hash contains details about the Card payment method
         /// options to pass to the order's PaymentIntent.
         /// </summary>
-        [JsonProperty("card")]
+        [JsonProperty("card", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("card")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderPaymentSettingsPaymentMethodOptionsCardOptions Card
         {
             get => this.card;
@@ -112,8 +117,9 @@ namespace Stripe
         /// If paying by <c>customer_balance</c>, this sub-hash contains details about the Customer
         /// Balance payment method options to pass to the order's PaymentIntent.
         /// </summary>
-        [JsonProperty("customer_balance")]
+        [JsonProperty("customer_balance", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("customer_balance")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderPaymentSettingsPaymentMethodOptionsCustomerBalanceOptions CustomerBalance
         {
             get => this.customerBalance;
@@ -128,8 +134,9 @@ namespace Stripe
         /// If paying by <c>ideal</c>, this sub-hash contains details about the iDEAL payment method
         /// options to pass to the order's PaymentIntent.
         /// </summary>
-        [JsonProperty("ideal")]
+        [JsonProperty("ideal", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("ideal")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderPaymentSettingsPaymentMethodOptionsIdealOptions Ideal
         {
             get => this.ideal;
@@ -144,8 +151,9 @@ namespace Stripe
         /// If paying by <c>klarna</c>, this sub-hash contains details about the Klarna payment
         /// method options to pass to the order's PaymentIntent.
         /// </summary>
-        [JsonProperty("klarna")]
+        [JsonProperty("klarna", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("klarna")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderPaymentSettingsPaymentMethodOptionsKlarnaOptions Klarna
         {
             get => this.klarna;
@@ -160,8 +168,9 @@ namespace Stripe
         /// If paying by <c>link</c>, this sub-hash contains details about the Link payment method
         /// options to pass to the order's PaymentIntent.
         /// </summary>
-        [JsonProperty("link")]
+        [JsonProperty("link", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("link")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderPaymentSettingsPaymentMethodOptionsLinkOptions Link
         {
             get => this.link;
@@ -176,8 +185,9 @@ namespace Stripe
         /// If paying by <c>oxxo</c>, this sub-hash contains details about the OXXO payment method
         /// options to pass to the order's PaymentIntent.
         /// </summary>
-        [JsonProperty("oxxo")]
+        [JsonProperty("oxxo", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("oxxo")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderPaymentSettingsPaymentMethodOptionsOxxoOptions Oxxo
         {
             get => this.oxxo;
@@ -192,8 +202,9 @@ namespace Stripe
         /// If paying by <c>p24</c>, this sub-hash contains details about the P24 payment method
         /// options to pass to the order's PaymentIntent.
         /// </summary>
-        [JsonProperty("p24")]
+        [JsonProperty("p24", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("p24")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderPaymentSettingsPaymentMethodOptionsP24Options P24
         {
             get => this.p24;
@@ -208,8 +219,9 @@ namespace Stripe
         /// If paying by <c>paypal</c>, this sub-hash contains details about the PayPal payment
         /// method options to pass to the order's PaymentIntent.
         /// </summary>
-        [JsonProperty("paypal")]
+        [JsonProperty("paypal", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("paypal")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderPaymentSettingsPaymentMethodOptionsPaypalOptions Paypal
         {
             get => this.paypal;
@@ -224,8 +236,9 @@ namespace Stripe
         /// If paying by <c>sepa_debit</c>, this sub-hash contains details about the SEPA Debit
         /// payment method options to pass to the order's PaymentIntent.
         /// </summary>
-        [JsonProperty("sepa_debit")]
+        [JsonProperty("sepa_debit", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("sepa_debit")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderPaymentSettingsPaymentMethodOptionsSepaDebitOptions SepaDebit
         {
             get => this.sepaDebit;
@@ -240,8 +253,9 @@ namespace Stripe
         /// If paying by <c>sofort</c>, this sub-hash contains details about the Sofort payment
         /// method options to pass to the order's PaymentIntent.
         /// </summary>
-        [JsonProperty("sofort")]
+        [JsonProperty("sofort", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("sofort")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderPaymentSettingsPaymentMethodOptionsSofortOptions Sofort
         {
             get => this.sofort;
@@ -256,8 +270,9 @@ namespace Stripe
         /// If paying by <c>wechat_pay</c>, this sub-hash contains details about the WeChat Pay
         /// payment method options to pass to the order's PaymentIntent.
         /// </summary>
-        [JsonProperty("wechat_pay")]
+        [JsonProperty("wechat_pay", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("wechat_pay")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderPaymentSettingsPaymentMethodOptionsWechatPayOptions WechatPay
         {
             get => this.wechatPay;

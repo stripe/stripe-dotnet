@@ -69,8 +69,9 @@ namespace Stripe
         /// <c>shopeepay</c>, <c>sofort</c>, <c>stripe_balance</c>, <c>swish</c>, <c>twint</c>,
         /// <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
-        [JsonProperty("excluded_payment_method_types")]
+        [JsonProperty("excluded_payment_method_types", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("excluded_payment_method_types")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> ExcludedPaymentMethodTypes
         {
             get => this.excludedPaymentMethodTypes;
@@ -101,8 +102,9 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;

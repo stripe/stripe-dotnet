@@ -41,8 +41,9 @@ namespace Stripe
         /// <summary>
         /// Sets the billing schedules for the subscription.
         /// </summary>
-        [JsonProperty("billing_schedules")]
+        [JsonProperty("billing_schedules", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("billing_schedules")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<InvoiceSubscriptionDetailsBillingScheduleOptions> BillingSchedules
         {
             get => this.billingSchedules;
@@ -59,9 +60,10 @@ namespace Stripe
         /// <c>proration_behavior</c>. If set during a future period, this will always cause a
         /// proration for that period.
         /// </summary>
-        [JsonProperty("cancel_at")]
+        [JsonProperty("cancel_at", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(AnyOfConverter))]
         [STJS.JsonPropertyName("cancel_at")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
         public AnyOf<DateTime?, InvoiceSubscriptionDetailsCancelAt> CancelAt
         {
@@ -93,8 +95,9 @@ namespace Stripe
         /// these default tax rates. The default tax rates will apply to any line item that does not
         /// have <c>tax_rates</c> set.
         /// </summary>
-        [JsonProperty("default_tax_rates")]
+        [JsonProperty("default_tax_rates", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("default_tax_rates")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> DefaultTaxRates
         {
             get => this.defaultTaxRates;

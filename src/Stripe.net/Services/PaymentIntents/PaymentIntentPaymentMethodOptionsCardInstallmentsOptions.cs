@@ -27,8 +27,9 @@ namespace Stripe
         /// The selected installment plan to use for this payment attempt. This parameter can only
         /// be provided during confirmation.
         /// </summary>
-        [JsonProperty("plan")]
+        [JsonProperty("plan", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("plan")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentMethodOptionsCardInstallmentsPlanOptions Plan
         {
             get => this.plan;

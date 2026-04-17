@@ -142,17 +142,28 @@ namespace Stripe.Infrastructure
                 switch (valueToSerialize)
                 {
                     case null:
-                        // If this is an emptyable property that was explicitly set to null,
-                        // write null even if the global ignore condition would skip it.
-                        bool forceWriteNull = value is IHasSetTracking tracked
-                            && tracked.IsPropertySet(property.PropertyInfo.Name);
+                        var ignoreCondition = property.IgnoreCondition
+                            ?? options.DefaultIgnoreCondition;
 
-                        // Use property-level ignore condition if set, otherwise use global setting
-                        var effectiveIgnoreCondition = property.IgnoreCondition ?? options.DefaultIgnoreCondition;
+                        bool shouldWriteNull;
+                        if (ignoreCondition == JsonIgnoreCondition.Always)
+                        {
+                            shouldWriteNull = false;
+                        }
+                        else if (ignoreCondition == JsonIgnoreCondition.WhenWritingNull)
+                        {
+                            // For emptyable properties on Options objects,
+                            // write null only when explicitly set by the caller.
+                            // For other types, respect the annotation and skip.
+                            shouldWriteNull = value is IHasSetTracking tracked
+                                && tracked.IsPropertySet(property.PropertyInfo.Name);
+                        }
+                        else
+                        {
+                            shouldWriteNull = true;
+                        }
 
-                        if (forceWriteNull ||
-                            (effectiveIgnoreCondition != JsonIgnoreCondition.WhenWritingNull &&
-                            effectiveIgnoreCondition != JsonIgnoreCondition.Always))
+                        if (shouldWriteNull)
                         {
                             writer.WritePropertyName(property.JsonPropertyName);
                             writer.WriteNullValue();

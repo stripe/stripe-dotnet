@@ -32,8 +32,9 @@ namespace Stripe.Checkout
         /// <summary>
         /// List of coupons and promotion codes attached to the Checkout Session.
         /// </summary>
-        [JsonProperty("discounts")]
+        [JsonProperty("discounts", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("discounts")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<SessionDiscountOptions> Discounts
         {
             get => this.discounts;
@@ -78,8 +79,9 @@ namespace Stripe.Checkout
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;
@@ -93,8 +95,9 @@ namespace Stripe.Checkout
         /// <summary>
         /// The shipping rate options to apply to this Session. Up to a maximum of 5.
         /// </summary>
-        [JsonProperty("shipping_options")]
+        [JsonProperty("shipping_options", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("shipping_options")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<SessionShippingOptionOptions> ShippingOptions
         {
             get => this.shippingOptions;

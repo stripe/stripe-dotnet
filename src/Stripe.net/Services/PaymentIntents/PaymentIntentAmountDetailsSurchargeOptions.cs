@@ -18,8 +18,9 @@ namespace Stripe
         /// <summary>
         /// Portion of the amount that corresponds to a surcharge.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("amount")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public long? Amount
         {
             get => this.amount;
@@ -34,8 +35,9 @@ namespace Stripe
         /// Indicate whether to enforce validations on the surcharge amount.
         /// One of: <c>automatic</c>, <c>disabled</c>, or <c>enabled</c>.
         /// </summary>
-        [JsonProperty("enforce_validation")]
+        [JsonProperty("enforce_validation", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("enforce_validation")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string EnforceValidation
         {
             get => this.enforceValidation;

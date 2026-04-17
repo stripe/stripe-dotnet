@@ -23,8 +23,9 @@ namespace Stripe.Issuing
         /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>)
         /// Additional documentation supporting the dispute.
         /// </summary>
-        [JsonProperty("additional_documentation")]
+        [JsonProperty("additional_documentation", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("additional_documentation")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string AdditionalDocumentation
         {
             get => this.additionalDocumentation;
@@ -38,9 +39,10 @@ namespace Stripe.Issuing
         /// <summary>
         /// Date when order was canceled.
         /// </summary>
-        [JsonProperty("canceled_at")]
+        [JsonProperty("canceled_at", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("canceled_at")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
         public DateTime? CanceledAt
         {
@@ -55,8 +57,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Reason for canceling the order.
         /// </summary>
-        [JsonProperty("cancellation_reason")]
+        [JsonProperty("cancellation_reason", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("cancellation_reason")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string CancellationReason
         {
             get => this.cancellationReason;
@@ -70,8 +73,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
-        [JsonProperty("explanation")]
+        [JsonProperty("explanation", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("explanation")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Explanation
         {
             get => this.explanation;
@@ -85,9 +89,10 @@ namespace Stripe.Issuing
         /// <summary>
         /// Date when the product was received.
         /// </summary>
-        [JsonProperty("received_at")]
+        [JsonProperty("received_at", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("received_at")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
         public DateTime? ReceivedAt
         {

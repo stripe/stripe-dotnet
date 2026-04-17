@@ -22,8 +22,9 @@ namespace Stripe
         /// href="https://stripe.com/invoicing/taxes?dashboard-or-api=dashboard#set-up-customer">country-specific
         /// requirements for calculating tax</a>.
         /// </summary>
-        [JsonProperty("address")]
+        [JsonProperty("address", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("address")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public AddressOptions Address
         {
             get => this.address;
@@ -37,8 +38,9 @@ namespace Stripe
         /// <summary>
         /// The customer's shipping information. Appears on invoices emailed to this customer.
         /// </summary>
-        [JsonProperty("shipping")]
+        [JsonProperty("shipping", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("shipping")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public ShippingOptions Shipping
         {
             get => this.shipping;
@@ -60,8 +62,9 @@ namespace Stripe
         /// The customer's tax exemption. One of <c>none</c>, <c>exempt</c>, or <c>reverse</c>.
         /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
         /// </summary>
-        [JsonProperty("tax_exempt")]
+        [JsonProperty("tax_exempt", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("tax_exempt")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string TaxExempt
         {
             get => this.taxExempt;

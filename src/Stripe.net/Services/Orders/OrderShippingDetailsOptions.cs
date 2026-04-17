@@ -31,8 +31,9 @@ namespace Stripe
         /// <summary>
         /// The phone number (including extension) for the recipient of the order.
         /// </summary>
-        [JsonProperty("phone")]
+        [JsonProperty("phone", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("phone")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Phone
         {
             get => this.phone;
