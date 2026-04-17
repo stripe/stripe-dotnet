@@ -30,8 +30,9 @@ namespace Stripe.TestHelpers.SharedPayment
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to the SharedPaymentGrantedToken.
         /// </summary>
-        [JsonProperty("shared_metadata")]
+        [JsonProperty("shared_metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("shared_metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> SharedMetadata
         {
             get => this.sharedMetadata;

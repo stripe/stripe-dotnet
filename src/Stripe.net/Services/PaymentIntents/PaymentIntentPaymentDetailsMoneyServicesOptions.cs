@@ -18,8 +18,9 @@ namespace Stripe
         /// <summary>
         /// Account funding transaction details including sender and beneficiary information.
         /// </summary>
-        [JsonProperty("account_funding")]
+        [JsonProperty("account_funding", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("account_funding")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentDetailsMoneyServicesAccountFundingOptions AccountFunding
         {
             get => this.accountFunding;
@@ -33,8 +34,9 @@ namespace Stripe
         /// <summary>
         /// The type of money services transaction.
         /// </summary>
-        [JsonProperty("transaction_type")]
+        [JsonProperty("transaction_type", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("transaction_type")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string TransactionType
         {
             get => this.transactionType;

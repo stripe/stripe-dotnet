@@ -92,8 +92,9 @@ namespace Stripe
         /// <summary>
         /// Contains information about the surcharge portion of the amount.
         /// </summary>
-        [JsonProperty("surcharge")]
+        [JsonProperty("surcharge", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("surcharge")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentAmountDetailsSurchargeOptions Surcharge
         {
             get => this.surcharge;

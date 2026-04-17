@@ -41,13 +41,6 @@ namespace Stripe.SharedPayment
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// ID of an existing Customer.
-        /// </summary>
-        [JsonProperty("customer")]
-        [STJS.JsonPropertyName("customer")]
-        public string Customer { get; set; }
-
-        /// <summary>
         /// Time at which this SharedPaymentIssuedToken was deactivated.
         /// </summary>
         [JsonProperty("deactivated_at")]

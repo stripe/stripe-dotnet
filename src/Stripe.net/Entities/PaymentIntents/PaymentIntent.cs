@@ -39,6 +39,13 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
+        /// Details about the agent that initiated the creation of this PaymentIntent.
+        /// </summary>
+        [JsonProperty("agent_details")]
+        [STJS.JsonPropertyName("agent_details")]
+        public PaymentIntentAgentDetails AgentDetails { get; set; }
+
+        /// <summary>
         /// Allocated Funds configuration for this PaymentIntent.
         /// </summary>
         [JsonProperty("allocated_funds")]
@@ -606,13 +613,6 @@ namespace Stripe
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
-
-        /// <summary>
-        /// ID of the shared payment token granted to be used in this PaymentIntent.
-        /// </summary>
-        [JsonProperty("shared_payment_granted_token")]
-        [STJS.JsonPropertyName("shared_payment_granted_token")]
-        public string SharedPaymentGrantedToken { get; set; }
 
         /// <summary>
         /// Shipping information for this PaymentIntent.

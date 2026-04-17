@@ -170,6 +170,11 @@ This release changes the pinned API version to 2026-03-25.preview and contains a
   * Release specs are identical.
 * [#3335](https://github.com/stripe/stripe-dotnet/pull/3335) Merge dotnet private preview
 
+## 51.0.1 - 2026-04-17
+* [#3366](https://github.com/stripe/stripe-dotnet/pull/3366) Fix emptyable property serialization for third-party serializers
+  
+  * Fixes a bug where serializing Options objects through a third-party serializer (e.g. AWS Lambda) could cause the SDK to unintentionally clear fields on the API. Emptyable properties now have null-skipping annotations so third-party serializers omit unset properties during round-trips.
+
 ## 51.0.0 - 2026-03-25
 
 This release changes the pinned API version to `2026-03-25.dahlia` and contains breaking changes (prefixed with ⚠️ below). There's also a [detailed migration guide](https://github.com/stripe/stripe-dotnet/wiki/Migration-guide-for-v51) to simplify your upgrade process.

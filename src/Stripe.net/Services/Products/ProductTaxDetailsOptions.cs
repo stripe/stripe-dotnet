@@ -26,8 +26,9 @@ namespace Stripe
         /// <summary>
         /// A <a href="https://docs.stripe.com/tax/tax-categories">tax code</a> ID.
         /// </summary>
-        [JsonProperty("tax_code")]
+        [JsonProperty("tax_code", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("tax_code")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string TaxCode
         {
             get => this.taxCode;

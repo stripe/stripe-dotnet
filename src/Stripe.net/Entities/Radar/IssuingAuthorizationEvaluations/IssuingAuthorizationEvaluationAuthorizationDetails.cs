@@ -53,7 +53,7 @@ namespace Stripe.Radar
         public string EntryModeRawCode { get; set; }
 
         /// <summary>
-        /// The timestamp of the authorization initiated in seconds.
+        /// The time the authorization was initiated, as a Unix timestamp in seconds.
         /// </summary>
         [JsonProperty("initiated_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

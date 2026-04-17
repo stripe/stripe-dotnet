@@ -25,8 +25,9 @@ namespace Stripe
         /// optionally store a long form explanation of the product being sold for your own
         /// rendering purposes.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("description")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Description
         {
             get => this.description;
@@ -55,8 +56,9 @@ namespace Stripe
         /// A list of up to 8 URLs of images for this product, meant to be displayable to the
         /// customer.
         /// </summary>
-        [JsonProperty("images")]
+        [JsonProperty("images", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("images")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> Images
         {
             get => this.images;
@@ -73,8 +75,9 @@ namespace Stripe
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string> Metadata
         {
             get => this.metadata;
@@ -95,8 +98,9 @@ namespace Stripe
         /// <summary>
         /// The dimensions of this product for shipping purposes.
         /// </summary>
-        [JsonProperty("package_dimensions")]
+        [JsonProperty("package_dimensions", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("package_dimensions")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderLineItemProductDataPackageDimensionsOptions PackageDimensions
         {
             get => this.packageDimensions;
@@ -117,8 +121,9 @@ namespace Stripe
         /// <summary>
         /// A <a href="https://docs.stripe.com/tax/tax-categories">tax code</a> ID.
         /// </summary>
-        [JsonProperty("tax_code")]
+        [JsonProperty("tax_code", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("tax_code")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string TaxCode
         {
             get => this.taxCode;
@@ -132,8 +137,9 @@ namespace Stripe
         /// <summary>
         /// A URL of a publicly-accessible webpage for this product.
         /// </summary>
-        [JsonProperty("url")]
+        [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("url")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string Url
         {
             get => this.url;
