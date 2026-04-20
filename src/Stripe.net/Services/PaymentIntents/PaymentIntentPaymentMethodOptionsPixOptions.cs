@@ -36,6 +36,14 @@ namespace Stripe
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
+        /// Additional fields for mandate creation. Only applicable when
+        /// <c>setup_future_usage=off_session</c>.
+        /// </summary>
+        [JsonProperty("mandate_options")]
+        [STJS.JsonPropertyName("mandate_options")]
+        public PaymentIntentPaymentMethodOptionsPixMandateOptionsOptions MandateOptions { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
@@ -54,10 +62,7 @@ namespace Stripe
         /// When processing card payments, Stripe uses <c>setup_future_usage</c> to help you comply
         /// with regional legislation and network rules, such as <a
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
-        ///
-        /// If you've already set <c>setup_future_usage</c> and you're performing a request using a
-        /// publishable key, you can only update the value from <c>on_session</c> to
-        /// <c>off_session</c>.
+        /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]

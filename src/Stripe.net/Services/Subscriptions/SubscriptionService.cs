@@ -206,8 +206,9 @@ namespace Stripe
         /// anchor and creating prorations. If no resumption invoice is generated, the subscription
         /// becomes <c>active</c> immediately. If a resumption invoice is generated, the
         /// subscription remains <c>paused</c> until the invoice is paid or marked uncollectible. If
-        /// the invoice is not paid by the expiration date, it is voided and the subscription
-        /// remains <c>paused</c>.</p>.
+        /// the invoice isn’t paid by the expiration date, it is voided and the subscription remains
+        /// <c>paused</c>. You can only resume subscriptions with <c>collection_method</c> set to
+        /// <c>charge_automatically</c>. <c>send_invoice</c> subscriptions are not supported.</p>.
         /// </summary>
         public virtual Subscription Resume(string id, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null)
         {
@@ -219,8 +220,9 @@ namespace Stripe
         /// anchor and creating prorations. If no resumption invoice is generated, the subscription
         /// becomes <c>active</c> immediately. If a resumption invoice is generated, the
         /// subscription remains <c>paused</c> until the invoice is paid or marked uncollectible. If
-        /// the invoice is not paid by the expiration date, it is voided and the subscription
-        /// remains <c>paused</c>.</p>.
+        /// the invoice isn’t paid by the expiration date, it is voided and the subscription remains
+        /// <c>paused</c>. You can only resume subscriptions with <c>collection_method</c> set to
+        /// <c>charge_automatically</c>. <c>send_invoice</c> subscriptions are not supported.</p>.
         /// </summary>
         public virtual Task<Subscription> ResumeAsync(string id, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

@@ -44,6 +44,13 @@ namespace Stripe
         public AccountCapabilitiesAmazonPayPaymentsOptions AmazonPayPayments { get; set; }
 
         /// <summary>
+        /// The app_distribution capability.
+        /// </summary>
+        [JsonProperty("app_distribution")]
+        [STJS.JsonPropertyName("app_distribution")]
+        public AccountCapabilitiesAppDistributionOptions AppDistribution { get; set; }
+
+        /// <summary>
         /// The au_becs_debit_payments capability.
         /// </summary>
         [JsonProperty("au_becs_debit_payments")]
@@ -371,6 +378,13 @@ namespace Stripe
         [JsonProperty("sofort_payments")]
         [STJS.JsonPropertyName("sofort_payments")]
         public AccountCapabilitiesSofortPaymentsOptions SofortPayments { get; set; }
+
+        /// <summary>
+        /// The sunbit_payments capability.
+        /// </summary>
+        [JsonProperty("sunbit_payments")]
+        [STJS.JsonPropertyName("sunbit_payments")]
+        public AccountCapabilitiesSunbitPaymentsOptions SunbitPayments { get; set; }
 
         /// <summary>
         /// The swish_payments capability.

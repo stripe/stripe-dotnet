@@ -40,7 +40,7 @@ namespace Stripe
 
         /// <summary>
         /// Type of the fee, one of: <c>application_fee</c>, <c>payment_method_passthrough_fee</c>,
-        /// <c>stripe_fee</c> or <c>tax</c>.
+        /// <c>stripe_fee</c>, <c>tax</c>, or <c>withheld_tax</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

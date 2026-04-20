@@ -44,6 +44,10 @@ namespace Stripe
         [STJS.JsonPropertyName("payto")]
         public SetupIntentPaymentMethodOptionsPayto Payto { get; set; }
 
+        [JsonProperty("pix")]
+        [STJS.JsonPropertyName("pix")]
+        public SetupIntentPaymentMethodOptionsPix Pix { get; set; }
+
         [JsonProperty("sepa_debit")]
         [STJS.JsonPropertyName("sepa_debit")]
         public SetupIntentPaymentMethodOptionsSepaDebit SepaDebit { get; set; }

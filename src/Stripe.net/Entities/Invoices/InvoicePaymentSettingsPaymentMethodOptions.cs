@@ -57,12 +57,28 @@ namespace Stripe
         public InvoicePaymentSettingsPaymentMethodOptionsPayto Payto { get; set; }
 
         /// <summary>
+        /// If paying by <c>pix</c>, this sub-hash contains details about the Pix payment method
+        /// options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("pix")]
+        [STJS.JsonPropertyName("pix")]
+        public InvoicePaymentSettingsPaymentMethodOptionsPix Pix { get; set; }
+
+        /// <summary>
         /// If paying by <c>sepa_debit</c>, this sub-hash contains details about the SEPA Direct
         /// Debit payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
         [JsonProperty("sepa_debit")]
         [STJS.JsonPropertyName("sepa_debit")]
         public InvoicePaymentSettingsPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
+
+        /// <summary>
+        /// If paying by <c>upi</c>, this sub-hash contains details about the UPI payment method
+        /// options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("upi")]
+        [STJS.JsonPropertyName("upi")]
+        public InvoicePaymentSettingsPaymentMethodOptionsUpi Upi { get; set; }
 
         /// <summary>
         /// If paying by <c>us_bank_account</c>, this sub-hash contains details about the ACH direct

@@ -317,6 +317,10 @@ namespace Stripe
         [STJS.JsonPropertyName("sofort")]
         public PaymentMethodSofort Sofort { get; set; }
 
+        [JsonProperty("sunbit")]
+        [STJS.JsonPropertyName("sunbit")]
+        public PaymentMethodSunbit Sunbit { get; set; }
+
         [JsonProperty("swish")]
         [STJS.JsonPropertyName("swish")]
         public PaymentMethodSwish Swish { get; set; }
@@ -339,8 +343,8 @@ namespace Stripe
         /// <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
         /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>,
-        /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>,
-        /// <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>sofort</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

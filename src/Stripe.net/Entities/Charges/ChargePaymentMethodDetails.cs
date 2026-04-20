@@ -208,6 +208,10 @@ namespace Stripe
         [STJS.JsonPropertyName("stripe_account")]
         public ChargePaymentMethodDetailsStripeAccount StripeAccount { get; set; }
 
+        [JsonProperty("sunbit")]
+        [STJS.JsonPropertyName("sunbit")]
+        public ChargePaymentMethodDetailsSunbit Sunbit { get; set; }
+
         [JsonProperty("swish")]
         [STJS.JsonPropertyName("swish")]
         public ChargePaymentMethodDetailsSwish Swish { get; set; }

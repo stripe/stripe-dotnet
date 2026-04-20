@@ -8,5 +8,18 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class MandateMultiUse : StripeEntity<MandateMultiUse>
     {
+        /// <summary>
+        /// The amount of the payment on a multi use mandate.
+        /// </summary>
+        [JsonProperty("amount")]
+        [STJS.JsonPropertyName("amount")]
+        public long Amount { get; set; }
+
+        /// <summary>
+        /// The currency of the payment on a multi use mandate.
+        /// </summary>
+        [JsonProperty("currency")]
+        [STJS.JsonPropertyName("currency")]
+        public string Currency { get; set; }
     }
 }

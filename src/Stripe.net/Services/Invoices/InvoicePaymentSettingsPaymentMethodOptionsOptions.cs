@@ -14,7 +14,9 @@ namespace Stripe
         private InvoicePaymentSettingsPaymentMethodOptionsCustomerBalanceOptions customerBalance;
         private InvoicePaymentSettingsPaymentMethodOptionsKonbiniOptions konbini;
         private InvoicePaymentSettingsPaymentMethodOptionsPaytoOptions payto;
+        private InvoicePaymentSettingsPaymentMethodOptionsPixOptions pix;
         private InvoicePaymentSettingsPaymentMethodOptionsSepaDebitOptions sepaDebit;
+        private InvoicePaymentSettingsPaymentMethodOptionsUpiOptions upi;
         private InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountOptions usBankAccount;
 
         [JsonIgnore]
@@ -124,6 +126,23 @@ namespace Stripe
         }
 
         /// <summary>
+        /// If paying by <c>pix</c>, this sub-hash contains details about the Pix payment method
+        /// options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("pix", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("pix")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public InvoicePaymentSettingsPaymentMethodOptionsPixOptions Pix
+        {
+            get => this.pix;
+            set
+            {
+                this.pix = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
         /// If paying by <c>sepa_debit</c>, this sub-hash contains details about the SEPA Direct
         /// Debit payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
@@ -136,6 +155,23 @@ namespace Stripe
             set
             {
                 this.sepaDebit = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If paying by <c>upi</c>, this sub-hash contains details about the UPI payment method
+        /// options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("upi", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("upi")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public InvoicePaymentSettingsPaymentMethodOptionsUpiOptions Upi
+        {
+            get => this.upi;
+            set
+            {
+                this.upi = value;
                 this.SetTracker.Track();
             }
         }

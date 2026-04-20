@@ -203,8 +203,8 @@ namespace Stripe.Checkout
         /// <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
         /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>,
-        /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>,
-        /// <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>sofort</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("excluded_payment_method_types")]
         [STJS.JsonPropertyName("excluded_payment_method_types")]
@@ -265,6 +265,16 @@ namespace Stripe.Checkout
         [JsonProperty("locale")]
         [STJS.JsonPropertyName("locale")]
         public string Locale { get; set; }
+
+        /// <summary>
+        /// Settings for Managed Payments for this Checkout Session and resulting <a
+        /// href="https://stripe.com/api/payment_intents/object">PaymentIntents</a>, <a
+        /// href="https://stripe.com/api/invoices/object">Invoices</a>, and <a
+        /// href="https://stripe.com/api/subscriptions/object">Subscriptions</a>.
+        /// </summary>
+        [JsonProperty("managed_payments")]
+        [STJS.JsonPropertyName("managed_payments")]
+        public SessionManagedPaymentsOptions ManagedPayments { get; set; }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
@@ -405,7 +415,7 @@ namespace Stripe.Checkout
         /// <c>multibanco</c>, <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>,
         /// <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>,
         /// <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
-        /// <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
+        /// <c>sepa_debit</c>, <c>sofort</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
         /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
