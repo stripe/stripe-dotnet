@@ -208,6 +208,15 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// Tax details for this product, including the <a
+        /// href="https://stripe.com/tax/tax-codes">tax code</a> and an optional performance
+        /// location.
+        /// </summary>
+        [JsonProperty("tax_details")]
+        [STJS.JsonPropertyName("tax_details")]
+        public ProductTaxDetails TaxDetails { get; set; }
+
+        /// <summary>
         /// The type of the product. The product is either of type <c>good</c>, which is eligible
         /// for use with Orders and SKUs, or <c>service</c>, which is eligible for use with
         /// Subscriptions and Plans.

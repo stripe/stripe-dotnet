@@ -37,7 +37,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// The reason why the card was canceled.
-        /// One of: <c>design_rejected</c>, <c>lost</c>, or <c>stolen</c>.
+        /// One of: <c>design_rejected</c>, <c>fulfillment_error</c>, <c>lost</c>, or <c>stolen</c>.
         /// </summary>
         [JsonProperty("cancellation_reason")]
         [STJS.JsonPropertyName("cancellation_reason")]
@@ -266,7 +266,8 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// The reason why the previous card needed to be replaced.
-        /// One of: <c>damaged</c>, <c>expired</c>, <c>lost</c>, or <c>stolen</c>.
+        /// One of: <c>damaged</c>, <c>expired</c>, <c>fulfillment_error</c>, <c>lost</c>, or
+        /// <c>stolen</c>.
         /// </summary>
         [JsonProperty("replacement_reason")]
         [STJS.JsonPropertyName("replacement_reason")]

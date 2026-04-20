@@ -69,5 +69,13 @@ namespace Stripe.Privacy
         [JsonProperty("validation_behavior")]
         [STJS.JsonPropertyName("validation_behavior")]
         public string ValidationBehavior { get; set; }
+
+        /// <summary>
+        /// The first 10 validation errors for the current validation attempt. Use the validation
+        /// errors list endpoint to paginate through the full list.
+        /// </summary>
+        [JsonProperty("validation_errors")]
+        [STJS.JsonPropertyName("validation_errors")]
+        public StripeList<RedactionJobValidationError> ValidationErrors { get; set; }
     }
 }

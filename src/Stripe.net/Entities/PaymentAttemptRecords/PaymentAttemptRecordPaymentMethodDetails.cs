@@ -266,6 +266,10 @@ namespace Stripe
         [STJS.JsonPropertyName("stripe_balance")]
         public PaymentAttemptRecordPaymentMethodDetailsStripeBalance StripeBalance { get; set; }
 
+        [JsonProperty("sunbit")]
+        [STJS.JsonPropertyName("sunbit")]
+        public PaymentAttemptRecordPaymentMethodDetailsSunbit Sunbit { get; set; }
+
         [JsonProperty("swish")]
         [STJS.JsonPropertyName("swish")]
         public PaymentAttemptRecordPaymentMethodDetailsSwish Swish { get; set; }
