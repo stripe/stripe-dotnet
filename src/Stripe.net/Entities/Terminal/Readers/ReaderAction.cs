@@ -44,6 +44,13 @@ namespace Stripe.Terminal
         public string FailureMessage { get; set; }
 
         /// <summary>
+        /// Represents a reader action to print content.
+        /// </summary>
+        [JsonProperty("print_content")]
+        [STJS.JsonPropertyName("print_content")]
+        public ReaderActionPrintContent PrintContent { get; set; }
+
+        /// <summary>
         /// Represents a reader action to process a payment intent.
         /// </summary>
         [JsonProperty("process_payment_intent")]
@@ -82,7 +89,7 @@ namespace Stripe.Terminal
         /// <summary>
         /// Type of action performed by the reader.
         /// One of: <c>collect_inputs</c>, <c>collect_payment_method</c>,
-        /// <c>confirm_payment_intent</c>, <c>process_payment_intent</c>,
+        /// <c>confirm_payment_intent</c>, <c>print_content</c>, <c>process_payment_intent</c>,
         /// <c>process_setup_intent</c>, <c>refund_payment</c>, or <c>set_reader_display</c>.
         /// </summary>
         [JsonProperty("type")]
