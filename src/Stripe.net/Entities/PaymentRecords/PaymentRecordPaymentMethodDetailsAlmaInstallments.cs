@@ -13,6 +13,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("count")]
         [STJS.JsonPropertyName("count")]
-        public long? Count { get; set; }
+        public long Count { get; set; }
     }
 }
