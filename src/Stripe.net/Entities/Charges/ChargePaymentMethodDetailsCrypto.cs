@@ -25,7 +25,7 @@ namespace Stripe
 
         /// <summary>
         /// The token currency that the transaction was sent with.
-        /// One of: <c>usdc</c>, <c>usdg</c>, or <c>usdp</c>.
+        /// One of: <c>phantom_cash</c>, <c>usdc</c>, <c>usdg</c>, <c>usdp</c>, or <c>usdt</c>.
         /// </summary>
         [JsonProperty("token_currency")]
         [STJS.JsonPropertyName("token_currency")]

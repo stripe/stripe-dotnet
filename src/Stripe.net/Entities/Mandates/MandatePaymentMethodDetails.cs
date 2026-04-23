@@ -64,6 +64,10 @@ namespace Stripe
         [STJS.JsonPropertyName("payto")]
         public MandatePaymentMethodDetailsPayto Payto { get; set; }
 
+        [JsonProperty("pix")]
+        [STJS.JsonPropertyName("pix")]
+        public MandatePaymentMethodDetailsPix Pix { get; set; }
+
         [JsonProperty("revolut_pay")]
         [STJS.JsonPropertyName("revolut_pay")]
         public MandatePaymentMethodDetailsRevolutPay RevolutPay { get; set; }

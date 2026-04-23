@@ -178,9 +178,10 @@ namespace Stripe
         /// Transaction type: <c>adjustment</c>, <c>advance</c>, <c>advance_funding</c>,
         /// <c>anticipation_repayment</c>, <c>application_fee</c>, <c>application_fee_refund</c>,
         /// <c>charge</c>, <c>climate_order_purchase</c>, <c>climate_order_refund</c>,
-        /// <c>connect_collection_transfer</c>, <c>contribution</c>,
-        /// <c>issuing_authorization_hold</c>, <c>issuing_authorization_release</c>,
-        /// <c>issuing_dispute</c>, <c>issuing_transaction</c>, <c>obligation_outbound</c>,
+        /// <c>connect_collection_transfer</c>, <c>contribution</c>, <c>inbound_transfer</c>,
+        /// <c>inbound_transfer_reversal</c>, <c>issuing_authorization_hold</c>,
+        /// <c>issuing_authorization_release</c>, <c>issuing_dispute</c>,
+        /// <c>issuing_transaction</c>, <c>obligation_outbound</c>,
         /// <c>obligation_reversal_inbound</c>, <c>payment</c>, <c>payment_failure_refund</c>,
         /// <c>payment_network_reserve_hold</c>, <c>payment_network_reserve_release</c>,
         /// <c>payment_refund</c>, <c>payment_reversal</c>, <c>payment_unreconciled</c>,
@@ -190,14 +191,16 @@ namespace Stripe
         /// <c>reserve_hold</c>, <c>reserve_release</c>, <c>stripe_fee</c>, <c>stripe_fx_fee</c>,
         /// <c>stripe_balance_payment_debit</c>, <c>stripe_balance_payment_debit_reversal</c>,
         /// <c>tax_fee</c>, <c>topup</c>, <c>topup_reversal</c>, <c>transfer</c>,
-        /// <c>transfer_cancel</c>, <c>transfer_failure</c>, or <c>transfer_refund</c>. Learn more
-        /// about <a href="https://stripe.com/docs/reports/balance-transaction-types">balance
-        /// transaction types and what they represent</a>. To classify transactions for accounting
-        /// purposes, consider <c>reporting_category</c> instead.
+        /// <c>transfer_cancel</c>, <c>transfer_failure</c>, <c>transfer_refund</c>, or
+        /// <c>fee_credit_funding</c>. Learn more about <a
+        /// href="https://stripe.com/docs/reports/balance-transaction-types">balance transaction
+        /// types and what they represent</a>. To classify transactions for accounting purposes,
+        /// consider <c>reporting_category</c> instead.
         /// One of: <c>adjustment</c>, <c>advance</c>, <c>advance_funding</c>,
         /// <c>anticipation_repayment</c>, <c>application_fee</c>, <c>application_fee_refund</c>,
         /// <c>charge</c>, <c>climate_order_purchase</c>, <c>climate_order_refund</c>,
-        /// <c>connect_collection_transfer</c>, <c>contribution</c>,
+        /// <c>connect_collection_transfer</c>, <c>contribution</c>, <c>fee_credit_funding</c>,
+        /// <c>inbound_transfer</c>, <c>inbound_transfer_reversal</c>,
         /// <c>issuing_authorization_hold</c>, <c>issuing_authorization_release</c>,
         /// <c>issuing_dispute</c>, <c>issuing_transaction</c>, <c>obligation_outbound</c>,
         /// <c>obligation_reversal_inbound</c>, <c>payment</c>, <c>payment_failure_refund</c>,

@@ -13,6 +13,10 @@ namespace Stripe
         [STJS.JsonPropertyName("cashapp_handle_redirect_or_display_qr_code")]
         public SetupIntentNextActionCashappHandleRedirectOrDisplayQrCode CashappHandleRedirectOrDisplayQrCode { get; set; }
 
+        [JsonProperty("pix_display_qr_code")]
+        [STJS.JsonPropertyName("pix_display_qr_code")]
+        public SetupIntentNextActionPixDisplayQrCode PixDisplayQrCode { get; set; }
+
         [JsonProperty("redirect_to_url")]
         [STJS.JsonPropertyName("redirect_to_url")]
         public SetupIntentNextActionRedirectToUrl RedirectToUrl { get; set; }

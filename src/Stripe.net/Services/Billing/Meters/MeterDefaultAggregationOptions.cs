@@ -9,9 +9,7 @@ namespace Stripe.Billing
     public class MeterDefaultAggregationOptions : INestedOptions
     {
         /// <summary>
-        /// Specifies how events are aggregated. Allowed values are <c>count</c> to count the number
-        /// of events, <c>sum</c> to sum each event's value and <c>last</c> to take the last event's
-        /// value in the window.
+        /// Specifies how events are aggregated.
         /// One of: <c>count</c>, <c>last</c>, or <c>sum</c>.
         /// </summary>
         [JsonProperty("formula")]

@@ -54,6 +54,15 @@ namespace Stripe
         public string AmazonPayPayments { get; set; }
 
         /// <summary>
+        /// The status of the <c>app_distribution</c> capability of the account, or whether the
+        /// platform can distribute apps to other accounts.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("app_distribution")]
+        [STJS.JsonPropertyName("app_distribution")]
+        public string AppDistribution { get; set; }
+
+        /// <summary>
         /// The status of the BECS Direct Debit (AU) payments capability of the account, or whether
         /// the account can directly process BECS Direct Debit (AU) charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -474,6 +483,15 @@ namespace Stripe
         [JsonProperty("sofort_payments")]
         [STJS.JsonPropertyName("sofort_payments")]
         public string SofortPayments { get; set; }
+
+        /// <summary>
+        /// The status of the Sunbit capability of the account, or whether the account can directly
+        /// process Sunbit payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("sunbit_payments")]
+        [STJS.JsonPropertyName("sunbit_payments")]
+        public string SunbitPayments { get; set; }
 
         /// <summary>
         /// The status of the Swish capability of the account, or whether the account can directly

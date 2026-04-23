@@ -80,6 +80,14 @@ namespace Stripe
         public SetupIntentPaymentMethodOptionsPaytoOptions Payto { get; set; }
 
         /// <summary>
+        /// If this is a <c>pix</c> SetupIntent, this sub-hash contains details about the Pix
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("pix")]
+        [STJS.JsonPropertyName("pix")]
+        public SetupIntentPaymentMethodOptionsPixOptions Pix { get; set; }
+
+        /// <summary>
         /// If this is a <c>sepa_debit</c> SetupIntent, this sub-hash contains details about the
         /// SEPA Debit payment method options.
         /// </summary>

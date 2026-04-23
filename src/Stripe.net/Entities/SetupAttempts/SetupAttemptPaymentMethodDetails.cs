@@ -80,6 +80,10 @@ namespace Stripe
         [STJS.JsonPropertyName("payto")]
         public SetupAttemptPaymentMethodDetailsPayto Payto { get; set; }
 
+        [JsonProperty("pix")]
+        [STJS.JsonPropertyName("pix")]
+        public SetupAttemptPaymentMethodDetailsPix Pix { get; set; }
+
         [JsonProperty("revolut_pay")]
         [STJS.JsonPropertyName("revolut_pay")]
         public SetupAttemptPaymentMethodDetailsRevolutPay RevolutPay { get; set; }
