@@ -67,8 +67,9 @@ namespace StripeTests.Infrastructure.TestData
         [STJS.JsonPropertyName("string_enum")]
         public TestStringEnum StringEnum { get; set; }
 
-        [JsonProperty("emptyable_string")]
+        [JsonProperty("emptyable_string", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("emptyable_string")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string EmptyableString
         {
             get => this.emptyableString;
@@ -79,8 +80,9 @@ namespace StripeTests.Infrastructure.TestData
             }
         }
 
-        [JsonProperty("emptyable_nested")]
+        [JsonProperty("emptyable_nested", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("emptyable_nested")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public Nested EmptyableNested
         {
             get => this.emptyableNested;
