@@ -32,7 +32,8 @@ namespace Stripe
         public string EndDate { get; set; }
 
         /// <summary>
-        /// Schedule at which the future payments will be charged. Defaults to <c>monthly</c>.
+        /// Schedule at which the future payments will be charged. Defaults to the subscription
+        /// servicing interval.
         /// One of: <c>halfyearly</c>, <c>monthly</c>, <c>quarterly</c>, <c>weekly</c>, or
         /// <c>yearly</c>.
         /// </summary>

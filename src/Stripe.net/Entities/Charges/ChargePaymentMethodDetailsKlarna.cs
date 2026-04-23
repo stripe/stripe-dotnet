@@ -9,6 +9,14 @@ namespace Stripe
     public class ChargePaymentMethodDetailsKlarna : StripeEntity<ChargePaymentMethodDetailsKlarna>
     {
         /// <summary>
+        /// ID of the <a href="https://docs.stripe.com/api/terminal/locations">location</a> that
+        /// this transaction's reader is assigned to.
+        /// </summary>
+        [JsonProperty("location")]
+        [STJS.JsonPropertyName("location")]
+        public string Location { get; set; }
+
+        /// <summary>
         /// The payer details for this transaction.
         /// </summary>
         [JsonProperty("payer_details")]
@@ -37,5 +45,13 @@ namespace Stripe
         [JsonProperty("preferred_locale")]
         [STJS.JsonPropertyName("preferred_locale")]
         public string PreferredLocale { get; set; }
+
+        /// <summary>
+        /// ID of the <a href="https://docs.stripe.com/api/terminal/readers">reader</a> this
+        /// transaction was made on.
+        /// </summary>
+        [JsonProperty("reader")]
+        [STJS.JsonPropertyName("reader")]
+        public string Reader { get; set; }
     }
 }

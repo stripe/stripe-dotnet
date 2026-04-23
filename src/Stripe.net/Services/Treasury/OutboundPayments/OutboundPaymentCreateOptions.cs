@@ -88,6 +88,14 @@ namespace Stripe.Treasury
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The purpose of the OutboundPayment, if applicable. This list is not exhaustive, do not
+        /// specify this parameter if your purpose does not match any that are provided.
+        /// </summary>
+        [JsonProperty("purpose")]
+        [STJS.JsonPropertyName("purpose")]
+        public string Purpose { get; set; }
+
+        /// <summary>
         /// The description that appears on the receiving end for this OutboundPayment (for example,
         /// bank statement for external bank transfer). Maximum 10 characters for <c>ach</c>
         /// payments, 140 characters for <c>us_domestic_wire</c> payments, or 500 characters for

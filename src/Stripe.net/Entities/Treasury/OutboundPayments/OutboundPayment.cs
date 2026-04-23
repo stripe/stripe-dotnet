@@ -152,6 +152,13 @@ namespace Stripe.Treasury
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The purpose of the OutboundPayment, if applicable.
+        /// </summary>
+        [JsonProperty("purpose")]
+        [STJS.JsonPropertyName("purpose")]
+        public string Purpose { get; set; }
+
+        /// <summary>
         /// Details about a returned OutboundPayment. Only set when the status is <c>returned</c>.
         /// </summary>
         [JsonProperty("returned_details")]

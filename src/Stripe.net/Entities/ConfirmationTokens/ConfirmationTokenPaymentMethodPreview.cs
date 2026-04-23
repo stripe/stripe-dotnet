@@ -280,6 +280,10 @@ namespace Stripe
         [STJS.JsonPropertyName("stripe_balance")]
         public ConfirmationTokenPaymentMethodPreviewStripeBalance StripeBalance { get; set; }
 
+        [JsonProperty("sunbit")]
+        [STJS.JsonPropertyName("sunbit")]
+        public ConfirmationTokenPaymentMethodPreviewSunbit Sunbit { get; set; }
+
         [JsonProperty("swish")]
         [STJS.JsonPropertyName("swish")]
         public ConfirmationTokenPaymentMethodPreviewSwish Swish { get; set; }
@@ -303,8 +307,9 @@ namespace Stripe
         /// <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>,
         /// <c>paynow</c>, <c>paypal</c>, <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
-        /// <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>stripe_balance</c>, <c>swish</c>,
-        /// <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>stripe_balance</c>,
+        /// <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>,
+        /// <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

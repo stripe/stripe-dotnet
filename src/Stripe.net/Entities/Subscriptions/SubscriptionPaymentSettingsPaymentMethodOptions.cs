@@ -25,6 +25,14 @@ namespace Stripe
         public SubscriptionPaymentSettingsPaymentMethodOptionsBancontact Bancontact { get; set; }
 
         /// <summary>
+        /// This sub-hash contains details about the Blik payment method options to pass to invoices
+        /// created by the subscription.
+        /// </summary>
+        [JsonProperty("blik")]
+        [STJS.JsonPropertyName("blik")]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsBlik Blik { get; set; }
+
+        /// <summary>
         /// This sub-hash contains details about the Card payment method options to pass to invoices
         /// created by the subscription.
         /// </summary>

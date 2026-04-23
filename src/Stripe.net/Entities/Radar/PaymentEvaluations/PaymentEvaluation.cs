@@ -94,8 +94,8 @@ namespace Stripe.Radar
         public PaymentEvaluationPaymentDetails PaymentDetails { get; set; }
 
         /// <summary>
-        /// Recommended action based on the score of the fraudulent_payment signal. Possible values
-        /// are <c>block</c> and <c>continue</c>.
+        /// Recommended action based on the score of the <c>fraudulent_payment</c> signal. Possible
+        /// values are <c>block</c> and <c>continue</c>.
         /// One of: <c>block</c>, or <c>continue</c>.
         /// </summary>
         [JsonProperty("recommended_action")]

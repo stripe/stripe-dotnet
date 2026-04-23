@@ -1,0 +1,25 @@
+// File generated from our OpenAPI spec
+namespace Stripe.SharedPayment
+{
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+    public class GrantedTokenPaymentMethodDetailsCashapp : StripeEntity<GrantedTokenPaymentMethodDetailsCashapp>
+    {
+        /// <summary>
+        /// A unique and immutable identifier assigned by Cash App to every buyer.
+        /// </summary>
+        [JsonProperty("buyer_id")]
+        [STJS.JsonPropertyName("buyer_id")]
+        public string BuyerId { get; set; }
+
+        /// <summary>
+        /// A public identifier for buyers using Cash App.
+        /// </summary>
+        [JsonProperty("cashtag")]
+        [STJS.JsonPropertyName("cashtag")]
+        public string Cashtag { get; set; }
+    }
+}

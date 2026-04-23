@@ -498,6 +498,14 @@ namespace Stripe
         public PaymentMethodStripeBalanceOptions StripeBalance { get; set; }
 
         /// <summary>
+        /// If this is a Sunbit PaymentMethod, this hash contains details about the Sunbit payment
+        /// method.
+        /// </summary>
+        [JsonProperty("sunbit")]
+        [STJS.JsonPropertyName("sunbit")]
+        public PaymentMethodSunbitOptions Sunbit { get; set; }
+
+        /// <summary>
         /// If this is a <c>swish</c> PaymentMethod, this hash contains details about the Swish
         /// payment method.
         /// </summary>
@@ -527,8 +535,9 @@ namespace Stripe
         /// <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>,
         /// <c>paynow</c>, <c>paypal</c>, <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
-        /// <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>stripe_balance</c>, <c>swish</c>,
-        /// <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>stripe_balance</c>,
+        /// <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>,
+        /// <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
