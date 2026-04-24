@@ -15,7 +15,7 @@ namespace Stripe.V2.Billing
     public class MeterEventSession : StripeEntity<MeterEventSession>, IHasId, IHasObject
     {
         /// <summary>
-        /// The unique id of this auth session.
+        /// The unique ID of this auth session.
         /// </summary>
         [JsonProperty("id")]
         [STJS.JsonPropertyName("id")]
@@ -30,7 +30,7 @@ namespace Stripe.V2.Billing
         public string Object { get; set; }
 
         /// <summary>
-        /// The authentication token for this session.  Use this token when calling the
+        /// The authentication token for this session. Use this token when calling the
         /// high-throughput meter event API.
         /// </summary>
         [JsonProperty("authentication_token")]
@@ -45,7 +45,7 @@ namespace Stripe.V2.Billing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The time at which this session will expire.
+        /// The time at which this session expires.
         /// </summary>
         [JsonProperty("expires_at")]
         [STJS.JsonPropertyName("expires_at")]

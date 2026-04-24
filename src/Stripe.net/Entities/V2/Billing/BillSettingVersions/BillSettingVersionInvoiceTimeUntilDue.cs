@@ -18,7 +18,7 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The number of interval units. For example, if interval=day and interval_count=30, the
-        /// invoice will be due in 30 days.
+        /// invoice is due in 30 days.
         /// </summary>
         [JsonProperty("interval_count")]
         [STJS.JsonPropertyName("interval_count")]

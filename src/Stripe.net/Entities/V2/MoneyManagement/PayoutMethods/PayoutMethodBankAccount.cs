@@ -21,7 +21,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// The type of bank account (checking or savings).
-        /// One of: <c>checking</c>, or <c>savings</c>.
+        /// One of: <c>checking</c>, <c>futsu</c>, <c>savings</c>, or <c>toza</c>.
         /// </summary>
         [JsonProperty("bank_account_type")]
         [STJS.JsonPropertyName("bank_account_type")]

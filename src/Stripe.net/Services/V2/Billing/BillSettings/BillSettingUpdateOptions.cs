@@ -40,7 +40,7 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// Optionally change the live version of the BillSetting. Providing <c>live_version =
-        /// "latest"</c> will set the BillSetting' <c>live_version</c> to its latest version.
+        /// "latest"</c> sets the BillSetting' <c>live_version</c> to its latest version.
         /// </summary>
         [JsonProperty("live_version")]
         [STJS.JsonPropertyName("live_version")]

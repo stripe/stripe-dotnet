@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Billing
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -43,14 +42,14 @@ namespace Stripe.V2.Billing
         /// </summary>
         [JsonProperty("konbini")]
         [STJS.JsonPropertyName("konbini")]
-        public Dictionary<string, object> Konbini { get; set; }
+        public CollectionSettingCreatePaymentMethodOptionsKonbiniOptions Konbini { get; set; }
 
         /// <summary>
         /// This sub-hash contains details about the SEPA Direct Debit payment method options.
         /// </summary>
         [JsonProperty("sepa_debit")]
         [STJS.JsonPropertyName("sepa_debit")]
-        public Dictionary<string, object> SepaDebit { get; set; }
+        public CollectionSettingCreatePaymentMethodOptionsSepaDebitOptions SepaDebit { get; set; }
 
         /// <summary>
         /// This sub-hash contains details about the ACH direct debit payment method options.
