@@ -22,8 +22,9 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Metadata associated with the FinancialAccount.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
         public Dictionary<string, string> Metadata
         {
@@ -34,5 +35,12 @@ namespace Stripe.V2.MoneyManagement
                 this.SetTracker.Track();
             }
         }
+
+        /// <summary>
+        /// Parameters for updating storage-specific fields on the FinancialAccount.
+        /// </summary>
+        [JsonProperty("storage")]
+        [STJS.JsonPropertyName("storage")]
+        public FinancialAccountUpdateStorageOptions Storage { get; set; }
     }
 }

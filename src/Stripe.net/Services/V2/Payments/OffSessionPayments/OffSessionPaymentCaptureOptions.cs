@@ -10,6 +10,13 @@ namespace Stripe.V2.Payments
     public class OffSessionPaymentCaptureOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// Provides industry-specific information about the amount.
+        /// </summary>
+        [JsonProperty("amount_details")]
+        [STJS.JsonPropertyName("amount_details")]
+        public OffSessionPaymentCaptureAmountDetailsOptions AmountDetails { get; set; }
+
+        /// <summary>
         /// The amount to capture.
         /// </summary>
         [JsonProperty("amount_to_capture")]
@@ -35,6 +42,13 @@ namespace Stripe.V2.Payments
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Provides industry-specific information about the payment.
+        /// </summary>
+        [JsonProperty("payment_details")]
+        [STJS.JsonPropertyName("payment_details")]
+        public OffSessionPaymentCapturePaymentDetailsOptions PaymentDetails { get; set; }
+
+        /// <summary>
         /// Text that appears on the customer’s statement as the statement descriptor for a non-card
         /// charge. This value overrides the account’s default statement descriptor. For information
         /// about requirements, including the 22-character limit, see the <a
@@ -46,10 +60,10 @@ namespace Stripe.V2.Payments
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// Provides information about a card charge. Concatenated to the account’s <a
+        /// Provides information about a card charge. Concatenated to the account's <a
         /// href="https://docs.stripe.com/get-started/account/statement-descriptors#static">statement
         /// descriptor prefix</a> to form the complete statement descriptor that appears on the
-        /// customer’s statement.
+        /// customer's statement.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
         [STJS.JsonPropertyName("statement_descriptor_suffix")]

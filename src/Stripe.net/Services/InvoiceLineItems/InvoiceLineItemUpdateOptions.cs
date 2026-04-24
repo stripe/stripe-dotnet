@@ -63,8 +63,9 @@ namespace Stripe
         /// The IDs of the margins to apply to the line item. When set, the <c>default_margins</c>
         /// on the invoice do not apply to this line item.
         /// </summary>
-        [JsonProperty("margins")]
+        [JsonProperty("margins", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("margins")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> Margins
         {
             get => this.margins;

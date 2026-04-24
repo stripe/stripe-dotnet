@@ -210,6 +210,15 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("custom_fields")]
         public List<SessionCustomField> CustomFields { get; set; }
 
+        /// <summary>
+        /// A list of the types of <a
+        /// href="https://docs.stripe.com/payments/payment-methods/custom-payment-methods">custom
+        /// payment methods</a> (e.g. cpmt_123) this Checkout Session is allowed to accept.
+        /// </summary>
+        [JsonProperty("custom_payment_method_types")]
+        [STJS.JsonPropertyName("custom_payment_method_types")]
+        public List<string> CustomPaymentMethodTypes { get; set; }
+
         [JsonProperty("custom_text")]
         [STJS.JsonPropertyName("custom_text")]
         public SessionCustomText CustomText { get; set; }
@@ -551,6 +560,43 @@ namespace Stripe.Checkout
         [JsonProperty("payment_method_types")]
         [STJS.JsonPropertyName("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
+
+        #region Expandable PaymentRecord
+
+        /// <summary>
+        /// (ID of the PaymentRecord)
+        /// The <a href="https://docs.stripe.com/api/payment-record">Payment Record</a> for this
+        /// Checkout Session.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public string PaymentRecordId
+        {
+            get => this.InternalPaymentRecord?.Id;
+            set => this.InternalPaymentRecord = SetExpandableFieldId(value, this.InternalPaymentRecord);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The <a href="https://docs.stripe.com/api/payment-record">Payment Record</a> for this
+        /// Checkout Session.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public PaymentRecord PaymentRecord
+        {
+            get => this.InternalPaymentRecord?.ExpandedObject;
+            set => this.InternalPaymentRecord = SetExpandableFieldObject(value, this.InternalPaymentRecord);
+        }
+
+        [JsonProperty("payment_record")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentRecord>))]
+        [STJS.JsonPropertyName("payment_record")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentRecord>))]
+        internal ExpandableField<PaymentRecord> InternalPaymentRecord { get; set; }
+        #endregion
 
         /// <summary>
         /// The payment status of the Checkout Session, one of <c>paid</c>, <c>unpaid</c>, or

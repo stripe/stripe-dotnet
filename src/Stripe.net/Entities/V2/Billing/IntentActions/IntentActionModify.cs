@@ -17,7 +17,7 @@ namespace Stripe.V2.Billing
         public string CollectAt { get; set; }
 
         /// <summary>
-        /// When the modify action will take effect. If not specified, the default behavior is
+        /// When the modify action takes effect. If not specified, the default behavior is
         /// on_reserve.
         /// </summary>
         [JsonProperty("effective_at")]

@@ -27,7 +27,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>payment_method_passthrough_fee</c>, <c>payment_network_reserved_funds</c>,
         /// <c>platform_earning</c>, <c>platform_earning_refund</c>, <c>platform_fee</c>,
         /// <c>received_credit</c>, <c>received_credit_reversal</c>, <c>received_debit</c>,
-        /// <c>received_debit_reversal</c>, <c>refund</c>, <c>refund_failure</c>, <c>return</c>,
+        /// <c>received_debit_reversal</c>, <c>refund</c>, <c>refund_failure</c>,
         /// <c>risk_reserved_funds</c>, <c>stripe_balance_payment_debit</c>,
         /// <c>stripe_balance_payment_debit_reversal</c>, <c>stripe_fee</c>, <c>stripe_fee_tax</c>,
         /// <c>tax_withholding</c>, <c>transfer_reversal</c>, or <c>unreconciled_customer_funds</c>.

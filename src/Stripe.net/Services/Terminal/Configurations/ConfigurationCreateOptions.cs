@@ -70,8 +70,9 @@ namespace Stripe.Terminal
         /// <summary>
         /// Configurations for reader security settings.
         /// </summary>
-        [JsonProperty("reader_security")]
+        [JsonProperty("reader_security", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("reader_security")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public ConfigurationReaderSecurityOptions ReaderSecurity
         {
             get => this.readerSecurity;

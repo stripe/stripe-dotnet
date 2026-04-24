@@ -12,7 +12,7 @@ namespace Stripe.V2.Billing
         private Dictionary<string, string> metadata;
 
         /// <summary>
-        /// Description that customers will see in the invoice line item. Maximum length of 250
+        /// Description that customers see in the invoice line item. Maximum length of 250
         /// characters.
         /// </summary>
         [JsonProperty("display_name")]
@@ -32,8 +32,9 @@ namespace Stripe.V2.Billing
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
         public Dictionary<string, string> Metadata
         {

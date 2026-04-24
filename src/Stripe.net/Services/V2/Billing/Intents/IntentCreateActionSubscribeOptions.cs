@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing
     public class IntentCreateActionSubscribeOptions : INestedOptions
     {
         /// <summary>
-        /// When the invoice will be collected. If not specified, defaults to on_effective_at.
+        /// When the invoice is collected. If not specified, defaults to on_effective_at.
         /// One of: <c>next_billing_date</c>, or <c>on_effective_at</c>.
         /// </summary>
         [JsonProperty("collect_at")]
@@ -17,7 +17,7 @@ namespace Stripe.V2.Billing
         public string CollectAt { get; set; }
 
         /// <summary>
-        /// When the subscribe action will take effect. If not specified, the default behavior is
+        /// When the subscribe action takes effect. If not specified, the default behavior is
         /// on_reserve.
         /// </summary>
         [JsonProperty("effective_at")]

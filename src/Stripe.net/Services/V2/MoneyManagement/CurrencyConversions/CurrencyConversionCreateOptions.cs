@@ -23,6 +23,13 @@ namespace Stripe.V2.MoneyManagement
         public CurrencyConversionCreateFromOptions From { get; set; }
 
         /// <summary>
+        /// The FX quote to use for the conversion.
+        /// </summary>
+        [JsonProperty("fx_quote")]
+        [STJS.JsonPropertyName("fx_quote")]
+        public string FxQuote { get; set; }
+
+        /// <summary>
         /// To amount object indicating the to currency or optional amount.
         /// </summary>
         [JsonProperty("to")]

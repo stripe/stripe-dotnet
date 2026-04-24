@@ -86,8 +86,9 @@ namespace Stripe
         /// <summary>
         /// Sets the billing schedules for the subscription.
         /// </summary>
-        [JsonProperty("billing_schedules")]
+        [JsonProperty("billing_schedules", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("billing_schedules")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<SubscriptionBillingScheduleOptions> BillingSchedules
         {
             get => this.billingSchedules;

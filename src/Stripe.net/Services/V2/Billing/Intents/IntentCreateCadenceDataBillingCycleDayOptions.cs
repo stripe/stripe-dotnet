@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     {
         /// <summary>
         /// The time at which the billing cycle ends. This field is optional, and if not provided,
-        /// it will default to the time at which the cadence was created in UTC timezone.
+        /// it defaults to the time at which the cadence was created in UTC timezone.
         /// </summary>
         [JsonProperty("time")]
         [STJS.JsonPropertyName("time")]

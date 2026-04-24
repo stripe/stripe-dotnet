@@ -92,6 +92,10 @@ namespace Stripe
         [STJS.JsonPropertyName("fpx")]
         public ChargePaymentMethodDetailsFpx Fpx { get; set; }
 
+        [JsonProperty("gift_card")]
+        [STJS.JsonPropertyName("gift_card")]
+        public ChargePaymentMethodDetailsGiftCard GiftCard { get; set; }
+
         [JsonProperty("giropay")]
         [STJS.JsonPropertyName("giropay")]
         public ChargePaymentMethodDetailsGiropay Giropay { get; set; }

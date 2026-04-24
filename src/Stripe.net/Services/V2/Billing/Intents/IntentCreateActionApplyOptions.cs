@@ -16,7 +16,7 @@ namespace Stripe.V2.Billing
         public IntentCreateActionApplyDiscountOptions Discount { get; set; }
 
         /// <summary>
-        /// When the apply action will take effect. If not specified, defaults to on_reserve.
+        /// When the apply action takes effect. If not specified, defaults to on_reserve.
         /// </summary>
         [JsonProperty("effective_at")]
         [STJS.JsonPropertyName("effective_at")]

@@ -19,7 +19,7 @@ namespace Stripe.V2.Billing
         public bool? Active { get; set; }
 
         /// <summary>
-        /// Description that customers will see in the invoice line item.
+        /// Description that customers see in the invoice line item.
         /// </summary>
         [JsonProperty("display_name")]
         [STJS.JsonPropertyName("display_name")]
@@ -35,8 +35,9 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// Set of key-value pairs that you can attach to an object.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
         public Dictionary<string, string> Metadata
         {

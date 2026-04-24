@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing
     public class IntentCreateActionRemoveEffectiveAtOptions : INestedOptions
     {
         /// <summary>
-        /// When the remove action will take effect.
+        /// When the remove action takes effect.
         /// One of: <c>current_billing_period_end</c>, or <c>on_reserve</c>.
         /// </summary>
         [JsonProperty("type")]

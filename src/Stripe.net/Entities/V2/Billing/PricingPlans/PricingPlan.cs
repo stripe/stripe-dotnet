@@ -54,7 +54,7 @@ namespace Stripe.V2.Billing
         public string Currency { get; set; }
 
         /// <summary>
-        /// A description for pricing plan subscription. Maximum length of 500 characters.
+        /// A description of the pricing plan. Maximum length of 500 characters.
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
@@ -107,7 +107,8 @@ namespace Stripe.V2.Billing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The Stripe Tax tax behavior - whether the PricingPlan is inclusive or exclusive of tax.
+        /// The tax behavior for Stripe Tax — whether the pricing plan price includes or excludes
+        /// tax.
         /// One of: <c>exclusive</c>, or <c>inclusive</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]

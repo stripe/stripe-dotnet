@@ -17,6 +17,13 @@ namespace Stripe.Radar
         public AccountEvaluationEventLoginFailed LoginFailed { get; set; }
 
         /// <summary>
+        /// Data about a succeeded login event.
+        /// </summary>
+        [JsonProperty("login_succeeded")]
+        [STJS.JsonPropertyName("login_succeeded")]
+        public AccountEvaluationEventLoginSucceeded LoginSucceeded { get; set; }
+
+        /// <summary>
         /// Time at which the event occurred. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("occurred_at")]
@@ -31,6 +38,13 @@ namespace Stripe.Radar
         [JsonProperty("registration_failed")]
         [STJS.JsonPropertyName("registration_failed")]
         public AccountEvaluationEventRegistrationFailed RegistrationFailed { get; set; }
+
+        /// <summary>
+        /// Data about a succeeded registration event.
+        /// </summary>
+        [JsonProperty("registration_succeeded")]
+        [STJS.JsonPropertyName("registration_succeeded")]
+        public AccountEvaluationEventRegistrationSucceeded RegistrationSucceeded { get; set; }
 
         /// <summary>
         /// The type of event that occurred.

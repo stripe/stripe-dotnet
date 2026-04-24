@@ -19,7 +19,7 @@ namespace Stripe.V2.Billing
         public bool? Active { get; set; }
 
         /// <summary>
-        /// Description of pricing plan subscription.
+        /// Description of the pricing plan. Maximum length of 500 characters.
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
@@ -50,8 +50,9 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// Set of key-value pairs that you can attach to an object.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
         public Dictionary<string, string> Metadata
         {

@@ -56,5 +56,25 @@ namespace Stripe.V2.Core
         {
             return this.RequestAsync<ClaimableSandbox>(BaseAddress.Api, HttpMethod.Get, $"/v2/core/claimable_sandboxes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
+
+        /// <summary>
+        /// Renew the claimable sandbox onboarding link. This will invalidate any existing
+        /// onboarding links. The endpoint only works on a claimable sandbox with status
+        /// <c>unclaimed</c> or <c>claimed</c>.
+        /// </summary>
+        public virtual ClaimableSandbox RenewOnboardingLink(string id, ClaimableSandboxRenewOnboardingLinkOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<ClaimableSandbox>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/claimable_sandboxes/{WebUtility.UrlEncode(id)}/renew_onboarding_link", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Renew the claimable sandbox onboarding link. This will invalidate any existing
+        /// onboarding links. The endpoint only works on a claimable sandbox with status
+        /// <c>unclaimed</c> or <c>claimed</c>.
+        /// </summary>
+        public virtual Task<ClaimableSandbox> RenewOnboardingLinkAsync(string id, ClaimableSandboxRenewOnboardingLinkOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<ClaimableSandbox>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/claimable_sandboxes/{WebUtility.UrlEncode(id)}/renew_onboarding_link", options, requestOptions, cancellationToken);
+        }
     }
 }

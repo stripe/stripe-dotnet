@@ -17,7 +17,7 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// An optional field to specify the version of the Settings to use. If not provided, this
-        /// will always default to the live version any time the settings are used.
+        /// defaults to the live version any time the settings are used.
         /// </summary>
         [JsonProperty("version")]
         [STJS.JsonPropertyName("version")]

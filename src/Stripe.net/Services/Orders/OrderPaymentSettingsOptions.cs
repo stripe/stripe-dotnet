@@ -21,8 +21,9 @@ namespace Stripe
         /// The amount of the application fee (if any) that will be requested to be applied to the
         /// payment and transferred to the application owner's Stripe account.
         /// </summary>
-        [JsonProperty("application_fee_amount")]
+        [JsonProperty("application_fee_amount", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("application_fee_amount")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public long? ApplicationFeeAmount
         {
             get => this.applicationFeeAmount;
@@ -58,8 +59,9 @@ namespace Stripe
         /// <summary>
         /// The URL to redirect the customer to after they authenticate their payment.
         /// </summary>
-        [JsonProperty("return_url")]
+        [JsonProperty("return_url", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("return_url")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string ReturnUrl
         {
             get => this.returnUrl;
@@ -91,8 +93,9 @@ namespace Stripe
         /// <summary>
         /// Provides configuration for completing a transfer for the order after it is paid.
         /// </summary>
-        [JsonProperty("transfer_data")]
+        [JsonProperty("transfer_data", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("transfer_data")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public OrderPaymentSettingsTransferDataOptions TransferData
         {
             get => this.transferData;

@@ -16,11 +16,25 @@ namespace Stripe.Radar
         public AccountEvaluationLoginFailedOptions LoginFailed { get; set; }
 
         /// <summary>
+        /// Event payload for login_succeeded.
+        /// </summary>
+        [JsonProperty("login_succeeded")]
+        [STJS.JsonPropertyName("login_succeeded")]
+        public AccountEvaluationLoginSucceededOptions LoginSucceeded { get; set; }
+
+        /// <summary>
         /// Event payload for registration_failed.
         /// </summary>
         [JsonProperty("registration_failed")]
         [STJS.JsonPropertyName("registration_failed")]
         public AccountEvaluationRegistrationFailedOptions RegistrationFailed { get; set; }
+
+        /// <summary>
+        /// Event payload for registration_succeeded.
+        /// </summary>
+        [JsonProperty("registration_succeeded")]
+        [STJS.JsonPropertyName("registration_succeeded")]
+        public AccountEvaluationRegistrationSucceededOptions RegistrationSucceeded { get; set; }
 
         /// <summary>
         /// The type of event to report.

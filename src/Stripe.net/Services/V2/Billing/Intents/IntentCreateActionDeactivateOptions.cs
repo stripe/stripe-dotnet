@@ -16,7 +16,7 @@ namespace Stripe.V2.Billing
         public IntentCreateActionDeactivateCancellationDetailsOptions CancellationDetails { get; set; }
 
         /// <summary>
-        /// When the invoice will be collected. If not specified, the default behavior is
+        /// When the invoice is collected. If not specified, the default behavior is
         /// on_effective_at.
         /// One of: <c>next_billing_date</c>, or <c>on_effective_at</c>.
         /// </summary>
@@ -25,7 +25,7 @@ namespace Stripe.V2.Billing
         public string CollectAt { get; set; }
 
         /// <summary>
-        /// When the deactivate action will take effect. If not specified, the default behavior is
+        /// When the deactivate action takes effect. If not specified, the default behavior is
         /// on_reserve.
         /// </summary>
         [JsonProperty("effective_at")]

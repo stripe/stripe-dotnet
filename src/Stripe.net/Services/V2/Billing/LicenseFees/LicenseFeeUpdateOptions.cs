@@ -21,8 +21,8 @@ namespace Stripe.V2.Billing
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Changes the version that new license fee will use. Providing <c>live_version =
-        /// "latest"</c> will set the license fee's <c>live_version</c> to its latest version.
+        /// Changes the version that new license fee activations use. Providing <c>live_version =
+        /// "latest"</c> sets the license fee's <c>live_version</c> to its latest version.
         /// </summary>
         [JsonProperty("live_version")]
         [STJS.JsonPropertyName("live_version")]
@@ -41,8 +41,9 @@ namespace Stripe.V2.Billing
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
         public Dictionary<string, string> Metadata
         {
@@ -55,10 +56,10 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Defines whether the tiered price should be graduated or volume-based. In volume-based
-        /// tiering, the maximum quantity within a period determines the per-unit price. In
-        /// graduated tiering, the pricing changes as the quantity grows into new tiers. Can only be
-        /// set if <c>tiers</c> is set.
+        /// Defines whether the tiered price is graduated or volume-based. In volume-based tiering,
+        /// the maximum quantity within a period determines the per-unit price. In graduated
+        /// tiering, the pricing changes as the quantity grows into new tiers. Can only be set if
+        /// <c>tiers</c> is set.
         /// One of: <c>graduated</c>, or <c>volume</c>.
         /// </summary>
         [JsonProperty("tiering_mode")]

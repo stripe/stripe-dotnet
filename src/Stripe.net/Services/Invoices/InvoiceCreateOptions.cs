@@ -37,8 +37,9 @@ namespace Stripe
         /// List of expected payments and corresponding due dates. Valid only for invoices where
         /// <c>collection_method=send_invoice</c>.
         /// </summary>
-        [JsonProperty("amounts_due")]
+        [JsonProperty("amounts_due", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("amounts_due")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<InvoiceAmountsDueOptions> AmountsDue
         {
             get => this.amountsDue;

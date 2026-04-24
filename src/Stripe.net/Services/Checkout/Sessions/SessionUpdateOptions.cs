@@ -32,8 +32,9 @@ namespace Stripe.Checkout
         /// <summary>
         /// List of coupons and promotion codes attached to the Checkout Session.
         /// </summary>
-        [JsonProperty("discounts")]
+        [JsonProperty("discounts", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("discounts")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<SessionDiscountOptions> Discounts
         {
             get => this.discounts;

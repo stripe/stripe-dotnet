@@ -57,6 +57,14 @@ namespace Stripe
         public PriceCustomUnitAmountOptions CustomUnitAmount { get; set; }
 
         /// <summary>
+        /// A custom identifier for this price, such as a SKU number or product code, that can be
+        /// used to reference records from external systems.
+        /// </summary>
+        [JsonProperty("external_reference")]
+        [STJS.JsonPropertyName("external_reference")]
+        public string ExternalReference { get; set; }
+
+        /// <summary>
         /// A lookup key used to retrieve prices dynamically from a static string. This may be up to
         /// 200 characters.
         /// </summary>

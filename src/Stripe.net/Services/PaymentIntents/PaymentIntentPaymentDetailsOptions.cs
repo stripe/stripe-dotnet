@@ -38,8 +38,9 @@ namespace Stripe
         /// <summary>
         /// Car rental data for this PaymentIntent.
         /// </summary>
-        [JsonProperty("car_rental_data")]
+        [JsonProperty("car_rental_data", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("car_rental_data")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<PaymentIntentPaymentDetailsCarRentalDatumOptions> CarRentalData
         {
             get => this.carRentalData;
@@ -79,8 +80,9 @@ namespace Stripe
         /// <summary>
         /// Fleet data for this PaymentIntent.
         /// </summary>
-        [JsonProperty("fleet_data")]
+        [JsonProperty("fleet_data", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("fleet_data")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<PaymentIntentPaymentDetailsFleetDatumOptions> FleetData
         {
             get => this.fleetData;
@@ -101,8 +103,9 @@ namespace Stripe
         /// <summary>
         /// Flight data for this PaymentIntent.
         /// </summary>
-        [JsonProperty("flight_data")]
+        [JsonProperty("flight_data", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("flight_data")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<PaymentIntentPaymentDetailsFlightDatumOptions> FlightData
         {
             get => this.flightData;
@@ -123,8 +126,9 @@ namespace Stripe
         /// <summary>
         /// Lodging data for this PaymentIntent.
         /// </summary>
-        [JsonProperty("lodging_data")]
+        [JsonProperty("lodging_data", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("lodging_data")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<PaymentIntentPaymentDetailsLodgingDatumOptions> LodgingData
         {
             get => this.lodgingData;
@@ -138,8 +142,9 @@ namespace Stripe
         /// <summary>
         /// Money services details for this PaymentIntent.
         /// </summary>
-        [JsonProperty("money_services")]
+        [JsonProperty("money_services", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("money_services")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentDetailsMoneyServicesOptions MoneyServices
         {
             get => this.moneyServices;

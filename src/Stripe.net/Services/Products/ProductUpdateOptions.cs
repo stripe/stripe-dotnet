@@ -53,6 +53,13 @@ namespace Stripe
         }
 
         /// <summary>
+        /// Other identifiers for this product.
+        /// </summary>
+        [JsonProperty("identifiers")]
+        [STJS.JsonPropertyName("identifiers")]
+        public ProductIdentifiersOptions Identifiers { get; set; }
+
+        /// <summary>
         /// A list of up to 8 URLs of images for this product, meant to be displayable to the
         /// customer.
         /// </summary>
@@ -171,8 +178,9 @@ namespace Stripe
         /// href="https://stripe.com/tax/tax-codes">tax code</a> and an optional performance
         /// location.
         /// </summary>
-        [JsonProperty("tax_details")]
+        [JsonProperty("tax_details", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("tax_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public ProductTaxDetailsOptions TaxDetails
         {
             get => this.taxDetails;

@@ -34,12 +34,12 @@ namespace Stripe.V2.Core
         public string Object { get; set; }
 
         /// <summary>
-        /// URL for user to claim sandbox into their existing Stripe account. The value will be null
-        /// if the sandbox status is <c>claimed</c> or <c>expired</c>.
+        /// The app channel that will be used when pre-installing your app on the claimable sandbox.
+        /// One of: <c>public</c>, or <c>testing</c>.
         /// </summary>
-        [JsonProperty("claim_url")]
-        [STJS.JsonPropertyName("claim_url")]
-        public string ClaimUrl { get; set; }
+        [JsonProperty("app_channel")]
+        [STJS.JsonPropertyName("app_channel")]
+        public string AppChannel { get; set; }
 
         /// <summary>
         /// The timestamp the sandbox was claimed. The value will be null if the sandbox status is
@@ -73,6 +73,21 @@ namespace Stripe.V2.Core
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// Details about the onboarding link.
+        /// </summary>
+        [JsonProperty("onboarding_link_details")]
+        [STJS.JsonPropertyName("onboarding_link_details")]
+        public ClaimableSandboxOnboardingLinkDetails OnboardingLinkDetails { get; set; }
+
+        /// <summary>
+        /// Details about the livemode owner account of the sandbox. This will be null until the
+        /// sandbox is claimed.
+        /// </summary>
+        [JsonProperty("owner_details")]
+        [STJS.JsonPropertyName("owner_details")]
+        public ClaimableSandboxOwnerDetails OwnerDetails { get; set; }
+
+        /// <summary>
         /// Values prefilled during the creation of the sandbox. When a user claims the sandbox,
         /// they will be able to update these values.
         /// </summary>
@@ -88,8 +103,8 @@ namespace Stripe.V2.Core
         public ClaimableSandboxSandboxDetails SandboxDetails { get; set; }
 
         /// <summary>
-        /// Status of the sandbox. One of <c>unclaimed</c>, <c>expired</c>, <c>claimed</c>.
-        /// One of: <c>claimed</c>, <c>expired</c>, or <c>unclaimed</c>.
+        /// Status of the sandbox.
+        /// One of: <c>claimed</c>, <c>expired</c>, <c>live</c>, or <c>unclaimed</c>.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

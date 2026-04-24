@@ -9,6 +9,13 @@ namespace Stripe.Events
     public class V2MoneyManagementTransactionCreatedEventData : StripeEntity<V2MoneyManagementTransactionCreatedEventData>
     {
         /// <summary>
+        /// Id of the v1 Treasury Transaction corresponding to this Transaction.
+        /// </summary>
+        [JsonProperty("treasury_transaction")]
+        [STJS.JsonPropertyName("treasury_transaction")]
+        public string TreasuryTransaction { get; set; }
+
+        /// <summary>
         /// Id of the v1 Transaction corresponding to this Transaction.
         /// </summary>
         [JsonProperty("v1_id")]

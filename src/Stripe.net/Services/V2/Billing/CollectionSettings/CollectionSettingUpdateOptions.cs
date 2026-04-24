@@ -9,9 +9,9 @@ namespace Stripe.V2.Billing
     public class CollectionSettingUpdateOptions : BaseOptions
     {
         /// <summary>
-        /// Either automatic, or send_invoice. When charging automatically, Stripe will attempt to
-        /// pay this bill at the end of the period using the payment method attached to the payer
-        /// profile. When sending an invoice, Stripe will email your payer profile an invoice with
+        /// Either automatic, or send_invoice. When charging automatically, Stripe attempts to pay
+        /// this bill at the end of the period using the payment method attached to the billing
+        /// profile. When sending an invoice, Stripe emails your billing profile an invoice with
         /// payment instructions.
         /// One of: <c>automatic</c>, or <c>send_invoice</c>.
         /// </summary>
@@ -37,8 +37,8 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// Optionally change the live version of the CollectionSetting. Billing Cadences and other
-        /// objects that refer to this CollectionSetting will use this version when no overrides are
-        /// set. Providing <c>live_version = "latest"</c> will set the CollectionSetting's
+        /// objects that refer to this CollectionSetting uses this version when no overrides are
+        /// set. Providing <c>live_version = "latest"</c> sets the CollectionSetting's
         /// <c>live_version</c> to its latest version.
         /// </summary>
         [JsonProperty("live_version")]

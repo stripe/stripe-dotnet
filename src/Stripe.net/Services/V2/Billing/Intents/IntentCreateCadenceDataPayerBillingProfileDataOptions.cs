@@ -17,8 +17,8 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The default payment method to use when billing this profile. If left blank, the
-        /// <c>PaymentMethod</c> from the <c>PaymentIntent</c> provided on commit will be used to
-        /// create the profile.
+        /// <c>PaymentMethod</c> from the <c>PaymentIntent</c> provided on commit is used to create
+        /// the profile.
         /// </summary>
         [JsonProperty("default_payment_method")]
         [STJS.JsonPropertyName("default_payment_method")]

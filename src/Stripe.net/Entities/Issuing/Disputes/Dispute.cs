@@ -59,6 +59,13 @@ namespace Stripe.Issuing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// Array of onchain crypto transactions linked to this resource.
+        /// </summary>
+        [JsonProperty("crypto_transactions")]
+        [STJS.JsonPropertyName("crypto_transactions")]
+        public List<DisputeCryptoTransaction> CryptoTransactions { get; set; }
+
+        /// <summary>
         /// The currency the <c>transaction</c> was made in.
         /// </summary>
         [JsonProperty("currency")]

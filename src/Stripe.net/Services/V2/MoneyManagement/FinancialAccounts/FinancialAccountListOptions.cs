@@ -28,7 +28,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Filter for FinancialAccount <c>type</c>. By default, FinancialAccounts of any
         /// <c>type</c> are returned.
-        /// One of: <c>accrued_fees</c>, <c>payments</c>, or <c>storage</c>.
+        /// One of: <c>accrued_fees</c>, <c>multiprocessor_settlement</c>, <c>payments</c>, or
+        /// <c>storage</c>.
         /// </summary>
         [JsonProperty("types")]
         [STJS.JsonPropertyName("types")]

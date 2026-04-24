@@ -29,8 +29,8 @@ namespace Stripe.V2.Billing
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Changes the version that new RateCard activations will use. Providing <c>live_version =
-        /// "latest"</c> will set the RateCard's <c>live_version</c> to its latest version.
+        /// Changes the version that new RateCard activations use. Providing <c>live_version =
+        /// "latest"</c> sets the RateCard's <c>live_version</c> to its latest version.
         /// </summary>
         [JsonProperty("live_version")]
         [STJS.JsonPropertyName("live_version")]
@@ -49,8 +49,9 @@ namespace Stripe.V2.Billing
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
         public Dictionary<string, string> Metadata
         {

@@ -70,8 +70,8 @@ namespace Stripe.V2.Billing
         public string LatestVersion { get; set; }
 
         /// <summary>
-        /// The ID of the Rate Card Version that will be used by all subscriptions when no specific
-        /// version is specified.
+        /// The ID of the Rate Card Version used by all subscriptions when no specific version is
+        /// specified.
         /// </summary>
         [JsonProperty("live_version")]
         [STJS.JsonPropertyName("live_version")]
@@ -104,9 +104,9 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The service cycle configuration for this Rate Card. For example, a monthly Rate Card
-        /// with a rate of $1 for the first 10 "workloads" and $2 thereafter means "$1 per workload
-        /// up to 10 workloads during a month of service." This is similar to but distinct from
-        /// billing interval; the service interval deals with the rate at which the customer
+        /// with a rate of 1 USD for the first 10 "workloads" and 2 USD thereafter means "1 USD per
+        /// workload up to 10 workloads during a month of service." This is similar to but distinct
+        /// from billing interval; the service interval deals with the rate at which the customer
         /// accumulates fees, while the billing interval in Cadence deals with the rate the customer
         /// is billed.
         /// </summary>
@@ -115,11 +115,11 @@ namespace Stripe.V2.Billing
         public RateCardServiceCycle ServiceCycle { get; set; }
 
         /// <summary>
-        /// The interval for assessing service. For example, a monthly Rate Card with a rate of $1
-        /// for the first 10 "workloads" and $2 thereafter means "$1 per workload up to 10 workloads
-        /// during a month of service." This is similar to but distinct from billing interval; the
-        /// service interval deals with the rate at which the customer accumulates fees, while the
-        /// billing interval in Cadence deals with the rate the customer is billed.
+        /// The interval for assessing service. For example, a monthly Rate Card with a rate of 1
+        /// USD for the first 10 "workloads" and 2 USD thereafter means "1 USD per workload up to 10
+        /// workloads during a month of service." This is similar to but distinct from billing
+        /// interval; the service interval deals with the rate at which the customer accumulates
+        /// fees, while the billing interval in Cadence deals with the rate the customer is billed.
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
         /// </summary>
         [JsonProperty("service_interval")]
@@ -128,14 +128,14 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The length of the interval for assessing service. For example, set this to 3 and
-        /// <c>service_interval</c> to <c>"month"</c> in order to specify quarterly service.
+        /// <c>service_interval</c> to <c>"month"</c> to specify quarterly service.
         /// </summary>
         [JsonProperty("service_interval_count")]
         [STJS.JsonPropertyName("service_interval_count")]
         public long ServiceIntervalCount { get; set; }
 
         /// <summary>
-        /// The Stripe Tax tax behavior - whether the rates are inclusive or exclusive of tax.
+        /// The tax behavior for Stripe Tax — whether the rate card price includes or excludes tax.
         /// One of: <c>exclusive</c>, or <c>inclusive</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]

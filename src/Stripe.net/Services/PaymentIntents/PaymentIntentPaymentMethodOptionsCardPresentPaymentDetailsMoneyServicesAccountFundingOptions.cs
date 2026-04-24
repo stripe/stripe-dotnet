@@ -17,8 +17,9 @@ namespace Stripe
         /// <summary>
         /// Details for a liquid asset (crypto or security) funding transaction.
         /// </summary>
-        [JsonProperty("liquid_asset")]
+        [JsonProperty("liquid_asset", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("liquid_asset")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PaymentIntentPaymentMethodOptionsCardPresentPaymentDetailsMoneyServicesAccountFundingLiquidAssetOptions LiquidAsset
         {
             get => this.liquidAsset;

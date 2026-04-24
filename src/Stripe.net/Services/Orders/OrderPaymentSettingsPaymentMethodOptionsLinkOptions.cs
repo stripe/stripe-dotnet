@@ -26,8 +26,9 @@ namespace Stripe
         /// If <c>capture_method</c> is already set on the PaymentIntent, providing an empty value
         /// for this parameter unsets the stored value for this payment method type.
         /// </summary>
-        [JsonProperty("capture_method")]
+        [JsonProperty("capture_method", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("capture_method")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string CaptureMethod
         {
             get => this.captureMethod;
@@ -71,8 +72,9 @@ namespace Stripe
         /// <c>off_session</c>.
         /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonProperty("setup_future_usage", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("setup_future_usage")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string SetupFutureUsage
         {
             get => this.setupFutureUsage;

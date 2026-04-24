@@ -128,6 +128,13 @@ namespace Stripe.Issuing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// Array of onchain crypto transactions linked to this resource.
+        /// </summary>
+        [JsonProperty("crypto_transactions")]
+        [STJS.JsonPropertyName("crypto_transactions")]
+        public List<AuthorizationCryptoTransaction> CryptoTransactions { get; set; }
+
+        /// <summary>
         /// The currency of the cardholder. This currency can be different from the currency
         /// presented at authorization and the <c>merchant_currency</c> field on this authorization.
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency

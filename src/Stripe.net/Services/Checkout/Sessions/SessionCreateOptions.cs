@@ -125,6 +125,21 @@ namespace Stripe.Checkout
         public List<SessionCustomFieldOptions> CustomFields { get; set; }
 
         /// <summary>
+        /// A list of custom payment methods (e.g., <c>cpmt_123</c>) this Checkout Session can
+        /// accept.
+        ///
+        /// You can add custom payment methods to your account through the dashboard under Settings
+        /// &gt; Custom Payment Methods.
+        ///
+        /// Read more about custom payment methods in checkout in our <a
+        /// href="https://docs.stripe.com/payments/payment-methods/custom-payment-methods">custom
+        /// payment method types guide</a>.
+        /// </summary>
+        [JsonProperty("custom_payment_method_types")]
+        [STJS.JsonPropertyName("custom_payment_method_types")]
+        public List<string> CustomPaymentMethodTypes { get; set; }
+
+        /// <summary>
         /// Display additional text for your customers using custom text. You can't set this
         /// parameter if <c>ui_mode</c> is <c>custom</c>.
         /// </summary>

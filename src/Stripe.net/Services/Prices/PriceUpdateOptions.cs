@@ -10,6 +10,7 @@ namespace Stripe
     public class PriceUpdateOptions : BaseOptions, IHasMetadata
     {
         private Dictionary<string, PriceCurrencyOptionsOptions> currencyOptions;
+        private string externalReference;
         private Dictionary<string, string> metadata;
         private PriceMigrateToOptions migrateTo;
 
@@ -34,6 +35,23 @@ namespace Stripe
             set
             {
                 this.currencyOptions = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// A custom identifier for this price, such as a SKU number or product code, that can be
+        /// used to reference records from external systems.
+        /// </summary>
+        [JsonProperty("external_reference", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("external_reference")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public string ExternalReference
+        {
+            get => this.externalReference;
+            set
+            {
+                this.externalReference = value;
                 this.SetTracker.Track();
             }
         }
@@ -69,8 +87,9 @@ namespace Stripe
         /// If specified, subscriptions using this price will be updated to use the new referenced
         /// price.
         /// </summary>
-        [JsonProperty("migrate_to")]
+        [JsonProperty("migrate_to", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("migrate_to")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public PriceMigrateToOptions MigrateTo
         {
             get => this.migrateTo;

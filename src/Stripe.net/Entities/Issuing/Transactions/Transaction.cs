@@ -202,6 +202,13 @@ namespace Stripe.Issuing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// Array of onchain crypto transactions linked to this resource.
+        /// </summary>
+        [JsonProperty("crypto_transactions")]
+        [STJS.JsonPropertyName("crypto_transactions")]
+        public List<TransactionCryptoTransaction> CryptoTransactions { get; set; }
+
+        /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.

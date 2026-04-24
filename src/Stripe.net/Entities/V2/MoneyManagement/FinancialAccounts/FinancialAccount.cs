@@ -94,6 +94,14 @@ namespace Stripe.V2.MoneyManagement
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// If this is a <c>multiprocessor_settlement</c> FinancialAccount, this hash includes
+        /// details specific to <c>multiprocessor_settlement</c> FinancialAccounts.
+        /// </summary>
+        [JsonProperty("multiprocessor_settlement")]
+        [STJS.JsonPropertyName("multiprocessor_settlement")]
+        public FinancialAccountMultiprocessorSettlement MultiprocessorSettlement { get; set; }
+
+        /// <summary>
         /// If this is a <c>other</c> FinancialAccount, this hash indicates what the actual type is.
         /// Upgrade your API version to see it reflected in <c>type</c>.
         /// </summary>
@@ -137,7 +145,8 @@ namespace Stripe.V2.MoneyManagement
         /// Type of the FinancialAccount. An additional hash is included on the FinancialAccount
         /// with a name matching this value. It contains additional information specific to the
         /// FinancialAccount type.
-        /// One of: <c>accrued_fees</c>, <c>other</c>, <c>payments</c>, or <c>storage</c>.
+        /// One of: <c>accrued_fees</c>, <c>multiprocessor_settlement</c>, <c>other</c>,
+        /// <c>payments</c>, or <c>storage</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

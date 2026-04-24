@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class RateCardModifyRatesRatesToCreateMeteredItemDataOptions : INestedOptions
     {
         /// <summary>
-        /// Description that customers will see in the invoice line item. Maximum length of 250
+        /// Description that customers see in the invoice line item. Maximum length of 250
         /// characters.
         /// </summary>
         [JsonProperty("display_name")]

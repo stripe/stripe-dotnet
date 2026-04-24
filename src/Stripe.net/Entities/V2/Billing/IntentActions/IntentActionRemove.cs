@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing
     public class IntentActionRemove : StripeEntity<IntentActionRemove>
     {
         /// <summary>
-        /// When the remove action will take effect. If not specified, defaults to on_reserve.
+        /// When the remove action takes effect. If not specified, defaults to on_reserve.
         /// </summary>
         [JsonProperty("effective_at")]
         [STJS.JsonPropertyName("effective_at")]

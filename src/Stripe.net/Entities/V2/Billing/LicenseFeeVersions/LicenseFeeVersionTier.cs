@@ -25,7 +25,7 @@ namespace Stripe.V2.Billing
         public string UnitAmount { get; set; }
 
         /// <summary>
-        /// Up to and including this quantity will be contained in the tier. Only one of
+        /// Up to and including this quantity is contained in the tier. Only one of
         /// <c>up_to_decimal</c> and <c>up_to_inf</c> may be set.
         /// </summary>
         [JsonProperty("up_to_decimal")]

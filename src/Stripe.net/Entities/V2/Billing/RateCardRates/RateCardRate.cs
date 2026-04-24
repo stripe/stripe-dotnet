@@ -86,10 +86,10 @@ namespace Stripe.V2.Billing
         public string RateCardVersion { get; set; }
 
         /// <summary>
-        /// Defines whether the tiering price should be graduated or volume-based. In volume-based
-        /// tiering, the maximum quantity within a period determines the per-unit price. In
-        /// graduated tiering, the pricing changes as the quantity grows into new tiers. Can only be
-        /// set if <c>tiers</c> is set.
+        /// Defines whether the tiering price is graduated or volume-based. In volume-based tiering,
+        /// the maximum quantity within a period determines the per-unit price. In graduated
+        /// tiering, the pricing changes as the quantity grows into new tiers. Can only be set if
+        /// <c>tiers</c> is set.
         /// One of: <c>graduated</c>, or <c>volume</c>.
         /// </summary>
         [JsonProperty("tiering_mode")]

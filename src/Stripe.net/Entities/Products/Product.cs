@@ -109,6 +109,10 @@ namespace Stripe
         [STJS.JsonPropertyName("description")]
         public string Description { get; set; }
 
+        [JsonProperty("identifiers")]
+        [STJS.JsonPropertyName("identifiers")]
+        public ProductIdentifiers Identifiers { get; set; }
+
         /// <summary>
         /// A list of up to 8 URLs of images for this product, meant to be displayable to the
         /// customer.
