@@ -35,5 +35,12 @@ namespace Stripe.V2.MoneyManagement
                 this.SetTracker.Track();
             }
         }
+
+        /// <summary>
+        /// Parameters for updating storage-specific fields on the FinancialAccount.
+        /// </summary>
+        [JsonProperty("storage")]
+        [STJS.JsonPropertyName("storage")]
+        public FinancialAccountUpdateStorageOptions Storage { get; set; }
     }
 }

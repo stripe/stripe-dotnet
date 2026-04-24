@@ -78,8 +78,8 @@ namespace Stripe.V2.Billing
         public LicensedItem LicensedItem { get; set; }
 
         /// <summary>
-        /// The ID of the License Fee Version that will be used by all subscriptions when no
-        /// specific version is specified.
+        /// The ID of the License Fee Version used by all subscriptions when no specific version is
+        /// specified.
         /// </summary>
         [JsonProperty("live_version")]
         [STJS.JsonPropertyName("live_version")]
@@ -127,14 +127,15 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The length of the interval for assessing service. For example, set this to 3 and
-        /// <c>service_interval</c> to <c>"month"</c> in order to specify quarterly service.
+        /// <c>service_interval</c> to <c>"month"</c> to specify quarterly service.
         /// </summary>
         [JsonProperty("service_interval_count")]
         [STJS.JsonPropertyName("service_interval_count")]
         public long ServiceIntervalCount { get; set; }
 
         /// <summary>
-        /// The Stripe Tax tax behavior - whether the license fee is inclusive or exclusive of tax.
+        /// The tax behavior for Stripe Tax — whether the license fee price includes or excludes
+        /// tax.
         /// One of: <c>exclusive</c>, or <c>inclusive</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
@@ -142,10 +143,10 @@ namespace Stripe.V2.Billing
         public string TaxBehavior { get; set; }
 
         /// <summary>
-        /// Defines whether the tiering price should be graduated or volume-based. In volume-based
-        /// tiering, the maximum quantity within a period determines the per-unit price. In
-        /// graduated tiering, the pricing changes as the quantity grows into new tiers. Can only be
-        /// set if <c>tiers</c> is set.
+        /// Defines whether the tiering price is graduated or volume-based. In volume-based tiering,
+        /// the maximum quantity within a period determines the per-unit price. In graduated
+        /// tiering, the pricing changes as the quantity grows into new tiers. Can only be set if
+        /// <c>tiers</c> is set.
         /// One of: <c>graduated</c>, or <c>volume</c>.
         /// </summary>
         [JsonProperty("tiering_mode")]

@@ -21,8 +21,8 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// Set the Rate for a Metered Item on the latest version of a Rate Card object. This will
-        /// create a new Rate Card version if the Metered Item already has a rate on the Rate Card.
+        /// Set the Rate for a Metered Item on the latest version of a Rate Card object. This
+        /// creates a new Rate Card version if the Metered Item already has a rate on the Rate Card.
         /// </summary>
         public virtual V2.Billing.RateCardRate Create(string id, RateCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -30,8 +30,8 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// Set the Rate for a Metered Item on the latest version of a Rate Card object. This will
-        /// create a new Rate Card version if the Metered Item already has a rate on the Rate Card.
+        /// Set the Rate for a Metered Item on the latest version of a Rate Card object. This
+        /// creates a new Rate Card version if the Metered Item already has a rate on the Rate Card.
         /// </summary>
         public virtual Task<V2.Billing.RateCardRate> CreateAsync(string id, RateCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -39,8 +39,8 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// Remove an existing Rate from a Rate Card. This will create a new Rate Card Version
-        /// without that Rate.
+        /// Remove an existing Rate from a Rate Card. This creates a new Rate Card Version without
+        /// that Rate.
         /// </summary>
         public virtual V2.DeletedObject Delete(string parentId, string id, RateDeleteOptions options = null, RequestOptions requestOptions = null)
         {
@@ -48,8 +48,8 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// Remove an existing Rate from a Rate Card. This will create a new Rate Card Version
-        /// without that Rate.
+        /// Remove an existing Rate from a Rate Card. This creates a new Rate Card Version without
+        /// that Rate.
         /// </summary>
         public virtual Task<V2.DeletedObject> DeleteAsync(string parentId, string id, RateDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

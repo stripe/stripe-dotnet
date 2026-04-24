@@ -49,6 +49,13 @@ namespace Stripe.DelegatedCheckout
         public long? AmountTotal { get; set; }
 
         /// <summary>
+        /// The buyer consent options for this requested session, including marketing preferences.
+        /// </summary>
+        [JsonProperty("buyer_consents")]
+        [STJS.JsonPropertyName("buyer_consents")]
+        public RequestedSessionBuyerConsents BuyerConsents { get; set; }
+
+        /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created_at")]

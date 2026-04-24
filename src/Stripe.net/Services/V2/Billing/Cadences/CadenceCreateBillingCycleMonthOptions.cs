@@ -10,8 +10,8 @@ namespace Stripe.V2.Billing
     {
         /// <summary>
         /// The day to anchor the billing on for a type="month" billing cycle from 1-31. If this
-        /// number is greater than the number of days in the month being billed, this will anchor to
-        /// the last day of the month. If not provided, this will default to the day the cadence was
+        /// number is greater than the number of days in the month being billed, this anchors to the
+        /// last day of the month. If not provided, this defaults to the day the cadence was
         /// created.
         /// </summary>
         [JsonProperty("day_of_month")]
@@ -20,9 +20,9 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The month to anchor the billing on for a type="month" billing cycle from 1-12. If not
-        /// provided, this will default to the month the cadence was created. This setting can only
-        /// be used for monthly billing cycles with <c>interval_count</c> of 2, 3, 4 or 6. All
-        /// occurrences will be calculated from month provided.
+        /// provided, this defaults to the month the cadence was created. This setting can only be
+        /// used for monthly billing cycles with <c>interval_count</c> of 2, 3, 4 or 6. All
+        /// occurrences are calculated from the month provided.
         /// </summary>
         [JsonProperty("month_of_year")]
         [STJS.JsonPropertyName("month_of_year")]
@@ -30,7 +30,7 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The time at which the billing cycle ends. This field is optional, and if not provided,
-        /// it will default to the time at which the cadence was created in UTC timezone.
+        /// it defaults to the time at which the cadence was created in UTC timezone.
         /// </summary>
         [JsonProperty("time")]
         [STJS.JsonPropertyName("time")]

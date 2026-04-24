@@ -29,8 +29,8 @@ namespace Stripe.V2.Billing
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Changes the version that new RateCard activations will use. Providing <c>live_version =
-        /// "latest"</c> will set the RateCard's <c>live_version</c> to its latest version.
+        /// Changes the version that new RateCard activations use. Providing <c>live_version =
+        /// "latest"</c> sets the RateCard's <c>live_version</c> to its latest version.
         /// </summary>
         [JsonProperty("live_version")]
         [STJS.JsonPropertyName("live_version")]

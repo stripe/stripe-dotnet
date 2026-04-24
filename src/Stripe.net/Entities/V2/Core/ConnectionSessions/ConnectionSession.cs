@@ -8,7 +8,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// The ConnectionSession resource.
+    /// A short-lived, single-use session used to launch client-side Link onboarding that
+    /// connects an Account to a Link consumer account.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ConnectionSession : StripeEntity<ConnectionSession>, IHasId, IHasObject

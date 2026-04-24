@@ -19,7 +19,7 @@ namespace Stripe.V2.Billing
         public bool? Active { get; set; }
 
         /// <summary>
-        /// Description that customers will see in the invoice line item.
+        /// Description that customers see in the invoice line item.
         /// </summary>
         [JsonProperty("display_name")]
         [STJS.JsonPropertyName("display_name")]

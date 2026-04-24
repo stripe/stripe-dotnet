@@ -53,6 +53,13 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
+        /// Other identifiers for this product.
+        /// </summary>
+        [JsonProperty("identifiers")]
+        [STJS.JsonPropertyName("identifiers")]
+        public OrderLineItemProductDataIdentifiersOptions Identifiers { get; set; }
+
+        /// <summary>
         /// A list of up to 8 URLs of images for this product, meant to be displayable to the
         /// customer.
         /// </summary>

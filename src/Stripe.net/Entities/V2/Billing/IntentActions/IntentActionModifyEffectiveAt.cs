@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class IntentActionModifyEffectiveAt : StripeEntity<IntentActionModifyEffectiveAt>
     {
         /// <summary>
-        /// The timestamp at which the modify action will take effect. Only present if type is
+        /// The timestamp at which the modify action takes effect. Only present if type is
         /// timestamp.
         /// </summary>
         [JsonProperty("timestamp")]
@@ -18,7 +18,7 @@ namespace Stripe.V2.Billing
         public DateTime? Timestamp { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// When the modify action will take effect.
+        /// When the modify action takes effect.
         /// One of: <c>current_billing_period_start</c>, <c>on_reserve</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]

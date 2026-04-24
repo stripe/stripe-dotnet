@@ -23,13 +23,5 @@ namespace Stripe.V2.Core
         [JsonProperty("api_keys")]
         [STJS.JsonPropertyName("api_keys")]
         public ClaimableSandboxSandboxDetailsApiKeys ApiKeys { get; set; }
-
-        /// <summary>
-        /// The livemode sandbox Stripe account ID. This field is only set if the user activates
-        /// their sandbox and chooses to install your platform's Stripe App in their live account.
-        /// </summary>
-        [JsonProperty("owner_account")]
-        [STJS.JsonPropertyName("owner_account")]
-        public string OwnerAccount { get; set; }
     }
 }

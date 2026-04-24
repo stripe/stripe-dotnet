@@ -45,6 +45,13 @@ namespace Stripe.V2.Payments
         public V2.Amount AmountCapturable { get; set; }
 
         /// <summary>
+        /// Provides industry-specific information about the amount.
+        /// </summary>
+        [JsonProperty("amount_details")]
+        [STJS.JsonPropertyName("amount_details")]
+        public OffSessionPaymentAmountDetails AmountDetails { get; set; }
+
+        /// <summary>
         /// The “presentment amount” to be collected from the customer.
         /// </summary>
         [JsonProperty("amount_requested")]
@@ -87,6 +94,13 @@ namespace Stripe.V2.Payments
         [JsonProperty("customer")]
         [STJS.JsonPropertyName("customer")]
         public string Customer { get; set; }
+
+        /// <summary>
+        /// An arbitrary string attached to the object. Often useful for displaying to users.
+        /// </summary>
+        [JsonProperty("description")]
+        [STJS.JsonPropertyName("description")]
+        public string Description { get; set; }
 
         /// <summary>
         /// The reason why the OffSessionPayment failed.
@@ -136,6 +150,13 @@ namespace Stripe.V2.Payments
         [JsonProperty("on_behalf_of")]
         [STJS.JsonPropertyName("on_behalf_of")]
         public string OnBehalfOf { get; set; }
+
+        /// <summary>
+        /// Provides industry-specific information about the payment.
+        /// </summary>
+        [JsonProperty("payment_details")]
+        [STJS.JsonPropertyName("payment_details")]
+        public OffSessionPaymentPaymentDetails PaymentDetails { get; set; }
 
         /// <summary>
         /// ID of the payment method used in this OffSessionPayment.

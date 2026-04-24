@@ -65,7 +65,7 @@ namespace Stripe.V2.Billing
         public string InvoiceRenderingTemplate { get; set; }
 
         /// <summary>
-        /// The latest version of the current settings object. This will be Updated every time an
+        /// The latest version of the current settings object. This is updated every time an
         /// attribute of the settings is updated.
         /// </summary>
         [JsonProperty("latest_version")]

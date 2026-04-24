@@ -25,7 +25,7 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Which rail we should use to make an Outbound money movement to this wallet.
         /// One of: <c>arbitrum</c>, <c>avalanche_c_chain</c>, <c>base</c>, <c>ethereum</c>,
-        /// <c>optimism</c>, <c>polygon</c>, <c>solana</c>, or <c>stellar</c>.
+        /// <c>optimism</c>, <c>polygon</c>, <c>solana</c>, <c>stellar</c>, or <c>tempo</c>.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]

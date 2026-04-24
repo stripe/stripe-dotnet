@@ -54,6 +54,15 @@ namespace Stripe.Issuing
         public string NetworkId { get; set; }
 
         /// <summary>
+        /// The identifier of the payment facilitator (PayFac) that processed this authorization, as
+        /// assigned by the card network. Null when the transaction was not processed through a
+        /// PayFac.
+        /// </summary>
+        [JsonProperty("payment_facilitator_id")]
+        [STJS.JsonPropertyName("payment_facilitator_id")]
+        public string PaymentFacilitatorId { get; set; }
+
+        /// <summary>
         /// Postal code where the seller is located.
         /// </summary>
         [JsonProperty("postal_code")]
@@ -66,6 +75,15 @@ namespace Stripe.Issuing
         [JsonProperty("state")]
         [STJS.JsonPropertyName("state")]
         public string State { get; set; }
+
+        /// <summary>
+        /// The identifier of the sub-merchant involved in this authorization, as assigned by the
+        /// payment facilitator. Null when the transaction was not processed through a PayFac or
+        /// when no sub-merchant ID was provided.
+        /// </summary>
+        [JsonProperty("sub_merchant_id")]
+        [STJS.JsonPropertyName("sub_merchant_id")]
+        public string SubMerchantId { get; set; }
 
         /// <summary>
         /// The seller's tax identification number. Currently populated for French merchants only.

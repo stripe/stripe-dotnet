@@ -52,7 +52,7 @@ namespace Stripe.V2.Billing
         public PricingPlanSubscriptionPricingPlanComponentDetailLicenseFeeDetailsServiceCycle ServiceCycle { get; set; }
 
         /// <summary>
-        /// Defines whether the tiering price should be graduated or volume-based.
+        /// Defines whether the tiering price is graduated or volume-based.
         /// One of: <c>graduated</c>, or <c>volume</c>.
         /// </summary>
         [JsonProperty("tiering_mode")]
@@ -83,7 +83,7 @@ namespace Stripe.V2.Billing
         public string UnitAmount { get; set; }
 
         /// <summary>
-        /// The unit label from the licensed item, used for display purposes (e.g. "seat",
+        /// The unit label from the licensed item, used for display purposes (for example, "seat",
         /// "environment").
         /// </summary>
         [JsonProperty("unit_label")]

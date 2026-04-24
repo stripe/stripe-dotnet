@@ -17,6 +17,13 @@ namespace Stripe.V2.Payments
         public V2.Amount Amount { get; set; }
 
         /// <summary>
+        /// Provides industry-specific information about the amount.
+        /// </summary>
+        [JsonProperty("amount_details")]
+        [STJS.JsonPropertyName("amount_details")]
+        public OffSessionPaymentCreateAmountDetailsOptions AmountDetails { get; set; }
+
+        /// <summary>
         /// The amount of the application fee (if any) that will be requested to be applied to the
         /// payment and transferred to the application owner's Stripe account.
         /// </summary>
@@ -47,6 +54,13 @@ namespace Stripe.V2.Payments
         public string Customer { get; set; }
 
         /// <summary>
+        /// An arbitrary string attached to the object. Often useful for displaying to users.
+        /// </summary>
+        [JsonProperty("description")]
+        [STJS.JsonPropertyName("description")]
+        public string Description { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Learn more about <a
@@ -63,6 +77,13 @@ namespace Stripe.V2.Payments
         [JsonProperty("on_behalf_of")]
         [STJS.JsonPropertyName("on_behalf_of")]
         public string OnBehalfOf { get; set; }
+
+        /// <summary>
+        /// Provides industry-specific information about the payment.
+        /// </summary>
+        [JsonProperty("payment_details")]
+        [STJS.JsonPropertyName("payment_details")]
+        public OffSessionPaymentCreatePaymentDetailsOptions PaymentDetails { get; set; }
 
         /// <summary>
         /// ID of the payment method used in this OffSessionPayment.

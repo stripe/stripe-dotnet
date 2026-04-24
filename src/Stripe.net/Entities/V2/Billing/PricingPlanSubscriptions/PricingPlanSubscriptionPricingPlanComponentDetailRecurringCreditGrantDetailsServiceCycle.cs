@@ -18,7 +18,7 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The length of the interval for assessing service. For example, set this to 3 and
-        /// <c>interval</c> to <c>"month"</c> in order to specify quarterly service.
+        /// <c>interval</c> to <c>"month"</c> to specify quarterly service.
         /// </summary>
         [JsonProperty("interval_count")]
         [STJS.JsonPropertyName("interval_count")]

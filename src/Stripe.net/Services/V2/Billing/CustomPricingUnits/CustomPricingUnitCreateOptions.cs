@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class CustomPricingUnitCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// Description that customers will see in the invoice line item. Maximum length of 10
+        /// Description that customers see in the invoice line item. Maximum length of 10
         /// characters.
         /// </summary>
         [JsonProperty("display_name")]

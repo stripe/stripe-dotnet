@@ -7,6 +7,7 @@ namespace Stripe.V2
 
     public class IamService : Service
     {
+        private V2.Iam.ActivityLogService activityLogs;
         private V2.Iam.ApiKeyService apiKeys;
 
         internal IamService(ApiRequestor requestor)
@@ -18,6 +19,9 @@ namespace Stripe.V2
             : base(client)
         {
         }
+
+        public virtual V2.Iam.ActivityLogService ActivityLogs => this.activityLogs ??= new V2.Iam.ActivityLogService(
+            this.Requestor);
 
         public virtual V2.Iam.ApiKeyService ApiKeys => this.apiKeys ??= new V2.Iam.ApiKeyService(
             this.Requestor);

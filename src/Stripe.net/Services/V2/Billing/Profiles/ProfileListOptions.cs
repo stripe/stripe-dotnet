@@ -35,7 +35,7 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// Filter billing profiles by status. Can be combined with all other filters. If not
-        /// provided, all billing profiles will be returned.
+        /// provided, all billing profiles are returned.
         /// One of: <c>active</c>, or <c>inactive</c>.
         /// </summary>
         [JsonProperty("status")]

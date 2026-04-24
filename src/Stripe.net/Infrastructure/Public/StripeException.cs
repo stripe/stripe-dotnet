@@ -79,6 +79,10 @@ namespace Stripe
                     ret = Stripe.V2.FinancialAccountNotOpenException.Parse(httpStatusCode, body);
                     break;
 
+                case "fx_quote_expired":
+                    ret = Stripe.V2.FxQuoteExpiredException.Parse(httpStatusCode, body);
+                    break;
+
                 case "insufficient_funds":
                     ret = Stripe.V2.InsufficientFundsException.Parse(httpStatusCode, body);
                     break;

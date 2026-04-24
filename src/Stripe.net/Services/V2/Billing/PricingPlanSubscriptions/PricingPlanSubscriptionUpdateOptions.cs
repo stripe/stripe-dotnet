@@ -12,7 +12,7 @@ namespace Stripe.V2.Billing
         private Dictionary<string, string> metadata;
 
         /// <summary>
-        /// When set to true, the <c>servicing_status_transition.will_cancel_at</c> field will be
+        /// When set to true, the <c>servicing_status_transition.will_cancel_at</c> field is
         /// cleared.
         /// </summary>
         [JsonProperty("clear_cancel_at")]

@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing
     public class CadencePayer : StripeEntity<CadencePayer>
     {
         /// <summary>
-        /// The ID of the Billing Profile object which determines how a bill will be paid.
+        /// The ID of the Billing Profile object which determines how a bill is paid.
         /// </summary>
         [JsonProperty("billing_profile")]
         [STJS.JsonPropertyName("billing_profile")]

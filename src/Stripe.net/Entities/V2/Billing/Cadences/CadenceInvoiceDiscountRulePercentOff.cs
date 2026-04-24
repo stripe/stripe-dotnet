@@ -16,8 +16,8 @@ namespace Stripe.V2.Billing
         public CadenceInvoiceDiscountRulePercentOffMaximumApplications MaximumApplications { get; set; }
 
         /// <summary>
-        /// Percent that will be taken off of the amount. For example, percent_off of 50.0 will make
-        /// $100 amount $50 instead.
+        /// Percent that is taken off the amount. For example, a percent_off of 50.0 reduces a 100
+        /// USD amount to 50 USD.
         /// </summary>
         [JsonProperty("percent_off")]
         [JsonConverter(typeof(DecimalStringConverter))]

@@ -24,7 +24,7 @@ namespace Stripe.V2.Billing
         public string CollectAt { get; set; }
 
         /// <summary>
-        /// When the deactivate action will take effect. If not specified, the default behavior is
+        /// When the deactivate action takes effect. If not specified, the default behavior is
         /// on_reserve.
         /// </summary>
         [JsonProperty("effective_at")]

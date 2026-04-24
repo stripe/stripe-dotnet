@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing
     public class IntentCreateActionModifyOptions : INestedOptions
     {
         /// <summary>
-        /// When the invoice will be collected. If not specified, the default behavior is
+        /// When the invoice is collected. If not specified, the default behavior is
         /// next_billing_date.
         /// One of: <c>next_billing_date</c>, or <c>on_effective_at</c>.
         /// </summary>
@@ -18,7 +18,7 @@ namespace Stripe.V2.Billing
         public string CollectAt { get; set; }
 
         /// <summary>
-        /// When the modify action will take effect. If not specified, the default behavior is
+        /// When the modify action takes effect. If not specified, the default behavior is
         /// on_reserve.
         /// </summary>
         [JsonProperty("effective_at")]

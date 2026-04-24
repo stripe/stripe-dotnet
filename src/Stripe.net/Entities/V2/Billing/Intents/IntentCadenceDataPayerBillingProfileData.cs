@@ -17,7 +17,7 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The default payment method to use when billing this profile. If none is provided, the
-        /// customer <c>default_payment_method</c> will be used.
+        /// customer <c>default_payment_method</c> is used.
         /// </summary>
         [JsonProperty("default_payment_method")]
         [STJS.JsonPropertyName("default_payment_method")]

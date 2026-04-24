@@ -17,8 +17,8 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The number of intervals (specified in the interval attribute) between cadence billings.
-        /// For example, type=month and interval_count=3 bills every 3 months. If this is not
-        /// provided, it will default to 1.
+        /// For example, type=month and interval_count=3 bills every 3 months. If not provided, this
+        /// defaults to 1.
         /// </summary>
         [JsonProperty("interval_count")]
         [STJS.JsonPropertyName("interval_count")]
