@@ -1,5 +1,21 @@
 # Changelog
 
+## 51.2.0-beta.1 - 2026-04-23
+This release changes the pinned API version to 2026-04-22.private.
+
+* [#3367](https://github.com/stripe/stripe-dotnet/pull/3367) Update generated code for beta
+  * Add support for new resources `SharedPayment.GrantedToken` and `SharedPayment.IssuedToken`
+  * Add support for `Get` method on resource `SharedPayment.GrantedToken`
+  * Add support for `Create` and `Revoke` test helper methods on resource `SharedPayment.GrantedToken`
+  * Add support for `Create`, `Get`, and `Revoke` methods on resource `SharedPayment.IssuedToken`
+  * Add support for `Blik` on `CheckoutSessionPaymentMethodOptionsOptions`, `Invoice.PaymentSettings.PaymentMethodOptions`, `InvoicePaymentSettingsPaymentMethodOptionsOptions`, `QuotePreviewInvoice.PaymentSettings.PaymentMethodOptions`, `Subscription.PaymentSettings.PaymentMethodOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsOptions`
+  * Add support for `SharedPaymentGrantedToken` on `ConfirmationTokenPaymentMethodDataOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `ValidationErrors` on `Privacy.RedactionJob`
+  * Add support for `TaxDetails` on `Product`
+  * ⚠️ Change type of `QuotePreviewInvoice.TotalTaxes.TaxRateDetails.TaxRate` from `string` to `expandable($TaxRate)`
+  * Add support for `AdmissionsTax`, `AttendanceTax`, `EntertainmentTax`, `GrossReceiptsTax`, `HospitalityTax`, `LuxuryTax`, `ResortTax`, and `TourismTax` on `TaxRegistrationCountryOptionsUsOptions`
+  * Add support for `Purpose` on `Treasury.OutboundPaymentCreateOptions` and `Treasury.OutboundPayment`
+
 ## 51.1.0-beta.2 - 2026-04-17
 Please review the [changelog for 51.0.1](https://github.com/stripe/stripe-dotnet/blob/master/CHANGELOG.md#5101---2026-04-17) for more information about changes in this release.
 
