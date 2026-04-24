@@ -8,13 +8,14 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// BatchJob resource.
+    /// A batch job allows you to perform an API operation on a large set of records
+    /// asynchronously.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class BatchJob : StripeEntity<BatchJob>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
-        /// Unique identifier for the BatchJob.
+        /// Unique identifier for the <c>batch_job</c>.
         /// </summary>
         [JsonProperty("id")]
         [STJS.JsonPropertyName("id")]
@@ -29,7 +30,7 @@ namespace Stripe.V2.Core
         public string Object { get; set; }
 
         /// <summary>
-        /// Timestamp at which BatchJob was created.
+        /// Timestamp at which the <c>batch_job</c> was created.
         /// </summary>
         [JsonProperty("created")]
         [STJS.JsonPropertyName("created")]
@@ -44,28 +45,28 @@ namespace Stripe.V2.Core
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The maximum rps defined for the <c>BatchJob</c>.
+        /// The maximum requests per second defined for the <c>batch_job</c>.
         /// </summary>
         [JsonProperty("maximum_rps")]
         [STJS.JsonPropertyName("maximum_rps")]
         public long MaximumRps { get; set; }
 
         /// <summary>
-        /// The metadata of the <c>BatchJob</c> object.
+        /// The metadata of the <c>batch_job</c>.
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// If the validation will be run previous to the execution of the <c>BatchJob</c>.
+        /// Whether validation runs before executing the <c>batch_job</c>.
         /// </summary>
         [JsonProperty("skip_validation")]
         [STJS.JsonPropertyName("skip_validation")]
         public bool SkipValidation { get; set; }
 
         /// <summary>
-        /// The current status of the <c>BatchJob</c>.
+        /// The current status of the <c>batch_job</c>.
         /// One of: <c>batch_failed</c>, <c>canceled</c>, <c>cancelling</c>, <c>complete</c>,
         /// <c>in_progress</c>, <c>ready_for_upload</c>, <c>timeout</c>, <c>upload_timeout</c>,
         /// <c>validating</c>, or <c>validation_failed</c>.
@@ -75,7 +76,7 @@ namespace Stripe.V2.Core
         public string Status { get; set; }
 
         /// <summary>
-        /// Additional details about the current state of the <c>BatchJob</c>.
+        /// Additional details about the current state of the <c>batch_job</c>.
         /// </summary>
         [JsonProperty("status_details")]
         [STJS.JsonPropertyName("status_details")]

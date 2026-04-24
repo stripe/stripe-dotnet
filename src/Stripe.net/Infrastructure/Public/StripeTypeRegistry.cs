@@ -255,6 +255,10 @@ namespace Stripe
                 { "v2.billing.meter_event_adjustment", typeof(V2.Billing.MeterEventAdjustment) },
                 { "v2.billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
                 { "v2.billing.profile", typeof(V2.Billing.Profile) },
+                {
+                    "v2.commerce.product_catalog_import", typeof(
+                    V2.Commerce.ProductCatalogImport)
+                },
                 { "v2.core.account", typeof(V2.Core.Account) },
                 { "v2.core.account_link", typeof(V2.Core.AccountLink) },
                 { "v2.core.account_person", typeof(V2.Core.AccountPerson) },
@@ -265,6 +269,10 @@ namespace Stripe
                 { "v2.core.event_destination", typeof(V2.Core.EventDestination) },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },
                 { "v2.core.vault.us_bank_account", typeof(V2.Core.Vault.UsBankAccount) },
+                { "v2.data.reporting.query_run", typeof(V2.Data.Reporting.QueryRun) },
+                { "v2.extend.workflow", typeof(V2.Extend.Workflow) },
+                { "v2.extend.workflow_run", typeof(V2.Extend.WorkflowRun) },
+                { "v2.iam.activity_log", typeof(V2.Iam.ActivityLog) },
                 { "v2.money_management.adjustment", typeof(V2.MoneyManagement.Adjustment) },
                 {
                     "v2.money_management.financial_account", typeof(
@@ -312,6 +320,11 @@ namespace Stripe
                     "v2.money_management.transaction_entry", typeof(
                     V2.MoneyManagement.TransactionEntry)
                 },
+                { "v2.network.business_profile", typeof(V2.Network.BusinessProfile) },
+                {
+                    "v2.orchestrated_commerce.agreement", typeof(
+                    V2.OrchestratedCommerce.Agreement)
+                },
 
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
             });
@@ -327,6 +340,22 @@ namespace Stripe
                 {
                     "v1.billing.meter.no_meter_found", typeof(
                     Events.V1BillingMeterNoMeterFoundEvent)
+                },
+                {
+                    "v2.commerce.product_catalog.imports.failed", typeof(
+                    Events.V2CommerceProductCatalogImportsFailedEvent)
+                },
+                {
+                    "v2.commerce.product_catalog.imports.processing", typeof(
+                    Events.V2CommerceProductCatalogImportsProcessingEvent)
+                },
+                {
+                    "v2.commerce.product_catalog.imports.succeeded", typeof(
+                    Events.V2CommerceProductCatalogImportsSucceededEvent)
+                },
+                {
+                    "v2.commerce.product_catalog.imports.succeeded_with_errors", typeof(
+                    Events.V2CommerceProductCatalogImportsSucceededWithErrorsEvent)
                 },
                 { "v2.core.account.closed", typeof(Events.V2CoreAccountClosedEvent) },
                 { "v2.core.account.created", typeof(Events.V2CoreAccountCreatedEvent) },
@@ -424,6 +453,34 @@ namespace Stripe
                 {
                     "v2.core.health.event_generation_failure.resolved", typeof(
                     Events.V2CoreHealthEventGenerationFailureResolvedEvent)
+                },
+                {
+                    "v2.data.reporting.query_run.created", typeof(
+                    Events.V2DataReportingQueryRunCreatedEvent)
+                },
+                {
+                    "v2.data.reporting.query_run.failed", typeof(
+                    Events.V2DataReportingQueryRunFailedEvent)
+                },
+                {
+                    "v2.data.reporting.query_run.succeeded", typeof(
+                    Events.V2DataReportingQueryRunSucceededEvent)
+                },
+                {
+                    "v2.data.reporting.query_run.updated", typeof(
+                    Events.V2DataReportingQueryRunUpdatedEvent)
+                },
+                {
+                    "v2.extend.workflow_run.failed", typeof(
+                    Events.V2ExtendWorkflowRunFailedEvent)
+                },
+                {
+                    "v2.extend.workflow_run.started", typeof(
+                    Events.V2ExtendWorkflowRunStartedEvent)
+                },
+                {
+                    "v2.extend.workflow_run.succeeded", typeof(
+                    Events.V2ExtendWorkflowRunSucceededEvent)
                 },
                 {
                     "v2.money_management.adjustment.created", typeof(
@@ -569,6 +626,22 @@ namespace Stripe
                     "v2.money_management.transaction.updated", typeof(
                     Events.V2MoneyManagementTransactionUpdatedEvent)
                 },
+                {
+                    "v2.orchestrated_commerce.agreement.confirmed", typeof(
+                    Events.V2OrchestratedCommerceAgreementConfirmedEvent)
+                },
+                {
+                    "v2.orchestrated_commerce.agreement.created", typeof(
+                    Events.V2OrchestratedCommerceAgreementCreatedEvent)
+                },
+                {
+                    "v2.orchestrated_commerce.agreement.partially_confirmed", typeof(
+                    Events.V2OrchestratedCommerceAgreementPartiallyConfirmedEvent)
+                },
+                {
+                    "v2.orchestrated_commerce.agreement.terminated", typeof(
+                    Events.V2OrchestratedCommerceAgreementTerminatedEvent)
+                },
 
                 // V2EventsToTypes: The end of the section generated from our OpenAPI spec
             });
@@ -584,6 +657,22 @@ namespace Stripe
                 {
                     "v1.billing.meter.no_meter_found", typeof(
                     Events.V1BillingMeterNoMeterFoundEventNotification)
+                },
+                {
+                    "v2.commerce.product_catalog.imports.failed", typeof(
+                    Events.V2CommerceProductCatalogImportsFailedEventNotification)
+                },
+                {
+                    "v2.commerce.product_catalog.imports.processing", typeof(
+                    Events.V2CommerceProductCatalogImportsProcessingEventNotification)
+                },
+                {
+                    "v2.commerce.product_catalog.imports.succeeded", typeof(
+                    Events.V2CommerceProductCatalogImportsSucceededEventNotification)
+                },
+                {
+                    "v2.commerce.product_catalog.imports.succeeded_with_errors", typeof(
+                    Events.V2CommerceProductCatalogImportsSucceededWithErrorsEventNotification)
                 },
                 {
                     "v2.core.account.closed", typeof(
@@ -708,6 +797,34 @@ namespace Stripe
                 {
                     "v2.core.health.event_generation_failure.resolved", typeof(
                     Events.V2CoreHealthEventGenerationFailureResolvedEventNotification)
+                },
+                {
+                    "v2.data.reporting.query_run.created", typeof(
+                    Events.V2DataReportingQueryRunCreatedEventNotification)
+                },
+                {
+                    "v2.data.reporting.query_run.failed", typeof(
+                    Events.V2DataReportingQueryRunFailedEventNotification)
+                },
+                {
+                    "v2.data.reporting.query_run.succeeded", typeof(
+                    Events.V2DataReportingQueryRunSucceededEventNotification)
+                },
+                {
+                    "v2.data.reporting.query_run.updated", typeof(
+                    Events.V2DataReportingQueryRunUpdatedEventNotification)
+                },
+                {
+                    "v2.extend.workflow_run.failed", typeof(
+                    Events.V2ExtendWorkflowRunFailedEventNotification)
+                },
+                {
+                    "v2.extend.workflow_run.started", typeof(
+                    Events.V2ExtendWorkflowRunStartedEventNotification)
+                },
+                {
+                    "v2.extend.workflow_run.succeeded", typeof(
+                    Events.V2ExtendWorkflowRunSucceededEventNotification)
                 },
                 {
                     "v2.money_management.adjustment.created", typeof(
@@ -852,6 +969,22 @@ namespace Stripe
                 {
                     "v2.money_management.transaction.updated", typeof(
                     Events.V2MoneyManagementTransactionUpdatedEventNotification)
+                },
+                {
+                    "v2.orchestrated_commerce.agreement.confirmed", typeof(
+                    Events.V2OrchestratedCommerceAgreementConfirmedEventNotification)
+                },
+                {
+                    "v2.orchestrated_commerce.agreement.created", typeof(
+                    Events.V2OrchestratedCommerceAgreementCreatedEventNotification)
+                },
+                {
+                    "v2.orchestrated_commerce.agreement.partially_confirmed", typeof(
+                    Events.V2OrchestratedCommerceAgreementPartiallyConfirmedEventNotification)
+                },
+                {
+                    "v2.orchestrated_commerce.agreement.terminated", typeof(
+                    Events.V2OrchestratedCommerceAgreementTerminatedEventNotification)
                 },
 
                 // V2EventNotificationsToTypes: The end of the section generated from our OpenAPI spec

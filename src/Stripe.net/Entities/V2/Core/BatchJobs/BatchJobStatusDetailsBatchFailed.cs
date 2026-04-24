@@ -9,7 +9,7 @@ namespace Stripe.V2.Core
     public class BatchJobStatusDetailsBatchFailed : StripeEntity<BatchJobStatusDetailsBatchFailed>
     {
         /// <summary>
-        /// Details about the <c>BatchJob</c> failure.
+        /// Details about the <c>batch_job</c> failure.
         /// </summary>
         [JsonProperty("error")]
         [STJS.JsonPropertyName("error")]

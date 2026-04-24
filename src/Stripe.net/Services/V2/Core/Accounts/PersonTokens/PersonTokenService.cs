@@ -20,7 +20,11 @@ namespace Stripe.V2.Core.Accounts
         }
 
         /// <summary>
-        /// Creates a Person Token associated with an Account.
+        /// Creates a single-use token that represents the details for a person. Use this when you
+        /// create or update persons associated with an Account v2. Learn more about <a
+        /// href="https://docs.stripe.com/connect/account-tokens">account tokens</a>. You can only
+        /// create person tokens with your application's publishable key and in live mode. You can
+        /// use your application's secret key to create person tokens only in test mode.
         /// </summary>
         public virtual V2.Core.AccountPersonToken Create(string id, PersonTokenCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -28,7 +32,11 @@ namespace Stripe.V2.Core.Accounts
         }
 
         /// <summary>
-        /// Creates a Person Token associated with an Account.
+        /// Creates a single-use token that represents the details for a person. Use this when you
+        /// create or update persons associated with an Account v2. Learn more about <a
+        /// href="https://docs.stripe.com/connect/account-tokens">account tokens</a>. You can only
+        /// create person tokens with your application's publishable key and in live mode. You can
+        /// use your application's secret key to create person tokens only in test mode.
         /// </summary>
         public virtual Task<V2.Core.AccountPersonToken> CreateAsync(string id, PersonTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

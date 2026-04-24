@@ -10,6 +10,7 @@ namespace Stripe.V2.Core
     {
         /// <summary>
         /// The HTTP method to use when calling the endpoint.
+        /// One of: <c>delete</c>, or <c>post</c>.
         /// </summary>
         [JsonProperty("http_method")]
         [STJS.JsonPropertyName("http_method")]

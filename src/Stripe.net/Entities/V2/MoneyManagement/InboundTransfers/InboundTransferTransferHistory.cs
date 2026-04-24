@@ -2,7 +2,6 @@
 namespace Stripe.V2.MoneyManagement
 {
     using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -22,14 +21,14 @@ namespace Stripe.V2.MoneyManagement
         /// </summary>
         [JsonProperty("bank_debit_processing")]
         [STJS.JsonPropertyName("bank_debit_processing")]
-        public Dictionary<string, object> BankDebitProcessing { get; set; }
+        public InboundTransferTransferHistoryBankDebitProcessing BankDebitProcessing { get; set; }
 
         /// <summary>
         /// The history entry for a queued InboundTransfer.
         /// </summary>
         [JsonProperty("bank_debit_queued")]
         [STJS.JsonPropertyName("bank_debit_queued")]
-        public Dictionary<string, object> BankDebitQueued { get; set; }
+        public InboundTransferTransferHistoryBankDebitQueued BankDebitQueued { get; set; }
 
         /// <summary>
         /// The history entry for a returned InboundTransfer.
@@ -43,7 +42,7 @@ namespace Stripe.V2.MoneyManagement
         /// </summary>
         [JsonProperty("bank_debit_succeeded")]
         [STJS.JsonPropertyName("bank_debit_succeeded")]
-        public Dictionary<string, object> BankDebitSucceeded { get; set; }
+        public InboundTransferTransferHistoryBankDebitSucceeded BankDebitSucceeded { get; set; }
 
         /// <summary>
         /// Creation time of the HistoryEntry in RFC 3339 format and UTC.

@@ -10,8 +10,8 @@ namespace Stripe.V2.Billing
     {
         /// <summary>
         /// The day to anchor the billing on for a type="month" billing cycle from 1-31. If this
-        /// number is greater than the number of days in the month being billed, this will anchor to
-        /// the last day of the month.
+        /// number is greater than the number of days in the month being billed, this anchors to the
+        /// last day of the month.
         /// </summary>
         [JsonProperty("day_of_month")]
         [STJS.JsonPropertyName("day_of_month")]

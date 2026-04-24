@@ -19,6 +19,10 @@ namespace Stripe
         // private-event-handlers: The beginning of the section generated from our OpenAPI spec
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1BillingMeterErrorReportTriggeredEventNotification>> v1BillingMeterErrorReportTriggered;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1BillingMeterNoMeterFoundEventNotification>> v1BillingMeterNoMeterFound;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CommerceProductCatalogImportsFailedEventNotification>> v2CommerceProductCatalogImportsFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CommerceProductCatalogImportsProcessingEventNotification>> v2CommerceProductCatalogImportsProcessing;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CommerceProductCatalogImportsSucceededEventNotification>> v2CommerceProductCatalogImportsSucceeded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CommerceProductCatalogImportsSucceededWithErrorsEventNotification>> v2CommerceProductCatalogImportsSucceededWithErrors;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountClosedEventNotification>> v2CoreAccountClosed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountCreatedEventNotification>> v2CoreAccountCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountUpdatedEventNotification>> v2CoreAccountUpdated;
@@ -50,6 +54,13 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobValidationFailedEventNotification>> v2CoreBatchJobValidationFailed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>> v2CoreEventDestinationPing;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification>> v2CoreHealthEventGenerationFailureResolved;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunCreatedEventNotification>> v2DataReportingQueryRunCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunFailedEventNotification>> v2DataReportingQueryRunFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunSucceededEventNotification>> v2DataReportingQueryRunSucceeded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunUpdatedEventNotification>> v2DataReportingQueryRunUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ExtendWorkflowRunFailedEventNotification>> v2ExtendWorkflowRunFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ExtendWorkflowRunStartedEventNotification>> v2ExtendWorkflowRunStarted;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ExtendWorkflowRunSucceededEventNotification>> v2ExtendWorkflowRunSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementAdjustmentCreatedEventNotification>> v2MoneyManagementAdjustmentCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification>> v2MoneyManagementFinancialAccountCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification>> v2MoneyManagementFinancialAccountUpdated;
@@ -86,6 +97,10 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitUpdatedEventNotification>> v2MoneyManagementReceivedDebitUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionCreatedEventNotification>> v2MoneyManagementTransactionCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionUpdatedEventNotification>> v2MoneyManagementTransactionUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2OrchestratedCommerceAgreementConfirmedEventNotification>> v2OrchestratedCommerceAgreementConfirmed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2OrchestratedCommerceAgreementCreatedEventNotification>> v2OrchestratedCommerceAgreementCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2OrchestratedCommerceAgreementPartiallyConfirmedEventNotification>> v2OrchestratedCommerceAgreementPartiallyConfirmed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2OrchestratedCommerceAgreementTerminatedEventNotification>> v2OrchestratedCommerceAgreementTerminated;
 
         // private-event-handlers: The end of the section generated from our OpenAPI spec
 
@@ -147,6 +162,30 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1BillingMeterNoMeterFoundEventNotification>> V1BillingMeterNoMeterFound
         {
             add { this.AddEventHandler(ref this.v1BillingMeterNoMeterFound, value, "v1.billing.meter.no_meter_found"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CommerceProductCatalogImportsFailedEventNotification>> V2CommerceProductCatalogImportsFailed
+        {
+            add { this.AddEventHandler(ref this.v2CommerceProductCatalogImportsFailed, value, "v2.commerce.product_catalog.imports.failed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CommerceProductCatalogImportsProcessingEventNotification>> V2CommerceProductCatalogImportsProcessing
+        {
+            add { this.AddEventHandler(ref this.v2CommerceProductCatalogImportsProcessing, value, "v2.commerce.product_catalog.imports.processing"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CommerceProductCatalogImportsSucceededEventNotification>> V2CommerceProductCatalogImportsSucceeded
+        {
+            add { this.AddEventHandler(ref this.v2CommerceProductCatalogImportsSucceeded, value, "v2.commerce.product_catalog.imports.succeeded"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CommerceProductCatalogImportsSucceededWithErrorsEventNotification>> V2CommerceProductCatalogImportsSucceededWithErrors
+        {
+            add { this.AddEventHandler(ref this.v2CommerceProductCatalogImportsSucceededWithErrors, value, "v2.commerce.product_catalog.imports.succeeded_with_errors"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -333,6 +372,48 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification>> V2CoreHealthEventGenerationFailureResolved
         {
             add { this.AddEventHandler(ref this.v2CoreHealthEventGenerationFailureResolved, value, "v2.core.health.event_generation_failure.resolved"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunCreatedEventNotification>> V2DataReportingQueryRunCreated
+        {
+            add { this.AddEventHandler(ref this.v2DataReportingQueryRunCreated, value, "v2.data.reporting.query_run.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunFailedEventNotification>> V2DataReportingQueryRunFailed
+        {
+            add { this.AddEventHandler(ref this.v2DataReportingQueryRunFailed, value, "v2.data.reporting.query_run.failed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunSucceededEventNotification>> V2DataReportingQueryRunSucceeded
+        {
+            add { this.AddEventHandler(ref this.v2DataReportingQueryRunSucceeded, value, "v2.data.reporting.query_run.succeeded"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunUpdatedEventNotification>> V2DataReportingQueryRunUpdated
+        {
+            add { this.AddEventHandler(ref this.v2DataReportingQueryRunUpdated, value, "v2.data.reporting.query_run.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ExtendWorkflowRunFailedEventNotification>> V2ExtendWorkflowRunFailed
+        {
+            add { this.AddEventHandler(ref this.v2ExtendWorkflowRunFailed, value, "v2.extend.workflow_run.failed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ExtendWorkflowRunStartedEventNotification>> V2ExtendWorkflowRunStarted
+        {
+            add { this.AddEventHandler(ref this.v2ExtendWorkflowRunStarted, value, "v2.extend.workflow_run.started"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ExtendWorkflowRunSucceededEventNotification>> V2ExtendWorkflowRunSucceeded
+        {
+            add { this.AddEventHandler(ref this.v2ExtendWorkflowRunSucceeded, value, "v2.extend.workflow_run.succeeded"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -552,6 +633,30 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2OrchestratedCommerceAgreementConfirmedEventNotification>> V2OrchestratedCommerceAgreementConfirmed
+        {
+            add { this.AddEventHandler(ref this.v2OrchestratedCommerceAgreementConfirmed, value, "v2.orchestrated_commerce.agreement.confirmed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2OrchestratedCommerceAgreementCreatedEventNotification>> V2OrchestratedCommerceAgreementCreated
+        {
+            add { this.AddEventHandler(ref this.v2OrchestratedCommerceAgreementCreated, value, "v2.orchestrated_commerce.agreement.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2OrchestratedCommerceAgreementPartiallyConfirmedEventNotification>> V2OrchestratedCommerceAgreementPartiallyConfirmed
+        {
+            add { this.AddEventHandler(ref this.v2OrchestratedCommerceAgreementPartiallyConfirmed, value, "v2.orchestrated_commerce.agreement.partially_confirmed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2OrchestratedCommerceAgreementTerminatedEventNotification>> V2OrchestratedCommerceAgreementTerminated
+        {
+            add { this.AddEventHandler(ref this.v2OrchestratedCommerceAgreementTerminated, value, "v2.orchestrated_commerce.agreement.terminated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         // public-event-handlers: The end of the section generated from our OpenAPI spec
 
         /// <summary>
@@ -668,6 +773,22 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V1BillingMeterNoMeterFoundEventNotification)
                 {
                     this.v1BillingMeterNoMeterFound.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1BillingMeterNoMeterFoundEventNotification>((Stripe.Events.V1BillingMeterNoMeterFoundEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CommerceProductCatalogImportsFailedEventNotification)
+                {
+                    this.v2CommerceProductCatalogImportsFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CommerceProductCatalogImportsFailedEventNotification>((Stripe.Events.V2CommerceProductCatalogImportsFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CommerceProductCatalogImportsProcessingEventNotification)
+                {
+                    this.v2CommerceProductCatalogImportsProcessing.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CommerceProductCatalogImportsProcessingEventNotification>((Stripe.Events.V2CommerceProductCatalogImportsProcessingEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CommerceProductCatalogImportsSucceededEventNotification)
+                {
+                    this.v2CommerceProductCatalogImportsSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CommerceProductCatalogImportsSucceededEventNotification>((Stripe.Events.V2CommerceProductCatalogImportsSucceededEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CommerceProductCatalogImportsSucceededWithErrorsEventNotification)
+                {
+                    this.v2CommerceProductCatalogImportsSucceededWithErrors.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CommerceProductCatalogImportsSucceededWithErrorsEventNotification>((Stripe.Events.V2CommerceProductCatalogImportsSucceededWithErrorsEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountClosedEventNotification)
                 {
@@ -792,6 +913,34 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification)
                 {
                     this.v2CoreHealthEventGenerationFailureResolved.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification>((Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2DataReportingQueryRunCreatedEventNotification)
+                {
+                    this.v2DataReportingQueryRunCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunCreatedEventNotification>((Stripe.Events.V2DataReportingQueryRunCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2DataReportingQueryRunFailedEventNotification)
+                {
+                    this.v2DataReportingQueryRunFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunFailedEventNotification>((Stripe.Events.V2DataReportingQueryRunFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2DataReportingQueryRunSucceededEventNotification)
+                {
+                    this.v2DataReportingQueryRunSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunSucceededEventNotification>((Stripe.Events.V2DataReportingQueryRunSucceededEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2DataReportingQueryRunUpdatedEventNotification)
+                {
+                    this.v2DataReportingQueryRunUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunUpdatedEventNotification>((Stripe.Events.V2DataReportingQueryRunUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2ExtendWorkflowRunFailedEventNotification)
+                {
+                    this.v2ExtendWorkflowRunFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2ExtendWorkflowRunFailedEventNotification>((Stripe.Events.V2ExtendWorkflowRunFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2ExtendWorkflowRunStartedEventNotification)
+                {
+                    this.v2ExtendWorkflowRunStarted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2ExtendWorkflowRunStartedEventNotification>((Stripe.Events.V2ExtendWorkflowRunStartedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2ExtendWorkflowRunSucceededEventNotification)
+                {
+                    this.v2ExtendWorkflowRunSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2ExtendWorkflowRunSucceededEventNotification>((Stripe.Events.V2ExtendWorkflowRunSucceededEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementAdjustmentCreatedEventNotification)
                 {
@@ -936,6 +1085,22 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2MoneyManagementTransactionUpdatedEventNotification)
                 {
                     this.v2MoneyManagementTransactionUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionUpdatedEventNotification>((Stripe.Events.V2MoneyManagementTransactionUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2OrchestratedCommerceAgreementConfirmedEventNotification)
+                {
+                    this.v2OrchestratedCommerceAgreementConfirmed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2OrchestratedCommerceAgreementConfirmedEventNotification>((Stripe.Events.V2OrchestratedCommerceAgreementConfirmedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2OrchestratedCommerceAgreementCreatedEventNotification)
+                {
+                    this.v2OrchestratedCommerceAgreementCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2OrchestratedCommerceAgreementCreatedEventNotification>((Stripe.Events.V2OrchestratedCommerceAgreementCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2OrchestratedCommerceAgreementPartiallyConfirmedEventNotification)
+                {
+                    this.v2OrchestratedCommerceAgreementPartiallyConfirmed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2OrchestratedCommerceAgreementPartiallyConfirmedEventNotification>((Stripe.Events.V2OrchestratedCommerceAgreementPartiallyConfirmedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2OrchestratedCommerceAgreementTerminatedEventNotification)
+                {
+                    this.v2OrchestratedCommerceAgreementTerminated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2OrchestratedCommerceAgreementTerminatedEventNotification>((Stripe.Events.V2OrchestratedCommerceAgreementTerminatedEventNotification)eventNotification, client));
                 }
 
                 // event-handler-dispatch: The end of the section generated from our OpenAPI spec

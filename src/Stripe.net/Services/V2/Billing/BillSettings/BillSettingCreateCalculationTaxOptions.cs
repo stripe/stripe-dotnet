@@ -9,8 +9,8 @@ namespace Stripe.V2.Billing
     public class BillSettingCreateCalculationTaxOptions : INestedOptions
     {
         /// <summary>
-        /// Determines if tax will be calculated automatically based on a PTC or manually based on
-        /// rules defined by the merchant. Defaults to "manual".
+        /// Determines if tax is calculated automatically based on a PTC or manually based on rules
+        /// defined by the business. Defaults to "manual".
         /// One of: <c>automatic</c>, or <c>manual</c>.
         /// </summary>
         [JsonProperty("type")]
