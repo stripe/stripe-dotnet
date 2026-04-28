@@ -17,6 +17,14 @@ namespace Stripe.V2.MoneyManagement
         public ReceivedCreditBankTransferCaBankAccount CaBankAccount { get; set; }
 
         /// <summary>
+        /// Hash containing the transaction bank details. Present if <c>origin_type</c> field value
+        /// is <c>eu_bank_account</c>.
+        /// </summary>
+        [JsonProperty("eu_bank_account")]
+        [STJS.JsonPropertyName("eu_bank_account")]
+        public ReceivedCreditBankTransferEuBankAccount EuBankAccount { get; set; }
+
+        /// <summary>
         /// Financial Address on which funds for ReceivedCredit were received.
         /// </summary>
         [JsonProperty("financial_address")]
@@ -32,8 +40,17 @@ namespace Stripe.V2.MoneyManagement
         public ReceivedCreditBankTransferGbBankAccount GbBankAccount { get; set; }
 
         /// <summary>
+        /// Hash containing the transaction bank details. Present if  <c>origin_type</c> field value
+        /// is <c>mx_bank_account</c>.
+        /// </summary>
+        [JsonProperty("mx_bank_account")]
+        [STJS.JsonPropertyName("mx_bank_account")]
+        public ReceivedCreditBankTransferMxBankAccount MxBankAccount { get; set; }
+
+        /// <summary>
         /// Open Enum. Indicates the origin of source from which external funds originated from.
-        /// One of: <c>ca_bank_account</c>, <c>gb_bank_account</c>, <c>sepa_bank_account</c>, or
+        /// One of: <c>ca_bank_account</c>, <c>crypto_wallet</c>, <c>eu_bank_account</c>,
+        /// <c>gb_bank_account</c>, <c>mx_bank_account</c>, <c>sepa_bank_account</c>, or
         /// <c>us_bank_account</c>.
         /// </summary>
         [JsonProperty("origin_type")]

@@ -51,7 +51,9 @@ namespace Stripe.V2.Core
         public AccountTokenCreateIdentityIndividualDocumentsOptions Documents { get; set; }
 
         /// <summary>
-        /// The individual's email address.
+        /// The individual's email address. You can only set this field when the Account is
+        /// configured as a <c>merchant</c> or <c>recipient</c>. Use <c>contact_email</c> as the
+        /// primary contact email for this Account.
         /// </summary>
         [JsonProperty("email")]
         [STJS.JsonPropertyName("email")]
