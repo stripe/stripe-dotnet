@@ -68,6 +68,14 @@ namespace Stripe.V2.MoneyManagement
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// This object stores details about the originating crypto transaction that resulted in the
+        /// ReceivedCredit. Present if <c>type</c> field value is <c>crypto_wallet_transfer</c>.
+        /// </summary>
+        [JsonProperty("crypto_wallet_transfer")]
+        [STJS.JsonPropertyName("crypto_wallet_transfer")]
+        public ReceivedCreditCryptoWalletTransfer CryptoWalletTransfer { get; set; }
+
+        /// <summary>
         /// Freeform string set by originator of the ReceivedCredit.
         /// </summary>
         [JsonProperty("description")]
@@ -139,7 +147,7 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Open Enum. The type of flow that caused the ReceivedCredit.
         /// One of: <c>balance_transfer</c>, <c>bank_transfer</c>, <c>card_spend</c>,
-        /// <c>external_credit</c>, or <c>stripe_balance_payment</c>.
+        /// <c>crypto_wallet_transfer</c>, <c>external_credit</c>, or <c>stripe_balance_payment</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

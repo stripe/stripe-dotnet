@@ -10,7 +10,7 @@ namespace Stripe
         private V2.BillingService billing;
         private V2.CommerceService commerce;
         private V2.CoreService core;
-        private V2.DatumService data;
+        private V2.DataService data;
         private V2.ExtendService extend;
         private V2.IamService iam;
         private V2.MoneyManagementService moneyManagement;
@@ -40,7 +40,7 @@ namespace Stripe
         public virtual V2.CoreService Core => this.core ??= new V2.CoreService(
             this.Requestor);
 
-        public virtual V2.DatumService Data => this.data ??= new V2.DatumService(
+        public virtual V2.DataService Data => this.data ??= new V2.DataService(
             this.Requestor);
 
         public virtual V2.ExtendService Extend => this.extend ??= new V2.ExtendService(

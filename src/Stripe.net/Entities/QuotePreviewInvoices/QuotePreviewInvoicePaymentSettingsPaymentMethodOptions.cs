@@ -33,6 +33,14 @@ namespace Stripe
         public QuotePreviewInvoicePaymentSettingsPaymentMethodOptionsBizum Bizum { get; set; }
 
         /// <summary>
+        /// If paying by <c>blik</c>, this sub-hash contains details about the Blik payment method
+        /// options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("blik")]
+        [STJS.JsonPropertyName("blik")]
+        public QuotePreviewInvoicePaymentSettingsPaymentMethodOptionsBlik Blik { get; set; }
+
+        /// <summary>
         /// If paying by <c>card</c>, this sub-hash contains details about the Card payment method
         /// options to pass to the invoice’s PaymentIntent.
         /// </summary>

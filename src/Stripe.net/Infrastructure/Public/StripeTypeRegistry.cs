@@ -319,6 +319,10 @@ namespace Stripe
                 { "v2.core.event_destination", typeof(V2.Core.EventDestination) },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },
                 { "v2.core.vault.us_bank_account", typeof(V2.Core.Vault.UsBankAccount) },
+                {
+                    "v2.data.analytics.metric_query_result", typeof(
+                    V2.Data.Analytics.MetricQueryResult)
+                },
                 { "v2.data.reporting.query_run", typeof(V2.Data.Reporting.QueryRun) },
                 { "v2.extend.workflow", typeof(V2.Extend.Workflow) },
                 { "v2.extend.workflow_run", typeof(V2.Extend.WorkflowRun) },
@@ -1114,6 +1118,14 @@ namespace Stripe
                     Events.V2CoreApprovalRequestCanceledEvent)
                 },
                 {
+                    "v2.core.approval_request.created", typeof(
+                    Events.V2CoreApprovalRequestCreatedEvent)
+                },
+                {
+                    "v2.core.approval_request.expired", typeof(
+                    Events.V2CoreApprovalRequestExpiredEvent)
+                },
+                {
                     "v2.core.approval_request.failed", typeof(
                     Events.V2CoreApprovalRequestFailedEvent)
                 },
@@ -1274,6 +1286,10 @@ namespace Stripe
                 {
                     "v2.data.reporting.query_run.updated", typeof(
                     Events.V2DataReportingQueryRunUpdatedEvent)
+                },
+                {
+                    "v2.extend.extension_run.failed", typeof(
+                    Events.V2ExtendExtensionRunFailedEvent)
                 },
                 {
                     "v2.extend.workflow_run.failed", typeof(
@@ -2473,6 +2489,14 @@ namespace Stripe
                     Events.V2CoreApprovalRequestCanceledEventNotification)
                 },
                 {
+                    "v2.core.approval_request.created", typeof(
+                    Events.V2CoreApprovalRequestCreatedEventNotification)
+                },
+                {
+                    "v2.core.approval_request.expired", typeof(
+                    Events.V2CoreApprovalRequestExpiredEventNotification)
+                },
+                {
                     "v2.core.approval_request.failed", typeof(
                     Events.V2CoreApprovalRequestFailedEventNotification)
                 },
@@ -2651,6 +2675,10 @@ namespace Stripe
                 {
                     "v2.data.reporting.query_run.updated", typeof(
                     Events.V2DataReportingQueryRunUpdatedEventNotification)
+                },
+                {
+                    "v2.extend.extension_run.failed", typeof(
+                    Events.V2ExtendExtensionRunFailedEventNotification)
                 },
                 {
                     "v2.extend.workflow_run.failed", typeof(

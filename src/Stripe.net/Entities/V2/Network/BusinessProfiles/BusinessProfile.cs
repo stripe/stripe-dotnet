@@ -6,7 +6,8 @@ namespace Stripe.V2.Network
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// The Stripe profile represents a business' public identity on the Stripe network.
+    /// The Stripe business profile represents a business' public identity on the Stripe
+    /// network.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class BusinessProfile : StripeEntity<BusinessProfile>, IHasId, IHasObject
@@ -42,7 +43,7 @@ namespace Stripe.V2.Network
         public string Description { get; set; }
 
         /// <summary>
-        /// The display name of the Stripe profile.
+        /// The display name of the Stripe business profile.
         /// </summary>
         [JsonProperty("display_name")]
         [STJS.JsonPropertyName("display_name")]
@@ -64,7 +65,7 @@ namespace Stripe.V2.Network
         public string Url { get; set; }
 
         /// <summary>
-        /// The username of the Stripe profile.
+        /// The username of the Stripe business profile.
         /// </summary>
         [JsonProperty("username")]
         [STJS.JsonPropertyName("username")]

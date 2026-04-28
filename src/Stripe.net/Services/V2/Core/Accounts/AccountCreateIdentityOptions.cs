@@ -34,7 +34,9 @@ namespace Stripe.V2.Core
         public string Country { get; set; }
 
         /// <summary>
-        /// The entity type.
+        /// The entity type represented by the Account. Ensure this field is accurate before adding
+        /// configurations that rely on identity information, as it determines which identity fields
+        /// apply and how the Account is validated.
         /// One of: <c>company</c>, <c>government_entity</c>, <c>individual</c>, or
         /// <c>non_profit</c>.
         /// </summary>

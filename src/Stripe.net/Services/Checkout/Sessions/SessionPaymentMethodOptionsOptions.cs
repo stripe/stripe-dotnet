@@ -87,6 +87,13 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsBizumOptions Bizum { get; set; }
 
         /// <summary>
+        /// contains details about the BLIK payment method options.
+        /// </summary>
+        [JsonProperty("blik")]
+        [STJS.JsonPropertyName("blik")]
+        public SessionPaymentMethodOptionsBlikOptions Blik { get; set; }
+
+        /// <summary>
         /// contains details about the Boleto payment method options.
         /// </summary>
         [JsonProperty("boleto")]

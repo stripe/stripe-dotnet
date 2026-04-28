@@ -8,6 +8,7 @@ namespace Stripe
     public class SharedPaymentService : Service
     {
         private SharedPayment.GrantedTokenService grantedTokens;
+        private SharedPayment.IssuedTokenService issuedTokens;
 
         internal SharedPaymentService(ApiRequestor requestor)
             : base(requestor)
@@ -20,6 +21,9 @@ namespace Stripe
         }
 
         public virtual SharedPayment.GrantedTokenService GrantedTokens => this.grantedTokens ??= new SharedPayment.GrantedTokenService(
+            this.Requestor);
+
+        public virtual SharedPayment.IssuedTokenService IssuedTokens => this.issuedTokens ??= new SharedPayment.IssuedTokenService(
             this.Requestor);
     }
 }

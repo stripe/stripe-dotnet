@@ -83,6 +83,14 @@ namespace Stripe.Issuing
         [STJS.JsonPropertyName("card")]
         public Card Card { get; set; }
 
+        /// <summary>
+        /// Whether the card was present at the point of sale for the authorization.
+        /// One of: <c>not_present</c>, or <c>present</c>.
+        /// </summary>
+        [JsonProperty("card_presence")]
+        [STJS.JsonPropertyName("card_presence")]
+        public string CardPresence { get; set; }
+
         #region Expandable Cardholder
 
         /// <summary>

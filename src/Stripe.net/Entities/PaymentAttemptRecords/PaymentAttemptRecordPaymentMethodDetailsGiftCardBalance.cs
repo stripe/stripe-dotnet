@@ -13,7 +13,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
-        public long Amount { get; set; }
+        public long? Amount { get; set; }
 
         /// <summary>
         /// The currency of the balance.

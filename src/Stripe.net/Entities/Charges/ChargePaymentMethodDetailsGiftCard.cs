@@ -42,6 +42,13 @@ namespace Stripe
         public string First6 { get; set; }
 
         /// <summary>
+        /// The last four digits of the gift card number.
+        /// </summary>
+        [JsonProperty("last4")]
+        [STJS.JsonPropertyName("last4")]
+        public string Last4 { get; set; }
+
+        /// <summary>
         /// The transaction ID from the gift card processor.
         /// </summary>
         [JsonProperty("transaction_id")]

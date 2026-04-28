@@ -8,15 +8,12 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// An Account v2 object represents a company, individual, or other entity that interacts
-    /// with a platform on Stripe. It contains both identifying information and properties that
+    /// An Account v2 object represents a company, individual, or other entity that your Stripe
+    /// integration interacts with. It contains both identifying information and properties that
     /// control its behavior and functionality. An Account can have one or more configurations
     /// that enable sets of related features, such as allowing it to act as a merchant or
-    /// customer. The Accounts v2 API supports both the Global Payouts preview feature and the
-    /// Connect-Billing integration preview feature. However, a particular Account can only
-    /// access one of them. The Connect-Billing integration preview feature allows an Account v2
-    /// to pay subscription fees to a platform. An Account v1 required a separate Customer
-    /// object to pay subscription fees.
+    /// customer. The Accounts v2 API is broadly available to Connect platforms, and to other
+    /// users in preview. The Accounts v2 API also supports the Global Payouts preview feature.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Account : StripeEntity<Account>, IHasId, IHasMetadata, IHasObject
@@ -63,8 +60,7 @@ namespace Stripe.V2.Core
         public AccountConfiguration Configuration { get; set; }
 
         /// <summary>
-        /// The default contact email address for the Account. Required when configuring the account
-        /// as a merchant or recipient.
+        /// The primary contact email address for the Account.
         /// </summary>
         [JsonProperty("contact_email")]
         [STJS.JsonPropertyName("contact_email")]

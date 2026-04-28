@@ -10,6 +10,13 @@ namespace Stripe.DelegatedCheckout
     public class RequestedSessionBuyerConsentsMarketing : StripeEntity<RequestedSessionBuyerConsentsMarketing>
     {
         /// <summary>
+        /// The buyer's marketing consent choices.
+        /// </summary>
+        [JsonProperty("consents")]
+        [STJS.JsonPropertyName("consents")]
+        public List<RequestedSessionBuyerConsentsMarketingConsent> Consents { get; set; }
+
+        /// <summary>
         /// The available marketing consent options.
         /// </summary>
         [JsonProperty("options")]

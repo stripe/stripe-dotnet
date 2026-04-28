@@ -25,8 +25,7 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationOptions Configuration { get; set; }
 
         /// <summary>
-        /// The default contact email address for the Account. Required when configuring the account
-        /// as a merchant or recipient.
+        /// The primary contact email address for the Account.
         /// </summary>
         [JsonProperty("contact_email")]
         [STJS.JsonPropertyName("contact_email")]

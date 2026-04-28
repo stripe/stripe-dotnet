@@ -16,6 +16,13 @@ namespace Stripe.DelegatedCheckout
         public RequestedSessionAffiliateAttributionOptions AffiliateAttribution { get; set; }
 
         /// <summary>
+        /// The buyer's consent choices for marketing communications.
+        /// </summary>
+        [JsonProperty("buyer_consents")]
+        [STJS.JsonPropertyName("buyer_consents")]
+        public RequestedSessionBuyerConsentsOptions BuyerConsents { get; set; }
+
+        /// <summary>
         /// The PaymentMethod to use with the requested session.
         /// </summary>
         [JsonProperty("payment_method")]

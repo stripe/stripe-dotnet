@@ -8,6 +8,9 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentRecordPaymentMethodDetailsGiftCard : StripeEntity<PaymentRecordPaymentMethodDetailsGiftCard>
     {
+        /// <summary>
+        /// The balance of the gift card after the transaction.
+        /// </summary>
         [JsonProperty("balance")]
         [STJS.JsonPropertyName("balance")]
         public PaymentRecordPaymentMethodDetailsGiftCardBalance Balance { get; set; }
@@ -40,6 +43,13 @@ namespace Stripe
         [JsonProperty("first6")]
         [STJS.JsonPropertyName("first6")]
         public string First6 { get; set; }
+
+        /// <summary>
+        /// The last four digits of the gift card number.
+        /// </summary>
+        [JsonProperty("last4")]
+        [STJS.JsonPropertyName("last4")]
+        public string Last4 { get; set; }
 
         /// <summary>
         /// The transaction ID from the gift card processor.

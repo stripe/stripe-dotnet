@@ -9223,6 +9223,39 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2DataAnalyticsMetricQueryPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/data/analytics/metric_query",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.data.analytics.metric_query_result\",\"created\":\"1970-01-12T21:42:34.472Z\",\"data\":[{\"dimensions\":{\"key\":\"dimensions\"},\"id\":\"obj_123\",\"results\":[{\"metric\":\"metric\",\"name\":\"name\",\"value\":\"111972721\"}],\"timestamp\":\"1970-01-01T15:18:46.294Z\"}],\"id\":\"obj_123\",\"livemode\":true,\"refreshed_at\":\"1970-01-01T11:25:45.896Z\"}");
+            var options = new Stripe.V2.Data.Analytics.MetricQueryCreateOptions
+            {
+                EndsAt = DateTimeOffset.Parse("1970-01-19T14:12:09.638Z")
+                    .UtcDateTime,
+                Granularity = "week",
+                Metrics = new List<Stripe.V2.Data.Analytics.MetricQueryCreateMetricOptions>
+                {
+                    new Stripe.V2.Data.Analytics.MetricQueryCreateMetricOptions
+                    {
+                        Id = "obj_123",
+                        Name = "name",
+                    },
+                },
+                StartsAt = DateTimeOffset.Parse("1970-01-25T15:13:01.215Z")
+                    .UtcDateTime,
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Data.Analytics.MetricQuery;
+            Stripe.V2.Data.Analytics.MetricQueryResult metricQueryResult = service
+                .Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/data/analytics/metric_query");
+        }
+
+        [Fact]
         public void TestV2DataReportingQueryRunPost()
         {
             this.StubRequest(
@@ -9687,7 +9720,7 @@ namespace StripeTests
             var options = new Stripe.V2.MoneyManagement.FinancialAddressCreateOptions
             {
                 FinancialAccount = "financial_account",
-                Type = "sepa_bank_account",
+                Type = "ca_bank_account",
             };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.FinancialAddresses;
@@ -10512,10 +10545,6 @@ namespace StripeTests
                 Amount = new Stripe.V2.Amount { Value = 96, Currency = "USD" },
                 Cadence = "unscheduled",
                 Customer = "customer",
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "metadata" },
-                },
             };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Payments.OffSessionPayments;
@@ -10568,17 +10597,10 @@ namespace StripeTests
                 "/v2/payments/off_session_payments/id_123/capture",
                 (HttpStatusCode)200,
                 "{\"object\":\"v2.payments.off_session_payment\",\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"payment_method\":\"payment_method\",\"payments_orchestration\":{\"enabled\":true},\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"scheduled\"},\"status\":\"requires_capture\"}");
-            var options = new Stripe.V2.Payments.OffSessionPaymentCaptureOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "metadata" },
-                },
-            };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Payments.OffSessionPayments;
             Stripe.V2.Payments.OffSessionPayment offSessionPayment = service
-                .Capture("id_123", options);
+                .Capture("id_123");
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/payments/off_session_payments/id_123/capture");
@@ -11246,7 +11268,7 @@ namespace StripeTests
                 var options = new Stripe.V2.MoneyManagement.FinancialAddressCreateOptions
                 {
                     FinancialAccount = "financial_account",
-                    Type = "sepa_bank_account",
+                    Type = "ca_bank_account",
                 };
                 var client = new StripeClient(this.Requestor);
                 var service = client.V2.MoneyManagement.FinancialAddresses;

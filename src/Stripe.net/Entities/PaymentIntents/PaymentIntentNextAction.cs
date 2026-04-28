@@ -33,6 +33,10 @@ namespace Stripe
         [STJS.JsonPropertyName("display_bank_transfer_instructions")]
         public PaymentIntentNextActionDisplayBankTransferInstructions DisplayBankTransferInstructions { get; set; }
 
+        [JsonProperty("klarna_display_qr_code")]
+        [STJS.JsonPropertyName("klarna_display_qr_code")]
+        public PaymentIntentNextActionKlarnaDisplayQrCode KlarnaDisplayQrCode { get; set; }
+
         [JsonProperty("konbini_display_details")]
         [STJS.JsonPropertyName("konbini_display_details")]
         public PaymentIntentNextActionKonbiniDisplayDetails KonbiniDisplayDetails { get; set; }
