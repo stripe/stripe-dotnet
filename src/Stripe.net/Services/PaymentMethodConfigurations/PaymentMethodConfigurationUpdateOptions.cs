@@ -575,6 +575,19 @@ namespace Stripe
         public PaymentMethodConfigurationSofortOptions Sofort { get; set; }
 
         /// <summary>
+        /// Sunbit is a <a
+        /// href="https://docs.stripe.com/payments/payment-methods#usage">single-use</a> payment
+        /// method where customers choose to pay in 3, 6, or 12 installments. Customers are
+        /// redirected from your website or app, authorize the payment with Sunbit, then return to
+        /// your website or app. You get <a
+        /// href="https://docs.stripe.com/payments/payment-methods#payment-notification">immediate
+        /// notification</a> of whether the payment succeeded or failed.
+        /// </summary>
+        [JsonProperty("sunbit")]
+        [STJS.JsonPropertyName("sunbit")]
+        public PaymentMethodConfigurationSunbitOptions Sunbit { get; set; }
+
+        /// <summary>
         /// Swish is a <a href="https://docs.stripe.com/payments/real-time">real-time</a> payment
         /// method popular in Sweden. It allows customers to <a
         /// href="https://docs.stripe.com/payments/payment-methods#customer-actions">authenticate

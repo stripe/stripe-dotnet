@@ -9,16 +9,14 @@ namespace Stripe
     public class ChargePaymentMethodDetailsAffirm : StripeEntity<ChargePaymentMethodDetailsAffirm>
     {
         /// <summary>
-        /// ID of the <a href="https://docs.stripe.com/api/terminal/locations">location</a> that
-        /// this transaction's reader is assigned to.
+        /// ID of the location that this reader is assigned to.
         /// </summary>
         [JsonProperty("location")]
         [STJS.JsonPropertyName("location")]
         public string Location { get; set; }
 
         /// <summary>
-        /// ID of the <a href="https://docs.stripe.com/api/terminal/readers">reader</a> this
-        /// transaction was made on.
+        /// ID of the reader this transaction was made on.
         /// </summary>
         [JsonProperty("reader")]
         [STJS.JsonPropertyName("reader")]

@@ -11,6 +11,7 @@ namespace Stripe
         private InvoicePaymentSettingsPaymentMethodOptionsAcssDebitOptions acssDebit;
         private InvoicePaymentSettingsPaymentMethodOptionsBancontactOptions bancontact;
         private InvoicePaymentSettingsPaymentMethodOptionsBizumOptions bizum;
+        private InvoicePaymentSettingsPaymentMethodOptionsBlikOptions blik;
         private InvoicePaymentSettingsPaymentMethodOptionsCardOptions card;
         private InvoicePaymentSettingsPaymentMethodOptionsCheckScanOptions checkScan;
         private InvoicePaymentSettingsPaymentMethodOptionsCustomerBalanceOptions customerBalance;
@@ -73,6 +74,23 @@ namespace Stripe
             set
             {
                 this.bizum = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If paying by <c>blik</c>, this sub-hash contains details about the Blik payment method
+        /// options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("blik", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("blik")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public InvoicePaymentSettingsPaymentMethodOptionsBlikOptions Blik
+        {
+            get => this.blik;
+            set
+            {
+                this.blik = value;
                 this.SetTracker.Track();
             }
         }

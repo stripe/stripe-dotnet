@@ -50,9 +50,9 @@ namespace Stripe
         /// settings</a>.
         /// One of: <c>ach_credit_transfer</c>, <c>ach_debit</c>, <c>acss_debit</c>, <c>affirm</c>,
         /// <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
-        /// <c>bizum</c>, <c>boleto</c>, <c>card</c>, <c>cashapp</c>, <c>check_scan</c>,
-        /// <c>crypto</c>, <c>custom</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>,
-        /// <c>giropay</c>, <c>grabpay</c>, <c>id_bank_transfer</c>, <c>ideal</c>,
+        /// <c>bizum</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>, <c>cashapp</c>,
+        /// <c>check_scan</c>, <c>crypto</c>, <c>custom</c>, <c>customer_balance</c>, <c>eps</c>,
+        /// <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>id_bank_transfer</c>, <c>ideal</c>,
         /// <c>jp_credit_transfer</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>,
         /// <c>kr_card</c>, <c>link</c>, <c>momo</c>, <c>multibanco</c>, <c>naver_pay</c>,
         /// <c>nz_bank_account</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>,

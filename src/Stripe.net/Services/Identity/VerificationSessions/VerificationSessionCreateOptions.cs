@@ -42,7 +42,8 @@ namespace Stripe.Identity
         public VerificationSessionOptionsOptions Options { get; set; }
 
         /// <summary>
-        /// Details provided about the user being verified. These details may be shown to the user.
+        /// Details provided about the user being verified. These details might be shown to the
+        /// user.
         /// </summary>
         [JsonProperty("provided_details")]
         [STJS.JsonPropertyName("provided_details")]
@@ -63,7 +64,7 @@ namespace Stripe.Identity
         public string RelatedCustomerAccount { get; set; }
 
         /// <summary>
-        /// Tokens referencing a Person resource and it's associated account.
+        /// Tokens referencing a Person resource and its associated account.
         /// </summary>
         [JsonProperty("related_person")]
         [STJS.JsonPropertyName("related_person")]

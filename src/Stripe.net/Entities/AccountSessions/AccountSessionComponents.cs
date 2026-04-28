@@ -25,6 +25,10 @@ namespace Stripe
         [STJS.JsonPropertyName("agentic_commerce_settings")]
         public AccountSessionComponentsAgenticCommerceSettings AgenticCommerceSettings { get; set; }
 
+        [JsonProperty("balance_report")]
+        [STJS.JsonPropertyName("balance_report")]
+        public AccountSessionComponentsBalanceReport BalanceReport { get; set; }
+
         [JsonProperty("balances")]
         [STJS.JsonPropertyName("balances")]
         public AccountSessionComponentsBalances Balances { get; set; }
@@ -133,6 +137,10 @@ namespace Stripe
         [JsonProperty("payout_details")]
         [STJS.JsonPropertyName("payout_details")]
         public AccountSessionComponentsPayoutDetails PayoutDetails { get; set; }
+
+        [JsonProperty("payout_reconciliation_report")]
+        [STJS.JsonPropertyName("payout_reconciliation_report")]
+        public AccountSessionComponentsPayoutReconciliationReport PayoutReconciliationReport { get; set; }
 
         [JsonProperty("payouts")]
         [STJS.JsonPropertyName("payouts")]

@@ -10,6 +10,17 @@ namespace Stripe.Issuing
     public class CardSpendingControls : StripeEntity<CardSpendingControls>
     {
         /// <summary>
+        /// Array of card presence statuses from which authorizations will be allowed. Possible
+        /// options are <c>present</c>, <c>not_present</c>. All other statuses will be blocked.
+        /// Cannot be set with <c>blocked_card_presences</c>. Provide an empty value to unset this
+        /// control.
+        /// One of: <c>not_present</c>, or <c>present</c>.
+        /// </summary>
+        [JsonProperty("allowed_card_presences")]
+        [STJS.JsonPropertyName("allowed_card_presences")]
+        public List<string> AllowedCardPresences { get; set; }
+
+        /// <summary>
         /// Array of strings containing <a
         /// href="https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category">categories</a>
         /// of authorizations to allow. All other categories will be blocked. Cannot be set with
@@ -173,6 +184,16 @@ namespace Stripe.Issuing
         [JsonProperty("allowed_merchant_countries")]
         [STJS.JsonPropertyName("allowed_merchant_countries")]
         public List<string> AllowedMerchantCountries { get; set; }
+
+        /// <summary>
+        /// Array of card presence statuses from which authorizations will be declined. Possible
+        /// options are <c>present</c>, <c>not_present</c>. Cannot be set with
+        /// <c>allowed_card_presences</c>. Provide an empty value to unset this control.
+        /// One of: <c>not_present</c>, or <c>present</c>.
+        /// </summary>
+        [JsonProperty("blocked_card_presences")]
+        [STJS.JsonPropertyName("blocked_card_presences")]
+        public List<string> BlockedCardPresences { get; set; }
 
         /// <summary>
         /// Array of strings containing <a

@@ -208,8 +208,10 @@ namespace Stripe
         public AccountTosAcceptanceOptions TosAcceptance { get; set; }
 
         /// <summary>
-        /// The type of Stripe account to create. May be one of <c>custom</c>, <c>express</c> or
-        /// <c>standard</c>.
+        /// The <c>type</c> parameter is deprecated. Use <a
+        /// href="https://stripe.com/api/accounts/create#create_account-controller"><c>controller</c></a>
+        /// instead to configure dashboard access, fee payer, loss liability, and requirement
+        /// collection.
         /// One of: <c>custom</c>, <c>express</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("type")]
