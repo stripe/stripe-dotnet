@@ -1,5 +1,9 @@
 # Changelog
 
+## 51.2.0-alpha.3 - 2026-04-28
+* [#3377](https://github.com/stripe/stripe-dotnet/pull/3377) Update generated code for private-preview
+  * Add support for `DebitCard` on `V2.Core.Account.Configuration.CardCreator.Capabilities.Consumer.Lead`, `V2.Core.Account.Identity.Attestations.TermsOfService.CardCreator.Consumer.Lead`, `V2CoreAccountConfigurationCardCreatorCapabilitiesConsumerLeadOptions`, and `V2CoreAccountIdentityAttestationsTermsOfServiceCardCreatorConsumerLeadOptions`
+
 ## 51.2.0-alpha.2 - 2026-04-28
 * [#3375](https://github.com/stripe/stripe-dotnet/pull/3375) Update generated code for private-preview
   * Add support for new resource `V2.Data.Analytics.MetricQueryResult`
