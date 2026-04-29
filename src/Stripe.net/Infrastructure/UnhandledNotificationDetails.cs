@@ -1,3 +1,4 @@
+// File copied from our code generator; changes here will be overwritten.
 namespace Stripe
 {
     /// <summary>
