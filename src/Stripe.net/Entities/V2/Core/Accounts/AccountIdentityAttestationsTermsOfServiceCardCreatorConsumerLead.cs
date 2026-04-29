@@ -17,6 +17,13 @@ namespace Stripe.V2.Core
         public AccountIdentityAttestationsTermsOfServiceCardCreatorConsumerLeadApplePay ApplePay { get; set; }
 
         /// <summary>
+        /// Terms of service acceptances for consumer issuing debit cards with Lead as BIN sponsor.
+        /// </summary>
+        [JsonProperty("debit_card")]
+        [STJS.JsonPropertyName("debit_card")]
+        public AccountIdentityAttestationsTermsOfServiceCardCreatorConsumerLeadDebitCard DebitCard { get; set; }
+
+        /// <summary>
         /// Terms of service acceptances for commercial issuing revolving credit cards with Lead as
         /// BIN sponsor.
         /// </summary>

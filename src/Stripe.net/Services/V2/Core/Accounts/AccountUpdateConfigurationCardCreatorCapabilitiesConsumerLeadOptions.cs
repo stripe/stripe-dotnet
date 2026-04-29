@@ -9,6 +9,13 @@ namespace Stripe.V2.Core
     public class AccountUpdateConfigurationCardCreatorCapabilitiesConsumerLeadOptions : INestedOptions
     {
         /// <summary>
+        /// Can create consumer issuing debit cards with Lead as BIN sponsor.
+        /// </summary>
+        [JsonProperty("debit_card")]
+        [STJS.JsonPropertyName("debit_card")]
+        public AccountUpdateConfigurationCardCreatorCapabilitiesConsumerLeadDebitCardOptions DebitCard { get; set; }
+
+        /// <summary>
         /// Can create consumer issuing prepaid cards with Lead as BIN sponsor.
         /// </summary>
         [JsonProperty("prepaid_card")]

@@ -17,7 +17,8 @@ namespace Stripe.Events
         /// <c>commercial.fifth_third.charge_card</c>, <c>commercial.lead.prepaid_card</c>,
         /// <c>commercial.stripe.charge_card</c>, <c>commercial.stripe.prepaid_card</c>,
         /// <c>consumer.celtic.revolving_credit_card</c>,
-        /// <c>consumer.cross_river_bank.prepaid_card</c>, or <c>consumer.lead.prepaid_card</c>.
+        /// <c>consumer.cross_river_bank.prepaid_card</c>, <c>consumer.lead.debit_card</c>, or
+        /// <c>consumer.lead.prepaid_card</c>.
         /// </summary>
         [JsonProperty("updated_capability")]
         [STJS.JsonPropertyName("updated_capability")]
