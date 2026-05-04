@@ -115,6 +115,15 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Incoming information from the card network for this dispute. Includes the acquiring
+        /// merchant's initial response, pre-arbitration submission, and pre-arbitration response to
+        /// the dispute.
+        /// </summary>
+        [JsonProperty("network_lifecycle")]
+        [STJS.JsonPropertyName("network_lifecycle")]
+        public DisputeNetworkLifecycle NetworkLifecycle { get; set; }
+
+        /// <summary>
         /// Current status of the dispute.
         /// One of: <c>expired</c>, <c>lost</c>, <c>submitted</c>, <c>unsubmitted</c>, or
         /// <c>won</c>.

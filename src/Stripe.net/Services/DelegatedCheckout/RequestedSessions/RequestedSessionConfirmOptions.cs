@@ -1,13 +1,16 @@
 // File generated from our OpenAPI spec
 namespace Stripe.DelegatedCheckout
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class RequestedSessionConfirmOptions : BaseOptions
+    public class RequestedSessionConfirmOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// Affiliate attribution data associated with this requested session.
         /// </summary>
@@ -21,6 +24,22 @@ namespace Stripe.DelegatedCheckout
         [JsonProperty("buyer_consents")]
         [STJS.JsonPropertyName("buyer_consents")]
         public RequestedSessionBuyerConsentsOptions BuyerConsents { get; set; }
+
+        /// <summary>
+        /// The metadata for this requested session.
+        /// </summary>
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The PaymentMethod to use with the requested session.

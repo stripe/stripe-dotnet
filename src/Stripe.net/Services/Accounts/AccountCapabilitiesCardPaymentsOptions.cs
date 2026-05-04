@@ -9,6 +9,13 @@ namespace Stripe
     public class AccountCapabilitiesCardPaymentsOptions : INestedOptions
     {
         /// <summary>
+        /// Protections to apply to this capability.
+        /// </summary>
+        [JsonProperty("protections")]
+        [STJS.JsonPropertyName("protections")]
+        public AccountCapabilitiesCardPaymentsProtectionsOptions Protections { get; set; }
+
+        /// <summary>
         /// Passing true requests the capability for the account, if it is not already requested. A
         /// requested capability may not immediately become active. Any requirements to activate the
         /// capability are returned in the <c>requirements</c> arrays.

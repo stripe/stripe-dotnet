@@ -57,6 +57,7 @@ namespace Stripe
         private PaymentAttemptRecordService paymentAttemptRecords;
         private PaymentIntentService paymentIntents;
         private PaymentLinkService paymentLinks;
+        private PaymentLocationService paymentLocations;
         private PaymentMethodService paymentMethods;
         private PaymentMethodConfigurationService paymentMethodConfigurations;
         private PaymentMethodDomainService paymentMethodDomains;
@@ -253,6 +254,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual PaymentLinkService PaymentLinks => this.paymentLinks ??= new PaymentLinkService(
+            this.Requestor);
+
+        public virtual PaymentLocationService PaymentLocations => this.paymentLocations ??= new PaymentLocationService(
             this.Requestor);
 
         public virtual PaymentMethodService PaymentMethods => this.paymentMethods ??= new PaymentMethodService(
