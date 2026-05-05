@@ -9,6 +9,7 @@
 
   <PropertyGroup>
     <DefaultItemExcludes>$(DefaultItemExcludes);V2/*WebhookHandler.cs</DefaultItemExcludes>
+    <DefaultItemExcludes>$(DefaultItemExcludes);V2/*HandlerEndpoint.cs</DefaultItemExcludes>
   </PropertyGroup>
 
   <ItemGroup>
