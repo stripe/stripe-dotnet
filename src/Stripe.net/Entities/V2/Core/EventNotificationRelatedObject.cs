@@ -1,3 +1,4 @@
+// File copied from our code generator; changes here will be overwritten.
 #nullable disable
 
 namespace Stripe.V2.Core
