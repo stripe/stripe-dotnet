@@ -1,5 +1,17 @@
 # Changelog
 
+## 51.2.0-alpha.4 - 2026-05-06
+* [#3378](https://github.com/stripe/stripe-dotnet/pull/3378) Update generated code for private-preview
+  * Add support for new resource `PaymentLocation`
+  * Add support for `Create`, `Delete`, `Get`, and `Update` methods on resource `PaymentLocation`
+  * Add support for `Protections` on `AccountCapabilitiesCardPaymentsOptions` and `Capability`
+  * Add support for `GiftCard` on `ConfirmationToken.PaymentMethodPreview`, `ConfirmationTokenPaymentMethodDataOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, `SetupIntentPaymentMethodDataOptions`, and `SharedPayment.GrantedToken.PaymentMethodDetails`
+  * Add support for `Metadata` on `DelegatedCheckout.RequestedSessionConfirmOptions`
+  * Add support for `CreditedItems` on `InvoiceItem.ProrationDetails`
+  * Add support for `NetworkLifecycle` on `Issuing.Dispute`
+  * Add support for `StatusDetails` on `Subscription`
+* [#3379](https://github.com/stripe/stripe-dotnet/pull/3379) Add EventNotificationHandler (private preview)
+
 ## 51.2.0-alpha.3 - 2026-04-28
 * [#3377](https://github.com/stripe/stripe-dotnet/pull/3377) Update generated code for private-preview
   * Add support for `DebitCard` on `V2.Core.Account.Configuration.CardCreator.Capabilities.Consumer.Lead`, `V2.Core.Account.Identity.Attestations.TermsOfService.CardCreator.Consumer.Lead`, `V2CoreAccountConfigurationCardCreatorCapabilitiesConsumerLeadOptions`, and `V2CoreAccountIdentityAttestationsTermsOfServiceCardCreatorConsumerLeadOptions`
