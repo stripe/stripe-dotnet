@@ -45,6 +45,14 @@ namespace Stripe
         public PaymentLocationCapabilitySettings CapabilitySettings { get; set; }
 
         /// <summary>
+        /// Whether this object is deleted or not.
+        /// </summary>
+        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("deleted")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public bool? Deleted { get; set; }
+
+        /// <summary>
         /// The display name of the location.
         /// </summary>
         [JsonProperty("display_name")]
