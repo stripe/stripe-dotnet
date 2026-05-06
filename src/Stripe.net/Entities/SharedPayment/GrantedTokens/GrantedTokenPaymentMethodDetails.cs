@@ -92,6 +92,10 @@ namespace Stripe.SharedPayment
         [STJS.JsonPropertyName("fpx")]
         public GrantedTokenPaymentMethodDetailsFpx Fpx { get; set; }
 
+        [JsonProperty("gift_card")]
+        [STJS.JsonPropertyName("gift_card")]
+        public GrantedTokenPaymentMethodDetailsGiftCard GiftCard { get; set; }
+
         [JsonProperty("giropay")]
         [STJS.JsonPropertyName("giropay")]
         public GrantedTokenPaymentMethodDetailsGiropay Giropay { get; set; }
@@ -252,10 +256,10 @@ namespace Stripe.SharedPayment
         /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
         /// <c>bancontact</c>, <c>billie</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
         /// <c>card_present</c>, <c>cashapp</c>, <c>crypto</c>, <c>custom</c>,
-        /// <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>gopay</c>,
-        /// <c>grabpay</c>, <c>id_bank_transfer</c>, <c>ideal</c>, <c>interac_present</c>,
-        /// <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>, <c>link</c>,
-        /// <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>,
+        /// <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>gift_card</c>, <c>giropay</c>,
+        /// <c>gopay</c>, <c>grabpay</c>, <c>id_bank_transfer</c>, <c>ideal</c>,
+        /// <c>interac_present</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>,
+        /// <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>,
         /// <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>,
         /// <c>paynow</c>, <c>paypal</c>, <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,

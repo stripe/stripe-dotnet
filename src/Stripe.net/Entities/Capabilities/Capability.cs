@@ -68,6 +68,10 @@ namespace Stripe
         [STJS.JsonPropertyName("future_requirements")]
         public CapabilityFutureRequirements FutureRequirements { get; set; }
 
+        [JsonProperty("protections")]
+        [STJS.JsonPropertyName("protections")]
+        public CapabilityProtections Protections { get; set; }
+
         /// <summary>
         /// Whether the capability has been requested.
         /// </summary>
