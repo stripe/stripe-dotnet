@@ -19,12 +19,20 @@ namespace Stripe.Infrastructure
         /// <param name="typeToConvert">Type of the object.</param>
         /// <param name="options">The calling serializer's options.</param>
         /// <returns>The object value.</returns>
-        public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override T Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
         {
             return this.ReadFullObject(ref reader, typeToConvert, options);
         }
 
-        protected T ReadFullObject(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        protected T ReadFullObject(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
         {
             if (reader.TokenType != JsonTokenType.StartObject)
             {
@@ -82,9 +90,14 @@ namespace Stripe.Infrastructure
 
                         property.Set(newInstance, value);
                     }
-                    else if (property.NumberHandling.HasValue &&
-                             (property.NumberHandling.Value & JsonNumberHandling.AllowReadingFromString) != 0 &&
-                             reader.TokenType == JsonTokenType.String)
+                    else if (
+                        property.NumberHandling.HasValue
+                        && (
+                            property.NumberHandling.Value
+                            & JsonNumberHandling.AllowReadingFromString
+                        ) != 0
+                        && reader.TokenType == JsonTokenType.String
+                    )
                     {
                         // Property has [JsonNumberHandling(AllowReadingFromString)] and
                         // the wire value is a JSON string — parse the number from the string.
@@ -97,7 +110,10 @@ namespace Stripe.Infrastructure
                         {
                             // Unwrap Nullable<T> to get the underlying type for Convert.ChangeType
                             var targetType = Nullable.GetUnderlyingType(valueType) ?? valueType;
-                            property.Set(newInstance, Convert.ChangeType(str, targetType, CultureInfo.InvariantCulture));
+                            property.Set(
+                                newInstance,
+                                Convert.ChangeType(str, targetType, CultureInfo.InvariantCulture)
+                            );
                         }
                     }
                     else
@@ -142,8 +158,8 @@ namespace Stripe.Infrastructure
                 switch (valueToSerialize)
                 {
                     case null:
-                        var ignoreCondition = property.IgnoreCondition
-                            ?? options.DefaultIgnoreCondition;
+                        var ignoreCondition =
+                            property.IgnoreCondition ?? options.DefaultIgnoreCondition;
 
                         bool shouldWriteNull;
                         if (ignoreCondition == JsonIgnoreCondition.Always)
@@ -155,7 +171,8 @@ namespace Stripe.Infrastructure
                             // For emptyable properties on Options objects,
                             // write null only when explicitly set by the caller.
                             // For other types, respect the annotation and skip.
-                            shouldWriteNull = value is IHasSetTracking tracked
+                            shouldWriteNull =
+                                value is IHasSetTracking tracked
                                 && tracked.IsPropertySet(property.PropertyInfo.Name);
                         }
                         else
@@ -173,11 +190,16 @@ namespace Stripe.Infrastructure
                     default:
                         writer.WritePropertyName(property.JsonPropertyName);
 
-                        if (property.NumberHandling.HasValue &&
-                            (property.NumberHandling.Value & JsonNumberHandling.WriteAsString) != 0 &&
-                            valueToSerialize is IConvertible)
+                        if (
+                            property.NumberHandling.HasValue
+                            && (property.NumberHandling.Value & JsonNumberHandling.WriteAsString)
+                                != 0
+                            && valueToSerialize is IConvertible
+                        )
                         {
-                            writer.WriteStringValue(Convert.ToString(valueToSerialize, CultureInfo.InvariantCulture));
+                            writer.WriteStringValue(
+                                Convert.ToString(valueToSerialize, CultureInfo.InvariantCulture)
+                            );
                         }
                         else
                         {

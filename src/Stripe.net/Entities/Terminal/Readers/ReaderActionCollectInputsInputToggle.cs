@@ -6,7 +6,8 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ReaderActionCollectInputsInputToggle : StripeEntity<ReaderActionCollectInputsInputToggle>
+    public class ReaderActionCollectInputsInputToggle
+        : StripeEntity<ReaderActionCollectInputsInputToggle>
     {
         /// <summary>
         /// The toggle's default value. Can be <c>enabled</c> or <c>disabled</c>.

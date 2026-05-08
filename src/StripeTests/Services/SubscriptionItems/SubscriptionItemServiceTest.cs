@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -20,7 +19,8 @@ namespace StripeTests
 
         public SubscriptionItemServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new SubscriptionItemService(this.StripeClient);
@@ -42,17 +42,11 @@ namespace StripeTests
                 Subscription = "sub_123",
             };
 
-            this.deleteOptions = new SubscriptionItemDeleteOptions
-            {
-                ClearUsage = true,
-            };
+            this.deleteOptions = new SubscriptionItemDeleteOptions { ClearUsage = true };
 
             this.updateOptions = new SubscriptionItemUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
             this.listOptions = new SubscriptionItemListOptions
@@ -147,7 +141,9 @@ namespace StripeTests
         [Fact]
         public async Task ListAutoPagingAsync()
         {
-            var subscriptionItem = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            var subscriptionItem = await this
+                .service.ListAutoPagingAsync(this.listOptions)
+                .FirstAsync();
             Assert.NotNull(subscriptionItem);
             Assert.Equal("subscription_item", subscriptionItem.Object);
         }
@@ -164,7 +160,10 @@ namespace StripeTests
         [Fact]
         public async Task UpdateAsync()
         {
-            var subscriptionItem = await this.service.UpdateAsync(SubscriptionItemId, this.updateOptions);
+            var subscriptionItem = await this.service.UpdateAsync(
+                SubscriptionItemId,
+                this.updateOptions
+            );
             this.AssertRequest(HttpMethod.Post, "/v1/subscription_items/si_123");
             Assert.NotNull(subscriptionItem);
             Assert.Equal("subscription_item", subscriptionItem.Object);

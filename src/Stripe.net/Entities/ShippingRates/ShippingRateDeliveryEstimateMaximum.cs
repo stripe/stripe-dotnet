@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ShippingRateDeliveryEstimateMaximum : StripeEntity<ShippingRateDeliveryEstimateMaximum>
+    public class ShippingRateDeliveryEstimateMaximum
+        : StripeEntity<ShippingRateDeliveryEstimateMaximum>
     {
         /// <summary>
         /// A unit of time.

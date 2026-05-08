@@ -17,7 +17,12 @@ namespace Stripe.Issuing
     /// card authorizations</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class Authorization : StripeEntity<Authorization>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
+    public class Authorization
+        : StripeEntity<Authorization>,
+            IHasId,
+            IHasMetadata,
+            IHasObject,
+            IBalanceTransactionSource
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -108,7 +113,8 @@ namespace Stripe.Issuing
         public Cardholder Cardholder
         {
             get => this.InternalCardholder?.ExpandedObject;
-            set => this.InternalCardholder = SetExpandableFieldObject(value, this.InternalCardholder);
+            set =>
+                this.InternalCardholder = SetExpandableFieldObject(value, this.InternalCardholder);
         }
 
         [JsonProperty("cardholder")]

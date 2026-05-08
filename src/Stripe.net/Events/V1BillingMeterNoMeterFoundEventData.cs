@@ -7,7 +7,8 @@ namespace Stripe.Events
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-    public class V1BillingMeterNoMeterFoundEventData : StripeEntity<V1BillingMeterNoMeterFoundEventData>
+    public class V1BillingMeterNoMeterFoundEventData
+        : StripeEntity<V1BillingMeterNoMeterFoundEventData>
     {
         /// <summary>
         /// Extra field included in the event's <c>data</c> when fetched from /v2/events.
@@ -35,6 +36,7 @@ namespace Stripe.Events
         /// </summary>
         [JsonProperty("validation_start")]
         [STJS.JsonPropertyName("validation_start")]
-        public DateTime ValidationStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime ValidationStart { get; set; } =
+            Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

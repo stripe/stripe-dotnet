@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -21,38 +20,26 @@ namespace StripeTests
 
         public SetupIntentServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new SetupIntentService(this.StripeClient);
 
-            this.cancelOptions = new SetupIntentCancelOptions
-            {
-            };
+            this.cancelOptions = new SetupIntentCancelOptions { };
 
-            this.confirmOptions = new SetupIntentConfirmOptions
-            {
-            };
+            this.confirmOptions = new SetupIntentConfirmOptions { };
 
             this.createOptions = new SetupIntentCreateOptions
             {
-                PaymentMethodTypes = new List<string>
-                {
-                    "card",
-                },
+                PaymentMethodTypes = new List<string> { "card" },
             };
 
-            this.listOptions = new SetupIntentListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new SetupIntentListOptions { Limit = 1 };
 
             this.updateOptions = new SetupIntentUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
         }
 
@@ -131,10 +118,7 @@ namespace StripeTests
         [Fact]
         public void GetWithClientSecret()
         {
-            var options = new SetupIntentGetOptions
-            {
-                ClientSecret = "seti_client_secret_123",
-            };
+            var options = new SetupIntentGetOptions { ClientSecret = "seti_client_secret_123" };
             var intent = this.service.Get(SetupIntentId, options);
             this.AssertRequest(HttpMethod.Get, "/v1/setup_intents/seti_123");
             Assert.NotNull(intent);

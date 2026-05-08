@@ -6,7 +6,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentPaymentMethodOptionsSamsungPayOptions : INestedOptions, IHasSetTracking
+    public class PaymentIntentPaymentMethodOptionsSamsungPayOptions
+        : INestedOptions,
+            IHasSetTracking
     {
         private string captureMethod;
 

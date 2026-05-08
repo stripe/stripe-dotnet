@@ -3,7 +3,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -19,7 +18,8 @@ namespace StripeTests
 
         public AccountPersonServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new AccountPersonService(this.StripeClient);
@@ -62,10 +62,7 @@ namespace StripeTests
             this.listOptions = new AccountPersonListOptions
             {
                 Limit = 1,
-                Relationship = new AccountPersonRelationshipOptions
-                {
-                    Director = true,
-                },
+                Relationship = new AccountPersonRelationshipOptions { Director = true },
             };
         }
 
@@ -156,7 +153,9 @@ namespace StripeTests
         [Fact]
         public async Task ListAutoPagingAsync()
         {
-            var person = await this.service.ListAutoPagingAsync(AccountId, this.listOptions).FirstAsync();
+            var person = await this
+                .service.ListAutoPagingAsync(AccountId, this.listOptions)
+                .FirstAsync();
             Assert.NotNull(person);
             Assert.Equal("person", person.Object);
         }

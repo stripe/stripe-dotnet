@@ -13,17 +13,19 @@ namespace StripeTests
 
             try
             {
-                JsonConvert.DefaultSettings = () => new JsonSerializerSettings
-                {
-                    MissingMemberHandling = MissingMemberHandling.Error,
-                };
+                JsonConvert.DefaultSettings = () =>
+                    new JsonSerializerSettings
+                    {
+                        MissingMemberHandling = MissingMemberHandling.Error,
+                    };
 
                 var s = "{\"int\":234,\"string\":\"Hello!\",\"foo\":\"bar\"}";
 
                 // Deserialization throws an exception because of the extra `foo` property that is
                 // missing in the TestObject class.
                 Assert.Throws<JsonSerializationException>(() =>
-                    JsonConvert.DeserializeObject<TestObject>(s));
+                    JsonConvert.DeserializeObject<TestObject>(s)
+                );
 
                 // Deserialization succeeds because we're not using DefaultSettings, so
                 // MissingMemberHandling is set to its default value Ignore instead of Error.
@@ -45,11 +47,12 @@ namespace StripeTests
 
             try
             {
-                JsonConvert.DefaultSettings = () => new JsonSerializerSettings
-                {
-                    Formatting = Formatting.Indented,
-                    PreserveReferencesHandling = PreserveReferencesHandling.All,
-                };
+                JsonConvert.DefaultSettings = () =>
+                    new JsonSerializerSettings
+                    {
+                        Formatting = Formatting.Indented,
+                        PreserveReferencesHandling = PreserveReferencesHandling.All,
+                    };
 
                 var o = new TestObject { Int = 234, String = "Hello!" };
 
@@ -60,7 +63,8 @@ namespace StripeTests
                 jsonDefault = jsonDefault.Replace("\r\n", "\n");
                 Assert.Equal(
                     "{\n  \"$id\": \"1\",\n  \"int\": 234,\n  \"string\": \"Hello!\"\n}",
-                    jsonDefault);
+                    jsonDefault
+                );
 
                 // Serialized string is not formatted and doesn't include `$id` keys because
                 // we're not using DefaultSettings.

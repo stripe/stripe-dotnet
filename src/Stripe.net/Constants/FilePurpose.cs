@@ -15,7 +15,8 @@ namespace Stripe
 
         public const string DisputeEvidence = "dispute_evidence";
 
-        public const string DocumentProviderIdentityDocument = "document_provider_identity_document";
+        public const string DocumentProviderIdentityDocument =
+            "document_provider_identity_document";
 
         public const string FinanceReportRun = "finance_report_run";
 

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentLinkCustomFieldDropdownOption : StripeEntity<PaymentLinkCustomFieldDropdownOption>
+    public class PaymentLinkCustomFieldDropdownOption
+        : StripeEntity<PaymentLinkCustomFieldDropdownOption>
     {
         /// <summary>
         /// The label for the option, displayed to the customer. Up to 100 characters.

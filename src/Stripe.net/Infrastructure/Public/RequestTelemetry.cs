@@ -14,8 +14,8 @@ namespace Stripe
     /// </summary>
     public class RequestTelemetry
     {
-        private readonly ConcurrentQueue<RequestMetrics> prevRequestMetrics
-            = new ConcurrentQueue<RequestMetrics>();
+        private readonly ConcurrentQueue<RequestMetrics> prevRequestMetrics =
+            new ConcurrentQueue<RequestMetrics>();
 
         private static long MaxRequestMetricsQueueSize => 100;
 
@@ -39,7 +39,10 @@ namespace Stripe
 
             var payload = new ClientTelemetryPayload { LastRequestMetrics = requestMetrics };
 
-            headers.Add("X-Stripe-Client-Telemetry", JsonUtils.SerializeObject(payload, Formatting.None));
+            headers.Add(
+                "X-Stripe-Client-Telemetry",
+                JsonUtils.SerializeObject(payload, Formatting.None)
+            );
         }
 
         /// <summary>
@@ -60,7 +63,11 @@ namespace Stripe
         /// <param name="response">The HTTP response message.</param>
         /// <param name="duration">The request duration.</param>
         /// <param name="usage">Tracked behaviors.</param>
-        public void MaybeEnqueueMetrics(HttpResponseMessage response, TimeSpan duration, List<string> usage)
+        public void MaybeEnqueueMetrics(
+            HttpResponseMessage response,
+            TimeSpan duration,
+            List<string> usage
+        )
         {
             if (!response.Headers.Contains("Request-Id"))
             {

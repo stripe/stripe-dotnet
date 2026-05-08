@@ -6,7 +6,5 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class RefundDestinationDetailsAlma : StripeEntity<RefundDestinationDetailsAlma>
-    {
-    }
+    public class RefundDestinationDetailsAlma : StripeEntity<RefundDestinationDetailsAlma> { }
 }

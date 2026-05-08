@@ -3,7 +3,6 @@ namespace StripeTests
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -14,7 +13,8 @@ namespace StripeTests
 
         public AccountLinkServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new AccountLinkService(this.StripeClient);

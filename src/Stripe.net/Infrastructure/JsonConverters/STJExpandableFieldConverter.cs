@@ -15,24 +15,25 @@ namespace Stripe.Infrastructure
     {
         public override bool CanConvert(Type typeToConvert)
         {
-            return typeof(IExpandableField).GetTypeInfo().IsAssignableFrom(typeToConvert.GetTypeInfo());
+            return typeof(IExpandableField)
+                .GetTypeInfo()
+                .IsAssignableFrom(typeToConvert.GetTypeInfo());
         }
 
-        public override JsonConverter CreateConverter(
-            Type type,
-            JsonSerializerOptions options)
+        public override JsonConverter CreateConverter(Type type, JsonSerializerOptions options)
         {
             Type[] typeArguments = type.GetGenericArguments();
             Type fieldType = typeArguments[0];
 
 #pragma warning disable SA1009 // Closing parenthesis should be spaced correctly
-            JsonConverter converter = (JsonConverter)Activator.CreateInstance(
-                typeof(STJExpandableFieldConverter<>).MakeGenericType(
-                    fieldType),
-                BindingFlags.Instance | BindingFlags.Public,
-                binder: null,
-                args: null,
-                culture: null)!;
+            JsonConverter converter = (JsonConverter)
+                Activator.CreateInstance(
+                    typeof(STJExpandableFieldConverter<>).MakeGenericType(fieldType),
+                    BindingFlags.Instance | BindingFlags.Public,
+                    binder: null,
+                    args: null,
+                    culture: null
+                )!;
 #pragma warning restore SA1009 // Closing parenthesis should be spaced correctly
 
             return converter;
@@ -57,7 +58,11 @@ namespace Stripe.Infrastructure
         /// <param name="typeToConvert">Type of the object.</param>
         /// <param name="options">The calling serializer's options.</param>
         /// <returns>The object value.</returns>
-        public override ExpandableField<T> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override ExpandableField<T> Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
         {
             var value = new ExpandableField<T>();
 
@@ -74,7 +79,12 @@ namespace Stripe.Infrastructure
                 case JsonTokenType.StartObject:
                     var elem = JsonElement.ParseValue(ref reader);
 
-                    value.ExpandedObject = (T)JsonSerializer.Deserialize(elem, typeToConvert.GenericTypeArguments[0], options);
+                    value.ExpandedObject = (T)
+                        JsonSerializer.Deserialize(
+                            elem,
+                            typeToConvert.GenericTypeArguments[0],
+                            options
+                        );
 
                     // If we failed to deserialize the expanded object (e.g. because of an unknown
                     // type), make a last ditch attempt at getting the ID.
@@ -86,9 +96,12 @@ namespace Stripe.Infrastructure
                     break;
 
                 default:
-                    throw new JsonException(string.Format(
-                        "Unexpected token when converting ExpandableField: {0}.",
-                        reader.TokenType.ToString()));
+                    throw new JsonException(
+                        string.Format(
+                            "Unexpected token when converting ExpandableField: {0}.",
+                            reader.TokenType.ToString()
+                        )
+                    );
             }
 
             return value;
@@ -100,7 +113,11 @@ namespace Stripe.Infrastructure
         /// <param name="writer">The <see cref="Utf8JsonWriter"/> to write to.</param>
         /// <param name="value">The value.</param>
         /// <param name="options">The calling serializer's options.</param>
-        public override void Write(Utf8JsonWriter writer, ExpandableField<T> value, JsonSerializerOptions options)
+        public override void Write(
+            Utf8JsonWriter writer,
+            ExpandableField<T> value,
+            JsonSerializerOptions options
+        )
         {
             switch (value)
             {
@@ -121,15 +138,20 @@ namespace Stripe.Infrastructure
                     break;
 
                 default:
-                    throw new JsonException(string.Format(
-                        "Unexpected value when converting ExpandableField. Expected IExpandableField, got {0}.",
-                        value.GetType()));
+                    throw new JsonException(
+                        string.Format(
+                            "Unexpected value when converting ExpandableField. Expected IExpandableField, got {0}.",
+                            value.GetType()
+                        )
+                    );
             }
         }
 
         public override bool CanConvert(Type typeToConvert)
         {
-            return typeof(IExpandableField).GetTypeInfo().IsAssignableFrom(typeToConvert.GetTypeInfo());
+            return typeof(IExpandableField)
+                .GetTypeInfo()
+                .IsAssignableFrom(typeToConvert.GetTypeInfo());
         }
     }
 }

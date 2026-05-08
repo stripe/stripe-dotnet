@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SetupIntentNextActionCashappHandleRedirectOrDisplayQrCode : StripeEntity<SetupIntentNextActionCashappHandleRedirectOrDisplayQrCode>
+    public class SetupIntentNextActionCashappHandleRedirectOrDisplayQrCode
+        : StripeEntity<SetupIntentNextActionCashappHandleRedirectOrDisplayQrCode>
     {
         /// <summary>
         /// The URL to the hosted Cash App Pay instructions page, which allows customers to view the

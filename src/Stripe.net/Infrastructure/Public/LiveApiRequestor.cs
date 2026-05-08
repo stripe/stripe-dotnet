@@ -27,12 +27,18 @@ namespace Stripe
 
             if (options.ApiKey != null && options.ApiKey.Length == 0)
             {
-                throw new ArgumentException("API key cannot be the empty string.", nameof(options.ApiKey));
+                throw new ArgumentException(
+                    "API key cannot be the empty string.",
+                    nameof(options.ApiKey)
+                );
             }
 
             if (options.ApiKey != null && StringUtils.ContainsWhitespace(options.ApiKey))
             {
-                throw new ArgumentException("API key cannot contain whitespace.", nameof(options.ApiKey));
+                throw new ArgumentException(
+                    "API key cannot contain whitespace.",
+                    nameof(options.ApiKey)
+                );
             }
 
             this.clientOptions = options;
@@ -105,11 +111,20 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
         {
             var apiMode = ApiModeUtils.GetApiMode(path);
-            var request = this.MakeStripeRequest(baseAddress, method, path, options, requestOptions, apiMode);
-            var response = await this.HttpClient.MakeRequestAsync(request, cancellationToken)
+            var request = this.MakeStripeRequest(
+                baseAddress,
+                method,
+                path,
+                options,
+                requestOptions,
+                apiMode
+            );
+            var response = await this
+                .HttpClient.MakeRequestAsync(request, cancellationToken)
                 .ConfigureAwait(false);
 
             return this.ProcessResponse<T>(response, apiMode);
@@ -121,11 +136,20 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
         {
             var apiMode = ApiModeUtils.GetApiMode(path);
-            var request = this.MakeStripeRequest(baseAddress, method, path, options, requestOptions, apiMode);
-            var response = await this.HttpClient.MakeStreamingRequestAsync(request, cancellationToken)
+            var request = this.MakeStripeRequest(
+                baseAddress,
+                method,
+                path,
+                options,
+                requestOptions,
+                apiMode
+            );
+            var response = await this
+                .HttpClient.MakeStreamingRequestAsync(request, cancellationToken)
                 .ConfigureAwait(false);
 
             if (response.StatusCode == HttpStatusCode.OK)
@@ -147,7 +171,8 @@ namespace Stripe
             return new StripeException(
                 response.StatusCode,
                 null,
-                $"Invalid response object from API: \"{response.Content}\"")
+                $"Invalid response object from API: \"{response.Content}\""
+            )
             {
                 StripeResponse = response,
             };
@@ -178,16 +203,18 @@ namespace Stripe
                     return BuildInvalidResponseException(response);
                 }
 
-                var stripeError = errorElement.ValueKind == JsonValueKind.String
-                    ? StripeError.FromJson(response.Content)
-                    : StripeError.FromJson(errorElement);
+                var stripeError =
+                    errorElement.ValueKind == JsonValueKind.String
+                        ? StripeError.FromJson(response.Content)
+                        : StripeError.FromJson(errorElement);
 
                 stripeError.StripeResponse = response;
 
                 return new StripeException(
                     response.StatusCode,
                     stripeError,
-                    stripeError.Message ?? stripeError.ErrorDescription)
+                    stripeError.Message ?? stripeError.ErrorDescription
+                )
                 {
                     StripeResponse = response,
                 };
@@ -232,7 +259,8 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            ApiMode apiMode)
+            ApiMode apiMode
+        )
         {
             if (this.defaultUsage.Count > 0)
             {
@@ -250,7 +278,8 @@ namespace Stripe
                 method,
                 path,
                 options,
-                apiMode);
+                apiMode
+            );
 
             return new StripeRequest(
                 method,
@@ -258,7 +287,8 @@ namespace Stripe
                 requestOptions.WithClientOptions(this.clientOptions),
                 options,
                 null,
-                apiMode);
+                apiMode
+            );
         }
 
         private T ProcessResponse<T>(StripeResponse response, ApiMode apiMode)
@@ -278,14 +308,17 @@ namespace Stripe
             try
             {
                 obj = System.Text.Json.JsonSerializer.Deserialize<T>(
-                    response.Content, StripeConfiguration.SerializerOptions);
+                    response.Content,
+                    StripeConfiguration.SerializerOptions
+                );
             }
             catch (System.Text.Json.JsonException)
             {
                 throw new StripeException(
                     response.StatusCode,
                     null,
-                    $"Invalid response object from API: \"{response.Content}\"")
+                    $"Invalid response object from API: \"{response.Content}\""
+                )
                 {
                     StripeResponse = response,
                 };
@@ -317,10 +350,13 @@ namespace Stripe
             HttpMethod method,
             string path,
             string content = null,
-            RawRequestOptions requestOptions = null)
+            RawRequestOptions requestOptions = null
+        )
         {
             return this.RawRequestAsync(method, path, content, requestOptions)
-                .ConfigureAwait(false).GetAwaiter().GetResult();
+                .ConfigureAwait(false)
+                .GetAwaiter()
+                .GetResult();
         }
 
         /// <summary>Sends a request to Stripe's API as an asynchronous operation.</summary>
@@ -336,26 +372,39 @@ namespace Stripe
             string path,
             string content = null,
             RawRequestOptions requestOptions = null,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
         {
             if (method != HttpMethod.Post && content != null)
             {
-                throw new InvalidOperationException("content is not allowed for non-POST requests.");
+                throw new InvalidOperationException(
+                    "content is not allowed for non-POST requests."
+                );
             }
 
-            requestOptions = requestOptions.WithUsage(this.defaultUsage.Concat(RawRequestUsage).ToList());
+            requestOptions = requestOptions.WithUsage(
+                this.defaultUsage.Concat(RawRequestUsage).ToList()
+            );
             var apiMode = ApiModeUtils.GetApiMode(path);
             var uri = StripeRequest.BuildUri(
                 requestOptions?.BaseUrl ?? this.GetBaseUrl(BaseAddress.Api),
                 method,
                 path,
                 null,
-                apiMode);
+                apiMode
+            );
 
-            var request = StripeRequest.CreateWithStringContent(method, uri, content, requestOptions.WithClientOptions(this.clientOptions), apiMode);
+            var request = StripeRequest.CreateWithStringContent(
+                method,
+                uri,
+                content,
+                requestOptions.WithClientOptions(this.clientOptions),
+                apiMode
+            );
 
-            var response = await this.HttpClient.MakeRequestAsync(request, cancellationToken)
-                    .ConfigureAwait(false);
+            var response = await this
+                .HttpClient.MakeRequestAsync(request, cancellationToken)
+                .ConfigureAwait(false);
 
             if (response.StatusCode != HttpStatusCode.OK)
             {

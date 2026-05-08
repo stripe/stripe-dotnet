@@ -8,6 +8,9 @@ namespace Stripe
     {
         TEntity Get(RequestOptions requestOptions = null);
 
-        Task<TEntity> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
+        Task<TEntity> GetAsync(
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        );
     }
 }

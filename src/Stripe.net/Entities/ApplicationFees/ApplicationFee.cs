@@ -7,7 +7,11 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ApplicationFee : StripeEntity<ApplicationFee>, IHasId, IHasObject, IBalanceTransactionSource
+    public class ApplicationFee
+        : StripeEntity<ApplicationFee>,
+            IHasId,
+            IHasObject,
+            IBalanceTransactionSource
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -98,7 +102,11 @@ namespace Stripe
         public Application Application
         {
             get => this.InternalApplication?.ExpandedObject;
-            set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
+            set =>
+                this.InternalApplication = SetExpandableFieldObject(
+                    value,
+                    this.InternalApplication
+                );
         }
 
         [JsonProperty("application")]
@@ -120,7 +128,11 @@ namespace Stripe
         public string BalanceTransactionId
         {
             get => this.InternalBalanceTransaction?.Id;
-            set => this.InternalBalanceTransaction = SetExpandableFieldId(value, this.InternalBalanceTransaction);
+            set =>
+                this.InternalBalanceTransaction = SetExpandableFieldId(
+                    value,
+                    this.InternalBalanceTransaction
+                );
         }
 
         /// <summary>
@@ -135,7 +147,11 @@ namespace Stripe
         public BalanceTransaction BalanceTransaction
         {
             get => this.InternalBalanceTransaction?.ExpandedObject;
-            set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
+            set =>
+                this.InternalBalanceTransaction = SetExpandableFieldObject(
+                    value,
+                    this.InternalBalanceTransaction
+                );
         }
 
         [JsonProperty("balance_transaction")]
@@ -226,7 +242,11 @@ namespace Stripe
         public string OriginatingTransactionId
         {
             get => this.InternalOriginatingTransaction?.Id;
-            set => this.InternalOriginatingTransaction = SetExpandableFieldId(value, this.InternalOriginatingTransaction);
+            set =>
+                this.InternalOriginatingTransaction = SetExpandableFieldId(
+                    value,
+                    this.InternalOriginatingTransaction
+                );
         }
 
         /// <summary>
@@ -241,7 +261,11 @@ namespace Stripe
         public Charge OriginatingTransaction
         {
             get => this.InternalOriginatingTransaction?.ExpandedObject;
-            set => this.InternalOriginatingTransaction = SetExpandableFieldObject(value, this.InternalOriginatingTransaction);
+            set =>
+                this.InternalOriginatingTransaction = SetExpandableFieldObject(
+                    value,
+                    this.InternalOriginatingTransaction
+                );
         }
 
         [JsonProperty("originating_transaction")]

@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationMerchantCapabilitiesJcbPaymentsStatusDetail : StripeEntity<AccountConfigurationMerchantCapabilitiesJcbPaymentsStatusDetail>
+    public class AccountConfigurationMerchantCapabilitiesJcbPaymentsStatusDetail
+        : StripeEntity<AccountConfigurationMerchantCapabilitiesJcbPaymentsStatusDetail>
     {
         /// <summary>
         /// Machine-readable code explaining the reason for the Capability to be in its current

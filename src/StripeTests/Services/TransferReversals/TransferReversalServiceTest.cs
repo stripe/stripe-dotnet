@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -20,28 +19,20 @@ namespace StripeTests
 
         public TransferReversalServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new TransferReversalService(this.StripeClient);
 
-            this.createOptions = new TransferReversalCreateOptions
-            {
-                Amount = 123,
-            };
+            this.createOptions = new TransferReversalCreateOptions { Amount = 123 };
 
             this.updateOptions = new TransferReversalUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.listOptions = new TransferReversalListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new TransferReversalListOptions { Limit = 1 };
         }
 
         [Fact]
@@ -105,7 +96,9 @@ namespace StripeTests
         [Fact]
         public void ListAutoPaging()
         {
-            var transferReversal = this.service.ListAutoPaging(TransferId, this.listOptions).First();
+            var transferReversal = this
+                .service.ListAutoPaging(TransferId, this.listOptions)
+                .First();
             Assert.NotNull(transferReversal);
             Assert.Equal("transfer_reversal", transferReversal.Object);
         }
@@ -113,7 +106,9 @@ namespace StripeTests
         [Fact]
         public async Task ListAutoPagingAsync()
         {
-            var transferReversal = await this.service.ListAutoPagingAsync(TransferId, this.listOptions).FirstAsync();
+            var transferReversal = await this
+                .service.ListAutoPagingAsync(TransferId, this.listOptions)
+                .FirstAsync();
             Assert.NotNull(transferReversal);
             Assert.Equal("transfer_reversal", transferReversal.Object);
         }
@@ -121,7 +116,11 @@ namespace StripeTests
         [Fact]
         public void Update()
         {
-            var transferReversal = this.service.Update(TransferId, TransferReversalId, this.updateOptions);
+            var transferReversal = this.service.Update(
+                TransferId,
+                TransferReversalId,
+                this.updateOptions
+            );
             this.AssertRequest(HttpMethod.Post, "/v1/transfers/tr_123/reversals/trr_123");
             Assert.NotNull(transferReversal);
             Assert.Equal("transfer_reversal", transferReversal.Object);
@@ -130,7 +129,11 @@ namespace StripeTests
         [Fact]
         public async Task UpdateAsync()
         {
-            var transferReversal = await this.service.UpdateAsync(TransferId, TransferReversalId, this.updateOptions);
+            var transferReversal = await this.service.UpdateAsync(
+                TransferId,
+                TransferReversalId,
+                this.updateOptions
+            );
             this.AssertRequest(HttpMethod.Post, "/v1/transfers/tr_123/reversals/trr_123");
             Assert.NotNull(transferReversal);
             Assert.Equal("transfer_reversal", transferReversal.Object);

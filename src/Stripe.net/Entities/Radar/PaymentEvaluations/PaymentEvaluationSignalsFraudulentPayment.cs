@@ -7,7 +7,8 @@ namespace Stripe.Radar
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentEvaluationSignalsFraudulentPayment : StripeEntity<PaymentEvaluationSignalsFraudulentPayment>
+    public class PaymentEvaluationSignalsFraudulentPayment
+        : StripeEntity<PaymentEvaluationSignalsFraudulentPayment>
     {
         /// <summary>
         /// The time when this signal was evaluated.

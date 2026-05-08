@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentMethodConfigurationCustomerBalance : StripeEntity<PaymentMethodConfigurationCustomerBalance>
+    public class PaymentMethodConfigurationCustomerBalance
+        : StripeEntity<PaymentMethodConfigurationCustomerBalance>
     {
         /// <summary>
         /// Whether this payment method may be offered at checkout. True if

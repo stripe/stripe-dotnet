@@ -6,7 +6,8 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class OutboundTransferDestinationPaymentMethodOptionsUsBankAccountOptions : INestedOptions
+    public class OutboundTransferDestinationPaymentMethodOptionsUsBankAccountOptions
+        : INestedOptions
     {
         /// <summary>
         /// Specifies the network rails to be used. If not set, will default to the PaymentMethod's

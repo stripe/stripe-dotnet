@@ -69,12 +69,14 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever a portal configuration is created.
         /// </summary>
-        public const string BillingPortalConfigurationCreated = "billing_portal.configuration.created";
+        public const string BillingPortalConfigurationCreated =
+            "billing_portal.configuration.created";
 
         /// <summary>
         /// Occurs whenever a portal configuration is updated.
         /// </summary>
-        public const string BillingPortalConfigurationUpdated = "billing_portal.configuration.updated";
+        public const string BillingPortalConfigurationUpdated =
+            "billing_portal.configuration.updated";
 
         /// <summary>
         /// Occurs whenever a portal session is created.
@@ -89,7 +91,8 @@ namespace Stripe
         /// <summary>
         /// Occurs when a credit balance transaction is created.
         /// </summary>
-        public const string BillingCreditBalanceTransactionCreated = "billing.credit_balance_transaction.created";
+        public const string BillingCreditBalanceTransactionCreated =
+            "billing.credit_balance_transaction.created";
 
         /// <summary>
         /// Occurs when a credit grant is created.
@@ -208,12 +211,14 @@ namespace Stripe
         /// <summary>
         /// Occurs when a payment intent using a delayed payment method fails.
         /// </summary>
-        public const string CheckoutSessionAsyncPaymentFailed = "checkout.session.async_payment_failed";
+        public const string CheckoutSessionAsyncPaymentFailed =
+            "checkout.session.async_payment_failed";
 
         /// <summary>
         /// Occurs when a payment intent using a delayed payment method finally succeeds.
         /// </summary>
-        public const string CheckoutSessionAsyncPaymentSucceeded = "checkout.session.async_payment_succeeded";
+        public const string CheckoutSessionAsyncPaymentSucceeded =
+            "checkout.session.async_payment_succeeded";
 
         /// <summary>
         /// Occurs when a Checkout Session has been successfully completed.
@@ -293,7 +298,8 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever a new customer cash balance transactions is created.
         /// </summary>
-        public const string CustomerCashBalanceTransactionCreated = "customer_cash_balance_transaction.created";
+        public const string CustomerCashBalanceTransactionCreated =
+            "customer_cash_balance_transaction.created";
 
         /// <summary>
         /// Occurs whenever a new customer is created.
@@ -364,13 +370,15 @@ namespace Stripe
         /// Occurs whenever a customer's subscription's pending update is applied, and the
         /// subscription is updated.
         /// </summary>
-        public const string CustomerSubscriptionPendingUpdateApplied = "customer.subscription.pending_update_applied";
+        public const string CustomerSubscriptionPendingUpdateApplied =
+            "customer.subscription.pending_update_applied";
 
         /// <summary>
         /// Occurs whenever a customer's subscription's pending update expires before the related
         /// invoice is paid.
         /// </summary>
-        public const string CustomerSubscriptionPendingUpdateExpired = "customer.subscription.pending_update_expired";
+        public const string CustomerSubscriptionPendingUpdateExpired =
+            "customer.subscription.pending_update_expired";
 
         /// <summary>
         /// Occurs whenever a customer's subscription is no longer paused. Only applies when a
@@ -385,7 +393,8 @@ namespace Stripe
         /// Occurs three days before a subscription's trial period is scheduled to end, or when a
         /// trial is ended immediately (using <c>trial_end=now</c>).
         /// </summary>
-        public const string CustomerSubscriptionTrialWillEnd = "customer.subscription.trial_will_end";
+        public const string CustomerSubscriptionTrialWillEnd =
+            "customer.subscription.trial_will_end";
 
         /// <summary>
         /// Occurs whenever a subscription changes (e.g., switching from one plan to another, or
@@ -416,7 +425,8 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever a customer's entitlements change.
         /// </summary>
-        public const string EntitlementsActiveEntitlementSummaryUpdated = "entitlements.active_entitlement_summary.updated";
+        public const string EntitlementsActiveEntitlementSummaryUpdated =
+            "entitlements.active_entitlement_summary.updated";
 
         /// <summary>
         /// Occurs whenever a new Stripe-generated file is available for your account.
@@ -426,82 +436,97 @@ namespace Stripe
         /// <summary>
         /// Occurs when a Financial Connections account's account numbers are updated.
         /// </summary>
-        public const string FinancialConnectionsAccountAccountNumbersUpdated = "financial_connections.account.account_numbers_updated";
+        public const string FinancialConnectionsAccountAccountNumbersUpdated =
+            "financial_connections.account.account_numbers_updated";
 
         /// <summary>
         /// Occurs when a new Financial Connections account is created.
         /// </summary>
-        public const string FinancialConnectionsAccountCreated = "financial_connections.account.created";
+        public const string FinancialConnectionsAccountCreated =
+            "financial_connections.account.created";
 
         /// <summary>
         /// Occurs when a Financial Connections account's status is updated from <c>active</c> to
         /// <c>inactive</c>.
         /// </summary>
-        public const string FinancialConnectionsAccountDeactivated = "financial_connections.account.deactivated";
+        public const string FinancialConnectionsAccountDeactivated =
+            "financial_connections.account.deactivated";
 
         /// <summary>
         /// Occurs when a Financial Connections account is disconnected.
         /// </summary>
-        public const string FinancialConnectionsAccountDisconnected = "financial_connections.account.disconnected";
+        public const string FinancialConnectionsAccountDisconnected =
+            "financial_connections.account.disconnected";
 
         /// <summary>
         /// Occurs when a Financial Connections account's status is updated from <c>inactive</c> to
         /// <c>active</c>.
         /// </summary>
-        public const string FinancialConnectionsAccountReactivated = "financial_connections.account.reactivated";
+        public const string FinancialConnectionsAccountReactivated =
+            "financial_connections.account.reactivated";
 
         /// <summary>
         /// Occurs when an Account’s <c>balance_refresh</c> status transitions from <c>pending</c>
         /// to either <c>succeeded</c> or <c>failed</c>.
         /// </summary>
-        public const string FinancialConnectionsAccountRefreshedBalance = "financial_connections.account.refreshed_balance";
+        public const string FinancialConnectionsAccountRefreshedBalance =
+            "financial_connections.account.refreshed_balance";
 
         /// <summary>
         /// Occurs when an Account’s <c>ownership_refresh</c> status transitions from <c>pending</c>
         /// to either <c>succeeded</c> or <c>failed</c>.
         /// </summary>
-        public const string FinancialConnectionsAccountRefreshedOwnership = "financial_connections.account.refreshed_ownership";
+        public const string FinancialConnectionsAccountRefreshedOwnership =
+            "financial_connections.account.refreshed_ownership";
 
         /// <summary>
         /// Occurs when an Account’s <c>transaction_refresh</c> status transitions from
         /// <c>pending</c> to either <c>succeeded</c> or <c>failed</c>.
         /// </summary>
-        public const string FinancialConnectionsAccountRefreshedTransactions = "financial_connections.account.refreshed_transactions";
+        public const string FinancialConnectionsAccountRefreshedTransactions =
+            "financial_connections.account.refreshed_transactions";
 
         /// <summary>
         /// Occurs when an Account’s tokenized account number is about to expire.
         /// </summary>
-        public const string FinancialConnectionsAccountUpcomingAccountNumberExpiry = "financial_connections.account.upcoming_account_number_expiry";
+        public const string FinancialConnectionsAccountUpcomingAccountNumberExpiry =
+            "financial_connections.account.upcoming_account_number_expiry";
 
         /// <summary>
         /// Occurs whenever a VerificationSession is canceled.
         /// </summary>
-        public const string IdentityVerificationSessionCanceled = "identity.verification_session.canceled";
+        public const string IdentityVerificationSessionCanceled =
+            "identity.verification_session.canceled";
 
         /// <summary>
         /// Occurs whenever a VerificationSession is created.
         /// </summary>
-        public const string IdentityVerificationSessionCreated = "identity.verification_session.created";
+        public const string IdentityVerificationSessionCreated =
+            "identity.verification_session.created";
 
         /// <summary>
         /// Occurs whenever a VerificationSession transitions to processing.
         /// </summary>
-        public const string IdentityVerificationSessionProcessing = "identity.verification_session.processing";
+        public const string IdentityVerificationSessionProcessing =
+            "identity.verification_session.processing";
 
         /// <summary>
         /// Occurs whenever a VerificationSession is redacted.
         /// </summary>
-        public const string IdentityVerificationSessionRedacted = "identity.verification_session.redacted";
+        public const string IdentityVerificationSessionRedacted =
+            "identity.verification_session.redacted";
 
         /// <summary>
         /// Occurs whenever a VerificationSession transitions to require user input.
         /// </summary>
-        public const string IdentityVerificationSessionRequiresInput = "identity.verification_session.requires_input";
+        public const string IdentityVerificationSessionRequiresInput =
+            "identity.verification_session.requires_input";
 
         /// <summary>
         /// Occurs whenever a VerificationSession transitions to verified.
         /// </summary>
-        public const string IdentityVerificationSessionVerified = "identity.verification_session.verified";
+        public const string IdentityVerificationSessionVerified =
+            "identity.verification_session.verified";
 
         /// <summary>
         /// Occurs when an InvoicePayment is successfully paid.
@@ -688,23 +713,27 @@ namespace Stripe
         /// Occurs whenever a personalization design is activated following the activation of the
         /// physical bundle that belongs to it.
         /// </summary>
-        public const string IssuingPersonalizationDesignActivated = "issuing_personalization_design.activated";
+        public const string IssuingPersonalizationDesignActivated =
+            "issuing_personalization_design.activated";
 
         /// <summary>
         /// Occurs whenever a personalization design is deactivated following the deactivation of
         /// the physical bundle that belongs to it.
         /// </summary>
-        public const string IssuingPersonalizationDesignDeactivated = "issuing_personalization_design.deactivated";
+        public const string IssuingPersonalizationDesignDeactivated =
+            "issuing_personalization_design.deactivated";
 
         /// <summary>
         /// Occurs whenever a personalization design is rejected by design review.
         /// </summary>
-        public const string IssuingPersonalizationDesignRejected = "issuing_personalization_design.rejected";
+        public const string IssuingPersonalizationDesignRejected =
+            "issuing_personalization_design.rejected";
 
         /// <summary>
         /// Occurs whenever a personalization design is updated.
         /// </summary>
-        public const string IssuingPersonalizationDesignUpdated = "issuing_personalization_design.updated";
+        public const string IssuingPersonalizationDesignUpdated =
+            "issuing_personalization_design.updated";
 
         /// <summary>
         /// Occurs whenever an issuing digital wallet token is created.
@@ -724,7 +753,8 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever an issuing transaction is updated with receipt data.
         /// </summary>
-        public const string IssuingTransactionPurchaseDetailsReceiptUpdated = "issuing_transaction.purchase_details_receipt_updated";
+        public const string IssuingTransactionPurchaseDetailsReceiptUpdated =
+            "issuing_transaction.purchase_details_receipt_updated";
 
         /// <summary>
         /// Occurs whenever an issuing transaction is updated.
@@ -743,7 +773,8 @@ namespace Stripe
         /// amount. <a href="https://docs.stripe.com/api/payment_intents/capture">Learn more about
         /// capturing PaymentIntents.</a>.
         /// </summary>
-        public const string PaymentIntentAmountCapturableUpdated = "payment_intent.amount_capturable_updated";
+        public const string PaymentIntentAmountCapturableUpdated =
+            "payment_intent.amount_capturable_updated";
 
         /// <summary>
         /// Occurs when a PaymentIntent is canceled.
@@ -800,7 +831,8 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever a payment method's details are automatically updated by the network.
         /// </summary>
-        public const string PaymentMethodAutomaticallyUpdated = "payment_method.automatically_updated";
+        public const string PaymentMethodAutomaticallyUpdated =
+            "payment_method.automatically_updated";
 
         /// <summary>
         /// Occurs whenever a payment method is detached from a customer.
@@ -1179,7 +1211,8 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever a test clock fails to advance its frozen time.
         /// </summary>
-        public const string TestHelpersTestClockInternalFailure = "test_helpers.test_clock.internal_failure";
+        public const string TestHelpersTestClockInternalFailure =
+            "test_helpers.test_clock.internal_failure";
 
         /// <summary>
         /// Occurs whenever a test clock transitions to a ready status.
@@ -1249,7 +1282,8 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever an initial credit is granted on a DebitReversal.
         /// </summary>
-        public const string TreasuryDebitReversalInitialCreditGranted = "treasury.debit_reversal.initial_credit_granted";
+        public const string TreasuryDebitReversalInitialCreditGranted =
+            "treasury.debit_reversal.initial_credit_granted";
 
         /// <summary>
         /// Occurs whenever the status of the FinancialAccount becomes closed.
@@ -1265,7 +1299,8 @@ namespace Stripe
         /// Occurs whenever the statuses of any features within an existing FinancialAccount are
         /// updated.
         /// </summary>
-        public const string TreasuryFinancialAccountFeaturesStatusUpdated = "treasury.financial_account.features_status_updated";
+        public const string TreasuryFinancialAccountFeaturesStatusUpdated =
+            "treasury.financial_account.features_status_updated";
 
         /// <summary>
         /// Occurs whenever an InboundTransfer is canceled.
@@ -1285,7 +1320,8 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever an InboundTransfer has succeeded.
         /// </summary>
-        public const string TreasuryInboundTransferSucceeded = "treasury.inbound_transfer.succeeded";
+        public const string TreasuryInboundTransferSucceeded =
+            "treasury.inbound_transfer.succeeded";
 
         /// <summary>
         /// Occurs whenever an OutboundPayment is canceled.
@@ -1300,7 +1336,8 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever the arrival date on an OutboundPayment updates.
         /// </summary>
-        public const string TreasuryOutboundPaymentExpectedArrivalDateUpdated = "treasury.outbound_payment.expected_arrival_date_updated";
+        public const string TreasuryOutboundPaymentExpectedArrivalDateUpdated =
+            "treasury.outbound_payment.expected_arrival_date_updated";
 
         /// <summary>
         /// Occurs whenever an OutboundPayment fails.
@@ -1320,12 +1357,14 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever tracking_details on an OutboundPayment is updated.
         /// </summary>
-        public const string TreasuryOutboundPaymentTrackingDetailsUpdated = "treasury.outbound_payment.tracking_details_updated";
+        public const string TreasuryOutboundPaymentTrackingDetailsUpdated =
+            "treasury.outbound_payment.tracking_details_updated";
 
         /// <summary>
         /// Occurs whenever an OutboundTransfer is canceled.
         /// </summary>
-        public const string TreasuryOutboundTransferCanceled = "treasury.outbound_transfer.canceled";
+        public const string TreasuryOutboundTransferCanceled =
+            "treasury.outbound_transfer.canceled";
 
         /// <summary>
         /// Occurs whenever an OutboundTransfer is created.
@@ -1335,7 +1374,8 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever the arrival date on an OutboundTransfer updates.
         /// </summary>
-        public const string TreasuryOutboundTransferExpectedArrivalDateUpdated = "treasury.outbound_transfer.expected_arrival_date_updated";
+        public const string TreasuryOutboundTransferExpectedArrivalDateUpdated =
+            "treasury.outbound_transfer.expected_arrival_date_updated";
 
         /// <summary>
         /// Occurs whenever an OutboundTransfer has failed.
@@ -1350,12 +1390,14 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever an OutboundTransfer is returned.
         /// </summary>
-        public const string TreasuryOutboundTransferReturned = "treasury.outbound_transfer.returned";
+        public const string TreasuryOutboundTransferReturned =
+            "treasury.outbound_transfer.returned";
 
         /// <summary>
         /// Occurs whenever tracking_details on an OutboundTransfer is updated.
         /// </summary>
-        public const string TreasuryOutboundTransferTrackingDetailsUpdated = "treasury.outbound_transfer.tracking_details_updated";
+        public const string TreasuryOutboundTransferTrackingDetailsUpdated =
+            "treasury.outbound_transfer.tracking_details_updated";
 
         /// <summary>
         /// Occurs whenever a received_credit is created as a result of funds being pushed by

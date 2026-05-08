@@ -53,17 +53,16 @@ namespace StripeTests
             };
 
             var expected = "{\n  \"nested\": \"id_not_expanded\"\n}";
-            Assert.Equal(expected, JsonUtils.SerializeObject(obj, Formatting.Indented).Replace("\r\n", "\n"));
+            Assert.Equal(
+                expected,
+                JsonUtils.SerializeObject(obj, Formatting.Indented).Replace("\r\n", "\n")
+            );
         }
 
         [Fact]
         public void SerializeExpanded()
         {
-            var nested = new TestNestedObject
-            {
-                Id = "id_expanded",
-                Bar = 42,
-            };
+            var nested = new TestNestedObject { Id = "id_expanded", Bar = 42 };
             var obj = new TestTopLevelObject
             {
                 InternalNested = new ExpandableField<TestNestedObject>
@@ -75,7 +74,10 @@ namespace StripeTests
 
             var expected =
                 "{\n  \"nested\": {\n    \"id\": \"id_expanded\",\n    \"bar\": 42\n  }\n}";
-            Assert.Equal(expected, JsonUtils.SerializeObject(obj, Formatting.Indented).Replace("\r\n", "\n"));
+            Assert.Equal(
+                expected,
+                JsonUtils.SerializeObject(obj, Formatting.Indented).Replace("\r\n", "\n")
+            );
         }
 
         [Fact]
@@ -91,7 +93,10 @@ namespace StripeTests
             };
 
             var expected = "{\n  \"nested\": null\n}";
-            Assert.Equal(expected, JsonUtils.SerializeObject(obj, Formatting.Indented).Replace("\r\n", "\n"));
+            Assert.Equal(
+                expected,
+                JsonUtils.SerializeObject(obj, Formatting.Indented).Replace("\r\n", "\n")
+            );
         }
 
         private class TestNestedObject : StripeEntity<TestNestedObject>, IHasId

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class BalanceRefundAndDisputePrefundingPending : StripeEntity<BalanceRefundAndDisputePrefundingPending>
+    public class BalanceRefundAndDisputePrefundingPending
+        : StripeEntity<BalanceRefundAndDisputePrefundingPending>
     {
         /// <summary>
         /// Balance amount.

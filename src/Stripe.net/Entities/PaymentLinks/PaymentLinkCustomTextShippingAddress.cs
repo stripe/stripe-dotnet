@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentLinkCustomTextShippingAddress : StripeEntity<PaymentLinkCustomTextShippingAddress>
+    public class PaymentLinkCustomTextShippingAddress
+        : StripeEntity<PaymentLinkCustomTextShippingAddress>
     {
         /// <summary>
         /// Text can be up to 1200 characters in length.

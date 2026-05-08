@@ -38,9 +38,12 @@ namespace Stripe.Infrastructure
                     break;
 
                 default:
-                    throw new JsonSerializationException(string.Format(
-                        "Unexpected value when converting AnyOf. Expected IAnyOf, got {0}.",
-                        value.GetType()));
+                    throw new JsonSerializationException(
+                        string.Format(
+                            "Unexpected value when converting AnyOf. Expected IAnyOf, got {0}.",
+                            value.GetType()
+                        )
+                    );
             }
         }
 
@@ -52,7 +55,12 @@ namespace Stripe.Infrastructure
         /// <param name="existingValue">The existing value of object being read.</param>
         /// <param name="serializer">The calling serializer.</param>
         /// <returns>The object value.</returns>
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(
+            JsonReader reader,
+            Type objectType,
+            object existingValue,
+            JsonSerializer serializer
+        )
         {
             if (reader.TokenType == JsonToken.Null)
             {
@@ -83,9 +91,12 @@ namespace Stripe.Infrastructure
 
             if (o == null)
             {
-                throw new JsonSerializationException(string.Format(
-                    "Cannot deserialize the current JSON object into any of the expected types ({0}).",
-                    string.Join(", ", objectType.GenericTypeArguments.Select(t => t.FullName))));
+                throw new JsonSerializationException(
+                    string.Format(
+                        "Cannot deserialize the current JSON object into any of the expected types ({0}).",
+                        string.Join(", ", objectType.GenericTypeArguments.Select(t => t.FullName))
+                    )
+                );
             }
 
             return Activator.CreateInstance(objectType, o);

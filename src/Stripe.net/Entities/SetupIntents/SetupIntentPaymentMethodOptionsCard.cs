@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SetupIntentPaymentMethodOptionsCard : StripeEntity<SetupIntentPaymentMethodOptionsCard>
+    public class SetupIntentPaymentMethodOptionsCard
+        : StripeEntity<SetupIntentPaymentMethodOptionsCard>
     {
         /// <summary>
         /// Configuration options for setting up an eMandate for cards issued in India.

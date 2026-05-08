@@ -170,7 +170,11 @@ namespace Stripe.Issuing
         public string PersonalizationDesignId
         {
             get => this.InternalPersonalizationDesign?.Id;
-            set => this.InternalPersonalizationDesign = SetExpandableFieldId(value, this.InternalPersonalizationDesign);
+            set =>
+                this.InternalPersonalizationDesign = SetExpandableFieldId(
+                    value,
+                    this.InternalPersonalizationDesign
+                );
         }
 
         /// <summary>
@@ -184,7 +188,11 @@ namespace Stripe.Issuing
         public PersonalizationDesign PersonalizationDesign
         {
             get => this.InternalPersonalizationDesign?.ExpandedObject;
-            set => this.InternalPersonalizationDesign = SetExpandableFieldObject(value, this.InternalPersonalizationDesign);
+            set =>
+                this.InternalPersonalizationDesign = SetExpandableFieldObject(
+                    value,
+                    this.InternalPersonalizationDesign
+                );
         }
 
         [JsonProperty("personalization_design")]
@@ -219,7 +227,8 @@ namespace Stripe.Issuing
         public Card ReplacedBy
         {
             get => this.InternalReplacedBy?.ExpandedObject;
-            set => this.InternalReplacedBy = SetExpandableFieldObject(value, this.InternalReplacedBy);
+            set =>
+                this.InternalReplacedBy = SetExpandableFieldObject(value, this.InternalReplacedBy);
         }
 
         [JsonProperty("replaced_by")]
@@ -240,7 +249,11 @@ namespace Stripe.Issuing
         public string ReplacementForId
         {
             get => this.InternalReplacementFor?.Id;
-            set => this.InternalReplacementFor = SetExpandableFieldId(value, this.InternalReplacementFor);
+            set =>
+                this.InternalReplacementFor = SetExpandableFieldId(
+                    value,
+                    this.InternalReplacementFor
+                );
         }
 
         /// <summary>
@@ -254,7 +267,11 @@ namespace Stripe.Issuing
         public Card ReplacementFor
         {
             get => this.InternalReplacementFor?.ExpandedObject;
-            set => this.InternalReplacementFor = SetExpandableFieldObject(value, this.InternalReplacementFor);
+            set =>
+                this.InternalReplacementFor = SetExpandableFieldObject(
+                    value,
+                    this.InternalReplacementFor
+                );
         }
 
         [JsonProperty("replacement_for")]

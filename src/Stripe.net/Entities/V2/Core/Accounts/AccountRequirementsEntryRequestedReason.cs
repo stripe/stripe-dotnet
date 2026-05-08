@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountRequirementsEntryRequestedReason : StripeEntity<AccountRequirementsEntryRequestedReason>
+    public class AccountRequirementsEntryRequestedReason
+        : StripeEntity<AccountRequirementsEntryRequestedReason>
     {
         /// <summary>
         /// Machine-readable description of Stripe's reason for collecting the requirement.

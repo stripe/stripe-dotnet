@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationCustomerBillingInvoiceCustomField : StripeEntity<AccountConfigurationCustomerBillingInvoiceCustomField>
+    public class AccountConfigurationCustomerBillingInvoiceCustomField
+        : StripeEntity<AccountConfigurationCustomerBillingInvoiceCustomField>
     {
         /// <summary>
         /// The name of the custom field. This may be up to 40 characters.

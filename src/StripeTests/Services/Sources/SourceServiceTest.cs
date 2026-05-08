@@ -5,7 +5,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -23,15 +22,13 @@ namespace StripeTests
 
         public SourceServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new SourceService(this.StripeClient);
 
-            this.attachOptions = new SourceAttachOptions
-            {
-                Source = SourceId,
-            };
+            this.attachOptions = new SourceAttachOptions { Source = SourceId };
 
             this.createOptions = new SourceCreateOptions
             {
@@ -65,23 +62,14 @@ namespace StripeTests
                     Name = "Owner Name",
                     Phone = "5555555555",
                 },
-                Receiver = new SourceReceiverOptions
-                {
-                    RefundAttributesMethod = "manual",
-                },
+                Receiver = new SourceReceiverOptions { RefundAttributesMethod = "manual" },
             };
 
-            this.listOptions = new SourceListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new SourceListOptions { Limit = 1 };
 
             this.updateOptions = new SourceUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
             this.verifyOptions = new SourceVerifyOptions
@@ -173,10 +161,7 @@ namespace StripeTests
         [Fact]
         public void GetWithClientSecret()
         {
-            var options = new SourceGetOptions
-            {
-                ClientSecret = "src_client_secret_123",
-            };
+            var options = new SourceGetOptions { ClientSecret = "src_client_secret_123" };
             var source = this.service.Get(SourceId, options);
             this.AssertRequest(HttpMethod.Get, "/v1/sources/src_123");
             Assert.NotNull(source);
@@ -219,7 +204,9 @@ namespace StripeTests
         [Fact]
         public async Task ListAutoPagingAsync()
         {
-            var source = await this.service.ListAutoPagingAsync(CustomerId, this.listOptions).FirstAsync();
+            var source = await this
+                .service.ListAutoPagingAsync(CustomerId, this.listOptions)
+                .FirstAsync();
             Assert.NotNull(source);
         }
 

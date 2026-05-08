@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ChargePaymentMethodDetailsCardOvercapture : StripeEntity<ChargePaymentMethodDetailsCardOvercapture>
+    public class ChargePaymentMethodDetailsCardOvercapture
+        : StripeEntity<ChargePaymentMethodDetailsCardOvercapture>
     {
         /// <summary>
         /// The maximum amount that can be captured.

@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsPaytoMandateOptions : StripeEntity<SessionPaymentMethodOptionsPaytoMandateOptions>
+    public class SessionPaymentMethodOptionsPaytoMandateOptions
+        : StripeEntity<SessionPaymentMethodOptionsPaytoMandateOptions>
     {
         /// <summary>
         /// Amount that will be collected. It is required when <c>amount_type</c> is <c>fixed</c>.

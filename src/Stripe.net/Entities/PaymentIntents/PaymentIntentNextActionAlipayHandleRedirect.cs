@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentNextActionAlipayHandleRedirect : StripeEntity<PaymentIntentNextActionAlipayHandleRedirect>
+    public class PaymentIntentNextActionAlipayHandleRedirect
+        : StripeEntity<PaymentIntentNextActionAlipayHandleRedirect>
     {
         /// <summary>
         /// The native data to be used with Alipay SDK you must redirect your customer to in order

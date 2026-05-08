@@ -6,7 +6,5 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class EventDestinationDeleteOptions : BaseOptions
-    {
-    }
+    public class EventDestinationDeleteOptions : BaseOptions { }
 }

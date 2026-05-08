@@ -6,7 +6,8 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ReceivedDebitInitiatingPaymentMethodDetailsUsBankAccount : StripeEntity<ReceivedDebitInitiatingPaymentMethodDetailsUsBankAccount>
+    public class ReceivedDebitInitiatingPaymentMethodDetailsUsBankAccount
+        : StripeEntity<ReceivedDebitInitiatingPaymentMethodDetailsUsBankAccount>
     {
         /// <summary>
         /// Bank name.

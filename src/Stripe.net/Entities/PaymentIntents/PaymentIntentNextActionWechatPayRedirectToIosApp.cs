@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentNextActionWechatPayRedirectToIosApp : StripeEntity<PaymentIntentNextActionWechatPayRedirectToIosApp>
+    public class PaymentIntentNextActionWechatPayRedirectToIosApp
+        : StripeEntity<PaymentIntentNextActionWechatPayRedirectToIosApp>
     {
         /// <summary>
         /// An universal link that redirect to WeChat Pay app.

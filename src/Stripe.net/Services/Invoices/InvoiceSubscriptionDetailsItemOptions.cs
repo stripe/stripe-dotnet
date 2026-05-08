@@ -7,7 +7,11 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class InvoiceSubscriptionDetailsItemOptions : INestedOptions, IHasId, IHasMetadata, IHasSetTracking
+    public class InvoiceSubscriptionDetailsItemOptions
+        : INestedOptions,
+            IHasId,
+            IHasMetadata,
+            IHasSetTracking
     {
         private InvoiceSubscriptionDetailsItemBillingThresholdsOptions billingThresholds;
         private List<InvoiceSubscriptionDetailsItemDiscountOptions> discounts;

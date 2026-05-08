@@ -64,7 +64,10 @@ namespace Stripe
     {
         // TODO: some way to enforce this stays up-to-date if new fields are added
         // to requestorOptions or requestOptions?
-        internal static T WithClientOptions<T>(this T requestOptions, StripeClientOptions clientOptions)
+        internal static T WithClientOptions<T>(
+            this T requestOptions,
+            StripeClientOptions clientOptions
+        )
             where T : RequestOptions, new()
         {
             T clone = (T)requestOptions?.Clone() ?? new T();

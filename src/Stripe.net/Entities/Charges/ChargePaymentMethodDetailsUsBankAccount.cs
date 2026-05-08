@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ChargePaymentMethodDetailsUsBankAccount : StripeEntity<ChargePaymentMethodDetailsUsBankAccount>
+    public class ChargePaymentMethodDetailsUsBankAccount
+        : StripeEntity<ChargePaymentMethodDetailsUsBankAccount>
     {
         /// <summary>
         /// Account holder type: individual or company.

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ChargePaymentMethodDetailsCardIncrementalAuthorization : StripeEntity<ChargePaymentMethodDetailsCardIncrementalAuthorization>
+    public class ChargePaymentMethodDetailsCardIncrementalAuthorization
+        : StripeEntity<ChargePaymentMethodDetailsCardIncrementalAuthorization>
     {
         /// <summary>
         /// Indicates whether or not the incremental authorization feature is supported.

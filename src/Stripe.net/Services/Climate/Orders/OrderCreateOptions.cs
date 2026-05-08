@@ -50,7 +50,9 @@ namespace Stripe.Climate
         /// </summary>
         [JsonProperty("metric_tons")]
         [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonNumberHandling(
+            STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString
+        )]
         [STJS.JsonPropertyName("metric_tons")]
         public decimal? MetricTons { get; set; }
 

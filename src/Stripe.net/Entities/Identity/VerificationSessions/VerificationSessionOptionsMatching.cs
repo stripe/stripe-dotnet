@@ -6,7 +6,8 @@ namespace Stripe.Identity
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class VerificationSessionOptionsMatching : StripeEntity<VerificationSessionOptionsMatching>
+    public class VerificationSessionOptionsMatching
+        : StripeEntity<VerificationSessionOptionsMatching>
     {
         /// <summary>
         /// Strictness of the DOB matching policy to apply.

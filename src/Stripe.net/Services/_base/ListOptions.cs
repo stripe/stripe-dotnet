@@ -1,7 +1,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-
     using STJS = System.Text.Json.Serialization;
 
     public class ListOptions : BaseOptions

@@ -2,7 +2,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
@@ -21,15 +20,14 @@ namespace Stripe
         /// <summary>Specifies which fields in the response should be expanded.</summary>
         [JsonProperty("expand", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("expand")]
-
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public List<string> Expand { get; set; }
 
         /// <summary>Dictionary containing extra request parameters.</summary>
         [JsonExtensionData]
         [STJS.JsonExtensionData]
-        public IDictionary<string, object> ExtraParams { get; set; }
-            = new Dictionary<string, object>();
+        public IDictionary<string, object> ExtraParams { get; set; } =
+            new Dictionary<string, object>();
 
         bool IHasSetTracking.IsPropertySet(string propertyName)
         {

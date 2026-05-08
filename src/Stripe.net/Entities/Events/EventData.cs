@@ -28,19 +28,22 @@ namespace Stripe
         /// </summary>
         [JsonProperty("previous_attributes")]
         [STJS.JsonIgnore]
-        [NoSystemTextJsonAttributesNeeded("STJEventConverter handles PreviousAttributes separately via SetPreviousAttributesJson")]
+        [NoSystemTextJsonAttributesNeeded(
+            "STJEventConverter handles PreviousAttributes separately via SetPreviousAttributesJson"
+        )]
         public dynamic PreviousAttributes
         {
             get
             {
                 if (this.previousAttributes == null && this.previousAttributesJson != null)
                 {
-                    this.previousAttributes = Newtonsoft.Json.Linq.JToken.Parse(this.previousAttributesJson);
+                    this.previousAttributes = Newtonsoft.Json.Linq.JToken.Parse(
+                        this.previousAttributesJson
+                    );
                 }
 
                 return this.previousAttributes;
             }
-
             set
             {
                 this.previousAttributes = value;
@@ -66,7 +69,6 @@ namespace Stripe
 
                 return this.rawObject;
             }
-
             set
             {
                 this.rawObject = value;

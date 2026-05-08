@@ -7,7 +7,11 @@ namespace Stripe.Tax
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class TransactionLineItem : StripeEntity<TransactionLineItem>, IHasId, IHasMetadata, IHasObject
+    public class TransactionLineItem
+        : StripeEntity<TransactionLineItem>,
+            IHasId,
+            IHasMetadata,
+            IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.

@@ -7,9 +7,7 @@ namespace StripeTests
     public class SetupIntentTest : BaseStripeTest
     {
         public SetupIntentTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -29,12 +27,12 @@ namespace StripeTests
             // and will be auto-expanded in a future API version.
             string[] expansions =
             {
-              "application",
-              "customer",
-              "mandate",
-              "on_behalf_of",
-              "payment_method",
-              "single_use_mandate",
+                "application",
+                "customer",
+                "mandate",
+                "on_behalf_of",
+                "payment_method",
+                "single_use_mandate",
             };
 
             string json = this.GetFixture("/v1/setup_intents/seti_123", expansions);

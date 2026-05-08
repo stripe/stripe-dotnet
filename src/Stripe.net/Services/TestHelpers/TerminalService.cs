@@ -10,16 +10,12 @@ namespace Stripe.TestHelpers
         private TestHelpers.Terminal.ReaderService readers;
 
         internal TerminalService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         internal TerminalService(IStripeClient client)
-            : base(client)
-        {
-        }
+            : base(client) { }
 
-        public virtual TestHelpers.Terminal.ReaderService Readers => this.readers ??= new TestHelpers.Terminal.ReaderService(
-            this.Requestor);
+        public virtual TestHelpers.Terminal.ReaderService Readers =>
+            this.readers ??= new TestHelpers.Terminal.ReaderService(this.Requestor);
     }
 }

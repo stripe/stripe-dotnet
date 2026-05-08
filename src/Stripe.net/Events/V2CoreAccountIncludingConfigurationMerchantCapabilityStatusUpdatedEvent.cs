@@ -8,14 +8,14 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when the status of an Account's merchant configuration capability is updated.
     /// </summary>
-    public class V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEvent : V2.Core.Event
+    public class V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEvent
+        : V2.Core.Event
     {
         /// <summary>
         /// Data for the v2.core.account[configuration.merchant].capability_status_updated event.
         /// </summary>
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]
-
         public V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventData Data { get; set; }
 
         /// <summary>
@@ -23,7 +23,6 @@ namespace Stripe.Events
         /// </summary>
         [JsonProperty("related_object")]
         [STJS.JsonPropertyName("related_object")]
-
         public V2.Core.EventRelatedObject RelatedObject { get; set; }
 
         /// <summary>

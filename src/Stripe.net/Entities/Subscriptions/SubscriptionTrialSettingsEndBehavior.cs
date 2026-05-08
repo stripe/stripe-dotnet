@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SubscriptionTrialSettingsEndBehavior : StripeEntity<SubscriptionTrialSettingsEndBehavior>
+    public class SubscriptionTrialSettingsEndBehavior
+        : StripeEntity<SubscriptionTrialSettingsEndBehavior>
     {
         /// <summary>
         /// Indicates how the subscription should change when the trial ends if the user did not

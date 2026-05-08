@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -21,36 +20,24 @@ namespace StripeTests
 
         public BankAccountServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new BankAccountService(this.StripeClient);
 
-            this.createOptions = new BankAccountCreateOptions
-            {
-                Source = "btok_123",
-            };
+            this.createOptions = new BankAccountCreateOptions { Source = "btok_123" };
 
             this.updateOptions = new BankAccountUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.listOptions = new BankAccountListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new BankAccountListOptions { Limit = 1 };
 
             this.verifyOptions = new BankAccountVerifyOptions
             {
-                Amounts = new List<long>
-                {
-                    32,
-                    45,
-                },
+                Amounts = new List<long> { 32, 45 },
             };
         }
 
@@ -132,7 +119,9 @@ namespace StripeTests
         [Fact]
         public async Task ListAutoPagingAsync()
         {
-            var bankAccount = await this.service.ListAutoPagingAsync(CustomerId, this.listOptions).FirstAsync();
+            var bankAccount = await this
+                .service.ListAutoPagingAsync(CustomerId, this.listOptions)
+                .FirstAsync();
             Assert.NotNull(bankAccount);
         }
 
@@ -149,7 +138,11 @@ namespace StripeTests
         [Fact]
         public async Task UpdateAsync()
         {
-            var bankAccount = await this.service.UpdateAsync(CustomerId, BankAccountId, this.updateOptions);
+            var bankAccount = await this.service.UpdateAsync(
+                CustomerId,
+                BankAccountId,
+                this.updateOptions
+            );
             this.AssertRequest(HttpMethod.Post, "/v1/customers/cus_123/sources/ba_123");
             Assert.NotNull(bankAccount);
         }
@@ -165,7 +158,11 @@ namespace StripeTests
         [Fact]
         public async Task VerifyAsync()
         {
-            var bankAccount = await this.service.VerifyAsync(CustomerId, BankAccountId, this.verifyOptions);
+            var bankAccount = await this.service.VerifyAsync(
+                CustomerId,
+                BankAccountId,
+                this.verifyOptions
+            );
             this.AssertRequest(HttpMethod.Post, "/v1/customers/cus_123/sources/ba_123/verify");
             Assert.NotNull(bankAccount);
         }

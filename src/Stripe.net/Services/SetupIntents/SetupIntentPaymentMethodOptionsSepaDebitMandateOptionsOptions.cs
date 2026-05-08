@@ -6,7 +6,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SetupIntentPaymentMethodOptionsSepaDebitMandateOptionsOptions : INestedOptions, IHasSetTracking
+    public class SetupIntentPaymentMethodOptionsSepaDebitMandateOptionsOptions
+        : INestedOptions,
+            IHasSetTracking
     {
         private string referencePrefix;
 

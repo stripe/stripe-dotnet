@@ -8,9 +8,7 @@ namespace StripeTests
 
     public class ApiRequestorAdapterTest : BaseStripeTest
     {
-        public ApiRequestorAdapterTest()
-        {
-        }
+        public ApiRequestorAdapterTest() { }
 
         [Fact]
         public async Task RequestAsync_BaseAddressApi()
@@ -20,11 +18,8 @@ namespace StripeTests
             httpClient.Response = response;
 
             var stripeClient = new StripeClient(
-                new StripeClientOptions
-                {
-                    ApiKey = "sk_test_123",
-                    HttpClient = httpClient,
-                });
+                new StripeClientOptions { ApiKey = "sk_test_123", HttpClient = httpClient }
+            );
 
             var underTest = new ApiRequestorAdapter(stripeClient);
             await underTest.RequestAsync<Charge>(
@@ -32,9 +27,13 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v1/charges",
                 new BaseOptions(),
-                null);
+                null
+            );
 
-            Assert.Equal("https://api.stripe.com/v1/charges", httpClient.LastRequest.Uri.ToString());
+            Assert.Equal(
+                "https://api.stripe.com/v1/charges",
+                httpClient.LastRequest.Uri.ToString()
+            );
         }
 
         [Fact]
@@ -45,11 +44,8 @@ namespace StripeTests
             httpClient.Response = response;
 
             var stripeClient = new StripeClient(
-                new StripeClientOptions
-                {
-                    ApiKey = "sk_test_123",
-                    HttpClient = httpClient,
-                });
+                new StripeClientOptions { ApiKey = "sk_test_123", HttpClient = httpClient }
+            );
 
             var underTest = new ApiRequestorAdapter(stripeClient);
             await underTest.RequestAsync<Charge>(
@@ -57,9 +53,13 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v1/charges",
                 new BaseOptions(),
-                null);
+                null
+            );
 
-            Assert.Equal("https://connect.stripe.com/v1/charges", httpClient.LastRequest.Uri.ToString());
+            Assert.Equal(
+                "https://connect.stripe.com/v1/charges",
+                httpClient.LastRequest.Uri.ToString()
+            );
         }
 
         [Fact]
@@ -70,11 +70,8 @@ namespace StripeTests
             httpClient.Response = response;
 
             var stripeClient = new StripeClient(
-                new StripeClientOptions
-                {
-                    ApiKey = "sk_test_123",
-                    HttpClient = httpClient,
-                });
+                new StripeClientOptions { ApiKey = "sk_test_123", HttpClient = httpClient }
+            );
 
             var underTest = new ApiRequestorAdapter(stripeClient);
             await underTest.RequestAsync<Charge>(
@@ -82,9 +79,13 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v1/charges",
                 new BaseOptions(),
-                null);
+                null
+            );
 
-            Assert.Equal("https://files.stripe.com/v1/charges", httpClient.LastRequest.Uri.ToString());
+            Assert.Equal(
+                "https://files.stripe.com/v1/charges",
+                httpClient.LastRequest.Uri.ToString()
+            );
         }
 
         [Fact]
@@ -95,11 +96,8 @@ namespace StripeTests
             httpClient.Response = response;
 
             var stripeClient = new StripeClient(
-                new StripeClientOptions
-                {
-                    ApiKey = "sk_test_123",
-                    HttpClient = httpClient,
-                });
+                new StripeClientOptions { ApiKey = "sk_test_123", HttpClient = httpClient }
+            );
 
             var underTest = new ApiRequestorAdapter(stripeClient);
             await underTest.RequestAsync<Charge>(
@@ -107,9 +105,13 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v1/charges",
                 new BaseOptions(),
-                null);
+                null
+            );
 
-            Assert.Equal("https://meter-events.stripe.com/v1/charges", httpClient.LastRequest.Uri.ToString());
+            Assert.Equal(
+                "https://meter-events.stripe.com/v1/charges",
+                httpClient.LastRequest.Uri.ToString()
+            );
         }
     }
 }

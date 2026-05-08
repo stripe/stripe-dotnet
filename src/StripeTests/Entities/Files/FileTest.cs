@@ -7,9 +7,7 @@ namespace StripeTests
     public class FileTest : BaseStripeTest
     {
         public FileTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

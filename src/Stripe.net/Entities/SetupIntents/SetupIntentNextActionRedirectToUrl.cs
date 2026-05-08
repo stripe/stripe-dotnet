@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SetupIntentNextActionRedirectToUrl : StripeEntity<SetupIntentNextActionRedirectToUrl>
+    public class SetupIntentNextActionRedirectToUrl
+        : StripeEntity<SetupIntentNextActionRedirectToUrl>
     {
         /// <summary>
         /// If the customer does not exit their browser while authenticating, they will be

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationTokenPaymentMethodPreviewCardGeneratedFrom : StripeEntity<ConfirmationTokenPaymentMethodPreviewCardGeneratedFrom>
+    public class ConfirmationTokenPaymentMethodPreviewCardGeneratedFrom
+        : StripeEntity<ConfirmationTokenPaymentMethodPreviewCardGeneratedFrom>
     {
         /// <summary>
         /// The charge that created this object.
@@ -33,7 +34,8 @@ namespace Stripe
         public string SetupAttemptId
         {
             get => this.InternalSetupAttempt?.Id;
-            set => this.InternalSetupAttempt = SetExpandableFieldId(value, this.InternalSetupAttempt);
+            set =>
+                this.InternalSetupAttempt = SetExpandableFieldId(value, this.InternalSetupAttempt);
         }
 
         /// <summary>
@@ -47,7 +49,11 @@ namespace Stripe
         public SetupAttempt SetupAttempt
         {
             get => this.InternalSetupAttempt?.ExpandedObject;
-            set => this.InternalSetupAttempt = SetExpandableFieldObject(value, this.InternalSetupAttempt);
+            set =>
+                this.InternalSetupAttempt = SetExpandableFieldObject(
+                    value,
+                    this.InternalSetupAttempt
+                );
         }
 
         [JsonProperty("setup_attempt")]

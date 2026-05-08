@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SetupIntentNextActionCashappHandleRedirectOrDisplayQrCodeQrCode : StripeEntity<SetupIntentNextActionCashappHandleRedirectOrDisplayQrCodeQrCode>
+    public class SetupIntentNextActionCashappHandleRedirectOrDisplayQrCodeQrCode
+        : StripeEntity<SetupIntentNextActionCashappHandleRedirectOrDisplayQrCodeQrCode>
     {
         /// <summary>
         /// The date (unix timestamp) when the QR code expires.

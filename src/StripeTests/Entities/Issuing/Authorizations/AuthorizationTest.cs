@@ -7,9 +7,7 @@ namespace StripeTests.Issuing
     public class AuthorizationTest : BaseStripeTest
     {
         public AuthorizationTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -28,10 +26,7 @@ namespace StripeTests.Issuing
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "cardholder",
-            };
+            string[] expansions = { "cardholder" };
 
             string json = this.GetFixture("/v1/issuing/authorizations/iauth_123", expansions);
             var authorization = JsonSerializer.Deserialize<Authorization>(json);

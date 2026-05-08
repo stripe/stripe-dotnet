@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CustomerSessionComponentsBuyButton : StripeEntity<CustomerSessionComponentsBuyButton>
+    public class CustomerSessionComponentsBuyButton
+        : StripeEntity<CustomerSessionComponentsBuyButton>
     {
         /// <summary>
         /// Whether the buy button is enabled.

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SetupIntentPaymentMethodOptionsAcssDebit : StripeEntity<SetupIntentPaymentMethodOptionsAcssDebit>
+    public class SetupIntentPaymentMethodOptionsAcssDebit
+        : StripeEntity<SetupIntentPaymentMethodOptionsAcssDebit>
     {
         /// <summary>
         /// Currency supported by the bank account.

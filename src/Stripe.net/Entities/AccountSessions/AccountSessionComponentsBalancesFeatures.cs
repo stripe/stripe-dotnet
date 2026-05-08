@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountSessionComponentsBalancesFeatures : StripeEntity<AccountSessionComponentsBalancesFeatures>
+    public class AccountSessionComponentsBalancesFeatures
+        : StripeEntity<AccountSessionComponentsBalancesFeatures>
     {
         /// <summary>
         /// Whether Stripe user authentication is disabled. This value can only be <c>true</c> for

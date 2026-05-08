@@ -9,50 +9,88 @@ namespace Stripe.Treasury
 
     public class FinancialAccountFeaturesService : Service
     {
-        public FinancialAccountFeaturesService()
-        {
-        }
+        public FinancialAccountFeaturesService() { }
 
         internal FinancialAccountFeaturesService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public FinancialAccountFeaturesService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>Retrieves Features information associated with the FinancialAccount.</p>.
+        /// </summary>
+        public virtual FinancialAccountFeatures Get(
+            string parentId,
+            FinancialAccountFeaturesGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<FinancialAccountFeatures>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/treasury/financial_accounts/{WebUtility.UrlEncode(parentId)}/features",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Retrieves Features information associated with the FinancialAccount.</p>.
         /// </summary>
-        public virtual FinancialAccountFeatures Get(string parentId, FinancialAccountFeaturesGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<FinancialAccountFeatures> GetAsync(
+            string parentId,
+            FinancialAccountFeaturesGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<FinancialAccountFeatures>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/financial_accounts/{WebUtility.UrlEncode(parentId)}/features", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Retrieves Features information associated with the FinancialAccount.</p>.
-        /// </summary>
-        public virtual Task<FinancialAccountFeatures> GetAsync(string parentId, FinancialAccountFeaturesGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<FinancialAccountFeatures>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/financial_accounts/{WebUtility.UrlEncode(parentId)}/features", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>Updates the Features associated with a FinancialAccount.</p>.
-        /// </summary>
-        public virtual FinancialAccountFeatures Update(string parentId, FinancialAccountFeaturesUpdateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.Request<FinancialAccountFeatures>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/financial_accounts/{WebUtility.UrlEncode(parentId)}/features", options, requestOptions);
+            return this.RequestAsync<FinancialAccountFeatures>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/treasury/financial_accounts/{WebUtility.UrlEncode(parentId)}/features",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Updates the Features associated with a FinancialAccount.</p>.
         /// </summary>
-        public virtual Task<FinancialAccountFeatures> UpdateAsync(string parentId, FinancialAccountFeaturesUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual FinancialAccountFeatures Update(
+            string parentId,
+            FinancialAccountFeaturesUpdateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<FinancialAccountFeatures>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/financial_accounts/{WebUtility.UrlEncode(parentId)}/features", options, requestOptions, cancellationToken);
+            return this.Request<FinancialAccountFeatures>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/treasury/financial_accounts/{WebUtility.UrlEncode(parentId)}/features",
+                options,
+                requestOptions
+            );
+        }
+
+        /// <summary>
+        /// <p>Updates the Features associated with a FinancialAccount.</p>.
+        /// </summary>
+        public virtual Task<FinancialAccountFeatures> UpdateAsync(
+            string parentId,
+            FinancialAccountFeaturesUpdateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return this.RequestAsync<FinancialAccountFeatures>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/treasury/financial_accounts/{WebUtility.UrlEncode(parentId)}/features",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

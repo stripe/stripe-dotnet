@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentNextActionOxxoDisplayDetails : StripeEntity<PaymentIntentNextActionOxxoDisplayDetails>
+    public class PaymentIntentNextActionOxxoDisplayDetails
+        : StripeEntity<PaymentIntentNextActionOxxoDisplayDetails>
     {
         /// <summary>
         /// The timestamp after which the OXXO voucher expires.

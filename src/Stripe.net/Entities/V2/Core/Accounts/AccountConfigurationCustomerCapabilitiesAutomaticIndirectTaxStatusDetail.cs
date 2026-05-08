@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationCustomerCapabilitiesAutomaticIndirectTaxStatusDetail : StripeEntity<AccountConfigurationCustomerCapabilitiesAutomaticIndirectTaxStatusDetail>
+    public class AccountConfigurationCustomerCapabilitiesAutomaticIndirectTaxStatusDetail
+        : StripeEntity<AccountConfigurationCustomerCapabilitiesAutomaticIndirectTaxStatusDetail>
     {
         /// <summary>
         /// Machine-readable code explaining the reason for the Capability to be in its current

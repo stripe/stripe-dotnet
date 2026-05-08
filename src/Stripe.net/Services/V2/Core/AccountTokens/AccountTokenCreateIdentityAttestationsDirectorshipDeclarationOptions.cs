@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountTokenCreateIdentityAttestationsDirectorshipDeclarationOptions : INestedOptions
+    public class AccountTokenCreateIdentityAttestationsDirectorshipDeclarationOptions
+        : INestedOptions
     {
         /// <summary>
         /// A boolean indicating if the directors information has been attested.

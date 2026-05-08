@@ -7,9 +7,7 @@ namespace StripeTests
     public class PayoutTest : BaseStripeTest
     {
         public PayoutTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -27,9 +25,9 @@ namespace StripeTests
         {
             string[] expansions =
             {
-              "balance_transaction",
-              "destination",
-              "failure_balance_transaction",
+                "balance_transaction",
+                "destination",
+                "failure_balance_transaction",
             };
 
             string json = this.GetFixture("/v1/payouts/po_123", expansions);

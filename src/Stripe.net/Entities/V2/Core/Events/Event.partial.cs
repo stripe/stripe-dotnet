@@ -20,7 +20,6 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonIgnore]
         [STJS.JsonIgnore]
-
         internal ApiRequestor Requestor { get; set; }
 
         /// <summary>
@@ -43,7 +42,10 @@ namespace Stripe.V2.Core
         /// Makes an API request to fetch the object associated with this event.
         /// </summary>
         /// <typeparam name="T">The type of the object to fetch.</typeparam>
-        protected virtual Task<T> FetchRelatedObjectAsync<T>(EventRelatedObject relatedObject, CancellationToken cancellationToken = default)
+        protected virtual Task<T> FetchRelatedObjectAsync<T>(
+            EventRelatedObject relatedObject,
+            CancellationToken cancellationToken = default
+        )
             where T : IStripeEntity
         {
             if (relatedObject == null)
@@ -56,22 +58,20 @@ namespace Stripe.V2.Core
                 return null;
             }
 
-            RequestOptions opts = new RequestOptions
-            {
-                StripeRequestTrigger = $"event={this.Id}",
-            };
+            RequestOptions opts = new RequestOptions { StripeRequestTrigger = $"event={this.Id}" };
             if (this.Context != null)
             {
                 opts.StripeContext = this.Context;
             }
 
             return this.Requestor.RequestAsync<T>(
-                    BaseAddress.Api,
-                    HttpMethod.Get,
-                    relatedObject.Url,
-                    null,
-                    opts,
-                    cancellationToken: cancellationToken);
+                BaseAddress.Api,
+                HttpMethod.Get,
+                relatedObject.Url,
+                null,
+                opts,
+                cancellationToken: cancellationToken
+            );
         }
     }
 }

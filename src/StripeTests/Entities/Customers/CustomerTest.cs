@@ -8,9 +8,7 @@ namespace StripeTests
     public class CustomerTest : BaseStripeTest
     {
         public CustomerTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -26,10 +24,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "invoice_settings.default_payment_method",
-            };
+            string[] expansions = { "invoice_settings.default_payment_method" };
 
             string json = this.GetFixture("/v1/customers/cus_123", expansions);
             var customer = JsonSerializer.Deserialize<Customer>(json);
@@ -62,10 +57,7 @@ namespace StripeTests
         [Fact]
         public void DefaultSourceId_Setter()
         {
-            var customer = new Customer
-            {
-                DefaultSourceId = "card_123",
-            };
+            var customer = new Customer { DefaultSourceId = "card_123" };
 
             Assert.Equal("card_123", customer.DefaultSourceId);
             Assert.Null(customer.DefaultSource);

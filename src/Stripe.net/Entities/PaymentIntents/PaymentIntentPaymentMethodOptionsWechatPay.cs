@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentMethodOptionsWechatPay : StripeEntity<PaymentIntentPaymentMethodOptionsWechatPay>
+    public class PaymentIntentPaymentMethodOptionsWechatPay
+        : StripeEntity<PaymentIntentPaymentMethodOptionsWechatPay>
     {
         /// <summary>
         /// The app ID registered with WeChat Pay. Only required when client is ios or android.

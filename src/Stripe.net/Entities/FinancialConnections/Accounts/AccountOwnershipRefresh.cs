@@ -17,7 +17,8 @@ namespace Stripe.FinancialConnections
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("last_attempted_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime LastAttemptedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime LastAttemptedAt { get; set; } =
+            Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Time at which the next ownership refresh can be initiated. This value will be

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CreditNoteLineItemTaxTaxRateDetails : StripeEntity<CreditNoteLineItemTaxTaxRateDetails>
+    public class CreditNoteLineItemTaxTaxRateDetails
+        : StripeEntity<CreditNoteLineItemTaxTaxRateDetails>
     {
         /// <summary>
         /// ID of the tax rate.

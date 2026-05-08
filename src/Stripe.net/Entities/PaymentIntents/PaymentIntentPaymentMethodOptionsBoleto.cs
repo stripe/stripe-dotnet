@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentMethodOptionsBoleto : StripeEntity<PaymentIntentPaymentMethodOptionsBoleto>
+    public class PaymentIntentPaymentMethodOptionsBoleto
+        : StripeEntity<PaymentIntentPaymentMethodOptionsBoleto>
     {
         /// <summary>
         /// The number of calendar days before a Boleto voucher expires. For example, if you create

@@ -6,7 +6,8 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ConfigurationFeaturesSubscriptionUpdateProductAdjustableQuantityOptions : INestedOptions
+    public class ConfigurationFeaturesSubscriptionUpdateProductAdjustableQuantityOptions
+        : INestedOptions
     {
         /// <summary>
         /// Set to true if the quantity can be adjusted to any non-negative integer.

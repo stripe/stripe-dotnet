@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SubscriptionScheduleDefaultSettingsAutomaticTax : StripeEntity<SubscriptionScheduleDefaultSettingsAutomaticTax>
+    public class SubscriptionScheduleDefaultSettingsAutomaticTax
+        : StripeEntity<SubscriptionScheduleDefaultSettingsAutomaticTax>
     {
         /// <summary>
         /// If Stripe disabled automatic tax, this enum describes why.

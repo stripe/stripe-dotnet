@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ChargePaymentMethodDetailsCardThreeDSecure : StripeEntity<ChargePaymentMethodDetailsCardThreeDSecure>
+    public class ChargePaymentMethodDetailsCardThreeDSecure
+        : StripeEntity<ChargePaymentMethodDetailsCardThreeDSecure>
     {
         /// <summary>
         /// For authenticated transactions: how the customer was authenticated by the issuing bank.

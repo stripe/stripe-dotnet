@@ -17,7 +17,10 @@ namespace StripeTests
         /// Gets the port on which stripe-mock is listening, or -1 if no stripe-mock process was
         /// started.
         /// </summary>
-        public static int Port { get => port; }
+        public static int Port
+        {
+            get => port;
+        }
 
         /// <summary>
         /// Starts a stripe-mock process on an available port, if necessary.
@@ -61,7 +64,9 @@ namespace StripeTests
             }
             catch (Exception e)
             {
-                Console.Error.WriteLine($"Error while starting stripe-mock, error message = {e.Message}");
+                Console.Error.WriteLine(
+                    $"Error while starting stripe-mock, error message = {e.Message}"
+                );
                 Environment.Exit(1);
             }
 
@@ -70,7 +75,9 @@ namespace StripeTests
 
             if (process.HasExited)
             {
-                Console.Error.WriteLine($"stripe-mock terminated early, status code = {process.ExitCode}");
+                Console.Error.WriteLine(
+                    $"stripe-mock terminated early, status code = {process.ExitCode}"
+                );
                 Environment.Exit(1);
             }
 

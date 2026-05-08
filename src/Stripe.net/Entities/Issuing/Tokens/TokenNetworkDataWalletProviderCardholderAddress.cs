@@ -6,7 +6,8 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class TokenNetworkDataWalletProviderCardholderAddress : StripeEntity<TokenNetworkDataWalletProviderCardholderAddress>
+    public class TokenNetworkDataWalletProviderCardholderAddress
+        : StripeEntity<TokenNetworkDataWalletProviderCardholderAddress>
     {
         /// <summary>
         /// The street address of the cardholder tokenizing the card.

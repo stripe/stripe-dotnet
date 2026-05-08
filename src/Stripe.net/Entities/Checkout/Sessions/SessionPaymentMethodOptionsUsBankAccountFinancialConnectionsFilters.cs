@@ -7,7 +7,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters : StripeEntity<SessionPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters>
+    public class SessionPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters
+        : StripeEntity<SessionPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters>
     {
         /// <summary>
         /// The account subcategories to use to filter for possible accounts to link. Valid

@@ -6,7 +6,9 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SessionPaymentMethodOptionsPaytoMandateOptionsOptions : INestedOptions, IHasSetTracking
+    public class SessionPaymentMethodOptionsPaytoMandateOptionsOptions
+        : INestedOptions,
+            IHasSetTracking
     {
         private long? amount;
         private string amountType;

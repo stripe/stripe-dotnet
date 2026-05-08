@@ -67,7 +67,8 @@ namespace Stripe
         public string DefaultPriceId
         {
             get => this.InternalDefaultPrice?.Id;
-            set => this.InternalDefaultPrice = SetExpandableFieldId(value, this.InternalDefaultPrice);
+            set =>
+                this.InternalDefaultPrice = SetExpandableFieldId(value, this.InternalDefaultPrice);
         }
 
         /// <summary>
@@ -82,7 +83,11 @@ namespace Stripe
         public Price DefaultPrice
         {
             get => this.InternalDefaultPrice?.ExpandedObject;
-            set => this.InternalDefaultPrice = SetExpandableFieldObject(value, this.InternalDefaultPrice);
+            set =>
+                this.InternalDefaultPrice = SetExpandableFieldObject(
+                    value,
+                    this.InternalDefaultPrice
+                );
         }
 
         [JsonProperty("default_price")]

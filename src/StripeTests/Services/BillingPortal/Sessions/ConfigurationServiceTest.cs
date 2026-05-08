@@ -4,7 +4,6 @@ namespace StripeTests.BillingPortal
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Stripe.BillingPortal;
     using Xunit;
@@ -19,7 +18,8 @@ namespace StripeTests.BillingPortal
 
         public ConfigurationServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new ConfigurationService(this.StripeClient);
@@ -40,14 +40,8 @@ namespace StripeTests.BillingPortal
                     },
                 },
             };
-            this.updateOptions = new ConfigurationUpdateOptions
-            {
-                Active = false,
-            };
-            this.listOptions = new ConfigurationListOptions
-            {
-                Active = true,
-            };
+            this.updateOptions = new ConfigurationUpdateOptions { Active = false };
+            this.listOptions = new ConfigurationListOptions { Active = true };
         }
 
         [Fact]
@@ -117,7 +111,9 @@ namespace StripeTests.BillingPortal
         [Fact]
         public async Task ListAutoPagingAsync()
         {
-            var configuration = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            var configuration = await this
+                .service.ListAutoPagingAsync(this.listOptions)
+                .FirstAsync();
             Assert.NotNull(configuration);
             Assert.Equal("billing_portal.configuration", configuration.Object);
         }

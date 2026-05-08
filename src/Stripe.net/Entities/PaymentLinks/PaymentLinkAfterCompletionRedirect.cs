@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentLinkAfterCompletionRedirect : StripeEntity<PaymentLinkAfterCompletionRedirect>
+    public class PaymentLinkAfterCompletionRedirect
+        : StripeEntity<PaymentLinkAfterCompletionRedirect>
     {
         /// <summary>
         /// The URL the customer will be redirected to after the purchase is complete.

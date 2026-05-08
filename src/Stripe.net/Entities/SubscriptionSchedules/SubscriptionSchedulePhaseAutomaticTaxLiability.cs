@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SubscriptionSchedulePhaseAutomaticTaxLiability : StripeEntity<SubscriptionSchedulePhaseAutomaticTaxLiability>
+    public class SubscriptionSchedulePhaseAutomaticTaxLiability
+        : StripeEntity<SubscriptionSchedulePhaseAutomaticTaxLiability>
     {
         #region Expandable Account
 

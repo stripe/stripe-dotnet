@@ -40,14 +40,17 @@ namespace Examples.V2
             var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
             try
             {
-                var eventNotification = client.ParseEventNotification(json, Request.Headers["Stripe-Signature"], webhookSecret);
+                var eventNotification = client.ParseEventNotification(
+                    json,
+                    Request.Headers["Stripe-Signature"],
+                    webhookSecret
+                );
 
                 // match on the type of the class to determine what event you have
                 if (eventNotification is V1BillingMeterErrorReportTriggeredEventNotification notif)
                 {
                     // there's basic info about the related object in the notification
-                    Console.WriteLine(
-                        $"Meter w/ id {notif.RelatedObject.Id} had a problem");
+                    Console.WriteLine($"Meter w/ id {notif.RelatedObject.Id} had a problem");
 
                     // or you can fetch the full object form the API for more details
                     var meter = await notif.FetchRelatedObjectAsync();

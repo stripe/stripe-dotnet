@@ -19,12 +19,15 @@ namespace Stripe.Infrastructure.FormEncoding
         public FormUrlEncodedContent(IEnumerable<KeyValuePair<string, string>> nameValueCollection)
             : base(CreateContentByteArray(nameValueCollection))
         {
-            this.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
+            this.Headers.ContentType = new MediaTypeHeaderValue(
+                "application/x-www-form-urlencoded"
+            );
             this.Headers.ContentType.CharSet = "utf-8";
         }
 
         private static byte[] CreateContentByteArray(
-            IEnumerable<KeyValuePair<string, string>> nameValueCollection)
+            IEnumerable<KeyValuePair<string, string>> nameValueCollection
+        )
         {
             if (nameValueCollection == null)
             {

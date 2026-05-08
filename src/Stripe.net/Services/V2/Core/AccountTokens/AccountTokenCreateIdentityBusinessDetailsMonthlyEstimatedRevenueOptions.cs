@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountTokenCreateIdentityBusinessDetailsMonthlyEstimatedRevenueOptions : INestedOptions
+    public class AccountTokenCreateIdentityBusinessDetailsMonthlyEstimatedRevenueOptions
+        : INestedOptions
     {
         /// <summary>
         /// A non-negative integer representing the amount in the smallest currency unit.

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class DisputeEvidenceEnhancedEvidenceVisaCompellingEvidence3DisputedTransaction : StripeEntity<DisputeEvidenceEnhancedEvidenceVisaCompellingEvidence3DisputedTransaction>
+    public class DisputeEvidenceEnhancedEvidenceVisaCompellingEvidence3DisputedTransaction
+        : StripeEntity<DisputeEvidenceEnhancedEvidenceVisaCompellingEvidence3DisputedTransaction>
     {
         /// <summary>
         /// User Account ID used to log into business platform. Must be recognizable by the user.

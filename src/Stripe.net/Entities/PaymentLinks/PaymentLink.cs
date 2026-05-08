@@ -79,7 +79,11 @@ namespace Stripe
         public Application Application
         {
             get => this.InternalApplication?.ExpandedObject;
-            set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
+            set =>
+                this.InternalApplication = SetExpandableFieldObject(
+                    value,
+                    this.InternalApplication
+                );
         }
 
         [JsonProperty("application")]
@@ -225,7 +229,8 @@ namespace Stripe
         public Account OnBehalfOf
         {
             get => this.InternalOnBehalfOf?.ExpandedObject;
-            set => this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
+            set =>
+                this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
         }
 
         [JsonProperty("on_behalf_of")]

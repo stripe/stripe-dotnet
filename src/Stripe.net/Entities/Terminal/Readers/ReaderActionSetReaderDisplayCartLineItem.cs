@@ -6,7 +6,8 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ReaderActionSetReaderDisplayCartLineItem : StripeEntity<ReaderActionSetReaderDisplayCartLineItem>
+    public class ReaderActionSetReaderDisplayCartLineItem
+        : StripeEntity<ReaderActionSetReaderDisplayCartLineItem>
     {
         /// <summary>
         /// The amount of the line item. A positive integer in the <a

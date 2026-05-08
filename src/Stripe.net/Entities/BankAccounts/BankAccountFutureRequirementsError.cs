@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class BankAccountFutureRequirementsError : StripeEntity<BankAccountFutureRequirementsError>
+    public class BankAccountFutureRequirementsError
+        : StripeEntity<BankAccountFutureRequirementsError>
     {
         /// <summary>
         /// The code for the type of error.

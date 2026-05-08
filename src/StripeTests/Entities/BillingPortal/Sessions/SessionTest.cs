@@ -8,9 +8,7 @@ namespace StripeTests.BillingPortal
     public class SessionTest : BaseStripeTest
     {
         public SessionTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

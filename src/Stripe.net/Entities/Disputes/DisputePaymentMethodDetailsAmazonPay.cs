@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class DisputePaymentMethodDetailsAmazonPay : StripeEntity<DisputePaymentMethodDetailsAmazonPay>
+    public class DisputePaymentMethodDetailsAmazonPay
+        : StripeEntity<DisputePaymentMethodDetailsAmazonPay>
     {
         /// <summary>
         /// The AmazonPay dispute type, chargeback or claim.

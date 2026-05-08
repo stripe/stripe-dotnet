@@ -16,24 +16,17 @@ namespace StripeTests
                 Customer = "cus_123",
                 Items = new List<SubscriptionItemOptions>
                 {
-                    new SubscriptionItemOptions
-                    {
-                        Plan = "plan_123",
-                        Quantity = 2,
-                    },
-                    new SubscriptionItemOptions
-                    {
-                        Plan = "plan_124",
-                        Quantity = 3,
-                    },
+                    new SubscriptionItemOptions { Plan = "plan_123", Quantity = 2 },
+                    new SubscriptionItemOptions { Plan = "plan_124", Quantity = 3 },
                 },
             };
 
             Assert.Equal(
-                "customer=cus_123&" +
-                "items[0][plan]=plan_123&items[0][quantity]=2&" +
-                "items[1][plan]=plan_124&items[1][quantity]=3",
-                ContentEncoder.CreateQueryString(options));
+                "customer=cus_123&"
+                    + "items[0][plan]=plan_123&items[0][quantity]=2&"
+                    + "items[1][plan]=plan_124&items[1][quantity]=3",
+                ContentEncoder.CreateQueryString(options)
+            );
         }
 
         [Fact]
@@ -50,10 +43,7 @@ namespace StripeTests
         [Fact]
         public void SerializeTrialEndNow()
         {
-            var options = new SubscriptionCreateOptions
-            {
-                TrialEnd = SubscriptionTrialEnd.Now,
-            };
+            var options = new SubscriptionCreateOptions { TrialEnd = SubscriptionTrialEnd.Now };
 
             Assert.Equal("trial_end=now", ContentEncoder.CreateQueryString(options));
         }

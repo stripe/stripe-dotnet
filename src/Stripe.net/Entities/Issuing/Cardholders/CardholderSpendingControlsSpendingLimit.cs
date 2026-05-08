@@ -7,7 +7,8 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CardholderSpendingControlsSpendingLimit : StripeEntity<CardholderSpendingControlsSpendingLimit>
+    public class CardholderSpendingControlsSpendingLimit
+        : StripeEntity<CardholderSpendingControlsSpendingLimit>
     {
         /// <summary>
         /// Maximum amount allowed to spend per interval. This amount is in the card's currency and

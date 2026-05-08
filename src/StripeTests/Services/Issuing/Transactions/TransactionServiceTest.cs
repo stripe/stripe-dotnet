@@ -4,7 +4,6 @@ namespace StripeTests.Issuing
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe.Issuing;
     using Xunit;
 
@@ -18,23 +17,18 @@ namespace StripeTests.Issuing
 
         public TransactionServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new TransactionService(this.StripeClient);
 
             this.updateOptions = new TransactionUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.listOptions = new TransactionListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new TransactionListOptions { Limit = 1 };
         }
 
         [Fact]

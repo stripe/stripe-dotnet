@@ -14,7 +14,11 @@ namespace Stripe
     /// Only one attempt per Payment Record can have guaranteed funds.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentAttemptRecord : StripeEntity<PaymentAttemptRecord>, IHasId, IHasMetadata, IHasObject
+    public class PaymentAttemptRecord
+        : StripeEntity<PaymentAttemptRecord>,
+            IHasId,
+            IHasMetadata,
+            IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.

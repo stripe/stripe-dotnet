@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentAttemptRecordPaymentMethodDetailsCardNetworkToken : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsCardNetworkToken>
+    public class PaymentAttemptRecordPaymentMethodDetailsCardNetworkToken
+        : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsCardNetworkToken>
     {
         /// <summary>
         /// Indicates if Stripe used a network token, either user provided or Stripe managed when

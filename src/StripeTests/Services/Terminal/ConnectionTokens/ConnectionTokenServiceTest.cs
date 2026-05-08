@@ -4,7 +4,6 @@ namespace StripeTests.Terminal
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe.Terminal;
     using Xunit;
 
@@ -15,14 +14,13 @@ namespace StripeTests.Terminal
 
         public ConnectionTokenServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new ConnectionTokenService(this.StripeClient);
 
-            this.createOptions = new ConnectionTokenCreateOptions
-            {
-            };
+            this.createOptions = new ConnectionTokenCreateOptions { };
         }
 
         [Fact]

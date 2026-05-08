@@ -27,7 +27,12 @@ namespace Stripe
         [JsonConverter(typeof(AnyOfConverter))]
         [STJS.JsonPropertyName("external_account")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-        public AnyOf<string, AccountExternalAccountCardOptions, AccountExternalAccountBankAccountOptions, AccountExternalAccountCardTokenOptions> ExternalAccount { get; set; }
+        public AnyOf<
+            string,
+            AccountExternalAccountCardOptions,
+            AccountExternalAccountBankAccountOptions,
+            AccountExternalAccountCardTokenOptions
+        > ExternalAccount { get; set; }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can

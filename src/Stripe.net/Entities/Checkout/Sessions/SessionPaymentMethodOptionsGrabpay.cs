@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsGrabpay : StripeEntity<SessionPaymentMethodOptionsGrabpay>
+    public class SessionPaymentMethodOptionsGrabpay
+        : StripeEntity<SessionPaymentMethodOptionsGrabpay>
     {
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment

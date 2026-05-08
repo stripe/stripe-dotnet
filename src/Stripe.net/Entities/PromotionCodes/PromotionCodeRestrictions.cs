@@ -16,7 +16,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("currency_options")]
         [STJS.JsonPropertyName("currency_options")]
-        public Dictionary<string, PromotionCodeRestrictionsCurrencyOptions> CurrencyOptions { get; set; }
+        public Dictionary<
+            string,
+            PromotionCodeRestrictionsCurrencyOptions
+        > CurrencyOptions { get; set; }
 
         /// <summary>
         /// A Boolean indicating if the Promotion Code should only be redeemed for Customers without

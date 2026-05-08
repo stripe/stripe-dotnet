@@ -6,7 +6,8 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class TransactionPurchaseDetailsFleetCardholderPromptData : StripeEntity<TransactionPurchaseDetailsFleetCardholderPromptData>
+    public class TransactionPurchaseDetailsFleetCardholderPromptData
+        : StripeEntity<TransactionPurchaseDetailsFleetCardholderPromptData>
     {
         /// <summary>
         /// Driver ID.

@@ -32,15 +32,18 @@ namespace Stripe.Infrastructure.FormEncoding
             return opts;
         }
 
-        private static byte[] CreateContentByteArray(
-            BaseOptions options)
+        private static byte[] CreateContentByteArray(BaseOptions options)
         {
             if (options == null)
             {
                 throw new ArgumentNullException(nameof(options));
             }
 
-            return JsonSerializer.SerializeToUtf8Bytes(options, options.GetType(), SerializerOptions);
+            return JsonSerializer.SerializeToUtf8Bytes(
+                options,
+                options.GetType(),
+                SerializerOptions
+            );
         }
     }
 }

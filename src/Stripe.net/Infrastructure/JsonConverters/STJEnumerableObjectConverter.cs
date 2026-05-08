@@ -26,21 +26,20 @@ namespace Stripe.Infrastructure
             return typeof(IEnumerable).GetTypeInfo().IsAssignableFrom(objectType.GetTypeInfo());
         }
 
-        public override JsonConverter CreateConverter(
-            Type type,
-            JsonSerializerOptions options)
+        public override JsonConverter CreateConverter(Type type, JsonSerializerOptions options)
         {
             Type[] typeArguments = type.GetGenericArguments();
             Type fieldType = typeArguments[0];
 
 #pragma warning disable SA1009 // Closing parenthesis should be spaced correctly
-            JsonConverter converter = (JsonConverter)Activator.CreateInstance(
-                typeof(STJEnumerableObjectConverterInner<>).MakeGenericType(
-                    type),
-                BindingFlags.Instance | BindingFlags.Public,
-                binder: null,
-                args: null,
-                culture: null)!;
+            JsonConverter converter = (JsonConverter)
+                Activator.CreateInstance(
+                    typeof(STJEnumerableObjectConverterInner<>).MakeGenericType(type),
+                    BindingFlags.Instance | BindingFlags.Public,
+                    binder: null,
+                    args: null,
+                    culture: null
+                )!;
 #pragma warning restore SA1009 // Closing parenthesis should be spaced correctly
 
             return converter;
@@ -54,7 +53,11 @@ namespace Stripe.Infrastructure
             /// <param name="writer">The <see cref="Utf8JsonWriter"/> to write to.</param>
             /// <param name="value">The value.</param>
             /// <param name="options">The calling serializer's options.</param>
-            public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
+            public override void Write(
+                Utf8JsonWriter writer,
+                T value,
+                JsonSerializerOptions options
+            )
             {
                 var allProperties = GetPropertiesForType(value.GetType());
                 writer.WriteStartObject();

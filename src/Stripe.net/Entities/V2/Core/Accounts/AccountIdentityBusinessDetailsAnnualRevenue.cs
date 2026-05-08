@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountIdentityBusinessDetailsAnnualRevenue : StripeEntity<AccountIdentityBusinessDetailsAnnualRevenue>
+    public class AccountIdentityBusinessDetailsAnnualRevenue
+        : StripeEntity<AccountIdentityBusinessDetailsAnnualRevenue>
     {
         /// <summary>
         /// Annual revenue amount in minor currency units (for example, '123' for 1.23 USD).

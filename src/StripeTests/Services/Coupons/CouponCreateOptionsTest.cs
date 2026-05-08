@@ -9,13 +9,12 @@ namespace StripeTests
         [Fact]
         public void Serialize()
         {
-            var options = new CouponCreateOptions
-            {
-                PercentOff = 25,
-                Duration = "forever",
-            };
+            var options = new CouponCreateOptions { PercentOff = 25, Duration = "forever" };
 
-            Assert.Equal("duration=forever&percent_off=25", ContentEncoder.CreateQueryString(options));
+            Assert.Equal(
+                "duration=forever&percent_off=25",
+                ContentEncoder.CreateQueryString(options)
+            );
         }
     }
 }

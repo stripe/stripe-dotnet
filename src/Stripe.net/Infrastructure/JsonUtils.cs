@@ -9,10 +9,8 @@ namespace Stripe.Infrastructure
 
     internal static class JsonUtils
     {
-        private static readonly JsonSerializerSettings DefaultSerializerSettings = new JsonSerializerSettings()
-        {
-            MaxDepth = 128,
-        };
+        private static readonly JsonSerializerSettings DefaultSerializerSettings =
+            new JsonSerializerSettings() { MaxDepth = 128 };
 
         /// <summary>
         /// Deserializes the JSON to the specified .NET type using
@@ -24,16 +22,12 @@ namespace Stripe.Infrastructure
         /// The <see cref="JsonSerializerSettings"/> used to deserialize the object.
         /// </param>
         /// <returns>The deserialized object from the JSON string.</returns>
-        public static T DeserializeObject<T>(
-            string value,
-            JsonSerializerSettings settings = null)
+        public static T DeserializeObject<T>(string value, JsonSerializerSettings settings = null)
         {
             return (T)DeserializeObject(value, typeof(T), settings);
         }
 
-        internal static T DeserializeObject<T>(
-            JToken value,
-            JsonSerializerSettings settings = null)
+        internal static T DeserializeObject<T>(JToken value, JsonSerializerSettings settings = null)
         {
             return (T)DeserializeObject(value, typeof(T), settings);
         }
@@ -51,14 +45,17 @@ namespace Stripe.Infrastructure
         public static object DeserializeObject(
             string value,
             Type type,
-            JsonSerializerSettings settings = null)
+            JsonSerializerSettings settings = null
+        )
         {
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
             }
 
-            JsonSerializer jsonSerializer = JsonSerializer.Create(settings ?? DefaultSerializerSettings);
+            JsonSerializer jsonSerializer = JsonSerializer.Create(
+                settings ?? DefaultSerializerSettings
+            );
 
             using (JsonTextReader reader = new JsonTextReader(new StringReader(value)))
             {
@@ -69,14 +66,17 @@ namespace Stripe.Infrastructure
         internal static object DeserializeObject(
             JToken value,
             Type type,
-            JsonSerializerSettings settings = null)
+            JsonSerializerSettings settings = null
+        )
         {
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
             }
 
-            JsonSerializer jsonSerializer = JsonSerializer.Create(settings ?? DefaultSerializerSettings);
+            JsonSerializer jsonSerializer = JsonSerializer.Create(
+                settings ?? DefaultSerializerSettings
+            );
 
             return jsonSerializer.Deserialize(value.CreateReader(), type);
         }
@@ -93,7 +93,8 @@ namespace Stripe.Infrastructure
         public static string SerializeObject(
             object value,
             Formatting formatting = Formatting.None,
-            JsonSerializerSettings settings = null)
+            JsonSerializerSettings settings = null
+        )
         {
             JsonSerializer jsonSerializer = JsonSerializer.Create(settings);
             jsonSerializer.Formatting = formatting;

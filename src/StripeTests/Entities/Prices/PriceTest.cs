@@ -7,9 +7,7 @@ namespace StripeTests
     public class PriceTest : BaseStripeTest
     {
         public PriceTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -25,10 +23,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "product",
-            };
+            string[] expansions = { "product" };
 
             string json = this.GetFixture("/v1/prices/price_123", expansions);
             var price = JsonSerializer.Deserialize<Price>(json);

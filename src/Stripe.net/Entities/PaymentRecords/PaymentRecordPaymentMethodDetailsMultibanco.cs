@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsMultibanco : StripeEntity<PaymentRecordPaymentMethodDetailsMultibanco>
+    public class PaymentRecordPaymentMethodDetailsMultibanco
+        : StripeEntity<PaymentRecordPaymentMethodDetailsMultibanco>
     {
         /// <summary>
         /// Entity number associated with this Multibanco payment.

@@ -6,7 +6,8 @@ namespace Stripe.Identity
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class VerificationReportDocumentIssuedDate : StripeEntity<VerificationReportDocumentIssuedDate>
+    public class VerificationReportDocumentIssuedDate
+        : StripeEntity<VerificationReportDocumentIssuedDate>
     {
         /// <summary>
         /// Numerical day between 1 and 31.

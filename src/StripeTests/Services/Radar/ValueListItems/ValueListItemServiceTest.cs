@@ -3,7 +3,6 @@ namespace StripeTests.Radar
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe.Radar;
     using Xunit;
 
@@ -17,7 +16,8 @@ namespace StripeTests.Radar
 
         public ValueListItemServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new ValueListItemService(this.StripeClient);
@@ -28,11 +28,7 @@ namespace StripeTests.Radar
                 ValueList = "rsl_123",
             };
 
-            this.listOptions = new ValueListItemListOptions
-            {
-                Limit = 1,
-                ValueList = "rsl_123",
-            };
+            this.listOptions = new ValueListItemListOptions { Limit = 1, ValueList = "rsl_123" };
         }
 
         [Fact]
@@ -120,7 +116,9 @@ namespace StripeTests.Radar
         [Fact]
         public async Task ListAutoPagingAsync()
         {
-            var valueListItem = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            var valueListItem = await this
+                .service.ListAutoPagingAsync(this.listOptions)
+                .FirstAsync();
             Assert.NotNull(valueListItem);
             Assert.Equal("radar.value_list_item", valueListItem.Object);
         }

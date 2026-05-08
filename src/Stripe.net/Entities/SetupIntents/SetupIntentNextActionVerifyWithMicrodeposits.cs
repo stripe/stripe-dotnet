@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SetupIntentNextActionVerifyWithMicrodeposits : StripeEntity<SetupIntentNextActionVerifyWithMicrodeposits>
+    public class SetupIntentNextActionVerifyWithMicrodeposits
+        : StripeEntity<SetupIntentNextActionVerifyWithMicrodeposits>
     {
         /// <summary>
         /// The timestamp when the microdeposits are expected to land.

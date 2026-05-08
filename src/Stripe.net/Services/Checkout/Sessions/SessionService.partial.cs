@@ -15,9 +15,19 @@ namespace Stripe.Checkout
         /// is also a URL where you can retrieve the full (paginated) list of line items.</p>.
         /// </summary>
         [Obsolete("Use SessionLineItemService.List instead.")]
-        public virtual StripeList<LineItem> ListLineItems(string id, SessionLineItemListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<LineItem> ListLineItems(
+            string id,
+            SessionLineItemListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions);
+            return this.Request<StripeList<LineItem>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/line_items",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -26,9 +36,21 @@ namespace Stripe.Checkout
         /// is also a URL where you can retrieve the full (paginated) list of line items.</p>.
         /// </summary>
         [Obsolete("Use SessionLineItemService.ListAsync instead.")]
-        public virtual Task<StripeList<LineItem>> ListLineItemsAsync(string id, SessionLineItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<LineItem>> ListLineItemsAsync(
+            string id,
+            SessionLineItemListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<LineItem>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/line_items",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -37,9 +59,17 @@ namespace Stripe.Checkout
         /// is also a URL where you can retrieve the full (paginated) list of line items.</p>.
         /// </summary>
         [Obsolete("Use SessionLineItemService.ListAutoPaging instead.")]
-        public virtual IEnumerable<LineItem> ListLineItemsAutoPaging(string id, SessionLineItemListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<LineItem> ListLineItemsAutoPaging(
+            string id,
+            SessionLineItemListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.ListRequestAutoPaging<LineItem>($"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions);
+            return this.ListRequestAutoPaging<LineItem>(
+                $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/line_items",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -48,9 +78,19 @@ namespace Stripe.Checkout
         /// is also a URL where you can retrieve the full (paginated) list of line items.</p>.
         /// </summary>
         [Obsolete("Use SessionLineItemService.ListAutoPagingAsync instead.")]
-        public virtual IAsyncEnumerable<LineItem> ListLineItemsAutoPagingAsync(string id, SessionLineItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<LineItem> ListLineItemsAutoPagingAsync(
+            string id,
+            SessionLineItemListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<LineItem>(
+                $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/line_items",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

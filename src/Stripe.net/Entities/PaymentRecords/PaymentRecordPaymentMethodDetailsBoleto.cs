@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsBoleto : StripeEntity<PaymentRecordPaymentMethodDetailsBoleto>
+    public class PaymentRecordPaymentMethodDetailsBoleto
+        : StripeEntity<PaymentRecordPaymentMethodDetailsBoleto>
     {
         /// <summary>
         /// The tax ID of the customer (CPF for individuals consumers or CNPJ for businesses

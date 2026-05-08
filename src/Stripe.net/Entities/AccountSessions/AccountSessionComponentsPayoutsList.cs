@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountSessionComponentsPayoutsList : StripeEntity<AccountSessionComponentsPayoutsList>
+    public class AccountSessionComponentsPayoutsList
+        : StripeEntity<AccountSessionComponentsPayoutsList>
     {
         /// <summary>
         /// Whether the embedded component is enabled.

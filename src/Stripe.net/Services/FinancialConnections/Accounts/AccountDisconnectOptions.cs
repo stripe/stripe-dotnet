@@ -6,7 +6,5 @@ namespace Stripe.FinancialConnections
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountDisconnectOptions : BaseOptions
-    {
-    }
+    public class AccountDisconnectOptions : BaseOptions { }
 }

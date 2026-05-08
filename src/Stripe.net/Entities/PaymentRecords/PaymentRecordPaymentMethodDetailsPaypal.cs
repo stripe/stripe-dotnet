@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsPaypal : StripeEntity<PaymentRecordPaymentMethodDetailsPaypal>
+    public class PaymentRecordPaymentMethodDetailsPaypal
+        : StripeEntity<PaymentRecordPaymentMethodDetailsPaypal>
     {
         /// <summary>
         /// Two-letter ISO code representing the buyer's country. Values are provided by PayPal

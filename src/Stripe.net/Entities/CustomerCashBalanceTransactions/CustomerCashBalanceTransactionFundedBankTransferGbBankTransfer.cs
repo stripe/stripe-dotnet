@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CustomerCashBalanceTransactionFundedBankTransferGbBankTransfer : StripeEntity<CustomerCashBalanceTransactionFundedBankTransferGbBankTransfer>
+    public class CustomerCashBalanceTransactionFundedBankTransferGbBankTransfer
+        : StripeEntity<CustomerCashBalanceTransactionFundedBankTransferGbBankTransfer>
     {
         /// <summary>
         /// The last 4 digits of the account number of the sender of the funding.

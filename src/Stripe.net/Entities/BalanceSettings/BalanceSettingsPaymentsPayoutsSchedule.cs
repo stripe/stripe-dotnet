@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class BalanceSettingsPaymentsPayoutsSchedule : StripeEntity<BalanceSettingsPaymentsPayoutsSchedule>
+    public class BalanceSettingsPaymentsPayoutsSchedule
+        : StripeEntity<BalanceSettingsPaymentsPayoutsSchedule>
     {
         /// <summary>
         /// How frequently funds will be paid out. One of <c>manual</c> (payouts only created via

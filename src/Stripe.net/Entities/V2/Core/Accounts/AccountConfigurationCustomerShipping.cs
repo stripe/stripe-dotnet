@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationCustomerShipping : StripeEntity<AccountConfigurationCustomerShipping>
+    public class AccountConfigurationCustomerShipping
+        : StripeEntity<AccountConfigurationCustomerShipping>
     {
         /// <summary>
         /// Customer shipping address.

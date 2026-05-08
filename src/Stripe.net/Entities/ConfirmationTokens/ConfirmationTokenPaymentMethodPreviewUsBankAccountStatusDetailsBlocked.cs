@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationTokenPaymentMethodPreviewUsBankAccountStatusDetailsBlocked : StripeEntity<ConfirmationTokenPaymentMethodPreviewUsBankAccountStatusDetailsBlocked>
+    public class ConfirmationTokenPaymentMethodPreviewUsBankAccountStatusDetailsBlocked
+        : StripeEntity<ConfirmationTokenPaymentMethodPreviewUsBankAccountStatusDetailsBlocked>
     {
         /// <summary>
         /// The ACH network code that resulted in this block.

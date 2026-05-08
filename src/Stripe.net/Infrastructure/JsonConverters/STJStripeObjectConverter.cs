@@ -33,25 +33,24 @@ namespace Stripe.Infrastructure
             return typeInfo.IsInterface && typeInfo.FullName.StartsWith("Stripe");
         }
 
-        public override JsonConverter CreateConverter(
-            Type type,
-            JsonSerializerOptions options)
+        public override JsonConverter CreateConverter(Type type, JsonSerializerOptions options)
         {
 #pragma warning disable SA1009 // Closing parenthesis should be spaced correctly
-            JsonConverter converter = (JsonConverter)Activator.CreateInstance(
-                typeof(STJStripeObjectConverterInner<>).MakeGenericType(
-                    type),
-                BindingFlags.Instance | BindingFlags.Public,
-                binder: null,
-                args: null,
-                culture: null)!;
+            JsonConverter converter = (JsonConverter)
+                Activator.CreateInstance(
+                    typeof(STJStripeObjectConverterInner<>).MakeGenericType(type),
+                    BindingFlags.Instance | BindingFlags.Public,
+                    binder: null,
+                    args: null,
+                    culture: null
+                )!;
 #pragma warning restore SA1009 // Closing parenthesis should be spaced correctly
 
             return converter;
         }
 
         internal class STJStripeObjectConverterInner<T> : STJDefaultConverter<T>
-        where T : class
+            where T : class
         {
             /// <summary>
             /// Reads the JSON representation of the object.  This creates the appropriate
@@ -62,7 +61,11 @@ namespace Stripe.Infrastructure
             /// <param name="typeToConvert">Type of the object.</param>
             /// <param name="options">The calling serializer's options.</param>
             /// <returns>The object value.</returns>
-            public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+            public override T Read(
+                ref Utf8JsonReader reader,
+                Type typeToConvert,
+                JsonSerializerOptions options
+            )
             {
                 if (reader.TokenType == JsonTokenType.Null)
                 {

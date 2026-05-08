@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PersonAdditionalTosAcceptancesAccount : StripeEntity<PersonAdditionalTosAcceptancesAccount>
+    public class PersonAdditionalTosAcceptancesAccount
+        : StripeEntity<PersonAdditionalTosAcceptancesAccount>
     {
         /// <summary>
         /// The Unix timestamp marking when the legal guardian accepted the service agreement.

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ChargePaymentMethodDetailsCardWalletVisaCheckout : StripeEntity<ChargePaymentMethodDetailsCardWalletVisaCheckout>
+    public class ChargePaymentMethodDetailsCardWalletVisaCheckout
+        : StripeEntity<ChargePaymentMethodDetailsCardWalletVisaCheckout>
     {
         /// <summary>
         /// Owner's verified billing address. Values are verified or provided by the wallet directly

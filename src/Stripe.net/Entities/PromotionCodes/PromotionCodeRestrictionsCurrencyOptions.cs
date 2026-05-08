@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PromotionCodeRestrictionsCurrencyOptions : StripeEntity<PromotionCodeRestrictionsCurrencyOptions>
+    public class PromotionCodeRestrictionsCurrencyOptions
+        : StripeEntity<PromotionCodeRestrictionsCurrencyOptions>
     {
         /// <summary>
         /// Minimum amount required to redeem this Promotion Code into a Coupon (e.g., a purchase

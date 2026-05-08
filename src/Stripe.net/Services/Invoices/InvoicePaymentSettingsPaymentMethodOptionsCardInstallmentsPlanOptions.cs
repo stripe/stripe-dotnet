@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class InvoicePaymentSettingsPaymentMethodOptionsCardInstallmentsPlanOptions : INestedOptions
+    public class InvoicePaymentSettingsPaymentMethodOptionsCardInstallmentsPlanOptions
+        : INestedOptions
     {
         /// <summary>
         /// For <c>fixed_count</c> installment plans, this is required. It represents the number of

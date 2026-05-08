@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ShippingRateFixedAmountCurrencyOptions : StripeEntity<ShippingRateFixedAmountCurrencyOptions>
+    public class ShippingRateFixedAmountCurrencyOptions
+        : StripeEntity<ShippingRateFixedAmountCurrencyOptions>
     {
         /// <summary>
         /// A non-negative integer in cents representing how much to charge.

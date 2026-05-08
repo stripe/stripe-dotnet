@@ -116,7 +116,11 @@ namespace Stripe
         public string CustomerBalanceTransactionId
         {
             get => this.InternalCustomerBalanceTransaction?.Id;
-            set => this.InternalCustomerBalanceTransaction = SetExpandableFieldId(value, this.InternalCustomerBalanceTransaction);
+            set =>
+                this.InternalCustomerBalanceTransaction = SetExpandableFieldId(
+                    value,
+                    this.InternalCustomerBalanceTransaction
+                );
         }
 
         /// <summary>
@@ -130,7 +134,11 @@ namespace Stripe
         public CustomerBalanceTransaction CustomerBalanceTransaction
         {
             get => this.InternalCustomerBalanceTransaction?.ExpandedObject;
-            set => this.InternalCustomerBalanceTransaction = SetExpandableFieldObject(value, this.InternalCustomerBalanceTransaction);
+            set =>
+                this.InternalCustomerBalanceTransaction = SetExpandableFieldObject(
+                    value,
+                    this.InternalCustomerBalanceTransaction
+                );
         }
 
         [JsonProperty("customer_balance_transaction")]

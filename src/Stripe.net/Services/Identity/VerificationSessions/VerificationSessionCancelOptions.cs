@@ -6,7 +6,5 @@ namespace Stripe.Identity
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class VerificationSessionCancelOptions : BaseOptions
-    {
-    }
+    public class VerificationSessionCancelOptions : BaseOptions { }
 }

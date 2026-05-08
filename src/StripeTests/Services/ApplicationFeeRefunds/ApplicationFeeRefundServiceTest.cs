@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -20,36 +19,26 @@ namespace StripeTests
 
         public ApplicationFeeRefundServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new ApplicationFeeRefundService(this.StripeClient);
 
-            this.createOptions = new ApplicationFeeRefundCreateOptions
-            {
-                Amount = 123,
-            };
+            this.createOptions = new ApplicationFeeRefundCreateOptions { Amount = 123 };
 
             this.updateOptions = new ApplicationFeeRefundUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.listOptions = new ApplicationFeeRefundListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new ApplicationFeeRefundListOptions { Limit = 1 };
         }
 
         [Fact]
         public void Create()
         {
-            var applicationFeeRefund = this.service.Create(
-                ApplicationFeeId,
-                this.createOptions);
+            var applicationFeeRefund = this.service.Create(ApplicationFeeId, this.createOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/application_fees/fee_123/refunds");
             Assert.NotNull(applicationFeeRefund);
             Assert.Equal("fee_refund", applicationFeeRefund.Object);
@@ -60,7 +49,8 @@ namespace StripeTests
         {
             var applicationFeeRefund = await this.service.CreateAsync(
                 ApplicationFeeId,
-                this.createOptions);
+                this.createOptions
+            );
             this.AssertRequest(HttpMethod.Post, "/v1/application_fees/fee_123/refunds");
             Assert.NotNull(applicationFeeRefund);
             Assert.Equal("fee_refund", applicationFeeRefund.Object);
@@ -78,7 +68,10 @@ namespace StripeTests
         [Fact]
         public async Task GetAsync()
         {
-            var applicationFeeRefund = await this.service.GetAsync(ApplicationFeeId, ApplicationFeeRefundId);
+            var applicationFeeRefund = await this.service.GetAsync(
+                ApplicationFeeId,
+                ApplicationFeeRefundId
+            );
             this.AssertRequest(HttpMethod.Get, "/v1/application_fees/fee_123/refunds/fr_123");
             Assert.NotNull(applicationFeeRefund);
             Assert.Equal("fee_refund", applicationFeeRefund.Object);
@@ -98,7 +91,10 @@ namespace StripeTests
         [Fact]
         public async Task ListAsync()
         {
-            var applicationFeeRefunds = await this.service.ListAsync(ApplicationFeeId, this.listOptions);
+            var applicationFeeRefunds = await this.service.ListAsync(
+                ApplicationFeeId,
+                this.listOptions
+            );
             this.AssertRequest(HttpMethod.Get, "/v1/application_fees/fee_123/refunds");
             Assert.NotNull(applicationFeeRefunds);
             Assert.Equal("list", applicationFeeRefunds.Object);
@@ -109,7 +105,9 @@ namespace StripeTests
         [Fact]
         public void ListAutoPaging()
         {
-            var applicationFeeRefund = this.service.ListAutoPaging(ApplicationFeeId, this.listOptions).First();
+            var applicationFeeRefund = this
+                .service.ListAutoPaging(ApplicationFeeId, this.listOptions)
+                .First();
             Assert.NotNull(applicationFeeRefund);
             Assert.Equal("fee_refund", applicationFeeRefund.Object);
         }
@@ -117,7 +115,9 @@ namespace StripeTests
         [Fact]
         public async Task ListAutoPagingAsync()
         {
-            var applicationFeeRefund = await this.service.ListAutoPagingAsync(ApplicationFeeId, this.listOptions).FirstAsync();
+            var applicationFeeRefund = await this
+                .service.ListAutoPagingAsync(ApplicationFeeId, this.listOptions)
+                .FirstAsync();
             Assert.NotNull(applicationFeeRefund);
             Assert.Equal("fee_refund", applicationFeeRefund.Object);
         }
@@ -128,7 +128,8 @@ namespace StripeTests
             var applicationFeeRefund = this.service.Update(
                 ApplicationFeeId,
                 ApplicationFeeRefundId,
-                this.updateOptions);
+                this.updateOptions
+            );
             this.AssertRequest(HttpMethod.Post, "/v1/application_fees/fee_123/refunds/fr_123");
             Assert.NotNull(applicationFeeRefund);
             Assert.Equal("fee_refund", applicationFeeRefund.Object);
@@ -140,7 +141,8 @@ namespace StripeTests
             var applicationFeeRefund = await this.service.UpdateAsync(
                 ApplicationFeeId,
                 ApplicationFeeRefundId,
-                this.updateOptions);
+                this.updateOptions
+            );
             this.AssertRequest(HttpMethod.Post, "/v1/application_fees/fee_123/refunds/fr_123");
             Assert.NotNull(applicationFeeRefund);
             Assert.Equal("fee_refund", applicationFeeRefund.Object);

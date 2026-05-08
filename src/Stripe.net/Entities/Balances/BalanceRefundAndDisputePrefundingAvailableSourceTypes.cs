@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class BalanceRefundAndDisputePrefundingAvailableSourceTypes : StripeEntity<BalanceRefundAndDisputePrefundingAvailableSourceTypes>
+    public class BalanceRefundAndDisputePrefundingAvailableSourceTypes
+        : StripeEntity<BalanceRefundAndDisputePrefundingAvailableSourceTypes>
     {
         /// <summary>
         /// Amount coming from <a href="https://docs.stripe.com/ach-deprecated">legacy US ACH

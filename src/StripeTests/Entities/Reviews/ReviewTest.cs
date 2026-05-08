@@ -7,9 +7,7 @@ namespace StripeTests
     public class ReviewTest : BaseStripeTest
     {
         public ReviewTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -25,11 +23,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "charge",
-              "payment_intent",
-            };
+            string[] expansions = { "charge", "payment_intent" };
 
             string json = this.GetFixture("/v1/reviews/prv_123", expansions);
             var review = JsonSerializer.Deserialize<Review>(json);

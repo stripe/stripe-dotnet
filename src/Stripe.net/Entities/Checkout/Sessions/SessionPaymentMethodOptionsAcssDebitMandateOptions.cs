@@ -7,7 +7,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsAcssDebitMandateOptions : StripeEntity<SessionPaymentMethodOptionsAcssDebitMandateOptions>
+    public class SessionPaymentMethodOptionsAcssDebitMandateOptions
+        : StripeEntity<SessionPaymentMethodOptionsAcssDebitMandateOptions>
     {
         /// <summary>
         /// A URL for custom mandate text.

@@ -5,7 +5,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -21,7 +20,8 @@ namespace StripeTests
 
         public AccountServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new AccountService(this.StripeClient);
@@ -29,21 +29,12 @@ namespace StripeTests
             this.createOptions = new AccountCreateOptions
             {
                 Type = AccountType.Custom,
-                BusinessProfile = new AccountBusinessProfileOptions
-                {
-                    Name = "business name",
-                },
+                BusinessProfile = new AccountBusinessProfileOptions { Name = "business name" },
                 BusinessType = "company",
                 Capabilities = new AccountCapabilitiesOptions
                 {
-                    CardPayments = new AccountCapabilitiesCardPaymentsOptions
-                    {
-                        Requested = true,
-                    },
-                    Transfers = new AccountCapabilitiesTransfersOptions
-                    {
-                        Requested = true,
-                    },
+                    CardPayments = new AccountCapabilitiesCardPaymentsOptions { Requested = true },
+                    Transfers = new AccountCapabilitiesTransfersOptions { Requested = true },
                 },
                 Company = new AccountCompanyOptions
                 {
@@ -69,10 +60,7 @@ namespace StripeTests
                 ExternalAccount = "tok_visa_debit",
                 Settings = new AccountSettingsOptions
                 {
-                    Branding = new AccountSettingsBrandingOptions
-                    {
-                        Logo = "file_123",
-                    },
+                    Branding = new AccountSettingsBrandingOptions { Logo = "file_123" },
                     CardPayments = new AccountSettingsCardPaymentsOptions
                     {
                         DeclineOn = new AccountSettingsCardPaymentsDeclineOnOptions
@@ -106,21 +94,12 @@ namespace StripeTests
 
             this.updateOptions = new AccountUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.rejectOptions = new AccountRejectOptions
-            {
-                Reason = "terms_of_service",
-            };
+            this.rejectOptions = new AccountRejectOptions { Reason = "terms_of_service" };
 
-            this.listOptions = new AccountListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new AccountListOptions { Limit = 1 };
         }
 
         [Fact]

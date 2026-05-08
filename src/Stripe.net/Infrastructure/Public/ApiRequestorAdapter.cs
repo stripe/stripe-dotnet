@@ -49,7 +49,8 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
         {
             if (baseAddress != BaseAddress.Api)
             {
@@ -57,7 +58,13 @@ namespace Stripe
                 requestOptions.InternalBaseUrl = this.GetBaseUrl(baseAddress);
             }
 
-            return this.client.RequestAsync<T>(method, path, options, requestOptions, cancellationToken);
+            return this.client.RequestAsync<T>(
+                method,
+                path,
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         public override Task<Stream> RequestStreamingAsync(
@@ -66,18 +73,28 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.client.RequestStreamingAsync(method, path, options, requestOptions, cancellationToken);
+            return this.client.RequestStreamingAsync(
+                method,
+                path,
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         public override StripeResponse RawRequest(
             HttpMethod method,
             string path,
             string content = null,
-            RawRequestOptions requestOptions = null)
+            RawRequestOptions requestOptions = null
+        )
         {
-            throw new System.NotImplementedException("RawRequest is unimplemented for this ApiRequestor");
+            throw new System.NotImplementedException(
+                "RawRequest is unimplemented for this ApiRequestor"
+            );
         }
 
         public override Task<StripeResponse> RawRequestAsync(
@@ -85,9 +102,12 @@ namespace Stripe
             string path,
             string content = null,
             RawRequestOptions requestOptions = null,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
         {
-            throw new System.NotImplementedException("RawRequestAsync is unimplemented for this ApiRequestor");
+            throw new System.NotImplementedException(
+                "RawRequestAsync is unimplemented for this ApiRequestor"
+            );
         }
     }
 }

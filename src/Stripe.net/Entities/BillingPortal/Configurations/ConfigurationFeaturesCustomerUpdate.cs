@@ -7,7 +7,8 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfigurationFeaturesCustomerUpdate : StripeEntity<ConfigurationFeaturesCustomerUpdate>
+    public class ConfigurationFeaturesCustomerUpdate
+        : StripeEntity<ConfigurationFeaturesCustomerUpdate>
     {
         /// <summary>
         /// The types of customer updates that are supported. When empty, customers are not

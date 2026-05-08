@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionConsentCollectionPaymentMethodReuseAgreement : StripeEntity<SessionConsentCollectionPaymentMethodReuseAgreement>
+    public class SessionConsentCollectionPaymentMethodReuseAgreement
+        : StripeEntity<SessionConsentCollectionPaymentMethodReuseAgreement>
     {
         /// <summary>
         /// Determines the position and visibility of the payment method reuse agreement in the UI.

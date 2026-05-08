@@ -6,7 +6,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentPaymentMethodOptionsAuBecsDebitOptions : INestedOptions, IHasSetTracking
+    public class PaymentIntentPaymentMethodOptionsAuBecsDebitOptions
+        : INestedOptions,
+            IHasSetTracking
     {
         private string setupFutureUsage;
 

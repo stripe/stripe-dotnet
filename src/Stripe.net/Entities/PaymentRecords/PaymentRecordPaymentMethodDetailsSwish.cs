@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsSwish : StripeEntity<PaymentRecordPaymentMethodDetailsSwish>
+    public class PaymentRecordPaymentMethodDetailsSwish
+        : StripeEntity<PaymentRecordPaymentMethodDetailsSwish>
     {
         /// <summary>
         /// Uniquely identifies the payer's Swish account. You can use this attribute to check

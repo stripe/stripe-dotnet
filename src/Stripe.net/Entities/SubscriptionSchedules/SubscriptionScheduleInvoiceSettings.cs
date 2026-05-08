@@ -6,7 +6,8 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-    public class SubscriptionScheduleInvoiceSettings : StripeEntity<SubscriptionScheduleInvoiceSettings>
+    public class SubscriptionScheduleInvoiceSettings
+        : StripeEntity<SubscriptionScheduleInvoiceSettings>
     {
         [JsonProperty("days_until_due")]
         [STJS.JsonPropertyName("days_until_due")]

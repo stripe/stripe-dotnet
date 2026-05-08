@@ -7,9 +7,7 @@ namespace StripeTests
     public class CreditNoteTest : BaseStripeTest
     {
         public CreditNoteTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -27,10 +25,10 @@ namespace StripeTests
         {
             string[] expansions =
             {
-              "customer",
-              "customer_balance_transaction",
-              "invoice",
-              "refund",
+                "customer",
+                "customer_balance_transaction",
+                "invoice",
+                "refund",
             };
 
             string json = this.GetFixture("/v1/credit_notes/cn_123456", expansions);
@@ -44,7 +42,10 @@ namespace StripeTests
             Assert.Equal("customer", creditNote.Customer.Object);
 
             Assert.NotNull(creditNote.CustomerBalanceTransaction);
-            Assert.Equal("customer_balance_transaction", creditNote.CustomerBalanceTransaction.Object);
+            Assert.Equal(
+                "customer_balance_transaction",
+                creditNote.CustomerBalanceTransaction.Object
+            );
 
             Assert.NotNull(creditNote.Invoice);
             Assert.Equal("invoice", creditNote.Invoice.Object);

@@ -7,9 +7,7 @@ namespace StripeTests
     public class PersonTest : BaseStripeTest
     {
         public PersonTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -25,11 +23,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "verification.document.back",
-              "verification.document.front",
-            };
+            string[] expansions = { "verification.document.back", "verification.document.front" };
 
             string json = this.GetFixture("/v1/accounts/acct_123/persons/person_123", expansions);
             var person = JsonSerializer.Deserialize<Person>(json);

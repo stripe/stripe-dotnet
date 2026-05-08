@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -15,15 +14,13 @@ namespace StripeTests
 
         public SetupAttemptServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new SetupAttemptService(this.StripeClient);
 
-            this.listOptions = new SetupAttemptListOptions
-            {
-                SetupIntent = "seti_123",
-            };
+            this.listOptions = new SetupAttemptListOptions { SetupIntent = "seti_123" };
         }
 
         [Fact]

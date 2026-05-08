@@ -13,24 +13,22 @@ namespace StripeTests
         {
             var date = DateTime.UtcNow;
             var roundedDate = date.AddTicks(-1 * (date.Ticks % TimeSpan.TicksPerSecond));
-            var obj = new TestObjectDateTime
-            {
-                Date = roundedDate,
-            };
+            var obj = new TestObjectDateTime { Date = roundedDate };
 
-            var reloaded = JsonSerializer.Deserialize<TestObjectDateTime>(JsonSerializer.Serialize(obj));
+            var reloaded = JsonSerializer.Deserialize<TestObjectDateTime>(
+                JsonSerializer.Serialize(obj)
+            );
             Assert.Equal(reloaded.Date, obj.Date);
         }
 
         [Fact]
         public void HandleNull()
         {
-            var obj = new TestObjectDateTime
-            {
-                Date = null,
-            };
+            var obj = new TestObjectDateTime { Date = null };
 
-            var reloaded = JsonSerializer.Deserialize<TestObjectDateTime>(JsonSerializer.Serialize(obj));
+            var reloaded = JsonSerializer.Deserialize<TestObjectDateTime>(
+                JsonSerializer.Serialize(obj)
+            );
             Assert.Null(reloaded.Date);
         }
 
@@ -45,7 +43,8 @@ namespace StripeTests
             var serialized = JsonSerializer.Serialize(evt, indentedOpts);
             var reserialized = JsonSerializer.Serialize(
                 JsonSerializer.Deserialize<Event>(serialized, opts),
-                indentedOpts);
+                indentedOpts
+            );
             Assert.Equal(serialized, reserialized);
 
             json = GetResourceAsString("api_fixtures.customer_with_expansions.json");
@@ -53,7 +52,8 @@ namespace StripeTests
             serialized = JsonSerializer.Serialize(customer, indentedOpts);
             reserialized = JsonSerializer.Serialize(
                 JsonSerializer.Deserialize<Customer>(serialized, opts),
-                indentedOpts);
+                indentedOpts
+            );
             Assert.Equal(serialized, reserialized);
         }
     }

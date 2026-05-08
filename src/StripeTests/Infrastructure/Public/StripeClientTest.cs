@@ -12,14 +12,16 @@ namespace StripeTests
     using Stripe;
     using Stripe.V2;
     using Xunit;
-
     using static TelemetryTestUtils;
 
     public class StripeClientTest : BaseStripeTest
     {
         private StripeClient stripeClient;
 
-        public StripeClientTest(StripeMockFixture stripeMockFixture, MockHttpClientFixture mockHttpClient)
+        public StripeClientTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClient
+        )
             : base(stripeMockFixture, mockHttpClient)
         {
             this.stripeClient = this.StripeClient as StripeClient;
@@ -63,10 +65,7 @@ namespace StripeTests
         [Fact]
         public void Ctr_StripeClientOptions_ChangesAfterConstruction()
         {
-            var options = new StripeClientOptions
-            {
-                ApiKey = "ak_123",
-            };
+            var options = new StripeClientOptions { ApiKey = "ak_123" };
 
             var client = new StripeClient(options);
 
@@ -93,8 +92,14 @@ namespace StripeTests
                             m.Headers,
                             (_) => true,
                             (_) => true,
-                            (t) => t != null && t.Count == 1 && t.Contains(Stripe.StripeClient.StripeClientUsage[0]))),
-                    ItExpr.IsAny<CancellationToken>());
+                            (t) =>
+                                t != null
+                                && t.Count == 1
+                                && t.Contains(Stripe.StripeClient.StripeClientUsage[0])
+                        )
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
         [Fact]
@@ -105,7 +110,10 @@ namespace StripeTests
             // This mimics StripeConfiguration.BuildDefaultStripeClient, which is used
             // by StripeConfiguration.StripeClient when a client is not set
             StripeConfiguration.StripeClient = new DefaultStripeClient(
-                stripeClient.ApiKey, stripeClient.ClientId, stripeClient.HttpClient);
+                stripeClient.ApiKey,
+                stripeClient.ClientId,
+                stripeClient.HttpClient
+            );
 
             var customers = new CustomerService();
             customers.Get("cus_123");
@@ -120,8 +128,11 @@ namespace StripeTests
                             m.Headers,
                             (_) => true,
                             (_) => true,
-                            (t) => t != null && t.Count == 0)),
-                    ItExpr.IsAny<CancellationToken>());
+                            (t) => t != null && t.Count == 0
+                        )
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             // unfortunately we cannot check at the top of the test because
             // StripeConfiguration.StripeClient always returns a value; but
@@ -134,33 +145,33 @@ namespace StripeTests
         {
             // Stub a request as stripe-mock does not support v2
             this.MockHttpClientFixture.StubRequest(
-                    HttpMethod.Post,
-                    "/v2/billing/meter_event_session",
-                    System.Net.HttpStatusCode.OK,
-                    "{\"id\": \"mes_123\",\"object\":\"v2.billing.meter_event_session\"}");
+                HttpMethod.Post,
+                "/v2/billing/meter_event_session",
+                System.Net.HttpStatusCode.OK,
+                "{\"id\": \"mes_123\",\"object\":\"v2.billing.meter_event_session\"}"
+            );
 
             var rawResponse = await this.stripeClient.RawRequestAsync(
                 HttpMethod.Post,
                 "/v2/billing/meter_event_session",
                 "{}",
-                new RawRequestOptions
-                {
-                    AdditionalHeaders =
-                    {
-                        { "foo", "bar" },
-                    },
-                });
+                new RawRequestOptions { AdditionalHeaders = { { "foo", "bar" } } }
+            );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
-                        "SendAsync",
-                        Times.Once(),
-                        ItExpr.Is<HttpRequestMessage>(m =>
-                            m.Headers.GetValues("Stripe-Version").First() == ApiVersion.Current &&
-                            m.Headers.GetValues("foo").First() == "bar"),
-                        ItExpr.IsAny<CancellationToken>());
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Headers.GetValues("Stripe-Version").First() == ApiVersion.Current
+                        && m.Headers.GetValues("foo").First() == "bar"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
-            var obj = this.stripeClient.Deserialize<Stripe.V2.Billing.MeterEventSession>(rawResponse.Content);
+            var obj = this.stripeClient.Deserialize<Stripe.V2.Billing.MeterEventSession>(
+                rawResponse.Content
+            );
             Assert.Equal("mes_123", obj.Id);
         }
 
@@ -169,10 +180,11 @@ namespace StripeTests
         {
             // Stub a request as stripe-mock does not support v2
             this.MockHttpClientFixture.StubRequest(
-                    HttpMethod.Post,
-                    "/v2/billing/meter_event_session",
-                    System.Net.HttpStatusCode.OK,
-                    "{\"id\": \"mes_123\",\"object\":\"v2.billing.meter_event_session\"}");
+                HttpMethod.Post,
+                "/v2/billing/meter_event_session",
+                System.Net.HttpStatusCode.OK,
+                "{\"id\": \"mes_123\",\"object\":\"v2.billing.meter_event_session\"}"
+            );
 
             var expectedBaseUrl = "https://test.stripetest.com";
             var rawResponse = await this.stripeClient.RawRequestAsync(
@@ -182,21 +194,23 @@ namespace StripeTests
                 new RawRequestOptions
                 {
                     BaseUrl = expectedBaseUrl,
-                    AdditionalHeaders =
-                    {
-                        { "foo", "bar" },
-                    },
-                });
+                    AdditionalHeaders = { { "foo", "bar" } },
+                }
+            );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
-                        "SendAsync",
-                        Times.Once(),
-                        ItExpr.Is<HttpRequestMessage>(m =>
-                            new Uri(expectedBaseUrl).Host == (string)m.Properties["OriginalHost"]),
-                        ItExpr.IsAny<CancellationToken>());
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        new Uri(expectedBaseUrl).Host == (string)m.Properties["OriginalHost"]
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
-            var obj = this.stripeClient.Deserialize<Stripe.V2.Billing.MeterEventSession>(rawResponse.Content);
+            var obj = this.stripeClient.Deserialize<Stripe.V2.Billing.MeterEventSession>(
+                rawResponse.Content
+            );
             Assert.Equal("mes_123", obj.Id);
         }
 
@@ -204,20 +218,18 @@ namespace StripeTests
         public async Task RawRequestAsyncIncludesCorrectUsage()
         {
             await this.stripeClient.RawRequestAsync(
-               HttpMethod.Get,
-               "/v1/customers/cus_123",
-               null,
-               new RawRequestOptions
-               {
-               });
+                HttpMethod.Get,
+                "/v1/customers/cus_123",
+                null,
+                new RawRequestOptions { }
+            );
 
             await this.stripeClient.RawRequestAsync(
                 HttpMethod.Get,
                 "/v1/customers/cus_123",
                 null,
-                new RawRequestOptions
-                {
-                });
+                new RawRequestOptions { }
+            );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
@@ -228,14 +240,22 @@ namespace StripeTests
                             m.Headers,
                             (_) => true,
                             (_) => true,
-                            (t) => t != null && t.Count == 2 && t.Contains(Stripe.StripeClient.StripeClientUsage[0]) && t.Contains(LiveApiRequestor.RawRequestUsage[0]))),
-                    ItExpr.IsAny<CancellationToken>());
+                            (t) =>
+                                t != null
+                                && t.Count == 2
+                                && t.Contains(Stripe.StripeClient.StripeClientUsage[0])
+                                && t.Contains(LiveApiRequestor.RawRequestUsage[0])
+                        )
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
         [Fact]
         public void ConstructEventNotification()
         {
-            string payload = @"{
+            string payload =
+                @"{
                 ""object"": ""v2.core.event"",
                 ""type"": ""unknown"",
                 ""data"": {},
@@ -248,7 +268,8 @@ namespace StripeTests
             var evt = this.stripeClient.ParseEventNotification(
                 payload,
                 V2.EventTest.GenerateSigHeader(payload),
-                V2.EventTest.WebhookSecret);
+                V2.EventTest.WebhookSecret
+            );
 
             Assert.NotNull(evt);
         }
@@ -261,7 +282,8 @@ namespace StripeTests
                 json,
                 V2.EventTest.GenerateSigHeader(json),
                 V2.EventTest.WebhookSecret,
-                throwOnApiVersionMismatch: false);
+                throwOnApiVersionMismatch: false
+            );
 
             Assert.NotNull(eventUtilityEvent);
             Assert.Equal("acct_123", eventUtilityEvent.Account);
@@ -277,22 +299,19 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v1/customers",
                 "description=hello",
-                new RawRequestOptions
-                {
-                    AdditionalHeaders =
-                    {
-                        { "foo", "bar" },
-                    },
-                });
+                new RawRequestOptions { AdditionalHeaders = { { "foo", "bar" } } }
+            );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
-                        "SendAsync",
-                        Times.Once(),
-                        ItExpr.Is<HttpRequestMessage>(m =>
-                            m.Headers.GetValues("Stripe-Version").First() == ApiVersion.Current &&
-                            m.Headers.GetValues("foo").First() == "bar"),
-                        ItExpr.IsAny<CancellationToken>());
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Headers.GetValues("Stripe-Version").First() == ApiVersion.Current
+                        && m.Headers.GetValues("foo").First() == "bar"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             var cus = this.stripeClient.Deserialize<Stripe.Customer>(rawResponse.Content);
             Assert.Equal("customer", cus.Object);
@@ -301,12 +320,18 @@ namespace StripeTests
         // NOTE: This doesn't need to do anything except be a type we can instantiate
         private class TestHttpClient : IHttpClient
         {
-            public Task<StripeResponse> MakeRequestAsync(StripeRequest request, CancellationToken cancellationToken = default)
+            public Task<StripeResponse> MakeRequestAsync(
+                StripeRequest request,
+                CancellationToken cancellationToken = default
+            )
             {
                 throw new System.NotImplementedException();
             }
 
-            public Task<StripeStreamedResponse> MakeStreamingRequestAsync(StripeRequest request, CancellationToken cancellationToken = default)
+            public Task<StripeStreamedResponse> MakeStreamingRequestAsync(
+                StripeRequest request,
+                CancellationToken cancellationToken = default
+            )
             {
                 throw new System.NotImplementedException();
             }

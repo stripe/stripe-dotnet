@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddress : StripeEntity<PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddress>
+    public class PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddress
+        : StripeEntity<PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddress>
     {
         /// <summary>
         /// ABA Records contain U.S. bank account details per the ABA format.

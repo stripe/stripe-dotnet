@@ -14,23 +14,16 @@ namespace StripeTests
             {
                 Tiers = new List<PriceTierOptions>
                 {
-                    new PriceTierOptions
-                    {
-                        UnitAmount = 1000,
-                        UpTo = 10,
-                    },
-                    new PriceTierOptions
-                    {
-                        UnitAmount = 2000,
-                        UpTo = PriceTierUpTo.Inf,
-                    },
+                    new PriceTierOptions { UnitAmount = 1000, UpTo = 10 },
+                    new PriceTierOptions { UnitAmount = 2000, UpTo = PriceTierUpTo.Inf },
                 },
             };
 
             Assert.Equal(
-                "tiers[0][unit_amount]=1000&tiers[0][up_to]=10&" +
-                "tiers[1][unit_amount]=2000&tiers[1][up_to]=inf",
-                ContentEncoder.CreateQueryString(options));
+                "tiers[0][unit_amount]=1000&tiers[0][up_to]=10&"
+                    + "tiers[1][unit_amount]=2000&tiers[1][up_to]=inf",
+                ContentEncoder.CreateQueryString(options)
+            );
         }
 
         [Fact]
@@ -56,9 +49,10 @@ namespace StripeTests
             };
 
             Assert.Equal(
-                "tiers[0][flat_amount_decimal]=0.12&tiers[0][unit_amount_decimal]=0.003&tiers[0][up_to]=10&" +
-                "tiers[1][flat_amount_decimal]=0.24&tiers[1][unit_amount_decimal]=0.004&tiers[1][up_to]=inf",
-                ContentEncoder.CreateQueryString(options));
+                "tiers[0][flat_amount_decimal]=0.12&tiers[0][unit_amount_decimal]=0.003&tiers[0][up_to]=10&"
+                    + "tiers[1][flat_amount_decimal]=0.24&tiers[1][unit_amount_decimal]=0.004&tiers[1][up_to]=inf",
+                ContentEncoder.CreateQueryString(options)
+            );
         }
     }
 }

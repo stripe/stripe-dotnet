@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationTokenPaymentMethodPreviewCardThreeDSecureUsage : StripeEntity<ConfirmationTokenPaymentMethodPreviewCardThreeDSecureUsage>
+    public class ConfirmationTokenPaymentMethodPreviewCardThreeDSecureUsage
+        : StripeEntity<ConfirmationTokenPaymentMethodPreviewCardThreeDSecureUsage>
     {
         /// <summary>
         /// Whether 3D Secure is supported on this card.

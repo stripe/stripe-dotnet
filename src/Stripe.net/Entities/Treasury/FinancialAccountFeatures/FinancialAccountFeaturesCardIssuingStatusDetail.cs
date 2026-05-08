@@ -6,7 +6,8 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class FinancialAccountFeaturesCardIssuingStatusDetail : StripeEntity<FinancialAccountFeaturesCardIssuingStatusDetail>
+    public class FinancialAccountFeaturesCardIssuingStatusDetail
+        : StripeEntity<FinancialAccountFeaturesCardIssuingStatusDetail>
     {
         /// <summary>
         /// Represents the reason why the status is <c>pending</c> or <c>restricted</c>.

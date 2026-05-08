@@ -12,7 +12,11 @@ namespace Stripe.Issuing
     /// carrier text that represents a product line.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PersonalizationDesign : StripeEntity<PersonalizationDesign>, IHasId, IHasMetadata, IHasObject
+    public class PersonalizationDesign
+        : StripeEntity<PersonalizationDesign>,
+            IHasId,
+            IHasMetadata,
+            IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -124,7 +128,11 @@ namespace Stripe.Issuing
         public string PhysicalBundleId
         {
             get => this.InternalPhysicalBundle?.Id;
-            set => this.InternalPhysicalBundle = SetExpandableFieldId(value, this.InternalPhysicalBundle);
+            set =>
+                this.InternalPhysicalBundle = SetExpandableFieldId(
+                    value,
+                    this.InternalPhysicalBundle
+                );
         }
 
         /// <summary>
@@ -138,7 +146,11 @@ namespace Stripe.Issuing
         public PhysicalBundle PhysicalBundle
         {
             get => this.InternalPhysicalBundle?.ExpandedObject;
-            set => this.InternalPhysicalBundle = SetExpandableFieldObject(value, this.InternalPhysicalBundle);
+            set =>
+                this.InternalPhysicalBundle = SetExpandableFieldObject(
+                    value,
+                    this.InternalPhysicalBundle
+                );
         }
 
         [JsonProperty("physical_bundle")]

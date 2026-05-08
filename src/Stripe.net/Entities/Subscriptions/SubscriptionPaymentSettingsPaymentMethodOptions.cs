@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SubscriptionPaymentSettingsPaymentMethodOptions : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptions>
+    public class SubscriptionPaymentSettingsPaymentMethodOptions
+        : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptions>
     {
         /// <summary>
         /// This sub-hash contains details about the Canadian pre-authorized debit payment method

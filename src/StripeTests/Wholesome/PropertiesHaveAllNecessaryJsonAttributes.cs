@@ -32,19 +32,39 @@ namespace StripeTests.Wholesome
             {
                 foreach (ExtendedPropertyInfo property in GetPropertiesToCheck(type))
                 {
-                    if (property.GetCustomAttribute(typeof(NoSystemTextJsonAttributesNeededAttribute), false) != null)
+                    if (
+                        property.GetCustomAttribute(
+                            typeof(NoSystemTextJsonAttributesNeededAttribute),
+                            false
+                        ) != null
+                    )
                     {
                         continue;
                     }
 
-                    if (property.PropertyType == typeof(decimal) || property.PropertyType == typeof(decimal?))
+                    if (
+                        property.PropertyType == typeof(decimal)
+                        || property.PropertyType == typeof(decimal?)
+                    )
                     {
-                        var jsonAttribute = property.GetCustomAttribute(typeof(Newtonsoft.Json.JsonConverterAttribute), false) as Newtonsoft.Json.JsonConverterAttribute;
-                        var stjAttribute = property.GetCustomAttribute(typeof(JsonNumberHandlingAttribute)) as JsonNumberHandlingAttribute;
+                        var jsonAttribute =
+                            property.GetCustomAttribute(
+                                typeof(Newtonsoft.Json.JsonConverterAttribute),
+                                false
+                            ) as Newtonsoft.Json.JsonConverterAttribute;
+                        var stjAttribute =
+                            property.GetCustomAttribute(typeof(JsonNumberHandlingAttribute))
+                            as JsonNumberHandlingAttribute;
                         if (jsonAttribute?.ConverterType == typeof(DecimalStringConverter))
                         {
                             var hasCorrectAttributes =
-                                (stjAttribute.Handling & (JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString)) != 0;
+                                (
+                                    stjAttribute.Handling
+                                    & (
+                                        JsonNumberHandling.AllowReadingFromString
+                                        | JsonNumberHandling.WriteAsString
+                                    )
+                                ) != 0;
 
                             if (!hasCorrectAttributes)
                             {
@@ -55,14 +75,29 @@ namespace StripeTests.Wholesome
                         }
                     }
 
-                    if (property.PropertyType == typeof(long) || property.PropertyType == typeof(long?))
+                    if (
+                        property.PropertyType == typeof(long)
+                        || property.PropertyType == typeof(long?)
+                    )
                     {
-                        var jsonAttribute = property.GetCustomAttribute(typeof(Newtonsoft.Json.JsonConverterAttribute), false) as Newtonsoft.Json.JsonConverterAttribute;
-                        var stjAttribute = property.GetCustomAttribute(typeof(JsonNumberHandlingAttribute)) as JsonNumberHandlingAttribute;
+                        var jsonAttribute =
+                            property.GetCustomAttribute(
+                                typeof(Newtonsoft.Json.JsonConverterAttribute),
+                                false
+                            ) as Newtonsoft.Json.JsonConverterAttribute;
+                        var stjAttribute =
+                            property.GetCustomAttribute(typeof(JsonNumberHandlingAttribute))
+                            as JsonNumberHandlingAttribute;
                         if (jsonAttribute?.ConverterType == typeof(Int64StringConverter))
                         {
                             var hasCorrectAttributes =
-                                (stjAttribute.Handling & (JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString)) != 0;
+                                (
+                                    stjAttribute.Handling
+                                    & (
+                                        JsonNumberHandling.AllowReadingFromString
+                                        | JsonNumberHandling.WriteAsString
+                                    )
+                                ) != 0;
 
                             if (!hasCorrectAttributes)
                             {
@@ -75,9 +110,17 @@ namespace StripeTests.Wholesome
 
                     foreach (Attribute attribute in property.GetCustomAttributes())
                     {
-                        if (attribute.GetType().Namespace?.StartsWith("Newtonsoft", true, null) == true)
+                        if (
+                            attribute.GetType().Namespace?.StartsWith("Newtonsoft", true, null)
+                            == true
+                        )
                         {
-                            bool hasCorrectAttributes = SystemTextJsonTestUtils.HasCorrectAttributes(attribute, property.GetCustomAttributes(), property.IsNotPublic);
+                            bool hasCorrectAttributes =
+                                SystemTextJsonTestUtils.HasCorrectAttributes(
+                                    attribute,
+                                    property.GetCustomAttributes(),
+                                    property.IsNotPublic
+                                );
                             if (!hasCorrectAttributes)
                             {
                                 results.Add($"{type.FullName}.{property.Name}");
@@ -87,7 +130,8 @@ namespace StripeTests.Wholesome
                 }
             }
 
-            var message = $"{AssertionMessage}\n{results.Count} affected properties: {string.Join(",", results)}";
+            var message =
+                $"{AssertionMessage}\n{results.Count} affected properties: {string.Join(",", results)}";
             AssertEmpty(results, message);
         }
     }

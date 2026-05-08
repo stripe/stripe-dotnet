@@ -6,7 +6,8 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AuthorizationFleetReportedBreakdownTax : StripeEntity<AuthorizationFleetReportedBreakdownTax>
+    public class AuthorizationFleetReportedBreakdownTax
+        : StripeEntity<AuthorizationFleetReportedBreakdownTax>
     {
         /// <summary>
         /// Amount of state or provincial Sales Tax included in the transaction amount. <c>null</c>
@@ -14,7 +15,9 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("local_amount_decimal")]
         [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonNumberHandling(
+            STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString
+        )]
         [STJS.JsonPropertyName("local_amount_decimal")]
         public decimal? LocalAmountDecimal { get; set; }
 
@@ -24,7 +27,9 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("national_amount_decimal")]
         [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonNumberHandling(
+            STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString
+        )]
         [STJS.JsonPropertyName("national_amount_decimal")]
         public decimal? NationalAmountDecimal { get; set; }
     }

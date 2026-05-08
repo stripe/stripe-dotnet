@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionInvoiceCreationInvoiceDataIssuer : StripeEntity<SessionInvoiceCreationInvoiceDataIssuer>
+    public class SessionInvoiceCreationInvoiceDataIssuer
+        : StripeEntity<SessionInvoiceCreationInvoiceDataIssuer>
     {
         #region Expandable Account
 

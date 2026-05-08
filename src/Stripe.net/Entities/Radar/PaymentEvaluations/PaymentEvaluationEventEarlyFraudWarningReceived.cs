@@ -6,7 +6,8 @@ namespace Stripe.Radar
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentEvaluationEventEarlyFraudWarningReceived : StripeEntity<PaymentEvaluationEventEarlyFraudWarningReceived>
+    public class PaymentEvaluationEventEarlyFraudWarningReceived
+        : StripeEntity<PaymentEvaluationEventEarlyFraudWarningReceived>
     {
         /// <summary>
         /// The type of fraud labeled by the issuer.

@@ -7,9 +7,7 @@ namespace StripeTests
     public class ApplePayDomainTest : BaseStripeTest
     {
         public ApplePayDomainTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

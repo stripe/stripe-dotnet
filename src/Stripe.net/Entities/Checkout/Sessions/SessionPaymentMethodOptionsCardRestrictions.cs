@@ -7,7 +7,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsCardRestrictions : StripeEntity<SessionPaymentMethodOptionsCardRestrictions>
+    public class SessionPaymentMethodOptionsCardRestrictions
+        : StripeEntity<SessionPaymentMethodOptionsCardRestrictions>
     {
         /// <summary>
         /// Specify the card brands to block in the Checkout Session. If a customer enters or

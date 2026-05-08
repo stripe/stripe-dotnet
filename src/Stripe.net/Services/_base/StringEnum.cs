@@ -24,7 +24,9 @@ namespace Stripe
     /// </code>
     /// </example>
     [Newtonsoft.Json.JsonConverter(typeof(Infrastructure.NewtonsoftStringEnumConverter))]
-    [NoSystemTextJsonAttributesNeeded("STJ converter is on each concrete subclass because STJ does not inherit converter attributes from base classes.")]
+    [NoSystemTextJsonAttributesNeeded(
+        "STJ converter is on each concrete subclass because STJ does not inherit converter attributes from base classes."
+    )]
     public abstract class StringEnum
     {
         /// <summary>Initializes a new instance of the <see cref="StringEnum"/> class.</summary>

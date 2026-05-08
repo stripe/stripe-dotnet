@@ -7,9 +7,7 @@ namespace StripeTests.Reporting
     public class ReportTypeTest : BaseStripeTest
     {
         public ReportTypeTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

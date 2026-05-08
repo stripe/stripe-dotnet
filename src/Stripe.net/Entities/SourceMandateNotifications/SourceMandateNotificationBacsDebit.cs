@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SourceMandateNotificationBacsDebit : StripeEntity<SourceMandateNotificationBacsDebit>
+    public class SourceMandateNotificationBacsDebit
+        : StripeEntity<SourceMandateNotificationBacsDebit>
     {
         /// <summary>
         /// Last 4 digits of the account number associated with the debit.

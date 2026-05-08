@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationMerchantCapabilities : StripeEntity<AccountConfigurationMerchantCapabilities>
+    public class AccountConfigurationMerchantCapabilities
+        : StripeEntity<AccountConfigurationMerchantCapabilities>
     {
         /// <summary>
         /// Allow the merchant to process ACH debit payments.

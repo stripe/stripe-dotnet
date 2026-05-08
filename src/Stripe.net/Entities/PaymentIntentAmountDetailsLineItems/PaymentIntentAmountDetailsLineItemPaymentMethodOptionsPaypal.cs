@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentAmountDetailsLineItemPaymentMethodOptionsPaypal : StripeEntity<PaymentIntentAmountDetailsLineItemPaymentMethodOptionsPaypal>
+    public class PaymentIntentAmountDetailsLineItemPaymentMethodOptionsPaypal
+        : StripeEntity<PaymentIntentAmountDetailsLineItemPaymentMethodOptionsPaypal>
     {
         /// <summary>
         /// Type of the line item.

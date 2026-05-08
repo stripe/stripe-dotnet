@@ -11,19 +11,15 @@ namespace Stripe
         private BillingPortal.SessionService sessions;
 
         internal BillingPortalService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         internal BillingPortalService(IStripeClient client)
-            : base(client)
-        {
-        }
+            : base(client) { }
 
-        public virtual BillingPortal.ConfigurationService Configurations => this.configurations ??= new BillingPortal.ConfigurationService(
-            this.Requestor);
+        public virtual BillingPortal.ConfigurationService Configurations =>
+            this.configurations ??= new BillingPortal.ConfigurationService(this.Requestor);
 
-        public virtual BillingPortal.SessionService Sessions => this.sessions ??= new BillingPortal.SessionService(
-            this.Requestor);
+        public virtual BillingPortal.SessionService Sessions =>
+            this.sessions ??= new BillingPortal.SessionService(this.Requestor);
     }
 }

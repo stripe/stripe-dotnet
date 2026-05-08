@@ -45,7 +45,10 @@ namespace Stripe.Climate
         /// </summary>
         [JsonProperty("current_prices_per_metric_ton")]
         [STJS.JsonPropertyName("current_prices_per_metric_ton")]
-        public Dictionary<string, ProductCurrentPricesPerMetricTon> CurrentPricesPerMetricTon { get; set; }
+        public Dictionary<
+            string,
+            ProductCurrentPricesPerMetricTon
+        > CurrentPricesPerMetricTon { get; set; }
 
         /// <summary>
         /// The year in which the carbon removal is expected to be delivered.
@@ -67,7 +70,9 @@ namespace Stripe.Climate
         /// </summary>
         [JsonProperty("metric_tons_available")]
         [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonNumberHandling(
+            STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString
+        )]
         [STJS.JsonPropertyName("metric_tons_available")]
         public decimal MetricTonsAvailable { get; set; }
 

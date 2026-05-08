@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationMerchantKonbiniPayments : StripeEntity<AccountConfigurationMerchantKonbiniPayments>
+    public class AccountConfigurationMerchantKonbiniPayments
+        : StripeEntity<AccountConfigurationMerchantKonbiniPayments>
     {
         /// <summary>
         /// Support for Konbini payments.

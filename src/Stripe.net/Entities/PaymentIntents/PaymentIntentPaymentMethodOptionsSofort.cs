@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentMethodOptionsSofort : StripeEntity<PaymentIntentPaymentMethodOptionsSofort>
+    public class PaymentIntentPaymentMethodOptionsSofort
+        : StripeEntity<PaymentIntentPaymentMethodOptionsSofort>
     {
         /// <summary>
         /// Preferred language of the SOFORT authorization page that the customer is redirected to.

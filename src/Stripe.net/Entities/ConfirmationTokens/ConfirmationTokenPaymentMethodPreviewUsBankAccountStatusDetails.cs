@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationTokenPaymentMethodPreviewUsBankAccountStatusDetails : StripeEntity<ConfirmationTokenPaymentMethodPreviewUsBankAccountStatusDetails>
+    public class ConfirmationTokenPaymentMethodPreviewUsBankAccountStatusDetails
+        : StripeEntity<ConfirmationTokenPaymentMethodPreviewUsBankAccountStatusDetails>
     {
         [JsonProperty("blocked")]
         [STJS.JsonPropertyName("blocked")]

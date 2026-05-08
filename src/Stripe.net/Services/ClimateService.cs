@@ -12,22 +12,18 @@ namespace Stripe
         private Climate.SupplierService suppliers;
 
         internal ClimateService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         internal ClimateService(IStripeClient client)
-            : base(client)
-        {
-        }
+            : base(client) { }
 
-        public virtual Climate.OrderService Orders => this.orders ??= new Climate.OrderService(
-            this.Requestor);
+        public virtual Climate.OrderService Orders =>
+            this.orders ??= new Climate.OrderService(this.Requestor);
 
-        public virtual Climate.ProductService Products => this.products ??= new Climate.ProductService(
-            this.Requestor);
+        public virtual Climate.ProductService Products =>
+            this.products ??= new Climate.ProductService(this.Requestor);
 
-        public virtual Climate.SupplierService Suppliers => this.suppliers ??= new Climate.SupplierService(
-            this.Requestor);
+        public virtual Climate.SupplierService Suppliers =>
+            this.suppliers ??= new Climate.SupplierService(this.Requestor);
     }
 }

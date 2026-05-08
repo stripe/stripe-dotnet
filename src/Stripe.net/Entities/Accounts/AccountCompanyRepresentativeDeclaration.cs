@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountCompanyRepresentativeDeclaration : StripeEntity<AccountCompanyRepresentativeDeclaration>
+    public class AccountCompanyRepresentativeDeclaration
+        : StripeEntity<AccountCompanyRepresentativeDeclaration>
     {
         /// <summary>
         /// The Unix timestamp marking when the representative declaration attestation was made.

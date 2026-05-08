@@ -175,7 +175,9 @@ namespace Stripe
         /// </summary>
         [JsonProperty("quantity_decimal")]
         [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonNumberHandling(
+            STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString
+        )]
         [STJS.JsonPropertyName("quantity_decimal")]
         public decimal? QuantityDecimal { get; set; }
 
@@ -186,7 +188,8 @@ namespace Stripe
         public string SubscriptionId
         {
             get => this.InternalSubscription?.Id;
-            set => this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
+            set =>
+                this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
         }
 
         [JsonIgnore]
@@ -194,7 +197,11 @@ namespace Stripe
         public Subscription Subscription
         {
             get => this.InternalSubscription?.ExpandedObject;
-            set => this.InternalSubscription = SetExpandableFieldObject(value, this.InternalSubscription);
+            set =>
+                this.InternalSubscription = SetExpandableFieldObject(
+                    value,
+                    this.InternalSubscription
+                );
         }
 
         [JsonProperty("subscription")]

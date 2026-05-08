@@ -83,7 +83,11 @@ namespace Stripe
         public Application Application
         {
             get => this.InternalApplication?.ExpandedObject;
-            set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
+            set =>
+                this.InternalApplication = SetExpandableFieldObject(
+                    value,
+                    this.InternalApplication
+                );
         }
 
         [JsonProperty("application")]
@@ -254,7 +258,11 @@ namespace Stripe
         public string LatestAttemptId
         {
             get => this.InternalLatestAttempt?.Id;
-            set => this.InternalLatestAttempt = SetExpandableFieldId(value, this.InternalLatestAttempt);
+            set =>
+                this.InternalLatestAttempt = SetExpandableFieldId(
+                    value,
+                    this.InternalLatestAttempt
+                );
         }
 
         /// <summary>
@@ -268,7 +276,11 @@ namespace Stripe
         public SetupAttempt LatestAttempt
         {
             get => this.InternalLatestAttempt?.ExpandedObject;
-            set => this.InternalLatestAttempt = SetExpandableFieldObject(value, this.InternalLatestAttempt);
+            set =>
+                this.InternalLatestAttempt = SetExpandableFieldObject(
+                    value,
+                    this.InternalLatestAttempt
+                );
         }
 
         [JsonProperty("latest_attempt")]
@@ -363,7 +375,8 @@ namespace Stripe
         public Account OnBehalfOf
         {
             get => this.InternalOnBehalfOf?.ExpandedObject;
-            set => this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
+            set =>
+                this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
         }
 
         [JsonProperty("on_behalf_of")]
@@ -387,7 +400,11 @@ namespace Stripe
         public string PaymentMethodId
         {
             get => this.InternalPaymentMethod?.Id;
-            set => this.InternalPaymentMethod = SetExpandableFieldId(value, this.InternalPaymentMethod);
+            set =>
+                this.InternalPaymentMethod = SetExpandableFieldId(
+                    value,
+                    this.InternalPaymentMethod
+                );
         }
 
         /// <summary>
@@ -404,7 +421,11 @@ namespace Stripe
         public PaymentMethod PaymentMethod
         {
             get => this.InternalPaymentMethod?.ExpandedObject;
-            set => this.InternalPaymentMethod = SetExpandableFieldObject(value, this.InternalPaymentMethod);
+            set =>
+                this.InternalPaymentMethod = SetExpandableFieldObject(
+                    value,
+                    this.InternalPaymentMethod
+                );
         }
 
         [JsonProperty("payment_method")]
@@ -450,7 +471,11 @@ namespace Stripe
         public string SingleUseMandateId
         {
             get => this.InternalSingleUseMandate?.Id;
-            set => this.InternalSingleUseMandate = SetExpandableFieldId(value, this.InternalSingleUseMandate);
+            set =>
+                this.InternalSingleUseMandate = SetExpandableFieldId(
+                    value,
+                    this.InternalSingleUseMandate
+                );
         }
 
         /// <summary>
@@ -464,7 +489,11 @@ namespace Stripe
         public Mandate SingleUseMandate
         {
             get => this.InternalSingleUseMandate?.ExpandedObject;
-            set => this.InternalSingleUseMandate = SetExpandableFieldObject(value, this.InternalSingleUseMandate);
+            set =>
+                this.InternalSingleUseMandate = SetExpandableFieldObject(
+                    value,
+                    this.InternalSingleUseMandate
+                );
         }
 
         [JsonProperty("single_use_mandate")]

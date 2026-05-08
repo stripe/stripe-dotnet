@@ -6,7 +6,8 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AuthorizationVerificationDataThreeDSecure : StripeEntity<AuthorizationVerificationDataThreeDSecure>
+    public class AuthorizationVerificationDataThreeDSecure
+        : StripeEntity<AuthorizationVerificationDataThreeDSecure>
     {
         /// <summary>
         /// The outcome of the 3D Secure authentication request.

@@ -12,7 +12,10 @@ namespace Stripe
     /// the customer.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SourceMandateNotification : StripeEntity<SourceMandateNotification>, IHasId, IHasObject
+    public class SourceMandateNotification
+        : StripeEntity<SourceMandateNotification>,
+            IHasId,
+            IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.

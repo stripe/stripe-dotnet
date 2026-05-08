@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountPersonAdditionalTermsOfService : StripeEntity<AccountPersonAdditionalTermsOfService>
+    public class AccountPersonAdditionalTermsOfService
+        : StripeEntity<AccountPersonAdditionalTermsOfService>
     {
         /// <summary>
         /// Stripe terms of service agreement.

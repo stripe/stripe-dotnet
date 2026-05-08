@@ -6,7 +6,8 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class OutboundTransferDestinationPaymentMethodDetailsUsBankAccount : StripeEntity<OutboundTransferDestinationPaymentMethodDetailsUsBankAccount>
+    public class OutboundTransferDestinationPaymentMethodDetailsUsBankAccount
+        : StripeEntity<OutboundTransferDestinationPaymentMethodDetailsUsBankAccount>
     {
         /// <summary>
         /// Account holder type: individual or company.

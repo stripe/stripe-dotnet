@@ -25,11 +25,9 @@ namespace StripeTests
         public LiveApiRequestorTest()
         {
             this.httpClient = new DummyHttpClient();
-            this.apiRequestor = new LiveApiRequestor(new StripeClientOptions
-            {
-                ApiKey = "sk_test_123",
-                HttpClient = this.httpClient,
-            });
+            this.apiRequestor = new LiveApiRequestor(
+                new StripeClientOptions { ApiKey = "sk_test_123", HttpClient = this.httpClient }
+            );
             this.options = new ChargeCreateOptions
             {
                 Amount = 123,
@@ -50,14 +48,18 @@ namespace StripeTests
         [Fact]
         public void Ctor_ThrowsIfApiKeyIsEmpty()
         {
-            var exception = Assert.Throws<ArgumentException>(() => new LiveApiRequestor(new StripeClientOptions { ApiKey = string.Empty }));
+            var exception = Assert.Throws<ArgumentException>(() =>
+                new LiveApiRequestor(new StripeClientOptions { ApiKey = string.Empty })
+            );
             Assert.Contains("API key cannot be the empty string.", exception.Message);
         }
 
         [Fact]
         public void Ctor_ThrowsIfApiKeyContainsWhitespace()
         {
-            var exception = Assert.Throws<ArgumentException>(() => new LiveApiRequestor(new StripeClientOptions { ApiKey = "sk_test_123\n" }));
+            var exception = Assert.Throws<ArgumentException>(() =>
+                new LiveApiRequestor(new StripeClientOptions { ApiKey = "sk_test_123\n" })
+            );
             Assert.Contains("API key cannot contain whitespace.", exception.Message);
         }
 
@@ -72,7 +74,8 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v1/charges",
                 this.options,
-                this.requestOptions);
+                this.requestOptions
+            );
 
             Assert.NotNull(charge);
             Assert.Equal("ch_123", charge.Id);
@@ -85,17 +88,15 @@ namespace StripeTests
             var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");
             this.httpClient.Response = response;
 
-            var testRequestOptions = new RequestOptions
-            {
-                StripeAccount = "acct_456",
-            };
+            var testRequestOptions = new RequestOptions { StripeAccount = "acct_456" };
 
             var charge = await this.apiRequestor.RequestAsync<Charge>(
                 BaseAddress.Api,
                 HttpMethod.Post,
                 "/v1/charges",
                 this.options,
-                testRequestOptions);
+                testRequestOptions
+            );
 
             Assert.NotNull(charge);
             Assert.Equal("acct_456", this.httpClient.LastRequest.StripeHeaders["Stripe-Account"]);
@@ -107,17 +108,15 @@ namespace StripeTests
             var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");
             this.httpClient.Response = response;
 
-            var testRequestOptions = new RequestOptions
-            {
-                StripeContext = "ctx_123",
-            };
+            var testRequestOptions = new RequestOptions { StripeContext = "ctx_123" };
 
             var charge = await this.apiRequestor.RequestAsync<Charge>(
                 BaseAddress.Api,
                 HttpMethod.Post,
                 "/v1/charges",
                 this.options,
-                testRequestOptions);
+                testRequestOptions
+            );
 
             Assert.NotNull(charge);
             Assert.Equal("ctx_123", this.httpClient.LastRequest.StripeHeaders["Stripe-Context"]);
@@ -135,11 +134,16 @@ namespace StripeTests
                     HttpMethod.Post,
                     "/v1/charges",
                     this.options,
-                    this.requestOptions));
+                    this.requestOptions
+                )
+            );
 
             Assert.NotNull(exception);
             Assert.Equal(HttpStatusCode.OK, exception.HttpStatusCode);
-            Assert.Equal("Invalid response object from API: \"this isn't JSON\"", exception.Message);
+            Assert.Equal(
+                "Invalid response object from API: \"this isn't JSON\"",
+                exception.Message
+            );
             Assert.Equal(response, exception.StripeResponse);
         }
 
@@ -149,7 +153,8 @@ namespace StripeTests
             var response = new StripeResponse(
                 HttpStatusCode.PaymentRequired,
                 null,
-                "{\"error\": {\"type\": \"card_error\"}}");
+                "{\"error\": {\"type\": \"card_error\"}}"
+            );
             this.httpClient.Response = response;
 
             var exception = await Assert.ThrowsAsync<StripeException>(async () =>
@@ -158,7 +163,9 @@ namespace StripeTests
                     HttpMethod.Post,
                     "/v1/charges",
                     this.options,
-                    this.requestOptions));
+                    this.requestOptions
+                )
+            );
 
             Assert.NotNull(exception);
             Assert.Equal(HttpStatusCode.PaymentRequired, exception.HttpStatusCode);
@@ -172,7 +179,8 @@ namespace StripeTests
             var response = new StripeResponse(
                 HttpStatusCode.BadRequest,
                 null,
-                "{\"error\": \"invalid_request\"}");
+                "{\"error\": \"invalid_request\"}"
+            );
             this.httpClient.Response = response;
 
             var exception = await Assert.ThrowsAsync<StripeException>(async () =>
@@ -181,7 +189,9 @@ namespace StripeTests
                     HttpMethod.Post,
                     "/oauth/token",
                     this.options,
-                    this.requestOptions));
+                    this.requestOptions
+                )
+            );
 
             Assert.NotNull(exception);
             Assert.Equal(HttpStatusCode.BadRequest, exception.HttpStatusCode);
@@ -195,7 +205,8 @@ namespace StripeTests
             var response = new StripeResponse(
                 HttpStatusCode.InternalServerError,
                 null,
-                "this isn't JSON");
+                "this isn't JSON"
+            );
             this.httpClient.Response = response;
 
             var exception = await Assert.ThrowsAsync<StripeException>(async () =>
@@ -204,20 +215,22 @@ namespace StripeTests
                     HttpMethod.Post,
                     "/v1/charges",
                     this.options,
-                    this.requestOptions));
+                    this.requestOptions
+                )
+            );
             Assert.NotNull(exception);
             Assert.Equal(HttpStatusCode.InternalServerError, exception.HttpStatusCode);
-            Assert.Equal("Invalid response object from API: \"this isn't JSON\"", exception.Message);
+            Assert.Equal(
+                "Invalid response object from API: \"this isn't JSON\"",
+                exception.Message
+            );
             Assert.Equal(response, exception.StripeResponse);
         }
 
         [Fact]
         public async Task RequestAsync_Error_InvalidErrorObject()
         {
-            var response = new StripeResponse(
-                HttpStatusCode.InternalServerError,
-                null,
-                "{}");
+            var response = new StripeResponse(HttpStatusCode.InternalServerError, null, "{}");
             this.httpClient.Response = response;
 
             var exception = await Assert.ThrowsAsync<StripeException>(async () =>
@@ -226,7 +239,9 @@ namespace StripeTests
                     HttpMethod.Post,
                     "/v1/charges",
                     this.options,
-                    this.requestOptions));
+                    this.requestOptions
+                )
+            );
 
             Assert.NotNull(exception);
             Assert.Equal(HttpStatusCode.InternalServerError, exception.HttpStatusCode);
@@ -237,7 +252,8 @@ namespace StripeTests
         [Fact]
         public async Task RequestAsync_V2_Error()
         {
-            var body = @"
+            var body =
+                @"
                 {
                   ""error"": {
                     ""type"": ""temporary_session_expired"",
@@ -255,7 +271,9 @@ namespace StripeTests
                     HttpMethod.Post,
                     "/v2/meter_event_stream",
                     this.options,
-                    this.requestOptions));
+                    this.requestOptions
+                )
+            );
 
             Assert.NotNull(exception);
             Assert.Equal(HttpStatusCode.BadRequest, exception.HttpStatusCode);
@@ -302,7 +320,8 @@ namespace StripeTests
             var streamedResponse = new StripeStreamedResponse(
                 HttpStatusCode.OK,
                 null,
-                StringToStream("this isn't JSON"));
+                StringToStream("this isn't JSON")
+            );
             this.httpClient.StreamedResponse = streamedResponse;
 
             var stream = await this.apiRequestor.RequestStreamingAsync(
@@ -310,7 +329,8 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v1/charges",
                 this.options,
-                this.requestOptions);
+                this.requestOptions
+            );
 
             Assert.NotNull(stream);
             Assert.Equal("this isn't JSON", StreamToString(stream));
@@ -322,7 +342,8 @@ namespace StripeTests
             var streamedResponse = new StripeStreamedResponse(
                 HttpStatusCode.PaymentRequired,
                 null,
-                StringToStream("{\"error\": {\"type\": \"card_error\"}}"));
+                StringToStream("{\"error\": {\"type\": \"card_error\"}}")
+            );
             this.httpClient.StreamedResponse = streamedResponse;
 
             var exception = await Assert.ThrowsAsync<StripeException>(async () =>
@@ -331,7 +352,9 @@ namespace StripeTests
                     HttpMethod.Post,
                     "/v1/charges",
                     this.options,
-                    this.requestOptions));
+                    this.requestOptions
+                )
+            );
 
             Assert.NotNull(exception);
             Assert.Equal(HttpStatusCode.PaymentRequired, exception.HttpStatusCode);
@@ -345,7 +368,8 @@ namespace StripeTests
             var streamedResponse = new StripeStreamedResponse(
                 HttpStatusCode.BadRequest,
                 null,
-                StringToStream("{\"error\": \"invalid_request\"}"));
+                StringToStream("{\"error\": \"invalid_request\"}")
+            );
             this.httpClient.StreamedResponse = streamedResponse;
 
             var exception = await Assert.ThrowsAsync<StripeException>(async () =>
@@ -354,7 +378,9 @@ namespace StripeTests
                     HttpMethod.Post,
                     "/oauth/token",
                     this.options,
-                    this.requestOptions));
+                    this.requestOptions
+                )
+            );
 
             Assert.NotNull(exception);
             Assert.Equal(HttpStatusCode.BadRequest, exception.HttpStatusCode);
@@ -368,7 +394,8 @@ namespace StripeTests
             var streamedResponse = new StripeStreamedResponse(
                 HttpStatusCode.InternalServerError,
                 null,
-                StringToStream("{}"));
+                StringToStream("{}")
+            );
             this.httpClient.StreamedResponse = streamedResponse;
 
             var exception = await Assert.ThrowsAsync<StripeException>(async () =>
@@ -377,7 +404,9 @@ namespace StripeTests
                     HttpMethod.Post,
                     "/v1/charges",
                     this.options,
-                    this.requestOptions));
+                    this.requestOptions
+                )
+            );
 
             Assert.NotNull(exception);
             Assert.Equal(HttpStatusCode.InternalServerError, exception.HttpStatusCode);
@@ -401,19 +430,22 @@ namespace StripeTests
             var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"fa_123\"}");
             this.httpClient.Response = response;
 
-            var options = new Stripe.V2.Billing.MeterEventSessionCreateOptions
-            {
-            };
-            var rawresponse = await this.apiRequestor.RequestAsync<Stripe.V2.Billing.MeterEventSession>(
-                BaseAddress.Api,
-                HttpMethod.Post,
-                "/v2/meter_event_session",
-                options,
-                this.requestOptions);
+            var options = new Stripe.V2.Billing.MeterEventSessionCreateOptions { };
+            var rawresponse =
+                await this.apiRequestor.RequestAsync<Stripe.V2.Billing.MeterEventSession>(
+                    BaseAddress.Api,
+                    HttpMethod.Post,
+                    "/v2/meter_event_session",
+                    options,
+                    this.requestOptions
+                );
 
             var lastRequest = this.httpClient.LastRequest;
 
-            Assert.Equal("application/json; charset=utf-8", lastRequest.Content.Headers.GetValues("Content-Type").First());
+            Assert.Equal(
+                "application/json; charset=utf-8",
+                lastRequest.Content.Headers.GetValues("Content-Type").First()
+            );
             Assert.Equal("{}", await lastRequest.Content.ReadAsStringAsync());
         }
 
@@ -426,12 +458,16 @@ namespace StripeTests
             var rawresponse = await this.apiRequestor.RawRequestAsync(
                 HttpMethod.Post,
                 "/v1/charges",
-                "foo=bar");
+                "foo=bar"
+            );
 
             var lastRequest = this.httpClient.LastRequest;
 
             Assert.Equal("{\"id\": \"ch_123\"}", rawresponse.Content);
-            Assert.Equal("application/x-www-form-urlencoded; charset=utf-8", lastRequest.Content.Headers.GetValues("Content-Type").First());
+            Assert.Equal(
+                "application/x-www-form-urlencoded; charset=utf-8",
+                lastRequest.Content.Headers.GetValues("Content-Type").First()
+            );
             Assert.Equal("foo=bar", await lastRequest.Content.ReadAsStringAsync());
         }
 
@@ -444,7 +480,8 @@ namespace StripeTests
             var rawresponse = await this.apiRequestor.RawRequestAsync(
                 HttpMethod.Post,
                 "/v1/charges",
-                "foo=bar");
+                "foo=bar"
+            );
             var lastRequest = this.httpClient.LastRequest;
             Assert.Equal(new List<string> { "raw_request" }, lastRequest.Usage);
         }
@@ -458,12 +495,16 @@ namespace StripeTests
             var rawresponse = this.apiRequestor.RawRequest(
                 HttpMethod.Post,
                 "/v1/charges",
-                "foo=bar");
+                "foo=bar"
+            );
 
             var lastRequest = this.httpClient.LastRequest;
 
             Assert.Equal("{\"id\": \"ch_123\"}", rawresponse.Content);
-            Assert.Equal("application/x-www-form-urlencoded; charset=utf-8", lastRequest.Content.Headers.GetValues("Content-Type").First());
+            Assert.Equal(
+                "application/x-www-form-urlencoded; charset=utf-8",
+                lastRequest.Content.Headers.GetValues("Content-Type").First()
+            );
             Assert.Equal("foo=bar", await lastRequest.Content.ReadAsStringAsync());
         }
 
@@ -478,18 +519,16 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/charges",
                 "{\"foo\":\"bar\"}",
-                new RawRequestOptions
-                {
-                    AdditionalHeaders =
-                    {
-                        { "foo", "bar" },
-                    },
-                });
+                new RawRequestOptions { AdditionalHeaders = { { "foo", "bar" } } }
+            );
 
             var lastRequest = this.httpClient.LastRequest;
 
             Assert.Equal(content, rawResponse.Content);
-            Assert.Equal("application/json; charset=utf-8", lastRequest.Content.Headers.GetValues("Content-Type").First());
+            Assert.Equal(
+                "application/json; charset=utf-8",
+                lastRequest.Content.Headers.GetValues("Content-Type").First()
+            );
             Assert.Equal("{\"foo\":\"bar\"}", await lastRequest.Content.ReadAsStringAsync());
             Assert.Equal("bar", lastRequest.StripeHeaders["foo"]);
         }
@@ -505,10 +544,8 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v1/charges",
                 "{\"foo\":\"bar\"}",
-                new RawRequestOptions
-                {
-                    StripeContext = "ctx_123",
-                });
+                new RawRequestOptions { StripeContext = "ctx_123" }
+            );
 
             var lastRequest = this.httpClient.LastRequest;
 
@@ -526,10 +563,8 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v1/charges",
                 "{\"foo\":\"bar\"}",
-                new RawRequestOptions
-                {
-                    StripeContext = "ctx_123",
-                });
+                new RawRequestOptions { StripeContext = "ctx_123" }
+            );
 
             var lastRequest = this.httpClient.LastRequest;
 
@@ -547,10 +582,8 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v1/charges",
                 "{\"foo\":\"bar\"}",
-                new RawRequestOptions
-                {
-                    StripeContext = null,
-                });
+                new RawRequestOptions { StripeContext = null }
+            );
 
             var lastRequest = this.httpClient.LastRequest;
 
@@ -564,7 +597,10 @@ namespace StripeTests
             var response = new StripeResponse(HttpStatusCode.OK, null, content);
             this.httpClient.Response = response;
 
-            var rawResponse = await this.apiRequestor.RawRequestAsync(HttpMethod.Get, "/v1/charges/ch_123");
+            var rawResponse = await this.apiRequestor.RawRequestAsync(
+                HttpMethod.Get,
+                "/v1/charges/ch_123"
+            );
             var lastRequest = this.httpClient.LastRequest;
 
             Assert.Equal(HttpMethod.Get, lastRequest.Method);
@@ -594,7 +630,11 @@ namespace StripeTests
             var response = new StripeResponse(HttpStatusCode.OK, null, content);
             this.httpClient.Response = response;
 
-            var rawResponse = await this.apiRequestor.RawRequestAsync(HttpMethod.Post, "/v1/charges/ch_123", "{\"foo\":\"bar\"}");
+            var rawResponse = await this.apiRequestor.RawRequestAsync(
+                HttpMethod.Post,
+                "/v1/charges/ch_123",
+                "{\"foo\":\"bar\"}"
+            );
             var lastRequest = this.httpClient.LastRequest;
 
             Assert.Equal(HttpMethod.Post, lastRequest.Method);
@@ -609,7 +649,11 @@ namespace StripeTests
             var response = new StripeResponse(HttpStatusCode.OK, null, content);
             this.httpClient.Response = response;
 
-            var rawResponse = this.apiRequestor.RawRequest(HttpMethod.Post, "/v1/charges/ch_123", "{\"foo\":\"bar\"}");
+            var rawResponse = this.apiRequestor.RawRequest(
+                HttpMethod.Post,
+                "/v1/charges/ch_123",
+                "{\"foo\":\"bar\"}"
+            );
             var lastRequest = this.httpClient.LastRequest;
 
             Assert.Equal(HttpMethod.Post, lastRequest.Method);
@@ -624,7 +668,10 @@ namespace StripeTests
             var response = new StripeResponse(HttpStatusCode.OK, null, content);
             this.httpClient.Response = response;
 
-            var rawResponse = await this.apiRequestor.RawRequestAsync(HttpMethod.Delete, "/v1/charges/ch_123");
+            var rawResponse = await this.apiRequestor.RawRequestAsync(
+                HttpMethod.Delete,
+                "/v1/charges/ch_123"
+            );
             var lastRequest = this.httpClient.LastRequest;
 
             Assert.Equal(HttpMethod.Delete, lastRequest.Method);
@@ -650,7 +697,9 @@ namespace StripeTests
         [Fact]
         public void RawRequestThrowsForNonPostOptions()
         {
-            Assert.Throws<InvalidOperationException>(() => this.apiRequestor.RawRequest(HttpMethod.Get, "/", "abc"));
+            Assert.Throws<InvalidOperationException>(() =>
+                this.apiRequestor.RawRequest(HttpMethod.Get, "/", "abc")
+            );
         }
 
         [Fact]
@@ -665,12 +714,14 @@ namespace StripeTests
         [Fact]
         public async Task StripeContextHeaderSet()
         {
-            var apiRequestorWithContext = new LiveApiRequestor(new StripeClientOptions
-            {
-                ApiKey = "sk_test_123",
-                HttpClient = this.httpClient,
-                StripeContext = "ctx_1234",
-            });
+            var apiRequestorWithContext = new LiveApiRequestor(
+                new StripeClientOptions
+                {
+                    ApiKey = "sk_test_123",
+                    HttpClient = this.httpClient,
+                    StripeContext = "ctx_1234",
+                }
+            );
             var response = new StripeResponse(HttpStatusCode.OK, null, "{}");
             this.httpClient.Response = response;
 
@@ -681,7 +732,10 @@ namespace StripeTests
             Assert.Equal("ctx_1234", lastRequest.StripeHeaders["Stripe-Context"]);
 
             // If its set in the request options, that takes precendence
-            await service.CreateAsync(new CustomerCreateOptions() { }, new RequestOptions { StripeContext = "ctx_2345" });
+            await service.CreateAsync(
+                new CustomerCreateOptions() { },
+                new RequestOptions { StripeContext = "ctx_2345" }
+            );
             lastRequest = this.httpClient.LastRequest;
             Assert.Equal("ctx_2345", lastRequest.StripeHeaders["Stripe-Context"]);
         }
@@ -689,12 +743,14 @@ namespace StripeTests
         [Fact]
         public async Task StripeAccountHeaderSet()
         {
-            var apiRequestorWithContext = new LiveApiRequestor(new StripeClientOptions
-            {
-                ApiKey = "sk_test_123",
-                HttpClient = this.httpClient,
-                StripeAccount = "acct_1234",
-            });
+            var apiRequestorWithContext = new LiveApiRequestor(
+                new StripeClientOptions
+                {
+                    ApiKey = "sk_test_123",
+                    HttpClient = this.httpClient,
+                    StripeAccount = "acct_1234",
+                }
+            );
 
             var response = new StripeResponse(HttpStatusCode.OK, null, "{}");
             this.httpClient.Response = response;
@@ -706,7 +762,10 @@ namespace StripeTests
             Assert.Equal("acct_1234", lastRequest.StripeHeaders["Stripe-Account"]);
 
             // If its set in the request options, that takes precendence
-            await service.CreateAsync(new CustomerCreateOptions() { }, new RequestOptions { StripeAccount = "acct_2345" });
+            await service.CreateAsync(
+                new CustomerCreateOptions() { },
+                new RequestOptions { StripeAccount = "acct_2345" }
+            );
             lastRequest = this.httpClient.LastRequest;
             Assert.Equal("acct_2345", lastRequest.StripeHeaders["Stripe-Account"]);
         }

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SourceTransactionGbpCreditTransfer : StripeEntity<SourceTransactionGbpCreditTransfer>
+    public class SourceTransactionGbpCreditTransfer
+        : StripeEntity<SourceTransactionGbpCreditTransfer>
     {
         /// <summary>
         /// Bank account fingerprint associated with the Stripe owned bank account receiving the

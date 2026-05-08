@@ -15,8 +15,7 @@ namespace StripeTests.Wholesome
     /// </summary>
     public class JsonNamesAreSnakeCase : WholesomeTest
     {
-        private const string AssertionMessage =
-            "Found at least one invalid JsonProperty name.";
+        private const string AssertionMessage = "Found at least one invalid JsonProperty name.";
 
         [Fact]
         public void Check()

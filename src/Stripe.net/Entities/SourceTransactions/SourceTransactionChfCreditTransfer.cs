@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SourceTransactionChfCreditTransfer : StripeEntity<SourceTransactionChfCreditTransfer>
+    public class SourceTransactionChfCreditTransfer
+        : StripeEntity<SourceTransactionChfCreditTransfer>
     {
         /// <summary>
         /// Reference associated with the transfer.

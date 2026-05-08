@@ -19,7 +19,8 @@ namespace StripeTests
             //   (echo -n "1533204620." && cat src/StripeTests/Resources/event_test_signature.json) | openssl sha256 -hmac "webhook_secret"
             this.eventTimestamp = 1533204620;
             this.secret = "webhook_secret";
-            this.signature = $"t={this.eventTimestamp},v1=2220f87ef101a04665f11cdf770523143f875572008577fa0f20882ddb9cc3c7,v0=63f3a72374a733066c4be69ed7f8e5ac85c22c9f0a6a612ab9a025a9e4ee7eef";
+            this.signature =
+                $"t={this.eventTimestamp},v1=2220f87ef101a04665f11cdf770523143f875572008577fa0f20882ddb9cc3c7,v0=63f3a72374a733066c4be69ed7f8e5ac85c22c9f0a6a612ab9a025a9e4ee7eef";
             this.json = GetResourceAsString("event_test_signature.json").Replace("\r\n", "\n");
         }
 
@@ -28,7 +29,14 @@ namespace StripeTests
         {
             var tolerance = 300;
             var fakeCurrentTimestamp = this.eventTimestamp + 100;
-            var evt = EventUtility.ConstructEvent(this.json, this.signature, this.secret, tolerance, fakeCurrentTimestamp, throwOnApiVersionMismatch: false);
+            var evt = EventUtility.ConstructEvent(
+                this.json,
+                this.signature,
+                this.secret,
+                tolerance,
+                fakeCurrentTimestamp,
+                throwOnApiVersionMismatch: false
+            );
 
             Assert.NotNull(evt);
             Assert.Equal("acct_123", evt.Account);
@@ -43,9 +51,19 @@ namespace StripeTests
             var fakeCurrentTimestamp = this.eventTimestamp + tolerance + 100;
 
             var exception = Assert.Throws<StripeException>(() =>
-                EventUtility.ConstructEvent(this.json, this.signature, this.secret, tolerance, fakeCurrentTimestamp));
+                EventUtility.ConstructEvent(
+                    this.json,
+                    this.signature,
+                    this.secret,
+                    tolerance,
+                    fakeCurrentTimestamp
+                )
+            );
 
-            Assert.Equal("The webhook cannot be processed because the current timestamp is outside of the allowed tolerance.", exception.Message);
+            Assert.Equal(
+                "The webhook cannot be processed because the current timestamp is outside of the allowed tolerance.",
+                exception.Message
+            );
         }
 
         [Fact]
@@ -53,30 +71,44 @@ namespace StripeTests
         {
             // This throws an error because the original JSON message is modified
             var exception = Assert.Throws<StripeException>(() =>
-                EventUtility.ConstructEvent(this.json + "this_changes_the_json", this.signature, this.secret));
+                EventUtility.ConstructEvent(
+                    this.json + "this_changes_the_json",
+                    this.signature,
+                    this.secret
+                )
+            );
 
             Assert.Equal(
-                "The expected signature was not found in the Stripe-Signature header. " +
-                "Make sure you're using the correct webhook secret (whsec_) and confirm the incoming request came from Stripe.",
-                exception.Message);
+                "The expected signature was not found in the Stripe-Signature header. "
+                    + "Make sure you're using the correct webhook secret (whsec_) and confirm the incoming request came from Stripe.",
+                exception.Message
+            );
         }
 
         [Fact]
         public void RejectSecretWithUnicode()
         {
             var exception = Assert.Throws<StripeException>(() =>
-                EventUtility.ConstructEvent(this.json, this.signature, this.secret + "\ud802"));
+                EventUtility.ConstructEvent(this.json, this.signature, this.secret + "\ud802")
+            );
 
-            Assert.Equal("The webhook cannot be processed because the signature cannot be safely calculated.", exception.Message);
+            Assert.Equal(
+                "The webhook cannot be processed because the signature cannot be safely calculated.",
+                exception.Message
+            );
         }
 
         [Fact]
         public void RejectMessageWithUnicode()
         {
             var exception = Assert.Throws<StripeException>(() =>
-                EventUtility.ConstructEvent(this.json + "\ud802", this.signature, this.secret));
+                EventUtility.ConstructEvent(this.json + "\ud802", this.signature, this.secret)
+            );
 
-            Assert.Equal("The webhook cannot be processed because the signature cannot be safely calculated.", exception.Message);
+            Assert.Equal(
+                "The webhook cannot be processed because the signature cannot be safely calculated.",
+                exception.Message
+            );
         }
 
         [Fact]
@@ -114,7 +146,8 @@ namespace StripeTests
         public void ThrowsOnLegacyApiVersionMismatch()
         {
             var exception = Assert.Throws<StripeException>(() =>
-                EventUtility.ParseEvent(this.json));
+                EventUtility.ParseEvent(this.json)
+            );
 
             Assert.Contains("Received event with API version 2017-05-25", exception.Message);
         }
@@ -127,9 +160,13 @@ namespace StripeTests
             var serialized = evt.ToJson();
 
             var exception = Assert.Throws<StripeException>(() =>
-                EventUtility.ParseEvent(serialized));
+                EventUtility.ParseEvent(serialized)
+            );
 
-            Assert.Contains("Received event with API version 2999-10-10.the_larch", exception.Message);
+            Assert.Contains(
+                "Received event with API version 2999-10-10.the_larch",
+                exception.Message
+            );
         }
 
         [Fact]
@@ -140,7 +177,9 @@ namespace StripeTests
         }
 
         [Theory]
-        [InlineData("t=,v1=2220f87ef101a04665f11cdf770523143f875572008577fa0f20882ddb9cc3c7,v0=63f3a72374a733066c4be69ed7f8e5ac85c22c9f0a6a612ab9a025a9e4ee7eef")]
+        [InlineData(
+            "t=,v1=2220f87ef101a04665f11cdf770523143f875572008577fa0f20882ddb9cc3c7,v0=63f3a72374a733066c4be69ed7f8e5ac85c22c9f0a6a612ab9a025a9e4ee7eef"
+        )]
         [InlineData("t,v1=,v0=")]
         [InlineData("t,v1=,v0")]
         [InlineData("t,v1=,")]
@@ -150,13 +189,15 @@ namespace StripeTests
         public void ValidateSignatureHandlesIncorrectHeaderValues(string headerValue)
         {
             Assert.Throws<StripeException>(() =>
-                EventUtility.ValidateSignature("{}", headerValue, string.Empty));
+                EventUtility.ValidateSignature("{}", headerValue, string.Empty)
+            );
         }
 
         [Fact]
         public void RejectV2PayloadInParseEvent()
         {
-            var v2Payload = @"{
+            var v2Payload =
+                @"{
                 ""id"": ""evt_234"",
                 ""object"": ""v2.core.event"",
                 ""type"": ""v1.billing.meter.error_report_triggered"",
@@ -165,7 +206,8 @@ namespace StripeTests
             }";
 
             var exception = Assert.Throws<ArgumentException>(() =>
-                EventUtility.ParseEvent(v2Payload, throwOnApiVersionMismatch: false));
+                EventUtility.ParseEvent(v2Payload, throwOnApiVersionMismatch: false)
+            );
 
             Assert.Contains("StripeClient.ParseEventNotification", exception.Message);
         }
@@ -173,7 +215,8 @@ namespace StripeTests
         [Fact]
         public void RejectV2PayloadInConstructEvent()
         {
-            var v2Payload = @"{
+            var v2Payload =
+                @"{
                 ""id"": ""evt_234"",
                 ""object"": ""v2.core.event"",
                 ""type"": ""v1.billing.meter.error_report_triggered"",
@@ -182,11 +225,21 @@ namespace StripeTests
             }";
 
             var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-            var signature = EventUtility.ComputeSignature(this.secret, timestamp.ToString(), v2Payload);
+            var signature = EventUtility.ComputeSignature(
+                this.secret,
+                timestamp.ToString(),
+                v2Payload
+            );
             var sigHeader = $"t={timestamp},v1={signature}";
 
             var exception = Assert.Throws<ArgumentException>(() =>
-                EventUtility.ConstructEvent(v2Payload, sigHeader, this.secret, throwOnApiVersionMismatch: false));
+                EventUtility.ConstructEvent(
+                    v2Payload,
+                    sigHeader,
+                    this.secret,
+                    throwOnApiVersionMismatch: false
+                )
+            );
 
             Assert.Contains("StripeClient.ParseEventNotification", exception.Message);
         }
@@ -198,9 +251,16 @@ namespace StripeTests
         [InlineData("2024-01-01.preview", "2025-03-31.basil", false)]
         [InlineData("2024-01-01.preview", "2025-03-31.preview", false)]
         [InlineData("2024-01-01.preview", "2024-01-01.preview", true)]
-        public void CompatibleAPIVersions(string sdkApiVersion, string eventApiVersion, bool expected)
+        public void CompatibleAPIVersions(
+            string sdkApiVersion,
+            string eventApiVersion,
+            bool expected
+        )
         {
-            Assert.Equal(EventUtility.IsCompatibleApiVersion(sdkApiVersion, eventApiVersion), expected);
+            Assert.Equal(
+                EventUtility.IsCompatibleApiVersion(sdkApiVersion, eventApiVersion),
+                expected
+            );
         }
     }
 }

@@ -24,7 +24,11 @@ namespace Stripe.Identity
     /// Verification Sessions API</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class VerificationSession : StripeEntity<VerificationSession>, IHasId, IHasMetadata, IHasObject
+    public class VerificationSession
+        : StripeEntity<VerificationSession>,
+            IHasId,
+            IHasMetadata,
+            IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -92,7 +96,11 @@ namespace Stripe.Identity
         public string LastVerificationReportId
         {
             get => this.InternalLastVerificationReport?.Id;
-            set => this.InternalLastVerificationReport = SetExpandableFieldId(value, this.InternalLastVerificationReport);
+            set =>
+                this.InternalLastVerificationReport = SetExpandableFieldId(
+                    value,
+                    this.InternalLastVerificationReport
+                );
         }
 
         /// <summary>
@@ -108,7 +116,11 @@ namespace Stripe.Identity
         public VerificationReport LastVerificationReport
         {
             get => this.InternalLastVerificationReport?.ExpandedObject;
-            set => this.InternalLastVerificationReport = SetExpandableFieldObject(value, this.InternalLastVerificationReport);
+            set =>
+                this.InternalLastVerificationReport = SetExpandableFieldObject(
+                    value,
+                    this.InternalLastVerificationReport
+                );
         }
 
         [JsonProperty("last_verification_report")]

@@ -7,9 +7,7 @@ namespace StripeTests
     public class PaymentMethodTest : BaseStripeTest
     {
         public PaymentMethodTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -25,10 +23,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "customer",
-            };
+            string[] expansions = { "customer" };
 
             string json = this.GetFixture("/v1/payment_methods/pm_123", expansions);
             var payment_method = JsonSerializer.Deserialize<PaymentMethod>(json);

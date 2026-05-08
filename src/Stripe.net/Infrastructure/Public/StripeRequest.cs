@@ -31,7 +31,8 @@ namespace Stripe
             HttpMethod method,
             string path,
             BaseOptions options,
-            RequestOptions requestOptions)
+            RequestOptions requestOptions
+        )
         {
             if (client == null)
             {
@@ -44,7 +45,10 @@ namespace Stripe
 
             this.Uri = BuildUri(client.ApiBase, method, path, options, ApiMode.V1);
 
-            this.AuthorizationHeader = BuildAuthorizationHeader(requestOptions?.ApiKey ?? client.ApiKey, requestOptions);
+            this.AuthorizationHeader = BuildAuthorizationHeader(
+                requestOptions?.ApiKey ?? client.ApiKey,
+                requestOptions
+            );
 
             this.StripeHeaders = BuildStripeHeaders(method, requestOptions, ApiMode.V1);
 
@@ -64,7 +68,8 @@ namespace Stripe
             RequestOptions requestOptions,
             BaseOptions options,
             string content,
-            ApiMode apiMode)
+            ApiMode apiMode
+        )
         {
             this.options = options;
             this.content = content;
@@ -74,7 +79,10 @@ namespace Stripe
 
             this.Uri = uri;
 
-            this.AuthorizationHeader = BuildAuthorizationHeader(requestOptions.ApiKey, requestOptions);
+            this.AuthorizationHeader = BuildAuthorizationHeader(
+                requestOptions.ApiKey,
+                requestOptions
+            );
 
             this.StripeHeaders = BuildStripeHeaders(method, requestOptions, this.ApiMode);
 
@@ -105,7 +113,8 @@ namespace Stripe
         /// For non-POST requests, this will be <c>null</c>.
         /// </summary>
         /// <remarks>This getter creates a new instance every time it is called.</remarks>
-        public HttpContent Content => BuildContent(this.Method, this.options, this.content, this.ApiMode);
+        public HttpContent Content =>
+            BuildContent(this.Method, this.options, this.content, this.ApiMode);
 
         internal ApiMode ApiMode { get; }
 
@@ -123,7 +132,8 @@ namespace Stripe
             Uri uri,
             string content,
             RequestOptions requestOptions,
-            ApiMode apiMode)
+            ApiMode apiMode
+        )
         {
             return new StripeRequest(method, uri, requestOptions, null, content, apiMode);
         }
@@ -136,7 +146,8 @@ namespace Stripe
                 "<{0} Method={1} Uri={2}>",
                 this.GetType().FullName,
                 this.Method,
-                this.Uri.ToString());
+                this.Uri.ToString()
+            );
         }
 
         internal static Uri BuildUri(
@@ -144,7 +155,8 @@ namespace Stripe
             HttpMethod method,
             string path,
             BaseOptions options,
-            ApiMode apiMode)
+            ApiMode apiMode
+        )
         {
             var b = new StringBuilder();
 
@@ -166,11 +178,13 @@ namespace Stripe
 
         private static AuthenticationHeaderValue BuildAuthorizationHeader(
             string apiKey,
-            RequestOptions requestOptions)
+            RequestOptions requestOptions
+        )
         {
             if (apiKey == null)
             {
-                var message = "No API key provided. Set your API key using "
+                var message =
+                    "No API key provided. Set your API key using "
                     + "`var client = new Stripe.StripeClient(\"<API-KEY>\")`."
                     + "You can generate API keys from the Stripe Dashboard. See "
                     + "https://stripe.com/docs/api/authentication for details or contact support "
@@ -184,11 +198,15 @@ namespace Stripe
         private static Dictionary<string, string> BuildStripeHeaders(
             HttpMethod method,
             RequestOptions requestOptions,
-            ApiMode apiMode)
+            ApiMode apiMode
+        )
         {
             var stripeHeaders = new Dictionary<string, string>
             {
-                { "Stripe-Version", requestOptions?.StripeVersion ?? StripeConfiguration.ApiVersion },
+                {
+                    "Stripe-Version",
+                    requestOptions?.StripeVersion ?? StripeConfiguration.ApiVersion
+                },
             };
 
             if (!string.IsNullOrEmpty(requestOptions?.StripeAccount))
@@ -210,7 +228,10 @@ namespace Stripe
             {
                 stripeHeaders.Add("Idempotency-Key", requestOptions.IdempotencyKey);
             }
-            else if (method == HttpMethod.Post || (apiMode == ApiMode.V2 && method == HttpMethod.Delete))
+            else if (
+                method == HttpMethod.Post
+                || (apiMode == ApiMode.V2 && method == HttpMethod.Delete)
+            )
             {
                 stripeHeaders.Add("Idempotency-Key", Guid.NewGuid().ToString());
             }
@@ -226,7 +247,12 @@ namespace Stripe
             return stripeHeaders;
         }
 
-        internal static HttpContent BuildContent(HttpMethod method, BaseOptions options, string content, ApiMode apiMode)
+        internal static HttpContent BuildContent(
+            HttpMethod method,
+            BaseOptions options,
+            string content,
+            ApiMode apiMode
+        )
         {
             if (method != HttpMethod.Post)
             {

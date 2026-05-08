@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountExternalAccountDocumentsBankAccountOwnershipVerificationOptions : INestedOptions
+    public class AccountExternalAccountDocumentsBankAccountOwnershipVerificationOptions
+        : INestedOptions
     {
         /// <summary>
         /// One or more document ids returned by a <a href="https://api.stripe.com#create_file">file

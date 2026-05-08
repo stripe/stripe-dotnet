@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -25,55 +24,32 @@ namespace StripeTests
 
         public InvoiceServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new InvoiceService(this.StripeClient);
 
-            this.createOptions = new InvoiceCreateOptions
-            {
-                Customer = "cus_123",
-            };
+            this.createOptions = new InvoiceCreateOptions { Customer = "cus_123" };
 
             this.updateOptions = new InvoiceUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.payOptions = new InvoicePayOptions
-            {
-                Forgive = true,
-                Source = "src_123",
-            };
+            this.payOptions = new InvoicePayOptions { Forgive = true, Source = "src_123" };
 
-            this.listOptions = new InvoiceListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new InvoiceListOptions { Limit = 1 };
 
-            this.lineItemListOptions = new InvoiceLineItemListOptions
-            {
-                Limit = 1,
-            };
+            this.lineItemListOptions = new InvoiceLineItemListOptions { Limit = 1 };
 
-            this.finalizeOptions = new InvoiceFinalizeOptions
-            {
-            };
+            this.finalizeOptions = new InvoiceFinalizeOptions { };
 
-            this.markUncollectibleOptions = new InvoiceMarkUncollectibleOptions
-            {
-            };
+            this.markUncollectibleOptions = new InvoiceMarkUncollectibleOptions { };
 
-            this.sendOptions = new InvoiceSendOptions
-            {
-            };
+            this.sendOptions = new InvoiceSendOptions { };
 
-            this.voidOptions = new InvoiceVoidOptions
-            {
-            };
+            this.voidOptions = new InvoiceVoidOptions { };
         }
 
         [Fact]
@@ -200,7 +176,10 @@ namespace StripeTests
         [Fact]
         public async Task ListLineItemsAsync()
         {
-            var lineItems = await this.service.LineItems.ListAsync(InvoiceId, this.lineItemListOptions);
+            var lineItems = await this.service.LineItems.ListAsync(
+                InvoiceId,
+                this.lineItemListOptions
+            );
             this.AssertRequest(HttpMethod.Get, "/v1/invoices/in_123/lines");
             Assert.NotNull(lineItems);
             Assert.Equal("list", lineItems.Object);
@@ -211,7 +190,9 @@ namespace StripeTests
         [Fact]
         public void ListLineItemsAutoPaging()
         {
-            var lineItem = this.service.LineItems.ListAutoPaging(InvoiceId, this.lineItemListOptions).First();
+            var lineItem = this
+                .service.LineItems.ListAutoPaging(InvoiceId, this.lineItemListOptions)
+                .First();
             Assert.NotNull(lineItem);
             Assert.Equal("line_item", lineItem.Object);
         }
@@ -219,7 +200,9 @@ namespace StripeTests
         [Fact]
         public async Task ListLineItemsAutoPagingAsync()
         {
-            var lineItem = await this.service.LineItems.ListAutoPagingAsync(InvoiceId, this.lineItemListOptions).FirstAsync();
+            var lineItem = await this
+                .service.LineItems.ListAutoPagingAsync(InvoiceId, this.lineItemListOptions)
+                .FirstAsync();
             Assert.NotNull(lineItem);
             Assert.Equal("line_item", lineItem.Object);
         }
@@ -236,7 +219,10 @@ namespace StripeTests
         [Fact]
         public async Task MarkUncollectibleAsync()
         {
-            var invoice = await this.service.MarkUncollectibleAsync(InvoiceId, this.markUncollectibleOptions);
+            var invoice = await this.service.MarkUncollectibleAsync(
+                InvoiceId,
+                this.markUncollectibleOptions
+            );
             this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/mark_uncollectible");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);

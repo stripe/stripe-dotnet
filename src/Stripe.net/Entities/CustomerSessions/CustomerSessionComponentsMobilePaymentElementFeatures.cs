@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CustomerSessionComponentsMobilePaymentElementFeatures : StripeEntity<CustomerSessionComponentsMobilePaymentElementFeatures>
+    public class CustomerSessionComponentsMobilePaymentElementFeatures
+        : StripeEntity<CustomerSessionComponentsMobilePaymentElementFeatures>
     {
         /// <summary>
         /// A list of <a

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class InvoiceItemProrationDetailsDiscountAmount : StripeEntity<InvoiceItemProrationDetailsDiscountAmount>
+    public class InvoiceItemProrationDetailsDiscountAmount
+        : StripeEntity<InvoiceItemProrationDetailsDiscountAmount>
     {
         /// <summary>
         /// The amount, in cents (or local equivalent), of the discount.

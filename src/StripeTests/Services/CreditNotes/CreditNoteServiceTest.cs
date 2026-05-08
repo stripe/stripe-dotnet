@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -23,7 +22,8 @@ namespace StripeTests
 
         public CreditNoteServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new CreditNoteService(this.StripeClient);
@@ -37,22 +37,12 @@ namespace StripeTests
 
             this.updateOptions = new CreditNoteUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.listOptions = new CreditNoteListOptions
-            {
-                Limit = 1,
-                Invoice = "in_123",
-            };
+            this.listOptions = new CreditNoteListOptions { Limit = 1, Invoice = "in_123" };
 
-            this.listLineItemsOptions = new CreditNoteListLineItemsOptions
-            {
-                Limit = 1,
-            };
+            this.listLineItemsOptions = new CreditNoteListLineItemsOptions { Limit = 1 };
 
             this.previewOptions = new CreditNotePreviewOptions
             {
@@ -66,9 +56,7 @@ namespace StripeTests
                 Invoice = "in_123",
             };
 
-            this.voidOptions = new CreditNoteVoidOptions
-            {
-            };
+            this.voidOptions = new CreditNoteVoidOptions { };
         }
 
         [Fact]
@@ -159,7 +147,10 @@ namespace StripeTests
         [Fact]
         public async Task ListLineItemsAsync()
         {
-            var lineItems = await this.service.ListLineItemsAsync(CreditNoteId, this.listLineItemsOptions);
+            var lineItems = await this.service.ListLineItemsAsync(
+                CreditNoteId,
+                this.listLineItemsOptions
+            );
             this.AssertRequest(HttpMethod.Get, "/v1/credit_notes/cn_123/lines");
             Assert.NotNull(lineItems);
             Assert.Equal("list", lineItems.Object);
@@ -170,7 +161,9 @@ namespace StripeTests
         [Fact]
         public void ListLineItemsAutoPaging()
         {
-            var lineItem = this.service.ListLineItemsAutoPaging(CreditNoteId, this.listLineItemsOptions).First();
+            var lineItem = this
+                .service.ListLineItemsAutoPaging(CreditNoteId, this.listLineItemsOptions)
+                .First();
             Assert.NotNull(lineItem);
             Assert.Equal("credit_note_line_item", lineItem.Object);
         }
@@ -178,7 +171,9 @@ namespace StripeTests
         [Fact]
         public async Task ListLineItemsAutoPagingAsync()
         {
-            var lineItem = await this.service.ListLineItemsAutoPagingAsync(CreditNoteId, this.listLineItemsOptions).FirstAsync();
+            var lineItem = await this
+                .service.ListLineItemsAutoPagingAsync(CreditNoteId, this.listLineItemsOptions)
+                .FirstAsync();
             Assert.NotNull(lineItem);
             Assert.Equal("credit_note_line_item", lineItem.Object);
         }
@@ -215,7 +210,9 @@ namespace StripeTests
         [Fact]
         public async Task ListPreviewLineItemsAsync()
         {
-            var lineItems = await this.service.ListPreviewLineItemsAsync(this.listPreviewLineItemsOptions);
+            var lineItems = await this.service.ListPreviewLineItemsAsync(
+                this.listPreviewLineItemsOptions
+            );
             this.AssertRequest(HttpMethod.Get, "/v1/credit_notes/preview/lines");
             Assert.NotNull(lineItems);
             Assert.Equal("list", lineItems.Object);
@@ -226,7 +223,9 @@ namespace StripeTests
         [Fact]
         public void ListPreviewLineItemsAutoPaging()
         {
-            var lineItem = this.service.ListPreviewLineItemsAutoPaging(this.listPreviewLineItemsOptions).First();
+            var lineItem = this
+                .service.ListPreviewLineItemsAutoPaging(this.listPreviewLineItemsOptions)
+                .First();
             Assert.NotNull(lineItem);
             Assert.Equal("credit_note_line_item", lineItem.Object);
         }
@@ -234,7 +233,9 @@ namespace StripeTests
         [Fact]
         public async Task ListPreviewLineItemsAutoPagingAsync()
         {
-            var lineItem = await this.service.ListPreviewLineItemsAutoPagingAsync(this.listPreviewLineItemsOptions).FirstAsync();
+            var lineItem = await this
+                .service.ListPreviewLineItemsAutoPagingAsync(this.listPreviewLineItemsOptions)
+                .FirstAsync();
             Assert.NotNull(lineItem);
             Assert.Equal("credit_note_line_item", lineItem.Object);
         }

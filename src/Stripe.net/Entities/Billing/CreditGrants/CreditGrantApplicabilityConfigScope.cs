@@ -7,7 +7,8 @@ namespace Stripe.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CreditGrantApplicabilityConfigScope : StripeEntity<CreditGrantApplicabilityConfigScope>
+    public class CreditGrantApplicabilityConfigScope
+        : StripeEntity<CreditGrantApplicabilityConfigScope>
     {
         /// <summary>
         /// The price type that credit grants can apply to. We currently only support the

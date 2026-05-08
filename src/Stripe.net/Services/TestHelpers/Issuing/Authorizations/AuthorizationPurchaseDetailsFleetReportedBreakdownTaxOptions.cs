@@ -14,7 +14,9 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         [JsonProperty("local_amount_decimal")]
         [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonNumberHandling(
+            STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString
+        )]
         [STJS.JsonPropertyName("local_amount_decimal")]
         public decimal? LocalAmountDecimal { get; set; }
 
@@ -24,7 +26,9 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         [JsonProperty("national_amount_decimal")]
         [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonNumberHandling(
+            STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString
+        )]
         [STJS.JsonPropertyName("national_amount_decimal")]
         public decimal? NationalAmountDecimal { get; set; }
     }

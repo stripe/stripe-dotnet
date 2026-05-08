@@ -4,7 +4,6 @@ namespace StripeTests.BillingPortal
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Stripe.BillingPortal;
     using Xunit;
@@ -17,7 +16,8 @@ namespace StripeTests.BillingPortal
 
         public SessionServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new SessionService(this.StripeClient);

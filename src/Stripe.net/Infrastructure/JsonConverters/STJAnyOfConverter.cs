@@ -18,7 +18,11 @@ namespace Stripe.Infrastructure
         /// <param name="typeToConvert">Type of the object.</param>
         /// <param name="options">The calling serializer's options.</param>
         /// <returns>The object value.</returns>
-        public override object Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override object Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
         {
             if (reader.TokenType == JsonTokenType.Null)
             {
@@ -46,9 +50,15 @@ namespace Stripe.Infrastructure
 
             if (o == null)
             {
-                throw new JsonException(string.Format(
-                    "Cannot deserialize the current JSON object into any of the expected types ({0}).",
-                    string.Join(", ", typeToConvert.GenericTypeArguments.Select(t => t.FullName))));
+                throw new JsonException(
+                    string.Format(
+                        "Cannot deserialize the current JSON object into any of the expected types ({0}).",
+                        string.Join(
+                            ", ",
+                            typeToConvert.GenericTypeArguments.Select(t => t.FullName)
+                        )
+                    )
+                );
             }
 
             return Activator.CreateInstance(typeToConvert, o);
@@ -60,7 +70,11 @@ namespace Stripe.Infrastructure
         /// <param name="writer">The <see cref="Utf8JsonWriter"/> to write to.</param>
         /// <param name="value">The value.</param>
         /// <param name="options">The calling serializer's options.</param>
-        public override void Write(Utf8JsonWriter writer, object value, JsonSerializerOptions options)
+        public override void Write(
+            Utf8JsonWriter writer,
+            object value,
+            JsonSerializerOptions options
+        )
         {
             switch (value)
             {
@@ -73,9 +87,12 @@ namespace Stripe.Infrastructure
                     break;
 
                 default:
-                    throw new JsonException(string.Format(
-                        "Unexpected value when converting AnyOf. Expected IAnyOf, got {0}.",
-                        value.GetType()));
+                    throw new JsonException(
+                        string.Format(
+                            "Unexpected value when converting AnyOf. Expected IAnyOf, got {0}.",
+                            value.GetType()
+                        )
+                    );
             }
         }
 

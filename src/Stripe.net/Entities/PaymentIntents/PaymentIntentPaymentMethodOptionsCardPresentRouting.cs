@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentMethodOptionsCardPresentRouting : StripeEntity<PaymentIntentPaymentMethodOptionsCardPresentRouting>
+    public class PaymentIntentPaymentMethodOptionsCardPresentRouting
+        : StripeEntity<PaymentIntentPaymentMethodOptionsCardPresentRouting>
     {
         /// <summary>
         /// Requested routing priority.

@@ -30,18 +30,29 @@ namespace StripeTests.Wholesome
             var types = assembly.DefinedTypes.Where(t => t.FullName.StartsWith("Stripe."));
             foreach (TypeInfo type in types)
             {
-                if (type.GetCustomAttribute(typeof(NoSystemTextJsonAttributesNeededAttribute), false) != null)
+                if (
+                    type.GetCustomAttribute(
+                        typeof(NoSystemTextJsonAttributesNeededAttribute),
+                        false
+                    ) != null
+                )
                 {
                     continue;
                 }
 
                 var hasCorrectAttributes = true;
-                var isIEnumerable = typeof(System.Collections.IEnumerable).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo());
-                var isEntity = typeof(StripeEntity).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo());
+                var isIEnumerable = typeof(System.Collections.IEnumerable)
+                    .GetTypeInfo()
+                    .IsAssignableFrom(type.GetTypeInfo());
+                var isEntity = typeof(StripeEntity)
+                    .GetTypeInfo()
+                    .IsAssignableFrom(type.GetTypeInfo());
 
                 if (isIEnumerable && isEntity)
                 {
-                    var converter = type.GetCustomAttribute(typeof(STJS.JsonConverterAttribute), false) as STJS.JsonConverterAttribute;
+                    var converter =
+                        type.GetCustomAttribute(typeof(STJS.JsonConverterAttribute), false)
+                        as STJS.JsonConverterAttribute;
                     if (converter?.ConverterType != typeof(STJEnumerableObjectConverter))
                     {
                         hasCorrectAttributes = false;
@@ -51,7 +62,9 @@ namespace StripeTests.Wholesome
                 // Special case for IHasObject
                 if (type == typeof(IHasObject))
                 {
-                    var converter = type.GetCustomAttribute(typeof(STJS.JsonConverterAttribute), false) as STJS.JsonConverterAttribute;
+                    var converter =
+                        type.GetCustomAttribute(typeof(STJS.JsonConverterAttribute), false)
+                        as STJS.JsonConverterAttribute;
                     if (converter?.ConverterType != typeof(STJStripeObjectConverter))
                     {
                         hasCorrectAttributes = false;
@@ -61,7 +74,9 @@ namespace StripeTests.Wholesome
                 // Special case for Stripe.V2.Core.Event
                 if (type == typeof(Stripe.V2.Core.Event))
                 {
-                    var converter = type.GetCustomAttribute(typeof(STJS.JsonConverterAttribute), false) as STJS.JsonConverterAttribute;
+                    var converter =
+                        type.GetCustomAttribute(typeof(STJS.JsonConverterAttribute), false)
+                        as STJS.JsonConverterAttribute;
                     if (converter?.ConverterType != typeof(STJV2EventConverter))
                     {
                         hasCorrectAttributes = false;
@@ -73,10 +88,17 @@ namespace StripeTests.Wholesome
                     var attributes = type.GetCustomAttributes(false).Cast<Attribute>();
                     foreach (Attribute attribute in attributes)
                     {
-                        if (attribute.GetType().Namespace?.StartsWith("Newtonsoft", true, null) == true)
+                        if (
+                            attribute.GetType().Namespace?.StartsWith("Newtonsoft", true, null)
+                            == true
+                        )
                         {
                             // we assume classes are public if they have json attributes
-                            hasCorrectAttributes = SystemTextJsonTestUtils.HasCorrectAttributes(attribute, attributes, true);
+                            hasCorrectAttributes = SystemTextJsonTestUtils.HasCorrectAttributes(
+                                attribute,
+                                attributes,
+                                true
+                            );
                             if (!hasCorrectAttributes)
                             {
                                 break;
@@ -91,7 +113,8 @@ namespace StripeTests.Wholesome
                 }
             }
 
-            var message = $"{AssertionMessage}\n{results.Count} affected classes: {string.Join(",", results)}";
+            var message =
+                $"{AssertionMessage}\n{results.Count} affected classes: {string.Join(",", results)}";
             AssertEmpty(results, message);
         }
     }

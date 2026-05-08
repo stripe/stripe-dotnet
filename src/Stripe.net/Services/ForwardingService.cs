@@ -10,16 +10,12 @@ namespace Stripe
         private Forwarding.RequestService requests;
 
         internal ForwardingService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         internal ForwardingService(IStripeClient client)
-            : base(client)
-        {
-        }
+            : base(client) { }
 
-        public virtual Forwarding.RequestService Requests => this.requests ??= new Forwarding.RequestService(
-            this.Requestor);
+        public virtual Forwarding.RequestService Requests =>
+            this.requests ??= new Forwarding.RequestService(this.Requestor);
     }
 }

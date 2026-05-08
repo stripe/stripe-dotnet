@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsAlipay : StripeEntity<PaymentRecordPaymentMethodDetailsAlipay>
+    public class PaymentRecordPaymentMethodDetailsAlipay
+        : StripeEntity<PaymentRecordPaymentMethodDetailsAlipay>
     {
         /// <summary>
         /// Uniquely identifies this particular Alipay account. You can use this attribute to check

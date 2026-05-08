@@ -8,55 +8,92 @@ namespace Stripe.Treasury
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class OutboundTransferService : Service,
-        ICreatable<OutboundTransfer, OutboundTransferCreateOptions>,
-        IListable<OutboundTransfer, OutboundTransferListOptions>,
-        IRetrievable<OutboundTransfer, OutboundTransferGetOptions>
+    public class OutboundTransferService
+        : Service,
+            ICreatable<OutboundTransfer, OutboundTransferCreateOptions>,
+            IListable<OutboundTransfer, OutboundTransferListOptions>,
+            IRetrievable<OutboundTransfer, OutboundTransferGetOptions>
     {
-        public OutboundTransferService()
-        {
-        }
+        public OutboundTransferService() { }
 
         internal OutboundTransferService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public OutboundTransferService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>An OutboundTransfer can be canceled if the funds have not yet been paid out.</p>.
+        /// </summary>
+        public virtual OutboundTransfer Cancel(
+            string id,
+            OutboundTransferCancelOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<OutboundTransfer>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/treasury/outbound_transfers/{WebUtility.UrlEncode(id)}/cancel",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>An OutboundTransfer can be canceled if the funds have not yet been paid out.</p>.
         /// </summary>
-        public virtual OutboundTransfer Cancel(string id, OutboundTransferCancelOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<OutboundTransfer> CancelAsync(
+            string id,
+            OutboundTransferCancelOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<OutboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/outbound_transfers/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>An OutboundTransfer can be canceled if the funds have not yet been paid out.</p>.
-        /// </summary>
-        public virtual Task<OutboundTransfer> CancelAsync(string id, OutboundTransferCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<OutboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/outbound_transfers/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>Creates an OutboundTransfer.</p>.
-        /// </summary>
-        public virtual OutboundTransfer Create(OutboundTransferCreateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.Request<OutboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/outbound_transfers", options, requestOptions);
+            return this.RequestAsync<OutboundTransfer>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/treasury/outbound_transfers/{WebUtility.UrlEncode(id)}/cancel",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Creates an OutboundTransfer.</p>.
         /// </summary>
-        public virtual Task<OutboundTransfer> CreateAsync(OutboundTransferCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual OutboundTransfer Create(
+            OutboundTransferCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<OutboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/outbound_transfers", options, requestOptions, cancellationToken);
+            return this.Request<OutboundTransfer>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/treasury/outbound_transfers",
+                options,
+                requestOptions
+            );
+        }
+
+        /// <summary>
+        /// <p>Creates an OutboundTransfer.</p>.
+        /// </summary>
+        public virtual Task<OutboundTransfer> CreateAsync(
+            OutboundTransferCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return this.RequestAsync<OutboundTransfer>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/treasury/outbound_transfers",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -64,9 +101,19 @@ namespace Stripe.Treasury
         /// OutboundTransfer ID from either the OutboundTransfer creation request or
         /// OutboundTransfer list.</p>.
         /// </summary>
-        public virtual OutboundTransfer Get(string id, OutboundTransferGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual OutboundTransfer Get(
+            string id,
+            OutboundTransferGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<OutboundTransfer>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/outbound_transfers/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<OutboundTransfer>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/treasury/outbound_transfers/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -74,41 +121,89 @@ namespace Stripe.Treasury
         /// OutboundTransfer ID from either the OutboundTransfer creation request or
         /// OutboundTransfer list.</p>.
         /// </summary>
-        public virtual Task<OutboundTransfer> GetAsync(string id, OutboundTransferGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<OutboundTransfer> GetAsync(
+            string id,
+            OutboundTransferGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<OutboundTransfer>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/outbound_transfers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<OutboundTransfer>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/treasury/outbound_transfers/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of OutboundTransfers sent from the specified FinancialAccount.</p>.
         /// </summary>
-        public virtual StripeList<OutboundTransfer> List(OutboundTransferListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<OutboundTransfer> List(
+            OutboundTransferListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeList<OutboundTransfer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/outbound_transfers", options, requestOptions);
+            return this.Request<StripeList<OutboundTransfer>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/treasury/outbound_transfers",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of OutboundTransfers sent from the specified FinancialAccount.</p>.
         /// </summary>
-        public virtual Task<StripeList<OutboundTransfer>> ListAsync(OutboundTransferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<OutboundTransfer>> ListAsync(
+            OutboundTransferListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeList<OutboundTransfer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/outbound_transfers", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<OutboundTransfer>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/treasury/outbound_transfers",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of OutboundTransfers sent from the specified FinancialAccount.</p>.
         /// </summary>
-        public virtual IEnumerable<OutboundTransfer> ListAutoPaging(OutboundTransferListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<OutboundTransfer> ListAutoPaging(
+            OutboundTransferListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.ListRequestAutoPaging<OutboundTransfer>($"/v1/treasury/outbound_transfers", options, requestOptions);
+            return this.ListRequestAutoPaging<OutboundTransfer>(
+                $"/v1/treasury/outbound_transfers",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of OutboundTransfers sent from the specified FinancialAccount.</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<OutboundTransfer> ListAutoPagingAsync(OutboundTransferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<OutboundTransfer> ListAutoPagingAsync(
+            OutboundTransferListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<OutboundTransfer>($"/v1/treasury/outbound_transfers", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<OutboundTransfer>(
+                $"/v1/treasury/outbound_transfers",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

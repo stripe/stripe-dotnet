@@ -36,7 +36,11 @@ namespace Stripe
         public string CancellationPolicyId
         {
             get => this.InternalCancellationPolicy?.Id;
-            set => this.InternalCancellationPolicy = SetExpandableFieldId(value, this.InternalCancellationPolicy);
+            set =>
+                this.InternalCancellationPolicy = SetExpandableFieldId(
+                    value,
+                    this.InternalCancellationPolicy
+                );
         }
 
         /// <summary>
@@ -51,7 +55,11 @@ namespace Stripe
         public File CancellationPolicy
         {
             get => this.InternalCancellationPolicy?.ExpandedObject;
-            set => this.InternalCancellationPolicy = SetExpandableFieldObject(value, this.InternalCancellationPolicy);
+            set =>
+                this.InternalCancellationPolicy = SetExpandableFieldObject(
+                    value,
+                    this.InternalCancellationPolicy
+                );
         }
 
         [JsonProperty("cancellation_policy")]
@@ -90,7 +98,11 @@ namespace Stripe
         public string CustomerCommunicationId
         {
             get => this.InternalCustomerCommunication?.Id;
-            set => this.InternalCustomerCommunication = SetExpandableFieldId(value, this.InternalCustomerCommunication);
+            set =>
+                this.InternalCustomerCommunication = SetExpandableFieldId(
+                    value,
+                    this.InternalCustomerCommunication
+                );
         }
 
         /// <summary>
@@ -107,7 +119,11 @@ namespace Stripe
         public File CustomerCommunication
         {
             get => this.InternalCustomerCommunication?.ExpandedObject;
-            set => this.InternalCustomerCommunication = SetExpandableFieldObject(value, this.InternalCustomerCommunication);
+            set =>
+                this.InternalCustomerCommunication = SetExpandableFieldObject(
+                    value,
+                    this.InternalCustomerCommunication
+                );
         }
 
         [JsonProperty("customer_communication")]
@@ -150,7 +166,11 @@ namespace Stripe
         public string CustomerSignatureId
         {
             get => this.InternalCustomerSignature?.Id;
-            set => this.InternalCustomerSignature = SetExpandableFieldId(value, this.InternalCustomerSignature);
+            set =>
+                this.InternalCustomerSignature = SetExpandableFieldId(
+                    value,
+                    this.InternalCustomerSignature
+                );
         }
 
         /// <summary>
@@ -165,7 +185,11 @@ namespace Stripe
         public File CustomerSignature
         {
             get => this.InternalCustomerSignature?.ExpandedObject;
-            set => this.InternalCustomerSignature = SetExpandableFieldObject(value, this.InternalCustomerSignature);
+            set =>
+                this.InternalCustomerSignature = SetExpandableFieldObject(
+                    value,
+                    this.InternalCustomerSignature
+                );
         }
 
         [JsonProperty("customer_signature")]
@@ -189,7 +213,11 @@ namespace Stripe
         public string DuplicateChargeDocumentationId
         {
             get => this.InternalDuplicateChargeDocumentation?.Id;
-            set => this.InternalDuplicateChargeDocumentation = SetExpandableFieldId(value, this.InternalDuplicateChargeDocumentation);
+            set =>
+                this.InternalDuplicateChargeDocumentation = SetExpandableFieldId(
+                    value,
+                    this.InternalDuplicateChargeDocumentation
+                );
         }
 
         /// <summary>
@@ -206,7 +234,11 @@ namespace Stripe
         public File DuplicateChargeDocumentation
         {
             get => this.InternalDuplicateChargeDocumentation?.ExpandedObject;
-            set => this.InternalDuplicateChargeDocumentation = SetExpandableFieldObject(value, this.InternalDuplicateChargeDocumentation);
+            set =>
+                this.InternalDuplicateChargeDocumentation = SetExpandableFieldObject(
+                    value,
+                    this.InternalDuplicateChargeDocumentation
+                );
         }
 
         [JsonProperty("duplicate_charge_documentation")]
@@ -292,7 +324,8 @@ namespace Stripe
         public string RefundPolicyId
         {
             get => this.InternalRefundPolicy?.Id;
-            set => this.InternalRefundPolicy = SetExpandableFieldId(value, this.InternalRefundPolicy);
+            set =>
+                this.InternalRefundPolicy = SetExpandableFieldId(value, this.InternalRefundPolicy);
         }
 
         /// <summary>
@@ -307,7 +340,11 @@ namespace Stripe
         public File RefundPolicy
         {
             get => this.InternalRefundPolicy?.ExpandedObject;
-            set => this.InternalRefundPolicy = SetExpandableFieldObject(value, this.InternalRefundPolicy);
+            set =>
+                this.InternalRefundPolicy = SetExpandableFieldObject(
+                    value,
+                    this.InternalRefundPolicy
+                );
         }
 
         [JsonProperty("refund_policy")]
@@ -353,7 +390,11 @@ namespace Stripe
         public string ServiceDocumentationId
         {
             get => this.InternalServiceDocumentation?.Id;
-            set => this.InternalServiceDocumentation = SetExpandableFieldId(value, this.InternalServiceDocumentation);
+            set =>
+                this.InternalServiceDocumentation = SetExpandableFieldId(
+                    value,
+                    this.InternalServiceDocumentation
+                );
         }
 
         /// <summary>
@@ -369,7 +410,11 @@ namespace Stripe
         public File ServiceDocumentation
         {
             get => this.InternalServiceDocumentation?.ExpandedObject;
-            set => this.InternalServiceDocumentation = SetExpandableFieldObject(value, this.InternalServiceDocumentation);
+            set =>
+                this.InternalServiceDocumentation = SetExpandableFieldObject(
+                    value,
+                    this.InternalServiceDocumentation
+                );
         }
 
         [JsonProperty("service_documentation")]
@@ -417,7 +462,11 @@ namespace Stripe
         public string ShippingDocumentationId
         {
             get => this.InternalShippingDocumentation?.Id;
-            set => this.InternalShippingDocumentation = SetExpandableFieldId(value, this.InternalShippingDocumentation);
+            set =>
+                this.InternalShippingDocumentation = SetExpandableFieldId(
+                    value,
+                    this.InternalShippingDocumentation
+                );
         }
 
         /// <summary>
@@ -434,7 +483,11 @@ namespace Stripe
         public File ShippingDocumentation
         {
             get => this.InternalShippingDocumentation?.ExpandedObject;
-            set => this.InternalShippingDocumentation = SetExpandableFieldObject(value, this.InternalShippingDocumentation);
+            set =>
+                this.InternalShippingDocumentation = SetExpandableFieldObject(
+                    value,
+                    this.InternalShippingDocumentation
+                );
         }
 
         [JsonProperty("shipping_documentation")]
@@ -465,7 +518,11 @@ namespace Stripe
         public string UncategorizedFileId
         {
             get => this.InternalUncategorizedFile?.Id;
-            set => this.InternalUncategorizedFile = SetExpandableFieldId(value, this.InternalUncategorizedFile);
+            set =>
+                this.InternalUncategorizedFile = SetExpandableFieldId(
+                    value,
+                    this.InternalUncategorizedFile
+                );
         }
 
         /// <summary>
@@ -480,7 +537,11 @@ namespace Stripe
         public File UncategorizedFile
         {
             get => this.InternalUncategorizedFile?.ExpandedObject;
-            set => this.InternalUncategorizedFile = SetExpandableFieldObject(value, this.InternalUncategorizedFile);
+            set =>
+                this.InternalUncategorizedFile = SetExpandableFieldObject(
+                    value,
+                    this.InternalUncategorizedFile
+                );
         }
 
         [JsonProperty("uncategorized_file")]

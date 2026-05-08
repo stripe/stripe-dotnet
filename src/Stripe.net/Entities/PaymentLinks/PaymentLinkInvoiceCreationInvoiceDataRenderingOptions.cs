@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentLinkInvoiceCreationInvoiceDataRenderingOptions : StripeEntity<PaymentLinkInvoiceCreationInvoiceDataRenderingOptions>
+    public class PaymentLinkInvoiceCreationInvoiceDataRenderingOptions
+        : StripeEntity<PaymentLinkInvoiceCreationInvoiceDataRenderingOptions>
     {
         /// <summary>
         /// How line-item prices and amounts will be displayed with respect to tax on invoice PDFs.

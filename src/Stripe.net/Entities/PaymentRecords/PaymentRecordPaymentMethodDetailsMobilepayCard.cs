@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsMobilepayCard : StripeEntity<PaymentRecordPaymentMethodDetailsMobilepayCard>
+    public class PaymentRecordPaymentMethodDetailsMobilepayCard
+        : StripeEntity<PaymentRecordPaymentMethodDetailsMobilepayCard>
     {
         /// <summary>
         /// Brand of the card used in the transaction.

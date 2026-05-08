@@ -4,7 +4,6 @@ namespace StripeTests.Identity
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe.Identity;
     using Xunit;
 
@@ -19,28 +18,20 @@ namespace StripeTests.Identity
 
         public VerificationSessionServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new VerificationSessionService(this.StripeClient);
 
-            this.createOptions = new VerificationSessionCreateOptions
-            {
-                Type = "id_number",
-            };
+            this.createOptions = new VerificationSessionCreateOptions { Type = "id_number" };
 
             this.updateOptions = new VerificationSessionUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.listOptions = new VerificationSessionListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new VerificationSessionListOptions { Limit = 1 };
         }
 
         [Fact]
@@ -134,7 +125,9 @@ namespace StripeTests.Identity
         [Fact]
         public async Task ListAutoPagingAsync()
         {
-            var verificationSession = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            var verificationSession = await this
+                .service.ListAutoPagingAsync(this.listOptions)
+                .FirstAsync();
             Assert.NotNull(verificationSession);
             Assert.Equal("identity.verification_session", verificationSession.Object);
         }
@@ -142,7 +135,10 @@ namespace StripeTests.Identity
         [Fact]
         public void Update()
         {
-            var verificationSession = this.service.Update(VerificationSessionId, this.updateOptions);
+            var verificationSession = this.service.Update(
+                VerificationSessionId,
+                this.updateOptions
+            );
             this.AssertRequest(HttpMethod.Post, "/v1/identity/verification_sessions/vs_123");
             Assert.NotNull(verificationSession);
         }
@@ -150,7 +146,10 @@ namespace StripeTests.Identity
         [Fact]
         public async Task UpdateAsync()
         {
-            var verificationSession = await this.service.UpdateAsync(VerificationSessionId, this.updateOptions);
+            var verificationSession = await this.service.UpdateAsync(
+                VerificationSessionId,
+                this.updateOptions
+            );
             this.AssertRequest(HttpMethod.Post, "/v1/identity/verification_sessions/vs_123");
             Assert.NotNull(verificationSession);
         }

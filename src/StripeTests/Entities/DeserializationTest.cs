@@ -7,7 +7,6 @@ namespace StripeTests
     using Stripe;
     using Stripe.Infrastructure;
     using Xunit;
-
     using STJ = System.Text.Json;
     using STJS = System.Text.Json.Serialization;
 
@@ -109,7 +108,8 @@ namespace StripeTests
         [Fact]
         public void TestStjRoundTripAllPropertyTypes()
         {
-            var json = @"{
+            var json =
+                @"{
                 ""id"": ""obj_123"",
                 ""some_integer"": 42,
                 ""some_longinteger"": 9876543210,
@@ -129,7 +129,9 @@ namespace StripeTests
 
             // Deserialize with STJ
             var stjEntity = STJ.JsonSerializer.Deserialize<MyEntity>(
-                json, StripeConfiguration.SerializerOptions);
+                json,
+                StripeConfiguration.SerializerOptions
+            );
 
             Assert.Equal("obj_123", stjEntity.Id);
             Assert.Equal(42, stjEntity.SomeInteger);
@@ -138,7 +140,10 @@ namespace StripeTests
             Assert.Equal(3.14m, stjEntity.SomeNumber);
             Assert.Equal(2.50m, stjEntity.SomeDecimalString);
             Assert.Equal("hello", stjEntity.SomeString);
-            Assert.Equal(new DateTime(2009, 2, 13, 23, 31, 30, DateTimeKind.Utc), stjEntity.SomeDatetime);
+            Assert.Equal(
+                new DateTime(2009, 2, 13, 23, 31, 30, DateTimeKind.Utc),
+                stjEntity.SomeDatetime
+            );
             Assert.Equal("active", stjEntity.SomeEnum);
             Assert.Equal("ref_456", stjEntity.SomeRef.Id);
             Assert.Equal(new List<string> { "a", "b" }, stjEntity.SomeStringArray);
@@ -150,13 +155,21 @@ namespace StripeTests
             // Deserialize with Newtonsoft and verify equivalence
 #pragma warning disable CS0618 // Type or member is obsolete
             var nsjEntity = JsonConvert.DeserializeObject<MyEntity>(
-                json, StripeConfiguration.SerializerSettings);
+                json,
+                StripeConfiguration.SerializerSettings
+            );
 #pragma warning restore CS0618 // Type or member is obsolete
 
             // Re-serialize both with STJ — if both produce the same output,
             // the in-memory representations are equivalent.
-            var stjOutput = STJ.JsonSerializer.Serialize(stjEntity, StripeConfiguration.SerializerOptions);
-            var nsjOutput = STJ.JsonSerializer.Serialize(nsjEntity, StripeConfiguration.SerializerOptions);
+            var stjOutput = STJ.JsonSerializer.Serialize(
+                stjEntity,
+                StripeConfiguration.SerializerOptions
+            );
+            var nsjOutput = STJ.JsonSerializer.Serialize(
+                nsjEntity,
+                StripeConfiguration.SerializerOptions
+            );
             Assert.Equal(stjOutput, nsjOutput);
         }
 
@@ -186,7 +199,10 @@ namespace StripeTests
             [JsonProperty("some_decimal_string")]
             [JsonConverter(typeof(DecimalStringConverter))]
             [STJS.JsonPropertyName("some_decimal_string")]
-            [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+            [STJS.JsonNumberHandling(
+                STJS.JsonNumberHandling.AllowReadingFromString
+                    | STJS.JsonNumberHandling.WriteAsString
+            )]
             public decimal SomeDecimalString { get; set; }
 
             [JsonProperty("some_string")]
@@ -197,7 +213,8 @@ namespace StripeTests
             [JsonConverter(typeof(UnixDateTimeConverter))]
             [STJS.JsonPropertyName("some_datetime")]
             [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-            public DateTime SomeDatetime { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+            public DateTime SomeDatetime { get; set; } =
+                Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
             [JsonProperty("some_ref")]
             [STJS.JsonPropertyName("some_ref")]
@@ -237,7 +254,10 @@ namespace StripeTests
                 set => this.InternalSomeExpandedArray = SetExpandableArrayObjects(value);
             }
 
-            [JsonProperty("some_expanded_array", ItemConverterType = typeof(ExpandableFieldConverter<MyEntity>))]
+            [JsonProperty(
+                "some_expanded_array",
+                ItemConverterType = typeof(ExpandableFieldConverter<MyEntity>)
+            )]
             [STJS.JsonPropertyName("some_expanded_array")]
             internal List<ExpandableField<MyEntity>> InternalSomeExpandedArray { get; set; }
             #endregion
@@ -265,7 +285,11 @@ namespace StripeTests
             public string SomeExpandableId
             {
                 get => this.InternalSomeExpandable?.Id;
-                set => this.InternalSomeExpandable = SetExpandableFieldId(value, this.InternalSomeExpandable);
+                set =>
+                    this.InternalSomeExpandable = SetExpandableFieldId(
+                        value,
+                        this.InternalSomeExpandable
+                    );
             }
 
             [JsonIgnore]
@@ -273,7 +297,11 @@ namespace StripeTests
             public MyEntity SomeExpandable
             {
                 get => this.InternalSomeExpandable?.ExpandedObject;
-                set => this.InternalSomeExpandable = SetExpandableFieldObject(value, this.InternalSomeExpandable);
+                set =>
+                    this.InternalSomeExpandable = SetExpandableFieldObject(
+                        value,
+                        this.InternalSomeExpandable
+                    );
             }
 
             [JsonProperty("some_expandable")]

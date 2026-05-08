@@ -6,7 +6,8 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfigurationFeaturesSubscriptionCancel : StripeEntity<ConfigurationFeaturesSubscriptionCancel>
+    public class ConfigurationFeaturesSubscriptionCancel
+        : StripeEntity<ConfigurationFeaturesSubscriptionCancel>
     {
         [JsonProperty("cancellation_reason")]
         [STJS.JsonPropertyName("cancellation_reason")]

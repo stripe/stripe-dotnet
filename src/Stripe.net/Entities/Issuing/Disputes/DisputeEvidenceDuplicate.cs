@@ -20,7 +20,11 @@ namespace Stripe.Issuing
         public string AdditionalDocumentationId
         {
             get => this.InternalAdditionalDocumentation?.Id;
-            set => this.InternalAdditionalDocumentation = SetExpandableFieldId(value, this.InternalAdditionalDocumentation);
+            set =>
+                this.InternalAdditionalDocumentation = SetExpandableFieldId(
+                    value,
+                    this.InternalAdditionalDocumentation
+                );
         }
 
         /// <summary>
@@ -35,7 +39,11 @@ namespace Stripe.Issuing
         public File AdditionalDocumentation
         {
             get => this.InternalAdditionalDocumentation?.ExpandedObject;
-            set => this.InternalAdditionalDocumentation = SetExpandableFieldObject(value, this.InternalAdditionalDocumentation);
+            set =>
+                this.InternalAdditionalDocumentation = SetExpandableFieldObject(
+                    value,
+                    this.InternalAdditionalDocumentation
+                );
         }
 
         [JsonProperty("additional_documentation")]
@@ -57,7 +65,11 @@ namespace Stripe.Issuing
         public string CardStatementId
         {
             get => this.InternalCardStatement?.Id;
-            set => this.InternalCardStatement = SetExpandableFieldId(value, this.InternalCardStatement);
+            set =>
+                this.InternalCardStatement = SetExpandableFieldId(
+                    value,
+                    this.InternalCardStatement
+                );
         }
 
         /// <summary>
@@ -72,7 +84,11 @@ namespace Stripe.Issuing
         public File CardStatement
         {
             get => this.InternalCardStatement?.ExpandedObject;
-            set => this.InternalCardStatement = SetExpandableFieldObject(value, this.InternalCardStatement);
+            set =>
+                this.InternalCardStatement = SetExpandableFieldObject(
+                    value,
+                    this.InternalCardStatement
+                );
         }
 
         [JsonProperty("card_statement")]
@@ -109,7 +125,11 @@ namespace Stripe.Issuing
         public File CashReceipt
         {
             get => this.InternalCashReceipt?.ExpandedObject;
-            set => this.InternalCashReceipt = SetExpandableFieldObject(value, this.InternalCashReceipt);
+            set =>
+                this.InternalCashReceipt = SetExpandableFieldObject(
+                    value,
+                    this.InternalCashReceipt
+                );
         }
 
         [JsonProperty("cash_receipt")]
@@ -146,7 +166,8 @@ namespace Stripe.Issuing
         public File CheckImage
         {
             get => this.InternalCheckImage?.ExpandedObject;
-            set => this.InternalCheckImage = SetExpandableFieldObject(value, this.InternalCheckImage);
+            set =>
+                this.InternalCheckImage = SetExpandableFieldObject(value, this.InternalCheckImage);
         }
 
         [JsonProperty("check_image")]

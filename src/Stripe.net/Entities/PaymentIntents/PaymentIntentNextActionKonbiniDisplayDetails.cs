@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentNextActionKonbiniDisplayDetails : StripeEntity<PaymentIntentNextActionKonbiniDisplayDetails>
+    public class PaymentIntentNextActionKonbiniDisplayDetails
+        : StripeEntity<PaymentIntentNextActionKonbiniDisplayDetails>
     {
         /// <summary>
         /// The timestamp at which the pending Konbini payment expires.

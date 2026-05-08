@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class QuoteComputedRecurringTotalDetails : StripeEntity<QuoteComputedRecurringTotalDetails>
+    public class QuoteComputedRecurringTotalDetails
+        : StripeEntity<QuoteComputedRecurringTotalDetails>
     {
         /// <summary>
         /// This is the sum of all the discounts.

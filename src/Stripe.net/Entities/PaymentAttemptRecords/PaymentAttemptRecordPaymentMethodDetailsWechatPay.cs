@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentAttemptRecordPaymentMethodDetailsWechatPay : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsWechatPay>
+    public class PaymentAttemptRecordPaymentMethodDetailsWechatPay
+        : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsWechatPay>
     {
         /// <summary>
         /// Uniquely identifies this particular WeChat Pay account. You can use this attribute to

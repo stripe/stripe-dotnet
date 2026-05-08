@@ -6,23 +6,16 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure.FormEncoding;
 
-    public class OAuthTokenService : Service,
-        ICreatable<OAuthToken, OAuthTokenCreateOptions>
+    public class OAuthTokenService : Service, ICreatable<OAuthToken, OAuthTokenCreateOptions>
     {
         public OAuthTokenService()
-            : base()
-        {
-        }
+            : base() { }
 
         internal OAuthTokenService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public OAuthTokenService(IStripeClient client)
-            : base(client)
-        {
-        }
+            : base(client) { }
 
         public virtual Uri AuthorizeUrl(OAuthAuthorizeUrlOptions options, bool express = false)
         {
@@ -34,36 +27,78 @@ namespace Stripe
 
             options = this.SetupOAuthAuthorizeUrlOptions(options);
 
-            return new Uri(this.Requestor.ConnectBase + path + "?" +
-                ContentEncoder.CreateQueryString(options));
+            return new Uri(
+                this.Requestor.ConnectBase + path + "?" + ContentEncoder.CreateQueryString(options)
+            );
         }
 
-        public virtual OAuthToken Create(OAuthTokenCreateOptions options, RequestOptions requestOptions = null)
+        public virtual OAuthToken Create(
+            OAuthTokenCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
             options = this.SetupOAuthTokenCreateOptions(options);
-            return this.Request<OAuthToken>(BaseAddress.Connect, HttpMethod.Post, "/oauth/token", options, requestOptions);
+            return this.Request<OAuthToken>(
+                BaseAddress.Connect,
+                HttpMethod.Post,
+                "/oauth/token",
+                options,
+                requestOptions
+            );
         }
 
-        public virtual Task<OAuthToken> CreateAsync(OAuthTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<OAuthToken> CreateAsync(
+            OAuthTokenCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
             options = this.SetupOAuthTokenCreateOptions(options);
-            return this.RequestAsync<OAuthToken>(BaseAddress.Connect, HttpMethod.Post, "/oauth/token", options, requestOptions, cancellationToken);
+            return this.RequestAsync<OAuthToken>(
+                BaseAddress.Connect,
+                HttpMethod.Post,
+                "/oauth/token",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
-        public virtual OAuthDeauthorize Deauthorize(OAuthDeauthorizeOptions options, RequestOptions requestOptions = null)
+        public virtual OAuthDeauthorize Deauthorize(
+            OAuthDeauthorizeOptions options,
+            RequestOptions requestOptions = null
+        )
         {
             options = this.SetupOAuthDeauthorizeOptions(options);
-            return this.Request<OAuthDeauthorize>(BaseAddress.Connect, HttpMethod.Post, "/oauth/deauthorize", options, requestOptions);
+            return this.Request<OAuthDeauthorize>(
+                BaseAddress.Connect,
+                HttpMethod.Post,
+                "/oauth/deauthorize",
+                options,
+                requestOptions
+            );
         }
 
-        public virtual Task<OAuthDeauthorize> DeauthorizeAsync(OAuthDeauthorizeOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<OAuthDeauthorize> DeauthorizeAsync(
+            OAuthDeauthorizeOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
             options = this.SetupOAuthDeauthorizeOptions(options);
-            return this.RequestAsync<OAuthDeauthorize>(BaseAddress.Connect, HttpMethod.Post, "/oauth/deauthorize", options, requestOptions, cancellationToken);
+            return this.RequestAsync<OAuthDeauthorize>(
+                BaseAddress.Connect,
+                HttpMethod.Post,
+                "/oauth/deauthorize",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         private OAuthAuthorizeUrlOptions SetupOAuthAuthorizeUrlOptions(
-            OAuthAuthorizeUrlOptions options)
+            OAuthAuthorizeUrlOptions options
+        )
         {
             if (options == null)
             {
@@ -79,7 +114,8 @@ namespace Stripe
         }
 
         private OAuthTokenCreateOptions SetupOAuthTokenCreateOptions(
-            OAuthTokenCreateOptions options)
+            OAuthTokenCreateOptions options
+        )
         {
             if (options == null)
             {
@@ -95,7 +131,8 @@ namespace Stripe
         }
 
         private OAuthDeauthorizeOptions SetupOAuthDeauthorizeOptions(
-            OAuthDeauthorizeOptions options)
+            OAuthDeauthorizeOptions options
+        )
         {
             if (options == null)
             {

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsAfterpayClearpay : StripeEntity<PaymentRecordPaymentMethodDetailsAfterpayClearpay>
+    public class PaymentRecordPaymentMethodDetailsAfterpayClearpay
+        : StripeEntity<PaymentRecordPaymentMethodDetailsAfterpayClearpay>
     {
         /// <summary>
         /// The Afterpay order ID associated with this payment intent.

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountSessionComponentsIssuingCardsListFeatures : StripeEntity<AccountSessionComponentsIssuingCardsListFeatures>
+    public class AccountSessionComponentsIssuingCardsListFeatures
+        : StripeEntity<AccountSessionComponentsIssuingCardsListFeatures>
     {
         /// <summary>
         /// Whether to allow card management features.

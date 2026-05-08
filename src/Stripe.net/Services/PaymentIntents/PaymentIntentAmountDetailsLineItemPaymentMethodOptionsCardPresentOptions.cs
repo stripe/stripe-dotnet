@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentAmountDetailsLineItemPaymentMethodOptionsCardPresentOptions : INestedOptions
+    public class PaymentIntentAmountDetailsLineItemPaymentMethodOptionsCardPresentOptions
+        : INestedOptions
     {
         /// <summary>
         /// Identifier that categorizes the items being purchased using a standardized commodity

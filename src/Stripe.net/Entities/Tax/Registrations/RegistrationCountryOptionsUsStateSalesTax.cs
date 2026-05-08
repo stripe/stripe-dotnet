@@ -7,7 +7,8 @@ namespace Stripe.Tax
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class RegistrationCountryOptionsUsStateSalesTax : StripeEntity<RegistrationCountryOptionsUsStateSalesTax>
+    public class RegistrationCountryOptionsUsStateSalesTax
+        : StripeEntity<RegistrationCountryOptionsUsStateSalesTax>
     {
         /// <summary>
         /// Elections for the state sales tax registration.

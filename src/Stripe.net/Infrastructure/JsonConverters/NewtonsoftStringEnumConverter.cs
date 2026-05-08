@@ -26,10 +26,16 @@ namespace Stripe.Infrastructure
             }
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(
+            JsonReader reader,
+            Type objectType,
+            object existingValue,
+            JsonSerializer serializer
+        )
         {
             throw new NotSupportedException(
-                $"Deserialization of {objectType.Name} (StringEnum) is not supported.");
+                $"Deserialization of {objectType.Name} (StringEnum) is not supported."
+            );
         }
     }
 }

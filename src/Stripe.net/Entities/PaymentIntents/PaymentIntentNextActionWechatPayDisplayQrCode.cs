@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentNextActionWechatPayDisplayQrCode : StripeEntity<PaymentIntentNextActionWechatPayDisplayQrCode>
+    public class PaymentIntentNextActionWechatPayDisplayQrCode
+        : StripeEntity<PaymentIntentNextActionWechatPayDisplayQrCode>
     {
         /// <summary>
         /// The data being used to generate QR code.

@@ -6,7 +6,9 @@ namespace Stripe
     /// <typeparam name="TEntityReturned">
     /// The type of <see cref="IStripeEntity"/> that this service returns.
     /// </typeparam>
-    [Obsolete("This class is deprecated and will be removed in a future release.  Use StripeClient#RequestAsync or StripeClient#RawRequest instead.")]
+    [Obsolete(
+        "This class is deprecated and will be removed in a future release.  Use StripeClient#RequestAsync or StripeClient#RawRequest instead."
+    )]
     public abstract class Service<TEntityReturned> : Service
         where TEntityReturned : IStripeEntity
     {
@@ -14,9 +16,7 @@ namespace Stripe
         /// Initializes a new instance of the <see cref="Service{T}"/> class.
         /// </summary>
         protected Service()
-            : base()
-        {
-        }
+            : base() { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Service{T}"/> class with a
@@ -24,9 +24,7 @@ namespace Stripe
         /// </summary>
         /// <param name="client">The client used by the service to send requests.</param>
         protected Service(IStripeClient client)
-            : base(client)
-        {
-        }
+            : base(client) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Service{T}"/> class with a
@@ -34,8 +32,6 @@ namespace Stripe
         /// </summary>
         /// <param name="requestor">The reuestor used by the service to send requests.</param>
         internal Service(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
     }
 }

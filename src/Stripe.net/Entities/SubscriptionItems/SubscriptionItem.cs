@@ -53,7 +53,8 @@ namespace Stripe
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("current_period_end")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime CurrentPeriodEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime CurrentPeriodEnd { get; set; } =
+            Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The start time of this subscription item's current billing period.
@@ -62,7 +63,8 @@ namespace Stripe
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("current_period_start")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime CurrentPeriodStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime CurrentPeriodStart { get; set; } =
+            Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Whether this object is deleted or not.

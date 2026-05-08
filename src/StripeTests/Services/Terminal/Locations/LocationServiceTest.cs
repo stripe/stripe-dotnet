@@ -18,7 +18,8 @@ namespace StripeTests.Terminal
 
         public LocationServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new LocationService(this.StripeClient);
@@ -37,14 +38,9 @@ namespace StripeTests.Terminal
                 DisplayName = "my location",
             };
 
-            this.listOptions = new LocationListOptions
-            {
-            };
+            this.listOptions = new LocationListOptions { };
 
-            this.updateOptions = new LocationUpdateOptions
-            {
-                DisplayName = "my_location_update",
-            };
+            this.updateOptions = new LocationUpdateOptions { DisplayName = "my_location_update" };
         }
 
         [Fact]

@@ -15,7 +15,13 @@ namespace Stripe
     /// Sources</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class Card : StripeEntity<Card>, IHasId, IHasMetadata, IHasObject, IExternalAccount, IPaymentSource
+    public class Card
+        : StripeEntity<Card>,
+            IHasId,
+            IHasMetadata,
+            IHasObject,
+            IExternalAccount,
+            IPaymentSource
     {
         /// <summary>
         /// Unique identifier for the object.

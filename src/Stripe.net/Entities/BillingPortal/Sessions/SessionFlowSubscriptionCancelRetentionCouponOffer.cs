@@ -6,7 +6,8 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionFlowSubscriptionCancelRetentionCouponOffer : StripeEntity<SessionFlowSubscriptionCancelRetentionCouponOffer>
+    public class SessionFlowSubscriptionCancelRetentionCouponOffer
+        : StripeEntity<SessionFlowSubscriptionCancelRetentionCouponOffer>
     {
         /// <summary>
         /// The ID of the coupon to be offered.

@@ -45,7 +45,8 @@ namespace StripeTests
             {
                 Assert.Equal(
                     testCase.want,
-                    StringUtils.SecureEquals(testCase.data.a, testCase.data.b));
+                    StringUtils.SecureEquals(testCase.data.a, testCase.data.b)
+                );
             }
         }
 

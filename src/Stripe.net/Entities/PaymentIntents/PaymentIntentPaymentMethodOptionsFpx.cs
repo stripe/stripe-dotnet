@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentMethodOptionsFpx : StripeEntity<PaymentIntentPaymentMethodOptionsFpx>
+    public class PaymentIntentPaymentMethodOptionsFpx
+        : StripeEntity<PaymentIntentPaymentMethodOptionsFpx>
     {
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment

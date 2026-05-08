@@ -7,9 +7,7 @@ namespace StripeTests.Terminal
     public class LocationTest : BaseStripeTest
     {
         public LocationTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

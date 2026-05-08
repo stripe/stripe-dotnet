@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountSessionComponentsFinancialAccountTransactionsFeaturesOptions : INestedOptions
+    public class AccountSessionComponentsFinancialAccountTransactionsFeaturesOptions
+        : INestedOptions
     {
         /// <summary>
         /// Whether to allow card spend dispute management features.

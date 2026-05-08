@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountIdentityIndividualScriptAddressesKanji : StripeEntity<AccountIdentityIndividualScriptAddressesKanji>
+    public class AccountIdentityIndividualScriptAddressesKanji
+        : StripeEntity<AccountIdentityIndividualScriptAddressesKanji>
     {
         /// <summary>
         /// City, district, suburb, town, or village.

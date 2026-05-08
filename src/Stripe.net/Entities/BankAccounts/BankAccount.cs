@@ -17,7 +17,13 @@ namespace Stripe
     /// and transfers</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class BankAccount : StripeEntity<BankAccount>, IHasId, IHasMetadata, IHasObject, IExternalAccount, IPaymentSource
+    public class BankAccount
+        : StripeEntity<BankAccount>,
+            IHasId,
+            IHasMetadata,
+            IHasObject,
+            IExternalAccount,
+            IPaymentSource
     {
         /// <summary>
         /// Unique identifier for the object.

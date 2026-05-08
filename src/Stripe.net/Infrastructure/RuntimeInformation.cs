@@ -19,20 +19,29 @@ namespace Stripe.Infrastructure
 
         internal static bool IsMono { get; } = Type.GetType("Mono.Runtime") != null;
 
-        internal static bool IsFullFramework => FrameworkDescription.StartsWith(".NET Framework", StringComparison.OrdinalIgnoreCase);
+        internal static bool IsFullFramework =>
+            FrameworkDescription.StartsWith(".NET Framework", StringComparison.OrdinalIgnoreCase);
 
-        internal static bool IsNetCore
-            => ((Environment.Version.Major >= 5) || FrameworkDescription.StartsWith(".NET Core", StringComparison.OrdinalIgnoreCase))
-                && !string.IsNullOrEmpty(typeof(object).Assembly.Location);
+        internal static bool IsNetCore =>
+            (
+                (Environment.Version.Major >= 5)
+                || FrameworkDescription.StartsWith(".NET Core", StringComparison.OrdinalIgnoreCase)
+            ) && !string.IsNullOrEmpty(typeof(object).Assembly.Location);
 
         /// <summary>
         /// "The north star for CoreRT is to be a flavor of .NET Core" -> CoreRT reports .NET Core everywhere.
         /// </summary>
-        internal static bool IsCoreRT
-            => ((Environment.Version.Major >= 5) || FrameworkDescription.StartsWith(".NET Core", StringComparison.OrdinalIgnoreCase))
-               && string.IsNullOrEmpty(typeof(object).Assembly.Location); // but it's merged to a single .exe and .Location returns null here ;)
+        internal static bool IsCoreRT =>
+            (
+                (Environment.Version.Major >= 5)
+                || FrameworkDescription.StartsWith(".NET Core", StringComparison.OrdinalIgnoreCase)
+            ) && string.IsNullOrEmpty(typeof(object).Assembly.Location); // but it's merged to a single .exe and .Location returns null here ;)
 
-        internal static bool IsRunningInContainer => string.Equals(Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER"), "true");
+        internal static bool IsRunningInContainer =>
+            string.Equals(
+                Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER"),
+                "true"
+            );
 
         /// <summary>Returns a string that describes the operating system on which the app is running.</summary>
         /// <returns>A string that describes the operating system on which the app is running.</returns>
@@ -77,20 +86,33 @@ namespace Stripe.Infrastructure
         internal static string GetMonoVersion()
         {
             var monoRuntimeType = Type.GetType("Mono.Runtime");
-            var monoDisplayName = monoRuntimeType?.GetMethod("GetDisplayName", BindingFlags.NonPublic | BindingFlags.Static);
+            var monoDisplayName = monoRuntimeType?.GetMethod(
+                "GetDisplayName",
+                BindingFlags.NonPublic | BindingFlags.Static
+            );
             if (monoDisplayName != null)
             {
                 string version = monoDisplayName.Invoke(null, null)?.ToString();
                 if (version != null)
                 {
-                    int bracket1 = version.IndexOf('('), bracket2 = version.IndexOf(')');
+                    int bracket1 = version.IndexOf('('),
+                        bracket2 = version.IndexOf(')');
                     if (bracket1 != -1 && bracket2 != -1)
                     {
                         string comment = version.Substring(bracket1 + 1, bracket2 - bracket1 - 1);
-                        var commentParts = comment.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                        var commentParts = comment.Split(
+                            new[] { ' ' },
+                            StringSplitOptions.RemoveEmptyEntries
+                        );
                         if (commentParts.Length > 2)
                         {
-                            version = version.Substring(0, bracket1) + "(" + commentParts[0] + " " + commentParts[1] + ")";
+                            version =
+                                version.Substring(0, bracket1)
+                                + "("
+                                + commentParts[0]
+                                + " "
+                                + commentParts[1]
+                                + ")";
                         }
                     }
                 }
@@ -167,20 +189,32 @@ namespace Stripe.Infrastructure
                 return true;
             }
 
-            string runtimeDirectory = System.Runtime.InteropServices.RuntimeEnvironment.GetRuntimeDirectory();
+            string runtimeDirectory =
+                System.Runtime.InteropServices.RuntimeEnvironment.GetRuntimeDirectory();
             if (TryGetVersionFromRuntimeDirectory(runtimeDirectory, out version))
             {
                 return true;
             }
 
             // systemPrivateCoreLib.Product*Part properties return 0 so we have to implement some ugly parsing...
-            var systemPrivateCoreLib = FileVersionInfo.GetVersionInfo(typeof(object).Assembly.Location);
-            if (TryGetVersionFromProductInfo(systemPrivateCoreLib.ProductVersion, systemPrivateCoreLib.ProductName, out version))
+            var systemPrivateCoreLib = FileVersionInfo.GetVersionInfo(
+                typeof(object).Assembly.Location
+            );
+            if (
+                TryGetVersionFromProductInfo(
+                    systemPrivateCoreLib.ProductVersion,
+                    systemPrivateCoreLib.ProductName,
+                    out version
+                )
+            )
             {
                 return true;
             }
 
-            string frameworkName = Assembly.GetEntryAssembly()?.GetCustomAttribute<TargetFrameworkAttribute>()?.FrameworkName;
+            string frameworkName = Assembly
+                .GetEntryAssembly()
+                ?.GetCustomAttribute<TargetFrameworkAttribute>()
+                ?.FrameworkName;
             if (TryGetVersionFromFrameworkName(frameworkName, out version))
             {
                 return true;
@@ -188,8 +222,14 @@ namespace Stripe.Infrastructure
 
             if (IsRunningInContainer)
             {
-                return Version.TryParse(Environment.GetEnvironmentVariable("DOTNET_VERSION"), out version)
-                    || Version.TryParse(Environment.GetEnvironmentVariable("ASPNETCORE_VERSION"), out version);
+                return Version.TryParse(
+                        Environment.GetEnvironmentVariable("DOTNET_VERSION"),
+                        out version
+                    )
+                    || Version.TryParse(
+                        Environment.GetEnvironmentVariable("ASPNETCORE_VERSION"),
+                        out version
+                    );
             }
 
             version = null;
@@ -199,9 +239,18 @@ namespace Stripe.Infrastructure
         // sample input:
         // for dotnet run: C:\Program Files\dotnet\shared\Microsoft.NETCore.App\2.1.12\
         // for dotnet publish: C:\Users\adsitnik\source\repos\ConsoleApp25\ConsoleApp25\bin\Release\netcoreapp2.0\win-x64\publish\
-        internal static bool TryGetVersionFromRuntimeDirectory(string runtimeDirectory, out Version version)
+        internal static bool TryGetVersionFromRuntimeDirectory(
+            string runtimeDirectory,
+            out Version version
+        )
         {
-            if (!string.IsNullOrEmpty(runtimeDirectory) && Version.TryParse(GetParsableVersionPart(new DirectoryInfo(runtimeDirectory).Name), out version))
+            if (
+                !string.IsNullOrEmpty(runtimeDirectory)
+                && Version.TryParse(
+                    GetParsableVersionPart(new DirectoryInfo(runtimeDirectory).Name),
+                    out version
+                )
+            )
             {
                 return true;
             }
@@ -216,14 +265,21 @@ namespace Stripe.Infrastructure
         // 2.2: 4.6.27817.03 @BuiltBy: dlab14-DDVSOWINAGE101 @Branch: release/2.2 @SrcCode: https://github.com/dotnet/coreclr/tree/ce1d090d33b400a25620c0145046471495067cc7, Microsoft .NET Framework
         // 3.0: 3.0.0-preview8.19379.2+ac25be694a5385a6a1496db40de932df0689b742, Microsoft .NET Core
         // 5.0: 5.0.0-alpha1.19413.7+0ecefa44c9d66adb8a997d5778dc6c246ad393a7, Microsoft .NET Core
-        internal static bool TryGetVersionFromProductInfo(string productVersion, string productName, out Version version)
+        internal static bool TryGetVersionFromProductInfo(
+            string productVersion,
+            string productName,
+            out Version version
+        )
         {
             if (!string.IsNullOrEmpty(productVersion) && !string.IsNullOrEmpty(productName))
             {
                 if (productName.IndexOf(".NET Core", StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     string parsableVersion = GetParsableVersionPart(productVersion);
-                    if (Version.TryParse(productVersion, out version) || Version.TryParse(parsableVersion, out version))
+                    if (
+                        Version.TryParse(productVersion, out version)
+                        || Version.TryParse(parsableVersion, out version)
+                    )
                     {
                         return true;
                     }
@@ -236,7 +292,11 @@ namespace Stripe.Infrastructure
                     int releaseVersionIndex = productVersion.IndexOf(releaseVersionPrefix);
                     if (releaseVersionIndex > 0)
                     {
-                        string releaseVersion = GetParsableVersionPart(productVersion.Substring(releaseVersionIndex + releaseVersionPrefix.Length));
+                        string releaseVersion = GetParsableVersionPart(
+                            productVersion.Substring(
+                                releaseVersionIndex + releaseVersionPrefix.Length
+                            )
+                        );
 
                         return Version.TryParse(releaseVersion, out version);
                     }
@@ -250,12 +310,17 @@ namespace Stripe.Infrastructure
         // sample input:
         // .NETCoreApp,Version=v2.0
         // .NETCoreApp,Version=v2.1
-        internal static bool TryGetVersionFromFrameworkName(string frameworkName, out Version version)
+        internal static bool TryGetVersionFromFrameworkName(
+            string frameworkName,
+            out Version version
+        )
         {
             const string versionPrefix = ".NETCoreApp,Version=v";
             if (!string.IsNullOrEmpty(frameworkName) && frameworkName.StartsWith(versionPrefix))
             {
-                string frameworkVersion = GetParsableVersionPart(frameworkName.Substring(versionPrefix.Length));
+                string frameworkVersion = GetParsableVersionPart(
+                    frameworkName.Substring(versionPrefix.Length)
+                );
 
                 return Version.TryParse(frameworkVersion, out version);
             }
@@ -265,6 +330,7 @@ namespace Stripe.Infrastructure
         }
 
         // Version.TryParse does not handle thing like 3.0.0-WORD
-        private static string GetParsableVersionPart(string fullVersionName) => new string(fullVersionName.TakeWhile(c => char.IsDigit(c) || c == '.').ToArray());
+        private static string GetParsableVersionPart(string fullVersionName) =>
+            new string(fullVersionName.TakeWhile(c => char.IsDigit(c) || c == '.').ToArray());
     }
 }

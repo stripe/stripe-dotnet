@@ -6,7 +6,5 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class FileLinkGetOptions : BaseOptions
-    {
-    }
+    public class FileLinkGetOptions : BaseOptions { }
 }

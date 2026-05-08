@@ -6,7 +6,8 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class OutboundTransferTrackingDetailsUsDomesticWire : StripeEntity<OutboundTransferTrackingDetailsUsDomesticWire>
+    public class OutboundTransferTrackingDetailsUsDomesticWire
+        : StripeEntity<OutboundTransferTrackingDetailsUsDomesticWire>
     {
         /// <summary>
         /// CHIPS System Sequence Number (SSN) of the OutboundTransfer for transfers sent over the

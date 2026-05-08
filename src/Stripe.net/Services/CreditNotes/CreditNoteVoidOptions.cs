@@ -5,7 +5,5 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class CreditNoteVoidOptions : BaseOptions
-    {
-    }
+    public class CreditNoteVoidOptions : BaseOptions { }
 }

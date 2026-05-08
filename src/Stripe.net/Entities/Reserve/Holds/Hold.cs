@@ -131,7 +131,11 @@ namespace Stripe.Reserve
         public Plan ReservePlan
         {
             get => this.InternalReservePlan?.ExpandedObject;
-            set => this.InternalReservePlan = SetExpandableFieldObject(value, this.InternalReservePlan);
+            set =>
+                this.InternalReservePlan = SetExpandableFieldObject(
+                    value,
+                    this.InternalReservePlan
+                );
         }
 
         [JsonProperty("reserve_plan")]
@@ -152,7 +156,8 @@ namespace Stripe.Reserve
         public string SourceChargeId
         {
             get => this.InternalSourceCharge?.Id;
-            set => this.InternalSourceCharge = SetExpandableFieldId(value, this.InternalSourceCharge);
+            set =>
+                this.InternalSourceCharge = SetExpandableFieldId(value, this.InternalSourceCharge);
         }
 
         /// <summary>
@@ -166,7 +171,11 @@ namespace Stripe.Reserve
         public Charge SourceCharge
         {
             get => this.InternalSourceCharge?.ExpandedObject;
-            set => this.InternalSourceCharge = SetExpandableFieldObject(value, this.InternalSourceCharge);
+            set =>
+                this.InternalSourceCharge = SetExpandableFieldObject(
+                    value,
+                    this.InternalSourceCharge
+                );
         }
 
         [JsonProperty("source_charge")]

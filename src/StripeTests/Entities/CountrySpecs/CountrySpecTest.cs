@@ -7,9 +7,7 @@ namespace StripeTests
     public class CountrySpecTest : BaseStripeTest
     {
         public CountrySpecTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

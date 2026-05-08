@@ -6,7 +6,9 @@ namespace Stripe.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CreditGrantApplicabilityConfigScopePrice : StripeEntity<CreditGrantApplicabilityConfigScopePrice>, IHasId
+    public class CreditGrantApplicabilityConfigScopePrice
+        : StripeEntity<CreditGrantApplicabilityConfigScopePrice>,
+            IHasId
     {
         /// <summary>
         /// Unique identifier for the object.

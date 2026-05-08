@@ -11,7 +11,5 @@ namespace Stripe.Infrastructure
     /// This is only used for an internal wholesome test.
     /// </remarks>
     [System.AttributeUsage(System.AttributeTargets.Property)]
-    internal class AllowNameMismatch : System.Attribute
-    {
-    }
+    internal class AllowNameMismatch : System.Attribute { }
 }

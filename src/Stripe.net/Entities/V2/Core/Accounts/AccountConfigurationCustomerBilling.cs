@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationCustomerBilling : StripeEntity<AccountConfigurationCustomerBilling>
+    public class AccountConfigurationCustomerBilling
+        : StripeEntity<AccountConfigurationCustomerBilling>
     {
         /// <summary>
         /// ID of a PaymentMethod attached to the customer account to use as the default for

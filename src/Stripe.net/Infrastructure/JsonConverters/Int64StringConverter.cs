@@ -27,14 +27,21 @@ namespace Stripe.Infrastructure
             writer.WriteValue(value.ToString());
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(
+            JsonReader reader,
+            Type objectType,
+            object existingValue,
+            JsonSerializer serializer
+        )
         {
             bool nullable = IsNullable(objectType);
             if (reader.TokenType == JsonToken.Null)
             {
                 if (!nullable)
                 {
-                    throw new JsonSerializationException(string.Format("Cannot convert null value to {0}.", objectType));
+                    throw new JsonSerializationException(
+                        string.Format("Cannot convert null value to {0}.", objectType)
+                    );
                 }
 
                 return null;
@@ -45,7 +52,9 @@ namespace Stripe.Infrastructure
             {
                 if (!long.TryParse((string)reader.Value!, out value))
                 {
-                    throw new JsonSerializationException(string.Format("Cannot convert invalid value to {0}.", objectType));
+                    throw new JsonSerializationException(
+                        string.Format("Cannot convert invalid value to {0}.", objectType)
+                    );
                 }
             }
             else if (reader.TokenType == JsonToken.Integer)
@@ -54,7 +63,12 @@ namespace Stripe.Infrastructure
             }
             else
             {
-                throw new JsonSerializationException(string.Format("Unexpected token parsing integer. Expected String or Integer, got {0}.", reader.TokenType));
+                throw new JsonSerializationException(
+                    string.Format(
+                        "Unexpected token parsing integer. Expected String or Integer, got {0}.",
+                        reader.TokenType
+                    )
+                );
             }
 
             return value;

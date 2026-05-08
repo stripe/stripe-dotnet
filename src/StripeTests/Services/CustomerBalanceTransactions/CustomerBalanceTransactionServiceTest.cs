@@ -3,7 +3,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -19,7 +18,8 @@ namespace StripeTests
 
         public CustomerBalanceTransactionServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new CustomerBalanceTransactionService(this.StripeClient);
@@ -30,10 +30,7 @@ namespace StripeTests
                 Currency = "usd",
             };
 
-            this.listOptions = new CustomerBalanceTransactionListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new CustomerBalanceTransactionListOptions { Limit = 1 };
 
             this.updateOptions = new CustomerBalanceTransactionUpdateOptions
             {
@@ -63,7 +60,10 @@ namespace StripeTests
         public void Get()
         {
             var transaction = this.service.Get(CustomerId, CustomerBalanceTransactionId);
-            this.AssertRequest(HttpMethod.Get, "/v1/customers/cus_123/balance_transactions/cbtxn_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/customers/cus_123/balance_transactions/cbtxn_123"
+            );
             Assert.NotNull(transaction);
             Assert.Equal("customer_balance_transaction", transaction.Object);
         }
@@ -72,7 +72,10 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var transaction = await this.service.GetAsync(CustomerId, CustomerBalanceTransactionId);
-            this.AssertRequest(HttpMethod.Get, "/v1/customers/cus_123/balance_transactions/cbtxn_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/customers/cus_123/balance_transactions/cbtxn_123"
+            );
             Assert.NotNull(transaction);
             Assert.Equal("customer_balance_transaction", transaction.Object);
         }
@@ -110,7 +113,9 @@ namespace StripeTests
         [Fact]
         public async Task ListAutoPagingAsync()
         {
-            var transaction = await this.service.ListAutoPagingAsync(CustomerId, this.listOptions).FirstAsync();
+            var transaction = await this
+                .service.ListAutoPagingAsync(CustomerId, this.listOptions)
+                .FirstAsync();
             Assert.NotNull(transaction);
             Assert.Equal("customer_balance_transaction", transaction.Object);
         }
@@ -118,8 +123,15 @@ namespace StripeTests
         [Fact]
         public void Update()
         {
-            var customer = this.service.Update(CustomerId, CustomerBalanceTransactionId, this.updateOptions);
-            this.AssertRequest(HttpMethod.Post, "/v1/customers/cus_123/balance_transactions/cbtxn_123");
+            var customer = this.service.Update(
+                CustomerId,
+                CustomerBalanceTransactionId,
+                this.updateOptions
+            );
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/customers/cus_123/balance_transactions/cbtxn_123"
+            );
             Assert.NotNull(customer);
             Assert.Equal("customer_balance_transaction", customer.Object);
         }
@@ -127,8 +139,15 @@ namespace StripeTests
         [Fact]
         public async Task UpdateAsync()
         {
-            var customer = await this.service.UpdateAsync(CustomerId, CustomerBalanceTransactionId, this.updateOptions);
-            this.AssertRequest(HttpMethod.Post, "/v1/customers/cus_123/balance_transactions/cbtxn_123");
+            var customer = await this.service.UpdateAsync(
+                CustomerId,
+                CustomerBalanceTransactionId,
+                this.updateOptions
+            );
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/customers/cus_123/balance_transactions/cbtxn_123"
+            );
             Assert.NotNull(customer);
             Assert.Equal("customer_balance_transaction", customer.Object);
         }

@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountIdentityBusinessDetailsDocuments : StripeEntity<AccountIdentityBusinessDetailsDocuments>
+    public class AccountIdentityBusinessDetailsDocuments
+        : StripeEntity<AccountIdentityBusinessDetailsDocuments>
     {
         /// <summary>
         /// One or more documents that support the Bank account ownership verification requirement.

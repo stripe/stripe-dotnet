@@ -6,7 +6,8 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ReceivedDebitInitiatingPaymentMethodDetailsBillingDetails : StripeEntity<ReceivedDebitInitiatingPaymentMethodDetailsBillingDetails>
+    public class ReceivedDebitInitiatingPaymentMethodDetailsBillingDetails
+        : StripeEntity<ReceivedDebitInitiatingPaymentMethodDetailsBillingDetails>
     {
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]

@@ -6,7 +6,8 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class OutboundTransferTrackingDetailsAch : StripeEntity<OutboundTransferTrackingDetailsAch>
+    public class OutboundTransferTrackingDetailsAch
+        : StripeEntity<OutboundTransferTrackingDetailsAch>
     {
         /// <summary>
         /// ACH trace ID of the OutboundTransfer for transfers sent over the <c>ach</c> network.

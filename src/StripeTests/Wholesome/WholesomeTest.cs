@@ -58,12 +58,25 @@ namespace StripeTests.Wholesome
             return this.propertyInfo.GetSetMethod(nonPublic);
         }
 
-        public override object GetValue(object obj, BindingFlags invokeAttr, Binder binder, object[] index, CultureInfo culture)
+        public override object GetValue(
+            object obj,
+            BindingFlags invokeAttr,
+            Binder binder,
+            object[] index,
+            CultureInfo culture
+        )
         {
             return this.propertyInfo.GetValue(obj, invokeAttr, binder, index, culture);
         }
 
-        public override void SetValue(object obj, object value, BindingFlags invokeAttr, Binder binder, object[] index, CultureInfo culture)
+        public override void SetValue(
+            object obj,
+            object value,
+            BindingFlags invokeAttr,
+            Binder binder,
+            object[] index,
+            CultureInfo culture
+        )
         {
             this.propertyInfo.SetValue(obj, value, invokeAttr, binder, index, culture);
         }
@@ -124,8 +137,8 @@ namespace StripeTests.Wholesome
         protected static List<Type> GetSubclassesOf(Type parentClass)
         {
             var assembly = parentClass.GetTypeInfo().Assembly;
-            return assembly.DefinedTypes
-                .Where(t => t.IsClass && t.IsSubclassOf(parentClass))
+            return assembly
+                .DefinedTypes.Where(t => t.IsClass && t.IsSubclassOf(parentClass))
                 .Select(t => t.AsType())
                 .ToList();
         }
@@ -143,8 +156,8 @@ namespace StripeTests.Wholesome
             }
 
             var assembly = parent.GetTypeInfo().Assembly;
-            return assembly.DefinedTypes
-                .Where(t => t.IsInterface && parent.IsAssignableFrom(t))
+            return assembly
+                .DefinedTypes.Where(t => t.IsInterface && parent.IsAssignableFrom(t))
                 .Select(t => t.AsType())
                 .ToList();
         }
@@ -157,8 +170,10 @@ namespace StripeTests.Wholesome
         protected static List<Type> GetClassesWithInterface(Type implementedInterface)
         {
             var assembly = implementedInterface.GetTypeInfo().Assembly;
-            return assembly.DefinedTypes
-                .Where(t => t.IsClass && t.ImplementedInterfaces.Contains(implementedInterface))
+            return assembly
+                .DefinedTypes.Where(t =>
+                    t.IsClass && t.ImplementedInterfaces.Contains(implementedInterface)
+                )
                 .Select(t => t.AsType())
                 .ToList();
         }
@@ -173,10 +188,20 @@ namespace StripeTests.Wholesome
         internal static IEnumerable<ExtendedPropertyInfo> GetPropertiesToCheck(Type type)
         {
             // Gets the nonpublic properties (private, internal, protected, etc)
-            var nonpublicProperties = type.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
-            var allProperties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+            var nonpublicProperties = type.GetProperties(
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly
+            );
+            var allProperties = type.GetProperties(
+                BindingFlags.Public
+                    | BindingFlags.NonPublic
+                    | BindingFlags.Instance
+                    | BindingFlags.DeclaredOnly
+            );
 
-            return allProperties.Select(p => new ExtendedPropertyInfo(p, nonpublicProperties.Contains(p)));
+            return allProperties.Select(p => new ExtendedPropertyInfo(
+                p,
+                nonpublicProperties.Contains(p)
+            ));
         }
     }
 }

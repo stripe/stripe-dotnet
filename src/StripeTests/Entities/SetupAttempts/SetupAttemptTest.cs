@@ -7,9 +7,7 @@ namespace StripeTests
     public class SetupAttemptTest : BaseStripeTest
     {
         public SetupAttemptTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

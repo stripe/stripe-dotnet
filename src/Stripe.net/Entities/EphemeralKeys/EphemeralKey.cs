@@ -66,7 +66,6 @@ namespace Stripe
 
         [JsonIgnore]
         [STJS.JsonIgnore]
-
         public string RawJson => this.StripeResponse?.Content;
     }
 }

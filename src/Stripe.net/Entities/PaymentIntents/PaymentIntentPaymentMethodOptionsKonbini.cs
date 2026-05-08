@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentMethodOptionsKonbini : StripeEntity<PaymentIntentPaymentMethodOptionsKonbini>
+    public class PaymentIntentPaymentMethodOptionsKonbini
+        : StripeEntity<PaymentIntentPaymentMethodOptionsKonbini>
     {
         /// <summary>
         /// An optional 10 to 11 digit numeric-only string determining the confirmation code at

@@ -7,7 +7,8 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfigurationFeaturesSubscriptionUpdateScheduleAtPeriodEnd : StripeEntity<ConfigurationFeaturesSubscriptionUpdateScheduleAtPeriodEnd>
+    public class ConfigurationFeaturesSubscriptionUpdateScheduleAtPeriodEnd
+        : StripeEntity<ConfigurationFeaturesSubscriptionUpdateScheduleAtPeriodEnd>
     {
         /// <summary>
         /// List of conditions. When any condition is true, an update will be scheduled at the end

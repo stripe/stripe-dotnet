@@ -3,7 +3,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -16,15 +15,13 @@ namespace StripeTests
 
         public CountrySpecServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new CountrySpecService(this.StripeClient);
 
-            this.listOptions = new CountrySpecListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new CountrySpecListOptions { Limit = 1 };
         }
 
         [Fact]

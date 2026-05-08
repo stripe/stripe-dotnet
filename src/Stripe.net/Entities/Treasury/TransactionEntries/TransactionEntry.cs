@@ -125,7 +125,11 @@ namespace Stripe.Treasury
         public Transaction Transaction
         {
             get => this.InternalTransaction?.ExpandedObject;
-            set => this.InternalTransaction = SetExpandableFieldObject(value, this.InternalTransaction);
+            set =>
+                this.InternalTransaction = SetExpandableFieldObject(
+                    value,
+                    this.InternalTransaction
+                );
         }
 
         [JsonProperty("transaction")]

@@ -6,9 +6,7 @@
 
     public class Program
     {
-        public Program()
-        {
-        }
+        public Program() { }
 
         /// <summary>
         /// To create an example, clone ExampleTemplate.cs, implement the example
@@ -49,7 +47,11 @@
 
             var runMethod = type.GetMethod(
                 "Run",
-                BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+                BindingFlags.NonPublic
+                    | BindingFlags.Public
+                    | BindingFlags.Static
+                    | BindingFlags.FlattenHierarchy
+            );
             if (runMethod == null)
             {
                 Console.WriteLine($"Example class {args[0]} is missing Run method");

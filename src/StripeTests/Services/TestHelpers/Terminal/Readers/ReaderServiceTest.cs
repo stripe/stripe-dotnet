@@ -14,7 +14,8 @@ namespace StripeTests.TestHelpers.Terminal
 
         public ReaderServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new ReaderService(this.StripeClient);
@@ -24,7 +25,10 @@ namespace StripeTests.TestHelpers.Terminal
         public async Task PresentPaymentMethodAsync()
         {
             var reader = await this.service.PresentPaymentMethodAsync(ReaderId);
-            this.AssertRequest(HttpMethod.Post, "/v1/test_helpers/terminal/readers/ds_123/present_payment_method");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/terminal/readers/ds_123/present_payment_method"
+            );
             Assert.NotNull(reader);
         }
     }

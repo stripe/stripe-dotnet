@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationMerchantCapabilitiesStripeBalance : StripeEntity<AccountConfigurationMerchantCapabilitiesStripeBalance>
+    public class AccountConfigurationMerchantCapabilitiesStripeBalance
+        : StripeEntity<AccountConfigurationMerchantCapabilitiesStripeBalance>
     {
         /// <summary>
         /// Enables this Account to complete payouts from their Stripe Balance (/v1/balance).

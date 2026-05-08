@@ -28,7 +28,11 @@ namespace Stripe
         public string DefaultPaymentMethodId
         {
             get => this.InternalDefaultPaymentMethod?.Id;
-            set => this.InternalDefaultPaymentMethod = SetExpandableFieldId(value, this.InternalDefaultPaymentMethod);
+            set =>
+                this.InternalDefaultPaymentMethod = SetExpandableFieldId(
+                    value,
+                    this.InternalDefaultPaymentMethod
+                );
         }
 
         /// <summary>
@@ -43,7 +47,11 @@ namespace Stripe
         public PaymentMethod DefaultPaymentMethod
         {
             get => this.InternalDefaultPaymentMethod?.ExpandedObject;
-            set => this.InternalDefaultPaymentMethod = SetExpandableFieldObject(value, this.InternalDefaultPaymentMethod);
+            set =>
+                this.InternalDefaultPaymentMethod = SetExpandableFieldObject(
+                    value,
+                    this.InternalDefaultPaymentMethod
+                );
         }
 
         [JsonProperty("default_payment_method")]

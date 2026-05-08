@@ -17,9 +17,7 @@ namespace Stripe
         /// <summary>
         /// Initializes a new instance of the <see cref="Service"/> class.
         /// </summary>
-        protected Service()
-        {
-        }
+        protected Service() { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Service"/> class with a
@@ -37,9 +35,7 @@ namespace Stripe
         /// </summary>
         /// <param name="client">The client used by the service to send requests.</param>
         protected Service(IStripeClient client)
-            : this(ApiRequestorAdapter.Adapt(client))
-        {
-        }
+            : this(ApiRequestorAdapter.Adapt(client)) { }
 
         /// <summary>
         /// Gets or sets the client used by this service to send requests. If no client was set when the
@@ -70,11 +66,14 @@ namespace Stripe
             HttpMethod method,
             string path,
             BaseOptions options,
-            RequestOptions requestOptions)
+            RequestOptions requestOptions
+        )
             where T : IStripeEntity
         {
             return this.RequestAsync<T>(baseAddress, method, path, options, requestOptions)
-                .ConfigureAwait(false).GetAwaiter().GetResult();
+                .ConfigureAwait(false)
+                .GetAwaiter()
+                .GetResult();
         }
 
         internal Stream RequestStreaming(
@@ -82,10 +81,13 @@ namespace Stripe
             HttpMethod method,
             string path,
             BaseOptions options,
-            RequestOptions requestOptions)
+            RequestOptions requestOptions
+        )
         {
             return this.RequestStreamingAsync(baseAddress, method, path, options, requestOptions)
-                .ConfigureAwait(false).GetAwaiter().GetResult();
+                .ConfigureAwait(false)
+                .GetAwaiter()
+                .GetResult();
         }
 
         internal async Task<T> RequestAsync<T>(
@@ -94,16 +96,20 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
             where T : IStripeEntity
         {
-            return await this.Requestor.RequestAsync<T>(
-                baseAddress,
-                method,
-                path,
-                options,
-                requestOptions,
-                cancellationToken).ConfigureAwait(false);
+            return await this
+                .Requestor.RequestAsync<T>(
+                    baseAddress,
+                    method,
+                    path,
+                    options,
+                    requestOptions,
+                    cancellationToken
+                )
+                .ConfigureAwait(false);
         }
 
         internal async Task<Stream> RequestStreamingAsync(
@@ -112,15 +118,18 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
         {
-            var stream = await this.Requestor.RequestStreamingAsync(
+            var stream = await this
+                .Requestor.RequestStreamingAsync(
                     baseAddress,
                     method,
                     path,
                     options,
                     requestOptions,
-                    cancellationToken)
+                    cancellationToken
+                )
                 .ConfigureAwait(false);
             return stream;
         }
@@ -128,28 +137,29 @@ namespace Stripe
         internal IEnumerable<T> ListRequestAutoPaging<T>(
             string url,
             BaseOptions options,
-            RequestOptions requestOptions)
+            RequestOptions requestOptions
+        )
             where T : IStripeEntity
         {
             var apiMode = ApiModeUtils.GetApiMode(url);
 #if NETFRAMEWORK
             if (apiMode == ApiMode.V2)
             {
-                return
-                    this.V2ListRequestAutoPagingSync<T>(url, options, requestOptions);
+                return this.V2ListRequestAutoPagingSync<T>(url, options, requestOptions);
             }
 
-            return
-                this.V1ListRequestAutoPagingSync<T>(url, options as ListOptions, requestOptions);
+            return this.V1ListRequestAutoPagingSync<T>(url, options as ListOptions, requestOptions);
 #else
             if (apiMode == ApiMode.V2)
             {
                 return AsyncUtils.ToEnumerable(
-                    this.V2ListRequestAutoPagingAsync<T>(url, options, requestOptions));
+                    this.V2ListRequestAutoPagingAsync<T>(url, options, requestOptions)
+                );
             }
 
             return AsyncUtils.ToEnumerable(
-                this.V1ListRequestAutoPagingAsync<T>(url, options as ListOptions, requestOptions));
+                this.V1ListRequestAutoPagingAsync<T>(url, options as ListOptions, requestOptions)
+            );
 #endif
         }
 
@@ -157,7 +167,8 @@ namespace Stripe
         internal IEnumerable<T> V1ListRequestAutoPagingSync<T>(
             string url,
             ListOptions options,
-            RequestOptions requestOptions)
+            RequestOptions requestOptions
+        )
             where T : IStripeEntity
         {
             var page = this.Request<StripeList<T>>(
@@ -165,14 +176,18 @@ namespace Stripe
                 HttpMethod.Get,
                 url,
                 options,
-                requestOptions);
+                requestOptions
+            );
 
             options = ((ListOptions)options?.Clone()) ?? new ListOptions();
             bool iterateBackward = false;
 
             // Backward iterating activates if we have an `EndingBefore`
             // constraint and not a `StartingAfter` constraint
-            if (!string.IsNullOrEmpty(options.EndingBefore) && string.IsNullOrEmpty(options.StartingAfter))
+            if (
+                !string.IsNullOrEmpty(options.EndingBefore)
+                && string.IsNullOrEmpty(options.StartingAfter)
+            )
             {
                 iterateBackward = true;
             }
@@ -219,14 +234,16 @@ namespace Stripe
                     HttpMethod.Get,
                     url,
                     options,
-                    requestOptions);
+                    requestOptions
+                );
             }
         }
 
         internal IEnumerable<T> V2ListRequestAutoPagingSync<T>(
             string url,
             BaseOptions options,
-            RequestOptions requestOptions)
+            RequestOptions requestOptions
+        )
             where T : IStripeEntity
         {
             var page = this.Request<Stripe.V2.StripeList<T>>(
@@ -234,7 +251,8 @@ namespace Stripe
                 HttpMethod.Get,
                 url,
                 options,
-                requestOptions);
+                requestOptions
+            );
 
             while (true)
             {
@@ -263,25 +281,28 @@ namespace Stripe
                     HttpMethod.Get,
                     page.NextPageUrl,
                     new BaseOptions(),
-                    requestOptions);
+                    requestOptions
+                );
             }
         }
-
 #endif
         internal async IAsyncEnumerable<T> V2ListRequestAutoPagingAsync<T>(
             string url,
             BaseOptions options,
             RequestOptions requestOptions,
-            [EnumeratorCancellation] CancellationToken cancellationToken = default)
+            [EnumeratorCancellation] CancellationToken cancellationToken = default
+        )
             where T : IStripeEntity
         {
             var page = await this.RequestAsync<Stripe.V2.StripeList<T>>(
-                BaseAddress.Api,
-                HttpMethod.Get,
-                url,
-                options,
-                requestOptions,
-                cancellationToken).ConfigureAwait(false);
+                    BaseAddress.Api,
+                    HttpMethod.Get,
+                    url,
+                    options,
+                    requestOptions,
+                    cancellationToken
+                )
+                .ConfigureAwait(false);
 
             while (true)
             {
@@ -310,12 +331,14 @@ namespace Stripe
 
                 // no options (params) needed for nextPageUrl calls
                 page = await this.RequestAsync<Stripe.V2.StripeList<T>>(
-                    BaseAddress.Api,
-                    HttpMethod.Get,
-                    page.NextPageUrl,
-                    new BaseOptions(),
-                    requestOptions,
-                    cancellationToken).ConfigureAwait(false);
+                        BaseAddress.Api,
+                        HttpMethod.Get,
+                        page.NextPageUrl,
+                        new BaseOptions(),
+                        requestOptions,
+                        cancellationToken
+                    )
+                    .ConfigureAwait(false);
             }
         }
 
@@ -323,7 +346,8 @@ namespace Stripe
             string url,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
             where T : IStripeEntity
         {
             var apiMode = ApiModeUtils.GetApiMode(url);
@@ -333,7 +357,8 @@ namespace Stripe
                     url,
                     options,
                     requestOptions,
-                    cancellationToken);
+                    cancellationToken
+                );
             }
             else
             {
@@ -341,7 +366,8 @@ namespace Stripe
                     url,
                     options as ListOptions,
                     requestOptions,
-                    cancellationToken);
+                    cancellationToken
+                );
             }
         }
 
@@ -349,23 +375,29 @@ namespace Stripe
             string url,
             ListOptions options,
             RequestOptions requestOptions,
-            [EnumeratorCancellation] CancellationToken cancellationToken = default)
+            [EnumeratorCancellation] CancellationToken cancellationToken = default
+        )
             where T : IStripeEntity
         {
             var page = await this.RequestAsync<StripeList<T>>(
-                BaseAddress.Api,
-                HttpMethod.Get,
-                url,
-                options,
-                requestOptions,
-                cancellationToken).ConfigureAwait(false);
+                    BaseAddress.Api,
+                    HttpMethod.Get,
+                    url,
+                    options,
+                    requestOptions,
+                    cancellationToken
+                )
+                .ConfigureAwait(false);
 
             options = ((ListOptions)options?.Clone()) ?? new ListOptions();
             bool iterateBackward = false;
 
             // Backward iterating activates if we have an `EndingBefore`
             // constraint and not a `StartingAfter` constraint
-            if (!string.IsNullOrEmpty(options.EndingBefore) && string.IsNullOrEmpty(options.StartingAfter))
+            if (
+                !string.IsNullOrEmpty(options.EndingBefore)
+                && string.IsNullOrEmpty(options.StartingAfter)
+            )
             {
                 iterateBackward = true;
             }
@@ -412,27 +444,30 @@ namespace Stripe
                 }
 
                 page = await this.RequestAsync<StripeList<T>>(
-                    BaseAddress.Api,
-                    HttpMethod.Get,
-                    url,
-                    options,
-                    requestOptions,
-                    cancellationToken).ConfigureAwait(false);
+                        BaseAddress.Api,
+                        HttpMethod.Get,
+                        url,
+                        options,
+                        requestOptions,
+                        cancellationToken
+                    )
+                    .ConfigureAwait(false);
             }
         }
 
         internal IEnumerable<T> SearchRequestAutoPaging<T>(
             string url,
             SearchOptions options,
-            RequestOptions requestOptions)
+            RequestOptions requestOptions
+        )
             where T : IStripeEntity
         {
 #if NETFRAMEWORK
-            return
-                this.SearchRequestAutoPagingSync<T>(url, options, requestOptions);
+            return this.SearchRequestAutoPagingSync<T>(url, options, requestOptions);
 #else
             return AsyncUtils.ToEnumerable(
-                this.SearchRequestAutoPagingAsync<T>(url, options, requestOptions));
+                this.SearchRequestAutoPagingAsync<T>(url, options, requestOptions)
+            );
 #endif
         }
 
@@ -440,7 +475,8 @@ namespace Stripe
         private IEnumerable<T> SearchRequestAutoPagingSync<T>(
             string url,
             SearchOptions options,
-            RequestOptions requestOptions)
+            RequestOptions requestOptions
+        )
             where T : IStripeEntity
         {
             var page = this.Request<StripeSearchResult<T>>(
@@ -448,7 +484,8 @@ namespace Stripe
                 HttpMethod.Get,
                 url,
                 options,
-                requestOptions);
+                requestOptions
+            );
 
             options = ((SearchOptions)options?.Clone()) ?? new SearchOptions();
 
@@ -480,25 +517,28 @@ namespace Stripe
                     HttpMethod.Get,
                     url,
                     options,
-                    requestOptions);
+                    requestOptions
+                );
             }
-}
-
+        }
 #endif
         internal async IAsyncEnumerable<T> SearchRequestAutoPagingAsync<T>(
             string url,
             SearchOptions options,
             RequestOptions requestOptions,
-            [EnumeratorCancellation] CancellationToken cancellationToken = default)
+            [EnumeratorCancellation] CancellationToken cancellationToken = default
+        )
             where T : IStripeEntity
         {
             var page = await this.RequestAsync<StripeSearchResult<T>>(
-                BaseAddress.Api,
-                HttpMethod.Get,
-                url,
-                options,
-                requestOptions,
-                cancellationToken).ConfigureAwait(false);
+                    BaseAddress.Api,
+                    HttpMethod.Get,
+                    url,
+                    options,
+                    requestOptions,
+                    cancellationToken
+                )
+                .ConfigureAwait(false);
 
             options = ((SearchOptions)options?.Clone()) ?? new SearchOptions();
 
@@ -527,12 +567,14 @@ namespace Stripe
                 options.Page = page.NextPage;
 
                 page = await this.RequestAsync<StripeSearchResult<T>>(
-                    BaseAddress.Api,
-                    HttpMethod.Get,
-                    url,
-                    options,
-                    requestOptions,
-                    cancellationToken).ConfigureAwait(false);
+                        BaseAddress.Api,
+                        HttpMethod.Get,
+                        url,
+                        options,
+                        requestOptions,
+                        cancellationToken
+                    )
+                    .ConfigureAwait(false);
             }
         }
     }

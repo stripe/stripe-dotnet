@@ -4,7 +4,6 @@ namespace StripeTests.Radar
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe.Radar;
     using Xunit;
 
@@ -19,7 +18,8 @@ namespace StripeTests.Radar
 
         public ValueListServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new ValueListService(this.StripeClient);
@@ -33,17 +33,10 @@ namespace StripeTests.Radar
 
             this.updateOptions = new ValueListUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.listOptions = new ValueListListOptions
-            {
-                Alias = "alias",
-                Limit = 1,
-            };
+            this.listOptions = new ValueListListOptions { Alias = "alias", Limit = 1 };
         }
 
         [Fact]

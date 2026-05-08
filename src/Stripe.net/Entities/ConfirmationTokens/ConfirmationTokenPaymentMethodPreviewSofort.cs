@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationTokenPaymentMethodPreviewSofort : StripeEntity<ConfirmationTokenPaymentMethodPreviewSofort>
+    public class ConfirmationTokenPaymentMethodPreviewSofort
+        : StripeEntity<ConfirmationTokenPaymentMethodPreviewSofort>
     {
         /// <summary>
         /// Two-letter ISO code representing the country the bank account is located in.

@@ -22,7 +22,9 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         [JsonProperty("quantity_decimal")]
         [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonNumberHandling(
+            STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString
+        )]
         [STJS.JsonPropertyName("quantity_decimal")]
         public decimal? QuantityDecimal { get; set; }
 
@@ -53,7 +55,9 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         [JsonProperty("unit_cost_decimal")]
         [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonNumberHandling(
+            STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString
+        )]
         [STJS.JsonPropertyName("unit_cost_decimal")]
         public decimal? UnitCostDecimal { get; set; }
     }

@@ -15,10 +15,10 @@ namespace Stripe.Infrastructure.FormEncoding
         /// Initializes a new instance of the <see cref="MultipartFormDataContent"/> class.
         /// </summary>
         /// <param name="nameValueCollection">The collection of name/value tuples to encode.</param>
-        public MultipartFormDataContent(IEnumerable<KeyValuePair<string, object>> nameValueCollection)
-            : this(nameValueCollection, Guid.NewGuid().ToString())
-        {
-        }
+        public MultipartFormDataContent(
+            IEnumerable<KeyValuePair<string, object>> nameValueCollection
+        )
+            : this(nameValueCollection, Guid.NewGuid().ToString()) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MultipartFormDataContent"/> class.
@@ -27,7 +27,8 @@ namespace Stripe.Infrastructure.FormEncoding
         /// <param name="boundary">The boundary string for the multipart form data content.</param>
         public MultipartFormDataContent(
             IEnumerable<KeyValuePair<string, object>> nameValueCollection,
-            string boundary)
+            string boundary
+        )
             : base(boundary)
         {
             if (nameValueCollection == null)
@@ -38,8 +39,8 @@ namespace Stripe.Infrastructure.FormEncoding
             this.ProcessParameters(nameValueCollection);
         }
 
-        private static StringContent CreateStringContent(string value)
-            => new StringContent(value, System.Text.Encoding.UTF8);
+        private static StringContent CreateStringContent(string value) =>
+            new StringContent(value, System.Text.Encoding.UTF8);
 
         private static StreamContent CreateStreamContent(MultipartFileContent value, string name)
         {
@@ -72,7 +73,9 @@ namespace Stripe.Infrastructure.FormEncoding
             return "\"" + value + "\"";
         }
 
-        private void ProcessParameters(IEnumerable<KeyValuePair<string, object>> nameValueCollection)
+        private void ProcessParameters(
+            IEnumerable<KeyValuePair<string, object>> nameValueCollection
+        )
         {
             foreach (var kvp in nameValueCollection)
             {
@@ -87,17 +90,14 @@ namespace Stripe.Infrastructure.FormEncoding
                         break;
 
                     case Stream s:
-                        var fileData = new MultipartFileContent
-                        {
-                            Data = s,
-                        };
+                        var fileData = new MultipartFileContent { Data = s };
                         this.Add(CreateStreamContent(fileData, QuoteString(kvp.Key)));
                         break;
 
                     default:
                         var message =
-                            "Unexpected type in collection. Expected System.String or " +
-                            $"System.IO.Stream, got {kvp.GetType().FullName}.";
+                            "Unexpected type in collection. Expected System.String or "
+                            + $"System.IO.Stream, got {kvp.GetType().FullName}.";
                         throw new ArgumentException(message, nameof(nameValueCollection));
                 }
             }

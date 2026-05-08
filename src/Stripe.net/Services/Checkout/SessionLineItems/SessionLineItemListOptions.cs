@@ -6,7 +6,5 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SessionLineItemListOptions : ListOptions
-    {
-    }
+    public class SessionLineItemListOptions : ListOptions { }
 }

@@ -6,7 +6,9 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ReaderActionCollectInputsInputSelectionChoice : StripeEntity<ReaderActionCollectInputsInputSelectionChoice>, IHasId
+    public class ReaderActionCollectInputsInputSelectionChoice
+        : StripeEntity<ReaderActionCollectInputsInputSelectionChoice>,
+            IHasId
     {
         /// <summary>
         /// The identifier for the selected choice. Maximum 50 characters.

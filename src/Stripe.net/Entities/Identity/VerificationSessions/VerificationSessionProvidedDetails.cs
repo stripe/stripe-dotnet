@@ -6,7 +6,8 @@ namespace Stripe.Identity
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class VerificationSessionProvidedDetails : StripeEntity<VerificationSessionProvidedDetails>
+    public class VerificationSessionProvidedDetails
+        : StripeEntity<VerificationSessionProvidedDetails>
     {
         /// <summary>
         /// Email of user being verified.

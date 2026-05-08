@@ -71,7 +71,8 @@ namespace StripeTests
             var options = new TestOptions();
             options.EmptyableString = null;
 
-            var result = await ContentEncoder.CreateHttpContent(options, ApiMode.V2)
+            var result = await ContentEncoder
+                .CreateHttpContent(options, ApiMode.V2)
                 .ReadAsStringAsync();
             Assert.Equal("{\"emptyable_string\":null}", result);
         }
@@ -82,7 +83,8 @@ namespace StripeTests
         {
             var options = new TestOptions();
 
-            var result = await ContentEncoder.CreateHttpContent(options, ApiMode.V2)
+            var result = await ContentEncoder
+                .CreateHttpContent(options, ApiMode.V2)
                 .ReadAsStringAsync();
             Assert.Equal("{}", result);
         }
@@ -94,7 +96,8 @@ namespace StripeTests
             var options = new TestOptions();
             options.EmptyableString = "hello";
 
-            var result = await ContentEncoder.CreateHttpContent(options, ApiMode.V2)
+            var result = await ContentEncoder
+                .CreateHttpContent(options, ApiMode.V2)
                 .ReadAsStringAsync();
             Assert.Equal("{\"emptyable_string\":\"hello\"}", result);
         }
@@ -112,7 +115,8 @@ namespace StripeTests
                 },
             };
 
-            var result = await ContentEncoder.CreateHttpContent(options, ApiMode.V2)
+            var result = await ContentEncoder
+                .CreateHttpContent(options, ApiMode.V2)
                 .ReadAsStringAsync();
             Assert.Contains("\"keep\":\"value\"", result);
             Assert.Contains("\"delete\":null", result);
@@ -131,7 +135,8 @@ namespace StripeTests
                 },
             };
 
-            var result = await ContentEncoder.CreateHttpContent(options, ApiMode.V2)
+            var result = await ContentEncoder
+                .CreateHttpContent(options, ApiMode.V2)
                 .ReadAsStringAsync();
             Assert.Contains("\"key1\":\"val1\"", result);
             Assert.Contains("\"key2\":\"val2\"", result);
@@ -144,7 +149,8 @@ namespace StripeTests
             var options = new TestOptions();
             options.EmptyableNested = null;
 
-            var result = await ContentEncoder.CreateHttpContent(options, ApiMode.V2)
+            var result = await ContentEncoder
+                .CreateHttpContent(options, ApiMode.V2)
                 .ReadAsStringAsync();
             Assert.Equal("{\"emptyable_nested\":null}", result);
         }
@@ -157,7 +163,8 @@ namespace StripeTests
             options.EmptyableString = "hello";
             options.EmptyableString = null;
 
-            var result = await ContentEncoder.CreateHttpContent(options, ApiMode.V2)
+            var result = await ContentEncoder
+                .CreateHttpContent(options, ApiMode.V2)
                 .ReadAsStringAsync();
             Assert.Equal("{\"emptyable_string\":null}", result);
         }
@@ -173,10 +180,7 @@ namespace StripeTests
         [Fact]
         public void NewtonsoftSerialization_UnsetEmptyable_Omitted()
         {
-            var options = new TestOptions
-            {
-                String = "hello",
-            };
+            var options = new TestOptions { String = "hello" };
 
             var json = JsonConvert.SerializeObject(options);
             Assert.DoesNotContain("emptyable_string", json);
@@ -210,7 +214,9 @@ namespace StripeTests
             Assert.Contains("\"emptyable_string\":null", json);
 
             var deserialized = System.Text.Json.JsonSerializer.Deserialize<TestOptions>(
-                json, stjOptions);
+                json,
+                stjOptions
+            );
 
             var result = ContentEncoder.CreateQueryString(deserialized);
             Assert.Equal("emptyable_string=", result);
@@ -220,10 +226,7 @@ namespace StripeTests
         [Fact]
         public void StjRoundTrip_UnsetEmptyable_StaysUnset()
         {
-            var options = new TestOptions
-            {
-                String = "hello",
-            };
+            var options = new TestOptions { String = "hello" };
 
             var stjOptions = StripeConfiguration.SerializerOptions;
             var json = System.Text.Json.JsonSerializer.Serialize(options, stjOptions);
@@ -231,7 +234,9 @@ namespace StripeTests
             Assert.DoesNotContain("emptyable_nested", json);
 
             var deserialized = System.Text.Json.JsonSerializer.Deserialize<TestOptions>(
-                json, stjOptions);
+                json,
+                stjOptions
+            );
 
             var result = ContentEncoder.CreateQueryString(deserialized);
             Assert.Contains("string=hello", result);

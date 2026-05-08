@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentMethodOptionsSepaDebitMandateOptions : StripeEntity<PaymentIntentPaymentMethodOptionsSepaDebitMandateOptions>
+    public class PaymentIntentPaymentMethodOptionsSepaDebitMandateOptions
+        : StripeEntity<PaymentIntentPaymentMethodOptionsSepaDebitMandateOptions>
     {
         /// <summary>
         /// Prefix used to generate the Mandate reference. Must be at most 12 characters long. Must

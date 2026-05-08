@@ -7,9 +7,7 @@ namespace StripeTests.Identity
     public class VerificationReportTest : BaseStripeTest
     {
         public VerificationReportTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

@@ -6,7 +6,8 @@ namespace Stripe.Events
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-    public class V1BillingMeterErrorReportTriggeredEventDataReasonErrorTypeSampleError : StripeEntity<V1BillingMeterErrorReportTriggeredEventDataReasonErrorTypeSampleError>
+    public class V1BillingMeterErrorReportTriggeredEventDataReasonErrorTypeSampleError
+        : StripeEntity<V1BillingMeterErrorReportTriggeredEventDataReasonErrorTypeSampleError>
     {
         /// <summary>
         /// The error message.

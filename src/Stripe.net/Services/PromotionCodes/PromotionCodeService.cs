@@ -8,42 +8,57 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class PromotionCodeService : Service,
-        ICreatable<PromotionCode, PromotionCodeCreateOptions>,
-        IListable<PromotionCode, PromotionCodeListOptions>,
-        IRetrievable<PromotionCode, PromotionCodeGetOptions>,
-        IUpdatable<PromotionCode, PromotionCodeUpdateOptions>
+    public class PromotionCodeService
+        : Service,
+            ICreatable<PromotionCode, PromotionCodeCreateOptions>,
+            IListable<PromotionCode, PromotionCodeListOptions>,
+            IRetrievable<PromotionCode, PromotionCodeGetOptions>,
+            IUpdatable<PromotionCode, PromotionCodeUpdateOptions>
     {
-        public PromotionCodeService()
-        {
-        }
+        public PromotionCodeService() { }
 
         internal PromotionCodeService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public PromotionCodeService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>A promotion code points to an underlying promotion. You can optionally restrict the
+        /// code to a specific customer, redemption limit, and expiration date.</p>.
+        /// </summary>
+        public virtual PromotionCode Create(
+            PromotionCodeCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<PromotionCode>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/promotion_codes",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>A promotion code points to an underlying promotion. You can optionally restrict the
         /// code to a specific customer, redemption limit, and expiration date.</p>.
         /// </summary>
-        public virtual PromotionCode Create(PromotionCodeCreateOptions options, RequestOptions requestOptions = null)
+        public virtual Task<PromotionCode> CreateAsync(
+            PromotionCodeCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<PromotionCode>(BaseAddress.Api, HttpMethod.Post, $"/v1/promotion_codes", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>A promotion code points to an underlying promotion. You can optionally restrict the
-        /// code to a specific customer, redemption limit, and expiration date.</p>.
-        /// </summary>
-        public virtual Task<PromotionCode> CreateAsync(PromotionCodeCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<PromotionCode>(BaseAddress.Api, HttpMethod.Post, $"/v1/promotion_codes", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PromotionCode>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/promotion_codes",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -52,9 +67,19 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/promotion_codes/list">list</a> with the desired
         /// <c>code</c>.</p>.
         /// </summary>
-        public virtual PromotionCode Get(string id, PromotionCodeGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual PromotionCode Get(
+            string id,
+            PromotionCodeGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<PromotionCode>(BaseAddress.Api, HttpMethod.Get, $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<PromotionCode>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -63,59 +88,129 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/promotion_codes/list">list</a> with the desired
         /// <c>code</c>.</p>.
         /// </summary>
-        public virtual Task<PromotionCode> GetAsync(string id, PromotionCodeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<PromotionCode> GetAsync(
+            string id,
+            PromotionCodeGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<PromotionCode>(BaseAddress.Api, HttpMethod.Get, $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PromotionCode>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of your promotion codes.</p>.
         /// </summary>
-        public virtual StripeList<PromotionCode> List(PromotionCodeListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<PromotionCode> List(
+            PromotionCodeListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeList<PromotionCode>>(BaseAddress.Api, HttpMethod.Get, $"/v1/promotion_codes", options, requestOptions);
+            return this.Request<StripeList<PromotionCode>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/promotion_codes",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of your promotion codes.</p>.
         /// </summary>
-        public virtual Task<StripeList<PromotionCode>> ListAsync(PromotionCodeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<PromotionCode>> ListAsync(
+            PromotionCodeListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeList<PromotionCode>>(BaseAddress.Api, HttpMethod.Get, $"/v1/promotion_codes", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<PromotionCode>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/promotion_codes",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of your promotion codes.</p>.
         /// </summary>
-        public virtual IEnumerable<PromotionCode> ListAutoPaging(PromotionCodeListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<PromotionCode> ListAutoPaging(
+            PromotionCodeListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.ListRequestAutoPaging<PromotionCode>($"/v1/promotion_codes", options, requestOptions);
+            return this.ListRequestAutoPaging<PromotionCode>(
+                $"/v1/promotion_codes",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of your promotion codes.</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<PromotionCode> ListAutoPagingAsync(PromotionCodeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<PromotionCode> ListAutoPagingAsync(
+            PromotionCodeListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<PromotionCode>($"/v1/promotion_codes", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<PromotionCode>(
+                $"/v1/promotion_codes",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Updates the specified promotion code by setting the values of the parameters passed.
         /// Most fields are, by design, not editable.</p>.
         /// </summary>
-        public virtual PromotionCode Update(string id, PromotionCodeUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual PromotionCode Update(
+            string id,
+            PromotionCodeUpdateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<PromotionCode>(BaseAddress.Api, HttpMethod.Post, $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<PromotionCode>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Updates the specified promotion code by setting the values of the parameters passed.
         /// Most fields are, by design, not editable.</p>.
         /// </summary>
-        public virtual Task<PromotionCode> UpdateAsync(string id, PromotionCodeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<PromotionCode> UpdateAsync(
+            string id,
+            PromotionCodeUpdateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<PromotionCode>(BaseAddress.Api, HttpMethod.Post, $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PromotionCode>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

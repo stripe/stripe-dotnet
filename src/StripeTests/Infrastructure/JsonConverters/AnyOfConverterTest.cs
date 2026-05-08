@@ -43,23 +43,25 @@ namespace StripeTests
             var json = "{\n  \"any_of\": []\n}";
 
             var exception = Assert.Throws<JsonSerializationException>(() =>
-                JsonConvert.DeserializeObject<TestObject>(json));
+                JsonConvert.DeserializeObject<TestObject>(json)
+            );
 
             Assert.Contains(
                 "Cannot deserialize the current JSON object into any of the expected types",
-                exception.Message);
+                exception.Message
+            );
         }
 
         [Fact]
         public void SerializeFirstType()
         {
-            var obj = new TestObject
-            {
-                AnyOf = "String!",
-            };
+            var obj = new TestObject { AnyOf = "String!" };
 
             var expected = "{\n  \"any_of\": \"String!\"\n}";
-            Assert.Equal(expected, JsonUtils.SerializeObject(obj, Formatting.Indented).Replace("\r\n", "\n"));
+            Assert.Equal(
+                expected,
+                JsonUtils.SerializeObject(obj, Formatting.Indented).Replace("\r\n", "\n")
+            );
         }
 
         [Fact]
@@ -67,28 +69,26 @@ namespace StripeTests
         {
             var obj = new TestObject
             {
-                AnyOf = new TestSubObject
-                {
-                    Id = "id_123",
-                    Bar = 42,
-                },
+                AnyOf = new TestSubObject { Id = "id_123", Bar = 42 },
             };
 
-            var expected =
-                "{\n  \"any_of\": {\n    \"id\": \"id_123\",\n    \"bar\": 42\n  }\n}";
-            Assert.Equal(expected, JsonUtils.SerializeObject(obj, Formatting.Indented).Replace("\r\n", "\n"));
+            var expected = "{\n  \"any_of\": {\n    \"id\": \"id_123\",\n    \"bar\": 42\n  }\n}";
+            Assert.Equal(
+                expected,
+                JsonUtils.SerializeObject(obj, Formatting.Indented).Replace("\r\n", "\n")
+            );
         }
 
         [Fact]
         public void SerializeNull()
         {
-            var obj = new TestObject
-            {
-                AnyOf = null,
-            };
+            var obj = new TestObject { AnyOf = null };
 
             var expected = "{\n  \"any_of\": null\n}";
-            Assert.Equal(expected, JsonUtils.SerializeObject(obj, Formatting.Indented).Replace("\r\n", "\n"));
+            Assert.Equal(
+                expected,
+                JsonUtils.SerializeObject(obj, Formatting.Indented).Replace("\r\n", "\n")
+            );
         }
 
         private class TestSubObject : StripeEntity<TestSubObject>, IHasId

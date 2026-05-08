@@ -8,103 +8,198 @@ namespace Stripe.Treasury
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class InboundTransferService : Service,
-        ICreatable<InboundTransfer, InboundTransferCreateOptions>,
-        IListable<InboundTransfer, InboundTransferListOptions>,
-        IRetrievable<InboundTransfer, InboundTransferGetOptions>
+    public class InboundTransferService
+        : Service,
+            ICreatable<InboundTransfer, InboundTransferCreateOptions>,
+            IListable<InboundTransfer, InboundTransferListOptions>,
+            IRetrievable<InboundTransfer, InboundTransferGetOptions>
     {
-        public InboundTransferService()
-        {
-        }
+        public InboundTransferService() { }
 
         internal InboundTransferService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public InboundTransferService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>Cancels an InboundTransfer.</p>.
+        /// </summary>
+        public virtual InboundTransfer Cancel(
+            string id,
+            InboundTransferCancelOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<InboundTransfer>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}/cancel",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Cancels an InboundTransfer.</p>.
         /// </summary>
-        public virtual InboundTransfer Cancel(string id, InboundTransferCancelOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<InboundTransfer> CancelAsync(
+            string id,
+            InboundTransferCancelOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Cancels an InboundTransfer.</p>.
-        /// </summary>
-        public virtual Task<InboundTransfer> CancelAsync(string id, InboundTransferCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>Creates an InboundTransfer.</p>.
-        /// </summary>
-        public virtual InboundTransfer Create(InboundTransferCreateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.Request<InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/inbound_transfers", options, requestOptions);
+            return this.RequestAsync<InboundTransfer>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}/cancel",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Creates an InboundTransfer.</p>.
         /// </summary>
-        public virtual Task<InboundTransfer> CreateAsync(InboundTransferCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual InboundTransfer Create(
+            InboundTransferCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/inbound_transfers", options, requestOptions, cancellationToken);
+            return this.Request<InboundTransfer>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/treasury/inbound_transfers",
+                options,
+                requestOptions
+            );
+        }
+
+        /// <summary>
+        /// <p>Creates an InboundTransfer.</p>.
+        /// </summary>
+        public virtual Task<InboundTransfer> CreateAsync(
+            InboundTransferCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return this.RequestAsync<InboundTransfer>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/treasury/inbound_transfers",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Retrieves the details of an existing InboundTransfer.</p>.
         /// </summary>
-        public virtual InboundTransfer Get(string id, InboundTransferGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual InboundTransfer Get(
+            string id,
+            InboundTransferGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<InboundTransfer>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<InboundTransfer>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Retrieves the details of an existing InboundTransfer.</p>.
         /// </summary>
-        public virtual Task<InboundTransfer> GetAsync(string id, InboundTransferGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<InboundTransfer> GetAsync(
+            string id,
+            InboundTransferGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<InboundTransfer>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<InboundTransfer>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of InboundTransfers sent from the specified FinancialAccount.</p>.
         /// </summary>
-        public virtual StripeList<InboundTransfer> List(InboundTransferListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<InboundTransfer> List(
+            InboundTransferListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeList<InboundTransfer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/inbound_transfers", options, requestOptions);
+            return this.Request<StripeList<InboundTransfer>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/treasury/inbound_transfers",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of InboundTransfers sent from the specified FinancialAccount.</p>.
         /// </summary>
-        public virtual Task<StripeList<InboundTransfer>> ListAsync(InboundTransferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<InboundTransfer>> ListAsync(
+            InboundTransferListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeList<InboundTransfer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/inbound_transfers", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<InboundTransfer>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/treasury/inbound_transfers",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of InboundTransfers sent from the specified FinancialAccount.</p>.
         /// </summary>
-        public virtual IEnumerable<InboundTransfer> ListAutoPaging(InboundTransferListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<InboundTransfer> ListAutoPaging(
+            InboundTransferListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.ListRequestAutoPaging<InboundTransfer>($"/v1/treasury/inbound_transfers", options, requestOptions);
+            return this.ListRequestAutoPaging<InboundTransfer>(
+                $"/v1/treasury/inbound_transfers",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of InboundTransfers sent from the specified FinancialAccount.</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<InboundTransfer> ListAutoPagingAsync(InboundTransferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<InboundTransfer> ListAutoPagingAsync(
+            InboundTransferListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<InboundTransfer>($"/v1/treasury/inbound_transfers", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<InboundTransfer>(
+                $"/v1/treasury/inbound_transfers",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

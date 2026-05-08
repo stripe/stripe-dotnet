@@ -8,24 +8,39 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class PayoutService : Service,
-        ICreatable<Payout, PayoutCreateOptions>,
-        IListable<Payout, PayoutListOptions>,
-        IRetrievable<Payout, PayoutGetOptions>,
-        IUpdatable<Payout, PayoutUpdateOptions>
+    public class PayoutService
+        : Service,
+            ICreatable<Payout, PayoutCreateOptions>,
+            IListable<Payout, PayoutListOptions>,
+            IRetrievable<Payout, PayoutGetOptions>,
+            IUpdatable<Payout, PayoutUpdateOptions>
     {
-        public PayoutService()
-        {
-        }
+        public PayoutService() { }
 
         internal PayoutService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public PayoutService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>You can cancel a previously created payout if its status is <c>pending</c>. Stripe
+        /// refunds the funds to your available balance. You can’t cancel automatic Stripe
+        /// payouts.</p>.
+        /// </summary>
+        public virtual Payout Cancel(
+            string id,
+            PayoutCancelOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<Payout>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/payouts/{WebUtility.UrlEncode(id)}/cancel",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -33,19 +48,21 @@ namespace Stripe
         /// refunds the funds to your available balance. You can’t cancel automatic Stripe
         /// payouts.</p>.
         /// </summary>
-        public virtual Payout Cancel(string id, PayoutCancelOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<Payout> CancelAsync(
+            string id,
+            PayoutCancelOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>You can cancel a previously created payout if its status is <c>pending</c>. Stripe
-        /// refunds the funds to your available balance. You can’t cancel automatic Stripe
-        /// payouts.</p>.
-        /// </summary>
-        public virtual Task<Payout> CancelAsync(string id, PayoutCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Payout>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/payouts/{WebUtility.UrlEncode(id)}/cancel",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -61,9 +78,18 @@ namespace Stripe
         /// href="https://stripe.com/api/balances/object">balance object</a> details available and
         /// pending amounts by source type.</p>.
         /// </summary>
-        public virtual Payout Create(PayoutCreateOptions options, RequestOptions requestOptions = null)
+        public virtual Payout Create(
+            PayoutCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts", options, requestOptions);
+            return this.Request<Payout>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/payouts",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -79,9 +105,20 @@ namespace Stripe
         /// href="https://stripe.com/api/balances/object">balance object</a> details available and
         /// pending amounts by source type.</p>.
         /// </summary>
-        public virtual Task<Payout> CreateAsync(PayoutCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Payout> CreateAsync(
+            PayoutCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Payout>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/payouts",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -89,9 +126,19 @@ namespace Stripe
         /// a payout creation request or the payout list. Stripe returns the corresponding payout
         /// information.</p>.
         /// </summary>
-        public virtual Payout Get(string id, PayoutGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Payout Get(
+            string id,
+            PayoutGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Payout>(BaseAddress.Api, HttpMethod.Get, $"/v1/payouts/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Payout>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/payouts/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -99,9 +146,21 @@ namespace Stripe
         /// a payout creation request or the payout list. Stripe returns the corresponding payout
         /// information.</p>.
         /// </summary>
-        public virtual Task<Payout> GetAsync(string id, PayoutGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Payout> GetAsync(
+            string id,
+            PayoutGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Payout>(BaseAddress.Api, HttpMethod.Get, $"/v1/payouts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Payout>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/payouts/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -109,9 +168,18 @@ namespace Stripe
         /// Stripe sent to you. The payouts return in sorted order, with the most recently created
         /// payouts appearing first.</p>.
         /// </summary>
-        public virtual StripeList<Payout> List(PayoutListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Payout> List(
+            PayoutListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeList<Payout>>(BaseAddress.Api, HttpMethod.Get, $"/v1/payouts", options, requestOptions);
+            return this.Request<StripeList<Payout>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/payouts",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -119,9 +187,20 @@ namespace Stripe
         /// Stripe sent to you. The payouts return in sorted order, with the most recently created
         /// payouts appearing first.</p>.
         /// </summary>
-        public virtual Task<StripeList<Payout>> ListAsync(PayoutListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<Payout>> ListAsync(
+            PayoutListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeList<Payout>>(BaseAddress.Api, HttpMethod.Get, $"/v1/payouts", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Payout>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/payouts",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -129,7 +208,10 @@ namespace Stripe
         /// Stripe sent to you. The payouts return in sorted order, with the most recently created
         /// payouts appearing first.</p>.
         /// </summary>
-        public virtual IEnumerable<Payout> ListAutoPaging(PayoutListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<Payout> ListAutoPaging(
+            PayoutListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
             return this.ListRequestAutoPaging<Payout>($"/v1/payouts", options, requestOptions);
         }
@@ -139,9 +221,18 @@ namespace Stripe
         /// Stripe sent to you. The payouts return in sorted order, with the most recently created
         /// payouts appearing first.</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<Payout> ListAutoPagingAsync(PayoutListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<Payout> ListAutoPagingAsync(
+            PayoutListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<Payout>($"/v1/payouts", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Payout>(
+                $"/v1/payouts",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -154,9 +245,19 @@ namespace Stripe
         /// authorized signatory of the selected bank account authorizes the debit on the bank
         /// account and that no other authorization is required.</p>.
         /// </summary>
-        public virtual Payout Reverse(string id, PayoutReverseOptions options = null, RequestOptions requestOptions = null)
+        public virtual Payout Reverse(
+            string id,
+            PayoutReverseOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}/reverse", options, requestOptions);
+            return this.Request<Payout>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/payouts/{WebUtility.UrlEncode(id)}/reverse",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -169,9 +270,21 @@ namespace Stripe
         /// authorized signatory of the selected bank account authorizes the debit on the bank
         /// account and that no other authorization is required.</p>.
         /// </summary>
-        public virtual Task<Payout> ReverseAsync(string id, PayoutReverseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Payout> ReverseAsync(
+            string id,
+            PayoutReverseOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}/reverse", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Payout>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/payouts/{WebUtility.UrlEncode(id)}/reverse",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -179,9 +292,19 @@ namespace Stripe
         /// don’t change parameters that you don’t provide. This request only accepts the metadata
         /// as arguments.</p>.
         /// </summary>
-        public virtual Payout Update(string id, PayoutUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Payout Update(
+            string id,
+            PayoutUpdateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Payout>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/payouts/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -189,9 +312,21 @@ namespace Stripe
         /// don’t change parameters that you don’t provide. This request only accepts the metadata
         /// as arguments.</p>.
         /// </summary>
-        public virtual Task<Payout> UpdateAsync(string id, PayoutUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Payout> UpdateAsync(
+            string id,
+            PayoutUpdateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Payout>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/payouts/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

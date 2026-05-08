@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SetupIntentPaymentMethodOptionsUpiMandateOptions : StripeEntity<SetupIntentPaymentMethodOptionsUpiMandateOptions>
+    public class SetupIntentPaymentMethodOptionsUpiMandateOptions
+        : StripeEntity<SetupIntentPaymentMethodOptionsUpiMandateOptions>
     {
         /// <summary>
         /// Amount to be charged for future payments.

@@ -6,7 +6,8 @@ namespace Stripe.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CreditBalanceTransactionDebitAmountMonetary : StripeEntity<CreditBalanceTransactionDebitAmountMonetary>
+    public class CreditBalanceTransactionDebitAmountMonetary
+        : StripeEntity<CreditBalanceTransactionDebitAmountMonetary>
     {
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency

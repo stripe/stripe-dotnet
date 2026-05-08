@@ -14,7 +14,9 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         [JsonProperty("gross_amount_decimal")]
         [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonNumberHandling(
+            STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString
+        )]
         [STJS.JsonPropertyName("gross_amount_decimal")]
         public decimal? GrossAmountDecimal { get; set; }
     }

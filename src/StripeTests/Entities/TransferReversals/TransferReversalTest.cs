@@ -7,9 +7,7 @@ namespace StripeTests
     public class TransferReversalTest : BaseStripeTest
     {
         public TransferReversalTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -27,10 +25,10 @@ namespace StripeTests
         {
             string[] expansions =
             {
-              "balance_transaction",
-              "destination_payment_refund",
-              "source_refund",
-              "transfer",
+                "balance_transaction",
+                "destination_payment_refund",
+                "source_refund",
+                "transfer",
             };
 
             string json = this.GetFixture("/v1/transfers/tr_123/reversals/trr_123", expansions);

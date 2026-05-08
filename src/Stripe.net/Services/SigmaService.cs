@@ -10,16 +10,12 @@ namespace Stripe
         private Sigma.ScheduledQueryRunService scheduledQueryRuns;
 
         internal SigmaService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         internal SigmaService(IStripeClient client)
-            : base(client)
-        {
-        }
+            : base(client) { }
 
-        public virtual Sigma.ScheduledQueryRunService ScheduledQueryRuns => this.scheduledQueryRuns ??= new Sigma.ScheduledQueryRunService(
-            this.Requestor);
+        public virtual Sigma.ScheduledQueryRunService ScheduledQueryRuns =>
+            this.scheduledQueryRuns ??= new Sigma.ScheduledQueryRunService(this.Requestor);
     }
 }

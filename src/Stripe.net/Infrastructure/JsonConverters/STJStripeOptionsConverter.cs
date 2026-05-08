@@ -22,14 +22,19 @@ namespace Stripe.Infrastructure
             return typeof(INestedOptions).IsAssignableFrom(typeToConvert);
         }
 
-        public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
+        public override JsonConverter CreateConverter(
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
         {
-            JsonConverter converter = (JsonConverter)Activator.CreateInstance(
-                typeof(STJDefaultConverter<>).MakeGenericType(typeToConvert),
-                BindingFlags.Instance | BindingFlags.Public,
-                binder: null,
-                args: null,
-                culture: null);
+            JsonConverter converter = (JsonConverter)
+                Activator.CreateInstance(
+                    typeof(STJDefaultConverter<>).MakeGenericType(typeToConvert),
+                    BindingFlags.Instance | BindingFlags.Public,
+                    binder: null,
+                    args: null,
+                    culture: null
+                );
             return converter;
         }
     }

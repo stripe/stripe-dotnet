@@ -48,8 +48,9 @@ namespace StripeTests
             var result = new StreamReader(stream).ReadToEnd();
             Assert.Equal(
                 "--test-boundary\r\nContent-Type: text/plain; charset=utf-8\r\n"
-                + "Content-Disposition: form-data; name=\"key\"\r\n\r\nvalueク\r\n--test-boundary--\r\n",
-                result);
+                    + "Content-Disposition: form-data; name=\"key\"\r\n\r\nvalueク\r\n--test-boundary--\r\n",
+                result
+            );
         }
 
         [Fact]
@@ -66,10 +67,11 @@ namespace StripeTests
             var result = new StreamReader(stream).ReadToEnd();
             Assert.Equal(
                 "--test-boundary\r\n"
-                + "Content-Disposition: form-data; name=\"key\"; filename=blob; filename*=utf-8''blob\r\n"
-                + "Content-Type: application/octet-stream\r\n\r\nHello World!\r\n"
-                + "--test-boundary--\r\n",
-                result);
+                    + "Content-Disposition: form-data; name=\"key\"; filename=blob; filename*=utf-8''blob\r\n"
+                    + "Content-Type: application/octet-stream\r\n\r\nHello World!\r\n"
+                    + "--test-boundary--\r\n",
+                result
+            );
         }
 
         [Fact]
@@ -77,31 +79,11 @@ namespace StripeTests
         {
             var source = new Dictionary<string, object>
             {
-                { "key", new MultipartFileContent { Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")) } },
-            };
-            var content = new MultipartFormDataContent(source, "test-boundary");
-
-            var stream = await content.ReadAsStreamAsync();
-            Assert.Equal(174, stream.Length);
-            var result = new StreamReader(stream).ReadToEnd();
-            Assert.Equal(
-                "--test-boundary\r\n"
-                + "Content-Disposition: form-data; name=\"key\"; filename=blob; filename*=utf-8''blob\r\n"
-                + "Content-Type: application/octet-stream\r\n\r\nHello World!\r\n"
-                + "--test-boundary--\r\n",
-                result);
-        }
-
-        [Fact]
-        public async Task Ctor_OneMultipartFileContentWithNameEntry_Success()
-        {
-            var source = new Dictionary<string, object>
-            {
                 {
-                    "key", new MultipartFileContent
+                    "key",
+                    new MultipartFileContent
                     {
-                         Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")),
-                         Name = "file",
+                        Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")),
                     }
                 },
             };
@@ -112,10 +94,39 @@ namespace StripeTests
             var result = new StreamReader(stream).ReadToEnd();
             Assert.Equal(
                 "--test-boundary\r\n"
-                + "Content-Disposition: form-data; name=\"key\"; filename=file; filename*=utf-8''file\r\n"
-                + "Content-Type: application/octet-stream\r\n\r\nHello World!\r\n"
-                + "--test-boundary--\r\n",
-                result);
+                    + "Content-Disposition: form-data; name=\"key\"; filename=blob; filename*=utf-8''blob\r\n"
+                    + "Content-Type: application/octet-stream\r\n\r\nHello World!\r\n"
+                    + "--test-boundary--\r\n",
+                result
+            );
+        }
+
+        [Fact]
+        public async Task Ctor_OneMultipartFileContentWithNameEntry_Success()
+        {
+            var source = new Dictionary<string, object>
+            {
+                {
+                    "key",
+                    new MultipartFileContent
+                    {
+                        Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")),
+                        Name = "file",
+                    }
+                },
+            };
+            var content = new MultipartFormDataContent(source, "test-boundary");
+
+            var stream = await content.ReadAsStreamAsync();
+            Assert.Equal(174, stream.Length);
+            var result = new StreamReader(stream).ReadToEnd();
+            Assert.Equal(
+                "--test-boundary\r\n"
+                    + "Content-Disposition: form-data; name=\"key\"; filename=file; filename*=utf-8''file\r\n"
+                    + "Content-Type: application/octet-stream\r\n\r\nHello World!\r\n"
+                    + "--test-boundary--\r\n",
+                result
+            );
         }
 
         [Fact]
@@ -124,7 +135,8 @@ namespace StripeTests
             var source = new Dictionary<string, object>
             {
                 {
-                    "key", new MultipartFileContent
+                    "key",
+                    new MultipartFileContent
                     {
                         Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")),
                         Name = "file.csv",
@@ -138,10 +150,11 @@ namespace StripeTests
             var result = new StreamReader(stream).ReadToEnd();
             Assert.Equal(
                 "--test-boundary\r\n"
-                + "Content-Disposition: form-data; name=\"key\"; filename=file.csv; filename*=utf-8''file.csv\r\n"
-                + "Content-Type: text/csv\r\n\r\nHello World!\r\n"
-                + "--test-boundary--\r\n",
-                result);
+                    + "Content-Disposition: form-data; name=\"key\"; filename=file.csv; filename*=utf-8''file.csv\r\n"
+                    + "Content-Type: text/csv\r\n\r\nHello World!\r\n"
+                    + "--test-boundary--\r\n",
+                result
+            );
         }
 
         [Fact]
@@ -150,7 +163,8 @@ namespace StripeTests
             var source = new Dictionary<string, object>
             {
                 {
-                    "key", new MultipartFileContent
+                    "key",
+                    new MultipartFileContent
                     {
                         Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")),
                         Name = "file",
@@ -165,10 +179,11 @@ namespace StripeTests
             var result = new StreamReader(stream).ReadToEnd();
             Assert.Equal(
                 "--test-boundary\r\n"
-                + "Content-Disposition: form-data; name=\"key\"; filename=file; filename*=utf-8''file\r\n"
-                + "Content-Type: application/json\r\n\r\nHello World!\r\n"
-                + "--test-boundary--\r\n",
-                result);
+                    + "Content-Disposition: form-data; name=\"key\"; filename=file; filename*=utf-8''file\r\n"
+                    + "Content-Type: application/json\r\n\r\nHello World!\r\n"
+                    + "--test-boundary--\r\n",
+                result
+            );
         }
 
         [Fact]
@@ -177,7 +192,8 @@ namespace StripeTests
             var source = new Dictionary<string, object>
             {
                 {
-                    "key", new MultipartFileContent
+                    "key",
+                    new MultipartFileContent
                     {
                         Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")),
                         Name = "file.json",
@@ -192,10 +208,11 @@ namespace StripeTests
             var result = new StreamReader(stream).ReadToEnd();
             Assert.Equal(
                 "--test-boundary\r\n"
-                + "Content-Disposition: form-data; name=\"key\"; filename=file.json; filename*=utf-8''file.json\r\n"
-                + "Content-Type: application/octet-stream\r\n\r\nHello World!\r\n"
-                + "--test-boundary--\r\n",
-                result);
+                    + "Content-Disposition: form-data; name=\"key\"; filename=file.json; filename*=utf-8''file.json\r\n"
+                    + "Content-Type: application/octet-stream\r\n\r\nHello World!\r\n"
+                    + "--test-boundary--\r\n",
+                result
+            );
         }
 
         [Fact]
@@ -213,19 +230,21 @@ namespace StripeTests
             var result = new StreamReader(stream).ReadToEnd();
             Assert.Equal(
                 "--test-boundary\r\n"
-                + "Content-Disposition: form-data; name=\"stream\"; filename=blob; filename*=utf-8''blob\r\n"
-                + "Content-Type: application/octet-stream\r\n\r\nHello クWorld!\r\n"
-                + "--test-boundary\r\nContent-Type: text/plain; charset=utf-8\r\n"
-                + "Content-Disposition: form-data; name=\"string\"\r\n\r\nString!ク\r\n--test-boundary--\r\n",
-                result);
+                    + "Content-Disposition: form-data; name=\"stream\"; filename=blob; filename*=utf-8''blob\r\n"
+                    + "Content-Type: application/octet-stream\r\n\r\nHello クWorld!\r\n"
+                    + "--test-boundary\r\nContent-Type: text/plain; charset=utf-8\r\n"
+                    + "Content-Disposition: form-data; name=\"string\"\r\n\r\nString!ク\r\n--test-boundary--\r\n",
+                result
+            );
         }
 
         [Fact]
         public void Ctor_OneNonStringNonStreamEntry_ThrowsArgumentException()
         {
             var source = new Dictionary<string, object> { { "key", 234 } };
-            Assert.Throws<ArgumentException>(
-                () => new MultipartFormDataContent(source, "test-boundary"));
+            Assert.Throws<ArgumentException>(() =>
+                new MultipartFormDataContent(source, "test-boundary")
+            );
         }
     }
 }

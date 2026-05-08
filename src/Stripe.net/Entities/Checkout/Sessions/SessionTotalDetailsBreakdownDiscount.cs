@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionTotalDetailsBreakdownDiscount : StripeEntity<SessionTotalDetailsBreakdownDiscount>
+    public class SessionTotalDetailsBreakdownDiscount
+        : StripeEntity<SessionTotalDetailsBreakdownDiscount>
     {
         /// <summary>
         /// The amount discounted.

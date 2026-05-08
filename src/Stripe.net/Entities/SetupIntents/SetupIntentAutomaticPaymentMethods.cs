@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SetupIntentAutomaticPaymentMethods : StripeEntity<SetupIntentAutomaticPaymentMethods>
+    public class SetupIntentAutomaticPaymentMethods
+        : StripeEntity<SetupIntentAutomaticPaymentMethods>
     {
         /// <summary>
         /// Controls whether this SetupIntent will accept redirect-based payment methods.

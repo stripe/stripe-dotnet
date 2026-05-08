@@ -6,7 +6,5 @@ namespace Stripe.Reporting
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ReportTypeGetOptions : BaseOptions
-    {
-    }
+    public class ReportTypeGetOptions : BaseOptions { }
 }

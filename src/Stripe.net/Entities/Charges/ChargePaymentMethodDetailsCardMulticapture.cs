@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ChargePaymentMethodDetailsCardMulticapture : StripeEntity<ChargePaymentMethodDetailsCardMulticapture>
+    public class ChargePaymentMethodDetailsCardMulticapture
+        : StripeEntity<ChargePaymentMethodDetailsCardMulticapture>
     {
         /// <summary>
         /// Indicates whether or not multiple captures are supported.

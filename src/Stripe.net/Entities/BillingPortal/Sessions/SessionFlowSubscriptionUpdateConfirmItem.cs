@@ -6,7 +6,9 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionFlowSubscriptionUpdateConfirmItem : StripeEntity<SessionFlowSubscriptionUpdateConfirmItem>, IHasId
+    public class SessionFlowSubscriptionUpdateConfirmItem
+        : StripeEntity<SessionFlowSubscriptionUpdateConfirmItem>,
+            IHasId
     {
         /// <summary>
         /// The ID of the <a

@@ -10,7 +10,11 @@ namespace Stripe
     /// The credit note line item object.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CreditNoteLineItem : StripeEntity<CreditNoteLineItem>, IHasId, IHasMetadata, IHasObject
+    public class CreditNoteLineItem
+        : StripeEntity<CreditNoteLineItem>,
+            IHasId,
+            IHasMetadata,
+            IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -131,7 +135,9 @@ namespace Stripe
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
         [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonNumberHandling(
+            STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString
+        )]
         [STJS.JsonPropertyName("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }
     }

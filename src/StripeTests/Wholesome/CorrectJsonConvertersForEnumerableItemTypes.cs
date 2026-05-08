@@ -39,7 +39,8 @@ namespace StripeTests.Wholesome
                     }
 
                     // Skip properties that don't have a `JsonProperty` attribute
-                    var jsonPropertyAttribute = property.GetCustomAttribute<JsonPropertyNameAttribute>();
+                    var jsonPropertyAttribute =
+                        property.GetCustomAttribute<JsonPropertyNameAttribute>();
                     if (jsonPropertyAttribute == null)
                     {
                         continue;
@@ -65,13 +66,15 @@ namespace StripeTests.Wholesome
                         {
                             results.Add(
                                 $"{typeArg.FullName}, expected = {ret.Item1}, "
-                                    + $"actual = {ret.Item2}");
+                                    + $"actual = {ret.Item2}"
+                            );
                         }
                     }
                 }
             }
 
-            var message = $"{AssertionMessage}\n{results.Count} affected classes: {string.Join(",", results)}";
+            var message =
+                $"{AssertionMessage}\n{results.Count} affected classes: {string.Join(",", results)}";
             AssertEmpty(results, message);
         }
     }

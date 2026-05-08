@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -20,7 +19,8 @@ namespace StripeTests
 
         public PlanServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new PlanService(this.StripeClient);
@@ -31,10 +31,7 @@ namespace StripeTests
                 Currency = "usd",
                 Interval = "month",
                 Nickname = "Plan Nickmame",
-                Product = new PlanProductOptions
-                {
-                    Name = "Product Name",
-                },
+                Product = new PlanProductOptions { Name = "Product Name" },
             };
 
             this.createDecimalTierOptions = new PlanCreateOptions
@@ -42,37 +39,20 @@ namespace StripeTests
                 Currency = "usd",
                 Interval = "month",
                 Nickname = "Plan Nickmame",
-                Product = new PlanProductOptions
-                {
-                    Name = "Product Name",
-                },
+                Product = new PlanProductOptions { Name = "Product Name" },
                 Tiers = new List<PlanTierOptions>
                 {
-                    new PlanTierOptions
-                    {
-                        UnitAmountDecimal = 0.04m,
-                        UpTo = 10,
-                    },
-                    new PlanTierOptions
-                    {
-                        UnitAmountDecimal = 0.03m,
-                        UpTo = PlanTierUpTo.Inf,
-                    },
+                    new PlanTierOptions { UnitAmountDecimal = 0.04m, UpTo = 10 },
+                    new PlanTierOptions { UnitAmountDecimal = 0.03m, UpTo = PlanTierUpTo.Inf },
                 },
             };
 
             this.updateOptions = new PlanUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.listOptions = new PlanListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new PlanListOptions { Limit = 1 };
         }
 
         [Fact]

@@ -15,7 +15,10 @@ namespace Stripe
     /// </summary>
     public class StripeClient : IStripeClient
     {
-        internal static readonly List<string> StripeClientUsage = new List<string> { "stripe_client" };
+        internal static readonly List<string> StripeClientUsage = new List<string>
+        {
+            "stripe_client",
+        };
 
         private JsonSerializerSettings jsonSerializerSettings;
 
@@ -62,24 +65,23 @@ namespace Stripe
             string apiBase = null,
             string connectBase = null,
             string filesBase = null,
-            string meterEventsBase = null)
-            : this(new StripeClientOptions
-            {
-                ApiKey = apiKey,
-                ClientId = clientId,
-                HttpClient = httpClient,
-                ApiBase = apiBase,
-                ConnectBase = connectBase,
-                FilesBase = filesBase,
-                MeterEventsBase = meterEventsBase,
-            })
-        {
-        }
+            string meterEventsBase = null
+        )
+            : this(
+                new StripeClientOptions
+                {
+                    ApiKey = apiKey,
+                    ClientId = clientId,
+                    HttpClient = httpClient,
+                    ApiBase = apiBase,
+                    ConnectBase = connectBase,
+                    FilesBase = filesBase,
+                    MeterEventsBase = meterEventsBase,
+                }
+            ) { }
 
         public StripeClient(StripeClientOptions options)
-            : this(new LiveApiRequestor(options, StripeClientUsage))
-        {
-        }
+            : this(new LiveApiRequestor(options, StripeClientUsage)) { }
 
         /// <summary>Default base URL for Stripe's API.</summary>
         public static string DefaultApiBase => "https://api.stripe.com";
@@ -154,10 +156,20 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
             where T : IStripeEntity
         {
-            return await this.Requestor.RequestAsync<T>(BaseAddress.Api, method, path, options, requestOptions, cancellationToken).ConfigureAwait(false);
+            return await this
+                .Requestor.RequestAsync<T>(
+                    BaseAddress.Api,
+                    method,
+                    path,
+                    options,
+                    requestOptions,
+                    cancellationToken
+                )
+                .ConfigureAwait(false);
         }
 
         /// <inheritdoc/>
@@ -166,9 +178,19 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
         {
-            return await this.Requestor.RequestStreamingAsync(BaseAddress.Api, method, path, options, requestOptions, cancellationToken).ConfigureAwait(false);
+            return await this
+                .Requestor.RequestStreamingAsync(
+                    BaseAddress.Api,
+                    method,
+                    path,
+                    options,
+                    requestOptions,
+                    cancellationToken
+                )
+                .ConfigureAwait(false);
         }
 
         /// <summary>Sends a request to Stripe's API as a synchronous operation.</summary>
@@ -182,7 +204,8 @@ namespace Stripe
             HttpMethod method,
             string path,
             string content = null,
-            RawRequestOptions requestOptions = null)
+            RawRequestOptions requestOptions = null
+        )
         {
             return this.Requestor.RawRequest(method, path, content, requestOptions);
         }
@@ -200,9 +223,12 @@ namespace Stripe
             string path,
             string content = null,
             RawRequestOptions requestOptions = null,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
         {
-            return await this.Requestor.RawRequestAsync(method, path, content, requestOptions, cancellationToken).ConfigureAwait(false);
+            return await this
+                .Requestor.RawRequestAsync(method, path, content, requestOptions, cancellationToken)
+                .ConfigureAwait(false);
         }
 
         /// <summary>
@@ -225,9 +251,16 @@ namespace Stripe
             string json,
             string stripeSignatureHeader,
             string secret,
-            long tolerance = EventUtility.DefaultTimeTolerance)
+            long tolerance = EventUtility.DefaultTimeTolerance
+        )
         {
-            EventUtility.ValidateSignature(json, stripeSignatureHeader, secret, tolerance, DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+            EventUtility.ValidateSignature(
+                json,
+                stripeSignatureHeader,
+                secret,
+                tolerance,
+                DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+            );
 
             var parsed = JObject.Parse(json);
             var objectValue = (string)parsed["object"];
@@ -235,7 +268,8 @@ namespace Stripe
             {
                 throw new ArgumentException(
                     "You passed a webhook payload to ParseEventNotification, which expects "
-                    + "a thin event notification. Use EventUtility.ConstructEvent instead.");
+                        + "a thin event notification. Use EventUtility.ConstructEvent instead."
+                );
             }
 
             return EventNotification.FromJson(json, this);

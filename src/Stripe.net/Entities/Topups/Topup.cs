@@ -15,7 +15,12 @@ namespace Stripe
     /// platform account</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class Topup : StripeEntity<Topup>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
+    public class Topup
+        : StripeEntity<Topup>,
+            IHasId,
+            IHasMetadata,
+            IHasObject,
+            IBalanceTransactionSource
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -50,7 +55,11 @@ namespace Stripe
         public string BalanceTransactionId
         {
             get => this.InternalBalanceTransaction?.Id;
-            set => this.InternalBalanceTransaction = SetExpandableFieldId(value, this.InternalBalanceTransaction);
+            set =>
+                this.InternalBalanceTransaction = SetExpandableFieldId(
+                    value,
+                    this.InternalBalanceTransaction
+                );
         }
 
         /// <summary>
@@ -65,7 +74,11 @@ namespace Stripe
         public BalanceTransaction BalanceTransaction
         {
             get => this.InternalBalanceTransaction?.ExpandedObject;
-            set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
+            set =>
+                this.InternalBalanceTransaction = SetExpandableFieldObject(
+                    value,
+                    this.InternalBalanceTransaction
+                );
         }
 
         [JsonProperty("balance_transaction")]

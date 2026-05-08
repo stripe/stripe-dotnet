@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountLinkUseCaseAccountOnboardingCollectionOptions : StripeEntity<AccountLinkUseCaseAccountOnboardingCollectionOptions>
+    public class AccountLinkUseCaseAccountOnboardingCollectionOptions
+        : StripeEntity<AccountLinkUseCaseAccountOnboardingCollectionOptions>
     {
         /// <summary>
         /// Specifies whether the platform collects only currently_due requirements

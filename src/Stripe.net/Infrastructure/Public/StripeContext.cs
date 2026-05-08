@@ -19,9 +19,7 @@ namespace Stripe
         /// Initializes a new instance of the <see cref="StripeContext"/> class with no segments.
         /// </summary>
         public StripeContext()
-            : this(null)
-        {
-        }
+            : this(null) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StripeContext"/> class with the given segments.
@@ -103,7 +101,10 @@ namespace Stripe
 
             if (string.IsNullOrWhiteSpace(segment))
             {
-                throw new ArgumentException("Segment cannot be empty or whitespace.", nameof(segment));
+                throw new ArgumentException(
+                    "Segment cannot be empty or whitespace.",
+                    nameof(segment)
+                );
             }
 
             var newSegments = new List<string>(this.segments) { segment };

@@ -8,7 +8,10 @@ namespace Stripe
 
     [JsonObject]
     [STJS.JsonConverter(typeof(STJEnumerableObjectConverter))]
-    public class StripeSearchResult<T> : StripeEntity<StripeSearchResult<T>>, IHasObject, IEnumerable<T>
+    public class StripeSearchResult<T>
+        : StripeEntity<StripeSearchResult<T>>,
+            IHasObject,
+            IEnumerable<T>
     {
         /// <summary>
         /// A string describing the object type returned.

@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountCreateConfigurationMerchantKonbiniPaymentsSupportHoursOptions : INestedOptions
+    public class AccountCreateConfigurationMerchantKonbiniPaymentsSupportHoursOptions
+        : INestedOptions
     {
         /// <summary>
         /// Support hours end time (JST time of day) for in <c>HH:MM</c> format.

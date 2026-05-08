@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountIdentityIndividualScriptAddresses : StripeEntity<AccountIdentityIndividualScriptAddresses>
+    public class AccountIdentityIndividualScriptAddresses
+        : StripeEntity<AccountIdentityIndividualScriptAddresses>
     {
         /// <summary>
         /// Kana Address.

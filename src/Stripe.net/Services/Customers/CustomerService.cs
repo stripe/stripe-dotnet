@@ -8,13 +8,14 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class CustomerService : Service,
-        ICreatable<Customer, CustomerCreateOptions>,
-        IDeletable<Customer, CustomerDeleteOptions>,
-        IListable<Customer, CustomerListOptions>,
-        IRetrievable<Customer, CustomerGetOptions>,
-        ISearchable<Customer, CustomerSearchOptions>,
-        IUpdatable<Customer, CustomerUpdateOptions>
+    public partial class CustomerService
+        : Service,
+            ICreatable<Customer, CustomerCreateOptions>,
+            IDeletable<Customer, CustomerDeleteOptions>,
+            IListable<Customer, CustomerListOptions>,
+            IRetrievable<Customer, CustomerGetOptions>,
+            ISearchable<Customer, CustomerSearchOptions>,
+            IUpdatable<Customer, CustomerUpdateOptions>
     {
         private CustomerBalanceTransactionService balanceTransactions;
         private CustomerCashBalanceService cashBalance;
@@ -24,130 +25,235 @@ namespace Stripe
         private CustomerPaymentSourceService paymentSources;
         private CustomerTaxIdService taxIds;
 
-        public CustomerService()
-        {
-        }
+        public CustomerService() { }
 
         internal CustomerService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public CustomerService(IStripeClient client)
-            : base(client)
-        {
-        }
+            : base(client) { }
 
-        public virtual CustomerBalanceTransactionService BalanceTransactions => this.balanceTransactions ??= new CustomerBalanceTransactionService(
-            this.Requestor);
+        public virtual CustomerBalanceTransactionService BalanceTransactions =>
+            this.balanceTransactions ??= new CustomerBalanceTransactionService(this.Requestor);
 
-        public virtual CustomerCashBalanceService CashBalance => this.cashBalance ??= new CustomerCashBalanceService(
-            this.Requestor);
+        public virtual CustomerCashBalanceService CashBalance =>
+            this.cashBalance ??= new CustomerCashBalanceService(this.Requestor);
 
-        public virtual CustomerCashBalanceTransactionService CashBalanceTransactions => this.cashBalanceTransactions ??= new CustomerCashBalanceTransactionService(
-            this.Requestor);
+        public virtual CustomerCashBalanceTransactionService CashBalanceTransactions =>
+            this.cashBalanceTransactions ??= new CustomerCashBalanceTransactionService(
+                this.Requestor
+            );
 
-        public virtual CustomerFundingInstructionsService FundingInstructions => this.fundingInstructions ??= new CustomerFundingInstructionsService(
-            this.Requestor);
+        public virtual CustomerFundingInstructionsService FundingInstructions =>
+            this.fundingInstructions ??= new CustomerFundingInstructionsService(this.Requestor);
 
-        public virtual CustomerPaymentMethodService PaymentMethods => this.paymentMethods ??= new CustomerPaymentMethodService(
-            this.Requestor);
+        public virtual CustomerPaymentMethodService PaymentMethods =>
+            this.paymentMethods ??= new CustomerPaymentMethodService(this.Requestor);
 
-        public virtual CustomerPaymentSourceService PaymentSources => this.paymentSources ??= new CustomerPaymentSourceService(
-            this.Requestor);
+        public virtual CustomerPaymentSourceService PaymentSources =>
+            this.paymentSources ??= new CustomerPaymentSourceService(this.Requestor);
 
-        public virtual CustomerTaxIdService TaxIds => this.taxIds ??= new CustomerTaxIdService(
-            this.Requestor);
-
-        /// <summary>
-        /// <p>Creates a new customer object.</p>.
-        /// </summary>
-        public virtual Customer Create(CustomerCreateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.Request<Customer>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers", options, requestOptions);
-        }
+        public virtual CustomerTaxIdService TaxIds =>
+            this.taxIds ??= new CustomerTaxIdService(this.Requestor);
 
         /// <summary>
         /// <p>Creates a new customer object.</p>.
         /// </summary>
-        public virtual Task<Customer> CreateAsync(CustomerCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Customer Create(
+            CustomerCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<Customer>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers", options, requestOptions, cancellationToken);
+            return this.Request<Customer>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/customers",
+                options,
+                requestOptions
+            );
+        }
+
+        /// <summary>
+        /// <p>Creates a new customer object.</p>.
+        /// </summary>
+        public virtual Task<Customer> CreateAsync(
+            CustomerCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return this.RequestAsync<Customer>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/customers",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Permanently deletes a customer. It cannot be undone. Also immediately cancels any
         /// active subscriptions on the customer.</p>.
         /// </summary>
-        public virtual Customer Delete(string id, CustomerDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual Customer Delete(
+            string id,
+            CustomerDeleteOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Customer>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Customer>(
+                BaseAddress.Api,
+                HttpMethod.Delete,
+                $"/v1/customers/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Permanently deletes a customer. It cannot be undone. Also immediately cancels any
         /// active subscriptions on the customer.</p>.
         /// </summary>
-        public virtual Task<Customer> DeleteAsync(string id, CustomerDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Customer> DeleteAsync(
+            string id,
+            CustomerDeleteOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Customer>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Customer>(
+                BaseAddress.Api,
+                HttpMethod.Delete,
+                $"/v1/customers/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Removes the currently applied discount on a customer.</p>.
         /// </summary>
-        public virtual Discount DeleteDiscount(string id, CustomerDeleteDiscountOptions options = null, RequestOptions requestOptions = null)
+        public virtual Discount DeleteDiscount(
+            string id,
+            CustomerDeleteDiscountOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Discount>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{WebUtility.UrlEncode(id)}/discount", options, requestOptions);
+            return this.Request<Discount>(
+                BaseAddress.Api,
+                HttpMethod.Delete,
+                $"/v1/customers/{WebUtility.UrlEncode(id)}/discount",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Removes the currently applied discount on a customer.</p>.
         /// </summary>
-        public virtual Task<Discount> DeleteDiscountAsync(string id, CustomerDeleteDiscountOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Discount> DeleteDiscountAsync(
+            string id,
+            CustomerDeleteDiscountOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Discount>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{WebUtility.UrlEncode(id)}/discount", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Discount>(
+                BaseAddress.Api,
+                HttpMethod.Delete,
+                $"/v1/customers/{WebUtility.UrlEncode(id)}/discount",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Retrieves a Customer object.</p>.
         /// </summary>
-        public virtual Customer Get(string id, CustomerGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Customer Get(
+            string id,
+            CustomerGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Customer>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Customer>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/customers/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Retrieves a Customer object.</p>.
         /// </summary>
-        public virtual Task<Customer> GetAsync(string id, CustomerGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Customer> GetAsync(
+            string id,
+            CustomerGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Customer>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Customer>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/customers/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of your customers. The customers are returned sorted by creation date,
         /// with the most recent customers appearing first.</p>.
         /// </summary>
-        public virtual StripeList<Customer> List(CustomerListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Customer> List(
+            CustomerListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeList<Customer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers", options, requestOptions);
+            return this.Request<StripeList<Customer>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/customers",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of your customers. The customers are returned sorted by creation date,
         /// with the most recent customers appearing first.</p>.
         /// </summary>
-        public virtual Task<StripeList<Customer>> ListAsync(CustomerListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<Customer>> ListAsync(
+            CustomerListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeList<Customer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Customer>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/customers",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of your customers. The customers are returned sorted by creation date,
         /// with the most recent customers appearing first.</p>.
         /// </summary>
-        public virtual IEnumerable<Customer> ListAutoPaging(CustomerListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<Customer> ListAutoPaging(
+            CustomerListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
             return this.ListRequestAutoPaging<Customer>($"/v1/customers", options, requestOptions);
         }
@@ -156,9 +262,18 @@ namespace Stripe
         /// <p>Returns a list of your customers. The customers are returned sorted by creation date,
         /// with the most recent customers appearing first.</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<Customer> ListAutoPagingAsync(CustomerListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<Customer> ListAutoPagingAsync(
+            CustomerListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<Customer>($"/v1/customers", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Customer>(
+                $"/v1/customers",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -169,9 +284,18 @@ namespace Stripe
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
         /// </summary>
-        public virtual StripeSearchResult<Customer> Search(CustomerSearchOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeSearchResult<Customer> Search(
+            CustomerSearchOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeSearchResult<Customer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/search", options, requestOptions);
+            return this.Request<StripeSearchResult<Customer>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/customers/search",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -182,9 +306,20 @@ namespace Stripe
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
         /// </summary>
-        public virtual Task<StripeSearchResult<Customer>> SearchAsync(CustomerSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeSearchResult<Customer>> SearchAsync(
+            CustomerSearchOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeSearchResult<Customer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/search", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeSearchResult<Customer>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/customers/search",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -195,9 +330,16 @@ namespace Stripe
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
         /// </summary>
-        public virtual IEnumerable<Customer> SearchAutoPaging(CustomerSearchOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<Customer> SearchAutoPaging(
+            CustomerSearchOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.SearchRequestAutoPaging<Customer>($"/v1/customers/search", options, requestOptions);
+            return this.SearchRequestAutoPaging<Customer>(
+                $"/v1/customers/search",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -208,9 +350,18 @@ namespace Stripe
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<Customer> SearchAutoPagingAsync(CustomerSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<Customer> SearchAutoPagingAsync(
+            CustomerSearchOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.SearchRequestAutoPagingAsync<Customer>($"/v1/customers/search", options, requestOptions, cancellationToken);
+            return this.SearchRequestAutoPagingAsync<Customer>(
+                $"/v1/customers/search",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -227,9 +378,19 @@ namespace Stripe
         ///
         /// <p>This request accepts mostly the same arguments as the customer creation call.</p>.
         /// </summary>
-        public virtual Customer Update(string id, CustomerUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Customer Update(
+            string id,
+            CustomerUpdateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Customer>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Customer>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/customers/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -246,9 +407,21 @@ namespace Stripe
         ///
         /// <p>This request accepts mostly the same arguments as the customer creation call.</p>.
         /// </summary>
-        public virtual Task<Customer> UpdateAsync(string id, CustomerUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Customer> UpdateAsync(
+            string id,
+            CustomerUpdateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Customer>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Customer>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/customers/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

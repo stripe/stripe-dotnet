@@ -8,9 +8,7 @@ namespace StripeTests.Terminal
     public class ReaderTest : BaseStripeTest
     {
         public ReaderTest(StripeMockFixture stripeMockFixture)
-: base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -33,7 +31,8 @@ namespace StripeTests.Terminal
             // 1699900000000 milliseconds = 1699900000 seconds
             long timestampMillis = 1699900000000L;
 
-            string json = $@"{{
+            string json =
+                $@"{{
     ""id"": ""tmr_test123"",
     ""object"": ""terminal.reader"",
     ""device_type"": ""simulated_stripe_s700"",
@@ -66,7 +65,8 @@ namespace StripeTests.Terminal
             // Unix timestamp in seconds for November 13, 2023 18:26:40 UTC
             long timestampSeconds = 1699900000L;
 
-            string json = $@"{{
+            string json =
+                $@"{{
                 ""id"": ""tmr_test456"",
                 ""object"": ""terminal.reader"",
                 ""device_type"": ""simulated_stripe_s700"",
@@ -99,7 +99,8 @@ namespace StripeTests.Terminal
             // Unix timestamp in milliseconds for November 13, 2023 18:26:40 UTC
             // 1699900000000 milliseconds = 1699900000 seconds
             long timestampMillis = 1699900000000L;
-            string json = $@"{{
+            string json =
+                $@"{{
                 ""id"": ""tmr_test123"",
                 ""object"": ""terminal.reader"",
                 ""device_type"": ""simulated_stripe_s700"",
@@ -131,7 +132,8 @@ namespace StripeTests.Terminal
 
             // Unix timestamp in seconds for November 13, 2023 18:26:40 UTC
             long timestampSeconds = 1699900000L;
-            string json = $@"{{
+            string json =
+                $@"{{
                 ""id"": ""tmr_test456"",
                 ""object"": ""terminal.reader"",
                 ""device_type"": ""simulated_stripe_s700"",

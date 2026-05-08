@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersOptions : INestedOptions
+    public class SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersOptions
+        : INestedOptions
     {
         /// <summary>
         /// The account subcategories to use to filter for selectable accounts. Valid subcategories

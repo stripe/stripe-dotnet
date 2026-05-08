@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationTokenPaymentMethodPreviewBoleto : StripeEntity<ConfirmationTokenPaymentMethodPreviewBoleto>
+    public class ConfirmationTokenPaymentMethodPreviewBoleto
+        : StripeEntity<ConfirmationTokenPaymentMethodPreviewBoleto>
     {
         /// <summary>
         /// Uniquely identifies the customer tax id (CNPJ or CPF).

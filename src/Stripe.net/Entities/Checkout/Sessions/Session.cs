@@ -417,7 +417,11 @@ namespace Stripe.Checkout
         public string PaymentIntentId
         {
             get => this.InternalPaymentIntent?.Id;
-            set => this.InternalPaymentIntent = SetExpandableFieldId(value, this.InternalPaymentIntent);
+            set =>
+                this.InternalPaymentIntent = SetExpandableFieldId(
+                    value,
+                    this.InternalPaymentIntent
+                );
         }
 
         /// <summary>
@@ -434,7 +438,11 @@ namespace Stripe.Checkout
         public PaymentIntent PaymentIntent
         {
             get => this.InternalPaymentIntent?.ExpandedObject;
-            set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
+            set =>
+                this.InternalPaymentIntent = SetExpandableFieldObject(
+                    value,
+                    this.InternalPaymentIntent
+                );
         }
 
         [JsonProperty("payment_intent")]
@@ -469,7 +477,11 @@ namespace Stripe.Checkout
         public PaymentLink PaymentLink
         {
             get => this.InternalPaymentLink?.ExpandedObject;
-            set => this.InternalPaymentLink = SetExpandableFieldObject(value, this.InternalPaymentLink);
+            set =>
+                this.InternalPaymentLink = SetExpandableFieldObject(
+                    value,
+                    this.InternalPaymentLink
+                );
         }
 
         [JsonProperty("payment_link")]
@@ -606,7 +618,11 @@ namespace Stripe.Checkout
         public SetupIntent SetupIntent
         {
             get => this.InternalSetupIntent?.ExpandedObject;
-            set => this.InternalSetupIntent = SetExpandableFieldObject(value, this.InternalSetupIntent);
+            set =>
+                this.InternalSetupIntent = SetExpandableFieldObject(
+                    value,
+                    this.InternalSetupIntent
+                );
         }
 
         [JsonProperty("setup_intent")]
@@ -671,7 +687,8 @@ namespace Stripe.Checkout
         public string SubscriptionId
         {
             get => this.InternalSubscription?.Id;
-            set => this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
+            set =>
+                this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
         }
 
         /// <summary>
@@ -686,7 +703,11 @@ namespace Stripe.Checkout
         public Subscription Subscription
         {
             get => this.InternalSubscription?.ExpandedObject;
-            set => this.InternalSubscription = SetExpandableFieldObject(value, this.InternalSubscription);
+            set =>
+                this.InternalSubscription = SetExpandableFieldObject(
+                    value,
+                    this.InternalSubscription
+                );
         }
 
         [JsonProperty("subscription")]

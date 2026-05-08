@@ -103,9 +103,7 @@ namespace StripeTests.Infrastructure.TestData
             public static readonly TestStringEnum Foo = new TestStringEnum("foo");
 
             private TestStringEnum(string value)
-                : base(value)
-            {
-            }
+                : base(value) { }
         }
 
         public class Nested

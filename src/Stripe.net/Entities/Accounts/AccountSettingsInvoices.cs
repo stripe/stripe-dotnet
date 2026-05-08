@@ -40,7 +40,10 @@ namespace Stripe
             set => this.InternalDefaultAccountTaxIds = SetExpandableArrayObjects(value);
         }
 
-        [JsonProperty("default_account_tax_ids", ItemConverterType = typeof(ExpandableFieldConverter<TaxId>))]
+        [JsonProperty(
+            "default_account_tax_ids",
+            ItemConverterType = typeof(ExpandableFieldConverter<TaxId>)
+        )]
         [STJS.JsonPropertyName("default_account_tax_ids")]
         internal List<ExpandableField<TaxId>> InternalDefaultAccountTaxIds { get; set; }
         #endregion

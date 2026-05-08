@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionCollectedInformationShippingDetails : StripeEntity<SessionCollectedInformationShippingDetails>
+    public class SessionCollectedInformationShippingDetails
+        : StripeEntity<SessionCollectedInformationShippingDetails>
     {
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]

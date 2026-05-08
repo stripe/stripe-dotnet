@@ -48,7 +48,8 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
             where T : IStripeEntity;
 
         /// <summary>Sends a request to Stripe's API as an asynchronous operation and returns a <see cref="Stream"/> as the response.</summary>
@@ -64,6 +65,7 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default);
+            CancellationToken cancellationToken = default
+        );
     }
 }

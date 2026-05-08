@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class DisputeEvidenceEnhancedEvidenceVisaCompellingEvidence3PriorUndisputedTransaction : StripeEntity<DisputeEvidenceEnhancedEvidenceVisaCompellingEvidence3PriorUndisputedTransaction>
+    public class DisputeEvidenceEnhancedEvidenceVisaCompellingEvidence3PriorUndisputedTransaction
+        : StripeEntity<DisputeEvidenceEnhancedEvidenceVisaCompellingEvidence3PriorUndisputedTransaction>
     {
         /// <summary>
         /// Stripe charge ID for the Visa Compelling Evidence 3.0 eligible prior charge.

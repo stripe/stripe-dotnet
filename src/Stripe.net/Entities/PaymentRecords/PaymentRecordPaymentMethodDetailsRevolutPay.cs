@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsRevolutPay : StripeEntity<PaymentRecordPaymentMethodDetailsRevolutPay>
+    public class PaymentRecordPaymentMethodDetailsRevolutPay
+        : StripeEntity<PaymentRecordPaymentMethodDetailsRevolutPay>
     {
         [JsonProperty("funding")]
         [STJS.JsonPropertyName("funding")]

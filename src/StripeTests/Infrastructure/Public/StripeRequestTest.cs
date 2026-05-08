@@ -14,7 +14,8 @@ namespace StripeTests
         {
             this.stripeClient = new StripeClient(
                 "sk_test_123",
-                apiBase: "https://client.example.com");
+                apiBase: "https://client.example.com"
+            );
         }
 
         [Fact]
@@ -25,13 +26,15 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/get",
                 new TestOptions { String = "string!" },
-                new RequestOptions());
+                new RequestOptions()
+            );
 
             Assert.Equal(HttpMethod.Get, request.Method);
             Assert.Equal($"https://client.example.com/get?string=string!", request.Uri.ToString());
             Assert.Equal(
                 $"Bearer {this.stripeClient.ApiKey}",
-                request.AuthorizationHeader.ToString());
+                request.AuthorizationHeader.ToString()
+            );
             Assert.True(request.StripeHeaders.ContainsKey("Stripe-Version"));
             Assert.Equal(StripeConfiguration.ApiVersion, request.StripeHeaders["Stripe-Version"]);
             Assert.False(request.StripeHeaders.ContainsKey("Idempotency-Key"));
@@ -47,13 +50,15 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/post",
                 new TestOptions { String = "string!" },
-                new RequestOptions());
+                new RequestOptions()
+            );
 
             Assert.Equal(HttpMethod.Post, request.Method);
             Assert.Equal($"{this.stripeClient.ApiBase}/post", request.Uri.ToString());
             Assert.Equal(
                 $"Bearer {this.stripeClient.ApiKey}",
-                request.AuthorizationHeader.ToString());
+                request.AuthorizationHeader.ToString()
+            );
             Assert.True(request.StripeHeaders.ContainsKey("Stripe-Version"));
             Assert.Equal(StripeConfiguration.ApiVersion, request.StripeHeaders["Stripe-Version"]);
             Assert.True(request.StripeHeaders.ContainsKey("Idempotency-Key"));
@@ -71,15 +76,18 @@ namespace StripeTests
                 HttpMethod.Delete,
                 "/delete",
                 new TestOptions { String = "string!" },
-                new RequestOptions());
+                new RequestOptions()
+            );
 
             Assert.Equal(HttpMethod.Delete, request.Method);
             Assert.Equal(
                 $"{this.stripeClient.ApiBase}/delete?string=string!",
-                request.Uri.ToString());
+                request.Uri.ToString()
+            );
             Assert.Equal(
                 $"Bearer {this.stripeClient.ApiKey}",
-                request.AuthorizationHeader.ToString());
+                request.AuthorizationHeader.ToString()
+            );
             Assert.True(request.StripeHeaders.ContainsKey("Stripe-Version"));
             Assert.Equal(StripeConfiguration.ApiVersion, request.StripeHeaders["Stripe-Version"]);
             Assert.False(request.StripeHeaders.ContainsKey("Idempotency-Key"));
@@ -97,17 +105,20 @@ namespace StripeTests
                     HttpMethod.Post,
                     "/post",
                     new TestOptions { String = "string!" },
-                    ApiMode.V2),
+                    ApiMode.V2
+                ),
                 new RequestOptions() { ApiKey = this.stripeClient.ApiKey },
                 new TestOptions { String = "string!" },
                 null,
-                ApiMode.V2);
+                ApiMode.V2
+            );
 
             Assert.Equal(HttpMethod.Post, request.Method);
             Assert.Equal($"{this.stripeClient.ApiBase}/post", request.Uri.ToString());
             Assert.Equal(
                 $"Bearer {this.stripeClient.ApiKey}",
-                request.AuthorizationHeader.ToString());
+                request.AuthorizationHeader.ToString()
+            );
             Assert.True(request.StripeHeaders.ContainsKey("Stripe-Version"));
 
             // V2 requests always have IK
@@ -128,19 +139,23 @@ namespace StripeTests
                     HttpMethod.Delete,
                     "/delete",
                     new TestOptions { String = "string!" },
-                    ApiMode.V2),
+                    ApiMode.V2
+                ),
                 new RequestOptions() { ApiKey = this.stripeClient.ApiKey },
                 new BaseOptions(),
                 null,
-                ApiMode.V2);
+                ApiMode.V2
+            );
 
             Assert.Equal(HttpMethod.Delete, request.Method);
             Assert.Equal(
                 $"{this.stripeClient.ApiBase}/delete?string=string!",
-                request.Uri.ToString());
+                request.Uri.ToString()
+            );
             Assert.Equal(
                 $"Bearer {this.stripeClient.ApiKey}",
-                request.AuthorizationHeader.ToString());
+                request.AuthorizationHeader.ToString()
+            );
             Assert.True(request.StripeHeaders.ContainsKey("Stripe-Version"));
 
             // V2 requests always have IK
@@ -165,7 +180,8 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/get",
                 null,
-                requestOptions);
+                requestOptions
+            );
 
             Assert.Equal(HttpMethod.Get, request.Method);
             Assert.Equal($"https://client.example.com/get", request.Uri.ToString());
@@ -196,7 +212,8 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/get",
                 null,
-                requestOptions);
+                requestOptions
+            );
 
             Assert.False(request.StripeHeaders.ContainsKey("Stripe-Account"));
         }
@@ -204,16 +221,14 @@ namespace StripeTests
         [Fact]
         public void Ctor_HandlesStringStripeContext()
         {
-            var requestOptions = new RequestOptions
-            {
-                StripeContext = "ctx_123",
-            };
+            var requestOptions = new RequestOptions { StripeContext = "ctx_123" };
             var request = new StripeRequest(
                 this.stripeClient,
                 HttpMethod.Get,
                 "/get",
                 null,
-                requestOptions);
+                requestOptions
+            );
 
             Assert.Equal("ctx_123", request.StripeHeaders["Stripe-Context"]);
         }
@@ -230,7 +245,8 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/get",
                 null,
-                requestOptions);
+                requestOptions
+            );
 
             Assert.Equal("ctx_123", request.StripeHeaders["Stripe-Context"]);
         }
@@ -238,16 +254,14 @@ namespace StripeTests
         [Fact]
         public void Ctor_HandlesDoesntSetEmptyString()
         {
-            var requestOptions = new RequestOptions
-            {
-                StripeContext = string.Empty,
-            };
+            var requestOptions = new RequestOptions { StripeContext = string.Empty };
             var request = new StripeRequest(
                 this.stripeClient,
                 HttpMethod.Get,
                 "/get",
                 null,
-                requestOptions);
+                requestOptions
+            );
 
             Assert.DoesNotContain("Stripe-Context", request.StripeHeaders);
         }
@@ -255,16 +269,14 @@ namespace StripeTests
         [Fact]
         public void Ctor_HandlesDoesntSetEmptyContext()
         {
-            var requestOptions = new RequestOptions
-            {
-                StripeContext = new StripeContext(),
-            };
+            var requestOptions = new RequestOptions { StripeContext = new StripeContext() };
             var request = new StripeRequest(
                 this.stripeClient,
                 HttpMethod.Get,
                 "/get",
                 null,
-                requestOptions);
+                requestOptions
+            );
 
             Assert.DoesNotContain("Stripe-Context", request.StripeHeaders);
         }
@@ -276,7 +288,8 @@ namespace StripeTests
             var requestOptions = new RequestOptions();
 
             var exception = Assert.Throws<StripeException>(() =>
-                new StripeRequest(client, HttpMethod.Get, "/get", null, requestOptions));
+                new StripeRequest(client, HttpMethod.Get, "/get", null, requestOptions)
+            );
 
             Assert.Contains("No API key provided.", exception.Message);
         }
@@ -288,7 +301,8 @@ namespace StripeTests
             var requestOptions = new RequestOptions();
 
             var exception = Assert.Throws<StripeException>(() =>
-                new StripeRequest(client, HttpMethod.Get, "/get", null, requestOptions));
+                new StripeRequest(client, HttpMethod.Get, "/get", null, requestOptions)
+            );
 
             Assert.Contains("No API key provided.", exception.Message);
         }
@@ -300,7 +314,8 @@ namespace StripeTests
             var requestOptions = new RequestOptions();
 
             var exception = Assert.Throws<StripeException>(() =>
-                new StripeRequest(client, HttpMethod.Get, "/get", null, requestOptions));
+                new StripeRequest(client, HttpMethod.Get, "/get", null, requestOptions)
+            );
 
             Assert.Contains("No API key provided.", exception.Message);
         }

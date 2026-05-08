@@ -18,7 +18,12 @@ namespace Stripe
     /// Related guide: <a href="https://docs.stripe.com/payouts">Receiving payouts</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class Payout : StripeEntity<Payout>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
+    public class Payout
+        : StripeEntity<Payout>,
+            IHasId,
+            IHasMetadata,
+            IHasObject,
+            IBalanceTransactionSource
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -55,7 +60,11 @@ namespace Stripe
         public string ApplicationFeeId
         {
             get => this.InternalApplicationFee?.Id;
-            set => this.InternalApplicationFee = SetExpandableFieldId(value, this.InternalApplicationFee);
+            set =>
+                this.InternalApplicationFee = SetExpandableFieldId(
+                    value,
+                    this.InternalApplicationFee
+                );
         }
 
         /// <summary>
@@ -71,7 +80,11 @@ namespace Stripe
         public ApplicationFee ApplicationFee
         {
             get => this.InternalApplicationFee?.ExpandedObject;
-            set => this.InternalApplicationFee = SetExpandableFieldObject(value, this.InternalApplicationFee);
+            set =>
+                this.InternalApplicationFee = SetExpandableFieldObject(
+                    value,
+                    this.InternalApplicationFee
+                );
         }
 
         [JsonProperty("application_fee")]
@@ -122,7 +135,11 @@ namespace Stripe
         public string BalanceTransactionId
         {
             get => this.InternalBalanceTransaction?.Id;
-            set => this.InternalBalanceTransaction = SetExpandableFieldId(value, this.InternalBalanceTransaction);
+            set =>
+                this.InternalBalanceTransaction = SetExpandableFieldId(
+                    value,
+                    this.InternalBalanceTransaction
+                );
         }
 
         /// <summary>
@@ -137,7 +154,11 @@ namespace Stripe
         public BalanceTransaction BalanceTransaction
         {
             get => this.InternalBalanceTransaction?.ExpandedObject;
-            set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
+            set =>
+                this.InternalBalanceTransaction = SetExpandableFieldObject(
+                    value,
+                    this.InternalBalanceTransaction
+                );
         }
 
         [JsonProperty("balance_transaction")]
@@ -197,7 +218,11 @@ namespace Stripe
         public IExternalAccount Destination
         {
             get => this.InternalDestination?.ExpandedObject;
-            set => this.InternalDestination = SetExpandableFieldObject(value, this.InternalDestination);
+            set =>
+                this.InternalDestination = SetExpandableFieldObject(
+                    value,
+                    this.InternalDestination
+                );
         }
 
         [JsonProperty("destination")]
@@ -220,7 +245,11 @@ namespace Stripe
         public string FailureBalanceTransactionId
         {
             get => this.InternalFailureBalanceTransaction?.Id;
-            set => this.InternalFailureBalanceTransaction = SetExpandableFieldId(value, this.InternalFailureBalanceTransaction);
+            set =>
+                this.InternalFailureBalanceTransaction = SetExpandableFieldId(
+                    value,
+                    this.InternalFailureBalanceTransaction
+                );
         }
 
         /// <summary>
@@ -236,7 +265,11 @@ namespace Stripe
         public BalanceTransaction FailureBalanceTransaction
         {
             get => this.InternalFailureBalanceTransaction?.ExpandedObject;
-            set => this.InternalFailureBalanceTransaction = SetExpandableFieldObject(value, this.InternalFailureBalanceTransaction);
+            set =>
+                this.InternalFailureBalanceTransaction = SetExpandableFieldObject(
+                    value,
+                    this.InternalFailureBalanceTransaction
+                );
         }
 
         [JsonProperty("failure_balance_transaction")]
@@ -300,7 +333,11 @@ namespace Stripe
         public string OriginalPayoutId
         {
             get => this.InternalOriginalPayout?.Id;
-            set => this.InternalOriginalPayout = SetExpandableFieldId(value, this.InternalOriginalPayout);
+            set =>
+                this.InternalOriginalPayout = SetExpandableFieldId(
+                    value,
+                    this.InternalOriginalPayout
+                );
         }
 
         /// <summary>
@@ -314,7 +351,11 @@ namespace Stripe
         public Payout OriginalPayout
         {
             get => this.InternalOriginalPayout?.ExpandedObject;
-            set => this.InternalOriginalPayout = SetExpandableFieldObject(value, this.InternalOriginalPayout);
+            set =>
+                this.InternalOriginalPayout = SetExpandableFieldObject(
+                    value,
+                    this.InternalOriginalPayout
+                );
         }
 
         [JsonProperty("original_payout")]
@@ -366,7 +407,8 @@ namespace Stripe
         public Payout ReversedBy
         {
             get => this.InternalReversedBy?.ExpandedObject;
-            set => this.InternalReversedBy = SetExpandableFieldObject(value, this.InternalReversedBy);
+            set =>
+                this.InternalReversedBy = SetExpandableFieldObject(value, this.InternalReversedBy);
         }
 
         [JsonProperty("reversed_by")]

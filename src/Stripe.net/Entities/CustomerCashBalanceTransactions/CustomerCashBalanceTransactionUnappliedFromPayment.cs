@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CustomerCashBalanceTransactionUnappliedFromPayment : StripeEntity<CustomerCashBalanceTransactionUnappliedFromPayment>
+    public class CustomerCashBalanceTransactionUnappliedFromPayment
+        : StripeEntity<CustomerCashBalanceTransactionUnappliedFromPayment>
     {
         #region Expandable PaymentIntent
 
@@ -20,7 +21,11 @@ namespace Stripe
         public string PaymentIntentId
         {
             get => this.InternalPaymentIntent?.Id;
-            set => this.InternalPaymentIntent = SetExpandableFieldId(value, this.InternalPaymentIntent);
+            set =>
+                this.InternalPaymentIntent = SetExpandableFieldId(
+                    value,
+                    this.InternalPaymentIntent
+                );
         }
 
         /// <summary>
@@ -35,7 +40,11 @@ namespace Stripe
         public PaymentIntent PaymentIntent
         {
             get => this.InternalPaymentIntent?.ExpandedObject;
-            set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
+            set =>
+                this.InternalPaymentIntent = SetExpandableFieldObject(
+                    value,
+                    this.InternalPaymentIntent
+                );
         }
 
         [JsonProperty("payment_intent")]

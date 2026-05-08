@@ -7,9 +7,7 @@ namespace StripeTests
     public class SubscriptionItemTest : BaseStripeTest
     {
         public SubscriptionItemTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

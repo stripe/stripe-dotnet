@@ -18,8 +18,8 @@ namespace StripeTests.Wholesome
     public class DontSerializeNullDeletedAttrs : WholesomeTest
     {
         private const string AssertionMessage =
-            "Found at least one invalid Deleted property. Make sure that the property " +
-            "has a JsonPropertyAttribute and that NullValueHandling is set to Ignore.";
+            "Found at least one invalid Deleted property. Make sure that the property "
+            + "has a JsonPropertyAttribute and that NullValueHandling is set to Ignore.";
 
         [Fact]
         public void Check()
@@ -51,7 +51,8 @@ namespace StripeTests.Wholesome
                     }
 
                     // Check that NullValueHanding is set to Ignore
-                    bool hasNullValueHandling = attribute.NullValueHandling == NullValueHandling.Ignore;
+                    bool hasNullValueHandling =
+                        attribute.NullValueHandling == NullValueHandling.Ignore;
                     if (!skipTheseClasses.Contains(entityClass.FullName))
                     {
                         // This feature is implemented as part of JsonIgnore in STJ; make sure
@@ -82,7 +83,8 @@ namespace StripeTests.Wholesome
                 }
 
                 // Actually fail test
-                var message = $"{AssertionMessage}\n{results.Count} affected properties: {string.Join(",", results)}";
+                var message =
+                    $"{AssertionMessage}\n{results.Count} affected properties: {string.Join(",", results)}";
                 Assert.True(false, message);
             }
         }

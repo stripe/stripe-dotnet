@@ -11,7 +11,10 @@ namespace Stripe.Billing
     /// or a debit) against an existing credit grant.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CreditBalanceTransaction : StripeEntity<CreditBalanceTransaction>, IHasId, IHasObject
+    public class CreditBalanceTransaction
+        : StripeEntity<CreditBalanceTransaction>,
+            IHasId,
+            IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -69,7 +72,11 @@ namespace Stripe.Billing
         public CreditGrant CreditGrant
         {
             get => this.InternalCreditGrant?.ExpandedObject;
-            set => this.InternalCreditGrant = SetExpandableFieldObject(value, this.InternalCreditGrant);
+            set =>
+                this.InternalCreditGrant = SetExpandableFieldObject(
+                    value,
+                    this.InternalCreditGrant
+                );
         }
 
         [JsonProperty("credit_grant")]

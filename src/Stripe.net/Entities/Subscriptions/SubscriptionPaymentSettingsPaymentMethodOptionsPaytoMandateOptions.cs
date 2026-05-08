@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SubscriptionPaymentSettingsPaymentMethodOptionsPaytoMandateOptions : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptionsPaytoMandateOptions>
+    public class SubscriptionPaymentSettingsPaymentMethodOptionsPaytoMandateOptions
+        : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptionsPaytoMandateOptions>
     {
         /// <summary>
         /// The maximum amount that can be collected in a single invoice. If you don't specify a

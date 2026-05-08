@@ -35,7 +35,9 @@ namespace Stripe.Infrastructure
 
             if (seconds < 0)
             {
-                throw new JsonSerializationException("Cannot convert date value that is before Unix epoch of 00:00:00 UTC on 1 January 1970.");
+                throw new JsonSerializationException(
+                    "Cannot convert date value that is before Unix epoch of 00:00:00 UTC on 1 January 1970."
+                );
             }
 
             writer.WriteValue(seconds);
@@ -49,14 +51,21 @@ namespace Stripe.Infrastructure
         /// <param name="existingValue">The existing property value of the JSON that is being converted.</param>
         /// <param name="serializer">The calling serializer.</param>
         /// <returns>The object value.</returns>
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(
+            JsonReader reader,
+            Type objectType,
+            object existingValue,
+            JsonSerializer serializer
+        )
         {
             bool nullable = IsNullable(objectType);
             if (reader.TokenType == JsonToken.Null)
             {
                 if (!nullable)
                 {
-                    throw new JsonSerializationException(string.Format("Cannot convert null value to {0}.", objectType));
+                    throw new JsonSerializationException(
+                        string.Format("Cannot convert null value to {0}.", objectType)
+                    );
                 }
 
                 return null;
@@ -72,12 +81,19 @@ namespace Stripe.Infrastructure
             {
                 if (!long.TryParse((string)reader.Value!, out seconds))
                 {
-                    throw new JsonSerializationException(string.Format("Cannot convert invalid value to {0}.", objectType));
+                    throw new JsonSerializationException(
+                        string.Format("Cannot convert invalid value to {0}.", objectType)
+                    );
                 }
             }
             else
             {
-                throw new JsonSerializationException(string.Format("Unexpected token parsing date. Expected Integer or String, got {0}.", reader.TokenType));
+                throw new JsonSerializationException(
+                    string.Format(
+                        "Unexpected token parsing date. Expected Integer or String, got {0}.",
+                        reader.TokenType
+                    )
+                );
             }
 
             if (seconds >= 0)
@@ -98,7 +114,12 @@ namespace Stripe.Infrastructure
             }
             else
             {
-                throw new JsonSerializationException(string.Format("Cannot convert value that is before Unix epoch of 00:00:00 UTC on 1 January 1970 to {0}.", objectType));
+                throw new JsonSerializationException(
+                    string.Format(
+                        "Cannot convert value that is before Unix epoch of 00:00:00 UTC on 1 January 1970 to {0}.",
+                        objectType
+                    )
+                );
             }
         }
 

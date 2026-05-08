@@ -7,7 +7,8 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PersonalizationDesignRejectionReasons : StripeEntity<PersonalizationDesignRejectionReasons>
+    public class PersonalizationDesignRejectionReasons
+        : StripeEntity<PersonalizationDesignRejectionReasons>
     {
         /// <summary>
         /// The reason(s) the card logo was rejected.

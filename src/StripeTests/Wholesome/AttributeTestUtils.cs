@@ -13,7 +13,10 @@ namespace StripeTests.Wholesome
         /// <param name="nsPrefix">The namespace or prefix of the namespace to search for.  Case insensitive.</param>
         /// <param name="assembly">An assembly to search.  If null, this method uses the calling assembly.</param>
         /// <returns>A list of attribute names currently in use.</returns>
-        public static IEnumerable<Attribute> FindAllUsedAttributesFromNamespace(string nsPrefix, Assembly assembly = null)
+        public static IEnumerable<Attribute> FindAllUsedAttributesFromNamespace(
+            string nsPrefix,
+            Assembly assembly = null
+        )
         {
             var results = new List<Attribute>();
             assembly = assembly ?? Assembly.GetCallingAssembly();

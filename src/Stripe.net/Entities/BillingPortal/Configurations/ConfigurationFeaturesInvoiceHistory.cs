@@ -6,7 +6,8 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfigurationFeaturesInvoiceHistory : StripeEntity<ConfigurationFeaturesInvoiceHistory>
+    public class ConfigurationFeaturesInvoiceHistory
+        : StripeEntity<ConfigurationFeaturesInvoiceHistory>
     {
         /// <summary>
         /// Whether the feature is enabled.

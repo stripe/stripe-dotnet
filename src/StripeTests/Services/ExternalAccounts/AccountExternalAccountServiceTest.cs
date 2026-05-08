@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -20,7 +19,8 @@ namespace StripeTests
 
         public AccountExternalAccountServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new AccountExternalAccountService(this.StripeClient);
@@ -32,17 +32,11 @@ namespace StripeTests
 
             this.updateOptions = new AccountExternalAccountUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
                 Name = "Jenny Rosen",
             };
 
-            this.listOptions = new AccountExternalAccountListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new AccountExternalAccountListOptions { Limit = 1 };
         }
 
         [Fact]
@@ -133,14 +127,20 @@ namespace StripeTests
         [Fact]
         public async Task ListAutoPagingAsync()
         {
-            var externalAccount = await this.service.ListAutoPagingAsync(AccountId, this.listOptions).FirstAsync();
+            var externalAccount = await this
+                .service.ListAutoPagingAsync(AccountId, this.listOptions)
+                .FirstAsync();
             Assert.NotNull(externalAccount);
         }
 
         [Fact]
         public void Update()
         {
-            var externalAccount = this.service.Update(AccountId, ExternalAccountId, this.updateOptions);
+            var externalAccount = this.service.Update(
+                AccountId,
+                ExternalAccountId,
+                this.updateOptions
+            );
             this.AssertRequest(HttpMethod.Post, "/v1/accounts/acct_123/external_accounts/ba_123");
             Assert.NotNull(externalAccount);
             Assert.IsType<BankAccount>(externalAccount);
@@ -150,7 +150,11 @@ namespace StripeTests
         [Fact]
         public async Task UpdateAsync()
         {
-            var externalAccount = await this.service.UpdateAsync(AccountId, ExternalAccountId, this.updateOptions);
+            var externalAccount = await this.service.UpdateAsync(
+                AccountId,
+                ExternalAccountId,
+                this.updateOptions
+            );
             this.AssertRequest(HttpMethod.Post, "/v1/accounts/acct_123/external_accounts/ba_123");
             Assert.NotNull(externalAccount);
             Assert.IsType<BankAccount>(externalAccount);

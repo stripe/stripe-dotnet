@@ -15,22 +15,36 @@ namespace Stripe.Infrastructure
             return typeof(StringEnum).IsAssignableFrom(typeToConvert);
         }
 
-        public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
+        public override JsonConverter CreateConverter(
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
         {
-            return (JsonConverter)Activator.CreateInstance(
-                typeof(STJStringEnumConverterInner<>).MakeGenericType(typeToConvert));
+            return (JsonConverter)
+                Activator.CreateInstance(
+                    typeof(STJStringEnumConverterInner<>).MakeGenericType(typeToConvert)
+                );
         }
 
         private class STJStringEnumConverterInner<T> : JsonConverter<T>
             where T : StringEnum
         {
-            public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+            public override T Read(
+                ref Utf8JsonReader reader,
+                Type typeToConvert,
+                JsonSerializerOptions options
+            )
             {
                 throw new NotSupportedException(
-                    $"Deserialization of {typeToConvert.Name} (StringEnum) is not supported.");
+                    $"Deserialization of {typeToConvert.Name} (StringEnum) is not supported."
+                );
             }
 
-            public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
+            public override void Write(
+                Utf8JsonWriter writer,
+                T value,
+                JsonSerializerOptions options
+            )
             {
                 if (value == null)
                 {

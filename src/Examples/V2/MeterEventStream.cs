@@ -44,11 +44,18 @@ namespace Examples.V2
             {
                 // Create a new meter event session in case the existing session expired
                 var client = new StripeClient(apiKey);
-                meterEventSession = await client.V2.Billing.MeterEventSession.CreateAsync(new MeterEventSessionCreateOptions());
+                meterEventSession = await client.V2.Billing.MeterEventSession.CreateAsync(
+                    new MeterEventSessionCreateOptions()
+                );
             }
         }
 
-        private static async Task SendMeterEvent(string apiKey, string eventName, string stripeCustomerId, string value)
+        private static async Task SendMeterEvent(
+            string apiKey,
+            string eventName,
+            string stripeCustomerId,
+            string value
+        )
         {
             // Refresh the meter event session if necessary
             await RefreshMeterEventSession(apiKey);
@@ -68,10 +75,10 @@ namespace Examples.V2
                     {
                         EventName = eventName,
                         Payload = new Dictionary<string, string>
-                    {
-                        { "stripe_customer_id", stripeCustomerId },
-                        { "value", value },
-                    },
+                        {
+                            { "stripe_customer_id", stripeCustomerId },
+                            { "value", value },
+                        },
                     },
                 ],
             };

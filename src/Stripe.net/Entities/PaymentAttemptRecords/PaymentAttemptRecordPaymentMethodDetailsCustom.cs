@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentAttemptRecordPaymentMethodDetailsCustom : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsCustom>
+    public class PaymentAttemptRecordPaymentMethodDetailsCustom
+        : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsCustom>
     {
         /// <summary>
         /// Display name for the custom (user-defined) payment method type used to make this

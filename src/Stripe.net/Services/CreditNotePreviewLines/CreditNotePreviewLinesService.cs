@@ -9,18 +9,31 @@ namespace Stripe
 
     public class CreditNotePreviewLinesService : Service
     {
-        public CreditNotePreviewLinesService()
-        {
-        }
+        public CreditNotePreviewLinesService() { }
 
         internal CreditNotePreviewLinesService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public CreditNotePreviewLinesService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>When retrieving a credit note preview, you’ll get a <strong>lines</strong> property
+        /// containing the first handful of those items. This URL you can retrieve the full
+        /// (paginated) list of line items.</p>.
+        /// </summary>
+        public virtual StripeList<CreditNoteLineItem> List(
+            CreditNotePreviewLinesListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<StripeList<CreditNoteLineItem>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/credit_notes/preview/lines",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -28,9 +41,20 @@ namespace Stripe
         /// containing the first handful of those items. This URL you can retrieve the full
         /// (paginated) list of line items.</p>.
         /// </summary>
-        public virtual StripeList<CreditNoteLineItem> List(CreditNotePreviewLinesListOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<StripeList<CreditNoteLineItem>> ListAsync(
+            CreditNotePreviewLinesListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<StripeList<CreditNoteLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/credit_notes/preview/lines", options, requestOptions);
+            return this.RequestAsync<StripeList<CreditNoteLineItem>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/credit_notes/preview/lines",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -38,9 +62,16 @@ namespace Stripe
         /// containing the first handful of those items. This URL you can retrieve the full
         /// (paginated) list of line items.</p>.
         /// </summary>
-        public virtual Task<StripeList<CreditNoteLineItem>> ListAsync(CreditNotePreviewLinesListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IEnumerable<CreditNoteLineItem> ListAutoPaging(
+            CreditNotePreviewLinesListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<StripeList<CreditNoteLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/credit_notes/preview/lines", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPaging<CreditNoteLineItem>(
+                $"/v1/credit_notes/preview/lines",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -48,19 +79,18 @@ namespace Stripe
         /// containing the first handful of those items. This URL you can retrieve the full
         /// (paginated) list of line items.</p>.
         /// </summary>
-        public virtual IEnumerable<CreditNoteLineItem> ListAutoPaging(CreditNotePreviewLinesListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IAsyncEnumerable<CreditNoteLineItem> ListAutoPagingAsync(
+            CreditNotePreviewLinesListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPaging<CreditNoteLineItem>($"/v1/credit_notes/preview/lines", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>When retrieving a credit note preview, you’ll get a <strong>lines</strong> property
-        /// containing the first handful of those items. This URL you can retrieve the full
-        /// (paginated) list of line items.</p>.
-        /// </summary>
-        public virtual IAsyncEnumerable<CreditNoteLineItem> ListAutoPagingAsync(CreditNotePreviewLinesListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListRequestAutoPagingAsync<CreditNoteLineItem>($"/v1/credit_notes/preview/lines", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<CreditNoteLineItem>(
+                $"/v1/credit_notes/preview/lines",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

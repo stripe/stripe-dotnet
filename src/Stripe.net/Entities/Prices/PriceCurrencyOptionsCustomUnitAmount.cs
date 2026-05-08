@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PriceCurrencyOptionsCustomUnitAmount : StripeEntity<PriceCurrencyOptionsCustomUnitAmount>
+    public class PriceCurrencyOptionsCustomUnitAmount
+        : StripeEntity<PriceCurrencyOptionsCustomUnitAmount>
     {
         /// <summary>
         /// The maximum unit amount the customer can specify for this item.

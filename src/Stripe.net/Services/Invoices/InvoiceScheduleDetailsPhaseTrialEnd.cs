@@ -6,11 +6,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(Infrastructure.STJStringEnumConverterFactory))]
     public class InvoiceScheduleDetailsPhaseTrialEnd : StringEnum
     {
-        public static readonly InvoiceScheduleDetailsPhaseTrialEnd Now = new InvoiceScheduleDetailsPhaseTrialEnd("now");
+        public static readonly InvoiceScheduleDetailsPhaseTrialEnd Now =
+            new InvoiceScheduleDetailsPhaseTrialEnd("now");
 
         private InvoiceScheduleDetailsPhaseTrialEnd(string value)
-            : base(value)
-        {
-        }
+            : base(value) { }
     }
 }

@@ -11,10 +11,7 @@ namespace StripeTests.Infrastructure.Public
         public void RequestOptions_StripeContextObject_GetAndSet()
         {
             var context = new StripeContext(new[] { "workspace", "123" });
-            var options = new RequestOptions
-            {
-                StripeContext = context,
-            };
+            var options = new RequestOptions { StripeContext = context };
 
             Assert.Equal("workspace/123", options.StripeContext);
         }
@@ -22,10 +19,7 @@ namespace StripeTests.Infrastructure.Public
         [Fact]
         public void RequestOptions_StripeContextConversion()
         {
-            var options = new RequestOptions
-            {
-                StripeContext = "a/b/c",
-            };
+            var options = new RequestOptions { StripeContext = "a/b/c" };
 
             Assert.Equal("a/b/c", options.StripeContext);
             StripeContext ctx = options.StripeContext;
@@ -35,10 +29,7 @@ namespace StripeTests.Infrastructure.Public
         [Fact]
         public void RequestOptions_StripeContextNull_ReturnsNullObject()
         {
-            var options = new RequestOptions
-            {
-                StripeContext = null,
-            };
+            var options = new RequestOptions { StripeContext = null };
 
             Assert.Null(options.StripeContext);
         }
@@ -47,10 +38,7 @@ namespace StripeTests.Infrastructure.Public
         public void StripeClientOptions_StripeContextObject_GetAndSet()
         {
             var context = new StripeContext(new[] { "workspace", "123" });
-            var options = new StripeClientOptions()
-            {
-                StripeContext = context,
-            };
+            var options = new StripeClientOptions() { StripeContext = context };
 
             Assert.Equal("workspace/123", options.StripeContext);
         }
@@ -58,10 +46,7 @@ namespace StripeTests.Infrastructure.Public
         [Fact]
         public void StripeClientOptions_StripeContextString_ReturnsContextObject()
         {
-            var options = new StripeClientOptions
-            {
-                StripeContext = "a/b/c",
-            };
+            var options = new StripeClientOptions { StripeContext = "a/b/c" };
 
             Assert.Equal("a/b/c", options.StripeContext);
             StripeContext ctx = options.StripeContext;
@@ -117,25 +102,16 @@ namespace StripeTests.Infrastructure.Public
         public void ContextBuilderPattern_WorksWithRequestOptions()
         {
             var baseContext = StripeContext.Parse("workspace_123");
-            var options = new RequestOptions
-            {
-                StripeContext = baseContext.Push("account_456"),
-            };
+            var options = new RequestOptions { StripeContext = baseContext.Push("account_456") };
             Assert.Equal("workspace_123/account_456", options.StripeContext);
         }
 
         [Fact]
         public void ContextCompatibility_StringAndObjectEquivalent()
         {
-            var stringOptions = new RequestOptions
-            {
-                StripeContext = "a/b/c",
-            };
+            var stringOptions = new RequestOptions { StripeContext = "a/b/c" };
             var context = new StripeContext(new[] { "a", "b", "c" });
-            var contextOptions = new RequestOptions
-            {
-                StripeContext = context,
-            };
+            var contextOptions = new RequestOptions { StripeContext = context };
 
             // Both should represent the same logical context
             Assert.Equal(stringOptions.StripeContext, contextOptions.StripeContext);
@@ -160,10 +136,7 @@ namespace StripeTests.Infrastructure.Public
                 StripeContext = "client_context",
             };
 
-            var requestOptions = new RequestOptions
-            {
-                StripeContext = "request_context",
-            };
+            var requestOptions = new RequestOptions { StripeContext = "request_context" };
 
             var merged = requestOptions.WithClientOptions(clientOptions);
 
@@ -197,10 +170,7 @@ namespace StripeTests.Infrastructure.Public
                 StripeContext = "client_context",
             };
 
-            var requestOptions = new RequestOptions
-            {
-                StripeContext = new StripeContext(),
-            };
+            var requestOptions = new RequestOptions { StripeContext = new StripeContext() };
 
             var merged = requestOptions.WithClientOptions(clientOptions);
 
@@ -217,10 +187,7 @@ namespace StripeTests.Infrastructure.Public
                 StripeContext = new StripeContext(),
             };
 
-            var requestOptions = new RequestOptions
-            {
-                StripeContext = "acct_123",
-            };
+            var requestOptions = new RequestOptions { StripeContext = "acct_123" };
 
             var merged = requestOptions.WithClientOptions(clientOptions);
 

@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationCustomerBillingInvoiceRendering : StripeEntity<AccountConfigurationCustomerBillingInvoiceRendering>
+    public class AccountConfigurationCustomerBillingInvoiceRendering
+        : StripeEntity<AccountConfigurationCustomerBillingInvoiceRendering>
     {
         /// <summary>
         /// Indicates whether displayed line item prices and amounts on invoice PDFs include

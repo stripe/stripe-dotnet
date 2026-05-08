@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentAmountDetailsLineItemPaymentMethodOptionsKlarnaOptions : INestedOptions
+    public class PaymentIntentAmountDetailsLineItemPaymentMethodOptionsKlarnaOptions
+        : INestedOptions
     {
         /// <summary>
         /// URL to an image for the product. Max length, 4096 characters.

@@ -4,7 +4,6 @@ namespace StripeTests.Reporting
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe.Reporting;
     using Xunit;
 
@@ -18,7 +17,8 @@ namespace StripeTests.Reporting
 
         public ReportRunServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new ReportRunService(this.StripeClient);
@@ -33,9 +33,7 @@ namespace StripeTests.Reporting
                 ReportType = "activity.summary.1",
             };
 
-            this.listOptions = new ReportRunListOptions
-            {
-            };
+            this.listOptions = new ReportRunListOptions { };
         }
 
         [Fact]

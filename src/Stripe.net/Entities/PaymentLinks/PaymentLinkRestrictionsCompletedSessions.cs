@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentLinkRestrictionsCompletedSessions : StripeEntity<PaymentLinkRestrictionsCompletedSessions>
+    public class PaymentLinkRestrictionsCompletedSessions
+        : StripeEntity<PaymentLinkRestrictionsCompletedSessions>
     {
         /// <summary>
         /// The current number of checkout sessions that have been completed on the payment link

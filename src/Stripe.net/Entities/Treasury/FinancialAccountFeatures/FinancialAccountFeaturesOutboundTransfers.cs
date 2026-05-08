@@ -6,7 +6,8 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class FinancialAccountFeaturesOutboundTransfers : StripeEntity<FinancialAccountFeaturesOutboundTransfers>
+    public class FinancialAccountFeaturesOutboundTransfers
+        : StripeEntity<FinancialAccountFeaturesOutboundTransfers>
     {
         /// <summary>
         /// Toggle settings for enabling/disabling an outbound ACH specific feature.

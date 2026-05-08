@@ -6,7 +6,8 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class FinancialAccountPlatformRestrictions : StripeEntity<FinancialAccountPlatformRestrictions>
+    public class FinancialAccountPlatformRestrictions
+        : StripeEntity<FinancialAccountPlatformRestrictions>
     {
         /// <summary>
         /// Restricts all inbound money movement.

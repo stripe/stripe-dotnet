@@ -7,9 +7,7 @@ namespace StripeTests
     public class TokenTest : BaseStripeTest
     {
         public TokenTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

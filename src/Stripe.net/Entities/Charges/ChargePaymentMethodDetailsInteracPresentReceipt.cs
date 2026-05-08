@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ChargePaymentMethodDetailsInteracPresentReceipt : StripeEntity<ChargePaymentMethodDetailsInteracPresentReceipt>
+    public class ChargePaymentMethodDetailsInteracPresentReceipt
+        : StripeEntity<ChargePaymentMethodDetailsInteracPresentReceipt>
     {
         /// <summary>
         /// The type of account being debited or credited.

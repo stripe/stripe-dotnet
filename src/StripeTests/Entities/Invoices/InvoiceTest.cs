@@ -8,9 +8,7 @@ namespace StripeTests
     public class InvoiceTest : BaseStripeTest
     {
         public InvoiceTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -29,10 +27,10 @@ namespace StripeTests
             // TODO: assert that tax_rate is not null. Today stripe-mock does not support this
             string[] expansions =
             {
-              "charge",
-              "customer",
-              "default_payment_method",
-              "payment_intent",
+                "charge",
+                "customer",
+                "default_payment_method",
+                "payment_intent",
             };
 
             string json = this.GetFixture("/v1/invoices/in_123", expansions);
@@ -102,7 +100,8 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithDiscountsExpanded()
         {
-            string json = "{\"object\": \"invoice\", \"discounts\": [{\"id\": \"di_123\", \"object\": \"discount\"}, {\"id\": \"di_456\", \"object\": \"discount\"}]}";
+            string json =
+                "{\"object\": \"invoice\", \"discounts\": [{\"id\": \"di_123\", \"object\": \"discount\"}, {\"id\": \"di_456\", \"object\": \"discount\"}]}";
             var invoice = JsonSerializer.Deserialize<Invoice>(json);
             Assert.NotNull(invoice);
             Assert.IsType<Invoice>(invoice);

@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class RefundNextActionDisplayDetailsEmailSent : StripeEntity<RefundNextActionDisplayDetailsEmailSent>
+    public class RefundNextActionDisplayDetailsEmailSent
+        : StripeEntity<RefundNextActionDisplayDetailsEmailSent>
     {
         /// <summary>
         /// The timestamp when the email was sent.

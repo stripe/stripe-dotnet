@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationTokenPaymentMethodPreviewUpi : StripeEntity<ConfirmationTokenPaymentMethodPreviewUpi>
+    public class ConfirmationTokenPaymentMethodPreviewUpi
+        : StripeEntity<ConfirmationTokenPaymentMethodPreviewUpi>
     {
         /// <summary>
         /// Customer's unique Virtual Payment Address.

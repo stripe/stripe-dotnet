@@ -8,23 +8,40 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class DisputeService : Service,
-        IListable<Dispute, DisputeListOptions>,
-        IRetrievable<Dispute, DisputeGetOptions>,
-        IUpdatable<Dispute, DisputeUpdateOptions>
+    public class DisputeService
+        : Service,
+            IListable<Dispute, DisputeListOptions>,
+            IRetrievable<Dispute, DisputeGetOptions>,
+            IUpdatable<Dispute, DisputeUpdateOptions>
     {
-        public DisputeService()
-        {
-        }
+        public DisputeService() { }
 
         internal DisputeService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public DisputeService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>Closing the dispute for a charge indicates that you do not have any evidence to
+        /// submit and are essentially dismissing the dispute, acknowledging it as lost.</p>.
+        ///
+        /// <p>The status of the dispute will change from <c>needs_response</c> to <c>lost</c>.
+        /// <em>Closing a dispute is irreversible</em>.</p>.
+        /// </summary>
+        public virtual Dispute Close(
+            string id,
+            DisputeCloseOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<Dispute>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/disputes/{WebUtility.UrlEncode(id)}/close",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -34,59 +51,104 @@ namespace Stripe
         /// <p>The status of the dispute will change from <c>needs_response</c> to <c>lost</c>.
         /// <em>Closing a dispute is irreversible</em>.</p>.
         /// </summary>
-        public virtual Dispute Close(string id, DisputeCloseOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<Dispute> CloseAsync(
+            string id,
+            DisputeCloseOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/disputes/{WebUtility.UrlEncode(id)}/close", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Closing the dispute for a charge indicates that you do not have any evidence to
-        /// submit and are essentially dismissing the dispute, acknowledging it as lost.</p>.
-        ///
-        /// <p>The status of the dispute will change from <c>needs_response</c> to <c>lost</c>.
-        /// <em>Closing a dispute is irreversible</em>.</p>.
-        /// </summary>
-        public virtual Task<Dispute> CloseAsync(string id, DisputeCloseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/disputes/{WebUtility.UrlEncode(id)}/close", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>Retrieves the dispute with the given ID.</p>.
-        /// </summary>
-        public virtual Dispute Get(string id, DisputeGetOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<Dispute>(BaseAddress.Api, HttpMethod.Get, $"/v1/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.RequestAsync<Dispute>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/disputes/{WebUtility.UrlEncode(id)}/close",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Retrieves the dispute with the given ID.</p>.
         /// </summary>
-        public virtual Task<Dispute> GetAsync(string id, DisputeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Dispute Get(
+            string id,
+            DisputeGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<Dispute>(BaseAddress.Api, HttpMethod.Get, $"/v1/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.Request<Dispute>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/disputes/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
+        }
+
+        /// <summary>
+        /// <p>Retrieves the dispute with the given ID.</p>.
+        /// </summary>
+        public virtual Task<Dispute> GetAsync(
+            string id,
+            DisputeGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return this.RequestAsync<Dispute>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/disputes/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of your disputes.</p>.
         /// </summary>
-        public virtual StripeList<Dispute> List(DisputeListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Dispute> List(
+            DisputeListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeList<Dispute>>(BaseAddress.Api, HttpMethod.Get, $"/v1/disputes", options, requestOptions);
+            return this.Request<StripeList<Dispute>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/disputes",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of your disputes.</p>.
         /// </summary>
-        public virtual Task<StripeList<Dispute>> ListAsync(DisputeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<Dispute>> ListAsync(
+            DisputeListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeList<Dispute>>(BaseAddress.Api, HttpMethod.Get, $"/v1/disputes", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Dispute>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/disputes",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of your disputes.</p>.
         /// </summary>
-        public virtual IEnumerable<Dispute> ListAutoPaging(DisputeListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<Dispute> ListAutoPaging(
+            DisputeListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
             return this.ListRequestAutoPaging<Dispute>($"/v1/disputes", options, requestOptions);
         }
@@ -94,9 +156,18 @@ namespace Stripe
         /// <summary>
         /// <p>Returns a list of your disputes.</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<Dispute> ListAutoPagingAsync(DisputeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<Dispute> ListAutoPagingAsync(
+            DisputeListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<Dispute>($"/v1/disputes", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Dispute>(
+                $"/v1/disputes",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -109,9 +180,19 @@ namespace Stripe
         /// chance of winning your dispute. To figure out which evidence fields to provide, see our
         /// <a href="https://stripe.com/docs/disputes/categories">guide to dispute types</a>.</p>.
         /// </summary>
-        public virtual Dispute Update(string id, DisputeUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Dispute Update(
+            string id,
+            DisputeUpdateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Dispute>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/disputes/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -124,9 +205,21 @@ namespace Stripe
         /// chance of winning your dispute. To figure out which evidence fields to provide, see our
         /// <a href="https://stripe.com/docs/disputes/categories">guide to dispute types</a>.</p>.
         /// </summary>
-        public virtual Task<Dispute> UpdateAsync(string id, DisputeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Dispute> UpdateAsync(
+            string id,
+            DisputeUpdateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Dispute>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/disputes/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

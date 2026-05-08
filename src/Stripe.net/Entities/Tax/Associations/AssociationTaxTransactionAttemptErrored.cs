@@ -6,7 +6,8 @@ namespace Stripe.Tax
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AssociationTaxTransactionAttemptErrored : StripeEntity<AssociationTaxTransactionAttemptErrored>
+    public class AssociationTaxTransactionAttemptErrored
+        : StripeEntity<AssociationTaxTransactionAttemptErrored>
     {
         /// <summary>
         /// Details on why we couldn't commit the tax transaction.

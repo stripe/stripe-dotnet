@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferOptions : INestedOptions
+    public class SubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferOptions
+        : INestedOptions
     {
         /// <summary>
         /// Configuration for eu_bank_transfer funding type.

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentAttemptRecordAmountRefunded : StripeEntity<PaymentAttemptRecordAmountRefunded>
+    public class PaymentAttemptRecordAmountRefunded
+        : StripeEntity<PaymentAttemptRecordAmountRefunded>
     {
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency

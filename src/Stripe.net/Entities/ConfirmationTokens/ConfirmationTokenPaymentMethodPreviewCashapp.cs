@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationTokenPaymentMethodPreviewCashapp : StripeEntity<ConfirmationTokenPaymentMethodPreviewCashapp>
+    public class ConfirmationTokenPaymentMethodPreviewCashapp
+        : StripeEntity<ConfirmationTokenPaymentMethodPreviewCashapp>
     {
         /// <summary>
         /// A unique and immutable identifier assigned by Cash App to every buyer.

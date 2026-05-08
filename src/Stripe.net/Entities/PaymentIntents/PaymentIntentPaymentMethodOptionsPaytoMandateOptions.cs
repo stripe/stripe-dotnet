@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentMethodOptionsPaytoMandateOptions : StripeEntity<PaymentIntentPaymentMethodOptionsPaytoMandateOptions>
+    public class PaymentIntentPaymentMethodOptionsPaytoMandateOptions
+        : StripeEntity<PaymentIntentPaymentMethodOptionsPaytoMandateOptions>
     {
         /// <summary>
         /// Amount that will be collected. It is required when <c>amount_type</c> is <c>fixed</c>.

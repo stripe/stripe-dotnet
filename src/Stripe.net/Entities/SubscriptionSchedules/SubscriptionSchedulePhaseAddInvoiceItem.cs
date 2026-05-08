@@ -7,7 +7,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SubscriptionSchedulePhaseAddInvoiceItem : StripeEntity<SubscriptionSchedulePhaseAddInvoiceItem>, IHasMetadata
+    public class SubscriptionSchedulePhaseAddInvoiceItem
+        : StripeEntity<SubscriptionSchedulePhaseAddInvoiceItem>,
+            IHasMetadata
     {
         /// <summary>
         /// The stackable discounts that will be applied to the item.

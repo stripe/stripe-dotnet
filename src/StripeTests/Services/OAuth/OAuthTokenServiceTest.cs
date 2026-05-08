@@ -5,7 +5,6 @@ namespace StripeTests
     using System.Net;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -21,7 +20,8 @@ namespace StripeTests
 
         public OAuthTokenServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new OAuthTokenService(this.StripeClient);
@@ -125,7 +125,9 @@ namespace StripeTests
             StripeConfiguration.StripeClient = new StripeClient(
                 "sk_test_123",
                 httpClient: new SystemNetHttpClient(
-                    new HttpClient(this.MockHttpClientFixture.MockHandler.Object)));
+                    new HttpClient(this.MockHttpClientFixture.MockHandler.Object)
+                )
+            );
 
             var service = new OAuthTokenService();
             var oauthToken = service.Create(this.createOptions);
@@ -137,15 +139,20 @@ namespace StripeTests
         [Fact]
         public void Create_Error()
         {
-            var json = "{\"error\": \"invalid_grant\", \"error_description\": \"Authorization code does not exist: ac_123\"}";
+            var json =
+                "{\"error\": \"invalid_grant\", \"error_description\": \"Authorization code does not exist: ac_123\"}";
             this.StubRequest(HttpMethod.Post, "/oauth/token", HttpStatusCode.BadRequest, json);
 
             var exception = Assert.Throws<StripeException>(() =>
-                this.service.Create(this.createOptions));
+                this.service.Create(this.createOptions)
+            );
             Assert.Equal("Authorization code does not exist: ac_123", exception.Message);
             Assert.NotNull(exception.StripeError);
             Assert.Equal("invalid_grant", exception.StripeError.Error);
-            Assert.Equal("Authorization code does not exist: ac_123", exception.StripeError.ErrorDescription);
+            Assert.Equal(
+                "Authorization code does not exist: ac_123",
+                exception.StripeError.ErrorDescription
+            );
         }
 
         [Fact]
@@ -174,7 +181,9 @@ namespace StripeTests
             StripeConfiguration.StripeClient = new StripeClient(
                 "sk_test_123",
                 httpClient: new SystemNetHttpClient(
-                    new HttpClient(this.MockHttpClientFixture.MockHandler.Object)));
+                    new HttpClient(this.MockHttpClientFixture.MockHandler.Object)
+                )
+            );
 
             var service = new OAuthTokenService();
             var oauthToken = await service.CreateAsync(this.createOptions);
@@ -199,11 +208,18 @@ namespace StripeTests
         [Fact]
         public void Deauthorize_Error()
         {
-            var json = "{\"error\": \"invalid_client\", \"error_description\": \"No such application: ca_123\"}";
-            this.StubRequest(HttpMethod.Post, "/oauth/deauthorize", HttpStatusCode.Unauthorized, json);
+            var json =
+                "{\"error\": \"invalid_client\", \"error_description\": \"No such application: ca_123\"}";
+            this.StubRequest(
+                HttpMethod.Post,
+                "/oauth/deauthorize",
+                HttpStatusCode.Unauthorized,
+                json
+            );
 
             var exception = Assert.Throws<StripeException>(() =>
-                this.service.Deauthorize(this.deauthorizeOptions));
+                this.service.Deauthorize(this.deauthorizeOptions)
+            );
             Assert.Equal("No such application: ca_123", exception.Message);
             Assert.NotNull(exception.StripeError);
             Assert.Equal("invalid_client", exception.StripeError.Error);
@@ -225,7 +241,9 @@ namespace StripeTests
 
         private Dictionary<string, string> ParseQueryString(string query)
         {
-            return query.TrimStart('?').Split('&')
+            return query
+                .TrimStart('?')
+                .Split('&')
                 .Select(x => x.Split(new[] { '=' }, 2))
                 .ToDictionary(x => WebUtility.UrlDecode(x[0]), x => WebUtility.UrlDecode(x[1]));
         }

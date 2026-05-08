@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationTokenMandateDataCustomerAcceptance : StripeEntity<ConfirmationTokenMandateDataCustomerAcceptance>
+    public class ConfirmationTokenMandateDataCustomerAcceptance
+        : StripeEntity<ConfirmationTokenMandateDataCustomerAcceptance>
     {
         /// <summary>
         /// If this is a Mandate accepted online, this hash contains details about the online

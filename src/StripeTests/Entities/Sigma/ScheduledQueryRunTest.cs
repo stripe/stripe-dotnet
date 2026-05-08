@@ -7,9 +7,7 @@ namespace StripeTests.Sigma
     public class ScheduledQueryRunTest : BaseStripeTest
     {
         public ScheduledQueryRunTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

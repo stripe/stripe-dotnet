@@ -32,7 +32,8 @@ namespace StripeTests.Wholesome
                 foreach (var property in GetPropertiesToCheck(stripeClass))
                 {
                     // Skip properties that don't have a `JsonProperty` attribute
-                    var jsonPropertyAttribute = property.GetCustomAttribute<JsonPropertyNameAttribute>();
+                    var jsonPropertyAttribute =
+                        property.GetCustomAttribute<JsonPropertyNameAttribute>();
                     if (jsonPropertyAttribute == null)
                     {
                         continue;
@@ -45,11 +46,15 @@ namespace StripeTests.Wholesome
 
                     // Check the class attributes; JsonConverter must be STJStripeEntityConverter
                     // for entity types or STJStripeOptionsConverter for options types
-                    var jsonConverterAttribute = stripeClass.GetCustomAttribute<JsonConverterAttribute>();
+                    var jsonConverterAttribute =
+                        stripeClass.GetCustomAttribute<JsonConverterAttribute>();
                     var expectedType = typeof(StripeEntity).IsAssignableFrom(stripeClass)
                         ? typeof(STJStripeEntityConverter)
                         : typeof(STJStripeOptionsConverter);
-                    if (jsonConverterAttribute == null || jsonConverterAttribute.ConverterType != expectedType)
+                    if (
+                        jsonConverterAttribute == null
+                        || jsonConverterAttribute.ConverterType != expectedType
+                    )
                     {
                         results.Add($"{stripeClass.FullName}");
                     }
@@ -59,7 +64,8 @@ namespace StripeTests.Wholesome
                 }
             }
 
-            var message = $"{AssertionMessage}\n{results.Count} affected classes: {string.Join(",", results)}";
+            var message =
+                $"{AssertionMessage}\n{results.Count} affected classes: {string.Join(",", results)}";
             AssertEmpty(results, message);
         }
     }

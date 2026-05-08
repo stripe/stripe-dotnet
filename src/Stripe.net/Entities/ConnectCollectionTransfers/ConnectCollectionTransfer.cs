@@ -6,7 +6,11 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConnectCollectionTransfer : StripeEntity<ConnectCollectionTransfer>, IHasId, IHasObject, IBalanceTransactionSource
+    public class ConnectCollectionTransfer
+        : StripeEntity<ConnectCollectionTransfer>,
+            IHasId,
+            IHasObject,
+            IBalanceTransactionSource
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -63,7 +67,11 @@ namespace Stripe
         public Account Destination
         {
             get => this.InternalDestination?.ExpandedObject;
-            set => this.InternalDestination = SetExpandableFieldObject(value, this.InternalDestination);
+            set =>
+                this.InternalDestination = SetExpandableFieldObject(
+                    value,
+                    this.InternalDestination
+                );
         }
 
         [JsonProperty("destination")]

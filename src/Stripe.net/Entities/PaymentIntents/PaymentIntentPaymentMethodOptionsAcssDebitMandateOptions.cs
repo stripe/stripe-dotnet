@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentMethodOptionsAcssDebitMandateOptions : StripeEntity<PaymentIntentPaymentMethodOptionsAcssDebitMandateOptions>
+    public class PaymentIntentPaymentMethodOptionsAcssDebitMandateOptions
+        : StripeEntity<PaymentIntentPaymentMethodOptionsAcssDebitMandateOptions>
     {
         /// <summary>
         /// A URL for custom mandate text.

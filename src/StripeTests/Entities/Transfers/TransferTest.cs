@@ -7,9 +7,7 @@ namespace StripeTests
     public class TransferTest : BaseStripeTest
     {
         public TransferTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -27,10 +25,10 @@ namespace StripeTests
         {
             string[] expansions =
             {
-              "balance_transaction",
-              "destination",
-              "destination_payment",
-              "source_transaction",
+                "balance_transaction",
+                "destination",
+                "destination_payment",
+                "source_transaction",
             };
 
             string json = this.GetFixture("/v1/transfers/tr_123", expansions);

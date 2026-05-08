@@ -7,7 +7,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsUpiMandateOptions : StripeEntity<SessionPaymentMethodOptionsUpiMandateOptions>
+    public class SessionPaymentMethodOptionsUpiMandateOptions
+        : StripeEntity<SessionPaymentMethodOptionsUpiMandateOptions>
     {
         /// <summary>
         /// Amount to be charged for future payments.

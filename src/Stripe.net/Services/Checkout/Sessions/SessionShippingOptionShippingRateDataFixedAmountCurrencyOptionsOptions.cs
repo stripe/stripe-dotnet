@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SessionShippingOptionShippingRateDataFixedAmountCurrencyOptionsOptions : INestedOptions
+    public class SessionShippingOptionShippingRateDataFixedAmountCurrencyOptionsOptions
+        : INestedOptions
     {
         /// <summary>
         /// A non-negative integer in cents representing how much to charge.

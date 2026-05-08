@@ -9,14 +9,14 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when an Account's requirements are updated.
     /// </summary>
-    public class V2CoreAccountIncludingRequirementsUpdatedEventNotification : V2.Core.EventNotification
+    public class V2CoreAccountIncludingRequirementsUpdatedEventNotification
+        : V2.Core.EventNotification
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
         /// </summary>
         [JsonProperty("related_object")]
         [STJS.JsonPropertyName("related_object")]
-
         public V2.Core.EventNotificationRelatedObject RelatedObject { get; set; }
 
         /// <summary>

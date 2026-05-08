@@ -23,7 +23,6 @@ namespace StripeTests.Wholesome
         {
             { typeof(JsonConverterAttribute), typeof(STJS.JsonConverterAttribute) },
             { typeof(JsonPropertyAttribute), typeof(STJS.JsonPropertyNameAttribute) },
-
             // STJ does not have an equivalent for JsonObject to control member serialization
             // (https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/migrate-from-newtonsoft?pivots=dotnet-6-0#jsonobjectattribute)
             // Instead, every public property to be ignored must be marked with a JsonIgnore attribute
@@ -47,12 +46,18 @@ namespace StripeTests.Wholesome
 
                 if (!equivalents.ContainsKey(attrType))
                 {
-                    throw new Exception($"Missing System.Text.Json equivalent for {attrType.Namespace}.{attrType.Name}");
+                    throw new Exception(
+                        $"Missing System.Text.Json equivalent for {attrType.Namespace}.{attrType.Name}"
+                    );
                 }
             }
         }
 
-        public static bool HasCorrectAttributes(Attribute jsonAttribute, IEnumerable<Attribute> toSearch, bool isNotPublic)
+        public static bool HasCorrectAttributes(
+            Attribute jsonAttribute,
+            IEnumerable<Attribute> toSearch,
+            bool isNotPublic
+        )
         {
             // If the jsonAttribute type isn't present, do nothing; we confirm above that all
             // expected types have an entry in the map
@@ -94,7 +99,10 @@ namespace StripeTests.Wholesome
             return hasCorrectEquivalentAttribute;
         }
 
-        public static Tuple<string, string> HasCorrectConverterType(Type type, MemberInfo attributeTarget)
+        public static Tuple<string, string> HasCorrectConverterType(
+            Type type,
+            MemberInfo attributeTarget
+        )
         {
             Type expectedConverterType = null;
             Type[] expectedGenericTypeArguments = null;
@@ -108,8 +116,8 @@ namespace StripeTests.Wholesome
             // some whos name starts with V1 but those are V1 payloads inside V2
             // style events.
             var v2Class =
-                propertyTarget?.DeclaringType.Namespace.Contains("V2") == true ||
-                propertyTarget?.DeclaringType.Namespace == "Stripe.Events";
+                propertyTarget?.DeclaringType.Namespace.Contains("V2") == true
+                || propertyTarget?.DeclaringType.Namespace == "Stripe.Events";
             if (type == typeof(DateTime) && !v2Class)
             {
                 expectedConverterType = typeof(STJUnixDateTimeConverter);
@@ -158,13 +166,15 @@ namespace StripeTests.Wholesome
 
             var expectedConverterName = GetConverterName(
                 expectedConverterType,
-                expectedGenericTypeArguments);
+                expectedGenericTypeArguments
+            );
 
             Type actualConverterType = null;
             Type[] actualGenericTypeArguments = null;
 
             // For this check, we are looking for the attribute on the class/type that is passed in.
-            var jsonConverterAttribute = attributeTarget.GetCustomAttribute<STJS.JsonConverterAttribute>();
+            var jsonConverterAttribute =
+                attributeTarget.GetCustomAttribute<STJS.JsonConverterAttribute>();
             if (jsonConverterAttribute != null)
             {
                 actualConverterType = jsonConverterAttribute.ConverterType;
@@ -173,14 +183,17 @@ namespace StripeTests.Wholesome
 
             var actualConverterName = GetConverterName(
                 actualConverterType,
-                actualGenericTypeArguments);
+                actualGenericTypeArguments
+            );
 
             // STJNullPreservingDictionaryConverter is applied by codegen to Dictionary
             // properties where null values need to be preserved (e.g. metadata mutation).
             // Whether a Dictionary property needs this is determined by API schema
             // semantics, not the C# type, so accept it on any Dictionary property.
-            if (actualConverterType == typeof(STJNullPreservingDictionaryConverter) &&
-                typeof(IDictionary).IsAssignableFrom(type))
+            if (
+                actualConverterType == typeof(STJNullPreservingDictionaryConverter)
+                && typeof(IDictionary).IsAssignableFrom(type)
+            )
             {
                 return null;
             }
@@ -196,7 +209,8 @@ namespace StripeTests.Wholesome
         internal static bool HasCorrectNullValueHandlingAttribute(PropertyInfo property)
         {
             var stjAttribute = property.GetCustomAttribute<STJS.JsonIgnoreAttribute>();
-            return stjAttribute != null && stjAttribute.Condition == STJS.JsonIgnoreCondition.WhenWritingNull;
+            return stjAttribute != null
+                && stjAttribute.Condition == STJS.JsonIgnoreCondition.WhenWritingNull;
         }
 
         private static string GetConverterName(Type type, Type[] genericTypeArguments)

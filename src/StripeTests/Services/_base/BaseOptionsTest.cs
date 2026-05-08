@@ -26,7 +26,8 @@ namespace StripeTests
             {
                 Assert.Equal(
                     options.ExtraParams[kvp.Key].ToString(),
-                    kvp.Value is JsonElement el ? el.ToString() : kvp.Value.ToString());
+                    kvp.Value is JsonElement el ? el.ToString() : kvp.Value.ToString()
+                );
             }
         }
     }

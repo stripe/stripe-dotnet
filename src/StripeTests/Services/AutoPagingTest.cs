@@ -16,9 +16,7 @@ namespace StripeTests
     public class AutoPagingTest : BaseStripeTest
     {
         public AutoPagingTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
-        {
-        }
+            : base(mockHttpClientFixture) { }
 
         [Fact]
         public void ListAutoPaging()
@@ -35,9 +33,11 @@ namespace StripeTests
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels"),
-                    ItExpr.IsAny<CancellationToken>())
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                )
                 .Returns(Task.FromResult(response1))
                 .Returns(Task.FromResult(response2))
                 .Returns(Task.FromResult(response3))
@@ -45,10 +45,7 @@ namespace StripeTests
 
             // Call auto-paging method
             var service = new PageableService(this.StripeClient);
-            var options = new ListOptions
-            {
-                Limit = 2,
-            };
+            var options = new ListOptions { Limit = 2 };
             var models = service.ListAutoPaging(options).ToList();
 
             // Check results
@@ -65,30 +62,36 @@ namespace StripeTests
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&starting_after=pm_124"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2&starting_after=pm_124"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&starting_after=pm_126"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2&starting_after=pm_126"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
         [Fact]
@@ -106,9 +109,11 @@ namespace StripeTests
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels"),
-                    ItExpr.IsAny<CancellationToken>())
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                )
                 .Returns(Task.FromResult(response1))
                 .Returns(Task.FromResult(response2))
                 .Returns(Task.FromResult(response3))
@@ -132,30 +137,36 @@ namespace StripeTests
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == string.Empty),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == string.Empty
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?starting_after=pm_124"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?starting_after=pm_124"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?starting_after=pm_126"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?starting_after=pm_126"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
         [Fact]
@@ -171,20 +182,18 @@ namespace StripeTests
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels"),
-                    ItExpr.IsAny<CancellationToken>())
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                )
                 .Returns(Task.FromResult(response1))
                 .Returns(Task.FromResult(response2))
                 .Throws(new StripeTestException("Unexpected invocation!"));
 
             // Call auto-paging method
             var service = new PageableService(this.StripeClient);
-            var options = new ListOptions
-            {
-                Limit = 2,
-                StartingAfter = "pm_124",
-            };
+            var options = new ListOptions { Limit = 2, StartingAfter = "pm_124" };
             var models = service.ListAutoPaging(options).ToList();
 
             // Check results
@@ -202,20 +211,24 @@ namespace StripeTests
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&starting_after=pm_124"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2&starting_after=pm_124"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&starting_after=pm_126"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2&starting_after=pm_126"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
         [Fact]
@@ -233,9 +246,11 @@ namespace StripeTests
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels"),
-                    ItExpr.IsAny<CancellationToken>())
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                )
                 .Returns(Task.FromResult(response1))
                 .Returns(Task.FromResult(response2))
                 .Returns(Task.FromResult(response3))
@@ -243,11 +258,7 @@ namespace StripeTests
 
             // Call auto-paging method
             var service = new PageableService(this.StripeClient);
-            var options = new ListOptions
-            {
-                Limit = 2,
-                EndingBefore = "pm_127",
-            };
+            var options = new ListOptions { Limit = 2, EndingBefore = "pm_127" };
             var models = service.ListAutoPaging(options).ToList();
 
             // Should not mutate its argument
@@ -267,30 +278,36 @@ namespace StripeTests
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&ending_before=pm_127"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2&ending_before=pm_127"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&ending_before=pm_125"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2&ending_before=pm_125"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&ending_before=pm_123"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2&ending_before=pm_123"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
         [Fact]
@@ -308,9 +325,11 @@ namespace StripeTests
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels"),
-                    ItExpr.IsAny<CancellationToken>())
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                )
                 .Returns(Task.FromResult(response1))
                 .Returns(Task.FromResult(response2))
                 .Returns(Task.FromResult(response3))
@@ -318,10 +337,7 @@ namespace StripeTests
 
             // Call auto-paging method
             var service = new PageableService(this.StripeClient);
-            var options = new ListOptions
-            {
-                Limit = 2,
-            };
+            var options = new ListOptions { Limit = 2 };
             var models = await service.ListAutoPagingAsync(options).ToListAsync();
 
             // Check results
@@ -338,30 +354,36 @@ namespace StripeTests
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&starting_after=pm_124"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2&starting_after=pm_124"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&starting_after=pm_126"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2&starting_after=pm_126"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
         [Fact]
@@ -379,9 +401,11 @@ namespace StripeTests
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels"),
-                    ItExpr.IsAny<CancellationToken>())
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                )
                 .Returns(Task.FromResult(response1))
                 .Returns(Task.FromResult(response2))
                 .Returns(Task.FromResult(response3))
@@ -405,30 +429,36 @@ namespace StripeTests
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == string.Empty),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == string.Empty
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?starting_after=pm_124"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?starting_after=pm_124"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?starting_after=pm_126"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?starting_after=pm_126"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
         [Fact]
@@ -444,20 +474,18 @@ namespace StripeTests
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels"),
-                    ItExpr.IsAny<CancellationToken>())
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                )
                 .Returns(Task.FromResult(response1))
                 .Returns(Task.FromResult(response2))
                 .Throws(new StripeTestException("Unexpected invocation!"));
 
             // Call auto-paging method
             var service = new PageableService(this.StripeClient);
-            var options = new ListOptions
-            {
-                Limit = 2,
-                StartingAfter = "pm_124",
-            };
+            var options = new ListOptions { Limit = 2, StartingAfter = "pm_124" };
             var models = await service.ListAutoPagingAsync(options).ToListAsync();
 
             // Check results
@@ -472,20 +500,24 @@ namespace StripeTests
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&starting_after=pm_124"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2&starting_after=pm_124"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&starting_after=pm_126"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2&starting_after=pm_126"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
         [Fact]
@@ -503,9 +535,11 @@ namespace StripeTests
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels"),
-                    ItExpr.IsAny<CancellationToken>())
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                )
                 .Returns(Task.FromResult(response1))
                 .Returns(Task.FromResult(response2))
                 .Returns(Task.FromResult(response3))
@@ -513,11 +547,7 @@ namespace StripeTests
 
             // Call auto-paging method
             var service = new PageableService(this.StripeClient);
-            var options = new ListOptions
-            {
-                Limit = 2,
-                EndingBefore = "pm_127",
-            };
+            var options = new ListOptions { Limit = 2, EndingBefore = "pm_127" };
             var models = await service.ListAutoPagingAsync(options).ToListAsync();
 
             // Check results
@@ -534,30 +564,36 @@ namespace StripeTests
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&ending_before=pm_127"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2&ending_before=pm_127"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&ending_before=pm_125"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2&ending_before=pm_125"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&ending_before=pm_123"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2&ending_before=pm_123"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
         [Fact]
@@ -573,26 +609,27 @@ namespace StripeTests
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels"),
-                    ItExpr.IsAny<CancellationToken>())
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                )
                 .Returns(Task.FromResult(response1))
                 .Returns(Task.FromResult(response2))
                 .Throws(new StripeTestException("Unexpected invocation!"));
 
             // Call auto-paging method
             var service = new PageableService(this.StripeClient);
-            var options = new ListOptions
-            {
-                Limit = 2,
-            };
+            var options = new ListOptions { Limit = 2 };
             var models = new List<PageableModel>();
 
             var source = new CancellationTokenSource();
 
             try
             {
-                await foreach (var model in service.ListAutoPagingAsync(options).WithCancellation(source.Token))
+                await foreach (
+                    var model in service.ListAutoPagingAsync(options).WithCancellation(source.Token)
+                )
                 {
                     models.Add(model);
 
@@ -605,9 +642,7 @@ namespace StripeTests
 
                 Assert.True(false, "Exception OperationCanceledException to be thrown");
             }
-            catch (OperationCanceledException)
-            {
-            }
+            catch (OperationCanceledException) { }
             finally
             {
                 source.Dispose();
@@ -625,20 +660,24 @@ namespace StripeTests
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == HttpMethod.Get &&
-                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&starting_after=pm_124"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == HttpMethod.Get
+                        && m.RequestUri.AbsolutePath == "/v1/pageablemodels"
+                        && m.RequestUri.Query == "?limit=2&starting_after=pm_124"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
         public class PageableModel : StripeEntity<PageableModel>, IHasId
@@ -650,18 +689,32 @@ namespace StripeTests
         public class PageableService : Service<PageableModel>
         {
             public PageableService(IStripeClient client)
-                : base(client)
+                : base(client) { }
+
+            public IEnumerable<PageableModel> ListAutoPaging(
+                ListOptions options = null,
+                RequestOptions requestOptions = null
+            )
             {
+                return this.ListRequestAutoPaging<PageableModel>(
+                    "/v1/pageablemodels",
+                    options,
+                    requestOptions
+                );
             }
 
-            public IEnumerable<PageableModel> ListAutoPaging(ListOptions options = null, RequestOptions requestOptions = null)
+            public IAsyncEnumerable<PageableModel> ListAutoPagingAsync(
+                ListOptions options = null,
+                RequestOptions requestOptions = null,
+                CancellationToken cancellationToken = default
+            )
             {
-                return this.ListRequestAutoPaging<PageableModel>("/v1/pageablemodels", options, requestOptions);
-            }
-
-            public IAsyncEnumerable<PageableModel> ListAutoPagingAsync(ListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-            {
-                return this.ListRequestAutoPagingAsync<PageableModel>("/v1/pageablemodels", options, requestOptions, cancellationToken);
+                return this.ListRequestAutoPagingAsync<PageableModel>(
+                    "/v1/pageablemodels",
+                    options,
+                    requestOptions,
+                    cancellationToken
+                );
             }
         }
     }

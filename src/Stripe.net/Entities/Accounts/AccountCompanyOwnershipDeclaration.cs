@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountCompanyOwnershipDeclaration : StripeEntity<AccountCompanyOwnershipDeclaration>
+    public class AccountCompanyOwnershipDeclaration
+        : StripeEntity<AccountCompanyOwnershipDeclaration>
     {
         /// <summary>
         /// The Unix timestamp marking when the beneficial owner attestation was made.

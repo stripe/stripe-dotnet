@@ -13,15 +13,12 @@ namespace StripeTests
     using Moq.Protected;
     using Stripe;
     using Xunit;
-
     using static TelemetryTestUtils;
 
     public class TelemetryTest : BaseStripeTest
     {
         public TelemetryTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
-        {
-        }
+            : base(mockHttpClientFixture) { }
 
         [Fact]
         public void TelemetryWorks()
@@ -41,8 +38,10 @@ namespace StripeTests
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        !m.Headers.Contains("X-Stripe-Client-Telemetry")),
-                    ItExpr.IsAny<CancellationToken>());
+                        !m.Headers.Contains("X-Stripe-Client-Telemetry")
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
@@ -53,8 +52,11 @@ namespace StripeTests
                             m.Headers,
                             (s) => s == "req_1",
                             (d) => d >= 15,
-                            (_) => true)),
-                    ItExpr.IsAny<CancellationToken>());
+                            (_) => true
+                        )
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
@@ -65,8 +67,11 @@ namespace StripeTests
                             m.Headers,
                             (s) => s == "req_2",
                             (d) => d >= 30,
-                            (_) => true)),
-                    ItExpr.IsAny<CancellationToken>());
+                            (_) => true
+                        )
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
         [Fact]
@@ -84,8 +89,10 @@ namespace StripeTests
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        !m.Headers.Contains("X-Stripe-Client-Telemetry")),
-                    ItExpr.IsAny<CancellationToken>());
+                        !m.Headers.Contains("X-Stripe-Client-Telemetry")
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
@@ -96,8 +103,15 @@ namespace StripeTests
                             m.Headers,
                             (_) => true,
                             (_) => true,
-                            (t) => t != null && t.Count >= 2 && t.Contains("llama") && t.Contains("bufo"))),
-                    ItExpr.IsAny<CancellationToken>());
+                            (t) =>
+                                t != null
+                                && t.Count >= 2
+                                && t.Contains("llama")
+                                && t.Contains("bufo")
+                        )
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
         [Fact]
@@ -120,8 +134,10 @@ namespace StripeTests
                     "SendAsync",
                     Times.Exactly(2),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        !m.Headers.Contains("X-Stripe-Client-Telemetry")),
-                    ItExpr.IsAny<CancellationToken>());
+                        !m.Headers.Contains("X-Stripe-Client-Telemetry")
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
@@ -132,8 +148,11 @@ namespace StripeTests
                             m.Headers,
                             (s) => s == "req_1",
                             (d) => d >= 15,
-                            (_) => true)),
-                    ItExpr.IsAny<CancellationToken>());
+                            (_) => true
+                        )
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
 
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
@@ -144,8 +163,11 @@ namespace StripeTests
                             m.Headers,
                             (s) => s == "req_2",
                             (d) => d >= 15,
-                            (_) => true)),
-                    ItExpr.IsAny<CancellationToken>());
+                            (_) => true
+                        )
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
         [Fact]
@@ -154,7 +176,8 @@ namespace StripeTests
             var mockHandler = new Mock<HttpClientHandler> { CallBase = true };
             var httpClient = new SystemNetHttpClient(
                 new System.Net.Http.HttpClient(mockHandler.Object),
-                enableTelemetry: false);
+                enableTelemetry: false
+            );
             var stripeClient = new StripeClient("sk_test_123", httpClient: httpClient);
 
             mockHandler.Reset();
@@ -167,18 +190,19 @@ namespace StripeTests
             service.Get();
             service.Get();
 
-            mockHandler.Protected()
+            mockHandler
+                .Protected()
                 .Verify(
                     "SendAsync",
                     Times.Exactly(3),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        !m.Headers.Contains("X-Stripe-Client-Telemetry")),
-                    ItExpr.IsAny<CancellationToken>());
+                        !m.Headers.Contains("X-Stripe-Client-Telemetry")
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
-        private class TestEntity : StripeEntity<TestEntity>
-        {
-        }
+        private class TestEntity : StripeEntity<TestEntity> { }
 
         private class TestService : Service<TestEntity>
         {
@@ -187,15 +211,19 @@ namespace StripeTests
             private static readonly List<string> TestUsage = new List<string> { "llama", "bufo" };
 
             public TestService(IStripeClient client)
-                : base(client)
-            {
-            }
+                : base(client) { }
 
             public virtual void MakeRequestWithUsage(RequestOptions requestOptions)
             {
                 RequestOptions ro = requestOptions.Clone();
                 ro.Usage = TestUsage;
-                this.Request<TestEntity>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/cus_xyz", null, ro);
+                this.Request<TestEntity>(
+                    BaseAddress.Api,
+                    HttpMethod.Get,
+                    $"/v1/customers/cus_xyz",
+                    null,
+                    ro
+                );
             }
         }
 
@@ -210,11 +238,13 @@ namespace StripeTests
             public static FakeServer ForMockHandler(Mock<HttpClientHandler> mockHandler)
             {
                 var fakeServer = new FakeServer();
-                mockHandler.Protected()
+                mockHandler
+                    .Protected()
                     .Setup<Task<HttpResponseMessage>>(
                         "SendAsync",
                         ItExpr.IsAny<HttpRequestMessage>(),
-                        ItExpr.IsAny<CancellationToken>())
+                        ItExpr.IsAny<CancellationToken>()
+                    )
                     .Returns(fakeServer.NextResponse);
                 return fakeServer;
             }

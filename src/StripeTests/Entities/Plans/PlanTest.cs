@@ -7,9 +7,7 @@ namespace StripeTests
     public class PlanTest : BaseStripeTest
     {
         public PlanTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -25,10 +23,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "product",
-            };
+            string[] expansions = { "product" };
 
             string json = this.GetFixture("/v1/plans/plan_123", expansions);
             var plan = JsonSerializer.Deserialize<Plan>(json);

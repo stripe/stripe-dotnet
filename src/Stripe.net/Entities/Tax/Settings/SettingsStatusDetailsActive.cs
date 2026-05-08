@@ -6,7 +6,5 @@ namespace Stripe.Tax
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SettingsStatusDetailsActive : StripeEntity<SettingsStatusDetailsActive>
-    {
-    }
+    public class SettingsStatusDetailsActive : StripeEntity<SettingsStatusDetailsActive> { }
 }

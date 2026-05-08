@@ -6,7 +6,8 @@ namespace Stripe.Tax
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class RegistrationCountryOptionsCaProvinceStandard : StripeEntity<RegistrationCountryOptionsCaProvinceStandard>
+    public class RegistrationCountryOptionsCaProvinceStandard
+        : StripeEntity<RegistrationCountryOptionsCaProvinceStandard>
     {
         /// <summary>
         /// Two-letter CA province code (<a href="https://en.wikipedia.org/wiki/ISO_3166-2">ISO

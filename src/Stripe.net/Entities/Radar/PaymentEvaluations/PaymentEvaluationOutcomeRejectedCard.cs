@@ -6,7 +6,8 @@ namespace Stripe.Radar
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentEvaluationOutcomeRejectedCard : StripeEntity<PaymentEvaluationOutcomeRejectedCard>
+    public class PaymentEvaluationOutcomeRejectedCard
+        : StripeEntity<PaymentEvaluationOutcomeRejectedCard>
     {
         /// <summary>
         /// Result of the address line 1 check.

@@ -6,7 +6,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentLinkInvoiceCreationInvoiceDataRenderingOptionsOptions : INestedOptions, IHasSetTracking
+    public class PaymentLinkInvoiceCreationInvoiceDataRenderingOptionsOptions
+        : INestedOptions,
+            IHasSetTracking
     {
         private string amountTaxDisplay;
 

@@ -6,7 +6,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class DisputeEvidenceEnhancedEvidenceVisaCompellingEvidence3PriorUndisputedTransactionOptions : INestedOptions, IHasSetTracking
+    public class DisputeEvidenceEnhancedEvidenceVisaCompellingEvidence3PriorUndisputedTransactionOptions
+        : INestedOptions,
+            IHasSetTracking
     {
         private string customerAccountId;
         private string customerDeviceFingerprint;

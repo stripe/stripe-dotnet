@@ -7,7 +7,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationCustomerBillingInvoice : StripeEntity<AccountConfigurationCustomerBillingInvoice>
+    public class AccountConfigurationCustomerBillingInvoice
+        : StripeEntity<AccountConfigurationCustomerBillingInvoice>
     {
         /// <summary>
         /// The list of up to 4 default custom fields to be displayed on invoices for this customer.

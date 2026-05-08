@@ -7,9 +7,7 @@ namespace StripeTests
     public class SourceTest : BaseStripeTest
     {
         public SourceTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

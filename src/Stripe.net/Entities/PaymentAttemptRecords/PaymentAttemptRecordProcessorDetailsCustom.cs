@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentAttemptRecordProcessorDetailsCustom : StripeEntity<PaymentAttemptRecordProcessorDetailsCustom>
+    public class PaymentAttemptRecordProcessorDetailsCustom
+        : StripeEntity<PaymentAttemptRecordProcessorDetailsCustom>
     {
         /// <summary>
         /// An opaque string for manual reconciliation of this payment, for example a check number

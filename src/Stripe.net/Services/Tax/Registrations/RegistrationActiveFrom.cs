@@ -9,8 +9,6 @@ namespace Stripe.Tax
         public static readonly RegistrationActiveFrom Now = new RegistrationActiveFrom("now");
 
         private RegistrationActiveFrom(string value)
-            : base(value)
-        {
-        }
+            : base(value) { }
     }
 }

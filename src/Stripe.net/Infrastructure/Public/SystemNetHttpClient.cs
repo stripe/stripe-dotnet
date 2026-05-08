@@ -43,8 +43,8 @@ namespace Stripe
 #endif
         ;
 
-        private static readonly Lazy<System.Net.Http.HttpClient> LazyDefaultHttpClient
-            = new Lazy<System.Net.Http.HttpClient>(BuildDefaultSystemNetHttpClient);
+        private static readonly Lazy<System.Net.Http.HttpClient> LazyDefaultHttpClient =
+            new Lazy<System.Net.Http.HttpClient>(BuildDefaultSystemNetHttpClient);
 
         private readonly System.Net.Http.HttpClient httpClient;
 
@@ -58,7 +58,10 @@ namespace Stripe
 
         private string stripeClientUserAgentString;
 
-        internal static readonly (string EnvVar, string Slug)[] AIAgents = new (string EnvVar, string Slug)[]
+        internal static readonly (string EnvVar, string Slug)[] AIAgents = new (
+            string EnvVar,
+            string Slug
+        )[]
         {
             // The beginning of the section generated from our OpenAPI spec
             ("ANTIGRAVITY_CLI_ALIAS", "antigravity"),
@@ -83,8 +86,8 @@ namespace Stripe
             // Enable support for TLS 1.2, as Stripe's API requires it. This should only be
             // necessary for .NET Framework 4.5 as more recent runtimes should have TLS 1.2 enabled
             // by default, but it can be disabled in some environments.
-            ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol |
-                SecurityProtocolType.Tls12;
+            ServicePointManager.SecurityProtocol =
+                ServicePointManager.SecurityProtocol | SecurityProtocolType.Tls12;
         }
 #endif
 
@@ -110,7 +113,8 @@ namespace Stripe
             System.Net.Http.HttpClient httpClient = null,
             int maxNetworkRetries = DefaultMaxNumberRetries,
             AppInfo appInfo = null,
-            bool enableTelemetry = true)
+            bool enableTelemetry = true
+        )
         {
             this.httpClient = httpClient ?? LazyDefaultHttpClient.Value;
             this.MaxNetworkRetries = maxNetworkRetries;
@@ -160,10 +164,7 @@ namespace Stripe
             // We set the User-Agent and X-Stripe-Client-User-Agent headers in each request
             // message rather than through the client's `DefaultRequestHeaders` because we
             // want these headers to be present even when a custom HTTP client is used.
-            return new System.Net.Http.HttpClient
-            {
-                Timeout = DefaultHttpTimeout,
-            };
+            return new System.Net.Http.HttpClient { Timeout = DefaultHttpTimeout };
         }
 
         /// <summary>Sends a request to Stripe's API as an asynchronous operation.</summary>
@@ -172,17 +173,21 @@ namespace Stripe
         /// <returns>The task object representing the asynchronous operation.</returns>
         public async Task<StripeResponse> MakeRequestAsync(
             StripeRequest request,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
         {
-            var (response, retries) = await this.SendHttpRequest(request, cancellationToken).ConfigureAwait(false);
+            var (response, retries) = await this.SendHttpRequest(request, cancellationToken)
+                .ConfigureAwait(false);
 
             var reader = new StreamReader(
-                await response.Content.ReadAsStreamAsync().ConfigureAwait(false));
+                await response.Content.ReadAsStreamAsync().ConfigureAwait(false)
+            );
 
             return new StripeResponse(
                 response.StatusCode,
                 response.Headers,
-                await reader.ReadToEndAsync().ConfigureAwait(false))
+                await reader.ReadToEndAsync().ConfigureAwait(false)
+            )
             {
                 NumRetries = retries,
             };
@@ -190,14 +195,17 @@ namespace Stripe
 
         public async Task<StripeStreamedResponse> MakeStreamingRequestAsync(
             StripeRequest request,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
         {
-            var (response, retries) = await this.SendHttpRequest(request, cancellationToken).ConfigureAwait(false);
+            var (response, retries) = await this.SendHttpRequest(request, cancellationToken)
+                .ConfigureAwait(false);
 
             return new StripeStreamedResponse(
                 response.StatusCode,
                 response.Headers,
-                await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                await response.Content.ReadAsStreamAsync().ConfigureAwait(false)
+            )
             {
                 NumRetries = retries,
             };
@@ -224,7 +232,8 @@ namespace Stripe
 
         private async Task<(HttpResponseMessage responseMessage, int retries)> SendHttpRequest(
             StripeRequest request,
-            CancellationToken cancellationToken)
+            CancellationToken cancellationToken
+        )
         {
             TimeSpan duration;
             Exception requestException;
@@ -246,7 +255,8 @@ namespace Stripe
 
                 try
                 {
-                    response = await this.httpClient.SendAsync(httpRequest, cancellationToken)
+                    response = await this
+                        .httpClient.SendAsync(httpRequest, cancellationToken)
                         .ConfigureAwait(false);
                 }
                 catch (HttpRequestException exception)
@@ -263,11 +273,14 @@ namespace Stripe
 
                 duration = stopwatch.Elapsed;
 
-                if (!this.ShouldRetry(
-                    retry,
-                    requestException != null,
-                    response?.StatusCode,
-                    response?.Headers))
+                if (
+                    !this.ShouldRetry(
+                        retry,
+                        requestException != null,
+                        response?.StatusCode,
+                        response?.Headers
+                    )
+                )
                 {
                     break;
                 }
@@ -317,7 +330,8 @@ namespace Stripe
                 {
                     values.Add(
                         "platform",
-                        $"{Environment.OSVersion} {System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture}");
+                        $"{Environment.OSVersion} {System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture}"
+                    );
                 }
                 catch (Exception)
                 {
@@ -327,7 +341,10 @@ namespace Stripe
 
             try
             {
-                values.Add("newtonsoft_json_version", RuntimeInformation.GetNewtonsoftJsonVersion());
+                values.Add(
+                    "newtonsoft_json_version",
+                    RuntimeInformation.GetNewtonsoftJsonVersion()
+                );
             }
             catch (Exception)
             {
@@ -370,7 +387,8 @@ namespace Stripe
             int numRetries,
             bool error,
             HttpStatusCode? statusCode,
-            HttpHeaders headers)
+            HttpHeaders headers
+        )
         {
             // Do not retry if we are out of retries.
             if (numRetries >= this.MaxNetworkRetries)
@@ -420,14 +438,23 @@ namespace Stripe
 
         private System.Net.Http.HttpRequestMessage BuildRequestMessage(StripeRequest request)
         {
-            var requestMessage = new System.Net.Http.HttpRequestMessage(request.Method, request.Uri);
+            var requestMessage = new System.Net.Http.HttpRequestMessage(
+                request.Method,
+                request.Uri
+            );
 
             // Standard headers
-            requestMessage.Headers.TryAddWithoutValidation("User-Agent", this.BuildUserAgentString(request.ApiMode));
+            requestMessage.Headers.TryAddWithoutValidation(
+                "User-Agent",
+                this.BuildUserAgentString(request.ApiMode)
+            );
             requestMessage.Headers.Authorization = request.AuthorizationHeader;
 
             // Custom headers
-            requestMessage.Headers.Add("X-Stripe-Client-User-Agent", this.stripeClientUserAgentString);
+            requestMessage.Headers.Add(
+                "X-Stripe-Client-User-Agent",
+                this.stripeClientUserAgentString
+            );
             foreach (var header in request.StripeHeaders)
             {
                 requestMessage.Headers.Add(header.Key, header.Value);
@@ -449,8 +476,9 @@ namespace Stripe
 
             // Apply exponential backoff with MinNetworkRetriesDelay on the number of numRetries
             // so far as inputs.
-            var delay = TimeSpan.FromTicks((long)(MinNetworkRetriesDelay.Ticks
-                * Math.Pow(2, numRetries - 1)));
+            var delay = TimeSpan.FromTicks(
+                (long)(MinNetworkRetriesDelay.Ticks * Math.Pow(2, numRetries - 1))
+            );
 
             // Do not allow the number to exceed MaxNetworkRetriesDelay
             if (delay > MaxNetworkRetriesDelay)

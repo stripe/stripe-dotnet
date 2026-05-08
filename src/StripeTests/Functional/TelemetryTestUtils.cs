@@ -21,7 +21,8 @@ namespace StripeTests
             HttpHeaders headers,
             Func<string, bool> requestIdMatcher,
             Func<long, bool> durationMatcher,
-            Func<List<string>, bool> usageMatcher)
+            Func<List<string>, bool> usageMatcher
+        )
         {
             if (!headers.Contains("X-Stripe-Client-Telemetry"))
             {
@@ -38,9 +39,10 @@ namespace StripeTests
             List<string> usage = null;
             if (metrics.TryGetProperty("usage", out var usageRaw))
             {
-                usage = usageRaw.ValueKind == JsonValueKind.Null
-                    ? new List<string>()
-                    : usageRaw.EnumerateArray().Select(x => x.GetString()).ToList();
+                usage =
+                    usageRaw.ValueKind == JsonValueKind.Null
+                        ? new List<string>()
+                        : usageRaw.EnumerateArray().Select(x => x.GetString()).ToList();
             }
 
             return requestIdMatcher(requestId) && durationMatcher(duration) && usageMatcher(usage);

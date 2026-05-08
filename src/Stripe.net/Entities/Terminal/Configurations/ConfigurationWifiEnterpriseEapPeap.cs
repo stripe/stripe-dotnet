@@ -6,7 +6,8 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfigurationWifiEnterpriseEapPeap : StripeEntity<ConfigurationWifiEnterpriseEapPeap>
+    public class ConfigurationWifiEnterpriseEapPeap
+        : StripeEntity<ConfigurationWifiEnterpriseEapPeap>
     {
         /// <summary>
         /// A File ID representing a PEM file containing the server certificate.

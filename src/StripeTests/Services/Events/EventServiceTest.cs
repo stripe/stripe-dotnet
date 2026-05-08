@@ -3,7 +3,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -16,15 +15,13 @@ namespace StripeTests
 
         public EventServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new EventService(this.StripeClient);
 
-            this.listOptions = new EventListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new EventListOptions { Limit = 1 };
         }
 
         [Fact]

@@ -6,7 +6,8 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ConfigurationFeaturesSubscriptionUpdateScheduleAtPeriodEndConditionOptions : INestedOptions
+    public class ConfigurationFeaturesSubscriptionUpdateScheduleAtPeriodEndConditionOptions
+        : INestedOptions
     {
         /// <summary>
         /// The type of condition.

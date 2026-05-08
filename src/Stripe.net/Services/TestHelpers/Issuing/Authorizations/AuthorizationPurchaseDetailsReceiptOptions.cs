@@ -14,7 +14,9 @@ namespace Stripe.TestHelpers.Issuing
 
         [JsonProperty("quantity")]
         [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonNumberHandling(
+            STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString
+        )]
         [STJS.JsonPropertyName("quantity")]
         public decimal? Quantity { get; set; }
 

@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsAuBecsDebit : StripeEntity<SessionPaymentMethodOptionsAuBecsDebit>
+    public class SessionPaymentMethodOptionsAuBecsDebit
+        : StripeEntity<SessionPaymentMethodOptionsAuBecsDebit>
     {
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment

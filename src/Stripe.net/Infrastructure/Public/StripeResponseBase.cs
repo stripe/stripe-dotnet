@@ -50,7 +50,8 @@ namespace Stripe
                 this.GetType().FullName,
                 (int)this.StatusCode,
                 this.RequestId,
-                this.Date?.ToString("s"));
+                this.Date?.ToString("s")
+            );
         }
 
         private static string MaybeGetHeader(HttpHeaders headers, string name)

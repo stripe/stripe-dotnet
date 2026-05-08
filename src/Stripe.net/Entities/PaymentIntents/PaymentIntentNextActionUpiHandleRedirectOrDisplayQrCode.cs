@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentNextActionUpiHandleRedirectOrDisplayQrCode : StripeEntity<PaymentIntentNextActionUpiHandleRedirectOrDisplayQrCode>
+    public class PaymentIntentNextActionUpiHandleRedirectOrDisplayQrCode
+        : StripeEntity<PaymentIntentNextActionUpiHandleRedirectOrDisplayQrCode>
     {
         /// <summary>
         /// The URL to the hosted UPI instructions page, which allows customers to view the QR code.

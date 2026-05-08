@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PersonFutureRequirementsAlternative : StripeEntity<PersonFutureRequirementsAlternative>
+    public class PersonFutureRequirementsAlternative
+        : StripeEntity<PersonFutureRequirementsAlternative>
     {
         /// <summary>
         /// Fields that can be provided to resolve all fields in <c>original_fields_due</c>.

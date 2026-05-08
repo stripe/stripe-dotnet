@@ -6,7 +6,8 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ReaderActionCollectInputsInputSignature : StripeEntity<ReaderActionCollectInputsInputSignature>
+    public class ReaderActionCollectInputsInputSignature
+        : StripeEntity<ReaderActionCollectInputsInputSignature>
     {
         /// <summary>
         /// The File ID of a collected signature image.

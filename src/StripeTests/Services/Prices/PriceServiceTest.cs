@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -20,7 +19,8 @@ namespace StripeTests
 
         public PriceServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new PriceService(this.StripeClient);
@@ -29,15 +29,8 @@ namespace StripeTests
             {
                 Currency = "usd",
                 Nickname = "Price Nickmame",
-                ProductData = new PriceProductDataOptions
-                {
-                    Name = "Product Name",
-                },
-                Recurring = new PriceRecurringOptions
-                {
-                    Interval = "day",
-                    IntervalCount = 15,
-                },
+                ProductData = new PriceProductDataOptions { Name = "Product Name" },
+                Recurring = new PriceRecurringOptions { Interval = "day", IntervalCount = 15 },
                 UnitAmountDecimal = 0.01234567890m, // Ensure decimals work
             };
 
@@ -45,47 +38,25 @@ namespace StripeTests
             {
                 Currency = "usd",
                 Nickname = "Price Nickmame",
-                ProductData = new PriceProductDataOptions
-                {
-                    Name = "Product Name",
-                },
-                Recurring = new PriceRecurringOptions
-                {
-                    Interval = "day",
-                    IntervalCount = 15,
-                },
+                ProductData = new PriceProductDataOptions { Name = "Product Name" },
+                Recurring = new PriceRecurringOptions { Interval = "day", IntervalCount = 15 },
                 Tiers = new List<PriceTierOptions>
                 {
-                    new PriceTierOptions
-                    {
-                        UnitAmountDecimal = 0.01234567890m,
-                        UpTo = 10,
-                    },
-                    new PriceTierOptions
-                    {
-                        UnitAmountDecimal = 0.02223m,
-                        UpTo = PriceTierUpTo.Inf,
-                    },
+                    new PriceTierOptions { UnitAmountDecimal = 0.01234567890m, UpTo = 10 },
+                    new PriceTierOptions { UnitAmountDecimal = 0.02223m, UpTo = PriceTierUpTo.Inf },
                 },
                 TiersMode = "graduated",
             };
 
             this.updateOptions = new PriceUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
             this.listOptions = new PriceListOptions
             {
                 Limit = 1,
-                LookupKeys = new List<string>
-                {
-                    "lookup_1",
-                    "lookup_2",
-                },
+                LookupKeys = new List<string> { "lookup_1", "lookup_2" },
             };
         }
 

@@ -7,9 +7,7 @@ namespace StripeTests.Issuing
     public class TransactionTest : BaseStripeTest
     {
         public TransactionTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

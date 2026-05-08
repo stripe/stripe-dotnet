@@ -4,7 +4,6 @@ namespace StripeTests.Radar
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe.Radar;
     using Xunit;
 
@@ -17,16 +16,13 @@ namespace StripeTests.Radar
 
         public EarlyFraudWarningServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new EarlyFraudWarningService(this.StripeClient);
 
-            this.listOptions = new EarlyFraudWarningListOptions
-            {
-                Charge = "ch_123",
-                Limit = 1,
-            };
+            this.listOptions = new EarlyFraudWarningListOptions { Charge = "ch_123", Limit = 1 };
         }
 
         [Fact]

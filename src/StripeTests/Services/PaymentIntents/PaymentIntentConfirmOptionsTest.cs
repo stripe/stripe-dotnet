@@ -9,10 +9,7 @@ namespace StripeTests
         [Fact]
         public void SerializeObjectProperly()
         {
-            var options_bool = new PaymentIntentConfirmOptions
-            {
-                OffSession = true,
-            };
+            var options_bool = new PaymentIntentConfirmOptions { OffSession = true };
 
             Assert.Equal("off_session=true", ContentEncoder.CreateQueryString(options_bool));
         }

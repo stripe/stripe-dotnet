@@ -6,7 +6,5 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ReaderCancelActionOptions : BaseOptions
-    {
-    }
+    public class ReaderCancelActionOptions : BaseOptions { }
 }

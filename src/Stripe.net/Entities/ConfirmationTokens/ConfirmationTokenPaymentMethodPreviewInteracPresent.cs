@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationTokenPaymentMethodPreviewInteracPresent : StripeEntity<ConfirmationTokenPaymentMethodPreviewInteracPresent>
+    public class ConfirmationTokenPaymentMethodPreviewInteracPresent
+        : StripeEntity<ConfirmationTokenPaymentMethodPreviewInteracPresent>
     {
         /// <summary>
         /// Card brand. Can be <c>interac</c>, <c>mastercard</c> or <c>visa</c>.

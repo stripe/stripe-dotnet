@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationTokenPaymentMethodPreviewLink : StripeEntity<ConfirmationTokenPaymentMethodPreviewLink>
+    public class ConfirmationTokenPaymentMethodPreviewLink
+        : StripeEntity<ConfirmationTokenPaymentMethodPreviewLink>
     {
         /// <summary>
         /// Account owner's email address.

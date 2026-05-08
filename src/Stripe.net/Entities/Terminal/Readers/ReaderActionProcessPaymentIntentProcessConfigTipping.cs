@@ -6,7 +6,8 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ReaderActionProcessPaymentIntentProcessConfigTipping : StripeEntity<ReaderActionProcessPaymentIntentProcessConfigTipping>
+    public class ReaderActionProcessPaymentIntentProcessConfigTipping
+        : StripeEntity<ReaderActionProcessPaymentIntentProcessConfigTipping>
     {
         /// <summary>
         /// Amount used to calculate tip suggestions on tipping selection screen for this

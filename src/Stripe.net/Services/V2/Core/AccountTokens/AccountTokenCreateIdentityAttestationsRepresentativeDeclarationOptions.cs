@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountTokenCreateIdentityAttestationsRepresentativeDeclarationOptions : INestedOptions
+    public class AccountTokenCreateIdentityAttestationsRepresentativeDeclarationOptions
+        : INestedOptions
     {
         /// <summary>
         /// A boolean indicating if the representative is authorized to act as the representative of

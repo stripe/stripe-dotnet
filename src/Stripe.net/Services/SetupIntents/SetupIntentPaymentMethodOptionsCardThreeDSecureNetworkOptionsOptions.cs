@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SetupIntentPaymentMethodOptionsCardThreeDSecureNetworkOptionsOptions : INestedOptions
+    public class SetupIntentPaymentMethodOptionsCardThreeDSecureNetworkOptionsOptions
+        : INestedOptions
     {
         /// <summary>
         /// Cartes Bancaires-specific 3DS fields.

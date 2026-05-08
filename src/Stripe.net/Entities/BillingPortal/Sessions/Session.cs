@@ -49,7 +49,11 @@ namespace Stripe.BillingPortal
         public string ConfigurationId
         {
             get => this.InternalConfiguration?.Id;
-            set => this.InternalConfiguration = SetExpandableFieldId(value, this.InternalConfiguration);
+            set =>
+                this.InternalConfiguration = SetExpandableFieldId(
+                    value,
+                    this.InternalConfiguration
+                );
         }
 
         /// <summary>
@@ -63,7 +67,11 @@ namespace Stripe.BillingPortal
         public Configuration Configuration
         {
             get => this.InternalConfiguration?.ExpandedObject;
-            set => this.InternalConfiguration = SetExpandableFieldObject(value, this.InternalConfiguration);
+            set =>
+                this.InternalConfiguration = SetExpandableFieldObject(
+                    value,
+                    this.InternalConfiguration
+                );
         }
 
         [JsonProperty("configuration")]

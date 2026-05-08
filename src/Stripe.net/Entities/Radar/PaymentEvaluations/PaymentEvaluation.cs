@@ -15,7 +15,11 @@ namespace Stripe.Radar
     /// steps.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentEvaluation : StripeEntity<PaymentEvaluation>, IHasId, IHasMetadata, IHasObject
+    public class PaymentEvaluation
+        : StripeEntity<PaymentEvaluation>,
+            IHasId,
+            IHasMetadata,
+            IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.

@@ -7,9 +7,7 @@ namespace StripeTests
     public class InvoiceLineItemTest : BaseStripeTest
     {
         public InvoiceLineItemTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

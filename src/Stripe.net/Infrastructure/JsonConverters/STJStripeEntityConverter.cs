@@ -24,21 +24,30 @@ namespace Stripe.Infrastructure
             return typeof(StripeEntity).IsAssignableFrom(typeToConvert);
         }
 
-        public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
+        public override JsonConverter CreateConverter(
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
         {
-            JsonConverter converter = (JsonConverter)Activator.CreateInstance(
-                typeof(STJStripeEntityConverterInner<>).MakeGenericType(typeToConvert),
-                BindingFlags.Instance | BindingFlags.Public,
-                binder: null,
-                args: null,
-                culture: null);
+            JsonConverter converter = (JsonConverter)
+                Activator.CreateInstance(
+                    typeof(STJStripeEntityConverterInner<>).MakeGenericType(typeToConvert),
+                    BindingFlags.Instance | BindingFlags.Public,
+                    binder: null,
+                    args: null,
+                    culture: null
+                );
             return converter;
         }
 
         internal class STJStripeEntityConverterInner<T> : STJDefaultConverter<T>
             where T : StripeEntity
         {
-            public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+            public override T Read(
+                ref Utf8JsonReader reader,
+                Type typeToConvert,
+                JsonSerializerOptions options
+            )
             {
                 if (reader.TokenType == JsonTokenType.Null)
                 {
@@ -53,12 +62,15 @@ namespace Stripe.Infrastructure
                 var rawJson = JsonElement.ParseValue(ref reader).GetRawText();
 
                 // Deserialize using the base converter's ReadFullObject
-                var newReader = new Utf8JsonReader(Encoding.UTF8.GetBytes(rawJson), new JsonReaderOptions
-                {
-                    AllowTrailingCommas = options.AllowTrailingCommas,
-                    CommentHandling = options.ReadCommentHandling,
-                    MaxDepth = options.MaxDepth,
-                });
+                var newReader = new Utf8JsonReader(
+                    Encoding.UTF8.GetBytes(rawJson),
+                    new JsonReaderOptions
+                    {
+                        AllowTrailingCommas = options.AllowTrailingCommas,
+                        CommentHandling = options.ReadCommentHandling,
+                        MaxDepth = options.MaxDepth,
+                    }
+                );
                 newReader.Read(); // advance to first token
                 T entity = this.ReadFullObject(ref newReader, typeToConvert, options);
 

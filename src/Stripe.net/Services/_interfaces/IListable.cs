@@ -10,10 +10,21 @@ namespace Stripe
     {
         StripeList<TEntity> List(TOptions listOptions = null, RequestOptions requestOptions = null);
 
-        Task<StripeList<TEntity>> ListAsync(TOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
+        Task<StripeList<TEntity>> ListAsync(
+            TOptions listOptions = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        );
 
-        IEnumerable<TEntity> ListAutoPaging(TOptions listOptions = null, RequestOptions requestOptions = null);
+        IEnumerable<TEntity> ListAutoPaging(
+            TOptions listOptions = null,
+            RequestOptions requestOptions = null
+        );
 
-        IAsyncEnumerable<TEntity> ListAutoPagingAsync(TOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
+        IAsyncEnumerable<TEntity> ListAutoPagingAsync(
+            TOptions listOptions = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        );
     }
 }

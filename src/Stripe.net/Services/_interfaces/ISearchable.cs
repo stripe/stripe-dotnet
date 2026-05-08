@@ -8,12 +8,26 @@ namespace Stripe
         where TEntity : IStripeEntity, IHasId
         where TOptions : SearchOptions, new()
     {
-        StripeSearchResult<TEntity> Search(TOptions searchOptions = null, RequestOptions requestOptions = null);
+        StripeSearchResult<TEntity> Search(
+            TOptions searchOptions = null,
+            RequestOptions requestOptions = null
+        );
 
-        Task<StripeSearchResult<TEntity>> SearchAsync(TOptions searchOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
+        Task<StripeSearchResult<TEntity>> SearchAsync(
+            TOptions searchOptions = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        );
 
-        IEnumerable<TEntity> SearchAutoPaging(TOptions searchOptions = null, RequestOptions requestOptions = null);
+        IEnumerable<TEntity> SearchAutoPaging(
+            TOptions searchOptions = null,
+            RequestOptions requestOptions = null
+        );
 
-        IAsyncEnumerable<TEntity> SearchAutoPagingAsync(TOptions searchOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
+        IAsyncEnumerable<TEntity> SearchAutoPagingAsync(
+            TOptions searchOptions = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        );
     }
 }

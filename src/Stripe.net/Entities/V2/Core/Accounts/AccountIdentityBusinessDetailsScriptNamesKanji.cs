@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountIdentityBusinessDetailsScriptNamesKanji : StripeEntity<AccountIdentityBusinessDetailsScriptNamesKanji>
+    public class AccountIdentityBusinessDetailsScriptNamesKanji
+        : StripeEntity<AccountIdentityBusinessDetailsScriptNamesKanji>
     {
         /// <summary>
         /// Registered name of the business.

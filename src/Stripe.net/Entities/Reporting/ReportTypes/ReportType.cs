@@ -45,7 +45,8 @@ namespace Stripe.Reporting
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("data_available_end")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime DataAvailableEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime DataAvailableEnd { get; set; } =
+            Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Earliest time for which this Report Type is available. Measured in seconds since the
@@ -55,7 +56,8 @@ namespace Stripe.Reporting
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("data_available_start")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime DataAvailableStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime DataAvailableStart { get; set; } =
+            Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// List of column names that are included by default when this Report Type gets run. (If

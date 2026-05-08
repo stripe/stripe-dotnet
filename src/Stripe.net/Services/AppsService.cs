@@ -10,16 +10,12 @@ namespace Stripe
         private Apps.SecretService secrets;
 
         internal AppsService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         internal AppsService(IStripeClient client)
-            : base(client)
-        {
-        }
+            : base(client) { }
 
-        public virtual Apps.SecretService Secrets => this.secrets ??= new Apps.SecretService(
-            this.Requestor);
+        public virtual Apps.SecretService Secrets =>
+            this.secrets ??= new Apps.SecretService(this.Requestor);
     }
 }

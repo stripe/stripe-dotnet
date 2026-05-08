@@ -3,7 +3,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -18,19 +17,15 @@ namespace StripeTests
 
         public AccountCapabilityServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new AccountCapabilityService(this.StripeClient);
 
-            this.updateOptions = new AccountCapabilityUpdateOptions
-            {
-                Requested = true,
-            };
+            this.updateOptions = new AccountCapabilityUpdateOptions { Requested = true };
 
-            this.listOptions = new AccountCapabilityListOptions
-            {
-            };
+            this.listOptions = new AccountCapabilityListOptions { };
         }
 
         [Fact]
@@ -85,7 +80,11 @@ namespace StripeTests
         [Fact]
         public async Task UpdateAsync()
         {
-            var capability = await this.service.UpdateAsync(AccountId, CapabilityId, this.updateOptions);
+            var capability = await this.service.UpdateAsync(
+                AccountId,
+                CapabilityId,
+                this.updateOptions
+            );
             this.AssertRequest(HttpMethod.Post, "/v1/accounts/acct_123/capabilities/acap_123");
             Assert.NotNull(capability);
             Assert.Equal("capability", capability.Object);

@@ -6,11 +6,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(Infrastructure.STJStringEnumConverterFactory))]
     public class SubscriptionSchedulePhaseEndDate : StringEnum
     {
-        public static readonly SubscriptionSchedulePhaseEndDate Now = new SubscriptionSchedulePhaseEndDate("now");
+        public static readonly SubscriptionSchedulePhaseEndDate Now =
+            new SubscriptionSchedulePhaseEndDate("now");
 
         private SubscriptionSchedulePhaseEndDate(string value)
-            : base(value)
-        {
-        }
+            : base(value) { }
     }
 }

@@ -6,7 +6,5 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class DisputeGetOptions : BaseOptions
-    {
-    }
+    public class DisputeGetOptions : BaseOptions { }
 }

@@ -6,7 +6,8 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ReaderActionRefundPaymentRefundPaymentConfig : StripeEntity<ReaderActionRefundPaymentRefundPaymentConfig>
+    public class ReaderActionRefundPaymentRefundPaymentConfig
+        : StripeEntity<ReaderActionRefundPaymentRefundPaymentConfig>
     {
         /// <summary>
         /// Enable customer-initiated cancellation when refunding this payment.

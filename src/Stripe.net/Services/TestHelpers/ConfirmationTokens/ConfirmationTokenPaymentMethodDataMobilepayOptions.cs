@@ -6,7 +6,5 @@ namespace Stripe.TestHelpers
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ConfirmationTokenPaymentMethodDataMobilepayOptions : INestedOptions
-    {
-    }
+    public class ConfirmationTokenPaymentMethodDataMobilepayOptions : INestedOptions { }
 }

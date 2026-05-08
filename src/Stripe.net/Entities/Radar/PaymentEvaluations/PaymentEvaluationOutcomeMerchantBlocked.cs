@@ -6,7 +6,8 @@ namespace Stripe.Radar
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentEvaluationOutcomeMerchantBlocked : StripeEntity<PaymentEvaluationOutcomeMerchantBlocked>
+    public class PaymentEvaluationOutcomeMerchantBlocked
+        : StripeEntity<PaymentEvaluationOutcomeMerchantBlocked>
     {
         /// <summary>
         /// The reason the payment was blocked by the merchant.

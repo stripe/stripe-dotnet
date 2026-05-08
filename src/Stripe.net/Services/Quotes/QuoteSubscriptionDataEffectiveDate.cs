@@ -6,11 +6,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(Infrastructure.STJStringEnumConverterFactory))]
     public class QuoteSubscriptionDataEffectiveDate : StringEnum
     {
-        public static readonly QuoteSubscriptionDataEffectiveDate CurrentPeriodEnd = new QuoteSubscriptionDataEffectiveDate("current_period_end");
+        public static readonly QuoteSubscriptionDataEffectiveDate CurrentPeriodEnd =
+            new QuoteSubscriptionDataEffectiveDate("current_period_end");
 
         private QuoteSubscriptionDataEffectiveDate(string value)
-            : base(value)
-        {
-        }
+            : base(value) { }
     }
 }

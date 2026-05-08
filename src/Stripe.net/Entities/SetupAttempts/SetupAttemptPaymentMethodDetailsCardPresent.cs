@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SetupAttemptPaymentMethodDetailsCardPresent : StripeEntity<SetupAttemptPaymentMethodDetailsCardPresent>
+    public class SetupAttemptPaymentMethodDetailsCardPresent
+        : StripeEntity<SetupAttemptPaymentMethodDetailsCardPresent>
     {
         #region Expandable GeneratedCard
 
@@ -19,7 +20,11 @@ namespace Stripe
         public string GeneratedCardId
         {
             get => this.InternalGeneratedCard?.Id;
-            set => this.InternalGeneratedCard = SetExpandableFieldId(value, this.InternalGeneratedCard);
+            set =>
+                this.InternalGeneratedCard = SetExpandableFieldId(
+                    value,
+                    this.InternalGeneratedCard
+                );
         }
 
         /// <summary>
@@ -33,7 +38,11 @@ namespace Stripe
         public PaymentMethod GeneratedCard
         {
             get => this.InternalGeneratedCard?.ExpandedObject;
-            set => this.InternalGeneratedCard = SetExpandableFieldObject(value, this.InternalGeneratedCard);
+            set =>
+                this.InternalGeneratedCard = SetExpandableFieldObject(
+                    value,
+                    this.InternalGeneratedCard
+                );
         }
 
         [JsonProperty("generated_card")]

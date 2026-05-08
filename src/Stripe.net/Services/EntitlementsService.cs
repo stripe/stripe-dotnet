@@ -11,19 +11,15 @@ namespace Stripe
         private Entitlements.FeatureService features;
 
         internal EntitlementsService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         internal EntitlementsService(IStripeClient client)
-            : base(client)
-        {
-        }
+            : base(client) { }
 
-        public virtual Entitlements.ActiveEntitlementService ActiveEntitlements => this.activeEntitlements ??= new Entitlements.ActiveEntitlementService(
-            this.Requestor);
+        public virtual Entitlements.ActiveEntitlementService ActiveEntitlements =>
+            this.activeEntitlements ??= new Entitlements.ActiveEntitlementService(this.Requestor);
 
-        public virtual Entitlements.FeatureService Features => this.features ??= new Entitlements.FeatureService(
-            this.Requestor);
+        public virtual Entitlements.FeatureService Features =>
+            this.features ??= new Entitlements.FeatureService(this.Requestor);
     }
 }

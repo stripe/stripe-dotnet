@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationTokenPaymentMethodPreviewP24 : StripeEntity<ConfirmationTokenPaymentMethodPreviewP24>
+    public class ConfirmationTokenPaymentMethodPreviewP24
+        : StripeEntity<ConfirmationTokenPaymentMethodPreviewP24>
     {
         /// <summary>
         /// The customer's bank, if provided.

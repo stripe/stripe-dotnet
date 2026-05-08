@@ -3,7 +3,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe.Sigma;
     using Xunit;
 
@@ -16,15 +15,13 @@ namespace StripeTests
 
         public ScheduledQueryRunServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new ScheduledQueryRunService(this.StripeClient);
 
-            this.listOptions = new ScheduledQueryRunListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new ScheduledQueryRunListOptions { Limit = 1 };
         }
 
         [Fact]

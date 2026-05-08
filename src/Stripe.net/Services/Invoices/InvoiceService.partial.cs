@@ -15,9 +15,19 @@ namespace Stripe
         /// where you can retrieve the full (paginated) list of line items.</p>.
         /// </summary>
         [Obsolete("Use InvoiceLineItemService.List instead.")]
-        public virtual StripeList<InvoiceLineItem> ListLineItems(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<InvoiceLineItem> ListLineItems(
+            string id,
+            InvoiceListLineItemsOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeList<InvoiceLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/{WebUtility.UrlEncode(id)}/lines", options, requestOptions);
+            return this.Request<StripeList<InvoiceLineItem>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/lines",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -26,9 +36,21 @@ namespace Stripe
         /// where you can retrieve the full (paginated) list of line items.</p>.
         /// </summary>
         [Obsolete("Use InvoiceLineItemService.ListAsync instead.")]
-        public virtual Task<StripeList<InvoiceLineItem>> ListLineItemsAsync(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<InvoiceLineItem>> ListLineItemsAsync(
+            string id,
+            InvoiceListLineItemsOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeList<InvoiceLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/{WebUtility.UrlEncode(id)}/lines", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<InvoiceLineItem>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/lines",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -37,9 +59,17 @@ namespace Stripe
         /// where you can retrieve the full (paginated) list of line items.</p>.
         /// </summary>
         [Obsolete("Use InvoiceLineItemService.ListAutoPaging instead.")]
-        public virtual IEnumerable<InvoiceLineItem> ListLineItemsAutoPaging(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<InvoiceLineItem> ListLineItemsAutoPaging(
+            string id,
+            InvoiceListLineItemsOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.ListRequestAutoPaging<InvoiceLineItem>($"/v1/invoices/{WebUtility.UrlEncode(id)}/lines", options, requestOptions);
+            return this.ListRequestAutoPaging<InvoiceLineItem>(
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/lines",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -48,9 +78,19 @@ namespace Stripe
         /// where you can retrieve the full (paginated) list of line items.</p>.
         /// </summary>
         [Obsolete("Use InvoiceLineItemService.ListAutoPagingAsync instead.")]
-        public virtual IAsyncEnumerable<InvoiceLineItem> ListLineItemsAutoPagingAsync(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<InvoiceLineItem> ListLineItemsAutoPagingAsync(
+            string id,
+            InvoiceListLineItemsOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"/v1/invoices/{WebUtility.UrlEncode(id)}/lines", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<InvoiceLineItem>(
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/lines",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -61,9 +101,20 @@ namespace Stripe
         /// invoice’s line item is only possible before the invoice is finalized.</p>.
         /// </summary>
         [Obsolete("Use InvoiceLineItemService.Update instead.")]
-        public virtual InvoiceLineItem UpdateLines(string parentId, string id, InvoiceUpdateInvoiceLineItemsOptions options, RequestOptions requestOptions = null)
+        public virtual InvoiceLineItem UpdateLines(
+            string parentId,
+            string id,
+            InvoiceUpdateInvoiceLineItemsOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<InvoiceLineItem>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(parentId)}/lines/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<InvoiceLineItem>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(parentId)}/lines/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -74,9 +125,22 @@ namespace Stripe
         /// invoice’s line item is only possible before the invoice is finalized.</p>.
         /// </summary>
         [Obsolete("Use InvoiceLineItemService.UpdateAsync instead.")]
-        public virtual Task<InvoiceLineItem> UpdateLinesAsync(string parentId, string id, InvoiceUpdateInvoiceLineItemsOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<InvoiceLineItem> UpdateLinesAsync(
+            string parentId,
+            string id,
+            InvoiceUpdateInvoiceLineItemsOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<InvoiceLineItem>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(parentId)}/lines/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<InvoiceLineItem>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(parentId)}/lines/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsSepaDebit : StripeEntity<SessionPaymentMethodOptionsSepaDebit>
+    public class SessionPaymentMethodOptionsSepaDebit
+        : StripeEntity<SessionPaymentMethodOptionsSepaDebit>
     {
         [JsonProperty("mandate_options")]
         [STJS.JsonPropertyName("mandate_options")]

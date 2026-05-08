@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsBillingDetailsAddress : StripeEntity<PaymentRecordPaymentMethodDetailsBillingDetailsAddress>
+    public class PaymentRecordPaymentMethodDetailsBillingDetailsAddress
+        : StripeEntity<PaymentRecordPaymentMethodDetailsBillingDetailsAddress>
     {
         /// <summary>
         /// City, district, suburb, town, or village.

@@ -7,9 +7,7 @@ namespace StripeTests
     public class WebhookEndpointTest : BaseStripeTest
     {
         public WebhookEndpointTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

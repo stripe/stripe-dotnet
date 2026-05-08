@@ -8,24 +8,40 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class RefundService : Service,
-        ICreatable<Refund, RefundCreateOptions>,
-        IListable<Refund, RefundListOptions>,
-        IRetrievable<Refund, RefundGetOptions>,
-        IUpdatable<Refund, RefundUpdateOptions>
+    public class RefundService
+        : Service,
+            ICreatable<Refund, RefundCreateOptions>,
+            IListable<Refund, RefundListOptions>,
+            IRetrievable<Refund, RefundGetOptions>,
+            IUpdatable<Refund, RefundUpdateOptions>
     {
-        public RefundService()
-        {
-        }
+        public RefundService() { }
 
         internal RefundService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public RefundService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>Cancels a refund with a status of <c>requires_action</c>.</p>.
+        ///
+        /// <p>You can’t cancel refunds in other states. Only refunds for payment methods that
+        /// require customer action can enter the <c>requires_action</c> state.</p>.
+        /// </summary>
+        public virtual Refund Cancel(
+            string id,
+            RefundCancelOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<Refund>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/refunds/{WebUtility.UrlEncode(id)}/cancel",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -34,20 +50,21 @@ namespace Stripe
         /// <p>You can’t cancel refunds in other states. Only refunds for payment methods that
         /// require customer action can enter the <c>requires_action</c> state.</p>.
         /// </summary>
-        public virtual Refund Cancel(string id, RefundCancelOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<Refund> CancelAsync(
+            string id,
+            RefundCancelOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<Refund>(BaseAddress.Api, HttpMethod.Post, $"/v1/refunds/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Cancels a refund with a status of <c>requires_action</c>.</p>.
-        ///
-        /// <p>You can’t cancel refunds in other states. Only refunds for payment methods that
-        /// require customer action can enter the <c>requires_action</c> state.</p>.
-        /// </summary>
-        public virtual Task<Refund> CancelAsync(string id, RefundCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<Refund>(BaseAddress.Api, HttpMethod.Post, $"/v1/refunds/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Refund>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/refunds/{WebUtility.UrlEncode(id)}/cancel",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -65,9 +82,18 @@ namespace Stripe
         /// error when called on an already-refunded charge, or when trying to refund more money
         /// than is left on a charge.</p>.
         /// </summary>
-        public virtual Refund Create(RefundCreateOptions options, RequestOptions requestOptions = null)
+        public virtual Refund Create(
+            RefundCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Refund>(BaseAddress.Api, HttpMethod.Post, $"/v1/refunds", options, requestOptions);
+            return this.Request<Refund>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/refunds",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -85,25 +111,58 @@ namespace Stripe
         /// error when called on an already-refunded charge, or when trying to refund more money
         /// than is left on a charge.</p>.
         /// </summary>
-        public virtual Task<Refund> CreateAsync(RefundCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Refund> CreateAsync(
+            RefundCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Refund>(BaseAddress.Api, HttpMethod.Post, $"/v1/refunds", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Refund>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/refunds",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Retrieves the details of an existing refund.</p>.
         /// </summary>
-        public virtual Refund Get(string id, RefundGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Refund Get(
+            string id,
+            RefundGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Refund>(BaseAddress.Api, HttpMethod.Get, $"/v1/refunds/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Refund>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/refunds/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Retrieves the details of an existing refund.</p>.
         /// </summary>
-        public virtual Task<Refund> GetAsync(string id, RefundGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Refund> GetAsync(
+            string id,
+            RefundGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Refund>(BaseAddress.Api, HttpMethod.Get, $"/v1/refunds/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Refund>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/refunds/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -111,9 +170,18 @@ namespace Stripe
         /// with the most recent refunds appearing first. The 10 most recent refunds are always
         /// available by default on the Charge object.</p>.
         /// </summary>
-        public virtual StripeList<Refund> List(RefundListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Refund> List(
+            RefundListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeList<Refund>>(BaseAddress.Api, HttpMethod.Get, $"/v1/refunds", options, requestOptions);
+            return this.Request<StripeList<Refund>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/refunds",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -121,9 +189,20 @@ namespace Stripe
         /// with the most recent refunds appearing first. The 10 most recent refunds are always
         /// available by default on the Charge object.</p>.
         /// </summary>
-        public virtual Task<StripeList<Refund>> ListAsync(RefundListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<Refund>> ListAsync(
+            RefundListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeList<Refund>>(BaseAddress.Api, HttpMethod.Get, $"/v1/refunds", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Refund>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/refunds",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -131,7 +210,10 @@ namespace Stripe
         /// with the most recent refunds appearing first. The 10 most recent refunds are always
         /// available by default on the Charge object.</p>.
         /// </summary>
-        public virtual IEnumerable<Refund> ListAutoPaging(RefundListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<Refund> ListAutoPaging(
+            RefundListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
             return this.ListRequestAutoPaging<Refund>($"/v1/refunds", options, requestOptions);
         }
@@ -141,9 +223,18 @@ namespace Stripe
         /// with the most recent refunds appearing first. The 10 most recent refunds are always
         /// available by default on the Charge object.</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<Refund> ListAutoPagingAsync(RefundListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<Refund> ListAutoPagingAsync(
+            RefundListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<Refund>($"/v1/refunds", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Refund>(
+                $"/v1/refunds",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -152,9 +243,19 @@ namespace Stripe
         ///
         /// <p>This request only accepts <c>metadata</c> as an argument.</p>.
         /// </summary>
-        public virtual Refund Update(string id, RefundUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Refund Update(
+            string id,
+            RefundUpdateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Refund>(BaseAddress.Api, HttpMethod.Post, $"/v1/refunds/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Refund>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/refunds/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -163,9 +264,21 @@ namespace Stripe
         ///
         /// <p>This request only accepts <c>metadata</c> as an argument.</p>.
         /// </summary>
-        public virtual Task<Refund> UpdateAsync(string id, RefundUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Refund> UpdateAsync(
+            string id,
+            RefundUpdateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Refund>(BaseAddress.Api, HttpMethod.Post, $"/v1/refunds/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Refund>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/refunds/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

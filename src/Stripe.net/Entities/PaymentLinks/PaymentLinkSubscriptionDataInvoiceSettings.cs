@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentLinkSubscriptionDataInvoiceSettings : StripeEntity<PaymentLinkSubscriptionDataInvoiceSettings>
+    public class PaymentLinkSubscriptionDataInvoiceSettings
+        : StripeEntity<PaymentLinkSubscriptionDataInvoiceSettings>
     {
         [JsonProperty("issuer")]
         [STJS.JsonPropertyName("issuer")]

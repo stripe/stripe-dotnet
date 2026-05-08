@@ -8,56 +8,93 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class TopupService : Service,
-        ICreatable<Topup, TopupCreateOptions>,
-        IListable<Topup, TopupListOptions>,
-        IRetrievable<Topup, TopupGetOptions>,
-        IUpdatable<Topup, TopupUpdateOptions>
+    public class TopupService
+        : Service,
+            ICreatable<Topup, TopupCreateOptions>,
+            IListable<Topup, TopupListOptions>,
+            IRetrievable<Topup, TopupGetOptions>,
+            IUpdatable<Topup, TopupUpdateOptions>
     {
-        public TopupService()
-        {
-        }
+        public TopupService() { }
 
         internal TopupService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public TopupService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>Cancels a top-up. Only pending top-ups can be canceled.</p>.
+        /// </summary>
+        public virtual Topup Cancel(
+            string id,
+            TopupCancelOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<Topup>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/topups/{WebUtility.UrlEncode(id)}/cancel",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Cancels a top-up. Only pending top-ups can be canceled.</p>.
         /// </summary>
-        public virtual Topup Cancel(string id, TopupCancelOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<Topup> CancelAsync(
+            string id,
+            TopupCancelOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<Topup>(BaseAddress.Api, HttpMethod.Post, $"/v1/topups/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Cancels a top-up. Only pending top-ups can be canceled.</p>.
-        /// </summary>
-        public virtual Task<Topup> CancelAsync(string id, TopupCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<Topup>(BaseAddress.Api, HttpMethod.Post, $"/v1/topups/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>Top up the balance of an account</p>.
-        /// </summary>
-        public virtual Topup Create(TopupCreateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.Request<Topup>(BaseAddress.Api, HttpMethod.Post, $"/v1/topups", options, requestOptions);
+            return this.RequestAsync<Topup>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/topups/{WebUtility.UrlEncode(id)}/cancel",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Top up the balance of an account</p>.
         /// </summary>
-        public virtual Task<Topup> CreateAsync(TopupCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Topup Create(
+            TopupCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<Topup>(BaseAddress.Api, HttpMethod.Post, $"/v1/topups", options, requestOptions, cancellationToken);
+            return this.Request<Topup>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/topups",
+                options,
+                requestOptions
+            );
+        }
+
+        /// <summary>
+        /// <p>Top up the balance of an account</p>.
+        /// </summary>
+        public virtual Task<Topup> CreateAsync(
+            TopupCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return this.RequestAsync<Topup>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/topups",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -65,9 +102,19 @@ namespace Stripe
         /// top-up ID that was returned from your previous request, and Stripe will return the
         /// corresponding top-up information.</p>.
         /// </summary>
-        public virtual Topup Get(string id, TopupGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Topup Get(
+            string id,
+            TopupGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Topup>(BaseAddress.Api, HttpMethod.Get, $"/v1/topups/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Topup>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/topups/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -75,31 +122,66 @@ namespace Stripe
         /// top-up ID that was returned from your previous request, and Stripe will return the
         /// corresponding top-up information.</p>.
         /// </summary>
-        public virtual Task<Topup> GetAsync(string id, TopupGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Topup> GetAsync(
+            string id,
+            TopupGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Topup>(BaseAddress.Api, HttpMethod.Get, $"/v1/topups/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Topup>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/topups/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of top-ups.</p>.
         /// </summary>
-        public virtual StripeList<Topup> List(TopupListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Topup> List(
+            TopupListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeList<Topup>>(BaseAddress.Api, HttpMethod.Get, $"/v1/topups", options, requestOptions);
+            return this.Request<StripeList<Topup>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/topups",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of top-ups.</p>.
         /// </summary>
-        public virtual Task<StripeList<Topup>> ListAsync(TopupListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<Topup>> ListAsync(
+            TopupListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeList<Topup>>(BaseAddress.Api, HttpMethod.Get, $"/v1/topups", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Topup>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/topups",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of top-ups.</p>.
         /// </summary>
-        public virtual IEnumerable<Topup> ListAutoPaging(TopupListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<Topup> ListAutoPaging(
+            TopupListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
             return this.ListRequestAutoPaging<Topup>($"/v1/topups", options, requestOptions);
         }
@@ -107,27 +189,58 @@ namespace Stripe
         /// <summary>
         /// <p>Returns a list of top-ups.</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<Topup> ListAutoPagingAsync(TopupListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<Topup> ListAutoPagingAsync(
+            TopupListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<Topup>($"/v1/topups", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Topup>(
+                $"/v1/topups",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Updates the metadata of a top-up. Other top-up details are not editable by
         /// design.</p>.
         /// </summary>
-        public virtual Topup Update(string id, TopupUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Topup Update(
+            string id,
+            TopupUpdateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Topup>(BaseAddress.Api, HttpMethod.Post, $"/v1/topups/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Topup>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/topups/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Updates the metadata of a top-up. Other top-up details are not editable by
         /// design.</p>.
         /// </summary>
-        public virtual Task<Topup> UpdateAsync(string id, TopupUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Topup> UpdateAsync(
+            string id,
+            TopupUpdateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Topup>(BaseAddress.Api, HttpMethod.Post, $"/v1/topups/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Topup>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/topups/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions>
+    public class SubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions
+        : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions>
     {
         /// <summary>
         /// Transaction type of the mandate.

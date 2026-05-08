@@ -12,7 +12,12 @@ namespace Stripe.Infrastructure
     internal class V2EventNotificationConverter : V2EventConverter
     {
         // mostly copied from the parent, but with different types
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(
+            JsonReader reader,
+            Type objectType,
+            object existingValue,
+            JsonSerializer serializer
+        )
         {
             if (reader.TokenType == JsonToken.Null)
             {
@@ -25,7 +30,9 @@ namespace Stripe.Infrastructure
             // class to deserialize into.
             var typeValue = (string)jsonObject["type"];
 
-            Type concreteType = StripeTypeRegistry.GetConcreteV2EventNotificationType(typeValue) ?? typeof(Events.UnknownEventNotification);
+            Type concreteType =
+                StripeTypeRegistry.GetConcreteV2EventNotificationType(typeValue)
+                ?? typeof(Events.UnknownEventNotification);
 
             using var subReader = jsonObject.CreateReader();
             var e = Activator.CreateInstance(concreteType);

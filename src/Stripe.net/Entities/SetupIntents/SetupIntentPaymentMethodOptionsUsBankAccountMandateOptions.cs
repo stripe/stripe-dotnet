@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SetupIntentPaymentMethodOptionsUsBankAccountMandateOptions : StripeEntity<SetupIntentPaymentMethodOptionsUsBankAccountMandateOptions>
+    public class SetupIntentPaymentMethodOptionsUsBankAccountMandateOptions
+        : StripeEntity<SetupIntentPaymentMethodOptionsUsBankAccountMandateOptions>
     {
         /// <summary>
         /// Mandate collection method.

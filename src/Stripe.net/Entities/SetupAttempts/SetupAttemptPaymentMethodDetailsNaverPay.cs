@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SetupAttemptPaymentMethodDetailsNaverPay : StripeEntity<SetupAttemptPaymentMethodDetailsNaverPay>
+    public class SetupAttemptPaymentMethodDetailsNaverPay
+        : StripeEntity<SetupAttemptPaymentMethodDetailsNaverPay>
     {
         /// <summary>
         /// Uniquely identifies this particular Naver Pay account. You can use this attribute to

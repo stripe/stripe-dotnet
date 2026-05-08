@@ -23,7 +23,5 @@ namespace Stripe
     /// </list>
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeObjectConverter))]
-    public interface IPaymentSource : IStripeEntity, IHasId, IHasObject
-    {
-    }
+    public interface IPaymentSource : IStripeEntity, IHasId, IHasObject { }
 }

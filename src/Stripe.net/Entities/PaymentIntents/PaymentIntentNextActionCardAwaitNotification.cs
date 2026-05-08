@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentNextActionCardAwaitNotification : StripeEntity<PaymentIntentNextActionCardAwaitNotification>
+    public class PaymentIntentNextActionCardAwaitNotification
+        : StripeEntity<PaymentIntentNextActionCardAwaitNotification>
     {
         /// <summary>
         /// The time that payment will be attempted. If customer approval is required, they need to

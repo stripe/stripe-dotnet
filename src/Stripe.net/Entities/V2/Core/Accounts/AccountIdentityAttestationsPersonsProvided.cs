@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountIdentityAttestationsPersonsProvided : StripeEntity<AccountIdentityAttestationsPersonsProvided>
+    public class AccountIdentityAttestationsPersonsProvided
+        : StripeEntity<AccountIdentityAttestationsPersonsProvided>
     {
         /// <summary>
         /// Whether the company’s directors have been provided. Set this Boolean to true after

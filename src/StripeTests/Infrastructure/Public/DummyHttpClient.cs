@@ -14,7 +14,8 @@ namespace StripeTests
 
         public Task<StripeResponse> MakeRequestAsync(
             StripeRequest request,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
         {
             this.LastRequest = request;
 
@@ -28,7 +29,8 @@ namespace StripeTests
 
         public Task<StripeStreamedResponse> MakeStreamingRequestAsync(
             StripeRequest request,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
         {
             this.LastRequest = request;
 

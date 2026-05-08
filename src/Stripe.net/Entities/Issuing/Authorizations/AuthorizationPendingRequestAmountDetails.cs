@@ -6,7 +6,8 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AuthorizationPendingRequestAmountDetails : StripeEntity<AuthorizationPendingRequestAmountDetails>
+    public class AuthorizationPendingRequestAmountDetails
+        : StripeEntity<AuthorizationPendingRequestAmountDetails>
     {
         /// <summary>
         /// The fee charged by the ATM for the cash withdrawal.

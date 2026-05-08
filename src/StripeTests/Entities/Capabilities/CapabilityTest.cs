@@ -7,9 +7,7 @@ namespace StripeTests
     public class CapabilityTest : BaseStripeTest
     {
         public CapabilityTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -25,12 +23,12 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "account",
-            };
+            string[] expansions = { "account" };
 
-            string json = this.GetFixture("/v1/accounts/acct_123/capabilities/acap_123", expansions);
+            string json = this.GetFixture(
+                "/v1/accounts/acct_123/capabilities/acap_123",
+                expansions
+            );
             var capability = JsonSerializer.Deserialize<Capability>(json);
             Assert.NotNull(capability);
             Assert.IsType<Capability>(capability);

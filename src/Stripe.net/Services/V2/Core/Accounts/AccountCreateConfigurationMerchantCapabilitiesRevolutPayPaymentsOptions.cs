@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountCreateConfigurationMerchantCapabilitiesRevolutPayPaymentsOptions : INestedOptions
+    public class AccountCreateConfigurationMerchantCapabilitiesRevolutPayPaymentsOptions
+        : INestedOptions
     {
         /// <summary>
         /// To request a new Capability for an account, pass true. There can be a delay before the

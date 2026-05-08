@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionInvoiceCreationInvoiceDataCustomField : StripeEntity<SessionInvoiceCreationInvoiceDataCustomField>
+    public class SessionInvoiceCreationInvoiceDataCustomField
+        : StripeEntity<SessionInvoiceCreationInvoiceDataCustomField>
     {
         /// <summary>
         /// The name of the custom field.

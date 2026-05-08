@@ -69,7 +69,11 @@ namespace Stripe
         public Application Application
         {
             get => this.InternalApplication?.ExpandedObject;
-            set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
+            set =>
+                this.InternalApplication = SetExpandableFieldObject(
+                    value,
+                    this.InternalApplication
+                );
         }
 
         [JsonProperty("application")]
@@ -210,7 +214,10 @@ namespace Stripe
             set => this.InternalDefaultTaxRates = SetExpandableArrayObjects(value);
         }
 
-        [JsonProperty("default_tax_rates", ItemConverterType = typeof(ExpandableFieldConverter<TaxRate>))]
+        [JsonProperty(
+            "default_tax_rates",
+            ItemConverterType = typeof(ExpandableFieldConverter<TaxRate>)
+        )]
         [STJS.JsonPropertyName("default_tax_rates")]
         internal List<ExpandableField<TaxRate>> InternalDefaultTaxRates { get; set; }
         #endregion
@@ -387,7 +394,8 @@ namespace Stripe
         public Account OnBehalfOf
         {
             get => this.InternalOnBehalfOf?.ExpandedObject;
-            set => this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
+            set =>
+                this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
         }
 
         [JsonProperty("on_behalf_of")]
@@ -420,7 +428,8 @@ namespace Stripe
         public string SubscriptionId
         {
             get => this.InternalSubscription?.Id;
-            set => this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
+            set =>
+                this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
         }
 
         /// <summary>
@@ -434,7 +443,11 @@ namespace Stripe
         public Subscription Subscription
         {
             get => this.InternalSubscription?.ExpandedObject;
-            set => this.InternalSubscription = SetExpandableFieldObject(value, this.InternalSubscription);
+            set =>
+                this.InternalSubscription = SetExpandableFieldObject(
+                    value,
+                    this.InternalSubscription
+                );
         }
 
         [JsonProperty("subscription")]
@@ -459,7 +472,11 @@ namespace Stripe
         public string SubscriptionScheduleId
         {
             get => this.InternalSubscriptionSchedule?.Id;
-            set => this.InternalSubscriptionSchedule = SetExpandableFieldId(value, this.InternalSubscriptionSchedule);
+            set =>
+                this.InternalSubscriptionSchedule = SetExpandableFieldId(
+                    value,
+                    this.InternalSubscriptionSchedule
+                );
         }
 
         /// <summary>
@@ -473,7 +490,11 @@ namespace Stripe
         public SubscriptionSchedule SubscriptionSchedule
         {
             get => this.InternalSubscriptionSchedule?.ExpandedObject;
-            set => this.InternalSubscriptionSchedule = SetExpandableFieldObject(value, this.InternalSubscriptionSchedule);
+            set =>
+                this.InternalSubscriptionSchedule = SetExpandableFieldObject(
+                    value,
+                    this.InternalSubscriptionSchedule
+                );
         }
 
         [JsonProperty("subscription_schedule")]

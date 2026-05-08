@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountRequirementsEntryImpactRestrictsCapability : StripeEntity<AccountRequirementsEntryImpactRestrictsCapability>
+    public class AccountRequirementsEntryImpactRestrictsCapability
+        : StripeEntity<AccountRequirementsEntryImpactRestrictsCapability>
     {
         /// <summary>
         /// The name of the Capability which will be restricted.

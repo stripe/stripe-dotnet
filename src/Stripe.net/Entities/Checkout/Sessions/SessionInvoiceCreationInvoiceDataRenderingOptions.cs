@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionInvoiceCreationInvoiceDataRenderingOptions : StripeEntity<SessionInvoiceCreationInvoiceDataRenderingOptions>
+    public class SessionInvoiceCreationInvoiceDataRenderingOptions
+        : StripeEntity<SessionInvoiceCreationInvoiceDataRenderingOptions>
     {
         /// <summary>
         /// How line-item prices and amounts will be displayed with respect to tax on invoice PDFs.

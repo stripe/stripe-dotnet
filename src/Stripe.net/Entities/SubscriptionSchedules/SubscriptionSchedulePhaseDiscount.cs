@@ -89,7 +89,11 @@ namespace Stripe
         public string PromotionCodeId
         {
             get => this.InternalPromotionCode?.Id;
-            set => this.InternalPromotionCode = SetExpandableFieldId(value, this.InternalPromotionCode);
+            set =>
+                this.InternalPromotionCode = SetExpandableFieldId(
+                    value,
+                    this.InternalPromotionCode
+                );
         }
 
         /// <summary>
@@ -103,7 +107,11 @@ namespace Stripe
         public PromotionCode PromotionCode
         {
             get => this.InternalPromotionCode?.ExpandedObject;
-            set => this.InternalPromotionCode = SetExpandableFieldObject(value, this.InternalPromotionCode);
+            set =>
+                this.InternalPromotionCode = SetExpandableFieldObject(
+                    value,
+                    this.InternalPromotionCode
+                );
         }
 
         [JsonProperty("promotion_code")]

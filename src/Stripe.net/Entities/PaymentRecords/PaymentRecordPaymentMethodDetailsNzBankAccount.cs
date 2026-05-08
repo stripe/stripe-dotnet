@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsNzBankAccount : StripeEntity<PaymentRecordPaymentMethodDetailsNzBankAccount>
+    public class PaymentRecordPaymentMethodDetailsNzBankAccount
+        : StripeEntity<PaymentRecordPaymentMethodDetailsNzBankAccount>
     {
         /// <summary>
         /// The name on the bank account. Only present if the account holder name is different from

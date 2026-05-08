@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationMerchantCardPaymentsDeclineOn : StripeEntity<AccountConfigurationMerchantCardPaymentsDeclineOn>
+    public class AccountConfigurationMerchantCardPaymentsDeclineOn
+        : StripeEntity<AccountConfigurationMerchantCardPaymentsDeclineOn>
     {
         /// <summary>
         /// Whether Stripe automatically declines charges with an incorrect ZIP or postal code. This

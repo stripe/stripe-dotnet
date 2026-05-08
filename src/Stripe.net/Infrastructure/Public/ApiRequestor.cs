@@ -72,7 +72,8 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
             where T : IStripeEntity;
 
         public abstract Task<Stream> RequestStreamingAsync(
@@ -81,19 +82,22 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default);
+            CancellationToken cancellationToken = default
+        );
 
         public abstract StripeResponse RawRequest(
             HttpMethod method,
             string path,
             string content = null,
-            RawRequestOptions requestOptions = null);
+            RawRequestOptions requestOptions = null
+        );
 
         public abstract Task<StripeResponse> RawRequestAsync(
             HttpMethod method,
             string path,
             string content = null,
             RawRequestOptions requestOptions = null,
-            CancellationToken cancellationToken = default);
+            CancellationToken cancellationToken = default
+        );
     }
 }

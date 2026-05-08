@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class InvoiceLineItemParentSubscriptionItemDetailsProrationDetails : StripeEntity<InvoiceLineItemParentSubscriptionItemDetailsProrationDetails>
+    public class InvoiceLineItemParentSubscriptionItemDetailsProrationDetails
+        : StripeEntity<InvoiceLineItemParentSubscriptionItemDetailsProrationDetails>
     {
         /// <summary>
         /// For a credit proration <c>line_item</c>, the original debit line_items to which the

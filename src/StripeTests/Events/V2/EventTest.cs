@@ -172,11 +172,9 @@ namespace StripeTests.V2
                 .Setup<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(new HttpResponseMessage
-                {
-                    Content = new StringContent(payload),
-                });
+                    ItExpr.IsAny<CancellationToken>()
+                )
+                .ReturnsAsync(new HttpResponseMessage { Content = new StringContent(payload) });
 
             var bte = this.DoParseSignedEventNotification(payload);
 
@@ -192,7 +190,11 @@ namespace StripeTests.V2
         /// <returns>An EventNotification derived class.</returns>
         private Stripe.V2.Core.EventNotification DoParseSignedEventNotification(string payload)
         {
-            var notif = this.stripeClient.ParseEventNotification(payload, GenerateSigHeader(payload), WebhookSecret);
+            var notif = this.stripeClient.ParseEventNotification(
+                payload,
+                GenerateSigHeader(payload),
+                WebhookSecret
+            );
 
             // Check to make sure this parsed the payload correctly
             Assert.NotNull(notif.Id);
@@ -214,11 +216,18 @@ namespace StripeTests.V2
         [Fact]
         public void ParseEventNotificationWithoutRelatedObject()
         {
-            var eventNotif = this.stripeClient.ParseEventNotification(v2KnownEventNoRelatedObjectPayload, GenerateSigHeader(v2KnownEventNoRelatedObjectPayload), WebhookSecret);
+            var eventNotif = this.stripeClient.ParseEventNotification(
+                v2KnownEventNoRelatedObjectPayload,
+                GenerateSigHeader(v2KnownEventNoRelatedObjectPayload),
+                WebhookSecret
+            );
             Assert.NotNull(eventNotif);
             Assert.Equal("evt_234", eventNotif.Id);
             Assert.Equal("v1.billing.meter.no_meter_found", eventNotif.Type);
-            Assert.Equal(new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc), eventNotif.Created);
+            Assert.Equal(
+                new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc),
+                eventNotif.Created
+            );
             Assert.True(eventNotif.Livemode);
             Assert.Null(eventNotif.Context);
         }
@@ -226,14 +235,23 @@ namespace StripeTests.V2
         [Fact]
         public void ParseEventNotificationWithRelatedObject()
         {
-            var eventNotif = this.stripeClient.ParseEventNotification(v2KnownEventPayload, GenerateSigHeader(v2KnownEventPayload), WebhookSecret);
+            var eventNotif = this.stripeClient.ParseEventNotification(
+                v2KnownEventPayload,
+                GenerateSigHeader(v2KnownEventPayload),
+                WebhookSecret
+            );
             Assert.NotNull(eventNotif);
             Assert.Equal("evt_234", eventNotif.Id);
             Assert.Equal("v1.billing.meter.error_report_triggered", eventNotif.Type);
-            Assert.Equal(new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc), eventNotif.Created);
+            Assert.Equal(
+                new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc),
+                eventNotif.Created
+            );
             Assert.True(eventNotif.Livemode);
             Assert.Equal("context 123", eventNotif.Context);
-            var evt = this.AssertAndCast<V1BillingMeterErrorReportTriggeredEventNotification>(eventNotif);
+            var evt = this.AssertAndCast<V1BillingMeterErrorReportTriggeredEventNotification>(
+                eventNotif
+            );
 
             Assert.NotNull(evt.RelatedObject);
             Assert.Equal("me_123", evt.RelatedObject.Id);
@@ -250,17 +268,27 @@ namespace StripeTests.V2
             Assert.NotNull(stripeEvent);
             Assert.Equal("evt_234", stripeEvent.Id);
             Assert.Equal("this.event.doesnt.exist", stripeEvent.Type);
-            Assert.Equal(new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc), stripeEvent.Created);
+            Assert.Equal(
+                new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc),
+                stripeEvent.Created
+            );
         }
 
         [Fact]
         public void ParseEventNotificationWithLivemodeFalse()
         {
-            var eventNotif = this.stripeClient.ParseEventNotification(v2KnownEventLivemodeFalsePayload, GenerateSigHeader(v2KnownEventLivemodeFalsePayload), WebhookSecret);
+            var eventNotif = this.stripeClient.ParseEventNotification(
+                v2KnownEventLivemodeFalsePayload,
+                GenerateSigHeader(v2KnownEventLivemodeFalsePayload),
+                WebhookSecret
+            );
             Assert.NotNull(eventNotif);
             Assert.Equal("evt_234", eventNotif.Id);
             Assert.Equal("v1.billing.meter.no_meter_found", eventNotif.Type);
-            Assert.Equal(new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc), eventNotif.Created);
+            Assert.Equal(
+                new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc),
+                eventNotif.Created
+            );
             Assert.False(eventNotif.Livemode);
             Assert.Null(eventNotif.Context);
         }
@@ -268,11 +296,18 @@ namespace StripeTests.V2
         [Fact]
         public void ParseEventNotificationWithReason()
         {
-            var eventNotif = this.stripeClient.ParseEventNotification(v2KnownEventWithReasonPayload, GenerateSigHeader(v2KnownEventWithReasonPayload), WebhookSecret);
+            var eventNotif = this.stripeClient.ParseEventNotification(
+                v2KnownEventWithReasonPayload,
+                GenerateSigHeader(v2KnownEventWithReasonPayload),
+                WebhookSecret
+            );
             Assert.NotNull(eventNotif);
             Assert.Equal("evt_234", eventNotif.Id);
             Assert.Equal("v1.billing.meter.no_meter_found", eventNotif.Type);
-            Assert.Equal(new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc), eventNotif.Created);
+            Assert.Equal(
+                new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc),
+                eventNotif.Created
+            );
             Assert.True(eventNotif.Livemode);
             Assert.Null(eventNotif.Context);
 
@@ -285,7 +320,13 @@ namespace StripeTests.V2
         [Fact]
         public void ParseEventNotificationWithInvalidSignature()
         {
-            var exception = Assert.Throws<StripeException>(() => this.stripeClient.ParseEventNotification(v2UnknownEventPayload, "invalid signature", WebhookSecret));
+            var exception = Assert.Throws<StripeException>(() =>
+                this.stripeClient.ParseEventNotification(
+                    v2UnknownEventPayload,
+                    "invalid signature",
+                    WebhookSecret
+                )
+            );
 
             Assert.Matches("header format is unexpected", exception.Message);
         }
@@ -293,7 +334,8 @@ namespace StripeTests.V2
         [Fact]
         public void RejectV1PayloadInParseEventNotification()
         {
-            var v1Payload = @"{
+            var v1Payload =
+                @"{
                 ""id"": ""evt_123"",
                 ""object"": ""event"",
                 ""type"": ""customer.created"",
@@ -306,7 +348,9 @@ namespace StripeTests.V2
                 this.stripeClient.ParseEventNotification(
                     v1Payload,
                     GenerateSigHeader(v1Payload),
-                    WebhookSecret));
+                    WebhookSecret
+                )
+            );
 
             Assert.Contains("EventUtility.ConstructEvent", exception.Message);
         }
@@ -314,12 +358,17 @@ namespace StripeTests.V2
         [Fact]
         public void ParseUnknownEventDirectly()
         {
-            var stripeEvent = JsonUtils.DeserializeObject<Stripe.V2.Core.Event>(v2UnknownEventPayload);
+            var stripeEvent = JsonUtils.DeserializeObject<Stripe.V2.Core.Event>(
+                v2UnknownEventPayload
+            );
             Assert.NotNull(stripeEvent);
             Assert.Equal("evt_234", stripeEvent.Id);
             Assert.Equal("v2.core.event", stripeEvent.Object);
             Assert.Equal("this.event.doesnt.exist", stripeEvent.Type);
-            Assert.Equal(new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc), stripeEvent.Created);
+            Assert.Equal(
+                new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc),
+                stripeEvent.Created
+            );
             Assert.Null(stripeEvent.Requestor);
         }
 
@@ -348,7 +397,10 @@ namespace StripeTests.V2
             Assert.Equal("meter_event_invalid_value", eventData.Reason.ErrorTypes[0].Code);
             Assert.Equal(1, eventData.Reason.ErrorTypes[0].ErrorCount);
             Assert.Equal(1, eventData.Reason.ErrorTypes[0].SampleErrors.Count);
-            Assert.Equal("choose better", eventData.Reason.ErrorTypes[0].SampleErrors[0].ErrorMessage);
+            Assert.Equal(
+                "choose better",
+                eventData.Reason.ErrorTypes[0].SampleErrors[0].ErrorMessage
+            );
             Assert.Equal("a", eventData.Reason.ErrorTypes[0].SampleErrors[0].Request.Identifier);
 #pragma warning restore xUnit2013 // Do not use equality check to check for collection size.
         }
@@ -359,7 +411,8 @@ namespace StripeTests.V2
             var parsed = this.DoParseSignedEventAndFetch(v2KnownEventPayload);
             var stripeEvent = this.AssertAndCast<V1BillingMeterErrorReportTriggeredEvent>(parsed);
 
-            var relatedObjectPayload = @"
+            var relatedObjectPayload =
+                @"
             {
                 ""id"": ""meter_123"",
                 ""object"": ""billing.meter""
@@ -368,11 +421,11 @@ namespace StripeTests.V2
                 .Setup<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(new HttpResponseMessage
-                {
-                    Content = new StringContent(relatedObjectPayload),
-                });
+                    ItExpr.IsAny<CancellationToken>()
+                )
+                .ReturnsAsync(
+                    new HttpResponseMessage { Content = new StringContent(relatedObjectPayload) }
+                );
             var relatedObject = stripeEvent.FetchRelatedObject();
             Assert.Equal("meter_123", relatedObject.Id);
             Assert.Equal("billing.meter", relatedObject.Object);
@@ -382,11 +435,14 @@ namespace StripeTests.V2
         public void FetchRelatedObjectFromNotif()
         {
             var notif = this.DoParseSignedEventNotification(v2KnownEventPayload);
-            var evt = this.AssertAndCast<V1BillingMeterErrorReportTriggeredEventNotification>(notif);
+            var evt = this.AssertAndCast<V1BillingMeterErrorReportTriggeredEventNotification>(
+                notif
+            );
 
             Assert.IsType<StripeContext>(evt.Context);
 
-            var relatedObjectPayload = @"
+            var relatedObjectPayload =
+                @"
             {
                 ""id"": ""meter_123"",
                 ""object"": ""billing.meter""
@@ -395,11 +451,11 @@ namespace StripeTests.V2
                 .Setup<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(new HttpResponseMessage
-                {
-                    Content = new StringContent(relatedObjectPayload),
-                });
+                    ItExpr.IsAny<CancellationToken>()
+                )
+                .ReturnsAsync(
+                    new HttpResponseMessage { Content = new StringContent(relatedObjectPayload) }
+                );
             var relatedObject = evt.FetchRelatedObject();
             Assert.IsType<Meter>(relatedObject);
 
@@ -411,9 +467,11 @@ namespace StripeTests.V2
                     "SendAsync",
                     Times.AtLeastOnce(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Headers.Contains("Stripe-Request-Trigger") &&
-                        m.Headers.GetValues("Stripe-Request-Trigger").First() == "event=evt_234"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Headers.Contains("Stripe-Request-Trigger")
+                        && m.Headers.GetValues("Stripe-Request-Trigger").First() == "event=evt_234"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
         [Fact]
@@ -432,9 +490,11 @@ namespace StripeTests.V2
         public async void FetchRelatedObjectAsync()
         {
             var parsed = this.DoParseSignedEventNotification(v2KnownEventPayload);
-            var stripeEvent = this.AssertAndCast<V1BillingMeterErrorReportTriggeredEventNotification>(parsed);
+            var stripeEvent =
+                this.AssertAndCast<V1BillingMeterErrorReportTriggeredEventNotification>(parsed);
 
-            var relatedObjectPayload = @"
+            var relatedObjectPayload =
+                @"
             {
                 ""id"": ""meter_123"",
                 ""object"": ""billing.meter""
@@ -443,11 +503,11 @@ namespace StripeTests.V2
                 .Setup<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(new HttpResponseMessage
-                {
-                    Content = new StringContent(relatedObjectPayload),
-                });
+                    ItExpr.IsAny<CancellationToken>()
+                )
+                .ReturnsAsync(
+                    new HttpResponseMessage { Content = new StringContent(relatedObjectPayload) }
+                );
             var relatedObject = await stripeEvent.FetchRelatedObjectAsync();
             Assert.Equal("meter_123", relatedObject.Id);
             Assert.Equal("billing.meter", relatedObject.Object);
@@ -457,9 +517,11 @@ namespace StripeTests.V2
                     "SendAsync",
                     Times.AtLeastOnce(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Headers.Contains("Stripe-Request-Trigger") &&
-                        m.Headers.GetValues("Stripe-Request-Trigger").First() == "event=evt_234"),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Headers.Contains("Stripe-Request-Trigger")
+                        && m.Headers.GetValues("Stripe-Request-Trigger").First() == "event=evt_234"
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
         [Fact]
@@ -469,11 +531,14 @@ namespace StripeTests.V2
                 .Setup<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(new HttpResponseMessage
-                {
-                    Content = new StringContent(v2KnownEventWithDataPayload),
-                });
+                    ItExpr.IsAny<CancellationToken>()
+                )
+                .ReturnsAsync(
+                    new HttpResponseMessage
+                    {
+                        Content = new StringContent(v2KnownEventWithDataPayload),
+                    }
+                );
 
             var v2EventService = new Stripe.V2.Core.EventService(this.stripeClient);
             var v2Event = await v2EventService.GetAsync("evt_234");

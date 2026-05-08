@@ -7,9 +7,7 @@ namespace StripeTests
     public class SubscriptionScheduleTest : BaseStripeTest
     {
         public SubscriptionScheduleTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -25,7 +23,9 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            var json = GetResourceAsString("api_fixtures.subscription_schedule_with_expansions.json");
+            var json = GetResourceAsString(
+                "api_fixtures.subscription_schedule_with_expansions.json"
+            );
             var schedule = JsonSerializer.Deserialize<SubscriptionSchedule>(json);
             Assert.NotNull(schedule);
             Assert.IsType<SubscriptionSchedule>(schedule);

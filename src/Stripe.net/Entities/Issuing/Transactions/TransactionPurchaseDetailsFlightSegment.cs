@@ -6,7 +6,8 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class TransactionPurchaseDetailsFlightSegment : StripeEntity<TransactionPurchaseDetailsFlightSegment>
+    public class TransactionPurchaseDetailsFlightSegment
+        : StripeEntity<TransactionPurchaseDetailsFlightSegment>
     {
         /// <summary>
         /// The three-letter IATA airport code of the flight's destination.

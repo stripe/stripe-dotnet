@@ -7,37 +7,52 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class MandateService : Service,
-        IRetrievable<Mandate, MandateGetOptions>
+    public class MandateService : Service, IRetrievable<Mandate, MandateGetOptions>
     {
-        public MandateService()
-        {
-        }
+        public MandateService() { }
 
         internal MandateService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public MandateService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>Retrieves a Mandate object.</p>.
+        /// </summary>
+        public virtual Mandate Get(
+            string id,
+            MandateGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<Mandate>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/mandates/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Retrieves a Mandate object.</p>.
         /// </summary>
-        public virtual Mandate Get(string id, MandateGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<Mandate> GetAsync(
+            string id,
+            MandateGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<Mandate>(BaseAddress.Api, HttpMethod.Get, $"/v1/mandates/{WebUtility.UrlEncode(id)}", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Retrieves a Mandate object.</p>.
-        /// </summary>
-        public virtual Task<Mandate> GetAsync(string id, MandateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<Mandate>(BaseAddress.Api, HttpMethod.Get, $"/v1/mandates/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Mandate>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/mandates/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

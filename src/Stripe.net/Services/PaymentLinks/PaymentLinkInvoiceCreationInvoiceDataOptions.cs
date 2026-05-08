@@ -7,7 +7,10 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentLinkInvoiceCreationInvoiceDataOptions : INestedOptions, IHasMetadata, IHasSetTracking
+    public class PaymentLinkInvoiceCreationInvoiceDataOptions
+        : INestedOptions,
+            IHasMetadata,
+            IHasSetTracking
     {
         private List<string> accountTaxIds;
         private List<PaymentLinkInvoiceCreationInvoiceDataCustomFieldOptions> customFields;

@@ -6,7 +6,8 @@ namespace Stripe.Tax
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CalculationTaxBreakdownTaxRateDetailsFlatAmount : StripeEntity<CalculationTaxBreakdownTaxRateDetailsFlatAmount>
+    public class CalculationTaxBreakdownTaxRateDetailsFlatAmount
+        : StripeEntity<CalculationTaxBreakdownTaxRateDetailsFlatAmount>
     {
         /// <summary>
         /// Amount of the tax when the <c>rate_type</c> is <c>flat_amount</c>. This positive integer

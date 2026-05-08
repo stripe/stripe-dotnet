@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ChargePaymentMethodDetailsCardExtendedAuthorization : StripeEntity<ChargePaymentMethodDetailsCardExtendedAuthorization>
+    public class ChargePaymentMethodDetailsCardExtendedAuthorization
+        : StripeEntity<ChargePaymentMethodDetailsCardExtendedAuthorization>
     {
         /// <summary>
         /// Indicates whether or not the capture window is extended beyond the standard

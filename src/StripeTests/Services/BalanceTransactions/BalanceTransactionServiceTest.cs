@@ -3,7 +3,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -16,15 +15,13 @@ namespace StripeTests
 
         public BalanceTransactionServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new BalanceTransactionService(this.StripeClient);
 
-            this.listOptions = new BalanceTransactionListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new BalanceTransactionListOptions { Limit = 1 };
         }
 
         [Fact]
@@ -78,7 +75,9 @@ namespace StripeTests
         [Fact]
         public async Task ListAutoPagingAsync()
         {
-            var balanceTransaction = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            var balanceTransaction = await this
+                .service.ListAutoPagingAsync(this.listOptions)
+                .FirstAsync();
             Assert.NotNull(balanceTransaction);
             Assert.Equal("balance_transaction", balanceTransaction.Object);
         }

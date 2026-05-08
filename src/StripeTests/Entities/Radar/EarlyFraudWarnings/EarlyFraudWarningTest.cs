@@ -8,9 +8,7 @@ namespace StripeTests.Radar
     public class EarlyFraudWarningTest : BaseStripeTest
     {
         public EarlyFraudWarningTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -26,10 +24,7 @@ namespace StripeTests.Radar
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "charge",
-            };
+            string[] expansions = { "charge" };
 
             string json = this.GetFixture("/v1/radar/early_fraud_warnings/issfr_123", expansions);
             var warning = JsonSerializer.Deserialize<EarlyFraudWarning>(json);

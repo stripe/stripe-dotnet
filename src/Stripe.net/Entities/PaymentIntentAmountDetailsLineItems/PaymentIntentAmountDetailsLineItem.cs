@@ -6,7 +6,10 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentAmountDetailsLineItem : StripeEntity<PaymentIntentAmountDetailsLineItem>, IHasId, IHasObject
+    public class PaymentIntentAmountDetailsLineItem
+        : StripeEntity<PaymentIntentAmountDetailsLineItem>,
+            IHasId,
+            IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.

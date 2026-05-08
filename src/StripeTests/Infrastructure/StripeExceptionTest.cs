@@ -7,9 +7,7 @@ namespace StripeTests
     public class StripeExceptionTest : BaseStripeTest
     {
         public StripeExceptionTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public async Task SetsStripeResponse()
@@ -18,8 +16,9 @@ namespace StripeTests
             // and so will throw an exception if we provide zero params.
             var exception = await Assert.ThrowsAsync<StripeException>(async () =>
             {
-                await new PaymentIntentService(this.StripeClient)
-                    .CreateAsync(new PaymentIntentCreateOptions());
+                await new PaymentIntentService(this.StripeClient).CreateAsync(
+                    new PaymentIntentCreateOptions()
+                );
             });
 
             Assert.NotNull(exception);

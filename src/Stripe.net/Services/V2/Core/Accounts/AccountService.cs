@@ -14,29 +14,35 @@ namespace Stripe.V2.Core
         private V2.Core.Accounts.PersonTokenService personTokens;
 
         internal AccountService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         internal AccountService(IStripeClient client)
-            : base(client)
-        {
-        }
+            : base(client) { }
 
-        public virtual V2.Core.Accounts.PersonService Persons => this.persons ??= new V2.Core.Accounts.PersonService(
-            this.Requestor);
+        public virtual V2.Core.Accounts.PersonService Persons =>
+            this.persons ??= new V2.Core.Accounts.PersonService(this.Requestor);
 
-        public virtual V2.Core.Accounts.PersonTokenService PersonTokens => this.personTokens ??= new V2.Core.Accounts.PersonTokenService(
-            this.Requestor);
+        public virtual V2.Core.Accounts.PersonTokenService PersonTokens =>
+            this.personTokens ??= new V2.Core.Accounts.PersonTokenService(this.Requestor);
 
         /// <summary>
         /// Removes access to the Account and its associated resources. Closed Accounts can no
         /// longer be operated on, but limited information can still be retrieved through the API in
         /// order to be able to track their history.
         /// </summary>
-        public virtual Account Close(string id, AccountCloseOptions options = null, RequestOptions requestOptions = null)
+        public virtual Account Close(
+            string id,
+            AccountCloseOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Account>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/accounts/{WebUtility.UrlEncode(id)}/close", options, requestOptions);
+            return this.Request<Account>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v2/core/accounts/{WebUtility.UrlEncode(id)}/close",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -44,9 +50,21 @@ namespace Stripe.V2.Core
         /// longer be operated on, but limited information can still be retrieved through the API in
         /// order to be able to track their history.
         /// </summary>
-        public virtual Task<Account> CloseAsync(string id, AccountCloseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Account> CloseAsync(
+            string id,
+            AccountCloseOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Account>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/accounts/{WebUtility.UrlEncode(id)}/close", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Account>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v2/core/accounts/{WebUtility.UrlEncode(id)}/close",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -56,9 +74,18 @@ namespace Stripe.V2.Core
         /// configured as any or all of the following configurations: Customer, Merchant and/or
         /// Recipient.
         /// </summary>
-        public virtual Account Create(AccountCreateOptions options, RequestOptions requestOptions = null)
+        public virtual Account Create(
+            AccountCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Account>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/accounts", options, requestOptions);
+            return this.Request<Account>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v2/core/accounts",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -68,73 +95,164 @@ namespace Stripe.V2.Core
         /// configured as any or all of the following configurations: Customer, Merchant and/or
         /// Recipient.
         /// </summary>
-        public virtual Task<Account> CreateAsync(AccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Account> CreateAsync(
+            AccountCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Account>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/accounts", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Account>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v2/core/accounts",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// Retrieves the details of an Account.
         /// </summary>
-        public virtual Account Get(string id, AccountGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Account Get(
+            string id,
+            AccountGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Account>(BaseAddress.Api, HttpMethod.Get, $"/v2/core/accounts/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Account>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v2/core/accounts/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// Retrieves the details of an Account.
         /// </summary>
-        public virtual Task<Account> GetAsync(string id, AccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Account> GetAsync(
+            string id,
+            AccountGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Account>(BaseAddress.Api, HttpMethod.Get, $"/v2/core/accounts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Account>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v2/core/accounts/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// Returns a list of Accounts.
         /// </summary>
-        public virtual V2.StripeList<Account> List(AccountListOptions options = null, RequestOptions requestOptions = null)
+        public virtual V2.StripeList<Account> List(
+            AccountListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<V2.StripeList<Account>>(BaseAddress.Api, HttpMethod.Get, $"/v2/core/accounts", options, requestOptions);
+            return this.Request<V2.StripeList<Account>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v2/core/accounts",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// Returns a list of Accounts.
         /// </summary>
-        public virtual Task<V2.StripeList<Account>> ListAsync(AccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<V2.StripeList<Account>> ListAsync(
+            AccountListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<V2.StripeList<Account>>(BaseAddress.Api, HttpMethod.Get, $"/v2/core/accounts", options, requestOptions, cancellationToken);
+            return this.RequestAsync<V2.StripeList<Account>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v2/core/accounts",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// Returns a list of Accounts.
         /// </summary>
-        public virtual IEnumerable<Account> ListAutoPaging(AccountListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<Account> ListAutoPaging(
+            AccountListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.ListRequestAutoPaging<Account>($"/v2/core/accounts", options, requestOptions);
+            return this.ListRequestAutoPaging<Account>(
+                $"/v2/core/accounts",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// Returns a list of Accounts.
         /// </summary>
-        public virtual IAsyncEnumerable<Account> ListAutoPagingAsync(AccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<Account> ListAutoPagingAsync(
+            AccountListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<Account>($"/v2/core/accounts", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Account>(
+                $"/v2/core/accounts",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// Updates the details of an Account.
         /// </summary>
-        public virtual Account Update(string id, AccountUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Account Update(
+            string id,
+            AccountUpdateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Account>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/accounts/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Account>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v2/core/accounts/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// Updates the details of an Account.
         /// </summary>
-        public virtual Task<Account> UpdateAsync(string id, AccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Account> UpdateAsync(
+            string id,
+            AccountUpdateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Account>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/accounts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Account>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v2/core/accounts/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

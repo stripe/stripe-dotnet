@@ -22,7 +22,12 @@ namespace Stripe
     /// charges and transfers</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class Transfer : StripeEntity<Transfer>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
+    public class Transfer
+        : StripeEntity<Transfer>,
+            IHasId,
+            IHasMetadata,
+            IHasObject,
+            IBalanceTransactionSource
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -64,7 +69,11 @@ namespace Stripe
         public string BalanceTransactionId
         {
             get => this.InternalBalanceTransaction?.Id;
-            set => this.InternalBalanceTransaction = SetExpandableFieldId(value, this.InternalBalanceTransaction);
+            set =>
+                this.InternalBalanceTransaction = SetExpandableFieldId(
+                    value,
+                    this.InternalBalanceTransaction
+                );
         }
 
         /// <summary>
@@ -78,7 +87,11 @@ namespace Stripe
         public BalanceTransaction BalanceTransaction
         {
             get => this.InternalBalanceTransaction?.ExpandedObject;
-            set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
+            set =>
+                this.InternalBalanceTransaction = SetExpandableFieldObject(
+                    value,
+                    this.InternalBalanceTransaction
+                );
         }
 
         [JsonProperty("balance_transaction")]
@@ -138,7 +151,11 @@ namespace Stripe
         public Account Destination
         {
             get => this.InternalDestination?.ExpandedObject;
-            set => this.InternalDestination = SetExpandableFieldObject(value, this.InternalDestination);
+            set =>
+                this.InternalDestination = SetExpandableFieldObject(
+                    value,
+                    this.InternalDestination
+                );
         }
 
         [JsonProperty("destination")]
@@ -160,7 +177,11 @@ namespace Stripe
         public string DestinationPaymentId
         {
             get => this.InternalDestinationPayment?.Id;
-            set => this.InternalDestinationPayment = SetExpandableFieldId(value, this.InternalDestinationPayment);
+            set =>
+                this.InternalDestinationPayment = SetExpandableFieldId(
+                    value,
+                    this.InternalDestinationPayment
+                );
         }
 
         /// <summary>
@@ -175,7 +196,11 @@ namespace Stripe
         public Charge DestinationPayment
         {
             get => this.InternalDestinationPayment?.ExpandedObject;
-            set => this.InternalDestinationPayment = SetExpandableFieldObject(value, this.InternalDestinationPayment);
+            set =>
+                this.InternalDestinationPayment = SetExpandableFieldObject(
+                    value,
+                    this.InternalDestinationPayment
+                );
         }
 
         [JsonProperty("destination_payment")]
@@ -229,7 +254,11 @@ namespace Stripe
         public string SourceTransactionId
         {
             get => this.InternalSourceTransaction?.Id;
-            set => this.InternalSourceTransaction = SetExpandableFieldId(value, this.InternalSourceTransaction);
+            set =>
+                this.InternalSourceTransaction = SetExpandableFieldId(
+                    value,
+                    this.InternalSourceTransaction
+                );
         }
 
         /// <summary>
@@ -244,7 +273,11 @@ namespace Stripe
         public Charge SourceTransaction
         {
             get => this.InternalSourceTransaction?.ExpandedObject;
-            set => this.InternalSourceTransaction = SetExpandableFieldObject(value, this.InternalSourceTransaction);
+            set =>
+                this.InternalSourceTransaction = SetExpandableFieldObject(
+                    value,
+                    this.InternalSourceTransaction
+                );
         }
 
         [JsonProperty("source_transaction")]

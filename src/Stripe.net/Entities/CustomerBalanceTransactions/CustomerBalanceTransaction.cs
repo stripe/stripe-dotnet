@@ -20,7 +20,11 @@ namespace Stripe
     /// balance</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CustomerBalanceTransaction : StripeEntity<CustomerBalanceTransaction>, IHasId, IHasMetadata, IHasObject
+    public class CustomerBalanceTransaction
+        : StripeEntity<CustomerBalanceTransaction>,
+            IHasId,
+            IHasMetadata,
+            IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -55,7 +59,11 @@ namespace Stripe
         public string CheckoutSessionId
         {
             get => this.InternalCheckoutSession?.Id;
-            set => this.InternalCheckoutSession = SetExpandableFieldId(value, this.InternalCheckoutSession);
+            set =>
+                this.InternalCheckoutSession = SetExpandableFieldId(
+                    value,
+                    this.InternalCheckoutSession
+                );
         }
 
         /// <summary>
@@ -69,7 +77,11 @@ namespace Stripe
         public Checkout.Session CheckoutSession
         {
             get => this.InternalCheckoutSession?.ExpandedObject;
-            set => this.InternalCheckoutSession = SetExpandableFieldObject(value, this.InternalCheckoutSession);
+            set =>
+                this.InternalCheckoutSession = SetExpandableFieldObject(
+                    value,
+                    this.InternalCheckoutSession
+                );
         }
 
         [JsonProperty("checkout_session")]
@@ -113,7 +125,8 @@ namespace Stripe
         public CreditNote CreditNote
         {
             get => this.InternalCreditNote?.ExpandedObject;
-            set => this.InternalCreditNote = SetExpandableFieldObject(value, this.InternalCreditNote);
+            set =>
+                this.InternalCreditNote = SetExpandableFieldObject(value, this.InternalCreditNote);
         }
 
         [JsonProperty("credit_note")]

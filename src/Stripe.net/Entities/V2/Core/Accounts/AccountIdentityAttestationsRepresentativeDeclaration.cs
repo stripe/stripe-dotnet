@@ -7,7 +7,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountIdentityAttestationsRepresentativeDeclaration : StripeEntity<AccountIdentityAttestationsRepresentativeDeclaration>
+    public class AccountIdentityAttestationsRepresentativeDeclaration
+        : StripeEntity<AccountIdentityAttestationsRepresentativeDeclaration>
     {
         /// <summary>
         /// The time marking when the representative attestation was made. Represented as a RFC 3339

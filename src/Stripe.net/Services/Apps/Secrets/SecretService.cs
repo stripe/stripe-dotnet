@@ -7,92 +7,170 @@ namespace Stripe.Apps
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class SecretService : Service,
-        ICreatable<Secret, SecretCreateOptions>,
-        IListable<Secret, SecretListOptions>
+    public class SecretService
+        : Service,
+            ICreatable<Secret, SecretCreateOptions>,
+            IListable<Secret, SecretListOptions>
     {
-        public SecretService()
-        {
-        }
+        public SecretService() { }
 
         internal SecretService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public SecretService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>Create or replace a secret in the secret store.</p>.
+        /// </summary>
+        public virtual Secret Create(
+            SecretCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<Secret>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/apps/secrets",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Create or replace a secret in the secret store.</p>.
         /// </summary>
-        public virtual Secret Create(SecretCreateOptions options, RequestOptions requestOptions = null)
+        public virtual Task<Secret> CreateAsync(
+            SecretCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<Secret>(BaseAddress.Api, HttpMethod.Post, $"/v1/apps/secrets", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Create or replace a secret in the secret store.</p>.
-        /// </summary>
-        public virtual Task<Secret> CreateAsync(SecretCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<Secret>(BaseAddress.Api, HttpMethod.Post, $"/v1/apps/secrets", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>Deletes a secret from the secret store by name and scope.</p>.
-        /// </summary>
-        public virtual Secret DeleteWhere(SecretDeleteWhereOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<Secret>(BaseAddress.Api, HttpMethod.Post, $"/v1/apps/secrets/delete", options, requestOptions);
+            return this.RequestAsync<Secret>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/apps/secrets",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Deletes a secret from the secret store by name and scope.</p>.
         /// </summary>
-        public virtual Task<Secret> DeleteWhereAsync(SecretDeleteWhereOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Secret DeleteWhere(
+            SecretDeleteWhereOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<Secret>(BaseAddress.Api, HttpMethod.Post, $"/v1/apps/secrets/delete", options, requestOptions, cancellationToken);
+            return this.Request<Secret>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/apps/secrets/delete",
+                options,
+                requestOptions
+            );
+        }
+
+        /// <summary>
+        /// <p>Deletes a secret from the secret store by name and scope.</p>.
+        /// </summary>
+        public virtual Task<Secret> DeleteWhereAsync(
+            SecretDeleteWhereOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return this.RequestAsync<Secret>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/apps/secrets/delete",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Finds a secret in the secret store by name and scope.</p>.
         /// </summary>
-        public virtual Secret Find(SecretFindOptions options = null, RequestOptions requestOptions = null)
+        public virtual Secret Find(
+            SecretFindOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Secret>(BaseAddress.Api, HttpMethod.Get, $"/v1/apps/secrets/find", options, requestOptions);
+            return this.Request<Secret>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/apps/secrets/find",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Finds a secret in the secret store by name and scope.</p>.
         /// </summary>
-        public virtual Task<Secret> FindAsync(SecretFindOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Secret> FindAsync(
+            SecretFindOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Secret>(BaseAddress.Api, HttpMethod.Get, $"/v1/apps/secrets/find", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Secret>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/apps/secrets/find",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>List all secrets stored on the given scope.</p>.
         /// </summary>
-        public virtual StripeList<Secret> List(SecretListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Secret> List(
+            SecretListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeList<Secret>>(BaseAddress.Api, HttpMethod.Get, $"/v1/apps/secrets", options, requestOptions);
+            return this.Request<StripeList<Secret>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/apps/secrets",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>List all secrets stored on the given scope.</p>.
         /// </summary>
-        public virtual Task<StripeList<Secret>> ListAsync(SecretListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<Secret>> ListAsync(
+            SecretListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeList<Secret>>(BaseAddress.Api, HttpMethod.Get, $"/v1/apps/secrets", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Secret>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/apps/secrets",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>List all secrets stored on the given scope.</p>.
         /// </summary>
-        public virtual IEnumerable<Secret> ListAutoPaging(SecretListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<Secret> ListAutoPaging(
+            SecretListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
             return this.ListRequestAutoPaging<Secret>($"/v1/apps/secrets", options, requestOptions);
         }
@@ -100,9 +178,18 @@ namespace Stripe.Apps
         /// <summary>
         /// <p>List all secrets stored on the given scope.</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<Secret> ListAutoPagingAsync(SecretListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<Secret> ListAutoPagingAsync(
+            SecretListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<Secret>($"/v1/apps/secrets", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Secret>(
+                $"/v1/apps/secrets",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

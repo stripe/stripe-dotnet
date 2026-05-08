@@ -28,7 +28,10 @@ namespace Stripe
         [JsonConverter(typeof(AnyOfConverter))]
         [STJS.JsonPropertyName("billing_cycle_anchor")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-        public AnyOf<DateTime?, InvoiceSubscriptionDetailsBillingCycleAnchor> BillingCycleAnchor { get; set; }
+        public AnyOf<
+            DateTime?,
+            InvoiceSubscriptionDetailsBillingCycleAnchor
+        > BillingCycleAnchor { get; set; }
 
         /// <summary>
         /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.

@@ -6,7 +6,8 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ReaderActionConfirmPaymentIntentConfirmConfig : StripeEntity<ReaderActionConfirmPaymentIntentConfirmConfig>
+    public class ReaderActionConfirmPaymentIntentConfirmConfig
+        : StripeEntity<ReaderActionConfirmPaymentIntentConfirmConfig>
     {
         /// <summary>
         /// If the customer doesn't abandon authenticating the payment, they're redirected to this

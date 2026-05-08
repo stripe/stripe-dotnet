@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentNextActionBoletoDisplayDetails : StripeEntity<PaymentIntentNextActionBoletoDisplayDetails>
+    public class PaymentIntentNextActionBoletoDisplayDetails
+        : StripeEntity<PaymentIntentNextActionBoletoDisplayDetails>
     {
         /// <summary>
         /// The timestamp after which the boleto expires.

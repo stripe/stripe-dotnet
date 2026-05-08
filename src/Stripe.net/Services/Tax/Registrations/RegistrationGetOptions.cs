@@ -6,7 +6,5 @@ namespace Stripe.Tax
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class RegistrationGetOptions : BaseOptions
-    {
-    }
+    public class RegistrationGetOptions : BaseOptions { }
 }

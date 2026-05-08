@@ -6,7 +6,5 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class OutboundTransferCancelOptions : BaseOptions
-    {
-    }
+    public class OutboundTransferCancelOptions : BaseOptions { }
 }

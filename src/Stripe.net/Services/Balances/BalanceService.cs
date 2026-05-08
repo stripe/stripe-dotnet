@@ -8,19 +8,13 @@ namespace Stripe
 
     public class BalanceService : Service, ISingletonRetrievable<Balance>
     {
-        public BalanceService()
-        {
-        }
+        public BalanceService() { }
 
         internal BalanceService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public BalanceService(IStripeClient client)
-            : base(client)
-        {
-        }
+            : base(client) { }
 
         /// <summary>
         /// <p>Retrieves the current account balance, based on the authentication that was used to
@@ -30,7 +24,13 @@ namespace Stripe
         /// </summary>
         public virtual Balance Get(RequestOptions requestOptions = null)
         {
-            return this.Request<Balance>(BaseAddress.Api, HttpMethod.Get, $"/v1/balance", null, requestOptions);
+            return this.Request<Balance>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/balance",
+                null,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -39,9 +39,19 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/account-balances#accounting-for-negative-balances">Accounting
         /// for negative balances</a>.</p>.
         /// </summary>
-        public virtual Task<Balance> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Balance> GetAsync(
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Balance>(BaseAddress.Api, HttpMethod.Get, $"/v1/balance", null, requestOptions, cancellationToken);
+            return this.RequestAsync<Balance>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/balance",
+                null,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -52,7 +62,13 @@ namespace Stripe
         /// </summary>
         public virtual Balance Get(BalanceGetOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Balance>(BaseAddress.Api, HttpMethod.Get, $"/v1/balance", options, requestOptions);
+            return this.Request<Balance>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/balance",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -61,9 +77,20 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/account-balances#accounting-for-negative-balances">Accounting
         /// for negative balances</a>.</p>.
         /// </summary>
-        public virtual Task<Balance> GetAsync(BalanceGetOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Balance> GetAsync(
+            BalanceGetOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Balance>(BaseAddress.Api, HttpMethod.Get, $"/v1/balance", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Balance>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/balance",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

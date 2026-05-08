@@ -6,21 +6,19 @@ namespace Stripe
 
     public class StripeException : Exception
     {
-        public StripeException()
-        {
-        }
+        public StripeException() { }
 
         public StripeException(string message)
-            : base(message)
-        {
-        }
+            : base(message) { }
 
         public StripeException(string message, Exception err)
-            : base(message, err)
-        {
-        }
+            : base(message, err) { }
 
-        public StripeException(HttpStatusCode httpStatusCode, StripeError stripeError, string message)
+        public StripeException(
+            HttpStatusCode httpStatusCode,
+            StripeError stripeError,
+            string message
+        )
             : base(message)
         {
             this.HttpStatusCode = httpStatusCode;
@@ -40,7 +38,11 @@ namespace Stripe
 
         public StripeResponse StripeResponse { get; set; }
 
-        internal static StripeException ParseV2Exception(string type, StripeResponse response, JsonElement body)
+        internal static StripeException ParseV2Exception(
+            string type,
+            StripeResponse response,
+            JsonElement body
+        )
         {
             var httpStatusCode = response.StatusCode;
             StripeException ret;

@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountIdentityIndividualDocuments : StripeEntity<AccountIdentityIndividualDocuments>
+    public class AccountIdentityIndividualDocuments
+        : StripeEntity<AccountIdentityIndividualDocuments>
     {
         /// <summary>
         /// One or more documents that demonstrate proof that this person is authorized to represent

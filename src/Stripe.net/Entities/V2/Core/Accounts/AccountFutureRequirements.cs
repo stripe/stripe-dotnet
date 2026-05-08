@@ -22,7 +22,8 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("minimum_transition_date")]
         [STJS.JsonPropertyName("minimum_transition_date")]
-        public DateTime? MinimumTransitionDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime? MinimumTransitionDate { get; set; } =
+            Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// An object containing an overview of requirements for the Account.

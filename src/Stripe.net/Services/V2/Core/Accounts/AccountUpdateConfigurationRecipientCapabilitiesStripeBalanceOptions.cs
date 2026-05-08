@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountUpdateConfigurationRecipientCapabilitiesStripeBalanceOptions : INestedOptions
+    public class AccountUpdateConfigurationRecipientCapabilitiesStripeBalanceOptions
+        : INestedOptions
     {
         /// <summary>
         /// Enables this Account to receive /v1/transfers into their Stripe Balance (/v1/balance).

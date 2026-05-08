@@ -14,8 +14,7 @@ namespace StripeTests.Wholesome
     /// </summary>
     public class NoDuplicateJsonPropertyValues : WholesomeTest
     {
-        private const string AssertionMessage =
-            "Found at least one duplicate JsonProperty name.";
+        private const string AssertionMessage = "Found at least one duplicate JsonProperty name.";
 
         [Fact]
         public void Check()

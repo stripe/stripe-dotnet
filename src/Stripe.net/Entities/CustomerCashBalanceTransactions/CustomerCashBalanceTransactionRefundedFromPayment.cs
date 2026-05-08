@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CustomerCashBalanceTransactionRefundedFromPayment : StripeEntity<CustomerCashBalanceTransactionRefundedFromPayment>
+    public class CustomerCashBalanceTransactionRefundedFromPayment
+        : StripeEntity<CustomerCashBalanceTransactionRefundedFromPayment>
     {
         #region Expandable Refund
 

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentPaymentMethodOptionsKlarnaSubscriptionNextBillingOptions : INestedOptions
+    public class PaymentIntentPaymentMethodOptionsKlarnaSubscriptionNextBillingOptions
+        : INestedOptions
     {
         /// <summary>
         /// The amount of the next charge for the subscription.

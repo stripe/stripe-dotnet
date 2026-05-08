@@ -137,7 +137,11 @@ namespace Stripe
         [JsonConverter(typeof(AnyOfConverter))]
         [STJS.JsonPropertyName("external_account")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-        public AnyOf<string, AccountBankAccountOptions, AccountCardOptions> ExternalAccount { get; set; }
+        public AnyOf<
+            string,
+            AccountBankAccountOptions,
+            AccountCardOptions
+        > ExternalAccount { get; set; }
 
         /// <summary>
         /// A hash of account group type to tokens. These are account groups this account should be

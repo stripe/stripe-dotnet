@@ -17,29 +17,35 @@ namespace Stripe.Infrastructure
     {
         public override bool CanConvert(Type typeToConvert)
         {
-            return typeToConvert == typeof(DateTime) ||
-                   typeToConvert == typeof(DateTime?);
+            return typeToConvert == typeof(DateTime) || typeToConvert == typeof(DateTime?);
         }
 
-        public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
+        public override JsonConverter CreateConverter(
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
         {
             if (typeToConvert == typeof(DateTime?))
             {
-                return (JsonConverter)Activator.CreateInstance(
-                    typeof(NullableDateTimeConverterInner),
-                    BindingFlags.Instance | BindingFlags.Public,
-                    binder: null,
-                    args: null,
-                    culture: null);
+                return (JsonConverter)
+                    Activator.CreateInstance(
+                        typeof(NullableDateTimeConverterInner),
+                        BindingFlags.Instance | BindingFlags.Public,
+                        binder: null,
+                        args: null,
+                        culture: null
+                    );
             }
             else
             {
-                return (JsonConverter)Activator.CreateInstance(
-                    typeof(DateTimeConverterInner),
-                    BindingFlags.Instance | BindingFlags.Public,
-                    binder: null,
-                    args: null,
-                    culture: null);
+                return (JsonConverter)
+                    Activator.CreateInstance(
+                        typeof(DateTimeConverterInner),
+                        BindingFlags.Instance | BindingFlags.Public,
+                        binder: null,
+                        args: null,
+                        culture: null
+                    );
             }
         }
 
@@ -52,7 +58,11 @@ namespace Stripe.Infrastructure
             /// <param name="typeToConvert">Type of the object.</param>
             /// <param name="options">The calling serializer's options.</param>
             /// <returns>The object value.</returns>
-            public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+            public override DateTime Read(
+                ref Utf8JsonReader reader,
+                Type typeToConvert,
+                JsonSerializerOptions options
+            )
             {
                 long seconds;
 
@@ -64,12 +74,19 @@ namespace Stripe.Infrastructure
                 {
                     if (!long.TryParse(reader.GetString(), out seconds))
                     {
-                        throw new JsonException(string.Format("Cannot convert invalid value to {0}.", typeToConvert));
+                        throw new JsonException(
+                            string.Format("Cannot convert invalid value to {0}.", typeToConvert)
+                        );
                     }
                 }
                 else
                 {
-                    throw new JsonException(string.Format("Unexpected token parsing date. Expected Integer or String, got {0}.", reader.TokenType));
+                    throw new JsonException(
+                        string.Format(
+                            "Unexpected token parsing date. Expected Integer or String, got {0}.",
+                            reader.TokenType
+                        )
+                    );
                 }
 
                 if (seconds >= 0)
@@ -90,7 +107,12 @@ namespace Stripe.Infrastructure
                 }
                 else
                 {
-                    throw new JsonException(string.Format("Cannot convert value that is before Unix epoch of 00:00:00 UTC on 1 January 1970 to {0}.", typeToConvert));
+                    throw new JsonException(
+                        string.Format(
+                            "Cannot convert value that is before Unix epoch of 00:00:00 UTC on 1 January 1970 to {0}.",
+                            typeToConvert
+                        )
+                    );
                 }
             }
 
@@ -100,13 +122,18 @@ namespace Stripe.Infrastructure
             /// <param name="writer">The <see cref="Utf8JsonWriter"/> to write to.</param>
             /// <param name="value">The value.</param>
             /// <param name="options">The calling serializer's options.</param>
-            public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
+            public override void Write(
+                Utf8JsonWriter writer,
+                DateTime value,
+                JsonSerializerOptions options
+            )
             {
                 long seconds;
 
                 if (value is DateTime dateTime)
                 {
-                    seconds = (long)(dateTime.ToUniversalTime() - DateTimeUtils.UnixEpoch).TotalSeconds;
+                    seconds = (long)
+                        (dateTime.ToUniversalTime() - DateTimeUtils.UnixEpoch).TotalSeconds;
                 }
                 else
                 {
@@ -115,7 +142,9 @@ namespace Stripe.Infrastructure
 
                 if (seconds < 0)
                 {
-                    throw new JsonException("Cannot convert date value that is before Unix epoch of 00:00:00 UTC on 1 January 1970.");
+                    throw new JsonException(
+                        "Cannot convert date value that is before Unix epoch of 00:00:00 UTC on 1 January 1970."
+                    );
                 }
 
                 writer.WriteNumberValue(seconds);
@@ -131,7 +160,11 @@ namespace Stripe.Infrastructure
             /// <param name="typeToConvert">Type of the object.</param>
             /// <param name="options">The calling serializer's options.</param>
             /// <returns>The object value.</returns>
-            public override DateTime? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+            public override DateTime? Read(
+                ref Utf8JsonReader reader,
+                Type typeToConvert,
+                JsonSerializerOptions options
+            )
             {
                 if (reader.TokenType == JsonTokenType.Null)
                 {
@@ -148,12 +181,19 @@ namespace Stripe.Infrastructure
                 {
                     if (!long.TryParse(reader.GetString(), out seconds))
                     {
-                        throw new JsonException(string.Format("Cannot convert invalid value to {0}.", typeToConvert));
+                        throw new JsonException(
+                            string.Format("Cannot convert invalid value to {0}.", typeToConvert)
+                        );
                     }
                 }
                 else
                 {
-                    throw new JsonException(string.Format("Unexpected token parsing date. Expected Integer, String, or Null, got {0}.", reader.TokenType));
+                    throw new JsonException(
+                        string.Format(
+                            "Unexpected token parsing date. Expected Integer, String, or Null, got {0}.",
+                            reader.TokenType
+                        )
+                    );
                 }
 
                 if (seconds >= 0)
@@ -174,7 +214,12 @@ namespace Stripe.Infrastructure
                 }
                 else
                 {
-                    throw new JsonException(string.Format("Cannot convert value that is before Unix epoch of 00:00:00 UTC on 1 January 1970 to {0}.", typeToConvert));
+                    throw new JsonException(
+                        string.Format(
+                            "Cannot convert value that is before Unix epoch of 00:00:00 UTC on 1 January 1970 to {0}.",
+                            typeToConvert
+                        )
+                    );
                 }
             }
 
@@ -184,7 +229,11 @@ namespace Stripe.Infrastructure
             /// <param name="writer">The <see cref="Utf8JsonWriter"/> to write to.</param>
             /// <param name="value">The value.</param>
             /// <param name="options">The calling serializer's options.</param>
-            public override void Write(Utf8JsonWriter writer, DateTime? value, JsonSerializerOptions options)
+            public override void Write(
+                Utf8JsonWriter writer,
+                DateTime? value,
+                JsonSerializerOptions options
+            )
             {
                 if (value == null)
                 {
@@ -192,11 +241,14 @@ namespace Stripe.Infrastructure
                     return;
                 }
 
-                long seconds = (long)(value.Value.ToUniversalTime() - DateTimeUtils.UnixEpoch).TotalSeconds;
+                long seconds = (long)
+                    (value.Value.ToUniversalTime() - DateTimeUtils.UnixEpoch).TotalSeconds;
 
                 if (seconds < 0)
                 {
-                    throw new JsonException("Cannot convert date value that is before Unix epoch of 00:00:00 UTC on 1 January 1970.");
+                    throw new JsonException(
+                        "Cannot convert date value that is before Unix epoch of 00:00:00 UTC on 1 January 1970."
+                    );
                 }
 
                 writer.WriteNumberValue(seconds);

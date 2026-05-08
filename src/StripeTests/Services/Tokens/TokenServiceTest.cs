@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -18,7 +17,8 @@ namespace StripeTests
 
         public TokenServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new TokenService(this.StripeClient);

@@ -7,7 +7,8 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfigurationFeaturesSubscriptionUpdateProduct : StripeEntity<ConfigurationFeaturesSubscriptionUpdateProduct>
+    public class ConfigurationFeaturesSubscriptionUpdateProduct
+        : StripeEntity<ConfigurationFeaturesSubscriptionUpdateProduct>
     {
         [JsonProperty("adjustable_quantity")]
         [STJS.JsonPropertyName("adjustable_quantity")]

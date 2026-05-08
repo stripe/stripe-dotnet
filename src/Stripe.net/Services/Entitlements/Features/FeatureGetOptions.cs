@@ -6,7 +6,5 @@ namespace Stripe.Entitlements
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class FeatureGetOptions : BaseOptions
-    {
-    }
+    public class FeatureGetOptions : BaseOptions { }
 }

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationTokenPaymentMethodOptionsCard : StripeEntity<ConfirmationTokenPaymentMethodOptionsCard>
+    public class ConfirmationTokenPaymentMethodOptionsCard
+        : StripeEntity<ConfirmationTokenPaymentMethodOptionsCard>
     {
         /// <summary>
         /// The <c>cvc_update</c> Token collected from the Payment Element.

@@ -4,7 +4,6 @@ namespace StripeTests.Issuing
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe.Issuing;
     using Xunit;
 
@@ -18,23 +17,18 @@ namespace StripeTests.Issuing
 
         public AuthorizationServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new AuthorizationService(this.StripeClient);
 
             this.updateOptions = new AuthorizationUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.listOptions = new AuthorizationListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new AuthorizationListOptions { Limit = 1 };
         }
 
         [Fact]
@@ -112,7 +106,9 @@ namespace StripeTests.Issuing
         [Fact]
         public async Task ListAutoPagingAsync()
         {
-            var authorization = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            var authorization = await this
+                .service.ListAutoPagingAsync(this.listOptions)
+                .FirstAsync();
             Assert.NotNull(authorization);
             Assert.Equal("issuing.authorization", authorization.Object);
         }

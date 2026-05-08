@@ -68,11 +68,7 @@ namespace StripeTests
         [Fact]
         public void SerializeExpanded()
         {
-            var nested = new TestNestedObject
-            {
-                Id = "id_expanded",
-                Bar = 42,
-            };
+            var nested = new TestNestedObject { Id = "id_expanded", Bar = 42 };
             var obj = new TestTopLevelObject
             {
                 InternalNested = new ExpandableField<TestNestedObject>
@@ -82,8 +78,7 @@ namespace StripeTests
                 },
             };
 
-            var expected =
-                "{\"nested\":{\"id\":\"id_expanded\",\"bar\":42}}";
+            var expected = "{\"nested\":{\"id\":\"id_expanded\",\"bar\":42}}";
             var actual = JsonSerializer.Serialize(obj);
             Assert.Equal(expected, actual);
 
@@ -97,11 +92,7 @@ namespace StripeTests
         [Fact]
         public void SerializeListOfExpanded()
         {
-            var nested = new TestNestedObject
-            {
-                Id = "id_expanded",
-                Bar = 42,
-            };
+            var nested = new TestNestedObject { Id = "id_expanded", Bar = 42 };
             var obj = new TestTopLevelObjectWithList
             {
                 InternalNestedList = new List<ExpandableField<TestNestedObject>>()
@@ -114,8 +105,7 @@ namespace StripeTests
                 },
             };
 
-            var expected =
-                "{\"nested_list\":[{\"id\":\"id_expanded\",\"bar\":42}]}";
+            var expected = "{\"nested_list\":[{\"id\":\"id_expanded\",\"bar\":42}]}";
             var actual = JsonSerializer.Serialize(obj);
             Assert.Equal(expected, actual);
 

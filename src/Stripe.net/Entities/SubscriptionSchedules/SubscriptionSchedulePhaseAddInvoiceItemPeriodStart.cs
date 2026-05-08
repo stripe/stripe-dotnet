@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SubscriptionSchedulePhaseAddInvoiceItemPeriodStart : StripeEntity<SubscriptionSchedulePhaseAddInvoiceItemPeriodStart>
+    public class SubscriptionSchedulePhaseAddInvoiceItemPeriodStart
+        : StripeEntity<SubscriptionSchedulePhaseAddInvoiceItemPeriodStart>
     {
         /// <summary>
         /// A precise Unix timestamp for the start of the invoice item period. Must be less than or

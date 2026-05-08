@@ -6,7 +6,8 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ReaderActionCollectInputsInputText : StripeEntity<ReaderActionCollectInputsInputText>
+    public class ReaderActionCollectInputsInputText
+        : StripeEntity<ReaderActionCollectInputsInputText>
     {
         /// <summary>
         /// The collected text value.

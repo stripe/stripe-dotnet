@@ -7,9 +7,7 @@ namespace StripeTests
     public class AccountTest : BaseStripeTest
     {
         public AccountTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -25,11 +23,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "settings.branding.icon",
-              "settings.branding.logo",
-            };
+            string[] expansions = { "settings.branding.icon", "settings.branding.logo" };
 
             string json = this.GetFixture("/v1/accounts/acct_123", expansions);
             var account = JsonSerializer.Deserialize<Account>(json);

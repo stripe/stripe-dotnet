@@ -7,7 +7,8 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CardholderIndividualCardIssuingUserTermsAcceptance : StripeEntity<CardholderIndividualCardIssuingUserTermsAcceptance>
+    public class CardholderIndividualCardIssuingUserTermsAcceptance
+        : StripeEntity<CardholderIndividualCardIssuingUserTermsAcceptance>
     {
         /// <summary>
         /// The Unix timestamp marking when the cardholder accepted the Authorized User Terms.

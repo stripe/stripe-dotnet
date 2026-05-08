@@ -6,11 +6,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(Infrastructure.STJStringEnumConverterFactory))]
     public class AccountSettingsPayoutsScheduleDelayDays : StringEnum
     {
-        public static readonly AccountSettingsPayoutsScheduleDelayDays Minimum = new AccountSettingsPayoutsScheduleDelayDays("minimum");
+        public static readonly AccountSettingsPayoutsScheduleDelayDays Minimum =
+            new AccountSettingsPayoutsScheduleDelayDays("minimum");
 
         private AccountSettingsPayoutsScheduleDelayDays(string value)
-            : base(value)
-        {
-        }
+            : base(value) { }
     }
 }

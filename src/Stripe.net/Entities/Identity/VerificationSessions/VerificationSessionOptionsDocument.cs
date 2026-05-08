@@ -7,7 +7,8 @@ namespace Stripe.Identity
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class VerificationSessionOptionsDocument : StripeEntity<VerificationSessionOptionsDocument>
+    public class VerificationSessionOptionsDocument
+        : StripeEntity<VerificationSessionOptionsDocument>
     {
         /// <summary>
         /// Array of strings of allowed identity document types. If the provided identity document

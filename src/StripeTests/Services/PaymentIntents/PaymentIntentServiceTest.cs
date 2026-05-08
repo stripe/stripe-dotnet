@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -22,19 +21,15 @@ namespace StripeTests
 
         public PaymentIntentServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new PaymentIntentService(this.StripeClient);
 
-            this.cancelOptions = new PaymentIntentCancelOptions
-            {
-            };
+            this.cancelOptions = new PaymentIntentCancelOptions { };
 
-            this.captureOptions = new PaymentIntentCaptureOptions
-            {
-                AmountToCapture = 123,
-            };
+            this.captureOptions = new PaymentIntentCaptureOptions { AmountToCapture = 123 };
 
             this.confirmOptions = new PaymentIntentConfirmOptions
             {
@@ -45,10 +40,7 @@ namespace StripeTests
             {
                 Amount = 1000,
                 Currency = "usd",
-                PaymentMethodTypes = new List<string>
-                {
-                    "card",
-                },
+                PaymentMethodTypes = new List<string> { "card" },
                 TransferData = new PaymentIntentTransferDataOptions
                 {
                     Amount = 100,
@@ -56,17 +48,11 @@ namespace StripeTests
                 },
             };
 
-            this.listOptions = new PaymentIntentListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new PaymentIntentListOptions { Limit = 1 };
 
             this.updateOptions = new PaymentIntentUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
         }
 
@@ -163,10 +149,7 @@ namespace StripeTests
         [Fact]
         public void GetWithClientSecret()
         {
-            var options = new PaymentIntentGetOptions
-            {
-                ClientSecret = "pi_client_secret_123",
-            };
+            var options = new PaymentIntentGetOptions { ClientSecret = "pi_client_secret_123" };
             var intent = this.service.Get(PaymentIntentId, options);
             this.AssertRequest(HttpMethod.Get, "/v1/payment_intents/pi_123");
             Assert.NotNull(intent);

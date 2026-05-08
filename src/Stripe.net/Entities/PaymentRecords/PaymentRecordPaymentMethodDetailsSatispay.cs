@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsSatispay : StripeEntity<PaymentRecordPaymentMethodDetailsSatispay>
+    public class PaymentRecordPaymentMethodDetailsSatispay
+        : StripeEntity<PaymentRecordPaymentMethodDetailsSatispay>
     {
         /// <summary>
         /// The Satispay transaction ID associated with this payment.

@@ -7,7 +7,9 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class CardholderIndividualCardIssuingUserTermsAcceptanceOptions : INestedOptions, IHasSetTracking
+    public class CardholderIndividualCardIssuingUserTermsAcceptanceOptions
+        : INestedOptions,
+            IHasSetTracking
     {
         private string userAgent;
 

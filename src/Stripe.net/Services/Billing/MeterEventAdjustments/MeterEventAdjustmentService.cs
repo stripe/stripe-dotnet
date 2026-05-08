@@ -6,37 +6,52 @@ namespace Stripe.Billing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class MeterEventAdjustmentService : Service,
-        ICreatable<MeterEventAdjustment, MeterEventAdjustmentCreateOptions>
+    public class MeterEventAdjustmentService
+        : Service,
+            ICreatable<MeterEventAdjustment, MeterEventAdjustmentCreateOptions>
     {
-        public MeterEventAdjustmentService()
-        {
-        }
+        public MeterEventAdjustmentService() { }
 
         internal MeterEventAdjustmentService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public MeterEventAdjustmentService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>Creates a billing meter event adjustment.</p>.
+        /// </summary>
+        public virtual MeterEventAdjustment Create(
+            MeterEventAdjustmentCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<MeterEventAdjustment>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/billing/meter_event_adjustments",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Creates a billing meter event adjustment.</p>.
         /// </summary>
-        public virtual MeterEventAdjustment Create(MeterEventAdjustmentCreateOptions options, RequestOptions requestOptions = null)
+        public virtual Task<MeterEventAdjustment> CreateAsync(
+            MeterEventAdjustmentCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<MeterEventAdjustment>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/meter_event_adjustments", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Creates a billing meter event adjustment.</p>.
-        /// </summary>
-        public virtual Task<MeterEventAdjustment> CreateAsync(MeterEventAdjustmentCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<MeterEventAdjustment>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/meter_event_adjustments", options, requestOptions, cancellationToken);
+            return this.RequestAsync<MeterEventAdjustment>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/billing/meter_event_adjustments",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

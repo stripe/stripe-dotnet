@@ -7,86 +7,215 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CardService : Service,
-        INestedCreatable<Card, CardCreateOptions>,
-        INestedDeletable<Card, CardDeleteOptions>,
-        INestedListable<Card, CardListOptions>,
-        INestedRetrievable<Card, CardGetOptions>,
-        INestedUpdatable<Card, CardUpdateOptions>
+    public class CardService
+        : Service,
+            INestedCreatable<Card, CardCreateOptions>,
+            INestedDeletable<Card, CardDeleteOptions>,
+            INestedListable<Card, CardListOptions>,
+            INestedRetrievable<Card, CardGetOptions>,
+            INestedUpdatable<Card, CardUpdateOptions>
     {
         public CardService()
-            : base()
-        {
-        }
+            : base() { }
 
         internal CardService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public CardService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        public virtual Card Create(
+            string parentId,
+            CardCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<Card>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources",
+                options,
+                requestOptions
+            );
         }
 
-        public virtual Card Create(string parentId, CardCreateOptions options, RequestOptions requestOptions = null)
+        public virtual Task<Card> CreateAsync(
+            string parentId,
+            CardCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources", options, requestOptions);
+            return this.RequestAsync<Card>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
-        public virtual Task<Card> CreateAsync(string parentId, CardCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Card Delete(
+            string parentId,
+            string id,
+            CardDeleteOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources", options, requestOptions, cancellationToken);
+            return this.Request<Card>(
+                BaseAddress.Api,
+                HttpMethod.Delete,
+                $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
-        public virtual Card Delete(string parentId, string id, CardDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<Card> DeleteAsync(
+            string parentId,
+            string id,
+            CardDeleteOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<Card>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.RequestAsync<Card>(
+                BaseAddress.Api,
+                HttpMethod.Delete,
+                $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
-        public virtual Task<Card> DeleteAsync(string parentId, string id, CardDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Card Get(
+            string parentId,
+            string id,
+            CardGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<Card>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.Request<Card>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
-        public virtual Card Get(string parentId, string id, CardGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<Card> GetAsync(
+            string parentId,
+            string id,
+            CardGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<Card>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.RequestAsync<Card>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
-        public virtual Task<Card> GetAsync(string parentId, string id, CardGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual StripeList<Card> List(
+            string parentId,
+            CardListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<Card>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.Request<StripeList<Card>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources",
+                options ?? new CardListOptions(),
+                requestOptions
+            );
         }
 
-        public virtual StripeList<Card> List(string parentId, CardListOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<StripeList<Card>> ListAsync(
+            string parentId,
+            CardListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<StripeList<Card>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources", options ?? new CardListOptions(), requestOptions);
+            return this.RequestAsync<StripeList<Card>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources",
+                options ?? new CardListOptions(),
+                requestOptions,
+                cancellationToken
+            );
         }
 
-        public virtual Task<StripeList<Card>> ListAsync(string parentId, CardListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IEnumerable<Card> ListAutoPaging(
+            string parentId,
+            CardListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<StripeList<Card>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources", options ?? new CardListOptions(), requestOptions, cancellationToken);
+            return this.ListRequestAutoPaging<Card>(
+                $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources",
+                options ?? new CardListOptions(),
+                requestOptions
+            );
         }
 
-        public virtual IEnumerable<Card> ListAutoPaging(string parentId, CardListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IAsyncEnumerable<Card> ListAutoPagingAsync(
+            string parentId,
+            CardListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPaging<Card>($"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources", options ?? new CardListOptions(), requestOptions);
+            return this.ListRequestAutoPagingAsync<Card>(
+                $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources",
+                options ?? new CardListOptions(),
+                requestOptions,
+                cancellationToken
+            );
         }
 
-        public virtual IAsyncEnumerable<Card> ListAutoPagingAsync(string parentId, CardListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Card Update(
+            string parentId,
+            string id,
+            CardUpdateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.ListRequestAutoPagingAsync<Card>($"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources", options ?? new CardListOptions(), requestOptions, cancellationToken);
+            return this.Request<Card>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
-        public virtual Card Update(string parentId, string id, CardUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Task<Card> UpdateAsync(
+            string parentId,
+            string id,
+            CardUpdateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources/{WebUtility.UrlEncode(id)}", options, requestOptions);
-        }
-
-        public virtual Task<Card> UpdateAsync(string parentId, string id, CardUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Card>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

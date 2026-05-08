@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationTokenPaymentMethodPreviewBacsDebit : StripeEntity<ConfirmationTokenPaymentMethodPreviewBacsDebit>
+    public class ConfirmationTokenPaymentMethodPreviewBacsDebit
+        : StripeEntity<ConfirmationTokenPaymentMethodPreviewBacsDebit>
     {
         /// <summary>
         /// Uniquely identifies this particular bank account. You can use this attribute to check

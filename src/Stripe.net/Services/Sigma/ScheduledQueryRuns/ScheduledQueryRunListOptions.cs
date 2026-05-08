@@ -6,7 +6,5 @@ namespace Stripe.Sigma
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ScheduledQueryRunListOptions : ListOptions
-    {
-    }
+    public class ScheduledQueryRunListOptions : ListOptions { }
 }

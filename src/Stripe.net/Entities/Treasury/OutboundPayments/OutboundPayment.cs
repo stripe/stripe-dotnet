@@ -116,7 +116,8 @@ namespace Stripe.Treasury
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("expected_arrival_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime ExpectedArrivalDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime ExpectedArrivalDate { get; set; } =
+            Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The FinancialAccount that funds were pulled from.
@@ -216,7 +217,11 @@ namespace Stripe.Treasury
         public Transaction Transaction
         {
             get => this.InternalTransaction?.ExpandedObject;
-            set => this.InternalTransaction = SetExpandableFieldObject(value, this.InternalTransaction);
+            set =>
+                this.InternalTransaction = SetExpandableFieldObject(
+                    value,
+                    this.InternalTransaction
+                );
         }
 
         [JsonProperty("transaction")]

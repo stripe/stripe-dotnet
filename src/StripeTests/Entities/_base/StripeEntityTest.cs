@@ -3,7 +3,6 @@ namespace StripeTests
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-
     using Newtonsoft.Json;
     using Stripe;
     using Stripe.Infrastructure;
@@ -12,11 +11,8 @@ namespace StripeTests
 
     public class StripeEntityTest : BaseStripeTest
     {
-        public StripeEntityTest(
-            StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+        public StripeEntityTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void FromJsonAuto()
@@ -77,7 +73,8 @@ namespace StripeTests
         [Fact]
         public void FromJsonDollarRefInMetadata()
         {
-            var json = "{\"integer\": 234, \"string\": \"String!\", \"metadata\": { \"$ref\": \"1\", \"foo\": \"bar\" }}";
+            var json =
+                "{\"integer\": 234, \"string\": \"String!\", \"metadata\": { \"$ref\": \"1\", \"foo\": \"bar\" }}";
 
             var o = StripeEntity.FromJson<TestEntity>(json);
 
@@ -100,7 +97,8 @@ namespace StripeTests
 
             var json = o.ToJson().Replace("\r\n", "\n");
 
-            var expectedJson = "{\n  \"integer\": 234,\n  \"string\": \"String!\",\n  \"metadata\": {\n    \"foo\": \"bar\"\n  },\n  \"nested\": null\n}";
+            var expectedJson =
+                "{\n  \"integer\": 234,\n  \"string\": \"String!\",\n  \"metadata\": {\n    \"foo\": \"bar\"\n  },\n  \"nested\": null\n}";
             Assert.Equal(expectedJson, json);
         }
 
@@ -112,16 +110,20 @@ namespace StripeTests
             var o = StripeEntity.FromJson<V2TestEntity>(json);
 
             Assert.NotNull(o);
-            Assert.Equal(DateTime.Parse("2022-09-18T13:22:18.123Z", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal), o.V2DateTime);
+            Assert.Equal(
+                DateTime.Parse(
+                    "2022-09-18T13:22:18.123Z",
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal
+                ),
+                o.V2DateTime
+            );
         }
 
         [Fact]
         public void ExpandableAccessors_Id()
         {
-            var o = new TestEntity
-            {
-                NestedId = "id_unexpanded",
-            };
+            var o = new TestEntity { NestedId = "id_unexpanded" };
 
             Assert.Equal("id_unexpanded", o.NestedId);
             Assert.Null(o.Nested);
@@ -195,7 +197,8 @@ namespace StripeTests
             // Access `items[data][0][id]`, a deeply nested string element
             Assert.Equal(
                 subscription.Items.Data[0].Id,
-                subscription.RawJObject["items"]["data"][0]["id"]);
+                subscription.RawJObject["items"]["data"][0]["id"]
+            );
         }
 
         [STJS.JsonConverter(typeof(STJStripeEntityConverter))]

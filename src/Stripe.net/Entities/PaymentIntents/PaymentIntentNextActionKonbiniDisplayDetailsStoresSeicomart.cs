@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentNextActionKonbiniDisplayDetailsStoresSeicomart : StripeEntity<PaymentIntentNextActionKonbiniDisplayDetailsStoresSeicomart>
+    public class PaymentIntentNextActionKonbiniDisplayDetailsStoresSeicomart
+        : StripeEntity<PaymentIntentNextActionKonbiniDisplayDetailsStoresSeicomart>
     {
         /// <summary>
         /// The confirmation number.

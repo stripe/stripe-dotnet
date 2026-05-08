@@ -10,66 +10,122 @@ namespace Stripe.TestHelpers.Issuing
 
     public class TransactionService : Service
     {
-        public TransactionService()
-        {
-        }
+        public TransactionService() { }
 
         internal TransactionService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public TransactionService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>Allows the user to capture an arbitrary amount, also known as a forced capture.</p>.
+        /// </summary>
+        public virtual Stripe.Issuing.Transaction CreateForceCapture(
+            TransactionCreateForceCaptureOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<Stripe.Issuing.Transaction>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/test_helpers/issuing/transactions/create_force_capture",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Allows the user to capture an arbitrary amount, also known as a forced capture.</p>.
         /// </summary>
-        public virtual Stripe.Issuing.Transaction CreateForceCapture(TransactionCreateForceCaptureOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<Stripe.Issuing.Transaction> CreateForceCaptureAsync(
+            TransactionCreateForceCaptureOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<Stripe.Issuing.Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/create_force_capture", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Allows the user to capture an arbitrary amount, also known as a forced capture.</p>.
-        /// </summary>
-        public virtual Task<Stripe.Issuing.Transaction> CreateForceCaptureAsync(TransactionCreateForceCaptureOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<Stripe.Issuing.Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/create_force_capture", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>Allows the user to refund an arbitrary amount, also known as a unlinked refund.</p>.
-        /// </summary>
-        public virtual Stripe.Issuing.Transaction CreateUnlinkedRefund(TransactionCreateUnlinkedRefundOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<Stripe.Issuing.Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/create_unlinked_refund", options, requestOptions);
+            return this.RequestAsync<Stripe.Issuing.Transaction>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/test_helpers/issuing/transactions/create_force_capture",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Allows the user to refund an arbitrary amount, also known as a unlinked refund.</p>.
         /// </summary>
-        public virtual Task<Stripe.Issuing.Transaction> CreateUnlinkedRefundAsync(TransactionCreateUnlinkedRefundOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Stripe.Issuing.Transaction CreateUnlinkedRefund(
+            TransactionCreateUnlinkedRefundOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<Stripe.Issuing.Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/create_unlinked_refund", options, requestOptions, cancellationToken);
+            return this.Request<Stripe.Issuing.Transaction>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/test_helpers/issuing/transactions/create_unlinked_refund",
+                options,
+                requestOptions
+            );
+        }
+
+        /// <summary>
+        /// <p>Allows the user to refund an arbitrary amount, also known as a unlinked refund.</p>.
+        /// </summary>
+        public virtual Task<Stripe.Issuing.Transaction> CreateUnlinkedRefundAsync(
+            TransactionCreateUnlinkedRefundOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return this.RequestAsync<Stripe.Issuing.Transaction>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/test_helpers/issuing/transactions/create_unlinked_refund",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Refund a test-mode Transaction.</p>.
         /// </summary>
-        public virtual Stripe.Issuing.Transaction Refund(string id, TransactionRefundOptions options = null, RequestOptions requestOptions = null)
+        public virtual Stripe.Issuing.Transaction Refund(
+            string id,
+            TransactionRefundOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Stripe.Issuing.Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/{WebUtility.UrlEncode(id)}/refund", options, requestOptions);
+            return this.Request<Stripe.Issuing.Transaction>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/test_helpers/issuing/transactions/{WebUtility.UrlEncode(id)}/refund",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Refund a test-mode Transaction.</p>.
         /// </summary>
-        public virtual Task<Stripe.Issuing.Transaction> RefundAsync(string id, TransactionRefundOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Stripe.Issuing.Transaction> RefundAsync(
+            string id,
+            TransactionRefundOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Stripe.Issuing.Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/{WebUtility.UrlEncode(id)}/refund", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Stripe.Issuing.Transaction>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/test_helpers/issuing/transactions/{WebUtility.UrlEncode(id)}/refund",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

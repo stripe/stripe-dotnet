@@ -9,8 +9,6 @@ namespace Stripe
         public static readonly PlanTierUpTo Inf = new PlanTierUpTo("inf");
 
         private PlanTierUpTo(string value)
-            : base(value)
-        {
-        }
+            : base(value) { }
     }
 }

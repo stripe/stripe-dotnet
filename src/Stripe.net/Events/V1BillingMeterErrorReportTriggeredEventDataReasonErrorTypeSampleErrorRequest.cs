@@ -6,7 +6,8 @@ namespace Stripe.Events
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-    public class V1BillingMeterErrorReportTriggeredEventDataReasonErrorTypeSampleErrorRequest : StripeEntity<V1BillingMeterErrorReportTriggeredEventDataReasonErrorTypeSampleErrorRequest>
+    public class V1BillingMeterErrorReportTriggeredEventDataReasonErrorTypeSampleErrorRequest
+        : StripeEntity<V1BillingMeterErrorReportTriggeredEventDataReasonErrorTypeSampleErrorRequest>
     {
         /// <summary>
         /// The request idempotency key.

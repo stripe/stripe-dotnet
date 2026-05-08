@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SessionShippingOptionShippingRateDataDeliveryEstimateMaximumOptions : INestedOptions
+    public class SessionShippingOptionShippingRateDataDeliveryEstimateMaximumOptions
+        : INestedOptions
     {
         /// <summary>
         /// A unit of time.

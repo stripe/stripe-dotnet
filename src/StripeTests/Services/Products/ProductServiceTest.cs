@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -19,7 +18,8 @@ namespace StripeTests
 
         public ProductServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new ProductService(this.StripeClient);
@@ -38,16 +38,10 @@ namespace StripeTests
 
             this.updateOptions = new ProductUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.listOptions = new ProductListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new ProductListOptions { Limit = 1 };
         }
 
         [Fact]

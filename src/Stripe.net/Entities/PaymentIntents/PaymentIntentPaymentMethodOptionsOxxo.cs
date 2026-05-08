@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentMethodOptionsOxxo : StripeEntity<PaymentIntentPaymentMethodOptionsOxxo>
+    public class PaymentIntentPaymentMethodOptionsOxxo
+        : StripeEntity<PaymentIntentPaymentMethodOptionsOxxo>
     {
         /// <summary>
         /// The number of calendar days before an OXXO invoice expires. For example, if you create

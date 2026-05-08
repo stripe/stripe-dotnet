@@ -6,7 +6,8 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class TransactionPurchaseDetailsFleetReportedBreakdown : StripeEntity<TransactionPurchaseDetailsFleetReportedBreakdown>
+    public class TransactionPurchaseDetailsFleetReportedBreakdown
+        : StripeEntity<TransactionPurchaseDetailsFleetReportedBreakdown>
     {
         /// <summary>
         /// Breakdown of fuel portion of the purchase.

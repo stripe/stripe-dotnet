@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsOxxo : StripeEntity<PaymentRecordPaymentMethodDetailsOxxo>
+    public class PaymentRecordPaymentMethodDetailsOxxo
+        : StripeEntity<PaymentRecordPaymentMethodDetailsOxxo>
     {
         /// <summary>
         /// OXXO reference number.

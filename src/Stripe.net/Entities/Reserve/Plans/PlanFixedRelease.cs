@@ -24,6 +24,7 @@ namespace Stripe.Reserve
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("scheduled_release")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime ScheduledRelease { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime ScheduledRelease { get; set; } =
+            Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

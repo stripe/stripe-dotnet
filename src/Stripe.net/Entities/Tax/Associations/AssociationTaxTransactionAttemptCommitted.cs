@@ -6,7 +6,8 @@ namespace Stripe.Tax
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AssociationTaxTransactionAttemptCommitted : StripeEntity<AssociationTaxTransactionAttemptCommitted>
+    public class AssociationTaxTransactionAttemptCommitted
+        : StripeEntity<AssociationTaxTransactionAttemptCommitted>
     {
         /// <summary>
         /// The <a href="https://docs.stripe.com/api/tax/transaction/object">Tax Transaction</a>.

@@ -6,7 +6,5 @@ namespace Stripe.Climate
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ProductGetOptions : BaseOptions
-    {
-    }
+    public class ProductGetOptions : BaseOptions { }
 }

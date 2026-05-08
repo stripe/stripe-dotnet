@@ -6,7 +6,5 @@ namespace Stripe.Radar
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ValueListGetOptions : BaseOptions
-    {
-    }
+    public class ValueListGetOptions : BaseOptions { }
 }

@@ -8,53 +8,88 @@ namespace Stripe.Tax
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class TransactionLineItemService : Service,
-        INestedListable<TransactionLineItem, TransactionLineItemListOptions>
+    public class TransactionLineItemService
+        : Service,
+            INestedListable<TransactionLineItem, TransactionLineItemListOptions>
     {
-        public TransactionLineItemService()
-        {
-        }
+        public TransactionLineItemService() { }
 
         internal TransactionLineItemService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public TransactionLineItemService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>Retrieves the line items of a committed standalone transaction as a collection.</p>.
+        /// </summary>
+        public virtual StripeList<TransactionLineItem> List(
+            string parentId,
+            TransactionLineItemListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<StripeList<TransactionLineItem>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/tax/transactions/{WebUtility.UrlEncode(parentId)}/line_items",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Retrieves the line items of a committed standalone transaction as a collection.</p>.
         /// </summary>
-        public virtual StripeList<TransactionLineItem> List(string parentId, TransactionLineItemListOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<StripeList<TransactionLineItem>> ListAsync(
+            string parentId,
+            TransactionLineItemListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<StripeList<TransactionLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/transactions/{WebUtility.UrlEncode(parentId)}/line_items", options, requestOptions);
+            return this.RequestAsync<StripeList<TransactionLineItem>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/tax/transactions/{WebUtility.UrlEncode(parentId)}/line_items",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Retrieves the line items of a committed standalone transaction as a collection.</p>.
         /// </summary>
-        public virtual Task<StripeList<TransactionLineItem>> ListAsync(string parentId, TransactionLineItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IEnumerable<TransactionLineItem> ListAutoPaging(
+            string parentId,
+            TransactionLineItemListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<StripeList<TransactionLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/transactions/{WebUtility.UrlEncode(parentId)}/line_items", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPaging<TransactionLineItem>(
+                $"/v1/tax/transactions/{WebUtility.UrlEncode(parentId)}/line_items",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Retrieves the line items of a committed standalone transaction as a collection.</p>.
         /// </summary>
-        public virtual IEnumerable<TransactionLineItem> ListAutoPaging(string parentId, TransactionLineItemListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IAsyncEnumerable<TransactionLineItem> ListAutoPagingAsync(
+            string parentId,
+            TransactionLineItemListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPaging<TransactionLineItem>($"/v1/tax/transactions/{WebUtility.UrlEncode(parentId)}/line_items", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Retrieves the line items of a committed standalone transaction as a collection.</p>.
-        /// </summary>
-        public virtual IAsyncEnumerable<TransactionLineItem> ListAutoPagingAsync(string parentId, TransactionLineItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListRequestAutoPagingAsync<TransactionLineItem>($"/v1/tax/transactions/{WebUtility.UrlEncode(parentId)}/line_items", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<TransactionLineItem>(
+                $"/v1/tax/transactions/{WebUtility.UrlEncode(parentId)}/line_items",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class MandatePaymentMethodDetailsAcssDebit : StripeEntity<MandatePaymentMethodDetailsAcssDebit>
+    public class MandatePaymentMethodDetailsAcssDebit
+        : StripeEntity<MandatePaymentMethodDetailsAcssDebit>
     {
         /// <summary>
         /// List of Stripe products where this mandate can be selected automatically.

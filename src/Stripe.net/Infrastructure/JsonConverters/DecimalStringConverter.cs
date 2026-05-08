@@ -12,7 +12,13 @@ namespace Stripe.Infrastructure
     /// </summary>
     internal class DecimalStringConverter : JsonConverter<decimal>
     {
-        public override decimal ReadJson(JsonReader reader, Type objectType, decimal existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override decimal ReadJson(
+            JsonReader reader,
+            Type objectType,
+            decimal existingValue,
+            bool hasExistingValue,
+            JsonSerializer serializer
+        )
         {
             if (reader.TokenType == JsonToken.Null)
             {

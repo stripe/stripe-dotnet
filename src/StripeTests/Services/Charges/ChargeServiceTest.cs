@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -21,15 +20,13 @@ namespace StripeTests
 
         public ChargeServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new ChargeService(this.StripeClient);
 
-            this.captureOptions = new ChargeCaptureOptions
-            {
-                Amount = 123,
-            };
+            this.captureOptions = new ChargeCaptureOptions { Amount = 123 };
 
             this.createOptions = new ChargeCreateOptions
             {
@@ -40,21 +37,12 @@ namespace StripeTests
 
             this.updateOptions = new ChargeUpdateOptions
             {
-                FraudDetails = new ChargeFraudDetailsOptions
-                {
-                    UserReport = "safe",
-                },
+                FraudDetails = new ChargeFraudDetailsOptions { UserReport = "safe" },
             };
 
-            this.listOptions = new ChargeListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new ChargeListOptions { Limit = 1 };
 
-            this.searchOptions = new ChargeSearchOptions
-            {
-                Query = "currency:\"USD\"",
-            };
+            this.searchOptions = new ChargeSearchOptions { Query = "currency:\"USD\"" };
         }
 
         [Fact]

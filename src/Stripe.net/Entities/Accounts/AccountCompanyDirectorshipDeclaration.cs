@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountCompanyDirectorshipDeclaration : StripeEntity<AccountCompanyDirectorshipDeclaration>
+    public class AccountCompanyDirectorshipDeclaration
+        : StripeEntity<AccountCompanyDirectorshipDeclaration>
     {
         /// <summary>
         /// The Unix timestamp marking when the directorship declaration attestation was made.

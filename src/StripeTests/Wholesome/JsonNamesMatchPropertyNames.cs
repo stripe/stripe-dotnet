@@ -51,7 +51,8 @@ namespace StripeTests.Wholesome
                     var propType = property.PropertyType;
 
                     // Skip properties that don't have a `JsonProperty` attribute
-                    var jsonPropertyAttribute = property.GetCustomAttribute<JsonPropertyAttribute>();
+                    var jsonPropertyAttribute =
+                        property.GetCustomAttribute<JsonPropertyAttribute>();
                     if (jsonPropertyAttribute == null)
                     {
                         continue;
@@ -77,14 +78,18 @@ namespace StripeTests.Wholesome
                         hasCorrectJsonPropertyName = true;
                     }
 
-                    var stjsJsonPropertyNameAttribute = property.GetCustomAttribute<STJS.JsonPropertyNameAttribute>();
+                    var stjsJsonPropertyNameAttribute =
+                        property.GetCustomAttribute<STJS.JsonPropertyNameAttribute>();
 
                     // Only check if there is a stjs property name attribute; another test will check
                     // that the necessary attributes are present
                     if (stjsJsonPropertyNameAttribute != null)
                     {
                         // Error on properties where the STJ property name doesn't match the Newtonsoft property name
-                        if (jsonPropertyAttribute.PropertyName != stjsJsonPropertyNameAttribute?.Name)
+                        if (
+                            jsonPropertyAttribute.PropertyName
+                            != stjsJsonPropertyNameAttribute?.Name
+                        )
                         {
                             hasCorrectJsonPropertyName = false;
                         }
@@ -106,17 +111,20 @@ namespace StripeTests.Wholesome
                 }
             }
 
-            var message = $"{AssertionMessage}\n{results.Count} affected properties: {string.Join(",", results)}";
+            var message =
+                $"{AssertionMessage}\n{results.Count} affected properties: {string.Join(",", results)}";
             AssertEmpty(results, message);
         }
 
         private static string ToPascalCase(string snakeCase)
         {
-            return snakeCase.Split('_')
+            return snakeCase
+                .Split('_')
                 .Select(s =>
                     overrides.ContainsKey(s)
                         ? overrides[s]
-                        : char.ToUpperInvariant(s[0]) + s.Substring(1, s.Length - 1))
+                        : char.ToUpperInvariant(s[0]) + s.Substring(1, s.Length - 1)
+                )
                 .Aggregate(string.Empty, (s1, s2) => s1 + s2);
         }
     }

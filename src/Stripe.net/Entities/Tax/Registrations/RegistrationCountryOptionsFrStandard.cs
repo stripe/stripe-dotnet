@@ -6,7 +6,8 @@ namespace Stripe.Tax
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class RegistrationCountryOptionsFrStandard : StripeEntity<RegistrationCountryOptionsFrStandard>
+    public class RegistrationCountryOptionsFrStandard
+        : StripeEntity<RegistrationCountryOptionsFrStandard>
     {
         /// <summary>
         /// Place of supply scheme used in an EU standard registration.

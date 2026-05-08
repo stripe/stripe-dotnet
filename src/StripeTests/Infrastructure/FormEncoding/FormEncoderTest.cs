@@ -22,7 +22,10 @@ namespace StripeTests
             Assert.NotNull(content);
             Assert.IsType<FormUrlEncodedContent>(content);
 
-            Assert.Equal("application/x-www-form-urlencoded", content.Headers.ContentType.MediaType);
+            Assert.Equal(
+                "application/x-www-form-urlencoded",
+                content.Headers.ContentType.MediaType
+            );
             Assert.Equal("utf-8", content.Headers.ContentType.CharSet);
             Assert.Equal(1, content.Headers.ContentType.Parameters.Count);
 
@@ -43,7 +46,10 @@ namespace StripeTests
             Assert.NotNull(content);
             Assert.IsType<FormUrlEncodedContent>(content);
 
-            Assert.Equal("application/x-www-form-urlencoded", content.Headers.ContentType.MediaType);
+            Assert.Equal(
+                "application/x-www-form-urlencoded",
+                content.Headers.ContentType.MediaType
+            );
             Assert.Equal("utf-8", content.Headers.ContentType.CharSet);
             Assert.Equal(1, content.Headers.ContentType.Parameters.Count);
 
@@ -78,19 +84,24 @@ namespace StripeTests
             // MultipartFormDataContentTest has more exhaustive tests with a non-random boundary.
             Assert.Contains(
                 "Content-Type: text/plain; charset=utf-8\r\nContent-Disposition: form-data; name=\"list[0]\"\r\n\r\n1\r\n",
-                result);
+                result
+            );
             Assert.Contains(
                 "Content-Type: text/plain; charset=utf-8\r\nContent-Disposition: form-data; name=\"list[1]\"\r\n\r\n2\r\n",
-                result);
+                result
+            );
             Assert.Contains(
                 "Content-Type: text/plain; charset=utf-8\r\nContent-Disposition: form-data; name=\"list[2]\"\r\n\r\n3\r\n",
-                result);
+                result
+            );
             Assert.Contains(
                 "Content-Disposition: form-data; name=\"stream\"; filename=blob; filename*=utf-8''blob\r\nContent-Type: application/octet-stream\r\n\r\nHello World!\r\n",
-                result);
+                result
+            );
             Assert.Contains(
                 "Content-Type: text/plain; charset=utf-8\r\nContent-Disposition: form-data; name=\"string\"\r\n\r\nString!\r\n",
-                result);
+                result
+            );
         }
 
         [Fact]
@@ -99,21 +110,9 @@ namespace StripeTests
             var testCases = new[]
             {
                 // No data
-                new
-                {
-                    data = new TestOptions { },
-                    want = string.Empty,
-                },
-
+                new { data = new TestOptions { }, want = string.Empty },
                 // AnyOf
-                new
-                {
-                    data = new TestOptions
-                    {
-                        AnyOf = "foo",
-                    },
-                    want = "any_of=foo",
-                },
+                new { data = new TestOptions { AnyOf = "foo" }, want = "any_of=foo" },
                 new
                 {
                     data = new TestOptions
@@ -146,43 +145,16 @@ namespace StripeTests
                     },
                     want = string.Empty,
                 },
-
                 // Array
                 new
                 {
-                    data = new TestOptions
-                    {
-                            Array = new[] { "1", "2", "3" },
-                    },
+                    data = new TestOptions { Array = new[] { "1", "2", "3" } },
                     want = "array[0]=1&array[1]=2&array[2]=3",
                 },
-                new
-                {
-                    data = new TestOptions
-                    {
-                            Array = new string[] { },
-                    },
-                    want = "array=",
-                },
-
+                new { data = new TestOptions { Array = new string[] { } }, want = "array=" },
                 // Bool
-                new
-                {
-                    data = new TestOptions
-                    {
-                        Bool = false,
-                    },
-                    want = "bool=False",
-                },
-                new
-                {
-                    data = new TestOptions
-                    {
-                        Bool = true,
-                    },
-                    want = "bool=True",
-                },
-
+                new { data = new TestOptions { Bool = false }, want = "bool=False" },
+                new { data = new TestOptions { Bool = true }, want = "bool=True" },
                 // DateRangeOptions
                 new
                 {
@@ -196,7 +168,6 @@ namespace StripeTests
                     },
                     want = "date_filter[gte]=946684800&date_filter[lt]=946702800",
                 },
-
                 // DateTime
                 new
                 {
@@ -206,25 +177,9 @@ namespace StripeTests
                     },
                     want = "datetime=946684800",
                 },
-
                 // Decimal
-                new
-                {
-                    data = new TestOptions
-                    {
-                        Decimal = 1.2345m,
-                    },
-                    want = "decimal=1.2345",
-                },
-                new
-                {
-                    data = new TestOptions
-                    {
-                        Decimal = 0.0m,
-                    },
-                    want = "decimal=0.0",
-                },
-
+                new { data = new TestOptions { Decimal = 1.2345m }, want = "decimal=1.2345" },
+                new { data = new TestOptions { Decimal = 0.0m }, want = "decimal=0.0" },
                 // Dictionary
                 new
                 {
@@ -256,30 +211,17 @@ namespace StripeTests
                     {
                         Dictionary = new Dictionary<string, object>
                         {
-                            { "foo", new Dictionary<string, object> { { "bar", "baz" } } },
+                            {
+                                "foo",
+                                new Dictionary<string, object> { { "bar", "baz" } }
+                            },
                         },
                     },
                     want = "dictionary[foo][bar]=baz",
                 },
-
                 // Enum
-                new
-                {
-                    data = new TestOptions
-                    {
-                        Enum = "test_one",
-                    },
-                    want = "enum=test_one",
-                },
-                new
-                {
-                    data = new TestOptions
-                    {
-                        Enum = "TestTwo",
-                    },
-                    want = "enum=TestTwo",
-                },
-
+                new { data = new TestOptions { Enum = "test_one" }, want = "enum=test_one" },
+                new { data = new TestOptions { Enum = "TestTwo" }, want = "enum=TestTwo" },
                 // List
                 new
                 {
@@ -297,14 +239,7 @@ namespace StripeTests
                     },
                     want = "list[0]=&list[1]=0",
                 },
-                new
-                {
-                    data = new TestOptions
-                    {
-                        List = new List<object> { },
-                    },
-                    want = "list=",
-                },
+                new { data = new TestOptions { List = new List<object> { } }, want = "list=" },
                 new
                 {
                     data = new TestOptions
@@ -317,60 +252,19 @@ namespace StripeTests
                     },
                     want = "list[0][foo]=bar&list[1][foo]=baz",
                 },
-
                 // Long
-                new
-                {
-                    data = new TestOptions
-                    {
-                        Long = 123,
-                    },
-                    want = "long=123",
-                },
-                new
-                {
-                    data = new TestOptions
-                    {
-                        Long = 0,
-                    },
-                    want = "long=0",
-                },
-
+                new { data = new TestOptions { Long = 123 }, want = "long=123" },
+                new { data = new TestOptions { Long = 0 }, want = "long=0" },
                 // String
-                new
-                {
-                    data = new TestOptions
-                    {
-                        String = "foo",
-                    },
-                    want = "string=foo",
-                },
-                new
-                {
-                    data = new TestOptions
-                    {
-                        String = string.Empty,
-                    },
-                    want = "string=",
-                },
-
+                new { data = new TestOptions { String = "foo" }, want = "string=foo" },
+                new { data = new TestOptions { String = string.Empty }, want = "string=" },
                 // StringEnum
                 new
                 {
-                    data = new TestOptions
-                    {
-                        StringEnum = TestOptions.TestStringEnum.Foo,
-                    },
+                    data = new TestOptions { StringEnum = TestOptions.TestStringEnum.Foo },
                     want = "string_enum=foo",
                 },
-                new
-                {
-                    data = new TestOptions
-                    {
-                        StringEnum = null,
-                    },
-                    want = string.Empty,
-                },
+                new { data = new TestOptions { StringEnum = null }, want = string.Empty },
             };
 
             foreach (var testCase in testCases)
@@ -382,20 +276,14 @@ namespace StripeTests
         [Fact]
         public void EnumEncodeUnknownValue()
         {
-            var options = new TestOptions
-            {
-                Enum = "TestTwo",
-            };
+            var options = new TestOptions { Enum = "TestTwo" };
             Assert.Equal("enum=TestTwo", FormEncoder.CreateQueryString(options));
         }
 
         [Fact]
         public void EnumEncodeValidValue()
         {
-            var options = new TestOptions
-            {
-                Enum = "test_one",
-            };
+            var options = new TestOptions { Enum = "test_one" };
             Assert.Contains("enum=test_one", FormEncoder.CreateQueryString(options));
         }
 
@@ -426,15 +314,16 @@ namespace StripeTests
             var options = new TestOptions
             {
                 Dictionary = new Dictionary<string, object>
-                    {
-                        { "#", "1 2 3" },
-                        { "bar&baz", "+foo?" },
-                    },
+                {
+                    { "#", "1 2 3" },
+                    { "bar&baz", "+foo?" },
+                },
                 String = "[éàü]",
             };
             Assert.Equal(
                 "dictionary[%23]=1+2+3&dictionary[bar%26baz]=%2Bfoo%3F&string=[%C3%A9%C3%A0%C3%BC]",
-                FormEncoder.CreateQueryString(options));
+                FormEncoder.CreateQueryString(options)
+            );
         }
     }
 }

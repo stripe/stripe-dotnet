@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters : StripeEntity<PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters>
+    public class PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters
+        : StripeEntity<PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters>
     {
         /// <summary>
         /// The account subcategories to use to filter for possible accounts to link. Valid

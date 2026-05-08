@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationMerchantScriptStatementDescriptor : StripeEntity<AccountConfigurationMerchantScriptStatementDescriptor>
+    public class AccountConfigurationMerchantScriptStatementDescriptor
+        : StripeEntity<AccountConfigurationMerchantScriptStatementDescriptor>
     {
         /// <summary>
         /// The Kana variation of statement_descriptor used for charges in Japan. Japanese statement

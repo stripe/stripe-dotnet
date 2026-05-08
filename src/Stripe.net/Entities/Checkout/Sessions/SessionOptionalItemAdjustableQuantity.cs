@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionOptionalItemAdjustableQuantity : StripeEntity<SessionOptionalItemAdjustableQuantity>
+    public class SessionOptionalItemAdjustableQuantity
+        : StripeEntity<SessionOptionalItemAdjustableQuantity>
     {
         /// <summary>
         /// Set to true if the quantity can be adjusted to any non-negative integer.

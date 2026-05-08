@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsCard : StripeEntity<PaymentRecordPaymentMethodDetailsCard>
+    public class PaymentRecordPaymentMethodDetailsCard
+        : StripeEntity<PaymentRecordPaymentMethodDetailsCard>
     {
         /// <summary>
         /// The authorization code of the payment.

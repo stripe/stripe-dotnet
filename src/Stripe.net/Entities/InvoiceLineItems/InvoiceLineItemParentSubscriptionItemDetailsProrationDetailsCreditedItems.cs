@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class InvoiceLineItemParentSubscriptionItemDetailsProrationDetailsCreditedItems : StripeEntity<InvoiceLineItemParentSubscriptionItemDetailsProrationDetailsCreditedItems>
+    public class InvoiceLineItemParentSubscriptionItemDetailsProrationDetailsCreditedItems
+        : StripeEntity<InvoiceLineItemParentSubscriptionItemDetailsProrationDetailsCreditedItems>
     {
         /// <summary>
         /// Invoice containing the credited invoice line items.

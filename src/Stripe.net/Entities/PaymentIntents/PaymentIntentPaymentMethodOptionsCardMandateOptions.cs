@@ -8,7 +8,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentMethodOptionsCardMandateOptions : StripeEntity<PaymentIntentPaymentMethodOptionsCardMandateOptions>
+    public class PaymentIntentPaymentMethodOptionsCardMandateOptions
+        : StripeEntity<PaymentIntentPaymentMethodOptionsCardMandateOptions>
     {
         /// <summary>
         /// Amount to be charged for future payments, specified in the presentment currency.

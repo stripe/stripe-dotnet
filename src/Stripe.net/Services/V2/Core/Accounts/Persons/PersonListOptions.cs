@@ -6,7 +6,5 @@ namespace Stripe.V2.Core.Accounts
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PersonListOptions : V2.ListOptions
-    {
-    }
+    public class PersonListOptions : V2.ListOptions { }
 }

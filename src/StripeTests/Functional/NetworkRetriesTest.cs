@@ -18,8 +18,10 @@ namespace StripeTests
         {
             var httpClient = new SystemNetHttpClient(
                 httpClient: new System.Net.Http.HttpClient(
-                    this.MockHttpClientFixture.MockHandler.Object),
-                maxNetworkRetries: 2)
+                    this.MockHttpClientFixture.MockHandler.Object
+                ),
+                maxNetworkRetries: 2
+            )
             {
                 NetworkRetriesSleep = false,
             };
@@ -41,17 +43,24 @@ namespace StripeTests
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .Returns(Task.FromResult(
-                    new HttpResponseMessage(HttpStatusCode.Conflict)
-                    {
-                        Content = new StringContent("{}", Encoding.UTF8),
-                    }))
-                .Returns(Task.FromResult(
-                    new HttpResponseMessage(HttpStatusCode.OK)
-                    {
-                        Content = new StringContent("{}", Encoding.UTF8),
-                    }))
+                    ItExpr.IsAny<CancellationToken>()
+                )
+                .Returns(
+                    Task.FromResult(
+                        new HttpResponseMessage(HttpStatusCode.Conflict)
+                        {
+                            Content = new StringContent("{}", Encoding.UTF8),
+                        }
+                    )
+                )
+                .Returns(
+                    Task.FromResult(
+                        new HttpResponseMessage(HttpStatusCode.OK)
+                        {
+                            Content = new StringContent("{}", Encoding.UTF8),
+                        }
+                    )
+                )
                 .Throws(new StripeTestException("Unexpected invocation"));
 
             var service = new BalanceService(this.StripeClient);
@@ -68,17 +77,24 @@ namespace StripeTests
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .Returns(Task.FromResult(
-                    new HttpResponseMessage(HttpStatusCode.ServiceUnavailable)
-                    {
-                        Content = new StringContent("{}", Encoding.UTF8),
-                    }))
-                .Returns(Task.FromResult(
-                    new HttpResponseMessage(HttpStatusCode.OK)
-                    {
-                        Content = new StringContent("{}", Encoding.UTF8),
-                    }))
+                    ItExpr.IsAny<CancellationToken>()
+                )
+                .Returns(
+                    Task.FromResult(
+                        new HttpResponseMessage(HttpStatusCode.ServiceUnavailable)
+                        {
+                            Content = new StringContent("{}", Encoding.UTF8),
+                        }
+                    )
+                )
+                .Returns(
+                    Task.FromResult(
+                        new HttpResponseMessage(HttpStatusCode.OK)
+                        {
+                            Content = new StringContent("{}", Encoding.UTF8),
+                        }
+                    )
+                )
                 .Throws(new StripeTestException("Unexpected invocation"));
 
             var service = new BalanceService(this.StripeClient);
@@ -95,17 +111,24 @@ namespace StripeTests
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .Returns(Task.FromResult(
-                    new HttpResponseMessage(HttpStatusCode.InternalServerError)
-                    {
-                        Content = new StringContent("{}", Encoding.UTF8),
-                    }))
-                .Returns(Task.FromResult(
-                    new HttpResponseMessage(HttpStatusCode.OK)
-                    {
-                        Content = new StringContent("{}", Encoding.UTF8),
-                    }))
+                    ItExpr.IsAny<CancellationToken>()
+                )
+                .Returns(
+                    Task.FromResult(
+                        new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                        {
+                            Content = new StringContent("{}", Encoding.UTF8),
+                        }
+                    )
+                )
+                .Returns(
+                    Task.FromResult(
+                        new HttpResponseMessage(HttpStatusCode.OK)
+                        {
+                            Content = new StringContent("{}", Encoding.UTF8),
+                        }
+                    )
+                )
                 .Throws(new StripeTestException("Unexpected invocation"));
 
             var service = new BalanceService(this.StripeClient);
@@ -122,13 +145,17 @@ namespace StripeTests
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
+                    ItExpr.IsAny<CancellationToken>()
+                )
                 .Throws(new HttpRequestException("Connection error"))
-                .Returns(Task.FromResult(
-                    new HttpResponseMessage(HttpStatusCode.OK)
-                    {
-                        Content = new StringContent("{}", Encoding.UTF8),
-                    }))
+                .Returns(
+                    Task.FromResult(
+                        new HttpResponseMessage(HttpStatusCode.OK)
+                        {
+                            Content = new StringContent("{}", Encoding.UTF8),
+                        }
+                    )
+                )
                 .Throws(new StripeTestException("Unexpected invocation"));
 
             var service = new BalanceService(this.StripeClient);
@@ -145,7 +172,8 @@ namespace StripeTests
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
+                    ItExpr.IsAny<CancellationToken>()
+                )
                 .Throws(new HttpRequestException("Connection error 1"))
                 .Throws(new HttpRequestException("Connection error 2"))
                 .Throws(new HttpRequestException("Connection error 3"))
@@ -165,13 +193,17 @@ namespace StripeTests
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
+                    ItExpr.IsAny<CancellationToken>()
+                )
                 .Throws(new OperationCanceledException("Timeout"))
-                .Returns(Task.FromResult(
-                    new HttpResponseMessage(HttpStatusCode.OK)
-                    {
-                        Content = new StringContent("{}", Encoding.UTF8),
-                    }))
+                .Returns(
+                    Task.FromResult(
+                        new HttpResponseMessage(HttpStatusCode.OK)
+                        {
+                            Content = new StringContent("{}", Encoding.UTF8),
+                        }
+                    )
+                )
                 .Throws(new StripeTestException("Unexpected invocation"));
 
             var service = new BalanceService(this.StripeClient);
@@ -188,7 +220,8 @@ namespace StripeTests
                 .SetupSequence<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
+                    ItExpr.IsAny<CancellationToken>()
+                )
                 .Throws(new TaskCanceledException("Timeout 1"))
                 .Throws(new TaskCanceledException("Timeout 2"))
                 .Throws(new TaskCanceledException("Timeout 3"))
@@ -215,8 +248,10 @@ namespace StripeTests
                 .Setup<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .Returns<HttpRequestMessage, CancellationToken>(async (_, t) =>
+                    ItExpr.IsAny<CancellationToken>()
+                )
+                .Returns<HttpRequestMessage, CancellationToken>(
+                    async (_, t) =>
                     {
                         requestCount += 1;
                         await Task.Delay(TimeSpan.FromSeconds(1), t).ConfigureAwait(false);
@@ -224,13 +259,15 @@ namespace StripeTests
                         {
                             Content = new StringContent("{}", Encoding.UTF8),
                         };
-                    });
+                    }
+                );
 
             var service = new BalanceService(this.StripeClient);
             var source = new CancellationTokenSource();
             source.CancelAfter(TimeSpan.FromMilliseconds(10));
             await Assert.ThrowsAsync<TaskCanceledException>(async () =>
-                await service.GetAsync(null, source.Token));
+                await service.GetAsync(null, source.Token)
+            );
 
             Assert.Equal(1, requestCount);
         }

@@ -32,6 +32,9 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("currency_options")]
         [STJS.JsonPropertyName("currency_options")]
-        public Dictionary<string, SessionShippingOptionShippingRateDataFixedAmountCurrencyOptionsOptions> CurrencyOptions { get; set; }
+        public Dictionary<
+            string,
+            SessionShippingOptionShippingRateDataFixedAmountCurrencyOptionsOptions
+        > CurrencyOptions { get; set; }
     }
 }

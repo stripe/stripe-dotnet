@@ -7,9 +7,7 @@ namespace StripeTests
     public class PaymentIntentTest : BaseStripeTest
     {
         public PaymentIntentTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -29,11 +27,11 @@ namespace StripeTests
             // and will be auto-expanded in a future API version.
             string[] expansions =
             {
-              "application",
-              "customer",
-              "invoice",
-              "payment_method",
-              "transfer_data.destination",
+                "application",
+                "customer",
+                "invoice",
+                "payment_method",
+                "transfer_data.destination",
             };
 
             string json = this.GetFixture("/v1/payment_intents/pi_123", expansions);
@@ -74,7 +72,9 @@ namespace StripeTests
         [Fact]
         public void DeserializeNextActionRedirectToUrl()
         {
-            var json = GetResourceAsString("api_fixtures.payment_intent.action_redirect_to_url.json");
+            var json = GetResourceAsString(
+                "api_fixtures.payment_intent.action_redirect_to_url.json"
+            );
             var intent = JsonSerializer.Deserialize<PaymentIntent>(json);
 
             Assert.NotNull(intent);

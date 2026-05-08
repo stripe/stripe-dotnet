@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentAmountDetailsShipping : StripeEntity<PaymentIntentAmountDetailsShipping>
+    public class PaymentIntentAmountDetailsShipping
+        : StripeEntity<PaymentIntentAmountDetailsShipping>
     {
         /// <summary>
         /// If a physical good is being shipped, the cost of shipping represented in the <a

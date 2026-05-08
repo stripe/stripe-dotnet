@@ -6,7 +6,5 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class TransferReversalListOptions : ListOptions
-    {
-    }
+    public class TransferReversalListOptions : ListOptions { }
 }

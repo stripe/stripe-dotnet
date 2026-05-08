@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsLink : StripeEntity<PaymentRecordPaymentMethodDetailsLink>
+    public class PaymentRecordPaymentMethodDetailsLink
+        : StripeEntity<PaymentRecordPaymentMethodDetailsLink>
     {
         /// <summary>
         /// Two-letter ISO code representing the funding source country beneath the Link payment.

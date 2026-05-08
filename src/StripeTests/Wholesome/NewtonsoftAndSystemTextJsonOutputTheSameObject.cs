@@ -13,7 +13,6 @@ namespace StripeTests.Wholesome
     using Stripe.Infrastructure;
     using Stripe.V2;
     using Xunit;
-
     using STJ = System.Text.Json;
     using STJS = System.Text.Json.Serialization;
 
@@ -38,10 +37,14 @@ namespace StripeTests.Wholesome
             var jsonNet = JsonUtils.SerializeObject(
                 instance,
                 Formatting.None,
-                StripeConfiguration.SerializerSettings);
+                StripeConfiguration.SerializerSettings
+            );
 
             var systemTextJson = STJ.JsonSerializer.Serialize(
-                instance, instance.GetType(), StripeConfiguration.SerializerOptions);
+                instance,
+                instance.GetType(),
+                StripeConfiguration.SerializerOptions
+            );
 
             if (jsonNet != systemTextJson)
             {
@@ -78,11 +81,7 @@ namespace StripeTests.Wholesome
             // between Newtonsoft and STJ: EventData.PreviousAttributes is serialized by
             // Newtonsoft (via [JsonProperty]) but ignored by STJ (via [JsonIgnore]) because
             // STJEventConverter handles it separately via SetPreviousAttributesJson.
-            var typesToSkip = new HashSet<Type>
-            {
-                typeof(Event),
-                typeof(EventData),
-            };
+            var typesToSkip = new HashSet<Type> { typeof(Event), typeof(EventData) };
 
             foreach (TypeInfo stripeClass in stripeClasses)
             {
@@ -121,7 +120,11 @@ namespace StripeTests.Wholesome
 
                 foreach (var property in GetPropertiesToCheck(stripeClass))
                 {
-                    if (typeof(IExpandableField).GetTypeInfo().IsAssignableFrom(property.PropertyType))
+                    if (
+                        typeof(IExpandableField)
+                            .GetTypeInfo()
+                            .IsAssignableFrom(property.PropertyType)
+                    )
                     {
                         if (!typesWithExpandableFields.Contains(stripeClass))
                         {
@@ -145,18 +148,28 @@ namespace StripeTests.Wholesome
             // Test the generic containers: StripeList, V2.StripeList, StripeSearchResults
             this.CheckGenericTypes(genericTypes, results);
 
-            var message = $"{AssertionMessage}\n{results.Count} affected classes: {string.Join(",", results)}";
+            var message =
+                $"{AssertionMessage}\n{results.Count} affected classes: {string.Join(",", results)}";
             AssertEmpty(results, message);
 
-            message = $"{GenericTypeAssertionMessage}\n{results.Count} affected classes: {string.Join(",", results)}";
+            message =
+                $"{GenericTypeAssertionMessage}\n{results.Count} affected classes: {string.Join(",", results)}";
             AssertEmpty(genericTypes.Select(t => t.Name).ToList(), message);
         }
 
-        private object GetPopulatedObject(Type type, List<Type> seen, Dictionary<Type, object> expandedObjectCache)
+        private object GetPopulatedObject(
+            Type type,
+            List<Type> seen,
+            Dictionary<Type, object> expandedObjectCache
+        )
         {
             if (type.IsNullableType())
             {
-                return this.GetPopulatedObject(type.GenericTypeArguments[0], seen, expandedObjectCache);
+                return this.GetPopulatedObject(
+                    type.GenericTypeArguments[0],
+                    seen,
+                    expandedObjectCache
+                );
             }
 
             if (type == typeof(bool))
@@ -209,7 +222,11 @@ namespace StripeTests.Wholesome
                     }
                     else
                     {
-                        propValue.ExpandedObject = this.GetPopulatedObject(objectType, seen, expandedObjectCache);
+                        propValue.ExpandedObject = this.GetPopulatedObject(
+                            objectType,
+                            seen,
+                            expandedObjectCache
+                        );
                         expandedObjectCache[objectType] = propValue.ExpandedObject;
                     }
                 }
@@ -303,12 +320,19 @@ namespace StripeTests.Wholesome
             return null;
         }
 
-        private T PopulateWithReasonableDefaults<T>(T instance, List<Type> seen, Dictionary<Type, object> expandedObjectCache)
+        private T PopulateWithReasonableDefaults<T>(
+            T instance,
+            List<Type> seen,
+            Dictionary<Type, object> expandedObjectCache
+        )
         {
             expandedObjectCache = expandedObjectCache ?? new Dictionary<Type, object>();
             foreach (var property in GetPropertiesToCheck(instance.GetType()))
             {
-                if (property.GetCustomAttribute(typeof(STJS.JsonPropertyNameAttribute), false) == null)
+                if (
+                    property.GetCustomAttribute(typeof(STJS.JsonPropertyNameAttribute), false)
+                    == null
+                )
                 {
                     continue;
                 }
@@ -319,7 +343,11 @@ namespace StripeTests.Wholesome
                 }
 
                 var propertyType = property.PropertyType;
-                var newValue = this.GetPopulatedObject(propertyType, seen?.ToList() ?? new List<Type>(), expandedObjectCache);
+                var newValue = this.GetPopulatedObject(
+                    propertyType,
+                    seen?.ToList() ?? new List<Type>(),
+                    expandedObjectCache
+                );
                 property.SetValue(instance, newValue);
             }
 
@@ -353,10 +381,7 @@ namespace StripeTests.Wholesome
             var list = new Stripe.StripeList<Customer>
             {
                 Object = "list_object",
-                Data = new List<Customer>
-                {
-                    customer1, customer2, customer3,
-                },
+                Data = new List<Customer> { customer1, customer2, customer3 },
                 HasMore = true,
                 Url = "/v1/customers",
             };
@@ -371,9 +396,21 @@ namespace StripeTests.Wholesome
             {
                 Data = new List<Stripe.V2.Core.Event>
                 {
-                    this.PopulateWithReasonableDefaults(new V1BillingMeterErrorReportTriggeredEvent(), null, new Dictionary<Type, object>()),
-                    this.PopulateWithReasonableDefaults(new V1BillingMeterErrorReportTriggeredEvent(), null, new Dictionary<Type, object>()),
-                    this.PopulateWithReasonableDefaults(new V1BillingMeterErrorReportTriggeredEvent(), null, new Dictionary<Type, object>()),
+                    this.PopulateWithReasonableDefaults(
+                        new V1BillingMeterErrorReportTriggeredEvent(),
+                        null,
+                        new Dictionary<Type, object>()
+                    ),
+                    this.PopulateWithReasonableDefaults(
+                        new V1BillingMeterErrorReportTriggeredEvent(),
+                        null,
+                        new Dictionary<Type, object>()
+                    ),
+                    this.PopulateWithReasonableDefaults(
+                        new V1BillingMeterErrorReportTriggeredEvent(),
+                        null,
+                        new Dictionary<Type, object>()
+                    ),
                 },
                 NextPageUrl = "/v2/customers?page=1234",
                 PreviousPageUrl = null,
@@ -386,10 +423,7 @@ namespace StripeTests.Wholesome
             var searchResult = new Stripe.StripeSearchResult<Customer>
             {
                 Object = "search_result",
-                Data = new List<Customer>
-                {
-                    customer1, customer2, customer3,
-                },
+                Data = new List<Customer> { customer1, customer2, customer3 },
                 HasMore = true,
                 NextPage = "1234",
                 TotalCount = 12,

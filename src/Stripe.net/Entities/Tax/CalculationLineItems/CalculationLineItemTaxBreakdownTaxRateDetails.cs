@@ -6,7 +6,8 @@ namespace Stripe.Tax
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CalculationLineItemTaxBreakdownTaxRateDetails : StripeEntity<CalculationLineItemTaxBreakdownTaxRateDetails>
+    public class CalculationLineItemTaxBreakdownTaxRateDetails
+        : StripeEntity<CalculationLineItemTaxBreakdownTaxRateDetails>
     {
         /// <summary>
         /// A localized display name for tax type, intended to be human-readable. For example,

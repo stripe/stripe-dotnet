@@ -15,9 +15,7 @@ namespace StripeTests
     public class ServiceTest : BaseStripeTest
     {
         public ServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
-        {
-        }
+            : base(mockHttpClientFixture) { }
 
         [Fact]
         public void Search_ReturnsOnePage()
@@ -27,7 +25,8 @@ namespace StripeTests
                 "/v1/test_entities/search",
                 (HttpStatusCode)200,
                 @"{""data"": [{""id"": ""1""}, {""id"": ""2""}],""next_page"": ""page2"", ""has_more"": true, ""total_count"": 4}",
-                query: "?query=my+query");
+                query: "?query=my+query"
+            );
 
             var service = new TestService(this.StripeClient);
 
@@ -51,14 +50,16 @@ namespace StripeTests
                 "/v1/test_entities/search",
                 (HttpStatusCode)200,
                 @"{""data"": [{""id"": ""1""}, {""id"": ""2""}],""next_page"": ""page2"", ""has_more"": true}",
-                query: "?query=my+query");
+                query: "?query=my+query"
+            );
 
             this.StubRequest(
                 HttpMethod.Get,
                 "/v1/test_entities/search",
                 (HttpStatusCode)200,
                 @"{""data"": [{""id"": ""3""}, {""id"": ""4""}],""next_page"": null, ""has_more"": false}",
-                "?page=page2&query=my+query");
+                "?page=page2&query=my+query"
+            );
 
             var service = new TestService(this.StripeClient);
             var options = new SearchOptions() { Query = "my query" };
@@ -84,14 +85,16 @@ namespace StripeTests
                 "/v1/test_entities/search",
                 (HttpStatusCode)200,
                 @"{""data"": [{""id"": ""1""}, {""id"": ""2""}],""next_page"": ""page2"", ""has_more"": true}",
-                query: "?query=my+query");
+                query: "?query=my+query"
+            );
 
             this.StubRequest(
                 HttpMethod.Get,
                 "/v1/test_entities/search",
                 (HttpStatusCode)200,
                 @"{""data"": [{""id"": ""3""}, {""id"": ""4""}],""next_page"": null, ""has_more"": false}",
-                "?page=page2&query=my+query");
+                "?page=page2&query=my+query"
+            );
 
             var service = new TestService(this.StripeClient);
 
@@ -116,7 +119,8 @@ namespace StripeTests
                 "/v2/test_entities",
                 (HttpStatusCode)200,
                 @"{""data"": [{""id"": ""1""}, {""id"": ""2""}],""next_page_url"": null}",
-                query: "?foo=bar");
+                query: "?foo=bar"
+            );
 
             var service = new TestService(this.StripeClient);
 
@@ -141,19 +145,22 @@ namespace StripeTests
                 "/v2/test_entities",
                 (HttpStatusCode)200,
                 @"{""data"": [{""id"": ""1""}, {""id"": ""2""}],""next_page_url"": ""/v2/test_entities/page1""}",
-                query: "?foo=bar");
+                query: "?foo=bar"
+            );
 
             this.StubRequest(
                 HttpMethod.Get,
                 "/v2/test_entities/page1",
                 (HttpStatusCode)200,
-                @"{""data"": [{""id"": ""3""}, {""id"": ""4""}],""next_page_url"": ""/v2/test_entities/page2""}");
+                @"{""data"": [{""id"": ""3""}, {""id"": ""4""}],""next_page_url"": ""/v2/test_entities/page2""}"
+            );
 
             this.StubRequest(
                 HttpMethod.Get,
                 "/v2/test_entities/page2",
                 (HttpStatusCode)200,
-                @"{""data"": [{""id"": ""5""}, {""id"": ""6""}],""next_page_url"": null}");
+                @"{""data"": [{""id"": ""5""}, {""id"": ""6""}],""next_page_url"": null}"
+            );
 
             var service = new TestService(this.StripeClient);
 
@@ -177,13 +184,15 @@ namespace StripeTests
                 "/v2/test_entities",
                 (HttpStatusCode)200,
                 @"{""data"": [{""id"": ""1""}, {""id"": ""2""}],""next_page_url"": ""/v2/test_entities/page1""}",
-                query: "?foo=bar");
+                query: "?foo=bar"
+            );
 
             this.StubRequest(
                 HttpMethod.Get,
                 "/v2/test_entities/page1",
                 (HttpStatusCode)200,
-                @"{""data"": [{""id"": ""3""}, {""id"": ""4""}],""next_page_url"": null}");
+                @"{""data"": [{""id"": ""3""}, {""id"": ""4""}],""next_page_url"": null}"
+            );
 
             var service = new TestService(this.StripeClient);
 
@@ -220,7 +229,8 @@ namespace StripeTests
                 string path,
                 BaseOptions options,
                 RequestOptions requestOptions,
-                CancellationToken cancellationToken = default)
+                CancellationToken cancellationToken = default
+            )
                 where T : IStripeEntity
             {
                 this.LastOptions = options;
@@ -234,7 +244,8 @@ namespace StripeTests
                 BaseOptions options,
                 RequestOptions requestOptions,
                 ApiMode apiMode,
-                CancellationToken cancellationToken = default)
+                CancellationToken cancellationToken = default
+            )
                 where T : IStripeEntity
             {
                 this.LastOptions = options;
@@ -246,7 +257,8 @@ namespace StripeTests
                 string path,
                 BaseOptions options,
                 RequestOptions requestOptions,
-                CancellationToken cancellationToken = default)
+                CancellationToken cancellationToken = default
+            )
             {
                 this.LastOptions = options;
                 return Task.FromResult(Stream.Null);
@@ -263,38 +275,87 @@ namespace StripeTests
         private class TestService : Service<TestEntity>
         {
             public TestService(IStripeClient client)
-                : base(client)
+                : base(client) { }
+
+            public virtual TestEntity Get(
+                string id,
+                BaseOptions options = null,
+                RequestOptions requestOptions = null
+            )
             {
+                return this.Request<TestEntity>(
+                    BaseAddress.Api,
+                    HttpMethod.Get,
+                    $"/v1/test_entities/{WebUtility.UrlEncode(id)}",
+                    options,
+                    requestOptions
+                );
             }
 
-            public virtual TestEntity Get(string id, BaseOptions options = null, RequestOptions requestOptions = null)
+            public virtual StripeSearchResult<TestEntity> Search(
+                SearchOptions options = null,
+                RequestOptions requestOptions = null
+            )
             {
-                return this.Request<TestEntity>(BaseAddress.Api, HttpMethod.Get, $"/v1/test_entities/{WebUtility.UrlEncode(id)}", options, requestOptions);
+                return this.Request<StripeSearchResult<TestEntity>>(
+                    BaseAddress.Api,
+                    HttpMethod.Get,
+                    $"/v1/test_entities/search",
+                    options,
+                    requestOptions
+                );
             }
 
-            public virtual StripeSearchResult<TestEntity> Search(SearchOptions options = null, RequestOptions requestOptions = null)
+            public virtual IEnumerable<TestEntity> SearchAutoPaging(
+                SearchOptions options = null,
+                RequestOptions requestOptions = null
+            )
             {
-                return this.Request<StripeSearchResult<TestEntity>>(BaseAddress.Api, HttpMethod.Get, $"/v1/test_entities/search", options, requestOptions);
+                return this.SearchRequestAutoPaging<TestEntity>(
+                    $"/v1/test_entities/search",
+                    options,
+                    requestOptions
+                );
             }
 
-            public virtual IEnumerable<TestEntity> SearchAutoPaging(SearchOptions options = null, RequestOptions requestOptions = null)
+            public virtual IAsyncEnumerable<TestEntity> SearchAutoPagingAsync(
+                SearchOptions options = null,
+                RequestOptions requestOptions = null,
+                CancellationToken cancellationToken = default
+            )
             {
-                return this.SearchRequestAutoPaging<TestEntity>($"/v1/test_entities/search", options, requestOptions);
+                return this.SearchRequestAutoPagingAsync<TestEntity>(
+                    $"/v1/test_entities/search",
+                    options,
+                    requestOptions,
+                    cancellationToken
+                );
             }
 
-            public virtual IAsyncEnumerable<TestEntity> SearchAutoPagingAsync(SearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+            public virtual IEnumerable<TestEntity> ListV2AutoPaging(
+                BaseOptions options = null,
+                RequestOptions requestOptions = null
+            )
             {
-                return this.SearchRequestAutoPagingAsync<TestEntity>($"/v1/test_entities/search", options, requestOptions, cancellationToken);
+                return this.ListRequestAutoPaging<TestEntity>(
+                    $"/v2/test_entities",
+                    options,
+                    requestOptions
+                );
             }
 
-            public virtual IEnumerable<TestEntity> ListV2AutoPaging(BaseOptions options = null, RequestOptions requestOptions = null)
+            public virtual IAsyncEnumerable<TestEntity> ListV2AutoPagingAsync(
+                BaseOptions options = null,
+                RequestOptions requestOptions = null,
+                CancellationToken cancellationToken = default
+            )
             {
-                return this.ListRequestAutoPaging<TestEntity>($"/v2/test_entities", options, requestOptions);
-            }
-
-            public virtual IAsyncEnumerable<TestEntity> ListV2AutoPagingAsync(BaseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-            {
-                return this.ListRequestAutoPagingAsync<TestEntity>($"/v2/test_entities", options, requestOptions, cancellationToken);
+                return this.ListRequestAutoPagingAsync<TestEntity>(
+                    $"/v2/test_entities",
+                    options,
+                    requestOptions,
+                    cancellationToken
+                );
             }
         }
     }

@@ -36,7 +36,10 @@ namespace Stripe
     /// configurations for your Connect accounts</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentMethodConfiguration : StripeEntity<PaymentMethodConfiguration>, IHasId, IHasObject
+    public class PaymentMethodConfiguration
+        : StripeEntity<PaymentMethodConfiguration>,
+            IHasId,
+            IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.

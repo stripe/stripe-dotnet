@@ -6,7 +6,8 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class FinancialAccountFinancialAddressAba : StripeEntity<FinancialAccountFinancialAddressAba>
+    public class FinancialAccountFinancialAddressAba
+        : StripeEntity<FinancialAccountFinancialAddressAba>
     {
         /// <summary>
         /// The name of the person or business that owns the bank account.

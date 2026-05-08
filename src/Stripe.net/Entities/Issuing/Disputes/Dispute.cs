@@ -16,7 +16,12 @@ namespace Stripe.Issuing
     /// disputes</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class Dispute : StripeEntity<Dispute>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
+    public class Dispute
+        : StripeEntity<Dispute>,
+            IHasId,
+            IHasMetadata,
+            IHasObject,
+            IBalanceTransactionSource
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -141,7 +146,11 @@ namespace Stripe.Issuing
         public Transaction Transaction
         {
             get => this.InternalTransaction?.ExpandedObject;
-            set => this.InternalTransaction = SetExpandableFieldObject(value, this.InternalTransaction);
+            set =>
+                this.InternalTransaction = SetExpandableFieldObject(
+                    value,
+                    this.InternalTransaction
+                );
         }
 
         [JsonProperty("transaction")]

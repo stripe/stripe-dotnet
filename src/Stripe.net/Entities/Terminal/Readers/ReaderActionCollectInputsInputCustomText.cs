@@ -6,7 +6,8 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ReaderActionCollectInputsInputCustomText : StripeEntity<ReaderActionCollectInputsInputCustomText>
+    public class ReaderActionCollectInputsInputCustomText
+        : StripeEntity<ReaderActionCollectInputsInputCustomText>
     {
         /// <summary>
         /// Customize the default description for this input.

@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountCreateConfigurationMerchantScriptStatementDescriptorKanaOptions : INestedOptions
+    public class AccountCreateConfigurationMerchantScriptStatementDescriptorKanaOptions
+        : INestedOptions
     {
         /// <summary>
         /// The default text that appears on statements for non-card charges outside of Japan. For

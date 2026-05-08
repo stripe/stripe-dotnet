@@ -11,19 +11,15 @@ namespace Stripe
         private Identity.VerificationSessionService verificationSessions;
 
         internal IdentityService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         internal IdentityService(IStripeClient client)
-            : base(client)
-        {
-        }
+            : base(client) { }
 
-        public virtual Identity.VerificationReportService VerificationReports => this.verificationReports ??= new Identity.VerificationReportService(
-            this.Requestor);
+        public virtual Identity.VerificationReportService VerificationReports =>
+            this.verificationReports ??= new Identity.VerificationReportService(this.Requestor);
 
-        public virtual Identity.VerificationSessionService VerificationSessions => this.verificationSessions ??= new Identity.VerificationSessionService(
-            this.Requestor);
+        public virtual Identity.VerificationSessionService VerificationSessions =>
+            this.verificationSessions ??= new Identity.VerificationSessionService(this.Requestor);
     }
 }

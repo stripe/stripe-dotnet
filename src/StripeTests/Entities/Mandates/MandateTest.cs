@@ -7,9 +7,7 @@ namespace StripeTests
     public class MandateTest : BaseStripeTest
     {
         public MandateTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -25,10 +23,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "payment_method",
-            };
+            string[] expansions = { "payment_method" };
 
             string json = this.GetFixture("/v1/mandates/mandate_123", expansions);
             var mandate = JsonSerializer.Deserialize<Mandate>(json);

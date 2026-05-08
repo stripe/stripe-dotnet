@@ -3,7 +3,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -18,7 +17,8 @@ namespace StripeTests
 
         public TaxIdServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new CustomerTaxIdService(this.StripeClient);
@@ -29,10 +29,7 @@ namespace StripeTests
                 Value = "11111",
             };
 
-            this.listOptions = new CustomerTaxIdListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new CustomerTaxIdListOptions { Limit = 1 };
         }
 
         [Fact]
@@ -122,7 +119,9 @@ namespace StripeTests
         [Fact]
         public async Task ListAutoPagingAsync()
         {
-            var person = await this.service.ListAutoPagingAsync(CustomerId, this.listOptions).FirstAsync();
+            var person = await this
+                .service.ListAutoPagingAsync(CustomerId, this.listOptions)
+                .FirstAsync();
             Assert.NotNull(person);
             Assert.Equal("tax_id", person.Object);
         }

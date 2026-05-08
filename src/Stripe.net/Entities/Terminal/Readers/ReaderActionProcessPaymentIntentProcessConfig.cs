@@ -6,7 +6,8 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ReaderActionProcessPaymentIntentProcessConfig : StripeEntity<ReaderActionProcessPaymentIntentProcessConfig>
+    public class ReaderActionProcessPaymentIntentProcessConfig
+        : StripeEntity<ReaderActionProcessPaymentIntentProcessConfig>
     {
         /// <summary>
         /// Enable customer-initiated cancellation when processing this payment.

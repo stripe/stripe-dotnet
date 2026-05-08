@@ -6,7 +6,9 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class OutboundTransferDestinationPaymentMethodOptionsOptions : INestedOptions, IHasSetTracking
+    public class OutboundTransferDestinationPaymentMethodOptionsOptions
+        : INestedOptions,
+            IHasSetTracking
     {
         private OutboundTransferDestinationPaymentMethodOptionsUsBankAccountOptions usBankAccount;
 

@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationCustomerAutomaticIndirectTax : StripeEntity<AccountConfigurationCustomerAutomaticIndirectTax>
+    public class AccountConfigurationCustomerAutomaticIndirectTax
+        : StripeEntity<AccountConfigurationCustomerAutomaticIndirectTax>
     {
         /// <summary>
         /// The customer account's tax exemption status: <c>none</c>, <c>exempt</c>, or

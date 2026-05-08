@@ -19,7 +19,11 @@ namespace Stripe.Terminal
         public string PaymentIntentId
         {
             get => this.InternalPaymentIntent?.Id;
-            set => this.InternalPaymentIntent = SetExpandableFieldId(value, this.InternalPaymentIntent);
+            set =>
+                this.InternalPaymentIntent = SetExpandableFieldId(
+                    value,
+                    this.InternalPaymentIntent
+                );
         }
 
         /// <summary>
@@ -33,7 +37,11 @@ namespace Stripe.Terminal
         public PaymentIntent PaymentIntent
         {
             get => this.InternalPaymentIntent?.ExpandedObject;
-            set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
+            set =>
+                this.InternalPaymentIntent = SetExpandableFieldObject(
+                    value,
+                    this.InternalPaymentIntent
+                );
         }
 
         [JsonProperty("payment_intent")]

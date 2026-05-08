@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationMerchantBacsDebitPayments : StripeEntity<AccountConfigurationMerchantBacsDebitPayments>
+    public class AccountConfigurationMerchantBacsDebitPayments
+        : StripeEntity<AccountConfigurationMerchantBacsDebitPayments>
     {
         /// <summary>
         /// Display name for Bacs Direct Debit payments.

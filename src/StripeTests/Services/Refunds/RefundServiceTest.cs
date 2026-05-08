@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -19,29 +18,20 @@ namespace StripeTests
 
         public RefundServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new RefundService(this.StripeClient);
 
-            this.createOptions = new RefundCreateOptions
-            {
-                Amount = 123,
-                Charge = "ch_123",
-            };
+            this.createOptions = new RefundCreateOptions { Amount = 123, Charge = "ch_123" };
 
             this.updateOptions = new RefundUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.listOptions = new RefundListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new RefundListOptions { Limit = 1 };
         }
 
         [Fact]

@@ -39,7 +39,8 @@ namespace StripeTests.Wholesome
                     }
 
                     // Skip properties that don't have a `JsonProperty` attribute
-                    var jsonPropertyAttribute = property.GetCustomAttribute<JsonPropertyAttribute>();
+                    var jsonPropertyAttribute =
+                        property.GetCustomAttribute<JsonPropertyAttribute>();
                     if (jsonPropertyAttribute == null)
                     {
                         continue;
@@ -54,8 +55,8 @@ namespace StripeTests.Wholesome
                     // some whos name starts with V1 but those are V1 payloads inside V2
                     // style events.
                     var v2Class =
-                        stripeClass.Namespace.Contains("V2") ||
-                        stripeClass.Namespace == "Stripe.Events";
+                        stripeClass.Namespace.Contains("V2")
+                        || stripeClass.Namespace == "Stripe.Events";
                     if (propType == typeof(DateTime) && !v2Class)
                     {
                         expectedConverterType = typeof(UnixDateTimeConverter);
@@ -64,7 +65,11 @@ namespace StripeTests.Wholesome
                     {
                         expectedConverterType = typeof(AnyOfConverter);
                     }
-                    else if (typeof(IExpandableField).GetTypeInfo().IsAssignableFrom(propType.GetTypeInfo()))
+                    else if (
+                        typeof(IExpandableField)
+                            .GetTypeInfo()
+                            .IsAssignableFrom(propType.GetTypeInfo())
+                    )
                     {
                         expectedConverterType = typeof(ExpandableFieldConverter<>);
                         expectedGenericTypeArguments = propType.GenericTypeArguments;
@@ -76,11 +81,13 @@ namespace StripeTests.Wholesome
 
                     var expectedConverterName = GetConverterName(
                         expectedConverterType,
-                        expectedGenericTypeArguments);
+                        expectedGenericTypeArguments
+                    );
 
                     Type actualConverterType = null;
                     Type[] actualGenericTypeArguments = null;
-                    var jsonConverterAttribute = property.GetCustomAttribute<JsonConverterAttribute>();
+                    var jsonConverterAttribute =
+                        property.GetCustomAttribute<JsonConverterAttribute>();
                     if (jsonConverterAttribute != null)
                     {
                         actualConverterType = jsonConverterAttribute.ConverterType;
@@ -89,7 +96,8 @@ namespace StripeTests.Wholesome
 
                     var actualConverterName = GetConverterName(
                         actualConverterType,
-                        actualGenericTypeArguments);
+                        actualGenericTypeArguments
+                    );
 
                     if (expectedConverterName == actualConverterName)
                     {
@@ -97,22 +105,33 @@ namespace StripeTests.Wholesome
                     }
 
                     // if we have a DecimalStringConverter on a decimal type, assume its good.
-                    if ((property.PropertyType == typeof(decimal) || property.PropertyType == typeof(decimal?))
-                         && actualConverterName == "DecimalStringConverter")
+                    if (
+                        (
+                            property.PropertyType == typeof(decimal)
+                            || property.PropertyType == typeof(decimal?)
+                        )
+                        && actualConverterName == "DecimalStringConverter"
+                    )
                     {
                         continue;
                     }
 
                     // if we have a Int64StringConverter on a long type, assume its good.
-                    if ((property.PropertyType == typeof(long) || property.PropertyType == typeof(long?))
-                         && actualConverterName == "Int64StringConverter")
+                    if (
+                        (
+                            property.PropertyType == typeof(long)
+                            || property.PropertyType == typeof(long?)
+                        )
+                        && actualConverterName == "Int64StringConverter"
+                    )
                     {
                         continue;
                     }
 
                     results.Add(
                         $"{stripeClass.Name}.{property.Name}, expected = {expectedConverterName}, "
-                            + $"actual = {actualConverterName}");
+                            + $"actual = {actualConverterName}"
+                    );
                 }
             }
 

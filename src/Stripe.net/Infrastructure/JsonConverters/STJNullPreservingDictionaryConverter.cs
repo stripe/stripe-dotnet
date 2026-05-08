@@ -26,7 +26,10 @@ namespace Stripe.Infrastructure
         }
 
         /// <inheritdoc/>
-        public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
+        public override JsonConverter CreateConverter(
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
         {
             var keyType = typeToConvert.GenericTypeArguments[0];
             var valueType = typeToConvert.GenericTypeArguments[1];
@@ -40,7 +43,8 @@ namespace Stripe.Infrastructure
             public override Dictionary<TKey, TValue> Read(
                 ref Utf8JsonReader reader,
                 Type typeToConvert,
-                JsonSerializerOptions options)
+                JsonSerializerOptions options
+            )
             {
                 // Standard deserialization handles null values fine.
                 // No recursion risk because this converter is per-property (via attribute),
@@ -51,7 +55,8 @@ namespace Stripe.Infrastructure
             public override void Write(
                 Utf8JsonWriter writer,
                 Dictionary<TKey, TValue> value,
-                JsonSerializerOptions options)
+                JsonSerializerOptions options
+            )
             {
                 writer.WriteStartObject();
                 foreach (var kvp in value)

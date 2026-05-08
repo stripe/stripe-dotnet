@@ -19,7 +19,8 @@ namespace Stripe.Terminal
         public string SplashscreenId
         {
             get => this.InternalSplashscreen?.Id;
-            set => this.InternalSplashscreen = SetExpandableFieldId(value, this.InternalSplashscreen);
+            set =>
+                this.InternalSplashscreen = SetExpandableFieldId(value, this.InternalSplashscreen);
         }
 
         /// <summary>
@@ -33,7 +34,11 @@ namespace Stripe.Terminal
         public File Splashscreen
         {
             get => this.InternalSplashscreen?.ExpandedObject;
-            set => this.InternalSplashscreen = SetExpandableFieldObject(value, this.InternalSplashscreen);
+            set =>
+                this.InternalSplashscreen = SetExpandableFieldObject(
+                    value,
+                    this.InternalSplashscreen
+                );
         }
 
         [JsonProperty("splashscreen")]

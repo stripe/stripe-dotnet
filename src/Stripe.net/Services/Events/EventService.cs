@@ -8,52 +8,57 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class EventService : Service,
-        IListable<Event, EventListOptions>,
-        IRetrievable<Event, EventGetOptions>
+    public class EventService
+        : Service,
+            IListable<Event, EventListOptions>,
+            IRetrievable<Event, EventGetOptions>
     {
-        public EventService()
-        {
-        }
+        public EventService() { }
 
         internal EventService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public EventService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>Retrieves the details of an event if it was created in the last 30 days. Supply the
+        /// unique identifier of the event, which you might have received in a webhook.</p>.
+        /// </summary>
+        public virtual Event Get(
+            string id,
+            EventGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<Event>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/events/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Retrieves the details of an event if it was created in the last 30 days. Supply the
         /// unique identifier of the event, which you might have received in a webhook.</p>.
         /// </summary>
-        public virtual Event Get(string id, EventGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<Event> GetAsync(
+            string id,
+            EventGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<Event>(BaseAddress.Api, HttpMethod.Get, $"/v1/events/{WebUtility.UrlEncode(id)}", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Retrieves the details of an event if it was created in the last 30 days. Supply the
-        /// unique identifier of the event, which you might have received in a webhook.</p>.
-        /// </summary>
-        public virtual Task<Event> GetAsync(string id, EventGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<Event>(BaseAddress.Api, HttpMethod.Get, $"/v1/events/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>List events, going back up to 30 days. Each event data is rendered according to
-        /// Stripe API version at its creation time, specified in <a
-        /// href="https://docs.stripe.com/api/events/object">event object</a> <c>api_version</c>
-        /// attribute (not according to your current Stripe API version or <c>Stripe-Version</c>
-        /// header).</p>.
-        /// </summary>
-        public virtual StripeList<Event> List(EventListOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<StripeList<Event>>(BaseAddress.Api, HttpMethod.Get, $"/v1/events", options, requestOptions);
+            return this.RequestAsync<Event>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/events/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -63,9 +68,18 @@ namespace Stripe
         /// attribute (not according to your current Stripe API version or <c>Stripe-Version</c>
         /// header).</p>.
         /// </summary>
-        public virtual Task<StripeList<Event>> ListAsync(EventListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual StripeList<Event> List(
+            EventListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<StripeList<Event>>(BaseAddress.Api, HttpMethod.Get, $"/v1/events", options, requestOptions, cancellationToken);
+            return this.Request<StripeList<Event>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/events",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -75,7 +89,33 @@ namespace Stripe
         /// attribute (not according to your current Stripe API version or <c>Stripe-Version</c>
         /// header).</p>.
         /// </summary>
-        public virtual IEnumerable<Event> ListAutoPaging(EventListOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<StripeList<Event>> ListAsync(
+            EventListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return this.RequestAsync<StripeList<Event>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/events",
+                options,
+                requestOptions,
+                cancellationToken
+            );
+        }
+
+        /// <summary>
+        /// <p>List events, going back up to 30 days. Each event data is rendered according to
+        /// Stripe API version at its creation time, specified in <a
+        /// href="https://docs.stripe.com/api/events/object">event object</a> <c>api_version</c>
+        /// attribute (not according to your current Stripe API version or <c>Stripe-Version</c>
+        /// header).</p>.
+        /// </summary>
+        public virtual IEnumerable<Event> ListAutoPaging(
+            EventListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
             return this.ListRequestAutoPaging<Event>($"/v1/events", options, requestOptions);
         }
@@ -87,9 +127,18 @@ namespace Stripe
         /// attribute (not according to your current Stripe API version or <c>Stripe-Version</c>
         /// header).</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<Event> ListAutoPagingAsync(EventListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<Event> ListAutoPagingAsync(
+            EventListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<Event>($"/v1/events", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Event>(
+                $"/v1/events",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

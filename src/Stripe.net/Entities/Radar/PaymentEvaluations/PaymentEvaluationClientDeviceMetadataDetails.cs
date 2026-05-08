@@ -6,7 +6,8 @@ namespace Stripe.Radar
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentEvaluationClientDeviceMetadataDetails : StripeEntity<PaymentEvaluationClientDeviceMetadataDetails>
+    public class PaymentEvaluationClientDeviceMetadataDetails
+        : StripeEntity<PaymentEvaluationClientDeviceMetadataDetails>
     {
         /// <summary>
         /// ID for the Radar Session associated with the payment evaluation. A <a

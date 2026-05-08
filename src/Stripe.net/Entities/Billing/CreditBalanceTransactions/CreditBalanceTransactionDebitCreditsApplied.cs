@@ -6,7 +6,8 @@ namespace Stripe.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CreditBalanceTransactionDebitCreditsApplied : StripeEntity<CreditBalanceTransactionDebitCreditsApplied>
+    public class CreditBalanceTransactionDebitCreditsApplied
+        : StripeEntity<CreditBalanceTransactionDebitCreditsApplied>
     {
         #region Expandable Invoice
 

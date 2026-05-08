@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class MandatePaymentMethodDetailsAuBecsDebit : StripeEntity<MandatePaymentMethodDetailsAuBecsDebit>
+    public class MandatePaymentMethodDetailsAuBecsDebit
+        : StripeEntity<MandatePaymentMethodDetailsAuBecsDebit>
     {
         /// <summary>
         /// The URL of the mandate. This URL generally contains sensitive information about the

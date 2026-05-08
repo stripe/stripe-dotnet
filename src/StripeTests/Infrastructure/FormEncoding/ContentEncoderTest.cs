@@ -22,7 +22,10 @@ namespace StripeTests
             Assert.NotNull(content);
             Assert.IsType<FormUrlEncodedContent>(content);
 
-            Assert.Equal("application/x-www-form-urlencoded", content.Headers.ContentType.MediaType);
+            Assert.Equal(
+                "application/x-www-form-urlencoded",
+                content.Headers.ContentType.MediaType
+            );
             Assert.Equal("utf-8", content.Headers.ContentType.CharSet);
             Assert.Equal(1, content.Headers.ContentType.Parameters.Count);
 
@@ -43,7 +46,10 @@ namespace StripeTests
             Assert.NotNull(content);
             Assert.IsType<FormUrlEncodedContent>(content);
 
-            Assert.Equal("application/x-www-form-urlencoded", content.Headers.ContentType.MediaType);
+            Assert.Equal(
+                "application/x-www-form-urlencoded",
+                content.Headers.ContentType.MediaType
+            );
             Assert.Equal("utf-8", content.Headers.ContentType.CharSet);
             Assert.Equal(1, content.Headers.ContentType.Parameters.Count);
 
@@ -100,19 +106,24 @@ namespace StripeTests
             // MultipartFormDataContentTest has more exhaustive tests with a non-random boundary.
             Assert.Contains(
                 "Content-Type: text/plain; charset=utf-8\r\nContent-Disposition: form-data; name=\"list[0]\"\r\n\r\n1\r\n",
-                result);
+                result
+            );
             Assert.Contains(
                 "Content-Type: text/plain; charset=utf-8\r\nContent-Disposition: form-data; name=\"list[1]\"\r\n\r\n2\r\n",
-                result);
+                result
+            );
             Assert.Contains(
                 "Content-Type: text/plain; charset=utf-8\r\nContent-Disposition: form-data; name=\"list[2]\"\r\n\r\n3\r\n",
-                result);
+                result
+            );
             Assert.Contains(
                 "Content-Disposition: form-data; name=\"stream\"; filename=blob; filename*=utf-8''blob\r\nContent-Type: application/octet-stream\r\n\r\nHello World!\r\n",
-                result);
+                result
+            );
             Assert.Contains(
                 "Content-Type: text/plain; charset=utf-8\r\nContent-Disposition: form-data; name=\"string\"\r\n\r\nString!\r\n",
-                result);
+                result
+            );
         }
 
         [Fact]
@@ -126,14 +137,10 @@ namespace StripeTests
                     Data = new TestOptions { },
                     Want = string.Empty,
                 },
-
                 // AnyOf
                 new QueryStringTestCase
                 {
-                    Data = new TestOptions
-                    {
-                        AnyOf = "foo",
-                    },
+                    Data = new TestOptions { AnyOf = "foo" },
                     Want = "any_of=foo",
                 },
                 new QueryStringTestCase
@@ -168,54 +175,35 @@ namespace StripeTests
                     },
                     Want = string.Empty,
                 },
-
                 // Array
                 new QueryStringTestCase
                 {
-                    Data = new TestOptions
-                    {
-                            Array = new[] { "1", "2", "3" },
-                    },
+                    Data = new TestOptions { Array = new[] { "1", "2", "3" } },
                     Want = "array[0]=1&array[1]=2&array[2]=3",
                 },
                 new QueryStringTestCase
                 {
-                    Data = new TestOptions
-                    {
-                            Array = new string[] { },
-                    },
+                    Data = new TestOptions { Array = new string[] { } },
                     Want = "array=",
                 },
-
                 // V2 Array
                 new QueryStringTestCase
                 {
-                    Data = new TestOptions
-                    {
-                            Array = new[] { "1", "2", "3" },
-                    },
+                    Data = new TestOptions { Array = new[] { "1", "2", "3" } },
                     Want = "array[0]=1&array[1]=2&array[2]=3",
                     Mode = ApiMode.V2,
                 },
-
                 // Bool
                 new QueryStringTestCase
                 {
-                    Data = new TestOptions
-                    {
-                        Bool = false,
-                    },
+                    Data = new TestOptions { Bool = false },
                     Want = "bool=false",
                 },
                 new QueryStringTestCase
                 {
-                    Data = new TestOptions
-                    {
-                        Bool = true,
-                    },
+                    Data = new TestOptions { Bool = true },
                     Want = "bool=true",
                 },
-
                 // DateRangeOptions
                 new QueryStringTestCase
                 {
@@ -229,7 +217,6 @@ namespace StripeTests
                     },
                     Want = "date_filter[gte]=946684800&date_filter[lt]=946702800",
                 },
-
                 // DateTime
                 new QueryStringTestCase
                 {
@@ -239,25 +226,17 @@ namespace StripeTests
                     },
                     Want = "datetime=946684800",
                 },
-
                 // Decimal
                 new QueryStringTestCase
                 {
-                    Data = new TestOptions
-                    {
-                        Decimal = 1.2345m,
-                    },
+                    Data = new TestOptions { Decimal = 1.2345m },
                     Want = "decimal=1.2345",
                 },
                 new QueryStringTestCase
                 {
-                    Data = new TestOptions
-                    {
-                        Decimal = 0.0m,
-                    },
+                    Data = new TestOptions { Decimal = 0.0m },
                     Want = "decimal=0.0",
                 },
-
                 // Dictionary
                 new QueryStringTestCase
                 {
@@ -289,30 +268,25 @@ namespace StripeTests
                     {
                         Dictionary = new Dictionary<string, object>
                         {
-                            { "foo", new Dictionary<string, object> { { "bar", "baz" } } },
+                            {
+                                "foo",
+                                new Dictionary<string, object> { { "bar", "baz" } }
+                            },
                         },
                     },
                     Want = "dictionary[foo][bar]=baz",
                 },
-
                 // Enum
                 new QueryStringTestCase
                 {
-                    Data = new TestOptions
-                    {
-                        Enum = "test_one",
-                    },
+                    Data = new TestOptions { Enum = "test_one" },
                     Want = "enum=test_one",
                 },
                 new QueryStringTestCase
                 {
-                    Data = new TestOptions
-                    {
-                        Enum = "TestTwo",
-                    },
+                    Data = new TestOptions { Enum = "TestTwo" },
                     Want = "enum=TestTwo",
                 },
-
                 // List
                 new QueryStringTestCase
                 {
@@ -332,10 +306,7 @@ namespace StripeTests
                 },
                 new QueryStringTestCase
                 {
-                    Data = new TestOptions
-                    {
-                        List = new List<object> { },
-                    },
+                    Data = new TestOptions { List = new List<object> { } },
                     Want = "list=",
                 },
                 new QueryStringTestCase
@@ -350,7 +321,6 @@ namespace StripeTests
                     },
                     Want = "list[0][foo]=bar&list[1][foo]=baz",
                 },
-
                 // Nested list (2D array)
                 new QueryStringTestCase
                 {
@@ -364,85 +334,61 @@ namespace StripeTests
                     },
                     Want = "list[0][0]=1&list[0][1]=2&list[1][0]=3&list[1][1]=4",
                 },
-
                 // Long
                 new QueryStringTestCase
                 {
-                    Data = new TestOptions
-                    {
-                        Long = 123,
-                    },
+                    Data = new TestOptions { Long = 123 },
                     Want = "long=123",
                 },
                 new QueryStringTestCase
                 {
-                    Data = new TestOptions
-                    {
-                        Long = 0,
-                    },
+                    Data = new TestOptions { Long = 0 },
                     Want = "long=0",
                 },
-
                 // String
                 new QueryStringTestCase
                 {
-                    Data = new TestOptions
-                    {
-                        String = "foo",
-                    },
+                    Data = new TestOptions { String = "foo" },
                     Want = "string=foo",
                 },
                 new QueryStringTestCase
                 {
-                    Data = new TestOptions
-                    {
-                        String = string.Empty,
-                    },
+                    Data = new TestOptions { String = string.Empty },
                     Want = "string=",
                 },
-
                 // StringEnum
                 new QueryStringTestCase
                 {
-                    Data = new TestOptions
-                    {
-                        StringEnum = TestOptions.TestStringEnum.Foo,
-                    },
+                    Data = new TestOptions { StringEnum = TestOptions.TestStringEnum.Foo },
                     Want = "string_enum=foo",
                 },
                 new QueryStringTestCase
                 {
-                    Data = new TestOptions
-                    {
-                        StringEnum = null,
-                    },
+                    Data = new TestOptions { StringEnum = null },
                     Want = string.Empty,
                 },
             };
 
             foreach (var testCase in testCases)
             {
-                Assert.Equal(testCase.Want, ContentEncoder.CreateQueryString(testCase.Data, testCase.Mode));
+                Assert.Equal(
+                    testCase.Want,
+                    ContentEncoder.CreateQueryString(testCase.Data, testCase.Mode)
+                );
             }
         }
 
         [Fact]
         public void EnumEncodeUnknownValue()
         {
-            var options = new TestOptions
-            {
-                Enum = "TestTwo",
-            };
+            var options = new TestOptions { Enum = "TestTwo" };
             Assert.Equal("enum=TestTwo", ContentEncoder.CreateQueryString(options));
         }
 
         [Fact]
         public void EnumEncodeValidValue()
         {
-            var options = new TestOptions
-            {
-                Enum = "test_one",
-            };
+            var options = new TestOptions { Enum = "test_one" };
             Assert.Contains("enum=test_one", ContentEncoder.CreateQueryString(options));
         }
 
@@ -473,15 +419,16 @@ namespace StripeTests
             var options = new TestOptions
             {
                 Dictionary = new Dictionary<string, object>
-                    {
-                        { "#", "1 2 3" },
-                        { "bar&baz", "+foo?" },
-                    },
+                {
+                    { "#", "1 2 3" },
+                    { "bar&baz", "+foo?" },
+                },
                 String = "[éàü]",
             };
             Assert.Equal(
                 "dictionary[%23]=1+2+3&dictionary[bar%26baz]=%2Bfoo%3F&string=[%C3%A9%C3%A0%C3%BC]",
-                ContentEncoder.CreateQueryString(options));
+                ContentEncoder.CreateQueryString(options)
+            );
         }
 
         private class QueryStringTestCase

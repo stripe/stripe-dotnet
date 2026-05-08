@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsNaverPay : StripeEntity<SessionPaymentMethodOptionsNaverPay>
+    public class SessionPaymentMethodOptionsNaverPay
+        : StripeEntity<SessionPaymentMethodOptionsNaverPay>
     {
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.

@@ -43,15 +43,16 @@ namespace Stripe
         {
             get
             {
-                if (string.IsNullOrEmpty(apiKey) &&
-                    !string.IsNullOrEmpty(ConfigurationManager.AppSettings["StripeApiKey"]))
+                if (
+                    string.IsNullOrEmpty(apiKey)
+                    && !string.IsNullOrEmpty(ConfigurationManager.AppSettings["StripeApiKey"])
+                )
                 {
                     apiKey = ConfigurationManager.AppSettings["StripeApiKey"];
                 }
 
                 return apiKey;
             }
-
             set
             {
                 if (value != apiKey)
@@ -72,15 +73,16 @@ namespace Stripe
         {
             get
             {
-                if (string.IsNullOrEmpty(clientId) &&
-                    !string.IsNullOrEmpty(ConfigurationManager.AppSettings["StripeClientId"]))
+                if (
+                    string.IsNullOrEmpty(clientId)
+                    && !string.IsNullOrEmpty(ConfigurationManager.AppSettings["StripeClientId"])
+                )
                 {
                     clientId = ConfigurationManager.AppSettings["StripeClientId"];
                 }
 
                 return clientId;
             }
-
             set
             {
                 if (value != clientId)
@@ -100,23 +102,25 @@ namespace Stripe
         /// otherwise Stripe.net will no longer be able to deserialize polymorphic resources
         /// represented by interfaces (e.g. <see cref="IPaymentSource"/>).
         /// </summary>
-        [Obsolete("Use SerializerOptions instead. SerializerSettings will be removed in a future major version.")]
+        [Obsolete(
+            "Use SerializerOptions instead. SerializerSettings will be removed in a future major version."
+        )]
 #pragma warning disable CS0618 // Type or member is obsolete
-        public static JsonSerializerSettings SerializerSettings { get; set; } = DefaultSerializerSettings();
+        public static JsonSerializerSettings SerializerSettings { get; set; } =
+            DefaultSerializerSettings();
 #pragma warning restore CS0618 // Type or member is obsolete
 
         /// <summary>
         /// Gets or sets the System.Text.Json options used for serialization and deserialization.
         /// </summary>
-        public static JsonSerializerOptions SerializerOptions { get; set; } = DefaultStjSerializerOptions();
+        public static JsonSerializerOptions SerializerOptions { get; set; } =
+            DefaultStjSerializerOptions();
 
         /// <summary>
         /// Cached options instance for indented JSON output (used by ToJson()).
         /// </summary>
-        internal static JsonSerializerOptions IndentedSerializerOptions { get; } = new JsonSerializerOptions(DefaultStjSerializerOptions())
-        {
-            WriteIndented = true,
-        };
+        internal static JsonSerializerOptions IndentedSerializerOptions { get; } =
+            new JsonSerializerOptions(DefaultStjSerializerOptions()) { WriteIndented = true };
 
         /// <summary>
         /// Gets or sets the maximum number of times that the library will retry requests that
@@ -125,7 +129,6 @@ namespace Stripe
         public static int MaxNetworkRetries
         {
             get => maxNetworkRetries;
-
             set
             {
                 if (value != maxNetworkRetries)
@@ -143,7 +146,6 @@ namespace Stripe
         public static bool EnableTelemetry
         {
             get => enableTelemetry;
-
             set
             {
                 if (value != enableTelemetry)
@@ -181,7 +183,6 @@ namespace Stripe
 
                 return stripeClient;
             }
-
             set => stripeClient = value;
         }
 
@@ -195,7 +196,6 @@ namespace Stripe
         public static AppInfo AppInfo
         {
             internal get => appInfo;
-
             set
             {
                 if ((value != null) && string.IsNullOrEmpty(value.Name))
@@ -217,7 +217,9 @@ namespace Stripe
         /// the default settings used by Stripe.net.
         /// </summary>
         /// <returns>A <see cref="Newtonsoft.Json.JsonSerializerSettings"/> instance.</returns>
-        [Obsolete("Use DefaultStjSerializerOptions() instead. DefaultSerializerSettings() will be removed in a future major version.")]
+        [Obsolete(
+            "Use DefaultStjSerializerOptions() instead. DefaultSerializerSettings() will be removed in a future major version."
+        )]
         public static JsonSerializerSettings DefaultSerializerSettings()
         {
             return DefaultSerializerSettings(null);
@@ -234,7 +236,10 @@ namespace Stripe
             {
                 // Disable the warning (applies to net8.0).
 #pragma warning disable SYSLIB0050
-                Context = new StreamingContext(StreamingContextStates.All, new DeserializationContext { Requestor = requestor }),
+                Context = new StreamingContext(
+                    StreamingContextStates.All,
+                    new DeserializationContext { Requestor = requestor }
+                ),
 
                 // Re-enable the warning.
 #pragma warning restore SYSLIB0050
@@ -284,7 +289,8 @@ namespace Stripe
         {
             if (ApiKey != null && ApiKey.Length == 0)
             {
-                var message = "Your API key is invalid, as it is an empty string. You can "
+                var message =
+                    "Your API key is invalid, as it is an empty string. You can "
                     + "double-check your API key from the Stripe Dashboard. See "
                     + "https://stripe.com/docs/api/authentication for details or contact support "
                     + "at https://support.stripe.com/email if you have any questions.";
@@ -293,7 +299,8 @@ namespace Stripe
 
             if (ApiKey != null && StringUtils.ContainsWhitespace(ApiKey))
             {
-                var message = "Your API key is invalid, as it contains whitespace. You can "
+                var message =
+                    "Your API key is invalid, as it contains whitespace. You can "
                     + "double-check your API key from the Stripe Dashboard. See "
                     + "https://stripe.com/docs/api/authentication for details or contact support "
                     + "at https://support.stripe.com/email if you have any questions.";
@@ -304,7 +311,8 @@ namespace Stripe
                 httpClient: null,
                 maxNetworkRetries: MaxNetworkRetries,
                 appInfo: AppInfo,
-                enableTelemetry: EnableTelemetry);
+                enableTelemetry: EnableTelemetry
+            );
             return new DefaultStripeClient(ApiKey, ClientId, httpClient);
         }
     }

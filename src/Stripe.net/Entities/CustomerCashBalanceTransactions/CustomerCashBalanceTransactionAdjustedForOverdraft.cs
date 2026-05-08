@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CustomerCashBalanceTransactionAdjustedForOverdraft : StripeEntity<CustomerCashBalanceTransactionAdjustedForOverdraft>
+    public class CustomerCashBalanceTransactionAdjustedForOverdraft
+        : StripeEntity<CustomerCashBalanceTransactionAdjustedForOverdraft>
     {
         #region Expandable BalanceTransaction
 
@@ -20,7 +21,11 @@ namespace Stripe
         public string BalanceTransactionId
         {
             get => this.InternalBalanceTransaction?.Id;
-            set => this.InternalBalanceTransaction = SetExpandableFieldId(value, this.InternalBalanceTransaction);
+            set =>
+                this.InternalBalanceTransaction = SetExpandableFieldId(
+                    value,
+                    this.InternalBalanceTransaction
+                );
         }
 
         /// <summary>
@@ -35,7 +40,11 @@ namespace Stripe
         public BalanceTransaction BalanceTransaction
         {
             get => this.InternalBalanceTransaction?.ExpandedObject;
-            set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
+            set =>
+                this.InternalBalanceTransaction = SetExpandableFieldObject(
+                    value,
+                    this.InternalBalanceTransaction
+                );
         }
 
         [JsonProperty("balance_transaction")]
@@ -58,7 +67,11 @@ namespace Stripe
         public string LinkedTransactionId
         {
             get => this.InternalLinkedTransaction?.Id;
-            set => this.InternalLinkedTransaction = SetExpandableFieldId(value, this.InternalLinkedTransaction);
+            set =>
+                this.InternalLinkedTransaction = SetExpandableFieldId(
+                    value,
+                    this.InternalLinkedTransaction
+                );
         }
 
         /// <summary>
@@ -74,7 +87,11 @@ namespace Stripe
         public CustomerCashBalanceTransaction LinkedTransaction
         {
             get => this.InternalLinkedTransaction?.ExpandedObject;
-            set => this.InternalLinkedTransaction = SetExpandableFieldObject(value, this.InternalLinkedTransaction);
+            set =>
+                this.InternalLinkedTransaction = SetExpandableFieldObject(
+                    value,
+                    this.InternalLinkedTransaction
+                );
         }
 
         [JsonProperty("linked_transaction")]

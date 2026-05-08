@@ -6,7 +6,8 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CardholderIndividualVerificationDocument : StripeEntity<CardholderIndividualVerificationDocument>
+    public class CardholderIndividualVerificationDocument
+        : StripeEntity<CardholderIndividualVerificationDocument>
     {
         #region Expandable Back
 

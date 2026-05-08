@@ -8,24 +8,39 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class SubscriptionScheduleService : Service,
-        ICreatable<SubscriptionSchedule, SubscriptionScheduleCreateOptions>,
-        IListable<SubscriptionSchedule, SubscriptionScheduleListOptions>,
-        IRetrievable<SubscriptionSchedule, SubscriptionScheduleGetOptions>,
-        IUpdatable<SubscriptionSchedule, SubscriptionScheduleUpdateOptions>
+    public class SubscriptionScheduleService
+        : Service,
+            ICreatable<SubscriptionSchedule, SubscriptionScheduleCreateOptions>,
+            IListable<SubscriptionSchedule, SubscriptionScheduleListOptions>,
+            IRetrievable<SubscriptionSchedule, SubscriptionScheduleGetOptions>,
+            IUpdatable<SubscriptionSchedule, SubscriptionScheduleUpdateOptions>
     {
-        public SubscriptionScheduleService()
-        {
-        }
+        public SubscriptionScheduleService() { }
 
         internal SubscriptionScheduleService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public SubscriptionScheduleService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>Cancels a subscription schedule and its associated subscription immediately (if the
+        /// subscription schedule has an active subscription). A subscription schedule can only be
+        /// canceled if its status is <c>not_started</c> or <c>active</c>.</p>.
+        /// </summary>
+        public virtual SubscriptionSchedule Cancel(
+            string id,
+            SubscriptionScheduleCancelOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<SubscriptionSchedule>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/cancel",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -33,37 +48,59 @@ namespace Stripe
         /// subscription schedule has an active subscription). A subscription schedule can only be
         /// canceled if its status is <c>not_started</c> or <c>active</c>.</p>.
         /// </summary>
-        public virtual SubscriptionSchedule Cancel(string id, SubscriptionScheduleCancelOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<SubscriptionSchedule> CancelAsync(
+            string id,
+            SubscriptionScheduleCancelOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Cancels a subscription schedule and its associated subscription immediately (if the
-        /// subscription schedule has an active subscription). A subscription schedule can only be
-        /// canceled if its status is <c>not_started</c> or <c>active</c>.</p>.
-        /// </summary>
-        public virtual Task<SubscriptionSchedule> CancelAsync(string id, SubscriptionScheduleCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>Creates a new subscription schedule object. Each customer can have up to 500 active
-        /// or scheduled subscriptions.</p>.
-        /// </summary>
-        public virtual SubscriptionSchedule Create(SubscriptionScheduleCreateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.Request<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules", options, requestOptions);
+            return this.RequestAsync<SubscriptionSchedule>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/cancel",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Creates a new subscription schedule object. Each customer can have up to 500 active
         /// or scheduled subscriptions.</p>.
         /// </summary>
-        public virtual Task<SubscriptionSchedule> CreateAsync(SubscriptionScheduleCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual SubscriptionSchedule Create(
+            SubscriptionScheduleCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules", options, requestOptions, cancellationToken);
+            return this.Request<SubscriptionSchedule>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/subscription_schedules",
+                options,
+                requestOptions
+            );
+        }
+
+        /// <summary>
+        /// <p>Creates a new subscription schedule object. Each customer can have up to 500 active
+        /// or scheduled subscriptions.</p>.
+        /// </summary>
+        public virtual Task<SubscriptionSchedule> CreateAsync(
+            SubscriptionScheduleCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return this.RequestAsync<SubscriptionSchedule>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/subscription_schedules",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -71,9 +108,19 @@ namespace Stripe
         /// the unique subscription schedule identifier that was returned upon subscription schedule
         /// creation.</p>.
         /// </summary>
-        public virtual SubscriptionSchedule Get(string id, SubscriptionScheduleGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual SubscriptionSchedule Get(
+            string id,
+            SubscriptionScheduleGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<SubscriptionSchedule>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -81,41 +128,89 @@ namespace Stripe
         /// the unique subscription schedule identifier that was returned upon subscription schedule
         /// creation.</p>.
         /// </summary>
-        public virtual Task<SubscriptionSchedule> GetAsync(string id, SubscriptionScheduleGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<SubscriptionSchedule> GetAsync(
+            string id,
+            SubscriptionScheduleGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<SubscriptionSchedule>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Retrieves the list of your subscription schedules.</p>.
         /// </summary>
-        public virtual StripeList<SubscriptionSchedule> List(SubscriptionScheduleListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<SubscriptionSchedule> List(
+            SubscriptionScheduleListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeList<SubscriptionSchedule>>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscription_schedules", options, requestOptions);
+            return this.Request<StripeList<SubscriptionSchedule>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/subscription_schedules",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Retrieves the list of your subscription schedules.</p>.
         /// </summary>
-        public virtual Task<StripeList<SubscriptionSchedule>> ListAsync(SubscriptionScheduleListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<SubscriptionSchedule>> ListAsync(
+            SubscriptionScheduleListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeList<SubscriptionSchedule>>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscription_schedules", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<SubscriptionSchedule>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/subscription_schedules",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Retrieves the list of your subscription schedules.</p>.
         /// </summary>
-        public virtual IEnumerable<SubscriptionSchedule> ListAutoPaging(SubscriptionScheduleListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<SubscriptionSchedule> ListAutoPaging(
+            SubscriptionScheduleListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.ListRequestAutoPaging<SubscriptionSchedule>($"/v1/subscription_schedules", options, requestOptions);
+            return this.ListRequestAutoPaging<SubscriptionSchedule>(
+                $"/v1/subscription_schedules",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Retrieves the list of your subscription schedules.</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<SubscriptionSchedule> ListAutoPagingAsync(SubscriptionScheduleListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<SubscriptionSchedule> ListAutoPagingAsync(
+            SubscriptionScheduleListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<SubscriptionSchedule>($"/v1/subscription_schedules", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<SubscriptionSchedule>(
+                $"/v1/subscription_schedules",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -126,9 +221,19 @@ namespace Stripe
         /// <c>subscription</c> property and set the subscription’s ID to the
         /// <c>released_subscription</c> property.</p>.
         /// </summary>
-        public virtual SubscriptionSchedule Release(string id, SubscriptionScheduleReleaseOptions options = null, RequestOptions requestOptions = null)
+        public virtual SubscriptionSchedule Release(
+            string id,
+            SubscriptionScheduleReleaseOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/release", options, requestOptions);
+            return this.Request<SubscriptionSchedule>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/release",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -139,25 +244,59 @@ namespace Stripe
         /// <c>subscription</c> property and set the subscription’s ID to the
         /// <c>released_subscription</c> property.</p>.
         /// </summary>
-        public virtual Task<SubscriptionSchedule> ReleaseAsync(string id, SubscriptionScheduleReleaseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<SubscriptionSchedule> ReleaseAsync(
+            string id,
+            SubscriptionScheduleReleaseOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/release", options, requestOptions, cancellationToken);
+            return this.RequestAsync<SubscriptionSchedule>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/release",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Updates an existing subscription schedule.</p>.
         /// </summary>
-        public virtual SubscriptionSchedule Update(string id, SubscriptionScheduleUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual SubscriptionSchedule Update(
+            string id,
+            SubscriptionScheduleUpdateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<SubscriptionSchedule>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Updates an existing subscription schedule.</p>.
         /// </summary>
-        public virtual Task<SubscriptionSchedule> UpdateAsync(string id, SubscriptionScheduleUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<SubscriptionSchedule> UpdateAsync(
+            string id,
+            SubscriptionScheduleUpdateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<SubscriptionSchedule>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

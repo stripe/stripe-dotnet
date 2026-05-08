@@ -22,7 +22,11 @@ namespace Stripe.Infrastructure
         /// <param name="typeToConvert">Type of the object.</param>
         /// <param name="options">The calling serializer's options.</param>
         /// <returns>The object value.</returns>
-        public override V2.Core.EventNotification Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override V2.Core.EventNotification Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
         {
             if (reader.TokenType == JsonTokenType.Null)
             {
@@ -39,18 +43,22 @@ namespace Stripe.Infrastructure
                 typeValue = typeProp.GetString();
             }
 
-            Type concreteType = StripeTypeRegistry.GetConcreteV2EventNotificationType(typeValue)
+            Type concreteType =
+                StripeTypeRegistry.GetConcreteV2EventNotificationType(typeValue)
                 ?? typeof(Events.UnknownEventNotification);
 
             // Deserialize using ReadFullObject with the concrete type.
             var rawJson = jsonElement.GetRawText();
             var bytes = Encoding.UTF8.GetBytes(rawJson);
-            var newReader = new Utf8JsonReader(bytes, new JsonReaderOptions
-            {
-                AllowTrailingCommas = options.AllowTrailingCommas,
-                CommentHandling = options.ReadCommentHandling,
-                MaxDepth = options.MaxDepth,
-            });
+            var newReader = new Utf8JsonReader(
+                bytes,
+                new JsonReaderOptions
+                {
+                    AllowTrailingCommas = options.AllowTrailingCommas,
+                    CommentHandling = options.ReadCommentHandling,
+                    MaxDepth = options.MaxDepth,
+                }
+            );
 
             // Advance to the first token (StartObject)
             newReader.Read();
@@ -67,7 +75,9 @@ namespace Stripe.Infrastructure
         /// </returns>
         public override bool CanConvert(Type objectType)
         {
-            return typeof(Stripe.V2.Core.EventNotification).GetTypeInfo().IsAssignableFrom(objectType.GetTypeInfo());
+            return typeof(Stripe.V2.Core.EventNotification)
+                .GetTypeInfo()
+                .IsAssignableFrom(objectType.GetTypeInfo());
         }
     }
 }

@@ -16,7 +16,12 @@ namespace Stripe.Issuing
     /// card transactions</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class Transaction : StripeEntity<Transaction>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
+    public class Transaction
+        : StripeEntity<Transaction>,
+            IHasId,
+            IHasMetadata,
+            IHasObject,
+            IBalanceTransactionSource
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -61,7 +66,11 @@ namespace Stripe.Issuing
         public string AuthorizationId
         {
             get => this.InternalAuthorization?.Id;
-            set => this.InternalAuthorization = SetExpandableFieldId(value, this.InternalAuthorization);
+            set =>
+                this.InternalAuthorization = SetExpandableFieldId(
+                    value,
+                    this.InternalAuthorization
+                );
         }
 
         /// <summary>
@@ -75,7 +84,11 @@ namespace Stripe.Issuing
         public Authorization Authorization
         {
             get => this.InternalAuthorization?.ExpandedObject;
-            set => this.InternalAuthorization = SetExpandableFieldObject(value, this.InternalAuthorization);
+            set =>
+                this.InternalAuthorization = SetExpandableFieldObject(
+                    value,
+                    this.InternalAuthorization
+                );
         }
 
         [JsonProperty("authorization")]
@@ -97,7 +110,11 @@ namespace Stripe.Issuing
         public string BalanceTransactionId
         {
             get => this.InternalBalanceTransaction?.Id;
-            set => this.InternalBalanceTransaction = SetExpandableFieldId(value, this.InternalBalanceTransaction);
+            set =>
+                this.InternalBalanceTransaction = SetExpandableFieldId(
+                    value,
+                    this.InternalBalanceTransaction
+                );
         }
 
         /// <summary>
@@ -112,7 +129,11 @@ namespace Stripe.Issuing
         public BalanceTransaction BalanceTransaction
         {
             get => this.InternalBalanceTransaction?.ExpandedObject;
-            set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
+            set =>
+                this.InternalBalanceTransaction = SetExpandableFieldObject(
+                    value,
+                    this.InternalBalanceTransaction
+                );
         }
 
         [JsonProperty("balance_transaction")]
@@ -182,7 +203,8 @@ namespace Stripe.Issuing
         public Cardholder Cardholder
         {
             get => this.InternalCardholder?.ExpandedObject;
-            set => this.InternalCardholder = SetExpandableFieldObject(value, this.InternalCardholder);
+            set =>
+                this.InternalCardholder = SetExpandableFieldObject(value, this.InternalCardholder);
         }
 
         [JsonProperty("cardholder")]

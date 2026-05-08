@@ -7,7 +7,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsCustomerBalanceBankTransfer : StripeEntity<SessionPaymentMethodOptionsCustomerBalanceBankTransfer>
+    public class SessionPaymentMethodOptionsCustomerBalanceBankTransfer
+        : StripeEntity<SessionPaymentMethodOptionsCustomerBalanceBankTransfer>
     {
         [JsonProperty("eu_bank_transfer")]
         [STJS.JsonPropertyName("eu_bank_transfer")]

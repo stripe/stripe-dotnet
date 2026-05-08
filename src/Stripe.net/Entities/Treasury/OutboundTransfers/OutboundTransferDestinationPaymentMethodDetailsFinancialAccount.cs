@@ -6,7 +6,9 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class OutboundTransferDestinationPaymentMethodDetailsFinancialAccount : StripeEntity<OutboundTransferDestinationPaymentMethodDetailsFinancialAccount>, IHasId
+    public class OutboundTransferDestinationPaymentMethodDetailsFinancialAccount
+        : StripeEntity<OutboundTransferDestinationPaymentMethodDetailsFinancialAccount>,
+            IHasId
     {
         /// <summary>
         /// Token of the FinancialAccount.

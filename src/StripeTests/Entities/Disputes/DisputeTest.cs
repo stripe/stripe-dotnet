@@ -7,9 +7,7 @@ namespace StripeTests
     public class DisputeTest : BaseStripeTest
     {
         public DisputeTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -25,11 +23,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "charge",
-              "payment_intent",
-            };
+            string[] expansions = { "charge", "payment_intent" };
 
             string json = this.GetFixture("/v1/disputes/dp_123", expansions);
             var dispute = JsonSerializer.Deserialize<Dispute>(json);

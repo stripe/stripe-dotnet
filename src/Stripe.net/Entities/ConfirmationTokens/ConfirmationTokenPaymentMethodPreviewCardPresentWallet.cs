@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationTokenPaymentMethodPreviewCardPresentWallet : StripeEntity<ConfirmationTokenPaymentMethodPreviewCardPresentWallet>
+    public class ConfirmationTokenPaymentMethodPreviewCardPresentWallet
+        : StripeEntity<ConfirmationTokenPaymentMethodPreviewCardPresentWallet>
     {
         /// <summary>
         /// The type of mobile wallet, one of <c>apple_pay</c>, <c>google_pay</c>,

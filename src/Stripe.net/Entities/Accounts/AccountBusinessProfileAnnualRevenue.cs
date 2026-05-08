@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountBusinessProfileAnnualRevenue : StripeEntity<AccountBusinessProfileAnnualRevenue>
+    public class AccountBusinessProfileAnnualRevenue
+        : StripeEntity<AccountBusinessProfileAnnualRevenue>
     {
         /// <summary>
         /// A non-negative integer representing the amount in the <a

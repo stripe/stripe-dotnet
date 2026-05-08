@@ -6,8 +6,6 @@ namespace StripeTests.Infrastructure.TestData
     public class TestService : Service<Charge>
     {
         public TestService()
-            : base()
-        {
-        }
+            : base() { }
     }
 }

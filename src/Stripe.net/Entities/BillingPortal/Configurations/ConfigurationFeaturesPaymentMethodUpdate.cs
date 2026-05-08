@@ -6,7 +6,8 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfigurationFeaturesPaymentMethodUpdate : StripeEntity<ConfigurationFeaturesPaymentMethodUpdate>
+    public class ConfigurationFeaturesPaymentMethodUpdate
+        : StripeEntity<ConfigurationFeaturesPaymentMethodUpdate>
     {
         /// <summary>
         /// Whether the feature is enabled.

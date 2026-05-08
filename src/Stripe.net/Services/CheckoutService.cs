@@ -10,16 +10,12 @@ namespace Stripe
         private Checkout.SessionService sessions;
 
         internal CheckoutService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         internal CheckoutService(IStripeClient client)
-            : base(client)
-        {
-        }
+            : base(client) { }
 
-        public virtual Checkout.SessionService Sessions => this.sessions ??= new Checkout.SessionService(
-            this.Requestor);
+        public virtual Checkout.SessionService Sessions =>
+            this.sessions ??= new Checkout.SessionService(this.Requestor);
     }
 }

@@ -121,7 +121,11 @@ namespace Stripe.Reserve
         public Hold ReserveHold
         {
             get => this.InternalReserveHold?.ExpandedObject;
-            set => this.InternalReserveHold = SetExpandableFieldObject(value, this.InternalReserveHold);
+            set =>
+                this.InternalReserveHold = SetExpandableFieldObject(
+                    value,
+                    this.InternalReserveHold
+                );
         }
 
         [JsonProperty("reserve_hold")]
@@ -160,7 +164,11 @@ namespace Stripe.Reserve
         public Plan ReservePlan
         {
             get => this.InternalReservePlan?.ExpandedObject;
-            set => this.InternalReservePlan = SetExpandableFieldObject(value, this.InternalReservePlan);
+            set =>
+                this.InternalReservePlan = SetExpandableFieldObject(
+                    value,
+                    this.InternalReservePlan
+                );
         }
 
         [JsonProperty("reserve_plan")]

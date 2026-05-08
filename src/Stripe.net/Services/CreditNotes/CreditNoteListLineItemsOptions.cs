@@ -1,6 +1,4 @@
 namespace Stripe
 {
-    public class CreditNoteListLineItemsOptions : ListOptions
-    {
-    }
+    public class CreditNoteListLineItemsOptions : ListOptions { }
 }

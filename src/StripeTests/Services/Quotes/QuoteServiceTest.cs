@@ -5,7 +5,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -28,22 +27,17 @@ namespace StripeTests
 
         public QuoteServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new QuoteService(this.StripeClient);
 
-            this.createOptions = new QuoteCreateOptions
-            {
-                Customer = "cus_123",
-            };
+            this.createOptions = new QuoteCreateOptions { Customer = "cus_123" };
 
             this.updateOptions = new QuoteUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
             this.updateOptionsWithCurrentPeriodEnd = new QuoteUpdateOptions
@@ -62,36 +56,22 @@ namespace StripeTests
                 },
             };
 
-            this.listOptions = new QuoteListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new QuoteListOptions { Limit = 1 };
 
-            this.acceptOptions = new QuoteAcceptOptions
-            {
-            };
+            this.acceptOptions = new QuoteAcceptOptions { };
 
-            this.cancelOptions = new QuoteCancelOptions
-            {
-            };
+            this.cancelOptions = new QuoteCancelOptions { };
 
-            this.finalizeOptions = new QuoteFinalizeOptions
-            {
-            };
+            this.finalizeOptions = new QuoteFinalizeOptions { };
 
-            this.listLineItemsOptions = new QuoteLineItemListOptions
-            {
-                Limit = 1,
-            };
+            this.listLineItemsOptions = new QuoteLineItemListOptions { Limit = 1 };
 
             this.listComputedUpfrontLineItemsOptions = new QuoteComputedUpfrontLineItemsListOptions
             {
                 Limit = 1,
             };
 
-            this.pdfOptions = new QuotePdfOptions
-            {
-            };
+            this.pdfOptions = new QuotePdfOptions { };
         }
 
         [Fact]
@@ -236,7 +216,10 @@ namespace StripeTests
         [Fact]
         public async Task ListLineItemsAsync()
         {
-            var lineItems = await this.service.LineItems.ListAsync(QuoteId, this.listLineItemsOptions);
+            var lineItems = await this.service.LineItems.ListAsync(
+                QuoteId,
+                this.listLineItemsOptions
+            );
             this.AssertRequest(HttpMethod.Get, "/v1/quotes/qt_123/line_items");
             Assert.NotNull(lineItems);
             Assert.Equal("list", lineItems.Object);
@@ -247,7 +230,9 @@ namespace StripeTests
         [Fact]
         public void ListLineItemsAutoPaging()
         {
-            var lineItem = this.service.LineItems.ListAutoPaging(QuoteId, this.listLineItemsOptions).First();
+            var lineItem = this
+                .service.LineItems.ListAutoPaging(QuoteId, this.listLineItemsOptions)
+                .First();
             Assert.NotNull(lineItem);
             Assert.Equal("item", lineItem.Object);
         }
@@ -255,7 +240,9 @@ namespace StripeTests
         [Fact]
         public async Task ListLineItemsAutoPagingAsync()
         {
-            var lineItem = await this.service.LineItems.ListAutoPagingAsync(QuoteId, this.listLineItemsOptions).FirstAsync();
+            var lineItem = await this
+                .service.LineItems.ListAutoPagingAsync(QuoteId, this.listLineItemsOptions)
+                .FirstAsync();
             Assert.NotNull(lineItem);
             Assert.Equal("item", lineItem.Object);
         }
@@ -263,7 +250,10 @@ namespace StripeTests
         [Fact]
         public void ListComputedUpfrontLineItems()
         {
-            var lineItems = this.service.ComputedUpfrontLineItems.List(QuoteId, this.listComputedUpfrontLineItemsOptions);
+            var lineItems = this.service.ComputedUpfrontLineItems.List(
+                QuoteId,
+                this.listComputedUpfrontLineItemsOptions
+            );
             this.AssertRequest(HttpMethod.Get, "/v1/quotes/qt_123/computed_upfront_line_items");
             Assert.NotNull(lineItems);
             Assert.Equal("list", lineItems.Object);
@@ -274,7 +264,10 @@ namespace StripeTests
         [Fact]
         public async Task ListComputedUpfrontLineItemsAsync()
         {
-            var lineItems = await this.service.ComputedUpfrontLineItems.ListAsync(QuoteId, this.listComputedUpfrontLineItemsOptions);
+            var lineItems = await this.service.ComputedUpfrontLineItems.ListAsync(
+                QuoteId,
+                this.listComputedUpfrontLineItemsOptions
+            );
             this.AssertRequest(HttpMethod.Get, "/v1/quotes/qt_123/computed_upfront_line_items");
             Assert.NotNull(lineItems);
             Assert.Equal("list", lineItems.Object);
@@ -285,7 +278,12 @@ namespace StripeTests
         [Fact]
         public void ListComputedUpfrontLineItemsAutoPaging()
         {
-            var lineItem = this.service.ComputedUpfrontLineItems.ListAutoPaging(QuoteId, this.listComputedUpfrontLineItemsOptions).First();
+            var lineItem = this
+                .service.ComputedUpfrontLineItems.ListAutoPaging(
+                    QuoteId,
+                    this.listComputedUpfrontLineItemsOptions
+                )
+                .First();
             Assert.NotNull(lineItem);
             Assert.Equal("item", lineItem.Object);
         }
@@ -293,7 +291,12 @@ namespace StripeTests
         [Fact]
         public async Task ListComputedUpfrontLineItemsAutoPagingAsync()
         {
-            var lineItem = await this.service.ComputedUpfrontLineItems.ListAutoPagingAsync(QuoteId, this.listComputedUpfrontLineItemsOptions).FirstAsync();
+            var lineItem = await this
+                .service.ComputedUpfrontLineItems.ListAutoPagingAsync(
+                    QuoteId,
+                    this.listComputedUpfrontLineItemsOptions
+                )
+                .FirstAsync();
             Assert.NotNull(lineItem);
             Assert.Equal("item", lineItem.Object);
         }

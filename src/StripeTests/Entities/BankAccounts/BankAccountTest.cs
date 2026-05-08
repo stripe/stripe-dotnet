@@ -7,9 +7,7 @@ namespace StripeTests
     public class BankAccountTest : BaseStripeTest
     {
         public BankAccountTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void DeserializeForAccount()

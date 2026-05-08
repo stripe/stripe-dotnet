@@ -18,7 +18,8 @@ namespace Stripe
 
         /// <summary>Returns a string that represents the current object.</summary>
         /// <returns>A string that represents the current object.</returns>
-        public override string ToString() => this.Value == null ? "AnyOf(null)" : this.Value.ToString();
+        public override string ToString() =>
+            this.Value == null ? "AnyOf(null)" : this.Value.ToString();
     }
 
     /// <summary>
@@ -29,7 +30,11 @@ namespace Stripe
     /// </summary>
     /// <typeparam name="T1">The first possible type of the value.</typeparam>
     /// <typeparam name="T2">The second possible type of the value.</typeparam>
-    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleType", Justification = "Generic variant")]
+    [SuppressMessage(
+        "StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleType",
+        Justification = "Generic variant"
+    )]
     public class AnyOf<T1, T2> : AnyOf
     {
         private readonly T1 value1;
@@ -75,7 +80,9 @@ namespace Stripe
                     case Values.Value2:
                         return this.value2;
                     default:
-                        throw new InvalidOperationException($"Unexpected state, setValue={this.setValue}");
+                        throw new InvalidOperationException(
+                            $"Unexpected state, setValue={this.setValue}"
+                        );
                 }
             }
         }
@@ -93,7 +100,9 @@ namespace Stripe
                     case Values.Value2:
                         return typeof(T2);
                     default:
-                        throw new InvalidOperationException($"Unexpected state, setValue={this.setValue}");
+                        throw new InvalidOperationException(
+                            $"Unexpected state, setValue={this.setValue}"
+                        );
                 }
             }
         }
@@ -103,14 +112,16 @@ namespace Stripe
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>An <see cref="AnyOf{T1, T2}"/> object that holds the value.</returns>
-        public static implicit operator AnyOf<T1, T2>(T1 value) => value == null ? null : new AnyOf<T1, T2>(value);
+        public static implicit operator AnyOf<T1, T2>(T1 value) =>
+            value == null ? null : new AnyOf<T1, T2>(value);
 
         /// <summary>
         /// Converts a value of type <c>T2</c> to an <see cref="AnyOf{T1, T2}"/> object.
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>An <see cref="AnyOf{T1, T2}"/> object that holds the value.</returns>
-        public static implicit operator AnyOf<T1, T2>(T2 value) => value == null ? null : new AnyOf<T1, T2>(value);
+        public static implicit operator AnyOf<T1, T2>(T2 value) =>
+            value == null ? null : new AnyOf<T1, T2>(value);
 
         /// <summary>
         /// Converts an <see cref="AnyOf{T1, T2}"/> object to a value of type <c>T1</c>.
@@ -143,7 +154,11 @@ namespace Stripe
     /// <typeparam name="T1">The first possible type of the value.</typeparam>
     /// <typeparam name="T2">The second possible type of the value.</typeparam>
     /// <typeparam name="T3">The third possible type of the value.</typeparam>
-    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleType", Justification = "Generic variant")]
+    [SuppressMessage(
+        "StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleType",
+        Justification = "Generic variant"
+    )]
     public class AnyOf<T1, T2, T3> : AnyOf
     {
         private readonly T1 value1;
@@ -206,7 +221,9 @@ namespace Stripe
                     case Values.Value3:
                         return this.value3;
                     default:
-                        throw new InvalidOperationException($"Unexpected state, setValue={this.setValue}");
+                        throw new InvalidOperationException(
+                            $"Unexpected state, setValue={this.setValue}"
+                        );
                 }
             }
         }
@@ -226,7 +243,9 @@ namespace Stripe
                     case Values.Value3:
                         return typeof(T3);
                     default:
-                        throw new InvalidOperationException($"Unexpected state, setValue={this.setValue}");
+                        throw new InvalidOperationException(
+                            $"Unexpected state, setValue={this.setValue}"
+                        );
                 }
             }
         }
@@ -236,21 +255,24 @@ namespace Stripe
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>An <see cref="AnyOf{T1, T2, T3}"/> object that holds the value.</returns>
-        public static implicit operator AnyOf<T1, T2, T3>(T1 value) => value == null ? null : new AnyOf<T1, T2, T3>(value);
+        public static implicit operator AnyOf<T1, T2, T3>(T1 value) =>
+            value == null ? null : new AnyOf<T1, T2, T3>(value);
 
         /// <summary>
         /// Converts a value of type <c>T2</c> to an <see cref="AnyOf{T1, T2, T3}"/> object.
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>An <see cref="AnyOf{T1, T2, T3}"/> object that holds the value.</returns>
-        public static implicit operator AnyOf<T1, T2, T3>(T2 value) => value == null ? null : new AnyOf<T1, T2, T3>(value);
+        public static implicit operator AnyOf<T1, T2, T3>(T2 value) =>
+            value == null ? null : new AnyOf<T1, T2, T3>(value);
 
         /// <summary>
         /// Converts a value of type <c>T3</c> to an <see cref="AnyOf{T1, T2, T3}"/> object.
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>An <see cref="AnyOf{T1, T2, T3}"/> object that holds the value.</returns>
-        public static implicit operator AnyOf<T1, T2, T3>(T3 value) => value == null ? null : new AnyOf<T1, T2, T3>(value);
+        public static implicit operator AnyOf<T1, T2, T3>(T3 value) =>
+            value == null ? null : new AnyOf<T1, T2, T3>(value);
 
         /// <summary>
         /// Converts an <see cref="AnyOf{T1, T2, T3}"/> object to a value of type <c>T1</c>.
@@ -294,7 +316,11 @@ namespace Stripe
     /// <typeparam name="T2">The second possible type of the value.</typeparam>
     /// <typeparam name="T3">The third possible type of the value.</typeparam>
     /// <typeparam name="T4">The fourth possible type of the value.</typeparam>
-    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleType", Justification = "Generic variant")]
+    [SuppressMessage(
+        "StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleType",
+        Justification = "Generic variant"
+    )]
     public class AnyOf<T1, T2, T3, T4> : AnyOf
     {
         private readonly T1 value1;
@@ -372,7 +398,9 @@ namespace Stripe
                     case Values.Value4:
                         return this.value4;
                     default:
-                        throw new InvalidOperationException($"Unexpected state, setValue={this.setValue}");
+                        throw new InvalidOperationException(
+                            $"Unexpected state, setValue={this.setValue}"
+                        );
                 }
             }
         }
@@ -394,7 +422,9 @@ namespace Stripe
                     case Values.Value4:
                         return typeof(T4);
                     default:
-                        throw new InvalidOperationException($"Unexpected state, setValue={this.setValue}");
+                        throw new InvalidOperationException(
+                            $"Unexpected state, setValue={this.setValue}"
+                        );
                 }
             }
         }
@@ -404,21 +434,24 @@ namespace Stripe
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>An <see cref="AnyOf{T1, T2, T3, T4}"/> object that holds the value.</returns>
-        public static implicit operator AnyOf<T1, T2, T3, T4>(T1 value) => value == null ? null : new AnyOf<T1, T2, T3, T4>(value);
+        public static implicit operator AnyOf<T1, T2, T3, T4>(T1 value) =>
+            value == null ? null : new AnyOf<T1, T2, T3, T4>(value);
 
         /// <summary>
         /// Converts a value of type <c>T2</c> to an <see cref="AnyOf{T1, T2, T3, T4}"/> object.
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>An <see cref="AnyOf{T1, T2, T3, T4}"/> object that holds the value.</returns>
-        public static implicit operator AnyOf<T1, T2, T3, T4>(T2 value) => value == null ? null : new AnyOf<T1, T2, T3, T4>(value);
+        public static implicit operator AnyOf<T1, T2, T3, T4>(T2 value) =>
+            value == null ? null : new AnyOf<T1, T2, T3, T4>(value);
 
         /// <summary>
         /// Converts a value of type <c>T3</c> to an <see cref="AnyOf{T1, T2, T3, T4}"/> object.
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>An <see cref="AnyOf{T1, T2, T3, T4}"/> object that holds the value.</returns>
-        public static implicit operator AnyOf<T1, T2, T3, T4>(T3 value) => value == null ? null : new AnyOf<T1, T2, T3, T4>(value);
+        public static implicit operator AnyOf<T1, T2, T3, T4>(T3 value) =>
+            value == null ? null : new AnyOf<T1, T2, T3, T4>(value);
 
         /// <summary>
         /// Converts an <see cref="AnyOf{T1, T2, T3, T4}"/> object to a value of type <c>T1</c>.

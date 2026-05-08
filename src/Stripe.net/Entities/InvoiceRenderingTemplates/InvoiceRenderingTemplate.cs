@@ -13,7 +13,11 @@ namespace Stripe
     /// they can be used over the API when creating invoices.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class InvoiceRenderingTemplate : StripeEntity<InvoiceRenderingTemplate>, IHasId, IHasMetadata, IHasObject
+    public class InvoiceRenderingTemplate
+        : StripeEntity<InvoiceRenderingTemplate>,
+            IHasId,
+            IHasMetadata,
+            IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.

@@ -15,9 +15,7 @@ namespace StripeTests
         /// Initializes a new instance of the <see cref="BaseStripeTest"/> class with no fixtures.
         /// </summary>
         public BaseStripeTest()
-            : this(null, null)
-        {
-        }
+            : this(null, null) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseStripeTest"/> class with the
@@ -29,9 +27,7 @@ namespace StripeTests
         /// The <see cref="StripeMockFixture"/> fixture.
         /// </param>
         public BaseStripeTest(StripeMockFixture stripeMockFixture)
-            : this(stripeMockFixture, null)
-        {
-        }
+            : this(stripeMockFixture, null) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseStripeTest"/> class with the
@@ -43,9 +39,7 @@ namespace StripeTests
         /// The <see cref="MockHttpClientFixture"/> fixture.
         /// </param>
         public BaseStripeTest(MockHttpClientFixture mockHttpClientFixture)
-            : this(null, mockHttpClientFixture)
-        {
-        }
+            : this(null, mockHttpClientFixture) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseStripeTest"/> class with both the
@@ -61,7 +55,8 @@ namespace StripeTests
         /// </param>
         public BaseStripeTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
         {
             this.StripeMockFixture = stripeMockFixture;
             this.MockHttpClientFixture = mockHttpClientFixture;
@@ -69,7 +64,9 @@ namespace StripeTests
             if ((this.StripeMockFixture != null) && (this.MockHttpClientFixture != null))
             {
                 // Set up StripeClient to use stripe-mock with the mock HTTP client
-                var clientOptions = this.StripeMockFixture.BuildStripeClientOptions(this.MockHttpClientFixture.MockHandler.Object);
+                var clientOptions = this.StripeMockFixture.BuildStripeClientOptions(
+                    this.MockHttpClientFixture.MockHandler.Object
+                );
                 var client = new StripeClient(clientOptions);
                 this.StripeClient = client;
                 this.Requestor = client.Requestor;
@@ -89,7 +86,8 @@ namespace StripeTests
             {
                 // Set up StripeClient with the mock HTTP client
                 var httpClient = new SystemNetHttpClient(
-                    new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
+                    new HttpClient(this.MockHttpClientFixture.MockHandler.Object)
+                );
                 var clientOptions = new StripeClientOptions
                 {
                     ApiKey = "sk_test_123",
@@ -130,7 +128,8 @@ namespace StripeTests
             var fullpath = "StripeTests.Resources." + path;
             var contents = new StreamReader(
                 typeof(BaseStripeTest).GetTypeInfo().Assembly.GetManifestResourceStream(fullpath),
-                Encoding.UTF8).ReadToEnd();
+                Encoding.UTF8
+            ).ReadToEnd();
 
             return contents;
         }
@@ -142,15 +141,21 @@ namespace StripeTests
         /// <param name="path">The HTTP path.</param>
         /// <param name="query">The HTTP query.</param>
         /// <param name="host">The HTTP host.</param>
-        protected void AssertRequest(HttpMethod method, string path, string query = null, string host = null)
+        protected void AssertRequest(
+            HttpMethod method,
+            string path,
+            string query = null,
+            string host = null
+        )
         {
             if (this.MockHttpClientFixture == null)
             {
                 throw new StripeTestException(
                     "AssertRequest called from a test class that doesn't have access to "
-                    + "MockHttpClientFixture. Make sure that the constructor for "
-                    + $"{this.GetType().Name} receives MockHttpClientFixture and calls the "
-                    + "base constructor.");
+                        + "MockHttpClientFixture. Make sure that the constructor for "
+                        + $"{this.GetType().Name} receives MockHttpClientFixture and calls the "
+                        + "base constructor."
+                );
             }
 
             this.MockHttpClientFixture.AssertRequest(method, path, query, host);
@@ -165,15 +170,22 @@ namespace StripeTests
         /// <param name="status">The status code to return.</param>
         /// <param name="response">The response body to return.</param>
         /// <param name="query">The HTTP query.</param>
-        protected void StubRequest(HttpMethod method, string path, HttpStatusCode status, string response, string query = null)
+        protected void StubRequest(
+            HttpMethod method,
+            string path,
+            HttpStatusCode status,
+            string response,
+            string query = null
+        )
         {
             if (this.MockHttpClientFixture == null)
             {
                 throw new StripeTestException(
                     "StubRequest called from a test class that doesn't have access to "
-                    + "MockHttpClientFixture. Make sure that the constructor for "
-                    + $"{this.GetType().Name} receives MockHttpClientFixture and calls the "
-                    + "base constructor.");
+                        + "MockHttpClientFixture. Make sure that the constructor for "
+                        + $"{this.GetType().Name} receives MockHttpClientFixture and calls the "
+                        + "base constructor."
+                );
             }
 
             this.MockHttpClientFixture.StubRequest(method, path, status, response, query);
@@ -194,9 +206,10 @@ namespace StripeTests
             {
                 throw new StripeTestException(
                     "GetFixture called from a test class that doesn't have access to "
-                    + "StripeMockFixture. Make sure that the constructor for "
-                    + $"{this.GetType().Name} receives StripeMockFixture and calls the "
-                    + "base constructor.");
+                        + "StripeMockFixture. Make sure that the constructor for "
+                        + $"{this.GetType().Name} receives StripeMockFixture and calls the "
+                        + "base constructor."
+                );
             }
 
             return this.StripeMockFixture.GetFixture(path, expansions);

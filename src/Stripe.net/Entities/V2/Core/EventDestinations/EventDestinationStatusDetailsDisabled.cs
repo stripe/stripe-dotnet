@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class EventDestinationStatusDetailsDisabled : StripeEntity<EventDestinationStatusDetailsDisabled>
+    public class EventDestinationStatusDetailsDisabled
+        : StripeEntity<EventDestinationStatusDetailsDisabled>
     {
         /// <summary>
         /// Reason event destination has been disabled.

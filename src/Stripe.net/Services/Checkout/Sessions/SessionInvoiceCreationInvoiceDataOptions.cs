@@ -7,7 +7,10 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SessionInvoiceCreationInvoiceDataOptions : INestedOptions, IHasMetadata, IHasSetTracking
+    public class SessionInvoiceCreationInvoiceDataOptions
+        : INestedOptions,
+            IHasMetadata,
+            IHasSetTracking
     {
         private List<string> accountTaxIds;
         private List<SessionInvoiceCreationInvoiceDataCustomFieldOptions> customFields;

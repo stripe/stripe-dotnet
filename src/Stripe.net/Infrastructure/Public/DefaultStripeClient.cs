@@ -21,7 +21,9 @@ namespace Stripe
                     ApiKey = apiKey,
                     ClientId = clientId,
                     HttpClient = httpClient,
-                }, new List<string>());
+                },
+                new List<string>()
+            );
         }
 
         /// <summary>Gets the base URL for Stripe's API.</summary>
@@ -60,10 +62,20 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
             where T : IStripeEntity
         {
-            return await this.Requestor.RequestAsync<T>(BaseAddress.Api, method, path, options, requestOptions, cancellationToken).ConfigureAwait(false);
+            return await this
+                .Requestor.RequestAsync<T>(
+                    BaseAddress.Api,
+                    method,
+                    path,
+                    options,
+                    requestOptions,
+                    cancellationToken
+                )
+                .ConfigureAwait(false);
         }
 
         /// <inheritdoc/>
@@ -72,9 +84,19 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default
+        )
         {
-            return await this.Requestor.RequestStreamingAsync(BaseAddress.Api, method, path, options, requestOptions, cancellationToken).ConfigureAwait(false);
+            return await this
+                .Requestor.RequestStreamingAsync(
+                    BaseAddress.Api,
+                    method,
+                    path,
+                    options,
+                    requestOptions,
+                    cancellationToken
+                )
+                .ConfigureAwait(false);
         }
     }
 }

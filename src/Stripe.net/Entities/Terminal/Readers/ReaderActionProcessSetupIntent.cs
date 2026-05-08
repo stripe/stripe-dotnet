@@ -49,7 +49,11 @@ namespace Stripe.Terminal
         public SetupIntent SetupIntent
         {
             get => this.InternalSetupIntent?.ExpandedObject;
-            set => this.InternalSetupIntent = SetExpandableFieldObject(value, this.InternalSetupIntent);
+            set =>
+                this.InternalSetupIntent = SetExpandableFieldObject(
+                    value,
+                    this.InternalSetupIntent
+                );
         }
 
         [JsonProperty("setup_intent")]

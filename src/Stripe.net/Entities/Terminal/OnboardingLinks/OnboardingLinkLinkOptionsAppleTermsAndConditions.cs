@@ -6,7 +6,8 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class OnboardingLinkLinkOptionsAppleTermsAndConditions : StripeEntity<OnboardingLinkLinkOptionsAppleTermsAndConditions>
+    public class OnboardingLinkLinkOptionsAppleTermsAndConditions
+        : StripeEntity<OnboardingLinkLinkOptionsAppleTermsAndConditions>
     {
         /// <summary>
         /// Whether the link should also support users relinking their Apple account.

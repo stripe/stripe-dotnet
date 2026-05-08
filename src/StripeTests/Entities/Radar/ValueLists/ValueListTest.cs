@@ -7,9 +7,7 @@ namespace StripeTests.Radar
     public class ValueListTest : BaseStripeTest
     {
         public ValueListTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

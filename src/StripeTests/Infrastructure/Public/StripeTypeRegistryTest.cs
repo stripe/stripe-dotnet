@@ -18,7 +18,10 @@ namespace StripeTests
 
             // When provided with an interface, the concrete type is deduced from the object string
             type = typeof(IExternalAccount);
-            Assert.Equal(typeof(BankAccount), StripeTypeRegistry.GetConcreteType(type, "bank_account"));
+            Assert.Equal(
+                typeof(BankAccount),
+                StripeTypeRegistry.GetConcreteType(type, "bank_account")
+            );
 
             // When provided with an interface and no concrete type is known for the object string,
             // it returns null

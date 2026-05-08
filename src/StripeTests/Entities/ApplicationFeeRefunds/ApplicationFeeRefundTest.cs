@@ -7,9 +7,7 @@ namespace StripeTests
     public class ApplicationFeeRefundTest : BaseStripeTest
     {
         public ApplicationFeeRefundTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

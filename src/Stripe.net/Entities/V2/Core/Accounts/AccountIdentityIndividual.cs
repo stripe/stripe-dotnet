@@ -8,7 +8,11 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountIdentityIndividual : StripeEntity<AccountIdentityIndividual>, IHasId, IHasMetadata, IHasObject
+    public class AccountIdentityIndividual
+        : StripeEntity<AccountIdentityIndividual>,
+            IHasId,
+            IHasMetadata,
+            IHasObject
     {
         /// <summary>
         /// The account ID which the individual belongs to.

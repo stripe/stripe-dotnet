@@ -24,7 +24,9 @@ namespace Stripe
             {
                 if (this.ExpandedObject != null)
                 {
-                    throw new InvalidOperationException("Cannot set Id when ExpandedObject is already set.");
+                    throw new InvalidOperationException(
+                        "Cannot set Id when ExpandedObject is already set."
+                    );
                 }
 
                 this.id = value;

@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentMethodOptionsPix : StripeEntity<PaymentIntentPaymentMethodOptionsPix>
+    public class PaymentIntentPaymentMethodOptionsPix
+        : StripeEntity<PaymentIntentPaymentMethodOptionsPix>
     {
         /// <summary>
         /// Determines if the amount includes the IOF tax.

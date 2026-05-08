@@ -10,45 +10,83 @@ namespace Stripe.V2.Core
     public class AccountTokenService : Service
     {
         internal AccountTokenService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         internal AccountTokenService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// Creates an Account Token.
+        /// </summary>
+        public virtual AccountToken Create(
+            AccountTokenCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<AccountToken>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v2/core/account_tokens",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// Creates an Account Token.
         /// </summary>
-        public virtual AccountToken Create(AccountTokenCreateOptions options, RequestOptions requestOptions = null)
+        public virtual Task<AccountToken> CreateAsync(
+            AccountTokenCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<AccountToken>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/account_tokens", options, requestOptions);
-        }
-
-        /// <summary>
-        /// Creates an Account Token.
-        /// </summary>
-        public virtual Task<AccountToken> CreateAsync(AccountTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<AccountToken>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/account_tokens", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// Retrieves an Account Token.
-        /// </summary>
-        public virtual AccountToken Get(string id, AccountTokenGetOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<AccountToken>(BaseAddress.Api, HttpMethod.Get, $"/v2/core/account_tokens/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.RequestAsync<AccountToken>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v2/core/account_tokens",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// Retrieves an Account Token.
         /// </summary>
-        public virtual Task<AccountToken> GetAsync(string id, AccountTokenGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual AccountToken Get(
+            string id,
+            AccountTokenGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<AccountToken>(BaseAddress.Api, HttpMethod.Get, $"/v2/core/account_tokens/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.Request<AccountToken>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v2/core/account_tokens/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
+        }
+
+        /// <summary>
+        /// Retrieves an Account Token.
+        /// </summary>
+        public virtual Task<AccountToken> GetAsync(
+            string id,
+            AccountTokenGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return this.RequestAsync<AccountToken>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v2/core/account_tokens/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

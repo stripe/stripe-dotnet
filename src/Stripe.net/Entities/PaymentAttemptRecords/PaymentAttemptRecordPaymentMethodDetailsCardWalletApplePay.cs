@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentAttemptRecordPaymentMethodDetailsCardWalletApplePay : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsCardWalletApplePay>
+    public class PaymentAttemptRecordPaymentMethodDetailsCardWalletApplePay
+        : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsCardWalletApplePay>
     {
         /// <summary>
         /// Type of the apple_pay transaction, one of <c>apple_pay</c> or <c>apple_pay_later</c>.

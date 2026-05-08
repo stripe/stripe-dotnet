@@ -7,7 +7,8 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class FinancialAccountStatusDetailsClosed : StripeEntity<FinancialAccountStatusDetailsClosed>
+    public class FinancialAccountStatusDetailsClosed
+        : StripeEntity<FinancialAccountStatusDetailsClosed>
     {
         /// <summary>
         /// The array that contains reasons for a FinancialAccount closure.

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountOptions : INestedOptions
+    public class SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountOptions
+        : INestedOptions
     {
         /// <summary>
         /// Additional fields for Financial Connections Session creation.

@@ -9,8 +9,10 @@ namespace Stripe.Infrastructure.FormEncoding
         // only a limited set of file types that are listed below. It's not hugely important if
         // a type is missing or incorrect, as the server doesn't trust the Content-Type header
         // and checks the actual file contents anyway.
-        private static readonly IDictionary<string, string> MimeTypeMap
-            = new Dictionary<string, string>
+        private static readonly IDictionary<string, string> MimeTypeMap = new Dictionary<
+            string,
+            string
+        >
         {
             { ".csv", "text/csv" },
             { ".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" },

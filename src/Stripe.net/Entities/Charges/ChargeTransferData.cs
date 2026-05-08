@@ -43,7 +43,11 @@ namespace Stripe
         public Account Destination
         {
             get => this.InternalDestination?.ExpandedObject;
-            set => this.InternalDestination = SetExpandableFieldObject(value, this.InternalDestination);
+            set =>
+                this.InternalDestination = SetExpandableFieldObject(
+                    value,
+                    this.InternalDestination
+                );
         }
 
         [JsonProperty("destination")]

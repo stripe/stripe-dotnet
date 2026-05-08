@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SubscriptionPendingInvoiceItemInterval : StripeEntity<SubscriptionPendingInvoiceItemInterval>
+    public class SubscriptionPendingInvoiceItemInterval
+        : StripeEntity<SubscriptionPendingInvoiceItemInterval>
     {
         /// <summary>
         /// Specifies invoicing frequency. Either <c>day</c>, <c>week</c>, <c>month</c> or

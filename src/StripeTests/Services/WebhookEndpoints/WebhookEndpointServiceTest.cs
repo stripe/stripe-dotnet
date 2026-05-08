@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -19,32 +18,24 @@ namespace StripeTests
 
         public WebhookEndpointServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new WebhookEndpointService(this.StripeClient);
 
             this.createOptions = new WebhookEndpointCreateOptions
             {
-                EnabledEvents = new List<string>
-                {
-                    "charge.succeeded",
-                },
+                EnabledEvents = new List<string> { "charge.succeeded" },
                 Url = "https://stripe.com",
             };
 
             this.updateOptions = new WebhookEndpointUpdateOptions
             {
-                EnabledEvents = new List<string>
-                {
-                    "charge.succeeded",
-                },
+                EnabledEvents = new List<string> { "charge.succeeded" },
             };
 
-            this.listOptions = new WebhookEndpointListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new WebhookEndpointListOptions { Limit = 1 };
         }
 
         [Fact]

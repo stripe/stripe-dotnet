@@ -7,7 +7,8 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionFlowSubscriptionUpdateConfirm : StripeEntity<SessionFlowSubscriptionUpdateConfirm>
+    public class SessionFlowSubscriptionUpdateConfirm
+        : StripeEntity<SessionFlowSubscriptionUpdateConfirm>
     {
         /// <summary>
         /// The coupon or promotion code to apply to this subscription update.

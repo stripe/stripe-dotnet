@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountIdentityBusinessDetailsIdNumber : StripeEntity<AccountIdentityBusinessDetailsIdNumber>
+    public class AccountIdentityBusinessDetailsIdNumber
+        : StripeEntity<AccountIdentityBusinessDetailsIdNumber>
     {
         /// <summary>
         /// The registrar of the ID number (Only valid for DE ID number types).

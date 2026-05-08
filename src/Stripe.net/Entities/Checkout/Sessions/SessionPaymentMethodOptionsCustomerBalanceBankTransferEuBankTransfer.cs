@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer : StripeEntity<SessionPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer>
+    public class SessionPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer
+        : StripeEntity<SessionPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer>
     {
         /// <summary>
         /// The desired country code of the bank account information. Permitted values include:

@@ -18,12 +18,10 @@ namespace StripeTests
 
         public MockHttpClientFixture()
         {
-            this.MockHandler = new Mock<HttpClientHandler>
-            {
-                CallBase = true,
-            };
+            this.MockHandler = new Mock<HttpClientHandler> { CallBase = true };
             this.HttpClient = new SystemNetHttpClient(
-                new System.Net.Http.HttpClient(this.MockHandler.Object));
+                new System.Net.Http.HttpClient(this.MockHandler.Object)
+            );
         }
 
         public Mock<HttpClientHandler> MockHandler { get; }
@@ -45,21 +43,35 @@ namespace StripeTests
         /// <param name="path">The HTTP path.</param>
         /// <param name="query">The HTTP query.</param>
         /// <param name="host">The HTTP host.</param>
-        public void AssertRequest(HttpMethod method, string path, string query = null, string host = null)
+        public void AssertRequest(
+            HttpMethod method,
+            string path,
+            string query = null,
+            string host = null
+        )
         {
             this.MockHandler.Protected()
                 .Verify(
                     "SendAsync",
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == method &&
-                        m.RequestUri.AbsolutePath == path &&
-                        QueryEquivalent(query, m.RequestUri.Query) &&
-                        HostEquivalent(host, m)),
-                    ItExpr.IsAny<CancellationToken>());
+                        m.Method == method
+                        && m.RequestUri.AbsolutePath == path
+                        && QueryEquivalent(query, m.RequestUri.Query)
+                        && HostEquivalent(host, m)
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                );
         }
 
-        private static bool MatchHttpRequest(HttpMethod method, string path, HttpStatusCode status, string response, string query, HttpRequestMessage m)
+        private static bool MatchHttpRequest(
+            HttpMethod method,
+            string path,
+            HttpStatusCode status,
+            string response,
+            string query,
+            HttpRequestMessage m
+        )
         {
             if (m.Method != method)
             {
@@ -88,7 +100,13 @@ namespace StripeTests
         /// <param name="status">The status code to return.</param>
         /// <param name="response">The response body to return.</param>
         /// <param name="query">The HTTP query.</param>
-        public void StubRequest(HttpMethod method, string path, HttpStatusCode status, string response, string query = null)
+        public void StubRequest(
+            HttpMethod method,
+            string path,
+            HttpStatusCode status,
+            string response,
+            string query = null
+        )
         {
             var responseMessage = new HttpResponseMessage(status);
             responseMessage.Content = new StringContent(response);
@@ -96,8 +114,11 @@ namespace StripeTests
             this.MockHandler.Protected()
                 .Setup<Task<HttpResponseMessage>>(
                     "SendAsync",
-                    ItExpr.Is<HttpRequestMessage>(m => MatchHttpRequest(method, path, status, response, query, m)),
-                    ItExpr.IsAny<CancellationToken>())
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        MatchHttpRequest(method, path, status, response, query, m)
+                    ),
+                    ItExpr.IsAny<CancellationToken>()
+                )
                 .Returns(Task.FromResult(responseMessage));
         }
 

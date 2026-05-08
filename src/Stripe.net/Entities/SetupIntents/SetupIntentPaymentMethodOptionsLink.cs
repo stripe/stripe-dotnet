@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SetupIntentPaymentMethodOptionsLink : StripeEntity<SetupIntentPaymentMethodOptionsLink>
+    public class SetupIntentPaymentMethodOptionsLink
+        : StripeEntity<SetupIntentPaymentMethodOptionsLink>
     {
         /// <summary>
         /// [Deprecated] This is a legacy parameter that no longer has any function.

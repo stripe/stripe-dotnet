@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsAffirm : StripeEntity<PaymentRecordPaymentMethodDetailsAffirm>
+    public class PaymentRecordPaymentMethodDetailsAffirm
+        : StripeEntity<PaymentRecordPaymentMethodDetailsAffirm>
     {
         /// <summary>
         /// ID of the location that this reader is assigned to.

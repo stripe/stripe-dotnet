@@ -7,7 +7,8 @@ namespace Stripe.Events
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-    public class V1BillingMeterNoMeterFoundEventDataReasonErrorType : StripeEntity<V1BillingMeterNoMeterFoundEventDataReasonErrorType>
+    public class V1BillingMeterNoMeterFoundEventDataReasonErrorType
+        : StripeEntity<V1BillingMeterNoMeterFoundEventDataReasonErrorType>
     {
         /// <summary>
         /// Open Enum.

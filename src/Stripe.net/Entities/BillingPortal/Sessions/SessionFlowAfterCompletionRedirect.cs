@@ -6,7 +6,8 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionFlowAfterCompletionRedirect : StripeEntity<SessionFlowAfterCompletionRedirect>
+    public class SessionFlowAfterCompletionRedirect
+        : StripeEntity<SessionFlowAfterCompletionRedirect>
     {
         /// <summary>
         /// The URL the customer will be redirected to after the flow is completed.

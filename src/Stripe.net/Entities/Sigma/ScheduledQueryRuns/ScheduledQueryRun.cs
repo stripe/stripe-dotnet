@@ -73,7 +73,8 @@ namespace Stripe.Sigma
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("result_available_until")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime ResultAvailableUntil { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime ResultAvailableUntil { get; set; } =
+            Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// SQL for the query.

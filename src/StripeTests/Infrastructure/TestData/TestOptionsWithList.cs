@@ -11,16 +11,8 @@ namespace StripeTests.Infrastructure.TestData
         {
             this.SomeList = new List<TestNestedOptions>
             {
-                new TestNestedOptions
-                {
-                    ALong = 1,
-                    AString = "foo",
-                },
-                new TestNestedOptions
-                {
-                    ALong = 2,
-                    AString = "bar",
-                },
+                new TestNestedOptions { ALong = 1, AString = "foo" },
+                new TestNestedOptions { ALong = 2, AString = "bar" },
             };
         }
 

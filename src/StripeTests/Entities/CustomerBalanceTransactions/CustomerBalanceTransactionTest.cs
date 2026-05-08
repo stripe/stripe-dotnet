@@ -7,9 +7,7 @@ namespace StripeTests
     public class CustomerBalanceTransactionTest : BaseStripeTest
     {
         public CustomerBalanceTransactionTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -25,14 +23,12 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "credit_note",
-              "customer",
-              "invoice",
-            };
+            string[] expansions = { "credit_note", "customer", "invoice" };
 
-            string json = this.GetFixture("/v1/customers/cus_123/balance_transactions/cbtxn_123", expansions);
+            string json = this.GetFixture(
+                "/v1/customers/cus_123/balance_transactions/cbtxn_123",
+                expansions
+            );
             var transaction = JsonSerializer.Deserialize<CustomerBalanceTransaction>(json);
             Assert.NotNull(transaction);
             Assert.IsType<CustomerBalanceTransaction>(transaction);

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ChargePaymentMethodDetailsRevolutPayFundingCard : StripeEntity<ChargePaymentMethodDetailsRevolutPayFundingCard>
+    public class ChargePaymentMethodDetailsRevolutPayFundingCard
+        : StripeEntity<ChargePaymentMethodDetailsRevolutPayFundingCard>
     {
         /// <summary>
         /// Card brand. Can be <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,

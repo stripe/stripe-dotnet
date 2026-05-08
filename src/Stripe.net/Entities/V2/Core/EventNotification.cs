@@ -72,7 +72,10 @@ namespace Stripe.V2.Core
         /// <returns></returns>
         public static EventNotification FromJson(string payload, StripeClient client)
         {
-            var en = JsonUtils.DeserializeObject<EventNotification>(payload, client.GetJsonSerializationSettings());
+            var en = JsonUtils.DeserializeObject<EventNotification>(
+                payload,
+                client.GetJsonSerializationSettings()
+            );
 
             en.Client = client;
 
@@ -80,55 +83,71 @@ namespace Stripe.V2.Core
         }
 
         protected internal T FetchEvent<T>()
-        where T : V2.Core.Event
+            where T : V2.Core.Event
         {
             return this.FetchEventAsync<T>().ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
         protected async Task<T> FetchEventAsync<T>(CancellationToken cancellationToken = default)
-        where T : V2.Core.Event
+            where T : V2.Core.Event
         {
             if (this.Client == null)
             {
-                throw new Exception("EventNotification is trying to make a request with no client.");
+                throw new Exception(
+                    "EventNotification is trying to make a request with no client."
+                );
             }
 
-            return (T)await this.Client.V2.Core.Events.GetAsync(
-                this.Id,
-                requestOptions: new RequestOptions
-                {
-                    Usage = new List<string> { "fetch_event" },
-                    StripeContext = this.Context,
-                    StripeRequestTrigger = $"event={this.Id}",
-                },
-                cancellationToken: cancellationToken).ConfigureAwait(false);
+            return (T)
+                await this
+                    .Client.V2.Core.Events.GetAsync(
+                        this.Id,
+                        requestOptions: new RequestOptions
+                        {
+                            Usage = new List<string> { "fetch_event" },
+                            StripeContext = this.Context,
+                            StripeRequestTrigger = $"event={this.Id}",
+                        },
+                        cancellationToken: cancellationToken
+                    )
+                    .ConfigureAwait(false);
         }
 
         protected virtual T FetchRelatedObject<T>(EventNotificationRelatedObject relatedObject)
-        where T : IStripeEntity
+            where T : IStripeEntity
         {
-            return this.FetchRelatedObjectAsync<T>(relatedObject).ConfigureAwait(false).GetAwaiter().GetResult();
+            return this.FetchRelatedObjectAsync<T>(relatedObject)
+                .ConfigureAwait(false)
+                .GetAwaiter()
+                .GetResult();
         }
 
-        protected virtual async Task<T> FetchRelatedObjectAsync<T>(EventNotificationRelatedObject relatedObject, CancellationToken cancellationToken = default)
-        where T : IStripeEntity
+        protected virtual async Task<T> FetchRelatedObjectAsync<T>(
+            EventNotificationRelatedObject relatedObject,
+            CancellationToken cancellationToken = default
+        )
+            where T : IStripeEntity
         {
             if (this.Client == null)
             {
-                throw new Exception("EventNotification is trying to make a request with no client.");
+                throw new Exception(
+                    "EventNotification is trying to make a request with no client."
+                );
             }
 
-            var res = await this.Client.RawRequestAsync(
-                HttpMethod.Get,
-                relatedObject.Url,
-                requestOptions: new RawRequestOptions
-                {
-                    Usage = new List<string> { "fetch_related_object" },
-                    StripeContext = this.Context,
-                    StripeRequestTrigger = $"event={this.Id}",
-                },
-                cancellationToken: cancellationToken)
-            .ConfigureAwait(false);
+            var res = await this
+                .Client.RawRequestAsync(
+                    HttpMethod.Get,
+                    relatedObject.Url,
+                    requestOptions: new RawRequestOptions
+                    {
+                        Usage = new List<string> { "fetch_related_object" },
+                        StripeContext = this.Context,
+                        StripeRequestTrigger = $"event={this.Id}",
+                    },
+                    cancellationToken: cancellationToken
+                )
+                .ConfigureAwait(false);
 
             return this.Client.Deserialize<T>(res.Content);
         }

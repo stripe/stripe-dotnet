@@ -6,7 +6,5 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ConfigurationGetOptions : BaseOptions
-    {
-    }
+    public class ConfigurationGetOptions : BaseOptions { }
 }

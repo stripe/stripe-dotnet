@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class QuoteSubscriptionDataBillingModeFlexible : StripeEntity<QuoteSubscriptionDataBillingModeFlexible>
+    public class QuoteSubscriptionDataBillingModeFlexible
+        : StripeEntity<QuoteSubscriptionDataBillingModeFlexible>
     {
         /// <summary>
         /// Controls how invoices and invoice items display proration amounts and discount amounts.

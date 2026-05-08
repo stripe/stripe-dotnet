@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsCardInstallments : StripeEntity<SessionPaymentMethodOptionsCardInstallments>
+    public class SessionPaymentMethodOptionsCardInstallments
+        : StripeEntity<SessionPaymentMethodOptionsCardInstallments>
     {
         /// <summary>
         /// Indicates if installments are enabled.

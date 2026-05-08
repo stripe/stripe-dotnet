@@ -7,9 +7,7 @@ namespace StripeTests
     public class TaxIdTest : BaseStripeTest
     {
         public TaxIdTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -25,10 +23,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "customer",
-            };
+            string[] expansions = { "customer" };
 
             string json = this.GetFixture("/v1/customers/cus_123/tax_ids/txi_123", expansions);
             var taxId = JsonSerializer.Deserialize<TaxId>(json);

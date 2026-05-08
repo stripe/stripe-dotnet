@@ -6,7 +6,8 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AuthorizationVerificationDataAuthenticationExemption : StripeEntity<AuthorizationVerificationDataAuthenticationExemption>
+    public class AuthorizationVerificationDataAuthenticationExemption
+        : StripeEntity<AuthorizationVerificationDataAuthenticationExemption>
     {
         /// <summary>
         /// The entity that requested the exemption, either the acquiring merchant or the Issuing

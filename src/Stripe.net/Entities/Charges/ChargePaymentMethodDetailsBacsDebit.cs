@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ChargePaymentMethodDetailsBacsDebit : StripeEntity<ChargePaymentMethodDetailsBacsDebit>
+    public class ChargePaymentMethodDetailsBacsDebit
+        : StripeEntity<ChargePaymentMethodDetailsBacsDebit>
     {
         /// <summary>
         /// Estimated date to debit the customer's bank account. A date string in YYYY-MM-DD format.

@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationMerchantBranding : StripeEntity<AccountConfigurationMerchantBranding>
+    public class AccountConfigurationMerchantBranding
+        : StripeEntity<AccountConfigurationMerchantBranding>
     {
         /// <summary>
         /// ID of a <a href="https://docs.stripe.com/api/persons/update#create_file">file

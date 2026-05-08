@@ -7,7 +7,10 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountTokenCreateIdentityIndividualOptions : INestedOptions, IHasMetadata, IHasSetTracking
+    public class AccountTokenCreateIdentityIndividualOptions
+        : INestedOptions,
+            IHasMetadata,
+            IHasSetTracking
     {
         private Dictionary<string, string> metadata;
 

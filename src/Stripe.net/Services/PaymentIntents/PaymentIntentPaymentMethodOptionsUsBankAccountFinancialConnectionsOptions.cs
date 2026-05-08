@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions : INestedOptions
+    public class PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions
+        : INestedOptions
     {
         /// <summary>
         /// Provide filters for the linked accounts that the customer can select for the payment

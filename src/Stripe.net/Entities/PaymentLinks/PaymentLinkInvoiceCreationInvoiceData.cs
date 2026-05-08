@@ -8,7 +8,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentLinkInvoiceCreationInvoiceData : StripeEntity<PaymentLinkInvoiceCreationInvoiceData>, IHasMetadata
+    public class PaymentLinkInvoiceCreationInvoiceData
+        : StripeEntity<PaymentLinkInvoiceCreationInvoiceData>,
+            IHasMetadata
     {
         #region Expandable AccountTaxIds
 
@@ -38,7 +40,10 @@ namespace Stripe
             set => this.InternalAccountTaxIds = SetExpandableArrayObjects(value);
         }
 
-        [JsonProperty("account_tax_ids", ItemConverterType = typeof(ExpandableFieldConverter<TaxId>))]
+        [JsonProperty(
+            "account_tax_ids",
+            ItemConverterType = typeof(ExpandableFieldConverter<TaxId>)
+        )]
         [STJS.JsonPropertyName("account_tax_ids")]
         internal List<ExpandableField<TaxId>> InternalAccountTaxIds { get; set; }
         #endregion

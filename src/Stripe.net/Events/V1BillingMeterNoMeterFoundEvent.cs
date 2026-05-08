@@ -15,7 +15,6 @@ namespace Stripe.Events
         /// </summary>
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]
-
         public V1BillingMeterNoMeterFoundEventData Data { get; set; }
     }
 }

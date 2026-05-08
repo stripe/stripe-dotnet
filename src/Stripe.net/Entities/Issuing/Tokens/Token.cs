@@ -116,7 +116,8 @@ namespace Stripe.Issuing
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("network_updated_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime NetworkUpdatedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime NetworkUpdatedAt { get; set; } =
+            Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The usage state of the token.

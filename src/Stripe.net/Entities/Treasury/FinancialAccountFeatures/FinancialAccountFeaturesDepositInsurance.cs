@@ -7,7 +7,8 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class FinancialAccountFeaturesDepositInsurance : StripeEntity<FinancialAccountFeaturesDepositInsurance>
+    public class FinancialAccountFeaturesDepositInsurance
+        : StripeEntity<FinancialAccountFeaturesDepositInsurance>
     {
         /// <summary>
         /// Whether the FinancialAccount should have the Feature.

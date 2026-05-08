@@ -5,7 +5,6 @@ namespace StripeTests.Issuing
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe.Issuing;
     using Xunit;
 
@@ -21,7 +20,8 @@ namespace StripeTests.Issuing
 
         public IssuingDisputeServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new DisputeService(this.StripeClient);
@@ -45,24 +45,15 @@ namespace StripeTests.Issuing
 
             this.submitOptions = new DisputeSubmitOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
             this.updateOptions = new DisputeUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.listOptions = new DisputeListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new DisputeListOptions { Limit = 1 };
         }
 
         [Fact]

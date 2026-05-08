@@ -13,42 +13,21 @@ namespace StripeTests
             var testCases = new[]
             {
                 // No data
-                new
-                {
-                    data = new ChargeCreateOptions { },
-                    want = string.Empty,
-                },
-
+                new { data = new ChargeCreateOptions { }, want = string.Empty },
                 // Source is a non-null, non-empty string
                 new
                 {
-                    data = new ChargeCreateOptions
-                    {
-                        Source = "tok_visa",
-                    },
+                    data = new ChargeCreateOptions { Source = "tok_visa" },
                     want = "source=tok_visa",
                 },
-
                 // Source is a non-null, empty string
-                new
-                {
-                    data = new ChargeCreateOptions
-                    {
-                        Source = string.Empty,
-                    },
-                    want = "source=",
-                },
-
+                new { data = new ChargeCreateOptions { Source = string.Empty }, want = "source=" },
                 // Source is a null string
                 new
                 {
-                    data = new ChargeCreateOptions
-                    {
-                        Source = (string)null,
-                    },
+                    data = new ChargeCreateOptions { Source = (string)null },
                     want = string.Empty,
                 },
-
                 // Source is a non-null CardCreateNestedOptions
                 new
                 {
@@ -63,26 +42,14 @@ namespace StripeTests
                     },
                     want = "source[exp_month]=1&source[exp_year]=2030&source[number]=4242424242424242&source[object]=card",
                 },
-
                 // Source is a null CardCreateNestedOptions
                 new
                 {
-                    data = new ChargeCreateOptions
-                    {
-                        Source = (CardCreateNestedOptions)null,
-                    },
+                    data = new ChargeCreateOptions { Source = (CardCreateNestedOptions)null },
                     want = string.Empty,
                 },
-
                 // Source is null
-                new
-                {
-                    data = new ChargeCreateOptions
-                    {
-                        Source = null,
-                    },
-                    want = string.Empty,
-                },
+                new { data = new ChargeCreateOptions { Source = null }, want = string.Empty },
             };
 
             foreach (var testCase in testCases)

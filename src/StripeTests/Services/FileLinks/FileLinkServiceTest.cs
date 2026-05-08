@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -19,29 +18,20 @@ namespace StripeTests
 
         public FileLinkServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new FileLinkService(this.StripeClient);
 
-            this.createOptions = new FileLinkCreateOptions
-            {
-                File = "file_123",
-            };
+            this.createOptions = new FileLinkCreateOptions { File = "file_123" };
 
             this.updateOptions = new FileLinkUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.listOptions = new FileLinkListOptions
-            {
-                File = "file_123",
-                Limit = 1,
-            };
+            this.listOptions = new FileLinkListOptions { File = "file_123", Limit = 1 };
         }
 
         [Fact]

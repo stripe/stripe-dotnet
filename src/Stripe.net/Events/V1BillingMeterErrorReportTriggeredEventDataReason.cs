@@ -7,7 +7,8 @@ namespace Stripe.Events
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-    public class V1BillingMeterErrorReportTriggeredEventDataReason : StripeEntity<V1BillingMeterErrorReportTriggeredEventDataReason>
+    public class V1BillingMeterErrorReportTriggeredEventDataReason
+        : StripeEntity<V1BillingMeterErrorReportTriggeredEventDataReason>
     {
         /// <summary>
         /// The total error count within this window.

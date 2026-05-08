@@ -23,41 +23,27 @@ namespace StripeTests
 
         public PaymentMethodServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new PaymentMethodService(this.StripeClient);
 
-            this.attachOptions = new PaymentMethodAttachOptions
-            {
-                Customer = "cus_123",
-            };
+            this.attachOptions = new PaymentMethodAttachOptions { Customer = "cus_123" };
 
             this.createOptions = new PaymentMethodCreateOptions
             {
-                Card = new PaymentMethodCardOptions
-                {
-                    Token = "tok_123",
-                },
+                Card = new PaymentMethodCardOptions { Token = "tok_123" },
                 Type = "card",
             };
 
-            this.detachOptions = new PaymentMethodDetachOptions
-            {
-            };
+            this.detachOptions = new PaymentMethodDetachOptions { };
 
-            this.listOptions = new PaymentMethodListOptions
-            {
-                Customer = "cus_123",
-                Type = "card",
-            };
+            this.listOptions = new PaymentMethodListOptions { Customer = "cus_123", Type = "card" };
 
             this.updateOptions = new PaymentMethodUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
         }
 
@@ -73,7 +59,10 @@ namespace StripeTests
         [Fact]
         public async Task AttachAsync()
         {
-            var payment_method = await this.service.AttachAsync(PaymentMethodId, this.attachOptions);
+            var payment_method = await this.service.AttachAsync(
+                PaymentMethodId,
+                this.attachOptions
+            );
             this.AssertRequest(HttpMethod.Post, "/v1/payment_methods/pm_123/attach");
             Assert.NotNull(payment_method);
             Assert.Equal("payment_method", payment_method.Object);
@@ -109,7 +98,10 @@ namespace StripeTests
         [Fact]
         public async Task DetachAsync()
         {
-            var payment_method = await this.service.DetachAsync(PaymentMethodId, this.detachOptions);
+            var payment_method = await this.service.DetachAsync(
+                PaymentMethodId,
+                this.detachOptions
+            );
             this.AssertRequest(HttpMethod.Post, "/v1/payment_methods/pm_123/detach");
             Assert.NotNull(payment_method);
             Assert.Equal("payment_method", payment_method.Object);
@@ -130,7 +122,12 @@ namespace StripeTests
         public void GetEncodesParams()
         {
             // we don't want to hit stripe-mock becuase it handles path traversals weirdly
-            this.StubRequest(HttpMethod.Get, "/v1/payment_methods/very%2Fcool", HttpStatusCode.OK, "{}");
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v1/payment_methods/very%2Fcool",
+                HttpStatusCode.OK,
+                "{}"
+            );
 
             // this ID should get URL encoded in the request
             this.service.Get("very/cool");
@@ -181,7 +178,9 @@ namespace StripeTests
         [Fact]
         public async Task ListAutoPagingAsync()
         {
-            var payment_method = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            var payment_method = await this
+                .service.ListAutoPagingAsync(this.listOptions)
+                .FirstAsync();
             Assert.NotNull(payment_method);
             Assert.Equal("payment_method", payment_method.Object);
         }

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class InvoicePaymentSettingsPaymentMethodOptions : StripeEntity<InvoicePaymentSettingsPaymentMethodOptions>
+    public class InvoicePaymentSettingsPaymentMethodOptions
+        : StripeEntity<InvoicePaymentSettingsPaymentMethodOptions>
     {
         /// <summary>
         /// If paying by <c>acss_debit</c>, this sub-hash contains details about the Canadian

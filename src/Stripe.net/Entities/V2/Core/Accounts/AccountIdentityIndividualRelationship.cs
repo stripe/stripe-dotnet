@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountIdentityIndividualRelationship : StripeEntity<AccountIdentityIndividualRelationship>
+    public class AccountIdentityIndividualRelationship
+        : StripeEntity<AccountIdentityIndividualRelationship>
     {
         /// <summary>
         /// Whether the individual is an authorizer of the Account's identity.
@@ -51,7 +52,9 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("percent_ownership")]
         [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonNumberHandling(
+            STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString
+        )]
         [STJS.JsonPropertyName("percent_ownership")]
         public decimal? PercentOwnership { get; set; }
 

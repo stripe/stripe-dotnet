@@ -8,24 +8,44 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class SetupIntentService : Service,
-        ICreatable<SetupIntent, SetupIntentCreateOptions>,
-        IListable<SetupIntent, SetupIntentListOptions>,
-        IRetrievable<SetupIntent, SetupIntentGetOptions>,
-        IUpdatable<SetupIntent, SetupIntentUpdateOptions>
+    public class SetupIntentService
+        : Service,
+            ICreatable<SetupIntent, SetupIntentCreateOptions>,
+            IListable<SetupIntent, SetupIntentListOptions>,
+            IRetrievable<SetupIntent, SetupIntentGetOptions>,
+            IUpdatable<SetupIntent, SetupIntentUpdateOptions>
     {
-        public SetupIntentService()
-        {
-        }
+        public SetupIntentService() { }
 
         internal SetupIntentService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public SetupIntentService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>You can cancel a SetupIntent object when it’s in one of these statuses:
+        /// <c>requires_payment_method</c>, <c>requires_confirmation</c>, or <c>requires_action</c>.
+        /// </p>.
+        ///
+        /// <p>After you cancel it, setup is abandoned and any operations on the SetupIntent fail
+        /// with an error. You can’t cancel the SetupIntent for a Checkout Session. <a
+        /// href="https://stripe.com/docs/api/checkout/sessions/expire">Expire the Checkout
+        /// Session</a> instead.</p>.
+        /// </summary>
+        public virtual SetupIntent Cancel(
+            string id,
+            SetupIntentCancelOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<SetupIntent>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/setup_intents/{WebUtility.UrlEncode(id)}/cancel",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -38,24 +58,21 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/checkout/sessions/expire">Expire the Checkout
         /// Session</a> instead.</p>.
         /// </summary>
-        public virtual SetupIntent Cancel(string id, SetupIntentCancelOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<SetupIntent> CancelAsync(
+            string id,
+            SetupIntentCancelOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<SetupIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/setup_intents/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>You can cancel a SetupIntent object when it’s in one of these statuses:
-        /// <c>requires_payment_method</c>, <c>requires_confirmation</c>, or <c>requires_action</c>.
-        /// </p>.
-        ///
-        /// <p>After you cancel it, setup is abandoned and any operations on the SetupIntent fail
-        /// with an error. You can’t cancel the SetupIntent for a Checkout Session. <a
-        /// href="https://stripe.com/docs/api/checkout/sessions/expire">Expire the Checkout
-        /// Session</a> instead.</p>.
-        /// </summary>
-        public virtual Task<SetupIntent> CancelAsync(string id, SetupIntentCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<SetupIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/setup_intents/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<SetupIntent>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/setup_intents/{WebUtility.UrlEncode(id)}/cancel",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -71,9 +88,19 @@ namespace Stripe
         /// transition to the <c>requires_payment_method</c> status or the <c>canceled</c> status if
         /// the confirmation limit is reached.</p>.
         /// </summary>
-        public virtual SetupIntent Confirm(string id, SetupIntentConfirmOptions options = null, RequestOptions requestOptions = null)
+        public virtual SetupIntent Confirm(
+            string id,
+            SetupIntentConfirmOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<SetupIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/setup_intents/{WebUtility.UrlEncode(id)}/confirm", options, requestOptions);
+            return this.Request<SetupIntent>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/setup_intents/{WebUtility.UrlEncode(id)}/confirm",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -89,9 +116,21 @@ namespace Stripe
         /// transition to the <c>requires_payment_method</c> status or the <c>canceled</c> status if
         /// the confirmation limit is reached.</p>.
         /// </summary>
-        public virtual Task<SetupIntent> ConfirmAsync(string id, SetupIntentConfirmOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<SetupIntent> ConfirmAsync(
+            string id,
+            SetupIntentConfirmOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<SetupIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/setup_intents/{WebUtility.UrlEncode(id)}/confirm", options, requestOptions, cancellationToken);
+            return this.RequestAsync<SetupIntent>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/setup_intents/{WebUtility.UrlEncode(id)}/confirm",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -101,9 +140,18 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/setup_intents/confirm">confirm</a> it to collect any
         /// required permissions to charge the payment method later.</p>.
         /// </summary>
-        public virtual SetupIntent Create(SetupIntentCreateOptions options, RequestOptions requestOptions = null)
+        public virtual SetupIntent Create(
+            SetupIntentCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<SetupIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/setup_intents", options, requestOptions);
+            return this.Request<SetupIntent>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/setup_intents",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -113,9 +161,20 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/setup_intents/confirm">confirm</a> it to collect any
         /// required permissions to charge the payment method later.</p>.
         /// </summary>
-        public virtual Task<SetupIntent> CreateAsync(SetupIntentCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<SetupIntent> CreateAsync(
+            SetupIntentCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<SetupIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/setup_intents", options, requestOptions, cancellationToken);
+            return this.RequestAsync<SetupIntent>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/setup_intents",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -129,9 +188,19 @@ namespace Stripe
         /// href="https://stripe.com/docs/api#setup_intent_object">SetupIntent</a> object reference
         /// for more details.</p>.
         /// </summary>
-        public virtual SetupIntent Get(string id, SetupIntentGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual SetupIntent Get(
+            string id,
+            SetupIntentGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<SetupIntent>(BaseAddress.Api, HttpMethod.Get, $"/v1/setup_intents/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<SetupIntent>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/setup_intents/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -145,73 +214,165 @@ namespace Stripe
         /// href="https://stripe.com/docs/api#setup_intent_object">SetupIntent</a> object reference
         /// for more details.</p>.
         /// </summary>
-        public virtual Task<SetupIntent> GetAsync(string id, SetupIntentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<SetupIntent> GetAsync(
+            string id,
+            SetupIntentGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<SetupIntent>(BaseAddress.Api, HttpMethod.Get, $"/v1/setup_intents/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<SetupIntent>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/setup_intents/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of SetupIntents.</p>.
         /// </summary>
-        public virtual StripeList<SetupIntent> List(SetupIntentListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<SetupIntent> List(
+            SetupIntentListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeList<SetupIntent>>(BaseAddress.Api, HttpMethod.Get, $"/v1/setup_intents", options, requestOptions);
+            return this.Request<StripeList<SetupIntent>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/setup_intents",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of SetupIntents.</p>.
         /// </summary>
-        public virtual Task<StripeList<SetupIntent>> ListAsync(SetupIntentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<SetupIntent>> ListAsync(
+            SetupIntentListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeList<SetupIntent>>(BaseAddress.Api, HttpMethod.Get, $"/v1/setup_intents", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<SetupIntent>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/setup_intents",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of SetupIntents.</p>.
         /// </summary>
-        public virtual IEnumerable<SetupIntent> ListAutoPaging(SetupIntentListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<SetupIntent> ListAutoPaging(
+            SetupIntentListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.ListRequestAutoPaging<SetupIntent>($"/v1/setup_intents", options, requestOptions);
+            return this.ListRequestAutoPaging<SetupIntent>(
+                $"/v1/setup_intents",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of SetupIntents.</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<SetupIntent> ListAutoPagingAsync(SetupIntentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<SetupIntent> ListAutoPagingAsync(
+            SetupIntentListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<SetupIntent>($"/v1/setup_intents", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<SetupIntent>(
+                $"/v1/setup_intents",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Updates a SetupIntent object.</p>.
         /// </summary>
-        public virtual SetupIntent Update(string id, SetupIntentUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual SetupIntent Update(
+            string id,
+            SetupIntentUpdateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<SetupIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/setup_intents/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<SetupIntent>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/setup_intents/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Updates a SetupIntent object.</p>.
         /// </summary>
-        public virtual Task<SetupIntent> UpdateAsync(string id, SetupIntentUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<SetupIntent> UpdateAsync(
+            string id,
+            SetupIntentUpdateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<SetupIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/setup_intents/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<SetupIntent>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/setup_intents/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Verifies microdeposits on a SetupIntent object.</p>.
         /// </summary>
-        public virtual SetupIntent VerifyMicrodeposits(string id, SetupIntentVerifyMicrodepositsOptions options = null, RequestOptions requestOptions = null)
+        public virtual SetupIntent VerifyMicrodeposits(
+            string id,
+            SetupIntentVerifyMicrodepositsOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<SetupIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/setup_intents/{WebUtility.UrlEncode(id)}/verify_microdeposits", options, requestOptions);
+            return this.Request<SetupIntent>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/setup_intents/{WebUtility.UrlEncode(id)}/verify_microdeposits",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Verifies microdeposits on a SetupIntent object.</p>.
         /// </summary>
-        public virtual Task<SetupIntent> VerifyMicrodepositsAsync(string id, SetupIntentVerifyMicrodepositsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<SetupIntent> VerifyMicrodepositsAsync(
+            string id,
+            SetupIntentVerifyMicrodepositsOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<SetupIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/setup_intents/{WebUtility.UrlEncode(id)}/verify_microdeposits", options, requestOptions, cancellationToken);
+            return this.RequestAsync<SetupIntent>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/setup_intents/{WebUtility.UrlEncode(id)}/verify_microdeposits",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

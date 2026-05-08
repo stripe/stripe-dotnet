@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -19,32 +18,24 @@ namespace StripeTests
 
         public PromotionCodeServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new PromotionCodeService(this.StripeClient);
 
             this.createOptions = new PromotionCodeCreateOptions
             {
-                Promotion = new PromotionCodePromotionOptions
-                {
-                    Coupon = "co_123",
-                },
+                Promotion = new PromotionCodePromotionOptions { Coupon = "co_123" },
                 Code = "TESTCODE",
             };
 
             this.updateOptions = new PromotionCodeUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.listOptions = new PromotionCodeListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new PromotionCodeListOptions { Limit = 1 };
         }
 
         /*[Fact]
@@ -117,7 +108,9 @@ namespace StripeTests
         [Fact]
         public async Task ListAutoPagingAsync()
         {
-            var promotionCode = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            var promotionCode = await this
+                .service.ListAutoPagingAsync(this.listOptions)
+                .FirstAsync();
             Assert.NotNull(promotionCode);
             Assert.Equal("promotion_code", promotionCode.Object);
         }

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentMethodOptionsAfterpayClearpay : StripeEntity<PaymentIntentPaymentMethodOptionsAfterpayClearpay>
+    public class PaymentIntentPaymentMethodOptionsAfterpayClearpay
+        : StripeEntity<PaymentIntentPaymentMethodOptionsAfterpayClearpay>
     {
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.

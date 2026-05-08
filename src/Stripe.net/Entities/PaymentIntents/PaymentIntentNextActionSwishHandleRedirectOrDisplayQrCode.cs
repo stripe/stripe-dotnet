@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentNextActionSwishHandleRedirectOrDisplayQrCode : StripeEntity<PaymentIntentNextActionSwishHandleRedirectOrDisplayQrCode>
+    public class PaymentIntentNextActionSwishHandleRedirectOrDisplayQrCode
+        : StripeEntity<PaymentIntentNextActionSwishHandleRedirectOrDisplayQrCode>
     {
         /// <summary>
         /// The URL to the hosted Swish instructions page, which allows customers to view the QR

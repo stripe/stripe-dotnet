@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class MandatePaymentMethodDetailsBacsDebit : StripeEntity<MandatePaymentMethodDetailsBacsDebit>
+    public class MandatePaymentMethodDetailsBacsDebit
+        : StripeEntity<MandatePaymentMethodDetailsBacsDebit>
     {
         /// <summary>
         /// The display name for the account on this mandate.

@@ -8,13 +8,9 @@ namespace StripeTests
     /// </summary>
     public class StripeTestException : Exception
     {
-        public StripeTestException()
-        {
-        }
+        public StripeTestException() { }
 
         public StripeTestException(string message)
-            : base(message)
-        {
-        }
+            : base(message) { }
     }
 }

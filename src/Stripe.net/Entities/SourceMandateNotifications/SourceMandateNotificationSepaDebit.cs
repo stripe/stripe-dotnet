@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SourceMandateNotificationSepaDebit : StripeEntity<SourceMandateNotificationSepaDebit>
+    public class SourceMandateNotificationSepaDebit
+        : StripeEntity<SourceMandateNotificationSepaDebit>
     {
         /// <summary>
         /// SEPA creditor ID.

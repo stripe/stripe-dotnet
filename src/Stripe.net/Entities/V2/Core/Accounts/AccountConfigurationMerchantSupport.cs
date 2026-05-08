@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationMerchantSupport : StripeEntity<AccountConfigurationMerchantSupport>
+    public class AccountConfigurationMerchantSupport
+        : StripeEntity<AccountConfigurationMerchantSupport>
     {
         /// <summary>
         /// A publicly available mailing address for sending support issues to.

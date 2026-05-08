@@ -25,7 +25,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("currency_options")]
         [STJS.JsonPropertyName("currency_options")]
-        public Dictionary<string, ProductDefaultPriceDataCurrencyOptionsOptions> CurrencyOptions { get; set; }
+        public Dictionary<
+            string,
+            ProductDefaultPriceDataCurrencyOptionsOptions
+        > CurrencyOptions { get; set; }
 
         /// <summary>
         /// When set, provides configuration for the amount to be adjusted by the customer during
@@ -81,7 +84,9 @@ namespace Stripe
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
         [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonNumberHandling(
+            STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString
+        )]
         [STJS.JsonPropertyName("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }
     }

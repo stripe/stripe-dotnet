@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsCardChecks : StripeEntity<PaymentRecordPaymentMethodDetailsCardChecks>
+    public class PaymentRecordPaymentMethodDetailsCardChecks
+        : StripeEntity<PaymentRecordPaymentMethodDetailsCardChecks>
     {
         /// <summary>
         /// If you provide a value for <c>address.line1</c>, the check result is one of <c>pass</c>,

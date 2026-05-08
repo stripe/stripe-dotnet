@@ -27,7 +27,10 @@ namespace StripeTests
         public void Ctor_EmptySource_CorrectMediaTypeAndCharset()
         {
             var content = new FormUrlEncodedContent(new Dictionary<string, string>());
-            Assert.Equal("application/x-www-form-urlencoded", content.Headers.ContentType.MediaType);
+            Assert.Equal(
+                "application/x-www-form-urlencoded",
+                content.Headers.ContentType.MediaType
+            );
             Assert.Equal("utf-8", content.Headers.ContentType.CharSet);
             Assert.Equal(1, content.Headers.ContentType.Parameters.Count);
         }

@@ -8,49 +8,66 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class InvoiceService : Service,
-        ICreatable<Invoice, InvoiceCreateOptions>,
-        IDeletable<Invoice, InvoiceDeleteOptions>,
-        IListable<Invoice, InvoiceListOptions>,
-        IRetrievable<Invoice, InvoiceGetOptions>,
-        ISearchable<Invoice, InvoiceSearchOptions>,
-        IUpdatable<Invoice, InvoiceUpdateOptions>
+    public partial class InvoiceService
+        : Service,
+            ICreatable<Invoice, InvoiceCreateOptions>,
+            IDeletable<Invoice, InvoiceDeleteOptions>,
+            IListable<Invoice, InvoiceListOptions>,
+            IRetrievable<Invoice, InvoiceGetOptions>,
+            ISearchable<Invoice, InvoiceSearchOptions>,
+            IUpdatable<Invoice, InvoiceUpdateOptions>
     {
         private InvoiceLineItemService lineItems;
 
-        public InvoiceService()
-        {
-        }
+        public InvoiceService() { }
 
         internal InvoiceService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public InvoiceService(IStripeClient client)
-            : base(client)
-        {
-        }
+            : base(client) { }
 
-        public virtual InvoiceLineItemService LineItems => this.lineItems ??= new InvoiceLineItemService(
-            this.Requestor);
+        public virtual InvoiceLineItemService LineItems =>
+            this.lineItems ??= new InvoiceLineItemService(this.Requestor);
 
         /// <summary>
         /// <p>Adds multiple line items to an invoice. This is only possible when an invoice is
         /// still a draft.</p>.
         /// </summary>
-        public virtual Invoice AddLines(string id, InvoiceAddLinesOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice AddLines(
+            string id,
+            InvoiceAddLinesOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/add_lines", options, requestOptions);
+            return this.Request<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/add_lines",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Adds multiple line items to an invoice. This is only possible when an invoice is
         /// still a draft.</p>.
         /// </summary>
-        public virtual Task<Invoice> AddLinesAsync(string id, InvoiceAddLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> AddLinesAsync(
+            string id,
+            InvoiceAddLinesOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/add_lines", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/add_lines",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -67,9 +84,19 @@ namespace Stripe
         /// <p>See: <a href="https://stripe.com/docs/invoicing/partial-payments">Partial
         /// payments</a> to learn more.</p>.
         /// </summary>
-        public virtual Invoice AttachPayment(string id, InvoiceAttachPaymentOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice AttachPayment(
+            string id,
+            InvoiceAttachPaymentOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/attach_payment", options, requestOptions);
+            return this.Request<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/attach_payment",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -86,9 +113,21 @@ namespace Stripe
         /// <p>See: <a href="https://stripe.com/docs/invoicing/partial-payments">Partial
         /// payments</a> to learn more.</p>.
         /// </summary>
-        public virtual Task<Invoice> AttachPaymentAsync(string id, InvoiceAttachPaymentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> AttachPaymentAsync(
+            string id,
+            InvoiceAttachPaymentOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/attach_payment", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/attach_payment",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -97,9 +136,18 @@ namespace Stripe
         /// invoice, which allows you to <a href="https://stripe.com/api/invoices/pay">pay</a> or <a
         /// href="https://stripe.com/api/invoices/send">send</a> the invoice to your customers.</p>.
         /// </summary>
-        public virtual Invoice Create(InvoiceCreateOptions options, RequestOptions requestOptions = null)
+        public virtual Invoice Create(
+            InvoiceCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices", options, requestOptions);
+            return this.Request<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -108,9 +156,20 @@ namespace Stripe
         /// invoice, which allows you to <a href="https://stripe.com/api/invoices/pay">pay</a> or <a
         /// href="https://stripe.com/api/invoices/send">send</a> the invoice to your customers.</p>.
         /// </summary>
-        public virtual Task<Invoice> CreateAsync(InvoiceCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> CreateAsync(
+            InvoiceCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -139,9 +198,18 @@ namespace Stripe
         /// may vary between the time of the preview and the time of the actual invoice creation. <a
         /// href="https://docs.stripe.com/currencies/conversions">Learn more</a></p>.
         /// </summary>
-        public virtual Invoice CreatePreview(InvoiceCreatePreviewOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice CreatePreview(
+            InvoiceCreatePreviewOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/create_preview", options, requestOptions);
+            return this.Request<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/create_preview",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -170,9 +238,20 @@ namespace Stripe
         /// may vary between the time of the preview and the time of the actual invoice creation. <a
         /// href="https://docs.stripe.com/currencies/conversions">Learn more</a></p>.
         /// </summary>
-        public virtual Task<Invoice> CreatePreviewAsync(InvoiceCreatePreviewOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> CreatePreviewAsync(
+            InvoiceCreatePreviewOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/create_preview", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/create_preview",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -181,9 +260,19 @@ namespace Stripe
         /// finalized or if an invoice is for a subscription, it must be <a
         /// href="https://stripe.com/api/invoices/void">voided</a>.</p>.
         /// </summary>
-        public virtual Invoice Delete(string id, InvoiceDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice Delete(
+            string id,
+            InvoiceDeleteOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Delete, $"/v1/invoices/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Delete,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -192,9 +281,21 @@ namespace Stripe
         /// finalized or if an invoice is for a subscription, it must be <a
         /// href="https://stripe.com/api/invoices/void">voided</a>.</p>.
         /// </summary>
-        public virtual Task<Invoice> DeleteAsync(string id, InvoiceDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> DeleteAsync(
+            string id,
+            InvoiceDeleteOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Delete, $"/v1/invoices/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Delete,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -202,9 +303,19 @@ namespace Stripe
         /// invoices. However, if you’d like to finalize a draft invoice manually, you can do so
         /// using this method.</p>.
         /// </summary>
-        public virtual Invoice FinalizeInvoice(string id, InvoiceFinalizeOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice FinalizeInvoice(
+            string id,
+            InvoiceFinalizeOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/finalize", options, requestOptions);
+            return this.Request<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/finalize",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -212,25 +323,59 @@ namespace Stripe
         /// invoices. However, if you’d like to finalize a draft invoice manually, you can do so
         /// using this method.</p>.
         /// </summary>
-        public virtual Task<Invoice> FinalizeInvoiceAsync(string id, InvoiceFinalizeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> FinalizeInvoiceAsync(
+            string id,
+            InvoiceFinalizeOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/finalize", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/finalize",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Retrieves the invoice with the given ID.</p>.
         /// </summary>
-        public virtual Invoice Get(string id, InvoiceGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice Get(
+            string id,
+            InvoiceGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Retrieves the invoice with the given ID.</p>.
         /// </summary>
-        public virtual Task<Invoice> GetAsync(string id, InvoiceGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> GetAsync(
+            string id,
+            InvoiceGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -238,9 +383,18 @@ namespace Stripe
         /// are returned sorted by creation date, with the most recently created invoices appearing
         /// first.</p>.
         /// </summary>
-        public virtual StripeList<Invoice> List(InvoiceListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Invoice> List(
+            InvoiceListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeList<Invoice>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices", options, requestOptions);
+            return this.Request<StripeList<Invoice>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/invoices",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -248,9 +402,20 @@ namespace Stripe
         /// are returned sorted by creation date, with the most recently created invoices appearing
         /// first.</p>.
         /// </summary>
-        public virtual Task<StripeList<Invoice>> ListAsync(InvoiceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<Invoice>> ListAsync(
+            InvoiceListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeList<Invoice>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Invoice>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/invoices",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -258,7 +423,10 @@ namespace Stripe
         /// are returned sorted by creation date, with the most recently created invoices appearing
         /// first.</p>.
         /// </summary>
-        public virtual IEnumerable<Invoice> ListAutoPaging(InvoiceListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<Invoice> ListAutoPaging(
+            InvoiceListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
             return this.ListRequestAutoPaging<Invoice>($"/v1/invoices", options, requestOptions);
         }
@@ -268,27 +436,58 @@ namespace Stripe
         /// are returned sorted by creation date, with the most recently created invoices appearing
         /// first.</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<Invoice> ListAutoPagingAsync(InvoiceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<Invoice> ListAutoPagingAsync(
+            InvoiceListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<Invoice>($"/v1/invoices", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Invoice>(
+                $"/v1/invoices",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Marking an invoice as uncollectible is useful for keeping track of bad debts that can
         /// be written off for accounting purposes.</p>.
         /// </summary>
-        public virtual Invoice MarkUncollectible(string id, InvoiceMarkUncollectibleOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice MarkUncollectible(
+            string id,
+            InvoiceMarkUncollectibleOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/mark_uncollectible", options, requestOptions);
+            return this.Request<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/mark_uncollectible",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Marking an invoice as uncollectible is useful for keeping track of bad debts that can
         /// be written off for accounting purposes.</p>.
         /// </summary>
-        public virtual Task<Invoice> MarkUncollectibleAsync(string id, InvoiceMarkUncollectibleOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> MarkUncollectibleAsync(
+            string id,
+            InvoiceMarkUncollectibleOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/mark_uncollectible", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/mark_uncollectible",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -298,9 +497,19 @@ namespace Stripe
         /// settings</a>. However, if you’d like to attempt payment on an invoice out of the normal
         /// collection schedule or for some other reason, you can do so.</p>.
         /// </summary>
-        public virtual Invoice Pay(string id, InvoicePayOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice Pay(
+            string id,
+            InvoicePayOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/pay", options, requestOptions);
+            return this.Request<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/pay",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -310,27 +519,61 @@ namespace Stripe
         /// settings</a>. However, if you’d like to attempt payment on an invoice out of the normal
         /// collection schedule or for some other reason, you can do so.</p>.
         /// </summary>
-        public virtual Task<Invoice> PayAsync(string id, InvoicePayOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> PayAsync(
+            string id,
+            InvoicePayOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/pay", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/pay",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Removes multiple line items from an invoice. This is only possible when an invoice is
         /// still a draft.</p>.
         /// </summary>
-        public virtual Invoice RemoveLines(string id, InvoiceRemoveLinesOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice RemoveLines(
+            string id,
+            InvoiceRemoveLinesOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/remove_lines", options, requestOptions);
+            return this.Request<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/remove_lines",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Removes multiple line items from an invoice. This is only possible when an invoice is
         /// still a draft.</p>.
         /// </summary>
-        public virtual Task<Invoice> RemoveLinesAsync(string id, InvoiceRemoveLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> RemoveLinesAsync(
+            string id,
+            InvoiceRemoveLinesOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/remove_lines", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/remove_lines",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -341,9 +584,18 @@ namespace Stripe
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
         /// </summary>
-        public virtual StripeSearchResult<Invoice> Search(InvoiceSearchOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeSearchResult<Invoice> Search(
+            InvoiceSearchOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeSearchResult<Invoice>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/search", options, requestOptions);
+            return this.Request<StripeSearchResult<Invoice>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/invoices/search",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -354,9 +606,20 @@ namespace Stripe
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
         /// </summary>
-        public virtual Task<StripeSearchResult<Invoice>> SearchAsync(InvoiceSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeSearchResult<Invoice>> SearchAsync(
+            InvoiceSearchOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeSearchResult<Invoice>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/search", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeSearchResult<Invoice>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/invoices/search",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -367,9 +630,16 @@ namespace Stripe
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
         /// </summary>
-        public virtual IEnumerable<Invoice> SearchAutoPaging(InvoiceSearchOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<Invoice> SearchAutoPaging(
+            InvoiceSearchOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.SearchRequestAutoPaging<Invoice>($"/v1/invoices/search", options, requestOptions);
+            return this.SearchRequestAutoPaging<Invoice>(
+                $"/v1/invoices/search",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -380,9 +650,18 @@ namespace Stripe
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<Invoice> SearchAutoPagingAsync(InvoiceSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<Invoice> SearchAutoPagingAsync(
+            InvoiceSearchOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.SearchRequestAutoPagingAsync<Invoice>($"/v1/invoices/search", options, requestOptions, cancellationToken);
+            return this.SearchRequestAutoPagingAsync<Invoice>(
+                $"/v1/invoices/search",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -395,9 +674,19 @@ namespace Stripe
         /// <p>Requests made in test-mode result in no emails being sent, despite sending an
         /// <c>invoice.sent</c> event.</p>.
         /// </summary>
-        public virtual Invoice SendInvoice(string id, InvoiceSendOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice SendInvoice(
+            string id,
+            InvoiceSendOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/send", options, requestOptions);
+            return this.Request<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/send",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -410,9 +699,21 @@ namespace Stripe
         /// <p>Requests made in test-mode result in no emails being sent, despite sending an
         /// <c>invoice.sent</c> event.</p>.
         /// </summary>
-        public virtual Task<Invoice> SendInvoiceAsync(string id, InvoiceSendOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> SendInvoiceAsync(
+            string id,
+            InvoiceSendOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/send", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/send",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -425,9 +726,19 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/invoices/reconciliation">automatically
         /// reconciling</a> invoices, pass <c>auto_advance=false</c>.</p>.
         /// </summary>
-        public virtual Invoice Update(string id, InvoiceUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Invoice Update(
+            string id,
+            InvoiceUpdateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -440,27 +751,61 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/invoices/reconciliation">automatically
         /// reconciling</a> invoices, pass <c>auto_advance=false</c>.</p>.
         /// </summary>
-        public virtual Task<Invoice> UpdateAsync(string id, InvoiceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> UpdateAsync(
+            string id,
+            InvoiceUpdateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Updates multiple line items on an invoice. This is only possible when an invoice is
         /// still a draft.</p>.
         /// </summary>
-        public virtual Invoice UpdateLines(string id, InvoiceUpdateLinesOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice UpdateLines(
+            string id,
+            InvoiceUpdateLinesOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/update_lines", options, requestOptions);
+            return this.Request<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/update_lines",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Updates multiple line items on an invoice. This is only possible when an invoice is
         /// still a draft.</p>.
         /// </summary>
-        public virtual Task<Invoice> UpdateLinesAsync(string id, InvoiceUpdateLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> UpdateLinesAsync(
+            string id,
+            InvoiceUpdateLinesOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/update_lines", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/update_lines",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -476,9 +821,19 @@ namespace Stripe
         /// recommends that you consult with your legal counsel for advice specific to your
         /// business.</p>.
         /// </summary>
-        public virtual Invoice VoidInvoice(string id, InvoiceVoidOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice VoidInvoice(
+            string id,
+            InvoiceVoidOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/void", options, requestOptions);
+            return this.Request<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/void",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -494,9 +849,21 @@ namespace Stripe
         /// recommends that you consult with your legal counsel for advice specific to your
         /// business.</p>.
         /// </summary>
-        public virtual Task<Invoice> VoidInvoiceAsync(string id, InvoiceVoidOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> VoidInvoiceAsync(
+            string id,
+            InvoiceVoidOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/void", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/invoices/{WebUtility.UrlEncode(id)}/void",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

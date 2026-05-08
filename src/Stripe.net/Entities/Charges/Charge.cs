@@ -15,7 +15,12 @@ namespace Stripe
     /// new integrations.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class Charge : StripeEntity<Charge>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
+    public class Charge
+        : StripeEntity<Charge>,
+            IHasId,
+            IHasMetadata,
+            IHasObject,
+            IBalanceTransactionSource
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -85,7 +90,11 @@ namespace Stripe
         public Application Application
         {
             get => this.InternalApplication?.ExpandedObject;
-            set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
+            set =>
+                this.InternalApplication = SetExpandableFieldObject(
+                    value,
+                    this.InternalApplication
+                );
         }
 
         [JsonProperty("application")]
@@ -108,7 +117,11 @@ namespace Stripe
         public string ApplicationFeeId
         {
             get => this.InternalApplicationFee?.Id;
-            set => this.InternalApplicationFee = SetExpandableFieldId(value, this.InternalApplicationFee);
+            set =>
+                this.InternalApplicationFee = SetExpandableFieldId(
+                    value,
+                    this.InternalApplicationFee
+                );
         }
 
         /// <summary>
@@ -124,7 +137,11 @@ namespace Stripe
         public ApplicationFee ApplicationFee
         {
             get => this.InternalApplicationFee?.ExpandedObject;
-            set => this.InternalApplicationFee = SetExpandableFieldObject(value, this.InternalApplicationFee);
+            set =>
+                this.InternalApplicationFee = SetExpandableFieldObject(
+                    value,
+                    this.InternalApplicationFee
+                );
         }
 
         [JsonProperty("application_fee")]
@@ -162,7 +179,11 @@ namespace Stripe
         public string BalanceTransactionId
         {
             get => this.InternalBalanceTransaction?.Id;
-            set => this.InternalBalanceTransaction = SetExpandableFieldId(value, this.InternalBalanceTransaction);
+            set =>
+                this.InternalBalanceTransaction = SetExpandableFieldId(
+                    value,
+                    this.InternalBalanceTransaction
+                );
         }
 
         /// <summary>
@@ -177,7 +198,11 @@ namespace Stripe
         public BalanceTransaction BalanceTransaction
         {
             get => this.InternalBalanceTransaction?.ExpandedObject;
-            set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
+            set =>
+                this.InternalBalanceTransaction = SetExpandableFieldObject(
+                    value,
+                    this.InternalBalanceTransaction
+                );
         }
 
         [JsonProperty("balance_transaction")]
@@ -288,7 +313,11 @@ namespace Stripe
         public string FailureBalanceTransactionId
         {
             get => this.InternalFailureBalanceTransaction?.Id;
-            set => this.InternalFailureBalanceTransaction = SetExpandableFieldId(value, this.InternalFailureBalanceTransaction);
+            set =>
+                this.InternalFailureBalanceTransaction = SetExpandableFieldId(
+                    value,
+                    this.InternalFailureBalanceTransaction
+                );
         }
 
         /// <summary>
@@ -303,7 +332,11 @@ namespace Stripe
         public BalanceTransaction FailureBalanceTransaction
         {
             get => this.InternalFailureBalanceTransaction?.ExpandedObject;
-            set => this.InternalFailureBalanceTransaction = SetExpandableFieldObject(value, this.InternalFailureBalanceTransaction);
+            set =>
+                this.InternalFailureBalanceTransaction = SetExpandableFieldObject(
+                    value,
+                    this.InternalFailureBalanceTransaction
+                );
         }
 
         [JsonProperty("failure_balance_transaction")]
@@ -387,7 +420,8 @@ namespace Stripe
         public Account OnBehalfOf
         {
             get => this.InternalOnBehalfOf?.ExpandedObject;
-            set => this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
+            set =>
+                this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
         }
 
         [JsonProperty("on_behalf_of")]
@@ -423,7 +457,11 @@ namespace Stripe
         public string PaymentIntentId
         {
             get => this.InternalPaymentIntent?.Id;
-            set => this.InternalPaymentIntent = SetExpandableFieldId(value, this.InternalPaymentIntent);
+            set =>
+                this.InternalPaymentIntent = SetExpandableFieldId(
+                    value,
+                    this.InternalPaymentIntent
+                );
         }
 
         /// <summary>
@@ -437,7 +475,11 @@ namespace Stripe
         public PaymentIntent PaymentIntent
         {
             get => this.InternalPaymentIntent?.ExpandedObject;
-            set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
+            set =>
+                this.InternalPaymentIntent = SetExpandableFieldObject(
+                    value,
+                    this.InternalPaymentIntent
+                );
         }
 
         [JsonProperty("payment_intent")]
@@ -578,7 +620,11 @@ namespace Stripe
         public string SourceTransferId
         {
             get => this.InternalSourceTransfer?.Id;
-            set => this.InternalSourceTransfer = SetExpandableFieldId(value, this.InternalSourceTransfer);
+            set =>
+                this.InternalSourceTransfer = SetExpandableFieldId(
+                    value,
+                    this.InternalSourceTransfer
+                );
         }
 
         /// <summary>
@@ -594,7 +640,11 @@ namespace Stripe
         public Transfer SourceTransfer
         {
             get => this.InternalSourceTransfer?.ExpandedObject;
-            set => this.InternalSourceTransfer = SetExpandableFieldObject(value, this.InternalSourceTransfer);
+            set =>
+                this.InternalSourceTransfer = SetExpandableFieldObject(
+                    value,
+                    this.InternalSourceTransfer
+                );
         }
 
         [JsonProperty("source_transfer")]

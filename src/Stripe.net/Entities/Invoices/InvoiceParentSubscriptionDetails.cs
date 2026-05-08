@@ -8,7 +8,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class InvoiceParentSubscriptionDetails : StripeEntity<InvoiceParentSubscriptionDetails>, IHasMetadata
+    public class InvoiceParentSubscriptionDetails
+        : StripeEntity<InvoiceParentSubscriptionDetails>,
+            IHasMetadata
     {
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> defined as
@@ -31,7 +33,8 @@ namespace Stripe
         public string SubscriptionId
         {
             get => this.InternalSubscription?.Id;
-            set => this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
+            set =>
+                this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
         }
 
         /// <summary>
@@ -45,7 +48,11 @@ namespace Stripe
         public Subscription Subscription
         {
             get => this.InternalSubscription?.ExpandedObject;
-            set => this.InternalSubscription = SetExpandableFieldObject(value, this.InternalSubscription);
+            set =>
+                this.InternalSubscription = SetExpandableFieldObject(
+                    value,
+                    this.InternalSubscription
+                );
         }
 
         [JsonProperty("subscription")]
@@ -63,6 +70,7 @@ namespace Stripe
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("subscription_proration_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime SubscriptionProrationDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime SubscriptionProrationDate { get; set; } =
+            Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

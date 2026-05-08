@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountSessionComponentsPaymentDisputesFeatures : StripeEntity<AccountSessionComponentsPaymentDisputesFeatures>
+    public class AccountSessionComponentsPaymentDisputesFeatures
+        : StripeEntity<AccountSessionComponentsPaymentDisputesFeatures>
     {
         /// <summary>
         /// Whether connected accounts can manage destination charges that are created on behalf of

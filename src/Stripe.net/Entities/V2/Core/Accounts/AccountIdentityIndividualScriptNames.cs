@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountIdentityIndividualScriptNames : StripeEntity<AccountIdentityIndividualScriptNames>
+    public class AccountIdentityIndividualScriptNames
+        : StripeEntity<AccountIdentityIndividualScriptNames>
     {
         /// <summary>
         /// Persons name in kana script.

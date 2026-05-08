@@ -41,7 +41,8 @@ namespace Stripe.Checkout
         public string ShippingRateId
         {
             get => this.InternalShippingRate?.Id;
-            set => this.InternalShippingRate = SetExpandableFieldId(value, this.InternalShippingRate);
+            set =>
+                this.InternalShippingRate = SetExpandableFieldId(value, this.InternalShippingRate);
         }
 
         /// <summary>
@@ -55,7 +56,11 @@ namespace Stripe.Checkout
         public ShippingRate ShippingRate
         {
             get => this.InternalShippingRate?.ExpandedObject;
-            set => this.InternalShippingRate = SetExpandableFieldObject(value, this.InternalShippingRate);
+            set =>
+                this.InternalShippingRate = SetExpandableFieldObject(
+                    value,
+                    this.InternalShippingRate
+                );
         }
 
         [JsonProperty("shipping_rate")]

@@ -6,7 +6,6 @@ namespace Stripe.Identity
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class VerificationReportOptionsIdNumber : StripeEntity<VerificationReportOptionsIdNumber>
-    {
-    }
+    public class VerificationReportOptionsIdNumber
+        : StripeEntity<VerificationReportOptionsIdNumber> { }
 }

@@ -27,7 +27,9 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("fx_rate")]
         [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonNumberHandling(
+            STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString
+        )]
         [STJS.JsonPropertyName("fx_rate")]
         public decimal FxRate { get; set; }
 

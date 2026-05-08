@@ -13,25 +13,23 @@ namespace Stripe.V2
         private V2.Billing.MeterEventStreamService meterEventStream;
 
         internal BillingService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         internal BillingService(IStripeClient client)
-            : base(client)
-        {
-        }
+            : base(client) { }
 
-        public virtual V2.Billing.MeterEventService MeterEvents => this.meterEvents ??= new V2.Billing.MeterEventService(
-            this.Requestor);
+        public virtual V2.Billing.MeterEventService MeterEvents =>
+            this.meterEvents ??= new V2.Billing.MeterEventService(this.Requestor);
 
-        public virtual V2.Billing.MeterEventAdjustmentService MeterEventAdjustments => this.meterEventAdjustments ??= new V2.Billing.MeterEventAdjustmentService(
-            this.Requestor);
+        public virtual V2.Billing.MeterEventAdjustmentService MeterEventAdjustments =>
+            this.meterEventAdjustments ??= new V2.Billing.MeterEventAdjustmentService(
+                this.Requestor
+            );
 
-        public virtual V2.Billing.MeterEventSessionService MeterEventSession => this.meterEventSession ??= new V2.Billing.MeterEventSessionService(
-            this.Requestor);
+        public virtual V2.Billing.MeterEventSessionService MeterEventSession =>
+            this.meterEventSession ??= new V2.Billing.MeterEventSessionService(this.Requestor);
 
-        public virtual V2.Billing.MeterEventStreamService MeterEventStream => this.meterEventStream ??= new V2.Billing.MeterEventStreamService(
-            this.Requestor);
+        public virtual V2.Billing.MeterEventStreamService MeterEventStream =>
+            this.meterEventStream ??= new V2.Billing.MeterEventStreamService(this.Requestor);
     }
 }

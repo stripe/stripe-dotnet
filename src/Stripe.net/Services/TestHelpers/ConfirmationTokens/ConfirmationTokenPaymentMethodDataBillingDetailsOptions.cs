@@ -6,7 +6,9 @@ namespace Stripe.TestHelpers
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ConfirmationTokenPaymentMethodDataBillingDetailsOptions : INestedOptions, IHasSetTracking
+    public class ConfirmationTokenPaymentMethodDataBillingDetailsOptions
+        : INestedOptions,
+            IHasSetTracking
     {
         private AddressOptions address;
         private string email;

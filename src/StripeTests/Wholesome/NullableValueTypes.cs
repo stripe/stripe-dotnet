@@ -14,8 +14,7 @@ namespace StripeTests.Wholesome
     /// </summary>
     public class NullableValueTypes : WholesomeTest
     {
-        private const string AssertionMessage =
-            "Found at least one non-nullable value type";
+        private const string AssertionMessage = "Found at least one non-nullable value type";
 
         [Fact]
         public void Check()
@@ -45,8 +44,10 @@ namespace StripeTests.Wholesome
                     }
 
                     // Skip value types that are already nullable
-                    if (propType.GetTypeInfo().IsGenericType &&
-                        propType.GetGenericTypeDefinition() == typeof(Nullable<>))
+                    if (
+                        propType.GetTypeInfo().IsGenericType
+                        && propType.GetGenericTypeDefinition() == typeof(Nullable<>)
+                    )
                     {
                         continue;
                     }

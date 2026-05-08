@@ -62,7 +62,11 @@ namespace Stripe
         public string PaymentIntentId
         {
             get => this.InternalPaymentIntent?.Id;
-            set => this.InternalPaymentIntent = SetExpandableFieldId(value, this.InternalPaymentIntent);
+            set =>
+                this.InternalPaymentIntent = SetExpandableFieldId(
+                    value,
+                    this.InternalPaymentIntent
+                );
         }
 
         /// <summary>
@@ -78,7 +82,11 @@ namespace Stripe
         public PaymentIntent PaymentIntent
         {
             get => this.InternalPaymentIntent?.ExpandedObject;
-            set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
+            set =>
+                this.InternalPaymentIntent = SetExpandableFieldObject(
+                    value,
+                    this.InternalPaymentIntent
+                );
         }
 
         [JsonProperty("payment_intent")]
@@ -100,7 +108,11 @@ namespace Stripe
         public string PaymentRecordId
         {
             get => this.InternalPaymentRecord?.Id;
-            set => this.InternalPaymentRecord = SetExpandableFieldId(value, this.InternalPaymentRecord);
+            set =>
+                this.InternalPaymentRecord = SetExpandableFieldId(
+                    value,
+                    this.InternalPaymentRecord
+                );
         }
 
         /// <summary>
@@ -115,7 +127,11 @@ namespace Stripe
         public PaymentRecord PaymentRecord
         {
             get => this.InternalPaymentRecord?.ExpandedObject;
-            set => this.InternalPaymentRecord = SetExpandableFieldObject(value, this.InternalPaymentRecord);
+            set =>
+                this.InternalPaymentRecord = SetExpandableFieldObject(
+                    value,
+                    this.InternalPaymentRecord
+                );
         }
 
         [JsonProperty("payment_record")]

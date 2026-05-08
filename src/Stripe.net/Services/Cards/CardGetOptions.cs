@@ -1,6 +1,4 @@
 namespace Stripe
 {
-    public class CardGetOptions : BaseOptions
-    {
-    }
+    public class CardGetOptions : BaseOptions { }
 }

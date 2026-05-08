@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentLinkOptionalItemAdjustableQuantity : StripeEntity<PaymentLinkOptionalItemAdjustableQuantity>
+    public class PaymentLinkOptionalItemAdjustableQuantity
+        : StripeEntity<PaymentLinkOptionalItemAdjustableQuantity>
     {
         /// <summary>
         /// Set to true if the quantity can be adjusted to any non-negative integer.

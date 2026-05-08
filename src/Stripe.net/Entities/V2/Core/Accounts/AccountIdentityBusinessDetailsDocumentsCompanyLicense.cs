@@ -7,7 +7,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountIdentityBusinessDetailsDocumentsCompanyLicense : StripeEntity<AccountIdentityBusinessDetailsDocumentsCompanyLicense>
+    public class AccountIdentityBusinessDetailsDocumentsCompanyLicense
+        : StripeEntity<AccountIdentityBusinessDetailsDocumentsCompanyLicense>
     {
         /// <summary>
         /// One or more document IDs returned by a <a

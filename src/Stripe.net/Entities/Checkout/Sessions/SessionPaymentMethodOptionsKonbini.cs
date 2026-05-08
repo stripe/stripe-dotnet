@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsKonbini : StripeEntity<SessionPaymentMethodOptionsKonbini>
+    public class SessionPaymentMethodOptionsKonbini
+        : StripeEntity<SessionPaymentMethodOptionsKonbini>
     {
         /// <summary>
         /// The number of calendar days (between 1 and 60) after which Konbini payment instructions

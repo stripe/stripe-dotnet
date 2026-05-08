@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class DisputeEvidenceEnhancedEvidenceVisaCompliance : StripeEntity<DisputeEvidenceEnhancedEvidenceVisaCompliance>
+    public class DisputeEvidenceEnhancedEvidenceVisaCompliance
+        : StripeEntity<DisputeEvidenceEnhancedEvidenceVisaCompliance>
     {
         /// <summary>
         /// A field acknowledging the fee incurred when countering a Visa compliance dispute. If

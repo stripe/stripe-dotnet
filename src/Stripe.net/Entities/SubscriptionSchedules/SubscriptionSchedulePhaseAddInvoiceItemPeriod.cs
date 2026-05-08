@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SubscriptionSchedulePhaseAddInvoiceItemPeriod : StripeEntity<SubscriptionSchedulePhaseAddInvoiceItemPeriod>
+    public class SubscriptionSchedulePhaseAddInvoiceItemPeriod
+        : StripeEntity<SubscriptionSchedulePhaseAddInvoiceItemPeriod>
     {
         [JsonProperty("end")]
         [STJS.JsonPropertyName("end")]

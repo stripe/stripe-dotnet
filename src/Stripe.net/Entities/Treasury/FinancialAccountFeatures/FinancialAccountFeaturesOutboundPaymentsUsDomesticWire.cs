@@ -7,7 +7,8 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class FinancialAccountFeaturesOutboundPaymentsUsDomesticWire : StripeEntity<FinancialAccountFeaturesOutboundPaymentsUsDomesticWire>
+    public class FinancialAccountFeaturesOutboundPaymentsUsDomesticWire
+        : StripeEntity<FinancialAccountFeaturesOutboundPaymentsUsDomesticWire>
     {
         /// <summary>
         /// Whether the FinancialAccount should have the Feature.

@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentMethodOptionsCardInstallments : StripeEntity<PaymentIntentPaymentMethodOptionsCardInstallments>
+    public class PaymentIntentPaymentMethodOptionsCardInstallments
+        : StripeEntity<PaymentIntentPaymentMethodOptionsCardInstallments>
     {
         /// <summary>
         /// Installment plans that may be selected for this PaymentIntent.

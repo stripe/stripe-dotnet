@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentMethodConfigurationAuBecsDebitDisplayPreference : StripeEntity<PaymentMethodConfigurationAuBecsDebitDisplayPreference>
+    public class PaymentMethodConfigurationAuBecsDebitDisplayPreference
+        : StripeEntity<PaymentMethodConfigurationAuBecsDebitDisplayPreference>
     {
         /// <summary>
         /// For child configs, whether or not the account's preference will be observed. If

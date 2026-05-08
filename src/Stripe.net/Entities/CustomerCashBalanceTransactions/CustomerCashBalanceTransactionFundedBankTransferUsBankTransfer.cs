@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CustomerCashBalanceTransactionFundedBankTransferUsBankTransfer : StripeEntity<CustomerCashBalanceTransactionFundedBankTransferUsBankTransfer>
+    public class CustomerCashBalanceTransactionFundedBankTransferUsBankTransfer
+        : StripeEntity<CustomerCashBalanceTransactionFundedBankTransferUsBankTransfer>
     {
         /// <summary>
         /// The banking network used for this funding.

@@ -7,7 +7,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountFutureRequirementsEntryImpact : StripeEntity<AccountFutureRequirementsEntryImpact>
+    public class AccountFutureRequirementsEntryImpact
+        : StripeEntity<AccountFutureRequirementsEntryImpact>
     {
         /// <summary>
         /// The Capabilities that will be restricted if the requirement is not collected and

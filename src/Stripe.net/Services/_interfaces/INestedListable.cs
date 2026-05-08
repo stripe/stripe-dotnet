@@ -8,12 +8,30 @@ namespace Stripe
         where TEntity : IStripeEntity, IHasId
         where TOptions : ListOptions, new()
     {
-        StripeList<TEntity> List(string parentId, TOptions listOptions = null, RequestOptions requestOptions = null);
+        StripeList<TEntity> List(
+            string parentId,
+            TOptions listOptions = null,
+            RequestOptions requestOptions = null
+        );
 
-        Task<StripeList<TEntity>> ListAsync(string parentId, TOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
+        Task<StripeList<TEntity>> ListAsync(
+            string parentId,
+            TOptions listOptions = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        );
 
-        IEnumerable<TEntity> ListAutoPaging(string parentId, TOptions listOptions = null, RequestOptions requestOptions = null);
+        IEnumerable<TEntity> ListAutoPaging(
+            string parentId,
+            TOptions listOptions = null,
+            RequestOptions requestOptions = null
+        );
 
-        IAsyncEnumerable<TEntity> ListAutoPagingAsync(string parentId, TOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
+        IAsyncEnumerable<TEntity> ListAutoPagingAsync(
+            string parentId,
+            TOptions listOptions = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        );
     }
 }

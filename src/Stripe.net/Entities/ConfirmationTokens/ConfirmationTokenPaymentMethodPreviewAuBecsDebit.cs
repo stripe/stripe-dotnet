@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationTokenPaymentMethodPreviewAuBecsDebit : StripeEntity<ConfirmationTokenPaymentMethodPreviewAuBecsDebit>
+    public class ConfirmationTokenPaymentMethodPreviewAuBecsDebit
+        : StripeEntity<ConfirmationTokenPaymentMethodPreviewAuBecsDebit>
     {
         /// <summary>
         /// Six-digit number identifying bank and branch associated with this bank account.

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CustomerSessionComponentsMobilePaymentElement : StripeEntity<CustomerSessionComponentsMobilePaymentElement>
+    public class CustomerSessionComponentsMobilePaymentElement
+        : StripeEntity<CustomerSessionComponentsMobilePaymentElement>
     {
         /// <summary>
         /// Whether the mobile payment element is enabled.

@@ -37,7 +37,9 @@ namespace Stripe
         /// <returns>The raw <see cref="JObject">JObject</see>.</returns>
         [JsonIgnore]
         [STJS.JsonIgnore]
-        [Obsolete("Use RawJsonElement instead. RawJObject will be removed in a future major version.")]
+        [Obsolete(
+            "Use RawJsonElement instead. RawJObject will be removed in a future major version."
+        )]
 #pragma warning disable CS0618 // Type or member is obsolete
         public JObject RawJObject
         {
@@ -50,7 +52,6 @@ namespace Stripe
 
                 return this.rawJObject;
             }
-
             protected set
             {
                 this.rawJObject = value;
@@ -84,11 +85,7 @@ namespace Stripe
 
                 return this.rawJsonElement;
             }
-
-            protected set
-            {
-                this.rawJsonElement = value;
-            }
+            protected set { this.rawJsonElement = value; }
         }
 
         [JsonIgnore]
@@ -104,7 +101,9 @@ namespace Stripe
         public static IHasObject FromJson(string value)
         {
             return STJ.JsonSerializer.Deserialize<IHasObject>(
-                value, StripeConfiguration.SerializerOptions);
+                value,
+                StripeConfiguration.SerializerOptions
+            );
         }
 
         /// <summary>Deserializes the JSON to the specified Stripe object type.</summary>
@@ -114,8 +113,7 @@ namespace Stripe
         public static T FromJson<T>(string value)
             where T : IStripeEntity
         {
-            return STJ.JsonSerializer.Deserialize<T>(
-                value, StripeConfiguration.SerializerOptions);
+            return STJ.JsonSerializer.Deserialize<T>(value, StripeConfiguration.SerializerOptions);
         }
 
         /// <summary>Deserializes the JSON to the specified Stripe object type.</summary>
@@ -133,8 +131,7 @@ namespace Stripe
             where T : IStripeEntity
         {
             // return JsonUtils.DeserializeObject<T>(value, StripeConfiguration.SerializerSettings);
-            return STJ.JsonSerializer.Deserialize<T>(
-                value, StripeConfiguration.SerializerOptions);
+            return STJ.JsonSerializer.Deserialize<T>(value, StripeConfiguration.SerializerOptions);
         }
 
         internal void SetRawJObject(JObject rawJObject)
@@ -161,7 +158,8 @@ namespace Stripe
                 this.GetType().FullName,
                 RuntimeHelpers.GetHashCode(this),
                 this.GetIdString(),
-                this.ToJson());
+                this.ToJson()
+            );
         }
 
         /// <summary>Serializes the Stripe object's documented properties as a JSON string.</summary>
@@ -175,7 +173,8 @@ namespace Stripe
             return STJ.JsonSerializer.Serialize(
                 this,
                 this.GetType(),
-                StripeConfiguration.IndentedSerializerOptions);
+                StripeConfiguration.IndentedSerializerOptions
+            );
         }
 
         /// <summary>
@@ -190,7 +189,8 @@ namespace Stripe
         /// <returns>The expandable field with its ID set to the provided string ID.</returns>
         protected static ExpandableField<T> SetExpandableFieldId<T>(
             string id,
-            ExpandableField<T> expandable)
+            ExpandableField<T> expandable
+        )
             where T : IHasId
         {
             if (expandable == null)
@@ -219,7 +219,8 @@ namespace Stripe
         /// </returns>
         protected static ExpandableField<T> SetExpandableFieldObject<T>(
             T obj,
-            ExpandableField<T> expandable)
+            ExpandableField<T> expandable
+        )
             where T : IHasId
         {
             if (expandable == null)
@@ -235,24 +236,32 @@ namespace Stripe
         protected static List<ExpandableField<T>> SetExpandableArrayIds<T>(List<string> ids)
             where T : IHasId
         {
-            return ids?.Select((id) =>
-            {
-                var expandable = new ExpandableField<T>();
-                expandable.Id = id;
-                return expandable;
-            }).ToList();
+            return ids
+                ?.Select(
+                    (id) =>
+                    {
+                        var expandable = new ExpandableField<T>();
+                        expandable.Id = id;
+                        return expandable;
+                    }
+                )
+                .ToList();
         }
 
         protected static List<ExpandableField<T>> SetExpandableArrayObjects<T>(List<T> objects)
             where T : IHasId
         {
-            return objects?.Select((obj) =>
-            {
-                var expandable = new ExpandableField<T>();
-                expandable.Id = obj.Id;
-                expandable.ExpandedObject = obj;
-                return expandable;
-            }).ToList();
+            return objects
+                ?.Select(
+                    (obj) =>
+                    {
+                        var expandable = new ExpandableField<T>();
+                        expandable.Id = obj.Id;
+                        expandable.ExpandedObject = obj;
+                        return expandable;
+                    }
+                )
+                .ToList();
         }
 
         private object GetIdString()
@@ -269,7 +278,11 @@ namespace Stripe
         }
     }
 
-    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleType", Justification = "Generic variant")]
+    [SuppressMessage(
+        "StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleType",
+        Justification = "Generic variant"
+    )]
     public abstract class StripeEntity<T> : StripeEntity
         where T : StripeEntity<T>
     {

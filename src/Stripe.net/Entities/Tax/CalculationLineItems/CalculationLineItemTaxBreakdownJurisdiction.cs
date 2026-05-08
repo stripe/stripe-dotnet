@@ -6,7 +6,8 @@ namespace Stripe.Tax
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CalculationLineItemTaxBreakdownJurisdiction : StripeEntity<CalculationLineItemTaxBreakdownJurisdiction>
+    public class CalculationLineItemTaxBreakdownJurisdiction
+        : StripeEntity<CalculationLineItemTaxBreakdownJurisdiction>
     {
         /// <summary>
         /// Two-letter country code (<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO

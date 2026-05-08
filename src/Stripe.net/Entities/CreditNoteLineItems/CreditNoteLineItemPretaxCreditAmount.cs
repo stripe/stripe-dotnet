@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CreditNoteLineItemPretaxCreditAmount : StripeEntity<CreditNoteLineItemPretaxCreditAmount>
+    public class CreditNoteLineItemPretaxCreditAmount
+        : StripeEntity<CreditNoteLineItemPretaxCreditAmount>
     {
         /// <summary>
         /// The amount, in cents (or local equivalent), of the pretax credit amount.
@@ -26,7 +27,11 @@ namespace Stripe
         public string CreditBalanceTransactionId
         {
             get => this.InternalCreditBalanceTransaction?.Id;
-            set => this.InternalCreditBalanceTransaction = SetExpandableFieldId(value, this.InternalCreditBalanceTransaction);
+            set =>
+                this.InternalCreditBalanceTransaction = SetExpandableFieldId(
+                    value,
+                    this.InternalCreditBalanceTransaction
+                );
         }
 
         /// <summary>
@@ -40,7 +45,11 @@ namespace Stripe
         public Billing.CreditBalanceTransaction CreditBalanceTransaction
         {
             get => this.InternalCreditBalanceTransaction?.ExpandedObject;
-            set => this.InternalCreditBalanceTransaction = SetExpandableFieldObject(value, this.InternalCreditBalanceTransaction);
+            set =>
+                this.InternalCreditBalanceTransaction = SetExpandableFieldObject(
+                    value,
+                    this.InternalCreditBalanceTransaction
+                );
         }
 
         [JsonProperty("credit_balance_transaction")]

@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationCustomerCapabilities : StripeEntity<AccountConfigurationCustomerCapabilities>
+    public class AccountConfigurationCustomerCapabilities
+        : StripeEntity<AccountConfigurationCustomerCapabilities>
     {
         /// <summary>
         /// Generates requirements for enabling automatic indirect tax calculation on this

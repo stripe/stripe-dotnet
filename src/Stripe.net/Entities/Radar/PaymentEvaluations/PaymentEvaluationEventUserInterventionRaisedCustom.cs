@@ -6,7 +6,8 @@ namespace Stripe.Radar
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentEvaluationEventUserInterventionRaisedCustom : StripeEntity<PaymentEvaluationEventUserInterventionRaisedCustom>
+    public class PaymentEvaluationEventUserInterventionRaisedCustom
+        : StripeEntity<PaymentEvaluationEventUserInterventionRaisedCustom>
     {
         /// <summary>
         /// Custom type of user intervention raised. The string must use a snake case description

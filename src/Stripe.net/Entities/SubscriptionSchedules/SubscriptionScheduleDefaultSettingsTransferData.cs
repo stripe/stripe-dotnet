@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SubscriptionScheduleDefaultSettingsTransferData : StripeEntity<SubscriptionScheduleDefaultSettingsTransferData>
+    public class SubscriptionScheduleDefaultSettingsTransferData
+        : StripeEntity<SubscriptionScheduleDefaultSettingsTransferData>
     {
         /// <summary>
         /// A non-negative decimal between 0 and 100, with at most two decimal places. This
@@ -43,7 +44,11 @@ namespace Stripe
         public Account Destination
         {
             get => this.InternalDestination?.ExpandedObject;
-            set => this.InternalDestination = SetExpandableFieldObject(value, this.InternalDestination);
+            set =>
+                this.InternalDestination = SetExpandableFieldObject(
+                    value,
+                    this.InternalDestination
+                );
         }
 
         [JsonProperty("destination")]

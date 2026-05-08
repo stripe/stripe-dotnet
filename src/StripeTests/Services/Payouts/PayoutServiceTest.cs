@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -19,29 +18,20 @@ namespace StripeTests
 
         public PayoutServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new PayoutService(this.StripeClient);
 
-            this.createOptions = new PayoutCreateOptions
-            {
-                Amount = 123,
-                Currency = "usd",
-            };
+            this.createOptions = new PayoutCreateOptions { Amount = 123, Currency = "usd" };
 
             this.updateOptions = new PayoutUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.listOptions = new PayoutListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new PayoutListOptions { Limit = 1 };
         }
 
         [Fact]

@@ -7,9 +7,7 @@ namespace StripeTests
     public class TaxRateTest : BaseStripeTest
     {
         public TaxRateTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

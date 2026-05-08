@@ -7,7 +7,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountCreateIdentityBusinessDetailsDocumentsProofOfUltimateBeneficialOwnershipOptions : INestedOptions
+    public class AccountCreateIdentityBusinessDetailsDocumentsProofOfUltimateBeneficialOwnershipOptions
+        : INestedOptions
     {
         /// <summary>
         /// One or more document IDs returned by a <a

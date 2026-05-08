@@ -6,7 +6,8 @@ namespace Stripe.Identity
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class VerificationSessionVerifiedOutputs : StripeEntity<VerificationSessionVerifiedOutputs>
+    public class VerificationSessionVerifiedOutputs
+        : StripeEntity<VerificationSessionVerifiedOutputs>
     {
         /// <summary>
         /// The user's verified address.

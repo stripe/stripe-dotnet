@@ -6,7 +6,5 @@ namespace Stripe.TestHelpers.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class InboundTransferReturnInboundTransferOptions : BaseOptions
-    {
-    }
+    public class InboundTransferReturnInboundTransferOptions : BaseOptions { }
 }

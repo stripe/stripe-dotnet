@@ -6,7 +6,8 @@ namespace Stripe.Radar
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentEvaluationEventUserInterventionRaised : StripeEntity<PaymentEvaluationEventUserInterventionRaised>
+    public class PaymentEvaluationEventUserInterventionRaised
+        : StripeEntity<PaymentEvaluationEventUserInterventionRaised>
     {
         /// <summary>
         /// User intervention raised custom event details attached to this payment evaluation.

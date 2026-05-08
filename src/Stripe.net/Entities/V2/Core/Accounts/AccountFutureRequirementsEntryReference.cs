@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountFutureRequirementsEntryReference : StripeEntity<AccountFutureRequirementsEntryReference>
+    public class AccountFutureRequirementsEntryReference
+        : StripeEntity<AccountFutureRequirementsEntryReference>
     {
         /// <summary>
         /// If <c>inquiry</c> is the type, the inquiry token.

@@ -4,7 +4,6 @@ namespace StripeTests.Identity
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe.Identity;
     using Xunit;
 
@@ -17,15 +16,13 @@ namespace StripeTests.Identity
 
         public VerificationReportServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new VerificationReportService(this.StripeClient);
 
-            this.listOptions = new VerificationReportListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new VerificationReportListOptions { Limit = 1 };
         }
 
         [Fact]

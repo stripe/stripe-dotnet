@@ -16,7 +16,11 @@ namespace Stripe
     /// schedules</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SubscriptionSchedule : StripeEntity<SubscriptionSchedule>, IHasId, IHasMetadata, IHasObject
+    public class SubscriptionSchedule
+        : StripeEntity<SubscriptionSchedule>,
+            IHasId,
+            IHasMetadata,
+            IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -57,7 +61,11 @@ namespace Stripe
         public Application Application
         {
             get => this.InternalApplication?.ExpandedObject;
-            set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
+            set =>
+                this.InternalApplication = SetExpandableFieldObject(
+                    value,
+                    this.InternalApplication
+                );
         }
 
         [JsonProperty("application")]
@@ -234,7 +242,8 @@ namespace Stripe
         public string SubscriptionId
         {
             get => this.InternalSubscription?.Id;
-            set => this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
+            set =>
+                this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
         }
 
         /// <summary>
@@ -248,7 +257,11 @@ namespace Stripe
         public Subscription Subscription
         {
             get => this.InternalSubscription?.ExpandedObject;
-            set => this.InternalSubscription = SetExpandableFieldObject(value, this.InternalSubscription);
+            set =>
+                this.InternalSubscription = SetExpandableFieldObject(
+                    value,
+                    this.InternalSubscription
+                );
         }
 
         [JsonProperty("subscription")]

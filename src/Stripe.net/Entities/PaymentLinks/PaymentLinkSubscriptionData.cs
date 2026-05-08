@@ -7,7 +7,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentLinkSubscriptionData : StripeEntity<PaymentLinkSubscriptionData>, IHasMetadata
+    public class PaymentLinkSubscriptionData
+        : StripeEntity<PaymentLinkSubscriptionData>,
+            IHasMetadata
     {
         /// <summary>
         /// The subscription's description, meant to be displayable to the customer. Use this field

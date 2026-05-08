@@ -6,7 +6,8 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class DisputeEvidenceNoValidAuthorization : StripeEntity<DisputeEvidenceNoValidAuthorization>
+    public class DisputeEvidenceNoValidAuthorization
+        : StripeEntity<DisputeEvidenceNoValidAuthorization>
     {
         #region Expandable AdditionalDocumentation
 
@@ -20,7 +21,11 @@ namespace Stripe.Issuing
         public string AdditionalDocumentationId
         {
             get => this.InternalAdditionalDocumentation?.Id;
-            set => this.InternalAdditionalDocumentation = SetExpandableFieldId(value, this.InternalAdditionalDocumentation);
+            set =>
+                this.InternalAdditionalDocumentation = SetExpandableFieldId(
+                    value,
+                    this.InternalAdditionalDocumentation
+                );
         }
 
         /// <summary>
@@ -35,7 +40,11 @@ namespace Stripe.Issuing
         public File AdditionalDocumentation
         {
             get => this.InternalAdditionalDocumentation?.ExpandedObject;
-            set => this.InternalAdditionalDocumentation = SetExpandableFieldObject(value, this.InternalAdditionalDocumentation);
+            set =>
+                this.InternalAdditionalDocumentation = SetExpandableFieldObject(
+                    value,
+                    this.InternalAdditionalDocumentation
+                );
         }
 
         [JsonProperty("additional_documentation")]

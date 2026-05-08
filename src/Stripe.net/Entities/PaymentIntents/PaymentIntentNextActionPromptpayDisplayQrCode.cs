@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentNextActionPromptpayDisplayQrCode : StripeEntity<PaymentIntentNextActionPromptpayDisplayQrCode>
+    public class PaymentIntentNextActionPromptpayDisplayQrCode
+        : StripeEntity<PaymentIntentNextActionPromptpayDisplayQrCode>
     {
         /// <summary>
         /// The raw data string used to generate QR code, it should be used together with QR code

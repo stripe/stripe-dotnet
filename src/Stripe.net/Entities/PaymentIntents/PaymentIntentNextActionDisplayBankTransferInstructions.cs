@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentNextActionDisplayBankTransferInstructions : StripeEntity<PaymentIntentNextActionDisplayBankTransferInstructions>
+    public class PaymentIntentNextActionDisplayBankTransferInstructions
+        : StripeEntity<PaymentIntentNextActionDisplayBankTransferInstructions>
     {
         /// <summary>
         /// The remaining amount that needs to be transferred to complete the payment.

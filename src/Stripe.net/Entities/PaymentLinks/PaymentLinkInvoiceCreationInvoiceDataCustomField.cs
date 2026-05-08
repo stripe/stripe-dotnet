@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentLinkInvoiceCreationInvoiceDataCustomField : StripeEntity<PaymentLinkInvoiceCreationInvoiceDataCustomField>
+    public class PaymentLinkInvoiceCreationInvoiceDataCustomField
+        : StripeEntity<PaymentLinkInvoiceCreationInvoiceDataCustomField>
     {
         /// <summary>
         /// The name of the custom field.

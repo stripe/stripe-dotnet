@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsPaynow : StripeEntity<PaymentRecordPaymentMethodDetailsPaynow>
+    public class PaymentRecordPaymentMethodDetailsPaynow
+        : StripeEntity<PaymentRecordPaymentMethodDetailsPaynow>
     {
         /// <summary>
         /// ID of the <a href="https://docs.stripe.com/api/terminal/locations">location</a> that

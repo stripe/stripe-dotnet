@@ -6,7 +6,8 @@ namespace Stripe.Radar
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentEvaluationEventDisputeOpened : StripeEntity<PaymentEvaluationEventDisputeOpened>
+    public class PaymentEvaluationEventDisputeOpened
+        : StripeEntity<PaymentEvaluationEventDisputeOpened>
     {
         /// <summary>
         /// Amount to dispute for this payment. A positive integer representing how much to charge

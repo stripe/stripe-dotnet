@@ -9,9 +9,7 @@ namespace StripeTests
     public class StripeResponseTest : BaseStripeTest
     {
         public StripeResponseTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         /* Most of StripeResponse's methods are helpers for accessing headers. Unfortunately,
          * HttpResponseHeaders is a sealed class with no public constructor, which makes it
@@ -31,7 +29,9 @@ namespace StripeTests
         public void IdempotencyKey_Present()
         {
             var requestOptions = new RequestOptions { IdempotencyKey = "idempotency_key" };
-            var response = new AccountService(this.StripeClient).GetSelf(requestOptions).StripeResponse;
+            var response = new AccountService(this.StripeClient)
+                .GetSelf(requestOptions)
+                .StripeResponse;
 
             Assert.Equal("idempotency_key", response.IdempotencyKey);
         }

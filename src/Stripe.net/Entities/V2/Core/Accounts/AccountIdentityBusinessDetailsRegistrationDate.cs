@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountIdentityBusinessDetailsRegistrationDate : StripeEntity<AccountIdentityBusinessDetailsRegistrationDate>
+    public class AccountIdentityBusinessDetailsRegistrationDate
+        : StripeEntity<AccountIdentityBusinessDetailsRegistrationDate>
     {
         /// <summary>
         /// The day of registration, between 1 and 31.

@@ -38,7 +38,8 @@ namespace StripeTests.Wholesome
 
                     // Skip properties that don't have a `JsonPropertyName` attribute
                     // FIXME: this seems like an unnecessary test; why would we have a converter without a property name?
-                    var jsonPropertyNameAttribute = property.GetCustomAttribute<JsonPropertyNameAttribute>();
+                    var jsonPropertyNameAttribute =
+                        property.GetCustomAttribute<JsonPropertyNameAttribute>();
                     if (jsonPropertyNameAttribute == null)
                     {
                         continue;
@@ -49,12 +50,14 @@ namespace StripeTests.Wholesome
                     {
                         results.Add(
                             $"{stripeClass.Name}.{property.Name}, expected = {ret.Item1}, "
-                                + $"actual = {ret.Item2}");
+                                + $"actual = {ret.Item2}"
+                        );
                     }
                 }
             }
 
-            var message = $"{AssertionMessage}\n{results.Count} affected properties: {string.Join(",", results)}";
+            var message =
+                $"{AssertionMessage}\n{results.Count} affected properties: {string.Join(",", results)}";
             AssertEmpty(results, message);
         }
     }

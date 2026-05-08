@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsAmazonPay : StripeEntity<SessionPaymentMethodOptionsAmazonPay>
+    public class SessionPaymentMethodOptionsAmazonPay
+        : StripeEntity<SessionPaymentMethodOptionsAmazonPay>
     {
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.

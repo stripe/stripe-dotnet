@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountConfigurationCustomerAutomaticIndirectTaxLocation : StripeEntity<AccountConfigurationCustomerAutomaticIndirectTaxLocation>
+    public class AccountConfigurationCustomerAutomaticIndirectTaxLocation
+        : StripeEntity<AccountConfigurationCustomerAutomaticIndirectTaxLocation>
     {
         /// <summary>
         /// The identified tax country of the customer.

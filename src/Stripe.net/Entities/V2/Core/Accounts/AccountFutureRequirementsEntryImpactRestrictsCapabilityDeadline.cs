@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountFutureRequirementsEntryImpactRestrictsCapabilityDeadline : StripeEntity<AccountFutureRequirementsEntryImpactRestrictsCapabilityDeadline>
+    public class AccountFutureRequirementsEntryImpactRestrictsCapabilityDeadline
+        : StripeEntity<AccountFutureRequirementsEntryImpactRestrictsCapabilityDeadline>
     {
         /// <summary>
         /// The current status of the requirement's impact.

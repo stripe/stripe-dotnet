@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationTokenPaymentMethodPreviewKlarnaDob : StripeEntity<ConfirmationTokenPaymentMethodPreviewKlarnaDob>
+    public class ConfirmationTokenPaymentMethodPreviewKlarnaDob
+        : StripeEntity<ConfirmationTokenPaymentMethodPreviewKlarnaDob>
     {
         /// <summary>
         /// The day of birth, between 1 and 31.

@@ -6,12 +6,12 @@ namespace Stripe
     [STJS.JsonConverter(typeof(Infrastructure.STJStringEnumConverterFactory))]
     public class InvoiceSubscriptionDetailsBillingCycleAnchor : StringEnum
     {
-        public static readonly InvoiceSubscriptionDetailsBillingCycleAnchor Now = new InvoiceSubscriptionDetailsBillingCycleAnchor("now");
-        public static readonly InvoiceSubscriptionDetailsBillingCycleAnchor Unchanged = new InvoiceSubscriptionDetailsBillingCycleAnchor("unchanged");
+        public static readonly InvoiceSubscriptionDetailsBillingCycleAnchor Now =
+            new InvoiceSubscriptionDetailsBillingCycleAnchor("now");
+        public static readonly InvoiceSubscriptionDetailsBillingCycleAnchor Unchanged =
+            new InvoiceSubscriptionDetailsBillingCycleAnchor("unchanged");
 
         private InvoiceSubscriptionDetailsBillingCycleAnchor(string value)
-            : base(value)
-        {
-        }
+            : base(value) { }
     }
 }

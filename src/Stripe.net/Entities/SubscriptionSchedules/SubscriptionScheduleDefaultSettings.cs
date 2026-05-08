@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SubscriptionScheduleDefaultSettings : StripeEntity<SubscriptionScheduleDefaultSettings>
+    public class SubscriptionScheduleDefaultSettings
+        : StripeEntity<SubscriptionScheduleDefaultSettings>
     {
         /// <summary>
         /// A non-negative decimal between 0 and 100, with at most two decimal places. This
@@ -65,7 +66,11 @@ namespace Stripe
         public string DefaultPaymentMethodId
         {
             get => this.InternalDefaultPaymentMethod?.Id;
-            set => this.InternalDefaultPaymentMethod = SetExpandableFieldId(value, this.InternalDefaultPaymentMethod);
+            set =>
+                this.InternalDefaultPaymentMethod = SetExpandableFieldId(
+                    value,
+                    this.InternalDefaultPaymentMethod
+                );
         }
 
         /// <summary>
@@ -80,7 +85,11 @@ namespace Stripe
         public PaymentMethod DefaultPaymentMethod
         {
             get => this.InternalDefaultPaymentMethod?.ExpandedObject;
-            set => this.InternalDefaultPaymentMethod = SetExpandableFieldObject(value, this.InternalDefaultPaymentMethod);
+            set =>
+                this.InternalDefaultPaymentMethod = SetExpandableFieldObject(
+                    value,
+                    this.InternalDefaultPaymentMethod
+                );
         }
 
         [JsonProperty("default_payment_method")]
@@ -130,7 +139,8 @@ namespace Stripe
         public Account OnBehalfOf
         {
             get => this.InternalOnBehalfOf?.ExpandedObject;
-            set => this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
+            set =>
+                this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
         }
 
         [JsonProperty("on_behalf_of")]

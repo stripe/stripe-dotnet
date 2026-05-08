@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsAcssDebit : StripeEntity<SessionPaymentMethodOptionsAcssDebit>
+    public class SessionPaymentMethodOptionsAcssDebit
+        : StripeEntity<SessionPaymentMethodOptionsAcssDebit>
     {
         /// <summary>
         /// Currency supported by the bank account. Returned when the Session is in <c>setup</c>

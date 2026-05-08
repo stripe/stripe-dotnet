@@ -7,7 +7,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountIdentityAttestationsDirectorshipDeclaration : StripeEntity<AccountIdentityAttestationsDirectorshipDeclaration>
+    public class AccountIdentityAttestationsDirectorshipDeclaration
+        : StripeEntity<AccountIdentityAttestationsDirectorshipDeclaration>
     {
         /// <summary>
         /// The time marking when the director attestation was made. Represented as a RFC 3339 date

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsBlik : StripeEntity<PaymentRecordPaymentMethodDetailsBlik>
+    public class PaymentRecordPaymentMethodDetailsBlik
+        : StripeEntity<PaymentRecordPaymentMethodDetailsBlik>
     {
         /// <summary>
         /// A unique and immutable identifier assigned by BLIK to every buyer.

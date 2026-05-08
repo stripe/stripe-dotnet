@@ -6,7 +6,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountUpdateIdentityIndividualDocumentsSecondaryVerificationFrontBackOptions : INestedOptions
+    public class AccountUpdateIdentityIndividualDocumentsSecondaryVerificationFrontBackOptions
+        : INestedOptions
     {
         /// <summary>
         /// A <a href="https://docs.stripe.com/api/persons/update#create_file">file upload</a> token

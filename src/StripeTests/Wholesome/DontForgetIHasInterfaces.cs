@@ -13,8 +13,7 @@ namespace StripeTests.Wholesome
     /// </summary>
     public class DontForgetIHasInterfaces : WholesomeTest
     {
-        private const string AssertionMessage =
-            "Found at least one missing interface.";
+        private const string AssertionMessage = "Found at least one missing interface.";
 
         [Fact]
         public void Check()
@@ -50,7 +49,10 @@ namespace StripeTests.Wholesome
                     }
 
                     // Check for IHasMetadata
-                    if ((property.Name == "Metadata") && (property.PropertyType == typeof(Dictionary<string, string>)))
+                    if (
+                        (property.Name == "Metadata")
+                        && (property.PropertyType == typeof(Dictionary<string, string>))
+                    )
                     {
                         if (!interfaces.Contains(typeof(IHasMetadata)))
                         {

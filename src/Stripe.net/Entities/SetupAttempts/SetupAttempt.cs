@@ -58,7 +58,11 @@ namespace Stripe
         public Application Application
         {
             get => this.InternalApplication?.ExpandedObject;
-            set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
+            set =>
+                this.InternalApplication = SetExpandableFieldObject(
+                    value,
+                    this.InternalApplication
+                );
         }
 
         [JsonProperty("application")]
@@ -189,7 +193,8 @@ namespace Stripe
         public Account OnBehalfOf
         {
             get => this.InternalOnBehalfOf?.ExpandedObject;
-            set => this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
+            set =>
+                this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
         }
 
         [JsonProperty("on_behalf_of")]
@@ -210,7 +215,11 @@ namespace Stripe
         public string PaymentMethodId
         {
             get => this.InternalPaymentMethod?.Id;
-            set => this.InternalPaymentMethod = SetExpandableFieldId(value, this.InternalPaymentMethod);
+            set =>
+                this.InternalPaymentMethod = SetExpandableFieldId(
+                    value,
+                    this.InternalPaymentMethod
+                );
         }
 
         /// <summary>
@@ -224,7 +233,11 @@ namespace Stripe
         public PaymentMethod PaymentMethod
         {
             get => this.InternalPaymentMethod?.ExpandedObject;
-            set => this.InternalPaymentMethod = SetExpandableFieldObject(value, this.InternalPaymentMethod);
+            set =>
+                this.InternalPaymentMethod = SetExpandableFieldObject(
+                    value,
+                    this.InternalPaymentMethod
+                );
         }
 
         [JsonProperty("payment_method")]
@@ -270,7 +283,11 @@ namespace Stripe
         public SetupIntent SetupIntent
         {
             get => this.InternalSetupIntent?.ExpandedObject;
-            set => this.InternalSetupIntent = SetExpandableFieldObject(value, this.InternalSetupIntent);
+            set =>
+                this.InternalSetupIntent = SetExpandableFieldObject(
+                    value,
+                    this.InternalSetupIntent
+                );
         }
 
         [JsonProperty("setup_intent")]

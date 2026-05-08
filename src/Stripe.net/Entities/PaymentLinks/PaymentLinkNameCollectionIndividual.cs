@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentLinkNameCollectionIndividual : StripeEntity<PaymentLinkNameCollectionIndividual>
+    public class PaymentLinkNameCollectionIndividual
+        : StripeEntity<PaymentLinkNameCollectionIndividual>
     {
         /// <summary>
         /// Indicates whether individual name collection is enabled for the payment link.

@@ -7,7 +7,8 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfigurationFeaturesSubscriptionUpdate : StripeEntity<ConfigurationFeaturesSubscriptionUpdate>
+    public class ConfigurationFeaturesSubscriptionUpdate
+        : StripeEntity<ConfigurationFeaturesSubscriptionUpdate>
     {
         /// <summary>
         /// Determines the value to use for the billing cycle anchor on subscription updates. Valid

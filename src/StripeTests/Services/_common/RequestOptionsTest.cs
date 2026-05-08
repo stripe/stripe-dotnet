@@ -10,10 +10,7 @@ namespace StripeTests
         [Fact]
         public void WithClientOptionsSetsApiKey()
         {
-            var clientOptions = new StripeClientOptions
-            {
-                ApiKey = "12345",
-            };
+            var clientOptions = new StripeClientOptions { ApiKey = "12345" };
 
             // Should copy when request option is empty
             var options = new RequestOptions();
@@ -27,13 +24,9 @@ namespace StripeTests
         }
 
         [Fact]
-
         public void WithClientOptionsSetsStripeContext()
         {
-            var clientOptions = new StripeClientOptions
-            {
-                StripeContext = "ctx_12345",
-            };
+            var clientOptions = new StripeClientOptions { StripeContext = "ctx_12345" };
 
             // Should copy when request option is empty
             var options = new RequestOptions();
@@ -49,10 +42,7 @@ namespace StripeTests
         [Fact]
         public void WithClientOptionsSetsStripeAccount()
         {
-            var clientOptions = new StripeClientOptions
-            {
-                StripeAccount = "acct_12345",
-            };
+            var clientOptions = new StripeClientOptions { StripeAccount = "acct_12345" };
 
             // Should copy when request option is empty
             var options = new RequestOptions();

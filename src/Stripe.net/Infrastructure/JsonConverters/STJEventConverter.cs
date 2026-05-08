@@ -17,7 +17,11 @@ namespace Stripe.Infrastructure
     /// </summary>
     internal class STJEventConverter : STJDefaultConverter<Event>
     {
-        public override Event Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override Event Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
         {
             if (reader.TokenType == JsonTokenType.Null)
             {
@@ -47,12 +51,15 @@ namespace Stripe.Infrastructure
             // Deserialize the (possibly patched) JSON via ReadFullObject
             var patchedJson = jsonNode.ToJsonString();
             var bytes = Encoding.UTF8.GetBytes(patchedJson);
-            var newReader = new Utf8JsonReader(bytes, new JsonReaderOptions
-            {
-                AllowTrailingCommas = options.AllowTrailingCommas,
-                CommentHandling = options.ReadCommentHandling,
-                MaxDepth = options.MaxDepth,
-            });
+            var newReader = new Utf8JsonReader(
+                bytes,
+                new JsonReaderOptions
+                {
+                    AllowTrailingCommas = options.AllowTrailingCommas,
+                    CommentHandling = options.ReadCommentHandling,
+                    MaxDepth = options.MaxDepth,
+                }
+            );
             newReader.Read();
 
             var entity = this.ReadFullObject(ref newReader, typeToConvert, options);

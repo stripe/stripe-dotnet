@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CustomerSessionComponentsCustomerSheet : StripeEntity<CustomerSessionComponentsCustomerSheet>
+    public class CustomerSessionComponentsCustomerSheet
+        : StripeEntity<CustomerSessionComponentsCustomerSheet>
     {
         /// <summary>
         /// Whether the customer sheet is enabled.

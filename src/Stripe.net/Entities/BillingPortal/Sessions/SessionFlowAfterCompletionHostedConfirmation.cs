@@ -6,7 +6,8 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionFlowAfterCompletionHostedConfirmation : StripeEntity<SessionFlowAfterCompletionHostedConfirmation>
+    public class SessionFlowAfterCompletionHostedConfirmation
+        : StripeEntity<SessionFlowAfterCompletionHostedConfirmation>
     {
         /// <summary>
         /// A custom message to display to the customer after the flow is completed.

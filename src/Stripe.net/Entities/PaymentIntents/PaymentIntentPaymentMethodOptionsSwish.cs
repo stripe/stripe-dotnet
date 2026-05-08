@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentMethodOptionsSwish : StripeEntity<PaymentIntentPaymentMethodOptionsSwish>
+    public class PaymentIntentPaymentMethodOptionsSwish
+        : StripeEntity<PaymentIntentPaymentMethodOptionsSwish>
     {
         /// <summary>
         /// A reference for this payment to be displayed in the Swish app.

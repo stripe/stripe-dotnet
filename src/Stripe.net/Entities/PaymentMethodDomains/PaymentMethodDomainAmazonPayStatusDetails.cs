@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentMethodDomainAmazonPayStatusDetails : StripeEntity<PaymentMethodDomainAmazonPayStatusDetails>
+    public class PaymentMethodDomainAmazonPayStatusDetails
+        : StripeEntity<PaymentMethodDomainAmazonPayStatusDetails>
     {
         /// <summary>
         /// The error message associated with the status of the payment method on the domain.

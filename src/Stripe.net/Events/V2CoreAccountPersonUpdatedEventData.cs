@@ -6,7 +6,8 @@ namespace Stripe.Events
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-    public class V2CoreAccountPersonUpdatedEventData : StripeEntity<V2CoreAccountPersonUpdatedEventData>
+    public class V2CoreAccountPersonUpdatedEventData
+        : StripeEntity<V2CoreAccountPersonUpdatedEventData>
     {
         /// <summary>
         /// The ID of the v2 account.

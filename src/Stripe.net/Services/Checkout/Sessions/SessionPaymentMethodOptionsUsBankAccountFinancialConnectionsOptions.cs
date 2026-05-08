@@ -7,7 +7,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SessionPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions : INestedOptions
+    public class SessionPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions
+        : INestedOptions
     {
         /// <summary>
         /// The list of permissions to request. If this parameter is passed, the

@@ -12,7 +12,11 @@ namespace Stripe
     {
         private Task<StripeResponse> fetchFullyTask;
 
-        public StripeStreamedResponse(HttpStatusCode statusCode, HttpResponseHeaders headers, Stream body)
+        public StripeStreamedResponse(
+            HttpStatusCode statusCode,
+            HttpResponseHeaders headers,
+            Stream body
+        )
             : base(statusCode, headers)
         {
             this.Body = body;

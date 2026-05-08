@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ChargePaymentMethodDetailsCardPresentOffline : StripeEntity<ChargePaymentMethodDetailsCardPresentOffline>
+    public class ChargePaymentMethodDetailsCardPresentOffline
+        : StripeEntity<ChargePaymentMethodDetailsCardPresentOffline>
     {
         /// <summary>
         /// Time at which the payment was collected while offline.

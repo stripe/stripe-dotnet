@@ -7,7 +7,9 @@ namespace Stripe.BillingPortal
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ConfigurationFeaturesSubscriptionCancelCancellationReasonOptions : INestedOptions, IHasSetTracking
+    public class ConfigurationFeaturesSubscriptionCancelCancellationReasonOptions
+        : INestedOptions,
+            IHasSetTracking
     {
         private List<string> options;
 

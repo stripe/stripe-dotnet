@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentProcessingCardCustomerNotification : StripeEntity<PaymentIntentProcessingCardCustomerNotification>
+    public class PaymentIntentProcessingCardCustomerNotification
+        : StripeEntity<PaymentIntentProcessingCardCustomerNotification>
     {
         /// <summary>
         /// Whether customer approval has been requested for this payment. For payments greater than

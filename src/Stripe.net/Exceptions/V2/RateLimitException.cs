@@ -12,14 +12,11 @@ namespace Stripe.V2
         private RateLimitException(
             HttpStatusCode httpStatusCode,
             StripeError stripeError,
-            string message)
-            : base(httpStatusCode, stripeError)
-        {
-        }
+            string message
+        )
+            : base(httpStatusCode, stripeError) { }
 
-        internal static RateLimitException Parse(
-            HttpStatusCode httpStatusCode,
-            JsonElement body)
+        internal static RateLimitException Parse(HttpStatusCode httpStatusCode, JsonElement body)
         {
             var stripeError = StripeError.FromJson<StripeError>(body);
             return new RateLimitException(httpStatusCode, stripeError, stripeError.Message);

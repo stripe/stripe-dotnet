@@ -49,7 +49,9 @@ namespace StripeTests
             {
                 ApiKey = "sk_test_123",
                 ClientId = "ca_123",
-                HttpClient = new SystemNetHttpClient(new ForwardingHttpClient(innerHandler, this.port)),
+                HttpClient = new SystemNetHttpClient(
+                    new ForwardingHttpClient(innerHandler, this.port)
+                ),
             };
         }
 
@@ -74,10 +76,8 @@ namespace StripeTests
 
             using (System.Net.Http.HttpClient client = new System.Net.Http.HttpClient())
             {
-                client.DefaultRequestHeaders.Authorization
-                    = new System.Net.Http.Headers.AuthenticationHeaderValue(
-                        "Bearer",
-                        "sk_test_123");
+                client.DefaultRequestHeaders.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "sk_test_123");
 
                 HttpResponseMessage response;
 
@@ -89,13 +89,15 @@ namespace StripeTests
                 {
                     throw new StripeTestException(
                         $"Couldn't reach stripe-mock at `localhost:{this.port}`. "
-                        + "Is it running? Please see README for setup instructions.");
+                            + "Is it running? Please see README for setup instructions."
+                    );
                 }
 
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
                     throw new StripeTestException(
-                        $"stripe-mock returned status code: {response.StatusCode}.");
+                        $"stripe-mock returned status code: {response.StatusCode}."
+                    );
                 }
 
                 return response.Content.ReadAsStringAsync().Result;
@@ -131,18 +133,19 @@ namespace StripeTests
                 {
                     throw new StripeTestException(
                         $"Couldn't reach stripe-mock at `localhost:{this.port}`. "
-                        + "Is it running? Please see README for setup instructions.");
+                            + "Is it running? Please see README for setup instructions."
+                    );
                 }
 
                 string version = response.Headers.GetValues("Stripe-Mock-Version").FirstOrDefault();
 
-                if (!version.Equals("master") &&
-                    (CompareVersions(version, MockMinimumVersion) > 0))
+                if (!version.Equals("master") && (CompareVersions(version, MockMinimumVersion) > 0))
                 {
                     throw new StripeTestException(
                         $"Your version of stripe-mock ({version}) is too old. The minimum "
-                        + $"version to run this test suite is {MockMinimumVersion}. Please see its "
-                        + "repository for upgrade instructions.");
+                            + $"version to run this test suite is {MockMinimumVersion}. Please see its "
+                            + "repository for upgrade instructions."
+                    );
                 }
             }
         }
@@ -157,10 +160,15 @@ namespace StripeTests
                 this.port = port;
             }
 
-            public override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            public override Task<HttpResponseMessage> SendAsync(
+                HttpRequestMessage request,
+                CancellationToken cancellationToken
+            )
             {
                 request.Properties.Add("OriginalHost", request.RequestUri.Host);
-                request.RequestUri = new Uri($"http://localhost:{this.port}{request.RequestUri!.PathAndQuery}");
+                request.RequestUri = new Uri(
+                    $"http://localhost:{this.port}{request.RequestUri!.PathAndQuery}"
+                );
                 return base.SendAsync(request, cancellationToken);
             }
         }

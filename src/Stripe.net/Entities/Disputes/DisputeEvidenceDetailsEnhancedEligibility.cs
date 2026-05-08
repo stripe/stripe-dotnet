@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class DisputeEvidenceDetailsEnhancedEligibility : StripeEntity<DisputeEvidenceDetailsEnhancedEligibility>
+    public class DisputeEvidenceDetailsEnhancedEligibility
+        : StripeEntity<DisputeEvidenceDetailsEnhancedEligibility>
     {
         [JsonProperty("visa_compelling_evidence_3")]
         [STJS.JsonPropertyName("visa_compelling_evidence_3")]

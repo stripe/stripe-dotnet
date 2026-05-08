@@ -6,7 +6,5 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class MandatePaymentMethodDetailsLink : StripeEntity<MandatePaymentMethodDetailsLink>
-    {
-    }
+    public class MandatePaymentMethodDetailsLink : StripeEntity<MandatePaymentMethodDetailsLink> { }
 }

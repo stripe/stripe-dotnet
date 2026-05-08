@@ -4,7 +4,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -21,7 +20,8 @@ namespace StripeTests
 
         public SubscriptionScheduleServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new SubscriptionScheduleService(this.StripeClient);
@@ -46,10 +46,7 @@ namespace StripeTests
                     {
                         Items = new List<SubscriptionSchedulePhaseItemOptions>
                         {
-                            new SubscriptionSchedulePhaseItemOptions
-                            {
-                                Price = "price_123",
-                            },
+                            new SubscriptionSchedulePhaseItemOptions { Price = "price_123" },
                         },
                     },
                 },
@@ -62,16 +59,10 @@ namespace StripeTests
 
             this.updateOptions = new SubscriptionScheduleUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.listOptions = new SubscriptionScheduleListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new SubscriptionScheduleListOptions { Limit = 1 };
         }
 
         [Fact]
@@ -161,7 +152,9 @@ namespace StripeTests
         [Fact]
         public async Task ListAutoPagingAsync()
         {
-            var subscription = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            var subscription = await this
+                .service.ListAutoPagingAsync(this.listOptions)
+                .FirstAsync();
             Assert.NotNull(subscription);
             Assert.Equal("subscription_schedule", subscription.Object);
         }

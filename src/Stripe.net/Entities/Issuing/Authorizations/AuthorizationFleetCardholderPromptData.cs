@@ -7,7 +7,8 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AuthorizationFleetCardholderPromptData : StripeEntity<AuthorizationFleetCardholderPromptData>
+    public class AuthorizationFleetCardholderPromptData
+        : StripeEntity<AuthorizationFleetCardholderPromptData>
     {
         /// <summary>
         /// [Deprecated] An alphanumeric ID, though typical point of sales only support numeric

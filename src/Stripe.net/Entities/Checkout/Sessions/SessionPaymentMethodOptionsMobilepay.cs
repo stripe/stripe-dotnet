@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsMobilepay : StripeEntity<SessionPaymentMethodOptionsMobilepay>
+    public class SessionPaymentMethodOptionsMobilepay
+        : StripeEntity<SessionPaymentMethodOptionsMobilepay>
     {
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.

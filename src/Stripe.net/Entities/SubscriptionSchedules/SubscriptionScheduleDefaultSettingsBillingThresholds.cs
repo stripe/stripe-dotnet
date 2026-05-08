@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SubscriptionScheduleDefaultSettingsBillingThresholds : StripeEntity<SubscriptionScheduleDefaultSettingsBillingThresholds>
+    public class SubscriptionScheduleDefaultSettingsBillingThresholds
+        : StripeEntity<SubscriptionScheduleDefaultSettingsBillingThresholds>
     {
         /// <summary>
         /// Monetary threshold that triggers the subscription to create an invoice.

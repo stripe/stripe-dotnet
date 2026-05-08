@@ -9,10 +9,15 @@ namespace Stripe
         /// Use this to send API calls to e.g. files.stripe.com or
         /// a proxy address.
         /// </remarks>
-        public string BaseUrl { get => this.InternalBaseUrl; set => this.InternalBaseUrl = value; }
+        public string BaseUrl
+        {
+            get => this.InternalBaseUrl;
+            set => this.InternalBaseUrl = value;
+        }
 
         /// <summary>Gets or sets additional headers for the request.</summary>
-        public Dictionary<string, string> AdditionalHeaders { get; set; } = new Dictionary<string, string>();
+        public Dictionary<string, string> AdditionalHeaders { get; set; } =
+            new Dictionary<string, string>();
 
         internal new RawRequestOptions Clone()
         {

@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SourceMandateNotificationAcssDebit : StripeEntity<SourceMandateNotificationAcssDebit>
+    public class SourceMandateNotificationAcssDebit
+        : StripeEntity<SourceMandateNotificationAcssDebit>
     {
         /// <summary>
         /// The statement descriptor associate with the debit.

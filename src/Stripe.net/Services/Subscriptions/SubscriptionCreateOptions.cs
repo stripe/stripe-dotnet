@@ -353,7 +353,10 @@ namespace Stripe
         /// analogous to calling <a href="https://stripe.com/api/invoices/create">Create an
         /// invoice</a> for the given subscription at the specified interval.
         /// </summary>
-        [JsonProperty("pending_invoice_item_interval", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty(
+            "pending_invoice_item_interval",
+            NullValueHandling = NullValueHandling.Ignore
+        )]
         [STJS.JsonPropertyName("pending_invoice_item_interval")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval

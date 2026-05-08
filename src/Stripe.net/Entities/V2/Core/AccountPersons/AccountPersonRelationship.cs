@@ -51,7 +51,9 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("percent_ownership")]
         [JsonConverter(typeof(DecimalStringConverter))]
-        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonNumberHandling(
+            STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString
+        )]
         [STJS.JsonPropertyName("percent_ownership")]
         public decimal? PercentOwnership { get; set; }
 

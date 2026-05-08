@@ -6,7 +6,11 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ReserveTransaction : StripeEntity<ReserveTransaction>, IHasId, IHasObject, IBalanceTransactionSource
+    public class ReserveTransaction
+        : StripeEntity<ReserveTransaction>,
+            IHasId,
+            IHasObject,
+            IBalanceTransactionSource
     {
         /// <summary>
         /// Unique identifier for the object.

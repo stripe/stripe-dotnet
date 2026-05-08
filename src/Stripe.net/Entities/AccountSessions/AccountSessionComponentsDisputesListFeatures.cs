@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountSessionComponentsDisputesListFeatures : StripeEntity<AccountSessionComponentsDisputesListFeatures>
+    public class AccountSessionComponentsDisputesListFeatures
+        : StripeEntity<AccountSessionComponentsDisputesListFeatures>
     {
         /// <summary>
         /// Whether to allow capturing and cancelling payment intents. This is <c>true</c> by

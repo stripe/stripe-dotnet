@@ -7,7 +7,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentLinkPaymentIntentData : StripeEntity<PaymentLinkPaymentIntentData>, IHasMetadata
+    public class PaymentLinkPaymentIntentData
+        : StripeEntity<PaymentLinkPaymentIntentData>,
+            IHasMetadata
     {
         /// <summary>
         /// Indicates when the funds will be captured from the customer's account.

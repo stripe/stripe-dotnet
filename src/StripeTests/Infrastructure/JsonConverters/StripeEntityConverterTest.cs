@@ -18,7 +18,8 @@ namespace StripeTests
         [Fact]
         public void DeserializeRoot()
         {
-            var json = @"{ 
+            var json =
+                @"{ 
                             ""supported_field"": 1, 
                             ""unsupported_field"": 2
                          }";
@@ -32,7 +33,8 @@ namespace StripeTests
         [Fact]
         public void DeserializeChild()
         {
-            var childJson = @"{
+            var childJson =
+                @"{
                                 ""child_supported_field"": 1,
                                 ""child_unsupported_field"": 2,
                               }";

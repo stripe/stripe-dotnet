@@ -7,9 +7,7 @@ namespace StripeTests.Terminal
     public class ConnectionTokenTest : BaseStripeTest
     {
         public ConnectionTokenTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()

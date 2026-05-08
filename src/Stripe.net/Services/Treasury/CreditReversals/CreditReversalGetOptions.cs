@@ -6,7 +6,5 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class CreditReversalGetOptions : BaseOptions
-    {
-    }
+    public class CreditReversalGetOptions : BaseOptions { }
 }

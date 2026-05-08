@@ -9,34 +9,50 @@ namespace Stripe.TestHelpers
 
     public class RefundService : Service
     {
-        public RefundService()
-        {
-        }
+        public RefundService() { }
 
         internal RefundService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public RefundService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>Expire a refund with a status of <c>requires_action</c>.</p>.
+        /// </summary>
+        public virtual Refund Expire(
+            string id,
+            RefundExpireOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<Refund>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/test_helpers/refunds/{WebUtility.UrlEncode(id)}/expire",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Expire a refund with a status of <c>requires_action</c>.</p>.
         /// </summary>
-        public virtual Refund Expire(string id, RefundExpireOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<Refund> ExpireAsync(
+            string id,
+            RefundExpireOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<Refund>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/refunds/{WebUtility.UrlEncode(id)}/expire", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Expire a refund with a status of <c>requires_action</c>.</p>.
-        /// </summary>
-        public virtual Task<Refund> ExpireAsync(string id, RefundExpireOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<Refund>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/refunds/{WebUtility.UrlEncode(id)}/expire", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Refund>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/test_helpers/refunds/{WebUtility.UrlEncode(id)}/expire",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

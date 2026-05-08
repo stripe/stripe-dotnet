@@ -6,7 +6,8 @@ namespace Stripe.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CreditBalanceSummaryBalanceAvailableBalance : StripeEntity<CreditBalanceSummaryBalanceAvailableBalance>
+    public class CreditBalanceSummaryBalanceAvailableBalance
+        : StripeEntity<CreditBalanceSummaryBalanceAvailableBalance>
     {
         /// <summary>
         /// The monetary amount.

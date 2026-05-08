@@ -8,104 +8,199 @@ namespace Stripe.Entitlements
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class FeatureService : Service,
-        ICreatable<Feature, FeatureCreateOptions>,
-        IListable<Feature, FeatureListOptions>,
-        IRetrievable<Feature, FeatureGetOptions>,
-        IUpdatable<Feature, FeatureUpdateOptions>
+    public class FeatureService
+        : Service,
+            ICreatable<Feature, FeatureCreateOptions>,
+            IListable<Feature, FeatureListOptions>,
+            IRetrievable<Feature, FeatureGetOptions>,
+            IUpdatable<Feature, FeatureUpdateOptions>
     {
-        public FeatureService()
-        {
-        }
+        public FeatureService() { }
 
         internal FeatureService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public FeatureService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>Creates a feature</p>.
+        /// </summary>
+        public virtual Feature Create(
+            FeatureCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<Feature>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/entitlements/features",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Creates a feature</p>.
         /// </summary>
-        public virtual Feature Create(FeatureCreateOptions options, RequestOptions requestOptions = null)
+        public virtual Task<Feature> CreateAsync(
+            FeatureCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<Feature>(BaseAddress.Api, HttpMethod.Post, $"/v1/entitlements/features", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Creates a feature</p>.
-        /// </summary>
-        public virtual Task<Feature> CreateAsync(FeatureCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<Feature>(BaseAddress.Api, HttpMethod.Post, $"/v1/entitlements/features", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>Retrieves a feature</p>.
-        /// </summary>
-        public virtual Feature Get(string id, FeatureGetOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<Feature>(BaseAddress.Api, HttpMethod.Get, $"/v1/entitlements/features/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.RequestAsync<Feature>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/entitlements/features",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Retrieves a feature</p>.
         /// </summary>
-        public virtual Task<Feature> GetAsync(string id, FeatureGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Feature Get(
+            string id,
+            FeatureGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<Feature>(BaseAddress.Api, HttpMethod.Get, $"/v1/entitlements/features/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.Request<Feature>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/entitlements/features/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
+        }
+
+        /// <summary>
+        /// <p>Retrieves a feature</p>.
+        /// </summary>
+        public virtual Task<Feature> GetAsync(
+            string id,
+            FeatureGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return this.RequestAsync<Feature>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/entitlements/features/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Retrieve a list of features</p>.
         /// </summary>
-        public virtual StripeList<Feature> List(FeatureListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Feature> List(
+            FeatureListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeList<Feature>>(BaseAddress.Api, HttpMethod.Get, $"/v1/entitlements/features", options, requestOptions);
+            return this.Request<StripeList<Feature>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/entitlements/features",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Retrieve a list of features</p>.
         /// </summary>
-        public virtual Task<StripeList<Feature>> ListAsync(FeatureListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<Feature>> ListAsync(
+            FeatureListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeList<Feature>>(BaseAddress.Api, HttpMethod.Get, $"/v1/entitlements/features", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Feature>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/entitlements/features",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Retrieve a list of features</p>.
         /// </summary>
-        public virtual IEnumerable<Feature> ListAutoPaging(FeatureListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<Feature> ListAutoPaging(
+            FeatureListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.ListRequestAutoPaging<Feature>($"/v1/entitlements/features", options, requestOptions);
+            return this.ListRequestAutoPaging<Feature>(
+                $"/v1/entitlements/features",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Retrieve a list of features</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<Feature> ListAutoPagingAsync(FeatureListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<Feature> ListAutoPagingAsync(
+            FeatureListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<Feature>($"/v1/entitlements/features", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Feature>(
+                $"/v1/entitlements/features",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Update a feature’s metadata or permanently deactivate it.</p>.
         /// </summary>
-        public virtual Feature Update(string id, FeatureUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Feature Update(
+            string id,
+            FeatureUpdateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Feature>(BaseAddress.Api, HttpMethod.Post, $"/v1/entitlements/features/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Feature>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/entitlements/features/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Update a feature’s metadata or permanently deactivate it.</p>.
         /// </summary>
-        public virtual Task<Feature> UpdateAsync(string id, FeatureUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Feature> UpdateAsync(
+            string id,
+            FeatureUpdateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Feature>(BaseAddress.Api, HttpMethod.Post, $"/v1/entitlements/features/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Feature>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/entitlements/features/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

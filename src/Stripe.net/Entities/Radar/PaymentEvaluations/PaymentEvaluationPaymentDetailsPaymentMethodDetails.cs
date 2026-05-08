@@ -6,7 +6,8 @@ namespace Stripe.Radar
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentEvaluationPaymentDetailsPaymentMethodDetails : StripeEntity<PaymentEvaluationPaymentDetailsPaymentMethodDetails>
+    public class PaymentEvaluationPaymentDetailsPaymentMethodDetails
+        : StripeEntity<PaymentEvaluationPaymentDetailsPaymentMethodDetails>
     {
         /// <summary>
         /// Billing information associated with the payment evaluation.
@@ -26,7 +27,11 @@ namespace Stripe.Radar
         public string PaymentMethodId
         {
             get => this.InternalPaymentMethod?.Id;
-            set => this.InternalPaymentMethod = SetExpandableFieldId(value, this.InternalPaymentMethod);
+            set =>
+                this.InternalPaymentMethod = SetExpandableFieldId(
+                    value,
+                    this.InternalPaymentMethod
+                );
         }
 
         /// <summary>
@@ -40,7 +45,11 @@ namespace Stripe.Radar
         public PaymentMethod PaymentMethod
         {
             get => this.InternalPaymentMethod?.ExpandedObject;
-            set => this.InternalPaymentMethod = SetExpandableFieldObject(value, this.InternalPaymentMethod);
+            set =>
+                this.InternalPaymentMethod = SetExpandableFieldObject(
+                    value,
+                    this.InternalPaymentMethod
+                );
         }
 
         [JsonProperty("payment_method")]

@@ -12,7 +12,9 @@ namespace StripeTests
         {
             var json = "{\"enum\": \"test_one\"}";
             TestOptions obj = JsonSerializer.Deserialize<TestOptions>(
-                json, StripeConfiguration.SerializerOptions);
+                json,
+                StripeConfiguration.SerializerOptions
+            );
 
             Assert.NotNull(obj);
             Assert.Equal("test_one", obj.Enum);
@@ -26,7 +28,9 @@ namespace StripeTests
             // enum values that the SDK doesn't yet know about.
             var json = "{\"enum\": \"unknown_value\"}";
             TestOptions obj = JsonSerializer.Deserialize<TestOptions>(
-                json, StripeConfiguration.SerializerOptions);
+                json,
+                StripeConfiguration.SerializerOptions
+            );
 
             Assert.NotNull(obj);
             Assert.Equal("unknown_value", obj.Enum);
@@ -37,7 +41,9 @@ namespace StripeTests
         {
             var json = "{\"enum\": null}";
             TestOptions obj = JsonSerializer.Deserialize<TestOptions>(
-                json, StripeConfiguration.SerializerOptions);
+                json,
+                StripeConfiguration.SerializerOptions
+            );
 
             Assert.NotNull(obj);
             Assert.Null(obj.Enum);

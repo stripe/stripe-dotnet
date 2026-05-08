@@ -4,7 +4,6 @@ namespace StripeTests.Issuing
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Stripe.Issuing;
     using Xunit;
@@ -20,7 +19,8 @@ namespace StripeTests.Issuing
 
         public CardholderServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new CardholderService(this.StripeClient);
@@ -65,10 +65,7 @@ namespace StripeTests.Issuing
                         new CardholderSpendingControlsSpendingLimitOptions
                         {
                             Amount = 1000,
-                            Categories = new List<string>
-                            {
-                                "financial_institutions",
-                            },
+                            Categories = new List<string> { "financial_institutions" },
                             Interval = "all_time",
                         },
                     },
@@ -78,16 +75,10 @@ namespace StripeTests.Issuing
 
             this.updateOptions = new CardholderUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Metadata = new Dictionary<string, string> { { "key", "value" } },
             };
 
-            this.listOptions = new CardholderListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new CardholderListOptions { Limit = 1 };
         }
 
         [Fact]

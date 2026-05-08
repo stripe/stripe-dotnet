@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsRevolutPay : StripeEntity<SessionPaymentMethodOptionsRevolutPay>
+    public class SessionPaymentMethodOptionsRevolutPay
+        : StripeEntity<SessionPaymentMethodOptionsRevolutPay>
     {
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.

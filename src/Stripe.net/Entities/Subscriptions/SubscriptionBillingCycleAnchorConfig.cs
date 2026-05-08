@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SubscriptionBillingCycleAnchorConfig : StripeEntity<SubscriptionBillingCycleAnchorConfig>
+    public class SubscriptionBillingCycleAnchorConfig
+        : StripeEntity<SubscriptionBillingCycleAnchorConfig>
     {
         /// <summary>
         /// The day of the month of the billing_cycle_anchor.

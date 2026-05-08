@@ -7,53 +7,82 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class SetupAttemptService : Service,
-        IListable<SetupAttempt, SetupAttemptListOptions>
+    public class SetupAttemptService : Service, IListable<SetupAttempt, SetupAttemptListOptions>
     {
-        public SetupAttemptService()
-        {
-        }
+        public SetupAttemptService() { }
 
         internal SetupAttemptService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public SetupAttemptService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>Returns a list of SetupAttempts that associate with a provided SetupIntent.</p>.
+        /// </summary>
+        public virtual StripeList<SetupAttempt> List(
+            SetupAttemptListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<StripeList<SetupAttempt>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/setup_attempts",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of SetupAttempts that associate with a provided SetupIntent.</p>.
         /// </summary>
-        public virtual StripeList<SetupAttempt> List(SetupAttemptListOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<StripeList<SetupAttempt>> ListAsync(
+            SetupAttemptListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<StripeList<SetupAttempt>>(BaseAddress.Api, HttpMethod.Get, $"/v1/setup_attempts", options, requestOptions);
+            return this.RequestAsync<StripeList<SetupAttempt>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/setup_attempts",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of SetupAttempts that associate with a provided SetupIntent.</p>.
         /// </summary>
-        public virtual Task<StripeList<SetupAttempt>> ListAsync(SetupAttemptListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IEnumerable<SetupAttempt> ListAutoPaging(
+            SetupAttemptListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.RequestAsync<StripeList<SetupAttempt>>(BaseAddress.Api, HttpMethod.Get, $"/v1/setup_attempts", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPaging<SetupAttempt>(
+                $"/v1/setup_attempts",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Returns a list of SetupAttempts that associate with a provided SetupIntent.</p>.
         /// </summary>
-        public virtual IEnumerable<SetupAttempt> ListAutoPaging(SetupAttemptListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IAsyncEnumerable<SetupAttempt> ListAutoPagingAsync(
+            SetupAttemptListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPaging<SetupAttempt>($"/v1/setup_attempts", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Returns a list of SetupAttempts that associate with a provided SetupIntent.</p>.
-        /// </summary>
-        public virtual IAsyncEnumerable<SetupAttempt> ListAutoPagingAsync(SetupAttemptListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListRequestAutoPagingAsync<SetupAttempt>($"/v1/setup_attempts", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<SetupAttempt>(
+                $"/v1/setup_attempts",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

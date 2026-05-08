@@ -12,8 +12,10 @@ namespace Stripe
     /// </summary>
     public static class EventUtility
     {
-        internal static readonly UTF8Encoding SafeUTF8
-            = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
+        internal static readonly UTF8Encoding SafeUTF8 = new UTF8Encoding(
+            encoderShouldEmitUTF8Identifier: false,
+            throwOnInvalidBytes: true
+        );
 
         public const int DefaultTimeTolerance = 300;
 
@@ -67,30 +69,34 @@ namespace Stripe
         {
             using (var doc = System.Text.Json.JsonDocument.Parse(json))
             {
-                if (doc.RootElement.TryGetProperty("object", out var objectProp) &&
-                    objectProp.GetString() == "v2.core.event")
+                if (
+                    doc.RootElement.TryGetProperty("object", out var objectProp)
+                    && objectProp.GetString() == "v2.core.event"
+                )
                 {
                     throw new ArgumentException(
                         "You passed a thin event notification to ConstructEvent, which expects "
-                        + "a webhook payload. Use StripeClient.ParseEventNotification instead.");
+                            + "a webhook payload. Use StripeClient.ParseEventNotification instead."
+                    );
                 }
             }
 
             var stripeEvent = System.Text.Json.JsonSerializer.Deserialize<Event>(
                 json,
-                StripeConfiguration.SerializerOptions);
+                StripeConfiguration.SerializerOptions
+            );
 
-            if (throwOnApiVersionMismatch &&
-                !IsCompatibleApiVersion(stripeEvent.ApiVersion))
+            if (throwOnApiVersionMismatch && !IsCompatibleApiVersion(stripeEvent.ApiVersion))
             {
                 throw new StripeException(
                     $"Received event with API version {stripeEvent.ApiVersion}, but Stripe.net "
-                    + $"{StripeConfiguration.StripeNetVersion} expects API version "
-                    + $"{ApiVersion.Current}. We recommend that you create a "
-                    + "WebhookEndpoint with this API version. Otherwise, you can disable this "
-                    + "exception by passing `throwOnApiVersionMismatch: false` to "
-                    + "`Stripe.EventUtility.ParseEvent` or `Stripe.EventUtility.ConstructEvent`, "
-                    + "but be wary that objects may be incorrectly deserialized.");
+                        + $"{StripeConfiguration.StripeNetVersion} expects API version "
+                        + $"{ApiVersion.Current}. We recommend that you create a "
+                        + "WebhookEndpoint with this API version. Otherwise, you can disable this "
+                        + "exception by passing `throwOnApiVersionMismatch: false` to "
+                        + "`Stripe.EventUtility.ParseEvent` or `Stripe.EventUtility.ConstructEvent`, "
+                        + "but be wary that objects may be incorrectly deserialized."
+                );
             }
 
             return stripeEvent;
@@ -122,7 +128,8 @@ namespace Stripe
             string stripeSignatureHeader,
             string secret,
             long tolerance = DefaultTimeTolerance,
-            bool throwOnApiVersionMismatch = true)
+            bool throwOnApiVersionMismatch = true
+        )
         {
             return ConstructEvent(
                 json,
@@ -130,7 +137,8 @@ namespace Stripe
                 secret,
                 tolerance,
                 DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
-                throwOnApiVersionMismatch);
+                throwOnApiVersionMismatch
+            );
         }
 
         /// <summary>
@@ -161,18 +169,36 @@ namespace Stripe
             string secret,
             long tolerance,
             long utcNow,
-            bool throwOnApiVersionMismatch = true)
+            bool throwOnApiVersionMismatch = true
+        )
         {
             ValidateSignature(json, stripeSignatureHeader, secret, tolerance, utcNow);
             return ParseEvent(json, throwOnApiVersionMismatch);
         }
 
-        public static void ValidateSignature(string json, string stripeSignatureHeader, string secret, long tolerance = DefaultTimeTolerance)
+        public static void ValidateSignature(
+            string json,
+            string stripeSignatureHeader,
+            string secret,
+            long tolerance = DefaultTimeTolerance
+        )
         {
-            ValidateSignature(json, stripeSignatureHeader, secret, tolerance, DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+            ValidateSignature(
+                json,
+                stripeSignatureHeader,
+                secret,
+                tolerance,
+                DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+            );
         }
 
-        public static void ValidateSignature(string json, string stripeSignatureHeader, string secret, long tolerance, long utcNow)
+        public static void ValidateSignature(
+            string json,
+            string stripeSignatureHeader,
+            string secret,
+            long tolerance,
+            long utcNow
+        )
         {
             var signatureItems = ParseStripeSignature(stripeSignatureHeader);
             var signature = string.Empty;
@@ -185,14 +211,16 @@ namespace Stripe
             {
                 throw new StripeException(
                     "The webhook cannot be processed because the signature cannot be safely calculated.",
-                    ex);
+                    ex
+                );
             }
 
             if (!IsSignaturePresent(signature, signatureItems["v1"]))
             {
                 throw new StripeException(
-                    "The expected signature was not found in the Stripe-Signature header. " +
-                    "Make sure you're using the correct webhook secret (whsec_) and confirm the incoming request came from Stripe.");
+                    "The expected signature was not found in the Stripe-Signature header. "
+                        + "Make sure you're using the correct webhook secret (whsec_) and confirm the incoming request came from Stripe."
+                );
             }
 
             var webhookUtc = Convert.ToInt32(signatureItems["t"].FirstOrDefault());
@@ -200,7 +228,8 @@ namespace Stripe
             if (Math.Abs(utcNow - webhookUtc) > tolerance)
             {
                 throw new StripeException(
-                    "The webhook cannot be processed because the current timestamp is outside of the allowed tolerance.");
+                    "The webhook cannot be processed because the current timestamp is outside of the allowed tolerance."
+                );
             }
         }
 
@@ -211,14 +240,14 @@ namespace Stripe
                 string[] parts = item.Trim().Split(new[] { '=' }, 2);
                 if (parts.Length != 2)
                 {
-                    throw new StripeException(
-                        "The signature header format is unexpected.");
+                    throw new StripeException("The signature header format is unexpected.");
                 }
 
                 return (parts[0], parts[1]);
             }
 
-            return stripeSignatureHeader.Trim()
+            return stripeSignatureHeader
+                .Trim()
                 .Split(',')
                 .Select(item => ParseItem(item))
                 .ToLookup(item => item.Key, item => item.Value);

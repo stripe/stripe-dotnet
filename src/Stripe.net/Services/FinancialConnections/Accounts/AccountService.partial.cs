@@ -13,36 +13,76 @@ namespace Stripe.FinancialConnections
         /// <p>Lists all owners for a given <c>Account</c></p>.
         /// </summary>
         [Obsolete("Use AccountOwnerService.List instead.")]
-        public virtual StripeList<AccountOwner> ListOwners(string id, AccountOwnerListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<AccountOwner> ListOwners(
+            string id,
+            AccountOwnerListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeList<AccountOwner>>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/owners", options, requestOptions);
+            return this.Request<StripeList<AccountOwner>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/owners",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Lists all owners for a given <c>Account</c></p>.
         /// </summary>
         [Obsolete("Use AccountOwnerService.ListASync instead.")]
-        public virtual Task<StripeList<AccountOwner>> ListOwnersAsync(string id, AccountOwnerListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<AccountOwner>> ListOwnersAsync(
+            string id,
+            AccountOwnerListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeList<AccountOwner>>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/owners", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<AccountOwner>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/owners",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Lists all owners for a given <c>Account</c></p>.
         /// </summary>
         [Obsolete("Use AccountOwnerService.ListAutoPaging instead.")]
-        public virtual IEnumerable<AccountOwner> ListOwnersAutoPaging(string id, AccountOwnerListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<AccountOwner> ListOwnersAutoPaging(
+            string id,
+            AccountOwnerListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.ListRequestAutoPaging<AccountOwner>($"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/owners", options, requestOptions);
+            return this.ListRequestAutoPaging<AccountOwner>(
+                $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/owners",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Lists all owners for a given <c>Account</c></p>.
         /// </summary>
         [Obsolete("Use AccountOwnerService.ListAutoPagingAsync instead.")]
-        public virtual IAsyncEnumerable<AccountOwner> ListOwnersAutoPagingAsync(string id, AccountOwnerListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<AccountOwner> ListOwnersAutoPagingAsync(
+            string id,
+            AccountOwnerListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<AccountOwner>($"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/owners", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<AccountOwner>(
+                $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/owners",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

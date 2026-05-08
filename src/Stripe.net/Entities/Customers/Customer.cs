@@ -107,7 +107,11 @@ namespace Stripe
         public string DefaultSourceId
         {
             get => this.InternalDefaultSource?.Id;
-            set => this.InternalDefaultSource = SetExpandableFieldId(value, this.InternalDefaultSource);
+            set =>
+                this.InternalDefaultSource = SetExpandableFieldId(
+                    value,
+                    this.InternalDefaultSource
+                );
         }
 
         /// <summary>
@@ -125,7 +129,11 @@ namespace Stripe
         public IPaymentSource DefaultSource
         {
             get => this.InternalDefaultSource?.ExpandedObject;
-            set => this.InternalDefaultSource = SetExpandableFieldObject(value, this.InternalDefaultSource);
+            set =>
+                this.InternalDefaultSource = SetExpandableFieldObject(
+                    value,
+                    this.InternalDefaultSource
+                );
         }
 
         [JsonProperty("default_source")]

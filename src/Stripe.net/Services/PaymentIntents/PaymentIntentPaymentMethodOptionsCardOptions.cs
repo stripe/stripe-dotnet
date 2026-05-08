@@ -194,7 +194,10 @@ namespace Stripe
         /// 22 characters. On card statements, the <em>concatenation</em> of both prefix and suffix
         /// (including separators) will appear truncated to 22 characters.
         /// </summary>
-        [JsonProperty("statement_descriptor_suffix_kana", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty(
+            "statement_descriptor_suffix_kana",
+            NullValueHandling = NullValueHandling.Ignore
+        )]
         [STJS.JsonPropertyName("statement_descriptor_suffix_kana")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string StatementDescriptorSuffixKana
@@ -214,7 +217,10 @@ namespace Stripe
         /// 17 characters. On card statements, the <em>concatenation</em> of both prefix and suffix
         /// (including separators) will appear truncated to 17 characters.
         /// </summary>
-        [JsonProperty("statement_descriptor_suffix_kanji", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty(
+            "statement_descriptor_suffix_kanji",
+            NullValueHandling = NullValueHandling.Ignore
+        )]
         [STJS.JsonPropertyName("statement_descriptor_suffix_kanji")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
         public string StatementDescriptorSuffixKanji

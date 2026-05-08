@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentMethodConfigurationWechatPayDisplayPreference : StripeEntity<PaymentMethodConfigurationWechatPayDisplayPreference>
+    public class PaymentMethodConfigurationWechatPayDisplayPreference
+        : StripeEntity<PaymentMethodConfigurationWechatPayDisplayPreference>
     {
         /// <summary>
         /// For child configs, whether or not the account's preference will be observed. If

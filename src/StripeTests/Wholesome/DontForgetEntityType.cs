@@ -45,17 +45,23 @@ namespace StripeTests.Wholesome
                     continue;
                 }
 
-                if (!baseType.GetTypeInfo().IsGenericType ||
-                    baseType.GetGenericTypeDefinition() != typeof(StripeEntity<>))
+                if (
+                    !baseType.GetTypeInfo().IsGenericType
+                    || baseType.GetGenericTypeDefinition() != typeof(StripeEntity<>)
+                )
                 {
-                    results.Add($"{stripeClass.Name} inherits from {baseType.Name} instead of StripeEntity<{stripeClass.Name}>");
+                    results.Add(
+                        $"{stripeClass.Name} inherits from {baseType.Name} instead of StripeEntity<{stripeClass.Name}>"
+                    );
                     continue;
                 }
 
                 var typeParam = baseType.GetTypeInfo().GetGenericArguments()[0];
                 if (typeParam != stripeClass)
                 {
-                    results.Add($"{stripeClass.Name} inherits from StripeEntity<{typeParam.Name}> instead of StripeEntity<{stripeClass.Name}>");
+                    results.Add(
+                        $"{stripeClass.Name} inherits from StripeEntity<{typeParam.Name}> instead of StripeEntity<{stripeClass.Name}>"
+                    );
                     continue;
                 }
             }

@@ -6,7 +6,9 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodConfigurationDetails : StripeEntity<SessionPaymentMethodConfigurationDetails>, IHasId
+    public class SessionPaymentMethodConfigurationDetails
+        : StripeEntity<SessionPaymentMethodConfigurationDetails>,
+            IHasId
     {
         /// <summary>
         /// ID of the payment method configuration used.

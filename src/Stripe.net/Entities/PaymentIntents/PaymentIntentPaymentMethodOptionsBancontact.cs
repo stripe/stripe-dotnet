@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentMethodOptionsBancontact : StripeEntity<PaymentIntentPaymentMethodOptionsBancontact>
+    public class PaymentIntentPaymentMethodOptionsBancontact
+        : StripeEntity<PaymentIntentPaymentMethodOptionsBancontact>
     {
         /// <summary>
         /// Preferred language of the Bancontact authorization page that the customer is redirected

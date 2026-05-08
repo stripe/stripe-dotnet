@@ -7,9 +7,7 @@ namespace StripeTests
     public class PromotionCodeTest : BaseStripeTest
     {
         public PromotionCodeTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -25,10 +23,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansionsCustomer()
         {
-            string[] expansions =
-            {
-              "customer",
-            };
+            string[] expansions = { "customer" };
 
             string json = this.GetFixture("/v1/promotion_codes/co_123", expansions);
             var promoCode = JsonSerializer.Deserialize<PromotionCode>(json);

@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SessionPaymentMethodOptionsSamsungPay : StripeEntity<SessionPaymentMethodOptionsSamsungPay>
+    public class SessionPaymentMethodOptionsSamsungPay
+        : StripeEntity<SessionPaymentMethodOptionsSamsungPay>
     {
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.

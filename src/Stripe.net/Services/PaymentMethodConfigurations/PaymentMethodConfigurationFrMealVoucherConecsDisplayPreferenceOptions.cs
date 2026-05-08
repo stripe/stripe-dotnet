@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentMethodConfigurationFrMealVoucherConecsDisplayPreferenceOptions : INestedOptions
+    public class PaymentMethodConfigurationFrMealVoucherConecsDisplayPreferenceOptions
+        : INestedOptions
     {
         /// <summary>
         /// The account's preference for whether or not to display this payment method.

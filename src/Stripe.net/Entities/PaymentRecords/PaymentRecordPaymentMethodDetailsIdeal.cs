@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsIdeal : StripeEntity<PaymentRecordPaymentMethodDetailsIdeal>
+    public class PaymentRecordPaymentMethodDetailsIdeal
+        : StripeEntity<PaymentRecordPaymentMethodDetailsIdeal>
     {
         /// <summary>
         /// The customer's bank. Can be one of <c>abn_amro</c>, <c>adyen</c>, <c>asn_bank</c>,
@@ -47,7 +48,11 @@ namespace Stripe
         public string GeneratedSepaDebitId
         {
             get => this.InternalGeneratedSepaDebit?.Id;
-            set => this.InternalGeneratedSepaDebit = SetExpandableFieldId(value, this.InternalGeneratedSepaDebit);
+            set =>
+                this.InternalGeneratedSepaDebit = SetExpandableFieldId(
+                    value,
+                    this.InternalGeneratedSepaDebit
+                );
         }
 
         /// <summary>
@@ -61,7 +66,11 @@ namespace Stripe
         public PaymentMethod GeneratedSepaDebit
         {
             get => this.InternalGeneratedSepaDebit?.ExpandedObject;
-            set => this.InternalGeneratedSepaDebit = SetExpandableFieldObject(value, this.InternalGeneratedSepaDebit);
+            set =>
+                this.InternalGeneratedSepaDebit = SetExpandableFieldObject(
+                    value,
+                    this.InternalGeneratedSepaDebit
+                );
         }
 
         [JsonProperty("generated_sepa_debit")]
@@ -82,7 +91,11 @@ namespace Stripe
         public string GeneratedSepaDebitMandateId
         {
             get => this.InternalGeneratedSepaDebitMandate?.Id;
-            set => this.InternalGeneratedSepaDebitMandate = SetExpandableFieldId(value, this.InternalGeneratedSepaDebitMandate);
+            set =>
+                this.InternalGeneratedSepaDebitMandate = SetExpandableFieldId(
+                    value,
+                    this.InternalGeneratedSepaDebitMandate
+                );
         }
 
         /// <summary>
@@ -96,7 +109,11 @@ namespace Stripe
         public Mandate GeneratedSepaDebitMandate
         {
             get => this.InternalGeneratedSepaDebitMandate?.ExpandedObject;
-            set => this.InternalGeneratedSepaDebitMandate = SetExpandableFieldObject(value, this.InternalGeneratedSepaDebitMandate);
+            set =>
+                this.InternalGeneratedSepaDebitMandate = SetExpandableFieldObject(
+                    value,
+                    this.InternalGeneratedSepaDebitMandate
+                );
         }
 
         [JsonProperty("generated_sepa_debit_mandate")]

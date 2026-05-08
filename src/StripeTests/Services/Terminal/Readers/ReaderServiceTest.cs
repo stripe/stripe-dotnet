@@ -17,7 +17,8 @@ namespace StripeTests.Terminal
 
         public ReaderServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new ReaderService(this.StripeClient);
@@ -29,15 +30,9 @@ namespace StripeTests.Terminal
                 RegistrationCode = "a-b-c",
             };
 
-            this.listOptions = new ReaderListOptions
-            {
-                Location = "loc_123",
-            };
+            this.listOptions = new ReaderListOptions { Location = "loc_123" };
 
-            this.updateOptions = new ReaderUpdateOptions
-            {
-                Label = "my_reader_update",
-            };
+            this.updateOptions = new ReaderUpdateOptions { Label = "my_reader_update" };
         }
 
         [Fact]

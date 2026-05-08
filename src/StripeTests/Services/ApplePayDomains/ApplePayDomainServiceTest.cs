@@ -3,7 +3,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -17,20 +16,15 @@ namespace StripeTests
 
         public ApplePayDomainServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new ApplePayDomainService(this.StripeClient);
 
-            this.createOptions = new ApplePayDomainCreateOptions
-            {
-                DomainName = "example.com",
-            };
+            this.createOptions = new ApplePayDomainCreateOptions { DomainName = "example.com" };
 
-            this.listOptions = new ApplePayDomainListOptions
-            {
-                Limit = 2,
-            };
+            this.listOptions = new ApplePayDomainListOptions { Limit = 2 };
         }
 
         [Fact]

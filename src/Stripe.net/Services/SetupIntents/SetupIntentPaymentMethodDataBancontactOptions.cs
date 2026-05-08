@@ -6,7 +6,5 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SetupIntentPaymentMethodDataBancontactOptions : INestedOptions
-    {
-    }
+    public class SetupIntentPaymentMethodDataBancontactOptions : INestedOptions { }
 }

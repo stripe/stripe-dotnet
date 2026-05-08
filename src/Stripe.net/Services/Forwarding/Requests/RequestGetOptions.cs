@@ -6,7 +6,5 @@ namespace Stripe.Forwarding
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class RequestGetOptions : BaseOptions
-    {
-    }
+    public class RequestGetOptions : BaseOptions { }
 }

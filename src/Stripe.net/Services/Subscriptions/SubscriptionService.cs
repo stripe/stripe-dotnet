@@ -8,25 +8,55 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class SubscriptionService : Service,
-        ICreatable<Subscription, SubscriptionCreateOptions>,
-        IListable<Subscription, SubscriptionListOptions>,
-        IRetrievable<Subscription, SubscriptionGetOptions>,
-        ISearchable<Subscription, SubscriptionSearchOptions>,
-        IUpdatable<Subscription, SubscriptionUpdateOptions>
+    public class SubscriptionService
+        : Service,
+            ICreatable<Subscription, SubscriptionCreateOptions>,
+            IListable<Subscription, SubscriptionListOptions>,
+            IRetrievable<Subscription, SubscriptionGetOptions>,
+            ISearchable<Subscription, SubscriptionSearchOptions>,
+            IUpdatable<Subscription, SubscriptionUpdateOptions>
     {
-        public SubscriptionService()
-        {
-        }
+        public SubscriptionService() { }
 
         internal SubscriptionService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
+            : base(requestor) { }
 
         public SubscriptionService(IStripeClient client)
-            : base(client)
+            : base(client) { }
+
+        /// <summary>
+        /// <p>Cancels a customer’s subscription immediately. The customer won’t be charged again
+        /// for the subscription. After it’s canceled, you can no longer update the subscription or
+        /// its <a href="https://stripe.com/metadata">metadata</a>.</p>.
+        ///
+        /// <p>Any pending invoice items that you’ve created are still charged at the end of the
+        /// period, unless manually <a
+        /// href="https://stripe.com/api/invoiceitems/delete">deleted</a>. If you’ve set the
+        /// subscription to cancel at the end of the period, any pending prorations are also left in
+        /// place and collected at the end of the period. But if the subscription is set to cancel
+        /// immediately, pending prorations are removed if <c>invoice_now</c> and <c>prorate</c> are
+        /// both set to true.</p>.
+        ///
+        /// <p>By default, upon subscription cancellation, Stripe stops automatic collection of all
+        /// finalized invoices for the customer. This is intended to prevent unexpected payment
+        /// attempts after the customer has canceled a subscription. However, you can resume
+        /// automatic collection of the invoices manually after subscription cancellation to have us
+        /// proceed. Or, you could check for unpaid invoices before allowing the customer to cancel
+        /// the subscription at all.</p>.
+        /// </summary>
+        public virtual Subscription Cancel(
+            string id,
+            SubscriptionCancelOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
+            return this.Request<Subscription>(
+                BaseAddress.Api,
+                HttpMethod.Delete,
+                $"/v1/subscriptions/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -49,34 +79,21 @@ namespace Stripe
         /// proceed. Or, you could check for unpaid invoices before allowing the customer to cancel
         /// the subscription at all.</p>.
         /// </summary>
-        public virtual Subscription Cancel(string id, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null)
+        public virtual Task<Subscription> CancelAsync(
+            string id,
+            SubscriptionCancelOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Delete, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Cancels a customer’s subscription immediately. The customer won’t be charged again
-        /// for the subscription. After it’s canceled, you can no longer update the subscription or
-        /// its <a href="https://stripe.com/metadata">metadata</a>.</p>.
-        ///
-        /// <p>Any pending invoice items that you’ve created are still charged at the end of the
-        /// period, unless manually <a
-        /// href="https://stripe.com/api/invoiceitems/delete">deleted</a>. If you’ve set the
-        /// subscription to cancel at the end of the period, any pending prorations are also left in
-        /// place and collected at the end of the period. But if the subscription is set to cancel
-        /// immediately, pending prorations are removed if <c>invoice_now</c> and <c>prorate</c> are
-        /// both set to true.</p>.
-        ///
-        /// <p>By default, upon subscription cancellation, Stripe stops automatic collection of all
-        /// finalized invoices for the customer. This is intended to prevent unexpected payment
-        /// attempts after the customer has canceled a subscription. However, you can resume
-        /// automatic collection of the invoices manually after subscription cancellation to have us
-        /// proceed. Or, you could check for unpaid invoices before allowing the customer to cancel
-        /// the subscription at all.</p>.
-        /// </summary>
-        public virtual Task<Subscription> CancelAsync(string id, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Delete, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(
+                BaseAddress.Api,
+                HttpMethod.Delete,
+                $"/v1/subscriptions/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -93,9 +110,18 @@ namespace Stripe
         /// schedules</a> instead. Schedules provide the flexibility to model more complex billing
         /// configurations that change over time.</p>.
         /// </summary>
-        public virtual Subscription Create(SubscriptionCreateOptions options, RequestOptions requestOptions = null)
+        public virtual Subscription Create(
+            SubscriptionCreateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions", options, requestOptions);
+            return this.Request<Subscription>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/subscriptions",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -112,93 +138,206 @@ namespace Stripe
         /// schedules</a> instead. Schedules provide the flexibility to model more complex billing
         /// configurations that change over time.</p>.
         /// </summary>
-        public virtual Task<Subscription> CreateAsync(SubscriptionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Subscription> CreateAsync(
+            SubscriptionCreateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/subscriptions",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Removes the currently applied discount on a subscription.</p>.
         /// </summary>
-        public virtual Discount DeleteDiscount(string id, SubscriptionDeleteDiscountOptions options = null, RequestOptions requestOptions = null)
+        public virtual Discount DeleteDiscount(
+            string id,
+            SubscriptionDeleteDiscountOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Discount>(BaseAddress.Api, HttpMethod.Delete, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/discount", options, requestOptions);
+            return this.Request<Discount>(
+                BaseAddress.Api,
+                HttpMethod.Delete,
+                $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/discount",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Removes the currently applied discount on a subscription.</p>.
         /// </summary>
-        public virtual Task<Discount> DeleteDiscountAsync(string id, SubscriptionDeleteDiscountOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Discount> DeleteDiscountAsync(
+            string id,
+            SubscriptionDeleteDiscountOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Discount>(BaseAddress.Api, HttpMethod.Delete, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/discount", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Discount>(
+                BaseAddress.Api,
+                HttpMethod.Delete,
+                $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/discount",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Retrieves the subscription with the given ID.</p>.
         /// </summary>
-        public virtual Subscription Get(string id, SubscriptionGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Subscription Get(
+            string id,
+            SubscriptionGetOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Subscription>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/subscriptions/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Retrieves the subscription with the given ID.</p>.
         /// </summary>
-        public virtual Task<Subscription> GetAsync(string id, SubscriptionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Subscription> GetAsync(
+            string id,
+            SubscriptionGetOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/subscriptions/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>By default, returns a list of subscriptions that have not been canceled. In order to
         /// list canceled subscriptions, specify <c>status=canceled</c>.</p>.
         /// </summary>
-        public virtual StripeList<Subscription> List(SubscriptionListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Subscription> List(
+            SubscriptionListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeList<Subscription>>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions", options, requestOptions);
+            return this.Request<StripeList<Subscription>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/subscriptions",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>By default, returns a list of subscriptions that have not been canceled. In order to
         /// list canceled subscriptions, specify <c>status=canceled</c>.</p>.
         /// </summary>
-        public virtual Task<StripeList<Subscription>> ListAsync(SubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<Subscription>> ListAsync(
+            SubscriptionListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeList<Subscription>>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Subscription>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/subscriptions",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>By default, returns a list of subscriptions that have not been canceled. In order to
         /// list canceled subscriptions, specify <c>status=canceled</c>.</p>.
         /// </summary>
-        public virtual IEnumerable<Subscription> ListAutoPaging(SubscriptionListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<Subscription> ListAutoPaging(
+            SubscriptionListOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.ListRequestAutoPaging<Subscription>($"/v1/subscriptions", options, requestOptions);
+            return this.ListRequestAutoPaging<Subscription>(
+                $"/v1/subscriptions",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>By default, returns a list of subscriptions that have not been canceled. In order to
         /// list canceled subscriptions, specify <c>status=canceled</c>.</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<Subscription> ListAutoPagingAsync(SubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<Subscription> ListAutoPagingAsync(
+            SubscriptionListOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.ListRequestAutoPagingAsync<Subscription>($"/v1/subscriptions", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Subscription>(
+                $"/v1/subscriptions",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
         /// <p>Upgrade the billing_mode of an existing subscription.</p>.
         /// </summary>
-        public virtual Subscription Migrate(string id, SubscriptionMigrateOptions options = null, RequestOptions requestOptions = null)
+        public virtual Subscription Migrate(
+            string id,
+            SubscriptionMigrateOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/migrate", options, requestOptions);
+            return this.Request<Subscription>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/migrate",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
         /// <p>Upgrade the billing_mode of an existing subscription.</p>.
         /// </summary>
-        public virtual Task<Subscription> MigrateAsync(string id, SubscriptionMigrateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Subscription> MigrateAsync(
+            string id,
+            SubscriptionMigrateOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/migrate", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/migrate",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -209,9 +348,19 @@ namespace Stripe
         /// the invoice is not paid by the expiration date, it is voided and the subscription
         /// remains <c>paused</c>.</p>.
         /// </summary>
-        public virtual Subscription Resume(string id, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null)
+        public virtual Subscription Resume(
+            string id,
+            SubscriptionResumeOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/resume", options, requestOptions);
+            return this.Request<Subscription>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/resume",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -222,9 +371,21 @@ namespace Stripe
         /// the invoice is not paid by the expiration date, it is voided and the subscription
         /// remains <c>paused</c>.</p>.
         /// </summary>
-        public virtual Task<Subscription> ResumeAsync(string id, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Subscription> ResumeAsync(
+            string id,
+            SubscriptionResumeOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/resume", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/resume",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -235,9 +396,18 @@ namespace Stripe
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
         /// </summary>
-        public virtual StripeSearchResult<Subscription> Search(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeSearchResult<Subscription> Search(
+            SubscriptionSearchOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<StripeSearchResult<Subscription>>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions/search", options, requestOptions);
+            return this.Request<StripeSearchResult<Subscription>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/subscriptions/search",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -248,9 +418,20 @@ namespace Stripe
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
         /// </summary>
-        public virtual Task<StripeSearchResult<Subscription>> SearchAsync(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeSearchResult<Subscription>> SearchAsync(
+            SubscriptionSearchOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<StripeSearchResult<Subscription>>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions/search", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeSearchResult<Subscription>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                $"/v1/subscriptions/search",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -261,9 +442,16 @@ namespace Stripe
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
         /// </summary>
-        public virtual IEnumerable<Subscription> SearchAutoPaging(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<Subscription> SearchAutoPaging(
+            SubscriptionSearchOptions options = null,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.SearchRequestAutoPaging<Subscription>($"/v1/subscriptions/search", options, requestOptions);
+            return this.SearchRequestAutoPaging<Subscription>(
+                $"/v1/subscriptions/search",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -274,9 +462,18 @@ namespace Stripe
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
         /// </summary>
-        public virtual IAsyncEnumerable<Subscription> SearchAutoPagingAsync(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<Subscription> SearchAutoPagingAsync(
+            SubscriptionSearchOptions options = null,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.SearchRequestAutoPagingAsync<Subscription>($"/v1/subscriptions/search", options, requestOptions, cancellationToken);
+            return this.SearchRequestAutoPagingAsync<Subscription>(
+                $"/v1/subscriptions/search",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
 
         /// <summary>
@@ -329,9 +526,19 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/subscriptions/usage-based">usage-based billing</a>
         /// instead.</p>.
         /// </summary>
-        public virtual Subscription Update(string id, SubscriptionUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Subscription Update(
+            string id,
+            SubscriptionUpdateOptions options,
+            RequestOptions requestOptions = null
+        )
         {
-            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Subscription>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/subscriptions/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions
+            );
         }
 
         /// <summary>
@@ -384,9 +591,21 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/subscriptions/usage-based">usage-based billing</a>
         /// instead.</p>.
         /// </summary>
-        public virtual Task<Subscription> UpdateAsync(string id, SubscriptionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Subscription> UpdateAsync(
+            string id,
+            SubscriptionUpdateOptions options,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default
+        )
         {
-            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                $"/v1/subscriptions/{WebUtility.UrlEncode(id)}",
+                options,
+                requestOptions,
+                cancellationToken
+            );
         }
     }
 }

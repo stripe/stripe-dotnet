@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class BalanceInstantAvailableNetAvailable : StripeEntity<BalanceInstantAvailableNetAvailable>
+    public class BalanceInstantAvailableNetAvailable
+        : StripeEntity<BalanceInstantAvailableNetAvailable>
     {
         /// <summary>
         /// Net balance amount, subtracting fees from platform-set pricing.

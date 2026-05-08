@@ -7,9 +7,7 @@ namespace StripeTests
     public class ExternalAccountTest : BaseStripeTest
     {
         public ExternalAccountTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -24,12 +22,12 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "account",
-            };
+            string[] expansions = { "account" };
 
-            string json = this.GetFixture("/v1/accounts/acct_123/external_accounts/ba_123", expansions);
+            string json = this.GetFixture(
+                "/v1/accounts/acct_123/external_accounts/ba_123",
+                expansions
+            );
             var externalAccount = JsonSerializer.Deserialize<IExternalAccount>(json);
             Assert.NotNull(externalAccount);
             Assert.IsType<BankAccount>(externalAccount);

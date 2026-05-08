@@ -6,7 +6,5 @@ namespace Stripe.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class CreditGrantExpireOptions : BaseOptions
-    {
-    }
+    public class CreditGrantExpireOptions : BaseOptions { }
 }

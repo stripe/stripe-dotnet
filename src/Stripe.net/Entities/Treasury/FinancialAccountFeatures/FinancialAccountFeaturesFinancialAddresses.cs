@@ -6,7 +6,8 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class FinancialAccountFeaturesFinancialAddresses : StripeEntity<FinancialAccountFeaturesFinancialAddresses>
+    public class FinancialAccountFeaturesFinancialAddresses
+        : StripeEntity<FinancialAccountFeaturesFinancialAddresses>
     {
         /// <summary>
         /// Toggle settings for enabling/disabling the ABA address feature.

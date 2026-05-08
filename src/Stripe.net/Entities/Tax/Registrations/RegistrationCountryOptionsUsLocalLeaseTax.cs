@@ -6,7 +6,8 @@ namespace Stripe.Tax
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class RegistrationCountryOptionsUsLocalLeaseTax : StripeEntity<RegistrationCountryOptionsUsLocalLeaseTax>
+    public class RegistrationCountryOptionsUsLocalLeaseTax
+        : StripeEntity<RegistrationCountryOptionsUsLocalLeaseTax>
     {
         /// <summary>
         /// A <a href="https://www.census.gov/library/reference/code-lists/ansi.html">FIPS code</a>

@@ -7,7 +7,6 @@ namespace StripeTests
     using System.Net.Http;
     using System.Reflection;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -23,25 +22,22 @@ namespace StripeTests
 
         public FileServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new FileService(this.StripeClient);
 
-            var resourceStream = typeof(FileServiceTest).GetTypeInfo().Assembly.GetManifestResourceStream(FileName);
+            var resourceStream = typeof(FileServiceTest)
+                .GetTypeInfo()
+                .Assembly.GetManifestResourceStream(FileName);
             this.createOptions = new FileCreateOptions
             {
-                File = new MultipartFileContent
-                {
-                    Data = resourceStream,
-                },
+                File = new MultipartFileContent { Data = resourceStream },
                 FileLinkData = new FileFileLinkDataOptions
                 {
                     Create = true,
-                    Metadata = new Dictionary<string, string>
-                    {
-                        { "key", "value" },
-                    },
+                    Metadata = new Dictionary<string, string> { { "key", "value" } },
                 },
                 Purpose = FilePurpose.BusinessLogo,
             };
@@ -55,10 +51,7 @@ namespace StripeTests
                 Purpose = FilePurpose.BusinessLogo,
             };
 
-            this.listOptions = new FileListOptions
-            {
-                Limit = 1,
-            };
+            this.listOptions = new FileListOptions { Limit = 1 };
         }
 
         [Fact]

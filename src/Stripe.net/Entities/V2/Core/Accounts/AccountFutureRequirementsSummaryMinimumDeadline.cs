@@ -7,7 +7,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountFutureRequirementsSummaryMinimumDeadline : StripeEntity<AccountFutureRequirementsSummaryMinimumDeadline>
+    public class AccountFutureRequirementsSummaryMinimumDeadline
+        : StripeEntity<AccountFutureRequirementsSummaryMinimumDeadline>
     {
         /// <summary>
         /// The current strictest status of all requirements on the Account.

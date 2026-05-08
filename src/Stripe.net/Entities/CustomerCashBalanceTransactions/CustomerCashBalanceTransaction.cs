@@ -14,7 +14,11 @@ namespace Stripe
     /// customer.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CustomerCashBalanceTransaction : StripeEntity<CustomerCashBalanceTransaction>, IHasId, IHasObject, IBalanceTransactionSource
+    public class CustomerCashBalanceTransaction
+        : StripeEntity<CustomerCashBalanceTransaction>,
+            IHasId,
+            IHasObject,
+            IBalanceTransactionSource
     {
         /// <summary>
         /// Unique identifier for the object.

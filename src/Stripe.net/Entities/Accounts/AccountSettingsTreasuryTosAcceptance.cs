@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountSettingsTreasuryTosAcceptance : StripeEntity<AccountSettingsTreasuryTosAcceptance>
+    public class AccountSettingsTreasuryTosAcceptance
+        : StripeEntity<AccountSettingsTreasuryTosAcceptance>
     {
         /// <summary>
         /// The Unix timestamp marking when the account representative accepted the service

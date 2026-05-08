@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentRecordPaymentMethodDetailsPaypalSellerProtection : StripeEntity<PaymentRecordPaymentMethodDetailsPaypalSellerProtection>
+    public class PaymentRecordPaymentMethodDetailsPaypalSellerProtection
+        : StripeEntity<PaymentRecordPaymentMethodDetailsPaypalSellerProtection>
     {
         /// <summary>
         /// An array of conditions that are covered for the transaction, if applicable.

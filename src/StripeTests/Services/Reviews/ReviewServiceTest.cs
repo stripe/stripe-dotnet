@@ -3,7 +3,6 @@ namespace StripeTests
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe;
     using Xunit;
 
@@ -17,18 +16,15 @@ namespace StripeTests
 
         public ReviewServiceTest(
             StripeMockFixture stripeMockFixture,
-            MockHttpClientFixture mockHttpClientFixture)
+            MockHttpClientFixture mockHttpClientFixture
+        )
             : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new ReviewService(this.StripeClient);
 
-            this.approveOptions = new ReviewApproveOptions
-            {
-            };
+            this.approveOptions = new ReviewApproveOptions { };
 
-            this.listOptions = new ReviewListOptions
-            {
-            };
+            this.listOptions = new ReviewListOptions { };
         }
 
         [Fact]

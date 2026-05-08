@@ -64,8 +64,10 @@ namespace Stripe.Infrastructure.FormEncoding
             // multipart/form-data encoding.
             if (flatParams.All(kvp => kvp.Value is string))
             {
-                var flatParamsString = flatParams
-                    .Select(kvp => new KeyValuePair<string, string>(kvp.Key, kvp.Value as string));
+                var flatParamsString = flatParams.Select(kvp => new KeyValuePair<string, string>(
+                    kvp.Key,
+                    kvp.Value as string
+                ));
 
                 return new FormUrlEncodedContent(flatParamsString);
             }
@@ -85,20 +87,21 @@ namespace Stripe.Infrastructure.FormEncoding
             var arrayEncoding = ArrayEncoding.Indexed;
             var flatParams = FlattenParamsValue(options, null, arrayEncoding)
                 .Where(kvp => kvp.Value is string)
-                .Select(kvp => new KeyValuePair<string, string>(
-                    kvp.Key,
-                    kvp.Value as string));
+                .Select(kvp => new KeyValuePair<string, string>(kvp.Key, kvp.Value as string));
             return CreateQueryString(flatParams);
         }
 
         /// <summary>Creates the HTTP query string for a collection of name/value tuples.</summary>
         /// <param name="nameValueCollection">The collection of name/value tuples.</param>
         /// <returns>The query string.</returns>
-        public static string CreateQueryString(IEnumerable<KeyValuePair<string, string>> nameValueCollection)
+        public static string CreateQueryString(
+            IEnumerable<KeyValuePair<string, string>> nameValueCollection
+        )
         {
             return string.Join(
                 "&",
-                nameValueCollection.Select(kvp => $"{UrlEncode(kvp.Key)}={UrlEncode(kvp.Value)}"));
+                nameValueCollection.Select(kvp => $"{UrlEncode(kvp.Key)}={UrlEncode(kvp.Value)}")
+            );
         }
 
         /// <summary>URL-encodes a string.</summary>
@@ -109,9 +112,7 @@ namespace Stripe.Infrastructure.FormEncoding
             // Don't use strict form encoding by changing the square bracket control
             // characters back to their literals. This is fine by the server, and
             // makes these parameter strings easier to read.
-            return WebUtility.UrlEncode(value)
-                .Replace("%5B", "[")
-                .Replace("%5D", "]");
+            return WebUtility.UrlEncode(value).Replace("%5B", "[").Replace("%5D", "]");
         }
 
         /// <summary>
@@ -122,7 +123,11 @@ namespace Stripe.Infrastructure.FormEncoding
         /// <param name="keyPrefix">The key under which new keys should be nested, if any.</param>
         /// <param name="arrayEncoding">How to encode arrays.</param>
         /// <returns>The list of parameters.</returns>
-        private static List<KeyValuePair<string, object>> FlattenParamsValue(object value, string keyPrefix, ArrayEncoding arrayEncoding)
+        private static List<KeyValuePair<string, object>> FlattenParamsValue(
+            object value,
+            string keyPrefix,
+            ArrayEncoding arrayEncoding
+        )
         {
             List<KeyValuePair<string, object>> flatParams = null;
 
@@ -163,26 +168,29 @@ namespace Stripe.Infrastructure.FormEncoding
                 case DateTime dateTime:
                     flatParams = SingleParam(
                         keyPrefix,
-                        ((DateTimeOffset)dateTime).ToUnixTimeSeconds().ToString(CultureInfo.InvariantCulture));
+                        ((DateTimeOffset)dateTime)
+                            .ToUnixTimeSeconds()
+                            .ToString(CultureInfo.InvariantCulture)
+                    );
                     break;
 
                 case Enum e:
-                    var enumMember = e.GetType().GetField(e.ToString())
+                    var enumMember = e.GetType()
+                        .GetField(e.ToString())
                         ?.GetCustomAttribute<EnumMemberAttribute>();
                     var enumValue = enumMember?.Value ?? e.ToString();
                     flatParams = SingleParam(keyPrefix, enumValue);
                     break;
 
                 case bool b:
-                    flatParams = SingleParam(
-                        keyPrefix,
-                        b ? "true" : "false");
+                    flatParams = SingleParam(keyPrefix, b ? "true" : "false");
                     break;
 
                 default:
                     flatParams = SingleParam(
                         keyPrefix,
-                        string.Format(CultureInfo.InvariantCulture, "{0}", value));
+                        string.Format(CultureInfo.InvariantCulture, "{0}", value)
+                    );
                     break;
             }
 
@@ -199,9 +207,11 @@ namespace Stripe.Infrastructure.FormEncoding
         private static List<KeyValuePair<string, object>> FlattenParamsAnyOf(
             IAnyOf anyOf,
             string keyPrefix,
-            ArrayEncoding arrayEncoding)
+            ArrayEncoding arrayEncoding
+        )
         {
-            List<KeyValuePair<string, object>> flatParams = new List<KeyValuePair<string, object>>();
+            List<KeyValuePair<string, object>> flatParams =
+                new List<KeyValuePair<string, object>>();
 
             // If the value contained within the `AnyOf` instance is null, we don't encode it in the
             // request. We do this to mimic the behavior of regular (non-`AnyOf`) properties in
@@ -230,9 +240,11 @@ namespace Stripe.Infrastructure.FormEncoding
         private static List<KeyValuePair<string, object>> FlattenParamsOptions(
             INestedOptions options,
             string keyPrefix,
-            ArrayEncoding arrayEncoding)
+            ArrayEncoding arrayEncoding
+        )
         {
-            List<KeyValuePair<string, object>> flatParams = new List<KeyValuePair<string, object>>();
+            List<KeyValuePair<string, object>> flatParams =
+                new List<KeyValuePair<string, object>>();
             if (options == null)
             {
                 return flatParams;
@@ -242,11 +254,14 @@ namespace Stripe.Infrastructure.FormEncoding
             {
                 // Check STJ [JsonExtensionData] first, fall back to Newtonsoft
                 var stjExtension = property.GetCustomAttribute<STJS.JsonExtensionDataAttribute>();
-                var nsjExtension = property.GetCustomAttribute<Newtonsoft.Json.JsonExtensionDataAttribute>();
+                var nsjExtension =
+                    property.GetCustomAttribute<Newtonsoft.Json.JsonExtensionDataAttribute>();
                 if (stjExtension != null || nsjExtension != null)
                 {
                     var extensionValue = property.GetValue(options, null) as IDictionary;
-                    flatParams.AddRange(FlattenParamsDictionary(extensionValue, keyPrefix, arrayEncoding));
+                    flatParams.AddRange(
+                        FlattenParamsDictionary(extensionValue, keyPrefix, arrayEncoding)
+                    );
                     continue;
                 }
 
@@ -259,7 +274,8 @@ namespace Stripe.Infrastructure.FormEncoding
                 }
                 else
                 {
-                    var nsjAttribute = property.GetCustomAttribute<Newtonsoft.Json.JsonPropertyAttribute>();
+                    var nsjAttribute =
+                        property.GetCustomAttribute<Newtonsoft.Json.JsonPropertyAttribute>();
                     if (nsjAttribute != null)
                     {
                         key = nsjAttribute.PropertyName;
@@ -282,7 +298,9 @@ namespace Stripe.Infrastructure.FormEncoding
                     if (options is IHasSetTracking tracked && tracked.IsPropertySet(property.Name))
                     {
                         string newPrefixForNull = NewPrefix(key, keyPrefix);
-                        flatParams.Add(new KeyValuePair<string, object>(newPrefixForNull, string.Empty));
+                        flatParams.Add(
+                            new KeyValuePair<string, object>(newPrefixForNull, string.Empty)
+                        );
                     }
 
                     continue;
@@ -309,9 +327,11 @@ namespace Stripe.Infrastructure.FormEncoding
         private static List<KeyValuePair<string, object>> FlattenParamsDictionary(
             IDictionary dictionary,
             string keyPrefix,
-            ArrayEncoding arrayEncoding)
+            ArrayEncoding arrayEncoding
+        )
         {
-            List<KeyValuePair<string, object>> flatParams = new List<KeyValuePair<string, object>>();
+            List<KeyValuePair<string, object>> flatParams =
+                new List<KeyValuePair<string, object>>();
             if (dictionary == null)
             {
                 return flatParams;
@@ -344,9 +364,11 @@ namespace Stripe.Infrastructure.FormEncoding
         private static List<KeyValuePair<string, object>> FlattenParamsList(
             IEnumerable list,
             string keyPrefix,
-            ArrayEncoding arrayEncoding)
+            ArrayEncoding arrayEncoding
+        )
         {
-            List<KeyValuePair<string, object>> flatParams = new List<KeyValuePair<string, object>>();
+            List<KeyValuePair<string, object>> flatParams =
+                new List<KeyValuePair<string, object>>();
             if (list == null)
             {
                 return flatParams;
@@ -355,7 +377,8 @@ namespace Stripe.Infrastructure.FormEncoding
             int index = 0;
             foreach (object value in list)
             {
-                var maybeIndex = arrayEncoding == ArrayEncoding.Indexed ? $"[{index}]" : string.Empty;
+                var maybeIndex =
+                    arrayEncoding == ArrayEncoding.Indexed ? $"[{index}]" : string.Empty;
                 string newPrefix = $"{keyPrefix}{maybeIndex}";
                 flatParams.AddRange(FlattenParamsValue(value, newPrefix, arrayEncoding));
                 index += 1;
@@ -378,7 +401,8 @@ namespace Stripe.Infrastructure.FormEncoding
         /// <returns>A list containg the single parameter.</returns>
         private static List<KeyValuePair<string, object>> SingleParam(string key, object value)
         {
-            List<KeyValuePair<string, object>> flatParams = new List<KeyValuePair<string, object>>();
+            List<KeyValuePair<string, object>> flatParams =
+                new List<KeyValuePair<string, object>>();
             flatParams.Add(new KeyValuePair<string, object>(key, value));
             return flatParams;
         }

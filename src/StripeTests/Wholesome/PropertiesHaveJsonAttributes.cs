@@ -36,9 +36,11 @@ namespace StripeTests.Wholesome
 
                     foreach (var attribute in property.GetCustomAttributes())
                     {
-                        if (attribute.GetType() == typeof(JsonPropertyAttribute)
+                        if (
+                            attribute.GetType() == typeof(JsonPropertyAttribute)
                             || attribute.GetType() == typeof(JsonIgnoreAttribute)
-                            || attribute.GetType() == typeof(JsonExtensionDataAttribute))
+                            || attribute.GetType() == typeof(JsonExtensionDataAttribute)
+                        )
                         {
                             hasJsonAttribute = true;
                             break;

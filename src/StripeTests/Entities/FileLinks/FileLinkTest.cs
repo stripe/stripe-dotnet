@@ -7,9 +7,7 @@ namespace StripeTests
     public class FileLinkTest : BaseStripeTest
     {
         public FileLinkTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -25,10 +23,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "file",
-            };
+            string[] expansions = { "file" };
 
             string json = this.GetFixture("/v1/file_links/link_123", expansions);
             var fileLink = JsonSerializer.Deserialize<FileLink>(json);

@@ -6,7 +6,5 @@ namespace Stripe
     /// directly. This class shouldn't do anything. But, it _does_ need to be`public` so it can be
     /// returned to callers in `Task`s.
     /// </summary>
-    public class EmptyStripeEntity : StripeEntity<EmptyStripeEntity>
-    {
-    }
+    public class EmptyStripeEntity : StripeEntity<EmptyStripeEntity> { }
 }

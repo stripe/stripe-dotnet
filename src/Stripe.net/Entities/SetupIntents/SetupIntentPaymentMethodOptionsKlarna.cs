@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SetupIntentPaymentMethodOptionsKlarna : StripeEntity<SetupIntentPaymentMethodOptionsKlarna>
+    public class SetupIntentPaymentMethodOptionsKlarna
+        : StripeEntity<SetupIntentPaymentMethodOptionsKlarna>
     {
         /// <summary>
         /// The currency of the setup intent. Three letter ISO currency code.

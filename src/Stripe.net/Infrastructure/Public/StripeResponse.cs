@@ -12,7 +12,11 @@ namespace Stripe
         /// <param name="statusCode">The HTTP status code.</param>
         /// <param name="headers">The HTTP headers of the response.</param>
         /// <param name="content">The body of the response.</param>
-        public StripeResponse(HttpStatusCode statusCode, HttpResponseHeaders headers, string content)
+        public StripeResponse(
+            HttpStatusCode statusCode,
+            HttpResponseHeaders headers,
+            string content
+        )
             : base(statusCode, headers)
         {
             this.Content = content;

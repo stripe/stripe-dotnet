@@ -12,17 +12,21 @@ namespace Stripe.V2
         private TemporarySessionExpiredException(
             HttpStatusCode httpStatusCode,
             StripeError stripeError,
-            string message)
-            : base(httpStatusCode, stripeError)
-        {
-        }
+            string message
+        )
+            : base(httpStatusCode, stripeError) { }
 
         internal static TemporarySessionExpiredException Parse(
             HttpStatusCode httpStatusCode,
-            JsonElement body)
+            JsonElement body
+        )
         {
             var stripeError = StripeError.FromJson<StripeError>(body);
-            return new TemporarySessionExpiredException(httpStatusCode, stripeError, stripeError.Message);
+            return new TemporarySessionExpiredException(
+                httpStatusCode,
+                stripeError,
+                stripeError.Message
+            );
         }
     }
 }

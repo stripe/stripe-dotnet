@@ -6,7 +6,6 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SetupAttemptPaymentMethodDetailsCardWalletGooglePay : StripeEntity<SetupAttemptPaymentMethodDetailsCardWalletGooglePay>
-    {
-    }
+    public class SetupAttemptPaymentMethodDetailsCardWalletGooglePay
+        : StripeEntity<SetupAttemptPaymentMethodDetailsCardWalletGooglePay> { }
 }

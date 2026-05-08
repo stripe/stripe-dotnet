@@ -7,7 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentLinkShippingAddressCollection : StripeEntity<PaymentLinkShippingAddressCollection>
+    public class PaymentLinkShippingAddressCollection
+        : StripeEntity<PaymentLinkShippingAddressCollection>
     {
         /// <summary>
         /// An array of two-letter ISO country codes representing which countries Checkout should

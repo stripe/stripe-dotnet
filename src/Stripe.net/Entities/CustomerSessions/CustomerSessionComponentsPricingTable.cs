@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class CustomerSessionComponentsPricingTable : StripeEntity<CustomerSessionComponentsPricingTable>
+    public class CustomerSessionComponentsPricingTable
+        : StripeEntity<CustomerSessionComponentsPricingTable>
     {
         /// <summary>
         /// Whether the pricing table is enabled.

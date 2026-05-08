@@ -6,7 +6,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ChargePaymentMethodDetailsKakaoPay : StripeEntity<ChargePaymentMethodDetailsKakaoPay>
+    public class ChargePaymentMethodDetailsKakaoPay
+        : StripeEntity<ChargePaymentMethodDetailsKakaoPay>
     {
         /// <summary>
         /// A unique identifier for the buyer as determined by the local payment processor.

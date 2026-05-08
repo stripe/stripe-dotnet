@@ -8,9 +8,7 @@ namespace StripeTests.Checkout
     public class SessionTest : BaseStripeTest
     {
         public SessionTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
-        {
-        }
+            : base(stripeMockFixture) { }
 
         [Fact]
         public void Deserialize()
@@ -28,11 +26,11 @@ namespace StripeTests.Checkout
         {
             string[] expansions =
             {
-              "customer",
-              "payment_intent",
-              "line_items",
-              "setup_intent",
-              "subscription",
+                "customer",
+                "payment_intent",
+                "line_items",
+                "setup_intent",
+                "subscription",
             };
 
             string json = this.GetFixture("/v1/checkout/sessions/cs_123", expansions);
