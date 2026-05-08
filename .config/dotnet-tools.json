@@ -7,6 +7,12 @@
       "commands": [
         "csmacnz.Coveralls"
       ]
+    },
+    "csharpier": {
+      "version": "1.0.3",
+      "commands": [
+        "csharpier"
+      ]
     }
   }
 }
