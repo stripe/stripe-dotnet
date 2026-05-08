@@ -9,7 +9,7 @@
       ]
     },
     "csharpier": {
-      "version": "1.0.3",
+      "version": "1.2.6",
       "commands": [
         "csharpier"
       ]
