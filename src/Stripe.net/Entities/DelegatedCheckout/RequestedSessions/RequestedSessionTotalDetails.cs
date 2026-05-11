@@ -18,6 +18,13 @@ namespace Stripe.DelegatedCheckout
         public long? AmountCartDiscount { get; set; }
 
         /// <summary>
+        /// The total discount amount from discount codes across the session.
+        /// </summary>
+        [JsonProperty("amount_discount")]
+        [STJS.JsonPropertyName("amount_discount")]
+        public long? AmountDiscount { get; set; }
+
+        /// <summary>
         /// The amount fulfillment of the total details.
         /// </summary>
         [JsonProperty("amount_fulfillment")]
@@ -33,6 +40,13 @@ namespace Stripe.DelegatedCheckout
         public long? AmountItemsDiscount { get; set; }
 
         /// <summary>
+        /// The total sale amount across the session.
+        /// </summary>
+        [JsonProperty("amount_sale")]
+        [STJS.JsonPropertyName("amount_sale")]
+        public long? AmountSale { get; set; }
+
+        /// <summary>
         /// The amount tax of the total details.
         /// </summary>
         [JsonProperty("amount_tax")]
@@ -45,5 +59,12 @@ namespace Stripe.DelegatedCheckout
         [JsonProperty("applicable_fees")]
         [STJS.JsonPropertyName("applicable_fees")]
         public List<RequestedSessionTotalDetailsApplicableFee> ApplicableFees { get; set; }
+
+        /// <summary>
+        /// The breakdown of discounts applied to the session.
+        /// </summary>
+        [JsonProperty("breakdown")]
+        [STJS.JsonPropertyName("breakdown")]
+        public RequestedSessionTotalDetailsBreakdown Breakdown { get; set; }
     }
 }

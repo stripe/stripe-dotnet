@@ -8,8 +8,5 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class InvoicePaymentSettingsPaymentMethodOptionsCheckScan : StripeEntity<InvoicePaymentSettingsPaymentMethodOptionsCheckScan>
     {
-        [JsonProperty("check_deposit_address")]
-        [STJS.JsonPropertyName("check_deposit_address")]
-        public InvoicePaymentSettingsPaymentMethodOptionsCheckScanCheckDepositAddress CheckDepositAddress { get; set; }
     }
 }
