@@ -117,6 +117,13 @@ namespace Stripe
         }
 
         /// <summary>
+        /// The ID of the Payment Location for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("location")]
+        [STJS.JsonPropertyName("location")]
+        public string Location { get; set; }
+
+        /// <summary>
         /// Lodging reservation details for this PaymentIntent.
         /// </summary>
         [JsonProperty("lodging")]

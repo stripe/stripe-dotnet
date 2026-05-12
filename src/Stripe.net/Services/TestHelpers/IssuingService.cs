@@ -9,6 +9,7 @@ namespace Stripe.TestHelpers
     {
         private TestHelpers.Issuing.AuthorizationService authorizations;
         private TestHelpers.Issuing.CardService cards;
+        private TestHelpers.Issuing.DisputeService disputes;
         private TestHelpers.Issuing.PersonalizationDesignService personalizationDesigns;
         private TestHelpers.Issuing.TransactionService transactions;
 
@@ -26,6 +27,9 @@ namespace Stripe.TestHelpers
             this.Requestor);
 
         public virtual TestHelpers.Issuing.CardService Cards => this.cards ??= new TestHelpers.Issuing.CardService(
+            this.Requestor);
+
+        public virtual TestHelpers.Issuing.DisputeService Disputes => this.disputes ??= new TestHelpers.Issuing.DisputeService(
             this.Requestor);
 
         public virtual TestHelpers.Issuing.PersonalizationDesignService PersonalizationDesigns => this.personalizationDesigns ??= new TestHelpers.Issuing.PersonalizationDesignService(

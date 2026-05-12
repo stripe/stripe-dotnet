@@ -14,5 +14,12 @@ namespace Stripe
         [JsonProperty("benefit")]
         [STJS.JsonPropertyName("benefit")]
         public SetupIntentSetupDetailsBenefitOptions Benefit { get; set; }
+
+        /// <summary>
+        /// The ID of the Payment Location for this SetupIntent.
+        /// </summary>
+        [JsonProperty("location")]
+        [STJS.JsonPropertyName("location")]
+        public string Location { get; set; }
     }
 }
