@@ -286,6 +286,7 @@ namespace Stripe
             }
         }
 #endif
+
         internal async IAsyncEnumerable<T> V2ListRequestAutoPagingAsync<T>(
             string url,
             BaseOptions options,
@@ -522,6 +523,7 @@ namespace Stripe
             }
         }
 #endif
+
         internal async IAsyncEnumerable<T> SearchRequestAutoPagingAsync<T>(
             string url,
             SearchOptions options,
