@@ -81,6 +81,13 @@ namespace Stripe.DelegatedCheckout
         public string Customer { get; set; }
 
         /// <summary>
+        /// The discounts applied to and rejected from this requested session.
+        /// </summary>
+        [JsonProperty("discounts")]
+        [STJS.JsonPropertyName("discounts")]
+        public RequestedSessionDiscounts Discounts { get; set; }
+
+        /// <summary>
         /// Time at which the requested session expires. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("expires_at")]

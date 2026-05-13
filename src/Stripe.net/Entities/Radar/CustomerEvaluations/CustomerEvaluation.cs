@@ -72,5 +72,12 @@ namespace Stripe.Radar
         [JsonProperty("signals")]
         [STJS.JsonPropertyName("signals")]
         public CustomerEvaluationSignals Signals { get; set; }
+
+        /// <summary>
+        /// The outcome status reported for this evaluation: allowed, restricted, or blocked.
+        /// </summary>
+        [JsonProperty("status")]
+        [STJS.JsonPropertyName("status")]
+        public string Status { get; set; }
     }
 }

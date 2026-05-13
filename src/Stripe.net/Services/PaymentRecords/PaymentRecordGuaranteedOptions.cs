@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -17,6 +18,13 @@ namespace Stripe
         [STJS.JsonPropertyName("guaranteed_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
         public DateTime? GuaranteedAt { get; set; }
+
+        /// <summary>
+        /// Payment evaluations associated with this reported payment.
+        /// </summary>
+        [JsonProperty("payment_evaluations")]
+        [STJS.JsonPropertyName("payment_evaluations")]
+        public List<string> PaymentEvaluations { get; set; }
 
         /// <summary>
         /// Processor information for this payment.

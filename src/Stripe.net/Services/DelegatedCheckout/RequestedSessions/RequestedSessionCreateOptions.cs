@@ -31,6 +31,13 @@ namespace Stripe.DelegatedCheckout
         public string Customer { get; set; }
 
         /// <summary>
+        /// The discount codes to apply to this requested session.
+        /// </summary>
+        [JsonProperty("discounts")]
+        [STJS.JsonPropertyName("discounts")]
+        public RequestedSessionDiscountsOptions Discounts { get; set; }
+
+        /// <summary>
         /// The details of the fulfillment.
         /// </summary>
         [JsonProperty("fulfillment_details")]

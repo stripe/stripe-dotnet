@@ -10,6 +10,8 @@ namespace Stripe.V2.MoneyManagement
 
     public class FinancialAccountService : Service
     {
+        private V2.MoneyManagement.FinancialAccounts.StatementService statements;
+
         internal FinancialAccountService(ApiRequestor requestor)
             : base(requestor)
         {
@@ -19,6 +21,9 @@ namespace Stripe.V2.MoneyManagement
             : base(client)
         {
         }
+
+        public virtual V2.MoneyManagement.FinancialAccounts.StatementService Statements => this.statements ??= new V2.MoneyManagement.FinancialAccounts.StatementService(
+            this.Requestor);
 
         /// <summary>
         /// Closes a FinancialAccount with or without forwarding settings.

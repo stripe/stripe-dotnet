@@ -74,6 +74,13 @@ namespace Stripe.V2.MoneyManagement
         public string Description { get; set; }
 
         /// <summary>
+        /// The dispute details.
+        /// </summary>
+        [JsonProperty("dispute_details")]
+        [STJS.JsonPropertyName("dispute_details")]
+        public ReceivedDebitDisputeDetails DisputeDetails { get; set; }
+
+        /// <summary>
         /// The amount and currency of the original/external debit request.
         /// </summary>
         [JsonProperty("external_amount")]

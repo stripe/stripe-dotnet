@@ -45,6 +45,13 @@ namespace Stripe.V2.MoneyManagement
         public string CurrencyConversion { get; set; }
 
         /// <summary>
+        /// If applicable, the ID of the DebitDispute that created this Transaction.
+        /// </summary>
+        [JsonProperty("debit_dispute")]
+        [STJS.JsonPropertyName("debit_dispute")]
+        public string DebitDispute { get; set; }
+
+        /// <summary>
         /// If applicable, the ID of the Dispute that created this Transaction.
         /// </summary>
         [JsonProperty("dispute")]
@@ -203,11 +210,11 @@ namespace Stripe.V2.MoneyManagement
         /// Open Enum. Type of the flow that created the Transaction. The field matching this value
         /// will contain the ID of the flow.
         /// One of: <c>adjustment</c>, <c>application_fee</c>, <c>application_fee_refund</c>,
-        /// <c>charge</c>, <c>currency_conversion</c>, <c>dispute</c>, <c>fee_transaction</c>,
-        /// <c>inbound_transfer</c>, <c>outbound_payment</c>, <c>outbound_transfer</c>,
-        /// <c>payout</c>, <c>received_credit</c>, <c>received_debit</c>, <c>refund</c>,
-        /// <c>reserve_hold</c>, <c>reserve_release</c>, <c>topup</c>, <c>transfer</c>,
-        /// <c>transfer_reversal</c>, <c>treasury_credit_reversal</c>,
+        /// <c>charge</c>, <c>currency_conversion</c>, <c>debit_dispute</c>, <c>dispute</c>,
+        /// <c>fee_transaction</c>, <c>inbound_transfer</c>, <c>outbound_payment</c>,
+        /// <c>outbound_transfer</c>, <c>payout</c>, <c>received_credit</c>, <c>received_debit</c>,
+        /// <c>refund</c>, <c>reserve_hold</c>, <c>reserve_release</c>, <c>topup</c>,
+        /// <c>transfer</c>, <c>transfer_reversal</c>, <c>treasury_credit_reversal</c>,
         /// <c>treasury_debit_reversal</c>, <c>treasury_inbound_transfer</c>,
         /// <c>treasury_issuing_authorization</c>, <c>treasury_other</c>,
         /// <c>treasury_outbound_payment</c>, <c>treasury_outbound_transfer</c>,

@@ -16,6 +16,13 @@ namespace Stripe.DelegatedCheckout
         public long AmountDiscount { get; set; }
 
         /// <summary>
+        /// The sale amount for this line item.
+        /// </summary>
+        [JsonProperty("amount_sale")]
+        [STJS.JsonPropertyName("amount_sale")]
+        public long AmountSale { get; set; }
+
+        /// <summary>
         /// The total before any discounts or taxes are applied.
         /// </summary>
         [JsonProperty("amount_subtotal")]

@@ -318,6 +318,8 @@ namespace Stripe
                 { "v2.core.connection_session", typeof(V2.Core.ConnectionSession) },
                 { "v2.core.event", typeof(V2.Core.Event) },
                 { "v2.core.event_destination", typeof(V2.Core.EventDestination) },
+                { "v2.core.fee_batch", typeof(V2.Core.FeeBatch) },
+                { "v2.core.fee_entry", typeof(V2.Core.FeeEntry) },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },
                 { "v2.core.vault.us_bank_account", typeof(V2.Core.Vault.UsBankAccount) },
                 {
@@ -334,9 +336,14 @@ namespace Stripe
                     "v2.money_management.currency_conversion", typeof(
                     V2.MoneyManagement.CurrencyConversion)
                 },
+                { "v2.money_management.debit_dispute", typeof(V2.MoneyManagement.DebitDispute) },
                 {
                     "v2.money_management.financial_account", typeof(
                     V2.MoneyManagement.FinancialAccount)
+                },
+                {
+                    "v2.money_management.financial_account_statement", typeof(
+                    V2.MoneyManagement.FinancialAccountStatement)
                 },
                 {
                     "v2.money_management.financial_address", typeof(
@@ -1351,6 +1358,14 @@ namespace Stripe
                 {
                     "v2.money_management.financial_account.updated", typeof(
                     Events.V2MoneyManagementFinancialAccountUpdatedEvent)
+                },
+                {
+                    "v2.money_management.financial_account_statement.created", typeof(
+                    Events.V2MoneyManagementFinancialAccountStatementCreatedEvent)
+                },
+                {
+                    "v2.money_management.financial_account_statement.restated", typeof(
+                    Events.V2MoneyManagementFinancialAccountStatementRestatedEvent)
                 },
                 {
                     "v2.money_management.financial_address.activated", typeof(
@@ -2740,6 +2755,14 @@ namespace Stripe
                 {
                     "v2.money_management.financial_account.updated", typeof(
                     Events.V2MoneyManagementFinancialAccountUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.financial_account_statement.created", typeof(
+                    Events.V2MoneyManagementFinancialAccountStatementCreatedEventNotification)
+                },
+                {
+                    "v2.money_management.financial_account_statement.restated", typeof(
+                    Events.V2MoneyManagementFinancialAccountStatementRestatedEventNotification)
                 },
                 {
                     "v2.money_management.financial_address.activated", typeof(

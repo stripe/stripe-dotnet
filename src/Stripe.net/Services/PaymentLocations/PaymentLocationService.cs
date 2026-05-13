@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System;
+    using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
@@ -73,6 +74,22 @@ namespace Stripe
         public virtual Task<PaymentLocation> GetAsync(string id, PaymentLocationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentLocation>(BaseAddress.Api, HttpMethod.Get, $"/v1/payment_locations/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>List all Payment Locations.</p>.
+        /// </summary>
+        public virtual StripeList<PaymentLocation> List(PaymentLocationListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeList<PaymentLocation>>(BaseAddress.Api, HttpMethod.Get, $"/v1/payment_locations", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>List all Payment Locations.</p>.
+        /// </summary>
+        public virtual Task<StripeList<PaymentLocation>> ListAsync(PaymentLocationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<StripeList<PaymentLocation>>(BaseAddress.Api, HttpMethod.Get, $"/v1/payment_locations", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
