@@ -13,7 +13,8 @@ namespace Stripe.DelegatedCheckout
         private Dictionary<string, string> sharedMetadata;
 
         /// <summary>
-        /// The discount codes to apply to this requested session.
+        /// The discount codes to apply to this requested session. Pass an empty value to remove all
+        /// applied discounts.
         /// </summary>
         [JsonProperty("discounts")]
         [STJS.JsonPropertyName("discounts")]
