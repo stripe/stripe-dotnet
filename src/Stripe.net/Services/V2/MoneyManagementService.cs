@@ -9,6 +9,7 @@ namespace Stripe.V2
     {
         private V2.MoneyManagement.AdjustmentService adjustments;
         private V2.MoneyManagement.CurrencyConversionService currencyConversions;
+        private V2.MoneyManagement.DebitDisputeService debitDisputes;
         private V2.MoneyManagement.FinancialAccountService financialAccounts;
         private V2.MoneyManagement.FinancialAddressService financialAddresses;
         private V2.MoneyManagement.InboundTransferService inboundTransfers;
@@ -38,6 +39,9 @@ namespace Stripe.V2
             this.Requestor);
 
         public virtual V2.MoneyManagement.CurrencyConversionService CurrencyConversions => this.currencyConversions ??= new V2.MoneyManagement.CurrencyConversionService(
+            this.Requestor);
+
+        public virtual V2.MoneyManagement.DebitDisputeService DebitDisputes => this.debitDisputes ??= new V2.MoneyManagement.DebitDisputeService(
             this.Requestor);
 
         public virtual V2.MoneyManagement.FinancialAccountService FinancialAccounts => this.financialAccounts ??= new V2.MoneyManagement.FinancialAccountService(

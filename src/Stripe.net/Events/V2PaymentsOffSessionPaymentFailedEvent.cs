@@ -12,6 +12,14 @@ namespace Stripe.Events
     public class V2PaymentsOffSessionPaymentFailedEvent : V2.Core.Event
     {
         /// <summary>
+        /// Data for the v2.payments.off_session_payment.failed event.
+        /// </summary>
+        [JsonProperty("data")]
+        [STJS.JsonPropertyName("data")]
+
+        public V2PaymentsOffSessionPaymentFailedEventData Data { get; set; }
+
+        /// <summary>
         /// Object containing the reference to API resource relevant to the event.
         /// </summary>
         [JsonProperty("related_object")]

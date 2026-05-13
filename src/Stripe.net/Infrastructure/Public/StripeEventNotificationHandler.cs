@@ -352,6 +352,8 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementAdjustmentCreatedEventNotification>> v2MoneyManagementAdjustmentCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification>> v2MoneyManagementFinancialAccountCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification>> v2MoneyManagementFinancialAccountUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountStatementCreatedEventNotification>> v2MoneyManagementFinancialAccountStatementCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountStatementRestatedEventNotification>> v2MoneyManagementFinancialAccountStatementRestated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAddressActivatedEventNotification>> v2MoneyManagementFinancialAddressActivated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAddressFailedEventNotification>> v2MoneyManagementFinancialAddressFailed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferAvailableEventNotification>> v2MoneyManagementInboundTransferAvailable;
@@ -2474,6 +2476,18 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountStatementCreatedEventNotification>> V2MoneyManagementFinancialAccountStatementCreated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAccountStatementCreated, value, "v2.money_management.financial_account_statement.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountStatementRestatedEventNotification>> V2MoneyManagementFinancialAccountStatementRestated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAccountStatementRestated, value, "v2.money_management.financial_account_statement.restated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAddressActivatedEventNotification>> V2MoneyManagementFinancialAddressActivated
         {
             add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAddressActivated, value, "v2.money_management.financial_address.activated"); }
@@ -4314,6 +4328,14 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification)
                 {
                     this.v2MoneyManagementFinancialAccountUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification>((Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAccountStatementCreatedEventNotification)
+                {
+                    this.v2MoneyManagementFinancialAccountStatementCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountStatementCreatedEventNotification>((Stripe.Events.V2MoneyManagementFinancialAccountStatementCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAccountStatementRestatedEventNotification)
+                {
+                    this.v2MoneyManagementFinancialAccountStatementRestated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountStatementRestatedEventNotification>((Stripe.Events.V2MoneyManagementFinancialAccountStatementRestatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAddressActivatedEventNotification)
                 {
