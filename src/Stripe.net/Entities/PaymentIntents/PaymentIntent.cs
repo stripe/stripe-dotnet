@@ -53,6 +53,16 @@ namespace Stripe
         public PaymentIntentAllocatedFunds AllocatedFunds { get; set; }
 
         /// <summary>
+        /// The list of payment method types allowed for use with this payment. Stripe automatically
+        /// returns compatible payment methods from this list in the <c>payment_method_types</c>
+        /// field of the response, based on the other PaymentIntent parameters, such as
+        /// <c>currency</c>, <c>amount</c>, and <c>customer</c>.
+        /// </summary>
+        [JsonProperty("allowed_payment_method_types")]
+        [STJS.JsonPropertyName("allowed_payment_method_types")]
+        public List<string> AllowedPaymentMethodTypes { get; set; }
+
+        /// <summary>
         /// Amount intended to be collected by this PaymentIntent. A positive integer representing
         /// how much to charge in the <a
         /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a> (e.g.,
