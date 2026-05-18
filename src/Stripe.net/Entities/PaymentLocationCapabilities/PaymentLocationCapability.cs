@@ -35,6 +35,14 @@ namespace Stripe
         public string Capability { get; set; }
 
         /// <summary>
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
+        /// </summary>
+        [JsonProperty("livemode")]
+        [STJS.JsonPropertyName("livemode")]
+        public bool Livemode { get; set; }
+
+        /// <summary>
         /// The payment location for which the capability enables functionality.
         /// </summary>
         [JsonProperty("location")]
