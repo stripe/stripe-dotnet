@@ -38,6 +38,10 @@ namespace Stripe
         [STJS.JsonPropertyName("object")]
         public string Object { get; set; }
 
+        [JsonProperty("advanced_feature_details")]
+        [STJS.JsonPropertyName("advanced_feature_details")]
+        public PaymentIntentAdvancedFeatureDetails AdvancedFeatureDetails { get; set; }
+
         /// <summary>
         /// Details about the agent that initiated the creation of this PaymentIntent.
         /// </summary>
