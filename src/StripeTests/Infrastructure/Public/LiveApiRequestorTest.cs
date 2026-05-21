@@ -2,10 +2,12 @@ namespace StripeTests
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Net;
     using System.Net.Http;
+    using System.Net.Http.Headers;
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
@@ -709,6 +711,137 @@ namespace StripeTests
             await service.CreateAsync(new CustomerCreateOptions() { }, new RequestOptions { StripeAccount = "acct_2345" });
             lastRequest = this.httpClient.LastRequest;
             Assert.Equal("acct_2345", lastRequest.StripeHeaders["Stripe-Account"]);
+        }
+
+        [Fact]
+        public async Task RequestAsync_EmitsTraceWarning_WhenStripeNoticeHeaderPresent()
+        {
+            var headers = BuildHeaders("Stripe-Notice", "test notice message");
+            var response = new StripeResponse(HttpStatusCode.OK, headers, "{\"id\": \"ch_123\"}");
+            this.httpClient.Response = response;
+
+            var listener = new CapturingTraceListener();
+            Trace.Listeners.Add(listener);
+            try
+            {
+                await this.apiRequestor.RequestAsync<Charge>(
+                    BaseAddress.Api,
+                    HttpMethod.Post,
+                    "/v1/charges",
+                    this.options,
+                    this.requestOptions);
+
+                Assert.Contains("test notice message", listener.Warnings);
+            }
+            finally
+            {
+                Trace.Listeners.Remove(listener);
+            }
+        }
+
+        [Fact]
+        public async Task RequestAsync_NoTraceWarning_WhenStripeNoticeHeaderAbsent()
+        {
+            var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");
+            this.httpClient.Response = response;
+
+            var listener = new CapturingTraceListener();
+            Trace.Listeners.Add(listener);
+            try
+            {
+                await this.apiRequestor.RequestAsync<Charge>(
+                    BaseAddress.Api,
+                    HttpMethod.Post,
+                    "/v1/charges",
+                    this.options,
+                    this.requestOptions);
+
+                Assert.Empty(listener.Warnings);
+            }
+            finally
+            {
+                Trace.Listeners.Remove(listener);
+            }
+        }
+
+        [Fact]
+        public async Task RawRequestAsync_EmitsTraceWarning_WhenStripeNoticeHeaderPresent()
+        {
+            var headers = BuildHeaders("Stripe-Notice", "raw notice message");
+            var response = new StripeResponse(HttpStatusCode.OK, headers, "{\"id\": \"ch_123\"}");
+            this.httpClient.Response = response;
+
+            var listener = new CapturingTraceListener();
+            Trace.Listeners.Add(listener);
+            try
+            {
+                await this.apiRequestor.RawRequestAsync(
+                    HttpMethod.Post,
+                    "/v1/charges",
+                    "foo=bar");
+
+                Assert.Contains("raw notice message", listener.Warnings);
+            }
+            finally
+            {
+                Trace.Listeners.Remove(listener);
+            }
+        }
+
+        [Fact]
+        public async Task RawRequestAsync_NoTraceWarning_WhenStripeNoticeHeaderAbsent()
+        {
+            var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");
+            this.httpClient.Response = response;
+
+            var listener = new CapturingTraceListener();
+            Trace.Listeners.Add(listener);
+            try
+            {
+                await this.apiRequestor.RawRequestAsync(
+                    HttpMethod.Post,
+                    "/v1/charges",
+                    "foo=bar");
+
+                Assert.Empty(listener.Warnings);
+            }
+            finally
+            {
+                Trace.Listeners.Remove(listener);
+            }
+        }
+
+        private static HttpResponseHeaders BuildHeaders(string name, string value)
+        {
+            var message = new HttpResponseMessage();
+            message.Headers.Add(name, value);
+            return message.Headers;
+        }
+
+        private class CapturingTraceListener : TraceListener
+        {
+            public List<string> Warnings { get; } = new List<string>();
+
+            public override void TraceEvent(
+                TraceEventCache eventCache,
+                string source,
+                TraceEventType eventType,
+                int id,
+                string message)
+            {
+                if (eventType == TraceEventType.Warning)
+                {
+                    this.Warnings.Add(message);
+                }
+            }
+
+            public override void Write(string message)
+            {
+            }
+
+            public override void WriteLine(string message)
+            {
+            }
         }
 
         private class Foo : StripeEntity<Foo>

@@ -2,10 +2,12 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Net;
     using System.Net.Http;
+    using System.Net.Http.Headers;
     using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;
@@ -225,6 +227,18 @@ namespace Stripe
             }
         }
 
+        private static void MaybeEmitStripeNotice(HttpResponseHeaders headers)
+        {
+            if (headers != null && headers.Contains("Stripe-Notice"))
+            {
+                var notice = headers.GetValues("Stripe-Notice").FirstOrDefault();
+                if (notice != null)
+                {
+                    Trace.TraceWarning(notice);
+                }
+            }
+        }
+
         // Note: BaseOptions options really means query params here
         private StripeRequest MakeStripeRequest(
             BaseAddress baseAddress,
@@ -273,6 +287,8 @@ namespace Stripe
 
                 throw BuildStripeException(response);
             }
+
+            MaybeEmitStripeNotice(response.Headers);
 
             T obj;
             try
@@ -361,6 +377,8 @@ namespace Stripe
             {
                 throw BuildStripeException(response);
             }
+
+            MaybeEmitStripeNotice(response.Headers);
 
             return response;
         }
