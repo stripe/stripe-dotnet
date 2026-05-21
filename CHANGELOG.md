@@ -1,5 +1,24 @@
 # Changelog
 
+## 51.2.0-alpha.6 - 2026-05-20
+* [#3384](https://github.com/stripe/stripe-dotnet/pull/3384) Update generated code for private-preview
+  * Add support for new resource `PaymentLocationCapability`
+  * Add support for `Get`, `List`, and `Update` methods on resource `PaymentLocationCapability`
+  * Add support for `Close` and `SimulateNetworkLifecycleDisputeResponse` test helper methods on resource `Issuing.Dispute`
+  * Change type of `DelegatedCheckoutRequestedSessionDiscountsOptions.Codes` from `array(string)` to `emptyable(array(string))`
+  * ⚠️ Remove support for `CreditedItems` on `InvoiceItem.ProrationDetails`
+  * Add support for `BalanceResponse` on `Issuing.Authorization`
+  * Add support for `PaymentEvaluations` on `PaymentAttemptRecordReportCanceledOptions`, `PaymentAttemptRecordReportFailedOptions`, `PaymentRecordFailedOptions`, `PaymentRecordReportPaymentAttemptCanceledOptions`, and `PaymentRecordReportPaymentAttemptFailedOptions`
+  * Add support for `Enabled` on `PaymentIntentPaymentDetailsBenefitFrMealVoucherOptions` and `SetupIntentSetupDetailsBenefitFrMealVoucherOptions`
+  * Add support for `AdvancedFeatureDetails` and `AllowedPaymentMethodTypes` on `PaymentIntent`
+  * Change type of `PaymentLocationAddressOptions.City` from `string` to `emptyable(string)`
+  * Change type of `PaymentLocationAddressOptions.Line1` from `string` to `emptyable(string)`
+  * Change type of `PaymentLocationAddressOptions.Line2` from `string` to `emptyable(string)`
+  * Change type of `PaymentLocationAddressOptions.PostalCode` from `string` to `emptyable(string)`
+  * Change type of `PaymentLocationAddressOptions.State` from `string` to `emptyable(string)`
+  * ⚠️ Remove support for `PaymentBehavior` on `SubscriptionResumeOptions`
+  * ⚠️ Remove support for `StatusDetails` on `Subscription`
+
 ## 51.2.0-alpha.5 - 2026-05-13
 * [#3382](https://github.com/stripe/stripe-dotnet/pull/3382) Update generated code for private-preview
   * Add support for new resources `V2.Core.FeeBatch`, `V2.Core.FeeEntry`, `V2.MoneyManagement.DebitDispute`, and `V2.MoneyManagement.FinancialAccountStatement`
