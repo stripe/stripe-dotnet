@@ -68,6 +68,10 @@ namespace Stripe.Issuing
         [STJS.JsonPropertyName("authorization_method")]
         public string AuthorizationMethod { get; set; }
 
+        [JsonProperty("balance_response")]
+        [STJS.JsonPropertyName("balance_response")]
+        public AuthorizationBalanceResponse BalanceResponse { get; set; }
+
         /// <summary>
         /// List of balance transactions associated with this authorization.
         /// </summary>

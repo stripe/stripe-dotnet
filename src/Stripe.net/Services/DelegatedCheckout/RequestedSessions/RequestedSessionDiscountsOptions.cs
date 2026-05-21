@@ -10,7 +10,7 @@ namespace Stripe.DelegatedCheckout
     public class RequestedSessionDiscountsOptions : INestedOptions
     {
         /// <summary>
-        /// Array of discount codes to apply.
+        /// Array of discount codes to apply. Pass an empty value to remove all applied discounts.
         /// </summary>
         [JsonProperty("codes")]
         [STJS.JsonPropertyName("codes")]

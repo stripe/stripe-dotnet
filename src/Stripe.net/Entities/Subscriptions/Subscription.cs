@@ -713,13 +713,6 @@ namespace Stripe
         [STJS.JsonPropertyName("status")]
         public string Status { get; set; }
 
-        /// <summary>
-        /// Describes changes to the subscription's status.
-        /// </summary>
-        [JsonProperty("status_details")]
-        [STJS.JsonPropertyName("status_details")]
-        public SubscriptionStatusDetails StatusDetails { get; set; }
-
         #region Expandable TestClock
 
         /// <summary>

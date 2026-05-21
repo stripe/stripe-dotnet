@@ -25,6 +25,40 @@ namespace Stripe.TestHelpers.Issuing
         }
 
         /// <summary>
+        /// <p>Test helper: closes a test-mode Issuing dispute as won or lost.</p>.
+        /// </summary>
+        public virtual Stripe.Issuing.Dispute Close(string id, DisputeCloseOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Stripe.Issuing.Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/disputes/{WebUtility.UrlEncode(id)}/close", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Test helper: closes a test-mode Issuing dispute as won or lost.</p>.
+        /// </summary>
+        public virtual Task<Stripe.Issuing.Dispute> CloseAsync(string id, DisputeCloseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Stripe.Issuing.Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/disputes/{WebUtility.UrlEncode(id)}/close", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Test helper: populates <c>network_lifecycle.dispute_response</c> on a test-mode Visa
+        /// Issuing Dispute using placeholder file tokens. Only supported for Visa disputes.</p>.
+        /// </summary>
+        public virtual Stripe.Issuing.Dispute SimulateNetworkLifecycleDisputeResponse(string id, DisputeSimulateNetworkLifecycleDisputeResponseOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Stripe.Issuing.Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/disputes/{WebUtility.UrlEncode(id)}/simulate_network_lifecycle_dispute_response", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Test helper: populates <c>network_lifecycle.dispute_response</c> on a test-mode Visa
+        /// Issuing Dispute using placeholder file tokens. Only supported for Visa disputes.</p>.
+        /// </summary>
+        public virtual Task<Stripe.Issuing.Dispute> SimulateNetworkLifecycleDisputeResponseAsync(string id, DisputeSimulateNetworkLifecycleDisputeResponseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Stripe.Issuing.Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/disputes/{WebUtility.UrlEncode(id)}/simulate_network_lifecycle_dispute_response", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Test helper: populates <c>network_lifecycle.pre_arbitration_response</c> on a
         /// test-mode Visa Issuing Dispute using placeholder file tokens. Only supported for Visa
         /// disputes in the collaboration flow.</p>.

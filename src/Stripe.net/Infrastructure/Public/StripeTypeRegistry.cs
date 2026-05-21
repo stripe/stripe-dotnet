@@ -152,6 +152,7 @@ namespace Stripe
                 },
                 { "payment_link", typeof(PaymentLink) },
                 { "payment_location", typeof(PaymentLocation) },
+                { "payment_location_capability", typeof(PaymentLocationCapability) },
                 { "payment_method", typeof(PaymentMethod) },
                 { "payment_method_balance", typeof(PaymentMethodBalance) },
                 { "payment_method_configuration", typeof(PaymentMethodConfiguration) },

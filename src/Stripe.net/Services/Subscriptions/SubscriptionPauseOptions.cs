@@ -25,7 +25,7 @@ namespace Stripe
         public string InvoicingBehavior { get; set; }
 
         /// <summary>
-        /// The type of pause to apply.
+        /// The type of pause to apply. Defaults to <c>subscription</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

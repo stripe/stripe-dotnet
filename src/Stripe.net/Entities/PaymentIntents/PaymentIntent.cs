@@ -38,6 +38,10 @@ namespace Stripe
         [STJS.JsonPropertyName("object")]
         public string Object { get; set; }
 
+        [JsonProperty("advanced_feature_details")]
+        [STJS.JsonPropertyName("advanced_feature_details")]
+        public PaymentIntentAdvancedFeatureDetails AdvancedFeatureDetails { get; set; }
+
         /// <summary>
         /// Details about the agent that initiated the creation of this PaymentIntent.
         /// </summary>
@@ -51,6 +55,16 @@ namespace Stripe
         [JsonProperty("allocated_funds")]
         [STJS.JsonPropertyName("allocated_funds")]
         public PaymentIntentAllocatedFunds AllocatedFunds { get; set; }
+
+        /// <summary>
+        /// The list of payment method types allowed for use with this payment. Stripe automatically
+        /// returns compatible payment methods from this list in the <c>payment_method_types</c>
+        /// field of the response, based on the other PaymentIntent parameters, such as
+        /// <c>currency</c>, <c>amount</c>, and <c>customer</c>.
+        /// </summary>
+        [JsonProperty("allowed_payment_method_types")]
+        [STJS.JsonPropertyName("allowed_payment_method_types")]
+        public List<string> AllowedPaymentMethodTypes { get; set; }
 
         /// <summary>
         /// Amount intended to be collected by this PaymentIntent. A positive integer representing

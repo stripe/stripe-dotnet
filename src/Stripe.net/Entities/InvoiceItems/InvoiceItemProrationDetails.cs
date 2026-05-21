@@ -9,10 +9,6 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class InvoiceItemProrationDetails : StripeEntity<InvoiceItemProrationDetails>
     {
-        [JsonProperty("credited_items")]
-        [STJS.JsonPropertyName("credited_items")]
-        public InvoiceItemProrationDetailsCreditedItems CreditedItems { get; set; }
-
         /// <summary>
         /// Discount amounts applied when the proration was created.
         /// </summary>

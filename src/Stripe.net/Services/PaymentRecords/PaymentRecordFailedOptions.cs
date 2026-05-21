@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -28,6 +29,13 @@ namespace Stripe
         [JsonProperty("failure_code")]
         [STJS.JsonPropertyName("failure_code")]
         public string FailureCode { get; set; }
+
+        /// <summary>
+        /// Payment evaluations associated with this reported payment.
+        /// </summary>
+        [JsonProperty("payment_evaluations")]
+        [STJS.JsonPropertyName("payment_evaluations")]
+        public List<string> PaymentEvaluations { get; set; }
 
         /// <summary>
         /// Processor information for this payment.

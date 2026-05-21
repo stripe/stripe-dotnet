@@ -39,5 +39,12 @@ namespace Stripe
                 this.SetTracker.Track();
             }
         }
+
+        /// <summary>
+        /// Payment evaluations associated with this reported payment.
+        /// </summary>
+        [JsonProperty("payment_evaluations")]
+        [STJS.JsonPropertyName("payment_evaluations")]
+        public List<string> PaymentEvaluations { get; set; }
     }
 }
