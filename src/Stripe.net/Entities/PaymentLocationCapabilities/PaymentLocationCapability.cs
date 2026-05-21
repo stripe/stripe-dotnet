@@ -79,6 +79,6 @@ namespace Stripe
 
         [JsonIgnore]
         [STJS.JsonIgnore]
-        public string Id => this.Capability;
+        public string Id { get => this.Capability; set => this.Capability = value; }
     }
 }
