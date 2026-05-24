@@ -6,6 +6,7 @@ namespace Stripe
     [STJS.JsonConverter(typeof(Infrastructure.STJStringEnumConverterFactory))]
     public class SubscriptionCancelAt : StringEnum
     {
+        public static readonly SubscriptionCancelAt MaxBilledUntil = new SubscriptionCancelAt("max_billed_until");
         public static readonly SubscriptionCancelAt MaxPeriodEnd = new SubscriptionCancelAt("max_period_end");
         public static readonly SubscriptionCancelAt MinPeriodEnd = new SubscriptionCancelAt("min_period_end");
 

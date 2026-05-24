@@ -13,6 +13,10 @@ namespace Stripe
         [STJS.JsonPropertyName("alipay_handle_redirect")]
         public PaymentIntentNextActionAlipayHandleRedirect AlipayHandleRedirect { get; set; }
 
+        [JsonProperty("blik_authorize")]
+        [STJS.JsonPropertyName("blik_authorize")]
+        public PaymentIntentNextActionBlikAuthorize BlikAuthorize { get; set; }
+
         [JsonProperty("boleto_display_details")]
         [STJS.JsonPropertyName("boleto_display_details")]
         public PaymentIntentNextActionBoletoDisplayDetails BoletoDisplayDetails { get; set; }

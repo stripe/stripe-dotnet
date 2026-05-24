@@ -156,6 +156,10 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("satispay")]
         public SessionPaymentMethodOptionsSatispay Satispay { get; set; }
 
+        [JsonProperty("scalapay")]
+        [STJS.JsonPropertyName("scalapay")]
+        public SessionPaymentMethodOptionsScalapay Scalapay { get; set; }
+
         [JsonProperty("sepa_debit")]
         [STJS.JsonPropertyName("sepa_debit")]
         public SessionPaymentMethodOptionsSepaDebit SepaDebit { get; set; }

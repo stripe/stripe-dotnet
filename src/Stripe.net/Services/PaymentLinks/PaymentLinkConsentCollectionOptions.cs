@@ -20,7 +20,7 @@ namespace Stripe
         /// If set to <c>auto</c>, enables the collection of customer consent for promotional
         /// communications. The Checkout Session will determine whether to display an option to opt
         /// into promotional communication from the merchant depending on the customer's locale.
-        /// Only available to US merchants.
+        /// Only available to US merchants and US customers.
         /// One of: <c>auto</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("promotions")]

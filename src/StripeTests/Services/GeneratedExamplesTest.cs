@@ -7031,7 +7031,7 @@ namespace StripeTests
                 Endpoint = new Stripe.V2.Core.BatchJobCreateEndpointOptions
                 {
                     HttpMethod = "delete",
-                    Path = BatchJobEndpointPath.V1SubscriptionScheduleCreate,
+                    Path = BatchJobEndpointPath.V1SubscriptionUpdate,
                 },
                 Metadata = new Dictionary<string, string>
                 {

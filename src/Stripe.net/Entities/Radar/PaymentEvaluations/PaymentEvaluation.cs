@@ -95,7 +95,7 @@ namespace Stripe.Radar
 
         /// <summary>
         /// Recommended action based on the score of the <c>fraudulent_payment</c> signal. Possible
-        /// values are <c>block</c> and <c>continue</c>.
+        /// values are <c>block</c>, <c>continue</c> and <c>request_three_d_secure</c>.
         /// One of: <c>block</c>, or <c>continue</c>.
         /// </summary>
         [JsonProperty("recommended_action")]

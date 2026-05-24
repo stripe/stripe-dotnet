@@ -10,6 +10,14 @@ namespace Stripe
     public class BalanceSettingsPaymentsPayouts : StripeEntity<BalanceSettingsPaymentsPayouts>
     {
         /// <summary>
+        /// Configures per-currency rules for automatically transferring funds from the payments
+        /// balance to a FinancialAccount.
+        /// </summary>
+        [JsonProperty("automatic_transfer_rules_by_currency")]
+        [STJS.JsonPropertyName("automatic_transfer_rules_by_currency")]
+        public Dictionary<string, List<BalanceSettingsPaymentsPayoutsAutomaticTransferRulesByCurrency>> AutomaticTransferRulesByCurrency { get; set; }
+
+        /// <summary>
         /// The minimum balance amount to retain per currency after automatic payouts. Only funds
         /// that exceed these amounts are paid out. Learn more about the <a
         /// href="https://stripe.com/payouts/minimum-balances-for-automatic-payouts">minimum

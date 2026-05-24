@@ -32,8 +32,9 @@ namespace Stripe
 
         /// <summary>
         /// <p>Cancels a customer’s subscription immediately. The customer won’t be charged again
-        /// for the subscription. After it’s canceled, you can no longer update the subscription or
-        /// its <a href="https://stripe.com/metadata">metadata</a>.</p>.
+        /// for the subscription. After it’s canceled, the subscription is largely immutable. You
+        /// can still update its <a href="https://stripe.com/metadata">metadata</a> and
+        /// <c>cancellation_details</c>.</p>.
         ///
         /// <p>Any pending invoice items that you’ve created are still charged at the end of the
         /// period, unless manually <a
@@ -57,8 +58,9 @@ namespace Stripe
 
         /// <summary>
         /// <p>Cancels a customer’s subscription immediately. The customer won’t be charged again
-        /// for the subscription. After it’s canceled, you can no longer update the subscription or
-        /// its <a href="https://stripe.com/metadata">metadata</a>.</p>.
+        /// for the subscription. After it’s canceled, the subscription is largely immutable. You
+        /// can still update its <a href="https://stripe.com/metadata">metadata</a> and
+        /// <c>cancellation_details</c>.</p>.
         ///
         /// <p>Any pending invoice items that you’ve created are still charged at the end of the
         /// period, unless manually <a
@@ -203,13 +205,39 @@ namespace Stripe
         }
 
         /// <summary>
+        /// <p>Pauses a subscription by transitioning it to the paused status. A paused subscription
+        /// does not generate invoices and will not advance to new billing periods. The subscription
+        /// can be resumed later using the resume endpoint. Cannot pause subscriptions with attached
+        /// schedules.</p>.
+        /// </summary>
+        public virtual Subscription Pause(string id, SubscriptionPauseOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/pause", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Pauses a subscription by transitioning it to the paused status. A paused subscription
+        /// does not generate invoices and will not advance to new billing periods. The subscription
+        /// can be resumed later using the resume endpoint. Cannot pause subscriptions with attached
+        /// schedules.</p>.
+        /// </summary>
+        public virtual Task<Subscription> PauseAsync(string id, SubscriptionPauseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/pause", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Initiates resumption of a paused subscription, optionally resetting the billing cycle
-        /// anchor and creating prorations. If no resumption invoice is generated, the subscription
-        /// becomes <c>active</c> immediately. If a resumption invoice is generated, the
-        /// subscription remains <c>paused</c> until the invoice is paid or marked uncollectible. If
-        /// the invoice isn’t paid by the expiration date, it is voided and the subscription remains
-        /// <c>paused</c>. You can only resume subscriptions with <c>collection_method</c> set to
-        /// <c>charge_automatically</c>. <c>send_invoice</c> subscriptions are not supported.</p>.
+        /// anchor and creating prorations. Resume is only available for subscriptions that use
+        /// <c>charge_automatically</c> collection. If Stripe doesn’t generate a resumption invoice,
+        /// the subscription becomes <c>active</c> immediately. When a resumption invoice is
+        /// generated, Stripe finalizes it immediately. If the invoice is paid or marked
+        /// uncollectible, the subscription becomes <c>active</c>. If the invoice is manually
+        /// voided, the subscription stays <c>paused</c>. If there is no payment attempt within 23
+        /// hours, Stripe voids the invoice and the subscription stays <c>paused</c>. Learn more
+        /// about <a
+        /// href="https://stripe.com/docs/billing/subscriptions/pause#resume-subscriptions">resuming
+        /// subscriptions</a>.</p>.
         /// </summary>
         public virtual Subscription Resume(string id, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null)
         {
@@ -218,12 +246,16 @@ namespace Stripe
 
         /// <summary>
         /// <p>Initiates resumption of a paused subscription, optionally resetting the billing cycle
-        /// anchor and creating prorations. If no resumption invoice is generated, the subscription
-        /// becomes <c>active</c> immediately. If a resumption invoice is generated, the
-        /// subscription remains <c>paused</c> until the invoice is paid or marked uncollectible. If
-        /// the invoice isn’t paid by the expiration date, it is voided and the subscription remains
-        /// <c>paused</c>. You can only resume subscriptions with <c>collection_method</c> set to
-        /// <c>charge_automatically</c>. <c>send_invoice</c> subscriptions are not supported.</p>.
+        /// anchor and creating prorations. Resume is only available for subscriptions that use
+        /// <c>charge_automatically</c> collection. If Stripe doesn’t generate a resumption invoice,
+        /// the subscription becomes <c>active</c> immediately. When a resumption invoice is
+        /// generated, Stripe finalizes it immediately. If the invoice is paid or marked
+        /// uncollectible, the subscription becomes <c>active</c>. If the invoice is manually
+        /// voided, the subscription stays <c>paused</c>. If there is no payment attempt within 23
+        /// hours, Stripe voids the invoice and the subscription stays <c>paused</c>. Learn more
+        /// about <a
+        /// href="https://stripe.com/docs/billing/subscriptions/pause#resume-subscriptions">resuming
+        /// subscriptions</a>.</p>.
         /// </summary>
         public virtual Task<Subscription> ResumeAsync(string id, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -283,27 +315,51 @@ namespace Stripe
         }
 
         /// <summary>
+        /// Serializes a Subscription cancel request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchCancel(string subscriptionExposedId, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null)
+        {
+            var requestId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var requestBody = new Dictionary<string, object>
+            {
+                { "id", requestId },
+                { "path_params", new Dictionary<string, string> { { "subscription_exposed_id", subscriptionExposedId } } },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                requestBody["context"] = stripeContext;
+            }
+
+            return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+        }
+
+        /// <summary>
         /// Serializes a Subscription migrate request into a batch job JSONL line.
         /// </summary>
         public virtual string SerializeBatchMigrate(string subscription, SubscriptionMigrateOptions options = null, RequestOptions requestOptions = null)
         {
-            var itemId = Guid.NewGuid().ToString();
+            var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
             var stripeContext = requestOptions?.StripeContext;
 
-            var item = new Dictionary<string, object>
+            var requestBody = new Dictionary<string, object>
             {
-                { "id", itemId },
+                { "id", requestId },
                 { "path_params", new Dictionary<string, string> { { "subscription", subscription } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
             if (stripeContext != null)
             {
-                item["context"] = stripeContext;
+                requestBody["context"] = stripeContext;
             }
 
-            return JsonSerializer.Serialize(item, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+            return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
         }
 
         /// <summary>
@@ -311,23 +367,23 @@ namespace Stripe
         /// </summary>
         public virtual string SerializeBatchUpdate(string subscriptionExposedId, SubscriptionUpdateOptions options = null, RequestOptions requestOptions = null)
         {
-            var itemId = Guid.NewGuid().ToString();
+            var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
             var stripeContext = requestOptions?.StripeContext;
 
-            var item = new Dictionary<string, object>
+            var requestBody = new Dictionary<string, object>
             {
-                { "id", itemId },
+                { "id", requestId },
                 { "path_params", new Dictionary<string, string> { { "subscription_exposed_id", subscriptionExposedId } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
             if (stripeContext != null)
             {
-                item["context"] = stripeContext;
+                requestBody["context"] = stripeContext;
             }
 
-            return JsonSerializer.Serialize(item, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+            return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
         }
 
         /// <summary>

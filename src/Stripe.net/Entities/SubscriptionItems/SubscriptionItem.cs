@@ -36,7 +36,7 @@ namespace Stripe
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("billed_until")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime? BilledUntil { get; set; }
+        public DateTime BilledUntil { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the related subscription
