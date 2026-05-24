@@ -9,6 +9,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SetupIntentNextAction : StripeEntity<SetupIntentNextAction>
     {
+        [JsonProperty("blik_authorize")]
+        [STJS.JsonPropertyName("blik_authorize")]
+        public SetupIntentNextActionBlikAuthorize BlikAuthorize { get; set; }
+
         [JsonProperty("cashapp_handle_redirect_or_display_qr_code")]
         [STJS.JsonPropertyName("cashapp_handle_redirect_or_display_qr_code")]
         public SetupIntentNextActionCashappHandleRedirectOrDisplayQrCode CashappHandleRedirectOrDisplayQrCode { get; set; }

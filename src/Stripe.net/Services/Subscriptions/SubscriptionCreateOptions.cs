@@ -95,6 +95,13 @@ namespace Stripe
         public SubscriptionBillingModeOptions BillingMode { get; set; }
 
         /// <summary>
+        /// Sets the billing schedules for the subscription.
+        /// </summary>
+        [JsonProperty("billing_schedules")]
+        [STJS.JsonPropertyName("billing_schedules")]
+        public List<SubscriptionBillingScheduleOptions> BillingSchedules { get; set; }
+
+        /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period. When updating, pass an empty string to remove previously-defined
         /// thresholds.
@@ -302,38 +309,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// Only applies to subscriptions with <c>collection_method=charge_automatically</c>.
-        ///
-        /// Use <c>allow_incomplete</c> to create Subscriptions with <c>status=incomplete</c> if the
-        /// first invoice can't be paid. Creating Subscriptions with this status allows you to
-        /// manage scenarios where additional customer actions are needed to pay a subscription's
-        /// invoice. For example, SCA regulation may require 3DS authentication to complete payment.
-        /// See the <a
-        /// href="https://docs.stripe.com/billing/migration/strong-customer-authentication">SCA
-        /// Migration Guide</a> for Billing to learn more. This is the default behavior.
-        ///
-        /// Use <c>default_incomplete</c> to create Subscriptions with <c>status=incomplete</c> when
-        /// the first invoice requires payment, otherwise start as active. Subscriptions transition
-        /// to <c>status=active</c> when successfully confirming the PaymentIntent on the first
-        /// invoice. This allows simpler management of scenarios where additional customer actions
-        /// are needed to pay a subscription’s invoice, such as failed payments, <a
-        /// href="https://docs.stripe.com/billing/migration/strong-customer-authentication">SCA
-        /// regulation</a>, or collecting a mandate for a bank debit payment method. If the
-        /// PaymentIntent is not confirmed within 23 hours Subscriptions transition to
-        /// <c>status=incomplete_expired</c>, which is a terminal state.
-        ///
-        /// Use <c>error_if_incomplete</c> if you want Stripe to return an HTTP 402 status code if a
-        /// subscription's first invoice can't be paid. For example, if a payment method requires
-        /// 3DS authentication due to SCA regulation and further customer action is needed, this
-        /// parameter doesn't create a Subscription and returns an error instead. This was the
-        /// default behavior for API versions prior to 2019-03-14. See the <a
-        /// href="https://docs.stripe.com/upgrades#2019-03-14">changelog</a> to learn more.
-        ///
-        /// <c>pending_if_incomplete</c> is only used with updates and cannot be passed when
-        /// creating a Subscription.
-        ///
-        /// Subscriptions with <c>collection_method=send_invoice</c> are automatically activated
-        /// regardless of the first Invoice status.
+        /// Controls how Stripe handles the first invoice when payment is required and
+        /// <c>collection_method=charge_automatically</c>. Subscriptions with
+        /// <c>collection_method=send_invoice</c> are automatically activated regardless of the
+        /// first Invoice status.
         /// One of: <c>allow_incomplete</c>, <c>default_incomplete</c>, <c>error_if_incomplete</c>,
         /// or <c>pending_if_incomplete</c>.
         /// </summary>

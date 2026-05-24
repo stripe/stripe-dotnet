@@ -33,6 +33,14 @@ namespace Stripe
         public SetupIntentPaymentMethodOptionsBacsDebitOptions BacsDebit { get; set; }
 
         /// <summary>
+        /// If this is a <c>bizum</c> SetupIntent, this sub-hash contains details about the Bizum
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("bizum")]
+        [STJS.JsonPropertyName("bizum")]
+        public SetupIntentPaymentMethodOptionsBizumOptions Bizum { get; set; }
+
+        /// <summary>
         /// Configuration for any card setup attempted on this SetupIntent.
         /// </summary>
         [JsonProperty("card")]
@@ -57,7 +65,7 @@ namespace Stripe
 
         /// <summary>
         /// If this is a <c>link</c> PaymentMethod, this sub-hash contains details about the Link
-        /// payment method options.
+        /// payment method options (Link is also known as Onelink in the UK).
         /// </summary>
         [JsonProperty("link")]
         [STJS.JsonPropertyName("link")]

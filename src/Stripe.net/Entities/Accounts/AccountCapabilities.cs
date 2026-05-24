@@ -108,6 +108,15 @@ namespace Stripe
         public string BilliePayments { get; set; }
 
         /// <summary>
+        /// The status of the Bizum capability of the account, or whether the account can directly
+        /// process Bizum payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("bizum_payments")]
+        [STJS.JsonPropertyName("bizum_payments")]
+        public string BizumPayments { get; set; }
+
+        /// <summary>
         /// The status of the blik payments capability of the account, or whether the account can
         /// directly process blik charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -456,6 +465,15 @@ namespace Stripe
         [JsonProperty("satispay_payments")]
         [STJS.JsonPropertyName("satispay_payments")]
         public string SatispayPayments { get; set; }
+
+        /// <summary>
+        /// The status of the Scalapay capability of the account, or whether the account can
+        /// directly process Scalapay payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("scalapay_payments")]
+        [STJS.JsonPropertyName("scalapay_payments")]
+        public string ScalapayPayments { get; set; }
 
         /// <summary>
         /// The status of the SEPA customer_balance payments (EUR currency) capability of the

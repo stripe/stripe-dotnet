@@ -107,6 +107,13 @@ namespace Stripe
         public SubscriptionBillingMode BillingMode { get; set; }
 
         /// <summary>
+        /// Billing schedules for this subscription.
+        /// </summary>
+        [JsonProperty("billing_schedules")]
+        [STJS.JsonPropertyName("billing_schedules")]
+        public List<SubscriptionBillingSchedule> BillingSchedules { get; set; }
+
+        /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period.
         /// </summary>

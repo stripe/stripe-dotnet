@@ -96,6 +96,10 @@ namespace Stripe
         [STJS.JsonPropertyName("sofort")]
         public SetupAttemptPaymentMethodDetailsSofort Sofort { get; set; }
 
+        [JsonProperty("twint")]
+        [STJS.JsonPropertyName("twint")]
+        public SetupAttemptPaymentMethodDetailsTwint Twint { get; set; }
+
         /// <summary>
         /// The type of the payment method used in the SetupIntent (e.g., <c>card</c>). An
         /// additional hash is included on <c>payment_method_details</c> with a name matching this

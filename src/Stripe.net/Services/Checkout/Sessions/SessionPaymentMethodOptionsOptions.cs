@@ -10,7 +10,7 @@ namespace Stripe.Checkout
     {
         /// <summary>
         /// contains details about the ACSS Debit payment method options. You can't set this
-        /// parameter if <c>ui_mode</c> is <c>custom</c>.
+        /// parameter if <c>ui_mode</c> is <c>elements</c>.
         /// </summary>
         [JsonProperty("acss_debit")]
         [STJS.JsonPropertyName("acss_debit")]
@@ -185,7 +185,8 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsKrCardOptions KrCard { get; set; }
 
         /// <summary>
-        /// contains details about the Link payment method options.
+        /// contains details about the Link payment method options (Link is also known as Onelink in
+        /// the UK).
         /// </summary>
         [JsonProperty("link")]
         [STJS.JsonPropertyName("link")]
@@ -288,6 +289,13 @@ namespace Stripe.Checkout
         [JsonProperty("satispay")]
         [STJS.JsonPropertyName("satispay")]
         public SessionPaymentMethodOptionsSatispayOptions Satispay { get; set; }
+
+        /// <summary>
+        /// contains details about the Scalapay payment method options.
+        /// </summary>
+        [JsonProperty("scalapay")]
+        [STJS.JsonPropertyName("scalapay")]
+        public SessionPaymentMethodOptionsScalapayOptions Scalapay { get; set; }
 
         /// <summary>
         /// contains details about the Sepa Debit payment method options.

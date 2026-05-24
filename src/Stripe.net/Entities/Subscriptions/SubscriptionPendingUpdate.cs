@@ -3,12 +3,13 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class SubscriptionPendingUpdate : StripeEntity<SubscriptionPendingUpdate>
+    public class SubscriptionPendingUpdate : StripeEntity<SubscriptionPendingUpdate>, IHasMetadata
     {
         /// <summary>
         /// If the update is applied, determines the date of the first full invoice, and, for plans
@@ -22,6 +23,49 @@ namespace Stripe
         public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>
+        /// The pending subscription-level discount that will be applied when the pending update is
+        /// applied.
+        /// </summary>
+        [JsonProperty("discount")]
+        [STJS.JsonPropertyName("discount")]
+        public Discount Discount { get; set; }
+
+        #region Expandable Discounts
+
+        /// <summary>
+        /// (IDs of the Discounts)
+        /// The discounts that will be applied to the subscription when the pending update is
+        /// applied. Use <c>expand[]=discounts</c> to expand each discount.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public List<string> DiscountIds
+        {
+            get => this.InternalDiscounts?.Select((x) => x.Id).ToList();
+            set => this.InternalDiscounts = SetExpandableArrayIds<Discount>(value);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The discounts that will be applied to the subscription when the pending update is
+        /// applied. Use <c>expand[]=discounts</c> to expand each discount.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public List<Discount> Discounts
+        {
+            get => this.InternalDiscounts?.Select((x) => x.ExpandedObject).ToList();
+            set => this.InternalDiscounts = SetExpandableArrayObjects(value);
+        }
+
+        [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
+        [STJS.JsonPropertyName("discounts")]
+        internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
+        #endregion
+
+        /// <summary>
         /// The point after which the changes reflected by this update will be discarded and no
         /// longer applied.
         /// </summary>
@@ -30,6 +74,15 @@ namespace Stripe
         [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
+        /// </summary>
+        [JsonProperty("metadata")]
+        [STJS.JsonPropertyName("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// List of subscription items, each with an attached plan, that will be set if the update

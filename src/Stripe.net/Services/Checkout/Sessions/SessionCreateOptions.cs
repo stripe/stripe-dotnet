@@ -20,7 +20,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Configure actions after a Checkout Session has expired. You can't set this parameter if
-        /// <c>ui_mode</c> is <c>custom</c>.
+        /// <c>ui_mode</c> is <c>elements</c>.
         /// </summary>
         [JsonProperty("after_expiration")]
         [STJS.JsonPropertyName("after_expiration")]
@@ -52,7 +52,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The branding settings for the Checkout Session. This parameter is not allowed if ui_mode
-        /// is <c>custom</c>.
+        /// is <c>elements</c>.
         /// </summary>
         [JsonProperty("branding_settings")]
         [STJS.JsonPropertyName("branding_settings")]
@@ -61,7 +61,7 @@ namespace Stripe.Checkout
         /// <summary>
         /// If set, Checkout displays a back button and customers will be directed to this URL if
         /// they decide to cancel payment and return to your website. This parameter is not allowed
-        /// if ui_mode is <c>embedded</c> or <c>custom</c>.
+        /// if ui_mode is <c>embedded_page</c> or <c>elements</c>.
         /// </summary>
         [JsonProperty("cancel_url")]
         [STJS.JsonPropertyName("cancel_url")]
@@ -196,14 +196,14 @@ namespace Stripe.Checkout
         /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
-        /// <c>bancontact</c>, <c>billie</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
+        /// <c>bancontact</c>, <c>billie</c>, <c>bizum</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
         /// <c>cashapp</c>, <c>crypto</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>,
         /// <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>,
         /// <c>konbini</c>, <c>kr_card</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>,
         /// <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
         /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
-        /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>,
-        /// <c>sofort</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
+        /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>scalapay</c>,
+        /// <c>sepa_debit</c>, <c>sofort</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
         /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("excluded_payment_method_types")]
@@ -334,7 +334,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Where the user is coming from. This informs the optimizations that are applied to the
-        /// session. You can't set this parameter if <c>ui_mode</c> is <c>custom</c>.
+        /// session. You can't set this parameter if <c>ui_mode</c> is <c>elements</c>.
         /// One of: <c>mobile_app</c>, or <c>web</c>.
         /// </summary>
         [JsonProperty("origin_context")]
@@ -408,15 +408,15 @@ namespace Stripe.Checkout
         /// characteristics.
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
-        /// <c>bancontact</c>, <c>billie</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
+        /// <c>bancontact</c>, <c>billie</c>, <c>bizum</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
         /// <c>cashapp</c>, <c>crypto</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>,
         /// <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>,
         /// <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>,
         /// <c>multibanco</c>, <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>,
         /// <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>,
         /// <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
-        /// <c>sepa_debit</c>, <c>sofort</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
-        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>scalapay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>sunbit</c>, <c>swish</c>,
+        /// <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
         [STJS.JsonPropertyName("payment_method_types")]
@@ -447,7 +447,7 @@ namespace Stripe.Checkout
         public SessionPhoneNumberCollectionOptions PhoneNumberCollection { get; set; }
 
         /// <summary>
-        /// This parameter applies to <c>ui_mode: embedded</c>. Learn more about the <a
+        /// This parameter applies to <c>ui_mode: embedded_page</c>. Learn more about the <a
         /// href="https://docs.stripe.com/payments/checkout/custom-success-page?payment-ui=embedded-form">redirect
         /// behavior</a> of embedded sessions. Defaults to <c>always</c>.
         /// One of: <c>always</c>, <c>if_required</c>, or <c>never</c>.
@@ -459,8 +459,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// The URL to redirect your customer back to after they authenticate or cancel their
         /// payment on the payment method's app or site. This parameter is required if
-        /// <c>ui_mode</c> is <c>embedded</c> or <c>custom</c> and redirect-based payment methods
-        /// are enabled on the session.
+        /// <c>ui_mode</c> is <c>embedded_page</c> or <c>elements</c> and redirect-based payment
+        /// methods are enabled on the session.
         /// </summary>
         [JsonProperty("return_url")]
         [STJS.JsonPropertyName("return_url")]
@@ -502,7 +502,7 @@ namespace Stripe.Checkout
         /// relevant text on the page, such as the submit button. <c>submit_type</c> can only be
         /// specified on Checkout Sessions in <c>payment</c> or <c>subscription</c> mode. If blank
         /// or <c>auto</c>, <c>pay</c> is used. You can't set this parameter if <c>ui_mode</c> is
-        /// <c>custom</c>.
+        /// <c>elements</c>.
         /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
         /// </summary>
         [JsonProperty("submit_type")]
@@ -519,9 +519,10 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The URL to which Stripe should send customers when payment or setup is complete. This
-        /// parameter is not allowed if ui_mode is <c>embedded</c> or <c>custom</c>. If you'd like
-        /// to use information from the successful Checkout Session on your page, read the guide on
-        /// <a href="https://docs.stripe.com/payments/checkout/custom-success-page">customizing your
+        /// parameter is not allowed if ui_mode is <c>embedded_page</c> or <c>elements</c>. If you'd
+        /// like to use information from the successful Checkout Session on your page, read the
+        /// guide on <a
+        /// href="https://docs.stripe.com/payments/checkout/custom-success-page">customizing your
         /// success page</a>.
         /// </summary>
         [JsonProperty("success_url")]
@@ -536,7 +537,7 @@ namespace Stripe.Checkout
         public SessionTaxIdCollectionOptions TaxIdCollection { get; set; }
 
         /// <summary>
-        /// The UI mode of the Session. Defaults to <c>hosted</c>.
+        /// The UI mode of the Session. Defaults to <c>hosted_page</c>.
         /// One of: <c>elements</c>, <c>embedded_page</c>, <c>form</c>, or <c>hosted_page</c>.
         /// </summary>
         [JsonProperty("ui_mode")]

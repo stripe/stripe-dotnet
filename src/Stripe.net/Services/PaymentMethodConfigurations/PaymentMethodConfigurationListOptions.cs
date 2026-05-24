@@ -11,6 +11,13 @@ namespace Stripe
         private string application;
 
         /// <summary>
+        /// Whether the configuration is active.
+        /// </summary>
+        [JsonProperty("active")]
+        [STJS.JsonPropertyName("active")]
+        public bool? Active { get; set; }
+
+        /// <summary>
         /// The Connect application to filter by.
         /// </summary>
         [JsonProperty("application", NullValueHandling = NullValueHandling.Ignore)]

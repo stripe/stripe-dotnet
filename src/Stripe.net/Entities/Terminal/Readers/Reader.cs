@@ -57,8 +57,11 @@ namespace Stripe.Terminal
         /// Device type of the reader.
         /// One of: <c>bbpos_chipper2x</c>, <c>bbpos_wisepad3</c>, <c>bbpos_wisepos_e</c>,
         /// <c>mobile_phone_reader</c>, <c>simulated_stripe_s700</c>, <c>simulated_stripe_s710</c>,
-        /// <c>simulated_wisepos_e</c>, <c>stripe_m2</c>, <c>stripe_s700</c>, <c>stripe_s710</c>, or
-        /// <c>verifone_P400</c>.
+        /// <c>simulated_verifone_m425</c>, <c>simulated_verifone_p630</c>,
+        /// <c>simulated_verifone_ux700</c>, <c>simulated_verifone_v660p</c>,
+        /// <c>simulated_wisepos_e</c>, <c>stripe_m2</c>, <c>stripe_s700</c>, <c>stripe_s710</c>,
+        /// <c>verifone_P400</c>, <c>verifone_m425</c>, <c>verifone_p630</c>, <c>verifone_ux700</c>,
+        /// or <c>verifone_v660p</c>.
         /// </summary>
         [JsonProperty("device_type")]
         [STJS.JsonPropertyName("device_type")]

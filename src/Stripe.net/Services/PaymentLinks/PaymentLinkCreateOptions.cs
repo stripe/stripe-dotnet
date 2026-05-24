@@ -197,6 +197,10 @@ namespace Stripe
         [STJS.JsonPropertyName("payment_method_collection")]
         public string PaymentMethodCollection { get; set; }
 
+        [JsonProperty("payment_method_options")]
+        [STJS.JsonPropertyName("payment_method_options")]
+        public PaymentLinkPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
+
         /// <summary>
         /// The list of payment method types that customers can use. If no value is passed, Stripe
         /// will dynamically show relevant payment methods from your <a
@@ -204,13 +208,14 @@ namespace Stripe
         /// (20+ payment methods <a
         /// href="https://docs.stripe.com/payments/payment-methods/integration-options#payment-method-product-support">supported</a>).
         /// One of: <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>, <c>alma</c>,
-        /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>billie</c>, <c>blik</c>,
-        /// <c>boleto</c>, <c>card</c>, <c>cashapp</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
-        /// <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>, <c>konbini</c>, <c>link</c>, <c>mb_way</c>,
-        /// <c>mobilepay</c>, <c>multibanco</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
-        /// <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
-        /// <c>satispay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>sunbit</c>, <c>swish</c>,
-        /// <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>billie</c>, <c>bizum</c>,
+        /// <c>blik</c>, <c>boleto</c>, <c>card</c>, <c>cashapp</c>, <c>eps</c>, <c>fpx</c>,
+        /// <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>, <c>konbini</c>,
+        /// <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>oxxo</c>,
+        /// <c>p24</c>, <c>pay_by_bank</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>,
+        /// <c>promptpay</c>, <c>satispay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>sunbit</c>,
+        /// <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
+        /// <c>zip</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
         [STJS.JsonPropertyName("payment_method_types")]

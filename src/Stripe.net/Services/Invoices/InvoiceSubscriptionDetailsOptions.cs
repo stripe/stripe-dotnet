@@ -10,6 +10,7 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceSubscriptionDetailsOptions : INestedOptions, IHasSetTracking
     {
+        private List<InvoiceSubscriptionDetailsBillingScheduleOptions> billingSchedules;
         private AnyOf<DateTime?, InvoiceSubscriptionDetailsCancelAt> cancelAt;
         private List<string> defaultTaxRates;
 
@@ -36,6 +37,22 @@ namespace Stripe
         [JsonProperty("billing_mode")]
         [STJS.JsonPropertyName("billing_mode")]
         public InvoiceSubscriptionDetailsBillingModeOptions BillingMode { get; set; }
+
+        /// <summary>
+        /// Sets the billing schedules for the subscription.
+        /// </summary>
+        [JsonProperty("billing_schedules", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("billing_schedules")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public List<InvoiceSubscriptionDetailsBillingScheduleOptions> BillingSchedules
+        {
+            get => this.billingSchedules;
+            set
+            {
+                this.billingSchedules = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A timestamp at which the subscription should cancel. If set to a date before the current

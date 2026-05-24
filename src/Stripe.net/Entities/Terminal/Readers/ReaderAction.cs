@@ -9,6 +9,19 @@ namespace Stripe.Terminal
     public class ReaderAction : StripeEntity<ReaderAction>
     {
         /// <summary>
+        /// The reader action failed due to an <a href="https://docs.stripe.com/api/errors">API
+        /// error</a>. Only present when <c>status</c> is <c>failed</c> and the underlying failure
+        /// was an API error. Avoid parsing the <c>message</c> field for programmatic logic; use
+        /// <c>type</c> or <c>code</c> instead. The <c>message</c> field is for display to humans
+        /// only and may be updated at anytime. Requires <a
+        /// href="https://docs.stripe.com/terminal/readers/stripe-reader-s700-s710#reader-software-version">reader
+        /// version</a> 2.42 or later. Readers on older versions always return null.
+        /// </summary>
+        [JsonProperty("api_error")]
+        [STJS.JsonPropertyName("api_error")]
+        public StripeError ApiError { get; set; }
+
+        /// <summary>
         /// Represents a reader action to collect customer inputs.
         /// </summary>
         [JsonProperty("collect_inputs")]
@@ -42,6 +55,13 @@ namespace Stripe.Terminal
         [JsonProperty("failure_message")]
         [STJS.JsonPropertyName("failure_message")]
         public string FailureMessage { get; set; }
+
+        /// <summary>
+        /// Represents a reader action to print content.
+        /// </summary>
+        [JsonProperty("print_content")]
+        [STJS.JsonPropertyName("print_content")]
+        public ReaderActionPrintContent PrintContent { get; set; }
 
         /// <summary>
         /// Represents a reader action to process a payment intent.
@@ -82,7 +102,7 @@ namespace Stripe.Terminal
         /// <summary>
         /// Type of action performed by the reader.
         /// One of: <c>collect_inputs</c>, <c>collect_payment_method</c>,
-        /// <c>confirm_payment_intent</c>, <c>process_payment_intent</c>,
+        /// <c>confirm_payment_intent</c>, <c>print_content</c>, <c>process_payment_intent</c>,
         /// <c>process_setup_intent</c>, <c>refund_payment</c>, or <c>set_reader_display</c>.
         /// </summary>
         [JsonProperty("type")]
