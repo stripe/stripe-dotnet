@@ -215,27 +215,99 @@ namespace Stripe
         }
 
         /// <summary>
-        /// Serializes a Customer update request into a batch job JSONL line.
+        /// Serializes a Customer create request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchUpdate(string customer, CustomerUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchCreate(CustomerCreateOptions options = null, RequestOptions requestOptions = null)
         {
-            var itemId = Guid.NewGuid().ToString();
+            var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
             var stripeContext = requestOptions?.StripeContext;
 
-            var item = new Dictionary<string, object>
+            var requestBody = new Dictionary<string, object>
             {
-                { "id", itemId },
+                { "id", requestId },
+                { "path_params", null },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                requestBody["context"] = stripeContext;
+            }
+
+            return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+        }
+
+        /// <summary>
+        /// Serializes a Customer delete request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchDelete(string customer, CustomerDeleteOptions options = null, RequestOptions requestOptions = null)
+        {
+            var requestId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var requestBody = new Dictionary<string, object>
+            {
+                { "id", requestId },
                 { "path_params", new Dictionary<string, string> { { "customer", customer } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
             if (stripeContext != null)
             {
-                item["context"] = stripeContext;
+                requestBody["context"] = stripeContext;
             }
 
-            return JsonSerializer.Serialize(item, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+            return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+        }
+
+        /// <summary>
+        /// Serializes a Customer delete_discount request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchDeleteDiscount(string customer, CustomerDeleteDiscountOptions options = null, RequestOptions requestOptions = null)
+        {
+            var requestId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var requestBody = new Dictionary<string, object>
+            {
+                { "id", requestId },
+                { "path_params", new Dictionary<string, string> { { "customer", customer } } },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                requestBody["context"] = stripeContext;
+            }
+
+            return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+        }
+
+        /// <summary>
+        /// Serializes a Customer update request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchUpdate(string customer, CustomerUpdateOptions options = null, RequestOptions requestOptions = null)
+        {
+            var requestId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var requestBody = new Dictionary<string, object>
+            {
+                { "id", requestId },
+                { "path_params", new Dictionary<string, string> { { "customer", customer } } },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                requestBody["context"] = stripeContext;
+            }
+
+            return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
         }
 
         /// <summary>

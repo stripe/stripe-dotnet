@@ -5,6 +5,7 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
+    using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -106,6 +107,30 @@ namespace Stripe
         public virtual IAsyncEnumerable<TaxId> ListAutoPagingAsync(TaxIdListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<TaxId>($"/v1/tax_ids", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Serializes a TaxId create request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchCreate(TaxIdCreateOptions options = null, RequestOptions requestOptions = null)
+        {
+            var requestId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var requestBody = new Dictionary<string, object>
+            {
+                { "id", requestId },
+                { "path_params", null },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                requestBody["context"] = stripeContext;
+            }
+
+            return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
         }
     }
 }

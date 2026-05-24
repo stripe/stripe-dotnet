@@ -5,6 +5,7 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
+    using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -119,6 +120,102 @@ namespace Stripe
         public virtual IAsyncEnumerable<IPaymentSource> ListAutoPagingAsync(string parentId, CustomerPaymentSourceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<IPaymentSource>($"/v1/customers/{WebUtility.UrlEncode(parentId)}/sources", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Serializes a CustomerPaymentSource create request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchCreate(string customer, CustomerPaymentSourceCreateOptions options = null, RequestOptions requestOptions = null)
+        {
+            var requestId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var requestBody = new Dictionary<string, object>
+            {
+                { "id", requestId },
+                { "path_params", new Dictionary<string, string> { { "customer", customer } } },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                requestBody["context"] = stripeContext;
+            }
+
+            return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+        }
+
+        /// <summary>
+        /// Serializes a CustomerPaymentSource delete request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchDelete(string customer, string id, CustomerPaymentSourceDeleteOptions options = null, RequestOptions requestOptions = null)
+        {
+            var requestId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var requestBody = new Dictionary<string, object>
+            {
+                { "id", requestId },
+                { "path_params", new Dictionary<string, string> { { "customer", customer }, { "id", id } } },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                requestBody["context"] = stripeContext;
+            }
+
+            return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+        }
+
+        /// <summary>
+        /// Serializes a CustomerPaymentSource update request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchUpdate(string customer, string id, CustomerPaymentSourceUpdateOptions options = null, RequestOptions requestOptions = null)
+        {
+            var requestId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var requestBody = new Dictionary<string, object>
+            {
+                { "id", requestId },
+                { "path_params", new Dictionary<string, string> { { "customer", customer }, { "id", id } } },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                requestBody["context"] = stripeContext;
+            }
+
+            return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+        }
+
+        /// <summary>
+        /// Serializes a CustomerPaymentSource verify request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchVerify(string customer, string id, CustomerPaymentSourceVerifyOptions options = null, RequestOptions requestOptions = null)
+        {
+            var requestId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var requestBody = new Dictionary<string, object>
+            {
+                { "id", requestId },
+                { "path_params", new Dictionary<string, string> { { "customer", customer }, { "id", id } } },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                requestBody["context"] = stripeContext;
+            }
+
+            return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
         }
 
         /// <summary>

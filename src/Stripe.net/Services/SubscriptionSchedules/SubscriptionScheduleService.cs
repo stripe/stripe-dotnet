@@ -166,23 +166,23 @@ namespace Stripe
         /// </summary>
         public virtual string SerializeBatchCancel(string schedule, SubscriptionScheduleCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            var itemId = Guid.NewGuid().ToString();
+            var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
             var stripeContext = requestOptions?.StripeContext;
 
-            var item = new Dictionary<string, object>
+            var requestBody = new Dictionary<string, object>
             {
-                { "id", itemId },
+                { "id", requestId },
                 { "path_params", new Dictionary<string, string> { { "schedule", schedule } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
             if (stripeContext != null)
             {
-                item["context"] = stripeContext;
+                requestBody["context"] = stripeContext;
             }
 
-            return JsonSerializer.Serialize(item, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+            return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
         }
 
         /// <summary>
@@ -190,23 +190,47 @@ namespace Stripe
         /// </summary>
         public virtual string SerializeBatchCreate(SubscriptionScheduleCreateOptions options = null, RequestOptions requestOptions = null)
         {
-            var itemId = Guid.NewGuid().ToString();
+            var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
             var stripeContext = requestOptions?.StripeContext;
 
-            var item = new Dictionary<string, object>
+            var requestBody = new Dictionary<string, object>
             {
-                { "id", itemId },
+                { "id", requestId },
                 { "path_params", null },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
             if (stripeContext != null)
             {
-                item["context"] = stripeContext;
+                requestBody["context"] = stripeContext;
             }
 
-            return JsonSerializer.Serialize(item, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+            return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+        }
+
+        /// <summary>
+        /// Serializes a SubscriptionSchedule release request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchRelease(string schedule, SubscriptionScheduleReleaseOptions options = null, RequestOptions requestOptions = null)
+        {
+            var requestId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var requestBody = new Dictionary<string, object>
+            {
+                { "id", requestId },
+                { "path_params", new Dictionary<string, string> { { "schedule", schedule } } },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                requestBody["context"] = stripeContext;
+            }
+
+            return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
         }
 
         /// <summary>
@@ -214,23 +238,23 @@ namespace Stripe
         /// </summary>
         public virtual string SerializeBatchUpdate(string schedule, SubscriptionScheduleUpdateOptions options = null, RequestOptions requestOptions = null)
         {
-            var itemId = Guid.NewGuid().ToString();
+            var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
             var stripeContext = requestOptions?.StripeContext;
 
-            var item = new Dictionary<string, object>
+            var requestBody = new Dictionary<string, object>
             {
-                { "id", itemId },
+                { "id", requestId },
                 { "path_params", new Dictionary<string, string> { { "schedule", schedule } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
             if (stripeContext != null)
             {
-                item["context"] = stripeContext;
+                requestBody["context"] = stripeContext;
             }
 
-            return JsonSerializer.Serialize(item, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+            return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
         }
 
         /// <summary>
