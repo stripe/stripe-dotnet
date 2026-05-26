@@ -6256,6 +6256,66 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2CommerceProductCatalogImportGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/commerce/product_catalog/imports",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Commerce.ProductCatalog.Imports;
+            Stripe.V2.StripeList<Stripe.V2.Commerce.ProductCatalogImport> productCatalogImports = service
+                .List();
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/commerce/product_catalog/imports");
+        }
+
+        [Fact]
+        public void TestV2CommerceProductCatalogImportPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/commerce/product_catalog/imports",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}");
+            var options = new Stripe.V2.Commerce.ProductCatalog.ImportCreateOptions
+            {
+                FeedType = "pricing",
+                Metadata = new Dictionary<string, string>
+                {
+                    { "key", "metadata" },
+                },
+                Mode = "upsert",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Commerce.ProductCatalog.Imports;
+            Stripe.V2.Commerce.ProductCatalogImport productCatalogImport = service
+                .Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/commerce/product_catalog/imports");
+        }
+
+        [Fact]
+        public void TestV2CommerceProductCatalogImportGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/commerce/product_catalog/imports/id_123",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Commerce.ProductCatalog.Imports;
+            Stripe.V2.Commerce.ProductCatalogImport productCatalogImport = service
+                .Get("id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/commerce/product_catalog/imports/id_123");
+        }
+
+        [Fact]
         public void TestV2CoreAccountGet()
         {
             this.StubRequest(

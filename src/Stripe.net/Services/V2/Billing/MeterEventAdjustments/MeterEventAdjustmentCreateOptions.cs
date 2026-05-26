@@ -23,8 +23,7 @@ namespace Stripe.V2.Billing
         public string EventName { get; set; }
 
         /// <summary>
-        /// Specifies whether to cancel a single event or a range of events for a time period. Time
-        /// period cancellation is not supported yet.
+        /// Specifies the type of cancellation. Currently supports canceling a single event.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

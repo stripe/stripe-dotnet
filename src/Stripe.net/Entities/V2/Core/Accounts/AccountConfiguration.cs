@@ -9,7 +9,8 @@ namespace Stripe.V2.Core
     public class AccountConfiguration : StripeEntity<AccountConfiguration>
     {
         /// <summary>
-        /// The Customer Configuration allows the Account to be used in inbound payment flows.
+        /// The Customer Configuration allows the Account to be used in inbound payment flows (i.e.
+        /// customer-facing payment and billing flows).
         /// </summary>
         [JsonProperty("customer")]
         [STJS.JsonPropertyName("customer")]
