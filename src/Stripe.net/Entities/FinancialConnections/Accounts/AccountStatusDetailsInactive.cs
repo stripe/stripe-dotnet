@@ -19,7 +19,7 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// The underlying cause of the Account being inactive.
         /// One of: <c>access_denied</c>, <c>access_expired</c>, <c>account_closed</c>,
-        /// <c>account_unavailable</c>, or <c>unspecified</c>.
+        /// <c>account_unavailable</c>, <c>institution_requirement</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("cause")]
         [STJS.JsonPropertyName("cause")]

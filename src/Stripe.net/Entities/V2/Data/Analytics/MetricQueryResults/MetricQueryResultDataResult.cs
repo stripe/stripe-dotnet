@@ -16,7 +16,7 @@ namespace Stripe.V2.Data.Analytics
         public string Currency { get; set; }
 
         /// <summary>
-        /// The Gen6 ID of this metric.
+        /// The ID of this metric.
         /// </summary>
         [JsonProperty("metric")]
         [STJS.JsonPropertyName("metric")]

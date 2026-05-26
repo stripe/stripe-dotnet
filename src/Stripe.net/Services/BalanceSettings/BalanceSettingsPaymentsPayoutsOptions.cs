@@ -9,11 +9,30 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class BalanceSettingsPaymentsPayoutsOptions : INestedOptions, IHasSetTracking
     {
+        private Dictionary<string, List<BalanceSettingsPaymentsPayoutsAutomaticTransferRulesByCurrencyOptions>> automaticTransferRulesByCurrency;
         private Dictionary<string, long?> minimumBalanceByCurrency;
 
         [JsonIgnore]
         [STJS.JsonIgnore]
         internal SetTracker SetTracker { get; } = new SetTracker();
+
+        /// <summary>
+        /// Configures per-currency rules for automatically transferring funds from the payments
+        /// balance to a FinancialAccount.
+        /// </summary>
+        [JsonProperty("automatic_transfer_rules_by_currency", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("automatic_transfer_rules_by_currency")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
+        public Dictionary<string, List<BalanceSettingsPaymentsPayoutsAutomaticTransferRulesByCurrencyOptions>> AutomaticTransferRulesByCurrency
+        {
+            get => this.automaticTransferRulesByCurrency;
+            set
+            {
+                this.automaticTransferRulesByCurrency = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The minimum balance amount to retain per currency after automatic payouts. Only funds

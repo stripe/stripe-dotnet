@@ -20,6 +20,10 @@ namespace Stripe
         [STJS.JsonPropertyName("bacs_debit")]
         public SetupIntentPaymentMethodOptionsBacsDebit BacsDebit { get; set; }
 
+        [JsonProperty("bizum")]
+        [STJS.JsonPropertyName("bizum")]
+        public SetupIntentPaymentMethodOptionsBizum Bizum { get; set; }
+
         [JsonProperty("card")]
         [STJS.JsonPropertyName("card")]
         public SetupIntentPaymentMethodOptionsCard Card { get; set; }

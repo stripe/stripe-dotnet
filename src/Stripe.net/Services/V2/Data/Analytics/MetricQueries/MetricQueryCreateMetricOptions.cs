@@ -9,14 +9,14 @@ namespace Stripe.V2.Data.Analytics
     public class MetricQueryCreateMetricOptions : INestedOptions, IHasId
     {
         /// <summary>
-        /// The Gen6 ID for this metric, e.g. metric_61Sud3n5oAGVCWiSr5.
+        /// The ID for this metric, e.g. metric_61Sud3n5oAGVCWiSr5.
         /// </summary>
         [JsonProperty("id")]
         [STJS.JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
-        /// The common name for this metric, e.g. mrr_minor_units.
+        /// The common name for this metric, e.g. revenue.mrr.
         /// </summary>
         [JsonProperty("name")]
         [STJS.JsonPropertyName("name")]

@@ -16,6 +16,13 @@ namespace Stripe.Events
         public long ActualTraffic { get; set; }
 
         /// <summary>
+        /// The canonical path.
+        /// </summary>
+        [JsonProperty("canonical_path")]
+        [STJS.JsonPropertyName("canonical_path")]
+        public string CanonicalPath { get; set; }
+
+        /// <summary>
         /// The expected volume of payment requests within the latest observation time window.
         /// </summary>
         [JsonProperty("expected_traffic")]

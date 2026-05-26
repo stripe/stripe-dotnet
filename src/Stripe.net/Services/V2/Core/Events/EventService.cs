@@ -21,7 +21,9 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// Retrieves the details of an event.
+        /// Retrieves the details of an event if it was created in the last 30 days. Supply the
+        /// unique identifier of the event, which might have been delivered to your event
+        /// destination.
         /// </summary>
         public virtual Event Get(string id, EventGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -29,7 +31,9 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// Retrieves the details of an event.
+        /// Retrieves the details of an event if it was created in the last 30 days. Supply the
+        /// unique identifier of the event, which might have been delivered to your event
+        /// destination.
         /// </summary>
         public virtual Task<Event> GetAsync(string id, EventGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

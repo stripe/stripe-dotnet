@@ -10,6 +10,14 @@ namespace Stripe
     public class SubscriptionSchedulePhaseAddInvoiceItem : StripeEntity<SubscriptionSchedulePhaseAddInvoiceItem>, IHasMetadata
     {
         /// <summary>
+        /// Controls whether discounts apply to this invoice item. Defaults to true if no value is
+        /// provided.
+        /// </summary>
+        [JsonProperty("discountable")]
+        [STJS.JsonPropertyName("discountable")]
+        public bool? Discountable { get; set; }
+
+        /// <summary>
         /// The stackable discounts that will be applied to the item.
         /// </summary>
         [JsonProperty("discounts")]

@@ -128,6 +128,14 @@ namespace Stripe
         public PaymentMethodConfigurationBillieOptions Billie { get; set; }
 
         /// <summary>
+        /// To enable Bizum, buyers need a Spanish IBAN from a bank connected to Bizum. Within their
+        /// banking app, they can enable Bizum and link their mobile number to their IBAN.
+        /// </summary>
+        [JsonProperty("bizum")]
+        [STJS.JsonPropertyName("bizum")]
+        public PaymentMethodConfigurationBizumOptions Bizum { get; set; }
+
+        /// <summary>
         /// BLIK is a <a href="https://docs.stripe.com/payments/payment-methods#usage">single
         /// use</a> payment method that requires customers to authenticate their payments. When
         /// customers want to pay online using BLIK, they request a six-digit code from their
@@ -527,9 +535,8 @@ namespace Stripe
         public PaymentMethodConfigurationSamsungPayOptions SamsungPay { get; set; }
 
         /// <summary>
-        /// Satispay is a <a
-        /// href="https://docs.stripe.com/payments/payment-methods#usage">single-use</a> payment
-        /// method where customers are required to <a
+        /// Satispay is a <a href="https://stripe.com/payments/payment-methods#usage">single-use</a>
+        /// payment method where customers are required to <a
         /// href="https://stripe.com/payments/payment-methods#customer-actions">authenticate</a>
         /// their payment. Customers pay by being redirected from your website or app, authorizing
         /// the payment with Satispay, then returning to your website or app. You get <a
@@ -539,6 +546,18 @@ namespace Stripe
         [JsonProperty("satispay")]
         [STJS.JsonPropertyName("satispay")]
         public PaymentMethodConfigurationSatispayOptions Satispay { get; set; }
+
+        /// <summary>
+        /// Scalapay is a <a href="https://stripe.com/payments/payment-methods#usage">single-use</a>
+        /// payment method that lets customers pay in 3 or 4 installments. Customers are redirected
+        /// from your website or app, authorize the payment with Scalapay, then return to your
+        /// website or app. You get <a
+        /// href="https://stripe.com/payments/payment-methods#payment-notification">immediate
+        /// notification</a> of whether the payment succeeded or failed.
+        /// </summary>
+        [JsonProperty("scalapay")]
+        [STJS.JsonPropertyName("scalapay")]
+        public PaymentMethodConfigurationScalapayOptions Scalapay { get; set; }
 
         /// <summary>
         /// The <a href="https://en.wikipedia.org/wiki/Single_Euro_Payments_Area">Single Euro

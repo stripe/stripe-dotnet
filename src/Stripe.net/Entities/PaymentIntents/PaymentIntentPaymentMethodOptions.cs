@@ -48,6 +48,10 @@ namespace Stripe
         [STJS.JsonPropertyName("billie")]
         public PaymentIntentPaymentMethodOptionsBillie Billie { get; set; }
 
+        [JsonProperty("bizum")]
+        [STJS.JsonPropertyName("bizum")]
+        public PaymentIntentPaymentMethodOptionsBizum Bizum { get; set; }
+
         [JsonProperty("blik")]
         [STJS.JsonPropertyName("blik")]
         public PaymentIntentPaymentMethodOptionsBlik Blik { get; set; }
@@ -83,6 +87,10 @@ namespace Stripe
         [JsonProperty("fpx")]
         [STJS.JsonPropertyName("fpx")]
         public PaymentIntentPaymentMethodOptionsFpx Fpx { get; set; }
+
+        [JsonProperty("gift_card")]
+        [STJS.JsonPropertyName("gift_card")]
+        public PaymentIntentPaymentMethodOptionsGiftCard GiftCard { get; set; }
 
         [JsonProperty("giropay")]
         [STJS.JsonPropertyName("giropay")]
@@ -207,6 +215,10 @@ namespace Stripe
         [JsonProperty("satispay")]
         [STJS.JsonPropertyName("satispay")]
         public PaymentIntentPaymentMethodOptionsSatispay Satispay { get; set; }
+
+        [JsonProperty("scalapay")]
+        [STJS.JsonPropertyName("scalapay")]
+        public PaymentIntentPaymentMethodOptionsScalapay Scalapay { get; set; }
 
         [JsonProperty("sepa_debit")]
         [STJS.JsonPropertyName("sepa_debit")]

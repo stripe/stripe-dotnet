@@ -33,7 +33,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// (ID of the File)
         /// The file for the card logo to use with physical bundles that support card logos. Must
-        /// have a <c>purpose</c> value of <c>issuing_logo</c>.
+        /// have a <c>purpose</c> value of <c>issuing_logo</c>. Image must be in PNG format with
+        /// dimensions of 1000px by 200px. It must be a binary (black and white) image containing a
+        /// black logo on a white background. We don't accept grayscale.
         /// </summary>
         [JsonIgnore]
         [STJS.JsonIgnore]
@@ -46,7 +48,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// (Expanded)
         /// The file for the card logo to use with physical bundles that support card logos. Must
-        /// have a <c>purpose</c> value of <c>issuing_logo</c>.
+        /// have a <c>purpose</c> value of <c>issuing_logo</c>. Image must be in PNG format with
+        /// dimensions of 1000px by 200px. It must be a binary (black and white) image containing a
+        /// black logo on a white background. We don't accept grayscale.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>

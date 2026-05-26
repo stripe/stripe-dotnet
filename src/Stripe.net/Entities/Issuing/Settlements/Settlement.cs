@@ -95,8 +95,8 @@ namespace Stripe.Issuing
         public long NetTotalAmount { get; set; }
 
         /// <summary>
-        /// The card network for this settlement report. One of ["visa", "maestro"].
-        /// One of: <c>maestro</c>, or <c>visa</c>.
+        /// The card network for this settlement report. One of ["visa", "maestro", "mastercard"].
+        /// One of: <c>maestro</c>, <c>mastercard</c>, or <c>visa</c>.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]

@@ -13,7 +13,7 @@ namespace Stripe
         public PaymentRecordPaymentMethodDetailsRevolutPayFundingCard Card { get; set; }
 
         /// <summary>
-        /// funding type of the underlying payment method.
+        /// Funding type of the underlying payment method.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -1217,12 +1217,28 @@ namespace Stripe
                     Events.V2CoreHealthAuthorizationRateDropResolvedEvent)
                 },
                 {
+                    "v2.core.health.elements_error.firing", typeof(
+                    Events.V2CoreHealthElementsErrorFiringEvent)
+                },
+                {
+                    "v2.core.health.elements_error.resolved", typeof(
+                    Events.V2CoreHealthElementsErrorResolvedEvent)
+                },
+                {
                     "v2.core.health.event_generation_failure.resolved", typeof(
                     Events.V2CoreHealthEventGenerationFailureResolvedEvent)
                 },
                 {
                     "v2.core.health.fraud_rate.increased", typeof(
                     Events.V2CoreHealthFraudRateIncreasedEvent)
+                },
+                {
+                    "v2.core.health.invoice_count_dropped.firing", typeof(
+                    Events.V2CoreHealthInvoiceCountDroppedFiringEvent)
+                },
+                {
+                    "v2.core.health.invoice_count_dropped.resolved", typeof(
+                    Events.V2CoreHealthInvoiceCountDroppedResolvedEvent)
                 },
                 {
                     "v2.core.health.issuing_authorization_request_errors.firing", typeof(
@@ -2614,12 +2630,28 @@ namespace Stripe
                     Events.V2CoreHealthAuthorizationRateDropResolvedEventNotification)
                 },
                 {
+                    "v2.core.health.elements_error.firing", typeof(
+                    Events.V2CoreHealthElementsErrorFiringEventNotification)
+                },
+                {
+                    "v2.core.health.elements_error.resolved", typeof(
+                    Events.V2CoreHealthElementsErrorResolvedEventNotification)
+                },
+                {
                     "v2.core.health.event_generation_failure.resolved", typeof(
                     Events.V2CoreHealthEventGenerationFailureResolvedEventNotification)
                 },
                 {
                     "v2.core.health.fraud_rate.increased", typeof(
                     Events.V2CoreHealthFraudRateIncreasedEventNotification)
+                },
+                {
+                    "v2.core.health.invoice_count_dropped.firing", typeof(
+                    Events.V2CoreHealthInvoiceCountDroppedFiringEventNotification)
+                },
+                {
+                    "v2.core.health.invoice_count_dropped.resolved", typeof(
+                    Events.V2CoreHealthInvoiceCountDroppedResolvedEventNotification)
                 },
                 {
                     "v2.core.health.issuing_authorization_request_errors.firing", typeof(

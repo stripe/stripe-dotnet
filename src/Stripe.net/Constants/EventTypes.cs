@@ -895,6 +895,11 @@ namespace Stripe
         public const string PaymentIntentCreated = "payment_intent.created";
 
         /// <summary>
+        /// Occurs when the authorization of a PaymentIntent expires.
+        /// </summary>
+        public const string PaymentIntentExpired = "payment_intent.expired";
+
+        /// <summary>
         /// Occurs when funds are applied to a customer_balance PaymentIntent and the
         /// 'amount_remaining' changes.
         /// </summary>

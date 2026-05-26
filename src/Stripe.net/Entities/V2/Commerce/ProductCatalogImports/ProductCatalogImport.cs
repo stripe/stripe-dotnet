@@ -8,8 +8,8 @@ namespace Stripe.V2.Commerce
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// The product catalog import object tracks the long-running background process that
-    /// handles uploading, processing and validation.
+    /// The ProductCatalogImport object tracks the long-running background process that handles
+    /// uploading, processing and validation.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ProductCatalogImport : StripeEntity<ProductCatalogImport>, IHasId, IHasMetadata, IHasObject
