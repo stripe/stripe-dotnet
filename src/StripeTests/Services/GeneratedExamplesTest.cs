@@ -7623,6 +7623,20 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2IamActivityLogGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/iam/activity_logs/id_123",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.iam.activity_log\",\"actor\":{\"type\":\"api_key\"},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"details\":{\"type\":\"api_key\"},\"id\":\"obj_123\",\"livemode\":true,\"type\":\"api_key_created\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Iam.ActivityLogs;
+            Stripe.V2.Iam.ActivityLog activityLog = service.Get("id_123");
+            this.AssertRequest(HttpMethod.Get, "/v2/iam/activity_logs/id_123");
+        }
+
+        [Fact]
         public void TestV2MoneyManagementAdjustmentGet()
         {
             this.StubRequest(
@@ -8525,7 +8539,7 @@ namespace StripeTests
             var options = new Stripe.V2.TestHelpers.FinancialAddressCreditOptions
             {
                 Amount = new Stripe.V2.Amount { Value = 96, Currency = "USD" },
-                Network = "rtp",
+                Network = "ach",
             };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.TestHelpers.FinancialAddresses;
