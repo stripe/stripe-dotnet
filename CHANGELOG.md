@@ -1,5 +1,20 @@
 # Changelog
 
+## 51.3.0-beta.1 - 2026-05-27
+This release changes the pinned API version to 2026-05-27.private.
+
+* [#3376](https://github.com/stripe/stripe-dotnet/pull/3376) Update generated code for beta
+  * Add support for `Pause` method on resource `Subscription`
+  * Add support for `Get` method on resource `V2.Iam.ActivityLog`
+  * ⚠️ Change type of `ProductCatalog.TrialOffer.EndBehavior.Transition.Price` from `string` to `expandable($Price)`
+  * Add support for `AmountPaidOffStripe` on `QuotePreviewInvoice`
+  * Add support for `Discountable` on `QuotePreviewSubscriptionSchedule.Phase.AddInvoiceItem`
+  * Add support for `Bizum` and `Scalapay` on `SharedPayment.GrantedToken.PaymentMethodDetails`
+  * Change type of `SubscriptionItem.BilledUntil` from `nullable(DateTime)` to `DateTime`
+  * Add support for `PaymentBehavior` on `SubscriptionResumeOptions`
+  * Add support for `StatusDetails` on `Subscription`
+  * ⚠️ Change type of `V2.MoneyManagement.ReceivedCredit.BankTransfer.GbBankAccount.Network` from `literal('fps')` to `enum('chaps'|'fps')`
+
 ## 51.2.0-beta.2 - 2026-04-24
 * [#3374](https://github.com/stripe/stripe-dotnet/pull/3374) Update generated code for beta
   * Add support for new resources `V2.Commerce.ProductCatalogImport`, `V2.Data.Reporting.QueryRun`, `V2.Extend.WorkflowRun`, `V2.Extend.Workflow`, `V2.Iam.ActivityLog`, `V2.Network.BusinessProfile`, and `V2.OrchestratedCommerce.Agreement`
