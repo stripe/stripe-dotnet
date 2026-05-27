@@ -69,8 +69,7 @@ namespace Stripe.V2.Core
         public AccountTokenCreateIdentityBusinessDetailsDocumentsProofOfAddressOptions ProofOfAddress { get; set; }
 
         /// <summary>
-        /// One or more documents showing the company’s proof of registration with the national
-        /// business registry.
+        /// One or more documents that demonstrate proof of ultimate beneficial ownership.
         /// </summary>
         [JsonProperty("proof_of_registration")]
         [STJS.JsonPropertyName("proof_of_registration")]

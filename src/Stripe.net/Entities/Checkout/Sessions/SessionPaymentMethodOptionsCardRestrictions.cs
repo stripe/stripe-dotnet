@@ -10,8 +10,8 @@ namespace Stripe.Checkout
     public class SessionPaymentMethodOptionsCardRestrictions : StripeEntity<SessionPaymentMethodOptionsCardRestrictions>
     {
         /// <summary>
-        /// Specify the card brands to block in the Checkout Session. If a customer enters or
-        /// selects a card belonging to a blocked brand, they can't complete the Session.
+        /// The card brands to block. If a customer enters or selects a card belonging to a blocked
+        /// brand, they can't complete the payment.
         /// One of: <c>american_express</c>, <c>discover_global_network</c>, <c>mastercard</c>, or
         /// <c>visa</c>.
         /// </summary>

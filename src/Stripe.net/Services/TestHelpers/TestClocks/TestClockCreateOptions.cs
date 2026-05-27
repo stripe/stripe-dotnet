@@ -10,6 +10,14 @@ namespace Stripe.TestHelpers
     public class TestClockCreateOptions : BaseOptions
     {
         /// <summary>
+        /// Existing customer this test clock will be attached to. Once attached, customers can't be
+        /// removed from a test clock.
+        /// </summary>
+        [JsonProperty("customer")]
+        [STJS.JsonPropertyName("customer")]
+        public string Customer { get; set; }
+
+        /// <summary>
         /// The initial frozen time for this test clock.
         /// </summary>
         [JsonProperty("frozen_time")]

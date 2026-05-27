@@ -113,9 +113,9 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The client secret of your Checkout Session. Applies to Checkout Sessions with
-        /// <c>ui_mode: embedded</c> or <c>ui_mode: custom</c>. For <c>ui_mode: embedded</c>, the
-        /// client secret is to be used when initializing Stripe.js embedded checkout. For
-        /// <c>ui_mode: custom</c>, use the client secret with <a
+        /// <c>ui_mode: embedded_page</c> or <c>ui_mode: elements</c>. For <c>ui_mode:
+        /// embedded_page</c>, the client secret is to be used when initializing Stripe.js embedded
+        /// checkout. For <c>ui_mode: elements</c>, use the client secret with <a
         /// href="https://docs.stripe.com/js/custom_checkout/init">initCheckout</a> on your front
         /// end.
         /// </summary>
@@ -559,7 +559,7 @@ namespace Stripe.Checkout
         public string RecoveredFrom { get; set; }
 
         /// <summary>
-        /// This parameter applies to <c>ui_mode: embedded</c>. Learn more about the <a
+        /// This parameter applies to <c>ui_mode: embedded_page</c>. Learn more about the <a
         /// href="https://docs.stripe.com/payments/checkout/custom-success-page?payment-ui=embedded-form">redirect
         /// behavior</a> of embedded sessions. Defaults to <c>always</c>.
         /// One of: <c>always</c>, <c>if_required</c>, or <c>never</c>.
@@ -569,9 +569,9 @@ namespace Stripe.Checkout
         public string RedirectOnCompletion { get; set; }
 
         /// <summary>
-        /// Applies to Checkout Sessions with <c>ui_mode: embedded</c> or <c>ui_mode: custom</c>.
-        /// The URL to redirect your customer back to after they authenticate or cancel their
-        /// payment on the payment method's app or site.
+        /// Applies to Checkout Sessions with <c>ui_mode: embedded_page</c> or <c>ui_mode:
+        /// elements</c>. The URL to redirect your customer back to after they authenticate or
+        /// cancel their payment on the payment method's app or site.
         /// </summary>
         [JsonProperty("return_url")]
         [STJS.JsonPropertyName("return_url")]
@@ -735,10 +735,10 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The URL to the Checkout Session. Applies to Checkout Sessions with <c>ui_mode:
-        /// hosted</c>. Redirect customers to this URL to take them to Checkout. If you’re using <a
-        /// href="https://docs.stripe.com/payments/checkout/custom-domains">Custom Domains</a>, the
-        /// URL will use your subdomain. Otherwise, it’ll use <c>checkout.stripe.com.</c> This value
-        /// is only present when the session is active.
+        /// hosted_page</c>. Redirect customers to this URL to take them to Checkout. If you’re
+        /// using <a href="https://docs.stripe.com/payments/checkout/custom-domains">Custom
+        /// Domains</a>, the URL will use your subdomain. Otherwise, it’ll use
+        /// <c>checkout.stripe.com.</c> This value is only present when the session is active.
         /// </summary>
         [JsonProperty("url")]
         [STJS.JsonPropertyName("url")]

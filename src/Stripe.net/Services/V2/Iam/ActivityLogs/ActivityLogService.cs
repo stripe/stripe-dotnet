@@ -3,6 +3,7 @@ namespace Stripe.V2.Iam
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -17,6 +18,22 @@ namespace Stripe.V2.Iam
         internal ActivityLogService(IStripeClient client)
             : base(client)
         {
+        }
+
+        /// <summary>
+        /// Retrieve an activity log.
+        /// </summary>
+        public virtual ActivityLog Get(string id, ActivityLogGetOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<ActivityLog>(BaseAddress.Api, HttpMethod.Get, $"/v2/iam/activity_logs/{WebUtility.UrlEncode(id)}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Retrieve an activity log.
+        /// </summary>
+        public virtual Task<ActivityLog> GetAsync(string id, ActivityLogGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<ActivityLog>(BaseAddress.Api, HttpMethod.Get, $"/v2/iam/activity_logs/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

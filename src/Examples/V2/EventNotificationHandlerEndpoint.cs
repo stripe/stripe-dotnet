@@ -1,3 +1,4 @@
+// File copied from our code generator; changes here will be overwritten.
 namespace Examples.V2
 {
 #pragma warning disable SA1101 // Prefix local calls with this

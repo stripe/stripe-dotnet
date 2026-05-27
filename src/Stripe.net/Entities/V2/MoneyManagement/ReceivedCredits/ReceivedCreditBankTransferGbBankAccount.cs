@@ -31,6 +31,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. The money transmission network used to send funds for this ReceivedCredit.
+        /// One of: <c>chaps</c>, or <c>fps</c>.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]

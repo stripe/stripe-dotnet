@@ -219,23 +219,23 @@ namespace Stripe
         /// </summary>
         public virtual string SerializeBatchUpdate(string customer, CustomerUpdateOptions options = null, RequestOptions requestOptions = null)
         {
-            var itemId = Guid.NewGuid().ToString();
+            var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
             var stripeContext = requestOptions?.StripeContext;
 
-            var item = new Dictionary<string, object>
+            var requestBody = new Dictionary<string, object>
             {
-                { "id", itemId },
+                { "id", requestId },
                 { "path_params", new Dictionary<string, string> { { "customer", customer } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
             if (stripeContext != null)
             {
-                item["context"] = stripeContext;
+                requestBody["context"] = stripeContext;
             }
 
-            return JsonSerializer.Serialize(item, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+            return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
         }
 
         /// <summary>

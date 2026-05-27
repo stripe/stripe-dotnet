@@ -17,7 +17,11 @@ namespace Stripe.Terminal
         private ConfigurationStripeS700Options stripeS700;
         private ConfigurationStripeS710Options stripeS710;
         private ConfigurationTippingOptions tipping;
+        private ConfigurationVerifoneM425Options verifoneM425;
         private ConfigurationVerifoneP400Options verifoneP400;
+        private ConfigurationVerifoneP630Options verifoneP630;
+        private ConfigurationVerifoneUx700Options verifoneUx700;
+        private ConfigurationVerifoneV660pOptions verifoneV660p;
         private ConfigurationWifiOptions wifi;
 
         /// <summary>
@@ -172,6 +176,22 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
+        /// An object containing device type specific settings for Verifone M425 readers.
+        /// </summary>
+        [JsonProperty("verifone_m425", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("verifone_m425")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public ConfigurationVerifoneM425Options VerifoneM425
+        {
+            get => this.verifoneM425;
+            set
+            {
+                this.verifoneM425 = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
         /// An object containing device type specific settings for Verifone P400 readers.
         /// </summary>
         [JsonProperty("verifone_p400", NullValueHandling = NullValueHandling.Ignore)]
@@ -183,6 +203,54 @@ namespace Stripe.Terminal
             set
             {
                 this.verifoneP400 = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// An object containing device type specific settings for Verifone P630 readers.
+        /// </summary>
+        [JsonProperty("verifone_p630", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("verifone_p630")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public ConfigurationVerifoneP630Options VerifoneP630
+        {
+            get => this.verifoneP630;
+            set
+            {
+                this.verifoneP630 = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// An object containing device type specific settings for Verifone UX700 readers.
+        /// </summary>
+        [JsonProperty("verifone_ux700", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("verifone_ux700")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public ConfigurationVerifoneUx700Options VerifoneUx700
+        {
+            get => this.verifoneUx700;
+            set
+            {
+                this.verifoneUx700 = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// An object containing device type specific settings for Verifone V660p readers.
+        /// </summary>
+        [JsonProperty("verifone_v660p", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("verifone_v660p")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public ConfigurationVerifoneV660pOptions VerifoneV660p
+        {
+            get => this.verifoneV660p;
+            set
+            {
+                this.verifoneV660p = value;
                 this.SetTracker.Track();
             }
         }

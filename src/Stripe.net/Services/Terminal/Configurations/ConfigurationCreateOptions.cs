@@ -121,11 +121,39 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
+        /// An object containing device type specific settings for Verifone M425 readers.
+        /// </summary>
+        [JsonProperty("verifone_m425")]
+        [STJS.JsonPropertyName("verifone_m425")]
+        public ConfigurationVerifoneM425Options VerifoneM425 { get; set; }
+
+        /// <summary>
         /// An object containing device type specific settings for Verifone P400 readers.
         /// </summary>
         [JsonProperty("verifone_p400")]
         [STJS.JsonPropertyName("verifone_p400")]
         public ConfigurationVerifoneP400Options VerifoneP400 { get; set; }
+
+        /// <summary>
+        /// An object containing device type specific settings for Verifone P630 readers.
+        /// </summary>
+        [JsonProperty("verifone_p630")]
+        [STJS.JsonPropertyName("verifone_p630")]
+        public ConfigurationVerifoneP630Options VerifoneP630 { get; set; }
+
+        /// <summary>
+        /// An object containing device type specific settings for Verifone UX700 readers.
+        /// </summary>
+        [JsonProperty("verifone_ux700")]
+        [STJS.JsonPropertyName("verifone_ux700")]
+        public ConfigurationVerifoneUx700Options VerifoneUx700 { get; set; }
+
+        /// <summary>
+        /// An object containing device type specific settings for Verifone V660p readers.
+        /// </summary>
+        [JsonProperty("verifone_v660p")]
+        [STJS.JsonPropertyName("verifone_v660p")]
+        public ConfigurationVerifoneV660pOptions VerifoneV660p { get; set; }
 
         /// <summary>
         /// Configurations for connecting to a WiFi network.

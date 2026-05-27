@@ -19,6 +19,13 @@ namespace Stripe.V2.Core
         public List<string> Files { get; set; }
 
         /// <summary>
+        /// Person that is signing the document.
+        /// </summary>
+        [JsonProperty("signer")]
+        [STJS.JsonPropertyName("signer")]
+        public AccountIdentityBusinessDetailsDocumentsProofOfRegistrationSigner Signer { get; set; }
+
+        /// <summary>
         /// The format of the document. Currently supports <c>files</c> only.
         /// </summary>
         [JsonProperty("type")]

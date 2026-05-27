@@ -94,9 +94,25 @@ namespace Stripe.Terminal
         [STJS.JsonPropertyName("tipping")]
         public ConfigurationTipping Tipping { get; set; }
 
+        [JsonProperty("verifone_m425")]
+        [STJS.JsonPropertyName("verifone_m425")]
+        public ConfigurationVerifoneM425 VerifoneM425 { get; set; }
+
         [JsonProperty("verifone_p400")]
         [STJS.JsonPropertyName("verifone_p400")]
         public ConfigurationVerifoneP400 VerifoneP400 { get; set; }
+
+        [JsonProperty("verifone_p630")]
+        [STJS.JsonPropertyName("verifone_p630")]
+        public ConfigurationVerifoneP630 VerifoneP630 { get; set; }
+
+        [JsonProperty("verifone_ux700")]
+        [STJS.JsonPropertyName("verifone_ux700")]
+        public ConfigurationVerifoneUx700 VerifoneUx700 { get; set; }
+
+        [JsonProperty("verifone_v660p")]
+        [STJS.JsonPropertyName("verifone_v660p")]
+        public ConfigurationVerifoneV660p VerifoneV660p { get; set; }
 
         [JsonProperty("wifi")]
         [STJS.JsonPropertyName("wifi")]

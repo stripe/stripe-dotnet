@@ -20,7 +20,11 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// Creates an Account Token.
+        /// Create an account token with a publishable key and pass it to the Accounts v2 API to
+        /// create or update an account without its data touching your server. Learn more about <a
+        /// href="https://docs.stripe.com/connect/account-tokens">account tokens</a>. In live mode,
+        /// you can only create account tokens with your application's publishable key. In test
+        /// mode, you can create account tokens with your secret key or publishable key.
         /// </summary>
         public virtual AccountToken Create(AccountTokenCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -28,7 +32,11 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// Creates an Account Token.
+        /// Create an account token with a publishable key and pass it to the Accounts v2 API to
+        /// create or update an account without its data touching your server. Learn more about <a
+        /// href="https://docs.stripe.com/connect/account-tokens">account tokens</a>. In live mode,
+        /// you can only create account tokens with your application's publishable key. In test
+        /// mode, you can create account tokens with your secret key or publishable key.
         /// </summary>
         public virtual Task<AccountToken> CreateAsync(AccountTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

@@ -5,16 +5,16 @@ namespace Stripe.V2
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class DatumService : Service
+    public class DataService : Service
     {
         private V2.Data.ReportingService reporting;
 
-        internal DatumService(ApiRequestor requestor)
+        internal DataService(ApiRequestor requestor)
             : base(requestor)
         {
         }
 
-        internal DatumService(IStripeClient client)
+        internal DataService(IStripeClient client)
             : base(client)
         {
         }

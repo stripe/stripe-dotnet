@@ -20,7 +20,7 @@ namespace Stripe.V2.Network
         }
 
         /// <summary>
-        /// Retrieve a Stripe profile by its Network ID.
+        /// Retrieve a Stripe business profile by its Network ID.
         /// </summary>
         public virtual BusinessProfile Get(string id, BusinessProfileGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -28,7 +28,7 @@ namespace Stripe.V2.Network
         }
 
         /// <summary>
-        /// Retrieve a Stripe profile by its Network ID.
+        /// Retrieve a Stripe business profile by its Network ID.
         /// </summary>
         public virtual Task<BusinessProfile> GetAsync(string id, BusinessProfileGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -36,7 +36,8 @@ namespace Stripe.V2.Network
         }
 
         /// <summary>
-        /// Retrieve the Stripe profile associated with the requesting merchant and livemode.
+        /// Retrieve the Stripe business profile associated with the requesting merchant and
+        /// livemode.
         /// </summary>
         public virtual BusinessProfile Me(BusinessProfileMeOptions options = null, RequestOptions requestOptions = null)
         {
@@ -44,7 +45,8 @@ namespace Stripe.V2.Network
         }
 
         /// <summary>
-        /// Retrieve the Stripe profile associated with the requesting merchant and livemode.
+        /// Retrieve the Stripe business profile associated with the requesting merchant and
+        /// livemode.
         /// </summary>
         public virtual Task<BusinessProfile> MeAsync(BusinessProfileMeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
