@@ -2,7 +2,6 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Net;
@@ -232,9 +231,9 @@ namespace Stripe
             if (headers != null && headers.Contains("Stripe-Notice"))
             {
                 var notice = headers.GetValues("Stripe-Notice").FirstOrDefault();
-                if (notice != null)
+                if (!string.IsNullOrEmpty(notice))
                 {
-                    Trace.TraceWarning(notice);
+                    Console.Error.WriteLine(notice);
                 }
             }
         }
