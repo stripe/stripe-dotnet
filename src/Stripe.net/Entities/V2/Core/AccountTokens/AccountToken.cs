@@ -7,8 +7,8 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// Account tokens are single-use tokens which tokenize company/individual/business
-    /// information, and are used for creating or updating an Account.
+    /// Account tokens are single-use tokens which tokenize an account's contact_email,
+    /// display_name, contact_phone, and identity.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountToken : StripeEntity<AccountToken>, IHasId, IHasObject

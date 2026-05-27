@@ -9,8 +9,8 @@ namespace Stripe.V2.Billing
     public class MeterEventAdjustmentCreateCancelOptions : INestedOptions
     {
         /// <summary>
-        /// Unique identifier for the event. You can only cancel events within 24 hours of Stripe
-        /// receiving them.
+        /// The identifier that was originally assigned to the meter event. You can only cancel
+        /// events within 24 hours of Stripe receiving them.
         /// </summary>
         [JsonProperty("identifier")]
         [STJS.JsonPropertyName("identifier")]

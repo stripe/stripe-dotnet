@@ -9,6 +9,7 @@ namespace Stripe
     public class BalanceSettingsPaymentsSettlementTimingOptions : INestedOptions, IHasSetTracking
     {
         private long? delayDaysOverride;
+        private BalanceSettingsPaymentsSettlementTimingStartOfDayOptions startOfDay;
 
         [JsonIgnore]
         [STJS.JsonIgnore]
@@ -31,6 +32,25 @@ namespace Stripe
             set
             {
                 this.delayDaysOverride = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// Customized start of day configuration for automatic payouts to group and send payments
+        /// in local timezones with a customized day starting time. For details, see our <a
+        /// href="https://stripe.com/connect/customized-start-of-day">Customized start of day</a>
+        /// documentation.
+        /// </summary>
+        [JsonProperty("start_of_day", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("start_of_day")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public BalanceSettingsPaymentsSettlementTimingStartOfDayOptions StartOfDay
+        {
+            get => this.startOfDay;
+            set
+            {
+                this.startOfDay = value;
                 this.SetTracker.Track();
             }
         }

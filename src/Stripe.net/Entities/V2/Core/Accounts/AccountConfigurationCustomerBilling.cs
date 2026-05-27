@@ -9,8 +9,8 @@ namespace Stripe.V2.Core
     public class AccountConfigurationCustomerBilling : StripeEntity<AccountConfigurationCustomerBilling>
     {
         /// <summary>
-        /// ID of a PaymentMethod attached to the customer account to use as the default for
-        /// invoices and subscriptions.
+        /// The ID of a <c>PaymentMethod</c> attached to this Account's <c>customer</c>
+        /// configuration, used as the default payment method for invoices and subscriptions.
         /// </summary>
         [JsonProperty("default_payment_method")]
         [STJS.JsonPropertyName("default_payment_method")]

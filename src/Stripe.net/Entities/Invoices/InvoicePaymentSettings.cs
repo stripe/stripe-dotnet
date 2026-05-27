@@ -40,8 +40,8 @@ namespace Stripe
         /// <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>multibanco</c>, <c>naver_pay</c>,
         /// <c>nz_bank_account</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>,
         /// <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>,
-        /// <c>sepa_credit_transfer</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>upi</c>,
-        /// <c>us_bank_account</c>, or <c>wechat_pay</c>.
+        /// <c>sepa_credit_transfer</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>,
+        /// <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, or <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
         [STJS.JsonPropertyName("payment_method_types")]

@@ -19,7 +19,7 @@ namespace Stripe
 
         /// <summary>
         /// If a physical good is being shipped, the postal code of where it is being shipped from.
-        /// At most 10 alphanumeric characters long, hyphens are allowed.
+        /// At most 10 alphanumeric characters long, hyphens and spaces are allowed.
         /// </summary>
         [JsonProperty("from_postal_code")]
         [STJS.JsonPropertyName("from_postal_code")]
@@ -27,7 +27,7 @@ namespace Stripe
 
         /// <summary>
         /// If a physical good is being shipped, the postal code of where it is being shipped to. At
-        /// most 10 alphanumeric characters long, hyphens are allowed.
+        /// most 10 alphanumeric characters long, hyphens and spaces are allowed.
         /// </summary>
         [JsonProperty("to_postal_code")]
         [STJS.JsonPropertyName("to_postal_code")]

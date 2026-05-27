@@ -8,6 +8,7 @@ namespace Stripe
     public class V2Services : Service
     {
         private V2.BillingService billing;
+        private V2.CommerceService commerce;
         private V2.CoreService core;
 
         internal V2Services(ApiRequestor requestor)
@@ -21,6 +22,9 @@ namespace Stripe
         }
 
         public virtual V2.BillingService Billing => this.billing ??= new V2.BillingService(
+            this.Requestor);
+
+        public virtual V2.CommerceService Commerce => this.commerce ??= new V2.CommerceService(
             this.Requestor);
 
         public virtual V2.CoreService Core => this.core ??= new V2.CoreService(

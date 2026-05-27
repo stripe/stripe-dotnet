@@ -76,6 +76,10 @@ namespace Stripe
         [STJS.JsonPropertyName("sepa_debit")]
         public MandatePaymentMethodDetailsSepaDebit SepaDebit { get; set; }
 
+        [JsonProperty("twint")]
+        [STJS.JsonPropertyName("twint")]
+        public MandatePaymentMethodDetailsTwint Twint { get; set; }
+
         /// <summary>
         /// This mandate corresponds with a specific payment method type. The
         /// <c>payment_method_details</c> includes an additional hash with the same name and

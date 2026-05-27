@@ -15,7 +15,7 @@ namespace Stripe.V2.Billing
     public class MeterEventAdjustment : StripeEntity<MeterEventAdjustment>, IHasId, IHasObject
     {
         /// <summary>
-        /// The unique id of this meter event adjustment.
+        /// The unique ID of this meter event adjustment.
         /// </summary>
         [JsonProperty("id")]
         [STJS.JsonPropertyName("id")]
@@ -67,8 +67,8 @@ namespace Stripe.V2.Billing
         public string Status { get; set; }
 
         /// <summary>
-        /// Open Enum. Specifies whether to cancel a single event or a range of events for a time
-        /// period. Time period cancellation is not supported yet.
+        /// Open Enum. Specifies the type of cancellation. Currently supports canceling a single
+        /// event.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -11,6 +11,7 @@ namespace Stripe
     public class SubscriptionUpdateOptions : BaseOptions, IHasMetadata
     {
         private decimal? applicationFeePercent;
+        private List<SubscriptionBillingScheduleOptions> billingSchedules;
         private SubscriptionBillingThresholdsOptions billingThresholds;
         private AnyOf<DateTime?, SubscriptionCancelAt> cancelAt;
         private string defaultSource;
@@ -70,6 +71,22 @@ namespace Stripe
         [JsonProperty("billing_cycle_anchor")]
         [STJS.JsonPropertyName("billing_cycle_anchor")]
         public SubscriptionBillingCycleAnchor BillingCycleAnchor { get; set; }
+
+        /// <summary>
+        /// Sets the billing schedules for the subscription.
+        /// </summary>
+        [JsonProperty("billing_schedules", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("billing_schedules")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public List<SubscriptionBillingScheduleOptions> BillingSchedules
+        {
+            get => this.billingSchedules;
+            set
+            {
+                this.billingSchedules = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
@@ -217,8 +234,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// The coupons to redeem into discounts for the subscription. If not specified or empty,
-        /// inherits the discount from the subscription's customer.
+        /// The coupons to redeem into discounts for the subscription. A populated array overwrites
+        /// the existing discounts on the subscription. If not specified or empty array, it leaves
+        /// the subscription's discounts unchanged. If empty string, it clears the subscription's
+        /// discounts.
         /// </summary>
         [JsonProperty("discounts", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("discounts")]
@@ -310,33 +329,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// Use <c>allow_incomplete</c> to transition the subscription to <c>status=past_due</c> if
-        /// a payment is required but cannot be paid. This allows you to manage scenarios where
-        /// additional user actions are needed to pay a subscription's invoice. For example, SCA
-        /// regulation may require 3DS authentication to complete payment. See the <a
-        /// href="https://docs.stripe.com/billing/migration/strong-customer-authentication">SCA
-        /// Migration Guide</a> for Billing to learn more. This is the default behavior.
-        ///
-        /// Use <c>default_incomplete</c> to transition the subscription to <c>status=past_due</c>
-        /// when payment is required and await explicit confirmation of the invoice's payment
-        /// intent. This allows simpler management of scenarios where additional user actions are
-        /// needed to pay a subscription’s invoice. Such as failed payments, <a
-        /// href="https://docs.stripe.com/billing/migration/strong-customer-authentication">SCA
-        /// regulation</a>, or collecting a mandate for a bank debit payment method.
-        ///
-        /// Use <c>pending_if_incomplete</c> to update the subscription using <a
-        /// href="https://docs.stripe.com/billing/subscriptions/pending-updates">pending
-        /// updates</a>. When you use <c>pending_if_incomplete</c> you can only pass the parameters
-        /// <a
-        /// href="https://docs.stripe.com/billing/pending-updates-reference#supported-attributes">supported
-        /// by pending updates</a>.
-        ///
-        /// Use <c>error_if_incomplete</c> if you want Stripe to return an HTTP 402 status code if a
-        /// subscription's invoice cannot be paid. For example, if a payment method requires 3DS
-        /// authentication due to SCA regulation and further user action is needed, this parameter
-        /// does not update the subscription and returns an error instead. This was the default
-        /// behavior for API versions prior to 2019-03-14. See the <a
-        /// href="https://docs.stripe.com/changelog/2019-03-14">changelog</a> to learn more.
+        /// Controls how Stripe handles payment when a subscription update requires payment and
+        /// <c>collection_method=charge_automatically</c>.
         /// One of: <c>allow_incomplete</c>, <c>default_incomplete</c>, <c>error_if_incomplete</c>,
         /// or <c>pending_if_incomplete</c>.
         /// </summary>

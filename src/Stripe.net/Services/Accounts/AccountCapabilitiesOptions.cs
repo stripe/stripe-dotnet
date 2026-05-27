@@ -86,6 +86,13 @@ namespace Stripe
         public AccountCapabilitiesBilliePaymentsOptions BilliePayments { get; set; }
 
         /// <summary>
+        /// The bizum_payments capability.
+        /// </summary>
+        [JsonProperty("bizum_payments")]
+        [STJS.JsonPropertyName("bizum_payments")]
+        public AccountCapabilitiesBizumPaymentsOptions BizumPayments { get; set; }
+
+        /// <summary>
         /// The blik_payments capability.
         /// </summary>
         [JsonProperty("blik_payments")]
@@ -357,6 +364,13 @@ namespace Stripe
         [JsonProperty("satispay_payments")]
         [STJS.JsonPropertyName("satispay_payments")]
         public AccountCapabilitiesSatispayPaymentsOptions SatispayPayments { get; set; }
+
+        /// <summary>
+        /// The scalapay_payments capability.
+        /// </summary>
+        [JsonProperty("scalapay_payments")]
+        [STJS.JsonPropertyName("scalapay_payments")]
+        public AccountCapabilitiesScalapayPaymentsOptions ScalapayPayments { get; set; }
 
         /// <summary>
         /// The sepa_bank_transfer_payments capability.

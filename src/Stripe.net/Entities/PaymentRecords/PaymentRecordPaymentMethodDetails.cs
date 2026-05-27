@@ -63,6 +63,10 @@ namespace Stripe
         [STJS.JsonPropertyName("billing_details")]
         public PaymentRecordPaymentMethodDetailsBillingDetails BillingDetails { get; set; }
 
+        [JsonProperty("bizum")]
+        [STJS.JsonPropertyName("bizum")]
+        public PaymentRecordPaymentMethodDetailsBizum Bizum { get; set; }
+
         [JsonProperty("blik")]
         [STJS.JsonPropertyName("blik")]
         public PaymentRecordPaymentMethodDetailsBlik Blik { get; set; }
@@ -221,6 +225,10 @@ namespace Stripe
         [JsonProperty("satispay")]
         [STJS.JsonPropertyName("satispay")]
         public PaymentRecordPaymentMethodDetailsSatispay Satispay { get; set; }
+
+        [JsonProperty("scalapay")]
+        [STJS.JsonPropertyName("scalapay")]
+        public PaymentRecordPaymentMethodDetailsScalapay Scalapay { get; set; }
 
         [JsonProperty("sepa_credit_transfer")]
         [STJS.JsonPropertyName("sepa_credit_transfer")]

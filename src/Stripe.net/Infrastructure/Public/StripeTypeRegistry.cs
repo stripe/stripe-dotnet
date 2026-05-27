@@ -193,6 +193,10 @@ namespace Stripe
                 { "v2.billing.meter_event", typeof(V2.Billing.MeterEvent) },
                 { "v2.billing.meter_event_adjustment", typeof(V2.Billing.MeterEventAdjustment) },
                 { "v2.billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
+                {
+                    "v2.commerce.product_catalog_import", typeof(
+                    V2.Commerce.ProductCatalogImport)
+                },
                 { "v2.core.account", typeof(V2.Core.Account) },
                 { "v2.core.account_link", typeof(V2.Core.AccountLink) },
                 { "v2.core.account_person", typeof(V2.Core.AccountPerson) },
@@ -215,6 +219,22 @@ namespace Stripe
                 {
                     "v1.billing.meter.no_meter_found", typeof(
                     Events.V1BillingMeterNoMeterFoundEvent)
+                },
+                {
+                    "v2.commerce.product_catalog.imports.failed", typeof(
+                    Events.V2CommerceProductCatalogImportsFailedEvent)
+                },
+                {
+                    "v2.commerce.product_catalog.imports.processing", typeof(
+                    Events.V2CommerceProductCatalogImportsProcessingEvent)
+                },
+                {
+                    "v2.commerce.product_catalog.imports.succeeded", typeof(
+                    Events.V2CommerceProductCatalogImportsSucceededEvent)
+                },
+                {
+                    "v2.commerce.product_catalog.imports.succeeded_with_errors", typeof(
+                    Events.V2CommerceProductCatalogImportsSucceededWithErrorsEvent)
                 },
                 { "v2.core.account.closed", typeof(Events.V2CoreAccountClosedEvent) },
                 { "v2.core.account.created", typeof(Events.V2CoreAccountCreatedEvent) },
@@ -294,6 +314,22 @@ namespace Stripe
                 {
                     "v1.billing.meter.no_meter_found", typeof(
                     Events.V1BillingMeterNoMeterFoundEventNotification)
+                },
+                {
+                    "v2.commerce.product_catalog.imports.failed", typeof(
+                    Events.V2CommerceProductCatalogImportsFailedEventNotification)
+                },
+                {
+                    "v2.commerce.product_catalog.imports.processing", typeof(
+                    Events.V2CommerceProductCatalogImportsProcessingEventNotification)
+                },
+                {
+                    "v2.commerce.product_catalog.imports.succeeded", typeof(
+                    Events.V2CommerceProductCatalogImportsSucceededEventNotification)
+                },
+                {
+                    "v2.commerce.product_catalog.imports.succeeded_with_errors", typeof(
+                    Events.V2CommerceProductCatalogImportsSucceededWithErrorsEventNotification)
                 },
                 {
                     "v2.core.account.closed", typeof(

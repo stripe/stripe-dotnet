@@ -30,6 +30,15 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
+        /// The time period the subscription item has been billed for.
+        /// </summary>
+        [JsonProperty("billed_until")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        [STJS.JsonPropertyName("billed_until")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+        public DateTime BilledUntil { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
         /// Define thresholds at which an invoice will be sent, and the related subscription
         /// advanced to a new billing period.
         /// </summary>

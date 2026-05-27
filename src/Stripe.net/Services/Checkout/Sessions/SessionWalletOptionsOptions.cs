@@ -9,7 +9,8 @@ namespace Stripe.Checkout
     public class SessionWalletOptionsOptions : INestedOptions
     {
         /// <summary>
-        /// contains details about the Link wallet options.
+        /// contains details about the Link wallet options (Link is also known as Onelink in the
+        /// UK).
         /// </summary>
         [JsonProperty("link")]
         [STJS.JsonPropertyName("link")]

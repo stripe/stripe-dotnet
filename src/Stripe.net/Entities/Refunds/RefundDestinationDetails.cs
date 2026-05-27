@@ -120,6 +120,10 @@ namespace Stripe
         [STJS.JsonPropertyName("revolut")]
         public RefundDestinationDetailsRevolut Revolut { get; set; }
 
+        [JsonProperty("scalapay")]
+        [STJS.JsonPropertyName("scalapay")]
+        public RefundDestinationDetailsScalapay Scalapay { get; set; }
+
         [JsonProperty("sofort")]
         [STJS.JsonPropertyName("sofort")]
         public RefundDestinationDetailsSofort Sofort { get; set; }

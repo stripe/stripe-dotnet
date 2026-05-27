@@ -24,7 +24,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// A future timestamp to anchor the subscription's billing cycle for new subscriptions. You
-        /// can't set this parameter if <c>ui_mode</c> is <c>custom</c>.
+        /// can't set this parameter if <c>ui_mode</c> is <c>elements</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

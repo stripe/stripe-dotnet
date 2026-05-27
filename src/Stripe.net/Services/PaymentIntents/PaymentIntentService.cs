@@ -290,9 +290,11 @@ namespace Stripe
         /// including declines. After it’s captured, a PaymentIntent can no longer be
         /// incremented.</p>.
         ///
-        /// <p>Learn more about <a
-        /// href="https://stripe.com/docs/terminal/features/incremental-authorizations">incremental
-        /// authorizations</a>.</p>.
+        /// <p>Learn more about incremental authorizations with <a
+        /// href="https://stripe.com/docs/terminal/features/incremental-authorizations">in-person
+        /// payments</a> and <a
+        /// href="https://stripe.com/docs/payments/incremental-authorization?platform=web&amp;ui=elements">online
+        /// payments</a>.</p>.
         /// </summary>
         public virtual PaymentIntent IncrementAuthorization(string id, PaymentIntentIncrementAuthorizationOptions options = null, RequestOptions requestOptions = null)
         {
@@ -323,9 +325,11 @@ namespace Stripe
         /// including declines. After it’s captured, a PaymentIntent can no longer be
         /// incremented.</p>.
         ///
-        /// <p>Learn more about <a
-        /// href="https://stripe.com/docs/terminal/features/incremental-authorizations">incremental
-        /// authorizations</a>.</p>.
+        /// <p>Learn more about incremental authorizations with <a
+        /// href="https://stripe.com/docs/terminal/features/incremental-authorizations">in-person
+        /// payments</a> and <a
+        /// href="https://stripe.com/docs/payments/incremental-authorization?platform=web&amp;ui=elements">online
+        /// payments</a>.</p>.
         /// </summary>
         public virtual Task<PaymentIntent> IncrementAuthorizationAsync(string id, PaymentIntentIncrementAuthorizationOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
