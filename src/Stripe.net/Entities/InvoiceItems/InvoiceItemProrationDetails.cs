@@ -10,6 +10,14 @@ namespace Stripe
     public class InvoiceItemProrationDetails : StripeEntity<InvoiceItemProrationDetails>
     {
         /// <summary>
+        /// For a credit proration, links to the debit invoice line items or invoice item that the
+        /// credit applies to.
+        /// </summary>
+        [JsonProperty("credited_items")]
+        [STJS.JsonPropertyName("credited_items")]
+        public InvoiceItemProrationDetailsCreditedItems CreditedItems { get; set; }
+
+        /// <summary>
         /// Discount amounts applied when the proration was created.
         /// </summary>
         [JsonProperty("discount_amounts")]

@@ -313,8 +313,12 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthApiLatencyResolvedEventNotification>> v2CoreHealthApiLatencyResolved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthAuthorizationRateDropFiringEventNotification>> v2CoreHealthAuthorizationRateDropFiring;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthAuthorizationRateDropResolvedEventNotification>> v2CoreHealthAuthorizationRateDropResolved;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthElementsErrorFiringEventNotification>> v2CoreHealthElementsErrorFiring;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthElementsErrorResolvedEventNotification>> v2CoreHealthElementsErrorResolved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification>> v2CoreHealthEventGenerationFailureResolved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthFraudRateIncreasedEventNotification>> v2CoreHealthFraudRateIncreased;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthInvoiceCountDroppedFiringEventNotification>> v2CoreHealthInvoiceCountDroppedFiring;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthInvoiceCountDroppedResolvedEventNotification>> v2CoreHealthInvoiceCountDroppedResolved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthIssuingAuthorizationRequestErrorsFiringEventNotification>> v2CoreHealthIssuingAuthorizationRequestErrorsFiring;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthIssuingAuthorizationRequestErrorsResolvedEventNotification>> v2CoreHealthIssuingAuthorizationRequestErrorsResolved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthIssuingAuthorizationRequestTimeoutFiringEventNotification>> v2CoreHealthIssuingAuthorizationRequestTimeoutFiring;
@@ -2242,6 +2246,18 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthElementsErrorFiringEventNotification>> V2CoreHealthElementsErrorFiring
+        {
+            add { this.AddEventHandler(ref this.v2CoreHealthElementsErrorFiring, value, "v2.core.health.elements_error.firing"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthElementsErrorResolvedEventNotification>> V2CoreHealthElementsErrorResolved
+        {
+            add { this.AddEventHandler(ref this.v2CoreHealthElementsErrorResolved, value, "v2.core.health.elements_error.resolved"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification>> V2CoreHealthEventGenerationFailureResolved
         {
             add { this.AddEventHandler(ref this.v2CoreHealthEventGenerationFailureResolved, value, "v2.core.health.event_generation_failure.resolved"); }
@@ -2251,6 +2267,18 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthFraudRateIncreasedEventNotification>> V2CoreHealthFraudRateIncreased
         {
             add { this.AddEventHandler(ref this.v2CoreHealthFraudRateIncreased, value, "v2.core.health.fraud_rate.increased"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthInvoiceCountDroppedFiringEventNotification>> V2CoreHealthInvoiceCountDroppedFiring
+        {
+            add { this.AddEventHandler(ref this.v2CoreHealthInvoiceCountDroppedFiring, value, "v2.core.health.invoice_count_dropped.firing"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthInvoiceCountDroppedResolvedEventNotification>> V2CoreHealthInvoiceCountDroppedResolved
+        {
+            add { this.AddEventHandler(ref this.v2CoreHealthInvoiceCountDroppedResolved, value, "v2.core.health.invoice_count_dropped.resolved"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -4173,6 +4201,14 @@ namespace Stripe
                 {
                     this.v2CoreHealthAuthorizationRateDropResolved.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthAuthorizationRateDropResolvedEventNotification>((Stripe.Events.V2CoreHealthAuthorizationRateDropResolvedEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V2CoreHealthElementsErrorFiringEventNotification)
+                {
+                    this.v2CoreHealthElementsErrorFiring.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthElementsErrorFiringEventNotification>((Stripe.Events.V2CoreHealthElementsErrorFiringEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreHealthElementsErrorResolvedEventNotification)
+                {
+                    this.v2CoreHealthElementsErrorResolved.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthElementsErrorResolvedEventNotification>((Stripe.Events.V2CoreHealthElementsErrorResolvedEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification)
                 {
                     this.v2CoreHealthEventGenerationFailureResolved.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification>((Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification)eventNotification, client));
@@ -4180,6 +4216,14 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2CoreHealthFraudRateIncreasedEventNotification)
                 {
                     this.v2CoreHealthFraudRateIncreased.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthFraudRateIncreasedEventNotification>((Stripe.Events.V2CoreHealthFraudRateIncreasedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreHealthInvoiceCountDroppedFiringEventNotification)
+                {
+                    this.v2CoreHealthInvoiceCountDroppedFiring.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthInvoiceCountDroppedFiringEventNotification>((Stripe.Events.V2CoreHealthInvoiceCountDroppedFiringEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreHealthInvoiceCountDroppedResolvedEventNotification)
+                {
+                    this.v2CoreHealthInvoiceCountDroppedResolved.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthInvoiceCountDroppedResolvedEventNotification>((Stripe.Events.V2CoreHealthInvoiceCountDroppedResolvedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreHealthIssuingAuthorizationRequestErrorsFiringEventNotification)
                 {

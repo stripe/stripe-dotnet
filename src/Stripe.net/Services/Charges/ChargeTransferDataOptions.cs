@@ -17,6 +17,13 @@ namespace Stripe
         public long? Amount { get; set; }
 
         /// <summary>
+        /// An arbitrary string attached to the transfer. Often useful for displaying to users.
+        /// </summary>
+        [JsonProperty("description")]
+        [STJS.JsonPropertyName("description")]
+        public string Description { get; set; }
+
+        /// <summary>
         /// ID of an existing, connected Stripe account.
         /// </summary>
         [JsonProperty("destination")]

@@ -89,6 +89,10 @@ namespace Stripe
         [STJS.JsonPropertyName("billing_details")]
         public PaymentMethodBillingDetails BillingDetails { get; set; }
 
+        [JsonProperty("bizum")]
+        [STJS.JsonPropertyName("bizum")]
+        public PaymentMethodBizum Bizum { get; set; }
+
         [JsonProperty("blik")]
         [STJS.JsonPropertyName("blik")]
         public PaymentMethodBlik Blik { get; set; }
@@ -341,6 +345,10 @@ namespace Stripe
         [STJS.JsonPropertyName("satispay")]
         public PaymentMethodSatispay Satispay { get; set; }
 
+        [JsonProperty("scalapay")]
+        [STJS.JsonPropertyName("scalapay")]
+        public PaymentMethodScalapay Scalapay { get; set; }
+
         [JsonProperty("sepa_debit")]
         [STJS.JsonPropertyName("sepa_debit")]
         public PaymentMethodSepaDebit SepaDebit { get; set; }
@@ -382,7 +390,7 @@ namespace Stripe
         /// PaymentMethod type.
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
-        /// <c>bancontact</c>, <c>billie</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
+        /// <c>bancontact</c>, <c>billie</c>, <c>bizum</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
         /// <c>card_present</c>, <c>cashapp</c>, <c>crypto</c>, <c>custom</c>,
         /// <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>gift_card</c>, <c>giropay</c>,
         /// <c>gopay</c>, <c>grabpay</c>, <c>id_bank_transfer</c>, <c>ideal</c>,
@@ -391,9 +399,9 @@ namespace Stripe
         /// <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>,
         /// <c>paynow</c>, <c>paypal</c>, <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
-        /// <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>stripe_balance</c>,
-        /// <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>,
-        /// <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>scalapay</c>, <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>,
+        /// <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

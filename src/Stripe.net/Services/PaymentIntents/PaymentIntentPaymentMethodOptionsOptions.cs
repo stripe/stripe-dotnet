@@ -18,6 +18,7 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsBacsDebitOptions bacsDebit;
         private PaymentIntentPaymentMethodOptionsBancontactOptions bancontact;
         private PaymentIntentPaymentMethodOptionsBillieOptions billie;
+        private PaymentIntentPaymentMethodOptionsBizumOptions bizum;
         private PaymentIntentPaymentMethodOptionsBlikOptions blik;
         private PaymentIntentPaymentMethodOptionsBoletoOptions boleto;
         private PaymentIntentPaymentMethodOptionsCardPresentOptions cardPresent;
@@ -26,6 +27,7 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsCustomerBalanceOptions customerBalance;
         private PaymentIntentPaymentMethodOptionsEpsOptions eps;
         private PaymentIntentPaymentMethodOptionsFpxOptions fpx;
+        private PaymentIntentPaymentMethodOptionsGiftCardOptions giftCard;
         private PaymentIntentPaymentMethodOptionsGiropayOptions giropay;
         private PaymentIntentPaymentMethodOptionsGopayOptions gopay;
         private PaymentIntentPaymentMethodOptionsGrabpayOptions grabpay;
@@ -57,6 +59,7 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsRevolutPayOptions revolutPay;
         private PaymentIntentPaymentMethodOptionsSamsungPayOptions samsungPay;
         private PaymentIntentPaymentMethodOptionsSatispayOptions satispay;
+        private PaymentIntentPaymentMethodOptionsScalapayOptions scalapay;
         private PaymentIntentPaymentMethodOptionsSepaDebitOptions sepaDebit;
         private PaymentIntentPaymentMethodOptionsShopeepayOptions shopeepay;
         private PaymentIntentPaymentMethodOptionsSofortOptions sofort;
@@ -243,6 +246,23 @@ namespace Stripe
         }
 
         /// <summary>
+        /// If this is a <c>bizum</c> PaymentMethod, this sub-hash contains details about the Bizum
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("bizum", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("bizum")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsBizumOptions Bizum
+        {
+            get => this.bizum;
+            set
+            {
+                this.bizum = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
         /// If this is a <c>blik</c> PaymentMethod, this sub-hash contains details about the BLIK
         /// payment method options.
         /// </summary>
@@ -381,6 +401,23 @@ namespace Stripe
             set
             {
                 this.fpx = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If this is a <c>gift_card</c> PaymentMethod, this sub-hash contains details about the
+        /// gift card payment method options.
+        /// </summary>
+        [JsonProperty("gift_card", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("gift_card")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsGiftCardOptions GiftCard
+        {
+            get => this.giftCard;
+            set
+            {
+                this.giftCard = value;
                 this.SetTracker.Track();
             }
         }
@@ -557,7 +594,7 @@ namespace Stripe
 
         /// <summary>
         /// If this is a <c>link</c> PaymentMethod, this sub-hash contains details about the Link
-        /// payment method options.
+        /// payment method options (Link is also known as Onelink in the UK).
         /// </summary>
         [JsonProperty("link", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("link")]
@@ -908,6 +945,23 @@ namespace Stripe
             set
             {
                 this.satispay = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If this is a <c>scalapay</c> PaymentMethod, this sub-hash contains details about the
+        /// ScalaPay payment method options.
+        /// </summary>
+        [JsonProperty("scalapay", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("scalapay")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsScalapayOptions Scalapay
+        {
+            get => this.scalapay;
+            set
+            {
+                this.scalapay = value;
                 this.SetTracker.Track();
             }
         }

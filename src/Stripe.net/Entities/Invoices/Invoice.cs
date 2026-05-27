@@ -141,6 +141,13 @@ namespace Stripe
         public long AmountPaid { get; set; }
 
         /// <summary>
+        /// Amount, in cents (or local equivalent), that was paid on the invoice outside of Stripe.
+        /// </summary>
+        [JsonProperty("amount_paid_off_stripe")]
+        [STJS.JsonPropertyName("amount_paid_off_stripe")]
+        public long AmountPaidOffStripe { get; set; }
+
+        /// <summary>
         /// The difference between amount_due and amount_paid, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("amount_remaining")]

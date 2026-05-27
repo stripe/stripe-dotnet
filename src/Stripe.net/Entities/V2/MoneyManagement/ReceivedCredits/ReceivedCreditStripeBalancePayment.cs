@@ -9,6 +9,13 @@ namespace Stripe.V2.MoneyManagement
     public class ReceivedCreditStripeBalancePayment : StripeEntity<ReceivedCreditStripeBalancePayment>
     {
         /// <summary>
+        /// ID of the debit agreement associated with this payment.
+        /// </summary>
+        [JsonProperty("debit_agreement")]
+        [STJS.JsonPropertyName("debit_agreement")]
+        public string DebitAgreement { get; set; }
+
+        /// <summary>
         /// Statement descriptor for the Stripe Balance Payment.
         /// </summary>
         [JsonProperty("statement_descriptor")]

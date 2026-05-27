@@ -24,6 +24,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// Defines the granularity of spend aggregation.
+        /// One of: <c>billing_cadence</c>, or <c>pricing_plan_subscription</c>.
         /// </summary>
         [JsonProperty("group_by")]
         [STJS.JsonPropertyName("group_by")]

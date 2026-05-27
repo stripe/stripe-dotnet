@@ -270,9 +270,10 @@ namespace Stripe
         /// <c>treasury.received_credit.created</c>, <c>treasury.received_credit.failed</c>,
         /// <c>treasury.received_credit.succeeded</c>, <c>treasury.received_debit.created</c>,
         /// <c>invoice_payment.detached</c>, <c>billing.alert.recovered</c>,
-        /// <c>billing.credit_balance_transaction.created</c>, <c>billing.credit_grant.updated</c>,
-        /// <c>billing.meter.created</c>, <c>billing.meter.deactivated</c>,
-        /// <c>billing.meter.reactivated</c>, <c>billing.meter.updated</c>, or <c>ping</c>.
+        /// <c>payment_intent.expired</c>, <c>billing.credit_balance_transaction.created</c>,
+        /// <c>billing.credit_grant.updated</c>, <c>billing.meter.created</c>,
+        /// <c>billing.meter.deactivated</c>, <c>billing.meter.reactivated</c>,
+        /// <c>billing.meter.updated</c>, or <c>ping</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

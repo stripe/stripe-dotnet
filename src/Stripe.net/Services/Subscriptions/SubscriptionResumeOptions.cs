@@ -21,6 +21,16 @@ namespace Stripe
         public SubscriptionBillingCycleAnchor BillingCycleAnchor { get; set; }
 
         /// <summary>
+        /// Controls whether Stripe attempts payment on the resumption invoice in the resume
+        /// request, and how payment on that invoice affects the subscription's status. The default
+        /// is <c>resume_on_payment_attempt</c>.
+        /// One of: <c>resume_on_payment_attempt</c>, or <c>resume_on_payment_success</c>.
+        /// </summary>
+        [JsonProperty("payment_behavior")]
+        [STJS.JsonPropertyName("payment_behavior")]
+        public string PaymentBehavior { get; set; }
+
+        /// <summary>
         /// Determines how to handle <a
         /// href="https://docs.stripe.com/billing/subscriptions/prorations">prorations</a> resulting
         /// from the <c>billing_cycle_anchor</c> being <c>unchanged</c>. When the

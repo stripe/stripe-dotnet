@@ -6,9 +6,11 @@ namespace Stripe.ProductCatalog
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// Resource for the TrialOffer API, used to describe a subscription item's trial period
-    /// settings. Renders a TrialOffer object that describes the price, duration, end_behavior
-    /// of a trial offer.
+    /// Trial offers let you define free or paid introductory pricing for a subscription item. A
+    /// TrialOffer specifies the price to charge during the trial, how long the trial lasts (a
+    /// fixed end timestamp or a number of billing intervals), and what price the subscription
+    /// item transitions to when the trial ends. You attach a TrialOffer to a subscription item
+    /// using <c>items[current_trial][trial_offer]</c> when creating or updating a subscription.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TrialOffer : StripeEntity<TrialOffer>, IHasId, IHasObject

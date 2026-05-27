@@ -16,6 +16,14 @@ namespace Stripe
         internal SetTracker SetTracker { get; } = new SetTracker();
 
         /// <summary>
+        /// Controls whether discounts apply to this invoice item. Defaults to true if no value is
+        /// provided.
+        /// </summary>
+        [JsonProperty("discountable")]
+        [STJS.JsonPropertyName("discountable")]
+        public bool? Discountable { get; set; }
+
+        /// <summary>
         /// The coupons to redeem into discounts for the item.
         /// </summary>
         [JsonProperty("discounts")]

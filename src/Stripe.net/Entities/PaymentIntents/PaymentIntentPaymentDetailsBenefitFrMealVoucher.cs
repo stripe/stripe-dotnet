@@ -9,6 +9,14 @@ namespace Stripe
     public class PaymentIntentPaymentDetailsBenefitFrMealVoucher : StripeEntity<PaymentIntentPaymentDetailsBenefitFrMealVoucher>
     {
         /// <summary>
+        /// Whether meal voucher benefit is enabled for this payment.
+        /// One of: <c>if_payment_method_is_eligible</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("enabled")]
+        [STJS.JsonPropertyName("enabled")]
+        public string Enabled { get; set; }
+
+        /// <summary>
         /// The 14-digit SIRET of the meal voucher acceptor.
         /// </summary>
         [JsonProperty("siret")]
