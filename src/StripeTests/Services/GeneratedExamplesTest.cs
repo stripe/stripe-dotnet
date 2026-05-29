@@ -6522,6 +6522,383 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2BillingContractGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/billing/contracts",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"object\":\"v2.billing.contract\",\"contract_line_details\":[{\"contract_line\":\"contract_line\",\"contract_line_value_details\":{\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"overrides\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"type\":\"service_action\"}],\"pricing\":{},\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"}}],\"contract_number\":\"contract_number\",\"contract_value_details\":{\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"license_quantities\":[{\"license_pricing_id\":\"license_pricing_id\",\"license_pricing_type\":\"price\",\"pricing_line\":\"pricing_line\",\"quantity\":1285004149}],\"livemode\":true,\"pricing_lines\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"pricing\":{\"type\":\"price\"},\"pricing_line\":\"pricing_line\",\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"}}],\"pricing_overrides\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"pricing_override\":\"pricing_override\",\"priority\":1165461084,\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"type\":\"multiplier\"}],\"status\":\"draft\",\"status_details\":{}}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.Contracts;
+            Stripe.V2.StripeList<Stripe.V2.Billing.Contract> contracts = service
+                .List();
+            this.AssertRequest(HttpMethod.Get, "/v2/billing/contracts");
+        }
+
+        [Fact]
+        public void TestV2BillingContractPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/billing/contracts",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.billing.contract\",\"contract_line_details\":[{\"contract_line\":\"contract_line\",\"contract_line_value_details\":{\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"overrides\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"type\":\"service_action\"}],\"pricing\":{},\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"}}],\"contract_number\":\"contract_number\",\"contract_value_details\":{\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"license_quantities\":[{\"license_pricing_id\":\"license_pricing_id\",\"license_pricing_type\":\"price\",\"pricing_line\":\"pricing_line\",\"quantity\":1285004149}],\"livemode\":true,\"pricing_lines\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"pricing\":{\"type\":\"price\"},\"pricing_line\":\"pricing_line\",\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"}}],\"pricing_overrides\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"pricing_override\":\"pricing_override\",\"priority\":1165461084,\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"type\":\"multiplier\"}],\"status\":\"draft\",\"status_details\":{}}");
+            var options = new Stripe.V2.Billing.ContractCreateOptions
+            {
+                ContractLines = new List<Stripe.V2.Billing.ContractCreateContractLineOptions>
+                {
+                    new Stripe.V2.Billing.ContractCreateContractLineOptions
+                    {
+                        EndsAt = new Stripe.V2.Billing.ContractCreateContractLineEndsAtOptions
+                        {
+                            Timestamp = DateTimeOffset.Parse(
+                                "1970-01-01T15:18:46.294Z")
+                                .UtcDateTime,
+                        },
+                        Metadata = new Dictionary<string, string>
+                        {
+                            { "key", "metadata" },
+                        },
+                        Overrides = new List<Stripe.V2.Billing.ContractCreateContractLineOverrideOptions>
+                        {
+                            new Stripe.V2.Billing.ContractCreateContractLineOverrideOptions
+                            {
+                                EndsAt = new Stripe.V2.Billing.ContractCreateContractLineOverrideEndsAtOptions
+                                {
+                                    Timestamp = DateTimeOffset.Parse(
+                                        "1970-01-01T15:18:46.294Z")
+                                        .UtcDateTime,
+                                },
+                                ServiceAction = new Stripe.V2.Billing.ContractCreateContractLineOverrideServiceActionOptions
+                                {
+                                    Add = new Stripe.V2.Billing.ContractCreateContractLineOverrideServiceActionAddOptions
+                                    {
+                                        CreditGrant = new Stripe.V2.Billing.ContractCreateContractLineOverrideServiceActionAddCreditGrantOptions
+                                        {
+                                            Amount = new Stripe.V2.Billing.ContractCreateContractLineOverrideServiceActionAddCreditGrantAmountOptions
+                                            {
+                                                Monetary = new Stripe.V2.Amount
+                                                {
+                                                    Value = 63,
+                                                    Currency = "USD",
+                                                },
+                                                Type = "monetary",
+                                            },
+                                            ApplicabilityConfig = new Stripe.V2.Billing.ContractCreateContractLineOverrideServiceActionAddCreditGrantApplicabilityConfigOptions
+                                            {
+                                                Scope = new Stripe.V2.Billing.ContractCreateContractLineOverrideServiceActionAddCreditGrantApplicabilityConfigScopeOptions
+                                                {
+                                                    BillableItems = new List<string>
+                                                    {
+                                                        "billable_items",
+                                                    },
+                                                    PriceType = "metered",
+                                                },
+                                            },
+                                            Category = "paid",
+                                            ExpiryConfig = new Stripe.V2.Billing.ContractCreateContractLineOverrideServiceActionAddCreditGrantExpiryConfigOptions
+                                            {
+                                                Type = "end_of_service_period",
+                                            },
+                                            Name = "name",
+                                            Priority = 1165461084,
+                                        },
+                                        ServiceInterval = "month",
+                                        ServiceIntervalCount = 1375336415,
+                                        Type = "credit_grant",
+                                    },
+                                    Replace = new Stripe.V2.Billing.ContractCreateContractLineOverrideServiceActionReplaceOptions
+                                    {
+                                        CreditGrant = new Stripe.V2.Billing.ContractCreateContractLineOverrideServiceActionReplaceCreditGrantOptions
+                                        {
+                                            Amount = new Stripe.V2.Billing.ContractCreateContractLineOverrideServiceActionReplaceCreditGrantAmountOptions
+                                            {
+                                                Monetary = new Stripe.V2.Amount
+                                                {
+                                                    Value = 63,
+                                                    Currency = "USD",
+                                                },
+                                                Type = "monetary",
+                                            },
+                                            ApplicabilityConfig = new Stripe.V2.Billing.ContractCreateContractLineOverrideServiceActionReplaceCreditGrantApplicabilityConfigOptions
+                                            {
+                                                Scope = new Stripe.V2.Billing.ContractCreateContractLineOverrideServiceActionReplaceCreditGrantApplicabilityConfigScopeOptions
+                                                {
+                                                    BillableItems = new List<string>
+                                                    {
+                                                        "billable_items",
+                                                    },
+                                                    PriceType = "metered",
+                                                },
+                                            },
+                                            Category = "paid",
+                                            ExpiryConfig = new Stripe.V2.Billing.ContractCreateContractLineOverrideServiceActionReplaceCreditGrantExpiryConfigOptions
+                                            {
+                                                Type = "end_of_service_period",
+                                            },
+                                            Name = "name",
+                                            Priority = 1165461084,
+                                        },
+                                        Id = "obj_123",
+                                        LookupKey = "lookup_key",
+                                        ServiceInterval = "month",
+                                        ServiceIntervalCount = 1375336415,
+                                        Type = "credit_grant",
+                                    },
+                                    Type = "add",
+                                },
+                                StartsAt = new Stripe.V2.Billing.ContractCreateContractLineOverrideStartsAtOptions
+                                {
+                                    Timestamp = DateTimeOffset.Parse(
+                                        "1970-01-01T15:18:46.294Z")
+                                        .UtcDateTime,
+                                },
+                                Type = "service_action",
+                            },
+                        },
+                        Pricing = new Stripe.V2.Billing.ContractCreateContractLinePricingOptions(),
+                        StartsAt = new Stripe.V2.Billing.ContractCreateContractLineStartsAtOptions
+                        {
+                            Timestamp = DateTimeOffset.Parse(
+                                "1970-01-01T15:18:46.294Z")
+                                .UtcDateTime,
+                        },
+                    },
+                },
+                ContractNumber = "contract_number",
+                Currency = "usd",
+                LicenseQuantityActions = new List<Stripe.V2.Billing.ContractCreateLicenseQuantityActionOptions>
+                {
+                    new Stripe.V2.Billing.ContractCreateLicenseQuantityActionOptions
+                    {
+                        EffectiveAt = new Stripe.V2.Billing.ContractCreateLicenseQuantityActionEffectiveAtOptions
+                        {
+                            Timestamp = DateTimeOffset.Parse(
+                                "1970-01-01T15:18:46.294Z")
+                                .UtcDateTime,
+                            Type = "timestamp",
+                        },
+                        LicensePricingId = "license_pricing_id",
+                        LicensePricingLookupKey = "license_pricing_lookup_key",
+                        LicensePricingType = "price",
+                        PricingLine = "pricing_line",
+                        Set = new Stripe.V2.Billing.ContractCreateLicenseQuantityActionSetOptions
+                        {
+                            Quantity = 1285004149,
+                        },
+                        Type = "set",
+                    },
+                },
+                PricingLines = new List<Stripe.V2.Billing.ContractCreatePricingLineOptions>
+                {
+                    new Stripe.V2.Billing.ContractCreatePricingLineOptions
+                    {
+                        EndsAt = new Stripe.V2.Billing.ContractCreatePricingLineEndsAtOptions
+                        {
+                            Timestamp = DateTimeOffset.Parse(
+                                "1970-01-01T15:18:46.294Z")
+                                .UtcDateTime,
+                            Type = "contract_end",
+                        },
+                        LookupKey = "lookup_key",
+                        Metadata = new Dictionary<string, string>
+                        {
+                            { "key", "metadata" },
+                        },
+                        Pricing = new Stripe.V2.Billing.ContractCreatePricingLinePricingOptions
+                        {
+                            PriceDetails = new Stripe.V2.Billing.ContractCreatePricingLinePricingPriceDetailsOptions
+                            {
+                                Price = "price",
+                                Quantity = 1285004149,
+                            },
+                            Type = "price",
+                        },
+                        StartsAt = new Stripe.V2.Billing.ContractCreatePricingLineStartsAtOptions
+                        {
+                            Timestamp = DateTimeOffset.Parse(
+                                "1970-01-01T15:18:46.294Z")
+                                .UtcDateTime,
+                            Type = "contract_start",
+                        },
+                    },
+                },
+                PricingOverrides = new List<Stripe.V2.Billing.ContractCreatePricingOverrideOptions>
+                {
+                    new Stripe.V2.Billing.ContractCreatePricingOverrideOptions
+                    {
+                        EndsAt = new Stripe.V2.Billing.ContractCreatePricingOverrideEndsAtOptions
+                        {
+                            Timestamp = DateTimeOffset.Parse(
+                                "1970-01-01T15:18:46.294Z")
+                                .UtcDateTime,
+                            Type = "contract_end",
+                        },
+                        LookupKey = "lookup_key",
+                        Multiplier = new Stripe.V2.Billing.ContractCreatePricingOverrideMultiplierOptions
+                        {
+                            Criteria = new List<Stripe.V2.Billing.ContractCreatePricingOverrideMultiplierCriterionOptions>
+                            {
+                                new Stripe.V2.Billing.ContractCreatePricingOverrideMultiplierCriterionOptions
+                                {
+                                    BillableItemIds = new List<string>
+                                    {
+                                        "billable_item_ids",
+                                    },
+                                    BillableItemLookupKeys = new List<string>
+                                    {
+                                        "billable_item_lookup_keys",
+                                    },
+                                    BillableItemTypes = new List<string>
+                                    {
+                                        "metered",
+                                    },
+                                    MetadataConditions = new List<Stripe.V2.Billing.ContractCreatePricingOverrideMultiplierCriterionMetadataConditionOptions>
+                                    {
+                                        new Stripe.V2.Billing.ContractCreatePricingOverrideMultiplierCriterionMetadataConditionOptions
+                                        {
+                                            AllOf = new List<Stripe.V2.Billing.ContractCreatePricingOverrideMultiplierCriterionMetadataConditionAllOfOptions>
+                                            {
+                                                new Stripe.V2.Billing.ContractCreatePricingOverrideMultiplierCriterionMetadataConditionAllOfOptions
+                                                {
+                                                    Key = "key",
+                                                    Value = "value",
+                                                },
+                                            },
+                                        },
+                                    },
+                                    RateCardIds = new List<string>
+                                    {
+                                        "rate_card_ids",
+                                    },
+                                    Type = "exclude",
+                                },
+                            },
+                            Factor = "factor",
+                        },
+                        OverwritePrice = new Stripe.V2.Billing.ContractCreatePricingOverrideOverwritePriceOptions
+                        {
+                            Price = "price",
+                            TieringMode = "graduated",
+                            Tiers = new List<Stripe.V2.Billing.ContractCreatePricingOverrideOverwritePriceTierOptions>
+                            {
+                                new Stripe.V2.Billing.ContractCreatePricingOverrideOverwritePriceTierOptions
+                                {
+                                    FlatAmount = "flat_amount",
+                                    UnitAmount = "unit_amount",
+                                    UpToDecimal = 1387931359.3333333M,
+                                    UpToInf = "inf",
+                                },
+                            },
+                            UnitAmount = "unit_amount",
+                        },
+                        Priority = 1165461084,
+                        StartsAt = new Stripe.V2.Billing.ContractCreatePricingOverrideStartsAtOptions
+                        {
+                            Timestamp = DateTimeOffset.Parse(
+                                "1970-01-01T15:18:46.294Z")
+                                .UtcDateTime,
+                            Type = "contract_start",
+                        },
+                        Type = "multiplier",
+                    },
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.Contracts;
+            Stripe.V2.Billing.Contract contract = service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v2/billing/contracts");
+        }
+
+        [Fact]
+        public void TestV2BillingContractGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/billing/contracts/id_123",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.billing.contract\",\"contract_line_details\":[{\"contract_line\":\"contract_line\",\"contract_line_value_details\":{\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"overrides\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"type\":\"service_action\"}],\"pricing\":{},\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"}}],\"contract_number\":\"contract_number\",\"contract_value_details\":{\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"license_quantities\":[{\"license_pricing_id\":\"license_pricing_id\",\"license_pricing_type\":\"price\",\"pricing_line\":\"pricing_line\",\"quantity\":1285004149}],\"livemode\":true,\"pricing_lines\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"pricing\":{\"type\":\"price\"},\"pricing_line\":\"pricing_line\",\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"}}],\"pricing_overrides\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"pricing_override\":\"pricing_override\",\"priority\":1165461084,\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"type\":\"multiplier\"}],\"status\":\"draft\",\"status_details\":{}}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.Contracts;
+            Stripe.V2.Billing.Contract contract = service.Get("id_123");
+            this.AssertRequest(HttpMethod.Get, "/v2/billing/contracts/id_123");
+        }
+
+        [Fact]
+        public void TestV2BillingContractPost2()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/billing/contracts/id_123",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.billing.contract\",\"contract_line_details\":[{\"contract_line\":\"contract_line\",\"contract_line_value_details\":{\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"overrides\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"type\":\"service_action\"}],\"pricing\":{},\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"}}],\"contract_number\":\"contract_number\",\"contract_value_details\":{\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"license_quantities\":[{\"license_pricing_id\":\"license_pricing_id\",\"license_pricing_type\":\"price\",\"pricing_line\":\"pricing_line\",\"quantity\":1285004149}],\"livemode\":true,\"pricing_lines\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"pricing\":{\"type\":\"price\"},\"pricing_line\":\"pricing_line\",\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"}}],\"pricing_overrides\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"pricing_override\":\"pricing_override\",\"priority\":1165461084,\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"type\":\"multiplier\"}],\"status\":\"draft\",\"status_details\":{}}");
+            var options = new Stripe.V2.Billing.ContractUpdateOptions();
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.Contracts;
+            Stripe.V2.Billing.Contract contract = service.Update(
+                "id_123",
+                options);
+            this.AssertRequest(HttpMethod.Post, "/v2/billing/contracts/id_123");
+        }
+
+        [Fact]
+        public void TestV2BillingContractPost3()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/billing/contracts/id_123/activate",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.billing.contract\",\"contract_line_details\":[{\"contract_line\":\"contract_line\",\"contract_line_value_details\":{\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"overrides\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"type\":\"service_action\"}],\"pricing\":{},\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"}}],\"contract_number\":\"contract_number\",\"contract_value_details\":{\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"license_quantities\":[{\"license_pricing_id\":\"license_pricing_id\",\"license_pricing_type\":\"price\",\"pricing_line\":\"pricing_line\",\"quantity\":1285004149}],\"livemode\":true,\"pricing_lines\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"pricing\":{\"type\":\"price\"},\"pricing_line\":\"pricing_line\",\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"}}],\"pricing_overrides\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"pricing_override\":\"pricing_override\",\"priority\":1165461084,\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"type\":\"multiplier\"}],\"status\":\"draft\",\"status_details\":{}}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.Contracts;
+            Stripe.V2.Billing.Contract contract = service.Activate("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/billing/contracts/id_123/activate");
+        }
+
+        [Fact]
+        public void TestV2BillingContractPost4()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/billing/contracts/id_123/cancel",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.billing.contract\",\"contract_line_details\":[{\"contract_line\":\"contract_line\",\"contract_line_value_details\":{\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"overrides\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"type\":\"service_action\"}],\"pricing\":{},\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"}}],\"contract_number\":\"contract_number\",\"contract_value_details\":{\"total\":\"total\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"license_quantities\":[{\"license_pricing_id\":\"license_pricing_id\",\"license_pricing_type\":\"price\",\"pricing_line\":\"pricing_line\",\"quantity\":1285004149}],\"livemode\":true,\"pricing_lines\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"pricing\":{\"type\":\"price\"},\"pricing_line\":\"pricing_line\",\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"}}],\"pricing_overrides\":[{\"ends_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"pricing_override\":\"pricing_override\",\"priority\":1165461084,\"starts_at\":{\"timestamp\":\"1970-01-01T15:18:46.294Z\"},\"type\":\"multiplier\"}],\"status\":\"draft\",\"status_details\":{}}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.Contracts;
+            Stripe.V2.Billing.Contract contract = service.Cancel("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/billing/contracts/id_123/cancel");
+        }
+
+        [Fact]
+        public void TestV2BillingContractsLicensePricingQuantityChangeGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/billing/contracts/contract_id_123/license_pricing/license_pricing_id_123/quantity_changes",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"object\":\"v2.billing.contract_license_pricing_quantity_change\",\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"id\":\"obj_123\",\"license_pricing_id\":\"license_pricing_id\",\"license_pricing_type\":\"price\",\"livemode\":true,\"pricing_line\":\"pricing_line\",\"quantity\":1285004149}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client
+                .V2
+                .Billing
+                .Contracts
+                .LicensePricing
+                .QuantityChanges;
+            Stripe.V2.StripeList<Stripe.V2.Billing.ContractLicensePricingQuantityChange> contractLicensePricingQuantityChanges = service
+                .ListQuantityChanges(
+                "contract_id_123",
+                "license_pricing_id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/billing/contracts/contract_id_123/license_pricing/license_pricing_id_123/quantity_changes");
+        }
+
+        [Fact]
         public void TestV2BillingCustomPricingUnitGet()
         {
             this.StubRequest(

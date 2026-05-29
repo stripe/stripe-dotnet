@@ -11,6 +11,7 @@ namespace Stripe
     public class PaymentLocationService : Service,
         ICreatable<PaymentLocation, PaymentLocationCreateOptions>,
         IDeletable<PaymentLocation, PaymentLocationDeleteOptions>,
+        IListable<PaymentLocation, PaymentLocationListOptions>,
         IRetrievable<PaymentLocation, PaymentLocationGetOptions>,
         IUpdatable<PaymentLocation, PaymentLocationUpdateOptions>
     {
@@ -90,6 +91,22 @@ namespace Stripe
         public virtual Task<StripeList<PaymentLocation>> ListAsync(PaymentLocationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<PaymentLocation>>(BaseAddress.Api, HttpMethod.Get, $"/v1/payment_locations", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>List all Payment Locations.</p>.
+        /// </summary>
+        public virtual IEnumerable<PaymentLocation> ListAutoPaging(PaymentLocationListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<PaymentLocation>($"/v1/payment_locations", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>List all Payment Locations.</p>.
+        /// </summary>
+        public virtual IAsyncEnumerable<PaymentLocation> ListAutoPagingAsync(PaymentLocationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<PaymentLocation>($"/v1/payment_locations", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

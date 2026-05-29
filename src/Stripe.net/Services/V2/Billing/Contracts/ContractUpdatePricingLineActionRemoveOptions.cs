@@ -1,0 +1,18 @@
+// File generated from our OpenAPI spec
+namespace Stripe.V2.Billing
+{
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
+    public class ContractUpdatePricingLineActionRemoveOptions : INestedOptions, IHasId
+    {
+        /// <summary>
+        /// The ID of the pricing line to remove.
+        /// </summary>
+        [JsonProperty("id")]
+        [STJS.JsonPropertyName("id")]
+        public string Id { get; set; }
+    }
+}

@@ -16,10 +16,10 @@ namespace Stripe
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// Payment-level details for the orchestrated payment.
+        /// Merchant-provided reference for this payment, used for reconciliation.
         /// </summary>
-        [JsonProperty("payment_details")]
-        [STJS.JsonPropertyName("payment_details")]
-        public PaymentIntentPaymentsOrchestrationPaymentDetailsOptions PaymentDetails { get; set; }
+        [JsonProperty("payment_reference")]
+        [STJS.JsonPropertyName("payment_reference")]
+        public string PaymentReference { get; set; }
     }
 }

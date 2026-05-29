@@ -67,6 +67,8 @@ namespace Stripe
                 { "customer_balance_transaction", typeof(CustomerBalanceTransaction) },
                 { "customer_cash_balance_transaction", typeof(CustomerCashBalanceTransaction) },
                 { "customer_session", typeof(CustomerSession) },
+                { "delegated_checkout.order", typeof(DelegatedCheckout.Order) },
+                { "delegated_checkout.order_event", typeof(DelegatedCheckout.OrderEvent) },
                 {
                     "delegated_checkout.requested_session", typeof(
                     DelegatedCheckout.RequestedSession)
@@ -274,6 +276,11 @@ namespace Stripe
                 {
                     "v2.billing.collection_setting_version", typeof(
                     V2.Billing.CollectionSettingVersion)
+                },
+                { "v2.billing.contract", typeof(V2.Billing.Contract) },
+                {
+                    "v2.billing.contract_license_pricing_quantity_change", typeof(
+                    V2.Billing.ContractLicensePricingQuantityChange)
                 },
                 { "v2.billing.custom_pricing_unit", typeof(V2.Billing.CustomPricingUnit) },
                 { "v2.billing.intent", typeof(V2.Billing.Intent) },
