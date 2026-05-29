@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Reporting
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -22,6 +23,13 @@ namespace Stripe.V2.Reporting
         [JsonProperty("download_url")]
         [STJS.JsonPropertyName("download_url")]
         public ReportRunResultFileDownloadUrl DownloadUrl { get; set; }
+
+        /// <summary>
+        /// The columns of the schema.
+        /// </summary>
+        [JsonProperty("schema")]
+        [STJS.JsonPropertyName("schema")]
+        public List<ReportRunResultFileSchema> Schema { get; set; }
 
         /// <summary>
         /// The total size of the file in bytes.
