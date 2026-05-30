@@ -22,6 +22,7 @@ namespace Stripe
         private SubscriptionPaymentSettingsPaymentMethodOptionsSepaDebitOptions sepaDebit;
         private SubscriptionPaymentSettingsPaymentMethodOptionsUpiOptions upi;
         private SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountOptions usBankAccount;
+        private SubscriptionPaymentSettingsPaymentMethodOptionsWechatPayOptions wechatPay;
 
         [JsonIgnore]
         [STJS.JsonIgnore]
@@ -261,6 +262,23 @@ namespace Stripe
             set
             {
                 this.usBankAccount = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// This sub-hash contains details about the WeChat Pay payment method options to pass to
+        /// the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("wechat_pay", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("wechat_pay")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsWechatPayOptions WechatPay
+        {
+            get => this.wechatPay;
+            set
+            {
+                this.wechatPay = value;
                 this.SetTracker.Track();
             }
         }

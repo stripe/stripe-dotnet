@@ -119,5 +119,13 @@ namespace Stripe
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]
         public InvoicePaymentSettingsPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
+
+        /// <summary>
+        /// If paying by <c>wechat_pay</c>, this sub-hash contains details about the WeChat Pay
+        /// payment method options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("wechat_pay")]
+        [STJS.JsonPropertyName("wechat_pay")]
+        public InvoicePaymentSettingsPaymentMethodOptionsWechatPay WechatPay { get; set; }
     }
 }
