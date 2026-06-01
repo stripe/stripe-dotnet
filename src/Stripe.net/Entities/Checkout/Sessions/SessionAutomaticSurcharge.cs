@@ -25,7 +25,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The surcharge provider used for this session.
-        /// One of: <c>interpayments</c>, or <c>yeeld</c>.
+        /// One of: <c>interpayments</c>, <c>proserv</c>, or <c>yeeld</c>.
         /// </summary>
         [JsonProperty("provider")]
         [STJS.JsonPropertyName("provider")]
