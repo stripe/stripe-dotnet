@@ -415,6 +415,7 @@ namespace Stripe
                 },
                 { "v2.reporting.report", typeof(V2.Reporting.Report) },
                 { "v2.reporting.report_run", typeof(V2.Reporting.ReportRun) },
+                { "v2.signals.account_signal", typeof(V2.Signals.AccountSignal) },
                 { "v2.tax.manual_rule", typeof(V2.Tax.ManualRule) },
 
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
@@ -1654,6 +1655,10 @@ namespace Stripe
                 {
                     "v2.signals.account_signal.fraudulent_merchant_ready", typeof(
                     Events.V2SignalsAccountSignalFraudulentMerchantReadyEvent)
+                },
+                {
+                    "v2.signals.account_signal.merchant_delinquency_ready", typeof(
+                    Events.V2SignalsAccountSignalMerchantDelinquencyReadyEvent)
                 },
 
                 // V2EventsToTypes: The end of the section generated from our OpenAPI spec
@@ -3067,6 +3072,10 @@ namespace Stripe
                 {
                     "v2.signals.account_signal.fraudulent_merchant_ready", typeof(
                     Events.V2SignalsAccountSignalFraudulentMerchantReadyEventNotification)
+                },
+                {
+                    "v2.signals.account_signal.merchant_delinquency_ready", typeof(
+                    Events.V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification)
                 },
 
                 // V2EventNotificationsToTypes: The end of the section generated from our OpenAPI spec
