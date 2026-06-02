@@ -36,5 +36,22 @@ namespace Stripe.Issuing
         [JsonProperty("network_data")]
         [STJS.JsonPropertyName("network_data")]
         public AuthorizationTokenDetailsNetworkData NetworkData { get; set; }
+
+        /// <summary>
+        /// The decision made during token provisioning.
+        /// One of: <c>approve</c>, <c>approve_pending_id_and_v</c>, or <c>decline</c>.
+        /// </summary>
+        [JsonProperty("provisioning_decision")]
+        [STJS.JsonPropertyName("provisioning_decision")]
+        public string ProvisioningDecision { get; set; }
+
+        /// <summary>
+        /// The type of the token, indicating how it is used.
+        /// One of: <c>card_on_file</c>, <c>cloud_based</c>, <c>commerce_platform</c>,
+        /// <c>commercial_virtual_account</c>, <c>secure_element</c>, or <c>static_credential</c>.
+        /// </summary>
+        [JsonProperty("token_type")]
+        [STJS.JsonPropertyName("token_type")]
+        public string TokenType { get; set; }
     }
 }
