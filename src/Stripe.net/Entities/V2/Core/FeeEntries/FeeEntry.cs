@@ -32,7 +32,7 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
-        public FeeEntryAmount Amount { get; set; }
+        public V2.Amount Amount { get; set; }
 
         /// <summary>
         /// The entity that assessed this fee.

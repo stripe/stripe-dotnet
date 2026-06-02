@@ -13,6 +13,6 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
-        public FeeBatchTaxAmount Amount { get; set; }
+        public V2.Amount Amount { get; set; }
     }
 }
