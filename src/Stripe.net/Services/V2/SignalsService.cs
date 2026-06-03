@@ -5,16 +5,16 @@ namespace Stripe.V2
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class SignalService : Service
+    public class SignalsService : Service
     {
         private V2.Signals.AccountSignalService accountSignals;
 
-        internal SignalService(ApiRequestor requestor)
+        internal SignalsService(ApiRequestor requestor)
             : base(requestor)
         {
         }
 
-        internal SignalService(IStripeClient client)
+        internal SignalsService(IStripeClient client)
             : base(client)
         {
         }
