@@ -5,17 +5,17 @@ namespace Stripe.V2
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class PaymentService : Service
+    public class PaymentsService : Service
     {
         private V2.Payments.OffSessionPaymentService offSessionPayments;
         private V2.Payments.SettlementAllocationIntentService settlementAllocationIntents;
 
-        internal PaymentService(ApiRequestor requestor)
+        internal PaymentsService(ApiRequestor requestor)
             : base(requestor)
         {
         }
 
-        internal PaymentService(IStripeClient client)
+        internal PaymentsService(IStripeClient client)
             : base(client)
         {
         }
