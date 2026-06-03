@@ -7,8 +7,8 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// A Payment Location Capability represents a capability for a Stripe account at a Payment
-    /// Location.
+    /// A <c>payment_location</c> capability represents a capability for a Stripe account at a
+    /// payment location.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentLocationCapability : StripeEntity<PaymentLocationCapability>, IHasObject, IHasId
@@ -21,7 +21,7 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// The account for which the capability enables functionality.
+        /// The account that the capability enables functionality for.
         /// </summary>
         [JsonProperty("account")]
         [STJS.JsonPropertyName("account")]
@@ -43,7 +43,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The payment location for which the capability enables functionality.
+        /// The payment location that the capability enables functionality for.
         /// </summary>
         [JsonProperty("location")]
         [STJS.JsonPropertyName("location")]
@@ -57,7 +57,7 @@ namespace Stripe
         public bool Requested { get; set; }
 
         /// <summary>
-        /// Time at which the capability was requested. Measured in seconds since the Unix epoch.
+        /// Time when the capability was requested. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("requested_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

@@ -1,0 +1,85 @@
+// File generated from our OpenAPI spec
+namespace Stripe.V2.Billing
+{
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
+    public class ContractCreateOptions : BaseOptions, IHasMetadata
+    {
+        /// <summary>
+        /// The billing settings for the contract.
+        /// </summary>
+        [JsonProperty("billing_settings")]
+        [STJS.JsonPropertyName("billing_settings")]
+        public ContractCreateBillingSettingsOptions BillingSettings { get; set; }
+
+        /// <summary>
+        /// A list of contract lines to create with the contract.
+        /// </summary>
+        [JsonProperty("contract_lines")]
+        [STJS.JsonPropertyName("contract_lines")]
+        public List<ContractCreateContractLineOptions> ContractLines { get; set; }
+
+        /// <summary>
+        /// A unique user-provided contract number e.g. C-2026-0001.
+        /// </summary>
+        [JsonProperty("contract_number")]
+        [STJS.JsonPropertyName("contract_number")]
+        public string ContractNumber { get; set; }
+
+        /// <summary>
+        /// Currency of the contract.
+        /// </summary>
+        [JsonProperty("currency")]
+        [STJS.JsonPropertyName("currency")]
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// Additional fields to include in the response.
+        /// One of: <c>contract_line_details</c>, <c>license_quantities</c>, <c>one_time_fees</c>,
+        /// <c>pricing_lines</c>, or <c>pricing_overrides</c>.
+        /// </summary>
+        [JsonProperty("include")]
+        [STJS.JsonPropertyName("include")]
+        public List<string> Include { get; set; }
+
+        /// <summary>
+        /// A list of license quantity actions to create with the contract.
+        /// </summary>
+        [JsonProperty("license_quantity_actions")]
+        [STJS.JsonPropertyName("license_quantity_actions")]
+        public List<ContractCreateLicenseQuantityActionOptions> LicenseQuantityActions { get; set; }
+
+        /// <summary>
+        /// Set of key-value pairs that you can attach to an object.
+        /// </summary>
+        [JsonProperty("metadata")]
+        [STJS.JsonPropertyName("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// A list of one-time fees to create with the contract. Each fee is billed as individual
+        /// invoice items per its bill_schedule.
+        /// </summary>
+        [JsonProperty("one_time_fees")]
+        [STJS.JsonPropertyName("one_time_fees")]
+        public List<ContractCreateOneTimeFeeOptions> OneTimeFees { get; set; }
+
+        /// <summary>
+        /// A list of pricing lines to create with the contract.
+        /// </summary>
+        [JsonProperty("pricing_lines")]
+        [STJS.JsonPropertyName("pricing_lines")]
+        public List<ContractCreatePricingLineOptions> PricingLines { get; set; }
+
+        /// <summary>
+        /// A list of pricing overrides to create with the contract.
+        /// </summary>
+        [JsonProperty("pricing_overrides")]
+        [STJS.JsonPropertyName("pricing_overrides")]
+        public List<ContractCreatePricingOverrideOptions> PricingOverrides { get; set; }
+    }
+}

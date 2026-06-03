@@ -68,6 +68,10 @@ namespace Stripe
         [STJS.JsonPropertyName("address_kanji")]
         public AddressJapan AddressKanji { get; set; }
 
+        [JsonProperty("birth_address")]
+        [STJS.JsonPropertyName("birth_address")]
+        public Address BirthAddress { get; set; }
+
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>

@@ -12,6 +12,8 @@ namespace Stripe.DelegatedCheckout
         IRetrievable<RequestedSession, RequestedSessionGetOptions>,
         IUpdatable<RequestedSession, RequestedSessionUpdateOptions>
     {
+        private RequestedSessionOrderService orders;
+
         public RequestedSessionService()
         {
         }
@@ -25,6 +27,9 @@ namespace Stripe.DelegatedCheckout
             : base(client)
         {
         }
+
+        public virtual RequestedSessionOrderService Orders => this.orders ??= new RequestedSessionOrderService(
+            this.Requestor);
 
         /// <summary>
         /// <p>Confirms a requested session</p>.

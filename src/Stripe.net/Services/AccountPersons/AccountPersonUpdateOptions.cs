@@ -43,6 +43,13 @@ namespace Stripe
         public AddressJapanOptions AddressKanji { get; set; }
 
         /// <summary>
+        /// The person's place of birth.
+        /// </summary>
+        [JsonProperty("birth_address")]
+        [STJS.JsonPropertyName("birth_address")]
+        public AddressOptions BirthAddress { get; set; }
+
+        /// <summary>
         /// The person's date of birth.
         /// </summary>
         [JsonProperty("dob", NullValueHandling = NullValueHandling.Ignore)]

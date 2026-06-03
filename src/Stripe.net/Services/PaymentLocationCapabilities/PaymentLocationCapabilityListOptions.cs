@@ -9,7 +9,7 @@ namespace Stripe
     public class PaymentLocationCapabilityListOptions : BaseOptions
     {
         /// <summary>
-        /// The location for which the capabilities enable functionality.
+        /// The payment location that the capabilities enable functionality for.
         /// </summary>
         [JsonProperty("location")]
         [STJS.JsonPropertyName("location")]

@@ -38,7 +38,7 @@ namespace Stripe
 
         /// <summary>
         /// The capability settings for the location. Only applicable for locations with requested
-        /// Payment Location Capabilities.
+        /// payment location capabilities.
         /// </summary>
         [JsonProperty("capability_settings")]
         [STJS.JsonPropertyName("capability_settings")]

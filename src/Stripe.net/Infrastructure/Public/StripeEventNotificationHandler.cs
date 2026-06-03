@@ -424,6 +424,7 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ReportingReportRunSucceededEventNotification>> v2ReportingReportRunSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ReportingReportRunUpdatedEventNotification>> v2ReportingReportRunUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalFraudulentMerchantReadyEventNotification>> v2SignalsAccountSignalFraudulentMerchantReady;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification>> v2SignalsAccountSignalMerchantDelinquencyReady;
 
         // private-event-handlers: The end of the section generated from our OpenAPI spec
 
@@ -2912,6 +2913,12 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification>> V2SignalsAccountSignalMerchantDelinquencyReady
+        {
+            add { this.AddEventHandler(ref this.v2SignalsAccountSignalMerchantDelinquencyReady, value, "v2.signals.account_signal.merchant_delinquency_ready"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         // public-event-handlers: The end of the section generated from our OpenAPI spec
 
         /// <summary>
@@ -4644,6 +4651,10 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2SignalsAccountSignalFraudulentMerchantReadyEventNotification)
                 {
                     this.v2SignalsAccountSignalFraudulentMerchantReady.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalFraudulentMerchantReadyEventNotification>((Stripe.Events.V2SignalsAccountSignalFraudulentMerchantReadyEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification)
+                {
+                    this.v2SignalsAccountSignalMerchantDelinquencyReady.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification>((Stripe.Events.V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification)eventNotification, client));
                 }
 
                 // event-handler-dispatch: The end of the section generated from our OpenAPI spec

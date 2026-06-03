@@ -27,7 +27,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Retrieves information about the specified Payment Location Capability.</p>.
+        /// <p>Retrieves a <c>payment_location</c> capability</p>.
         /// </summary>
         public virtual PaymentLocationCapability Get(string id, PaymentLocationCapabilityGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -35,7 +35,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Retrieves information about the specified Payment Location Capability.</p>.
+        /// <p>Retrieves a <c>payment_location</c> capability</p>.
         /// </summary>
         public virtual Task<PaymentLocationCapability> GetAsync(string id, PaymentLocationCapabilityGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -43,8 +43,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Returns a list of <c>PaymentLocationCapability</c> objects associated with the
-        /// location.</p>.
+        /// <p>List all payment location capabilities associated with the payment location.</p>.
         /// </summary>
         public virtual StripeList<PaymentLocationCapability> List(PaymentLocationCapabilityListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -52,8 +51,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Returns a list of <c>PaymentLocationCapability</c> objects associated with the
-        /// location.</p>.
+        /// <p>List all payment location capabilities associated with the payment location.</p>.
         /// </summary>
         public virtual Task<StripeList<PaymentLocationCapability>> ListAsync(PaymentLocationCapabilityListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -61,8 +59,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Updates a specified Payment Location Capability. Request or remove a payment location
-        /// capability by updating its <c>requested</c> parameter.</p>.
+        /// <p>Updates a <c>payment_location</c> capability. Request or remove a
+        /// <c>payment_location</c> capability by updating its <c>requested</c> parameter.</p>.
         /// </summary>
         public virtual PaymentLocationCapability Update(string id, PaymentLocationCapabilityUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -70,8 +68,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Updates a specified Payment Location Capability. Request or remove a payment location
-        /// capability by updating its <c>requested</c> parameter.</p>.
+        /// <p>Updates a <c>payment_location</c> capability. Request or remove a
+        /// <c>payment_location</c> capability by updating its <c>requested</c> parameter.</p>.
         /// </summary>
         public virtual Task<PaymentLocationCapability> UpdateAsync(string id, PaymentLocationCapabilityUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

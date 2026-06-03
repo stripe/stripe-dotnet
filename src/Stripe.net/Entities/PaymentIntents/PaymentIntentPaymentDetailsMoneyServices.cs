@@ -14,6 +14,7 @@ namespace Stripe
 
         /// <summary>
         /// The type of money services transaction.
+        /// One of: <c>account_funding</c>, or <c>debt_repayment</c>.
         /// </summary>
         [JsonProperty("transaction_type")]
         [STJS.JsonPropertyName("transaction_type")]

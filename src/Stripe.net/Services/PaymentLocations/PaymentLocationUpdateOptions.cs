@@ -30,10 +30,10 @@ namespace Stripe
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Pass true when updating location fields that will trigger onboarding review for any of
-        /// the location's active location capabilities. If this parameter is not set to true,
-        /// updates that would trigger onboarding review will fail. Only applicable for locations
-        /// with active location capabilities.
+        /// Pass true when updating location fields that trigger onboarding review for any of the
+        /// location's active location capabilities. If this parameter isn't set to true, updates
+        /// that would trigger onboarding review fail. Only applicable for locations with active
+        /// location capabilities.
         /// </summary>
         [JsonProperty("onboarding_data_update_acknowledged")]
         [STJS.JsonPropertyName("onboarding_data_update_acknowledged")]

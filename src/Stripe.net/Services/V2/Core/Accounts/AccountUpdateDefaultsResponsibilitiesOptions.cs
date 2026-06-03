@@ -25,5 +25,13 @@ namespace Stripe.V2.Core
         [JsonProperty("losses_collector")]
         [STJS.JsonPropertyName("losses_collector")]
         public string LossesCollector { get; set; }
+
+        /// <summary>
+        /// A value indicating the party responsible for collecting requirements on this account.
+        /// One of: <c>application</c>, or <c>stripe</c>.
+        /// </summary>
+        [JsonProperty("requirements_collector")]
+        [STJS.JsonPropertyName("requirements_collector")]
+        public string RequirementsCollector { get; set; }
     }
 }

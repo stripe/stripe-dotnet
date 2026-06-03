@@ -18,5 +18,13 @@ namespace Stripe
         [JsonProperty("networks")]
         [STJS.JsonPropertyName("networks")]
         public List<string> Networks { get; set; }
+
+        /// <summary>
+        /// If true, provisions a permanent per-customer deposit address reused across
+        /// PaymentIntents.
+        /// </summary>
+        [JsonProperty("static_address")]
+        [STJS.JsonPropertyName("static_address")]
+        public bool? StaticAddress { get; set; }
     }
 }

@@ -56,8 +56,8 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// The description that appears on the receiving end for an OutboundTransfer (for example,
-        /// on a bank statement). Must be between 3 and 22 characters long, and not contain
-        /// profanity.
+        /// on a bank statement). Must be between 3 and 22 characters long for most destinations
+        /// (500 for FinancialAccount destinations), and not contain profanity.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         [STJS.JsonPropertyName("statement_descriptor")]
