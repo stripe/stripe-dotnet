@@ -19,28 +19,6 @@ namespace Stripe
         internal SetTracker SetTracker { get; } = new SetTracker();
 
         /// <summary>
-        /// Controls when funds are captured from the customer's account when <c>capture_method</c>
-        /// is <c>automatic_delayed</c>.
-        ///
-        /// If omitted, funds are captured before the authorization expires.
-        /// One of: <c>auth_expiry</c>, <c>end_of_day</c>, or <c>target_delay</c>.
-        /// </summary>
-        [JsonProperty("capture_by")]
-        [STJS.JsonPropertyName("capture_by")]
-        public string CaptureBy { get; set; }
-
-        /// <summary>
-        /// The number of days or hours to delay the capture of the funds. You can set both days and
-        /// hours as long as the total delay does not exceed 30 days.
-        ///
-        /// You can only set this if <c>capture_method</c> is <c>automatic_delayed</c> and
-        /// <c>capture_by</c> is <c>target_delay</c>.
-        /// </summary>
-        [JsonProperty("capture_delay")]
-        [STJS.JsonPropertyName("capture_delay")]
-        public PaymentIntentPaymentMethodOptionsCardCaptureDelayOptions CaptureDelay { get; set; }
-
-        /// <summary>
         /// Controls when the funds are captured from the customer's account.
         ///
         /// If provided, this parameter overrides the behavior of the top-level <a

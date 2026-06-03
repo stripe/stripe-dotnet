@@ -9,21 +9,6 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsCard : StripeEntity<PaymentIntentPaymentMethodOptionsCard>
     {
         /// <summary>
-        /// Controls when funds are captured from the customer's account when <c>capture_method</c>
-        /// is <c>automatic_delayed</c>.
-        ///
-        /// If omitted, funds are captured before the authorization expires.
-        /// One of: <c>auth_expiry</c>, <c>end_of_day</c>, or <c>target_delay</c>.
-        /// </summary>
-        [JsonProperty("capture_by")]
-        [STJS.JsonPropertyName("capture_by")]
-        public string CaptureBy { get; set; }
-
-        [JsonProperty("capture_delay")]
-        [STJS.JsonPropertyName("capture_delay")]
-        public PaymentIntentPaymentMethodOptionsCardCaptureDelay CaptureDelay { get; set; }
-
-        /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// </summary>
         [JsonProperty("capture_method")]
