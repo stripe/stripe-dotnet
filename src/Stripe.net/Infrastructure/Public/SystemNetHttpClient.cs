@@ -135,7 +135,7 @@ namespace Stripe
         /// </summary>
         public static TimeSpan MinNetworkRetriesDelay => TimeSpan.FromMilliseconds(500);
 
-        /// <summary>Gets or sets the cached source hash. Internal for testing.</summary>
+        /// <summary>Gets or sets the cached source hash.</summary>
         internal static string SourceHash { get; set; } = ComputeSourceHash();
 
         /// <summary>
