@@ -8,6 +8,8 @@ namespace Stripe
     using System.Net;
     using System.Net.Http;
     using System.Net.Http.Headers;
+    using System.Security.Cryptography;
+    using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
@@ -133,6 +135,9 @@ namespace Stripe
         /// </summary>
         public static TimeSpan MinNetworkRetriesDelay => TimeSpan.FromMilliseconds(500);
 
+        /// <summary>Gets or sets the cached source hash.</summary>
+        internal static string SourceHash { get; set; } = ComputeSourceHash();
+
         /// <summary>
         /// Gets whether telemetry was enabled for this client.
         /// </summary>
@@ -222,6 +227,35 @@ namespace Stripe
             return string.Empty;
         }
 
+        internal static string ComputeSourceHash()
+        {
+            try
+            {
+                var parts = new System.Collections.Generic.List<string>
+                {
+                    System.Runtime.InteropServices.RuntimeInformation.OSDescription,
+                };
+                try
+                {
+                    parts.Add(Environment.MachineName);
+                }
+                catch
+                {
+                }
+
+                var inputBytes = Encoding.UTF8.GetBytes(string.Join(" ", parts));
+                using (var md5 = MD5.Create())
+                {
+                    var hashBytes = md5.ComputeHash(inputBytes);
+                    return BitConverter.ToString(hashBytes).Replace("-", string.Empty).ToLowerInvariant();
+                }
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
+
         private async Task<(HttpResponseMessage responseMessage, int retries)> SendHttpRequest(
             StripeRequest request,
             CancellationToken cancellationToken)
@@ -297,6 +331,10 @@ namespace Stripe
                 { "lang", ".net" },
                 { "stripe_net_target_framework", StripeNetTargetFramework },
             };
+            if (!string.IsNullOrEmpty(SourceHash))
+            {
+                values["source"] = SourceHash;
+            }
 
             // The following values are in try/catch blocks on the off chance that the
             // RuntimeInformation methods fail in an unexpected way. This should ~never happen, but
