@@ -1,5 +1,14 @@
 # Changelog
 
+## 52.0.0 - 2026-06-05
+
+This release **doesn't** change the pinned API version; it still uses `2026-05-27.dahlia`.
+
+We're doing an out-of-band-major to update a field type that changed. If you're not using `tax_details`, this is a no-op release when compared with the last one. If you _are_ using `tax_details` its type has changed slightly and you'll have to update your code when upgrading.
+
+* [#3396](https://github.com/stripe/stripe-dotnet/pull/3396) ⚠️ Make `tax_rate.tax_details` expandable
+* [#3394](https://github.com/stripe/stripe-dotnet/pull/3394) Add "source" field to user-agent header
+
 ## 51.3.0-beta.1 - 2026-05-27
 This release changes the pinned API version to 2026-05-27.private.
 
