@@ -38,7 +38,7 @@ namespace Stripe.V2.Commerce
 
         /// <summary>
         /// The type of feed data being imported into the product catalog.
-        /// One of: <c>inventory</c>, <c>pricing</c>, or <c>product</c>.
+        /// One of: <c>inventory</c>, <c>pricing</c>, <c>product</c>, or <c>promotion</c>.
         /// </summary>
         [JsonProperty("feed_type")]
         [STJS.JsonPropertyName("feed_type")]
