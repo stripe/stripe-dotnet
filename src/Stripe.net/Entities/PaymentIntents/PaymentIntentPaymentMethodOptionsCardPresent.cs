@@ -9,6 +9,21 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsCardPresent : StripeEntity<PaymentIntentPaymentMethodOptionsCardPresent>
     {
         /// <summary>
+        /// Controls when funds are captured from the customer's account when <c>capture_method</c>
+        /// is <c>automatic_delayed</c>.
+        ///
+        /// If omitted, funds are captured before the authorization expires.
+        /// One of: <c>auth_expiry</c>, <c>end_of_day</c>, or <c>target_delay</c>.
+        /// </summary>
+        [JsonProperty("capture_by")]
+        [STJS.JsonPropertyName("capture_by")]
+        public string CaptureBy { get; set; }
+
+        [JsonProperty("capture_delay")]
+        [STJS.JsonPropertyName("capture_delay")]
+        public PaymentIntentPaymentMethodOptionsCardPresentCaptureDelay CaptureDelay { get; set; }
+
+        /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// One of: <c>manual</c>, or <c>manual_preferred</c>.
         /// </summary>
@@ -36,6 +51,15 @@ namespace Stripe
         [JsonProperty("request_incremental_authorization_support")]
         [STJS.JsonPropertyName("request_incremental_authorization_support")]
         public bool? RequestIncrementalAuthorizationSupport { get; set; }
+
+        /// <summary>
+        /// Request ability to make <a href="https://docs.stripe.com/payments/multicapture">multiple
+        /// captures</a> for this PaymentIntent.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_multicapture")]
+        [STJS.JsonPropertyName("request_multicapture")]
+        public string RequestMulticapture { get; set; }
 
         /// <summary>
         /// Request ability to <a

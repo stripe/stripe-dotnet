@@ -17,6 +17,13 @@ namespace Stripe
         public string Address { get; set; }
 
         /// <summary>
+        /// The wallet address that should receive refunds for deposits on this network.
+        /// </summary>
+        [JsonProperty("refund_address")]
+        [STJS.JsonPropertyName("refund_address")]
+        public string RefundAddress { get; set; }
+
+        /// <summary>
         /// The token currencies supported on this network.
         /// </summary>
         [JsonProperty("supported_tokens")]

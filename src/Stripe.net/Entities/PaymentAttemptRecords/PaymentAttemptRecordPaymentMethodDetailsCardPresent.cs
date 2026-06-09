@@ -163,6 +163,10 @@ namespace Stripe
         [STJS.JsonPropertyName("location")]
         public string Location { get; set; }
 
+        [JsonProperty("multicapture")]
+        [STJS.JsonPropertyName("multicapture")]
+        public PaymentAttemptRecordPaymentMethodDetailsCardPresentMulticapture Multicapture { get; set; }
+
         /// <summary>
         /// Identifies which network this charge was processed on. Can be <c>amex</c>,
         /// <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>, <c>eftpos_au</c>,

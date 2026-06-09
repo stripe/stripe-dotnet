@@ -6,10 +6,10 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentAdvancedFeatureDetailsReauthorization : StripeEntity<PaymentIntentAdvancedFeatureDetailsReauthorization>
+    public class ChargePaymentMethodDetailsCardPresentMulticapture : StripeEntity<ChargePaymentMethodDetailsCardPresentMulticapture>
     {
         /// <summary>
-        /// Indicates whether the feature is supported.
+        /// Indicates whether or not multiple captures are supported.
         /// One of: <c>available</c>, or <c>unavailable</c>.
         /// </summary>
         [JsonProperty("status")]

@@ -37,6 +37,10 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("link")]
         public SessionCurrentAttemptPaymentMethodDetailsLink Link { get; set; }
 
+        [JsonProperty("pix")]
+        [STJS.JsonPropertyName("pix")]
+        public SessionCurrentAttemptPaymentMethodDetailsPix Pix { get; set; }
+
         [JsonProperty("sepa_debit")]
         [STJS.JsonPropertyName("sepa_debit")]
         public SessionCurrentAttemptPaymentMethodDetailsSepaDebit SepaDebit { get; set; }

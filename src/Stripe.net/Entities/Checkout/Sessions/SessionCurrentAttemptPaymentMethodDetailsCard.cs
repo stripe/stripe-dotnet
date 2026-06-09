@@ -12,7 +12,7 @@ namespace Stripe.Checkout
         /// The brand of the card, accounting for customer's brand choice on dual-branded cards.
         /// One of: <c>accel</c>, <c>amex</c>, <c>carnet</c>, <c>cartes_bancaires</c>,
         /// <c>conecs</c>, <c>diners</c>, <c>discover</c>, <c>eftpos_au</c>, <c>elo</c>,
-        /// <c>girocard</c>, <c>interac</c>, <c>jcb</c>, <c>link</c>, <c>maestro</c>,
+        /// <c>girocard</c>, <c>interac</c>, <c>jaywan</c>, <c>jcb</c>, <c>link</c>, <c>maestro</c>,
         /// <c>mastercard</c>, <c>nyce</c>, <c>pulse</c>, <c>rupay</c>, <c>star</c>,
         /// <c>unionpay</c>, <c>unknown</c>, or <c>visa</c>.
         /// </summary>

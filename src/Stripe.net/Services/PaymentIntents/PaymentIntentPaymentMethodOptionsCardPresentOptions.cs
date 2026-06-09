@@ -9,6 +9,28 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsCardPresentOptions : INestedOptions
     {
         /// <summary>
+        /// Controls when funds are captured from the customer's account when <c>capture_method</c>
+        /// is <c>automatic_delayed</c>.
+        ///
+        /// If omitted, funds are captured before the authorization expires.
+        /// One of: <c>auth_expiry</c>, <c>end_of_day</c>, or <c>target_delay</c>.
+        /// </summary>
+        [JsonProperty("capture_by")]
+        [STJS.JsonPropertyName("capture_by")]
+        public string CaptureBy { get; set; }
+
+        /// <summary>
+        /// The number of days or hours to delay the capture of the funds. You can set both days and
+        /// hours as long as the total delay does not exceed 30 days.
+        ///
+        /// You can only set this if <c>capture_method</c> is <c>automatic_delayed</c> and
+        /// <c>capture_by</c> is <c>target_delay</c>.
+        /// </summary>
+        [JsonProperty("capture_delay")]
+        [STJS.JsonPropertyName("capture_delay")]
+        public PaymentIntentPaymentMethodOptionsCardPresentCaptureDelayOptions CaptureDelay { get; set; }
+
+        /// <summary>
         /// Controls when the funds are captured from the customer's account.
         ///
         /// If provided, this parameter overrides the behavior of the top-level <a
@@ -50,6 +72,15 @@ namespace Stripe
         [JsonProperty("request_incremental_authorization_support")]
         [STJS.JsonPropertyName("request_incremental_authorization_support")]
         public bool? RequestIncrementalAuthorizationSupport { get; set; }
+
+        /// <summary>
+        /// Request ability to make <a href="https://docs.stripe.com/payments/multicapture">multiple
+        /// captures</a> for this PaymentIntent.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_multicapture")]
+        [STJS.JsonPropertyName("request_multicapture")]
+        public string RequestMulticapture { get; set; }
 
         /// <summary>
         /// Request ability to <a

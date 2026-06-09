@@ -549,6 +549,24 @@ namespace Stripe
         }
 
         /// <summary>
+        /// <p>Updates the refund address for a static crypto deposit PaymentIntent on the specified
+        /// network.</p>.
+        /// </summary>
+        public virtual PaymentIntent UpdateCryptoRefundAddress(string id, PaymentIntentUpdateCryptoRefundAddressOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<PaymentIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/update_crypto_refund_address", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Updates the refund address for a static crypto deposit PaymentIntent on the specified
+        /// network.</p>.
+        /// </summary>
+        public virtual Task<PaymentIntent> UpdateCryptoRefundAddressAsync(string id, PaymentIntentUpdateCryptoRefundAddressOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<PaymentIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/update_crypto_refund_address", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Verifies microdeposits on a PaymentIntent object.</p>.
         /// </summary>
         public virtual PaymentIntent VerifyMicrodeposits(string id, PaymentIntentVerifyMicrodepositsOptions options = null, RequestOptions requestOptions = null)

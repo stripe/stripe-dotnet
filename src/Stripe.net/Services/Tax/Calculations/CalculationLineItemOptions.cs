@@ -38,6 +38,14 @@ namespace Stripe.Tax
         public string PerformanceLocation { get; set; }
 
         /// <summary>
+        /// Details of the performance location for this line item. Use this to specify an address
+        /// directly instead of a tax location ID.
+        /// </summary>
+        [JsonProperty("performance_location_details")]
+        [STJS.JsonPropertyName("performance_location_details")]
+        public CalculationLineItemPerformanceLocationDetailsOptions PerformanceLocationDetails { get; set; }
+
+        /// <summary>
         /// If provided, the product's <c>tax_code</c> will be used as the line item's
         /// <c>tax_code</c>.
         /// </summary>

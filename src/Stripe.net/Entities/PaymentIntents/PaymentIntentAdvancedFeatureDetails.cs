@@ -33,18 +33,5 @@ namespace Stripe
         [JsonProperty("overcapture")]
         [STJS.JsonPropertyName("overcapture")]
         public PaymentIntentAdvancedFeatureDetailsOvercapture Overcapture { get; set; }
-
-        [JsonProperty("reauthorization")]
-        [STJS.JsonPropertyName("reauthorization")]
-        public PaymentIntentAdvancedFeatureDetailsReauthorization Reauthorization { get; set; }
-
-        /// <summary>
-        /// Timestamp at which the reauthorization window closes.
-        /// </summary>
-        [JsonProperty("reauthorize_before")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-        [STJS.JsonPropertyName("reauthorize_before")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime? ReauthorizeBefore { get; set; }
     }
 }

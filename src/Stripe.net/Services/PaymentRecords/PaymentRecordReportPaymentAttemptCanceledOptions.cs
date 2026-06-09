@@ -46,5 +46,12 @@ namespace Stripe
         [JsonProperty("payment_evaluations")]
         [STJS.JsonPropertyName("payment_evaluations")]
         public List<string> PaymentEvaluations { get; set; }
+
+        /// <summary>
+        /// The reason the payment attempt was canceled.
+        /// </summary>
+        [JsonProperty("reason")]
+        [STJS.JsonPropertyName("reason")]
+        public string Reason { get; set; }
     }
 }
