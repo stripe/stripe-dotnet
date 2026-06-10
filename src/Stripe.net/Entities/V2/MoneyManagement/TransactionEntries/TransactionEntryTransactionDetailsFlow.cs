@@ -129,6 +129,13 @@ namespace Stripe.V2.MoneyManagement
         public string ReserveRelease { get; set; }
 
         /// <summary>
+        /// If applicable, the ID of the TaxFund that created this Transaction.
+        /// </summary>
+        [JsonProperty("tax_fund")]
+        [STJS.JsonPropertyName("tax_fund")]
+        public string TaxFund { get; set; }
+
+        /// <summary>
         /// If applicable, the ID of the Topup that created this Transaction.
         /// </summary>
         [JsonProperty("topup")]
@@ -213,12 +220,13 @@ namespace Stripe.V2.MoneyManagement
         /// <c>charge</c>, <c>currency_conversion</c>, <c>debit_dispute</c>, <c>dispute</c>,
         /// <c>fee_transaction</c>, <c>inbound_transfer</c>, <c>outbound_payment</c>,
         /// <c>outbound_transfer</c>, <c>payout</c>, <c>received_credit</c>, <c>received_debit</c>,
-        /// <c>refund</c>, <c>reserve_hold</c>, <c>reserve_release</c>, <c>topup</c>,
-        /// <c>transfer</c>, <c>transfer_reversal</c>, <c>treasury_credit_reversal</c>,
-        /// <c>treasury_debit_reversal</c>, <c>treasury_inbound_transfer</c>,
-        /// <c>treasury_issuing_authorization</c>, <c>treasury_other</c>,
-        /// <c>treasury_outbound_payment</c>, <c>treasury_outbound_transfer</c>,
-        /// <c>treasury_received_credit</c>, or <c>treasury_received_debit</c>.
+        /// <c>refund</c>, <c>reserve_hold</c>, <c>reserve_release</c>, <c>tax_fund</c>,
+        /// <c>topup</c>, <c>transfer</c>, <c>transfer_reversal</c>,
+        /// <c>treasury_credit_reversal</c>, <c>treasury_debit_reversal</c>,
+        /// <c>treasury_inbound_transfer</c>, <c>treasury_issuing_authorization</c>,
+        /// <c>treasury_other</c>, <c>treasury_outbound_payment</c>,
+        /// <c>treasury_outbound_transfer</c>, <c>treasury_received_credit</c>, or
+        /// <c>treasury_received_debit</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

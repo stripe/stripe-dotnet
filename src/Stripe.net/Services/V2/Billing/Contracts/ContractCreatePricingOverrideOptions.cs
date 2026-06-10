@@ -38,7 +38,8 @@ namespace Stripe.V2.Billing
         public ContractCreatePricingOverrideOverwritePriceOptions OverwritePrice { get; set; }
 
         /// <summary>
-        /// The priority of this override relative to others. Lower number = higher priority.
+        /// The priority of this override relative to others. The highest priority is 0 and the
+        /// lowest is 100.
         /// </summary>
         [JsonProperty("priority")]
         [STJS.JsonPropertyName("priority")]

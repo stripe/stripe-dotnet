@@ -9374,7 +9374,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/fee_batches",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.core.fee_batch\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"collected_by\":{\"type\":\"application\"},\"collection_records\":[{\"amount\":{\"currency\":\"USD\",\"value\":96},\"type\":\"money_management_transaction\"}],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"billed\",\"status_transitions\":{}}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.core.fee_batch\",\"amount\":{\"currency\":\"usd\",\"value\":\"value\"},\"collected_by\":{\"type\":\"application\"},\"collection_records\":[{\"amount\":{\"currency\":\"usd\",\"value\":\"value\"},\"type\":\"money_management_transaction\"}],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"billed\",\"status_transitions\":{}}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.FeeBatches;
             Stripe.V2.StripeList<Stripe.V2.Core.FeeBatch> feeBatches = service
@@ -9389,7 +9389,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/fee_batches/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.fee_batch\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"collected_by\":{\"type\":\"application\"},\"collection_records\":[{\"amount\":{\"currency\":\"USD\",\"value\":96},\"type\":\"money_management_transaction\"}],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"billed\",\"status_transitions\":{}}");
+                "{\"object\":\"v2.core.fee_batch\",\"amount\":{\"currency\":\"usd\",\"value\":\"value\"},\"collected_by\":{\"type\":\"application\"},\"collection_records\":[{\"amount\":{\"currency\":\"usd\",\"value\":\"value\"},\"type\":\"money_management_transaction\"}],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"billed\",\"status_transitions\":{}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.FeeBatches;
             Stripe.V2.Core.FeeBatch feeBatch = service.Get("id_123");
@@ -9403,7 +9403,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/fee_entries",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.core.fee_entry\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"charged_by\":{\"type\":\"application\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"incurred_by\":{\"id\":\"obj_123\",\"type\":\"type\"},\"livemode\":true,\"reason\":\"reprice\",\"type\":\"application_fee\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.core.fee_entry\",\"amount\":{\"currency\":\"usd\",\"value\":\"value\"},\"charged_by\":{\"type\":\"application\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"incurred_by\":{\"id\":\"obj_123\",\"type\":\"type\"},\"livemode\":true,\"reason\":\"reprice\",\"type\":\"application_fee\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.FeeEntries;
             Stripe.V2.StripeList<Stripe.V2.Core.FeeEntry> feeEntries = service
@@ -9418,7 +9418,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/fee_entries/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.fee_entry\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"charged_by\":{\"type\":\"application\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"incurred_by\":{\"id\":\"obj_123\",\"type\":\"type\"},\"livemode\":true,\"reason\":\"reprice\",\"type\":\"application_fee\"}");
+                "{\"object\":\"v2.core.fee_entry\",\"amount\":{\"currency\":\"usd\",\"value\":\"value\"},\"charged_by\":{\"type\":\"application\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"incurred_by\":{\"id\":\"obj_123\",\"type\":\"type\"},\"livemode\":true,\"reason\":\"reprice\",\"type\":\"application_fee\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.FeeEntries;
             Stripe.V2.Core.FeeEntry feeEntry = service.Get("id_123");
@@ -10878,7 +10878,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/transactions",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.money_management.transaction\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"category\":\"received_debit\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"pending\",\"status_transitions\":{}}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.money_management.transaction\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"category\":\"inbound_transfer_reversal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"pending\",\"status_transitions\":{}}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.Transactions;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.Transaction> transactions = service
@@ -10895,7 +10895,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/transactions/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.transaction\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"category\":\"received_debit\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"pending\",\"status_transitions\":{}}");
+                "{\"object\":\"v2.money_management.transaction\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"category\":\"inbound_transfer_reversal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"pending\",\"status_transitions\":{}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.Transactions;
             Stripe.V2.MoneyManagement.Transaction transaction = service.Get(
@@ -10912,7 +10912,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/transaction_entries",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.money_management.transaction_entry\",\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"id\":\"obj_123\",\"livemode\":true,\"transaction\":\"transaction\",\"transaction_details\":{\"category\":\"received_debit\",\"financial_account\":\"financial_account\"}}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.money_management.transaction_entry\",\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"id\":\"obj_123\",\"livemode\":true,\"transaction\":\"transaction\",\"transaction_details\":{\"category\":\"inbound_transfer_reversal\",\"financial_account\":\"financial_account\"}}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.TransactionEntries;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.TransactionEntry> transactionEntries = service
@@ -10929,7 +10929,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/transaction_entries/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.transaction_entry\",\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"id\":\"obj_123\",\"livemode\":true,\"transaction\":\"transaction\",\"transaction_details\":{\"category\":\"received_debit\",\"financial_account\":\"financial_account\"}}");
+                "{\"object\":\"v2.money_management.transaction_entry\",\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"id\":\"obj_123\",\"livemode\":true,\"transaction\":\"transaction\",\"transaction_details\":{\"category\":\"inbound_transfer_reversal\",\"financial_account\":\"financial_account\"}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.TransactionEntries;
             Stripe.V2.MoneyManagement.TransactionEntry transactionEntry = service
@@ -11736,39 +11736,20 @@ namespace StripeTests
         {
             this.StubRequest(
                 HttpMethod.Post,
-                "/v2/extend/workflows/id_123/invoke",
+                "/v2/core/vault/us_bank_accounts/id_123/archive",
                 (HttpStatusCode)400,
                 "{\"error\":{\"type\":\"cannot_proceed\",\"code\":\"default_payout_method_cannot_be_archived\"}}");
             var exception = Assert.Throws<Stripe.V2.CannotProceedException>(
             () =>
             {
-                var options = new Stripe.V2.Extend.WorkflowInvokeOptions
-                {
-                    InputParameters = new Dictionary<string, object>
-                {
-                    { "int_key", 123 },
-                    { "string_key", "value" },
-                    { "boolean_key", true },
-                    {
-                        "object_key", new Dictionary<string, object>
-                        {
-                            { "object_int_key", 123 },
-                            { "object_string_key", "value" },
-                            { "object_boolean_key", true },
-                        }
-                    },
-                    { "array_key", new List<object> { 1, 2, 3 } },
-                },
-                };
                 var client = new StripeClient(this.Requestor);
-                var service = client.V2.Extend.Workflows;
-                Stripe.V2.Extend.WorkflowRun workflowRun = service.Invoke(
-                    "id_123",
-                    options);
+                var service = client.V2.Core.Vault.UsBankAccounts;
+                Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Archive(
+                    "id_123");
             });
             this.AssertRequest(
                 HttpMethod.Post,
-                "/v2/extend/workflows/id_123/invoke");
+                "/v2/core/vault/us_bank_accounts/id_123/archive");
         }
 
         [Fact]
