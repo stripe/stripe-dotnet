@@ -44,6 +44,8 @@ namespace Stripe
         private ForwardingService forwarding;
         private FrMealVouchersOnboardingService frMealVouchersOnboardings;
         private FxQuoteService fxQuotes;
+        private GiftCardService giftCards;
+        private GiftCardOperationService giftCardOperations;
         private IdentityService identity;
         private InvoiceService invoices;
         private InvoiceItemService invoiceItems;
@@ -87,6 +89,7 @@ namespace Stripe
         private SubscriptionScheduleService subscriptionSchedules;
         private TaxService tax;
         private TaxCodeService taxCodes;
+        private TaxFundService taxFunds;
         private TaxIdService taxIds;
         private TaxRateService taxRates;
         private TerminalService terminal;
@@ -218,6 +221,12 @@ namespace Stripe
         public virtual FxQuoteService FxQuotes => this.fxQuotes ??= new FxQuoteService(
             this.Requestor);
 
+        public virtual GiftCardService GiftCards => this.giftCards ??= new GiftCardService(
+            this.Requestor);
+
+        public virtual GiftCardOperationService GiftCardOperations => this.giftCardOperations ??= new GiftCardOperationService(
+            this.Requestor);
+
         public virtual IdentityService Identity => this.identity ??= new IdentityService(
             this.Requestor);
 
@@ -345,6 +354,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual TaxCodeService TaxCodes => this.taxCodes ??= new TaxCodeService(
+            this.Requestor);
+
+        public virtual TaxFundService TaxFunds => this.taxFunds ??= new TaxFundService(
             this.Requestor);
 
         public virtual TaxIdService TaxIds => this.taxIds ??= new TaxIdService(

@@ -69,6 +69,18 @@ namespace Stripe.Tax
         public string PerformanceLocation { get; set; }
 
         /// <summary>
+        /// The address of the location where this line item's event or service takes place.
+        /// Depending on the <a href="https://stripe.com/tax/tax-codes">tax code</a>, providing a
+        /// performance location is required, optional, or not supported. Use this to provide the
+        /// address inline without pre-creating a <a
+        /// href="https://stripe.com/api/tax/location">TaxLocation</a> object. Can't be used with
+        /// <c>performance_location</c>.
+        /// </summary>
+        [JsonProperty("performance_location_details")]
+        [STJS.JsonPropertyName("performance_location_details")]
+        public CalculationLineItemPerformanceLocationDetails PerformanceLocationDetails { get; set; }
+
+        /// <summary>
         /// The ID of an existing <a href="https://docs.stripe.com/api/products/object">Product</a>.
         /// </summary>
         [JsonProperty("product")]

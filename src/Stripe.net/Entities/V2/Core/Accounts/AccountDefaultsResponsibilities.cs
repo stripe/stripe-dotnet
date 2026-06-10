@@ -19,7 +19,7 @@ namespace Stripe.V2.Core
         public string FeesCollector { get; set; }
 
         /// <summary>
-        /// A value indicating responsibility for collecting requirements on this account.
+        /// A value indicating the responsibility for losses on this account.
         /// One of: <c>application</c>, or <c>stripe</c>.
         /// </summary>
         [JsonProperty("losses_collector")]

@@ -124,6 +124,13 @@ namespace Stripe.Issuing
         public DisputeNetworkLifecycle NetworkLifecycle { get; set; }
 
         /// <summary>
+        /// Provisional credit details for this dispute.
+        /// </summary>
+        [JsonProperty("provisional_credit")]
+        [STJS.JsonPropertyName("provisional_credit")]
+        public DisputeProvisionalCredit ProvisionalCredit { get; set; }
+
+        /// <summary>
         /// Current status of the dispute.
         /// One of: <c>expired</c>, <c>lost</c>, <c>submitted</c>, <c>unsubmitted</c>, or
         /// <c>won</c>.

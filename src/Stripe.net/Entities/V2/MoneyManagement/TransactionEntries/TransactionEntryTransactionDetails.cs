@@ -30,7 +30,8 @@ namespace Stripe.V2.MoneyManagement
         /// <c>received_debit_reversal</c>, <c>refund</c>, <c>refund_failure</c>,
         /// <c>risk_reserved_funds</c>, <c>stripe_balance_payment_debit</c>,
         /// <c>stripe_balance_payment_debit_reversal</c>, <c>stripe_fee</c>, <c>stripe_fee_tax</c>,
-        /// <c>tax_withholding</c>, <c>transfer_reversal</c>, or <c>unreconciled_customer_funds</c>.
+        /// <c>tax_fund</c>, <c>tax_withholding</c>, <c>transfer_reversal</c>, or
+        /// <c>unreconciled_customer_funds</c>.
         /// </summary>
         [JsonProperty("category")]
         [STJS.JsonPropertyName("category")]

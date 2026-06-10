@@ -1,0 +1,29 @@
+// File generated from our OpenAPI spec
+namespace Stripe
+{
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+    public class TaxFundSource : StripeEntity<TaxFundSource>
+    {
+        /// <summary>
+        /// Details about the payments balance side of the sweep.
+        /// </summary>
+        [JsonProperty("payments_balance")]
+        [STJS.JsonPropertyName("payments_balance")]
+        public TaxFundSourcePaymentsBalance PaymentsBalance { get; set; }
+
+        /// <summary>
+        /// Details about the tax fund financial account side of the sweep.
+        /// </summary>
+        [JsonProperty("tax_fund_account")]
+        [STJS.JsonPropertyName("tax_fund_account")]
+        public TaxFundSourceTaxFundAccount TaxFundAccount { get; set; }
+
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
+    }
+}

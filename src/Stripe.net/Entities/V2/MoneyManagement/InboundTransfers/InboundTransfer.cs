@@ -68,7 +68,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// A hosted transaction receipt URL that is provided when money movement is considered
-        /// regulated under Stripe’s money transmission licenses.
+        /// regulated under Stripe's money transmission licenses.
         /// </summary>
         [JsonProperty("receipt_url")]
         [STJS.JsonPropertyName("receipt_url")]

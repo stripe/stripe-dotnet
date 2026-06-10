@@ -13,7 +13,7 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
-        public V2.Amount Amount { get; set; }
+        public FeeBatchCollectionRecordAmount Amount { get; set; }
 
         /// <summary>
         /// The ID of the associated v1 balance transaction.

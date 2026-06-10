@@ -44,5 +44,12 @@ namespace Stripe.Issuing
                 this.SetTracker.Track();
             }
         }
+
+        /// <summary>
+        /// Provisional credit information for this dispute.
+        /// </summary>
+        [JsonProperty("provisional_credit")]
+        [STJS.JsonPropertyName("provisional_credit")]
+        public DisputeProvisionalCreditOptions ProvisionalCredit { get; set; }
     }
 }

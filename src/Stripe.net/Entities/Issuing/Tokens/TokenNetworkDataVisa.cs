@@ -16,8 +16,7 @@ namespace Stripe.Issuing
         public string CardReferenceId { get; set; }
 
         /// <summary>
-        /// Stripe's recommendation to the network for this token activation request, derived from
-        /// the same risk signals used for the activation decision.
+        /// The network's recommendation to Stripe for this token activation request.
         /// One of: <c>approve</c>, <c>decline</c>, or <c>recommend_id_and_v</c>.
         /// </summary>
         [JsonProperty("token_decision_recommendation")]

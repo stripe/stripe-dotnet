@@ -41,7 +41,7 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
-        public V2.Amount Amount { get; set; }
+        public FeeBatchAmount Amount { get; set; }
 
         /// <summary>
         /// The entity that collected this batch.

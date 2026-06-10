@@ -46,6 +46,13 @@ namespace Stripe
         [STJS.JsonPropertyName("flight_data")]
         public List<PaymentIntentPaymentDetailsFlightDatum> FlightData { get; set; }
 
+        /// <summary>
+        /// The Payment Location associated with this PaymentIntent.
+        /// </summary>
+        [JsonProperty("location")]
+        [STJS.JsonPropertyName("location")]
+        public string Location { get; set; }
+
         [JsonProperty("lodging_data")]
         [STJS.JsonPropertyName("lodging_data")]
         public List<PaymentIntentPaymentDetailsLodgingDatum> LodgingData { get; set; }

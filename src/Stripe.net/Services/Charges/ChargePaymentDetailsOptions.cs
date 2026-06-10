@@ -14,7 +14,6 @@ namespace Stripe
         private List<ChargePaymentDetailsFleetDatumOptions> fleetData;
         private List<ChargePaymentDetailsFlightDatumOptions> flightData;
         private List<ChargePaymentDetailsLodgingDatumOptions> lodgingData;
-        private ChargePaymentDetailsMoneyServicesOptions moneyServices;
         private string orderReference;
 
         [JsonIgnore]
@@ -128,22 +127,6 @@ namespace Stripe
             set
             {
                 this.lodgingData = value;
-                this.SetTracker.Track();
-            }
-        }
-
-        /// <summary>
-        /// Money services details for this PaymentIntent.
-        /// </summary>
-        [JsonProperty("money_services", NullValueHandling = NullValueHandling.Ignore)]
-        [STJS.JsonPropertyName("money_services")]
-        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
-        public ChargePaymentDetailsMoneyServicesOptions MoneyServices
-        {
-            get => this.moneyServices;
-            set
-            {
-                this.moneyServices = value;
                 this.SetTracker.Track();
             }
         }

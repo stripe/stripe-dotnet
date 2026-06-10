@@ -393,6 +393,15 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// ID of the latest <a href="https://docs.stripe.com/api/payment-attempt-record">Payment
+        /// Attempt Record object</a> created by this PaymentIntent. This property is <c>null</c>
+        /// until PaymentIntent confirmation is attempted.
+        /// </summary>
+        [JsonProperty("latest_payment_attempt_record")]
+        [STJS.JsonPropertyName("latest_payment_attempt_record")]
+        public string LatestPaymentAttemptRecord { get; set; }
+
+        /// <summary>
         /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
         /// test mode, the value is <c>false</c>.
         /// </summary>
@@ -530,6 +539,43 @@ namespace Stripe
         [JsonProperty("payment_method_types")]
         [STJS.JsonPropertyName("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
+
+        #region Expandable PaymentRecord
+
+        /// <summary>
+        /// (ID of the PaymentRecord)
+        /// ID of the <a href="https://docs.stripe.com/api/payment-record">Payment Record object</a>
+        /// created by this PaymentIntent.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public string PaymentRecordId
+        {
+            get => this.InternalPaymentRecord?.Id;
+            set => this.InternalPaymentRecord = SetExpandableFieldId(value, this.InternalPaymentRecord);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the <a href="https://docs.stripe.com/api/payment-record">Payment Record object</a>
+        /// created by this PaymentIntent.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public PaymentRecord PaymentRecord
+        {
+            get => this.InternalPaymentRecord?.ExpandedObject;
+            set => this.InternalPaymentRecord = SetExpandableFieldObject(value, this.InternalPaymentRecord);
+        }
+
+        [JsonProperty("payment_record")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentRecord>))]
+        [STJS.JsonPropertyName("payment_record")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentRecord>))]
+        internal ExpandableField<PaymentRecord> InternalPaymentRecord { get; set; }
+        #endregion
 
         /// <summary>
         /// When you enable this parameter, this PaymentIntent will route your payment to processors
