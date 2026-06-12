@@ -6,7 +6,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentNextActionCryptoDisplayDetailsDepositAddressesTempoSupportedToken : StripeEntity<PaymentIntentNextActionCryptoDisplayDetailsDepositAddressesTempoSupportedToken>
+    public class PaymentIntentNextActionCryptoDisplayDetailsDepositAddressesPolygonSupportedToken : StripeEntity<PaymentIntentNextActionCryptoDisplayDetailsDepositAddressesPolygonSupportedToken>
     {
         /// <summary>
         /// The on-chain contract address for the supported token currency on this specific network.

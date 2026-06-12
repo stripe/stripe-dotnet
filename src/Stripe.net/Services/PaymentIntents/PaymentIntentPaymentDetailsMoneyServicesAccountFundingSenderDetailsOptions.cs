@@ -30,11 +30,11 @@ namespace Stripe
         public string Email { get; set; }
 
         /// <summary>
-        /// Full name.
+        /// Given (first) name.
         /// </summary>
-        [JsonProperty("name")]
-        [STJS.JsonPropertyName("name")]
-        public string Name { get; set; }
+        [JsonProperty("given_name")]
+        [STJS.JsonPropertyName("given_name")]
+        public string GivenName { get; set; }
 
         /// <summary>
         /// Phone number.
@@ -42,5 +42,12 @@ namespace Stripe
         [JsonProperty("phone")]
         [STJS.JsonPropertyName("phone")]
         public string Phone { get; set; }
+
+        /// <summary>
+        /// Surname (family name).
+        /// </summary>
+        [JsonProperty("surname")]
+        [STJS.JsonPropertyName("surname")]
+        public string Surname { get; set; }
     }
 }

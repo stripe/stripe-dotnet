@@ -129,6 +129,10 @@ namespace Stripe
         [STJS.JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
+        [JsonProperty("managed_payments")]
+        [STJS.JsonPropertyName("managed_payments")]
+        public ProductManagedPayments ManagedPayments { get; set; }
+
         /// <summary>
         /// A list of up to 15 marketing features for this product. These are displayed in <a
         /// href="https://docs.stripe.com/payments/checkout/pricing-table">pricing tables</a>.

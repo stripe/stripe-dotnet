@@ -92,10 +92,6 @@ namespace Stripe
         [STJS.JsonPropertyName("revolut_pay")]
         public SetupAttemptPaymentMethodDetailsRevolutPay RevolutPay { get; set; }
 
-        [JsonProperty("satispay")]
-        [STJS.JsonPropertyName("satispay")]
-        public SetupAttemptPaymentMethodDetailsSatispay Satispay { get; set; }
-
         [JsonProperty("sepa_debit")]
         [STJS.JsonPropertyName("sepa_debit")]
         public SetupAttemptPaymentMethodDetailsSepaDebit SepaDebit { get; set; }

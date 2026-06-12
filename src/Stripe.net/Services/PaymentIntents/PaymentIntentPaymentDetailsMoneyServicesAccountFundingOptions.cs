@@ -15,13 +15,6 @@ namespace Stripe
         internal SetTracker SetTracker { get; } = new SetTracker();
 
         /// <summary>
-        /// ID of the Account representing the sender in this account funding transaction.
-        /// </summary>
-        [JsonProperty("sender_account")]
-        [STJS.JsonPropertyName("sender_account")]
-        public string SenderAccount { get; set; }
-
-        /// <summary>
         /// Inline identity details for the sender of this account funding transaction.
         /// </summary>
         [JsonProperty("sender_details", NullValueHandling = NullValueHandling.Ignore)]

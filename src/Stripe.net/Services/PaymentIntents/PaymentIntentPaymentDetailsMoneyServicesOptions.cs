@@ -33,13 +33,6 @@ namespace Stripe
         }
 
         /// <summary>
-        /// ID of the Account representing the beneficiary in this account funding transaction.
-        /// </summary>
-        [JsonProperty("beneficiary_account")]
-        [STJS.JsonPropertyName("beneficiary_account")]
-        public string BeneficiaryAccount { get; set; }
-
-        /// <summary>
         /// Inline identity details for the beneficiary of this transaction.
         /// </summary>
         [JsonProperty("beneficiary_details", NullValueHandling = NullValueHandling.Ignore)]

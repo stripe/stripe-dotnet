@@ -12,6 +12,14 @@ namespace Stripe
         [STJS.JsonPropertyName("base")]
         public PaymentIntentNextActionCryptoDisplayDetailsDepositAddressesBase Base { get; set; }
 
+        [JsonProperty("ethereum")]
+        [STJS.JsonPropertyName("ethereum")]
+        public PaymentIntentNextActionCryptoDisplayDetailsDepositAddressesEthereum Ethereum { get; set; }
+
+        [JsonProperty("polygon")]
+        [STJS.JsonPropertyName("polygon")]
+        public PaymentIntentNextActionCryptoDisplayDetailsDepositAddressesPolygon Polygon { get; set; }
+
         [JsonProperty("solana")]
         [STJS.JsonPropertyName("solana")]
         public PaymentIntentNextActionCryptoDisplayDetailsDepositAddressesSolana Solana { get; set; }

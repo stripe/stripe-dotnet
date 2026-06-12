@@ -9,6 +9,14 @@ namespace Stripe
     public class PaymentIntentPaymentDetailsMoneyServicesBeneficiaryDetailsOptions : INestedOptions
     {
         /// <summary>
+        /// An opaque identifier for the beneficiary's account (e.g. bank account number, card
+        /// first6+last4, or other unique identifier).
+        /// </summary>
+        [JsonProperty("account_reference")]
+        [STJS.JsonPropertyName("account_reference")]
+        public string AccountReference { get; set; }
+
+        /// <summary>
         /// Address.
         /// </summary>
         [JsonProperty("address")]
@@ -30,11 +38,11 @@ namespace Stripe
         public string Email { get; set; }
 
         /// <summary>
-        /// Full name.
+        /// Given (first) name.
         /// </summary>
-        [JsonProperty("name")]
-        [STJS.JsonPropertyName("name")]
-        public string Name { get; set; }
+        [JsonProperty("given_name")]
+        [STJS.JsonPropertyName("given_name")]
+        public string GivenName { get; set; }
 
         /// <summary>
         /// Phone number.
@@ -42,5 +50,12 @@ namespace Stripe
         [JsonProperty("phone")]
         [STJS.JsonPropertyName("phone")]
         public string Phone { get; set; }
+
+        /// <summary>
+        /// Surname (family name).
+        /// </summary>
+        [JsonProperty("surname")]
+        [STJS.JsonPropertyName("surname")]
+        public string Surname { get; set; }
     }
 }
