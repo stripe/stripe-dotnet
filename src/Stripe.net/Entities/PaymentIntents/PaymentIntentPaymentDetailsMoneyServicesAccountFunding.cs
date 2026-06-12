@@ -9,17 +9,6 @@ namespace Stripe
     public class PaymentIntentPaymentDetailsMoneyServicesAccountFunding : StripeEntity<PaymentIntentPaymentDetailsMoneyServicesAccountFunding>
     {
         /// <summary>
-        /// ID of the Account representing the beneficiary in this account funding transaction.
-        /// </summary>
-        [JsonProperty("beneficiary_account")]
-        [STJS.JsonPropertyName("beneficiary_account")]
-        public string BeneficiaryAccount { get; set; }
-
-        [JsonProperty("beneficiary_details")]
-        [STJS.JsonPropertyName("beneficiary_details")]
-        public PaymentIntentPaymentDetailsMoneyServicesAccountFundingBeneficiaryDetails BeneficiaryDetails { get; set; }
-
-        /// <summary>
         /// ID of the Account representing the sender in this account funding transaction.
         /// </summary>
         [JsonProperty("sender_account")]

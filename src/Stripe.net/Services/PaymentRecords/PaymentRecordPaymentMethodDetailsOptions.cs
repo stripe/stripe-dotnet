@@ -16,6 +16,13 @@ namespace Stripe
         public PaymentRecordPaymentMethodDetailsBillingDetailsOptions BillingDetails { get; set; }
 
         /// <summary>
+        /// Information about the card payment method used to make this payment.
+        /// </summary>
+        [JsonProperty("card")]
+        [STJS.JsonPropertyName("card")]
+        public PaymentRecordPaymentMethodDetailsCardOptions Card { get; set; }
+
+        /// <summary>
         /// Information about the custom (user-defined) payment method used to make this payment.
         /// </summary>
         [JsonProperty("custom")]
@@ -33,6 +40,7 @@ namespace Stripe
         /// The type of the payment method details. An additional hash is included on the
         /// payment_method_details with a name matching this value. It contains additional
         /// information specific to the type.
+        /// One of: <c>card</c>, or <c>custom</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

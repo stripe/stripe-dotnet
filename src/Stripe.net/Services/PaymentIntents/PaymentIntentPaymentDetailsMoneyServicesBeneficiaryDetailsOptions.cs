@@ -6,7 +6,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentPaymentDetailsMoneyServicesAccountFundingBeneficiaryDetailsOptions : INestedOptions
+    public class PaymentIntentPaymentDetailsMoneyServicesBeneficiaryDetailsOptions : INestedOptions
     {
         /// <summary>
         /// Address.
@@ -20,7 +20,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("date_of_birth")]
         [STJS.JsonPropertyName("date_of_birth")]
-        public PaymentIntentPaymentDetailsMoneyServicesAccountFundingBeneficiaryDetailsDateOfBirthOptions DateOfBirth { get; set; }
+        public PaymentIntentPaymentDetailsMoneyServicesBeneficiaryDetailsDateOfBirthOptions DateOfBirth { get; set; }
 
         /// <summary>
         /// Email address.

@@ -6,7 +6,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentPaymentDetailsMoneyServicesAccountFundingBeneficiaryDetailsDateOfBirthOptions : INestedOptions
+    public class PaymentIntentPaymentDetailsMoneyServicesBeneficiaryDetailsDateOfBirthOptions : INestedOptions
     {
         /// <summary>
         /// Day of birth, between 1 and 31.

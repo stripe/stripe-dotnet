@@ -9,6 +9,7 @@ namespace Stripe.Radar
 
     public class CustomerEvaluationService : Service,
         ICreatable<CustomerEvaluation, CustomerEvaluationCreateOptions>,
+        IRetrievable<CustomerEvaluation, CustomerEvaluationGetOptions>,
         IUpdatable<CustomerEvaluation, CustomerEvaluationUpdateOptions>
     {
         public CustomerEvaluationService()
@@ -39,6 +40,22 @@ namespace Stripe.Radar
         public virtual Task<CustomerEvaluation> CreateAsync(CustomerEvaluationCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<CustomerEvaluation>(BaseAddress.Api, HttpMethod.Post, $"/v1/radar/customer_evaluations", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Retrieves an <c>CustomerEvaluation</c> object.</p>.
+        /// </summary>
+        public virtual CustomerEvaluation Get(string id, CustomerEvaluationGetOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<CustomerEvaluation>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/customer_evaluations/{WebUtility.UrlEncode(id)}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Retrieves an <c>CustomerEvaluation</c> object.</p>.
+        /// </summary>
+        public virtual Task<CustomerEvaluation> GetAsync(string id, CustomerEvaluationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<CustomerEvaluation>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/customer_evaluations/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

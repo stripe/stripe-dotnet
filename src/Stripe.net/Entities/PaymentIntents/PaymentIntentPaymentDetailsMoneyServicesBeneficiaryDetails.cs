@@ -6,15 +6,15 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentIntentPaymentDetailsMoneyServicesAccountFundingBeneficiaryDetails : StripeEntity<PaymentIntentPaymentDetailsMoneyServicesAccountFundingBeneficiaryDetails>
+    public class PaymentIntentPaymentDetailsMoneyServicesBeneficiaryDetails : StripeEntity<PaymentIntentPaymentDetailsMoneyServicesBeneficiaryDetails>
     {
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
-        public PaymentIntentPaymentDetailsMoneyServicesAccountFundingBeneficiaryDetailsAddress Address { get; set; }
+        public PaymentIntentPaymentDetailsMoneyServicesBeneficiaryDetailsAddress Address { get; set; }
 
         [JsonProperty("date_of_birth")]
         [STJS.JsonPropertyName("date_of_birth")]
-        public PaymentIntentPaymentDetailsMoneyServicesAccountFundingBeneficiaryDetailsDateOfBirth DateOfBirth { get; set; }
+        public PaymentIntentPaymentDetailsMoneyServicesBeneficiaryDetailsDateOfBirth DateOfBirth { get; set; }
 
         /// <summary>
         /// Email address.

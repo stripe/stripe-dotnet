@@ -9,6 +9,7 @@ namespace Stripe
     public class PaymentIntentPaymentDetailsMoneyServicesOptions : INestedOptions, IHasSetTracking
     {
         private PaymentIntentPaymentDetailsMoneyServicesAccountFundingOptions accountFunding;
+        private PaymentIntentPaymentDetailsMoneyServicesBeneficiaryDetailsOptions beneficiaryDetails;
         private string transactionType;
 
         [JsonIgnore]
@@ -16,7 +17,7 @@ namespace Stripe
         internal SetTracker SetTracker { get; } = new SetTracker();
 
         /// <summary>
-        /// Account funding transaction details including sender and beneficiary information.
+        /// Account funding transaction details including sender information.
         /// </summary>
         [JsonProperty("account_funding", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("account_funding")]
@@ -27,6 +28,29 @@ namespace Stripe
             set
             {
                 this.accountFunding = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// ID of the Account representing the beneficiary in this account funding transaction.
+        /// </summary>
+        [JsonProperty("beneficiary_account")]
+        [STJS.JsonPropertyName("beneficiary_account")]
+        public string BeneficiaryAccount { get; set; }
+
+        /// <summary>
+        /// Inline identity details for the beneficiary of this transaction.
+        /// </summary>
+        [JsonProperty("beneficiary_details", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("beneficiary_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentDetailsMoneyServicesBeneficiaryDetailsOptions BeneficiaryDetails
+        {
+            get => this.beneficiaryDetails;
+            set
+            {
+                this.beneficiaryDetails = value;
                 this.SetTracker.Track();
             }
         }
