@@ -278,6 +278,13 @@ namespace Stripe.Checkout
         public SessionInvoiceCreationOptions InvoiceCreation { get; set; }
 
         /// <summary>
+        /// A list of items the customer will purchase.
+        /// </summary>
+        [JsonProperty("items")]
+        [STJS.JsonPropertyName("items")]
+        public List<SessionItemOptions> Items { get; set; }
+
+        /// <summary>
         /// A list of items the customer is purchasing. Use this parameter to pass one-time or
         /// recurring <a href="https://docs.stripe.com/api/prices">Prices</a>. The parameter is
         /// required for <c>payment</c> and <c>subscription</c> mode.
