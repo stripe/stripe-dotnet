@@ -104,6 +104,10 @@ namespace Stripe
         [STJS.JsonPropertyName("wechat_pay_display_qr_code")]
         public PaymentIntentNextActionWechatPayDisplayQrCode WechatPayDisplayQrCode { get; set; }
 
+        [JsonProperty("wechat_pay_handle_app_redirect")]
+        [STJS.JsonPropertyName("wechat_pay_handle_app_redirect")]
+        public PaymentIntentNextActionWechatPayHandleAppRedirect WechatPayHandleAppRedirect { get; set; }
+
         [JsonProperty("wechat_pay_redirect_to_android_app")]
         [STJS.JsonPropertyName("wechat_pay_redirect_to_android_app")]
         public PaymentIntentNextActionWechatPayRedirectToAndroidApp WechatPayRedirectToAndroidApp { get; set; }

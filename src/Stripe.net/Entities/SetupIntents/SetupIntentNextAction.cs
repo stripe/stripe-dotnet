@@ -51,5 +51,9 @@ namespace Stripe
         [JsonProperty("verify_with_microdeposits")]
         [STJS.JsonPropertyName("verify_with_microdeposits")]
         public SetupIntentNextActionVerifyWithMicrodeposits VerifyWithMicrodeposits { get; set; }
+
+        [JsonProperty("wechat_pay_handle_app_redirect")]
+        [STJS.JsonPropertyName("wechat_pay_handle_app_redirect")]
+        public SetupIntentNextActionWechatPayHandleAppRedirect WechatPayHandleAppRedirect { get; set; }
     }
 }
