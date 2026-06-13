@@ -10,6 +10,13 @@ namespace Stripe.V2.Core
     public class AccountConfigurationMerchantCapabilitiesZipPayments : StripeEntity<AccountConfigurationMerchantCapabilitiesZipPayments>
     {
         /// <summary>
+        /// Protections applied to this capability, keyed by protection type (e.g. "psp_migration").
+        /// </summary>
+        [JsonProperty("protections")]
+        [STJS.JsonPropertyName("protections")]
+        public AccountConfigurationMerchantCapabilitiesZipPaymentsProtections Protections { get; set; }
+
+        /// <summary>
         /// The status of the Capability.
         /// One of: <c>active</c>, <c>pending</c>, <c>restricted</c>, or <c>unsupported</c>.
         /// </summary>

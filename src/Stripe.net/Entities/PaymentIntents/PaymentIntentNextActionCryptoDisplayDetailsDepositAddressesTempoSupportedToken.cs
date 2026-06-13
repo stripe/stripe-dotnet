@@ -16,7 +16,8 @@ namespace Stripe
         public string TokenContractAddress { get; set; }
 
         /// <summary>
-        /// The supported token currency. Supported token currencies include: <c>usdc</c>.
+        /// The supported token currency.
+        /// One of: <c>usdc</c>, <c>usdg</c>, or <c>usdp</c>.
         /// </summary>
         [JsonProperty("token_currency")]
         [STJS.JsonPropertyName("token_currency")]

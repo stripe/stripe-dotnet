@@ -16,12 +16,5 @@ namespace Stripe
         [JsonProperty("digital_asset_category")]
         [STJS.JsonPropertyName("digital_asset_category")]
         public string DigitalAssetCategory { get; set; }
-
-        /// <summary>
-        /// Details for a wallet funding transaction.
-        /// </summary>
-        [JsonProperty("wallet")]
-        [STJS.JsonPropertyName("wallet")]
-        public PaymentIntentPaymentMethodOptionsCardPresentPaymentDetailsMoneyServicesAccountFundingWalletOptions Wallet { get; set; }
     }
 }

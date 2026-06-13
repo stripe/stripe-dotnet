@@ -22,6 +22,10 @@ namespace Stripe
         [STJS.JsonPropertyName("decremental_authorization")]
         public PaymentIntentAdvancedFeatureDetailsDecrementalAuthorization DecrementalAuthorization { get; set; }
 
+        [JsonProperty("forced_capture")]
+        [STJS.JsonPropertyName("forced_capture")]
+        public PaymentIntentAdvancedFeatureDetailsForcedCapture ForcedCapture { get; set; }
+
         [JsonProperty("incremental_authorization")]
         [STJS.JsonPropertyName("incremental_authorization")]
         public PaymentIntentAdvancedFeatureDetailsIncrementalAuthorization IncrementalAuthorization { get; set; }

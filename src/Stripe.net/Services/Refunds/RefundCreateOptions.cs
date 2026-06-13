@@ -73,6 +73,13 @@ namespace Stripe
         public string Origin { get; set; }
 
         /// <summary>
+        /// The identifier of the PaymentAttemptRecord to refund.
+        /// </summary>
+        [JsonProperty("payment_attempt_record")]
+        [STJS.JsonPropertyName("payment_attempt_record")]
+        public string PaymentAttemptRecord { get; set; }
+
+        /// <summary>
         /// The identifier of the PaymentIntent to refund.
         /// </summary>
         [JsonProperty("payment_intent")]

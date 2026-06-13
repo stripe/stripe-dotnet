@@ -9,6 +9,13 @@ namespace Stripe.V2.Core
     public class AccountUpdateConfigurationStorerCapabilitiesOutboundTransfersCryptoWalletsOptions : INestedOptions
     {
         /// <summary>
+        /// Protection types to request for this capability (e.g. "psp_migration").
+        /// </summary>
+        [JsonProperty("protections")]
+        [STJS.JsonPropertyName("protections")]
+        public AccountUpdateConfigurationStorerCapabilitiesOutboundTransfersCryptoWalletsProtectionsOptions Protections { get; set; }
+
+        /// <summary>
         /// To request a new Capability for an account, pass true. There can be a delay before the
         /// requested Capability becomes active.
         /// </summary>

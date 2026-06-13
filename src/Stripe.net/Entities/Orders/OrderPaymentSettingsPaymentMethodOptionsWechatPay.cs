@@ -16,8 +16,16 @@ namespace Stripe
         public string AppId { get; set; }
 
         /// <summary>
+        /// The unique buyer ID for the app ID registered with WeChat Pay. Only required when client
+        /// is mini_program.
+        /// </summary>
+        [JsonProperty("buyer_id")]
+        [STJS.JsonPropertyName("buyer_id")]
+        public string BuyerId { get; set; }
+
+        /// <summary>
         /// The client type that the end customer will pay from.
-        /// One of: <c>android</c>, <c>ios</c>, or <c>web</c>.
+        /// One of: <c>android</c>, <c>ios</c>, <c>mini_program</c>, or <c>web</c>.
         /// </summary>
         [JsonProperty("client")]
         [STJS.JsonPropertyName("client")]

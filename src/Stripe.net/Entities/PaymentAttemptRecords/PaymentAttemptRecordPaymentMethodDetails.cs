@@ -286,6 +286,10 @@ namespace Stripe
         [STJS.JsonPropertyName("swish")]
         public PaymentAttemptRecordPaymentMethodDetailsSwish Swish { get; set; }
 
+        [JsonProperty("tamara")]
+        [STJS.JsonPropertyName("tamara")]
+        public PaymentAttemptRecordPaymentMethodDetailsTamara Tamara { get; set; }
+
         [JsonProperty("twint")]
         [STJS.JsonPropertyName("twint")]
         public PaymentAttemptRecordPaymentMethodDetailsTwint Twint { get; set; }

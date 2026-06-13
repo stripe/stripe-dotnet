@@ -8,42 +8,11 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentPaymentDetailsMoneyServicesAccountFundingOptions : INestedOptions, IHasSetTracking
     {
-        private PaymentIntentPaymentDetailsMoneyServicesAccountFundingBeneficiaryDetailsOptions beneficiaryDetails;
         private PaymentIntentPaymentDetailsMoneyServicesAccountFundingSenderDetailsOptions senderDetails;
 
         [JsonIgnore]
         [STJS.JsonIgnore]
         internal SetTracker SetTracker { get; } = new SetTracker();
-
-        /// <summary>
-        /// ID of the Account representing the beneficiary in this account funding transaction.
-        /// </summary>
-        [JsonProperty("beneficiary_account")]
-        [STJS.JsonPropertyName("beneficiary_account")]
-        public string BeneficiaryAccount { get; set; }
-
-        /// <summary>
-        /// Inline identity details for the beneficiary of this account funding transaction.
-        /// </summary>
-        [JsonProperty("beneficiary_details", NullValueHandling = NullValueHandling.Ignore)]
-        [STJS.JsonPropertyName("beneficiary_details")]
-        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
-        public PaymentIntentPaymentDetailsMoneyServicesAccountFundingBeneficiaryDetailsOptions BeneficiaryDetails
-        {
-            get => this.beneficiaryDetails;
-            set
-            {
-                this.beneficiaryDetails = value;
-                this.SetTracker.Track();
-            }
-        }
-
-        /// <summary>
-        /// ID of the Account representing the sender in this account funding transaction.
-        /// </summary>
-        [JsonProperty("sender_account")]
-        [STJS.JsonPropertyName("sender_account")]
-        public string SenderAccount { get; set; }
 
         /// <summary>
         /// Inline identity details for the sender of this account funding transaction.
