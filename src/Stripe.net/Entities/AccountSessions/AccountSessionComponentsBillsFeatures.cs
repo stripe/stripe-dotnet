@@ -17,6 +17,15 @@ namespace Stripe
         public bool BillManagement { get; set; }
 
         /// <summary>
+        /// Whether Stripe user authentication is disabled. This value can only be <c>true</c> for
+        /// accounts where <c>controller.requirement_collection</c> is <c>application</c> for the
+        /// account. This is <c>false</c> by default.
+        /// </summary>
+        [JsonProperty("disable_stripe_user_authentication")]
+        [STJS.JsonPropertyName("disable_stripe_user_authentication")]
+        public bool DisableStripeUserAuthentication { get; set; }
+
+        /// <summary>
         /// Whether to enable the send money feature that grants access to bill creation and
         /// payment.
         /// </summary>
