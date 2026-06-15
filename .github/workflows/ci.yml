@@ -191,7 +191,7 @@ jobs:
   build:
     name: Build
     needs: [test, test-net462, prepare-dotnet-versions]
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
     steps:
@@ -213,7 +213,7 @@ jobs:
     name: Pack NuGet
     if: (((github.event_name == 'push') || (github.event_name == 'workflow_dispatch')) && startsWith(github.ref, 'refs/tags/v'))
     needs: [build, prepare-dotnet-versions]
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
     steps:
