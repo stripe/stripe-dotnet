@@ -52,6 +52,7 @@ namespace Stripe
 
         /// <summary>
         /// The outcome of the reported refund.
+        /// One of: <c>failed</c>, or <c>refunded</c>.
         /// </summary>
         [JsonProperty("outcome")]
         [STJS.JsonPropertyName("outcome")]

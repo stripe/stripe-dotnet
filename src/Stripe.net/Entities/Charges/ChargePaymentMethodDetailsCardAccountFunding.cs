@@ -9,12 +9,11 @@ namespace Stripe
     public class ChargePaymentMethodDetailsCardAccountFunding : StripeEntity<ChargePaymentMethodDetailsCardAccountFunding>
     {
         /// <summary>
-        /// The transaction type of the card transaction. One of <c>account_funding</c> or
-        /// <c>purchase</c>.
-        /// One of: <c>account_funding</c>, or <c>purchase</c>.
+        /// Indicates whether or not this charge is a funding transaction.
+        /// One of: <c>disabled</c>, or <c>enabled</c>.
         /// </summary>
-        [JsonProperty("processed_transaction_type")]
-        [STJS.JsonPropertyName("processed_transaction_type")]
-        public string ProcessedTransactionType { get; set; }
+        [JsonProperty("status")]
+        [STJS.JsonPropertyName("status")]
+        public string Status { get; set; }
     }
 }
