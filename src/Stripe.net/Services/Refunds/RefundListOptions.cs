@@ -26,10 +26,24 @@ namespace Stripe
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
+        /// Only return refunds for the PaymentAttemptRecord specified by this ID.
+        /// </summary>
+        [JsonProperty("payment_attempt_record")]
+        [STJS.JsonPropertyName("payment_attempt_record")]
+        public string PaymentAttemptRecord { get; set; }
+
+        /// <summary>
         /// Only return refunds for the PaymentIntent specified by this ID.
         /// </summary>
         [JsonProperty("payment_intent")]
         [STJS.JsonPropertyName("payment_intent")]
         public string PaymentIntent { get; set; }
+
+        /// <summary>
+        /// Only return refunds for the PaymentRecord specified by this ID.
+        /// </summary>
+        [JsonProperty("payment_record")]
+        [STJS.JsonPropertyName("payment_record")]
+        public string PaymentRecord { get; set; }
     }
 }
