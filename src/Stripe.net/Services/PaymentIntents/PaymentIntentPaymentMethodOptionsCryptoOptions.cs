@@ -50,5 +50,13 @@ namespace Stripe
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
+
+        /// <summary>
+        /// Specific configuration for this PaymentIntent when the mode is
+        /// <c>transaction_verification</c>.
+        /// </summary>
+        [JsonProperty("transaction_verification_options")]
+        [STJS.JsonPropertyName("transaction_verification_options")]
+        public PaymentIntentPaymentMethodOptionsCryptoTransactionVerificationOptionsOptions TransactionVerificationOptions { get; set; }
     }
 }
