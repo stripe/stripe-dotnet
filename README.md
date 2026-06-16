@@ -333,6 +333,9 @@ New features and bug fixes are released on the latest major version of the Strip
 
 ## Development
 
+> [!WARNING]
+> External contributions to this repo from first-time contributors are currently on hiatus. If you'd like to see a change made to the package, please open an issue.
+
 [Contribution guidelines for this project](CONTRIBUTING.md)
 
 .NET 8 is required to build and test Stripe.net SDK, you can install it from [get.dot.net](https://get.dot.net/).
