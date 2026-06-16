@@ -66,6 +66,13 @@ namespace Stripe
         public PaymentRecordProcessorDetailsOptions ProcessorDetails { get; set; }
 
         /// <summary>
+        /// A key to group refunds together.
+        /// </summary>
+        [JsonProperty("refund_group")]
+        [STJS.JsonPropertyName("refund_group")]
+        public string RefundGroup { get; set; }
+
+        /// <summary>
         /// Information about the payment attempt refund.
         /// </summary>
         [JsonProperty("refunded")]
