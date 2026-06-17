@@ -47,6 +47,14 @@ namespace Stripe
         [STJS.JsonPropertyName("exp_year")]
         public long? ExpYear { get; set; }
 
+        /// <summary>
+        /// Uniquely identifies this particular gift card number. You can use this attribute to
+        /// check whether two gift cards are the same.
+        /// </summary>
+        [JsonProperty("fingerprint")]
+        [STJS.JsonPropertyName("fingerprint")]
+        public string Fingerprint { get; set; }
+
         #region Expandable LastOperation
 
         /// <summary>

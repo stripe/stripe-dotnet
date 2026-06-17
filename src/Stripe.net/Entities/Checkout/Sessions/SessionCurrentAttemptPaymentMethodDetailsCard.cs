@@ -9,18 +9,6 @@ namespace Stripe.Checkout
     public class SessionCurrentAttemptPaymentMethodDetailsCard : StripeEntity<SessionCurrentAttemptPaymentMethodDetailsCard>
     {
         /// <summary>
-        /// The brand of the card, accounting for customer's brand choice on dual-branded cards.
-        /// One of: <c>accel</c>, <c>amex</c>, <c>carnet</c>, <c>cartes_bancaires</c>,
-        /// <c>conecs</c>, <c>diners</c>, <c>discover</c>, <c>eftpos_au</c>, <c>elo</c>,
-        /// <c>girocard</c>, <c>interac</c>, <c>jaywan</c>, <c>jcb</c>, <c>link</c>, <c>maestro</c>,
-        /// <c>mastercard</c>, <c>nyce</c>, <c>pulse</c>, <c>rupay</c>, <c>star</c>,
-        /// <c>unionpay</c>, <c>unknown</c>, or <c>visa</c>.
-        /// </summary>
-        [JsonProperty("brand")]
-        [STJS.JsonPropertyName("brand")]
-        public string Brand { get; set; }
-
-        /// <summary>
         /// Two-letter ISO code representing the country of the card. You could use this attribute
         /// to get a sense of the international breakdown of cards you've collected.
         /// </summary>

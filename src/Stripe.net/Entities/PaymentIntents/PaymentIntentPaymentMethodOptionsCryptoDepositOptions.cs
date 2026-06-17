@@ -13,7 +13,7 @@ namespace Stripe
         /// The blockchain networks to support for deposits. Learn more about <a
         /// href="https://docs.stripe.com/payments/deposit-mode-stablecoin-payments#token-and-network-support">supported
         /// networks and tokens</a>.
-        /// One of: <c>base</c>, <c>solana</c>, or <c>tempo</c>.
+        /// One of: <c>base</c>, <c>ethereum</c>, <c>polygon</c>, <c>solana</c>, or <c>tempo</c>.
         /// </summary>
         [JsonProperty("networks")]
         [STJS.JsonPropertyName("networks")]

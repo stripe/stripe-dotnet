@@ -17,7 +17,7 @@ namespace Stripe.TestHelpers
 
         /// <summary>
         /// The blockchain network of the simulated crypto deposit.
-        /// One of: <c>base</c>, <c>solana</c>, or <c>tempo</c>.
+        /// One of: <c>base</c>, <c>ethereum</c>, <c>polygon</c>, <c>solana</c>, or <c>tempo</c>.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]
@@ -25,6 +25,7 @@ namespace Stripe.TestHelpers
 
         /// <summary>
         /// The token currency of the simulated crypto deposit.
+        /// One of: <c>usdc</c>, <c>usdg</c>, or <c>usdp</c>.
         /// </summary>
         [JsonProperty("token_currency")]
         [STJS.JsonPropertyName("token_currency")]

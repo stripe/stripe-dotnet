@@ -23,6 +23,13 @@ namespace Stripe
         public PaymentAttemptRecordAmountOptions Amount { get; set; }
 
         /// <summary>
+        /// Information about the refund failure.
+        /// </summary>
+        [JsonProperty("failed")]
+        [STJS.JsonPropertyName("failed")]
+        public PaymentAttemptRecordFailedOptions Failed { get; set; }
+
+        /// <summary>
         /// When the reported refund was initiated. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("initiated_at")]
@@ -52,6 +59,7 @@ namespace Stripe
 
         /// <summary>
         /// The outcome of the reported refund.
+        /// One of: <c>failed</c>, or <c>refunded</c>.
         /// </summary>
         [JsonProperty("outcome")]
         [STJS.JsonPropertyName("outcome")]
@@ -63,6 +71,13 @@ namespace Stripe
         [JsonProperty("processor_details")]
         [STJS.JsonPropertyName("processor_details")]
         public PaymentAttemptRecordProcessorDetailsOptions ProcessorDetails { get; set; }
+
+        /// <summary>
+        /// A key to group refunds together.
+        /// </summary>
+        [JsonProperty("refund_group")]
+        [STJS.JsonPropertyName("refund_group")]
+        public string RefundGroup { get; set; }
 
         /// <summary>
         /// Information about the payment attempt refund.

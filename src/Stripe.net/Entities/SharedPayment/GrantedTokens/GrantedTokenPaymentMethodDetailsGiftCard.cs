@@ -38,13 +38,6 @@ namespace Stripe.SharedPayment
         public string Fingerprint { get; set; }
 
         /// <summary>
-        /// The first six digits of the gift card number.
-        /// </summary>
-        [JsonProperty("first6")]
-        [STJS.JsonPropertyName("first6")]
-        public string First6 { get; set; }
-
-        /// <summary>
         /// The last four digits of the gift card number.
         /// </summary>
         [JsonProperty("last4")]

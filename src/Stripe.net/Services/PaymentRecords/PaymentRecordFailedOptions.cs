@@ -31,6 +31,19 @@ namespace Stripe
         public string FailureCode { get; set; }
 
         /// <summary>
+        /// Provides the reason for the refund failure. Possible values are:
+        /// <c>lost_or_stolen_card</c>, <c>expired_or_canceled_card</c>,
+        /// <c>charge_for_pending_refund_disputed</c>, <c>insufficient_funds</c>, <c>declined</c>,
+        /// <c>merchant_request</c>, or <c>unknown</c>.
+        /// One of: <c>charge_for_pending_refund_disputed</c>, <c>declined</c>,
+        /// <c>expired_or_canceled_card</c>, <c>insufficient_funds</c>, <c>lost_or_stolen_card</c>,
+        /// <c>merchant_request</c>, or <c>unknown</c>.
+        /// </summary>
+        [JsonProperty("failure_reason")]
+        [STJS.JsonPropertyName("failure_reason")]
+        public string FailureReason { get; set; }
+
+        /// <summary>
         /// Payment evaluations associated with this reported payment.
         /// </summary>
         [JsonProperty("payment_evaluations")]

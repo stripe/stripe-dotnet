@@ -39,7 +39,7 @@ namespace Stripe
         ///
         /// If <c>capture_method</c> is already set on the PaymentIntent, providing an empty value
         /// for this parameter unsets the stored value for this payment method type.
-        /// One of: <c>manual</c>, or <c>manual_preferred</c>.
+        /// One of: <c>automatic_delayed</c>, <c>manual</c>, or <c>manual_preferred</c>.
         /// </summary>
         [JsonProperty("capture_method")]
         [STJS.JsonPropertyName("capture_method")]

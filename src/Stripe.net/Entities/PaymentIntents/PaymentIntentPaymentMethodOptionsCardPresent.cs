@@ -25,7 +25,7 @@ namespace Stripe
 
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
-        /// One of: <c>manual</c>, or <c>manual_preferred</c>.
+        /// One of: <c>automatic_delayed</c>, <c>manual</c>, or <c>manual_preferred</c>.
         /// </summary>
         [JsonProperty("capture_method")]
         [STJS.JsonPropertyName("capture_method")]
