@@ -23,6 +23,13 @@ namespace Stripe
         public PaymentAttemptRecordAmountOptions Amount { get; set; }
 
         /// <summary>
+        /// Information about the refund failure.
+        /// </summary>
+        [JsonProperty("failed")]
+        [STJS.JsonPropertyName("failed")]
+        public PaymentAttemptRecordFailedOptions Failed { get; set; }
+
+        /// <summary>
         /// When the reported refund was initiated. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("initiated_at")]
