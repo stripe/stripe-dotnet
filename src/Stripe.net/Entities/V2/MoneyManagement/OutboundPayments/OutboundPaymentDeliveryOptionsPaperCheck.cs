@@ -9,6 +9,13 @@ namespace Stripe.V2.MoneyManagement
     public class OutboundPaymentDeliveryOptionsPaperCheck : StripeEntity<OutboundPaymentDeliveryOptionsPaperCheck>
     {
         /// <summary>
+        /// The ID of a file to include as an attachment with the paper check.
+        /// </summary>
+        [JsonProperty("attachment")]
+        [STJS.JsonPropertyName("attachment")]
+        public string Attachment { get; set; }
+
+        /// <summary>
         /// Memo printed on the memo field of the check.
         /// </summary>
         [JsonProperty("memo")]

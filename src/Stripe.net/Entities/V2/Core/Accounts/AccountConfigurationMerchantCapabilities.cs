@@ -296,6 +296,13 @@ namespace Stripe.V2.Core
         public AccountConfigurationMerchantCapabilitiesStripeBalance StripeBalance { get; set; }
 
         /// <summary>
+        /// Allow the merchant to process Sunbit payments.
+        /// </summary>
+        [JsonProperty("sunbit_payments")]
+        [STJS.JsonPropertyName("sunbit_payments")]
+        public AccountConfigurationMerchantCapabilitiesSunbitPayments SunbitPayments { get; set; }
+
+        /// <summary>
         /// Allow the merchant to process Swish payments.
         /// </summary>
         [JsonProperty("swish_payments")]

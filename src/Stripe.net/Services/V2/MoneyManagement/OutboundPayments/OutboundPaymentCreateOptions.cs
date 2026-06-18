@@ -55,6 +55,13 @@ namespace Stripe.V2.MoneyManagement
         public string OutboundPaymentQuote { get; set; }
 
         /// <summary>
+        /// The PayoutIntent ID that triggered this OutboundPayment.
+        /// </summary>
+        [JsonProperty("payout_intent")]
+        [STJS.JsonPropertyName("payout_intent")]
+        public string PayoutIntent { get; set; }
+
+        /// <summary>
         /// The purpose of the OutboundPayment.
         /// </summary>
         [JsonProperty("purpose")]

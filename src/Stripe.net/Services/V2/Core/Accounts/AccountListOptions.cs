@@ -13,7 +13,7 @@ namespace Stripe.V2.Core
         /// Filter only accounts that have all of the configurations specified. If omitted, returns
         /// all accounts regardless of which configurations they have.
         /// One of: <c>card_creator</c>, <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or
-        /// <c>storer</c>.
+        /// <c>money_manager</c>.
         /// </summary>
         [JsonProperty("applied_configurations")]
         [STJS.JsonPropertyName("applied_configurations")]

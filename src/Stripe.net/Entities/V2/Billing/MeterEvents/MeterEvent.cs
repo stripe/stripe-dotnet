@@ -39,7 +39,7 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// A unique identifier for the event. If not provided, one will be generated. We recommend
-        /// using a globally unique identifier for this. We’ll enforce uniqueness within a rolling
+        /// using a globally unique identifier for this. We'll enforce uniqueness within a rolling
         /// 24 hour period.
         /// </summary>
         [JsonProperty("identifier")]
@@ -55,7 +55,7 @@ namespace Stripe.V2.Billing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The payload of the event. This must contain the fields corresponding to a meter’s
+        /// The payload of the event. This must contain the fields corresponding to a meter's
         /// <c>customer_mapping.event_payload_key</c> (default is <c>stripe_customer_id</c>) and
         /// <c>value_settings.event_payload_key</c> (default is <c>value</c>). Read more about the
         /// <a

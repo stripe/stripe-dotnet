@@ -10,8 +10,8 @@ namespace Stripe.V2.MoneyManagement
     {
         /// <summary>
         /// Open Enum. The reason for the failure of the ReceivedDebit.
-        /// One of: <c>financial_address_inactive</c>, <c>insufficient_funds</c>, or
-        /// <c>stripe_rejected</c>.
+        /// One of: <c>capability_inactive</c>, <c>financial_address_inactive</c>,
+        /// <c>insufficient_funds</c>, or <c>stripe_rejected</c>.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

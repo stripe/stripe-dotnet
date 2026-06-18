@@ -25,6 +25,13 @@ namespace Stripe.V2.Core
         public AccountIdentityAttestationsTermsOfServiceCardCreator CardCreator { get; set; }
 
         /// <summary>
+        /// Details on the Account's acceptance of Consumer-specific terms of service.
+        /// </summary>
+        [JsonProperty("consumer_money_manager")]
+        [STJS.JsonPropertyName("consumer_money_manager")]
+        public AccountIdentityAttestationsTermsOfServiceConsumerMoneyManager ConsumerMoneyManager { get; set; }
+
+        /// <summary>
         /// Details on the Account's acceptance of Consumer-privacy-disclosures-specific terms of
         /// service.
         /// </summary>
@@ -33,24 +40,17 @@ namespace Stripe.V2.Core
         public AccountIdentityAttestationsTermsOfServiceConsumerPrivacyDisclosures ConsumerPrivacyDisclosures { get; set; }
 
         /// <summary>
-        /// Details on the Account's acceptance of Consumer-storer-specific terms of service.
+        /// Details on the Account's acceptance of Crypto-specific terms of service.
         /// </summary>
-        [JsonProperty("consumer_storer")]
-        [STJS.JsonPropertyName("consumer_storer")]
-        public AccountIdentityAttestationsTermsOfServiceConsumerStorer ConsumerStorer { get; set; }
-
-        /// <summary>
-        /// Details on the Account's acceptance of Crypto-storer-specific terms of service.
-        /// </summary>
-        [JsonProperty("crypto_storer")]
-        [STJS.JsonPropertyName("crypto_storer")]
-        public AccountIdentityAttestationsTermsOfServiceCryptoStorer CryptoStorer { get; set; }
+        [JsonProperty("crypto_money_manager")]
+        [STJS.JsonPropertyName("crypto_money_manager")]
+        public AccountIdentityAttestationsTermsOfServiceCryptoMoneyManager CryptoMoneyManager { get; set; }
 
         /// <summary>
         /// Details on the Account's acceptance of Treasury-specific terms of service.
         /// </summary>
-        [JsonProperty("storer")]
-        [STJS.JsonPropertyName("storer")]
-        public AccountIdentityAttestationsTermsOfServiceStorer Storer { get; set; }
+        [JsonProperty("money_manager")]
+        [STJS.JsonPropertyName("money_manager")]
+        public AccountIdentityAttestationsTermsOfServiceMoneyManager MoneyManager { get; set; }
     }
 }

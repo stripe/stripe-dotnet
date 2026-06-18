@@ -28,6 +28,15 @@ namespace Stripe.V2.MoneyManagement
         public DateTime? FailedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// The time when the ReceivedDebit was marked as <c>returned</c>. Represented as a RFC 3339
+        /// date &amp; time UTC value in millisecond precision, for example:
+        /// <c>2022-09-18T13:22:18.123Z</c>.
+        /// </summary>
+        [JsonProperty("returned_at")]
+        [STJS.JsonPropertyName("returned_at")]
+        public DateTime? ReturnedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
         /// The time when the ReceivedDebit was marked as <c>succeeded</c>. Represented as a RFC
         /// 3339 date &amp; time UTC value in millisecond precision, for example:
         /// <c>2022-09-18T13:22:18.123Z</c>.

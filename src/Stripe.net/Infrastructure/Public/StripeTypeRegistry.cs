@@ -331,6 +331,11 @@ namespace Stripe
                 { "v2.core.event_destination", typeof(V2.Core.EventDestination) },
                 { "v2.core.fee_batch", typeof(V2.Core.FeeBatch) },
                 { "v2.core.fee_entry", typeof(V2.Core.FeeEntry) },
+                { "v2.core.health.alert", typeof(V2.Core.Health.Alert) },
+                {
+                    "v2.core.health.alert_history_entry", typeof(
+                    V2.Core.Health.AlertHistoryEntry)
+                },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },
                 { "v2.core.vault.us_bank_account", typeof(V2.Core.Vault.UsBankAccount) },
                 {
@@ -361,6 +366,10 @@ namespace Stripe
                     V2.MoneyManagement.FinancialAddress)
                 },
                 {
+                    "v2.money_management.financial_address_debit_simulation", typeof(
+                    V2.MoneyManagement.FinancialAddressDebitSimulation)
+                },
+                {
                     "v2.money_management.inbound_transfer", typeof(
                     V2.MoneyManagement.InboundTransfer)
                 },
@@ -380,6 +389,7 @@ namespace Stripe
                     "v2.money_management.outbound_transfer", typeof(
                     V2.MoneyManagement.OutboundTransfer)
                 },
+                { "v2.money_management.payout_intent", typeof(V2.MoneyManagement.PayoutIntent) },
                 { "v2.money_management.payout_method", typeof(V2.MoneyManagement.PayoutMethod) },
                 {
                     "v2.money_management.payout_methods_bank_account_spec", typeof(
@@ -1078,20 +1088,20 @@ namespace Stripe
                     Events.V2CoreAccountIncludingConfigurationMerchantUpdatedEvent)
                 },
                 {
+                    "v2.core.account[configuration.money_manager].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationMoneyManagerCapabilityStatusUpdatedEvent)
+                },
+                {
+                    "v2.core.account[configuration.money_manager].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationMoneyManagerUpdatedEvent)
+                },
+                {
                     "v2.core.account[configuration.recipient].capability_status_updated", typeof(
                     Events.V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEvent)
                 },
                 {
                     "v2.core.account[configuration.recipient].updated", typeof(
                     Events.V2CoreAccountIncludingConfigurationRecipientUpdatedEvent)
-                },
-                {
-                    "v2.core.account[configuration.storer].capability_status_updated", typeof(
-                    Events.V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent)
-                },
-                {
-                    "v2.core.account[configuration.storer].updated", typeof(
-                    Events.V2CoreAccountIncludingConfigurationStorerUpdatedEvent)
                 },
                 {
                     "v2.core.account[defaults].updated", typeof(
@@ -1380,6 +1390,18 @@ namespace Stripe
                     Events.V2MoneyManagementAdjustmentCreatedEvent)
                 },
                 {
+                    "v2.money_management.debit_dispute.failed", typeof(
+                    Events.V2MoneyManagementDebitDisputeFailedEvent)
+                },
+                {
+                    "v2.money_management.debit_dispute.submitted", typeof(
+                    Events.V2MoneyManagementDebitDisputeSubmittedEvent)
+                },
+                {
+                    "v2.money_management.debit_dispute.succeeded", typeof(
+                    Events.V2MoneyManagementDebitDisputeSucceededEvent)
+                },
+                {
                     "v2.money_management.financial_account.created", typeof(
                     Events.V2MoneyManagementFinancialAccountCreatedEvent)
                 },
@@ -1448,6 +1470,10 @@ namespace Stripe
                     Events.V2MoneyManagementOutboundPaymentReturnedEvent)
                 },
                 {
+                    "v2.money_management.outbound_payment.under_review", typeof(
+                    Events.V2MoneyManagementOutboundPaymentUnderReviewEvent)
+                },
+                {
                     "v2.money_management.outbound_payment.updated", typeof(
                     Events.V2MoneyManagementOutboundPaymentUpdatedEvent)
                 },
@@ -1470,6 +1496,10 @@ namespace Stripe
                 {
                     "v2.money_management.outbound_transfer.returned", typeof(
                     Events.V2MoneyManagementOutboundTransferReturnedEvent)
+                },
+                {
+                    "v2.money_management.outbound_transfer.under_review", typeof(
+                    Events.V2MoneyManagementOutboundTransferUnderReviewEvent)
                 },
                 {
                     "v2.money_management.outbound_transfer.updated", typeof(
@@ -2477,20 +2507,20 @@ namespace Stripe
                     Events.V2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification)
                 },
                 {
+                    "v2.core.account[configuration.money_manager].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationMoneyManagerCapabilityStatusUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.money_manager].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationMoneyManagerUpdatedEventNotification)
+                },
+                {
                     "v2.core.account[configuration.recipient].capability_status_updated", typeof(
                     Events.V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventNotification)
                 },
                 {
                     "v2.core.account[configuration.recipient].updated", typeof(
                     Events.V2CoreAccountIncludingConfigurationRecipientUpdatedEventNotification)
-                },
-                {
-                    "v2.core.account[configuration.storer].capability_status_updated", typeof(
-                    Events.V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification)
-                },
-                {
-                    "v2.core.account[configuration.storer].updated", typeof(
-                    Events.V2CoreAccountIncludingConfigurationStorerUpdatedEventNotification)
                 },
                 {
                     "v2.core.account[defaults].updated", typeof(
@@ -2797,6 +2827,18 @@ namespace Stripe
                     Events.V2MoneyManagementAdjustmentCreatedEventNotification)
                 },
                 {
+                    "v2.money_management.debit_dispute.failed", typeof(
+                    Events.V2MoneyManagementDebitDisputeFailedEventNotification)
+                },
+                {
+                    "v2.money_management.debit_dispute.submitted", typeof(
+                    Events.V2MoneyManagementDebitDisputeSubmittedEventNotification)
+                },
+                {
+                    "v2.money_management.debit_dispute.succeeded", typeof(
+                    Events.V2MoneyManagementDebitDisputeSucceededEventNotification)
+                },
+                {
                     "v2.money_management.financial_account.created", typeof(
                     Events.V2MoneyManagementFinancialAccountCreatedEventNotification)
                 },
@@ -2865,6 +2907,10 @@ namespace Stripe
                     Events.V2MoneyManagementOutboundPaymentReturnedEventNotification)
                 },
                 {
+                    "v2.money_management.outbound_payment.under_review", typeof(
+                    Events.V2MoneyManagementOutboundPaymentUnderReviewEventNotification)
+                },
+                {
                     "v2.money_management.outbound_payment.updated", typeof(
                     Events.V2MoneyManagementOutboundPaymentUpdatedEventNotification)
                 },
@@ -2887,6 +2933,10 @@ namespace Stripe
                 {
                     "v2.money_management.outbound_transfer.returned", typeof(
                     Events.V2MoneyManagementOutboundTransferReturnedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_transfer.under_review", typeof(
+                    Events.V2MoneyManagementOutboundTransferUnderReviewEventNotification)
                 },
                 {
                     "v2.money_management.outbound_transfer.updated", typeof(
