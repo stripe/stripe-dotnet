@@ -8,7 +8,8 @@ namespace Stripe
     using System.Threading.Tasks;
 
     public class PaymentRecordService : Service,
-        IRetrievable<PaymentRecord, PaymentRecordGetOptions>
+        IRetrievable<PaymentRecord, PaymentRecordGetOptions>,
+        ISearchable<PaymentRecord, PaymentRecordSearchOptions>
     {
         public PaymentRecordService()
         {
@@ -164,6 +165,58 @@ namespace Stripe
         public virtual Task<PaymentRecord> ReportRefundAsync(string id, PaymentRecordReportRefundOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_records/{WebUtility.UrlEncode(id)}/report_refund", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Search for PaymentRecords you’ve previously created using Stripe’s <a
+        /// href="https://stripe.com/docs/search#search-query-language">Search Query Language</a>.
+        /// Don’t use search in read-after-write flows where strict consistency is necessary. Under
+        /// normal operating conditions, data is searchable in less than a minute. Occasionally,
+        /// propagation of new or updated data can be up to an hour behind during outages. Search
+        /// functionality is not available to merchants in India.</p>.
+        /// </summary>
+        public virtual StripeSearchResult<PaymentRecord> Search(PaymentRecordSearchOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeSearchResult<PaymentRecord>>(BaseAddress.Api, HttpMethod.Get, $"/v1/payment_records/search", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Search for PaymentRecords you’ve previously created using Stripe’s <a
+        /// href="https://stripe.com/docs/search#search-query-language">Search Query Language</a>.
+        /// Don’t use search in read-after-write flows where strict consistency is necessary. Under
+        /// normal operating conditions, data is searchable in less than a minute. Occasionally,
+        /// propagation of new or updated data can be up to an hour behind during outages. Search
+        /// functionality is not available to merchants in India.</p>.
+        /// </summary>
+        public virtual Task<StripeSearchResult<PaymentRecord>> SearchAsync(PaymentRecordSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<StripeSearchResult<PaymentRecord>>(BaseAddress.Api, HttpMethod.Get, $"/v1/payment_records/search", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Search for PaymentRecords you’ve previously created using Stripe’s <a
+        /// href="https://stripe.com/docs/search#search-query-language">Search Query Language</a>.
+        /// Don’t use search in read-after-write flows where strict consistency is necessary. Under
+        /// normal operating conditions, data is searchable in less than a minute. Occasionally,
+        /// propagation of new or updated data can be up to an hour behind during outages. Search
+        /// functionality is not available to merchants in India.</p>.
+        /// </summary>
+        public virtual IEnumerable<PaymentRecord> SearchAutoPaging(PaymentRecordSearchOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.SearchRequestAutoPaging<PaymentRecord>($"/v1/payment_records/search", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Search for PaymentRecords you’ve previously created using Stripe’s <a
+        /// href="https://stripe.com/docs/search#search-query-language">Search Query Language</a>.
+        /// Don’t use search in read-after-write flows where strict consistency is necessary. Under
+        /// normal operating conditions, data is searchable in less than a minute. Occasionally,
+        /// propagation of new or updated data can be up to an hour behind during outages. Search
+        /// functionality is not available to merchants in India.</p>.
+        /// </summary>
+        public virtual IAsyncEnumerable<PaymentRecord> SearchAutoPagingAsync(PaymentRecordSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.SearchRequestAutoPagingAsync<PaymentRecord>($"/v1/payment_records/search", options, requestOptions, cancellationToken);
         }
     }
 }

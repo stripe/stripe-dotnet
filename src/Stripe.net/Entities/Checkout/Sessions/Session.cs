@@ -377,6 +377,13 @@ namespace Stripe.Checkout
         public SessionInvoiceCreation InvoiceCreation { get; set; }
 
         /// <summary>
+        /// The items to be purchased by the customer.
+        /// </summary>
+        [JsonProperty("items")]
+        [STJS.JsonPropertyName("items")]
+        public List<SessionItem> Items { get; set; }
+
+        /// <summary>
         /// The line items purchased by the customer.
         /// </summary>
         [JsonProperty("line_items")]

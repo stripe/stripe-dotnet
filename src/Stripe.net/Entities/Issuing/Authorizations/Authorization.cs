@@ -158,6 +158,13 @@ namespace Stripe.Issuing
         public string Currency { get; set; }
 
         /// <summary>
+        /// Enriched merchant data for this authorization.
+        /// </summary>
+        [JsonProperty("enriched_merchant_data")]
+        [STJS.JsonPropertyName("enriched_merchant_data")]
+        public AuthorizationEnrichedMerchantData EnrichedMerchantData { get; set; }
+
+        /// <summary>
         /// Fleet-specific information for authorizations using Fleet cards.
         /// </summary>
         [JsonProperty("fleet")]

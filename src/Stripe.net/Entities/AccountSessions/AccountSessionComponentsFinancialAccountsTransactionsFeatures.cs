@@ -1,0 +1,56 @@
+// File generated from our OpenAPI spec
+namespace Stripe
+{
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+    public class AccountSessionComponentsFinancialAccountsTransactionsFeatures : StripeEntity<AccountSessionComponentsFinancialAccountsTransactionsFeatures>
+    {
+        /// <summary>
+        /// Whether to allow capturing and cancelling payment intents. This is <c>true</c> by
+        /// default.
+        /// </summary>
+        [JsonProperty("capture_payments")]
+        [STJS.JsonPropertyName("capture_payments")]
+        public bool CapturePayments { get; set; }
+
+        /// <summary>
+        /// Whether to allow card management features.
+        /// </summary>
+        [JsonProperty("card_management")]
+        [STJS.JsonPropertyName("card_management")]
+        public bool CardManagement { get; set; }
+
+        /// <summary>
+        /// Whether to allow card spend dispute management features.
+        /// </summary>
+        [JsonProperty("card_spend_dispute_management")]
+        [STJS.JsonPropertyName("card_spend_dispute_management")]
+        public bool CardSpendDisputeManagement { get; set; }
+
+        /// <summary>
+        /// Whether connected accounts can manage destination charges that are created on behalf of
+        /// them. This is <c>false</c> by default.
+        /// </summary>
+        [JsonProperty("destination_on_behalf_of_charge_management")]
+        [STJS.JsonPropertyName("destination_on_behalf_of_charge_management")]
+        public bool DestinationOnBehalfOfChargeManagement { get; set; }
+
+        /// <summary>
+        /// Whether responding to disputes is enabled, including submitting evidence and accepting
+        /// disputes. This is <c>true</c> by default.
+        /// </summary>
+        [JsonProperty("dispute_management")]
+        [STJS.JsonPropertyName("dispute_management")]
+        public bool DisputeManagement { get; set; }
+
+        /// <summary>
+        /// Whether sending refunds is enabled. This is <c>true</c> by default.
+        /// </summary>
+        [JsonProperty("refund_management")]
+        [STJS.JsonPropertyName("refund_management")]
+        public bool RefundManagement { get; set; }
+    }
+}

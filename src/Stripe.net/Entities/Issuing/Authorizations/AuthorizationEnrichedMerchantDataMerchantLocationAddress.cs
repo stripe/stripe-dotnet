@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
-namespace Stripe.Tax
+namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class TransactionLineItemPerformanceLocationDetailsAddress : StripeEntity<TransactionLineItemPerformanceLocationDetailsAddress>
+    public class AuthorizationEnrichedMerchantDataMerchantLocationAddress : StripeEntity<AuthorizationEnrichedMerchantDataMerchantLocationAddress>
     {
         /// <summary>
         /// City, district, suburb, town, or village.
@@ -45,8 +45,8 @@ namespace Stripe.Tax
         public string PostalCode { get; set; }
 
         /// <summary>
-        /// State/province as an <a href="https://en.wikipedia.org/wiki/ISO_3166-2">ISO 3166-2</a>
-        /// subdivision code, without country prefix, such as "NY" or "TX".
+        /// State, county, province, or region (<a
+        /// href="https://en.wikipedia.org/wiki/ISO_3166-2">ISO 3166-2</a>).
         /// </summary>
         [JsonProperty("state")]
         [STJS.JsonPropertyName("state")]

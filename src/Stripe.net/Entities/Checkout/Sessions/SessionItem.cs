@@ -5,18 +5,18 @@ namespace Stripe.Checkout
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SessionItemOptions : INestedOptions
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+    public class SessionItem : StripeEntity<SessionItem>
     {
         /// <summary>
-        /// Configuration for the subscription item.
+        /// The key of the item. Guaranteed to be a unique ID within this checkout session's items.
         /// </summary>
-        [JsonProperty("subscription")]
-        [STJS.JsonPropertyName("subscription")]
-        public SessionItemSubscriptionOptions Subscription { get; set; }
+        [JsonProperty("key")]
+        [STJS.JsonPropertyName("key")]
+        public string Key { get; set; }
 
         /// <summary>
-        /// The type of item.
+        /// The type of the item.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

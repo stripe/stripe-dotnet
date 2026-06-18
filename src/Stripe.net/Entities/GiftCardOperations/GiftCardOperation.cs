@@ -145,11 +145,25 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// ID of the location that this transaction's reader is assigned to.
+        /// </summary>
+        [JsonProperty("location")]
+        [STJS.JsonPropertyName("location")]
+        public string Location { get; set; }
+
+        /// <summary>
         /// The connected account whose credentials were used to perform this operation.
         /// </summary>
         [JsonProperty("on_behalf_of")]
         [STJS.JsonPropertyName("on_behalf_of")]
         public string OnBehalfOf { get; set; }
+
+        /// <summary>
+        /// ID of the reader this transaction was made on.
+        /// </summary>
+        [JsonProperty("reader")]
+        [STJS.JsonPropertyName("reader")]
+        public string Reader { get; set; }
 
         /// <summary>
         /// Details about a gift card reload operation.

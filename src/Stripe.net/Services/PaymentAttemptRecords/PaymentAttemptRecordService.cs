@@ -123,6 +123,22 @@ namespace Stripe
         }
 
         /// <summary>
+        /// <p>Report that the specified Payment Attempt Record received an early fraud warning.</p>.
+        /// </summary>
+        public virtual PaymentAttemptRecord ReportEarlyFraudWarning(string id, PaymentAttemptRecordReportEarlyFraudWarningOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<PaymentAttemptRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_attempt_records/{WebUtility.UrlEncode(id)}/report_early_fraud_warning", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Report that the specified Payment Attempt Record received an early fraud warning.</p>.
+        /// </summary>
+        public virtual Task<PaymentAttemptRecord> ReportEarlyFraudWarningAsync(string id, PaymentAttemptRecordReportEarlyFraudWarningOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<PaymentAttemptRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_attempt_records/{WebUtility.UrlEncode(id)}/report_early_fraud_warning", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Report that the specified Payment Attempt Record failed.</p>.
         /// </summary>
         public virtual PaymentAttemptRecord ReportFailed(string id, PaymentAttemptRecordReportFailedOptions options = null, RequestOptions requestOptions = null)
