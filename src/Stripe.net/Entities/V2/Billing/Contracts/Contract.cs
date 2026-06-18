@@ -29,6 +29,13 @@ namespace Stripe.V2.Billing
         public string Object { get; set; }
 
         /// <summary>
+        /// The billing cycle anchor for the contract.
+        /// </summary>
+        [JsonProperty("billing_cycle_anchor")]
+        [STJS.JsonPropertyName("billing_cycle_anchor")]
+        public ContractBillingCycleAnchor BillingCycleAnchor { get; set; }
+
+        /// <summary>
         /// The billing settings for the contract.
         /// </summary>
         [JsonProperty("billing_settings")]

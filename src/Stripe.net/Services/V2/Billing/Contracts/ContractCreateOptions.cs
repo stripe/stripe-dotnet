@@ -10,6 +10,15 @@ namespace Stripe.V2.Billing
     public class ContractCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// The billing cycle anchor for the contract. If not provided, defaults to the pricing line
+        /// start time. It is only at the top-level of the contract with no option to override at
+        /// the pricing line level.
+        /// </summary>
+        [JsonProperty("billing_cycle_anchor")]
+        [STJS.JsonPropertyName("billing_cycle_anchor")]
+        public ContractCreateBillingCycleAnchorOptions BillingCycleAnchor { get; set; }
+
+        /// <summary>
         /// The billing settings for the contract.
         /// </summary>
         [JsonProperty("billing_settings")]
