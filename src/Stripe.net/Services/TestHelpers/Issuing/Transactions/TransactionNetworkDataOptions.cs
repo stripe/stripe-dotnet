@@ -6,7 +6,7 @@ namespace Stripe.TestHelpers.Issuing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AuthorizationNetworkDataOptions : INestedOptions
+    public class TransactionNetworkDataOptions : INestedOptions
     {
         /// <summary>
         /// Optional. A test value to populate network_data.acquirer_reference_number on the
@@ -17,12 +17,5 @@ namespace Stripe.TestHelpers.Issuing
         [JsonProperty("acquirer_reference_number")]
         [STJS.JsonPropertyName("acquirer_reference_number")]
         public string AcquirerReferenceNumber { get; set; }
-
-        /// <summary>
-        /// Identifier assigned to the acquirer by the card network.
-        /// </summary>
-        [JsonProperty("acquiring_institution_id")]
-        [STJS.JsonPropertyName("acquiring_institution_id")]
-        public string AcquiringInstitutionId { get; set; }
     }
 }

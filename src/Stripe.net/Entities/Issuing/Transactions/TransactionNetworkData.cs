@@ -9,6 +9,15 @@ namespace Stripe.Issuing
     public class TransactionNetworkData : StripeEntity<TransactionNetworkData>
     {
         /// <summary>
+        /// The network-provided acquirer reference number for this transaction, if available. Use
+        /// this value for downstream operational workflows such as filing disputes with the card
+        /// network.
+        /// </summary>
+        [JsonProperty("acquirer_reference_number")]
+        [STJS.JsonPropertyName("acquirer_reference_number")]
+        public string AcquirerReferenceNumber { get; set; }
+
+        /// <summary>
         /// A code created by Stripe which is shared with the merchant to validate the
         /// authorization. This field will be populated if the authorization message was approved.
         /// The code typically starts with the letter "S", followed by a six-digit number. For

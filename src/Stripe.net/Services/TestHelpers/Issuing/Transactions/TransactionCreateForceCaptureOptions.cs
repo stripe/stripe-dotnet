@@ -43,6 +43,13 @@ namespace Stripe.TestHelpers.Issuing
         public TransactionMerchantDataOptions MerchantData { get; set; }
 
         /// <summary>
+        /// Details about the transaction, such as processing dates, set by the card network.
+        /// </summary>
+        [JsonProperty("network_data")]
+        [STJS.JsonPropertyName("network_data")]
+        public TransactionNetworkDataOptions NetworkData { get; set; }
+
+        /// <summary>
         /// Additional purchase information that is optionally provided by the merchant.
         /// </summary>
         [JsonProperty("purchase_details")]
