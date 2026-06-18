@@ -1,0 +1,19 @@
+// File generated from our OpenAPI spec
+namespace Stripe.V2.Billing
+{
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+    public class ContractPricingLinesDataPricingPriceDetailsPricingOverrides : StripeEntity<ContractPricingLinesDataPricingPriceDetailsPricingOverrides>
+    {
+        /// <summary>
+        /// The pricing line overrides.
+        /// </summary>
+        [JsonProperty("data")]
+        [STJS.JsonPropertyName("data")]
+        public List<ContractPricingLinesDataPricingPriceDetailsPricingOverridesData> Data { get; set; }
+    }
+}

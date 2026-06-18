@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Billing
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -16,10 +17,18 @@ namespace Stripe.V2.Billing
         public string Price { get; set; }
 
         /// <summary>
-        /// The quantity for the price. Only applicable for licensed prices.
+        /// Pricing overrides embedded directly on this pricing line.
         /// </summary>
-        [JsonProperty("quantity")]
-        [STJS.JsonPropertyName("quantity")]
-        public long? Quantity { get; set; }
+        [JsonProperty("pricing_overrides")]
+        [STJS.JsonPropertyName("pricing_overrides")]
+        public List<ContractCreatePricingLinePricingPriceDetailsPricingOverrideOptions> PricingOverrides { get; set; }
+
+        /// <summary>
+        /// Quantity changes for the pricing line. For now, at most one entry is allowed. A quantity
+        /// change clears all future quantity changes on this pricing line.
+        /// </summary>
+        [JsonProperty("quantity_changes")]
+        [STJS.JsonPropertyName("quantity_changes")]
+        public List<ContractCreatePricingLinePricingPriceDetailsQuantityChangeOptions> QuantityChanges { get; set; }
     }
 }

@@ -23,6 +23,13 @@ namespace Stripe.V2.Billing
         public string Id { get; set; }
 
         /// <summary>
+        /// Pricing updates for the pricing line (quantity changes and pricing override actions).
+        /// </summary>
+        [JsonProperty("pricing")]
+        [STJS.JsonPropertyName("pricing")]
+        public ContractUpdatePricingLineActionUpdatePricingOptions Pricing { get; set; }
+
+        /// <summary>
         /// The updated start time for the pricing line.
         /// </summary>
         [JsonProperty("starts_at")]

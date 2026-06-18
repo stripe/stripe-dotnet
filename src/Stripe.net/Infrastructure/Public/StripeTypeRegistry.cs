@@ -282,8 +282,8 @@ namespace Stripe
                 },
                 { "v2.billing.contract", typeof(V2.Billing.Contract) },
                 {
-                    "v2.billing.contract_license_pricing_quantity_change", typeof(
-                    V2.Billing.ContractLicensePricingQuantityChange)
+                    "v2.billing.contract_pricing_line_quantity_change", typeof(
+                    V2.Billing.ContractPricingLineQuantityChange)
                 },
                 { "v2.billing.custom_pricing_unit", typeof(V2.Billing.CustomPricingUnit) },
                 { "v2.billing.intent", typeof(V2.Billing.Intent) },

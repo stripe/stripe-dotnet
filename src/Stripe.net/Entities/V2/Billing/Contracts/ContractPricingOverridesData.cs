@@ -5,44 +5,50 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ContractCreatePricingOverrideOptions : INestedOptions
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+    public class ContractPricingOverridesData : StripeEntity<ContractPricingOverridesData>, IHasId
     {
         /// <summary>
-        /// When the pricing override ends.
+        /// Resolved timestamp when the pricing override ends.
         /// </summary>
         [JsonProperty("ends_at")]
         [STJS.JsonPropertyName("ends_at")]
-        public ContractCreatePricingOverrideEndsAtOptions EndsAt { get; set; }
+        public ContractPricingOverridesDataEndsAt EndsAt { get; set; }
 
         /// <summary>
-        /// A user-provided lookup key to reference this pricing override.
+        /// The ID of the pricing override.
+        /// </summary>
+        [JsonProperty("id")]
+        [STJS.JsonPropertyName("id")]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// The user-provided lookup key for the pricing override.
         /// </summary>
         [JsonProperty("lookup_key")]
         [STJS.JsonPropertyName("lookup_key")]
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// Parameters for a multiplier override. Required if <c>type</c> is <c>multiplier</c>.
+        /// Details for a multiplier override.
         /// </summary>
         [JsonProperty("multiplier")]
         [STJS.JsonPropertyName("multiplier")]
-        public ContractCreatePricingOverrideMultiplierOptions Multiplier { get; set; }
+        public ContractPricingOverridesDataMultiplier Multiplier { get; set; }
 
         /// <summary>
-        /// The priority of this override relative to others. The highest priority is 0 and the
-        /// lowest is 100.
+        /// The priority of this override relative to others. Lower number = higher priority.
         /// </summary>
         [JsonProperty("priority")]
         [STJS.JsonPropertyName("priority")]
-        public long? Priority { get; set; }
+        public long Priority { get; set; }
 
         /// <summary>
-        /// When the pricing override starts.
+        /// Resolved timestamp when the pricing override starts.
         /// </summary>
         [JsonProperty("starts_at")]
         [STJS.JsonPropertyName("starts_at")]
-        public ContractCreatePricingOverrideStartsAtOptions StartsAt { get; set; }
+        public ContractPricingOverridesDataStartsAt StartsAt { get; set; }
 
         /// <summary>
         /// The type of pricing override.

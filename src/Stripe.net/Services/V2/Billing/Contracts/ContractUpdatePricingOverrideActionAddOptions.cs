@@ -52,7 +52,6 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The type of pricing override to add.
-        /// One of: <c>multiplier</c>, or <c>overwrite_price</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

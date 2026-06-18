@@ -17,13 +17,6 @@ namespace Stripe.V2.Billing
         public ContractCreateBillingSettingsOptions BillingSettings { get; set; }
 
         /// <summary>
-        /// A list of contract lines to create with the contract.
-        /// </summary>
-        [JsonProperty("contract_lines")]
-        [STJS.JsonPropertyName("contract_lines")]
-        public List<ContractCreateContractLineOptions> ContractLines { get; set; }
-
-        /// <summary>
         /// A unique user-provided contract number e.g. C-2026-0001.
         /// </summary>
         [JsonProperty("contract_number")]
@@ -39,19 +32,11 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// Additional fields to include in the response.
-        /// One of: <c>contract_line_details</c>, <c>license_quantities</c>, <c>one_time_fees</c>,
-        /// <c>pricing_lines</c>, or <c>pricing_overrides</c>.
+        /// One of: <c>one_time_fees</c>, <c>pricing_lines</c>, or <c>pricing_overrides</c>.
         /// </summary>
         [JsonProperty("include")]
         [STJS.JsonPropertyName("include")]
         public List<string> Include { get; set; }
-
-        /// <summary>
-        /// A list of license quantity actions to create with the contract.
-        /// </summary>
-        [JsonProperty("license_quantity_actions")]
-        [STJS.JsonPropertyName("license_quantity_actions")]
-        public List<ContractCreateLicenseQuantityActionOptions> LicenseQuantityActions { get; set; }
 
         /// <summary>
         /// Set of key-value pairs that you can attach to an object.

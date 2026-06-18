@@ -7,7 +7,7 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ContractUpdatePricingOverrideActionAddOverwritePriceOptions : INestedOptions
+    public class ContractUpdatePricingLineActionUpdatePricingPriceDetailsPricingOverrideActionAddOverwritePriceOptions : INestedOptions
     {
         /// <summary>
         /// Defines whether the tiered price should be graduated or volume-based.
@@ -22,7 +22,7 @@ namespace Stripe.V2.Billing
         /// </summary>
         [JsonProperty("tiers")]
         [STJS.JsonPropertyName("tiers")]
-        public List<ContractUpdatePricingOverrideActionAddOverwritePriceTierOptions> Tiers { get; set; }
+        public List<ContractUpdatePricingLineActionUpdatePricingPriceDetailsPricingOverrideActionAddOverwritePriceTierOptions> Tiers { get; set; }
 
         /// <summary>
         /// The per-unit amount to be charged, represented as a decimal string in minor currency
