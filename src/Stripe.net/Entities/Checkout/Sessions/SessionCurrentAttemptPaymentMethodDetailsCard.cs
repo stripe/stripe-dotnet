@@ -9,6 +9,13 @@ namespace Stripe.Checkout
     public class SessionCurrentAttemptPaymentMethodDetailsCard : StripeEntity<SessionCurrentAttemptPaymentMethodDetailsCard>
     {
         /// <summary>
+        /// The brand of the card, accounting for customer's brand choice on dual-branded cards.
+        /// </summary>
+        [JsonProperty("brand")]
+        [STJS.JsonPropertyName("brand")]
+        public string Brand { get; set; }
+
+        /// <summary>
         /// Two-letter ISO code representing the country of the card. You could use this attribute
         /// to get a sense of the international breakdown of cards you've collected.
         /// </summary>
