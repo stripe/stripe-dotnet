@@ -118,6 +118,14 @@ jobs:
             ./scripts/dotnet-install.sh --runtime dotnet --channel "$channel" --install-dir "$DOTNET_ROOT"
           fi
 
+      - name: Cache NuGet packages
+        uses: actions/cache@v5
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
       - name: Install tools
         run: dotnet tool restore
 
@@ -154,6 +162,14 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v5
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
 
       - name: Install tools
         run: dotnet tool restore
@@ -203,6 +219,14 @@ jobs:
         with:
           dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
 
+      - name: Cache NuGet packages
+        uses: actions/cache@v5
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
       - name: Install tools
         run: dotnet tool restore
 
@@ -224,6 +248,14 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v5
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
 
       - name: Install tools
         run: dotnet tool restore
@@ -254,6 +286,14 @@ jobs:
         with:
           dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
 
+      - name: Cache NuGet packages
+        uses: actions/cache@v5
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
       - name: Build examples
         run: dotnet build src/Examples/Examples.sln -c Release
 
@@ -270,8 +310,60 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v5
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
       - name: Run backcompat check
         run: dotnet pack src/Stripe.net -p:RunBaselineCheck=true
+
+  format-check:
+    name: Format Check
+    if: github.event_name == 'pull_request'
+    needs: prepare-dotnet-versions
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: extractions/setup-just@v2
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v5
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Install tools
+        run: dotnet tool restore
+
+      - name: Restore dependencies
+        run: dotnet restore src/Stripe.net.sln
+
+      - name: Check formatting of changed files
+        run: |
+          mapfile -t changed_files < <(git diff --name-only "origin/${{ github.base_ref }}...HEAD" -- '*.cs')
+          if [ ${#changed_files[@]} -eq 0 ]; then
+            echo "No C# files changed, skipping format check"
+            exit 0
+          fi
+          echo "Checking format for ${#changed_files[@]} changed .cs files"
+          dotnet format whitespace --folder --verify-no-changes --include "${changed_files[@]}"
+          TargetFramework=net6.0 dotnet format src/Stripe.net.sln --severity warn --verify-no-changes --include "${changed_files[@]}"
 
   publish:
     name: Publish
