@@ -12,9 +12,6 @@ namespace Stripe
         [STJS.JsonPropertyName("account_funding")]
         public PaymentIntentPaymentDetailsMoneyServicesAccountFunding AccountFunding { get; set; }
 
-        /// <summary>
-        /// ID of the Account representing the beneficiary in this account funding transaction.
-        /// </summary>
         [JsonProperty("beneficiary_account")]
         [STJS.JsonPropertyName("beneficiary_account")]
         public string BeneficiaryAccount { get; set; }
