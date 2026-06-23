@@ -1,0 +1,289 @@
+namespace Stripe
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
+    using System.Reflection;
+    using System.Runtime.CompilerServices;
+    using System.Text.Json;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using Stripe.Infrastructure;
+    using STJ = System.Text.Json;
+    using STJS = System.Text.Json.Serialization;
+
+    [JsonObject(MemberSerialization.OptIn)]
+    [JsonConverter(typeof(StripeEntityConverter))]
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+    public abstract class StripeEntity : IStripeEntity
+    {
+        private string rawJsonString;
+        private JObject rawJObject;
+        private STJ.JsonElement? rawJsonElement;
+
+        /// <summary>
+        /// Gets the raw <see cref="JObject">JObject</see> exposed by the Newtonsoft.Json library.
+        /// This can be used to access properties that are not directly exposed by Stripe's .NET
+        /// library.
+        /// </summary>
+        /// <remarks>
+        /// You should always prefer using the standard property accessors whenever possible. This
+        /// accessor is not considered fully stable and might change or be removed in future
+        /// versions.
+        /// This property is only available on the objects originally returned by Stripe's .NET
+        /// library. It is not available on objects deserialized from JSON in application code.
+        /// </remarks>
+        /// <returns>The raw <see cref="JObject">JObject</see>.</returns>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        [Obsolete("Use RawJsonElement instead. RawJObject will be removed in a future major version.")]
+#pragma warning disable CS0618 // Type or member is obsolete
+        public JObject RawJObject
+        {
+            get
+            {
+                if (this.rawJObject == null && this.rawJsonString != null)
+                {
+                    this.rawJObject = JObject.Parse(this.rawJsonString);
+                }
+
+                return this.rawJObject;
+            }
+
+            protected set
+            {
+                this.rawJObject = value;
+
+                // Clear the raw string if someone sets the JObject directly
+                this.rawJsonString = null;
+            }
+        }
+#pragma warning restore CS0618 // Type or member is obsolete
+
+        /// <summary>
+        /// Gets the raw JSON returned by Stripe's API as a <see cref="System.Text.Json.JsonElement"/>.
+        /// The <see cref="System.Text.Json.JsonElement"/> is lazily parsed from the stored raw JSON
+        /// string on first access to avoid pinning a <see cref="System.Text.Json.JsonDocument"/>
+        /// buffer in memory for every entity.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public STJ.JsonElement? RawJsonElement
+        {
+            get
+            {
+                if (this.rawJsonElement == null && this.rawJsonString != null)
+                {
+                    // Parse on demand. The returned JsonElement is backed by a
+                    // JsonDocument that is never disposed — this is intentional,
+                    // as the element escapes the scope and the caller may hold
+                    // a reference to it indefinitely.
+                    this.rawJsonElement = STJ.JsonDocument.Parse(this.rawJsonString).RootElement;
+                }
+
+                return this.rawJsonElement;
+            }
+
+            protected set
+            {
+                this.rawJsonElement = value;
+            }
+        }
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public StripeResponse StripeResponse { get; set; }
+
+        /// <summary>
+        /// Deserializes the JSON to a Stripe object type. The type is automatically deduced from
+        ///  the <c>object</c> key in the JSON string.
+        /// </summary>
+        /// <param name="value">The object to deserialize.</param>
+        /// <returns>The deserialized Stripe object from the JSON string.</returns>
+        public static IHasObject FromJson(string value)
+        {
+            return STJ.JsonSerializer.Deserialize<IHasObject>(
+                value, StripeConfiguration.SerializerOptions);
+        }
+
+        /// <summary>Deserializes the JSON to the specified Stripe object type.</summary>
+        /// <typeparam name="T">The type of the Stripe object to deserialize to.</typeparam>
+        /// <param name="value">The object to deserialize.</param>
+        /// <returns>The deserialized Stripe object from the JSON string.</returns>
+        public static T FromJson<T>(string value)
+            where T : IStripeEntity
+        {
+            return STJ.JsonSerializer.Deserialize<T>(
+                value, StripeConfiguration.SerializerOptions);
+        }
+
+        /// <summary>Deserializes the JSON to the specified Stripe object type.</summary>
+        /// <typeparam name="T">The type of the Stripe object to deserialize to.</typeparam>
+        /// <param name="value">The object to deserialize.</param>
+        /// <param name="settings">The settings to use for deserialization.</param>
+        /// <returns>The deserialized Stripe object from the JSON string.</returns>
+        internal static T FromJson<T>(string value, JsonSerializerSettings settings)
+            where T : IStripeEntity
+        {
+            return JsonUtils.DeserializeObject<T>(value, settings);
+        }
+
+        internal static T FromJson<T>(JsonElement value)
+            where T : IStripeEntity
+        {
+            // return JsonUtils.DeserializeObject<T>(value, StripeConfiguration.SerializerSettings);
+            return STJ.JsonSerializer.Deserialize<T>(
+                value, StripeConfiguration.SerializerOptions);
+        }
+
+        internal void SetRawJObject(JObject rawJObject)
+        {
+#pragma warning disable CS0618 // Type or member is obsolete
+            this.RawJObject = rawJObject;
+#pragma warning restore CS0618 // Type or member is obsolete
+        }
+
+        internal void SetRawJsonString(string rawJson)
+        {
+            this.rawJsonString = rawJson;
+        }
+
+        /// <summary>Reports a Stripe object as a string.</summary>
+        /// <returns>
+        /// A string representing the Stripe object, including its JSON serialization.
+        /// </returns>
+        /// <seealso cref="ToJson"/>
+        public override string ToString()
+        {
+            return string.Format(
+                "<{0}@{1} id={2}> JSON: {3}",
+                this.GetType().FullName,
+                RuntimeHelpers.GetHashCode(this),
+                this.GetIdString(),
+                this.ToJson());
+        }
+
+        /// <summary>Serializes the Stripe object's documented properties as a JSON string.</summary>
+        /// <remarks>
+        /// The returned string will not include any undocumented properties contained in
+        /// <see cref="RawJObject"/>.
+        /// </remarks>
+        /// <returns>An indented JSON string represensation of the object.</returns>
+        public string ToJson()
+        {
+            return STJ.JsonSerializer.Serialize(
+                this,
+                this.GetType(),
+                StripeConfiguration.IndentedSerializerOptions);
+        }
+
+        /// <summary>
+        /// Sets a string ID on an expandable field. If the expandable field does not exist,
+        /// a new one is initialized. If the expandable field exists and already contains an
+        /// expanded object, and the ID within the expanded object does not match the new string ID,
+        /// expanded object is discarded.
+        /// </summary>
+        /// <typeparam name="T">Type of the expanded object.</typeparam>
+        /// <param name="id">The string ID.</param>
+        /// <param name="expandable">The expandable field.</param>
+        /// <returns>The expandable field with its ID set to the provided string ID.</returns>
+        protected static ExpandableField<T> SetExpandableFieldId<T>(
+            string id,
+            ExpandableField<T> expandable)
+            where T : IHasId
+        {
+            if (expandable == null)
+            {
+                expandable = new ExpandableField<T>();
+                expandable.Id = id;
+            }
+            else if (expandable.Id != id)
+            {
+                expandable.ExpandedObject = default;
+                expandable.Id = id;
+            }
+
+            return expandable;
+        }
+
+        /// <summary>
+        /// Sets an expanded object on an expandable field. If the expandable field does not exist,
+        /// a new one is initialized.
+        /// </summary>
+        /// <typeparam name="T">Type of the expanded object.</typeparam>
+        /// <param name="obj">The expanded object.</param>
+        /// <param name="expandable">The expandable field.</param>
+        /// <returns>
+        /// The expandable field with its expanded object set to the provided object.
+        /// </returns>
+        protected static ExpandableField<T> SetExpandableFieldObject<T>(
+            T obj,
+            ExpandableField<T> expandable)
+            where T : IHasId
+        {
+            if (expandable == null)
+            {
+                expandable = new ExpandableField<T>();
+            }
+
+            expandable.ExpandedObject = obj;
+
+            return expandable;
+        }
+
+        protected static List<ExpandableField<T>> SetExpandableArrayIds<T>(List<string> ids)
+            where T : IHasId
+        {
+            return ids?.Select((id) =>
+            {
+                var expandable = new ExpandableField<T>();
+                expandable.Id = id;
+                return expandable;
+            }).ToList();
+        }
+
+        protected static List<ExpandableField<T>> SetExpandableArrayObjects<T>(List<T> objects)
+            where T : IHasId
+        {
+            return objects?.Select((obj) =>
+            {
+                var expandable = new ExpandableField<T>();
+                expandable.Id = obj.Id;
+                expandable.ExpandedObject = obj;
+                return expandable;
+            }).ToList();
+        }
+
+        private object GetIdString()
+        {
+            foreach (var property in this.GetType().GetTypeInfo().DeclaredProperties)
+            {
+                if (property.Name == "Id")
+                {
+                    return property.GetValue(this);
+                }
+            }
+
+            return null;
+        }
+    }
+
+    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleType", Justification = "Generic variant")]
+    public abstract class StripeEntity<T> : StripeEntity
+        where T : StripeEntity<T>
+    {
+        /// <summary>Deserializes the JSON to a Stripe object type.</summary>
+        /// <param name="value">The object to deserialize.</param>
+        /// <returns>The deserialized Stripe object from the JSON string.</returns>
+        public static new T FromJson(string value)
+        {
+            return StripeEntity.FromJson<T>(value);
+        }
+
+        internal static T FromJson(JsonElement value)
+        {
+            return StripeEntity.FromJson<T>(value);
+        }
+    }
+}

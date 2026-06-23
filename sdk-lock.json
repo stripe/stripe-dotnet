@@ -1,0 +1,22 @@
+{
+  "runtime": {
+    "minVersion": "9.0.0",
+    "commands": [
+      {
+        "name": "dotnet",
+        "versionFlag": "--version",
+        "versionPattern": "(\\d+\\.\\d+\\.\\d+)"
+      }
+    ]
+  },
+  "recipes": {
+    "format": {
+      "commands": [
+        "dotnet format whitespace --folder",
+        "TargetFramework=net6.0 dotnet format style src/Stripe.net.sln --severity error  -v diag",
+        "TargetFramework=net6.0 dotnet format analyzers src/Stripe.net.sln --severity error  -v diag"
+      ],
+      "sourceHash": "sha256:d617b05872a386648f21990b4516aec93a232d1cad9772acc3f9463885a491f7"
+    }
+  }
+}
