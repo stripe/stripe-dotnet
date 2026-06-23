@@ -37,6 +37,13 @@ namespace Stripe.V2.MoneyManagement
         public string BankName { get; set; }
 
         /// <summary>
+        /// The BIC of the bank or financial institution.
+        /// </summary>
+        [JsonProperty("bic")]
+        [STJS.JsonPropertyName("bic")]
+        public string Bic { get; set; }
+
+        /// <summary>
         /// The last four digits of the US Bank Account number. This will always be returned. To
         /// view the full account number when retrieving or listing FinancialAddresses, use the
         /// <c>include</c> request parameter.
@@ -51,12 +58,5 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("routing_number")]
         [STJS.JsonPropertyName("routing_number")]
         public string RoutingNumber { get; set; }
-
-        /// <summary>
-        /// The swift code of the bank or financial institution.
-        /// </summary>
-        [JsonProperty("swift_code")]
-        [STJS.JsonPropertyName("swift_code")]
-        public string SwiftCode { get; set; }
     }
 }

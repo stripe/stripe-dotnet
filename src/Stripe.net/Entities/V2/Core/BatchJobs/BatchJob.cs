@@ -45,13 +45,6 @@ namespace Stripe.V2.Core
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The maximum requests per second defined for the <c>batch_job</c>.
-        /// </summary>
-        [JsonProperty("maximum_rps")]
-        [STJS.JsonPropertyName("maximum_rps")]
-        public long MaximumRps { get; set; }
-
-        /// <summary>
         /// The metadata of the <c>batch_job</c>.
         /// </summary>
         [JsonProperty("metadata")]

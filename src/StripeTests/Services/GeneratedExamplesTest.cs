@@ -16366,7 +16366,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/commerce/product_catalog/imports",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"mode\":\"upsert\",\"status\":\"awaiting_upload\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Commerce.ProductCatalog.Imports;
             Stripe.V2.StripeList<Stripe.V2.Commerce.ProductCatalogImport> productCatalogImports = service
@@ -16383,7 +16383,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/commerce/product_catalog/imports",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"mode\":\"upsert\",\"status\":\"awaiting_upload\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Commerce.ProductCatalog.Imports;
             Stripe.V2.StripeList<Stripe.V2.Commerce.ProductCatalogImport> productCatalogImports = await service
@@ -16400,7 +16400,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/commerce/product_catalog/imports",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"mode\":\"upsert\",\"status\":\"awaiting_upload\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Commerce.ProductCatalog.Imports;
             var productCatalogImport = service.ListAutoPaging().First();
@@ -16416,7 +16416,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/commerce/product_catalog/imports",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"mode\":\"upsert\",\"status\":\"awaiting_upload\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Commerce.ProductCatalog.Imports;
             var productCatalogImport = await service.ListAutoPagingAsync()
@@ -16433,7 +16433,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/commerce/product_catalog/imports",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}");
+                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"mode\":\"upsert\",\"status\":\"awaiting_upload\"}");
             var options = new Stripe.V2.Commerce.ProductCatalog.ImportCreateOptions
             {
                 FeedType = "pricing",
@@ -16459,7 +16459,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/commerce/product_catalog/imports",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}");
+                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"mode\":\"upsert\",\"status\":\"awaiting_upload\"}");
             var options = new Stripe.V2.Commerce.ProductCatalog.ImportCreateOptions
             {
                 FeedType = "pricing",
@@ -16485,7 +16485,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/commerce/product_catalog/imports/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}");
+                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"mode\":\"upsert\",\"status\":\"awaiting_upload\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Commerce.ProductCatalog.Imports;
             Stripe.V2.Commerce.ProductCatalogImport productCatalogImport = service
@@ -16502,7 +16502,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/commerce/product_catalog/imports/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}");
+                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"mode\":\"upsert\",\"status\":\"awaiting_upload\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Commerce.ProductCatalog.Imports;
             Stripe.V2.Commerce.ProductCatalogImport productCatalogImport = await service
@@ -16519,7 +16519,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/accounts",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.core.account\",\"applied_configurations\":[\"storer\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.core.account\",\"applied_configurations\":[\"money_manager\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Accounts;
             Stripe.V2.StripeList<Stripe.V2.Core.Account> accounts = service
@@ -16534,7 +16534,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/accounts",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.core.account\",\"applied_configurations\":[\"storer\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.core.account\",\"applied_configurations\":[\"money_manager\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Accounts;
             Stripe.V2.StripeList<Stripe.V2.Core.Account> accounts = await service
@@ -16549,7 +16549,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/accounts",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.core.account\",\"applied_configurations\":[\"storer\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.core.account\",\"applied_configurations\":[\"money_manager\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Accounts;
             var account = service.ListAutoPaging().First();
@@ -16563,7 +16563,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/accounts",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.core.account\",\"applied_configurations\":[\"storer\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.core.account\",\"applied_configurations\":[\"money_manager\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Accounts;
             var account = await service.ListAutoPagingAsync().FirstAsync();
@@ -16577,7 +16577,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/accounts",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.account\",\"applied_configurations\":[\"storer\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}");
+                "{\"object\":\"v2.core.account\",\"applied_configurations\":[\"money_manager\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}");
             var options = new Stripe.V2.Core.AccountCreateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Accounts;
@@ -16592,7 +16592,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/accounts",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.account\",\"applied_configurations\":[\"storer\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}");
+                "{\"object\":\"v2.core.account\",\"applied_configurations\":[\"money_manager\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}");
             var options = new Stripe.V2.Core.AccountCreateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Accounts;
@@ -16607,7 +16607,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/accounts/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.account\",\"applied_configurations\":[\"storer\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}");
+                "{\"object\":\"v2.core.account\",\"applied_configurations\":[\"money_manager\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Accounts;
             Stripe.V2.Core.Account account = service.Get("id_123");
@@ -16621,7 +16621,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/accounts/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.account\",\"applied_configurations\":[\"storer\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}");
+                "{\"object\":\"v2.core.account\",\"applied_configurations\":[\"money_manager\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Accounts;
             Stripe.V2.Core.Account account = await service.GetAsync("id_123");
@@ -16635,7 +16635,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/accounts/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.account\",\"applied_configurations\":[\"storer\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}");
+                "{\"object\":\"v2.core.account\",\"applied_configurations\":[\"money_manager\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}");
             var options = new Stripe.V2.Core.AccountUpdateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Accounts;
@@ -16650,7 +16650,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/accounts/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.account\",\"applied_configurations\":[\"storer\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}");
+                "{\"object\":\"v2.core.account\",\"applied_configurations\":[\"money_manager\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}");
             var options = new Stripe.V2.Core.AccountUpdateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Accounts;
@@ -16667,7 +16667,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/accounts/id_123/close",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.account\",\"applied_configurations\":[\"storer\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}");
+                "{\"object\":\"v2.core.account\",\"applied_configurations\":[\"money_manager\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Accounts;
             Stripe.V2.Core.Account account = service.Close("id_123");
@@ -16683,7 +16683,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/accounts/id_123/close",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.account\",\"applied_configurations\":[\"storer\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}");
+                "{\"object\":\"v2.core.account\",\"applied_configurations\":[\"money_manager\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Accounts;
             Stripe.V2.Core.Account account = await service.CloseAsync("id_123");
@@ -16999,7 +16999,7 @@ namespace StripeTests
                             Fields = "eventually_due",
                             FutureRequirements = "include",
                         },
-                        Configurations = new List<string> { "storer" },
+                        Configurations = new List<string> { "merchant" },
                         RefreshUrl = "refresh_url",
                         ReturnUrl = "return_url",
                     },
@@ -17010,7 +17010,7 @@ namespace StripeTests
                             Fields = "eventually_due",
                             FutureRequirements = "include",
                         },
-                        Configurations = new List<string> { "storer" },
+                        Configurations = new List<string> { "merchant" },
                         RefreshUrl = "refresh_url",
                         ReturnUrl = "return_url",
                     },
@@ -17043,7 +17043,7 @@ namespace StripeTests
                             Fields = "eventually_due",
                             FutureRequirements = "include",
                         },
-                        Configurations = new List<string> { "storer" },
+                        Configurations = new List<string> { "merchant" },
                         RefreshUrl = "refresh_url",
                         ReturnUrl = "return_url",
                     },
@@ -17054,7 +17054,7 @@ namespace StripeTests
                             Fields = "eventually_due",
                             FutureRequirements = "include",
                         },
-                        Configurations = new List<string> { "storer" },
+                        Configurations = new List<string> { "merchant" },
                         RefreshUrl = "refresh_url",
                         ReturnUrl = "return_url",
                     },
@@ -17139,17 +17139,13 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/batch_jobs",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.batch_job\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"maximum_rps\":1686015830,\"metadata\":{\"key\":\"metadata\"},\"skip_validation\":true,\"status\":\"batch_failed\"}");
+                "{\"object\":\"v2.core.batch_job\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"skip_validation\":true,\"status\":\"batch_failed\"}");
             var options = new Stripe.V2.Core.BatchJobCreateOptions
             {
                 Endpoint = new Stripe.V2.Core.BatchJobCreateEndpointOptions
                 {
                     HttpMethod = "delete",
                     Path = BatchJobEndpointPath.V1SubscriptionUpdate,
-                },
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "metadata" },
                 },
                 SkipValidation = true,
             };
@@ -17166,17 +17162,13 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/batch_jobs",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.batch_job\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"maximum_rps\":1686015830,\"metadata\":{\"key\":\"metadata\"},\"skip_validation\":true,\"status\":\"batch_failed\"}");
+                "{\"object\":\"v2.core.batch_job\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"skip_validation\":true,\"status\":\"batch_failed\"}");
             var options = new Stripe.V2.Core.BatchJobCreateOptions
             {
                 Endpoint = new Stripe.V2.Core.BatchJobCreateEndpointOptions
                 {
                     HttpMethod = "delete",
                     Path = BatchJobEndpointPath.V1SubscriptionUpdate,
-                },
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "metadata" },
                 },
                 SkipValidation = true,
             };
@@ -17194,7 +17186,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/batch_jobs/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.batch_job\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"maximum_rps\":1686015830,\"metadata\":{\"key\":\"metadata\"},\"skip_validation\":true,\"status\":\"batch_failed\"}");
+                "{\"object\":\"v2.core.batch_job\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"skip_validation\":true,\"status\":\"batch_failed\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.BatchJobs;
             Stripe.V2.Core.BatchJob batchJob = service.Get("id_123");
@@ -17208,7 +17200,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/batch_jobs/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.batch_job\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"maximum_rps\":1686015830,\"metadata\":{\"key\":\"metadata\"},\"skip_validation\":true,\"status\":\"batch_failed\"}");
+                "{\"object\":\"v2.core.batch_job\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"skip_validation\":true,\"status\":\"batch_failed\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.BatchJobs;
             Stripe.V2.Core.BatchJob batchJob = await service.GetAsync("id_123");
@@ -17222,7 +17214,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/batch_jobs/id_123/cancel",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.batch_job\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"maximum_rps\":1686015830,\"metadata\":{\"key\":\"metadata\"},\"skip_validation\":true,\"status\":\"batch_failed\"}");
+                "{\"object\":\"v2.core.batch_job\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"skip_validation\":true,\"status\":\"batch_failed\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.BatchJobs;
             Stripe.V2.Core.BatchJob batchJob = service.Cancel("id_123");
@@ -17238,7 +17230,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/batch_jobs/id_123/cancel",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.batch_job\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"maximum_rps\":1686015830,\"metadata\":{\"key\":\"metadata\"},\"skip_validation\":true,\"status\":\"batch_failed\"}");
+                "{\"object\":\"v2.core.batch_job\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"skip_validation\":true,\"status\":\"batch_failed\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.BatchJobs;
             Stripe.V2.Core.BatchJob batchJob = await service.CancelAsync(
@@ -21017,39 +21009,20 @@ namespace StripeTests
         {
             this.StubRequest(
                 HttpMethod.Post,
-                "/v2/extend/workflows/id_123/invoke",
+                "/v2/core/vault/us_bank_accounts/id_123/archive",
                 (HttpStatusCode)400,
                 "{\"error\":{\"type\":\"cannot_proceed\",\"code\":\"default_payout_method_cannot_be_archived\"}}");
             var exception = Assert.Throws<Stripe.V2.CannotProceedException>(
             () =>
             {
-                var options = new Stripe.V2.Extend.WorkflowInvokeOptions
-                {
-                    InputParameters = new Dictionary<string, object>
-                {
-                    { "int_key", 123 },
-                    { "string_key", "value" },
-                    { "boolean_key", true },
-                    {
-                        "object_key", new Dictionary<string, object>
-                        {
-                            { "object_int_key", 123 },
-                            { "object_string_key", "value" },
-                            { "object_boolean_key", true },
-                        }
-                    },
-                    { "array_key", new List<object> { 1, 2, 3 } },
-                },
-                };
                 var client = new StripeClient(this.Requestor);
-                var service = client.V2.Extend.Workflows;
-                Stripe.V2.Extend.WorkflowRun workflowRun = service.Invoke(
-                    "id_123",
-                    options);
+                var service = client.V2.Core.Vault.UsBankAccounts;
+                Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Archive(
+                    "id_123");
             });
             this.AssertRequest(
                 HttpMethod.Post,
-                "/v2/extend/workflows/id_123/invoke");
+                "/v2/core/vault/us_bank_accounts/id_123/archive");
         }
 
         [Fact]
@@ -21057,38 +21030,20 @@ namespace StripeTests
         {
             this.StubRequest(
                 HttpMethod.Post,
-                "/v2/extend/workflows/id_123/invoke",
+                "/v2/core/vault/us_bank_accounts/id_123/archive",
                 (HttpStatusCode)400,
                 "{\"error\":{\"type\":\"cannot_proceed\",\"code\":\"default_payout_method_cannot_be_archived\"}}");
             var exception = await Assert.ThrowsAsync<Stripe.V2.CannotProceedException>(
             async () =>
             {
-                var options = new Stripe.V2.Extend.WorkflowInvokeOptions
-                {
-                    InputParameters = new Dictionary<string, object>
-                {
-                    { "int_key", 123 },
-                    { "string_key", "value" },
-                    { "boolean_key", true },
-                    {
-                        "object_key", new Dictionary<string, object>
-                        {
-                            { "object_int_key", 123 },
-                            { "object_string_key", "value" },
-                            { "object_boolean_key", true },
-                        }
-                    },
-                    { "array_key", new List<object> { 1, 2, 3 } },
-                },
-                };
                 var client = new StripeClient(this.Requestor);
-                var service = client.V2.Extend.Workflows;
-                Stripe.V2.Extend.WorkflowRun workflowRun = await service
-                    .InvokeAsync("id_123", options);
+                var service = client.V2.Core.Vault.UsBankAccounts;
+                Stripe.V2.Core.Vault.UsBankAccount usBankAccount = await service
+                    .ArchiveAsync("id_123");
             });
             this.AssertRequest(
                 HttpMethod.Post,
-                "/v2/extend/workflows/id_123/invoke");
+                "/v2/core/vault/us_bank_accounts/id_123/archive");
         }
 
         [Fact]

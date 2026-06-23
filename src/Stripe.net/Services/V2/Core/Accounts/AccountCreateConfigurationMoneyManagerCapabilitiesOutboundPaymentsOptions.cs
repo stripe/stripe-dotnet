@@ -1,0 +1,33 @@
+// File generated from our OpenAPI spec
+namespace Stripe.V2.Core
+{
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
+    public class AccountCreateConfigurationMoneyManagerCapabilitiesOutboundPaymentsOptions : INestedOptions
+    {
+        /// <summary>
+        /// Can send funds from a FinancialAccount to a bank account owned by someone else.
+        /// </summary>
+        [JsonProperty("bank_accounts")]
+        [STJS.JsonPropertyName("bank_accounts")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesOutboundPaymentsBankAccountsOptions BankAccounts { get; set; }
+
+        /// <summary>
+        /// Can send funds from a FinancialAccount to a debit card owned by someone else.
+        /// </summary>
+        [JsonProperty("cards")]
+        [STJS.JsonPropertyName("cards")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesOutboundPaymentsCardsOptions Cards { get; set; }
+
+        /// <summary>
+        /// Can send funds from a FinancialAccount to another FinancialAccount owned by someone
+        /// else.
+        /// </summary>
+        [JsonProperty("financial_accounts")]
+        [STJS.JsonPropertyName("financial_accounts")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesOutboundPaymentsFinancialAccountsOptions FinancialAccounts { get; set; }
+    }
+}

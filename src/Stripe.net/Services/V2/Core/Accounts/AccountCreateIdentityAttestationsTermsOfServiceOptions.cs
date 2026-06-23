@@ -20,8 +20,8 @@ namespace Stripe.V2.Core
         /// <summary>
         /// Details on the Account's acceptance of Treasury-specific terms of service.
         /// </summary>
-        [JsonProperty("storer")]
-        [STJS.JsonPropertyName("storer")]
-        public AccountCreateIdentityAttestationsTermsOfServiceStorerOptions Storer { get; set; }
+        [JsonProperty("money_manager")]
+        [STJS.JsonPropertyName("money_manager")]
+        public AccountCreateIdentityAttestationsTermsOfServiceMoneyManagerOptions MoneyManager { get; set; }
     }
 }
