@@ -6,7 +6,7 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ContractBillingSettingsContractBillingDetailsBillSettingsDetailsInvoiceTimeUntilDue : StripeEntity<ContractBillingSettingsContractBillingDetailsBillSettingsDetailsInvoiceTimeUntilDue>
+    public class ContractBillingSettingsBillSettingsDetailsInvoiceTimeUntilDue : StripeEntity<ContractBillingSettingsBillSettingsDetailsInvoiceTimeUntilDue>
     {
         /// <summary>
         /// The interval unit.

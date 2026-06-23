@@ -6,7 +6,7 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ContractCreateBillingSettingsContractBillingDetailsBillingProfileDetailsOptions : INestedOptions
+    public class ContractCreateBillingSettingsBillingProfileDetailsOptions : INestedOptions
     {
         /// <summary>
         /// The customer who pays for the contract invoice.

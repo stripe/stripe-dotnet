@@ -6,19 +6,20 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ContractOneTimeFeesDataBillScheduleBillAt : StripeEntity<ContractOneTimeFeesDataBillScheduleBillAt>
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
+    public class ContractCreateOneTimeFeeBillAtOptions : INestedOptions
     {
         /// <summary>
-        /// The datetime at which the entry will be billed. Set when <c>type</c> is <c>datetime</c>.
+        /// The timestamp at which the entry should be billed. Required if <c>type</c> is
+        /// <c>timestamp</c>.
         /// </summary>
         [JsonProperty("timestamp")]
         [STJS.JsonPropertyName("timestamp")]
-        public DateTime? Timestamp { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime? Timestamp { get; set; }
 
         /// <summary>
         /// The type of the bill_at.
-        /// One of: <c>contract_start</c>, or <c>datetime</c>.
+        /// One of: <c>now</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

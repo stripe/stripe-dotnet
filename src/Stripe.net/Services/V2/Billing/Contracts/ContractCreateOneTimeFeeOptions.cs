@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Billing
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -10,26 +9,31 @@ namespace Stripe.V2.Billing
     public class ContractCreateOneTimeFeeOptions : INestedOptions
     {
         /// <summary>
-        /// The bill schedule for the fee. Each entry produces an individual invoice item billed at
-        /// <c>bill_at</c>.
+        /// The amount to bill.
         /// </summary>
-        [JsonProperty("bill_schedule")]
-        [STJS.JsonPropertyName("bill_schedule")]
-        public List<ContractCreateOneTimeFeeBillScheduleOptions> BillSchedule { get; set; }
+        [JsonProperty("amount")]
+        [STJS.JsonPropertyName("amount")]
+        public V2.Amount Amount { get; set; }
 
         /// <summary>
-        /// The type of billable item that this fee references.
+        /// When this fee should be billed.
         /// </summary>
-        [JsonProperty("billable_item_type")]
-        [STJS.JsonPropertyName("billable_item_type")]
-        public string BillableItemType { get; set; }
+        [JsonProperty("bill_at")]
+        [STJS.JsonPropertyName("bill_at")]
+        public ContractCreateOneTimeFeeBillAtOptions BillAt { get; set; }
 
         /// <summary>
-        /// Details for a product billable target. Required when <c>billable_item_type</c> is
-        /// <c>product</c>.
+        /// A user-provided lookup key.
         /// </summary>
-        [JsonProperty("product_details")]
-        [STJS.JsonPropertyName("product_details")]
-        public ContractCreateOneTimeFeeProductDetailsOptions ProductDetails { get; set; }
+        [JsonProperty("lookup_key")]
+        [STJS.JsonPropertyName("lookup_key")]
+        public string LookupKey { get; set; }
+
+        /// <summary>
+        /// The ID of the v1 Product for this fee.
+        /// </summary>
+        [JsonProperty("product")]
+        [STJS.JsonPropertyName("product")]
+        public string Product { get; set; }
     }
 }

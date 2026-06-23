@@ -6,7 +6,7 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ContractCreateBillingSettingsContractBillingDetailsCollectionSettingsDetailsOptions : INestedOptions
+    public class ContractCreateBillingSettingsCollectionSettingsDetailsOptions : INestedOptions
     {
         /// <summary>
         /// The collection method.

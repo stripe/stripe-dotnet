@@ -5,8 +5,8 @@ namespace Stripe.V2.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ContractCreateBillingSettingsContractBillingDetailsBillSettingsDetailsCalculationTaxOptions : INestedOptions
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+    public class ContractBillingSettingsBillSettingsDetailsCalculationTax : StripeEntity<ContractBillingSettingsBillSettingsDetailsCalculationTax>
     {
         /// <summary>
         /// The type of tax calculation.

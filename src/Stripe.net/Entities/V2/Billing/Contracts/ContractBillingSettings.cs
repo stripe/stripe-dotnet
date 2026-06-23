@@ -9,10 +9,24 @@ namespace Stripe.V2.Billing
     public class ContractBillingSettings : StripeEntity<ContractBillingSettings>
     {
         /// <summary>
-        /// Billing settings details for the contract.
+        /// The bill settings details configures invoice and tax settings for the contract.
         /// </summary>
-        [JsonProperty("contract_billing_details")]
-        [STJS.JsonPropertyName("contract_billing_details")]
-        public ContractBillingSettingsContractBillingDetails ContractBillingDetails { get; set; }
+        [JsonProperty("bill_settings_details")]
+        [STJS.JsonPropertyName("bill_settings_details")]
+        public ContractBillingSettingsBillSettingsDetails BillSettingsDetails { get; set; }
+
+        /// <summary>
+        /// The billing profile details configures who is charged for the contract.
+        /// </summary>
+        [JsonProperty("billing_profile_details")]
+        [STJS.JsonPropertyName("billing_profile_details")]
+        public ContractBillingSettingsBillingProfileDetails BillingProfileDetails { get; set; }
+
+        /// <summary>
+        /// The collection settings details configures how payments are collected on the contract.
+        /// </summary>
+        [JsonProperty("collection_settings_details")]
+        [STJS.JsonPropertyName("collection_settings_details")]
+        public ContractBillingSettingsCollectionSettingsDetails CollectionSettingsDetails { get; set; }
     }
 }

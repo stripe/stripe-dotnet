@@ -6,13 +6,13 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ContractBillingSettingsContractBillingDetailsBillSettingsDetailsCalculation : StripeEntity<ContractBillingSettingsContractBillingDetailsBillSettingsDetailsCalculation>
+    public class ContractBillingSettingsBillSettingsDetailsCalculation : StripeEntity<ContractBillingSettingsBillSettingsDetailsCalculation>
     {
         /// <summary>
         /// Tax calculation settings.
         /// </summary>
         [JsonProperty("tax")]
         [STJS.JsonPropertyName("tax")]
-        public ContractBillingSettingsContractBillingDetailsBillSettingsDetailsCalculationTax Tax { get; set; }
+        public ContractBillingSettingsBillSettingsDetailsCalculationTax Tax { get; set; }
     }
 }

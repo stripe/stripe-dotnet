@@ -11,7 +11,8 @@ namespace Stripe.V2.Billing
     {
         /// <summary>
         /// Additional fields to include in the response.
-        /// One of: <c>one_time_fees</c>, <c>pricing_lines</c>, or <c>pricing_overrides</c>.
+        /// One of: <c>billing_settings</c>, <c>one_time_fees</c>, <c>pricing_lines</c>, or
+        /// <c>pricing_overrides</c>.
         /// </summary>
         [JsonProperty("include")]
         [STJS.JsonPropertyName("include")]

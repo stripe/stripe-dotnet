@@ -6,7 +6,7 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ContractBillingSettingsContractBillingDetailsCollectionSettingsDetails : StripeEntity<ContractBillingSettingsContractBillingDetailsCollectionSettingsDetails>
+    public class ContractBillingSettingsCollectionSettingsDetails : StripeEntity<ContractBillingSettingsCollectionSettingsDetails>
     {
         /// <summary>
         /// The collection method.

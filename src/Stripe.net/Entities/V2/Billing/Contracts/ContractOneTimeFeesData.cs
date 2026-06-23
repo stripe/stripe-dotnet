@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Billing
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -10,18 +9,18 @@ namespace Stripe.V2.Billing
     public class ContractOneTimeFeesData : StripeEntity<ContractOneTimeFeesData>, IHasId
     {
         /// <summary>
-        /// The resolved bill schedule for the fee.
+        /// The amount billed for this fee.
         /// </summary>
-        [JsonProperty("bill_schedule")]
-        [STJS.JsonPropertyName("bill_schedule")]
-        public List<ContractOneTimeFeesDataBillSchedule> BillSchedule { get; set; }
+        [JsonProperty("amount")]
+        [STJS.JsonPropertyName("amount")]
+        public V2.Amount Amount { get; set; }
 
         /// <summary>
-        /// The type of billable item that this fee references.
+        /// When this fee will be billed. Always contains a concrete timestamp.
         /// </summary>
-        [JsonProperty("billable_item_type")]
-        [STJS.JsonPropertyName("billable_item_type")]
-        public string BillableItemType { get; set; }
+        [JsonProperty("bill_at")]
+        [STJS.JsonPropertyName("bill_at")]
+        public ContractOneTimeFeesDataBillAt BillAt { get; set; }
 
         /// <summary>
         /// The ID of the one-time fee.
@@ -38,11 +37,10 @@ namespace Stripe.V2.Billing
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// Details for a product billable target. Set when <c>billable_item_type</c> is
-        /// <c>product</c>.
+        /// The ID of the v1 Product for this fee.
         /// </summary>
-        [JsonProperty("product_details")]
-        [STJS.JsonPropertyName("product_details")]
-        public ContractOneTimeFeesDataProductDetails ProductDetails { get; set; }
+        [JsonProperty("product")]
+        [STJS.JsonPropertyName("product")]
+        public string Product { get; set; }
     }
 }

@@ -6,13 +6,13 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ContractCreateBillingSettingsContractBillingDetailsBillSettingsDetailsInvoiceOptions : INestedOptions
+    public class ContractCreateBillingSettingsBillSettingsDetailsInvoiceOptions : INestedOptions
     {
         /// <summary>
         /// The number of time units before the invoice is past due.
         /// </summary>
         [JsonProperty("time_until_due")]
         [STJS.JsonPropertyName("time_until_due")]
-        public ContractCreateBillingSettingsContractBillingDetailsBillSettingsDetailsInvoiceTimeUntilDueOptions TimeUntilDue { get; set; }
+        public ContractCreateBillingSettingsBillSettingsDetailsInvoiceTimeUntilDueOptions TimeUntilDue { get; set; }
     }
 }
