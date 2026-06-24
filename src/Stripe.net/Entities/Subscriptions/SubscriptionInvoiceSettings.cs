@@ -45,6 +45,27 @@ namespace Stripe
         internal List<ExpandableField<TaxId>> InternalAccountTaxIds { get; set; }
         #endregion
 
+        /// <summary>
+        /// A list of up to 4 custom fields to be displayed on the invoice.
+        /// </summary>
+        [JsonProperty("custom_fields")]
+        [STJS.JsonPropertyName("custom_fields")]
+        public List<SubscriptionInvoiceSettingsCustomField> CustomFields { get; set; }
+
+        /// <summary>
+        /// An arbitrary string attached to the object. Often useful for displaying to users.
+        /// </summary>
+        [JsonProperty("description")]
+        [STJS.JsonPropertyName("description")]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Footer to be displayed on the invoice.
+        /// </summary>
+        [JsonProperty("footer")]
+        [STJS.JsonPropertyName("footer")]
+        public string Footer { get; set; }
+
         [JsonProperty("issuer")]
         [STJS.JsonPropertyName("issuer")]
         public SubscriptionInvoiceSettingsIssuer Issuer { get; set; }

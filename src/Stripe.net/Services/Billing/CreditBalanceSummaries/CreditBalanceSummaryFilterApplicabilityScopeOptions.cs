@@ -19,7 +19,8 @@ namespace Stripe.Billing
 
         /// <summary>
         /// A list of prices that the credit grant can apply to. We currently only support the
-        /// <c>metered</c> prices. Cannot be used in combination with <c>price_type</c>.
+        /// <c>metered</c> prices. Cannot be used in combination with <c>price_type</c>. Limit 20
+        /// prices.
         /// </summary>
         [JsonProperty("prices")]
         [STJS.JsonPropertyName("prices")]
