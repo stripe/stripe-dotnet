@@ -1,5 +1,14 @@
 # Changelog
 
+## 52.0.0 - 2026-06-05
+
+This release **doesn't** change the pinned API version; it still uses `2026-05-27.dahlia`.
+
+We're doing an out-of-band-major to update a field type that changed. If you're not using `tax_details`, this is a no-op release when compared with the last one. If you _are_ using `tax_details` its type has changed slightly and you'll have to update your code when upgrading.
+
+* [#3396](https://github.com/stripe/stripe-dotnet/pull/3396) ⚠️ Make `tax_rate.tax_details` expandable
+* [#3394](https://github.com/stripe/stripe-dotnet/pull/3394) Add "source" field to user-agent header
+
 ## 51.3.0-beta.1 - 2026-05-27
 This release changes the pinned API version to 2026-05-27.private.
 
@@ -14,6 +23,41 @@ This release changes the pinned API version to 2026-05-27.private.
   * Add support for `PaymentBehavior` on `SubscriptionResumeOptions`
   * Add support for `StatusDetails` on `Subscription`
   * ⚠️ Change type of `V2.MoneyManagement.ReceivedCredit.BankTransfer.GbBankAccount.Network` from `literal('fps')` to `enum('chaps'|'fps')`
+
+## 51.2.0 - 2026-05-27
+This release changes the pinned API version to 2026-05-27.dahlia.
+
+* [#3386](https://github.com/stripe/stripe-dotnet/pull/3386) Update generated code
+  * Add support for new resource `V2.Commerce.ProductCatalogImport`
+  * Add support for `Create` and `Get` methods on resource `V2.Commerce.ProductCatalogImport`
+  * Add support for `BizumPayments` and `ScalapayPayments` on `Account.Capabilities` and `AccountCapabilitiesOptions`
+  * Add support for `AutomaticTransferRulesByCurrency` on `BalanceSettings.Payments.Payouts` and `BalanceSettingsPaymentsPayoutsOptions`
+  * Add support for `StartOfDay` on `BalanceSettings.Payments.SettlementTiming` and `BalanceSettingsPaymentsSettlementTimingOptions`
+  * Add support for `Description` on `ChargeTransferDataOptions`, `PaymentIntent.TransferData`, and `PaymentIntentTransferDataOptions`
+  * Add support for `Bizum` on `Charge.PaymentMethodDetails`, `ConfirmationToken.PaymentMethodPreview`, `ConfirmationTokenPaymentMethodDataOptions`, `PaymentAttemptRecord.PaymentMethodDetails`, `PaymentIntent.PaymentMethodOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, `PaymentMethodCreateOptions`, `PaymentMethod`, `PaymentRecord.PaymentMethodDetails`, `SetupIntent.PaymentMethodOptions`, `SetupIntentPaymentMethodDataOptions`, and `SetupIntentPaymentMethodOptionsOptions`
+  * Add support for `Scalapay` on `Charge.PaymentMethodDetails`, `Checkout.Session.PaymentMethodOptions`, `CheckoutSessionPaymentMethodOptionsOptions`, `ConfirmationToken.PaymentMethodPreview`, `ConfirmationTokenPaymentMethodDataOptions`, `PaymentAttemptRecord.PaymentMethodDetails`, `PaymentIntent.PaymentMethodOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, `PaymentMethodCreateOptions`, `PaymentMethod`, `PaymentRecord.PaymentMethodDetails`, `Refund.DestinationDetails`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `Mandate` on `Charge.PaymentMethodDetails.Twint`, `PaymentAttemptRecord.PaymentMethodDetails.Twint`, and `PaymentRecord.PaymentMethodDetails.Twint`
+  * Change type of `CheckoutSessionPaymentMethodOptionsTwintOptions.SetupFutureUsage` and `PaymentIntentPaymentMethodOptionsTwintOptions.SetupFutureUsage` from `literal('none')` to `enum('none'|'off_session')`
+  * ⚠️ Change type of `Checkout.Session.PaymentMethodOptions.Twint.SetupFutureUsage` and `PaymentIntent.PaymentMethodOptions.Twint.SetupFutureUsage` from `literal('none')` to `enum('none'|'off_session')`
+  * Add support for `CreditedItems` on `InvoiceItem.ProrationDetails`
+  * Add support for `Discountable` on `InvoiceScheduleDetailsPhaseAddInvoiceItemOptions`, `SubscriptionAddInvoiceItemOptions`, `SubscriptionSchedule.Phase.AddInvoiceItem`, and `SubscriptionSchedulePhaseAddInvoiceItemOptions`
+  * Add support for `BillingSchedules` on `InvoiceSubscriptionDetailsOptions`, `SubscriptionCreateOptions`, `SubscriptionUpdateOptions`, and `Subscription`
+  * Add support for `AmountPaidOffStripe` on `Invoice`
+  * Add support for `Twint` on `Mandate.PaymentMethodDetails` and `SetupAttempt.PaymentMethodDetails`
+  * Add support for `Metadata` on `PaymentIntent.TransferData`, `PaymentIntentTransferDataOptions`, and `Subscription.PendingUpdate`
+  * Add support for `PaymentData` on `PaymentIntent.TransferData` and `PaymentIntentTransferDataOptions`
+  * Add support for `BlikAuthorize` on `PaymentIntent.NextAction` and `SetupIntent.NextAction`
+  * Add support for `PaymentMethodOptions` on `PaymentLinkCreateOptions`, `PaymentLinkUpdateOptions`, and `PaymentLink`
+  * Add support for `Active` on `PaymentMethodConfigurationListOptions`
+  * Add support for `BilledUntil` on `SubscriptionItem`
+  * Add support for `Discount` and `Discounts` on `Subscription.PendingUpdate`
+  * Add support for `VerifoneM425`, `VerifoneP630`, `VerifoneUx700`, and `VerifoneV660p` on `Terminal.ConfigurationCreateOptions`, `Terminal.ConfigurationUpdateOptions`, and `Terminal.Configuration`
+  * Add support for `ApiError` and `PrintContent` on `Terminal.Reader.Action`
+  * Add support for `Customer` on `TestHelpers.TestClockCreateOptions`
+  * Add support for `Signer` on `V2.Core.Account.Identity.BusinessDetails.Documents.ProofOfRegistration`, `V2.Core.Account.Identity.BusinessDetails.Documents.ProofOfUltimateBeneficialOwnership`, `V2CoreAccountIdentityBusinessDetailsDocumentsProofOfRegistrationOptions`, `V2CoreAccountIdentityBusinessDetailsDocumentsProofOfUltimateBeneficialOwnershipOptions`, `V2CoreAccountTokenIdentityBusinessDetailsDocumentsProofOfRegistrationOptions`, and `V2CoreAccountTokenIdentityBusinessDetailsDocumentsProofOfUltimateBeneficialOwnershipOptions`
+  * Add support for `AzureEventGrid` on `V2.Core.EventDestinationCreateOptions` and `V2.Core.EventDestination`
+  * Add support for event notifications `V2CommerceProductCatalogImportsFailedEvent`, `V2CommerceProductCatalogImportsProcessingEvent`, `V2CommerceProductCatalogImportsSucceededEvent`, and `V2CommerceProductCatalogImportsSucceededWithErrorsEvent` with related object `V2.Commerce.ProductCatalogImport`
+* [#3385](https://github.com/stripe/stripe-dotnet/pull/3385) Emit warning when `stripe-notify` header is present in response
 
 ## 51.2.0-beta.2 - 2026-04-24
 * [#3374](https://github.com/stripe/stripe-dotnet/pull/3374) Update generated code for beta

@@ -20,8 +20,8 @@ namespace Stripe.V2.Core
         /// Details on the Account's acceptance of Treasury-specific terms of service; IP, date, and
         /// User Agent are expanded by Stripe.
         /// </summary>
-        [JsonProperty("storer")]
-        [STJS.JsonPropertyName("storer")]
-        public AccountTokenCreateIdentityAttestationsTermsOfServiceStorerOptions Storer { get; set; }
+        [JsonProperty("money_manager")]
+        [STJS.JsonPropertyName("money_manager")]
+        public AccountTokenCreateIdentityAttestationsTermsOfServiceMoneyManagerOptions MoneyManager { get; set; }
     }
 }

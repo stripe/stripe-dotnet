@@ -38,7 +38,7 @@ namespace Stripe.V2.Commerce
 
         /// <summary>
         /// The type of feed data being imported into the product catalog.
-        /// One of: <c>inventory</c>, <c>pricing</c>, or <c>product</c>.
+        /// One of: <c>inventory</c>, <c>pricing</c>, <c>product</c>, or <c>promotion</c>.
         /// </summary>
         [JsonProperty("feed_type")]
         [STJS.JsonPropertyName("feed_type")]
@@ -58,6 +58,14 @@ namespace Stripe.V2.Commerce
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The import strategy for handling existing catalog data.
+        /// One of: <c>replace</c>, or <c>upsert</c>.
+        /// </summary>
+        [JsonProperty("mode")]
+        [STJS.JsonPropertyName("mode")]
+        public string Mode { get; set; }
 
         /// <summary>
         /// The current status of this ProductCatalogImport.

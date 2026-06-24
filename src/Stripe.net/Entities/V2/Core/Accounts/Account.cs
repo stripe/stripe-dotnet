@@ -35,7 +35,7 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// The configurations that have been applied to this account.
-        /// One of: <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or <c>storer</c>.
+        /// One of: <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or <c>money_manager</c>.
         /// </summary>
         [JsonProperty("applied_configurations")]
         [STJS.JsonPropertyName("applied_configurations")]

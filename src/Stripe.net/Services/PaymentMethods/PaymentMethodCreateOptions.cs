@@ -514,8 +514,8 @@ namespace Stripe
         public PaymentMethodStripeBalanceOptions StripeBalance { get; set; }
 
         /// <summary>
-        /// If this is a Sunbit PaymentMethod, this hash contains details about the Sunbit payment
-        /// method.
+        /// If this is a <c>sunbit</c> PaymentMethod, this hash contains details about the Sunbit
+        /// payment method.
         /// </summary>
         [JsonProperty("sunbit")]
         [STJS.JsonPropertyName("sunbit")]

@@ -6,6 +6,7 @@ namespace StripeTests
     using System.Linq;
     using System.Net;
     using System.Net.Http;
+    using System.Net.Http.Headers;
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
@@ -709,6 +710,137 @@ namespace StripeTests
             await service.CreateAsync(new CustomerCreateOptions() { }, new RequestOptions { StripeAccount = "acct_2345" });
             lastRequest = this.httpClient.LastRequest;
             Assert.Equal("acct_2345", lastRequest.StripeHeaders["Stripe-Account"]);
+        }
+
+        [Fact]
+        public async Task RequestAsync_WritesToStderr_WhenStripeNoticeHeaderPresent()
+        {
+            var headers = BuildHeaders("Stripe-Notice", "test notice message");
+            var response = new StripeResponse(HttpStatusCode.OK, headers, "{\"id\": \"ch_123\"}");
+            this.httpClient.Response = response;
+
+            var stderr = new StringWriter();
+            Console.SetError(stderr);
+            try
+            {
+                await this.apiRequestor.RequestAsync<Charge>(
+                    BaseAddress.Api,
+                    HttpMethod.Post,
+                    "/v1/charges",
+                    this.options,
+                    this.requestOptions);
+
+                Assert.Contains("test notice message", stderr.ToString());
+            }
+            finally
+            {
+                Console.SetError(new StreamWriter(Console.OpenStandardError()) { AutoFlush = true });
+            }
+        }
+
+        [Fact]
+        public async Task RequestAsync_NoStderrWrite_WhenStripeNoticeHeaderAbsent()
+        {
+            var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");
+            this.httpClient.Response = response;
+
+            var stderr = new StringWriter();
+            Console.SetError(stderr);
+            try
+            {
+                await this.apiRequestor.RequestAsync<Charge>(
+                    BaseAddress.Api,
+                    HttpMethod.Post,
+                    "/v1/charges",
+                    this.options,
+                    this.requestOptions);
+
+                Assert.Empty(stderr.ToString());
+            }
+            finally
+            {
+                Console.SetError(new StreamWriter(Console.OpenStandardError()) { AutoFlush = true });
+            }
+        }
+
+        [Fact]
+        public async Task RequestAsync_NoStderrWrite_WhenStripeNoticeHeaderEmpty()
+        {
+            var headers = BuildHeaders("Stripe-Notice", string.Empty);
+            var response = new StripeResponse(HttpStatusCode.OK, headers, "{\"id\": \"ch_123\"}");
+            this.httpClient.Response = response;
+
+            var stderr = new StringWriter();
+            Console.SetError(stderr);
+            try
+            {
+                await this.apiRequestor.RequestAsync<Charge>(
+                    BaseAddress.Api,
+                    HttpMethod.Post,
+                    "/v1/charges",
+                    this.options,
+                    this.requestOptions);
+
+                Assert.Empty(stderr.ToString());
+            }
+            finally
+            {
+                Console.SetError(new StreamWriter(Console.OpenStandardError()) { AutoFlush = true });
+            }
+        }
+
+        [Fact]
+        public async Task RawRequestAsync_WritesToStderr_WhenStripeNoticeHeaderPresent()
+        {
+            var headers = BuildHeaders("Stripe-Notice", "raw notice message");
+            var response = new StripeResponse(HttpStatusCode.OK, headers, "{\"id\": \"ch_123\"}");
+            this.httpClient.Response = response;
+
+            var stderr = new StringWriter();
+            Console.SetError(stderr);
+            try
+            {
+                await this.apiRequestor.RawRequestAsync(
+                    HttpMethod.Post,
+                    "/v1/charges",
+                    "foo=bar");
+
+                Assert.Contains("raw notice message", stderr.ToString());
+            }
+            finally
+            {
+                Console.SetError(new StreamWriter(Console.OpenStandardError()) { AutoFlush = true });
+            }
+        }
+
+        [Fact]
+        public async Task RawRequestAsync_NoStderrWrite_WhenStripeNoticeHeaderAbsent()
+        {
+            var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");
+            this.httpClient.Response = response;
+
+            var stderr = new StringWriter();
+            Console.SetError(stderr);
+            try
+            {
+                await this.apiRequestor.RawRequestAsync(
+                    HttpMethod.Post,
+                    "/v1/charges",
+                    "foo=bar");
+
+                Assert.Empty(stderr.ToString());
+            }
+            finally
+            {
+                Console.SetError(new StreamWriter(Console.OpenStandardError()) { AutoFlush = true });
+            }
+        }
+
+        private static HttpResponseHeaders BuildHeaders(string name, string value)
+        {
+            var message = new HttpResponseMessage();
+            message.Headers.Add(name, value);
+            return message.Headers;
         }
 
         private class Foo : StripeEntity<Foo>

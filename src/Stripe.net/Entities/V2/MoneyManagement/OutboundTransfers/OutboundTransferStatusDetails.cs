@@ -16,6 +16,13 @@ namespace Stripe.V2.MoneyManagement
         public OutboundTransferStatusDetailsFailed Failed { get; set; }
 
         /// <summary>
+        /// The <c>processing</c> status details.
+        /// </summary>
+        [JsonProperty("processing")]
+        [STJS.JsonPropertyName("processing")]
+        public OutboundTransferStatusDetailsProcessing Processing { get; set; }
+
+        /// <summary>
         /// The <c>returned</c> status reason.
         /// </summary>
         [JsonProperty("returned")]

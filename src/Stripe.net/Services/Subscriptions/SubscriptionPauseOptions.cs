@@ -16,7 +16,7 @@ namespace Stripe
         public SubscriptionBillForOptions BillFor { get; set; }
 
         /// <summary>
-        /// Determines how to handle debits and credits when pausing. The default is
+        /// Determines how to handle debits and credits when pausing. Defaults to
         /// <c>pending_invoice_item</c>.
         /// One of: <c>invoice</c>, or <c>pending_invoice_item</c>.
         /// </summary>

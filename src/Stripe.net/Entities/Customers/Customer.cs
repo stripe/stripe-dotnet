@@ -262,6 +262,14 @@ namespace Stripe
         public List<string> PreferredLocales { get; set; }
 
         /// <summary>
+        /// Redaction status of this customer. If not null, this customer is associated to a
+        /// redaction job.
+        /// </summary>
+        [JsonProperty("redaction")]
+        [STJS.JsonPropertyName("redaction")]
+        public CustomerRedaction Redaction { get; set; }
+
+        /// <summary>
         /// Mailing and shipping address for the customer. Appears on invoices emailed to this
         /// customer.
         /// </summary>

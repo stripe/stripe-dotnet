@@ -230,6 +230,14 @@ namespace Stripe.Issuing
         public AuthorizationPendingRequest PendingRequest { get; set; }
 
         /// <summary>
+        /// Redaction status of this authorization. If the authorization is not redacted, this field
+        /// will be null.
+        /// </summary>
+        [JsonProperty("redaction")]
+        [STJS.JsonPropertyName("redaction")]
+        public AuthorizationRedaction Redaction { get; set; }
+
+        /// <summary>
         /// History of every time a <c>pending_request</c> authorization was approved/declined,
         /// either by you directly or by Stripe (e.g. based on your spending_controls). If the
         /// merchant changes the authorization by performing an incremental authorization, you can

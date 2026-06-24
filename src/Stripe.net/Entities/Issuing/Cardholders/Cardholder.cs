@@ -112,6 +112,14 @@ namespace Stripe.Issuing
         [STJS.JsonPropertyName("preferred_locales")]
         public List<string> PreferredLocales { get; set; }
 
+        /// <summary>
+        /// Redaction status of this cardholder. If the cardholder is not redacted, this field will
+        /// be null.
+        /// </summary>
+        [JsonProperty("redaction")]
+        [STJS.JsonPropertyName("redaction")]
+        public CardholderRedaction Redaction { get; set; }
+
         [JsonProperty("requirements")]
         [STJS.JsonPropertyName("requirements")]
         public CardholderRequirements Requirements { get; set; }

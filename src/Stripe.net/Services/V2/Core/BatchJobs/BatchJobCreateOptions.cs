@@ -17,14 +17,6 @@ namespace Stripe.V2.Core
         public BatchJobCreateEndpointOptions Endpoint { get; set; }
 
         /// <summary>
-        /// Optional field that allows the user to control how fast they want this batch job to run.
-        /// Gives them a control over the number of webhooks they receive.
-        /// </summary>
-        [JsonProperty("maximum_rps")]
-        [STJS.JsonPropertyName("maximum_rps")]
-        public long? MaximumRps { get; set; }
-
-        /// <summary>
         /// The metadata of the <c>batch_job</c>.
         /// </summary>
         [JsonProperty("metadata")]
