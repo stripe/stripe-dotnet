@@ -7,7 +7,7 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountUpdateIdentityAttestationsTermsOfServiceStorerOptions : INestedOptions
+    public class AccountUpdateIdentityAttestationsTermsOfServiceCryptoMoneyManagerOptions : INestedOptions
     {
         /// <summary>
         /// The time when the Account's representative accepted the terms of service. Represented as

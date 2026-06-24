@@ -18,17 +18,17 @@ namespace Stripe.V2.Core
         public AccountUpdateIdentityAttestationsTermsOfServiceAccountOptions Account { get; set; }
 
         /// <summary>
-        /// Details on the Account's acceptance of Crypto-storer-specific terms of service.
+        /// Details on the Account's acceptance of Crypto-specific terms of service.
         /// </summary>
-        [JsonProperty("crypto_storer")]
-        [STJS.JsonPropertyName("crypto_storer")]
-        public AccountUpdateIdentityAttestationsTermsOfServiceCryptoStorerOptions CryptoStorer { get; set; }
+        [JsonProperty("crypto_money_manager")]
+        [STJS.JsonPropertyName("crypto_money_manager")]
+        public AccountUpdateIdentityAttestationsTermsOfServiceCryptoMoneyManagerOptions CryptoMoneyManager { get; set; }
 
         /// <summary>
         /// Details on the Account's acceptance of Treasury-specific terms of service.
         /// </summary>
-        [JsonProperty("storer")]
-        [STJS.JsonPropertyName("storer")]
-        public AccountUpdateIdentityAttestationsTermsOfServiceStorerOptions Storer { get; set; }
+        [JsonProperty("money_manager")]
+        [STJS.JsonPropertyName("money_manager")]
+        public AccountUpdateIdentityAttestationsTermsOfServiceMoneyManagerOptions MoneyManager { get; set; }
     }
 }

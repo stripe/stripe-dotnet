@@ -51,7 +51,7 @@ namespace Stripe.V2.Commerce.ProductCatalog
 
         /// <summary>
         /// Filter by the type of feed data being imported.
-        /// One of: <c>inventory</c>, <c>pricing</c>, or <c>product</c>.
+        /// One of: <c>inventory</c>, <c>pricing</c>, <c>product</c>, or <c>promotion</c>.
         /// </summary>
         [JsonProperty("feed_type")]
         [STJS.JsonPropertyName("feed_type")]
