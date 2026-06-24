@@ -89,6 +89,15 @@ namespace Stripe.Issuing
         public DateTime? DecisionDeadline { get; set; }
 
         /// <summary>
+        /// Time at which the decision deadline was last updated.
+        /// </summary>
+        [JsonProperty("decision_deadline_updated_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        [STJS.JsonPropertyName("decision_deadline_updated_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+        public DateTime? DecisionDeadlineUpdatedAt { get; set; }
+
+        /// <summary>
         /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
         /// test mode, the value is <c>false</c>.
         /// </summary>

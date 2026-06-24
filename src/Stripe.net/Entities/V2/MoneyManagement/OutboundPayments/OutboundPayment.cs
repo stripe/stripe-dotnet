@@ -162,7 +162,8 @@ namespace Stripe.V2.MoneyManagement
         public string Status { get; set; }
 
         /// <summary>
-        /// Status details for an OutboundPayment in a <c>failed</c> or <c>returned</c> state.
+        /// Status details for an OutboundPayment in a <c>processing</c>, <c>failed</c>, or
+        /// <c>returned</c> state.
         /// </summary>
         [JsonProperty("status_details")]
         [STJS.JsonPropertyName("status_details")]

@@ -88,6 +88,24 @@ namespace Stripe
         [STJS.JsonPropertyName("financial_account_transactions")]
         public AccountSessionComponentsFinancialAccountTransactions FinancialAccountTransactions { get; set; }
 
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/financial-accounts/">financial
+        /// accounts</a> embedded component.
+        /// </summary>
+        [JsonProperty("financial_accounts")]
+        [STJS.JsonPropertyName("financial_accounts")]
+        public AccountSessionComponentsFinancialAccounts FinancialAccounts { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/financial-accounts-transactions/">financial
+        /// accounts transactions</a> embedded component.
+        /// </summary>
+        [JsonProperty("financial_accounts_transactions")]
+        [STJS.JsonPropertyName("financial_accounts_transactions")]
+        public AccountSessionComponentsFinancialAccountsTransactions FinancialAccountsTransactions { get; set; }
+
         [JsonProperty("instant_payouts_promotion")]
         [STJS.JsonPropertyName("instant_payouts_promotion")]
         public AccountSessionComponentsInstantPayoutsPromotion InstantPayoutsPromotion { get; set; }
@@ -149,6 +167,15 @@ namespace Stripe
         [JsonProperty("payouts_list")]
         [STJS.JsonPropertyName("payouts_list")]
         public AccountSessionComponentsPayoutsList PayoutsList { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/recipients-list/">recipients
+        /// list</a> embedded component.
+        /// </summary>
+        [JsonProperty("recipients_list")]
+        [STJS.JsonPropertyName("recipients_list")]
+        public AccountSessionComponentsRecipientsList RecipientsList { get; set; }
 
         [JsonProperty("tax_registrations")]
         [STJS.JsonPropertyName("tax_registrations")]

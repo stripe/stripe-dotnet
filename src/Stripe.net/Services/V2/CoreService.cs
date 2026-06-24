@@ -19,6 +19,7 @@ namespace Stripe.V2
         private V2.Core.EventDestinationService eventDestinations;
         private V2.Core.FeeBatchService feeBatches;
         private V2.Core.FeeEntryService feeEntries;
+        private V2.Core.HealthService health;
         private V2.Core.VaultService vault;
 
         internal CoreService(ApiRequestor requestor)
@@ -65,6 +66,9 @@ namespace Stripe.V2
             this.Requestor);
 
         public virtual V2.Core.FeeEntryService FeeEntries => this.feeEntries ??= new V2.Core.FeeEntryService(
+            this.Requestor);
+
+        public virtual V2.Core.HealthService Health => this.health ??= new V2.Core.HealthService(
             this.Requestor);
 
         public virtual V2.Core.VaultService Vault => this.vault ??= new V2.Core.VaultService(

@@ -18,7 +18,8 @@ namespace Stripe.Events
 
         /// <summary>
         /// Configurations on the Account that was onboarded via the account link.
-        /// One of: <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or <c>storer</c>.
+        /// One of: <c>customer</c>, <c>merchant</c>, <c>money_manager</c>, <c>recipient</c>, or
+        /// <c>storer</c>.
         /// </summary>
         [JsonProperty("configurations")]
         [STJS.JsonPropertyName("configurations")]

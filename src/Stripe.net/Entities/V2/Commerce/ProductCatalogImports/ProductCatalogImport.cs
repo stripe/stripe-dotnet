@@ -60,6 +60,14 @@ namespace Stripe.V2.Commerce
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The import strategy for handling existing catalog data.
+        /// One of: <c>replace</c>, or <c>upsert</c>.
+        /// </summary>
+        [JsonProperty("mode")]
+        [STJS.JsonPropertyName("mode")]
+        public string Mode { get; set; }
+
+        /// <summary>
         /// The current status of this ProductCatalogImport.
         /// One of: <c>awaiting_upload</c>, <c>failed</c>, <c>processing</c>, <c>succeeded</c>, or
         /// <c>succeeded_with_errors</c>.

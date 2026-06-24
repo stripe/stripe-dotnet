@@ -14,6 +14,7 @@ namespace Stripe
         private PaymentIntentAmountDetailsShippingOptions shipping;
         private PaymentIntentAmountDetailsSurchargeOptions surcharge;
         private PaymentIntentAmountDetailsTaxOptions tax;
+        private PaymentIntentAmountDetailsTipOptions tip;
 
         [JsonIgnore]
         [STJS.JsonIgnore]
@@ -117,6 +118,22 @@ namespace Stripe
             set
             {
                 this.tax = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// Contains information about the tip portion of the amount.
+        /// </summary>
+        [JsonProperty("tip", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("tip")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentAmountDetailsTipOptions Tip
+        {
+            get => this.tip;
+            set
+            {
+                this.tip = value;
                 this.SetTracker.Track();
             }
         }

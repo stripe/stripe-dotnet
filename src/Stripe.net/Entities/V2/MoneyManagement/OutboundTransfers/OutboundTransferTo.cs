@@ -21,5 +21,12 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("payout_method")]
         [STJS.JsonPropertyName("payout_method")]
         public string PayoutMethod { get; set; }
+
+        /// <summary>
+        /// Payout method options for the OutboundTransfer.
+        /// </summary>
+        [JsonProperty("payout_method_options")]
+        [STJS.JsonPropertyName("payout_method_options")]
+        public OutboundTransferToPayoutMethodOptions PayoutMethodOptions { get; set; }
     }
 }

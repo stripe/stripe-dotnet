@@ -29,6 +29,13 @@ namespace Stripe.V2.Billing
         public string Object { get; set; }
 
         /// <summary>
+        /// The billing cycle anchor for the contract.
+        /// </summary>
+        [JsonProperty("billing_cycle_anchor")]
+        [STJS.JsonPropertyName("billing_cycle_anchor")]
+        public ContractBillingCycleAnchor BillingCycleAnchor { get; set; }
+
+        /// <summary>
         /// The billing settings for the contract.
         /// </summary>
         [JsonProperty("billing_settings")]
@@ -36,26 +43,11 @@ namespace Stripe.V2.Billing
         public ContractBillingSettings BillingSettings { get; set; }
 
         /// <summary>
-        /// The contract line details of the contract. Only populated when
-        /// <c>contract_line_details</c> is passed in the <c>include</c> parameter.
-        /// </summary>
-        [JsonProperty("contract_line_details")]
-        [STJS.JsonPropertyName("contract_line_details")]
-        public List<ContractContractLineDetail> ContractLineDetails { get; set; }
-
-        /// <summary>
         /// A unique user-provided contract number e.g. C-2026-0001.
         /// </summary>
         [JsonProperty("contract_number")]
         [STJS.JsonPropertyName("contract_number")]
         public string ContractNumber { get; set; }
-
-        /// <summary>
-        /// The computed total value of all contract lines.
-        /// </summary>
-        [JsonProperty("contract_value_details")]
-        [STJS.JsonPropertyName("contract_value_details")]
-        public ContractContractValueDetails ContractValueDetails { get; set; }
 
         /// <summary>
         /// Timestamp of when the object was created.
@@ -79,14 +71,6 @@ namespace Stripe.V2.Billing
         public string Customer { get; set; }
 
         /// <summary>
-        /// The license quantities of the contract. Only populated when <c>license_quantities</c> is
-        /// passed in the <c>include</c> parameter.
-        /// </summary>
-        [JsonProperty("license_quantities")]
-        [STJS.JsonPropertyName("license_quantities")]
-        public List<ContractLicenseQuantity> LicenseQuantities { get; set; }
-
-        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
@@ -107,7 +91,7 @@ namespace Stripe.V2.Billing
         /// </summary>
         [JsonProperty("one_time_fees")]
         [STJS.JsonPropertyName("one_time_fees")]
-        public List<ContractOneTimeFee> OneTimeFees { get; set; }
+        public ContractOneTimeFees OneTimeFees { get; set; }
 
         /// <summary>
         /// The pricing lines of the contract. Only populated when <c>pricing_lines</c> is passed in
@@ -115,7 +99,7 @@ namespace Stripe.V2.Billing
         /// </summary>
         [JsonProperty("pricing_lines")]
         [STJS.JsonPropertyName("pricing_lines")]
-        public List<ContractPricingLine> PricingLines { get; set; }
+        public ContractPricingLines PricingLines { get; set; }
 
         /// <summary>
         /// The pricing overrides of the contract. Only populated when <c>pricing_overrides</c> is
@@ -123,7 +107,7 @@ namespace Stripe.V2.Billing
         /// </summary>
         [JsonProperty("pricing_overrides")]
         [STJS.JsonPropertyName("pricing_overrides")]
-        public List<ContractPricingOverride> PricingOverrides { get; set; }
+        public ContractPricingOverrides PricingOverrides { get; set; }
 
         /// <summary>
         /// The current status of the contract.

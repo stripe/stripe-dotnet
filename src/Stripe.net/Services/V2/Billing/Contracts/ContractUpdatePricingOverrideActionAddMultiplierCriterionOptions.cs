@@ -10,40 +10,18 @@ namespace Stripe.V2.Billing
     public class ContractUpdatePricingOverrideActionAddMultiplierCriterionOptions : INestedOptions
     {
         /// <summary>
-        /// Filter by billable item IDs.
+        /// Filter by pricing line IDs.
         /// </summary>
-        [JsonProperty("billable_item_ids")]
-        [STJS.JsonPropertyName("billable_item_ids")]
-        public List<string> BillableItemIds { get; set; }
+        [JsonProperty("pricing_line_ids")]
+        [STJS.JsonPropertyName("pricing_line_ids")]
+        public List<string> PricingLineIds { get; set; }
 
         /// <summary>
-        /// Filter by billable item lookup keys.
+        /// Filter by pricing line lookup keys.
         /// </summary>
-        [JsonProperty("billable_item_lookup_keys")]
-        [STJS.JsonPropertyName("billable_item_lookup_keys")]
-        public List<string> BillableItemLookupKeys { get; set; }
-
-        /// <summary>
-        /// Filter by billable item type.
-        /// One of: <c>licensed</c>, or <c>metered</c>.
-        /// </summary>
-        [JsonProperty("billable_item_types")]
-        [STJS.JsonPropertyName("billable_item_types")]
-        public List<string> BillableItemTypes { get; set; }
-
-        /// <summary>
-        /// Filter by metadata conditions.
-        /// </summary>
-        [JsonProperty("metadata_conditions")]
-        [STJS.JsonPropertyName("metadata_conditions")]
-        public List<ContractUpdatePricingOverrideActionAddMultiplierCriterionMetadataConditionOptions> MetadataConditions { get; set; }
-
-        /// <summary>
-        /// Filter by rate card IDs. Only applicable for <c>multiplier</c> overrides.
-        /// </summary>
-        [JsonProperty("rate_card_ids")]
-        [STJS.JsonPropertyName("rate_card_ids")]
-        public List<string> RateCardIds { get; set; }
+        [JsonProperty("pricing_line_lookup_keys")]
+        [STJS.JsonPropertyName("pricing_line_lookup_keys")]
+        public List<string> PricingLineLookupKeys { get; set; }
 
         /// <summary>
         /// Whether to include or exclude items matching these criteria.

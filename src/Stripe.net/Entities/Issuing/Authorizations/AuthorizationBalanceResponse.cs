@@ -18,19 +18,27 @@ namespace Stripe.Issuing
         public string AccountType { get; set; }
 
         /// <summary>
-        /// The remaining balance in the cardholder's account after the authorization, in the
-        /// smallest currency unit.
+        /// The available balance or credit limit in the cardholder's account after the
+        /// authorization, in the smallest currency unit.
         /// </summary>
-        [JsonProperty("amount")]
-        [STJS.JsonPropertyName("amount")]
-        public long Amount { get; set; }
+        [JsonProperty("available_balance")]
+        [STJS.JsonPropertyName("available_balance")]
+        public long AvailableBalance { get; set; }
 
         /// <summary>
-        /// The currency of the remaining balance in the cardholder's account after the
+        /// The currency of the remaining balances in the cardholder's account after the
         /// authorization.
         /// </summary>
         [JsonProperty("currency")]
         [STJS.JsonPropertyName("currency")]
         public string Currency { get; set; }
+
+        /// <summary>
+        /// The current ledger balance or remaining credit amount in the cardholder's account after
+        /// the authorization, in the smallest currency unit.
+        /// </summary>
+        [JsonProperty("current_balance")]
+        [STJS.JsonPropertyName("current_balance")]
+        public long CurrentBalance { get; set; }
     }
 }

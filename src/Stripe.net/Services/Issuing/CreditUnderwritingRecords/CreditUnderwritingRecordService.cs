@@ -151,5 +151,23 @@ namespace Stripe.Issuing
         {
             return this.RequestAsync<CreditUnderwritingRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{WebUtility.UrlEncode(id)}/report_decision", options, requestOptions, cancellationToken);
         }
+
+        /// <summary>
+        /// <p>Update a <c>CreditUnderwritingRecord</c> object to report that a credit offer has
+        /// been accepted.</p>.
+        /// </summary>
+        public virtual CreditUnderwritingRecord ReportOfferAcceptance(string id, CreditUnderwritingRecordReportOfferAcceptanceOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<CreditUnderwritingRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{WebUtility.UrlEncode(id)}/report_offer_acceptance", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Update a <c>CreditUnderwritingRecord</c> object to report that a credit offer has
+        /// been accepted.</p>.
+        /// </summary>
+        public virtual Task<CreditUnderwritingRecord> ReportOfferAcceptanceAsync(string id, CreditUnderwritingRecordReportOfferAcceptanceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<CreditUnderwritingRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{WebUtility.UrlEncode(id)}/report_offer_acceptance", options, requestOptions, cancellationToken);
+        }
     }
 }

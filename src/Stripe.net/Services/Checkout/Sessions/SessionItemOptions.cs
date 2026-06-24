@@ -9,6 +9,13 @@ namespace Stripe.Checkout
     public class SessionItemOptions : INestedOptions
     {
         /// <summary>
+        /// Configuration for the subscription item.
+        /// </summary>
+        [JsonProperty("subscription")]
+        [STJS.JsonPropertyName("subscription")]
+        public SessionItemSubscriptionOptions Subscription { get; set; }
+
+        /// <summary>
         /// The type of item.
         /// </summary>
         [JsonProperty("type")]

@@ -8,9 +8,6 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentDetailsMoneyServicesAccountFunding : StripeEntity<PaymentIntentPaymentDetailsMoneyServicesAccountFunding>
     {
-        /// <summary>
-        /// ID of the Account representing the sender in this account funding transaction.
-        /// </summary>
         [JsonProperty("sender_account")]
         [STJS.JsonPropertyName("sender_account")]
         public string SenderAccount { get; set; }

@@ -30,14 +30,6 @@ namespace Stripe.V2.Billing
         public ContractCreatePricingOverrideMultiplierOptions Multiplier { get; set; }
 
         /// <summary>
-        /// Parameters for an overwrite_price override. Required if <c>type</c> is
-        /// <c>overwrite_price</c>.
-        /// </summary>
-        [JsonProperty("overwrite_price")]
-        [STJS.JsonPropertyName("overwrite_price")]
-        public ContractCreatePricingOverrideOverwritePriceOptions OverwritePrice { get; set; }
-
-        /// <summary>
         /// The priority of this override relative to others. The highest priority is 0 and the
         /// lowest is 100.
         /// </summary>
@@ -54,7 +46,6 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The type of pricing override.
-        /// One of: <c>multiplier</c>, or <c>overwrite_price</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

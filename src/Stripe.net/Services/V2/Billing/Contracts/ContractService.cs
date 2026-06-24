@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
 
     public class ContractService : Service
     {
-        private V2.Billing.Contracts.LicensePricingService licensePricing;
+        private V2.Billing.Contracts.PricingLinesService pricingLines;
 
         internal ContractService(ApiRequestor requestor)
             : base(requestor)
@@ -22,7 +22,7 @@ namespace Stripe.V2.Billing
         {
         }
 
-        public virtual V2.Billing.Contracts.LicensePricingService LicensePricing => this.licensePricing ??= new V2.Billing.Contracts.LicensePricingService(
+        public virtual V2.Billing.Contracts.PricingLinesService PricingLines => this.pricingLines ??= new V2.Billing.Contracts.PricingLinesService(
             this.Requestor);
 
         /// <summary>
@@ -71,6 +71,22 @@ namespace Stripe.V2.Billing
         public virtual Task<Contract> CreateAsync(ContractCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Contract>(BaseAddress.Api, HttpMethod.Post, $"/v2/billing/contracts", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete a draft Contract object by ID.
+        /// </summary>
+        public virtual V2.DeletedObject Delete(string id, ContractDeleteOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<V2.DeletedObject>(BaseAddress.Api, HttpMethod.Delete, $"/v2/billing/contracts/{WebUtility.UrlEncode(id)}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Delete a draft Contract object by ID.
+        /// </summary>
+        public virtual Task<V2.DeletedObject> DeleteAsync(string id, ContractDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<V2.DeletedObject>(BaseAddress.Api, HttpMethod.Delete, $"/v2/billing/contracts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

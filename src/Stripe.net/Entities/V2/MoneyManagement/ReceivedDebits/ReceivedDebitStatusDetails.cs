@@ -15,5 +15,13 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("failed")]
         [STJS.JsonPropertyName("failed")]
         public ReceivedDebitStatusDetailsFailed Failed { get; set; }
+
+        /// <summary>
+        /// Information that elaborates on the <c>returned</c> status of a ReceivedDebit. It is only
+        /// present when the ReceivedDebit status is <c>returned</c>.
+        /// </summary>
+        [JsonProperty("returned")]
+        [STJS.JsonPropertyName("returned")]
+        public ReceivedDebitStatusDetailsReturned Returned { get; set; }
     }
 }

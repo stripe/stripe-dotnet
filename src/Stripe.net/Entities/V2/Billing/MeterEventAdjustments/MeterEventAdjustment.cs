@@ -59,7 +59,7 @@ namespace Stripe.V2.Billing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Open Enum. The meter event adjustment’s status.
+        /// Open Enum. The meter event adjustment's status.
         /// One of: <c>complete</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("status")]

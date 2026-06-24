@@ -34,6 +34,14 @@ namespace Stripe.V2.Core
         public AccountUpdateConfigurationMerchantOptions Merchant { get; set; }
 
         /// <summary>
+        /// The Money Manager Configuration allows the Account to store and move funds using
+        /// FinancialAccounts.
+        /// </summary>
+        [JsonProperty("money_manager")]
+        [STJS.JsonPropertyName("money_manager")]
+        public AccountUpdateConfigurationMoneyManagerOptions MoneyManager { get; set; }
+
+        /// <summary>
         /// The Recipient Configuration allows the Account to receive funds. Utilize this
         /// configuration if the Account will not be the Merchant of Record, like with Separate
         /// Charges &amp; Transfers, or Destination Charges without on_behalf_of set.
@@ -41,13 +49,5 @@ namespace Stripe.V2.Core
         [JsonProperty("recipient")]
         [STJS.JsonPropertyName("recipient")]
         public AccountUpdateConfigurationRecipientOptions Recipient { get; set; }
-
-        /// <summary>
-        /// The Storer Configuration allows the Account to store and move funds using stored-value
-        /// FinancialAccounts.
-        /// </summary>
-        [JsonProperty("storer")]
-        [STJS.JsonPropertyName("storer")]
-        public AccountUpdateConfigurationStorerOptions Storer { get; set; }
     }
 }

@@ -9,6 +9,13 @@ namespace Stripe.V2.MoneyManagement
     public class ReceivedCreditBankTransferUsBankAccount : StripeEntity<ReceivedCreditBankTransferUsBankAccount>
     {
         /// <summary>
+        /// The name of the account holder that sent the payment.
+        /// </summary>
+        [JsonProperty("account_holder_name")]
+        [STJS.JsonPropertyName("account_holder_name")]
+        public string AccountHolderName { get; set; }
+
+        /// <summary>
         /// The bank name the transfer was received from.
         /// </summary>
         [JsonProperty("bank_name")]

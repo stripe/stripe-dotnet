@@ -24,19 +24,19 @@ namespace Stripe.V2.Core
         public AccountTokenCreateIdentityAttestationsTermsOfServiceCardCreatorOptions CardCreator { get; set; }
 
         /// <summary>
-        /// Details on the Account's acceptance of Crypto-storer-specific terms of service; IP,
-        /// date, and User Agent are expanded by Stripe.
+        /// Details on the Account's acceptance of Crypto-specific terms of service; IP, date, and
+        /// User Agent are expanded by Stripe.
         /// </summary>
-        [JsonProperty("crypto_storer")]
-        [STJS.JsonPropertyName("crypto_storer")]
-        public AccountTokenCreateIdentityAttestationsTermsOfServiceCryptoStorerOptions CryptoStorer { get; set; }
+        [JsonProperty("crypto_money_manager")]
+        [STJS.JsonPropertyName("crypto_money_manager")]
+        public AccountTokenCreateIdentityAttestationsTermsOfServiceCryptoMoneyManagerOptions CryptoMoneyManager { get; set; }
 
         /// <summary>
         /// Details on the Account's acceptance of Treasury-specific terms of service; IP, date, and
         /// User Agent are expanded by Stripe.
         /// </summary>
-        [JsonProperty("storer")]
-        [STJS.JsonPropertyName("storer")]
-        public AccountTokenCreateIdentityAttestationsTermsOfServiceStorerOptions Storer { get; set; }
+        [JsonProperty("money_manager")]
+        [STJS.JsonPropertyName("money_manager")]
+        public AccountTokenCreateIdentityAttestationsTermsOfServiceMoneyManagerOptions MoneyManager { get; set; }
     }
 }

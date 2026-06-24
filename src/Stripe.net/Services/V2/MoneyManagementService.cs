@@ -17,11 +17,13 @@ namespace Stripe.V2
         private V2.MoneyManagement.OutboundPaymentQuoteService outboundPaymentQuotes;
         private V2.MoneyManagement.OutboundSetupIntentService outboundSetupIntents;
         private V2.MoneyManagement.OutboundTransferService outboundTransfers;
+        private V2.MoneyManagement.PayoutIntentService payoutIntents;
         private V2.MoneyManagement.PayoutMethodService payoutMethods;
         private V2.MoneyManagement.PayoutMethodsBankAccountSpecService payoutMethodsBankAccountSpec;
         private V2.MoneyManagement.ReceivedCreditService receivedCredits;
         private V2.MoneyManagement.ReceivedDebitService receivedDebits;
         private V2.MoneyManagement.RecipientVerificationService recipientVerifications;
+        private V2.MoneyManagement.TestHelpersService testHelpers;
         private V2.MoneyManagement.TransactionService transactions;
         private V2.MoneyManagement.TransactionEntryService transactionEntries;
 
@@ -65,6 +67,9 @@ namespace Stripe.V2
         public virtual V2.MoneyManagement.OutboundTransferService OutboundTransfers => this.outboundTransfers ??= new V2.MoneyManagement.OutboundTransferService(
             this.Requestor);
 
+        public virtual V2.MoneyManagement.PayoutIntentService PayoutIntents => this.payoutIntents ??= new V2.MoneyManagement.PayoutIntentService(
+            this.Requestor);
+
         public virtual V2.MoneyManagement.PayoutMethodService PayoutMethods => this.payoutMethods ??= new V2.MoneyManagement.PayoutMethodService(
             this.Requestor);
 
@@ -78,6 +83,9 @@ namespace Stripe.V2
             this.Requestor);
 
         public virtual V2.MoneyManagement.RecipientVerificationService RecipientVerifications => this.recipientVerifications ??= new V2.MoneyManagement.RecipientVerificationService(
+            this.Requestor);
+
+        public virtual V2.MoneyManagement.TestHelpersService TestHelpers => this.testHelpers ??= new V2.MoneyManagement.TestHelpersService(
             this.Requestor);
 
         public virtual V2.MoneyManagement.TransactionService Transactions => this.transactions ??= new V2.MoneyManagement.TransactionService(

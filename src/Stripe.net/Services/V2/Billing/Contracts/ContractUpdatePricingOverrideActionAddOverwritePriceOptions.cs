@@ -10,13 +10,6 @@ namespace Stripe.V2.Billing
     public class ContractUpdatePricingOverrideActionAddOverwritePriceOptions : INestedOptions
     {
         /// <summary>
-        /// The ID of the V1 price to overwrite.
-        /// </summary>
-        [JsonProperty("price")]
-        [STJS.JsonPropertyName("price")]
-        public string Price { get; set; }
-
-        /// <summary>
         /// Defines whether the tiered price should be graduated or volume-based.
         /// One of: <c>graduated</c>, or <c>volume</c>.
         /// </summary>

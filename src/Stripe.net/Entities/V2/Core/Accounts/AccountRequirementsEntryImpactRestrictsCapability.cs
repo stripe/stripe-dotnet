@@ -13,12 +13,18 @@ namespace Stripe.V2.Core
         /// One of: <c>ach_debit_payments</c>, <c>acss_debit_payments</c>, <c>affirm_payments</c>,
         /// <c>afterpay_clearpay_payments</c>, <c>alma_payments</c>, <c>amazon_pay_payments</c>,
         /// <c>automatic_indirect_tax</c>, <c>au_becs_debit_payments</c>,
-        /// <c>bacs_debit_payments</c>, <c>bancontact_payments</c>, <c>bank_accounts.instant</c>,
-        /// <c>bank_accounts.local</c>, <c>bank_accounts.wire</c>, <c>blik_payments</c>,
-        /// <c>boleto_payments</c>, <c>cards</c>, <c>card_payments</c>,
-        /// <c>cartes_bancaires_payments</c>, <c>cashapp_payments</c>,
-        /// <c>commercial.celtic.charge_card</c>, <c>commercial.celtic.spend_card</c>,
-        /// <c>commercial.cross_river_bank.charge_card</c>,
+        /// <c>bacs_debit_payments</c>, <c>bancontact_payments</c>, <c>bank_accounts.ach</c>,
+        /// <c>bank_accounts.becs</c>, <c>bank_accounts.eft</c>, <c>bank_accounts.fedwire</c>,
+        /// <c>bank_accounts.fps</c>, <c>bank_accounts.instant</c>, <c>bank_accounts.local</c>,
+        /// <c>bank_accounts.npp</c>, <c>bank_accounts.rtp</c>, <c>bank_accounts.sepa_credit</c>,
+        /// <c>bank_accounts.sepa_instant</c>, <c>bank_accounts.swift</c>,
+        /// <c>bank_accounts.wire</c>, <c>blik_payments</c>, <c>boleto_payments</c>,
+        /// <c>business_storage.inbound.eur</c>, <c>business_storage.inbound.gbp</c>,
+        /// <c>business_storage.inbound.usd</c>, <c>business_storage.outbound.eur</c>,
+        /// <c>business_storage.outbound.gbp</c>, <c>business_storage.outbound.usd</c>,
+        /// <c>cards</c>, <c>card_payments</c>, <c>cartes_bancaires_payments</c>,
+        /// <c>cashapp_payments</c>, <c>commercial.celtic.charge_card</c>,
+        /// <c>commercial.celtic.spend_card</c>, <c>commercial.cross_river_bank.charge_card</c>,
         /// <c>commercial.cross_river_bank.prepaid_card</c>,
         /// <c>commercial.cross_river_bank.spend_card</c>,
         /// <c>commercial.fifth_third.charge_card</c>, <c>commercial.lead.prepaid_card</c>,
@@ -26,6 +32,7 @@ namespace Stripe.V2.Core
         /// <c>consumer.celtic.revolving_credit_card</c>,
         /// <c>consumer.cross_river_bank.prepaid_card</c>, <c>consumer.holds_currencies.usd</c>,
         /// <c>consumer.lead.debit_card</c>, <c>consumer.lead.prepaid_card</c>,
+        /// <c>consumer_storage.inbound.usd</c>, <c>consumer_storage.outbound.usd</c>,
         /// <c>crypto_wallets</c>, <c>eps_payments</c>, <c>financial_addresses.bank_accounts</c>,
         /// <c>fpx_payments</c>, <c>gb_bank_transfer_payments</c>, <c>grabpay_payments</c>,
         /// <c>holds_currencies.eur</c>, <c>holds_currencies.gbp</c>, <c>holds_currencies.usd</c>,
@@ -38,11 +45,13 @@ namespace Stripe.V2.Core
         /// <c>outbound_payments.paper_checks</c>, <c>outbound_transfers.bank_accounts</c>,
         /// <c>outbound_transfers.financial_accounts</c>, <c>oxxo_payments</c>, <c>p24_payments</c>,
         /// <c>paper_checks</c>, <c>payco_payments</c>, <c>paynow_payments</c>,
-        /// <c>pay_by_bank_payments</c>, <c>promptpay_payments</c>, <c>revolut_pay_payments</c>,
-        /// <c>samsung_pay_payments</c>, <c>sepa_bank_transfer_payments</c>,
-        /// <c>sepa_debit_payments</c>, <c>stripe_balance.payouts</c>,
-        /// <c>stripe_balance.stripe_transfers</c>, <c>swish_payments</c>, <c>twint_payments</c>,
-        /// <c>us_bank_transfer_payments</c>, or <c>zip_payments</c>.
+        /// <c>pay_by_bank_payments</c>, <c>promptpay_payments</c>,
+        /// <c>received_credits.bank_accounts</c>, <c>received_debits.bank_accounts</c>,
+        /// <c>revolut_pay_payments</c>, <c>samsung_pay_payments</c>,
+        /// <c>sepa_bank_transfer_payments</c>, <c>sepa_debit_payments</c>,
+        /// <c>stripe_balance.payouts</c>, <c>stripe_balance.stripe_transfers</c>,
+        /// <c>swish_payments</c>, <c>twint_payments</c>, <c>us_bank_transfer_payments</c>, or
+        /// <c>zip_payments</c>.
         /// </summary>
         [JsonProperty("capability")]
         [STJS.JsonPropertyName("capability")]
@@ -50,8 +59,8 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// The configuration which specifies the Capability which will be restricted.
-        /// One of: <c>card_creator</c>, <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or
-        /// <c>storer</c>.
+        /// One of: <c>card_creator</c>, <c>customer</c>, <c>merchant</c>, <c>money_manager</c>,
+        /// <c>recipient</c>, or <c>storer</c>.
         /// </summary>
         [JsonProperty("configuration")]
         [STJS.JsonPropertyName("configuration")]
