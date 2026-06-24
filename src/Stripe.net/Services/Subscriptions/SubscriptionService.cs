@@ -42,7 +42,7 @@ namespace Stripe
         /// subscription to cancel at the end of the period, any pending prorations are also left in
         /// place and collected at the end of the period. But if the subscription is set to cancel
         /// immediately, pending prorations are removed if <c>invoice_now</c> and <c>prorate</c> are
-        /// both set to true.</p>.
+        /// both set to false.</p>.
         ///
         /// <p>By default, upon subscription cancellation, Stripe stops automatic collection of all
         /// finalized invoices for the customer. This is intended to prevent unexpected payment
@@ -68,7 +68,7 @@ namespace Stripe
         /// subscription to cancel at the end of the period, any pending prorations are also left in
         /// place and collected at the end of the period. But if the subscription is set to cancel
         /// immediately, pending prorations are removed if <c>invoice_now</c> and <c>prorate</c> are
-        /// both set to true.</p>.
+        /// both set to false.</p>.
         ///
         /// <p>By default, upon subscription cancellation, Stripe stops automatic collection of all
         /// finalized invoices for the customer. This is intended to prevent unexpected payment

@@ -116,6 +116,20 @@ namespace Stripe
         public List<InvoiceSubscriptionDetailsItemOptions> Items { get; set; }
 
         /// <summary>
+        /// Previews the invoice that would be generated when pausing the subscription. Passing an
+        /// empty hash won't preview pausing and instead returns the next invoice.
+        ///
+        /// To receive a preview invoice, set <c>invoicing_behavior</c> to <c>invoice</c>. A preview
+        /// isn't available if the <c>bill_for</c> options produce no billable amounts.
+        ///
+        /// <c>pending_invoice_item</c> never has a preview available because pausing wouldn't
+        /// generate an invoice, and paused subscriptions don't generate invoices either.
+        /// </summary>
+        [JsonProperty("pause")]
+        [STJS.JsonPropertyName("pause")]
+        public InvoiceSubscriptionDetailsPauseOptions Pause { get; set; }
+
+        /// <summary>
         /// The pre-billing to apply to the subscription as a preview.
         /// </summary>
         [JsonProperty("prebilling")]

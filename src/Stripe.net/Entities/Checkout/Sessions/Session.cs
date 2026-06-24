@@ -559,6 +559,14 @@ namespace Stripe.Checkout
         public string RecoveredFrom { get; set; }
 
         /// <summary>
+        /// The redaction status of the Checkout Session. If the Session is not redacted, this field
+        /// is null.
+        /// </summary>
+        [JsonProperty("redaction")]
+        [STJS.JsonPropertyName("redaction")]
+        public SessionRedaction Redaction { get; set; }
+
+        /// <summary>
         /// This parameter applies to <c>ui_mode: embedded_page</c>. Learn more about the <a
         /// href="https://docs.stripe.com/payments/checkout/custom-success-page?payment-ui=embedded-form">redirect
         /// behavior</a> of embedded sessions. Defaults to <c>always</c>.

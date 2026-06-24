@@ -445,6 +445,14 @@ namespace Stripe
         [STJS.JsonPropertyName("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 
+        /// <summary>
+        /// Redaction status of this SetupIntent. If the SetupIntent isn't redacted, this field is
+        /// null.
+        /// </summary>
+        [JsonProperty("redaction")]
+        [STJS.JsonPropertyName("redaction")]
+        public SetupIntentRedaction Redaction { get; set; }
+
         #region Expandable SingleUseMandate
 
         /// <summary>

@@ -64,6 +64,17 @@ namespace Stripe.Capital
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// The type of disclaimer to use for a financing offer in user-facing surfaces. The
+        /// corresponding disclaimer text to use for each disclaimer_variant value can be found in
+        /// the <a href="https://docs.stripe.com/capital/marketing">marketing docs</a>.
+        /// One of: <c>celtic_us_loan</c>, <c>fundbox_au_financing</c>, <c>youlend_de_financing</c>,
+        /// <c>youlend_fr_financing</c>, <c>youlend_uk_mca</c>, or <c>youlend_us_mca</c>.
+        /// </summary>
+        [JsonProperty("disclaimer_variant")]
+        [STJS.JsonPropertyName("disclaimer_variant")]
+        public string DisclaimerVariant { get; set; }
+
+        /// <summary>
         /// Time at which the offer expires. Given in seconds since unix epoch.
         /// </summary>
         [JsonProperty("expires_after")]

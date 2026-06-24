@@ -222,6 +222,16 @@ namespace Stripe
         public ChargePaymentMethodDetailsCardThreeDSecure ThreeDSecure { get; set; }
 
         /// <summary>
+        /// Transaction Link ID (TLID) is a unique identifier for a transaction. This is used by
+        /// some card networks, such as Mastercard, for transaction linking, in addition to Network
+        /// Transaction IDs. This value will be present if it is returned by the financial network
+        /// in the authorization response, and null otherwise.
+        /// </summary>
+        [JsonProperty("transaction_link_id")]
+        [STJS.JsonPropertyName("transaction_link_id")]
+        public string TransactionLinkId { get; set; }
+
+        /// <summary>
         /// If this Card is part of a card wallet, this contains the details of the card wallet.
         /// </summary>
         [JsonProperty("wallet")]

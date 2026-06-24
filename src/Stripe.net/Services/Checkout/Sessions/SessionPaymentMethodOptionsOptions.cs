@@ -319,6 +319,13 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsSofortOptions Sofort { get; set; }
 
         /// <summary>
+        /// contains details about the Sunbit payment method options.
+        /// </summary>
+        [JsonProperty("sunbit")]
+        [STJS.JsonPropertyName("sunbit")]
+        public SessionPaymentMethodOptionsSunbitOptions Sunbit { get; set; }
+
+        /// <summary>
         /// contains details about the Swish payment method options.
         /// </summary>
         [JsonProperty("swish")]

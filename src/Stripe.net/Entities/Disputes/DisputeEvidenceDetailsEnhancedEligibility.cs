@@ -8,6 +8,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class DisputeEvidenceDetailsEnhancedEligibility : StripeEntity<DisputeEvidenceDetailsEnhancedEligibility>
     {
+        [JsonProperty("mastercard_compliance")]
+        [STJS.JsonPropertyName("mastercard_compliance")]
+        public DisputeEvidenceDetailsEnhancedEligibilityMastercardCompliance MastercardCompliance { get; set; }
+
         [JsonProperty("visa_compelling_evidence_3")]
         [STJS.JsonPropertyName("visa_compelling_evidence_3")]
         public DisputeEvidenceDetailsEnhancedEligibilityVisaCompellingEvidence3 VisaCompellingEvidence3 { get; set; }

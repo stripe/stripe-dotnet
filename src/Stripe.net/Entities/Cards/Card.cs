@@ -336,6 +336,13 @@ namespace Stripe
         public CardNetworks Networks { get; set; }
 
         /// <summary>
+        /// Redaction status of this card. If not null, this card is associated to a redaction job.
+        /// </summary>
+        [JsonProperty("redaction")]
+        [STJS.JsonPropertyName("redaction")]
+        public CardRedaction Redaction { get; set; }
+
+        /// <summary>
         /// Status of a card based on the card issuer.
         /// One of: <c>regulated</c>, or <c>unregulated</c>.
         /// </summary>

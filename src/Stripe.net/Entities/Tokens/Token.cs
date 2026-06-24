@@ -94,6 +94,14 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// Redaction status of this token. If not null, this token is associated to a redaction
+        /// job.
+        /// </summary>
+        [JsonProperty("redaction")]
+        [STJS.JsonPropertyName("redaction")]
+        public TokenRedaction Redaction { get; set; }
+
+        /// <summary>
         /// Type of the token: <c>account</c>, <c>bank_account</c>, <c>card</c>, or <c>pii</c>.
         /// </summary>
         [JsonProperty("type")]

@@ -8,5 +8,11 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ConfirmationTokenPaymentMethodPreviewBizum : StripeEntity<ConfirmationTokenPaymentMethodPreviewBizum>
     {
+        /// <summary>
+        /// A unique identifier for the buyer as determined by the local payment processor.
+        /// </summary>
+        [JsonProperty("buyer_id")]
+        [STJS.JsonPropertyName("buyer_id")]
+        public string BuyerId { get; set; }
     }
 }

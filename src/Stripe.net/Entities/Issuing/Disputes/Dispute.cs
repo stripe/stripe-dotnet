@@ -108,6 +108,14 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Redaction status of this dispute. If the dispute is not redacted, this field will be
+        /// null.
+        /// </summary>
+        [JsonProperty("redaction")]
+        [STJS.JsonPropertyName("redaction")]
+        public DisputeRedaction Redaction { get; set; }
+
+        /// <summary>
         /// Current status of the dispute.
         /// One of: <c>expired</c>, <c>lost</c>, <c>submitted</c>, <c>unsubmitted</c>, or
         /// <c>won</c>.

@@ -297,6 +297,14 @@ namespace Stripe.Issuing
         [STJS.JsonPropertyName("purchase_details")]
         public TransactionPurchaseDetails PurchaseDetails { get; set; }
 
+        /// <summary>
+        /// Redaction status of this transaction. If the transaction is not redacted, this field
+        /// will be null.
+        /// </summary>
+        [JsonProperty("redaction")]
+        [STJS.JsonPropertyName("redaction")]
+        public TransactionRedaction Redaction { get; set; }
+
         #region Expandable Settlement
 
         /// <summary>
