@@ -59,7 +59,7 @@ namespace Stripe
         public long? Quantity { get; set; }
 
         /// <summary>
-        /// A list of up to 10 tax amounts for the credit note line item. Not valid when
+        /// A list of up to 20 tax amounts for the credit note line item. Not valid when
         /// <c>tax_rates</c> is used or if invoice is set up with
         /// <c>automatic_tax[enabled]=true</c>.
         /// </summary>

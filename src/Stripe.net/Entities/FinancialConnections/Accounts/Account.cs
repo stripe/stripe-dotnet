@@ -162,6 +162,10 @@ namespace Stripe.FinancialConnections
         [STJS.JsonPropertyName("status")]
         public string Status { get; set; }
 
+        [JsonProperty("status_details")]
+        [STJS.JsonPropertyName("status_details")]
+        public AccountStatusDetails StatusDetails { get; set; }
+
         /// <summary>
         /// If <c>category</c> is <c>cash</c>, one of:.
         ///

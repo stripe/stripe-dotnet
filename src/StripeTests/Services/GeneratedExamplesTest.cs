@@ -15278,7 +15278,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/commerce/product_catalog/imports",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"mode\":\"upsert\",\"status\":\"awaiting_upload\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Commerce.ProductCatalog.Imports;
             Stripe.V2.StripeList<Stripe.V2.Commerce.ProductCatalogImport> productCatalogImports = service
@@ -15295,7 +15295,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/commerce/product_catalog/imports",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"mode\":\"upsert\",\"status\":\"awaiting_upload\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Commerce.ProductCatalog.Imports;
             Stripe.V2.StripeList<Stripe.V2.Commerce.ProductCatalogImport> productCatalogImports = await service
@@ -15312,7 +15312,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/commerce/product_catalog/imports",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"mode\":\"upsert\",\"status\":\"awaiting_upload\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Commerce.ProductCatalog.Imports;
             var productCatalogImport = service.ListAutoPaging().First();
@@ -15328,7 +15328,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/commerce/product_catalog/imports",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"mode\":\"upsert\",\"status\":\"awaiting_upload\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Commerce.ProductCatalog.Imports;
             var productCatalogImport = await service.ListAutoPagingAsync()
@@ -15345,7 +15345,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/commerce/product_catalog/imports",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}");
+                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"mode\":\"upsert\",\"status\":\"awaiting_upload\"}");
             var options = new Stripe.V2.Commerce.ProductCatalog.ImportCreateOptions
             {
                 FeedType = "pricing",
@@ -15371,7 +15371,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/commerce/product_catalog/imports",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}");
+                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"mode\":\"upsert\",\"status\":\"awaiting_upload\"}");
             var options = new Stripe.V2.Commerce.ProductCatalog.ImportCreateOptions
             {
                 FeedType = "pricing",
@@ -15397,7 +15397,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/commerce/product_catalog/imports/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}");
+                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"mode\":\"upsert\",\"status\":\"awaiting_upload\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Commerce.ProductCatalog.Imports;
             Stripe.V2.Commerce.ProductCatalogImport productCatalogImport = service
@@ -15414,7 +15414,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/commerce/product_catalog/imports/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"status\":\"awaiting_upload\"}");
+                "{\"object\":\"v2.commerce.product_catalog_import\",\"created\":\"1970-01-12T21:42:34.472Z\",\"feed_type\":\"pricing\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"mode\":\"upsert\",\"status\":\"awaiting_upload\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Commerce.ProductCatalog.Imports;
             Stripe.V2.Commerce.ProductCatalogImport productCatalogImport = await service

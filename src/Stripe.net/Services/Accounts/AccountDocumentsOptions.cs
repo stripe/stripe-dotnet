@@ -27,7 +27,8 @@ namespace Stripe
         public AccountDocumentsCompanyLicenseOptions CompanyLicense { get; set; }
 
         /// <summary>
-        /// One or more documents showing the company's Memorandum of Association.
+        /// One or more documents showing the company's governing document (for example, a
+        /// memorandum of association, constitution, or articles of association).
         /// </summary>
         [JsonProperty("company_memorandum_of_association")]
         [STJS.JsonPropertyName("company_memorandum_of_association")]

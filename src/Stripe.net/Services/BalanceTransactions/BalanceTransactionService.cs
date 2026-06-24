@@ -48,10 +48,10 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of transactions that have contributed to the Stripe account balance
-        /// (e.g., charges, transfers, and so forth). The transactions are returned in sorted order,
+        /// (for example, charges, transfers, and so on). The transactions return in sorted order,
         /// with the most recent transactions appearing first.</p>.
         ///
-        /// <p>Note that this endpoint was previously called “Balance history” and used the path
+        /// <p>The previous name of this endpoint was “Balance history,” and it used the path
         /// <c>/v1/balance/history</c>.</p>.
         /// </summary>
         public virtual StripeList<BalanceTransaction> List(BalanceTransactionListOptions options = null, RequestOptions requestOptions = null)
@@ -61,10 +61,10 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of transactions that have contributed to the Stripe account balance
-        /// (e.g., charges, transfers, and so forth). The transactions are returned in sorted order,
+        /// (for example, charges, transfers, and so on). The transactions return in sorted order,
         /// with the most recent transactions appearing first.</p>.
         ///
-        /// <p>Note that this endpoint was previously called “Balance history” and used the path
+        /// <p>The previous name of this endpoint was “Balance history,” and it used the path
         /// <c>/v1/balance/history</c>.</p>.
         /// </summary>
         public virtual Task<StripeList<BalanceTransaction>> ListAsync(BalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
@@ -74,10 +74,10 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of transactions that have contributed to the Stripe account balance
-        /// (e.g., charges, transfers, and so forth). The transactions are returned in sorted order,
+        /// (for example, charges, transfers, and so on). The transactions return in sorted order,
         /// with the most recent transactions appearing first.</p>.
         ///
-        /// <p>Note that this endpoint was previously called “Balance history” and used the path
+        /// <p>The previous name of this endpoint was “Balance history,” and it used the path
         /// <c>/v1/balance/history</c>.</p>.
         /// </summary>
         public virtual IEnumerable<BalanceTransaction> ListAutoPaging(BalanceTransactionListOptions options = null, RequestOptions requestOptions = null)
@@ -87,10 +87,10 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of transactions that have contributed to the Stripe account balance
-        /// (e.g., charges, transfers, and so forth). The transactions are returned in sorted order,
+        /// (for example, charges, transfers, and so on). The transactions return in sorted order,
         /// with the most recent transactions appearing first.</p>.
         ///
-        /// <p>Note that this endpoint was previously called “Balance history” and used the path
+        /// <p>The previous name of this endpoint was “Balance history,” and it used the path
         /// <c>/v1/balance/history</c>.</p>.
         /// </summary>
         public virtual IAsyncEnumerable<BalanceTransaction> ListAutoPagingAsync(BalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)

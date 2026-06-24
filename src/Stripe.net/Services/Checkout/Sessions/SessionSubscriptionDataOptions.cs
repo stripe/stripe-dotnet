@@ -33,6 +33,14 @@ namespace Stripe.Checkout
         public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>
+        /// Configures when the subscription schedule's billing cycle anchors to a specific day of
+        /// the week or month.
+        /// </summary>
+        [JsonProperty("billing_cycle_anchor_config")]
+        [STJS.JsonPropertyName("billing_cycle_anchor_config")]
+        public SessionSubscriptionDataBillingCycleAnchorConfigOptions BillingCycleAnchorConfig { get; set; }
+
+        /// <summary>
         /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
         /// </summary>
         [JsonProperty("billing_mode")]

@@ -204,6 +204,10 @@ namespace Stripe
         [STJS.JsonPropertyName("sofort")]
         public PaymentIntentPaymentMethodOptionsSofort Sofort { get; set; }
 
+        [JsonProperty("sunbit")]
+        [STJS.JsonPropertyName("sunbit")]
+        public PaymentIntentPaymentMethodOptionsSunbit Sunbit { get; set; }
+
         [JsonProperty("swish")]
         [STJS.JsonPropertyName("swish")]
         public PaymentIntentPaymentMethodOptionsSwish Swish { get; set; }

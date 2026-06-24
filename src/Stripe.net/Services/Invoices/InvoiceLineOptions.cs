@@ -157,7 +157,7 @@ namespace Stripe
         public decimal? QuantityDecimal { get; set; }
 
         /// <summary>
-        /// A list of up to 10 tax amounts for this line item. This can be useful if you calculate
+        /// A list of up to 20 tax amounts for this line item. This can be useful if you calculate
         /// taxes on your own or use a third-party to calculate them. You cannot set tax amounts if
         /// any line item has <a
         /// href="https://docs.stripe.com/api/invoices/line_item#invoice_line_item_object-tax_rates">tax_rates</a>

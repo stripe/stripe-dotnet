@@ -9,6 +9,13 @@ namespace Stripe
     public class ChargePaymentMethodDetailsBizum : StripeEntity<ChargePaymentMethodDetailsBizum>
     {
         /// <summary>
+        /// A unique identifier for the buyer as determined by the local payment processor.
+        /// </summary>
+        [JsonProperty("buyer_id")]
+        [STJS.JsonPropertyName("buyer_id")]
+        public string BuyerId { get; set; }
+
+        /// <summary>
         /// The Bizum transaction ID associated with this payment.
         /// </summary>
         [JsonProperty("transaction_id")]

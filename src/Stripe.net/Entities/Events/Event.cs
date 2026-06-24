@@ -115,7 +115,10 @@ namespace Stripe
         /// <c>application_fee.created</c>, <c>application_fee.refund.updated</c>,
         /// <c>application_fee.refunded</c>, <c>balance.available</c>,
         /// <c>balance_settings.updated</c>, <c>billing.alert.triggered</c>,
-        /// <c>billing.credit_grant.created</c>, <c>billing_portal.configuration.created</c>,
+        /// <c>billing.credit_balance_transaction.created</c>, <c>billing.credit_grant.created</c>,
+        /// <c>billing.credit_grant.updated</c>, <c>billing.meter.created</c>,
+        /// <c>billing.meter.deactivated</c>, <c>billing.meter.reactivated</c>,
+        /// <c>billing.meter.updated</c>, <c>billing_portal.configuration.created</c>,
         /// <c>billing_portal.configuration.updated</c>, <c>billing_portal.session.created</c>,
         /// <c>capability.updated</c>, <c>cash_balance.funds_available</c>, <c>charge.captured</c>,
         /// <c>charge.dispute.closed</c>, <c>charge.dispute.created</c>,
@@ -235,10 +238,8 @@ namespace Stripe
         /// <c>treasury.outbound_transfer.returned</c>,
         /// <c>treasury.outbound_transfer.tracking_details_updated</c>,
         /// <c>treasury.received_credit.created</c>, <c>treasury.received_credit.failed</c>,
-        /// <c>treasury.received_credit.succeeded</c>, <c>treasury.received_debit.created</c>,
-        /// <c>billing.credit_balance_transaction.created</c>, <c>billing.credit_grant.updated</c>,
-        /// <c>billing.meter.created</c>, <c>billing.meter.deactivated</c>,
-        /// <c>billing.meter.reactivated</c>, <c>billing.meter.updated</c>, or <c>ping</c>.
+        /// <c>treasury.received_credit.succeeded</c>, <c>treasury.received_debit.created</c>, or
+        /// <c>ping</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -9,6 +9,13 @@ namespace Stripe
     public class DisputeEvidenceEnhancedEvidenceOptions : INestedOptions
     {
         /// <summary>
+        /// Evidence provided for Mastercard compliance evidence submission.
+        /// </summary>
+        [JsonProperty("mastercard_compliance")]
+        [STJS.JsonPropertyName("mastercard_compliance")]
+        public DisputeEvidenceEnhancedEvidenceMastercardComplianceOptions MastercardCompliance { get; set; }
+
+        /// <summary>
         /// Evidence provided for Visa Compelling Evidence 3.0 evidence submission.
         /// </summary>
         [JsonProperty("visa_compelling_evidence_3")]

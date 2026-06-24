@@ -168,6 +168,10 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("sofort")]
         public SessionPaymentMethodOptionsSofort Sofort { get; set; }
 
+        [JsonProperty("sunbit")]
+        [STJS.JsonPropertyName("sunbit")]
+        public SessionPaymentMethodOptionsSunbit Sunbit { get; set; }
+
         [JsonProperty("swish")]
         [STJS.JsonPropertyName("swish")]
         public SessionPaymentMethodOptionsSwish Swish { get; set; }
@@ -183,5 +187,9 @@ namespace Stripe.Checkout
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]
         public SessionPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
+
+        [JsonProperty("wechat_pay")]
+        [STJS.JsonPropertyName("wechat_pay")]
+        public SessionPaymentMethodOptionsWechatPay WechatPay { get; set; }
     }
 }
