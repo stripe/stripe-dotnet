@@ -11,7 +11,7 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Open Enum. The reason for the failure.
         /// One of: <c>account_not_configured_as_recipient</c>,
-        /// <c>currency_not_supported_for_financial_account_balance</c>,
+        /// <c>currency_not_supported_for_financial_account_balance</c>, <c>currency_required</c>,
         /// <c>feature_not_active_for_recipient</c>, <c>fx_rate_drift_exceeded_after_review</c>,
         /// <c>insufficient_funds</c>, <c>payout_method_account_type_incorrect</c>,
         /// <c>payout_method_amount_limit_exceeded</c>, <c>payout_method_canceled_by_customer</c>,
