@@ -55,20 +55,20 @@ namespace Stripe.V2.MoneyManagement
         /// <c>dispute_reversal</c>, <c>financing_paydown</c>, <c>financing_paydown_reversal</c>,
         /// <c>inbound_payment</c>, <c>inbound_payment_failure</c>, <c>inbound_transfer</c>,
         /// <c>inbound_transfer_reversal</c>, <c>india_mdr_processing_fee</c>,
-        /// <c>issuing_dispute</c>, <c>issuing_dispute_fraud_liability_debit</c>,
-        /// <c>issuing_dispute_provisional_credit</c>,
-        /// <c>issuing_dispute_provisional_credit_reversal</c>, <c>minimum_balance_hold</c>,
-        /// <c>network_cost</c>, <c>obligation</c>, <c>outbound_payment</c>,
-        /// <c>outbound_payment_reversal</c>, <c>outbound_transfer</c>,
+        /// <c>issuing_authorization</c>, <c>issuing_dispute</c>,
+        /// <c>issuing_dispute_fraud_liability_debit</c>, <c>issuing_dispute_provisional_credit</c>,
+        /// <c>issuing_dispute_provisional_credit_reversal</c>, <c>issuing_transaction</c>,
+        /// <c>minimum_balance_hold</c>, <c>network_cost</c>, <c>obligation</c>,
+        /// <c>outbound_payment</c>, <c>outbound_payment_reversal</c>, <c>outbound_transfer</c>,
         /// <c>outbound_transfer_reversal</c>, <c>partial_capture_reversal</c>,
         /// <c>payment_method_passthrough_fee</c>, <c>payment_network_reserved_funds</c>,
         /// <c>platform_earning</c>, <c>platform_earning_refund</c>, <c>platform_fee</c>,
-        /// <c>received_credit</c>, <c>received_credit_reversal</c>, <c>received_debit</c>,
-        /// <c>received_debit_reversal</c>, <c>refund</c>, <c>refund_failure</c>,
-        /// <c>risk_reserved_funds</c>, <c>stripe_balance_payment_debit</c>,
-        /// <c>stripe_balance_payment_debit_reversal</c>, <c>stripe_fee</c>, <c>stripe_fee_tax</c>,
-        /// <c>tax_fund</c>, <c>tax_withholding</c>, <c>transfer_reversal</c>, or
-        /// <c>unreconciled_customer_funds</c>.
+        /// <c>platform_funded_credit_transaction</c>, <c>received_credit</c>,
+        /// <c>received_credit_reversal</c>, <c>received_debit</c>, <c>received_debit_reversal</c>,
+        /// <c>refund</c>, <c>refund_failure</c>, <c>risk_reserved_funds</c>,
+        /// <c>stripe_balance_payment_debit</c>, <c>stripe_balance_payment_debit_reversal</c>,
+        /// <c>stripe_fee</c>, <c>stripe_fee_tax</c>, <c>tax_fund</c>, <c>tax_withholding</c>,
+        /// <c>transfer_reversal</c>, or <c>unreconciled_customer_funds</c>.
         /// </summary>
         [JsonProperty("category")]
         [STJS.JsonPropertyName("category")]

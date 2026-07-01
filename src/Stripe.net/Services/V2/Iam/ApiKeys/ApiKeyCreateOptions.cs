@@ -1,6 +1,8 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Iam
 {
+    using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -8,6 +10,20 @@ namespace Stripe.V2.Iam
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ApiKeyCreateOptions : BaseOptions
     {
+        /// <summary>
+        /// List of connect permissions for this API key.
+        /// </summary>
+        [JsonProperty("connect_permissions")]
+        [STJS.JsonPropertyName("connect_permissions")]
+        public List<string> ConnectPermissions { get; set; }
+
+        /// <summary>
+        /// Timestamp at which the key expires. If not provided, the key never expires.
+        /// </summary>
+        [JsonProperty("expires_at")]
+        [STJS.JsonPropertyName("expires_at")]
+        public DateTime? ExpiresAt { get; set; }
+
         /// <summary>
         /// Name for the API key.
         /// </summary>
@@ -21,6 +37,13 @@ namespace Stripe.V2.Iam
         [JsonProperty("note")]
         [STJS.JsonPropertyName("note")]
         public string Note { get; set; }
+
+        /// <summary>
+        /// List of permissions for this API key.
+        /// </summary>
+        [JsonProperty("permissions")]
+        [STJS.JsonPropertyName("permissions")]
+        public List<string> Permissions { get; set; }
 
         /// <summary>
         /// Public key for encrypting the API key secret. This must a PEM-formatted RSA key suitable
