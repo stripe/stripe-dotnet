@@ -85,6 +85,16 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
+        /// The Electronic Commerce Indicator (ECI) returned by the card network in the
+        /// authorization response. Indicates the level of authentication used. Only populated for
+        /// Visa and Mastercard transactions. The response value is the source of truth; it may
+        /// differ from the request value if the network downgraded the transaction.
+        /// </summary>
+        [JsonProperty("electronic_commerce_indicator")]
+        [STJS.JsonPropertyName("electronic_commerce_indicator")]
+        public string ElectronicCommerceIndicator { get; set; }
+
+        /// <summary>
         /// Two-digit number representing the card's expiration month.
         /// </summary>
         [JsonProperty("exp_month")]
@@ -245,6 +255,16 @@ namespace Stripe
         [JsonProperty("three_d_secure")]
         [STJS.JsonPropertyName("three_d_secure")]
         public ChargePaymentMethodDetailsCardThreeDSecure ThreeDSecure { get; set; }
+
+        /// <summary>
+        /// Transaction Link ID (TLID) is a unique identifier for a transaction. This is used by
+        /// some card networks, such as Mastercard, for transaction linking, in addition to Network
+        /// Transaction IDs. This value will be present if it is returned by the financial network
+        /// in the authorization response, and null otherwise.
+        /// </summary>
+        [JsonProperty("transaction_link_id")]
+        [STJS.JsonPropertyName("transaction_link_id")]
+        public string TransactionLinkId { get; set; }
 
         /// <summary>
         /// If this Card is part of a card wallet, this contains the details of the card wallet.

@@ -351,8 +351,6 @@ namespace Stripe.Checkout
         ///
         /// If a <a href="https://docs.stripe.com/api/customers">Customer</a> is created or
         /// provided, the names can be saved to the Customer object as well.
-        ///
-        /// You can't set this parameter if <c>ui_mode</c> is <c>custom</c>.
         /// </summary>
         [JsonProperty("name_collection")]
         [STJS.JsonPropertyName("name_collection")]

@@ -22,6 +22,10 @@ namespace Stripe
         [STJS.JsonPropertyName("tax_fund_account")]
         public TaxFundDestinationTaxFundAccount TaxFundAccount { get; set; }
 
+        /// <summary>
+        /// The type of account funds moved to or from. Either <c>payments_balance</c> or
+        /// <c>tax_fund_account</c>.
+        /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }

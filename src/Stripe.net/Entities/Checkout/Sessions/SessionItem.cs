@@ -16,6 +16,13 @@ namespace Stripe.Checkout
         public string Key { get; set; }
 
         /// <summary>
+        /// Details on the subscription for this item.
+        /// </summary>
+        [JsonProperty("subscription")]
+        [STJS.JsonPropertyName("subscription")]
+        public SessionItemSubscription Subscription { get; set; }
+
+        /// <summary>
         /// The type of the item.
         /// </summary>
         [JsonProperty("type")]

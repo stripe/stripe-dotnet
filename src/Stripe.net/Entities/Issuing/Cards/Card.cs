@@ -194,6 +194,20 @@ namespace Stripe.Issuing
         internal ExpandableField<PersonalizationDesign> InternalPersonalizationDesign { get; set; }
         #endregion
 
+        /// <summary>
+        /// The program that this card belongs to — will not be nil.
+        /// </summary>
+        [JsonProperty("program")]
+        [STJS.JsonPropertyName("program")]
+        public string Program { get; set; }
+
+        /// <summary>
+        /// Redaction status of this card. If not null, this card is associated to a redaction job.
+        /// </summary>
+        [JsonProperty("redaction")]
+        [STJS.JsonPropertyName("redaction")]
+        public CardRedaction Redaction { get; set; }
+
         #region Expandable ReplacedBy
 
         /// <summary>

@@ -506,6 +506,14 @@ namespace Stripe
         public string ReceiptUrl { get; set; }
 
         /// <summary>
+        /// Redaction status of this charge. If not null, this charge is associated to a redaction
+        /// job.
+        /// </summary>
+        [JsonProperty("redaction")]
+        [STJS.JsonPropertyName("redaction")]
+        public ChargeRedaction Redaction { get; set; }
+
+        /// <summary>
         /// Whether the charge has been fully refunded. If the charge is only partially refunded,
         /// this attribute will still be false.
         /// </summary>

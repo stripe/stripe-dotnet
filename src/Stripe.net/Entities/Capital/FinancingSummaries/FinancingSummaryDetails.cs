@@ -39,6 +39,18 @@ namespace Stripe.Capital
         public FinancingSummaryDetailsCurrentRepaymentInterval CurrentRepaymentInterval { get; set; }
 
         /// <summary>
+        /// The type of disclaimer to use for a financing offer in user-facing surfaces. The
+        /// corresponding disclaimer text to use for each disclaimer_variant value can be found in
+        /// the <a href="https://docs.stripe.com/capital/regulatory-compliance">regulatory
+        /// compliance docs</a>.
+        /// One of: <c>celtic_us_loan</c>, <c>fundbox_au_financing</c>, <c>youlend_de_financing</c>,
+        /// <c>youlend_fr_financing</c>, <c>youlend_uk_mca</c>, or <c>youlend_us_mca</c>.
+        /// </summary>
+        [JsonProperty("disclaimer_variant")]
+        [STJS.JsonPropertyName("disclaimer_variant")]
+        public string DisclaimerVariant { get; set; }
+
+        /// <summary>
         /// Fixed fee amount, in minor units. For example, 100 USD is represented as 10000.
         /// </summary>
         [JsonProperty("fee_amount")]

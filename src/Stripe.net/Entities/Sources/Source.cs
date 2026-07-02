@@ -193,6 +193,14 @@ namespace Stripe
         [STJS.JsonPropertyName("receiver")]
         public SourceReceiver Receiver { get; set; }
 
+        /// <summary>
+        /// Redaction status of this source. If not null, this source is associated to a redaction
+        /// job.
+        /// </summary>
+        [JsonProperty("redaction")]
+        [STJS.JsonPropertyName("redaction")]
+        public SourceRedaction Redaction { get; set; }
+
         [JsonProperty("redirect")]
         [STJS.JsonPropertyName("redirect")]
         public SourceRedirect Redirect { get; set; }

@@ -8,6 +8,10 @@ namespace Stripe.FinancialConnections
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountStatusDetails : StripeEntity<AccountStatusDetails>
     {
+        [JsonProperty("active")]
+        [STJS.JsonPropertyName("active")]
+        public AccountStatusDetailsActive Active { get; set; }
+
         [JsonProperty("inactive")]
         [STJS.JsonPropertyName("inactive")]
         public AccountStatusDetailsInactive Inactive { get; set; }

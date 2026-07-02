@@ -74,7 +74,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// Subscription item to update.
+        /// Subscription item to update. If you omit <c>id</c>, the API adds a new subscription item
+        /// rather than updating the existing one. See <a
+        /// href="https://docs.stripe.com/billing/subscriptions/change-price#changing">Changing a
+        /// subscription's price</a>.
         /// </summary>
         [JsonProperty("id")]
         [STJS.JsonPropertyName("id")]

@@ -38,6 +38,14 @@ namespace Stripe
         public long? ExpYear { get; set; }
 
         /// <summary>
+        /// Uniquely identifies this particular gift card number. You can use this attribute to
+        /// check whether two transactions were made using the same gift card.
+        /// </summary>
+        [JsonProperty("fingerprint")]
+        [STJS.JsonPropertyName("fingerprint")]
+        public string Fingerprint { get; set; }
+
+        /// <summary>
         /// The first six digits of the gift card number.
         /// </summary>
         [JsonProperty("first6")]

@@ -8,5 +8,11 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentMethodBlik : StripeEntity<PaymentMethodBlik>
     {
+        /// <summary>
+        /// A unique and immutable identifier assigned by BLIK to every buyer.
+        /// </summary>
+        [JsonProperty("buyer_id")]
+        [STJS.JsonPropertyName("buyer_id")]
+        public string BuyerId { get; set; }
     }
 }

@@ -64,6 +64,7 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsShopeepayOptions shopeepay;
         private PaymentIntentPaymentMethodOptionsSofortOptions sofort;
         private PaymentIntentPaymentMethodOptionsStripeBalanceOptions stripeBalance;
+        private PaymentIntentPaymentMethodOptionsSunbitOptions sunbit;
         private PaymentIntentPaymentMethodOptionsSwishOptions swish;
         private PaymentIntentPaymentMethodOptionsTwintOptions twint;
         private PaymentIntentPaymentMethodOptionsUpiOptions upi;
@@ -1030,6 +1031,23 @@ namespace Stripe
             set
             {
                 this.stripeBalance = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If this is a <c>sunbit</c> PaymentMethod, this sub-hash contains details about the
+        /// Sunbit payment method options.
+        /// </summary>
+        [JsonProperty("sunbit", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("sunbit")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsSunbitOptions Sunbit
+        {
+            get => this.sunbit;
+            set
+            {
+                this.sunbit = value;
                 this.SetTracker.Track();
             }
         }

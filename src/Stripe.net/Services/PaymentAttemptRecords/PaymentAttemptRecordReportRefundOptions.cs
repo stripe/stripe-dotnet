@@ -73,6 +73,15 @@ namespace Stripe
         public PaymentAttemptRecordProcessorDetailsOptions ProcessorDetails { get; set; }
 
         /// <summary>
+        /// The reason for the refund. One of <c>duplicate</c>, <c>fraudulent</c>, or
+        /// <c>requested_by_customer</c>.
+        /// One of: <c>duplicate</c>, <c>fraudulent</c>, or <c>requested_by_customer</c>.
+        /// </summary>
+        [JsonProperty("reason")]
+        [STJS.JsonPropertyName("reason")]
+        public string Reason { get; set; }
+
+        /// <summary>
         /// A key to group refunds together.
         /// </summary>
         [JsonProperty("refund_group")]

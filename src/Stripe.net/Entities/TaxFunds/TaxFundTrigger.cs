@@ -10,6 +10,10 @@ namespace Stripe
     {
         #region Expandable BalanceTransaction
 
+        /// <summary>
+        /// (ID of the BalanceTransaction)
+        /// The balance transaction on the payments balance that triggered the sweep.
+        /// </summary>
         [JsonIgnore]
         [STJS.JsonIgnore]
         public string BalanceTransactionId
@@ -18,6 +22,12 @@ namespace Stripe
             set => this.InternalBalanceTransaction = SetExpandableFieldId(value, this.InternalBalanceTransaction);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The balance transaction on the payments balance that triggered the sweep.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         [STJS.JsonIgnore]
         public BalanceTransaction BalanceTransaction
@@ -33,6 +43,9 @@ namespace Stripe
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
+        /// <summary>
+        /// The type of event that triggered the sweep. Always <c>balance_transaction</c>.
+        /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }

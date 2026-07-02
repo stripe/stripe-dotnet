@@ -8,6 +8,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentMethodOptionsCrypto : StripeEntity<PaymentIntentPaymentMethodOptionsCrypto>
     {
+        [JsonProperty("amount_reconciliation")]
+        [STJS.JsonPropertyName("amount_reconciliation")]
+        public PaymentIntentPaymentMethodOptionsCryptoAmountReconciliation AmountReconciliation { get; set; }
+
         [JsonProperty("deposit_options")]
         [STJS.JsonPropertyName("deposit_options")]
         public PaymentIntentPaymentMethodOptionsCryptoDepositOptions DepositOptions { get; set; }
