@@ -62,6 +62,14 @@ namespace Stripe.V2.MoneyManagement
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// If this is a <c>credit</c> FinancialAccount, this hash includes details specific to
+        /// <c>credit</c> FinancialAccounts.
+        /// </summary>
+        [JsonProperty("credit")]
+        [STJS.JsonPropertyName("credit")]
+        public FinancialAccountCredit Credit { get; set; }
+
+        /// <summary>
         /// A descriptive name for the FinancialAccount, up to 50 characters long. This name will be
         /// used in the Stripe Dashboard and embedded components.
         /// </summary>
@@ -145,8 +153,8 @@ namespace Stripe.V2.MoneyManagement
         /// Type of the FinancialAccount. An additional hash is included on the FinancialAccount
         /// with a name matching this value. It contains additional information specific to the
         /// FinancialAccount type.
-        /// One of: <c>accrued_fees</c>, <c>multiprocessor_settlement</c>, <c>other</c>,
-        /// <c>payments</c>, or <c>storage</c>.
+        /// One of: <c>accrued_fees</c>, <c>credit</c>, <c>multiprocessor_settlement</c>,
+        /// <c>other</c>, <c>payments</c>, or <c>storage</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

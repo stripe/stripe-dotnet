@@ -9,6 +9,13 @@ namespace Stripe.Issuing
     public class AuthorizationTokenDetailsNetworkDataDevice : StripeEntity<AuthorizationTokenDetailsNetworkDataDevice>
     {
         /// <summary>
+        /// An identifier for the device used during wallet provisioning.
+        /// </summary>
+        [JsonProperty("device_id")]
+        [STJS.JsonPropertyName("device_id")]
+        public string DeviceId { get; set; }
+
+        /// <summary>
         /// The IP address of the device at provisioning time.
         /// </summary>
         [JsonProperty("ip_address")]

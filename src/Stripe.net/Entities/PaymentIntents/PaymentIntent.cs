@@ -606,6 +606,14 @@ namespace Stripe
         [STJS.JsonPropertyName("receipt_email")]
         public string ReceiptEmail { get; set; }
 
+        /// <summary>
+        /// Redaction status of this PaymentIntent. If the PaymentIntent isn't redacted, this field
+        /// is null.
+        /// </summary>
+        [JsonProperty("redaction")]
+        [STJS.JsonPropertyName("redaction")]
+        public PaymentIntentRedaction Redaction { get; set; }
+
         #region Expandable Review
 
         /// <summary>

@@ -54,6 +54,21 @@ namespace Stripe
         }
 
         /// <summary>
+        /// The ID of a PaymentMethod representing the payment method to be used for the top-up. A
+        /// PaymentMethod of type <c>us_bank_account</c> can be used.
+        /// </summary>
+        [JsonProperty("payment_method")]
+        [STJS.JsonPropertyName("payment_method")]
+        public string PaymentMethod { get; set; }
+
+        /// <summary>
+        /// Payment method-specific configuration for this top-up.
+        /// </summary>
+        [JsonProperty("payment_method_options")]
+        [STJS.JsonPropertyName("payment_method_options")]
+        public TopupPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
+
+        /// <summary>
         /// The ID of a source to transfer funds from. For most users, this should be left
         /// unspecified which will use the bank account that was set up in the dashboard for the
         /// specified currency. In test mode, this can be a test bank token (see <a

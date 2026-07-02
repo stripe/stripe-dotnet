@@ -33,6 +33,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// The type of FinancialAccount to create.
+        /// One of: <c>credit</c>, or <c>storage</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

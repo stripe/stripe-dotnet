@@ -9,6 +9,20 @@ namespace Stripe
     public class PaymentRecordPaymentMethodDetailsCrypto : StripeEntity<PaymentRecordPaymentMethodDetailsCrypto>
     {
         /// <summary>
+        /// The amount received for the crypto payment.
+        /// </summary>
+        [JsonProperty("amount_received")]
+        [STJS.JsonPropertyName("amount_received")]
+        public long AmountReceived { get; set; }
+
+        /// <summary>
+        /// The amount requested for the crypto payment.
+        /// </summary>
+        [JsonProperty("amount_requested")]
+        [STJS.JsonPropertyName("amount_requested")]
+        public long AmountRequested { get; set; }
+
+        /// <summary>
         /// The wallet address of the customer.
         /// </summary>
         [JsonProperty("buyer_address")]
@@ -17,7 +31,8 @@ namespace Stripe
 
         /// <summary>
         /// The blockchain network that the transaction was sent on.
-        /// One of: <c>base</c>, <c>ethereum</c>, <c>polygon</c>, <c>solana</c>, or <c>tempo</c>.
+        /// One of: <c>base</c>, <c>ethereum</c>, <c>polygon</c>, <c>solana</c>, <c>sui</c>, or
+        /// <c>tempo</c>.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]
@@ -25,7 +40,8 @@ namespace Stripe
 
         /// <summary>
         /// The token currency that the transaction was sent with.
-        /// One of: <c>phantom_cash</c>, <c>usdc</c>, <c>usdg</c>, <c>usdp</c>, or <c>usdt</c>.
+        /// One of: <c>phantom_cash</c>, <c>usdc</c>, <c>usdg</c>, <c>usdp</c>, <c>usdsui</c>, or
+        /// <c>usdt</c>.
         /// </summary>
         [JsonProperty("token_currency")]
         [STJS.JsonPropertyName("token_currency")]

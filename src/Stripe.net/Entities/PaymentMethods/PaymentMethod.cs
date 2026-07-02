@@ -333,6 +333,14 @@ namespace Stripe
         [STJS.JsonPropertyName("rechnung")]
         public PaymentMethodRechnung Rechnung { get; set; }
 
+        /// <summary>
+        /// Redaction status of this PaymentMethod. If the PaymentMethod is not redacted, this field
+        /// will be null.
+        /// </summary>
+        [JsonProperty("redaction")]
+        [STJS.JsonPropertyName("redaction")]
+        public PaymentMethodRedaction Redaction { get; set; }
+
         [JsonProperty("revolut_pay")]
         [STJS.JsonPropertyName("revolut_pay")]
         public PaymentMethodRevolutPay RevolutPay { get; set; }

@@ -271,6 +271,15 @@ namespace Stripe.Issuing
         public long MerchantAmount { get; set; }
 
         /// <summary>
+        /// The exchange rate used by the network to convert the <c>merchant_amount</c> to
+        /// <c>amount</c>. The <c>merchant_amount</c> multiplied with this rate will equal to the
+        /// <c>amount</c>.
+        /// </summary>
+        [JsonProperty("merchant_amount_exchange_rate")]
+        [STJS.JsonPropertyName("merchant_amount_exchange_rate")]
+        public decimal? MerchantAmountExchangeRate { get; set; }
+
+        /// <summary>
         /// The currency with which the merchant is taking payment.
         /// </summary>
         [JsonProperty("merchant_currency")]
@@ -303,6 +312,14 @@ namespace Stripe.Issuing
         [JsonProperty("purchase_details")]
         [STJS.JsonPropertyName("purchase_details")]
         public TransactionPurchaseDetails PurchaseDetails { get; set; }
+
+        /// <summary>
+        /// Redaction status of this transaction. If the transaction is not redacted, this field
+        /// will be null.
+        /// </summary>
+        [JsonProperty("redaction")]
+        [STJS.JsonPropertyName("redaction")]
+        public TransactionRedaction Redaction { get; set; }
 
         #region Expandable Settlement
 

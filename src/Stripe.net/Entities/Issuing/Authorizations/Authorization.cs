@@ -208,6 +208,15 @@ namespace Stripe.Issuing
         public long MerchantAmount { get; set; }
 
         /// <summary>
+        /// The exchange rate used by the network to convert the <c>merchant_amount</c> to
+        /// <c>amount</c>. The <c>merchant_amount</c> multiplied with this rate will equal to the
+        /// <c>amount</c>.
+        /// </summary>
+        [JsonProperty("merchant_amount_exchange_rate")]
+        [STJS.JsonPropertyName("merchant_amount_exchange_rate")]
+        public decimal? MerchantAmountExchangeRate { get; set; }
+
+        /// <summary>
         /// The local currency that was presented to the cardholder for the authorization. This
         /// currency can be different from the cardholder currency and the <c>currency</c> field on
         /// this authorization. Three-letter <a
@@ -246,6 +255,14 @@ namespace Stripe.Issuing
         [JsonProperty("pending_request")]
         [STJS.JsonPropertyName("pending_request")]
         public AuthorizationPendingRequest PendingRequest { get; set; }
+
+        /// <summary>
+        /// Redaction status of this authorization. If the authorization is not redacted, this field
+        /// will be null.
+        /// </summary>
+        [JsonProperty("redaction")]
+        [STJS.JsonPropertyName("redaction")]
+        public AuthorizationRedaction Redaction { get; set; }
 
         /// <summary>
         /// History of every time a <c>pending_request</c> authorization was approved/declined,

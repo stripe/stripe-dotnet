@@ -29,6 +29,13 @@ namespace Stripe.V2.Iam
         public string Object { get; set; }
 
         /// <summary>
+        /// List of connect permissions for this API key.
+        /// </summary>
+        [JsonProperty("connect_permissions")]
+        [STJS.JsonPropertyName("connect_permissions")]
+        public List<string> ConnectPermissions { get; set; }
+
+        /// <summary>
         /// Timestamp when the API key was created.
         /// </summary>
         [JsonProperty("created")]
@@ -85,6 +92,13 @@ namespace Stripe.V2.Iam
         [JsonProperty("note")]
         [STJS.JsonPropertyName("note")]
         public string Note { get; set; }
+
+        /// <summary>
+        /// List of permissions for this API key.
+        /// </summary>
+        [JsonProperty("permissions")]
+        [STJS.JsonPropertyName("permissions")]
+        public List<string> Permissions { get; set; }
 
         /// <summary>
         /// Token set for a publishable key.
