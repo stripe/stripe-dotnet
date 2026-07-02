@@ -8,5 +8,11 @@ namespace Stripe.SharedPayment
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class GrantedTokenPaymentMethodDetailsBizum : StripeEntity<GrantedTokenPaymentMethodDetailsBizum>
     {
+        /// <summary>
+        /// A unique identifier for the buyer as determined by the local payment processor.
+        /// </summary>
+        [JsonProperty("buyer_id")]
+        [STJS.JsonPropertyName("buyer_id")]
+        public string BuyerId { get; set; }
     }
 }

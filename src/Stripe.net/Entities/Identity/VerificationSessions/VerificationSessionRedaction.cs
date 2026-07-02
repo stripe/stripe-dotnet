@@ -10,7 +10,7 @@ namespace Stripe.Identity
     {
         /// <summary>
         /// Indicates whether this object and its related objects have been redacted or not.
-        /// One of: <c>processing</c>, or <c>redacted</c>.
+        /// One of: <c>processing</c>, <c>redacted</c>, or <c>validated</c>.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

@@ -204,6 +204,9 @@ namespace Stripe
         [STJS.JsonPropertyName("payment_method_collection")]
         public string PaymentMethodCollection { get; set; }
 
+        /// <summary>
+        /// Payment-method-specific configuration.
+        /// </summary>
         [JsonProperty("payment_method_options")]
         [STJS.JsonPropertyName("payment_method_options")]
         public PaymentLinkPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }

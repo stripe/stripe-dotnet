@@ -8,7 +8,7 @@ namespace Stripe
 
     /// <summary>
     /// A GiftCardOperation represents an operation performed on a third-party gift card, such
-    /// as activation, deactivation, reload, cashout, balance check, or void.
+    /// as activation, reload, cashout, balance check, or void.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class GiftCardOperation : StripeEntity<GiftCardOperation>, IHasId, IHasObject
@@ -79,13 +79,6 @@ namespace Stripe
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
-
-        /// <summary>
-        /// Details about a gift card deactivation operation.
-        /// </summary>
-        [JsonProperty("deactivation")]
-        [STJS.JsonPropertyName("deactivation")]
-        public GiftCardOperationDeactivation Deactivation { get; set; }
 
         /// <summary>
         /// The failure code of the operation. Only present if the status is failed.
@@ -190,7 +183,7 @@ namespace Stripe
         /// <summary>
         /// The type of operation performed.
         /// One of: <c>activation</c>, <c>activation_void</c>, <c>balance_check</c>, <c>cashout</c>,
-        /// <c>cashout_void</c>, <c>deactivation</c>, <c>reload</c>, or <c>reload_void</c>.
+        /// <c>cashout_void</c>, <c>reload</c>, or <c>reload_void</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

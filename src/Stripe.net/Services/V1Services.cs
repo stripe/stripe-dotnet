@@ -30,6 +30,7 @@ namespace Stripe
         private CountrySpecService countrySpecs;
         private CouponService coupons;
         private CreditNoteService creditNotes;
+        private CryptoService crypto;
         private CustomerService customers;
         private CustomerSessionService customerSessions;
         private DelegatedCheckoutService delegatedCheckout;
@@ -177,6 +178,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual CreditNoteService CreditNotes => this.creditNotes ??= new CreditNoteService(
+            this.Requestor);
+
+        public virtual CryptoService Crypto => this.crypto ??= new CryptoService(
             this.Requestor);
 
         public virtual CustomerService Customers => this.customers ??= new CustomerService(

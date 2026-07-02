@@ -9,6 +9,13 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsCryptoOptions : INestedOptions
     {
         /// <summary>
+        /// Controls how crypto funding amounts are reconciled for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("amount_reconciliation")]
+        [STJS.JsonPropertyName("amount_reconciliation")]
+        public PaymentIntentPaymentMethodOptionsCryptoAmountReconciliationOptions AmountReconciliation { get; set; }
+
+        /// <summary>
         /// Specific configuration for this PaymentIntent when the mode is <c>deposit</c>.
         /// </summary>
         [JsonProperty("deposit_options")]

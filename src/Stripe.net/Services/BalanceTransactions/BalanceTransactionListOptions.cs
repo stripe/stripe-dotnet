@@ -44,13 +44,14 @@ namespace Stripe
         public string Source { get; set; }
 
         /// <summary>
-        /// Only returns transactions of the given type. One of: <c>adjustment</c>, <c>advance</c>,
-        /// <c>advance_funding</c>, <c>anticipation_repayment</c>, <c>application_fee</c>,
-        /// <c>application_fee_refund</c>, <c>charge</c>, <c>climate_order_purchase</c>,
-        /// <c>climate_order_refund</c>, <c>connect_collection_transfer</c>, <c>contribution</c>,
-        /// <c>inbound_transfer</c>, <c>inbound_transfer_reversal</c>,
-        /// <c>issuing_authorization_hold</c>, <c>issuing_authorization_release</c>,
-        /// <c>issuing_dispute</c>, <c>issuing_transaction</c>, <c>obligation_outbound</c>,
+        /// Only returns transactions of the given type. One of: <c>tax_fund</c>, <c>adjustment</c>,
+        /// <c>advance</c>, <c>advance_funding</c>, <c>anticipation_repayment</c>,
+        /// <c>application_fee</c>, <c>application_fee_refund</c>, <c>charge</c>,
+        /// <c>climate_order_purchase</c>, <c>climate_order_refund</c>,
+        /// <c>connect_collection_transfer</c>, <c>contribution</c>, <c>inbound_transfer</c>,
+        /// <c>inbound_transfer_reversal</c>, <c>issuing_authorization_hold</c>,
+        /// <c>issuing_authorization_release</c>, <c>issuing_dispute</c>,
+        /// <c>issuing_transaction</c>, <c>obligation_outbound</c>,
         /// <c>obligation_reversal_inbound</c>, <c>payment</c>, <c>payment_failure_refund</c>,
         /// <c>payment_network_reserve_hold</c>, <c>payment_network_reserve_release</c>,
         /// <c>payment_refund</c>, <c>payment_reversal</c>, <c>payment_unreconciled</c>,

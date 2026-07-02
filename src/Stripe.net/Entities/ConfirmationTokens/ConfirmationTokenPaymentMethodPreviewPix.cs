@@ -8,5 +8,12 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ConfirmationTokenPaymentMethodPreviewPix : StripeEntity<ConfirmationTokenPaymentMethodPreviewPix>
     {
+        /// <summary>
+        /// Uniquely identifies this particular Pix account. You can use this attribute to check
+        /// whether two Pix accounts are the same.
+        /// </summary>
+        [JsonProperty("fingerprint")]
+        [STJS.JsonPropertyName("fingerprint")]
+        public string Fingerprint { get; set; }
     }
 }

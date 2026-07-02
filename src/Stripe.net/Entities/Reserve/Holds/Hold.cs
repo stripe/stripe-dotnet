@@ -102,6 +102,13 @@ namespace Stripe.Reserve
         [STJS.JsonPropertyName("reason")]
         public string Reason { get; set; }
 
+        /// <summary>
+        /// List of ReserveReleases and the amounts released from this ReserveHold.
+        /// </summary>
+        [JsonProperty("release_details")]
+        [STJS.JsonPropertyName("release_details")]
+        public List<HoldReleaseDetail> ReleaseDetails { get; set; }
+
         [JsonProperty("release_schedule")]
         [STJS.JsonPropertyName("release_schedule")]
         public HoldReleaseSchedule ReleaseSchedule { get; set; }

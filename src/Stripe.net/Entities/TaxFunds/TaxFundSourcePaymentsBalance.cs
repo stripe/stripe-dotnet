@@ -10,6 +10,10 @@ namespace Stripe
     {
         #region Expandable BalanceTransaction
 
+        /// <summary>
+        /// (ID of the BalanceTransaction)
+        /// The balance transaction on the payments balance side of the sweep.
+        /// </summary>
         [JsonIgnore]
         [STJS.JsonIgnore]
         public string BalanceTransactionId
@@ -18,6 +22,12 @@ namespace Stripe
             set => this.InternalBalanceTransaction = SetExpandableFieldId(value, this.InternalBalanceTransaction);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The balance transaction on the payments balance side of the sweep.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         [STJS.JsonIgnore]
         public BalanceTransaction BalanceTransaction

@@ -8,10 +8,16 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TaxFundSourceTaxFundAccount : StripeEntity<TaxFundSourceTaxFundAccount>
     {
+        /// <summary>
+        /// The tax fund financial account involved in the sweep.
+        /// </summary>
         [JsonProperty("financial_account")]
         [STJS.JsonPropertyName("financial_account")]
         public string FinancialAccount { get; set; }
 
+        /// <summary>
+        /// The financial account transaction on the tax fund account side of the sweep.
+        /// </summary>
         [JsonProperty("transaction")]
         [STJS.JsonPropertyName("transaction")]
         public string Transaction { get; set; }

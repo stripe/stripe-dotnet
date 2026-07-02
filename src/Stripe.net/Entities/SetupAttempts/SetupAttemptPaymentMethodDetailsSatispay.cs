@@ -6,7 +6,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class GiftCardOperationDeactivation : StripeEntity<GiftCardOperationDeactivation>
+    public class SetupAttemptPaymentMethodDetailsSatispay : StripeEntity<SetupAttemptPaymentMethodDetailsSatispay>
     {
     }
 }
