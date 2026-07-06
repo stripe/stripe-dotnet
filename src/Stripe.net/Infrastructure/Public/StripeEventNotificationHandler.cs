@@ -223,6 +223,11 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingCadenceBilledEventNotification>> v2BillingCadenceBilled;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingCadenceCanceledEventNotification>> v2BillingCadenceCanceled;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingCadenceCreatedEventNotification>> v2BillingCadenceCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractActivatedEventNotification>> v2BillingContractActivated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCanceledEventNotification>> v2BillingContractCanceled;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCreatedEventNotification>> v2BillingContractCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractEndedEventNotification>> v2BillingContractEnded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractUpdatedEventNotification>> v2BillingContractUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingLicenseFeeCreatedEventNotification>> v2BillingLicenseFeeCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingLicenseFeeUpdatedEventNotification>> v2BillingLicenseFeeUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingLicenseFeeVersionCreatedEventNotification>> v2BillingLicenseFeeVersionCreated;
@@ -1709,6 +1714,36 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingCadenceCreatedEventNotification>> V2BillingCadenceCreated
         {
             add { this.AddEventHandler(ref this.v2BillingCadenceCreated, value, "v2.billing.cadence.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractActivatedEventNotification>> V2BillingContractActivated
+        {
+            add { this.AddEventHandler(ref this.v2BillingContractActivated, value, "v2.billing.contract.activated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCanceledEventNotification>> V2BillingContractCanceled
+        {
+            add { this.AddEventHandler(ref this.v2BillingContractCanceled, value, "v2.billing.contract.canceled"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCreatedEventNotification>> V2BillingContractCreated
+        {
+            add { this.AddEventHandler(ref this.v2BillingContractCreated, value, "v2.billing.contract.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractEndedEventNotification>> V2BillingContractEnded
+        {
+            add { this.AddEventHandler(ref this.v2BillingContractEnded, value, "v2.billing.contract.ended"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractUpdatedEventNotification>> V2BillingContractUpdated
+        {
+            add { this.AddEventHandler(ref this.v2BillingContractUpdated, value, "v2.billing.contract.updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -3882,6 +3917,26 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2BillingCadenceCreatedEventNotification)
                 {
                     this.v2BillingCadenceCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingCadenceCreatedEventNotification>((Stripe.Events.V2BillingCadenceCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2BillingContractActivatedEventNotification)
+                {
+                    this.v2BillingContractActivated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractActivatedEventNotification>((Stripe.Events.V2BillingContractActivatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2BillingContractCanceledEventNotification)
+                {
+                    this.v2BillingContractCanceled.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCanceledEventNotification>((Stripe.Events.V2BillingContractCanceledEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2BillingContractCreatedEventNotification)
+                {
+                    this.v2BillingContractCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCreatedEventNotification>((Stripe.Events.V2BillingContractCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2BillingContractEndedEventNotification)
+                {
+                    this.v2BillingContractEnded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractEndedEventNotification>((Stripe.Events.V2BillingContractEndedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2BillingContractUpdatedEventNotification)
+                {
+                    this.v2BillingContractUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractUpdatedEventNotification>((Stripe.Events.V2BillingContractUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2BillingLicenseFeeCreatedEventNotification)
                 {

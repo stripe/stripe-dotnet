@@ -16009,7 +16009,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/contracts",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\",\"status_details\":{}}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Contracts;
             Stripe.V2.StripeList<Stripe.V2.Billing.Contract> contracts = service
@@ -16024,7 +16024,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/contracts",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\",\"status_details\":{}}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Contracts;
             Stripe.V2.StripeList<Stripe.V2.Billing.Contract> contracts = await service
@@ -16039,7 +16039,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/contracts",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\",\"status_details\":{}}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Contracts;
             var contract = service.ListAutoPaging().First();
@@ -16053,7 +16053,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/contracts",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\",\"status_details\":{}}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Contracts;
             var contract = await service.ListAutoPagingAsync().FirstAsync();
@@ -16067,7 +16067,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/contracts",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\",\"status_details\":{}}");
+                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\"}");
             var options = new Stripe.V2.Billing.ContractCreateOptions
             {
                 ContractNumber = "contract_number",
@@ -16175,7 +16175,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/contracts",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\",\"status_details\":{}}");
+                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\"}");
             var options = new Stripe.V2.Billing.ContractCreateOptions
             {
                 ContractNumber = "contract_number",
@@ -16317,7 +16317,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/contracts/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\",\"status_details\":{}}");
+                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Contracts;
             Stripe.V2.Billing.Contract contract = service.Get("id_123");
@@ -16331,7 +16331,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/contracts/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\",\"status_details\":{}}");
+                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Contracts;
             Stripe.V2.Billing.Contract contract = await service.GetAsync(
@@ -16346,7 +16346,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/contracts/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\",\"status_details\":{}}");
+                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\"}");
             var options = new Stripe.V2.Billing.ContractUpdateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Contracts;
@@ -16363,7 +16363,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/contracts/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\",\"status_details\":{}}");
+                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\"}");
             var options = new Stripe.V2.Billing.ContractUpdateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Contracts;
@@ -16380,7 +16380,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/contracts/id_123/activate",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\",\"status_details\":{}}");
+                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Contracts;
             Stripe.V2.Billing.Contract contract = service.Activate("id_123");
@@ -16396,7 +16396,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/contracts/id_123/activate",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\",\"status_details\":{}}");
+                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Contracts;
             Stripe.V2.Billing.Contract contract = await service.ActivateAsync(
@@ -16413,7 +16413,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/contracts/id_123/cancel",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\",\"status_details\":{}}");
+                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Contracts;
             Stripe.V2.Billing.Contract contract = service.Cancel("id_123");
@@ -16429,7 +16429,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/contracts/id_123/cancel",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\",\"status_details\":{}}");
+                "{\"object\":\"v2.billing.contract\",\"contract_number\":\"contract_number\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"draft\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Contracts;
             Stripe.V2.Billing.Contract contract = await service.CancelAsync(

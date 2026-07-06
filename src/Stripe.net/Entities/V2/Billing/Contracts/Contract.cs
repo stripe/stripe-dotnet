@@ -118,10 +118,10 @@ namespace Stripe.V2.Billing
         public string Status { get; set; }
 
         /// <summary>
-        /// Information about the contract status transitions.
+        /// Historical timestamps of when the contract transitioned into each status.
         /// </summary>
-        [JsonProperty("status_details")]
-        [STJS.JsonPropertyName("status_details")]
-        public ContractStatusDetails StatusDetails { get; set; }
+        [JsonProperty("status_transitions")]
+        [STJS.JsonPropertyName("status_transitions")]
+        public ContractStatusTransitions StatusTransitions { get; set; }
     }
 }
