@@ -30,11 +30,11 @@ namespace Stripe.V2.Billing
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// Details for a multiplier override.
+        /// Details for a multiply_pricing override.
         /// </summary>
-        [JsonProperty("multiplier")]
-        [STJS.JsonPropertyName("multiplier")]
-        public ContractPricingOverridesDataMultiplier Multiplier { get; set; }
+        [JsonProperty("multiply_pricing")]
+        [STJS.JsonPropertyName("multiply_pricing")]
+        public ContractPricingOverridesDataMultiplyPricing MultiplyPricing { get; set; }
 
         /// <summary>
         /// The priority of this override relative to others. Lower number = higher priority.

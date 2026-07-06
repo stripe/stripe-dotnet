@@ -7,17 +7,18 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ContractCreatePricingOverrideMultiplierOptions : INestedOptions
+    public class ContractCreatePricingOverrideMultiplyPricingOptions : INestedOptions
     {
         /// <summary>
-        /// Criteria determining which rates the multiplier applies to.
+        /// Criteria determining which rates the multiply_pricing override applies to.
         /// </summary>
         [JsonProperty("criteria")]
         [STJS.JsonPropertyName("criteria")]
-        public List<ContractCreatePricingOverrideMultiplierCriterionOptions> Criteria { get; set; }
+        public List<ContractCreatePricingOverrideMultiplyPricingCriterionOptions> Criteria { get; set; }
 
         /// <summary>
-        /// The multiplier factor, represented as a decimal string. e.g. "0.8" for a 20% reduction.
+        /// The multiply_pricing factor, represented as a decimal string. e.g. "0.8" for a 20%
+        /// reduction.
         /// </summary>
         [JsonProperty("factor")]
         [STJS.JsonPropertyName("factor")]

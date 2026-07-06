@@ -16081,7 +16081,7 @@ namespace StripeTests
                             Timestamp = DateTimeOffset.Parse(
                                 "1970-01-01T15:18:46.294Z")
                                 .UtcDateTime,
-                            Type = "contract_end",
+                            Type = "timestamp",
                         },
                         LookupKey = "lookup_key",
                         Metadata = new Dictionary<string, string>
@@ -16102,7 +16102,7 @@ namespace StripeTests
                                             Timestamp = DateTimeOffset.Parse(
                                                 "1970-01-01T15:18:46.294Z")
                                                 .UtcDateTime,
-                                            Type = "contract_end",
+                                            Type = "timestamp",
                                         },
                                         LookupKey = "lookup_key",
                                         Metadata = new Dictionary<string, string>
@@ -16130,7 +16130,7 @@ namespace StripeTests
                                             Timestamp = DateTimeOffset.Parse(
                                                 "1970-01-01T15:18:46.294Z")
                                                 .UtcDateTime,
-                                            Type = "contract_start",
+                                            Type = "timestamp",
                                         },
                                         Type = "overwrite_price",
                                     },
@@ -16157,7 +16157,7 @@ namespace StripeTests
                             Timestamp = DateTimeOffset.Parse(
                                 "1970-01-01T15:18:46.294Z")
                                 .UtcDateTime,
-                            Type = "contract_start",
+                            Type = "timestamp",
                         },
                     },
                 },
@@ -16189,7 +16189,7 @@ namespace StripeTests
                             Timestamp = DateTimeOffset.Parse(
                                 "1970-01-01T15:18:46.294Z")
                                 .UtcDateTime,
-                            Type = "contract_end",
+                            Type = "timestamp",
                         },
                         LookupKey = "lookup_key",
                         Metadata = new Dictionary<string, string>
@@ -16210,7 +16210,7 @@ namespace StripeTests
                                             Timestamp = DateTimeOffset.Parse(
                                                 "1970-01-01T15:18:46.294Z")
                                                 .UtcDateTime,
-                                            Type = "contract_end",
+                                            Type = "timestamp",
                                         },
                                         LookupKey = "lookup_key",
                                         Metadata = new Dictionary<string, string>
@@ -16238,7 +16238,7 @@ namespace StripeTests
                                             Timestamp = DateTimeOffset.Parse(
                                                 "1970-01-01T15:18:46.294Z")
                                                 .UtcDateTime,
-                                            Type = "contract_start",
+                                            Type = "timestamp",
                                         },
                                         Type = "overwrite_price",
                                     },
@@ -16265,7 +16265,7 @@ namespace StripeTests
                             Timestamp = DateTimeOffset.Parse(
                                 "1970-01-01T15:18:46.294Z")
                                 .UtcDateTime,
-                            Type = "contract_start",
+                            Type = "timestamp",
                         },
                     },
                 },

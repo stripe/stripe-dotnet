@@ -23,7 +23,7 @@ namespace Stripe.V2.Billing
         public ContractOneTimeFeesDataBillAt BillAt { get; set; }
 
         /// <summary>
-        /// The ID of the one-time fee.
+        /// The id of the one-time fee.
         /// </summary>
         [JsonProperty("id")]
         [STJS.JsonPropertyName("id")]
@@ -37,7 +37,7 @@ namespace Stripe.V2.Billing
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// The ID of the v1 Product for this fee.
+        /// The id of the product for this fee.
         /// </summary>
         [JsonProperty("product")]
         [STJS.JsonPropertyName("product")]

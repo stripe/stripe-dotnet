@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing
     public class ContractCancelCancelPricingLineOptions : INestedOptions, IHasId
     {
         /// <summary>
-        /// The ID of the pricing line.
+        /// The id of the pricing line.
         /// </summary>
         [JsonProperty("id")]
         [STJS.JsonPropertyName("id")]

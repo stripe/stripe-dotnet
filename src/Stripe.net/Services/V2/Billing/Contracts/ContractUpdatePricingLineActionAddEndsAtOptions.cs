@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class ContractUpdatePricingLineActionAddEndsAtOptions : INestedOptions
     {
         /// <summary>
-        /// The timestamp when the item ends.
+        /// The timestamp when the pricing ends.
         /// </summary>
         [JsonProperty("timestamp")]
         [STJS.JsonPropertyName("timestamp")]
@@ -18,7 +18,6 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The type of end time to apply.
-        /// One of: <c>billing_period_end</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

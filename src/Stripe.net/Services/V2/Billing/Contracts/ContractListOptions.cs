@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class ContractListOptions : V2.ListOptions
     {
         /// <summary>
-        /// Filter by customer ID.
+        /// Filter by customer id.
         /// </summary>
         [JsonProperty("customer")]
         [STJS.JsonPropertyName("customer")]

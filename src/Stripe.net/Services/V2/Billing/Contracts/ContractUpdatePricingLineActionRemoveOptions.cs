@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing
     public class ContractUpdatePricingLineActionRemoveOptions : INestedOptions, IHasId
     {
         /// <summary>
-        /// The ID of the pricing line to remove.
+        /// The id of the pricing line to remove.
         /// </summary>
         [JsonProperty("id")]
         [STJS.JsonPropertyName("id")]

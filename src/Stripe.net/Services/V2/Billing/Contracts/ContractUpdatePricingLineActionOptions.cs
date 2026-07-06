@@ -9,14 +9,14 @@ namespace Stripe.V2.Billing
     public class ContractUpdatePricingLineActionOptions : INestedOptions
     {
         /// <summary>
-        /// Parameters for adding a pricing line.
+        /// Add a pricing line.
         /// </summary>
         [JsonProperty("add")]
         [STJS.JsonPropertyName("add")]
         public ContractUpdatePricingLineActionAddOptions Add { get; set; }
 
         /// <summary>
-        /// Parameters for removing a pricing line.
+        /// Remove a pricing line.
         /// </summary>
         [JsonProperty("remove")]
         [STJS.JsonPropertyName("remove")]
@@ -31,7 +31,7 @@ namespace Stripe.V2.Billing
         public string Type { get; set; }
 
         /// <summary>
-        /// Parameters for updating a pricing line.
+        /// Update a pricing line.
         /// </summary>
         [JsonProperty("update")]
         [STJS.JsonPropertyName("update")]

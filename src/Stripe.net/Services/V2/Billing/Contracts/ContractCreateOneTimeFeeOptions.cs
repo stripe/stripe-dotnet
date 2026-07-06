@@ -30,7 +30,7 @@ namespace Stripe.V2.Billing
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// The ID of the v1 Product for this fee.
+        /// The id of the product for this fee.
         /// </summary>
         [JsonProperty("product")]
         [STJS.JsonPropertyName("product")]

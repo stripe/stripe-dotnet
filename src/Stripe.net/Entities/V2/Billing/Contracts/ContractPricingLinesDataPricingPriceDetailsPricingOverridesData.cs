@@ -6,14 +6,21 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ContractPricingLinesDataPricingPriceDetailsPricingOverridesData : StripeEntity<ContractPricingLinesDataPricingPriceDetailsPricingOverridesData>
+    public class ContractPricingLinesDataPricingPriceDetailsPricingOverridesData : StripeEntity<ContractPricingLinesDataPricingPriceDetailsPricingOverridesData>, IHasId
     {
         /// <summary>
-        /// Resolved timestamp when this override ends.
+        /// Timestamp when this override ends.
         /// </summary>
         [JsonProperty("ends_at")]
         [STJS.JsonPropertyName("ends_at")]
         public ContractPricingLinesDataPricingPriceDetailsPricingOverridesDataEndsAt EndsAt { get; set; }
+
+        /// <summary>
+        /// The ID of the pricing override.
+        /// </summary>
+        [JsonProperty("id")]
+        [STJS.JsonPropertyName("id")]
+        public string Id { get; set; }
 
         /// <summary>
         /// The user-provided lookup key for this override.
@@ -30,14 +37,14 @@ namespace Stripe.V2.Billing
         public ContractPricingLinesDataPricingPriceDetailsPricingOverridesDataOverwritePrice OverwritePrice { get; set; }
 
         /// <summary>
-        /// The ID of the pricing line override.
+        /// The priority of this override relative to others. Lower number = higher priority.
         /// </summary>
-        [JsonProperty("pricing_override")]
-        [STJS.JsonPropertyName("pricing_override")]
-        public string PricingOverride { get; set; }
+        [JsonProperty("priority")]
+        [STJS.JsonPropertyName("priority")]
+        public long Priority { get; set; }
 
         /// <summary>
-        /// Resolved timestamp when this override starts.
+        /// Timestamp when this override starts.
         /// </summary>
         [JsonProperty("starts_at")]
         [STJS.JsonPropertyName("starts_at")]

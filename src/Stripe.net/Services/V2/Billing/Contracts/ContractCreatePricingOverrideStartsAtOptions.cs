@@ -18,7 +18,6 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The type of the starts_at.
-        /// One of: <c>contract_start</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
