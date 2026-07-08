@@ -10,14 +10,14 @@ namespace Stripe.V2.Billing
     public class ContractPricingLinesData : StripeEntity<ContractPricingLinesData>, IHasId, IHasMetadata
     {
         /// <summary>
-        /// Resolved timestamp when the pricing line ends.
+        /// Timestamp when the pricing line ends.
         /// </summary>
         [JsonProperty("ends_at")]
         [STJS.JsonPropertyName("ends_at")]
         public ContractPricingLinesDataEndsAt EndsAt { get; set; }
 
         /// <summary>
-        /// The ID of the pricing line.
+        /// The id of the pricing line.
         /// </summary>
         [JsonProperty("id")]
         [STJS.JsonPropertyName("id")]
@@ -31,7 +31,7 @@ namespace Stripe.V2.Billing
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object.
+        /// Set of key-value pairs.
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
@@ -45,7 +45,7 @@ namespace Stripe.V2.Billing
         public ContractPricingLinesDataPricing Pricing { get; set; }
 
         /// <summary>
-        /// Resolved timestamp when the pricing line starts.
+        /// Timestamp when the pricing line starts.
         /// </summary>
         [JsonProperty("starts_at")]
         [STJS.JsonPropertyName("starts_at")]

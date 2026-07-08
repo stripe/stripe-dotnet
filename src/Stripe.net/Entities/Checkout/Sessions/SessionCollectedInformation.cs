@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -45,10 +44,10 @@ namespace Stripe.Checkout
         public SessionCollectedInformationShippingDetails ShippingDetails { get; set; }
 
         /// <summary>
-        /// Customer’s tax ids for this Checkout Session.
+        /// Customer’s tax id for this Checkout Session.
         /// </summary>
-        [JsonProperty("tax_ids")]
-        [STJS.JsonPropertyName("tax_ids")]
-        public List<SessionCollectedInformationTaxId> TaxIds { get; set; }
+        [JsonProperty("tax_id")]
+        [STJS.JsonPropertyName("tax_id")]
+        public SessionCollectedInformationTaxId TaxId { get; set; }
     }
 }

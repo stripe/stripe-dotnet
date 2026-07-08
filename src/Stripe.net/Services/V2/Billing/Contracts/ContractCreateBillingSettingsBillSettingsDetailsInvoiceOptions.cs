@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing
     public class ContractCreateBillingSettingsBillSettingsDetailsInvoiceOptions : INestedOptions
     {
         /// <summary>
-        /// The number of time units before the invoice is past due.
+        /// How long the customer has to pay the invoice before it's past due.
         /// </summary>
         [JsonProperty("time_until_due")]
         [STJS.JsonPropertyName("time_until_due")]

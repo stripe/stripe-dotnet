@@ -87,6 +87,13 @@ namespace Stripe.V2.MoneyManagement
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// The PayoutMethodNetworkBusinessProfileWallet object details.
+        /// </summary>
+        [JsonProperty("network_business_profile_wallet")]
+        [STJS.JsonPropertyName("network_business_profile_wallet")]
+        public PayoutMethodNetworkBusinessProfileWallet NetworkBusinessProfileWallet { get; set; }
+
+        /// <summary>
         /// Whether the Payout Method is currently unusable for money movement, despite potentially
         /// being correctly set up. Please reach out to Stripe Support for more information.
         /// </summary>
@@ -96,7 +103,8 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Closed Enum. The type of payout method.
-        /// One of: <c>bank_account</c>, <c>card</c>, or <c>crypto_wallet</c>.
+        /// One of: <c>bank_account</c>, <c>card</c>, <c>crypto_wallet</c>, or
+        /// <c>network_business_profile_wallet</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

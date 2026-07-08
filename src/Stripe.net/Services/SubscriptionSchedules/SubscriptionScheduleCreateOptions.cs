@@ -120,9 +120,10 @@ namespace Stripe
 
         /// <summary>
         /// When the subscription schedule starts. We recommend using <c>now</c> so that it starts
-        /// the subscription immediately. You can also use a Unix timestamp to backdate the
-        /// subscription so that it starts on a past date, or set a future date for the subscription
-        /// to start on.
+        /// the subscription immediately, and to avoid unexpected behavior due to request delays or
+        /// clock skew resulting in a slightly backdated or postdated start. You can also use a Unix
+        /// timestamp to backdate the subscription so that it starts on a past date, or set a future
+        /// date for the subscription to start on.
         /// </summary>
         [JsonProperty("start_date")]
         [JsonConverter(typeof(AnyOfConverter))]

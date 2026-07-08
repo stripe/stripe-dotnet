@@ -44,6 +44,14 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("luxury_tax")]
         public RegistrationCountryOptionsUsLuxuryTax LuxuryTax { get; set; }
 
+        [JsonProperty("mass_transit_parking_tax")]
+        [STJS.JsonPropertyName("mass_transit_parking_tax")]
+        public RegistrationCountryOptionsUsMassTransitParkingTax MassTransitParkingTax { get; set; }
+
+        [JsonProperty("parking_tax")]
+        [STJS.JsonPropertyName("parking_tax")]
+        public RegistrationCountryOptionsUsParkingTax ParkingTax { get; set; }
+
         [JsonProperty("resort_tax")]
         [STJS.JsonPropertyName("resort_tax")]
         public RegistrationCountryOptionsUsResortTax ResortTax { get; set; }
@@ -69,7 +77,8 @@ namespace Stripe.Tax
         /// One of: <c>admissions_tax</c>, <c>attendance_tax</c>, <c>entertainment_tax</c>,
         /// <c>gross_receipts_tax</c>, <c>home_rule_tax</c>, <c>hospitality_tax</c>,
         /// <c>local_amusement_tax</c>, <c>local_lease_tax</c>, <c>luxury_tax</c>,
-        /// <c>resort_tax</c>, <c>state_communications_tax</c>, <c>state_retail_delivery_fee</c>,
+        /// <c>mass_transit_parking_tax</c>, <c>parking_tax</c>, <c>resort_tax</c>,
+        /// <c>state_communications_tax</c>, <c>state_retail_delivery_fee</c>,
         /// <c>state_sales_tax</c>, or <c>tourism_tax</c>.
         /// </summary>
         [JsonProperty("type")]

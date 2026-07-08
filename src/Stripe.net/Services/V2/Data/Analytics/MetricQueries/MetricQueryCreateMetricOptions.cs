@@ -9,14 +9,18 @@ namespace Stripe.V2.Data.Analytics
     public class MetricQueryCreateMetricOptions : INestedOptions, IHasId
     {
         /// <summary>
-        /// The ID for this metric, e.g. metric_61Sud3n5oAGVCWiSr5.
+        /// The ID for this metric (for example, <c>metric_61Sud3n5oAGVCWiSr5</c>). For the full
+        /// list of supported metrics, see <a
+        /// href="https://docs.stripe.com/data/analytics/supported-metrics">Supported metrics</a>.
         /// </summary>
         [JsonProperty("id")]
         [STJS.JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
-        /// The common name for this metric, e.g. revenue.mrr.
+        /// The common name for this metric (for example, <c>revenue.mrr</c>). For the full list of
+        /// supported metric names, see <a
+        /// href="https://docs.stripe.com/data/analytics/supported-metrics">Supported metrics</a>.
         /// </summary>
         [JsonProperty("name")]
         [STJS.JsonPropertyName("name")]

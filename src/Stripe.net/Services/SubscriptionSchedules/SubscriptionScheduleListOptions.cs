@@ -37,7 +37,9 @@ namespace Stripe
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
-        /// Only return subscription schedules for the given customer.
+        /// Only return subscription schedules for the given customer. The response will not include
+        /// subscription schedules for customers with a test clock attached if this parameter is not
+        /// set.
         /// </summary>
         [JsonProperty("customer")]
         [STJS.JsonPropertyName("customer")]

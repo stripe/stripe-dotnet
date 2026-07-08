@@ -23,11 +23,11 @@ namespace Stripe.V2.Billing
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// A multiplier override to add.
+        /// A multiply_pricing override to add.
         /// </summary>
-        [JsonProperty("multiplier")]
-        [STJS.JsonPropertyName("multiplier")]
-        public ContractUpdatePricingOverrideActionAddMultiplierOptions Multiplier { get; set; }
+        [JsonProperty("multiply_pricing")]
+        [STJS.JsonPropertyName("multiply_pricing")]
+        public ContractUpdatePricingOverrideActionAddMultiplyPricingOptions MultiplyPricing { get; set; }
 
         /// <summary>
         /// An overwrite price override to add.

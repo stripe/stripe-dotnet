@@ -8,13 +8,13 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// Main Contract resource representing a comprehensive billing agreement.
+    /// Contract resource representing a comprehensive sales agreement.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Contract : StripeEntity<Contract>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
-        /// The ID of the contract object.
+        /// The contract id.
         /// </summary>
         [JsonProperty("id")]
         [STJS.JsonPropertyName("id")]
@@ -29,14 +29,14 @@ namespace Stripe.V2.Billing
         public string Object { get; set; }
 
         /// <summary>
-        /// The billing cycle anchor for the contract.
+        /// The billing cycle anchor.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [STJS.JsonPropertyName("billing_cycle_anchor")]
         public ContractBillingCycleAnchor BillingCycleAnchor { get; set; }
 
         /// <summary>
-        /// The billing settings for the contract.
+        /// The billing settings.
         /// </summary>
         [JsonProperty("billing_settings")]
         [STJS.JsonPropertyName("billing_settings")]
@@ -50,21 +50,21 @@ namespace Stripe.V2.Billing
         public string ContractNumber { get; set; }
 
         /// <summary>
-        /// Timestamp of when the object was created.
+        /// Timestamp of when the contract was created.
         /// </summary>
         [JsonProperty("created")]
         [STJS.JsonPropertyName("created")]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The currency of the contract.
+        /// The currency.
         /// </summary>
         [JsonProperty("currency")]
         [STJS.JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
-        /// The ID of the customer associated with the contract.
+        /// The customer id.
         /// </summary>
         [JsonProperty("customer")]
         [STJS.JsonPropertyName("customer")]
@@ -79,31 +79,23 @@ namespace Stripe.V2.Billing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object.
+        /// Set of key-value pairs.
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The one-time fees of the contract. Only populated when <c>one_time_fees</c> is passed in
-        /// the <c>include</c> parameter.
-        /// </summary>
-        [JsonProperty("one_time_fees")]
-        [STJS.JsonPropertyName("one_time_fees")]
-        public ContractOneTimeFees OneTimeFees { get; set; }
-
-        /// <summary>
-        /// The pricing lines of the contract. Only populated when <c>pricing_lines</c> is passed in
-        /// the <c>include</c> parameter.
+        /// The pricing lines. Only populated when <c>pricing_lines</c> is passed in the
+        /// <c>include</c> parameter.
         /// </summary>
         [JsonProperty("pricing_lines")]
         [STJS.JsonPropertyName("pricing_lines")]
         public ContractPricingLines PricingLines { get; set; }
 
         /// <summary>
-        /// The pricing overrides of the contract. Only populated when <c>pricing_overrides</c> is
-        /// passed in the <c>include</c> parameter.
+        /// The pricing overrides. Only populated when <c>pricing_overrides</c> is passed in the
+        /// <c>include</c> parameter.
         /// </summary>
         [JsonProperty("pricing_overrides")]
         [STJS.JsonPropertyName("pricing_overrides")]
@@ -118,10 +110,10 @@ namespace Stripe.V2.Billing
         public string Status { get; set; }
 
         /// <summary>
-        /// Information about the contract status transitions.
+        /// Historical timestamps of when the contract transitioned into each status.
         /// </summary>
-        [JsonProperty("status_details")]
-        [STJS.JsonPropertyName("status_details")]
-        public ContractStatusDetails StatusDetails { get; set; }
+        [JsonProperty("status_transitions")]
+        [STJS.JsonPropertyName("status_transitions")]
+        public ContractStatusTransitions StatusTransitions { get; set; }
     }
 }

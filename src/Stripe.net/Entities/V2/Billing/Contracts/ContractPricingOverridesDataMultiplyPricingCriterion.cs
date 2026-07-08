@@ -7,7 +7,7 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ContractPricingOverridesDataMultiplierCriterion : StripeEntity<ContractPricingOverridesDataMultiplierCriterion>
+    public class ContractPricingOverridesDataMultiplyPricingCriterion : StripeEntity<ContractPricingOverridesDataMultiplyPricingCriterion>
     {
         /// <summary>
         /// Filter by pricing line IDs.

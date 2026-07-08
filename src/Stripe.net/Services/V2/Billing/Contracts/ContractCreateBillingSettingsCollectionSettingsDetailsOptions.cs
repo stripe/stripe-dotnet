@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing
     public class ContractCreateBillingSettingsCollectionSettingsDetailsOptions : INestedOptions
     {
         /// <summary>
-        /// The collection method.
+        /// How payment is collected for the contract.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
         [JsonProperty("collection_method")]

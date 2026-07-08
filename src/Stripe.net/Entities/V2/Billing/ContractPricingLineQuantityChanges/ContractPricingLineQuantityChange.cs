@@ -14,7 +14,7 @@ namespace Stripe.V2.Billing
     public class ContractPricingLineQuantityChange : StripeEntity<ContractPricingLineQuantityChange>, IHasId, IHasObject
     {
         /// <summary>
-        /// The ID of the quantity change object.
+        /// The id of the quantity change object.
         /// </summary>
         [JsonProperty("id")]
         [STJS.JsonPropertyName("id")]
@@ -58,7 +58,7 @@ namespace Stripe.V2.Billing
         public ContractPricingLineQuantityChangePricing Pricing { get; set; }
 
         /// <summary>
-        /// The ID of the pricing line associated with this quantity change.
+        /// The id of the pricing line associated with this quantity change.
         /// </summary>
         [JsonProperty("pricing_line")]
         [STJS.JsonPropertyName("pricing_line")]

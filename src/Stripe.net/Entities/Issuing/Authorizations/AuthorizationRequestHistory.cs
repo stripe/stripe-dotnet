@@ -85,6 +85,13 @@ namespace Stripe.Issuing
         public string MerchantCurrency { get; set; }
 
         /// <summary>
+        /// Details about the authorization request, such as identifiers, set by the card network.
+        /// </summary>
+        [JsonProperty("network_data")]
+        [STJS.JsonPropertyName("network_data")]
+        public AuthorizationRequestHistoryNetworkData NetworkData { get; set; }
+
+        /// <summary>
         /// The card network's estimate of the likelihood that an authorization is fraudulent. Takes
         /// on values between 1 and 99.
         /// </summary>

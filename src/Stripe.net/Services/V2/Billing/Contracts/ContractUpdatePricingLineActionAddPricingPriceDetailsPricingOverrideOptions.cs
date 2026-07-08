@@ -54,7 +54,7 @@ namespace Stripe.V2.Billing
         public ContractUpdatePricingLineActionAddPricingPriceDetailsPricingOverrideStartsAtOptions StartsAt { get; set; }
 
         /// <summary>
-        /// The type of override. Currently only <c>overwrite_price</c> is supported.
+        /// The type of override.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

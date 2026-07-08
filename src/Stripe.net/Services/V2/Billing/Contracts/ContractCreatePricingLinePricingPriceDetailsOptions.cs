@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class ContractCreatePricingLinePricingPriceDetailsOptions : INestedOptions
     {
         /// <summary>
-        /// The ID of the V1 price.
+        /// The id of the price.
         /// </summary>
         [JsonProperty("price")]
         [STJS.JsonPropertyName("price")]
@@ -25,7 +25,7 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// Quantity changes for the pricing line. For now, at most one entry is allowed. A quantity
-        /// change clears all future quantity changes on this pricing line.
+        /// change clears all future quantity changes on this pricing line. Defaults to 1.
         /// </summary>
         [JsonProperty("quantity_changes")]
         [STJS.JsonPropertyName("quantity_changes")]

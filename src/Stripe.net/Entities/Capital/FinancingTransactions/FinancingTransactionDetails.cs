@@ -31,7 +31,7 @@ namespace Stripe.Capital
 
         /// <summary>
         /// The linked payment for the transaction. This field only applies to financing
-        /// transactions of type <c>paydown</c> and reason <c>automatic_withholding</c>.
+        /// transactions of type <c>payment</c> and reason <c>automatic_withholding</c>.
         /// </summary>
         [JsonProperty("linked_payment")]
         [STJS.JsonPropertyName("linked_payment")]

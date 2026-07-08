@@ -137,6 +137,13 @@ namespace Stripe.V2.Core
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The network object related to this Account.
+        /// </summary>
+        [JsonProperty("related_network_object")]
+        [STJS.JsonPropertyName("related_network_object")]
+        public AccountRelatedNetworkObject RelatedNetworkObject { get; set; }
+
+        /// <summary>
         /// Information about the active requirements for the Account, including what information
         /// needs to be collected, and by when.
         /// </summary>

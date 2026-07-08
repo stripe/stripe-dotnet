@@ -26,6 +26,14 @@ namespace Stripe.Terminal
         public bool? EnableCustomerCancellation { get; set; }
 
         /// <summary>
+        /// The gift card brand to use in the transaction.
+        /// One of: <c>fiserv_valuelink</c>, <c>givex</c>, or <c>svs</c>.
+        /// </summary>
+        [JsonProperty("gift_card_brand")]
+        [STJS.JsonPropertyName("gift_card_brand")]
+        public string GiftCardBrand { get; set; }
+
+        /// <summary>
         /// The URL to redirect your customer back to after they authenticate or cancel their
         /// payment on the payment method's app or site. If you'd prefer to redirect to a mobile
         /// application, you can alternatively supply an application URI scheme.

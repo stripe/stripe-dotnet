@@ -916,6 +916,17 @@ namespace Stripe
                 { "v2.billing.cadence.canceled", typeof(Events.V2BillingCadenceCanceledEvent) },
                 { "v2.billing.cadence.created", typeof(Events.V2BillingCadenceCreatedEvent) },
                 {
+                    "v2.billing.contract.activated", typeof(
+                    Events.V2BillingContractActivatedEvent)
+                },
+                {
+                    "v2.billing.contract.canceled", typeof(
+                    Events.V2BillingContractCanceledEvent)
+                },
+                { "v2.billing.contract.created", typeof(Events.V2BillingContractCreatedEvent) },
+                { "v2.billing.contract.ended", typeof(Events.V2BillingContractEndedEvent) },
+                { "v2.billing.contract.updated", typeof(Events.V2BillingContractUpdatedEvent) },
+                {
                     "v2.billing.license_fee.created", typeof(
                     Events.V2BillingLicenseFeeCreatedEvent)
                 },
@@ -2318,6 +2329,26 @@ namespace Stripe
                 {
                     "v2.billing.cadence.created", typeof(
                     Events.V2BillingCadenceCreatedEventNotification)
+                },
+                {
+                    "v2.billing.contract.activated", typeof(
+                    Events.V2BillingContractActivatedEventNotification)
+                },
+                {
+                    "v2.billing.contract.canceled", typeof(
+                    Events.V2BillingContractCanceledEventNotification)
+                },
+                {
+                    "v2.billing.contract.created", typeof(
+                    Events.V2BillingContractCreatedEventNotification)
+                },
+                {
+                    "v2.billing.contract.ended", typeof(
+                    Events.V2BillingContractEndedEventNotification)
+                },
+                {
+                    "v2.billing.contract.updated", typeof(
+                    Events.V2BillingContractUpdatedEventNotification)
                 },
                 {
                     "v2.billing.license_fee.created", typeof(

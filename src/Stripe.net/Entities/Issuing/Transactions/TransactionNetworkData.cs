@@ -18,6 +18,22 @@ namespace Stripe.Issuing
         public string AcquirerReferenceNumber { get; set; }
 
         /// <summary>
+        /// The two-letter country code of the acquirer (<a
+        /// href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>).
+        /// </summary>
+        [JsonProperty("acquiring_institution_country")]
+        [STJS.JsonPropertyName("acquiring_institution_country")]
+        public string AcquiringInstitutionCountry { get; set; }
+
+        /// <summary>
+        /// Identifier assigned to the acquirer by the card network. Sometimes this value is not
+        /// provided by the network; in this case, the value will be null.
+        /// </summary>
+        [JsonProperty("acquiring_institution_id")]
+        [STJS.JsonPropertyName("acquiring_institution_id")]
+        public string AcquiringInstitutionId { get; set; }
+
+        /// <summary>
         /// A code created by Stripe which is shared with the merchant to validate the
         /// authorization. This field will be populated if the authorization message was approved.
         /// The code typically starts with the letter "S", followed by a six-digit number. For
@@ -36,6 +52,27 @@ namespace Stripe.Issuing
         [JsonProperty("processing_date")]
         [STJS.JsonPropertyName("processing_date")]
         public string ProcessingDate { get; set; }
+
+        /// <summary>
+        /// Identifier assigned by the acquirer to track all messages related to this transaction.
+        /// </summary>
+        [JsonProperty("retrieval_reference_number")]
+        [STJS.JsonPropertyName("retrieval_reference_number")]
+        public string RetrievalReferenceNumber { get; set; }
+
+        /// <summary>
+        /// The card network over which Stripe received the transaction. This field may differ from
+        /// the associated card’s primary network.
+        /// One of: <c>cirrus</c>, <c>interlink</c>, <c>maestro</c>, <c>mastercard</c>,
+        /// <c>other</c>, <c>plus</c>, or <c>visa</c>.
+        /// </summary>
+        [JsonProperty("routed_network")]
+        [STJS.JsonPropertyName("routed_network")]
+        public string RoutedNetwork { get; set; }
+
+        [JsonProperty("trace_id")]
+        [STJS.JsonPropertyName("trace_id")]
+        public TransactionNetworkDataTraceId TraceId { get; set; }
 
         /// <summary>
         /// Unique identifier for the authorization assigned by the card network used to match

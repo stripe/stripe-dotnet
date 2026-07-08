@@ -9,28 +9,28 @@ namespace Stripe.V2.Billing
     public class ContractUpdatePricingLineActionUpdateOptions : INestedOptions, IHasId
     {
         /// <summary>
-        /// The updated end time for the pricing line.
+        /// Updated end time.
         /// </summary>
         [JsonProperty("ends_at")]
         [STJS.JsonPropertyName("ends_at")]
         public ContractUpdatePricingLineActionUpdateEndsAtOptions EndsAt { get; set; }
 
         /// <summary>
-        /// The ID of the pricing line.
+        /// The id of the pricing line.
         /// </summary>
         [JsonProperty("id")]
         [STJS.JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
-        /// Pricing updates for the pricing line (quantity changes and pricing override actions).
+        /// Updated pricing configuration.
         /// </summary>
         [JsonProperty("pricing")]
         [STJS.JsonPropertyName("pricing")]
         public ContractUpdatePricingLineActionUpdatePricingOptions Pricing { get; set; }
 
         /// <summary>
-        /// The updated start time for the pricing line.
+        /// Updated start time.
         /// </summary>
         [JsonProperty("starts_at")]
         [STJS.JsonPropertyName("starts_at")]

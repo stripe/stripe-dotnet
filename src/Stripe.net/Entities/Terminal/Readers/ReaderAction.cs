@@ -9,6 +9,13 @@ namespace Stripe.Terminal
     public class ReaderAction : StripeEntity<ReaderAction>
     {
         /// <summary>
+        /// Represents a reader action to activate a gift card.
+        /// </summary>
+        [JsonProperty("activate_gift_card")]
+        [STJS.JsonPropertyName("activate_gift_card")]
+        public ReaderActionActivateGiftCard ActivateGiftCard { get; set; }
+
+        /// <summary>
         /// The reader action failed due to an <a href="https://docs.stripe.com/api/errors">API
         /// error</a>. Only present when <c>status</c> is <c>failed</c> and the underlying failure
         /// was an API error. Avoid parsing the <c>message</c> field for programmatic logic; use
@@ -20,6 +27,20 @@ namespace Stripe.Terminal
         [JsonProperty("api_error")]
         [STJS.JsonPropertyName("api_error")]
         public StripeError ApiError { get; set; }
+
+        /// <summary>
+        /// Represents a reader action to cash out a gift card.
+        /// </summary>
+        [JsonProperty("cashout_gift_card")]
+        [STJS.JsonPropertyName("cashout_gift_card")]
+        public ReaderActionCashoutGiftCard CashoutGiftCard { get; set; }
+
+        /// <summary>
+        /// Represents a reader action to check a gift card balance.
+        /// </summary>
+        [JsonProperty("check_gift_card_balance")]
+        [STJS.JsonPropertyName("check_gift_card_balance")]
+        public ReaderActionCheckGiftCardBalance CheckGiftCardBalance { get; set; }
 
         /// <summary>
         /// Represents a reader action to collect customer inputs.
@@ -41,6 +62,13 @@ namespace Stripe.Terminal
         [JsonProperty("confirm_payment_intent")]
         [STJS.JsonPropertyName("confirm_payment_intent")]
         public ReaderActionConfirmPaymentIntent ConfirmPaymentIntent { get; set; }
+
+        /// <summary>
+        /// Represents a reader action to deactivate a gift card.
+        /// </summary>
+        [JsonProperty("deactivate_gift_card")]
+        [STJS.JsonPropertyName("deactivate_gift_card")]
+        public ReaderActionDeactivateGiftCard DeactivateGiftCard { get; set; }
 
         /// <summary>
         /// Failure code, only set if status is <c>failed</c>.
@@ -85,6 +113,13 @@ namespace Stripe.Terminal
         public ReaderActionRefundPayment RefundPayment { get; set; }
 
         /// <summary>
+        /// Represents a reader action to reload a gift card.
+        /// </summary>
+        [JsonProperty("reload_gift_card")]
+        [STJS.JsonPropertyName("reload_gift_card")]
+        public ReaderActionReloadGiftCard ReloadGiftCard { get; set; }
+
+        /// <summary>
         /// Represents a reader action to set the reader display.
         /// </summary>
         [JsonProperty("set_reader_display")]
@@ -101,9 +136,11 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// Type of action performed by the reader.
-        /// One of: <c>collect_inputs</c>, <c>collect_payment_method</c>,
-        /// <c>confirm_payment_intent</c>, <c>print_content</c>, <c>process_payment_intent</c>,
-        /// <c>process_setup_intent</c>, <c>refund_payment</c>, or <c>set_reader_display</c>.
+        /// One of: <c>activate_gift_card</c>, <c>cashout_gift_card</c>,
+        /// <c>check_gift_card_balance</c>, <c>collect_inputs</c>, <c>collect_payment_method</c>,
+        /// <c>confirm_payment_intent</c>, <c>deactivate_gift_card</c>, <c>print_content</c>,
+        /// <c>process_payment_intent</c>, <c>process_setup_intent</c>, <c>refund_payment</c>,
+        /// <c>reload_gift_card</c>, or <c>set_reader_display</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

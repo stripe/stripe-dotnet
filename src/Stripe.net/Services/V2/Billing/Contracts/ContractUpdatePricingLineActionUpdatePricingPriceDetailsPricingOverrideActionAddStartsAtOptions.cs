@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class ContractUpdatePricingLineActionUpdatePricingPriceDetailsPricingOverrideActionAddStartsAtOptions : INestedOptions
     {
         /// <summary>
-        /// The timestamp when the item starts.
+        /// The timestamp when the pricing starts.
         /// </summary>
         [JsonProperty("timestamp")]
         [STJS.JsonPropertyName("timestamp")]
@@ -18,7 +18,6 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The type of start time to apply.
-        /// One of: <c>billing_period_start</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

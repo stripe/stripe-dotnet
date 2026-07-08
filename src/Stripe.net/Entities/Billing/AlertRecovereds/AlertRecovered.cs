@@ -17,6 +17,13 @@ namespace Stripe.Billing
         public string Object { get; set; }
 
         /// <summary>
+        /// The aggregation period for which this alert recovered.
+        /// </summary>
+        [JsonProperty("aggregation_period")]
+        [STJS.JsonPropertyName("aggregation_period")]
+        public AlertRecoveredAggregationPeriod AggregationPeriod { get; set; }
+
+        /// <summary>
         /// A billing alert is a resource that notifies you when a certain usage threshold on a
         /// meter is crossed. For example, you might create a billing alert to notify you when a
         /// certain user made 100 API requests.

@@ -23,11 +23,12 @@ namespace Stripe.V2.Billing
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// Parameters for a multiplier override. Required if <c>type</c> is <c>multiplier</c>.
+        /// Parameters for a multiply_pricing override. Required if <c>type</c> is
+        /// <c>multiply_pricing</c>.
         /// </summary>
-        [JsonProperty("multiplier")]
-        [STJS.JsonPropertyName("multiplier")]
-        public ContractCreatePricingOverrideMultiplierOptions Multiplier { get; set; }
+        [JsonProperty("multiply_pricing")]
+        [STJS.JsonPropertyName("multiply_pricing")]
+        public ContractCreatePricingOverrideMultiplyPricingOptions MultiplyPricing { get; set; }
 
         /// <summary>
         /// The priority of this override relative to others. The highest priority is 0 and the

@@ -26,7 +26,7 @@ namespace Stripe.V2.Billing
             this.Requestor);
 
         /// <summary>
-        /// Activate a Draft Contract object by ID.
+        /// Activate a draft contract.
         /// </summary>
         public virtual Contract Activate(string id, ContractActivateOptions options = null, RequestOptions requestOptions = null)
         {
@@ -34,7 +34,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Activate a Draft Contract object by ID.
+        /// Activate a draft contract.
         /// </summary>
         public virtual Task<Contract> ActivateAsync(string id, ContractActivateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -42,7 +42,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Cancel a Contract object by ID.
+        /// Cancel an active contract.
         /// </summary>
         public virtual Contract Cancel(string id, ContractCancelOptions options = null, RequestOptions requestOptions = null)
         {
@@ -50,7 +50,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Cancel a Contract object by ID.
+        /// Cancel an active contract.
         /// </summary>
         public virtual Task<Contract> CancelAsync(string id, ContractCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -58,7 +58,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a Contract object.
+        /// Create a draft contract.
         /// </summary>
         public virtual Contract Create(ContractCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -66,7 +66,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a Contract object.
+        /// Create a draft contract.
         /// </summary>
         public virtual Task<Contract> CreateAsync(ContractCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -74,7 +74,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Delete a draft Contract object by ID.
+        /// Delete a draft contract.
         /// </summary>
         public virtual V2.DeletedObject Delete(string id, ContractDeleteOptions options = null, RequestOptions requestOptions = null)
         {
@@ -82,7 +82,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Delete a draft Contract object by ID.
+        /// Delete a draft contract.
         /// </summary>
         public virtual Task<V2.DeletedObject> DeleteAsync(string id, ContractDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -90,7 +90,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a Contract object by ID.
+        /// Retrieve a contract.
         /// </summary>
         public virtual Contract Get(string id, ContractGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -98,7 +98,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a Contract object by ID.
+        /// Retrieve a contract.
         /// </summary>
         public virtual Task<Contract> GetAsync(string id, ContractGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -106,7 +106,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List Contract objects with pagination.
+        /// List contracts.
         /// </summary>
         public virtual V2.StripeList<Contract> List(ContractListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -114,7 +114,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List Contract objects with pagination.
+        /// List contracts.
         /// </summary>
         public virtual Task<V2.StripeList<Contract>> ListAsync(ContractListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -122,7 +122,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List Contract objects with pagination.
+        /// List contracts.
         /// </summary>
         public virtual IEnumerable<Contract> ListAutoPaging(ContractListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -130,7 +130,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List Contract objects with pagination.
+        /// List contracts.
         /// </summary>
         public virtual IAsyncEnumerable<Contract> ListAutoPagingAsync(ContractListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -138,7 +138,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update a Contract object by ID.
+        /// Update a draft or active contract.
         /// </summary>
         public virtual Contract Update(string id, ContractUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -146,7 +146,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update a Contract object by ID.
+        /// Update a draft or active contract.
         /// </summary>
         public virtual Task<Contract> UpdateAsync(string id, ContractUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

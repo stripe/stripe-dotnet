@@ -30,6 +30,24 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
+        /// <p>Initiates a gift card activation flow on a Reader and optionally sets its
+        /// balance.</p>.
+        /// </summary>
+        public virtual Reader ActivateGiftCard(string id, ReaderActivateGiftCardOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/activate_gift_card", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Initiates a gift card activation flow on a Reader and optionally sets its
+        /// balance.</p>.
+        /// </summary>
+        public virtual Task<Reader> ActivateGiftCardAsync(string id, ReaderActivateGiftCardOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/activate_gift_card", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Cancels the current reader action. See <a
         /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven#programmatic-cancellation">Programmatic
         /// Cancellation</a> for more details.</p>.
@@ -47,6 +65,40 @@ namespace Stripe.Terminal
         public virtual Task<Reader> CancelActionAsync(string id, ReaderCancelActionOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/cancel_action", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Initiates a gift card cashout flow on a Reader. A cashout sets the gift card balance
+        /// to 0.</p>.
+        /// </summary>
+        public virtual Reader CashoutGiftCard(string id, ReaderCashoutGiftCardOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/cashout_gift_card", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Initiates a gift card cashout flow on a Reader. A cashout sets the gift card balance
+        /// to 0.</p>.
+        /// </summary>
+        public virtual Task<Reader> CashoutGiftCardAsync(string id, ReaderCashoutGiftCardOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/cashout_gift_card", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Initiates a gift card balance check flow on a Reader.</p>.
+        /// </summary>
+        public virtual Reader CheckGiftCardBalance(string id, ReaderCheckGiftCardBalanceOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/check_gift_card_balance", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Initiates a gift card balance check flow on a Reader.</p>.
+        /// </summary>
+        public virtual Task<Reader> CheckGiftCardBalanceAsync(string id, ReaderCheckGiftCardBalanceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/check_gift_card_balance", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -249,6 +301,24 @@ namespace Stripe.Terminal
         public virtual Task<Reader> RefundPaymentAsync(string id, ReaderRefundPaymentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/refund_payment", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Initiates a gift card reload flow on a Reader by adding the specified amount to its
+        /// balance.</p>.
+        /// </summary>
+        public virtual Reader ReloadGiftCard(string id, ReaderReloadGiftCardOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/reload_gift_card", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Initiates a gift card reload flow on a Reader by adding the specified amount to its
+        /// balance.</p>.
+        /// </summary>
+        public virtual Task<Reader> ReloadGiftCardAsync(string id, ReaderReloadGiftCardOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/reload_gift_card", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

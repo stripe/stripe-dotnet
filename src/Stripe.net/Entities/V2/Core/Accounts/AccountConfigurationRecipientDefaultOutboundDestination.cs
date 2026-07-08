@@ -46,19 +46,19 @@ namespace Stripe.V2.Core
         /// <c>mg_bank_account</c>, <c>mk_bank_account</c>, <c>mn_bank_account</c>,
         /// <c>mo_bank_account</c>, <c>mt_bank_account</c>, <c>mu_bank_account</c>,
         /// <c>mx_bank_account</c>, <c>my_bank_account</c>, <c>mz_bank_account</c>,
-        /// <c>na_bank_account</c>, <c>ne_bank_account</c>, <c>ng_bank_account</c>,
-        /// <c>ni_bank_account</c>, <c>nl_bank_account</c>, <c>no_bank_account</c>,
-        /// <c>nz_bank_account</c>, <c>om_bank_account</c>, <c>pa_bank_account</c>,
-        /// <c>pe_bank_account</c>, <c>ph_bank_account</c>, <c>pk_bank_account</c>,
-        /// <c>pl_bank_account</c>, <c>pt_bank_account</c>, <c>py_bank_account</c>,
-        /// <c>qa_bank_account</c>, <c>ro_bank_account</c>, <c>rs_bank_account</c>,
-        /// <c>rw_bank_account</c>, <c>sa_bank_account</c>, <c>se_bank_account</c>,
-        /// <c>sg_bank_account</c>, <c>si_bank_account</c>, <c>sk_bank_account</c>,
-        /// <c>sm_bank_account</c>, <c>sn_bank_account</c>, <c>sv_bank_account</c>,
-        /// <c>th_bank_account</c>, <c>tn_bank_account</c>, <c>tr_bank_account</c>,
-        /// <c>tt_bank_account</c>, <c>tw_bank_account</c>, <c>tz_bank_account</c>,
-        /// <c>us_bank_account</c>, <c>uy_bank_account</c>, <c>uz_bank_account</c>,
-        /// <c>vn_bank_account</c>, or <c>za_bank_account</c>.
+        /// <c>na_bank_account</c>, <c>network_business_profile_wallet</c>, <c>ne_bank_account</c>,
+        /// <c>ng_bank_account</c>, <c>ni_bank_account</c>, <c>nl_bank_account</c>,
+        /// <c>no_bank_account</c>, <c>nz_bank_account</c>, <c>om_bank_account</c>,
+        /// <c>pa_bank_account</c>, <c>pe_bank_account</c>, <c>ph_bank_account</c>,
+        /// <c>pk_bank_account</c>, <c>pl_bank_account</c>, <c>pt_bank_account</c>,
+        /// <c>py_bank_account</c>, <c>qa_bank_account</c>, <c>ro_bank_account</c>,
+        /// <c>rs_bank_account</c>, <c>rw_bank_account</c>, <c>sa_bank_account</c>,
+        /// <c>se_bank_account</c>, <c>sg_bank_account</c>, <c>si_bank_account</c>,
+        /// <c>sk_bank_account</c>, <c>sm_bank_account</c>, <c>sn_bank_account</c>,
+        /// <c>sv_bank_account</c>, <c>th_bank_account</c>, <c>tn_bank_account</c>,
+        /// <c>tr_bank_account</c>, <c>tt_bank_account</c>, <c>tw_bank_account</c>,
+        /// <c>tz_bank_account</c>, <c>us_bank_account</c>, <c>uy_bank_account</c>,
+        /// <c>uz_bank_account</c>, <c>vn_bank_account</c>, or <c>za_bank_account</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

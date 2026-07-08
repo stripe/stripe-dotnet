@@ -18,7 +18,6 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The type of the ends_at.
-        /// One of: <c>contract_end</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

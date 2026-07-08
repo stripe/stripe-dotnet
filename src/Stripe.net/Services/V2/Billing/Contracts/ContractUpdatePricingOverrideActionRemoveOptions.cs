@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing
     public class ContractUpdatePricingOverrideActionRemoveOptions : INestedOptions, IHasId
     {
         /// <summary>
-        /// The ID of the pricing override to remove.
+        /// The id of the pricing override to remove.
         /// </summary>
         [JsonProperty("id")]
         [STJS.JsonPropertyName("id")]
