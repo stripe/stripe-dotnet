@@ -145,9 +145,18 @@ namespace Stripe.V2.MoneyManagement
         public ReceivedCreditStripeBalancePayment StripeBalancePayment { get; set; }
 
         /// <summary>
+        /// This object stores details about the Stripe network transfer that resulted in the
+        /// ReceivedCredit. Present if <c>type</c> field value is <c>stripe_network_transfer</c>.
+        /// </summary>
+        [JsonProperty("stripe_network_transfer")]
+        [STJS.JsonPropertyName("stripe_network_transfer")]
+        public ReceivedCreditStripeNetworkTransfer StripeNetworkTransfer { get; set; }
+
+        /// <summary>
         /// Open Enum. The type of flow that caused the ReceivedCredit.
         /// One of: <c>balance_transfer</c>, <c>bank_transfer</c>, <c>card_spend</c>,
-        /// <c>crypto_wallet_transfer</c>, <c>external_credit</c>, or <c>stripe_balance_payment</c>.
+        /// <c>crypto_wallet_transfer</c>, <c>external_credit</c>, <c>stripe_balance_payment</c>, or
+        /// <c>stripe_network_transfer</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

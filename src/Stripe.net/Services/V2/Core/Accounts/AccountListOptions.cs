@@ -26,5 +26,13 @@ namespace Stripe.V2.Core
         [JsonProperty("closed")]
         [STJS.JsonPropertyName("closed")]
         public bool? Closed { get; set; }
+
+        /// <summary>
+        /// Filter by the network object related to the account. If omitted, returns all Accounts
+        /// regardless of the network object they have.
+        /// </summary>
+        [JsonProperty("related_network_object")]
+        [STJS.JsonPropertyName("related_network_object")]
+        public string RelatedNetworkObject { get; set; }
     }
 }

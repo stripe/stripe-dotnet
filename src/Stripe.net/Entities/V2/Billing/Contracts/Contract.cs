@@ -86,14 +86,6 @@ namespace Stripe.V2.Billing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The one-time fees. Only populated when <c>one_time_fees</c> is passed in the
-        /// <c>include</c> parameter.
-        /// </summary>
-        [JsonProperty("one_time_fees")]
-        [STJS.JsonPropertyName("one_time_fees")]
-        public ContractOneTimeFees OneTimeFees { get; set; }
-
-        /// <summary>
         /// The pricing lines. Only populated when <c>pricing_lines</c> is passed in the
         /// <c>include</c> parameter.
         /// </summary>
