@@ -9,7 +9,7 @@ namespace Stripe.Capital
     public class FinancingTransactionListOptions : ListOptions
     {
         /// <summary>
-        /// For transactions of type <c>paydown</c> and reason <c>automatic_withholding</c> only,
+        /// For transactions of type <c>payment</c> and reason <c>automatic_withholding</c> only,
         /// only returns transactions that were created as a result of this charge.
         /// </summary>
         [JsonProperty("charge")]
@@ -32,7 +32,7 @@ namespace Stripe.Capital
         public string ReversedTransaction { get; set; }
 
         /// <summary>
-        /// For transactions of type <c>paydown</c> and reason <c>automatic_withholding</c> only,
+        /// For transactions of type <c>payment</c> and reason <c>automatic_withholding</c> only,
         /// only returns transactions that were created as a result of this Treasury Transaction.
         /// </summary>
         [JsonProperty("treasury_transaction")]

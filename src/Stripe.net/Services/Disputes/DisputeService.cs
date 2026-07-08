@@ -30,7 +30,8 @@ namespace Stripe
 
         /// <summary>
         /// <p>Closing the dispute for a charge indicates that you do not have any evidence to
-        /// submit and are essentially dismissing the dispute, acknowledging it as lost.</p>.
+        /// submit and are essentially dismissing the dispute (accepting it), acknowledging it as
+        /// lost.</p>.
         ///
         /// <p>The status of the dispute will change from <c>needs_response</c> to <c>lost</c>.
         /// <em>Closing a dispute is irreversible</em>.</p>.
@@ -42,7 +43,8 @@ namespace Stripe
 
         /// <summary>
         /// <p>Closing the dispute for a charge indicates that you do not have any evidence to
-        /// submit and are essentially dismissing the dispute, acknowledging it as lost.</p>.
+        /// submit and are essentially dismissing the dispute (accepting it), acknowledging it as
+        /// lost.</p>.
         ///
         /// <p>The status of the dispute will change from <c>needs_response</c> to <c>lost</c>.
         /// <em>Closing a dispute is irreversible</em>.</p>.

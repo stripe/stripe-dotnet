@@ -58,10 +58,10 @@ namespace Stripe
         /// platform</a>.</p>.
         ///
         /// <p>If you’ve already collected information for your connected accounts, you <a
-        /// href="https://stripe.com/docs/connect/best-practices#onboarding">can prefill that
-        /// information</a> when creating the account. Connect Onboarding won’t ask for the
-        /// prefilled information during account onboarding. You can prefill any information on the
-        /// account.</p>.
+        /// href="https://stripe.com/connect/marketplace/tasks/create#prefill-account-information">can
+        /// prefill that information</a> when creating the account. Connect Onboarding won’t ask for
+        /// the prefilled information during account onboarding. You can prefill any information on
+        /// the account.</p>.
         /// </summary>
         public virtual Account Create(AccountCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -75,10 +75,10 @@ namespace Stripe
         /// platform</a>.</p>.
         ///
         /// <p>If you’ve already collected information for your connected accounts, you <a
-        /// href="https://stripe.com/docs/connect/best-practices#onboarding">can prefill that
-        /// information</a> when creating the account. Connect Onboarding won’t ask for the
-        /// prefilled information during account onboarding. You can prefill any information on the
-        /// account.</p>.
+        /// href="https://stripe.com/connect/marketplace/tasks/create#prefill-account-information">can
+        /// prefill that information</a> when creating the account. Connect Onboarding won’t ask for
+        /// the prefilled information during account onboarding. You can prefill any information on
+        /// the account.</p>.
         /// </summary>
         public virtual Task<Account> CreateAsync(AccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

@@ -80,6 +80,10 @@ namespace Stripe
         [STJS.JsonPropertyName("paypal")]
         public SetupAttemptPaymentMethodDetailsPaypal Paypal { get; set; }
 
+        [JsonProperty("paypay")]
+        [STJS.JsonPropertyName("paypay")]
+        public SetupAttemptPaymentMethodDetailsPaypay Paypay { get; set; }
+
         [JsonProperty("payto")]
         [STJS.JsonPropertyName("payto")]
         public SetupAttemptPaymentMethodDetailsPayto Payto { get; set; }

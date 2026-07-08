@@ -57,8 +57,8 @@ namespace Stripe
         public string DisabledReason { get; set; }
 
         /// <summary>
-        /// Details about validation and verification failures for <c>due</c> requirements that must
-        /// be resolved.
+        /// Fields that are <c>currently_due</c> and need to be collected again because validation
+        /// or verification failed.
         /// </summary>
         [JsonProperty("errors")]
         [STJS.JsonPropertyName("errors")]

@@ -9,6 +9,14 @@ namespace Stripe.Checkout
     public class SessionAutomaticTax : StripeEntity<SessionAutomaticTax>
     {
         /// <summary>
+        /// Controls how much address information Checkout collects when automatic tax is enabled.
+        /// One of: <c>full</c>, or <c>minimal</c>.
+        /// </summary>
+        [JsonProperty("address_collection_precision")]
+        [STJS.JsonPropertyName("address_collection_precision")]
+        public string AddressCollectionPrecision { get; set; }
+
+        /// <summary>
         /// Indicates whether automatic tax is enabled for the session.
         /// </summary>
         [JsonProperty("enabled")]

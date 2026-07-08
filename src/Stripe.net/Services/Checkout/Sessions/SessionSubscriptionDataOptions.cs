@@ -30,8 +30,7 @@ namespace Stripe.Checkout
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
-        /// A future timestamp to anchor the subscription's billing cycle for new subscriptions. You
-        /// can't set this parameter if <c>ui_mode</c> is <c>elements</c>.
+        /// A future timestamp to anchor the subscription's billing cycle for new subscriptions.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
