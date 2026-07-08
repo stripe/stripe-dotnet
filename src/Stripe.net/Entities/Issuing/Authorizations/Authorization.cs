@@ -283,6 +283,13 @@ namespace Stripe.Issuing
         [STJS.JsonPropertyName("status")]
         public string Status { get; set; }
 
+        /// <summary>
+        /// Details about the cardholder verification outcome at the terminal.
+        /// </summary>
+        [JsonProperty("terminal_data")]
+        [STJS.JsonPropertyName("terminal_data")]
+        public AuthorizationTerminalData TerminalData { get; set; }
+
         #region Expandable Token
 
         /// <summary>

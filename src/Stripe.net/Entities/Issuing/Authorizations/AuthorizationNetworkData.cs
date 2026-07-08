@@ -9,12 +9,26 @@ namespace Stripe.Issuing
     public class AuthorizationNetworkData : StripeEntity<AuthorizationNetworkData>
     {
         /// <summary>
+        /// Country code of the acquirer assigned by the card network.
+        /// </summary>
+        [JsonProperty("acquiring_institution_country")]
+        [STJS.JsonPropertyName("acquiring_institution_country")]
+        public string AcquiringInstitutionCountry { get; set; }
+
+        /// <summary>
         /// Identifier assigned to the acquirer by the card network. Sometimes this value is not
         /// provided by the network; in this case, the value will be <c>null</c>.
         /// </summary>
         [JsonProperty("acquiring_institution_id")]
         [STJS.JsonPropertyName("acquiring_institution_id")]
         public string AcquiringInstitutionId { get; set; }
+
+        /// <summary>
+        /// Identifier assigned by the acquirer to track all messages related to this transaction.
+        /// </summary>
+        [JsonProperty("retrieval_reference_number")]
+        [STJS.JsonPropertyName("retrieval_reference_number")]
+        public string RetrievalReferenceNumber { get; set; }
 
         /// <summary>
         /// The System Trace Audit Number (STAN) is a 6-digit identifier assigned by the acquirer.

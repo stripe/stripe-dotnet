@@ -358,6 +358,13 @@ namespace Stripe.Issuing
         internal ExpandableField<Settlement> InternalSettlement { get; set; }
         #endregion
 
+        /// <summary>
+        /// Details about the transaction for settlement reconciliation.
+        /// </summary>
+        [JsonProperty("settlement_details")]
+        [STJS.JsonPropertyName("settlement_details")]
+        public TransactionSettlementDetails SettlementDetails { get; set; }
+
         #region Expandable Token
 
         /// <summary>
