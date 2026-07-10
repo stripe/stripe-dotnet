@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System.Text.Json;
     using System.Threading.Tasks;
     using Stripe;
     using Xunit;
@@ -25,6 +26,24 @@ namespace StripeTests
             Assert.NotNull(exception);
             Assert.NotNull(exception.StripeError);
             Assert.NotNull(exception.StripeError.StripeResponse);
+        }
+
+        [Fact]
+        public void DeserializesNetworkAdviceCode()
+        {
+            var json = "{\"type\": \"card_error\", \"network_advice_code\": \"02\"}";
+            var error = JsonSerializer.Deserialize<StripeError>(json);
+            Assert.Equal("02", error.NetworkAdviceCode);
+        }
+
+        [Fact]
+        public void DeserializesPaymentIntent()
+        {
+            var json = "{\"type\": \"card_error\", \"payment_intent\": {\"id\": \"pi_123\", \"object\": \"payment_intent\", \"amount\": 1000}}";
+            var error = JsonSerializer.Deserialize<StripeError>(json);
+            Assert.NotNull(error.PaymentIntent);
+            Assert.Equal("pi_123", error.PaymentIntent.Id);
+            Assert.Equal(1000, error.PaymentIntent.Amount);
         }
     }
 }
