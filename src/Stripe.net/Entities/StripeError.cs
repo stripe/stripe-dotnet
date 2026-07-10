@@ -82,14 +82,16 @@ namespace Stripe
         public string Param { get; set; }
 
         /// <summary>
-        /// The PaymentIntent object for errors returned on a request involving a PaymentIntent.
+        /// The <see cref="Stripe.PaymentIntent"/> object for errors returned on a request involving
+        /// a <see cref="Stripe.PaymentIntent"/>.
         /// </summary>
         [JsonProperty("payment_intent")]
         [STJS.JsonPropertyName("payment_intent")]
         public PaymentIntent PaymentIntent { get; set; }
 
         /// <summary>
-        /// The PaymentMethod object for errors returned on a request involving a PaymentMethod.
+        /// The <see cref="Stripe.PaymentMethod"/> object for errors returned on a request involving
+        /// a <see cref="Stripe.PaymentMethod"/>.
         /// </summary>
         [JsonProperty("payment_method")]
         [STJS.JsonPropertyName("payment_method")]
@@ -111,7 +113,8 @@ namespace Stripe
         public string RequestLogUrl { get; set; }
 
         /// <summary>
-        /// The SetupIntent object for errors returned on a request involving a SetupIntent.
+        /// The <see cref="Stripe.SetupIntent"/> object for errors returned on a request involving a
+        /// <see cref="Stripe.SetupIntent"/>.
         /// </summary>
         [JsonProperty("setup_intent")]
         [STJS.JsonPropertyName("setup_intent")]
