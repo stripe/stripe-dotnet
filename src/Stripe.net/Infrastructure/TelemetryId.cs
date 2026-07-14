@@ -11,6 +11,9 @@ namespace Stripe.Infrastructure
         private static string cachedId;
         private static bool loaded;
 
+        // For testing: overrides GetConfigDir() when set.
+        internal static string ConfigDirOverride { get; set; }
+
         public static string Get()
         {
             if (loaded)
@@ -64,7 +67,7 @@ namespace Stripe.Infrastructure
 
         private static string Resolve()
         {
-            var configDir = GetConfigDir();
+            var configDir = ConfigDirOverride ?? GetConfigDir();
             if (configDir == null)
             {
                 return null;
@@ -122,6 +125,7 @@ namespace Stripe.Infrastructure
             {
                 cachedId = null;
                 loaded = false;
+                ConfigDirOverride = null;
             }
         }
     }
