@@ -112,6 +112,92 @@ namespace StripeTests
         }
 
         [Fact]
+        public void GetReturnsNullWhenWriteFails()
+        {
+            var tmpDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            try
+            {
+                // Create a regular file where the config directory would need to be.
+                // Pointing ConfigDirOverride to a path inside that file makes
+                // Directory.CreateDirectory throw, causing Get() to return null.
+                Directory.CreateDirectory(tmpDir);
+                var blockingFile = Path.Combine(tmpDir, "not-a-dir");
+                File.WriteAllText(blockingFile, "I am a file, not a directory");
+
+                TelemetryId.Reset();
+                TelemetryId.ConfigDirOverride = Path.Combine(blockingFile, "stripe");
+
+                var id = TelemetryId.Get();
+
+                Assert.Null(id);
+            }
+            finally
+            {
+                TelemetryId.Reset();
+                if (Directory.Exists(tmpDir))
+                {
+                    Directory.Delete(tmpDir, recursive: true);
+                }
+            }
+        }
+
+        [Fact]
+        public void GetCreatesParentDirectoriesIfMissing()
+        {
+            var tmpDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            var nestedDir = Path.Combine(tmpDir, "nested", "config");
+            try
+            {
+                TelemetryId.Reset();
+                TelemetryId.ConfigDirOverride = nestedDir;
+
+                var id = TelemetryId.Get();
+
+                Assert.NotNull(id);
+                Assert.Matches("^[0-9a-f]{32}$", id);
+                Assert.True(Directory.Exists(nestedDir));
+            }
+            finally
+            {
+                TelemetryId.Reset();
+                if (Directory.Exists(tmpDir))
+                {
+                    Directory.Delete(tmpDir, recursive: true);
+                }
+            }
+        }
+
+        [Fact]
+        public void GetReadsPersistedValueAfterReset()
+        {
+            var tmpDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            try
+            {
+                TelemetryId.Reset();
+                TelemetryId.ConfigDirOverride = tmpDir;
+
+                var id1 = TelemetryId.Get();
+
+                // Reset clears the in-memory cache; the next Get() must read from disk.
+                TelemetryId.Reset();
+                TelemetryId.ConfigDirOverride = tmpDir;
+
+                var id2 = TelemetryId.Get();
+
+                Assert.NotNull(id1);
+                Assert.Equal(id1, id2);
+            }
+            finally
+            {
+                TelemetryId.Reset();
+                if (Directory.Exists(tmpDir))
+                {
+                    Directory.Delete(tmpDir, recursive: true);
+                }
+            }
+        }
+
+        [Fact]
         public void GetConfigDir_UnixUsesXdgConfigHomeWhenSet()
         {
             if (Environment.OSVersion.Platform == PlatformID.Win32NT)

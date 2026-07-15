@@ -2,7 +2,6 @@
 
 [![NuGet](https://img.shields.io/nuget/v/stripe.net.svg)](https://www.nuget.org/packages/Stripe.net/)
 [![Build Status](https://github.com/stripe/stripe-dotnet/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/stripe/stripe-dotnet/actions?query=branch%3Amaster)
-[![Coverage Status](https://coveralls.io/repos/github/stripe/stripe-dotnet/badge.svg?branch=master)](https://coveralls.io/github/stripe/stripe-dotnet?branch=master)
 
 > [!TIP]
 > Want to chat live with Stripe engineers? Join us on our [Discord server](https://stripe.com/go/discord/dotnet).
