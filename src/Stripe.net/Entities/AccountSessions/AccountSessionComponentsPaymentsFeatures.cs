@@ -38,5 +38,13 @@ namespace Stripe
         [JsonProperty("refund_management")]
         [STJS.JsonPropertyName("refund_management")]
         public bool RefundManagement { get; set; }
+
+        /// <summary>
+        /// Whether to allow connected accounts to submit disputes using Smart Disputes. Defaults to
+        /// the value of <c>dispute_management</c>.
+        /// </summary>
+        [JsonProperty("smart_disputes_management")]
+        [STJS.JsonPropertyName("smart_disputes_management")]
+        public bool SmartDisputesManagement { get; set; }
     }
 }

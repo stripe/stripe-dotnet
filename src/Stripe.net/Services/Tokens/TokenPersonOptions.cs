@@ -133,6 +133,10 @@ namespace Stripe
         /// itself, you can also provide a <a
         /// href="https://docs.stripe.com/js/tokens/create_token?type=pii">PII token provided by
         /// Stripe.js</a>.
+        ///
+        /// Changing this value for the account's representative requires that the account re-accept
+        /// the <a href="https://stripe.com/api/accounts/object#account_object-tos_acceptance">terms
+        /// of service</a>.
         /// </summary>
         [JsonProperty("id_number")]
         [STJS.JsonPropertyName("id_number")]
@@ -144,6 +148,10 @@ namespace Stripe
         /// back of an ID card. Instead of the number itself, you can also provide a <a
         /// href="https://docs.stripe.com/js/tokens/create_token?type=pii">PII token provided by
         /// Stripe.js</a>.
+        ///
+        /// Changing this value for the account's representative requires that the account re-accept
+        /// the <a href="https://stripe.com/api/accounts/object#account_object-tos_acceptance">terms
+        /// of service</a>.
         /// </summary>
         [JsonProperty("id_number_secondary")]
         [STJS.JsonPropertyName("id_number_secondary")]
@@ -252,6 +260,10 @@ namespace Stripe
 
         /// <summary>
         /// The last four digits of the person's Social Security number (U.S. only).
+        ///
+        /// Changing this value for the account's representative requires that the account re-accept
+        /// the <a href="https://stripe.com/api/accounts/object#account_object-tos_acceptance">terms
+        /// of service</a>.
         /// </summary>
         [JsonProperty("ssn_last_4")]
         [STJS.JsonPropertyName("ssn_last_4")]

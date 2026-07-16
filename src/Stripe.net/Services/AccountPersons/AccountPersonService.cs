@@ -48,7 +48,7 @@ namespace Stripe
         /// <summary>
         /// <p>Deletes an existing person’s relationship to the account’s legal entity. Any person
         /// with a relationship for an account can be deleted through the API, except if the person
-        /// is the <c>account_opener</c>. If your integration is using the <c>executive</c>
+        /// is the <c>representative</c>. If your integration is using the <c>executive</c>
         /// parameter, you cannot delete the only verified <c>executive</c> on file.</p>.
         /// </summary>
         public virtual Person Delete(string parentId, string id, AccountPersonDeleteOptions options = null, RequestOptions requestOptions = null)
@@ -59,7 +59,7 @@ namespace Stripe
         /// <summary>
         /// <p>Deletes an existing person’s relationship to the account’s legal entity. Any person
         /// with a relationship for an account can be deleted through the API, except if the person
-        /// is the <c>account_opener</c>. If your integration is using the <c>executive</c>
+        /// is the <c>representative</c>. If your integration is using the <c>executive</c>
         /// parameter, you cannot delete the only verified <c>executive</c> on file.</p>.
         /// </summary>
         public virtual Task<Person> DeleteAsync(string parentId, string id, AccountPersonDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)

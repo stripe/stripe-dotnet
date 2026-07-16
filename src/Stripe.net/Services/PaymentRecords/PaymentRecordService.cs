@@ -27,6 +27,24 @@ namespace Stripe
         }
 
         /// <summary>
+        /// <p>Report that the most recent payment attempt on the specified Payment Record was
+        /// disputed.</p>.
+        /// </summary>
+        public virtual PaymentRecord Create(string id, PaymentRecordCreateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request<PaymentRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_records/{WebUtility.UrlEncode(id)}/report_dispute", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Report that the most recent payment attempt on the specified Payment Record was
+        /// disputed.</p>.
+        /// </summary>
+        public virtual Task<PaymentRecord> CreateAsync(string id, PaymentRecordCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<PaymentRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_records/{WebUtility.UrlEncode(id)}/report_dispute", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Retrieves a Payment Record with the given ID</p>.
         /// </summary>
         public virtual PaymentRecord Get(string id, PaymentRecordGetOptions options = null, RequestOptions requestOptions = null)

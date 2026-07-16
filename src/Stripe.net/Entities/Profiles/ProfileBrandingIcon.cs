@@ -8,6 +8,9 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ProfileBrandingIcon : StripeEntity<ProfileBrandingIcon>
     {
+        /// <summary>
+        /// The original image.
+        /// </summary>
         [JsonProperty("original")]
         [STJS.JsonPropertyName("original")]
         public string Original { get; set; }

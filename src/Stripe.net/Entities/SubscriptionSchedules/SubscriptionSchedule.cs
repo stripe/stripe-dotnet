@@ -248,6 +248,13 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The pause schedules for this subscription schedule.
+        /// </summary>
+        [JsonProperty("pause_schedules")]
+        [STJS.JsonPropertyName("pause_schedules")]
+        public List<SubscriptionSchedulePauseSchedule> PauseSchedules { get; set; }
+
+        /// <summary>
         /// Configuration for the subscription schedule's phases.
         /// </summary>
         [JsonProperty("phases")]

@@ -9,8 +9,17 @@ namespace Stripe.SharedPayment
     public class IssuedTokenNextAction : StripeEntity<IssuedTokenNextAction>
     {
         /// <summary>
+        /// Contains details for handling the next action by redirecting the customer. Present when
+        /// <c>next_action.type</c> is <c>redirect_to_url</c>.
+        /// </summary>
+        [JsonProperty("redirect_to_url")]
+        [STJS.JsonPropertyName("redirect_to_url")]
+        public IssuedTokenNextActionRedirectToUrl RedirectToUrl { get; set; }
+
+        /// <summary>
         /// Specifies the type of next action required. Determines which child attribute contains
         /// action details.
+        /// One of: <c>redirect_to_url</c>, or <c>use_stripe_sdk</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

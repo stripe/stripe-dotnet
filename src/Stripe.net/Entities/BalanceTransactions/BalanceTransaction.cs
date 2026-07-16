@@ -86,7 +86,7 @@ namespace Stripe
 
         /// <summary>
         /// If applicable, this transaction uses an exchange rate. If money converts from currency A
-        /// to currency B, then the <c>amount</c> in currency A, multipled by the
+        /// to currency B, then the <c>amount</c> in currency A, multiplied by the
         /// <c>exchange_rate</c>, equals the <c>amount</c> in currency B. For example, if you charge
         /// a customer 10.00 EUR, the PaymentIntent's <c>amount</c> is <c>1000</c> and
         /// <c>currency</c> is <c>eur</c>. If this converts to 12.34 USD in your Stripe account, the

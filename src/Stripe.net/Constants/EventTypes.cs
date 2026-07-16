@@ -537,6 +537,11 @@ namespace Stripe
         public const string FinancialConnectionsAccountDisconnected = "financial_connections.account.disconnected";
 
         /// <summary>
+        /// Occurs when a Financial Connections account’s <c>expected_deactivation_date</c> changes.
+        /// </summary>
+        public const string FinancialConnectionsAccountExpectedDeactivationDateUpdated = "financial_connections.account.expected_deactivation_date_updated";
+
+        /// <summary>
         /// Occurs when a Financial Connections account's status is updated from <c>inactive</c> to
         /// <c>active</c>.
         /// </summary>
@@ -567,9 +572,31 @@ namespace Stripe
         public const string FinancialConnectionsAccountRefreshedTransactions = "financial_connections.account.refreshed_transactions";
 
         /// <summary>
+        /// Occurs when the supported_payment_method_types array on a Financial Connections account
+        /// changes.
+        /// </summary>
+        public const string FinancialConnectionsAccountSupportedPaymentMethodTypesUpdated = "financial_connections.account.supported_payment_method_types_updated";
+
+        /// <summary>
         /// Occurs when an Account’s tokenized account number is about to expire.
         /// </summary>
         public const string FinancialConnectionsAccountUpcomingAccountNumberExpiry = "financial_connections.account.upcoming_account_number_expiry";
+
+        /// <summary>
+        /// Occurs when a Financial Connections account is about to become <c>inactive</c>.
+        /// </summary>
+        public const string FinancialConnectionsAccountUpcomingDeactivation = "financial_connections.account.upcoming_deactivation";
+
+        /// <summary>
+        /// Occurs when a Financial Connections authorization’s <c>expected_deactivation_date</c>
+        /// changes.
+        /// </summary>
+        public const string FinancialConnectionsAuthorizationExpectedDeactivationDateUpdated = "financial_connections.authorization.expected_deactivation_date_updated";
+
+        /// <summary>
+        /// Occurs when a Financial Connections authorization is about to become <c>inactive</c>.
+        /// </summary>
+        public const string FinancialConnectionsAuthorizationUpcomingDeactivation = "financial_connections.authorization.upcoming_deactivation";
 
         /// <summary>
         /// Occurs when a Financial Connections Session <c>status</c> transitions from

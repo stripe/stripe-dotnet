@@ -126,8 +126,9 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Detaches a PaymentMethod object from a Customer. After a PaymentMethod is detached,
-        /// it can no longer be used for a payment or re-attached to a Customer.</p>.
+        /// <p>Detaches a PaymentMethod object from a Customer. Detachment is permanent and
+        /// irreversible — once detached, a PaymentMethod can no longer be used for payments or
+        /// re-attached to a Customer.</p>.
         /// </summary>
         public virtual PaymentMethod Detach(string id, PaymentMethodDetachOptions options = null, RequestOptions requestOptions = null)
         {
@@ -135,8 +136,9 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Detaches a PaymentMethod object from a Customer. After a PaymentMethod is detached,
-        /// it can no longer be used for a payment or re-attached to a Customer.</p>.
+        /// <p>Detaches a PaymentMethod object from a Customer. Detachment is permanent and
+        /// irreversible — once detached, a PaymentMethod can no longer be used for payments or
+        /// re-attached to a Customer.</p>.
         /// </summary>
         public virtual Task<PaymentMethod> DetachAsync(string id, PaymentMethodDetachOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

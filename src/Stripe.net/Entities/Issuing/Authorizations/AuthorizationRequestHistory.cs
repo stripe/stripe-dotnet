@@ -107,9 +107,9 @@ namespace Stripe.Issuing
         /// <c>cardholder_inactive</c>, <c>cardholder_verification_required</c>,
         /// <c>insecure_authorization_method</c>, <c>insufficient_funds</c>,
         /// <c>network_fallback</c>, <c>not_allowed</c>, <c>pin_blocked</c>,
-        /// <c>spending_controls</c>, <c>suspected_fraud</c>, <c>verification_failed</c>,
-        /// <c>webhook_approved</c>, <c>webhook_declined</c>, <c>webhook_error</c>, or
-        /// <c>webhook_timeout</c>.
+        /// <c>spending_controls</c>, <c>stripe_internal_error</c>, <c>suspected_fraud</c>,
+        /// <c>verification_failed</c>, <c>webhook_approved</c>, <c>webhook_declined</c>,
+        /// <c>webhook_error</c>, or <c>webhook_timeout</c>.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]
