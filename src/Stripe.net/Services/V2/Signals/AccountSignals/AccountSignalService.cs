@@ -37,7 +37,9 @@ namespace Stripe.V2.Signals
         }
 
         /// <summary>
-        /// Lists AccountSignals for a given account or customer, filtered by signal type.
+        /// Lists the latest AccountSignals for a given account or customer, filtered by signal
+        /// type. Note that this endpoint returns only the latest signal for each requested signal
+        /// type.
         /// </summary>
         public virtual V2.StripeList<AccountSignal> List(AccountSignalListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -45,7 +47,9 @@ namespace Stripe.V2.Signals
         }
 
         /// <summary>
-        /// Lists AccountSignals for a given account or customer, filtered by signal type.
+        /// Lists the latest AccountSignals for a given account or customer, filtered by signal
+        /// type. Note that this endpoint returns only the latest signal for each requested signal
+        /// type.
         /// </summary>
         public virtual Task<V2.StripeList<AccountSignal>> ListAsync(AccountSignalListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -53,7 +57,9 @@ namespace Stripe.V2.Signals
         }
 
         /// <summary>
-        /// Lists AccountSignals for a given account or customer, filtered by signal type.
+        /// Lists the latest AccountSignals for a given account or customer, filtered by signal
+        /// type. Note that this endpoint returns only the latest signal for each requested signal
+        /// type.
         /// </summary>
         public virtual IEnumerable<AccountSignal> ListAutoPaging(AccountSignalListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -61,7 +67,9 @@ namespace Stripe.V2.Signals
         }
 
         /// <summary>
-        /// Lists AccountSignals for a given account or customer, filtered by signal type.
+        /// Lists the latest AccountSignals for a given account or customer, filtered by signal
+        /// type. Note that this endpoint returns only the latest signal for each requested signal
+        /// type.
         /// </summary>
         public virtual IAsyncEnumerable<AccountSignal> ListAutoPagingAsync(AccountSignalListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

@@ -50,6 +50,14 @@ namespace Stripe
         public string DocUrl { get; set; }
 
         /// <summary>
+        /// The <see cref="Stripe.GiftCardOperation"/> object for errors returned on a request
+        /// involving a <see cref="Stripe.GiftCardOperation"/>.
+        /// </summary>
+        [JsonProperty("gift_card_operation")]
+        [STJS.JsonPropertyName("gift_card_operation")]
+        public GiftCardOperation GiftCardOperation { get; set; }
+
+        /// <summary>
         /// A human-readable message providing more details about the error. For card errors, these
         /// messages can be shown to your users.
         /// </summary>

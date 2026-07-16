@@ -87,6 +87,13 @@ namespace Stripe
         public string PaymentIntent { get; set; }
 
         /// <summary>
+        /// The identifier of the PaymentRecord to refund.
+        /// </summary>
+        [JsonProperty("payment_record")]
+        [STJS.JsonPropertyName("payment_record")]
+        public string PaymentRecord { get; set; }
+
+        /// <summary>
         /// String indicating the reason for the refund. If set, possible values are
         /// <c>duplicate</c>, <c>fraudulent</c>, and <c>requested_by_customer</c>. If you believe
         /// the charge to be fraudulent, specifying <c>fraudulent</c> as the reason will add the

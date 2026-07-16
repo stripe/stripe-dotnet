@@ -11,6 +11,7 @@ namespace Stripe
     {
         private List<SubscriptionScheduleBillingScheduleOptions> billingSchedules;
         private Dictionary<string, string> metadata;
+        private List<SubscriptionSchedulePauseScheduleOptions> pauseSchedules;
 
         /// <summary>
         /// Configures when the subscription schedule generates prorations for phase transitions.
@@ -74,6 +75,24 @@ namespace Stripe
             set
             {
                 this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// Sets the pause schedules for the subscription schedule. Include a <c>key</c> to update
+        /// an existing entry or omit it to add a new one. Pass <c>""</c> to clear all entries or
+        /// <c>[]</c> to leave them unchanged.
+        /// </summary>
+        [JsonProperty("pause_schedules", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("pause_schedules")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public List<SubscriptionSchedulePauseScheduleOptions> PauseSchedules
+        {
+            get => this.pauseSchedules;
+            set
+            {
+                this.pauseSchedules = value;
                 this.SetTracker.Track();
             }
         }

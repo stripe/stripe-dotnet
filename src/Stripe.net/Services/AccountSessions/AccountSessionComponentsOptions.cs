@@ -163,24 +163,6 @@ namespace Stripe
 
         /// <summary>
         /// Configuration for the <a
-        /// href="https://stripe.com/connect/supported-embedded-components/financial-accounts/">financial
-        /// accounts</a> embedded component.
-        /// </summary>
-        [JsonProperty("financial_accounts")]
-        [STJS.JsonPropertyName("financial_accounts")]
-        public AccountSessionComponentsFinancialAccountsOptions FinancialAccounts { get; set; }
-
-        /// <summary>
-        /// Configuration for the <a
-        /// href="https://stripe.com/connect/supported-embedded-components/financial-accounts-transactions/">financial
-        /// accounts transactions</a> embedded component.
-        /// </summary>
-        [JsonProperty("financial_accounts_transactions")]
-        [STJS.JsonPropertyName("financial_accounts_transactions")]
-        public AccountSessionComponentsFinancialAccountsTransactionsOptions FinancialAccountsTransactions { get; set; }
-
-        /// <summary>
-        /// Configuration for the <a
         /// href="https://stripe.com/connect/supported-embedded-components/instant-payouts-promotion/">instant
         /// payouts promotion</a> embedded component.
         /// </summary>
@@ -304,15 +286,6 @@ namespace Stripe
         [JsonProperty("recipients")]
         [STJS.JsonPropertyName("recipients")]
         public AccountSessionComponentsRecipientsOptions Recipients { get; set; }
-
-        /// <summary>
-        /// Configuration for the <a
-        /// href="https://stripe.com/connect/supported-embedded-components/recipients-list/">recipients
-        /// list</a> embedded component.
-        /// </summary>
-        [JsonProperty("recipients_list")]
-        [STJS.JsonPropertyName("recipients_list")]
-        public AccountSessionComponentsRecipientsListOptions RecipientsList { get; set; }
 
         /// <summary>
         /// Configuration for the <a

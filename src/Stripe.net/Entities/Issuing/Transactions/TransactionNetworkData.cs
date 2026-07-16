@@ -70,6 +70,9 @@ namespace Stripe.Issuing
         [STJS.JsonPropertyName("routed_network")]
         public string RoutedNetwork { get; set; }
 
+        /// <summary>
+        /// Mastercard identifier assigned by the card network for the transaction.
+        /// </summary>
         [JsonProperty("trace_id")]
         [STJS.JsonPropertyName("trace_id")]
         public TransactionNetworkDataTraceId TraceId { get; set; }

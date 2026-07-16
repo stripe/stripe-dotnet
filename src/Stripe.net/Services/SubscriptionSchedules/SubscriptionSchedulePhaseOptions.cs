@@ -285,8 +285,8 @@ namespace Stripe
         public string TrialContinuation { get; set; }
 
         /// <summary>
-        /// Sets the phase to trialing from the start date to this date. Must be before the phase
-        /// end date, can not be combined with <c>trial</c>.
+        /// Sets the phase to trialing from the start date to this date. Must be within the phase.
+        /// When combined with <c>trial=true</c>, it must match the phase end date.
         /// </summary>
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(AnyOfConverter))]

@@ -9,6 +9,13 @@ namespace Stripe
     public class PaymentRecordProcessorDetailsCustomOptions : INestedOptions
     {
         /// <summary>
+        /// A reference to the external dispute. This field must be unique across all disputes.
+        /// </summary>
+        [JsonProperty("dispute_reference")]
+        [STJS.JsonPropertyName("dispute_reference")]
+        public string DisputeReference { get; set; }
+
+        /// <summary>
         /// An opaque string for manual reconciliation of this payment, for example a check number
         /// or a payment processor ID.
         /// </summary>

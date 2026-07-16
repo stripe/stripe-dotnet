@@ -102,6 +102,14 @@ namespace Stripe
         }
 
         /// <summary>
+        /// Sets the pause schedules for the subscription schedule. Each entry configures when and
+        /// how the subscription pauses and optionally when and how it resumes.
+        /// </summary>
+        [JsonProperty("pause_schedules")]
+        [STJS.JsonPropertyName("pause_schedules")]
+        public List<SubscriptionSchedulePauseScheduleOptions> PauseSchedules { get; set; }
+
+        /// <summary>
         /// List representing phases of the subscription schedule. Each phase can be customized to
         /// have different durations, plans, and coupons. If there are multiple phases, the
         /// <c>end_date</c> of one phase will always equal the <c>start_date</c> of the next phase.

@@ -7,7 +7,10 @@ namespace Stripe.V2.Signals
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// An automatically evaluated signal on a v2 account.
+    /// An automatically evaluated signal on an account. Each Account Signal object corresponds
+    /// to exactly one signal type, indicated by type. Only the type-specific field is
+    /// populated; other type-specific payload fields are null. If an account has multiple
+    /// signals, Stripe creates separate account signal objects.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountSignal : StripeEntity<AccountSignal>, IHasId, IHasObject
