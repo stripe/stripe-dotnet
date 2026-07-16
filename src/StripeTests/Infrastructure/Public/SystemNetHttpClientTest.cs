@@ -135,27 +135,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void SourceHashIsHexString()
-        {
-            var hash = SystemNetHttpClient.ComputeSourceHash();
-
-            // MD5 produces 16 bytes → 32 hex characters
-            Assert.NotNull(hash);
-            Assert.Equal(32, hash.Length);
-            Assert.Matches("^[0-9a-f]{32}$", hash);
-        }
-
-        [Fact]
-        public void SourceHashIsDeterministic()
-        {
-            var hash1 = SystemNetHttpClient.ComputeSourceHash();
-            var hash2 = SystemNetHttpClient.ComputeSourceHash();
-
-            Assert.Equal(hash1, hash2);
-        }
-
-        [Fact]
-        public async Task SourceHashIncludedInUserAgentHeader()
+        public async Task TelemetryIdIncludedInUserAgentHeader()
         {
             var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
             responseMessage.Content = new StringContent("Hello world!");
@@ -167,7 +147,8 @@ namespace StripeTests
                 .Returns(Task.FromResult(responseMessage));
 
             var client = new SystemNetHttpClient(
-                httpClient: new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
+                httpClient: new HttpClient(this.MockHttpClientFixture.MockHandler.Object),
+                enableTelemetry: true);
             var request = new StripeRequest(
                 this.StripeClient,
                 HttpMethod.Post,
@@ -180,48 +161,39 @@ namespace StripeTests
                 .Verify(
                     "SendAsync",
                     Times.Once(),
-                    ItExpr.Is<HttpRequestMessage>(m => this.VerifySourceHeader(m.Headers)),
+                    ItExpr.Is<HttpRequestMessage>(m => this.VerifyTelemetryIdHeader(m.Headers)),
                     ItExpr.IsAny<CancellationToken>());
         }
 
         [Fact]
-        public async Task SourceHashAbsentFromUserAgentWhenEmpty()
+        public async Task TelemetryIdAbsentFromUserAgentWhenTelemetryDisabled()
         {
-            var savedHash = SystemNetHttpClient.SourceHash;
-            try
-            {
-                SystemNetHttpClient.SourceHash = string.Empty;
+            var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
+            responseMessage.Content = new StringContent("Hello world!");
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .Returns(Task.FromResult(responseMessage));
 
-                var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
-                responseMessage.Content = new StringContent("Hello world!");
-                this.MockHttpClientFixture.MockHandler.Protected()
-                    .Setup<Task<HttpResponseMessage>>(
-                        "SendAsync",
-                        ItExpr.IsAny<HttpRequestMessage>(),
-                        ItExpr.IsAny<CancellationToken>())
-                    .Returns(Task.FromResult(responseMessage));
+            var client = new SystemNetHttpClient(
+                httpClient: new HttpClient(this.MockHttpClientFixture.MockHandler.Object),
+                enableTelemetry: false);
+            var request = new StripeRequest(
+                this.StripeClient,
+                HttpMethod.Post,
+                "/foo",
+                null,
+                null);
+            await client.MakeRequestAsync(request);
 
-                var client = new SystemNetHttpClient(
-                    httpClient: new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
-                var request = new StripeRequest(
-                    this.StripeClient,
-                    HttpMethod.Post,
-                    "/foo",
-                    null,
-                    null);
-                await client.MakeRequestAsync(request);
-
-                this.MockHttpClientFixture.MockHandler.Protected()
-                    .Verify(
-                        "SendAsync",
-                        Times.Once(),
-                        ItExpr.Is<HttpRequestMessage>(m => this.VerifyNoSourceHeader(m.Headers)),
-                        ItExpr.IsAny<CancellationToken>());
-            }
-            finally
-            {
-                SystemNetHttpClient.SourceHash = savedHash;
-            }
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m => this.VerifyNoTelemetryIdHeader(m.Headers)),
+                    ItExpr.IsAny<CancellationToken>());
         }
 
         [Fact]
@@ -363,22 +335,22 @@ namespace StripeTests
             return true;
         }
 
-        private bool VerifySourceHeader(HttpRequestHeaders headers)
+        private bool VerifyTelemetryIdHeader(HttpRequestHeaders headers)
         {
             var userAgentJson = JObject.Parse(headers.GetValues("X-Stripe-Client-User-Agent").First());
-            var source = userAgentJson.Value<string>("source");
+            var telemetryId = userAgentJson.Value<string>("telemetry_id");
 
-            Assert.NotNull(source);
-            Assert.Matches("^[0-9a-f]{32}$", source);
+            Assert.NotNull(telemetryId);
+            Assert.Matches("^[0-9a-f]{32}$", telemetryId);
 
             return true;
         }
 
-        private bool VerifyNoSourceHeader(HttpRequestHeaders headers)
+        private bool VerifyNoTelemetryIdHeader(HttpRequestHeaders headers)
         {
             var userAgentJson = JObject.Parse(headers.GetValues("X-Stripe-Client-User-Agent").First());
 
-            Assert.Null(userAgentJson["source"]);
+            Assert.Null(userAgentJson["telemetry_id"]);
 
             return true;
         }
