@@ -1,5 +1,9 @@
 # Changelog
 
+## 52.1.1 - 2026-07-15
+* [#3409](https://github.com/stripe/stripe-dotnet/pull/3409) Replace source hash with Telemetry UUID
+* [#3408](https://github.com/stripe/stripe-dotnet/pull/3408) Make Error fields generated
+
 ## 52.1.0 - 2026-06-24
 This release changes the pinned API version to 2026-06-24.dahlia.
 
