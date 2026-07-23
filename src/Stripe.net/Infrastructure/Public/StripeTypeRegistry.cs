@@ -434,6 +434,7 @@ namespace Stripe
                 },
                 { "v2.reporting.report", typeof(V2.Reporting.Report) },
                 { "v2.reporting.report_run", typeof(V2.Reporting.ReportRun) },
+                { "v2.risk.inquiry", typeof(V2.Risk.Inquiry) },
                 { "v2.signals.account_signal", typeof(V2.Signals.AccountSignal) },
                 { "v2.tax.manual_rule", typeof(V2.Tax.ManualRule) },
 
