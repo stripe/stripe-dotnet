@@ -148,7 +148,7 @@ namespace Stripe
         /// <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
         /// <c>scalapay</c>, <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>,
         /// <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>, <c>tamara</c>, <c>twint</c>,
-        /// <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>upi</c>, <c>us_bank_account</c>, <c>vipps</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("excluded_payment_method_types", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("excluded_payment_method_types")]
@@ -255,9 +255,9 @@ namespace Stripe
 
         /// <summary>
         /// The list of payment method types (for example, a card) that this PaymentIntent can use.
-        /// Use <c>automatic_payment_methods</c> to manage payment methods from the <a
-        /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>. A
-        /// list of valid payment method types can be found <a
+        /// If you don't provide this, Stripe will dynamically show relevant payment methods from
+        /// your <a href="https://dashboard.stripe.com/settings/payment_methods">payment method
+        /// settings</a>. A list of valid payment method types can be found <a
         /// href="https://docs.stripe.com/api/payment_methods/object#payment_method_object-type">here</a>.
         /// </summary>
         [JsonProperty("payment_method_types")]

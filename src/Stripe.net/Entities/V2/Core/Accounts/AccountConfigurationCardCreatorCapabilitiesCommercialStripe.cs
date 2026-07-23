@@ -21,5 +21,12 @@ namespace Stripe.V2.Core
         [JsonProperty("prepaid_card")]
         [STJS.JsonPropertyName("prepaid_card")]
         public AccountConfigurationCardCreatorCapabilitiesCommercialStripePrepaidCard PrepaidCard { get; set; }
+
+        /// <summary>
+        /// Can create commercial issuing spend cards with Stripe as BIN sponsor.
+        /// </summary>
+        [JsonProperty("spend_card")]
+        [STJS.JsonPropertyName("spend_card")]
+        public AccountConfigurationCardCreatorCapabilitiesCommercialStripeSpendCard SpendCard { get; set; }
     }
 }

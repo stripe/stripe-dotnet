@@ -340,6 +340,10 @@ namespace Stripe
         [STJS.JsonPropertyName("us_bank_account")]
         public PaymentMethodConfigurationUsBankAccount UsBankAccount { get; set; }
 
+        [JsonProperty("vipps")]
+        [STJS.JsonPropertyName("vipps")]
+        public PaymentMethodConfigurationVipps Vipps { get; set; }
+
         [JsonProperty("wechat_pay")]
         [STJS.JsonPropertyName("wechat_pay")]
         public PaymentMethodConfigurationWechatPay WechatPay { get; set; }

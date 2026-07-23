@@ -73,6 +73,13 @@ namespace Stripe.Crypto
         public string Stellar { get; set; }
 
         /// <summary>
+        /// A Sui address.
+        /// </summary>
+        [JsonProperty("sui")]
+        [STJS.JsonPropertyName("sui")]
+        public string Sui { get; set; }
+
+        /// <summary>
         /// A worldchain address.
         /// </summary>
         [JsonProperty("worldchain")]

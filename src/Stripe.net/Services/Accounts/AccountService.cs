@@ -186,9 +186,7 @@ namespace Stripe
         /// you have flagged as suspicious.</p>.
         ///
         /// <p>Only accounts where your platform is liable for negative account balances, which
-        /// includes Custom and Express accounts, can be rejected. Test-mode accounts can be
-        /// rejected at any time. Live-mode accounts can only be rejected after all balances are
-        /// zero.</p>.
+        /// includes Custom and Express accounts, can be rejected.</p>.
         /// </summary>
         public virtual Account Reject(string id, AccountRejectOptions options = null, RequestOptions requestOptions = null)
         {
@@ -200,9 +198,7 @@ namespace Stripe
         /// you have flagged as suspicious.</p>.
         ///
         /// <p>Only accounts where your platform is liable for negative account balances, which
-        /// includes Custom and Express accounts, can be rejected. Test-mode accounts can be
-        /// rejected at any time. Live-mode accounts can only be rejected after all balances are
-        /// zero.</p>.
+        /// includes Custom and Express accounts, can be rejected.</p>.
         /// </summary>
         public virtual Task<Account> RejectAsync(string id, AccountRejectOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

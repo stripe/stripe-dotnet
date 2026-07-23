@@ -42,7 +42,7 @@ namespace Stripe.Crypto
         /// The specific crypto network the <c>destination_currency</c> is settled on. If
         /// <c>destination_networks</c> is set, it must be a value in that array.
         /// One of: <c>avalanche</c>, <c>base</c>, <c>bitcoin</c>, <c>ethereum</c>, <c>optimism</c>,
-        /// <c>polygon</c>, <c>solana</c>, <c>stellar</c>, or <c>worldchain</c>.
+        /// <c>polygon</c>, <c>solana</c>, <c>stellar</c>, <c>sui</c>, or <c>worldchain</c>.
         /// </summary>
         [JsonProperty("destination_network")]
         [STJS.JsonPropertyName("destination_network")]
@@ -52,7 +52,7 @@ namespace Stripe.Crypto
         /// If a platform wants to lock the supported networks, they can do so through this array.
         /// If left null, the experience will allow selection of all supported networks.
         /// One of: <c>avalanche</c>, <c>base</c>, <c>bitcoin</c>, <c>ethereum</c>, <c>optimism</c>,
-        /// <c>polygon</c>, <c>solana</c>, <c>stellar</c>, or <c>worldchain</c>.
+        /// <c>polygon</c>, <c>solana</c>, <c>stellar</c>, <c>sui</c>, or <c>worldchain</c>.
         /// </summary>
         [JsonProperty("destination_networks")]
         [STJS.JsonPropertyName("destination_networks")]

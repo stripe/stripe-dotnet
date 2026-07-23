@@ -12,7 +12,9 @@ namespace Stripe
         /// The type of product being purchased at this line item.
         /// One of: <c>air_conditioning_service</c>, <c>alcohol</c>, <c>aviation_fuel_premium</c>,
         /// <c>aviation_fuel_regular</c>, <c>car_care_detailing</c>, <c>compressed_natural_gas</c>,
-        /// <c>deli</c>, <c>food_service</c>, <c>green_gasoline_mid_plus</c>,
+        /// <c>deli</c>, <c>ev_battery_exchanges</c>, <c>ev_charging_fee</c>, <c>evc_level_1</c>,
+        /// <c>evc_level_2</c>, <c>evc_level_3</c>, <c>evc_level_4</c>, <c>evc_level_5</c>,
+        /// <c>food_service</c>, <c>green_gasoline_mid_plus</c>,
         /// <c>green_gasoline_premium_super</c>, <c>green_gasoline_regular</c>, <c>grocery</c>,
         /// <c>liquid_natural_gas</c>, <c>liquid_propane_gas</c>, <c>lodging</c>,
         /// <c>marine_diesel</c>, <c>marine_fuel</c>, <c>merchandise</c>, <c>mid_plus</c>,

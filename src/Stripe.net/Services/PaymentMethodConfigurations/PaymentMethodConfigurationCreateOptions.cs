@@ -645,6 +645,18 @@ namespace Stripe
         public PaymentMethodConfigurationUsBankAccountOptions UsBankAccount { get; set; }
 
         /// <summary>
+        /// Vipps is a <a
+        /// href="https://docs.stripe.com/payments/payment-methods#usage">single-use</a> card wallet
+        /// payment method used in Norway. It allows customers to <a
+        /// href="https://docs.stripe.com/payments/payment-methods#customer-actions">authenticate
+        /// and approve</a> payments using the Vipps app. Check this <a
+        /// href="https://docs.stripe.com/payments/vipps">page</a> for more details.
+        /// </summary>
+        [JsonProperty("vipps")]
+        [STJS.JsonPropertyName("vipps")]
+        public PaymentMethodConfigurationVippsOptions Vipps { get; set; }
+
+        /// <summary>
         /// WeChat, owned by Tencent, is China's leading mobile app with over 1 billion monthly
         /// active users. Chinese consumers can use WeChat Pay to pay for goods and services inside
         /// of businesses' apps and websites. WeChat Pay users buy most frequently in gaming,

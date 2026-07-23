@@ -569,7 +569,7 @@ namespace Stripe
         /// <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>,
         /// <c>satispay</c>, <c>scalapay</c>, <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>,
         /// <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>, <c>tamara</c>, <c>twint</c>,
-        /// <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>upi</c>, <c>us_bank_account</c>, <c>vipps</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
@@ -590,6 +590,14 @@ namespace Stripe
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]
         public PaymentMethodUsBankAccountOptions UsBankAccount { get; set; }
+
+        /// <summary>
+        /// If this is a <c>vipps</c> PaymentMethod, this hash contains details about the Vipps
+        /// payment method.
+        /// </summary>
+        [JsonProperty("vipps")]
+        [STJS.JsonPropertyName("vipps")]
+        public PaymentMethodVippsOptions Vipps { get; set; }
 
         /// <summary>
         /// If this is an <c>wechat_pay</c> PaymentMethod, this hash contains details about the

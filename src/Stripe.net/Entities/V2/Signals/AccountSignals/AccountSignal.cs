@@ -69,7 +69,8 @@ namespace Stripe.V2.Signals
 
         /// <summary>
         /// The type of signal.
-        /// One of: <c>fraudulent_merchant</c>, or <c>merchant_delinquency</c>.
+        /// One of: <c>fraudulent_merchant</c>, <c>merchant_delinquency</c>, or
+        /// <c>payment_delinquency_exposure</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

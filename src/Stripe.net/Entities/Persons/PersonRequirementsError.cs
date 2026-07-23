@@ -39,6 +39,8 @@ namespace Stripe
         /// <c>invalid_url_website_incomplete_terms_and_conditions</c>,
         /// <c>invalid_url_website_incomplete_under_construction</c>,
         /// <c>invalid_url_website_other</c>, <c>invalid_value_other</c>,
+        /// <c>partner_disabled_dispute_rate</c>, <c>partner_disabled_responsibilities</c>,
+        /// <c>partner_disabled_restricted_business</c>, <c>partner_disabled_suspected_fraud</c>,
         /// <c>unsupported_business_type</c>, <c>verification_data_not_found</c>,
         /// <c>verification_directors_mismatch</c>, <c>verification_document_address_mismatch</c>,
         /// <c>verification_document_address_missing</c>, <c>verification_document_corrupt</c>,

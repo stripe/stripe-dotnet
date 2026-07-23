@@ -9,9 +9,9 @@ namespace Stripe
     public class ChargePaymentMethodDetailsRevolutPayFundingCard : StripeEntity<ChargePaymentMethodDetailsRevolutPayFundingCard>
     {
         /// <summary>
-        /// Card brand. Can be <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,
-        /// <c>eftpos_au</c>, <c>jcb</c>, <c>link</c>, <c>mastercard</c>, <c>unionpay</c>,
-        /// <c>visa</c> or <c>unknown</c>.
+        /// Card brand. Can be <c>American Express</c>, <c>Cartes Bancaires</c>, <c>Diners Club</c>,
+        /// <c>Discover</c>, <c>Eftpos Australia</c>, <c>Girocard</c>, <c>JCB</c>,
+        /// <c>MasterCard</c>, <c>UnionPay</c>, <c>Visa</c>, or <c>Unknown</c>.
         /// </summary>
         [JsonProperty("brand")]
         [STJS.JsonPropertyName("brand")]
