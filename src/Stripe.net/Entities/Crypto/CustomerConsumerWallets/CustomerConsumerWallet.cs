@@ -37,7 +37,8 @@ namespace Stripe.Crypto
         /// <summary>
         /// The blockchain network for this wallet.
         /// One of: <c>aptos</c>, <c>avalanche</c>, <c>base</c>, <c>bitcoin</c>, <c>ethereum</c>,
-        /// <c>optimism</c>, <c>polygon</c>, <c>solana</c>, <c>stellar</c>, or <c>worldchain</c>.
+        /// <c>optimism</c>, <c>polygon</c>, <c>solana</c>, <c>stellar</c>, <c>sui</c>, or
+        /// <c>worldchain</c>.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]

@@ -69,6 +69,7 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsTwintOptions twint;
         private PaymentIntentPaymentMethodOptionsUpiOptions upi;
         private PaymentIntentPaymentMethodOptionsUsBankAccountOptions usBankAccount;
+        private PaymentIntentPaymentMethodOptionsVippsOptions vipps;
         private PaymentIntentPaymentMethodOptionsWechatPayOptions wechatPay;
         private PaymentIntentPaymentMethodOptionsZipOptions zip;
 
@@ -1116,6 +1117,23 @@ namespace Stripe
             set
             {
                 this.usBankAccount = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If this is a <c>Vipps</c> PaymentMethod, this sub-hash contains details about the Vipps
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("vipps", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("vipps")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsVippsOptions Vipps
+        {
+            get => this.vipps;
+            set
+            {
+                this.vipps = value;
                 this.SetTracker.Track();
             }
         }

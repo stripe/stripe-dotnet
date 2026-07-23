@@ -210,7 +210,7 @@ namespace Stripe
         /// <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
         /// <c>scalapay</c>, <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>,
         /// <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>, <c>tamara</c>, <c>twint</c>,
-        /// <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>upi</c>, <c>us_bank_account</c>, <c>vipps</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("excluded_payment_method_types")]
         [STJS.JsonPropertyName("excluded_payment_method_types")]

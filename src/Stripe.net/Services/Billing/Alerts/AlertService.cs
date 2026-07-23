@@ -13,6 +13,8 @@ namespace Stripe.Billing
         IListable<Alert, AlertListOptions>,
         IRetrievable<Alert, AlertGetOptions>
     {
+        private AlertNotificationService notifications;
+
         public AlertService()
         {
         }
@@ -26,6 +28,9 @@ namespace Stripe.Billing
             : base(client)
         {
         }
+
+        public virtual AlertNotificationService Notifications => this.notifications ??= new AlertNotificationService(
+            this.Requestor);
 
         /// <summary>
         /// <p>Reactivates this alert, allowing it to trigger again.</p>.

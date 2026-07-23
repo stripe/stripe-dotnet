@@ -62,5 +62,13 @@ namespace Stripe.DelegatedCheckout
         [JsonProperty("risk_details")]
         [STJS.JsonPropertyName("risk_details")]
         public RequestedSessionRiskDetailsOptions RiskDetails { get; set; }
+
+        /// <summary>
+        /// Set to true when using Stripe.js, iOS, or Android client-side SDKs to handle next
+        /// actions.
+        /// </summary>
+        [JsonProperty("use_stripe_sdk")]
+        [STJS.JsonPropertyName("use_stripe_sdk")]
+        public bool? UseStripeSdk { get; set; }
     }
 }
