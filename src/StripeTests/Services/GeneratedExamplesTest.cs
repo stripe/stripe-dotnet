@@ -27799,6 +27799,157 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2RiskInquiryGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/risk/inquiries",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"object\":\"v2.risk.inquiry\",\"closed_at\":\"1970-01-06T13:53:35.258Z\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"opened_at\":\"1970-01-18T22:56:33.737Z\",\"status\":\"closed\",\"type\":\"appeal\"}],\"next_page_url\":null,\"previous_page_url\":null}",
+                "account=account");
+            var options = new Stripe.V2.Risk.InquiryListOptions
+            {
+                Account = "account",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Risk.Inquiries;
+            Stripe.V2.StripeList<Stripe.V2.Risk.Inquiry> inquiries = service
+                .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/risk/inquiries",
+                "account=account");
+        }
+
+        [Fact]
+        public async Task TestV2RiskInquiryGetAsync()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/risk/inquiries",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"object\":\"v2.risk.inquiry\",\"closed_at\":\"1970-01-06T13:53:35.258Z\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"opened_at\":\"1970-01-18T22:56:33.737Z\",\"status\":\"closed\",\"type\":\"appeal\"}],\"next_page_url\":null,\"previous_page_url\":null}",
+                "account=account");
+            var options = new Stripe.V2.Risk.InquiryListOptions
+            {
+                Account = "account",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Risk.Inquiries;
+            Stripe.V2.StripeList<Stripe.V2.Risk.Inquiry> inquiries = await service
+                .ListAsync(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/risk/inquiries",
+                "account=account");
+        }
+
+        [Fact]
+        public void TestV2RiskInquiryGetAutoPaging()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/risk/inquiries",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"object\":\"v2.risk.inquiry\",\"closed_at\":\"1970-01-06T13:53:35.258Z\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"opened_at\":\"1970-01-18T22:56:33.737Z\",\"status\":\"closed\",\"type\":\"appeal\"}],\"next_page_url\":null,\"previous_page_url\":null}",
+                "account=account");
+            var options = new Stripe.V2.Risk.InquiryListOptions
+            {
+                Account = "account",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Risk.Inquiries;
+            var inquiry = service.ListAutoPaging(options).First();
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/risk/inquiries",
+                "account=account");
+        }
+
+        [Fact]
+        public async Task TestV2RiskInquiryGetAutoPagingAsync()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/risk/inquiries",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"object\":\"v2.risk.inquiry\",\"closed_at\":\"1970-01-06T13:53:35.258Z\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"opened_at\":\"1970-01-18T22:56:33.737Z\",\"status\":\"closed\",\"type\":\"appeal\"}],\"next_page_url\":null,\"previous_page_url\":null}",
+                "account=account");
+            var options = new Stripe.V2.Risk.InquiryListOptions
+            {
+                Account = "account",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Risk.Inquiries;
+            var inquiry = await service.ListAutoPagingAsync(options)
+                .FirstAsync();
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/risk/inquiries",
+                "account=account");
+        }
+
+        [Fact]
+        public void TestV2RiskInquiryGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/risk/inquiries/id_123",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.risk.inquiry\",\"closed_at\":\"1970-01-06T13:53:35.258Z\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"opened_at\":\"1970-01-18T22:56:33.737Z\",\"status\":\"closed\",\"type\":\"appeal\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Risk.Inquiries;
+            Stripe.V2.Risk.Inquiry inquiry = service.Get("id_123");
+            this.AssertRequest(HttpMethod.Get, "/v2/risk/inquiries/id_123");
+        }
+
+        [Fact]
+        public async Task TestV2RiskInquiryGet2Async()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/risk/inquiries/id_123",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.risk.inquiry\",\"closed_at\":\"1970-01-06T13:53:35.258Z\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"opened_at\":\"1970-01-18T22:56:33.737Z\",\"status\":\"closed\",\"type\":\"appeal\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Risk.Inquiries;
+            Stripe.V2.Risk.Inquiry inquiry = await service.GetAsync("id_123");
+            this.AssertRequest(HttpMethod.Get, "/v2/risk/inquiries/id_123");
+        }
+
+        [Fact]
+        public void TestV2RiskInquiryPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/risk/inquiries/id_123",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.risk.inquiry\",\"closed_at\":\"1970-01-06T13:53:35.258Z\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"opened_at\":\"1970-01-18T22:56:33.737Z\",\"status\":\"closed\",\"type\":\"appeal\"}");
+            var options = new Stripe.V2.Risk.InquiryUpdateOptions();
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Risk.Inquiries;
+            Stripe.V2.Risk.Inquiry inquiry = service.Update("id_123", options);
+            this.AssertRequest(HttpMethod.Post, "/v2/risk/inquiries/id_123");
+        }
+
+        [Fact]
+        public async Task TestV2RiskInquiryPostAsync()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/risk/inquiries/id_123",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.risk.inquiry\",\"closed_at\":\"1970-01-06T13:53:35.258Z\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"opened_at\":\"1970-01-18T22:56:33.737Z\",\"status\":\"closed\",\"type\":\"appeal\"}");
+            var options = new Stripe.V2.Risk.InquiryUpdateOptions();
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Risk.Inquiries;
+            Stripe.V2.Risk.Inquiry inquiry = await service.UpdateAsync(
+                "id_123",
+                options);
+            this.AssertRequest(HttpMethod.Post, "/v2/risk/inquiries/id_123");
+        }
+
+        [Fact]
         public void TestV2SignalsAccountSignalGet()
         {
             this.StubRequest(
