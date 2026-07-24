@@ -206,6 +206,28 @@ namespace Stripe
         }
 
         /// <summary>
+        /// Constructs an Event from an <a href="https://docs.stripe.com/event-destinations/eventbridge">AWS EventBridge</a>
+        /// or <a href="https://docs.stripe.com/event-destinations/eventgrid">Azure Event Grid</a> payload.
+        /// </summary>
+        /// <param name="json">The JSON payload from the cloud provider.</param>
+        /// <returns>The deserialized <see cref="Event"/>.</returns>
+        public Event ConstructEventFromCloudProvider(string json)
+        {
+            var innerJson = EventUtility.ExtractFromCloudProviderEnvelope(json);
+            return EventUtility.DeserializeEvent(innerJson);
+        }
+
+        /// <summary>
+        /// Parses an EventNotification from an <a href="https://docs.stripe.com/event-destinations/eventbridge">AWS EventBridge</a>
+        /// or <a href="https://docs.stripe.com/event-destinations/eventgrid">Azure Event Grid</a> payload.
+        /// </summary>
+        public EventNotification ParseEventNotificationFromCloudProvider(string json)
+        {
+            var innerJson = EventUtility.ExtractFromCloudProviderEnvelope(json);
+            return this.BuildEventNotification(innerJson);
+        }
+
+        /// <summary>
         /// Parses a JSON string from a Stripe webhook into a <see cref="EventNotification"/> object, while
         /// verifying the <a href="https://stripe.com/docs/webhooks/signatures">webhook's
         /// signature</a>.
@@ -228,14 +250,17 @@ namespace Stripe
             long tolerance = EventUtility.DefaultTimeTolerance)
         {
             EventUtility.ValidateSignature(json, stripeSignatureHeader, secret, tolerance, DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+            return this.BuildEventNotification(json);
+        }
 
+        private EventNotification BuildEventNotification(string json)
+        {
             var parsed = JObject.Parse(json);
             var objectValue = (string)parsed["object"];
             if (objectValue == "event")
             {
                 throw new ArgumentException(
-                    "You passed a webhook payload to ParseEventNotification, which expects "
-                    + "a thin event notification. Use EventUtility.ConstructEvent instead.");
+                    "You passed a webhook payload to a function that expects a thin event notification. Use the corresponding ConstructEvent method instead.");
             }
 
             return EventNotification.FromJson(json, this);

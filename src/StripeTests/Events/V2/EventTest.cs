@@ -308,7 +308,7 @@ namespace StripeTests.V2
                     GenerateSigHeader(v1Payload),
                     WebhookSecret));
 
-            Assert.Contains("EventUtility.ConstructEvent", exception.Message);
+            Assert.Contains("ConstructEvent", exception.Message);
         }
 
         [Fact]

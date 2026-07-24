@@ -65,20 +65,7 @@ namespace Stripe
         /// </remarks>
         public static Event ParseEvent(string json, bool throwOnApiVersionMismatch = true)
         {
-            using (var doc = System.Text.Json.JsonDocument.Parse(json))
-            {
-                if (doc.RootElement.TryGetProperty("object", out var objectProp) &&
-                    objectProp.GetString() == "v2.core.event")
-                {
-                    throw new ArgumentException(
-                        "You passed a thin event notification to ConstructEvent, which expects "
-                        + "a webhook payload. Use StripeClient.ParseEventNotification instead.");
-                }
-            }
-
-            var stripeEvent = System.Text.Json.JsonSerializer.Deserialize<Event>(
-                json,
-                StripeConfiguration.SerializerOptions);
+            var stripeEvent = DeserializeEvent(json);
 
             if (throwOnApiVersionMismatch &&
                 !IsCompatibleApiVersion(stripeEvent.ApiVersion))
@@ -227,6 +214,69 @@ namespace Stripe
         private static bool IsSignaturePresent(string signature, IEnumerable<string> signatures)
         {
             return signatures.Any(key => StringUtils.SecureEquals(key, signature));
+        }
+
+        internal static string ExtractFromCloudProviderEnvelope(string json)
+        {
+            using (var doc = System.Text.Json.JsonDocument.Parse(json))
+            {
+                System.Text.Json.JsonElement innerElement;
+
+                // Could add as many checks as we want here, but we'll start simple
+                if (doc.RootElement.TryGetProperty("detail", out var detailProp))
+                {
+                    // AWS
+                    // https://docs.stripe.com/event-destinations/eventbridge#event-structure
+                    innerElement = detailProp;
+                }
+                else if (doc.RootElement.TryGetProperty("specversion", out _))
+                {
+                    // Azure
+                    // https://docs.stripe.com/event-destinations/eventgrid#event-structure
+                    if (!doc.RootElement.TryGetProperty("data", out var dataProp))
+                    {
+                        throw new ArgumentException(
+                            "Unrecognized cloud event format. The payload must be an "
+                            + "AWS EventBridge or Azure Event Grid event envelope.");
+                    }
+
+                    innerElement = dataProp;
+                }
+                else if (doc.RootElement.TryGetProperty("id", out var idProp) &&
+                    idProp.ValueKind == System.Text.Json.JsonValueKind.String &&
+                    idProp.GetString().StartsWith("evt_"))
+                {
+                    throw new ArgumentException(
+                        "It looks like you passed a Stripe Event directly. "
+                        + "Use ConstructEvent instead to parse a webhook payload "
+                        + "with signature verification.");
+                }
+                else
+                {
+                    throw new ArgumentException(
+                        "Unrecognized cloud event format. The payload must be an "
+                        + "AWS EventBridge or Azure Event Grid event envelope.");
+                }
+
+                return innerElement.GetRawText();
+            }
+        }
+
+        internal static Event DeserializeEvent(string json)
+        {
+            using (var doc = System.Text.Json.JsonDocument.Parse(json))
+            {
+                if (doc.RootElement.TryGetProperty("object", out var objectProp) &&
+                    objectProp.GetString() == "v2.core.event")
+                {
+                    throw new ArgumentException(
+                        "You passed a thin event notification to a function that expects a webhook body. Use the corresponding EventNotification method instead.");
+                }
+            }
+
+            return System.Text.Json.JsonSerializer.Deserialize<Event>(
+                json,
+                StripeConfiguration.SerializerOptions);
         }
 
         /// <summary>

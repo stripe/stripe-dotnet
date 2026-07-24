@@ -167,7 +167,7 @@ namespace StripeTests
             var exception = Assert.Throws<ArgumentException>(() =>
                 EventUtility.ParseEvent(v2Payload, throwOnApiVersionMismatch: false));
 
-            Assert.Contains("StripeClient.ParseEventNotification", exception.Message);
+            Assert.Contains("EventNotification", exception.Message);
         }
 
         [Fact]
@@ -188,7 +188,7 @@ namespace StripeTests
             var exception = Assert.Throws<ArgumentException>(() =>
                 EventUtility.ConstructEvent(v2Payload, sigHeader, this.secret, throwOnApiVersionMismatch: false));
 
-            Assert.Contains("StripeClient.ParseEventNotification", exception.Message);
+            Assert.Contains("EventNotification", exception.Message);
         }
 
         [Theory]
