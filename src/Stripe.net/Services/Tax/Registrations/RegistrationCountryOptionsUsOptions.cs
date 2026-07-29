@@ -23,6 +23,20 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsUsLocalLeaseTaxOptions LocalLeaseTax { get; set; }
 
         /// <summary>
+        /// Options for the mass transit parking tax registration.
+        /// </summary>
+        [JsonProperty("mass_transit_parking_tax")]
+        [STJS.JsonPropertyName("mass_transit_parking_tax")]
+        public RegistrationCountryOptionsUsMassTransitParkingTaxOptions MassTransitParkingTax { get; set; }
+
+        /// <summary>
+        /// Options for the parking tax registration.
+        /// </summary>
+        [JsonProperty("parking_tax")]
+        [STJS.JsonPropertyName("parking_tax")]
+        public RegistrationCountryOptionsUsParkingTaxOptions ParkingTax { get; set; }
+
+        /// <summary>
         /// Two-letter US state code (<a href="https://en.wikipedia.org/wiki/ISO_3166-2">ISO
         /// 3166-2</a>).
         /// </summary>
@@ -40,8 +54,8 @@ namespace Stripe.Tax
         /// <summary>
         /// Type of registration to be created in the US.
         /// One of: <c>local_amusement_tax</c>, <c>local_lease_tax</c>,
-        /// <c>state_communications_tax</c>, <c>state_retail_delivery_fee</c>, or
-        /// <c>state_sales_tax</c>.
+        /// <c>mass_transit_parking_tax</c>, <c>parking_tax</c>, <c>state_communications_tax</c>,
+        /// <c>state_retail_delivery_fee</c>, or <c>state_sales_tax</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

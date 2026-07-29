@@ -24,6 +24,20 @@ namespace Stripe.FinancialConnections
         public SessionFiltersOptions Filters { get; set; }
 
         /// <summary>
+        /// Settings for configuring Session-specific limits.
+        /// </summary>
+        [JsonProperty("limits")]
+        [STJS.JsonPropertyName("limits")]
+        public SessionLimitsOptions Limits { get; set; }
+
+        /// <summary>
+        /// Customize manual entry behavior.
+        /// </summary>
+        [JsonProperty("manual_entry")]
+        [STJS.JsonPropertyName("manual_entry")]
+        public SessionManualEntryOptions ManualEntry { get; set; }
+
+        /// <summary>
         /// List of data features that you would like to request access to.
         ///
         /// Possible values are <c>balances</c>, <c>transactions</c>, <c>ownership</c>, and

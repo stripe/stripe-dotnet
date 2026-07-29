@@ -37,6 +37,10 @@ namespace Stripe
         [STJS.JsonPropertyName("address_kanji")]
         public AddressJapanOptions AddressKanji { get; set; }
 
+        [JsonProperty("administrative_address")]
+        [STJS.JsonPropertyName("administrative_address")]
+        public AddressOptions AdministrativeAddress { get; set; }
+
         /// <summary>
         /// Whether the company's directors have been provided. Set this Boolean to <c>true</c>
         /// after creating all the company's directors with <a
@@ -158,6 +162,10 @@ namespace Stripe
         [STJS.JsonPropertyName("phone")]
         public string Phone { get; set; }
 
+        [JsonProperty("principal_place_of_business")]
+        [STJS.JsonPropertyName("principal_place_of_business")]
+        public AddressOptions PrincipalPlaceOfBusiness { get; set; }
+
         /// <summary>
         /// When the business was incorporated or registered.
         /// </summary>
@@ -224,6 +232,10 @@ namespace Stripe
         /// The business ID number of the company, as appropriate for the company’s country.
         /// (Examples are an Employer ID Number in the U.S., a Business Number in Canada, or a
         /// Company Number in the UK.).
+        ///
+        /// Changing this value requires that the account re-accept the <a
+        /// href="https://stripe.com/api/accounts/object#account_object-tos_acceptance">terms of
+        /// service</a>.
         /// </summary>
         [JsonProperty("tax_id")]
         [STJS.JsonPropertyName("tax_id")]

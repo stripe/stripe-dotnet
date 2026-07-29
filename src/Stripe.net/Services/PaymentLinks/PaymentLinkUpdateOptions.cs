@@ -17,6 +17,7 @@ namespace Stripe
         private List<string> paymentMethodTypes;
         private PaymentLinkRestrictionsOptions restrictions;
         private PaymentLinkShippingAddressCollectionOptions shippingAddressCollection;
+        private List<PaymentLinkShippingOptionOptions> shippingOptions;
 
         /// <summary>
         /// Whether the payment link's <c>url</c> is active. If <c>false</c>, customers visiting the
@@ -54,6 +55,13 @@ namespace Stripe
         [JsonProperty("billing_address_collection")]
         [STJS.JsonPropertyName("billing_address_collection")]
         public string BillingAddressCollection { get; set; }
+
+        /// <summary>
+        /// Configure fields to gather active consent from customers.
+        /// </summary>
+        [JsonProperty("consent_collection")]
+        [STJS.JsonPropertyName("consent_collection")]
+        public PaymentLinkConsentCollectionOptions ConsentCollection { get; set; }
 
         /// <summary>
         /// Collect additional information from your customer using custom fields. Up to 3 fields
@@ -278,6 +286,24 @@ namespace Stripe
             set
             {
                 this.shippingAddressCollection = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// The shipping rate options to apply to <a
+        /// href="https://docs.stripe.com/api/checkout/sessions">checkout sessions</a> created by
+        /// this payment link.
+        /// </summary>
+        [JsonProperty("shipping_options", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("shipping_options")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public List<PaymentLinkShippingOptionOptions> ShippingOptions
+        {
+            get => this.shippingOptions;
+            set
+            {
+                this.shippingOptions = value;
                 this.SetTracker.Track();
             }
         }

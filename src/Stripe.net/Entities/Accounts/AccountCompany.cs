@@ -26,6 +26,10 @@ namespace Stripe
         [STJS.JsonPropertyName("address_kanji")]
         public AddressJapan AddressKanji { get; set; }
 
+        [JsonProperty("administrative_address")]
+        [STJS.JsonPropertyName("administrative_address")]
+        public Address AdministrativeAddress { get; set; }
+
         /// <summary>
         /// Whether the company's directors have been provided. This Boolean will be <c>true</c> if
         /// you've manually indicated that all directors are provided via <a
@@ -140,6 +144,10 @@ namespace Stripe
         [JsonProperty("phone")]
         [STJS.JsonPropertyName("phone")]
         public string Phone { get; set; }
+
+        [JsonProperty("principal_place_of_business")]
+        [STJS.JsonPropertyName("principal_place_of_business")]
+        public Address PrincipalPlaceOfBusiness { get; set; }
 
         [JsonProperty("registration_date")]
         [STJS.JsonPropertyName("registration_date")]

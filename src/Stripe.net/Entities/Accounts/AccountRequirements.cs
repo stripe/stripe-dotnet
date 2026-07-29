@@ -35,7 +35,7 @@ namespace Stripe
         /// <summary>
         /// Fields that need to be resolved to keep the account enabled. If not resolved by
         /// <c>current_deadline</c>, these fields will appear in <c>past_due</c> as well, and the
-        /// account is disabled.
+        /// account will be disabled.
         /// </summary>
         [JsonProperty("currently_due")]
         [STJS.JsonPropertyName("currently_due")]
@@ -57,8 +57,8 @@ namespace Stripe
         public string DisabledReason { get; set; }
 
         /// <summary>
-        /// Details about validation and verification failures for <c>due</c> requirements that must
-        /// be resolved.
+        /// Fields that are <c>currently_due</c> and need to be collected again because validation
+        /// or verification failed.
         /// </summary>
         [JsonProperty("errors")]
         [STJS.JsonPropertyName("errors")]

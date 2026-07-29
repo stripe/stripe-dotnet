@@ -21,8 +21,16 @@ namespace Stripe.Issuing
         public CardShippingAddressValidation AddressValidation { get; set; }
 
         /// <summary>
+        /// The name of the business at the shipping address, used on the shipping label to ensure
+        /// delivery when the card is shipped to a cardholder's workplace.
+        /// </summary>
+        [JsonProperty("business_name")]
+        [STJS.JsonPropertyName("business_name")]
+        public string BusinessName { get; set; }
+
+        /// <summary>
         /// The delivery company that shipped a card.
-        /// One of: <c>dhl</c>, <c>fedex</c>, <c>royal_mail</c>, or <c>usps</c>.
+        /// One of: <c>correos</c>, <c>dhl</c>, <c>fedex</c>, <c>royal_mail</c>, or <c>usps</c>.
         /// </summary>
         [JsonProperty("carrier")]
         [STJS.JsonPropertyName("carrier")]

@@ -59,6 +59,13 @@ namespace Stripe
         public AccountSettingsPayoutsOptions Payouts { get; set; }
 
         /// <summary>
+        /// Settings specific to SEPA Direct Debit payments.
+        /// </summary>
+        [JsonProperty("sepa_debit_payments")]
+        [STJS.JsonPropertyName("sepa_debit_payments")]
+        public AccountSettingsSepaDebitPaymentsOptions SepaDebitPayments { get; set; }
+
+        /// <summary>
         /// Settings specific to the account's Treasury FinancialAccounts.
         /// </summary>
         [JsonProperty("treasury")]
