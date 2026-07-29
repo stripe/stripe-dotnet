@@ -9,10 +9,10 @@ namespace Stripe
 
     /// <summary>
     /// The FX Quotes API provides three functions: - View Stripe's current exchange rate for
-    /// any given currency pair. - Extend quoted rates for a 1-hour period or a 24-hour period,
-    /// minimizing uncertainty from FX fluctuations. - Preview the FX fees Stripe will charge on
-    /// your FX transaction, allowing you to anticipate specific settlement amounts before
-    /// payment costs.
+    /// any given currency pair. - Extend quoted rates for up to a 24-hour period, minimizing
+    /// uncertainty from FX fluctuations. - Preview the FX fees Stripe will charge on your FX
+    /// transaction, allowing you to anticipate specific settlement amounts before payment
+    /// costs.
     ///
     /// <a href="https://stripe.com/payments/currencies/localize-prices/fx-quotes-api">View the
     /// docs</a>.
@@ -44,9 +44,8 @@ namespace Stripe
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The duration the exchange rate quote remains valid from creation time. Allowed values
-        /// are none, hour, and day. Note that for the test mode API available in alpha, you can
-        /// request an extended quote, but it won't be usable for any transactions.
+        /// The duration that the quote is locked for, from creation time. The quote will be usable
+        /// for the duration specified.
         /// One of: <c>day</c>, <c>five_minutes</c>, <c>hour</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("lock_duration")]

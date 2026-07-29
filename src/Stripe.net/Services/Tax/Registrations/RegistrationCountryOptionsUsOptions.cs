@@ -65,6 +65,20 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsUsLuxuryTaxOptions LuxuryTax { get; set; }
 
         /// <summary>
+        /// Options for the mass transit parking tax registration.
+        /// </summary>
+        [JsonProperty("mass_transit_parking_tax")]
+        [STJS.JsonPropertyName("mass_transit_parking_tax")]
+        public RegistrationCountryOptionsUsMassTransitParkingTaxOptions MassTransitParkingTax { get; set; }
+
+        /// <summary>
+        /// Options for the parking tax registration.
+        /// </summary>
+        [JsonProperty("parking_tax")]
+        [STJS.JsonPropertyName("parking_tax")]
+        public RegistrationCountryOptionsUsParkingTaxOptions ParkingTax { get; set; }
+
+        /// <summary>
         /// Options for the resort tax registration.
         /// </summary>
         [JsonProperty("resort_tax")]
@@ -97,9 +111,9 @@ namespace Stripe.Tax
         /// Type of registration to be created in the US.
         /// One of: <c>admissions_tax</c>, <c>attendance_tax</c>, <c>entertainment_tax</c>,
         /// <c>gross_receipts_tax</c>, <c>hospitality_tax</c>, <c>local_amusement_tax</c>,
-        /// <c>local_lease_tax</c>, <c>luxury_tax</c>, <c>resort_tax</c>,
-        /// <c>state_communications_tax</c>, <c>state_retail_delivery_fee</c>,
-        /// <c>state_sales_tax</c>, or <c>tourism_tax</c>.
+        /// <c>local_lease_tax</c>, <c>luxury_tax</c>, <c>mass_transit_parking_tax</c>,
+        /// <c>parking_tax</c>, <c>resort_tax</c>, <c>state_communications_tax</c>,
+        /// <c>state_retail_delivery_fee</c>, <c>state_sales_tax</c>, or <c>tourism_tax</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

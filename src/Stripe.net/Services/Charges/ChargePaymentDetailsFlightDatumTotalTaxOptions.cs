@@ -12,8 +12,8 @@ namespace Stripe
         /// <summary>
         /// Array of tax details.
         /// </summary>
-        [JsonProperty("taxes")]
-        [STJS.JsonPropertyName("taxes")]
-        public List<ChargePaymentDetailsFlightDatumTotalTaxTaxOptions> Taxes { get; set; }
+        [JsonProperty("tax_items")]
+        [STJS.JsonPropertyName("tax_items")]
+        public List<ChargePaymentDetailsFlightDatumTotalTaxTaxItemOptions> TaxItems { get; set; }
     }
 }

@@ -24,6 +24,14 @@ namespace Stripe.V2.Iam
         public List<string> OldRoles { get; set; }
 
         /// <summary>
+        /// Source of the role change.
+        /// One of: <c>dashboard</c>, <c>scim</c>, or <c>sso</c>.
+        /// </summary>
+        [JsonProperty("source")]
+        [STJS.JsonPropertyName("source")]
+        public string Source { get; set; }
+
+        /// <summary>
         /// Email address of the user whose roles were changed.
         /// </summary>
         [JsonProperty("user_email")]

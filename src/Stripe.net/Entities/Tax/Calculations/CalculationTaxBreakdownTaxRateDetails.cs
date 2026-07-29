@@ -56,7 +56,8 @@ namespace Stripe.Tax
         /// One of: <c>admissions_tax</c>, <c>amusement_tax</c>, <c>attendance_tax</c>,
         /// <c>communications_tax</c>, <c>entertainment_tax</c>, <c>gross_receipts_tax</c>,
         /// <c>gst</c>, <c>hospitality_tax</c>, <c>hst</c>, <c>igst</c>, <c>jct</c>,
-        /// <c>lease_tax</c>, <c>luxury_tax</c>, <c>pst</c>, <c>qst</c>, <c>resort_tax</c>,
+        /// <c>lease_tax</c>, <c>luxury_tax</c>, <c>mass_transit_parking_tax</c>,
+        /// <c>parking_tax</c>, <c>pst</c>, <c>qst</c>, <c>resort_tax</c>,
         /// <c>retail_delivery_fee</c>, <c>rst</c>, <c>sales_tax</c>, <c>service_tax</c>,
         /// <c>tourism_tax</c>, or <c>vat</c>.
         /// </summary>

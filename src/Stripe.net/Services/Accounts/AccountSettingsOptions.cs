@@ -80,6 +80,13 @@ namespace Stripe
         public AccountSettingsPaypayPaymentsOptions PaypayPayments { get; set; }
 
         /// <summary>
+        /// Settings specific to SEPA Direct Debit payments.
+        /// </summary>
+        [JsonProperty("sepa_debit_payments")]
+        [STJS.JsonPropertyName("sepa_debit_payments")]
+        public AccountSettingsSepaDebitPaymentsOptions SepaDebitPayments { get; set; }
+
+        /// <summary>
         /// Settings specific to the account's use of Smart Disputes.
         /// </summary>
         [JsonProperty("smart_disputes")]

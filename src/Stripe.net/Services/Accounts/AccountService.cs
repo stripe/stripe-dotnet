@@ -54,10 +54,10 @@ namespace Stripe
         /// platform</a>.</p>.
         ///
         /// <p>If you’ve already collected information for your connected accounts, you <a
-        /// href="https://stripe.com/docs/connect/best-practices#onboarding">can prefill that
-        /// information</a> when creating the account. Connect Onboarding won’t ask for the
-        /// prefilled information during account onboarding. You can prefill any information on the
-        /// account.</p>.
+        /// href="https://stripe.com/connect/marketplace/tasks/create#prefill-account-information">can
+        /// prefill that information</a> when creating the account. Connect Onboarding won’t ask for
+        /// the prefilled information during account onboarding. You can prefill any information on
+        /// the account.</p>.
         /// </summary>
         public virtual Account Create(AccountCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -71,10 +71,10 @@ namespace Stripe
         /// platform</a>.</p>.
         ///
         /// <p>If you’ve already collected information for your connected accounts, you <a
-        /// href="https://stripe.com/docs/connect/best-practices#onboarding">can prefill that
-        /// information</a> when creating the account. Connect Onboarding won’t ask for the
-        /// prefilled information during account onboarding. You can prefill any information on the
-        /// account.</p>.
+        /// href="https://stripe.com/connect/marketplace/tasks/create#prefill-account-information">can
+        /// prefill that information</a> when creating the account. Connect Onboarding won’t ask for
+        /// the prefilled information during account onboarding. You can prefill any information on
+        /// the account.</p>.
         /// </summary>
         public virtual Task<Account> CreateAsync(AccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -182,9 +182,7 @@ namespace Stripe
         /// you have flagged as suspicious.</p>.
         ///
         /// <p>Only accounts where your platform is liable for negative account balances, which
-        /// includes Custom and Express accounts, can be rejected. Test-mode accounts can be
-        /// rejected at any time. Live-mode accounts can only be rejected after all balances are
-        /// zero.</p>.
+        /// includes Custom and Express accounts, can be rejected.</p>.
         /// </summary>
         public virtual Account Reject(string id, AccountRejectOptions options = null, RequestOptions requestOptions = null)
         {
@@ -196,9 +194,7 @@ namespace Stripe
         /// you have flagged as suspicious.</p>.
         ///
         /// <p>Only accounts where your platform is liable for negative account balances, which
-        /// includes Custom and Express accounts, can be rejected. Test-mode accounts can be
-        /// rejected at any time. Live-mode accounts can only be rejected after all balances are
-        /// zero.</p>.
+        /// includes Custom and Express accounts, can be rejected.</p>.
         /// </summary>
         public virtual Task<Account> RejectAsync(string id, AccountRejectOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -227,6 +223,38 @@ namespace Stripe
             }
 
             return JsonSerializer.Serialize(requestBody, new JsonSerializerOptions(StripeConfiguration.SerializerOptions) { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull });
+        }
+
+        /// <summary>
+        /// <p>With Connect, you can unreject accounts that you have previously rejected.</p>.
+        ///
+        /// <p>Only accounts that were rejected by your platform can be unrejected. This API cannot
+        /// be used to unreject accounts that were rejected by Stripe.</p>.
+        ///
+        /// <p>Unreject will only enable charges and/or payouts if there are no other restrictions
+        /// other than those placed by a previous rejection. If you have separately paused charges
+        /// and/or payouts outside of rejection, those pauses will remain in place after
+        /// unrejection.</p>.
+        /// </summary>
+        public virtual Account Unreject(string id, AccountUnrejectOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Account>(BaseAddress.Api, HttpMethod.Post, $"/v1/accounts/{WebUtility.UrlEncode(id)}/unreject", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>With Connect, you can unreject accounts that you have previously rejected.</p>.
+        ///
+        /// <p>Only accounts that were rejected by your platform can be unrejected. This API cannot
+        /// be used to unreject accounts that were rejected by Stripe.</p>.
+        ///
+        /// <p>Unreject will only enable charges and/or payouts if there are no other restrictions
+        /// other than those placed by a previous rejection. If you have separately paused charges
+        /// and/or payouts outside of rejection, those pauses will remain in place after
+        /// unrejection.</p>.
+        /// </summary>
+        public virtual Task<Account> UnrejectAsync(string id, AccountUnrejectOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Account>(BaseAddress.Api, HttpMethod.Post, $"/v1/accounts/{WebUtility.UrlEncode(id)}/unreject", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
