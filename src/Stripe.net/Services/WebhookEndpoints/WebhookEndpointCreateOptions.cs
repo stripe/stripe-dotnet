@@ -47,8 +47,8 @@ namespace Stripe
         /// <c>2025-06-30.basil</c>, <c>2025-07-30.basil</c>, <c>2025-08-27.basil</c>,
         /// <c>2025-09-30.clover</c>, <c>2025-10-29.clover</c>, <c>2025-11-17.clover</c>,
         /// <c>2025-12-15.clover</c>, <c>2026-01-28.clover</c>, <c>2026-02-25.clover</c>,
-        /// <c>2026-03-25.dahlia</c>, <c>2026-04-22.dahlia</c>, <c>2026-05-27.dahlia</c>, or
-        /// <c>2026-06-24.dahlia</c>.
+        /// <c>2026-03-25.dahlia</c>, <c>2026-04-22.dahlia</c>, <c>2026-05-27.dahlia</c>,
+        /// <c>2026-06-24.dahlia</c>, or <c>2026-07-29.dahlia</c>.
         /// </summary>
         [JsonProperty("api_version")]
         [STJS.JsonPropertyName("api_version")]
@@ -134,12 +134,17 @@ namespace Stripe
         /// <c>financial_connections.account.created</c>,
         /// <c>financial_connections.account.deactivated</c>,
         /// <c>financial_connections.account.disconnected</c>,
+        /// <c>financial_connections.account.expected_deactivation_date_updated</c>,
         /// <c>financial_connections.account.reactivated</c>,
         /// <c>financial_connections.account.refreshed_balance</c>,
         /// <c>financial_connections.account.refreshed_inferred_balances</c>,
         /// <c>financial_connections.account.refreshed_ownership</c>,
         /// <c>financial_connections.account.refreshed_transactions</c>,
+        /// <c>financial_connections.account.supported_payment_method_types_updated</c>,
         /// <c>financial_connections.account.upcoming_account_number_expiry</c>,
+        /// <c>financial_connections.account.upcoming_deactivation</c>,
+        /// <c>financial_connections.authorization.expected_deactivation_date_updated</c>,
+        /// <c>financial_connections.authorization.upcoming_deactivation</c>,
         /// <c>financial_connections.session.updated</c>, <c>fx_quote.expired</c>,
         /// <c>identity.verification_session.canceled</c>,
         /// <c>identity.verification_session.created</c>,

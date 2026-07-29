@@ -33,5 +33,14 @@ namespace Stripe.FinancialConnections
         [JsonProperty("institution")]
         [STJS.JsonPropertyName("institution")]
         public string Institution { get; set; }
+
+        /// <summary>
+        /// Whether the Session should require that linked accounts support payments and retrieve
+        /// account numbers before completion.
+        /// One of: <c>all</c>, <c>at_least_one</c>, or <c>none</c>.
+        /// </summary>
+        [JsonProperty("require_payment_method_support")]
+        [STJS.JsonPropertyName("require_payment_method_support")]
+        public string RequirePaymentMethodSupport { get; set; }
     }
 }

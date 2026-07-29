@@ -30,7 +30,8 @@ namespace Stripe.V2.MoneyManagement
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// The payment method used to originate the debit.
+        /// Object containing details of the US Bank Account that originated the debit. Present when
+        /// the debit was originated via ACH.
         /// </summary>
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]

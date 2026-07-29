@@ -10,7 +10,7 @@ namespace Stripe.FinancialConnections
     {
         /// <summary>
         /// How manual entry should be handled.
-        /// One of: <c>automatic</c>, or <c>custom</c>.
+        /// One of: <c>automatic</c>, <c>custom</c>, or <c>disabled</c>.
         /// </summary>
         [JsonProperty("mode")]
         [STJS.JsonPropertyName("mode")]

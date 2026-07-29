@@ -21051,21 +21051,20 @@ namespace StripeTests
         {
             this.StubRequest(
                 HttpMethod.Post,
-                "/v2/money_management/outbound_setup_intents",
+                "/v2/core/vault/us_bank_accounts/id_123/confirm_microdeposits",
                 (HttpStatusCode)400,
                 "{\"error\":{\"type\":\"controlled_by_alternate_resource\",\"code\":\"payout_method_cannot_be_archived\"}}");
             var exception = Assert.Throws<Stripe.V2.ControlledByAlternateResourceException>(
             () =>
             {
-                var options = new Stripe.V2.MoneyManagement.OutboundSetupIntentCreateOptions();
                 var client = new StripeClient(this.Requestor);
-                var service = client.V2.MoneyManagement.OutboundSetupIntents;
-                Stripe.V2.MoneyManagement.OutboundSetupIntent outboundSetupIntent = service
-                    .Create(options);
+                var service = client.V2.Core.Vault.UsBankAccounts;
+                Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service
+                    .ConfirmMicrodeposits("id_123");
             });
             this.AssertRequest(
                 HttpMethod.Post,
-                "/v2/money_management/outbound_setup_intents");
+                "/v2/core/vault/us_bank_accounts/id_123/confirm_microdeposits");
         }
 
         [Fact]
@@ -21073,21 +21072,20 @@ namespace StripeTests
         {
             this.StubRequest(
                 HttpMethod.Post,
-                "/v2/money_management/outbound_setup_intents",
+                "/v2/core/vault/us_bank_accounts/id_123/confirm_microdeposits",
                 (HttpStatusCode)400,
                 "{\"error\":{\"type\":\"controlled_by_alternate_resource\",\"code\":\"payout_method_cannot_be_archived\"}}");
             var exception = await Assert.ThrowsAsync<Stripe.V2.ControlledByAlternateResourceException>(
             async () =>
             {
-                var options = new Stripe.V2.MoneyManagement.OutboundSetupIntentCreateOptions();
                 var client = new StripeClient(this.Requestor);
-                var service = client.V2.MoneyManagement.OutboundSetupIntents;
-                Stripe.V2.MoneyManagement.OutboundSetupIntent outboundSetupIntent = await service
-                    .CreateAsync(options);
+                var service = client.V2.Core.Vault.UsBankAccounts;
+                Stripe.V2.Core.Vault.UsBankAccount usBankAccount = await service
+                    .ConfirmMicrodepositsAsync("id_123");
             });
             this.AssertRequest(
                 HttpMethod.Post,
-                "/v2/money_management/outbound_setup_intents");
+                "/v2/core/vault/us_bank_accounts/id_123/confirm_microdeposits");
         }
 
         [Fact]
