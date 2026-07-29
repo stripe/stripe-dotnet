@@ -127,6 +127,14 @@ namespace Stripe
         public string FailureMessage { get; set; }
 
         /// <summary>
+        /// Indicates whether the top-up was initiated by Stripe or by the user.
+        /// One of: <c>stripe</c>, or <c>user</c>.
+        /// </summary>
+        [JsonProperty("initiated_by")]
+        [STJS.JsonPropertyName("initiated_by")]
+        public string InitiatedBy { get; set; }
+
+        /// <summary>
         /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
         /// test mode, the value is <c>false</c>.
         /// </summary>
@@ -142,6 +150,50 @@ namespace Stripe
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        #region Expandable PaymentMethod
+
+        /// <summary>
+        /// (ID of the PaymentMethod)
+        /// The ID of a PaymentMethod representing the payment method used for the top-up. A
+        /// PaymentMethod of type <c>us_bank_account</c> can be used.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public string PaymentMethodId
+        {
+            get => this.InternalPaymentMethod?.Id;
+            set => this.InternalPaymentMethod = SetExpandableFieldId(value, this.InternalPaymentMethod);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The ID of a PaymentMethod representing the payment method used for the top-up. A
+        /// PaymentMethod of type <c>us_bank_account</c> can be used.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public PaymentMethod PaymentMethod
+        {
+            get => this.InternalPaymentMethod?.ExpandedObject;
+            set => this.InternalPaymentMethod = SetExpandableFieldObject(value, this.InternalPaymentMethod);
+        }
+
+        [JsonProperty("payment_method")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
+        [STJS.JsonPropertyName("payment_method")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentMethod>))]
+        internal ExpandableField<PaymentMethod> InternalPaymentMethod { get; set; }
+        #endregion
+
+        /// <summary>
+        /// Payment-method-specific configuration for this top-up.
+        /// </summary>
+        [JsonProperty("payment_method_options")]
+        [STJS.JsonPropertyName("payment_method_options")]
+        public TopupPaymentMethodOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
         /// The source field is deprecated. It might not always be present in the API response.

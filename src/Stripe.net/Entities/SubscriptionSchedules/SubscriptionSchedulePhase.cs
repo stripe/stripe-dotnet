@@ -236,6 +236,14 @@ namespace Stripe
         public SubscriptionSchedulePhaseTransferData TransferData { get; set; }
 
         /// <summary>
+        /// If set to true the entire phase is counted as a trial and the customer will not be
+        /// charged for any fees.
+        /// </summary>
+        [JsonProperty("trial")]
+        [STJS.JsonPropertyName("trial")]
+        public bool Trial { get; set; }
+
+        /// <summary>
         /// When the trial ends within the phase.
         /// </summary>
         [JsonProperty("trial_end")]

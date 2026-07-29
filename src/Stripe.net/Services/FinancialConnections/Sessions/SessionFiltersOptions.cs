@@ -26,5 +26,14 @@ namespace Stripe.FinancialConnections
         [JsonProperty("countries")]
         [STJS.JsonPropertyName("countries")]
         public List<string> Countries { get; set; }
+
+        /// <summary>
+        /// Whether the session should require payment method support and successful account number
+        /// retrieval before completion.
+        /// One of: <c>all</c>, <c>at_least_one</c>, or <c>none</c>.
+        /// </summary>
+        [JsonProperty("require_payment_method_support")]
+        [STJS.JsonPropertyName("require_payment_method_support")]
+        public string RequirePaymentMethodSupport { get; set; }
     }
 }
