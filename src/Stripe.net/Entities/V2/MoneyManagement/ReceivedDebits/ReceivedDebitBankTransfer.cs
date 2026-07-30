@@ -16,7 +16,16 @@ namespace Stripe.V2.MoneyManagement
         public string FinancialAddress { get; set; }
 
         /// <summary>
+        /// Object containing details of the GB Bank Account that originated the debit. Present when
+        /// the debit was originated via BACS.
+        /// </summary>
+        [JsonProperty("gb_bank_account")]
+        [STJS.JsonPropertyName("gb_bank_account")]
+        public ReceivedDebitBankTransferGbBankAccount GbBankAccount { get; set; }
+
+        /// <summary>
         /// Open Enum. Indicates the origin type through which this debit was initiated.
+        /// One of: <c>gb_bank_account</c>, or <c>us_bank_account</c>.
         /// </summary>
         [JsonProperty("origin_type")]
         [STJS.JsonPropertyName("origin_type")]
@@ -24,6 +33,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. The type of the payment method used to originate the debit.
+        /// One of: <c>gb_bank_account</c>, or <c>us_bank_account</c>.
         /// </summary>
         [JsonProperty("payment_method_type")]
         [STJS.JsonPropertyName("payment_method_type")]
@@ -37,7 +47,8 @@ namespace Stripe.V2.MoneyManagement
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// The payment method used to originate the debit.
+        /// Object containing details of the US Bank Account that originated the debit. Present when
+        /// the debit was originated via ACH.
         /// </summary>
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]

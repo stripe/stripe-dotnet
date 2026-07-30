@@ -11,6 +11,7 @@ namespace Stripe
     {
         private string description;
         private Dictionary<string, string> metadata;
+        private string setupFutureUsage;
         private string statementDescriptor;
         private string statementDescriptorSuffix;
         private string transferGroup;
@@ -86,9 +87,18 @@ namespace Stripe
         /// rules, such as SCA.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonProperty("setup_future_usage", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("setup_future_usage")]
-        public string SetupFutureUsage { get; set; }
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public string SetupFutureUsage
+        {
+            get => this.setupFutureUsage;
+            set
+            {
+                this.setupFutureUsage = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Text that appears on the customer's statement as the statement descriptor for a non-card

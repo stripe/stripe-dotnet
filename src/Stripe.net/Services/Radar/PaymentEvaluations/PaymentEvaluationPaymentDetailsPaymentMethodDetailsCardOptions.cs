@@ -9,6 +9,13 @@ namespace Stripe.Radar
     public class PaymentEvaluationPaymentDetailsPaymentMethodDetailsCardOptions : INestedOptions
     {
         /// <summary>
+        /// The CVC of the card.
+        /// </summary>
+        [JsonProperty("cvc")]
+        [STJS.JsonPropertyName("cvc")]
+        public string Cvc { get; set; }
+
+        /// <summary>
         /// Two-digit number representing the card's expiration month.
         /// </summary>
         [JsonProperty("exp_month")]
@@ -35,5 +42,12 @@ namespace Stripe.Radar
         [JsonProperty("last4")]
         [STJS.JsonPropertyName("last4")]
         public string Last4 { get; set; }
+
+        /// <summary>
+        /// The card number, as a string without any separators.
+        /// </summary>
+        [JsonProperty("number")]
+        [STJS.JsonPropertyName("number")]
+        public string Number { get; set; }
     }
 }

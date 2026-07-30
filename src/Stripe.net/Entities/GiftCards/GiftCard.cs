@@ -27,7 +27,6 @@ namespace Stripe
 
         /// <summary>
         /// The brand of the gift card.
-        /// One of: <c>fiserv_valuelink</c>, <c>givex</c>, or <c>svs</c>.
         /// </summary>
         [JsonProperty("brand")]
         [STJS.JsonPropertyName("brand")]

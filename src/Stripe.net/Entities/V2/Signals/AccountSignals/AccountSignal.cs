@@ -38,6 +38,13 @@ namespace Stripe.V2.Signals
         public AccountSignalAccountDetails AccountDetails { get; set; }
 
         /// <summary>
+        /// The account evaluation that produced this signal, if applicable.
+        /// </summary>
+        [JsonProperty("account_evaluation")]
+        [STJS.JsonPropertyName("account_evaluation")]
+        public string AccountEvaluation { get; set; }
+
+        /// <summary>
         /// Timestamp at which the signal was created.
         /// </summary>
         [JsonProperty("created")]
@@ -50,6 +57,13 @@ namespace Stripe.V2.Signals
         [JsonProperty("fraudulent_merchant")]
         [STJS.JsonPropertyName("fraudulent_merchant")]
         public AccountSignalFraudulentMerchant FraudulentMerchant { get; set; }
+
+        /// <summary>
+        /// Data for the fraudulent website signal. Present only when type is fraudulent_website.
+        /// </summary>
+        [JsonProperty("fraudulent_website")]
+        [STJS.JsonPropertyName("fraudulent_website")]
+        public AccountSignalFraudulentWebsite FraudulentWebsite { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
@@ -68,12 +82,37 @@ namespace Stripe.V2.Signals
         public AccountSignalMerchantDelinquency MerchantDelinquency { get; set; }
 
         /// <summary>
+        /// Data for the payment delinquency exposure signal. Present only when type is
+        /// payment_delinquency_exposure.
+        /// </summary>
+        [JsonProperty("payment_delinquency_exposure")]
+        [STJS.JsonPropertyName("payment_delinquency_exposure")]
+        public AccountSignalPaymentDelinquencyExposure PaymentDelinquencyExposure { get; set; }
+
+        /// <summary>
         /// The type of signal.
-        /// One of: <c>fraudulent_merchant</c>, <c>merchant_delinquency</c>, or
-        /// <c>payment_delinquency_exposure</c>.
+        /// One of: <c>fraudulent_merchant</c>, <c>fraudulent_website</c>,
+        /// <c>merchant_delinquency</c>, <c>payment_delinquency_exposure</c>,
+        /// <c>user_account_sharing</c>, or <c>user_multi_accounting</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// Data for the user account-sharing signal. Present only when type is
+        /// user_account_sharing.
+        /// </summary>
+        [JsonProperty("user_account_sharing")]
+        [STJS.JsonPropertyName("user_account_sharing")]
+        public AccountSignalUserAccountSharing UserAccountSharing { get; set; }
+
+        /// <summary>
+        /// Data for the user multi-accounting signal. Present only when type is
+        /// user_multi_accounting.
+        /// </summary>
+        [JsonProperty("user_multi_accounting")]
+        [STJS.JsonPropertyName("user_multi_accounting")]
+        public AccountSignalUserMultiAccounting UserMultiAccounting { get; set; }
     }
 }

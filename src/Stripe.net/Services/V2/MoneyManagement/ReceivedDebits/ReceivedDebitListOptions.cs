@@ -8,5 +8,11 @@ namespace Stripe.V2.MoneyManagement
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ReceivedDebitListOptions : V2.ListOptions
     {
+        /// <summary>
+        /// Filter by the received debit mandate ID.
+        /// </summary>
+        [JsonProperty("received_debit_mandate")]
+        [STJS.JsonPropertyName("received_debit_mandate")]
+        public string ReceivedDebitMandate { get; set; }
     }
 }

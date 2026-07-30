@@ -9,11 +9,25 @@ namespace Stripe.V2.Billing
     public class IntentAmountDetails : StripeEntity<IntentAmountDetails>
     {
         /// <summary>
+        /// The outstanding amount after discount, tax, and customer balance application.
+        /// </summary>
+        [JsonProperty("amount_due")]
+        [STJS.JsonPropertyName("amount_due")]
+        public string AmountDue { get; set; }
+
+        /// <summary>
         /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
         /// </summary>
         [JsonProperty("currency")]
         [STJS.JsonPropertyName("currency")]
         public string Currency { get; set; }
+
+        /// <summary>
+        /// The customer's account balance applied to the amount.
+        /// </summary>
+        [JsonProperty("customer_balance_applied")]
+        [STJS.JsonPropertyName("customer_balance_applied")]
+        public string CustomerBalanceApplied { get; set; }
 
         /// <summary>
         /// Amount of discount applied.

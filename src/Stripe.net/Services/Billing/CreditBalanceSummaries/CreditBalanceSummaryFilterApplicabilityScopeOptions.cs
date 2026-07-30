@@ -34,5 +34,14 @@ namespace Stripe.Billing
         [JsonProperty("prices")]
         [STJS.JsonPropertyName("prices")]
         public List<CreditBalanceSummaryFilterApplicabilityScopePriceOptions> Prices { get; set; }
+
+        /// <summary>
+        /// A list of rate cards that the credit grant can apply to. The credit grant applies to any
+        /// metered item billed under one of these rate cards. Cannot be used in combination with
+        /// <c>price_type</c>, <c>prices</c>, or <c>billable_items</c>.
+        /// </summary>
+        [JsonProperty("rate_cards")]
+        [STJS.JsonPropertyName("rate_cards")]
+        public List<CreditBalanceSummaryFilterApplicabilityScopeRateCardOptions> RateCards { get; set; }
     }
 }

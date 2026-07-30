@@ -86,15 +86,6 @@ namespace Stripe.V2.MoneyManagement
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// If this is a managed FinancialAccount, <c>managed_by</c> indicates the product that
-        /// created and manages this FinancialAccount. For managed FinancialAccounts, creation of
-        /// money management resources can only be orchestrated by the managing product.
-        /// </summary>
-        [JsonProperty("managed_by")]
-        [STJS.JsonPropertyName("managed_by")]
-        public FinancialAccountManagedBy ManagedBy { get; set; }
-
-        /// <summary>
         /// Metadata associated with the FinancialAccount.
         /// </summary>
         [JsonProperty("metadata")]

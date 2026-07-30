@@ -10,6 +10,13 @@ namespace Stripe.V2.Core
     public class AccountTokenCreateIdentityBusinessDetailsOptions : INestedOptions
     {
         /// <summary>
+        /// Additional addresses associated with the business.
+        /// </summary>
+        [JsonProperty("additional_addresses")]
+        [STJS.JsonPropertyName("additional_addresses")]
+        public List<AccountTokenCreateIdentityBusinessDetailsAdditionalAddressOptions> AdditionalAddresses { get; set; }
+
+        /// <summary>
         /// The business registration address of the business entity.
         /// </summary>
         [JsonProperty("address")]

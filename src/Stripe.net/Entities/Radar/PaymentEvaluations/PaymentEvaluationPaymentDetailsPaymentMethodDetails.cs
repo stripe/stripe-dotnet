@@ -15,6 +15,13 @@ namespace Stripe.Radar
         [STJS.JsonPropertyName("billing_details")]
         public PaymentEvaluationPaymentDetailsPaymentMethodDetailsBillingDetails BillingDetails { get; set; }
 
+        /// <summary>
+        /// Card details associated with the payment evaluation.
+        /// </summary>
+        [JsonProperty("card")]
+        [STJS.JsonPropertyName("card")]
+        public PaymentEvaluationPaymentDetailsPaymentMethodDetailsCard Card { get; set; }
+
         #region Expandable PaymentMethod
 
         /// <summary>

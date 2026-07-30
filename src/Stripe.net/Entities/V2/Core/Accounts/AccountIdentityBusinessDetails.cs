@@ -10,6 +10,13 @@ namespace Stripe.V2.Core
     public class AccountIdentityBusinessDetails : StripeEntity<AccountIdentityBusinessDetails>
     {
         /// <summary>
+        /// Additional addresses associated with the business.
+        /// </summary>
+        [JsonProperty("additional_addresses")]
+        [STJS.JsonPropertyName("additional_addresses")]
+        public List<AccountIdentityBusinessDetailsAdditionalAddress> AdditionalAddresses { get; set; }
+
+        /// <summary>
         /// The company’s primary address.
         /// </summary>
         [JsonProperty("address")]

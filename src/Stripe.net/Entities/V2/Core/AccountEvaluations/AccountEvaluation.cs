@@ -51,6 +51,8 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// List of signals that were triggered for evaluation.
+        /// One of: <c>fraudulent_website</c>, <c>user_account_sharing</c>, or
+        /// <c>user_multi_accounting</c>.
         /// </summary>
         [JsonProperty("evaluations_triggered")]
         [STJS.JsonPropertyName("evaluations_triggered")]

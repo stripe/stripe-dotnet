@@ -50,6 +50,13 @@ namespace Stripe.Issuing
         public CardPinOptions Pin { get; set; }
 
         /// <summary>
+        /// The product code to request via product graduation.
+        /// </summary>
+        [JsonProperty("product_code")]
+        [STJS.JsonPropertyName("product_code")]
+        public string ProductCode { get; set; }
+
+        /// <summary>
         /// Updated shipping information for the card.
         /// </summary>
         [JsonProperty("shipping")]

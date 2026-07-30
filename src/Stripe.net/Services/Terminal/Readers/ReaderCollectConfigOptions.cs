@@ -27,7 +27,6 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// The gift card brand to use in the transaction.
-        /// One of: <c>fiserv_valuelink</c>, <c>givex</c>, or <c>svs</c>.
         /// </summary>
         [JsonProperty("gift_card_brand")]
         [STJS.JsonPropertyName("gift_card_brand")]

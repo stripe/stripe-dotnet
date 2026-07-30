@@ -9,6 +9,7 @@ namespace Stripe
     using System.Threading.Tasks;
 
     public class PaymentRecordService : Service,
+        IListable<PaymentRecord, PaymentRecordListOptions>,
         IRetrievable<PaymentRecord, PaymentRecordGetOptions>,
         ISearchable<PaymentRecord, PaymentRecordSearchOptions>
     {
@@ -58,6 +59,38 @@ namespace Stripe
         public virtual Task<PaymentRecord> GetAsync(string id, PaymentRecordGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentRecord>(BaseAddress.Api, HttpMethod.Get, $"/v1/payment_records/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>List all the Payment Records for a given merchant.</p>.
+        /// </summary>
+        public virtual StripeList<PaymentRecord> List(PaymentRecordListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeList<PaymentRecord>>(BaseAddress.Api, HttpMethod.Get, $"/v1/payment_records", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>List all the Payment Records for a given merchant.</p>.
+        /// </summary>
+        public virtual Task<StripeList<PaymentRecord>> ListAsync(PaymentRecordListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<StripeList<PaymentRecord>>(BaseAddress.Api, HttpMethod.Get, $"/v1/payment_records", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>List all the Payment Records for a given merchant.</p>.
+        /// </summary>
+        public virtual IEnumerable<PaymentRecord> ListAutoPaging(PaymentRecordListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<PaymentRecord>($"/v1/payment_records", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>List all the Payment Records for a given merchant.</p>.
+        /// </summary>
+        public virtual IAsyncEnumerable<PaymentRecord> ListAutoPagingAsync(PaymentRecordListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<PaymentRecord>($"/v1/payment_records", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

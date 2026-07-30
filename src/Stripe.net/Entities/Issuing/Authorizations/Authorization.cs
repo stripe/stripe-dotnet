@@ -189,6 +189,13 @@ namespace Stripe.Issuing
         public AuthorizationFuel Fuel { get; set; }
 
         /// <summary>
+        /// Details about the IIAS FSA/HSA healthcare amounts on this authorization.
+        /// </summary>
+        [JsonProperty("healthcare")]
+        [STJS.JsonPropertyName("healthcare")]
+        public AuthorizationHealthcare Healthcare { get; set; }
+
+        /// <summary>
         /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
         /// test mode, the value is <c>false</c>.
         /// </summary>

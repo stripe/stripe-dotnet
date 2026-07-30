@@ -30,6 +30,13 @@ namespace Stripe.TestHelpers.Terminal
         public ReaderCardPresentOptions CardPresent { get; set; }
 
         /// <summary>
+        /// Simulated data for the gift_card payment method.
+        /// </summary>
+        [JsonProperty("gift_card")]
+        [STJS.JsonPropertyName("gift_card")]
+        public ReaderGiftCardOptions GiftCard { get; set; }
+
+        /// <summary>
         /// Simulated data for the interac_present payment method.
         /// </summary>
         [JsonProperty("interac_present")]
@@ -38,7 +45,7 @@ namespace Stripe.TestHelpers.Terminal
 
         /// <summary>
         /// Simulated payment type.
-        /// One of: <c>card</c>, <c>card_present</c>, or <c>interac_present</c>.
+        /// One of: <c>card</c>, <c>card_present</c>, <c>gift_card</c>, or <c>interac_present</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

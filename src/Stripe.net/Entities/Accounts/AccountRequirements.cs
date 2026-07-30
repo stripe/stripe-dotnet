@@ -35,7 +35,7 @@ namespace Stripe
         /// <summary>
         /// Fields that need to be resolved to keep the account enabled. If not resolved by
         /// <c>current_deadline</c>, these fields will appear in <c>past_due</c> as well, and the
-        /// account is disabled.
+        /// account will be disabled.
         /// </summary>
         [JsonProperty("currently_due")]
         [STJS.JsonPropertyName("currently_due")]

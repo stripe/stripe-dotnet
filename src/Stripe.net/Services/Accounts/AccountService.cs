@@ -278,6 +278,38 @@ namespace Stripe
         }
 
         /// <summary>
+        /// <p>With Connect, you can unreject accounts that you have previously rejected.</p>.
+        ///
+        /// <p>Only accounts that were rejected by your platform can be unrejected. This API cannot
+        /// be used to unreject accounts that were rejected by Stripe.</p>.
+        ///
+        /// <p>Unreject will only enable charges and/or payouts if there are no other restrictions
+        /// other than those placed by a previous rejection. If you have separately paused charges
+        /// and/or payouts outside of rejection, those pauses will remain in place after
+        /// unrejection.</p>.
+        /// </summary>
+        public virtual Account Unreject(string id, AccountUnrejectOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Account>(BaseAddress.Api, HttpMethod.Post, $"/v1/accounts/{WebUtility.UrlEncode(id)}/unreject", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>With Connect, you can unreject accounts that you have previously rejected.</p>.
+        ///
+        /// <p>Only accounts that were rejected by your platform can be unrejected. This API cannot
+        /// be used to unreject accounts that were rejected by Stripe.</p>.
+        ///
+        /// <p>Unreject will only enable charges and/or payouts if there are no other restrictions
+        /// other than those placed by a previous rejection. If you have separately paused charges
+        /// and/or payouts outside of rejection, those pauses will remain in place after
+        /// unrejection.</p>.
+        /// </summary>
+        public virtual Task<Account> UnrejectAsync(string id, AccountUnrejectOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Account>(BaseAddress.Api, HttpMethod.Post, $"/v1/accounts/{WebUtility.UrlEncode(id)}/unreject", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Updates a <a href="https://stripe.com/connect/accounts">connected account</a> by
         /// setting the values of the parameters passed. Any parameters not provided are left
         /// unchanged.</p>.

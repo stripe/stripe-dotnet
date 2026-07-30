@@ -36,7 +36,7 @@ namespace Stripe.SharedPayment
         /// The type of the PaymentMethod. An additional hash is included on the PaymentMethod with
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
-        /// One of: <c>affirm</c>, <c>card</c>, <c>klarna</c>, <c>link</c>, or <c>shop_pay</c>.
+        /// One of: <c>affirm</c>, <c>card</c>, <c>klarna</c>, or <c>link</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
