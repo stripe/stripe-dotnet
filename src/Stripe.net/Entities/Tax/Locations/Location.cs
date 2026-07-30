@@ -40,6 +40,14 @@ namespace Stripe.Tax
         public string Description { get; set; }
 
         /// <summary>
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
+        /// </summary>
+        [JsonProperty("livemode")]
+        [STJS.JsonPropertyName("livemode")]
+        public bool Livemode { get; set; }
+
+        /// <summary>
         /// The type of tax location to be defined. Currently the only option is <c>performance</c>.
         /// </summary>
         [JsonProperty("type")]

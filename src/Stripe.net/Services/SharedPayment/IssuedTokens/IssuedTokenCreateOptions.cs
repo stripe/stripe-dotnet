@@ -54,5 +54,13 @@ namespace Stripe.SharedPayment
         [JsonProperty("usage_limits")]
         [STJS.JsonPropertyName("usage_limits")]
         public IssuedTokenUsageLimitsOptions UsageLimits { get; set; }
+
+        /// <summary>
+        /// Set to true when using Stripe.js, iOS, or Android client-side SDKs to handle next
+        /// actions.
+        /// </summary>
+        [JsonProperty("use_stripe_sdk")]
+        [STJS.JsonPropertyName("use_stripe_sdk")]
+        public bool? UseStripeSdk { get; set; }
     }
 }

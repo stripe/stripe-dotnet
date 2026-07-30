@@ -395,10 +395,17 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditReturnedEventNotification>> v2MoneyManagementReceivedCreditReturned;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditSucceededEventNotification>> v2MoneyManagementReceivedCreditSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitCanceledEventNotification>> v2MoneyManagementReceivedDebitCanceled;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitCreatedEventNotification>> v2MoneyManagementReceivedDebitCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitFailedEventNotification>> v2MoneyManagementReceivedDebitFailed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitPendingEventNotification>> v2MoneyManagementReceivedDebitPending;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitScheduledEventNotification>> v2MoneyManagementReceivedDebitScheduled;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitSucceededEventNotification>> v2MoneyManagementReceivedDebitSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitUpdatedEventNotification>> v2MoneyManagementReceivedDebitUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitMandateCanceledEventNotification>> v2MoneyManagementReceivedDebitMandateCanceled;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitMandateCreatedEventNotification>> v2MoneyManagementReceivedDebitMandateCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitMandateExpiredEventNotification>> v2MoneyManagementReceivedDebitMandateExpired;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitMandatePendingCancellationEventNotification>> v2MoneyManagementReceivedDebitMandatePendingCancellation;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitMandateUpdatedEventNotification>> v2MoneyManagementReceivedDebitMandateUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementRecipientVerificationCreatedEventNotification>> v2MoneyManagementRecipientVerificationCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementRecipientVerificationUpdatedEventNotification>> v2MoneyManagementRecipientVerificationUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionCreatedEventNotification>> v2MoneyManagementTransactionCreated;
@@ -433,8 +440,11 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ReportingReportRunFailedEventNotification>> v2ReportingReportRunFailed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ReportingReportRunSucceededEventNotification>> v2ReportingReportRunSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ReportingReportRunUpdatedEventNotification>> v2ReportingReportRunUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountEvaluationCompleteEventNotification>> v2SignalsAccountEvaluationComplete;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalFraudulentMerchantReadyEventNotification>> v2SignalsAccountSignalFraudulentMerchantReady;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalFraudulentWebsiteReadyEventNotification>> v2SignalsAccountSignalFraudulentWebsiteReady;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification>> v2SignalsAccountSignalMerchantDelinquencyReady;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification>> v2SignalsAccountSignalPaymentDelinquencyExposureReady;
 
         // private-event-handlers: The end of the section generated from our OpenAPI spec
 
@@ -2749,6 +2759,12 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitCreatedEventNotification>> V2MoneyManagementReceivedDebitCreated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitCreated, value, "v2.money_management.received_debit.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitFailedEventNotification>> V2MoneyManagementReceivedDebitFailed
         {
             add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitFailed, value, "v2.money_management.received_debit.failed"); }
@@ -2761,6 +2777,12 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitScheduledEventNotification>> V2MoneyManagementReceivedDebitScheduled
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitScheduled, value, "v2.money_management.received_debit.scheduled"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitSucceededEventNotification>> V2MoneyManagementReceivedDebitSucceeded
         {
             add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitSucceeded, value, "v2.money_management.received_debit.succeeded"); }
@@ -2770,6 +2792,36 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitUpdatedEventNotification>> V2MoneyManagementReceivedDebitUpdated
         {
             add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitUpdated, value, "v2.money_management.received_debit.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitMandateCanceledEventNotification>> V2MoneyManagementReceivedDebitMandateCanceled
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitMandateCanceled, value, "v2.money_management.received_debit_mandate.canceled"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitMandateCreatedEventNotification>> V2MoneyManagementReceivedDebitMandateCreated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitMandateCreated, value, "v2.money_management.received_debit_mandate.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitMandateExpiredEventNotification>> V2MoneyManagementReceivedDebitMandateExpired
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitMandateExpired, value, "v2.money_management.received_debit_mandate.expired"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitMandatePendingCancellationEventNotification>> V2MoneyManagementReceivedDebitMandatePendingCancellation
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitMandatePendingCancellation, value, "v2.money_management.received_debit_mandate.pending_cancellation"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitMandateUpdatedEventNotification>> V2MoneyManagementReceivedDebitMandateUpdated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitMandateUpdated, value, "v2.money_management.received_debit_mandate.updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -2977,15 +3029,33 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountEvaluationCompleteEventNotification>> V2SignalsAccountEvaluationComplete
+        {
+            add { this.AddEventHandler(ref this.v2SignalsAccountEvaluationComplete, value, "v2.signals.account_evaluation.complete"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalFraudulentMerchantReadyEventNotification>> V2SignalsAccountSignalFraudulentMerchantReady
         {
             add { this.AddEventHandler(ref this.v2SignalsAccountSignalFraudulentMerchantReady, value, "v2.signals.account_signal.fraudulent_merchant_ready"); }
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalFraudulentWebsiteReadyEventNotification>> V2SignalsAccountSignalFraudulentWebsiteReady
+        {
+            add { this.AddEventHandler(ref this.v2SignalsAccountSignalFraudulentWebsiteReady, value, "v2.signals.account_signal.fraudulent_website_ready"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification>> V2SignalsAccountSignalMerchantDelinquencyReady
         {
             add { this.AddEventHandler(ref this.v2SignalsAccountSignalMerchantDelinquencyReady, value, "v2.signals.account_signal.merchant_delinquency_ready"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification>> V2SignalsAccountSignalPaymentDelinquencyExposureReady
+        {
+            add { this.AddEventHandler(ref this.v2SignalsAccountSignalPaymentDelinquencyExposureReady, value, "v2.signals.account_signal.payment_delinquency_exposure_ready"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -4606,6 +4676,10 @@ namespace Stripe
                 {
                     this.v2MoneyManagementReceivedDebitCanceled.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitCanceledEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitCanceledEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedDebitCreatedEventNotification)
+                {
+                    this.v2MoneyManagementReceivedDebitCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitCreatedEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitCreatedEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedDebitFailedEventNotification)
                 {
                     this.v2MoneyManagementReceivedDebitFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitFailedEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitFailedEventNotification)eventNotification, client));
@@ -4614,6 +4688,10 @@ namespace Stripe
                 {
                     this.v2MoneyManagementReceivedDebitPending.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitPendingEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitPendingEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedDebitScheduledEventNotification)
+                {
+                    this.v2MoneyManagementReceivedDebitScheduled.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitScheduledEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitScheduledEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedDebitSucceededEventNotification)
                 {
                     this.v2MoneyManagementReceivedDebitSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitSucceededEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitSucceededEventNotification)eventNotification, client));
@@ -4621,6 +4699,26 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedDebitUpdatedEventNotification)
                 {
                     this.v2MoneyManagementReceivedDebitUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitUpdatedEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedDebitMandateCanceledEventNotification)
+                {
+                    this.v2MoneyManagementReceivedDebitMandateCanceled.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitMandateCanceledEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitMandateCanceledEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedDebitMandateCreatedEventNotification)
+                {
+                    this.v2MoneyManagementReceivedDebitMandateCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitMandateCreatedEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitMandateCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedDebitMandateExpiredEventNotification)
+                {
+                    this.v2MoneyManagementReceivedDebitMandateExpired.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitMandateExpiredEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitMandateExpiredEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedDebitMandatePendingCancellationEventNotification)
+                {
+                    this.v2MoneyManagementReceivedDebitMandatePendingCancellation.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitMandatePendingCancellationEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitMandatePendingCancellationEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedDebitMandateUpdatedEventNotification)
+                {
+                    this.v2MoneyManagementReceivedDebitMandateUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitMandateUpdatedEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitMandateUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementRecipientVerificationCreatedEventNotification)
                 {
@@ -4758,13 +4856,25 @@ namespace Stripe
                 {
                     this.v2ReportingReportRunUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2ReportingReportRunUpdatedEventNotification>((Stripe.Events.V2ReportingReportRunUpdatedEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V2SignalsAccountEvaluationCompleteEventNotification)
+                {
+                    this.v2SignalsAccountEvaluationComplete.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountEvaluationCompleteEventNotification>((Stripe.Events.V2SignalsAccountEvaluationCompleteEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V2SignalsAccountSignalFraudulentMerchantReadyEventNotification)
                 {
                     this.v2SignalsAccountSignalFraudulentMerchantReady.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalFraudulentMerchantReadyEventNotification>((Stripe.Events.V2SignalsAccountSignalFraudulentMerchantReadyEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V2SignalsAccountSignalFraudulentWebsiteReadyEventNotification)
+                {
+                    this.v2SignalsAccountSignalFraudulentWebsiteReady.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalFraudulentWebsiteReadyEventNotification>((Stripe.Events.V2SignalsAccountSignalFraudulentWebsiteReadyEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification)
                 {
                     this.v2SignalsAccountSignalMerchantDelinquencyReady.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification>((Stripe.Events.V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification)
+                {
+                    this.v2SignalsAccountSignalPaymentDelinquencyExposureReady.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification>((Stripe.Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification)eventNotification, client));
                 }
 
                 // event-handler-dispatch: The end of the section generated from our OpenAPI spec

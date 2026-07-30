@@ -26,6 +26,8 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// List of signals to evaluate.
+        /// One of: <c>fraudulent_website</c>, <c>user_account_sharing</c>, or
+        /// <c>user_multi_accounting</c>.
         /// </summary>
         [JsonProperty("signals")]
         [STJS.JsonPropertyName("signals")]

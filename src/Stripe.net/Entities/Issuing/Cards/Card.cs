@@ -195,6 +195,22 @@ namespace Stripe.Issuing
         #endregion
 
         /// <summary>
+        /// The product code the card is currently enrolled under. <c>product_graduation_state</c>
+        /// reflects any in-flight product graduation and whether the card network has confirmed it.
+        /// </summary>
+        [JsonProperty("product_code")]
+        [STJS.JsonPropertyName("product_code")]
+        public string ProductCode { get; set; }
+
+        /// <summary>
+        /// State of the product graduation request on this card. Only present when a product
+        /// graduation has been requested.
+        /// </summary>
+        [JsonProperty("product_graduation_state")]
+        [STJS.JsonPropertyName("product_graduation_state")]
+        public CardProductGraduationState ProductGraduationState { get; set; }
+
+        /// <summary>
         /// The program that this card belongs to — will not be nil.
         /// </summary>
         [JsonProperty("program")]

@@ -410,6 +410,10 @@ namespace Stripe
                     V2.MoneyManagement.ReceivedDebit)
                 },
                 {
+                    "v2.money_management.received_debit_mandate", typeof(
+                    V2.MoneyManagement.ReceivedDebitMandate)
+                },
+                {
                     "v2.money_management.recipient_verification", typeof(
                     V2.MoneyManagement.RecipientVerification)
                 },
@@ -434,6 +438,9 @@ namespace Stripe
                 },
                 { "v2.reporting.report", typeof(V2.Reporting.Report) },
                 { "v2.reporting.report_run", typeof(V2.Reporting.ReportRun) },
+                { "v2.risk.inquiry", typeof(V2.Risk.Inquiry) },
+                { "v2.signals.account_activity", typeof(V2.Signals.AccountActivity) },
+                { "v2.signals.account_evaluation", typeof(V2.Signals.AccountEvaluation) },
                 { "v2.signals.account_signal", typeof(V2.Signals.AccountSignal) },
                 { "v2.tax.manual_rule", typeof(V2.Tax.ManualRule) },
 
@@ -1551,6 +1558,10 @@ namespace Stripe
                     Events.V2MoneyManagementReceivedDebitCanceledEvent)
                 },
                 {
+                    "v2.money_management.received_debit.created", typeof(
+                    Events.V2MoneyManagementReceivedDebitCreatedEvent)
+                },
+                {
                     "v2.money_management.received_debit.failed", typeof(
                     Events.V2MoneyManagementReceivedDebitFailedEvent)
                 },
@@ -1559,12 +1570,36 @@ namespace Stripe
                     Events.V2MoneyManagementReceivedDebitPendingEvent)
                 },
                 {
+                    "v2.money_management.received_debit.scheduled", typeof(
+                    Events.V2MoneyManagementReceivedDebitScheduledEvent)
+                },
+                {
                     "v2.money_management.received_debit.succeeded", typeof(
                     Events.V2MoneyManagementReceivedDebitSucceededEvent)
                 },
                 {
                     "v2.money_management.received_debit.updated", typeof(
                     Events.V2MoneyManagementReceivedDebitUpdatedEvent)
+                },
+                {
+                    "v2.money_management.received_debit_mandate.canceled", typeof(
+                    Events.V2MoneyManagementReceivedDebitMandateCanceledEvent)
+                },
+                {
+                    "v2.money_management.received_debit_mandate.created", typeof(
+                    Events.V2MoneyManagementReceivedDebitMandateCreatedEvent)
+                },
+                {
+                    "v2.money_management.received_debit_mandate.expired", typeof(
+                    Events.V2MoneyManagementReceivedDebitMandateExpiredEvent)
+                },
+                {
+                    "v2.money_management.received_debit_mandate.pending_cancellation", typeof(
+                    Events.V2MoneyManagementReceivedDebitMandatePendingCancellationEvent)
+                },
+                {
+                    "v2.money_management.received_debit_mandate.updated", typeof(
+                    Events.V2MoneyManagementReceivedDebitMandateUpdatedEvent)
                 },
                 {
                     "v2.money_management.recipient_verification.created", typeof(
@@ -1703,12 +1738,24 @@ namespace Stripe
                     Events.V2ReportingReportRunUpdatedEvent)
                 },
                 {
+                    "v2.signals.account_evaluation.complete", typeof(
+                    Events.V2SignalsAccountEvaluationCompleteEvent)
+                },
+                {
                     "v2.signals.account_signal.fraudulent_merchant_ready", typeof(
                     Events.V2SignalsAccountSignalFraudulentMerchantReadyEvent)
                 },
                 {
+                    "v2.signals.account_signal.fraudulent_website_ready", typeof(
+                    Events.V2SignalsAccountSignalFraudulentWebsiteReadyEvent)
+                },
+                {
                     "v2.signals.account_signal.merchant_delinquency_ready", typeof(
                     Events.V2SignalsAccountSignalMerchantDelinquencyReadyEvent)
+                },
+                {
+                    "v2.signals.account_signal.payment_delinquency_exposure_ready", typeof(
+                    Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEvent)
                 },
 
                 // V2EventsToTypes: The end of the section generated from our OpenAPI spec
@@ -3008,6 +3055,10 @@ namespace Stripe
                     Events.V2MoneyManagementReceivedDebitCanceledEventNotification)
                 },
                 {
+                    "v2.money_management.received_debit.created", typeof(
+                    Events.V2MoneyManagementReceivedDebitCreatedEventNotification)
+                },
+                {
                     "v2.money_management.received_debit.failed", typeof(
                     Events.V2MoneyManagementReceivedDebitFailedEventNotification)
                 },
@@ -3016,12 +3067,36 @@ namespace Stripe
                     Events.V2MoneyManagementReceivedDebitPendingEventNotification)
                 },
                 {
+                    "v2.money_management.received_debit.scheduled", typeof(
+                    Events.V2MoneyManagementReceivedDebitScheduledEventNotification)
+                },
+                {
                     "v2.money_management.received_debit.succeeded", typeof(
                     Events.V2MoneyManagementReceivedDebitSucceededEventNotification)
                 },
                 {
                     "v2.money_management.received_debit.updated", typeof(
                     Events.V2MoneyManagementReceivedDebitUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.received_debit_mandate.canceled", typeof(
+                    Events.V2MoneyManagementReceivedDebitMandateCanceledEventNotification)
+                },
+                {
+                    "v2.money_management.received_debit_mandate.created", typeof(
+                    Events.V2MoneyManagementReceivedDebitMandateCreatedEventNotification)
+                },
+                {
+                    "v2.money_management.received_debit_mandate.expired", typeof(
+                    Events.V2MoneyManagementReceivedDebitMandateExpiredEventNotification)
+                },
+                {
+                    "v2.money_management.received_debit_mandate.pending_cancellation", typeof(
+                    Events.V2MoneyManagementReceivedDebitMandatePendingCancellationEventNotification)
+                },
+                {
+                    "v2.money_management.received_debit_mandate.updated", typeof(
+                    Events.V2MoneyManagementReceivedDebitMandateUpdatedEventNotification)
                 },
                 {
                     "v2.money_management.recipient_verification.created", typeof(
@@ -3160,12 +3235,24 @@ namespace Stripe
                     Events.V2ReportingReportRunUpdatedEventNotification)
                 },
                 {
+                    "v2.signals.account_evaluation.complete", typeof(
+                    Events.V2SignalsAccountEvaluationCompleteEventNotification)
+                },
+                {
                     "v2.signals.account_signal.fraudulent_merchant_ready", typeof(
                     Events.V2SignalsAccountSignalFraudulentMerchantReadyEventNotification)
                 },
                 {
+                    "v2.signals.account_signal.fraudulent_website_ready", typeof(
+                    Events.V2SignalsAccountSignalFraudulentWebsiteReadyEventNotification)
+                },
+                {
                     "v2.signals.account_signal.merchant_delinquency_ready", typeof(
                     Events.V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification)
+                },
+                {
+                    "v2.signals.account_signal.payment_delinquency_exposure_ready", typeof(
+                    Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification)
                 },
 
                 // V2EventNotificationsToTypes: The end of the section generated from our OpenAPI spec

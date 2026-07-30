@@ -18,6 +18,7 @@ namespace Stripe
         private V2.OrchestratedCommerceService orchestratedCommerce;
         private V2.PaymentsService payments;
         private V2.ReportingService reporting;
+        private V2.RiskService risk;
         private V2.SignalsService signals;
         private V2.TaxService tax;
         private V2.TestHelperService testHelpers;
@@ -63,6 +64,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual V2.ReportingService Reporting => this.reporting ??= new V2.ReportingService(
+            this.Requestor);
+
+        public virtual V2.RiskService Risk => this.risk ??= new V2.RiskService(
             this.Requestor);
 
         public virtual V2.SignalsService Signals => this.signals ??= new V2.SignalsService(

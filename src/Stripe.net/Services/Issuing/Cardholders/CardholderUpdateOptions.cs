@@ -48,6 +48,13 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The cardholder's name. This will be printed on cards issued to them.
+        /// </summary>
+        [JsonProperty("name")]
+        [STJS.JsonPropertyName("name")]
+        public string Name { get; set; }
+
+        /// <summary>
         /// The cardholder's phone number. This is required for all cardholders who will be creating
         /// EU cards. See the <a href="https://docs.stripe.com/issuing/3d-secure">3D Secure
         /// documentation</a> for more details.

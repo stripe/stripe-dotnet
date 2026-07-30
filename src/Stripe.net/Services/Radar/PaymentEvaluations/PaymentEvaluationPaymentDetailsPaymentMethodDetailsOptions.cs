@@ -16,7 +16,7 @@ namespace Stripe.Radar
         public PaymentEvaluationPaymentDetailsPaymentMethodDetailsBillingDetailsOptions BillingDetails { get; set; }
 
         /// <summary>
-        /// Masked PAN card details to use as an alternative to a payment_method token.
+        /// Masked/raw PAN card details to use as an alternative to a payment_method token.
         /// </summary>
         [JsonProperty("card")]
         [STJS.JsonPropertyName("card")]

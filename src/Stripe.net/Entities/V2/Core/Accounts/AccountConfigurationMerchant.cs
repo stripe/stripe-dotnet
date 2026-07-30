@@ -47,6 +47,13 @@ namespace Stripe.V2.Core
         public AccountConfigurationMerchantCardPayments CardPayments { get; set; }
 
         /// <summary>
+        /// Settings for gross settlement.
+        /// </summary>
+        [JsonProperty("gross_settlement")]
+        [STJS.JsonPropertyName("gross_settlement")]
+        public AccountConfigurationMerchantGrossSettlement GrossSettlement { get; set; }
+
+        /// <summary>
         /// Settings specific to Konbini payments on the account.
         /// </summary>
         [JsonProperty("konbini_payments")]

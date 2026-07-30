@@ -10,6 +10,7 @@ namespace Stripe.V2.MoneyManagement
     {
         /// <summary>
         /// The bank network the dispute was originated on.
+        /// One of: <c>ach</c>, or <c>bacs</c>.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]
@@ -17,7 +18,9 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// The reason for the dispute.
-        /// One of: <c>incorrect_amount_or_date</c>, or <c>unauthorized</c>.
+        /// One of: <c>beneficiary_unrecognized</c>, <c>incorrect_amount_or_date</c>,
+        /// <c>mandate_canceled</c>, <c>mandate_canceled_by_stripe</c>, <c>no_advance_notice</c>,
+        /// <c>originator_requested</c>, <c>signature_invalid</c>, or <c>unauthorized</c>.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

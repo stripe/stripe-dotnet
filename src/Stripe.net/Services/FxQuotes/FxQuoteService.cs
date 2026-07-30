@@ -60,8 +60,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Returns a list of FX quotes that have been issued. The FX quotes are returned in
-        /// sorted order, with the most recent FX quotes appearing first.</p>.
+        /// <p>Returns a list of active FX quotes. The FX quotes are returned in sorted order, with
+        /// the most recent FX quotes appearing first.</p>.
         /// </summary>
         public virtual StripeList<FxQuote> List(FxQuoteListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -69,8 +69,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Returns a list of FX quotes that have been issued. The FX quotes are returned in
-        /// sorted order, with the most recent FX quotes appearing first.</p>.
+        /// <p>Returns a list of active FX quotes. The FX quotes are returned in sorted order, with
+        /// the most recent FX quotes appearing first.</p>.
         /// </summary>
         public virtual Task<StripeList<FxQuote>> ListAsync(FxQuoteListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -78,8 +78,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Returns a list of FX quotes that have been issued. The FX quotes are returned in
-        /// sorted order, with the most recent FX quotes appearing first.</p>.
+        /// <p>Returns a list of active FX quotes. The FX quotes are returned in sorted order, with
+        /// the most recent FX quotes appearing first.</p>.
         /// </summary>
         public virtual IEnumerable<FxQuote> ListAutoPaging(FxQuoteListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -87,8 +87,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Returns a list of FX quotes that have been issued. The FX quotes are returned in
-        /// sorted order, with the most recent FX quotes appearing first.</p>.
+        /// <p>Returns a list of active FX quotes. The FX quotes are returned in sorted order, with
+        /// the most recent FX quotes appearing first.</p>.
         /// </summary>
         public virtual IAsyncEnumerable<FxQuote> ListAutoPagingAsync(FxQuoteListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

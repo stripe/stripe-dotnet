@@ -110,9 +110,18 @@ namespace Stripe.V2.MoneyManagement
         public string ReceiptUrl { get; set; }
 
         /// <summary>
+        /// The time at which the scheduled ReceivedDebit is expected to settle. Represented as a
+        /// RFC 3339 date &amp; time UTC value in millisecond precision, for example:
+        /// <c>2022-09-18T13:22:18.123Z</c>. Only present when status is <c>scheduled</c>.
+        /// </summary>
+        [JsonProperty("settles_at")]
+        [STJS.JsonPropertyName("settles_at")]
+        public DateTime? SettlesAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
         /// Open Enum. The status of the ReceivedDebit.
-        /// One of: <c>canceled</c>, <c>failed</c>, <c>pending</c>, <c>returned</c>, or
-        /// <c>succeeded</c>.
+        /// One of: <c>canceled</c>, <c>failed</c>, <c>pending</c>, <c>returned</c>,
+        /// <c>scheduled</c>, or <c>succeeded</c>.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

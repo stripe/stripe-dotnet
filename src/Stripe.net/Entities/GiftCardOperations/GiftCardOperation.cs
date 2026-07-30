@@ -88,7 +88,7 @@ namespace Stripe
         /// <c>invalid_number</c>, <c>invalid_pin</c>, <c>invalid_track_data</c>, <c>lost_card</c>,
         /// <c>lost_or_stolen_card</c>, <c>pin_required</c>, <c>pin_tries_exceeded</c>,
         /// <c>processing_error</c>, <c>provider_unavailable</c>, <c>stolen_card</c>,
-        /// <c>suspected_fraud</c>, or <c>timeout</c>.
+        /// <c>suspected_fraud</c>, <c>timeout</c>, or <c>try_again_later</c>.
         /// </summary>
         [JsonProperty("failure_code")]
         [STJS.JsonPropertyName("failure_code")]

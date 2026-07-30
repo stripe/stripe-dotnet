@@ -143,6 +143,13 @@ namespace Stripe.V2.Payments
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
+        /// Provides a way to schedule deferred payments for cards and debits, in YYYY-MM-DD format.
+        /// </summary>
+        [JsonProperty("target_date")]
+        [STJS.JsonPropertyName("target_date")]
+        public string TargetDate { get; set; }
+
+        /// <summary>
         /// Test clock that can be used to advance the retry attempts in a sandbox.
         /// </summary>
         [JsonProperty("test_clock")]

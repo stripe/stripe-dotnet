@@ -125,6 +125,48 @@ namespace Stripe
         [STJS.JsonPropertyName("currency")]
         public string Currency { get; set; }
 
+        #region Expandable Customer
+
+        /// <summary>
+        /// (ID of the Customer)
+        /// ID of the customer of this refund.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public string CustomerId
+        {
+            get => this.InternalCustomer?.Id;
+            set => this.InternalCustomer = SetExpandableFieldId(value, this.InternalCustomer);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the customer of this refund.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public Customer Customer
+        {
+            get => this.InternalCustomer?.ExpandedObject;
+            set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
+        }
+
+        [JsonProperty("customer")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+        [STJS.JsonPropertyName("customer")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
+        internal ExpandableField<Customer> InternalCustomer { get; set; }
+        #endregion
+
+        /// <summary>
+        /// ID of the account of this refund.
+        /// </summary>
+        [JsonProperty("customer_account")]
+        [STJS.JsonPropertyName("customer_account")]
+        public string CustomerAccount { get; set; }
+
         /// <summary>
         /// An arbitrary string attached to the object. You can use this for displaying to users
         /// (available on non-card refunds only).
@@ -238,6 +280,41 @@ namespace Stripe
         [STJS.JsonPropertyName("payment_intent")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentIntent>))]
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
+        #endregion
+
+        #region Expandable PaymentMethod
+
+        /// <summary>
+        /// (ID of the PaymentMethod)
+        /// ID of the payment method associated with this refund.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public string PaymentMethodId
+        {
+            get => this.InternalPaymentMethod?.Id;
+            set => this.InternalPaymentMethod = SetExpandableFieldId(value, this.InternalPaymentMethod);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the payment method associated with this refund.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public PaymentMethod PaymentMethod
+        {
+            get => this.InternalPaymentMethod?.ExpandedObject;
+            set => this.InternalPaymentMethod = SetExpandableFieldObject(value, this.InternalPaymentMethod);
+        }
+
+        [JsonProperty("payment_method")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
+        [STJS.JsonPropertyName("payment_method")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentMethod>))]
+        internal ExpandableField<PaymentMethod> InternalPaymentMethod { get; set; }
         #endregion
 
         /// <summary>

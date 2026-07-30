@@ -18,6 +18,7 @@ namespace Stripe.V2.MoneyManagement.TestHelpers
         /// <summary>
         /// The network to use in simulating the funds flow. This will be reflected in the resulting
         /// ReceivedDebit.
+        /// One of: <c>ach</c>, or <c>bacs</c>.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]

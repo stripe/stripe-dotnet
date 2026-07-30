@@ -80,6 +80,13 @@ namespace Stripe.Crypto
         public string Sui { get; set; }
 
         /// <summary>
+        /// A Tempo address.
+        /// </summary>
+        [JsonProperty("tempo")]
+        [STJS.JsonPropertyName("tempo")]
+        public string Tempo { get; set; }
+
+        /// <summary>
         /// A worldchain address.
         /// </summary>
         [JsonProperty("worldchain")]

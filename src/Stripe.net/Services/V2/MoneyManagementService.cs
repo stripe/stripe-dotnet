@@ -22,6 +22,7 @@ namespace Stripe.V2
         private V2.MoneyManagement.PayoutMethodsBankAccountSpecService payoutMethodsBankAccountSpec;
         private V2.MoneyManagement.ReceivedCreditService receivedCredits;
         private V2.MoneyManagement.ReceivedDebitService receivedDebits;
+        private V2.MoneyManagement.ReceivedDebitMandateService receivedDebitMandates;
         private V2.MoneyManagement.RecipientVerificationService recipientVerifications;
         private V2.MoneyManagement.TestHelpersService testHelpers;
         private V2.MoneyManagement.TransactionService transactions;
@@ -80,6 +81,9 @@ namespace Stripe.V2
             this.Requestor);
 
         public virtual V2.MoneyManagement.ReceivedDebitService ReceivedDebits => this.receivedDebits ??= new V2.MoneyManagement.ReceivedDebitService(
+            this.Requestor);
+
+        public virtual V2.MoneyManagement.ReceivedDebitMandateService ReceivedDebitMandates => this.receivedDebitMandates ??= new V2.MoneyManagement.ReceivedDebitMandateService(
             this.Requestor);
 
         public virtual V2.MoneyManagement.RecipientVerificationService RecipientVerifications => this.recipientVerifications ??= new V2.MoneyManagement.RecipientVerificationService(

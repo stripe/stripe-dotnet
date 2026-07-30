@@ -140,7 +140,7 @@ namespace Stripe
 
         /// <summary>
         /// Indicate whether this subscription should cancel at the end of the current period
-        /// (<c>current_period_end</c>). Defaults to <c>false</c>.
+        /// (<c>current_period_end</c>).
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
         [STJS.JsonPropertyName("cancel_at_period_end")]

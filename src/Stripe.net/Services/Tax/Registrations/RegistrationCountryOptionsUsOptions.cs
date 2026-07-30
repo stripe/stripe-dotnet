@@ -72,6 +72,20 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsUsLuxuryTaxOptions LuxuryTax { get; set; }
 
         /// <summary>
+        /// Options for the mass transit parking tax registration.
+        /// </summary>
+        [JsonProperty("mass_transit_parking_tax")]
+        [STJS.JsonPropertyName("mass_transit_parking_tax")]
+        public RegistrationCountryOptionsUsMassTransitParkingTaxOptions MassTransitParkingTax { get; set; }
+
+        /// <summary>
+        /// Options for the parking tax registration.
+        /// </summary>
+        [JsonProperty("parking_tax")]
+        [STJS.JsonPropertyName("parking_tax")]
+        public RegistrationCountryOptionsUsParkingTaxOptions ParkingTax { get; set; }
+
+        /// <summary>
         /// Options for the resort tax registration.
         /// </summary>
         [JsonProperty("resort_tax")]

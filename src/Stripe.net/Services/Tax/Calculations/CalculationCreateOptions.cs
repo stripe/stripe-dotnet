@@ -56,9 +56,11 @@ namespace Stripe.Tax
         public CalculationShippingCostOptions ShippingCost { get; set; }
 
         /// <summary>
-        /// Timestamp of date at which the tax rules and rates in effect applies for the
-        /// calculation. Measured in seconds since the Unix epoch. Can be up to 48 hours in the
-        /// past, and up to 48 hours in the future.
+        /// The calculation uses the tax rules and rates that are in effect at this timestamp. You
+        /// can use a date up to 31 days in the past or up to 31 days in the future. If you use a
+        /// future date, Stripe doesn't guarantee that the expected tax rules and rate being used
+        /// match the actual rules and rate that will be in effect on that date. We deploy tax
+        /// changes before their effective date, but not within a fixed window.
         /// </summary>
         [JsonProperty("tax_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

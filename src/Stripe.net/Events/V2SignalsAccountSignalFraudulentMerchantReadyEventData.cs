@@ -7,8 +7,7 @@ namespace Stripe.Events
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-    public class V2SignalsAccountSignalFraudulentMerchantReadyEventData : StripeEntity<V2SignalsAccountSignalFraudulentMerchantReadyEventData>,
-        IHasId
+    public class V2SignalsAccountSignalFraudulentMerchantReadyEventData : StripeEntity<V2SignalsAccountSignalFraudulentMerchantReadyEventData>
     {
         /// <summary>
         /// Account ID that this signal is associated with.
@@ -30,13 +29,6 @@ namespace Stripe.Events
         [JsonProperty("fraudulent_merchant")]
         [STJS.JsonPropertyName("fraudulent_merchant")]
         public V2SignalsAccountSignalFraudulentMerchantReadyEventDataFraudulentMerchant FraudulentMerchant { get; set; }
-
-        /// <summary>
-        /// Unique identifier for this account signal.
-        /// </summary>
-        [JsonProperty("id")]
-        [STJS.JsonPropertyName("id")]
-        public string Id { get; set; }
 
         /// <summary>
         /// The type of account signal. Currently only fraudulent_merchant is supported.
