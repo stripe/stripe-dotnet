@@ -65,8 +65,16 @@ namespace Stripe
         /// </remarks>
         public static Event ParseEvent(string json, bool throwOnApiVersionMismatch = true)
         {
-            var stripeEvent = DeserializeEvent(json);
+            return ValidateEvent(DeserializeEvent(json), throwOnApiVersionMismatch);
+        }
 
+        private static Event ParseEvent(System.Text.Json.JsonElement inner, bool throwOnApiVersionMismatch = true)
+        {
+            return ValidateEvent(DeserializeEvent(inner), throwOnApiVersionMismatch);
+        }
+
+        private static Event ValidateEvent(Event stripeEvent, bool throwOnApiVersionMismatch = true)
+        {
             if (throwOnApiVersionMismatch &&
                 !IsCompatibleApiVersion(stripeEvent.ApiVersion))
             {
@@ -84,9 +92,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// Parses a JSON string from a Stripe webhook into a <see cref="Event"/> object, while
-        /// verifying the <a href="https://stripe.com/docs/webhooks/signatures">webhook's
-        /// signature</a>.
+        /// Constructs an a <see cref="Event"/>
+        /// from an incoming <see href="https://docs.stripe.com/event-destinations#snapshot-payload">webhook</see> after verifying its authenticity. To work with a webhook that
+        /// has already been verified (i.e. one from a cloud provider, an asynchronous queue, or
+        /// during testing), see <see cref="ConstructEventWithoutVerification"/>.
         /// </summary>
         /// <param name="json">The JSON string to parse.</param>
         /// <param name="stripeSignatureHeader">
@@ -121,9 +130,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// Parses a JSON string from a Stripe webhook into a <see cref="Event"/> object, while
-        /// verifying the <a href="https://stripe.com/docs/webhooks/signatures">webhook's
-        /// signature</a>.
+        /// Constructs a <see href="https://docs.stripe.com/event-destinations#snapshot-payload">snapshot event</see>
+        /// from an incoming webhook after verifying its authenticity. To work with a webhook that
+        /// has already been verified (i.e. one from a cloud provider, an asynchronous queue, or
+        /// during testing), see <see cref="ConstructEventWithoutVerification"/>.
         /// </summary>
         /// <param name="json">The JSON string to parse.</param>
         /// <param name="stripeSignatureHeader">
@@ -154,11 +164,23 @@ namespace Stripe
             return ParseEvent(json, throwOnApiVersionMismatch);
         }
 
+        /// <summary>
+        /// Verifies the authenticity (and recency) of a webhook, throwing a
+        /// <see cref="StripeException"/> if there's a mismatch. Useful for quickly validating
+        /// incoming webhooks before storing them for later processing (at which time you can use
+        /// the <c>*WithoutVerification</c> methods for parsing).
+        /// </summary>
         public static void ValidateSignature(string json, string stripeSignatureHeader, string secret, long tolerance = DefaultTimeTolerance)
         {
             ValidateSignature(json, stripeSignatureHeader, secret, tolerance, DateTimeOffset.UtcNow.ToUnixTimeSeconds());
         }
 
+        /// <summary>
+        /// Verifies the authenticity (and recency) of a webhook, throwing a
+        /// <see cref="StripeException"/> if there's a mismatch. Useful for quickly validating
+        /// incoming webhooks before storing them for later processing (at which time you can use
+        /// the <c>*WithoutVerification</c> methods for parsing).
+        /// </summary>
         public static void ValidateSignature(string json, string stripeSignatureHeader, string secret, long tolerance, long utcNow)
         {
             var signatureItems = ParseStripeSignature(stripeSignatureHeader);
@@ -216,66 +238,79 @@ namespace Stripe
             return signatures.Any(key => StringUtils.SecureEquals(key, signature));
         }
 
-        internal static string ExtractFromCloudProviderEnvelope(string json)
+        internal static System.Text.Json.JsonElement MaybeExtractFromCloudProviderEnvelope(string json)
         {
-            using (var doc = System.Text.Json.JsonDocument.Parse(json))
+            var doc = System.Text.Json.JsonDocument.Parse(json);
+            var root = doc.RootElement;
+
+            // Could add as many checks as we want here, but we'll start simple
+            if (root.TryGetProperty("detail", out var detailProp))
             {
-                System.Text.Json.JsonElement innerElement;
-
-                // Could add as many checks as we want here, but we'll start simple
-                if (doc.RootElement.TryGetProperty("detail", out var detailProp))
-                {
-                    // AWS
-                    // https://docs.stripe.com/event-destinations/eventbridge#event-structure
-                    innerElement = detailProp;
-                }
-                else if (doc.RootElement.TryGetProperty("specversion", out _))
-                {
-                    // Azure
-                    // https://docs.stripe.com/event-destinations/eventgrid#event-structure
-                    if (!doc.RootElement.TryGetProperty("data", out var dataProp))
-                    {
-                        throw new ArgumentException(
-                            "Unrecognized cloud event format. The payload must be an "
-                            + "AWS EventBridge or Azure Event Grid event envelope.");
-                    }
-
-                    innerElement = dataProp;
-                }
-                else if (doc.RootElement.TryGetProperty("id", out var idProp) &&
-                    idProp.ValueKind == System.Text.Json.JsonValueKind.String &&
-                    idProp.GetString().StartsWith("evt_"))
-                {
-                    throw new ArgumentException(
-                        "It looks like you passed a Stripe Event directly. "
-                        + "Use ConstructEvent instead to parse a webhook payload "
-                        + "with signature verification.");
-                }
-                else
-                {
-                    throw new ArgumentException(
-                        "Unrecognized cloud event format. The payload must be an "
-                        + "AWS EventBridge or Azure Event Grid event envelope.");
-                }
-
-                return innerElement.GetRawText();
+                // AWS
+                // https://docs.stripe.com/event-destinations/eventbridge#event-structure
+                return detailProp.Clone();
             }
+
+            if (root.TryGetProperty("specversion", out _))
+            {
+                // Azure
+                // https://docs.stripe.com/event-destinations/eventgrid#event-structure
+                if (root.TryGetProperty("data", out var dataProp))
+                {
+                    return dataProp.Clone();
+                }
+            }
+
+            if (root.TryGetProperty("object", out var objProp) &&
+               (objProp.GetString() == "event" || objProp.GetString() == "v2.core.event"))
+            {
+                return root.Clone();
+            }
+
+            throw new ArgumentException(
+                "Unrecognized cloud event format. The payload must be an "
+                + "AWS EventBridge/Azure Event Grid event envelope or a Stripe webhook.");
+        }
+
+        /// <summary>
+        /// Constructs a <see href="https://docs.stripe.com/event-destinations#snapshot-payload">snapshot event</see>
+        /// from an incoming webhook without first verifying its authenticity. Should be used after
+        /// calling <see cref="ValidateSignature(string, string, string, long)"/> or with input from a trusted source (such as
+        /// <see href="https://docs.stripe.com/event-destinations/eventbridge">AWS EventBridge</see>,
+        /// or <see href="https://docs.stripe.com/event-destinations/eventgrid">Azure Event Grid</see>
+        /// payload). Or, to verify &amp; construct in a single call, use
+        /// <see cref="ConstructEvent(string, string, string, long, bool)"/> instead.
+        /// </summary>
+        /// <param name="json">The JSON string to parse.</param>
+        /// <param name="throwOnApiVersionMismatch">
+        /// If <c>true</c>, the method will throw a <see cref="StripeException"/> if the
+        /// API version of the event doesn't match Stripe.net's default API version.
+        /// Defaults to <c>false</c> since cloud provider payloads may not match the SDK version.
+        /// </param>
+        public static Event ConstructEventWithoutVerification(string json, bool throwOnApiVersionMismatch = false)
+        {
+            return ParseEvent(MaybeExtractFromCloudProviderEnvelope(json), throwOnApiVersionMismatch);
         }
 
         internal static Event DeserializeEvent(string json)
         {
             using (var doc = System.Text.Json.JsonDocument.Parse(json))
             {
-                if (doc.RootElement.TryGetProperty("object", out var objectProp) &&
-                    objectProp.GetString() == "v2.core.event")
-                {
-                    throw new ArgumentException(
-                        "You passed a thin event notification to a function that expects a webhook body. Use the corresponding EventNotification method instead.");
-                }
+                return DeserializeEvent(doc.RootElement);
+            }
+        }
+
+        internal static Event DeserializeEvent(System.Text.Json.JsonElement element)
+        {
+            if (element.TryGetProperty("object", out var objectProp) &&
+                objectProp.GetString() == "v2.core.event")
+            {
+                throw new ArgumentException(
+                    "You passed a thin event notification to a function that expects a webhook body. Use the corresponding EventNotification method instead.");
             }
 
             return System.Text.Json.JsonSerializer.Deserialize<Event>(
-                json,
+                element.GetRawText(),
                 StripeConfiguration.SerializerOptions);
         }
 
@@ -296,6 +331,17 @@ namespace Stripe
                 var hash = cryptographer.ComputeHash(payloadBytes);
                 return BitConverter.ToString(hash).Replace("-", string.Empty).ToLowerInvariant();
             }
+        }
+
+        /// <summary>
+        /// Compute the <c>Stripe-Signature</c> header for a given webhook body &amp; secret.
+        /// Useful for signing payloads in unit tests.
+        /// </summary>
+        public static string GenerateSignatureHeader(string payload, string secret, long? timestamp = null)
+        {
+            var ts = timestamp ?? DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var signature = ComputeSignature(secret, ts.ToString(), payload);
+            return $"t={ts},v1={signature}";
         }
     }
 }

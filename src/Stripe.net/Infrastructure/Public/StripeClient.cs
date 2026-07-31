@@ -7,7 +7,6 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
     using Stripe.V2.Core;
 
     /// <summary>
@@ -206,31 +205,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// Constructs an Event from an <a href="https://docs.stripe.com/event-destinations/eventbridge">AWS EventBridge</a>
-        /// or <a href="https://docs.stripe.com/event-destinations/eventgrid">Azure Event Grid</a> payload.
-        /// </summary>
-        /// <param name="json">The JSON payload from the cloud provider.</param>
-        /// <returns>The deserialized <see cref="Event"/>.</returns>
-        public Event ConstructEventFromCloudProvider(string json)
-        {
-            var innerJson = EventUtility.ExtractFromCloudProviderEnvelope(json);
-            return EventUtility.DeserializeEvent(innerJson);
-        }
-
-        /// <summary>
-        /// Parses an EventNotification from an <a href="https://docs.stripe.com/event-destinations/eventbridge">AWS EventBridge</a>
-        /// or <a href="https://docs.stripe.com/event-destinations/eventgrid">Azure Event Grid</a> payload.
-        /// </summary>
-        public EventNotification ParseEventNotificationFromCloudProvider(string json)
-        {
-            var innerJson = EventUtility.ExtractFromCloudProviderEnvelope(json);
-            return this.BuildEventNotification(innerJson);
-        }
-
-        /// <summary>
-        /// Parses a JSON string from a Stripe webhook into a <see cref="EventNotification"/> object, while
-        /// verifying the <a href="https://stripe.com/docs/webhooks/signatures">webhook's
-        /// signature</a>.
+        /// Constructs a <see href="https://docs.stripe.com/event-destinations#thin-payload">thin event notification</see>
+        /// from an incoming webhook after verifying its authenticity. To work with a webhook that
+        /// has already been verified (i.e. one from a cloud provider, an asynchronous queue, or
+        /// during testing), see <see cref="ParseEventNotificationWithoutVerification"/>.
         /// </summary>
         /// <param name="json">The JSON string to parse.</param>
         /// <param name="stripeSignatureHeader">
@@ -253,17 +231,39 @@ namespace Stripe
             return this.BuildEventNotification(json);
         }
 
+        /// <summary>
+        /// Constructs a <see href="https://docs.stripe.com/event-destinations#thin-payload">thin event notification</see>
+        /// from an incoming webhook without first verifying its authenticity. Should be used after
+        /// calling <see cref="EventUtility.ValidateSignature(string, string, string, long)"/> or with input from a trusted source
+        /// (such as <see href="https://docs.stripe.com/event-destinations/eventbridge">AWS EventBridge</see>,
+        /// or <see href="https://docs.stripe.com/event-destinations/eventgrid">Azure Event Grid</see>
+        /// payload). Or, to verify &amp; parse in a single call, use
+        /// <see cref="ParseEventNotification"/> instead.
+        /// </summary>
+        public EventNotification ParseEventNotificationWithoutVerification(string json)
+        {
+            var inner = EventUtility.MaybeExtractFromCloudProviderEnvelope(json);
+            return this.BuildEventNotification(inner);
+        }
+
         private EventNotification BuildEventNotification(string json)
         {
-            var parsed = JObject.Parse(json);
-            var objectValue = (string)parsed["object"];
-            if (objectValue == "event")
+            using (var doc = System.Text.Json.JsonDocument.Parse(json))
+            {
+                return this.BuildEventNotification(doc.RootElement, json);
+            }
+        }
+
+        private EventNotification BuildEventNotification(System.Text.Json.JsonElement element, string json = null)
+        {
+            if (element.TryGetProperty("object", out var objectProp) &&
+                objectProp.GetString() == "event")
             {
                 throw new ArgumentException(
                     "You passed a webhook payload to a function that expects a thin event notification. Use the corresponding ConstructEvent method instead.");
             }
 
-            return EventNotification.FromJson(json, this);
+            return EventNotification.FromJson(json ?? element.GetRawText(), this);
         }
 
         internal JsonSerializerSettings GetJsonSerializationSettings()

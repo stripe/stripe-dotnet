@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System;
+    using System.Text.Json;
     using Stripe;
     using Xunit;
 
@@ -10,10 +11,13 @@ namespace StripeTests
         private readonly string signature;
         private readonly string json;
         private readonly string secret;
+        private readonly StripeClient stripeClient;
 
         public EventUtilityTest()
             : base()
         {
+            this.stripeClient = this.StripeClient as StripeClient;
+
             // If you make changes to the JSON fixture you need to re-calculate the signature
             // To do this run the following command:
             //   (echo -n "1533204620." && cat src/StripeTests/Resources/event_test_signature.json) | openssl sha256 -hmac "webhook_secret"
@@ -154,6 +158,31 @@ namespace StripeTests
         }
 
         [Fact]
+        public void ValidateSignature_ValidSignatureDoesNotThrow()
+        {
+            var tolerance = 300;
+            var fakeCurrentTimestamp = this.eventTimestamp + 100;
+
+            // Should not throw
+            EventUtility.ValidateSignature(this.json, this.signature, this.secret, tolerance, fakeCurrentTimestamp);
+        }
+
+        [Fact]
+        public void ValidateSignature_InvalidSignatureThrows()
+        {
+            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var header = EventUtility.GenerateSignatureHeader("{}", "correct_secret", timestamp);
+
+            var exception = Assert.Throws<StripeException>(() =>
+                EventUtility.ValidateSignature("{}", header, "wrong_secret", EventUtility.DefaultTimeTolerance, timestamp));
+
+            Assert.Equal(
+                "The expected signature was not found in the Stripe-Signature header. " +
+                "Make sure you're using the correct webhook secret (whsec_) and confirm the incoming request came from Stripe.",
+                exception.Message);
+        }
+
+        [Fact]
         public void RejectV2PayloadInParseEvent()
         {
             var v2Payload = @"{
@@ -182,13 +211,45 @@ namespace StripeTests
             }";
 
             var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-            var signature = EventUtility.ComputeSignature(this.secret, timestamp.ToString(), v2Payload);
-            var sigHeader = $"t={timestamp},v1={signature}";
+            var sigHeader = EventUtility.GenerateSignatureHeader(v2Payload, this.secret, timestamp);
 
             var exception = Assert.Throws<ArgumentException>(() =>
                 EventUtility.ConstructEvent(v2Payload, sigHeader, this.secret, throwOnApiVersionMismatch: false));
 
             Assert.Contains("EventNotification", exception.Message);
+        }
+
+        [Fact]
+        public void GenerateSignatureHeader_ProducesCorrectFormat()
+        {
+            var payload = "{}";
+            var secret = "test_secret";
+            var timestamp = 1700000000L;
+
+            var header = EventUtility.GenerateSignatureHeader(payload, secret, timestamp);
+
+            // Format must be t=<timestamp>,v1=<hex>
+            Assert.StartsWith($"t={timestamp},v1=", header);
+            var parts = header.Split(',');
+            Assert.Equal(2, parts.Length);
+            var v1Part = parts[1];
+            Assert.StartsWith("v1=", v1Part);
+            var hex = v1Part.Substring(3);
+            Assert.Equal(64, hex.Length);
+            Assert.Matches("^[0-9a-f]+$", hex);
+        }
+
+        [Fact]
+        public void GenerateSignatureHeader_PassesValidateSignature()
+        {
+            var payload = "{}";
+            var secret = "test_secret";
+            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+
+            var header = EventUtility.GenerateSignatureHeader(payload, secret, timestamp);
+
+            // ValidateSignature should not throw
+            EventUtility.ValidateSignature(payload, header, secret, EventUtility.DefaultTimeTolerance, timestamp);
         }
 
         [Theory]
@@ -201,6 +262,136 @@ namespace StripeTests
         public void CompatibleAPIVersions(string sdkApiVersion, string eventApiVersion, bool expected)
         {
             Assert.Equal(EventUtility.IsCompatibleApiVersion(sdkApiVersion, eventApiVersion), expected);
+        }
+
+        [Fact]
+        public void ConstructEvent_ThrowsOnInvalidJson()
+        {
+            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var invalidJson = "this is not valid json";
+            var sigHeader = EventUtility.GenerateSignatureHeader(invalidJson, this.secret, timestamp);
+
+            Assert.ThrowsAny<Exception>(() =>
+                EventUtility.ConstructEvent(invalidJson, sigHeader, this.secret, EventUtility.DefaultTimeTolerance, timestamp, throwOnApiVersionMismatch: false));
+        }
+
+        [Fact]
+        public void ValidateSignature_MultipleSignatures_AtLeastOneValid_ShouldPass()
+        {
+            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var payload = "{}";
+            var validHeader = EventUtility.GenerateSignatureHeader(payload, this.secret, timestamp);
+
+            // Append an extra v1 signature that is invalid alongside the valid one.
+            var multiSigHeader = validHeader + ",v1=deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef";
+
+            // Should not throw — at least one v1 signature matches.
+            EventUtility.ValidateSignature(payload, multiSigHeader, this.secret, EventUtility.DefaultTimeTolerance, timestamp);
+        }
+
+        [Fact]
+        public void ValidateSignature_OldTimestampWithLargeTolerance_ShouldPass()
+        {
+            // Use a timestamp from the past (year 2018).
+            var oldTimestamp = 1533204620L;
+            var payload = "{}";
+            var sigHeader = EventUtility.GenerateSignatureHeader(payload, this.secret, oldTimestamp);
+
+            // Passing a very large tolerance means the age check never triggers.
+            EventUtility.ValidateSignature(payload, sigHeader, this.secret, long.MaxValue, DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+        }
+
+        [Fact]
+        public void ValidateSignature_NoV1Signatures_ShouldThrow()
+        {
+            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var payload = "{}";
+
+            // Construct a header that only contains a v0 signature — no v1 entries.
+            var v0Sig = EventUtility.ComputeSignature(this.secret, timestamp.ToString(), payload);
+            var v0OnlyHeader = $"t={timestamp},v0={v0Sig}";
+
+            var exception = Assert.Throws<StripeException>(() =>
+                EventUtility.ValidateSignature(payload, v0OnlyHeader, this.secret, EventUtility.DefaultTimeTolerance, timestamp));
+
+            Assert.Equal(
+                "The expected signature was not found in the Stripe-Signature header. " +
+                "Make sure you're using the correct webhook secret (whsec_) and confirm the incoming request came from Stripe.",
+                exception.Message);
+        }
+
+        [Fact]
+        public void ParseEventNotification_ValidV2Payload_ReturnsNotification()
+        {
+            var v2Payload = @"{
+                ""id"": ""evt_234"",
+                ""object"": ""v2.core.event"",
+                ""type"": ""v1.billing.meter.error_report_triggered"",
+                ""created"": ""2022-02-15T00:27:45.330Z"",
+                ""livemode"": true
+            }";
+
+            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var sigHeader = EventUtility.GenerateSignatureHeader(v2Payload, this.secret, timestamp);
+
+            var notification = this.stripeClient.ParseEventNotification(
+                v2Payload,
+                sigHeader,
+                this.secret,
+                long.MaxValue);
+
+            Assert.NotNull(notification);
+            Assert.Equal("evt_234", notification.Id);
+            Assert.Equal("v1.billing.meter.error_report_triggered", notification.Type);
+            Assert.True(notification.Livemode);
+        }
+
+        [Fact]
+        public void ParseEventNotification_RejectsV1Payload_SuggestsConstructEvent()
+        {
+            var v1Payload = @"{
+                ""id"": ""evt_123"",
+                ""object"": ""event"",
+                ""type"": ""customer.created"",
+                ""api_version"": ""2017-05-25"",
+                ""created"": 1533204620,
+                ""livemode"": false
+            }";
+
+            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var sigHeader = EventUtility.GenerateSignatureHeader(v1Payload, this.secret, timestamp);
+
+            var exception = Assert.Throws<ArgumentException>(() =>
+                this.stripeClient.ParseEventNotification(
+                    v1Payload,
+                    sigHeader,
+                    this.secret,
+                    long.MaxValue));
+
+            Assert.Contains("ConstructEvent", exception.Message);
+        }
+
+        [Fact]
+        public void ParseEventNotification_BadSignature_Throws()
+        {
+            var v2Payload = @"{
+                ""id"": ""evt_234"",
+                ""object"": ""v2.core.event"",
+                ""type"": ""v1.billing.meter.error_report_triggered"",
+                ""created"": ""2022-02-15T00:27:45.330Z"",
+                ""livemode"": true
+            }";
+
+            var exception = Assert.Throws<StripeException>(() =>
+                this.stripeClient.ParseEventNotification(
+                    v2Payload,
+                    "t=1234,v1=invalidsignature",
+                    this.secret));
+
+            Assert.Equal(
+                "The expected signature was not found in the Stripe-Signature header. " +
+                "Make sure you're using the correct webhook secret (whsec_) and confirm the incoming request came from Stripe.",
+                exception.Message);
         }
     }
 }

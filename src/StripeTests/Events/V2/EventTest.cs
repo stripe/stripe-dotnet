@@ -48,7 +48,7 @@ namespace StripeTests.V2
                 ""object"": ""v2.core.event"",
                 ""type"": ""v1.billing.meter.no_meter_found"",
                 ""created"": ""2022-02-15T00:27:45.330Z"",
-                ""livemode"": true,
+                ""livemode"": true
               }";
 
         private static string v2KnownEventPayload =
@@ -109,7 +109,7 @@ namespace StripeTests.V2
                 ""object"": ""v2.core.event"",
                 ""type"": ""v1.billing.meter.no_meter_found"",
                 ""created"": ""2022-02-15T00:27:45.330Z"",
-                ""livemode"": false,
+                ""livemode"": false
               }";
 
         private static string v2KnownEventWithReasonPayload =
