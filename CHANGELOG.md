@@ -1,5 +1,22 @@
 # Changelog
 
+## 52.3.0-alpha.2 - 2026-08-05
+* [#3419](https://github.com/stripe/stripe-dotnet/pull/3419) Update generated code for private-preview
+  * Add support for new resource `Billing.FeedbackOptions`
+  * Add support for `SequraPayments` on `Account.Capabilities`
+  * Add support for `FeedbackOptions` on `BillingPortal.Configuration.Features.SubscriptionCancel.CancellationReason`
+  * Add support for `Sequra` on `Charge.PaymentMethodDetails`, `Checkout.Session.PaymentMethodOptions`, `ConfirmationToken.PaymentMethodPreview`, `PaymentAttemptRecord.PaymentMethodDetails`, `PaymentIntent.PaymentMethodOptions`, and `PaymentRecord.PaymentMethodDetails`
+  * Add support for `RetrievalReferenceNumber` on `Charge.PaymentMethodDetails.CardPresent`, `ConfirmationToken.PaymentMethodPreview.Card.GeneratedFrom.PaymentMethodDetails.CardPresent`, `PaymentAttemptRecord.PaymentMethodDetails.CardPresent`, `PaymentMethod.Card.GeneratedFrom.PaymentMethodDetails.CardPresent`, and `PaymentRecord.PaymentMethodDetails.CardPresent`
+  * Add support for `PricingGroup` on `Charge.PaymentMethodDetails.Link`
+  * Add support for `TaxRates` on `Checkout.Session.ShippingOption`, `CheckoutSessionShippingOptionOptions`, and `CheckoutSessionShippingOptionsOptions`
+  * Add support for `FundingTypesBlocked` on `Checkout.Session.PaymentMethodOptions.Card.Restrictions`
+  * Add support for `Healthcare` on `Issuing.TestHelpersAuthorizationCreateOptions`, `IssuingAuthorizationPurchaseDetailsOptions`, and `IssuingTransactionPurchaseDetailsOptions`
+  * Add support for `IsAnomalous` on `PaymentAttemptRecordReportGuaranteedOptions`
+  * Add support for `AadeData` on `PaymentIntent.PaymentMethodOptions.CardPresent`
+  * Add support for `FeedbackOption` on `Subscription.CancellationDetails`
+  * Add support for `Application` on `V2.Payments.OffSessionPayment`
+  * Add support for `Status` on `V2.MoneyManagement.FinancialAccountStatementListOptions`
+
 ## 52.3.0-alpha.1 - 2026-07-29
 This release changes the pinned API version to 2026-07-29.preview.
 
