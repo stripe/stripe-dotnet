@@ -15,5 +15,13 @@ namespace Stripe.V2.MoneyManagement.FinancialAccounts
         [JsonProperty("order_by")]
         [STJS.JsonPropertyName("order_by")]
         public string OrderBy { get; set; }
+
+        /// <summary>
+        /// Filter results by status. If omitted, statements of all statuses are returned.
+        /// One of: <c>active</c>, or <c>restated</c>.
+        /// </summary>
+        [JsonProperty("status")]
+        [STJS.JsonPropertyName("status")]
+        public string Status { get; set; }
     }
 }

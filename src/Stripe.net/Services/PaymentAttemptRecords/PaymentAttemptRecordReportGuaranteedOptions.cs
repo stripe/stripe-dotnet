@@ -22,6 +22,14 @@ namespace Stripe
         public DateTime? GuaranteedAt { get; set; }
 
         /// <summary>
+        /// Set to <c>true</c> to enable writing an anomalous guaranteed payment to an outdated
+        /// PaymentAttemptRecord. This parameter defaults to <c>false</c>.
+        /// </summary>
+        [JsonProperty("is_anomalous")]
+        [STJS.JsonPropertyName("is_anomalous")]
+        public bool? IsAnomalous { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to

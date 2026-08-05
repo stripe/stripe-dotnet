@@ -41,6 +41,7 @@ namespace Stripe
                     Billing.CreditBalanceTransaction)
                 },
                 { "billing.credit_grant", typeof(Billing.CreditGrant) },
+                { "billing.feedback_options", typeof(Billing.FeedbackOptions) },
                 { "billing.meter", typeof(Billing.Meter) },
                 { "billing.meter_event", typeof(Billing.MeterEvent) },
                 { "billing.meter_event_adjustment", typeof(Billing.MeterEventAdjustment) },

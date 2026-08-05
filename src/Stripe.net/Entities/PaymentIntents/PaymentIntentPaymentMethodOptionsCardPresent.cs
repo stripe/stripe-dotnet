@@ -8,6 +8,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentMethodOptionsCardPresent : StripeEntity<PaymentIntentPaymentMethodOptionsCardPresent>
     {
+        [JsonProperty("aade_data")]
+        [STJS.JsonPropertyName("aade_data")]
+        public PaymentIntentPaymentMethodOptionsCardPresentAadeData AadeData { get; set; }
+
         /// <summary>
         /// Controls when funds are captured from the customer's account when <c>capture_method</c>
         /// is <c>automatic_delayed</c>.
