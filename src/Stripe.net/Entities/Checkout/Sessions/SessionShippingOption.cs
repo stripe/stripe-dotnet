@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -49,5 +50,12 @@ namespace Stripe.Checkout
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<ShippingRate>))]
         internal ExpandableField<ShippingRate> InternalShippingRate { get; set; }
         #endregion
+
+        /// <summary>
+        /// The tax rates applied to this shipping option.
+        /// </summary>
+        [JsonProperty("tax_rates")]
+        [STJS.JsonPropertyName("tax_rates")]
+        public List<string> TaxRates { get; set; }
     }
 }

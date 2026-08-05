@@ -76,6 +76,13 @@ namespace Stripe.TestHelpers.Issuing
         public AuthorizationFuelOptions Fuel { get; set; }
 
         /// <summary>
+        /// Healthcare-specific information for IIAS-eligible authorizations.
+        /// </summary>
+        [JsonProperty("healthcare")]
+        [STJS.JsonPropertyName("healthcare")]
+        public AuthorizationHealthcareOptions Healthcare { get; set; }
+
+        /// <summary>
         /// If set <c>true</c>, you may provide <a
         /// href="https://docs.stripe.com/api/issuing/authorizations/approve#approve_issuing_authorization-amount">amount</a>
         /// to control how much to hold for the authorization.

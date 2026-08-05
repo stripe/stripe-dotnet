@@ -9,14 +9,16 @@ namespace Stripe.Checkout
     public class SessionItemSubscriptionItemOptions : INestedOptions
     {
         /// <summary>
-        /// The ID of the price for this subscription item.
+        /// The ID of the <a href="https://docs.stripe.com/api/prices">Price</a>. One of
+        /// <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price")]
         [STJS.JsonPropertyName("price")]
         public string Price { get; set; }
 
         /// <summary>
-        /// Data used to generate a new Price object inline.
+        /// Data used to generate a new <a href="https://docs.stripe.com/api/prices">Price</a>
+        /// object inline. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price_data")]
         [STJS.JsonPropertyName("price_data")]

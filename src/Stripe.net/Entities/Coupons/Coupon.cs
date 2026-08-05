@@ -169,8 +169,7 @@ namespace Stripe
         public long TimesRedeemed { get; set; }
 
         /// <summary>
-        /// One of <c>amount_off</c>, <c>percent_off</c>, or <c>script</c>. Describes the type of
-        /// coupon logic used to calculate the discount.
+        /// The type of coupon logic used to calculate the discount.
         /// One of: <c>amount_off</c>, <c>percent_off</c>, or <c>script</c>.
         /// </summary>
         [JsonProperty("type")]

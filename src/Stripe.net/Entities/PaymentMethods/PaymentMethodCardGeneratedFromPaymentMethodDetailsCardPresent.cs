@@ -252,6 +252,13 @@ namespace Stripe
         [STJS.JsonPropertyName("receipt")]
         public PaymentMethodCardGeneratedFromPaymentMethodDetailsCardPresentReceipt Receipt { get; set; }
 
+        /// <summary>
+        /// The retrieval reference number assigned to this transaction.
+        /// </summary>
+        [JsonProperty("retrieval_reference_number")]
+        [STJS.JsonPropertyName("retrieval_reference_number")]
+        public string RetrievalReferenceNumber { get; set; }
+
         [JsonProperty("wallet")]
         [STJS.JsonPropertyName("wallet")]
         public PaymentMethodCardGeneratedFromPaymentMethodDetailsCardPresentWallet Wallet { get; set; }

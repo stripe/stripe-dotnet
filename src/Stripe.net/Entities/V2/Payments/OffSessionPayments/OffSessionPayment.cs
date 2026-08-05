@@ -59,6 +59,13 @@ namespace Stripe.V2.Payments
         public V2.Amount AmountRequested { get; set; }
 
         /// <summary>
+        /// The application associated with this OffSessionPayment.
+        /// </summary>
+        [JsonProperty("application")]
+        [STJS.JsonPropertyName("application")]
+        public string Application { get; set; }
+
+        /// <summary>
         /// The amount of the application fee requested to be applied to the payment.
         /// </summary>
         [JsonProperty("application_fee_amount_requested")]

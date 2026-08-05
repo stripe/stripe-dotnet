@@ -1,16 +1,15 @@
 // File generated from our OpenAPI spec
-namespace Stripe.Issuing
+namespace Stripe.TestHelpers.Issuing
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AuthorizationHealthcare : StripeEntity<AuthorizationHealthcare>
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
+    public class AuthorizationHealthcareOptions : INestedOptions
     {
         /// <summary>
-        /// Clinic and urgent care sub-amount for Visa only. Null if the merchant did not include
-        /// this amount.
+        /// Clinic and urgent care sub-amount for Visa only.
         /// </summary>
         [JsonProperty("clinic_amount")]
         [STJS.JsonPropertyName("clinic_amount")]
@@ -26,14 +25,14 @@ namespace Stripe.Issuing
         public string Currency { get; set; }
 
         /// <summary>
-        /// Dental care sub-amount for Visa only. Null if the merchant did not include this amount.
+        /// Dental care sub-amount for Visa only.
         /// </summary>
         [JsonProperty("dental_amount")]
         [STJS.JsonPropertyName("dental_amount")]
         public long? DentalAmount { get; set; }
 
         /// <summary>
-        /// Prescription drug sub-amount. Null if the merchant did not include this amount.
+        /// Prescription drug sub-amount. Null if the merchant did not send this amount.
         /// </summary>
         [JsonProperty("prescription_amount")]
         [STJS.JsonPropertyName("prescription_amount")]
@@ -54,11 +53,11 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("total_qualified_amount")]
         [STJS.JsonPropertyName("total_qualified_amount")]
-        public long TotalQualifiedAmount { get; set; }
+        public long? TotalQualifiedAmount { get; set; }
 
         /// <summary>
-        /// IIAS verification status from the merchant terminal. For Visa, this value will always be
-        /// iias_verified. Defaults to not_verified when the network does not provide IIAS status.
+        /// IIAS verification status from the merchant terminal. For Visa, this is always
+        /// iias_verified.
         /// One of: <c>iias_merchant_exempt</c>, <c>iias_merchant_not_certified</c>,
         /// <c>iias_verified</c>, or <c>not_verified</c>.
         /// </summary>
@@ -67,7 +66,7 @@ namespace Stripe.Issuing
         public string VerificationStatus { get; set; }
 
         /// <summary>
-        /// Vision/optical sub-amount. Null if the merchant did not include this amount.
+        /// Vision/optical sub-amount. Null if the merchant did not send this amount.
         /// </summary>
         [JsonProperty("vision_amount")]
         [STJS.JsonPropertyName("vision_amount")]

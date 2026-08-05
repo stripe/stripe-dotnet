@@ -15,5 +15,14 @@ namespace Stripe
         [JsonProperty("country")]
         [STJS.JsonPropertyName("country")]
         public string Country { get; set; }
+
+        /// <summary>
+        /// The pricing bundle applied to this Link payment at confirmation time. Maps to a bundle
+        /// in your Stripe pricing contract and on Stripe's published pricing page. Omitted if
+        /// bundle lookup failed at confirmation time.
+        /// </summary>
+        [JsonProperty("pricing_group")]
+        [STJS.JsonPropertyName("pricing_group")]
+        public string PricingGroup { get; set; }
     }
 }

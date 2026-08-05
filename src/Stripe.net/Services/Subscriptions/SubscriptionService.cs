@@ -492,7 +492,10 @@ namespace Stripe
         /// her subscription, plus a <currency>50</currency> prorating adjustment for half of the
         /// previous month’s <currency>100</currency> difference). Similarly, a downgrade generates
         /// a credit that is applied to the next invoice. We also prorate when you make quantity
-        /// changes.</p>.
+        /// changes. You can also <a
+        /// href="https://stripe.com/billing/scripts/stripe-authored/proration">use scripts to
+        /// prorate your billing</a>. To learn more, see <a
+        /// href="https://stripe.com/billing/subscriptions/prorations">Prorations</a>.</p>.
         ///
         /// <p>Switching prices does not normally change the billing date or generate an immediate
         /// charge unless:</p>.
@@ -547,7 +550,10 @@ namespace Stripe
         /// her subscription, plus a <currency>50</currency> prorating adjustment for half of the
         /// previous month’s <currency>100</currency> difference). Similarly, a downgrade generates
         /// a credit that is applied to the next invoice. We also prorate when you make quantity
-        /// changes.</p>.
+        /// changes. You can also <a
+        /// href="https://stripe.com/billing/scripts/stripe-authored/proration">use scripts to
+        /// prorate your billing</a>. To learn more, see <a
+        /// href="https://stripe.com/billing/subscriptions/prorations">Prorations</a>.</p>.
         ///
         /// <p>Switching prices does not normally change the billing date or generate an immediate
         /// charge unless:</p>.

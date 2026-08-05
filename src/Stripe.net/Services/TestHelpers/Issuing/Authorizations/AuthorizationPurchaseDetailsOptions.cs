@@ -31,6 +31,13 @@ namespace Stripe.TestHelpers.Issuing
         public AuthorizationPurchaseDetailsFuelOptions Fuel { get; set; }
 
         /// <summary>
+        /// Healthcare sub-amounts for IIAS-eligible transactions.
+        /// </summary>
+        [JsonProperty("healthcare")]
+        [STJS.JsonPropertyName("healthcare")]
+        public AuthorizationPurchaseDetailsHealthcareOptions Healthcare { get; set; }
+
+        /// <summary>
         /// Information about lodging that was purchased with this transaction.
         /// </summary>
         [JsonProperty("lodging")]
