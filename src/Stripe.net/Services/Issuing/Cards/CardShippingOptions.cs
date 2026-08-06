@@ -23,6 +23,16 @@ namespace Stripe.Issuing
         public CardShippingAddressValidationOptions AddressValidation { get; set; }
 
         /// <summary>
+        /// The name of the business at the shipping address, used on the shipping label to ensure
+        /// delivery when the card is shipped to a cardholder's workplace. Allowed characters:
+        /// <c>A-Z</c>, <c>a-z</c>, <c>0-9</c>, <c> </c>, <c>.</c>, <c>-</c>. All other characters
+        /// are stripped or ASCII-normalized when printed.
+        /// </summary>
+        [JsonProperty("business_name")]
+        [STJS.JsonPropertyName("business_name")]
+        public string BusinessName { get; set; }
+
+        /// <summary>
         /// Customs information for the shipment.
         /// </summary>
         [JsonProperty("customs")]

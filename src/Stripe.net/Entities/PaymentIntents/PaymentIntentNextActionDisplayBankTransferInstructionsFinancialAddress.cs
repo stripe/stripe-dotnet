@@ -39,8 +39,8 @@ namespace Stripe
 
         /// <summary>
         /// The payment networks supported by this FinancialAddress.
-        /// One of: <c>ach</c>, <c>bacs</c>, <c>domestic_wire_us</c>, <c>fps</c>, <c>sepa</c>,
-        /// <c>spei</c>, <c>swift</c>, or <c>zengin</c>.
+        /// One of: <c>ach</c>, <c>bacs</c>, <c>chaps</c>, <c>domestic_wire_us</c>, <c>fps</c>,
+        /// <c>sepa</c>, <c>spei</c>, <c>swift</c>, or <c>zengin</c>.
         /// </summary>
         [JsonProperty("supported_networks")]
         [STJS.JsonPropertyName("supported_networks")]

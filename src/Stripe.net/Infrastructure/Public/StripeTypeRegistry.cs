@@ -80,6 +80,10 @@ namespace Stripe
                     "financial_connections.account_ownership", typeof(
                     FinancialConnections.AccountOwnership)
                 },
+                {
+                    "financial_connections.authorization", typeof(
+                    FinancialConnections.Authorization)
+                },
                 { "financial_connections.session", typeof(FinancialConnections.Session) },
                 {
                     "financial_connections.transaction", typeof(
