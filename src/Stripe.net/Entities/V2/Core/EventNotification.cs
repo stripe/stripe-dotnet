@@ -64,8 +64,8 @@ namespace Stripe.V2.Core
         /// <summary>
         /// Helper for constructing an Event Notification. Doesn't perform signature validation, so you
         /// should use <see cref="StripeClient.ParseEventNotification"/> instead for
-        /// initial handling. This is useful in unit tests and working with EventNotifications that you've
-        /// already validated the authenticity of.
+        /// initial handling. This is useful in unit tests and working with EventNotifications
+        /// whose authenticity you've already validated.
         /// </summary>
         /// <param name="payload">JSON body for an EventNotification.</param>
         /// <param name="client">A StripeClient instance that will be used to make requests.</param>

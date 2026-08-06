@@ -251,14 +251,12 @@ namespace Stripe
                 return detailProp.Clone();
             }
 
-            if (root.TryGetProperty("specversion", out _))
+            if (root.TryGetProperty("specversion", out _) &&
+                root.TryGetProperty("data", out var dataProp))
             {
                 // Azure
                 // https://docs.stripe.com/event-destinations/eventgrid#event-structure
-                if (root.TryGetProperty("data", out var dataProp))
-                {
-                    return dataProp.Clone();
-                }
+                return dataProp.Clone();
             }
 
             if (root.TryGetProperty("object", out var objProp) &&
@@ -268,8 +266,8 @@ namespace Stripe
             }
 
             throw new ArgumentException(
-                "Unrecognized cloud event format. The payload must be an "
-                + "AWS EventBridge/Azure Event Grid event envelope or a Stripe webhook.");
+                "Unrecognized event format. The payload must be an "
+                + "AWS EventBridge/Azure Event Grid event envelope or a Stripe webhook (thin event notification or snapshot).");
         }
 
         /// <summary>

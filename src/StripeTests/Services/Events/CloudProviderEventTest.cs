@@ -129,7 +129,7 @@ namespace StripeTests
             var client = new StripeClient("sk_test_fake");
             var ex = Assert.Throws<ArgumentException>(() =>
                 client.ParseEventNotificationWithoutVerification("{\"foo\":\"bar\"}"));
-            Assert.Contains("Unrecognized cloud event format", ex.Message);
+            Assert.Contains("Unrecognized event format", ex.Message);
         }
 
         [Fact]
@@ -164,6 +164,28 @@ namespace StripeTests
             var ex = Assert.Throws<ArgumentException>(() =>
                 EventUtility.ConstructEventWithoutVerification(v2Payload));
             Assert.Contains("thin event notification", ex.Message);
+        }
+
+        [Fact]
+        public void ConstructEventWithoutVerification_AzureEnvelopeMissingDataFallsThrough()
+        {
+            var payload = "{\"specversion\":\"1.0\",\"type\":\"customer.created\","
+                + "\"source\":\"/providers/stripe/ed_test_123\",\"id\":\"test-missing-data\"}";
+            var ex = Assert.Throws<ArgumentException>(() =>
+                EventUtility.ConstructEventWithoutVerification(payload));
+            Assert.Contains("Unrecognized event format", ex.Message);
+        }
+
+        [Fact]
+        public void ParseEventNotificationWithoutVerification_UnexpectedObjectTypeThrows()
+        {
+            // Wrap in an AWS envelope so MaybeExtractFromCloudProviderEnvelope passes through,
+            // then BuildEventNotification should reject the unexpected "object" value.
+            var payload = "{\"detail\":{\"object\":\"customer\",\"type\":\"customer.created\",\"id\":\"cus_123\"}}";
+            var client = new StripeClient("sk_test_fake");
+            var ex = Assert.Throws<ArgumentException>(() =>
+                client.ParseEventNotificationWithoutVerification(payload));
+            Assert.Contains("Unexpected object type", ex.Message);
         }
     }
 }

@@ -256,11 +256,20 @@ namespace Stripe
 
         private EventNotification BuildEventNotification(System.Text.Json.JsonElement element, string json = null)
         {
-            if (element.TryGetProperty("object", out var objectProp) &&
-                objectProp.GetString() == "event")
+            if (element.TryGetProperty("object", out var objectProp))
             {
-                throw new ArgumentException(
-                    "You passed a webhook payload to a function that expects a thin event notification. Use the corresponding ConstructEvent method instead.");
+                var objectValue = objectProp.GetString();
+                if (objectValue == "event")
+                {
+                    throw new ArgumentException(
+                        "You passed a webhook payload to a function that expects a thin event notification. Use the corresponding ConstructEvent method instead.");
+                }
+
+                if (objectValue != "v2.core.event")
+                {
+                    throw new ArgumentException(
+                        $"Unexpected object type '{objectValue}'. Expected 'v2.core.event' for an event notification.");
+                }
             }
 
             return EventNotification.FromJson(json ?? element.GetRawText(), this);
