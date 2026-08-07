@@ -24,6 +24,13 @@ namespace Stripe.V2.Core
         public string Id { get; internal set; }
 
         /// <summary>
+        /// String representing the object's type. Objects of the same type share the same value.
+        /// </summary>
+        [JsonProperty("object")]
+        [STJS.JsonPropertyName("object")]
+        public string Object { get; internal set; }
+
+        /// <summary>
         /// The type of the event.
         /// </summary>
         [JsonProperty("type")]
