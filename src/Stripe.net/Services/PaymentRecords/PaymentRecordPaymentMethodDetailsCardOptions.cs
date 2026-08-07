@@ -14,5 +14,12 @@ namespace Stripe
         [JsonProperty("checks")]
         [STJS.JsonPropertyName("checks")]
         public PaymentRecordPaymentMethodDetailsCardChecksOptions Checks { get; set; }
+
+        /// <summary>
+        /// Decline code from the card network for the failed payment.
+        /// </summary>
+        [JsonProperty("network_decline_code")]
+        [STJS.JsonPropertyName("network_decline_code")]
+        public string NetworkDeclineCode { get; set; }
     }
 }

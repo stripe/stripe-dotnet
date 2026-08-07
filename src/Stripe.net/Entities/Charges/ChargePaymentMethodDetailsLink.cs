@@ -17,12 +17,12 @@ namespace Stripe
         public string Country { get; set; }
 
         /// <summary>
-        /// The pricing bundle applied to this Link payment at confirmation time. Maps to a bundle
-        /// in your Stripe pricing contract and on Stripe's published pricing page. Omitted if
-        /// bundle lookup failed at confirmation time.
+        /// The funding source group applied to this Link payment at confirmation time. Maps to a
+        /// bundle in your Stripe pricing contract and on Stripe's published pricing page. Omitted
+        /// if group lookup failed at confirmation time.
         /// </summary>
-        [JsonProperty("pricing_group")]
-        [STJS.JsonPropertyName("pricing_group")]
-        public string PricingGroup { get; set; }
+        [JsonProperty("funding_source_group")]
+        [STJS.JsonPropertyName("funding_source_group")]
+        public string FundingSourceGroup { get; set; }
     }
 }

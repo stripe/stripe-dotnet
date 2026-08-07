@@ -72,6 +72,13 @@ namespace Stripe.FinancialConnections
         public string Category { get; set; }
 
         /// <summary>
+        /// Per-taxonomy processing state for this account. One entry per subscribed taxonomy.
+        /// </summary>
+        [JsonProperty("classification_state")]
+        [STJS.JsonPropertyName("classification_state")]
+        public Dictionary<string, AccountClassificationState> ClassificationState { get; set; }
+
+        /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
@@ -87,6 +94,13 @@ namespace Stripe.FinancialConnections
         [JsonProperty("display_name")]
         [STJS.JsonPropertyName("display_name")]
         public string DisplayName { get; set; }
+
+        /// <summary>
+        /// The state of merchant name enrichment for this account.
+        /// </summary>
+        [JsonProperty("enrichment_state")]
+        [STJS.JsonPropertyName("enrichment_state")]
+        public AccountEnrichmentState EnrichmentState { get; set; }
 
         /// <summary>
         /// The state of the most recent attempt to refresh the account's inferred balance history.

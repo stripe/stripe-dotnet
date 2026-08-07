@@ -2,6 +2,7 @@
 namespace Stripe.FinancialConnections
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -42,6 +43,13 @@ namespace Stripe.FinancialConnections
         public long Amount { get; set; }
 
         /// <summary>
+        /// Classification labels for this transaction, one entry per subscribed use case.
+        /// </summary>
+        [JsonProperty("classifications")]
+        [STJS.JsonPropertyName("classifications")]
+        public List<TransactionClassification> Classifications { get; set; }
+
+        /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
@@ -56,6 +64,13 @@ namespace Stripe.FinancialConnections
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Enriched merchant information for this transaction.
+        /// </summary>
+        [JsonProperty("enrichments")]
+        [STJS.JsonPropertyName("enrichments")]
+        public TransactionEnrichments Enrichments { get; set; }
 
         /// <summary>
         /// If the object exists in live mode, the value is <c>true</c>. If the object exists in

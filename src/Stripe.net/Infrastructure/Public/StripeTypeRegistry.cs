@@ -444,6 +444,10 @@ namespace Stripe
                 { "v2.signals.account_evaluation", typeof(V2.Signals.AccountEvaluation) },
                 { "v2.signals.account_signal", typeof(V2.Signals.AccountSignal) },
                 { "v2.tax.manual_rule", typeof(V2.Tax.ManualRule) },
+                {
+                    "v2.tax.operations_resolve_address_result", typeof(
+                    V2.Tax.OperationsResolveAddressResult)
+                },
 
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
             });
@@ -484,7 +488,25 @@ namespace Stripe
                 },
                 { "v1.application_fee.refunded", typeof(Events.V1ApplicationFeeRefundedEvent) },
                 { "v1.balance.available", typeof(Events.V1BalanceAvailableEvent) },
+                { "v1.balance_settings.updated", typeof(Events.V1BalanceSettingsUpdatedEvent) },
                 { "v1.billing.alert.triggered", typeof(Events.V1BillingAlertTriggeredEvent) },
+                {
+                    "v1.billing.credit_balance_transaction.created", typeof(
+                    Events.V1BillingCreditBalanceTransactionCreatedEvent)
+                },
+                {
+                    "v1.billing.credit_grant.created", typeof(
+                    Events.V1BillingCreditGrantCreatedEvent)
+                },
+                {
+                    "v1.billing.credit_grant.updated", typeof(
+                    Events.V1BillingCreditGrantUpdatedEvent)
+                },
+                { "v1.billing.meter.created", typeof(Events.V1BillingMeterCreatedEvent) },
+                {
+                    "v1.billing.meter.deactivated", typeof(
+                    Events.V1BillingMeterDeactivatedEvent)
+                },
                 {
                     "v1.billing.meter.error_report_triggered", typeof(
                     Events.V1BillingMeterErrorReportTriggeredEvent)
@@ -493,6 +515,11 @@ namespace Stripe
                     "v1.billing.meter.no_meter_found", typeof(
                     Events.V1BillingMeterNoMeterFoundEvent)
                 },
+                {
+                    "v1.billing.meter.reactivated", typeof(
+                    Events.V1BillingMeterReactivatedEvent)
+                },
+                { "v1.billing.meter.updated", typeof(Events.V1BillingMeterUpdatedEvent) },
                 {
                     "v1.billing_portal.configuration.created", typeof(
                     Events.V1BillingPortalConfigurationCreatedEvent)
@@ -609,6 +636,10 @@ namespace Stripe
                 },
                 { "v1.file.created", typeof(Events.V1FileCreatedEvent) },
                 {
+                    "v1.financial_connections.account.account_numbers_updated", typeof(
+                    Events.V1FinancialConnectionsAccountAccountNumbersUpdatedEvent)
+                },
+                {
                     "v1.financial_connections.account.created", typeof(
                     Events.V1FinancialConnectionsAccountCreatedEvent)
                 },
@@ -619,6 +650,10 @@ namespace Stripe
                 {
                     "v1.financial_connections.account.disconnected", typeof(
                     Events.V1FinancialConnectionsAccountDisconnectedEvent)
+                },
+                {
+                    "v1.financial_connections.account.expected_deactivation_date_updated", typeof(
+                    Events.V1FinancialConnectionsAccountExpectedDeactivationDateUpdatedEvent)
                 },
                 {
                     "v1.financial_connections.account.reactivated", typeof(
@@ -635,6 +670,18 @@ namespace Stripe
                 {
                     "v1.financial_connections.account.refreshed_transactions", typeof(
                     Events.V1FinancialConnectionsAccountRefreshedTransactionsEvent)
+                },
+                {
+                    "v1.financial_connections.account.supported_payment_method_types_updated", typeof(
+                    Events.V1FinancialConnectionsAccountSupportedPaymentMethodTypesUpdatedEvent)
+                },
+                {
+                    "v1.financial_connections.account.upcoming_account_number_expiry", typeof(
+                    Events.V1FinancialConnectionsAccountUpcomingAccountNumberExpiryEvent)
+                },
+                {
+                    "v1.financial_connections.account.upcoming_deactivation", typeof(
+                    Events.V1FinancialConnectionsAccountUpcomingDeactivationEvent)
                 },
                 {
                     "v1.identity.verification_session.canceled", typeof(
@@ -677,6 +724,10 @@ namespace Stripe
                 {
                     "v1.invoice.payment_action_required", typeof(
                     Events.V1InvoicePaymentActionRequiredEvent)
+                },
+                {
+                    "v1.invoice.payment_attempt_required", typeof(
+                    Events.V1InvoicePaymentAttemptRequiredEvent)
                 },
                 { "v1.invoice.payment_failed", typeof(Events.V1InvoicePaymentFailedEvent) },
                 {
@@ -1805,8 +1856,32 @@ namespace Stripe
                 },
                 { "v1.balance.available", typeof(Events.V1BalanceAvailableEventNotification) },
                 {
+                    "v1.balance_settings.updated", typeof(
+                    Events.V1BalanceSettingsUpdatedEventNotification)
+                },
+                {
                     "v1.billing.alert.triggered", typeof(
                     Events.V1BillingAlertTriggeredEventNotification)
+                },
+                {
+                    "v1.billing.credit_balance_transaction.created", typeof(
+                    Events.V1BillingCreditBalanceTransactionCreatedEventNotification)
+                },
+                {
+                    "v1.billing.credit_grant.created", typeof(
+                    Events.V1BillingCreditGrantCreatedEventNotification)
+                },
+                {
+                    "v1.billing.credit_grant.updated", typeof(
+                    Events.V1BillingCreditGrantUpdatedEventNotification)
+                },
+                {
+                    "v1.billing.meter.created", typeof(
+                    Events.V1BillingMeterCreatedEventNotification)
+                },
+                {
+                    "v1.billing.meter.deactivated", typeof(
+                    Events.V1BillingMeterDeactivatedEventNotification)
                 },
                 {
                     "v1.billing.meter.error_report_triggered", typeof(
@@ -1815,6 +1890,14 @@ namespace Stripe
                 {
                     "v1.billing.meter.no_meter_found", typeof(
                     Events.V1BillingMeterNoMeterFoundEventNotification)
+                },
+                {
+                    "v1.billing.meter.reactivated", typeof(
+                    Events.V1BillingMeterReactivatedEventNotification)
+                },
+                {
+                    "v1.billing.meter.updated", typeof(
+                    Events.V1BillingMeterUpdatedEventNotification)
                 },
                 {
                     "v1.billing_portal.configuration.created", typeof(
@@ -1977,6 +2060,10 @@ namespace Stripe
                 },
                 { "v1.file.created", typeof(Events.V1FileCreatedEventNotification) },
                 {
+                    "v1.financial_connections.account.account_numbers_updated", typeof(
+                    Events.V1FinancialConnectionsAccountAccountNumbersUpdatedEventNotification)
+                },
+                {
                     "v1.financial_connections.account.created", typeof(
                     Events.V1FinancialConnectionsAccountCreatedEventNotification)
                 },
@@ -1987,6 +2074,10 @@ namespace Stripe
                 {
                     "v1.financial_connections.account.disconnected", typeof(
                     Events.V1FinancialConnectionsAccountDisconnectedEventNotification)
+                },
+                {
+                    "v1.financial_connections.account.expected_deactivation_date_updated", typeof(
+                    Events.V1FinancialConnectionsAccountExpectedDeactivationDateUpdatedEventNotification)
                 },
                 {
                     "v1.financial_connections.account.reactivated", typeof(
@@ -2003,6 +2094,18 @@ namespace Stripe
                 {
                     "v1.financial_connections.account.refreshed_transactions", typeof(
                     Events.V1FinancialConnectionsAccountRefreshedTransactionsEventNotification)
+                },
+                {
+                    "v1.financial_connections.account.supported_payment_method_types_updated", typeof(
+                    Events.V1FinancialConnectionsAccountSupportedPaymentMethodTypesUpdatedEventNotification)
+                },
+                {
+                    "v1.financial_connections.account.upcoming_account_number_expiry", typeof(
+                    Events.V1FinancialConnectionsAccountUpcomingAccountNumberExpiryEventNotification)
+                },
+                {
+                    "v1.financial_connections.account.upcoming_deactivation", typeof(
+                    Events.V1FinancialConnectionsAccountUpcomingDeactivationEventNotification)
                 },
                 {
                     "v1.identity.verification_session.canceled", typeof(
@@ -2045,6 +2148,10 @@ namespace Stripe
                 {
                     "v1.invoice.payment_action_required", typeof(
                     Events.V1InvoicePaymentActionRequiredEventNotification)
+                },
+                {
+                    "v1.invoice.payment_attempt_required", typeof(
+                    Events.V1InvoicePaymentAttemptRequiredEventNotification)
                 },
                 {
                     "v1.invoice.payment_failed", typeof(

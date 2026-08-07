@@ -20,6 +20,14 @@ namespace Stripe
         public long? Amount { get; set; }
 
         /// <summary>
+        /// Required when <c>type</c> is <c>applied_to_invoice</c>. Identifies the open invoice to
+        /// apply the customer's balance credit to.
+        /// </summary>
+        [JsonProperty("applied_to_invoice")]
+        [STJS.JsonPropertyName("applied_to_invoice")]
+        public CustomerBalanceTransactionAppliedToInvoiceOptions AppliedToInvoice { get; set; }
+
+        /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>. Specifies the <a
@@ -56,5 +64,15 @@ namespace Stripe
                 this.SetTracker.Track();
             }
         }
+
+        /// <summary>
+        /// The type of customer balance transaction. Defaults to <c>adjustment</c>, which updates
+        /// the customer's credit balance directly. Set to <c>applied_to_invoice</c> to apply the
+        /// customer's existing credit balance to a specific open invoice.
+        /// One of: <c>adjustment</c>, or <c>applied_to_invoice</c>.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }

@@ -16,6 +16,13 @@ namespace Stripe
         public CustomerSessionComponentsBuyButton BuyButton { get; set; }
 
         /// <summary>
+        /// This hash contains whether the customer portal is enabled.
+        /// </summary>
+        [JsonProperty("customer_portal")]
+        [STJS.JsonPropertyName("customer_portal")]
+        public CustomerSessionComponentsCustomerPortal CustomerPortal { get; set; }
+
+        /// <summary>
         /// This hash contains whether the customer sheet is enabled and the features it supports.
         /// </summary>
         [JsonProperty("customer_sheet")]
