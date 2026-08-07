@@ -28560,6 +28560,62 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2TaxOperationPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/tax/operations/resolve_address",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.tax.operations_resolve_address_result\",\"address\":{},\"livemode\":true,\"precision\":\"none\",\"precision_details\":{\"issues\":[{\"code\":\"required_for_improved_precision\",\"field\":\"country\"}]}}");
+            var options = new Stripe.V2.Tax.OperationResolveAddressOptions
+            {
+                Address = new Stripe.V2.Tax.OperationResolveAddressAddressOptions
+                {
+                    City = "city",
+                    Country = "country",
+                    Line1 = "line1",
+                    PostalCode = "postal_code",
+                    State = "state",
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Tax.Operations;
+            Stripe.V2.Tax.OperationsResolveAddressResult operationsResolveAddressResult = service
+                .ResolveAddress(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/tax/operations/resolve_address");
+        }
+
+        [Fact]
+        public async Task TestV2TaxOperationPostAsync()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/tax/operations/resolve_address",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.tax.operations_resolve_address_result\",\"address\":{},\"livemode\":true,\"precision\":\"none\",\"precision_details\":{\"issues\":[{\"code\":\"required_for_improved_precision\",\"field\":\"country\"}]}}");
+            var options = new Stripe.V2.Tax.OperationResolveAddressOptions
+            {
+                Address = new Stripe.V2.Tax.OperationResolveAddressAddressOptions
+                {
+                    City = "city",
+                    Country = "country",
+                    Line1 = "line1",
+                    PostalCode = "postal_code",
+                    State = "state",
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Tax.Operations;
+            Stripe.V2.Tax.OperationsResolveAddressResult operationsResolveAddressResult = await service
+                .ResolveAddressAsync(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/tax/operations/resolve_address");
+        }
+
+        [Fact]
         public void TestV2TestHelpersFinancialAddressPost()
         {
             this.StubRequest(

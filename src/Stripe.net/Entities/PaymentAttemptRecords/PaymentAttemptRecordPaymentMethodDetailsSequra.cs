@@ -9,7 +9,7 @@ namespace Stripe
     public class PaymentAttemptRecordPaymentMethodDetailsSequra : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsSequra>
     {
         /// <summary>
-        /// The Sequra transaction ID associated with this payment.
+        /// The SeQura transaction ID associated with this payment.
         /// </summary>
         [JsonProperty("transaction_id")]
         [STJS.JsonPropertyName("transaction_id")]

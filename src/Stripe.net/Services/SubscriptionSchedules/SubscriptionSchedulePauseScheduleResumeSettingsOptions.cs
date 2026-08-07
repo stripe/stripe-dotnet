@@ -18,7 +18,7 @@ namespace Stripe
 
         /// <summary>
         /// Controls whether Stripe attempts payment on the resumption invoice and how payment
-        /// affects the subscription's status. The default is <c>resume_on_payment_attempt</c>.
+        /// affects the subscription's status. The default is <c>resume_on_payment_success</c>.
         /// One of: <c>resume_on_payment_attempt</c>, or <c>resume_on_payment_success</c>.
         /// </summary>
         [JsonProperty("payment_behavior")]

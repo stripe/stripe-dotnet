@@ -24,5 +24,9 @@ namespace Stripe
         [JsonProperty("settings")]
         [STJS.JsonPropertyName("settings")]
         public SubscriptionSchedulePauseSchedulePauseSettings Settings { get; set; }
+
+        [JsonProperty("status")]
+        [STJS.JsonPropertyName("status")]
+        public SubscriptionSchedulePauseSchedulePauseStatus Status { get; set; }
     }
 }

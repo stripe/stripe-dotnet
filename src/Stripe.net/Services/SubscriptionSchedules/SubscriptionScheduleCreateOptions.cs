@@ -102,8 +102,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// Sets the pause schedules for the subscription schedule. Each entry configures when and
-        /// how the subscription pauses and optionally when and how it resumes.
+        /// Configures the subscription's pause behavior and, optionally, its resume behavior. Only
+        /// one entry is supported.
         /// </summary>
         [JsonProperty("pause_schedules")]
         [STJS.JsonPropertyName("pause_schedules")]

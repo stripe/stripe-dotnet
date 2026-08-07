@@ -78,9 +78,9 @@ namespace Stripe.Crypto
         /// must be present in that array. To lock a <c>destination_network</c>, specify that value
         /// as the single value for <c>destination_networks</c>. Users can select a different
         /// network in the onramp UI subject to <c>destination_networks</c> if set.
-        /// One of: <c>avalanche</c>, <c>base</c>, <c>bitcoin</c>, <c>ethereum</c>, <c>optimism</c>,
-        /// <c>polygon</c>, <c>solana</c>, <c>stellar</c>, <c>sui</c>, <c>tempo</c>, or
-        /// <c>worldchain</c>.
+        /// One of: <c>avalanche</c>, <c>base</c>, <c>bitcoin</c>, <c>celo</c>, <c>ethereum</c>,
+        /// <c>optimism</c>, <c>polygon</c>, <c>solana</c>, <c>stellar</c>, <c>sui</c>,
+        /// <c>tempo</c>, or <c>worldchain</c>.
         /// </summary>
         [JsonProperty("destination_network")]
         [STJS.JsonPropertyName("destination_network")]
@@ -93,9 +93,9 @@ namespace Stripe.Crypto
         /// it must be a non-empty array where values in the array are each a valid crypto network.
         /// It can be used to lock users to a specific network by passing a single value array.
         /// Users <strong>cannot</strong> override this parameter.
-        /// One of: <c>avalanche</c>, <c>base</c>, <c>bitcoin</c>, <c>ethereum</c>, <c>optimism</c>,
-        /// <c>polygon</c>, <c>solana</c>, <c>stellar</c>, <c>sui</c>, <c>tempo</c>, or
-        /// <c>worldchain</c>.
+        /// One of: <c>avalanche</c>, <c>base</c>, <c>bitcoin</c>, <c>celo</c>, <c>ethereum</c>,
+        /// <c>optimism</c>, <c>polygon</c>, <c>solana</c>, <c>stellar</c>, <c>sui</c>,
+        /// <c>tempo</c>, or <c>worldchain</c>.
         /// </summary>
         [JsonProperty("destination_networks")]
         [STJS.JsonPropertyName("destination_networks")]

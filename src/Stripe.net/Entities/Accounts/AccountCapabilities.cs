@@ -564,8 +564,8 @@ namespace Stripe
         public string SepaDebitPayments { get; set; }
 
         /// <summary>
-        /// The status of the Sequra capability of the account, or whether the account can directly
-        /// process Sequra payments.
+        /// The status of the SeQura capability of the account, or whether the account can directly
+        /// process SeQura payments.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("sequra_payments")]

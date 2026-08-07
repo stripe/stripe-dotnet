@@ -65,6 +65,20 @@ namespace Stripe.Issuing
         public string Currency { get; set; }
 
         /// <summary>
+        /// The total amount that was held for this authorization request.
+        /// </summary>
+        [JsonProperty("hold_amount")]
+        [STJS.JsonPropertyName("hold_amount")]
+        public AuthorizationRequestHistoryHoldAmount HoldAmount { get; set; }
+
+        /// <summary>
+        /// Breakdown of the amounts contributing to hold_amount.
+        /// </summary>
+        [JsonProperty("hold_amount_details")]
+        [STJS.JsonPropertyName("hold_amount_details")]
+        public AuthorizationRequestHistoryHoldAmountDetails HoldAmountDetails { get; set; }
+
+        /// <summary>
         /// The <c>pending_request.merchant_amount</c> at the time of the request, presented in the
         /// <c>merchant_currency</c> and in the <a
         /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
