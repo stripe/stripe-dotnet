@@ -217,6 +217,7 @@ namespace StripeTests.V2
             var eventNotif = this.stripeClient.ParseEventNotification(v2KnownEventNoRelatedObjectPayload, GenerateSigHeader(v2KnownEventNoRelatedObjectPayload), WebhookSecret);
             Assert.NotNull(eventNotif);
             Assert.Equal("evt_234", eventNotif.Id);
+            Assert.Equal("v2.core.event", eventNotif.Object);
             Assert.Equal("v1.billing.meter.no_meter_found", eventNotif.Type);
             Assert.Equal(new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc), eventNotif.Created);
             Assert.True(eventNotif.Livemode);
