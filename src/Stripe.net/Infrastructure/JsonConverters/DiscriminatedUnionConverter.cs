@@ -62,8 +62,7 @@ namespace Stripe.Infrastructure
 
         public override bool CanConvert(Type objectType)
         {
-            return objectType.GetTypeInfo().IsInterface &&
-                   objectType.GetCustomAttribute<StripeDiscriminatedUnionAttribute>() != null;
+            return objectType.GetCustomAttribute<StripeDiscriminatedUnionAttribute>() != null;
         }
 
         private static UnionMetadata GetMetadata(Type interfaceType)

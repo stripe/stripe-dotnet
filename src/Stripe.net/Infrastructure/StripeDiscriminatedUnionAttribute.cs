@@ -3,11 +3,11 @@ namespace Stripe
     using System;
 
     /// <summary>
-    /// Marks an interface as a discriminated union. The interface property
+    /// Marks an interface or class as a discriminated union. The property
     /// will be deserialized by inspecting the JSON discriminator field and
     /// dispatching to the appropriate variant type.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Interface)]
+    [AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class, Inherited = false)]
     public class StripeDiscriminatedUnionAttribute : Attribute
     {
         public StripeDiscriminatedUnionAttribute(string discriminatorPropertyName)

@@ -26,16 +26,6 @@ namespace StripeTests
         {
         }
 
-        [StripeDiscriminatedUnion("model")]
-        [StripeUnionVariant(typeof(TestRgbColorEntity), "rgb")]
-        [StripeUnionVariant(typeof(TestHsvColorEntity), "hsv")]
-        [JsonConverter(typeof(DiscriminatedUnionConverter))]
-        [STJS.JsonConverter(typeof(STJDiscriminatedUnionConverterFactory))]
-        private interface ITestColorEntity
-        {
-            string Model { get; }
-        }
-
         [Fact]
         public async void StandaloneUnion_V1FormEncoding_RgbVariant()
         {
@@ -438,12 +428,20 @@ namespace StripeTests
             public TestInlineUnionBankOptions Bank { get; set; }
         }
 
-        private class TestRgbColorEntity : StripeEntity<TestRgbColorEntity>, ITestColorEntity
+        [StripeDiscriminatedUnion("model")]
+        [StripeUnionVariant(typeof(TestRgbColorEntity), "rgb")]
+        [StripeUnionVariant(typeof(TestHsvColorEntity), "hsv")]
+        [JsonConverter(typeof(DiscriminatedUnionConverter))]
+        [STJS.JsonConverter(typeof(STJDiscriminatedUnionConverterFactory))]
+        private class TestColorEntity : StripeEntity<TestColorEntity>
         {
             [JsonProperty("model")]
             [STJS.JsonPropertyName("model")]
             public string Model { get; set; }
+        }
 
+        private class TestRgbColorEntity : TestColorEntity
+        {
             [JsonProperty("r")]
             [STJS.JsonPropertyName("r")]
             public long R { get; set; }
@@ -457,12 +455,8 @@ namespace StripeTests
             public long B { get; set; }
         }
 
-        private class TestHsvColorEntity : StripeEntity<TestHsvColorEntity>, ITestColorEntity
+        private class TestHsvColorEntity : TestColorEntity
         {
-            [JsonProperty("model")]
-            [STJS.JsonPropertyName("model")]
-            public string Model { get; set; }
-
             [JsonProperty("h")]
             [STJS.JsonPropertyName("h")]
             public long H { get; set; }
@@ -480,7 +474,7 @@ namespace StripeTests
         {
             [JsonProperty("color")]
             [STJS.JsonPropertyName("color")]
-            public ITestColorEntity Color { get; set; }
+            public TestColorEntity Color { get; set; }
 
             [JsonProperty("name")]
             [STJS.JsonPropertyName("name")]

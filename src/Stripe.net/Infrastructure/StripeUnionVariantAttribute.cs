@@ -3,10 +3,10 @@ namespace Stripe
     using System;
 
     /// <summary>
-    /// Maps a discriminator value to a concrete variant type for a discriminated union interface.
-    /// Applied to the interface multiple times, once per variant.
+    /// Maps a discriminator value to a concrete variant type for a discriminated union.
+    /// Applied to the interface or base class multiple times, once per variant.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Interface, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
     public class StripeUnionVariantAttribute : Attribute
     {
         public StripeUnionVariantAttribute(Type variantType, string discriminatorValue)

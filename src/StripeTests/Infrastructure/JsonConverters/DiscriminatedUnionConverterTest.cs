@@ -7,15 +7,6 @@ namespace StripeTests
 
     public class DiscriminatedUnionConverterTest : BaseStripeTest
     {
-        [StripeDiscriminatedUnion("model")]
-        [StripeUnionVariant(typeof(TestRgbColor), "rgb")]
-        [StripeUnionVariant(typeof(TestHsvColor), "hsv")]
-        [JsonConverter(typeof(DiscriminatedUnionConverter))]
-        private interface ITestColor
-        {
-            string Model { get; }
-        }
-
         [Fact]
         public void DeserializeFirstVariant()
         {
@@ -120,40 +111,44 @@ namespace StripeTests
             Assert.Equal(90, hsv.V);
         }
 
-        private class TestRgbColor : ITestColor
+        [StripeDiscriminatedUnion("model")]
+        [StripeUnionVariant(typeof(TestRgbColor), "rgb")]
+        [StripeUnionVariant(typeof(TestHsvColor), "hsv")]
+        [JsonConverter(typeof(DiscriminatedUnionConverter))]
+        private class TestColor
         {
             [JsonProperty("model")]
             public string Model { get; set; }
-
-            [JsonProperty("r")]
-            public int R { get; set; }
-
-            [JsonProperty("g")]
-            public int G { get; set; }
-
-            [JsonProperty("b")]
-            public int B { get; set; }
         }
 
-        private class TestHsvColor : ITestColor
+        private class TestRgbColor : TestColor
         {
-            [JsonProperty("model")]
-            public string Model { get; set; }
+            [JsonProperty("r")]
+            public long R { get; set; }
 
+            [JsonProperty("g")]
+            public long G { get; set; }
+
+            [JsonProperty("b")]
+            public long B { get; set; }
+        }
+
+        private class TestHsvColor : TestColor
+        {
             [JsonProperty("h")]
-            public int H { get; set; }
+            public long H { get; set; }
 
             [JsonProperty("s")]
-            public int S { get; set; }
+            public long S { get; set; }
 
             [JsonProperty("v")]
-            public int V { get; set; }
+            public long V { get; set; }
         }
 
         private class TestContainer
         {
             [JsonProperty("color")]
-            public ITestColor Color { get; set; }
+            public TestColor Color { get; set; }
         }
     }
 }

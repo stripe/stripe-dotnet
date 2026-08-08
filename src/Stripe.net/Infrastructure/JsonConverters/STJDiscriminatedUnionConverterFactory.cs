@@ -19,8 +19,7 @@ namespace Stripe.Infrastructure
 
         public override bool CanConvert(Type typeToConvert)
         {
-            return typeToConvert.GetTypeInfo().IsInterface &&
-                   typeToConvert.GetCustomAttribute<StripeDiscriminatedUnionAttribute>() != null;
+            return typeToConvert.GetCustomAttribute<StripeDiscriminatedUnionAttribute>() != null;
         }
 
         public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
