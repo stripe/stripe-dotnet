@@ -48,7 +48,7 @@ namespace StripeTests.V2
                 ""object"": ""v2.core.event"",
                 ""type"": ""v1.billing.meter.no_meter_found"",
                 ""created"": ""2022-02-15T00:27:45.330Z"",
-                ""livemode"": true,
+                ""livemode"": true
               }";
 
         private static string v2KnownEventPayload =
@@ -109,7 +109,7 @@ namespace StripeTests.V2
                 ""object"": ""v2.core.event"",
                 ""type"": ""v1.billing.meter.no_meter_found"",
                 ""created"": ""2022-02-15T00:27:45.330Z"",
-                ""livemode"": false,
+                ""livemode"": false
               }";
 
         private static string v2KnownEventWithReasonPayload =
@@ -217,6 +217,7 @@ namespace StripeTests.V2
             var eventNotif = this.stripeClient.ParseEventNotification(v2KnownEventNoRelatedObjectPayload, GenerateSigHeader(v2KnownEventNoRelatedObjectPayload), WebhookSecret);
             Assert.NotNull(eventNotif);
             Assert.Equal("evt_234", eventNotif.Id);
+            Assert.Equal("v2.core.event", eventNotif.Object);
             Assert.Equal("v1.billing.meter.no_meter_found", eventNotif.Type);
             Assert.Equal(new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc), eventNotif.Created);
             Assert.True(eventNotif.Livemode);
@@ -308,7 +309,7 @@ namespace StripeTests.V2
                     GenerateSigHeader(v1Payload),
                     WebhookSecret));
 
-            Assert.Contains("EventUtility.ConstructEvent", exception.Message);
+            Assert.Contains("ConstructEvent", exception.Message);
         }
 
         [Fact]

@@ -34,6 +34,12 @@ namespace Stripe
         /// <summary>API version used by Stripe.net.</summary>
         public static string ApiVersion => Stripe.ApiVersion.Current;
 
+        /// <summary>
+        /// The major API version that this SDK uses. Objects retrieved using the same major version
+        /// are compatible. Is an empty string in preview versions of the SDK.
+        /// </summary>
+        public static string MajorApiVersion => Stripe.ApiVersion.CurrentMajor;
+
         /// <summary>Gets or sets the API key.</summary>
         /// <remarks>
         /// You can also set the API key using the <c>StripeApiKey</c> key in
