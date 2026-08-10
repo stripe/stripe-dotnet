@@ -1,5 +1,15 @@
 # Changelog
 
+## 52.3.0 - 2026-08-10
+* [#3422](https://github.com/stripe/stripe-dotnet/pull/3422) Surface `object` property on `EventNotification`
+* [#3416](https://github.com/stripe/stripe-dotnet/pull/3416) add/adjust event parsing helpers
+  
+  - Added methods that return which return their respective `Event`/`EventNotification` class instances without verifying authenticity. Use them when you've previously verified an event (e.g. you verified, put the event in a queue, and are now processing). Supports events from [AWS EventBridge](https://docs.stripe.com/event-destinations/eventbridge) and [Azure Event Grid](https://docs.stripe.com/event-destinations/eventgrid) natively.
+    - `EventUtility.ConstructEventWithoutVerification(json)`
+    - `StripeClient.ParseEventNotificationWithoutVerification(json)`
+  - Added `EventUtility.GenerateSignatureHeader(payload, secret)`, which computes a full `Stripe-Signature` header for the given payload. Useful for unit tests!
+* [#3420](https://github.com/stripe/stripe-dotnet/pull/3420) Add `stripe.major_api_version` constant
+
 ## 52.2.0 - 2026-07-29
 This release changes the pinned API version to 2026-07-29.dahlia.
 
