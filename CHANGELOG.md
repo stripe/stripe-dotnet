@@ -1,5 +1,15 @@
 # Changelog
 
+## 52.3.0 - 2026-08-10
+* [#3422](https://github.com/stripe/stripe-dotnet/pull/3422) Surface `object` property on `EventNotification`
+* [#3416](https://github.com/stripe/stripe-dotnet/pull/3416) add/adjust event parsing helpers
+  
+  - Added methods that return which return their respective `Event`/`EventNotification` class instances without verifying authenticity. Use them when you've previously verified an event (e.g. you verified, put the event in a queue, and are now processing). Supports events from [AWS EventBridge](https://docs.stripe.com/event-destinations/eventbridge) and [Azure Event Grid](https://docs.stripe.com/event-destinations/eventgrid) natively.
+    - `EventUtility.ConstructEventWithoutVerification(json)`
+    - `StripeClient.ParseEventNotificationWithoutVerification(json)`
+  - Added `EventUtility.GenerateSignatureHeader(payload, secret)`, which computes a full `Stripe-Signature` header for the given payload. Useful for unit tests!
+* [#3420](https://github.com/stripe/stripe-dotnet/pull/3420) Add `stripe.major_api_version` constant
+
 ## 52.3.0-beta.1 - 2026-07-29
 This release changes the pinned API version to 2026-07-29.preview.
 
@@ -21,6 +31,39 @@ This release changes the pinned API version to 2026-07-29.preview.
   * Add support for `Source` on `V2.Iam.ActivityLog.Details.UserRoles`
   * Add support for `Payout` on `V2.MoneyManagement.ReceivedCredit.BalanceTransfer`
   * ⚠️ Remove support for `PayoutV1` on `V2.MoneyManagement.ReceivedCredit.BalanceTransfer`
+
+## 52.2.0 - 2026-07-29
+This release changes the pinned API version to 2026-07-29.dahlia.
+
+* [#3417](https://github.com/stripe/stripe-dotnet/pull/3417) Update generated code
+  * Add support for new resource `FinancialConnections.Authorization`
+  * Add support for `Unreject` method on resource `Account`
+  * Add support for `List` method on resource `PaymentRecord`
+  * Add support for `SmartDisputesManagement` on `AccountSession.Components.DisputesList.Features`, `AccountSession.Components.PaymentDetails.Features`, `AccountSession.Components.PaymentDisputes.Features`, `AccountSession.Components.Payments.Features`, `AccountSessionComponentsDisputesListFeaturesOptions`, `AccountSessionComponentsPaymentDetailsFeaturesOptions`, `AccountSessionComponentsPaymentDisputesFeaturesOptions`, and `AccountSessionComponentsPaymentsFeaturesOptions`
+  * Add support for `AdministrativeAddress` and `PrincipalPlaceOfBusiness` on `Account.Company`, `AccountCompanyOptions`, and `TokenAccountCompanyOptions`
+  * Add support for `SepaDebitPayments` on `AccountSettingsOptions`
+  * Remove support for `ProofOfRegistration` on `AccountDocumentsOptions`.  This field was limited-use and is being deprecated.
+  * Add support for `PayoutsAction` on `AccountRejectOptions`
+  * Remove support for `DynamicTaxRates` on `CheckoutSessionLineItemOptions`.  This field was limited-use and is being deprecated.
+  * Add support for `SetupFutureUsage` on `Checkout.Session.PaymentMethodOptions.Payco`, `Checkout.Session.PaymentMethodOptions.SamsungPay`, `CheckoutSessionPaymentMethodOptionsPaycoOptions`, `CheckoutSessionPaymentMethodOptionsSamsungPayOptions`, `PaymentIntent.PaymentMethodOptions.Payco`, `PaymentIntent.PaymentMethodOptions.SamsungPay`, `PaymentIntentPaymentMethodOptionsPaycoOptions`, `PaymentIntentPaymentMethodOptionsSamsungPayOptions`, and `PaymentLinkPaymentIntentDataOptions`
+  * Add support for `Network` on `Dispute.PaymentMethodDetails.Card`
+  * Add support for `Limits` and `ManualEntry` on `FinancialConnections.SessionCreateOptions` and `FinancialConnections.Session`
+  * Add support for `RequirePaymentMethodSupport` on `FinancialConnections.Session.Filters` and `FinancialConnectionsSessionFiltersOptions`
+  * Add support for `BankAccountToken` on `FinancialConnections.Session`
+  * Add support for `Metadata` on `InvoiceSubscriptionDetailsOptions`
+  * Add support for `BusinessName` on `Issuing.Card.Shipping` and `IssuingCardShippingOptions`
+  * Add support for `AllowedPaymentMethodTypes` on `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, `PaymentIntentUpdateOptions`, `PaymentIntent`, `SetupIntentConfirmOptions`, `SetupIntentCreateOptions`, `SetupIntentUpdateOptions`, and `SetupIntent`
+  * Add support for `Referrer` on `PaymentIntentRadarOptionsOptions`
+  * Add support for `ConsentCollection` and `ShippingOptions` on `PaymentLinkUpdateOptions`
+  * Add support for `CustomFields`, `Description`, and `Footer` on `Quote.InvoiceSettings`, `QuoteInvoiceSettingsOptions`, `SubscriptionSchedule.DefaultSettings.InvoiceSettings`, `SubscriptionSchedule.Phase.InvoiceSettings`, `SubscriptionScheduleDefaultSettingsInvoiceSettingsOptions`, and `SubscriptionSchedulePhaseInvoiceSettingsOptions`
+  * Add support for `CustomerAccount` and `Customer` on `Refund`
+  * Add support for `PaymentMethod` on `Refund` and `Topup`
+  * Add support for `Trial` on `SubscriptionSchedule.Phase`
+  * Add support for `MassTransitParkingTax` and `ParkingTax` on `Tax.Registration.CountryOptions.Us` and `TaxRegistrationCountryOptionsUsOptions`
+  * Add support for `InitiatedBy` and `PaymentMethodOptions` on `Topup`
+  * Add support for `AdditionalAddresses` on `V2.Core.Account.Identity.BusinessDetails`, `V2CoreAccountIdentityBusinessDetailsOptions`, and `V2CoreAccountTokenIdentityBusinessDetailsOptions`
+  * Add support for snapshot events `FinancialConnectionsAccountExpectedDeactivationDateUpdated`, `FinancialConnectionsAccountSupportedPaymentMethodTypesUpdated`, and `FinancialConnectionsAccountUpcomingDeactivation` with resource `FinancialConnections.Account`
+  * Add support for snapshot events `FinancialConnectionsAuthorizationExpectedDeactivationDateUpdated` and `FinancialConnectionsAuthorizationUpcomingDeactivation` with resource `FinancialConnections.Authorization`
 
 ## 52.2.0-beta.1 - 2026-06-24
 This release changes the pinned API version to 2026-06-24.preview.
