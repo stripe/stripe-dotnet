@@ -28,6 +28,13 @@ namespace Stripe.FinancialConnections
         public List<string> Countries { get; set; }
 
         /// <summary>
+        /// Country from which to filter accounts.
+        /// </summary>
+        [JsonProperty("country")]
+        [STJS.JsonPropertyName("country")]
+        public string Country { get; set; }
+
+        /// <summary>
         /// Stripe ID of the institution with which the customer should be directed to log in.
         /// </summary>
         [JsonProperty("institution")]

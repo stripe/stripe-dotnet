@@ -17,6 +17,15 @@ namespace Stripe.V2.MoneyManagement
         public V2.Amount Amount { get; set; }
 
         /// <summary>
+        /// Controls whether the intent requires explicit confirmation before transitioning to
+        /// pending. Defaults to automatic.
+        /// One of: <c>automatic</c>, or <c>manual</c>.
+        /// </summary>
+        [JsonProperty("confirmation_method")]
+        [STJS.JsonPropertyName("confirmation_method")]
+        public string ConfirmationMethod { get; set; }
+
+        /// <summary>
         /// An arbitrary string attached to the PayoutIntent. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]

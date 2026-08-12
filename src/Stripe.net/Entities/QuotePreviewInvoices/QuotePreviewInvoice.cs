@@ -329,6 +329,13 @@ namespace Stripe
         public Address CustomerAddress { get; set; }
 
         /// <summary>
+        /// The customer balance amounts applied to this invoice.
+        /// </summary>
+        [JsonProperty("customer_balance")]
+        [STJS.JsonPropertyName("customer_balance")]
+        public QuotePreviewInvoiceCustomerBalance CustomerBalance { get; set; }
+
+        /// <summary>
         /// The customer's email. Until the invoice is finalized, this field will equal
         /// <c>customer.email</c>. Once the invoice is finalized, this field will no longer be
         /// updated.

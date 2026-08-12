@@ -37,6 +37,15 @@ namespace Stripe.V2.MoneyManagement
         public V2.Amount Amount { get; set; }
 
         /// <summary>
+        /// Controls whether the intent requires explicit confirmation before transitioning to
+        /// pending.
+        /// One of: <c>automatic</c>, or <c>manual</c>.
+        /// </summary>
+        [JsonProperty("confirmation_method")]
+        [STJS.JsonPropertyName("confirmation_method")]
+        public string ConfirmationMethod { get; set; }
+
+        /// <summary>
         /// Time at which the PayoutIntent was created. Represented as a RFC 3339 date &amp; time
         /// UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
         /// </summary>
@@ -52,11 +61,25 @@ namespace Stripe.V2.MoneyManagement
         public string Description { get; set; }
 
         /// <summary>
+        /// Estimated fees and taxes.
+        /// </summary>
+        [JsonProperty("estimated_fees")]
+        [STJS.JsonPropertyName("estimated_fees")]
+        public List<PayoutIntentEstimatedFee> EstimatedFees { get; set; }
+
+        /// <summary>
         /// The FinancialAccount that funds are pulled from.
         /// </summary>
         [JsonProperty("from")]
         [STJS.JsonPropertyName("from")]
         public PayoutIntentFrom From { get; set; }
+
+        /// <summary>
+        /// FX rate information for fee transparency.
+        /// </summary>
+        [JsonProperty("fx_quote")]
+        [STJS.JsonPropertyName("fx_quote")]
+        public PayoutIntentFxQuote FxQuote { get; set; }
 
         /// <summary>
         /// Details about the latest payout associated with this PayoutIntent.

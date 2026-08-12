@@ -17,7 +17,7 @@ namespace Stripe.V2.Core
         public List<AccountIdentityBusinessDetailsAdditionalAddress> AdditionalAddresses { get; set; }
 
         /// <summary>
-        /// The company’s primary address.
+        /// The company's primary address.
         /// </summary>
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
@@ -69,7 +69,7 @@ namespace Stripe.V2.Core
         public AccountIdentityBusinessDetailsMonthlyEstimatedRevenue MonthlyEstimatedRevenue { get; set; }
 
         /// <summary>
-        /// The company’s phone number (used for verification).
+        /// The company's phone number (used for verification).
         /// </summary>
         [JsonProperty("phone")]
         [STJS.JsonPropertyName("phone")]

@@ -25476,7 +25476,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/payout_intents",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"confirmation_method\":\"manual\",\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutIntents;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.PayoutIntent> payoutIntents = service
@@ -25493,7 +25493,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/payout_intents",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"confirmation_method\":\"manual\",\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutIntents;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.PayoutIntent> payoutIntents = await service
@@ -25510,7 +25510,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/payout_intents",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"confirmation_method\":\"manual\",\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutIntents;
             var payoutIntent = service.ListAutoPaging().First();
@@ -25526,7 +25526,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/payout_intents",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"confirmation_method\":\"manual\",\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutIntents;
             var payoutIntent = await service.ListAutoPagingAsync().FirstAsync();
@@ -25542,7 +25542,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/payout_intents",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
+                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"confirmation_method\":\"manual\",\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
             var options = new Stripe.V2.MoneyManagement.PayoutIntentCreateOptions
             {
                 Amount = new Stripe.V2.Amount { Value = 96, Currency = "USD" },
@@ -25592,7 +25592,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/payout_intents",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
+                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"confirmation_method\":\"manual\",\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
             var options = new Stripe.V2.MoneyManagement.PayoutIntentCreateOptions
             {
                 Amount = new Stripe.V2.Amount { Value = 96, Currency = "USD" },
@@ -25642,7 +25642,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/payout_intents/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
+                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"confirmation_method\":\"manual\",\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutIntents;
             Stripe.V2.MoneyManagement.PayoutIntent payoutIntent = service.Get(
@@ -25659,7 +25659,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/payout_intents/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
+                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"confirmation_method\":\"manual\",\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutIntents;
             Stripe.V2.MoneyManagement.PayoutIntent payoutIntent = await service
@@ -25676,7 +25676,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/payout_intents/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
+                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"confirmation_method\":\"manual\",\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
             var options = new Stripe.V2.MoneyManagement.PayoutIntentUpdateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutIntents;
@@ -25694,7 +25694,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/payout_intents/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
+                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"confirmation_method\":\"manual\",\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
             var options = new Stripe.V2.MoneyManagement.PayoutIntentUpdateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutIntents;
@@ -25712,7 +25712,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/payout_intents/id_123/cancel",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
+                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"confirmation_method\":\"manual\",\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutIntents;
             Stripe.V2.MoneyManagement.PayoutIntent payoutIntent = service
@@ -25729,7 +25729,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/payout_intents/id_123/cancel",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
+                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"confirmation_method\":\"manual\",\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutIntents;
             Stripe.V2.MoneyManagement.PayoutIntent payoutIntent = await service
@@ -25737,6 +25737,74 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/money_management/payout_intents/id_123/cancel");
+        }
+
+        [Fact]
+        public void TestV2MoneyManagementPayoutIntentPost4()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/payout_intents/id_123/confirm",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"confirmation_method\":\"manual\",\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.PayoutIntents;
+            Stripe.V2.MoneyManagement.PayoutIntent payoutIntent = service
+                .Confirm("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/payout_intents/id_123/confirm");
+        }
+
+        [Fact]
+        public async Task TestV2MoneyManagementPayoutIntentPost4Async()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/payout_intents/id_123/confirm",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"confirmation_method\":\"manual\",\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.PayoutIntents;
+            Stripe.V2.MoneyManagement.PayoutIntent payoutIntent = await service
+                .ConfirmAsync("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/payout_intents/id_123/confirm");
+        }
+
+        [Fact]
+        public void TestV2MoneyManagementPayoutIntentPost5()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/payout_intents/id_123/fx_quote",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"confirmation_method\":\"manual\",\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.PayoutIntents;
+            Stripe.V2.MoneyManagement.PayoutIntent payoutIntent = service
+                .FxQuote("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/payout_intents/id_123/fx_quote");
+        }
+
+        [Fact]
+        public async Task TestV2MoneyManagementPayoutIntentPost5Async()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/payout_intents/id_123/fx_quote",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.money_management.payout_intent\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"confirmation_method\":\"manual\",\"created\":\"1970-01-12T21:42:34.472Z\",\"from\":{\"currency\":\"usd\",\"financial_account\":\"financial_account\"},\"id\":\"obj_123\",\"latest_payout\":{\"type\":\"outbound_payment\"},\"livemode\":true,\"status\":\"canceled\",\"to\":{}}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.PayoutIntents;
+            Stripe.V2.MoneyManagement.PayoutIntent payoutIntent = await service
+                .FxQuoteAsync("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/payout_intents/id_123/fx_quote");
         }
 
         [Fact]
@@ -28560,6 +28628,62 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2TaxOperationPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/tax/operations/resolve_address",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.tax.operations_resolve_address_result\",\"address\":{},\"livemode\":true,\"precision\":\"none\",\"precision_details\":{\"issues\":[{\"code\":\"required_for_improved_precision\",\"field\":\"country\"}]}}");
+            var options = new Stripe.V2.Tax.OperationResolveAddressOptions
+            {
+                Address = new Stripe.V2.Tax.OperationResolveAddressAddressOptions
+                {
+                    City = "city",
+                    Country = "country",
+                    Line1 = "line1",
+                    PostalCode = "postal_code",
+                    State = "state",
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Tax.Operations;
+            Stripe.V2.Tax.OperationsResolveAddressResult operationsResolveAddressResult = service
+                .ResolveAddress(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/tax/operations/resolve_address");
+        }
+
+        [Fact]
+        public async Task TestV2TaxOperationPostAsync()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/tax/operations/resolve_address",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.tax.operations_resolve_address_result\",\"address\":{},\"livemode\":true,\"precision\":\"none\",\"precision_details\":{\"issues\":[{\"code\":\"required_for_improved_precision\",\"field\":\"country\"}]}}");
+            var options = new Stripe.V2.Tax.OperationResolveAddressOptions
+            {
+                Address = new Stripe.V2.Tax.OperationResolveAddressAddressOptions
+                {
+                    City = "city",
+                    Country = "country",
+                    Line1 = "line1",
+                    PostalCode = "postal_code",
+                    State = "state",
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Tax.Operations;
+            Stripe.V2.Tax.OperationsResolveAddressResult operationsResolveAddressResult = await service
+                .ResolveAddressAsync(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/tax/operations/resolve_address");
+        }
+
+        [Fact]
         public void TestV2TestHelpersFinancialAddressPost()
         {
             this.StubRequest(
@@ -29105,6 +29229,48 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/money_management/currency_conversions");
+        }
+
+        [Fact]
+        public void TestFxQuoteNeedsRefreshError()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/payout_intents/id_123/confirm",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"fx_quote_needs_refresh\",\"code\":\"payout_intent_fx_quote_expired\"}}");
+            var exception = Assert.Throws<Stripe.V2.FxQuoteNeedsRefreshException>(
+            () =>
+            {
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.MoneyManagement.PayoutIntents;
+                Stripe.V2.MoneyManagement.PayoutIntent payoutIntent = service
+                    .Confirm("id_123");
+            });
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/payout_intents/id_123/confirm");
+        }
+
+        [Fact]
+        public async Task TestFxQuoteNeedsRefreshErrorAsync()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/payout_intents/id_123/confirm",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"fx_quote_needs_refresh\",\"code\":\"payout_intent_fx_quote_expired\"}}");
+            var exception = await Assert.ThrowsAsync<Stripe.V2.FxQuoteNeedsRefreshException>(
+            async () =>
+            {
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.MoneyManagement.PayoutIntents;
+                Stripe.V2.MoneyManagement.PayoutIntent payoutIntent = await service
+                    .ConfirmAsync("id_123");
+            });
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/payout_intents/id_123/confirm");
         }
 
         [Fact]

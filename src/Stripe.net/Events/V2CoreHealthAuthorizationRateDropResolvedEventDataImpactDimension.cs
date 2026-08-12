@@ -9,6 +9,13 @@ namespace Stripe.Events
     public class V2CoreHealthAuthorizationRateDropResolvedEventDataImpactDimension : StripeEntity<V2CoreHealthAuthorizationRateDropResolvedEventDataImpactDimension>
     {
         /// <summary>
+        /// The acquirer dimension.
+        /// </summary>
+        [JsonProperty("acquirer")]
+        [STJS.JsonPropertyName("acquirer")]
+        public string Acquirer { get; set; }
+
+        /// <summary>
         /// The issuer dimension.
         /// </summary>
         [JsonProperty("issuer")]
@@ -17,6 +24,7 @@ namespace Stripe.Events
 
         /// <summary>
         /// The type of the dimension.
+        /// One of: <c>acquirer</c>, or <c>issuer</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

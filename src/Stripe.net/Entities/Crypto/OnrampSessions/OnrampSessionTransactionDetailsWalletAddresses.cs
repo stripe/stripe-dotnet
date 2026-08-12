@@ -30,6 +30,13 @@ namespace Stripe.Crypto
         public string Bitcoin { get; set; }
 
         /// <summary>
+        /// A Celo address.
+        /// </summary>
+        [JsonProperty("celo")]
+        [STJS.JsonPropertyName("celo")]
+        public string Celo { get; set; }
+
+        /// <summary>
         /// The end customer's crypto wallet destination tag (for each network) to use for this
         /// transaction.
         /// </summary>

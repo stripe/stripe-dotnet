@@ -3,7 +3,7 @@ namespace Stripe
 {
     internal class ApiVersion
     {
-        public const string Current = "2026-07-29.preview";
+        public const string Current = "2026-08-12.preview";
         public const string CurrentMajor = "";
     }
 }

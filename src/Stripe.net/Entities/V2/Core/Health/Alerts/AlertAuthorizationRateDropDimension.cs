@@ -9,6 +9,13 @@ namespace Stripe.V2.Core.Health
     public class AlertAuthorizationRateDropDimension : StripeEntity<AlertAuthorizationRateDropDimension>
     {
         /// <summary>
+        /// Populated when type is acquirer.
+        /// </summary>
+        [JsonProperty("acquirer")]
+        [STJS.JsonPropertyName("acquirer")]
+        public string Acquirer { get; set; }
+
+        /// <summary>
         /// Populated when type is issuer.
         /// </summary>
         [JsonProperty("issuer")]
@@ -16,7 +23,8 @@ namespace Stripe.V2.Core.Health
         public string Issuer { get; set; }
 
         /// <summary>
-        /// The type of the dimension. Determines which field in dimension_details is populated.
+        /// The type of the dimension. Determines which field is populated.
+        /// One of: <c>acquirer</c>, or <c>issuer</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
