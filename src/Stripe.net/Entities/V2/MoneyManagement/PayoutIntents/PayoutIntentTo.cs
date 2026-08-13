@@ -9,6 +9,13 @@ namespace Stripe.V2.MoneyManagement
     public class PayoutIntentTo : StripeEntity<PayoutIntentTo>
     {
         /// <summary>
+        /// Estimated amount to be credited to the recipient in the destination currency.
+        /// </summary>
+        [JsonProperty("credited")]
+        [STJS.JsonPropertyName("credited")]
+        public V2.Amount Credited { get; set; }
+
+        /// <summary>
         /// The currency to send to the recipient.
         /// </summary>
         [JsonProperty("currency")]

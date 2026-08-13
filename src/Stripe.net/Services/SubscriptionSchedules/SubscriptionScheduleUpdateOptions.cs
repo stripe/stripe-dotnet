@@ -80,9 +80,9 @@ namespace Stripe
         }
 
         /// <summary>
-        /// Sets the pause schedules for the subscription schedule. Include a <c>key</c> to update
-        /// an existing entry or omit it to add a new one. Pass <c>""</c> to clear all entries or
-        /// <c>[]</c> to leave them unchanged.
+        /// Configures the subscription's pause behavior and, optionally, its resume behavior. Only
+        /// one entry is supported. Include a key to update an existing entry. Omit to leave an
+        /// existing pause schedule unchanged, or pass "" to clear it.
         /// </summary>
         [JsonProperty("pause_schedules", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("pause_schedules")]

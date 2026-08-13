@@ -13,6 +13,13 @@ namespace Stripe.BillingPortal
         public SessionFlowAfterCompletion AfterCompletion { get; set; }
 
         /// <summary>
+        /// Configuration when <c>flow.type=customer_update</c>.
+        /// </summary>
+        [JsonProperty("customer_update")]
+        [STJS.JsonPropertyName("customer_update")]
+        public SessionFlowCustomerUpdate CustomerUpdate { get; set; }
+
+        /// <summary>
         /// Configuration when <c>flow.type=subscription_cancel</c>.
         /// </summary>
         [JsonProperty("subscription_cancel")]
@@ -35,8 +42,9 @@ namespace Stripe.BillingPortal
 
         /// <summary>
         /// Type of flow that the customer will go through.
-        /// One of: <c>payment_method_update</c>, <c>subscription_cancel</c>,
-        /// <c>subscription_update</c>, or <c>subscription_update_confirm</c>.
+        /// One of: <c>customer_update</c>, <c>payment_method_update</c>,
+        /// <c>subscription_cancel</c>, <c>subscription_update</c>, or
+        /// <c>subscription_update_confirm</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

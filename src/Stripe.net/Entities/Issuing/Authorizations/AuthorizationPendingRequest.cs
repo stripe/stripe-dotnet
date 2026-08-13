@@ -38,6 +38,20 @@ namespace Stripe.Issuing
         public string Currency { get; set; }
 
         /// <summary>
+        /// The total amount to be held for this authorization request.
+        /// </summary>
+        [JsonProperty("hold_amount")]
+        [STJS.JsonPropertyName("hold_amount")]
+        public AuthorizationPendingRequestHoldAmount HoldAmount { get; set; }
+
+        /// <summary>
+        /// Breakdown of the amounts contributing to hold_amount.
+        /// </summary>
+        [JsonProperty("hold_amount_details")]
+        [STJS.JsonPropertyName("hold_amount_details")]
+        public AuthorizationPendingRequestHoldAmountDetails HoldAmountDetails { get; set; }
+
+        /// <summary>
         /// If set <c>true</c>, you may provide <a
         /// href="https://docs.stripe.com/api/issuing/authorizations/approve#approve_issuing_authorization-amount">amount</a>
         /// to control how much to hold for the authorization.

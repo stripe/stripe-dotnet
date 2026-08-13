@@ -9,6 +9,13 @@ namespace Stripe.V2.MoneyManagement
     public class PayoutIntentNextAction : StripeEntity<PayoutIntentNextAction>
     {
         /// <summary>
+        /// Details about a confirmation required. Populated when type is confirm.
+        /// </summary>
+        [JsonProperty("confirm")]
+        [STJS.JsonPropertyName("confirm")]
+        public PayoutIntentNextActionConfirm Confirm { get; set; }
+
+        /// <summary>
         /// Details about a failure that requires user action. Populated when type is
         /// handle_failure.
         /// </summary>
@@ -18,6 +25,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. The type of next action required.
+        /// One of: <c>confirm</c>, or <c>handle_failure</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

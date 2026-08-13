@@ -25,6 +25,14 @@ namespace Stripe
         public SubscriptionPaymentSettingsPaymentMethodOptionsBancontact Bancontact { get; set; }
 
         /// <summary>
+        /// This sub-hash contains details about the Billie payment method options to pass to
+        /// invoices created by the subscription.
+        /// </summary>
+        [JsonProperty("billie")]
+        [STJS.JsonPropertyName("billie")]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsBillie Billie { get; set; }
+
+        /// <summary>
         /// This sub-hash contains details about the Bizum payment method options to pass to
         /// invoices created by the subscription.
         /// </summary>

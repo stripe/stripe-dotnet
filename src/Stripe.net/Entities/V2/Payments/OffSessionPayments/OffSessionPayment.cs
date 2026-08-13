@@ -52,7 +52,7 @@ namespace Stripe.V2.Payments
         public OffSessionPaymentAmountDetails AmountDetails { get; set; }
 
         /// <summary>
-        /// The “presentment amount” to be collected from the customer.
+        /// The "presentment amount" to be collected from the customer.
         /// </summary>
         [JsonProperty("amount_requested")]
         [STJS.JsonPropertyName("amount_requested")]
@@ -194,8 +194,8 @@ namespace Stripe.V2.Payments
         public OffSessionPaymentRetryDetails RetryDetails { get; set; }
 
         /// <summary>
-        /// Text that appears on the customer’s statement as the statement descriptor for a non-card
-        /// charge. This value overrides the account’s default statement descriptor. For information
+        /// Text that appears on the customer's statement as the statement descriptor for a non-card
+        /// charge. This value overrides the account's default statement descriptor. For information
         /// about requirements, including the 22-character limit, see the <a
         /// href="https://docs.stripe.com/get-started/account/statement-descriptors">Statement
         /// Descriptor docs</a>.
@@ -205,10 +205,10 @@ namespace Stripe.V2.Payments
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// Provides information about a card charge. Concatenated to the account’s <a
+        /// Provides information about a card charge. Concatenated to the account's <a
         /// href="https://docs.stripe.com/get-started/account/statement-descriptors#static">statement
         /// descriptor prefix</a> to form the complete statement descriptor that appears on the
-        /// customer’s statement.
+        /// customer's statement.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
         [STJS.JsonPropertyName("statement_descriptor_suffix")]

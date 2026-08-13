@@ -21,8 +21,8 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Cancels a PayoutIntent. Only pending PayoutIntents or processing PayoutIntents with
-        /// cancelable OutboundPayment/Transfer can be canceled.
+        /// Cancels a PayoutIntent. Only pending PayoutIntents, processing PayoutIntents with
+        /// cancelable OutboundPayment/Transfer, or requires_action PayoutIntents can be canceled.
         /// </summary>
         public virtual PayoutIntent Cancel(string id, PayoutIntentCancelOptions options = null, RequestOptions requestOptions = null)
         {
@@ -30,12 +30,30 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Cancels a PayoutIntent. Only pending PayoutIntents or processing PayoutIntents with
-        /// cancelable OutboundPayment/Transfer can be canceled.
+        /// Cancels a PayoutIntent. Only pending PayoutIntents, processing PayoutIntents with
+        /// cancelable OutboundPayment/Transfer, or requires_action PayoutIntents can be canceled.
         /// </summary>
         public virtual Task<PayoutIntent> CancelAsync(string id, PayoutIntentCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PayoutIntent>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/payout_intents/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Confirms a PayoutIntent that is in the requires_action state, transitioning it to
+        /// pending.
+        /// </summary>
+        public virtual PayoutIntent Confirm(string id, PayoutIntentConfirmOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<PayoutIntent>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/payout_intents/{WebUtility.UrlEncode(id)}/confirm", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Confirms a PayoutIntent that is in the requires_action state, transitioning it to
+        /// pending.
+        /// </summary>
+        public virtual Task<PayoutIntent> ConfirmAsync(string id, PayoutIntentConfirmOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<PayoutIntent>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/payout_intents/{WebUtility.UrlEncode(id)}/confirm", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -52,6 +70,22 @@ namespace Stripe.V2.MoneyManagement
         public virtual Task<PayoutIntent> CreateAsync(PayoutIntentCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PayoutIntent>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/payout_intents", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Refreshes FX quote for a PayoutIntent.
+        /// </summary>
+        public virtual PayoutIntent FxQuote(string id, PayoutIntentFxQuoteOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<PayoutIntent>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/payout_intents/{WebUtility.UrlEncode(id)}/fx_quote", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Refreshes FX quote for a PayoutIntent.
+        /// </summary>
+        public virtual Task<PayoutIntent> FxQuoteAsync(string id, PayoutIntentFxQuoteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<PayoutIntent>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/payout_intents/{WebUtility.UrlEncode(id)}/fx_quote", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

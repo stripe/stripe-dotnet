@@ -6,8 +6,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SubscriptionSchedulePauseScheduleOptions : INestedOptions
+    public class SubscriptionSchedulePauseScheduleOptions : INestedOptions, IHasSetTracking
     {
+        private SubscriptionSchedulePauseScheduleResumeOptions resume;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// A unique identifier for this pause schedule entry.
         /// </summary>
@@ -25,8 +31,22 @@ namespace Stripe
         /// <summary>
         /// Configuration for when and how the subscription resumes.
         /// </summary>
-        [JsonProperty("resume")]
+        [JsonProperty("resume", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("resume")]
-        public SubscriptionSchedulePauseScheduleResumeOptions Resume { get; set; }
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public SubscriptionSchedulePauseScheduleResumeOptions Resume
+        {
+            get => this.resume;
+            set
+            {
+                this.resume = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

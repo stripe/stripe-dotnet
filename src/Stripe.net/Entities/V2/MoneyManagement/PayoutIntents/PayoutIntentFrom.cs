@@ -16,6 +16,13 @@ namespace Stripe.V2.MoneyManagement
         public string Currency { get; set; }
 
         /// <summary>
+        /// Estimated amount to be debited from the financial account.
+        /// </summary>
+        [JsonProperty("debited")]
+        [STJS.JsonPropertyName("debited")]
+        public V2.Amount Debited { get; set; }
+
+        /// <summary>
         /// The FinancialAccount that funds are pulled from.
         /// </summary>
         [JsonProperty("financial_account")]

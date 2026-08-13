@@ -21,10 +21,15 @@ namespace Stripe
 
         /// <summary>
         /// The failure code for this payment attempt. Must be one of
-        /// <c>payment_method_customer_decline</c> or
-        /// <c>payment_method_provider_unknown_outcome</c>.
-        /// One of: <c>payment_method_customer_decline</c>, or
-        /// <c>payment_method_provider_unknown_outcome</c>.
+        /// <c>payment_method_customer_decline</c>, <c>payment_method_provider_unknown_outcome</c>,
+        /// <c>authentication_failure</c>, <c>expired_payment_method</c>, <c>incorrect_cvc</c>,
+        /// <c>incorrect_number</c>, <c>incorrect_postal_code</c>, <c>insufficient_funds</c>,
+        /// <c>processing_error</c>, or <c>payment_method_restricted</c>.
+        /// One of: <c>authentication_failure</c>, <c>expired_payment_method</c>,
+        /// <c>incorrect_cvc</c>, <c>incorrect_number</c>, <c>incorrect_postal_code</c>,
+        /// <c>insufficient_funds</c>, <c>payment_method_customer_decline</c>,
+        /// <c>payment_method_provider_unknown_outcome</c>, <c>payment_method_restricted</c>, or
+        /// <c>processing_error</c>.
         /// </summary>
         [JsonProperty("failure_code")]
         [STJS.JsonPropertyName("failure_code")]
