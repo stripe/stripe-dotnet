@@ -27,13 +27,20 @@ namespace Examples.V2
         private readonly StripeClient client;
         private readonly StripeEventNotificationHandler handler;
 
+        // Handles events delivered through a channel that has already authenticated them, such as
+        // AWS EventBridge or Azure Event Grid. Those payloads carry no Stripe-Signature header, so
+        // this handler skips verification. Callbacks are registered separately from the one above.
+        private readonly StripeEventNotificationHandlerWithoutVerification unverifiedHandler;
+
         public EventNotificationHandlerEndpoint()
         {
             client = new StripeClient(Environment.GetEnvironmentVariable("STRIPE_API_KEY"));
             handler = client.NotificationHandler(Environment.GetEnvironmentVariable("WEBHOOK_SECRET") ?? string.Empty, FallbackCallback);
+            unverifiedHandler = client.NotificationHandlerWithoutVerification(FallbackCallback);
 
             // register handlers
             handler.V1BillingMeterErrorReportTriggered += HandleBillingMeterErrorReportTriggeredEventNotification;
+            unverifiedHandler.V1BillingMeterErrorReportTriggered += HandleBillingMeterErrorReportTriggeredEventNotification;
         }
 
         private void HandleBillingMeterErrorReportTriggeredEventNotification(object sender, Stripe.StripeEventNotificationEventArgs<Stripe.Events.V1BillingMeterErrorReportTriggeredEventNotification> e)
@@ -52,6 +59,16 @@ namespace Examples.V2
         {
             var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
             handler.Handle(json, Request.Headers["Stripe-Signature"]);
+            return Ok();
+        }
+
+        [HttpPost("from-cloud-provider")]
+        public async Task<IActionResult> FromCloudProvider()
+        {
+            var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
+
+            // Handle takes only the body here; there's no signature to check
+            unverifiedHandler.Handle(json);
             return Ok();
         }
     }
