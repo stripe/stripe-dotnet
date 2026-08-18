@@ -990,6 +990,31 @@ namespace Stripe
         public const string PaymentMethodUpdated = "payment_method.updated";
 
         /// <summary>
+        /// Occurs whenever a new payment plan is created.
+        /// </summary>
+        public const string PaymentPlanCreated = "payment_plan.created";
+
+        /// <summary>
+        /// Occurs whenever a payment plan installment becomes due.
+        /// </summary>
+        public const string PaymentPlanInstallmentDue = "payment_plan.installment_due";
+
+        /// <summary>
+        /// Occurs whenever a payment plan installment is paid.
+        /// </summary>
+        public const string PaymentPlanInstallmentPaid = "payment_plan.installment_paid";
+
+        /// <summary>
+        /// Occurs whenever a payment plan installment is about to become due.
+        /// </summary>
+        public const string PaymentPlanInstallmentWillBeDue = "payment_plan.installment_will_be_due";
+
+        /// <summary>
+        /// Occurs whenever a payment plan is updated.
+        /// </summary>
+        public const string PaymentPlanUpdated = "payment_plan.updated";
+
+        /// <summary>
         /// Occurs whenever a payout is canceled.
         /// </summary>
         public const string PayoutCanceled = "payout.canceled";

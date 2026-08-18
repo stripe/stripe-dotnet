@@ -64,6 +64,14 @@ namespace Stripe.DelegatedCheckout
         public RequestedSessionRiskDetailsOptions RiskDetails { get; set; }
 
         /// <summary>
+        /// A SharedPaymentIssuedToken (<c>spt_...</c>) previously issued to this buyer. Mutually
+        /// exclusive with <c>payment_method</c> and <c>payment_method_data</c>.
+        /// </summary>
+        [JsonProperty("shared_payment_issued_token")]
+        [STJS.JsonPropertyName("shared_payment_issued_token")]
+        public string SharedPaymentIssuedToken { get; set; }
+
+        /// <summary>
         /// Set to true when using Stripe.js, iOS, or Android client-side SDKs to handle next
         /// actions.
         /// </summary>

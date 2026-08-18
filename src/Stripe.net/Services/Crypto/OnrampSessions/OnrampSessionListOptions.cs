@@ -21,7 +21,7 @@ namespace Stripe.Crypto
         /// <summary>
         /// The destination cryptocurrency to filter by.
         /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>sol</c>, <c>usdc</c>,
-        /// <c>wld</c>, or <c>xlm</c>.
+        /// <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
         /// </summary>
         [JsonProperty("destination_currency")]
         [STJS.JsonPropertyName("destination_currency")]

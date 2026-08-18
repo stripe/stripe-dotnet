@@ -16,6 +16,14 @@ namespace Stripe.V2.MoneyManagement
         public V2.Amount Amount { get; set; }
 
         /// <summary>
+        /// Tax charged for this fee, if applicable. Value expressed as a decimal string in major
+        /// units.
+        /// </summary>
+        [JsonProperty("tax_amount")]
+        [STJS.JsonPropertyName("tax_amount")]
+        public OutboundPaymentQuoteEstimatedFeeTaxAmount TaxAmount { get; set; }
+
+        /// <summary>
         /// The fee type.
         /// One of: <c>cross_border_payout_fee</c>, <c>foreign_exchange_fee</c>,
         /// <c>instant_payout_fee</c>, <c>next_day_payout_fee</c>, <c>real_time_payout_fee</c>,

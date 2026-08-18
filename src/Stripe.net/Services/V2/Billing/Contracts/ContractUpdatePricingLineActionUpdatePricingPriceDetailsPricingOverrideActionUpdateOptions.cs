@@ -7,8 +7,14 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ContractUpdatePricingLineActionUpdatePricingPriceDetailsPricingOverrideActionUpdateOptions : INestedOptions, IHasId, IHasMetadata
+    public class ContractUpdatePricingLineActionUpdatePricingPriceDetailsPricingOverrideActionUpdateOptions : INestedOptions, IHasId, IHasMetadata, IHasSetTracking
     {
+        private Dictionary<string, string> metadata;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Updated end time.
         /// </summary>
@@ -31,11 +37,21 @@ namespace Stripe.V2.Billing
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// Metadata for the pricing override.
+        /// Metadata mutations to apply to the pricing override.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Updated start time.
@@ -43,5 +59,10 @@ namespace Stripe.V2.Billing
         [JsonProperty("starts_at")]
         [STJS.JsonPropertyName("starts_at")]
         public ContractUpdatePricingLineActionUpdatePricingPriceDetailsPricingOverrideActionUpdateStartsAtOptions StartsAt { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

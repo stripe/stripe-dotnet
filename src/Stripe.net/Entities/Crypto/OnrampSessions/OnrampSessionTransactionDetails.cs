@@ -21,7 +21,7 @@ namespace Stripe.Crypto
         /// supported currencies to this array. If left null, the experience will allow selection of
         /// all supported destination currencies.
         /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>sol</c>, <c>usdc</c>,
-        /// <c>wld</c>, or <c>xlm</c>.
+        /// <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
         /// </summary>
         [JsonProperty("destination_currencies")]
         [STJS.JsonPropertyName("destination_currencies")]
@@ -32,7 +32,7 @@ namespace Stripe.Crypto
         /// a crypto currency code. If <c>destination_currencies</c> is set, it must be a value in
         /// that array.
         /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>sol</c>, <c>usdc</c>,
-        /// <c>wld</c>, or <c>xlm</c>.
+        /// <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
         /// </summary>
         [JsonProperty("destination_currency")]
         [STJS.JsonPropertyName("destination_currency")]

@@ -9,7 +9,7 @@ namespace Stripe.Billing
     /// A resource for the feedback options model (for custom cancellation reasons).
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class FeedbackOptions : StripeEntity<FeedbackOptions>, IHasId, IHasObject
+    public class FeedbackOption : StripeEntity<FeedbackOption>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -50,6 +50,6 @@ namespace Stripe.Billing
 
         [JsonProperty("status_transitions")]
         [STJS.JsonPropertyName("status_transitions")]
-        public FeedbackOptionsStatusTransitions StatusTransitions { get; set; }
+        public FeedbackOptionStatusTransitions StatusTransitions { get; set; }
     }
 }
