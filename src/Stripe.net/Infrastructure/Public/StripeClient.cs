@@ -286,6 +286,16 @@ namespace Stripe
             return new StripeEventNotificationHandler(this, webhookSecret, fallbackCallback);
         }
 
+        /// <summary>
+        /// Creates a handler that processes events without webhook signature verification.
+        /// Intended for pre-authenticated channels like AWS EventBridge or Azure Event Grid.
+        /// </summary>
+        /// <param name="fallbackCallback">The function to call when handing an event for whom there's no callback registered.</param>
+        public StripeEventNotificationHandlerWithoutVerification NotificationHandlerWithoutVerification(Action<object, StripeUnhandledEventNotificationEventArgs> fallbackCallback)
+        {
+            return StripeEventNotificationHandler.WithoutVerification(this, fallbackCallback);
+        }
+
         internal JsonSerializerSettings GetJsonSerializationSettings()
         {
             return this.jsonSerializerSettings;

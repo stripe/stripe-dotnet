@@ -3,6 +3,8 @@ namespace StripeTests
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
     using Stripe;
     using Stripe.Events;
     using Xunit;
@@ -185,6 +187,32 @@ namespace StripeTests
             });
 
             Assert.Contains("already registered", exception.Message);
+        }
+
+        [Fact]
+        public void CannotRegisterHandlerAfterHandling()
+        {
+            void Handler1(object sender, StripeEventNotificationEventArgs<V1BillingMeterErrorReportTriggeredEventNotification> e)
+            {
+            }
+
+            void Handler2(object sender, StripeEventNotificationEventArgs<V1BillingMeterNoMeterFoundEventNotification> e)
+            {
+            }
+
+            var handler = new StripeEventNotificationHandler(this.stripeClient, WebhookSecret, (s, e) => { });
+            handler.V1BillingMeterErrorReportTriggered += Handler1;
+
+            var sigHeader = StripeTests.V2.EventTest.GenerateSigHeader(this.V1BillingMeterPayload);
+            handler.Handle(this.V1BillingMeterPayload, sigHeader);
+
+            // registration is expected to happen once at startup; doing it later is a bug
+            var exception = Assert.Throws<InvalidOperationException>(() =>
+            {
+                handler.V1BillingMeterNoMeterFound += Handler2;
+            });
+
+            Assert.Contains("after Handle has been called", exception.Message);
         }
 
         [Fact]
@@ -470,4 +498,259 @@ namespace StripeTests
             Assert.Equal("original_context_123", requestor?.CurrentStripeContext?.ToString());
         }
     }
+
+#pragma warning disable SA1402 // File may only contain a single type
+    public class StripeEventNotificationHandlerWithoutVerificationTest : BaseStripeTest
+    {
+        private StripeClient stripeClient;
+
+        public StripeEventNotificationHandlerWithoutVerificationTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
+        {
+            this.stripeClient = this.StripeClient as StripeClient;
+        }
+
+        private string V1BillingMeterPayload => @"{
+            ""id"": ""evt_123"",
+            ""object"": ""v2.core.event"",
+            ""type"": ""v1.billing.meter.error_report_triggered"",
+            ""livemode"": false,
+            ""created"": ""2022-02-15T00:27:45.330Z"",
+            ""context"": ""event_context_456"",
+            ""related_object"": {
+                ""id"": ""mtr_123"",
+                ""type"": ""billing.meter"",
+                ""url"": ""/v1/billing/meters/mtr_123""
+            }
+        }";
+
+        private string UnknownEventPayload => @"{
+            ""id"": ""evt_unknown"",
+            ""object"": ""v2.core.event"",
+            ""type"": ""llama.created"",
+            ""livemode"": false,
+            ""created"": ""2022-02-15T00:27:45.330Z"",
+            ""context"": ""event_context_unknown"",
+            ""related_object"": {
+                ""id"": ""llama_123"",
+                ""type"": ""llama"",
+                ""url"": ""/v1/llamas/llama_123""
+            }
+        }";
+
+        [Fact]
+        public void RoutesEventToRegisteredHandler()
+        {
+            var handlerCalled = false;
+            StripeEventNotificationEventArgs<V1BillingMeterErrorReportTriggeredEventNotification> receivedArgs = null;
+
+            void Handler(object sender, StripeEventNotificationEventArgs<V1BillingMeterErrorReportTriggeredEventNotification> e)
+            {
+                handlerCalled = true;
+                receivedArgs = e;
+            }
+
+            var unhandledCalled = false;
+
+            void UnhandledHandler(object sender, StripeUnhandledEventNotificationEventArgs e)
+            {
+                unhandledCalled = true;
+            }
+
+            var handler = StripeEventNotificationHandler.WithoutVerification(this.stripeClient, UnhandledHandler);
+            handler.V1BillingMeterErrorReportTriggered += Handler;
+
+            handler.Handle(this.V1BillingMeterPayload);
+
+            Assert.True(handlerCalled);
+            Assert.NotNull(receivedArgs);
+            Assert.IsType<V1BillingMeterErrorReportTriggeredEventNotification>(receivedArgs.EventNotification);
+            Assert.Equal("evt_123", receivedArgs.EventNotification.Id);
+            Assert.False(unhandledCalled);
+        }
+
+        [Fact]
+        public void HandleTakesOnlyBody()
+        {
+            // Handle(json) takes a single parameter — no signature header required.
+            var handlerCalled = false;
+
+            void Handler(object sender, StripeEventNotificationEventArgs<V1BillingMeterErrorReportTriggeredEventNotification> e)
+            {
+                handlerCalled = true;
+            }
+
+            var handler = StripeEventNotificationHandler.WithoutVerification(this.stripeClient, (s, e) => { });
+            handler.V1BillingMeterErrorReportTriggered += Handler;
+
+            // No sig header — this must not throw.
+            handler.Handle(this.V1BillingMeterPayload);
+
+            Assert.True(handlerCalled);
+        }
+
+        [Fact]
+        public void KnownUnregisteredEventRoutesToFallbackWithIsKnownTrue()
+        {
+            var unhandledCalled = false;
+            Stripe.V2.Core.EventNotification receivedNotification = null;
+            StripeClient receivedClient = null;
+            UnhandledNotificationDetails receivedDetails = null;
+
+            void UnhandledHandler(object sender, StripeUnhandledEventNotificationEventArgs e)
+            {
+                unhandledCalled = true;
+                receivedNotification = e.EventNotification;
+                receivedClient = e.Client;
+                receivedDetails = e.Details;
+            }
+
+            var handler = StripeEventNotificationHandler.WithoutVerification(this.stripeClient, UnhandledHandler);
+
+            // Don't register a handler for this event type
+            handler.Handle(this.V1BillingMeterPayload);
+
+            Assert.True(unhandledCalled);
+            Assert.NotNull(receivedNotification);
+            Assert.IsType<V1BillingMeterErrorReportTriggeredEventNotification>(receivedNotification);
+            Assert.Equal("v1.billing.meter.error_report_triggered", receivedNotification.Type);
+            Assert.NotNull(receivedClient);
+            Assert.IsType<StripeClient>(receivedClient);
+            Assert.NotNull(receivedDetails);
+            Assert.True(receivedDetails.IsKnownEventType);
+        }
+
+        [Fact]
+        public void UnknownEventRoutesToFallbackWithIsKnownFalse()
+        {
+            var unhandledCalled = false;
+            Stripe.V2.Core.EventNotification receivedNotification = null;
+            StripeClient receivedClient = null;
+            UnhandledNotificationDetails receivedDetails = null;
+
+            void UnhandledHandler(object sender, StripeUnhandledEventNotificationEventArgs e)
+            {
+                unhandledCalled = true;
+                receivedNotification = e.EventNotification;
+                receivedClient = e.Client;
+                receivedDetails = e.Details;
+            }
+
+            var handler = StripeEventNotificationHandler.WithoutVerification(this.stripeClient, UnhandledHandler);
+
+            handler.Handle(this.UnknownEventPayload);
+
+            Assert.True(unhandledCalled);
+            Assert.NotNull(receivedNotification);
+            Assert.IsType<UnknownEventNotification>(receivedNotification);
+            Assert.Equal("llama.created", receivedNotification.Type);
+            Assert.NotNull(receivedClient);
+            Assert.IsType<StripeClient>(receivedClient);
+            Assert.NotNull(receivedDetails);
+            Assert.False(receivedDetails.IsKnownEventType);
+        }
+
+        [Fact]
+        public void HandlerUsesEventStripeContext()
+        {
+            StripeContext receivedContext = null;
+
+            void Handler(object sender, StripeEventNotificationEventArgs<V1BillingMeterErrorReportTriggeredEventNotification> e)
+            {
+                var requestor = e.Client.Requestor as LiveApiRequestor;
+                receivedContext = requestor?.CurrentStripeContext;
+            }
+
+            var clientOptions = new StripeClientOptions
+            {
+                ApiKey = "sk_test_123",
+                StripeContext = "original_context_123",
+            };
+            var client = new StripeClient(clientOptions);
+            var handler = StripeEventNotificationHandler.WithoutVerification(client, (s, e) => { });
+
+            // Verify original context is set
+            var requestor = client.Requestor as LiveApiRequestor;
+            Assert.Equal("original_context_123", requestor?.CurrentStripeContext?.ToString());
+
+            handler.V1BillingMeterErrorReportTriggered += Handler;
+
+            handler.Handle(this.V1BillingMeterPayload);
+
+            // Handler should have received the event's context
+            Assert.NotNull(receivedContext);
+            Assert.Equal("event_context_456", receivedContext.ToString());
+
+            // Original context should be restored after handling
+            Assert.Equal("original_context_123", requestor?.CurrentStripeContext?.ToString());
+        }
+
+        [Fact]
+        public void CannotRegisterHandlerAfterHandling()
+        {
+            void Handler1(object sender, StripeEventNotificationEventArgs<V1BillingMeterErrorReportTriggeredEventNotification> e)
+            {
+            }
+
+            void Handler2(object sender, StripeEventNotificationEventArgs<V1BillingMeterNoMeterFoundEventNotification> e)
+            {
+            }
+
+            var handler = StripeEventNotificationHandler.WithoutVerification(this.stripeClient, (s, e) => { });
+            handler.V1BillingMeterErrorReportTriggered += Handler1;
+
+            handler.Handle(this.V1BillingMeterPayload);
+
+            // the guard lives on the shared base, so it applies to this sibling too
+            var exception = Assert.Throws<InvalidOperationException>(() =>
+            {
+                handler.V1BillingMeterNoMeterFound += Handler2;
+            });
+
+            Assert.Contains("after Handle has been called", exception.Message);
+        }
+
+        [Fact]
+        public void DoesNotExposeVerifyingHandle()
+        {
+            // The two handlers are siblings, so the signature-verifying Handle(json, sigHeader)
+            // isn't inherited here at all -- passing a signature header is a compile error rather
+            // than a runtime one. Assert on the declared methods so a refactor can't quietly
+            // reintroduce it.
+            var handleMethods = typeof(StripeEventNotificationHandlerWithoutVerification)
+                .GetMethods()
+                .Where(m => m.Name == "Handle")
+                .ToList();
+
+            Assert.Single(handleMethods);
+            Assert.Single(handleMethods[0].GetParameters());
+        }
+
+        [Fact]
+        public void CannotBeDerivedOutsideThisAssembly()
+        {
+            // The shared base has to be public (CS0060), so its constructor is internal instead.
+            var ctors = typeof(StripeEventNotificationHandlerBase)
+                .GetConstructors(BindingFlags.Instance | BindingFlags.Public);
+
+            Assert.Empty(ctors);
+        }
+
+        [Fact]
+        public void StaticFactoryReturnsCorrectType()
+        {
+            var handler = StripeEventNotificationHandler.WithoutVerification(this.stripeClient, (s, e) => { });
+
+            Assert.IsType<StripeEventNotificationHandlerWithoutVerification>(handler);
+        }
+
+        [Fact]
+        public void ClientFactoryMethodReturnsCorrectType()
+        {
+            var handler = this.stripeClient.NotificationHandlerWithoutVerification((s, e) => { });
+
+            Assert.IsType<StripeEventNotificationHandlerWithoutVerification>(handler);
+        }
+    }
+#pragma warning restore SA1402 // File may only contain a single type
 }
