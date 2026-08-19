@@ -536,8 +536,8 @@ namespace Stripe.Checkout
         #endregion
 
         /// <summary>
-        /// Configure whether a Checkout Session should collect a payment method. Defaults to
-        /// <c>always</c>.
+        /// Configure whether a Checkout Session should collect a payment method for sessions with
+        /// mode <c>payment</c>. Defaults to <c>always</c>.
         /// One of: <c>always</c>, or <c>if_required</c>.
         /// </summary>
         [JsonProperty("payment_method_collection")]

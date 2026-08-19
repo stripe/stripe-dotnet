@@ -8,7 +8,8 @@ namespace Stripe.V2.Data.Analytics
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// The result of a metric query.
+    /// The result of a metric query. For the full list of supported metrics, see <a
+    /// href="https://docs.stripe.com/data/analytics/supported-metrics">Supported metrics</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class MetricQueryResult : StripeEntity<MetricQueryResult>, IHasId, IHasObject

@@ -8,6 +8,10 @@ namespace Stripe.Tax
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class RegistrationCountryOptionsGr : StripeEntity<RegistrationCountryOptionsGr>
     {
+        [JsonProperty("igic")]
+        [STJS.JsonPropertyName("igic")]
+        public RegistrationCountryOptionsGrIgic Igic { get; set; }
+
         [JsonProperty("standard")]
         [STJS.JsonPropertyName("standard")]
         public RegistrationCountryOptionsGrStandard Standard { get; set; }

@@ -222,6 +222,10 @@ namespace Stripe
         [STJS.JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
+        [JsonProperty("managed_payments")]
+        [STJS.JsonPropertyName("managed_payments")]
+        public InvoiceItemManagedPayments ManagedPayments { get; set; }
+
         #region Expandable Margins
 
         /// <summary>

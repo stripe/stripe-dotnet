@@ -48,7 +48,7 @@ namespace Stripe.Crypto
         /// specific cryptocurrency by passing a single value array. Users <strong>cannot</strong>
         /// override this parameter.
         /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>sol</c>, <c>usdc</c>,
-        /// <c>wld</c>, or <c>xlm</c>.
+        /// <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
         /// </summary>
         [JsonProperty("destination_currencies")]
         [STJS.JsonPropertyName("destination_currencies")]
@@ -64,7 +64,7 @@ namespace Stripe.Crypto
         /// <c>destination_currencies</c>. Users can select a different cryptocurrency in the onramp
         /// UI subject to <c>destination_currencies</c> if set.
         /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>sol</c>, <c>usdc</c>,
-        /// <c>wld</c>, or <c>xlm</c>.
+        /// <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
         /// </summary>
         [JsonProperty("destination_currency")]
         [STJS.JsonPropertyName("destination_currency")]

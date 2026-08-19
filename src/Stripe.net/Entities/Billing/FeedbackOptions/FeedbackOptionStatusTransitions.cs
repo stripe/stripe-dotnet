@@ -7,7 +7,7 @@ namespace Stripe.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class FeedbackOptionsStatusTransitions : StripeEntity<FeedbackOptionsStatusTransitions>
+    public class FeedbackOptionStatusTransitions : StripeEntity<FeedbackOptionStatusTransitions>
     {
         /// <summary>
         /// The time the feedback option was deactivated, if any. Measured in seconds since Unix

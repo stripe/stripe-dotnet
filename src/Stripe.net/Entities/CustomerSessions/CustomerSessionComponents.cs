@@ -9,6 +9,13 @@ namespace Stripe
     public class CustomerSessionComponents : StripeEntity<CustomerSessionComponents>
     {
         /// <summary>
+        /// This hash contains whether the active entitlements is enabled.
+        /// </summary>
+        [JsonProperty("active_entitlements")]
+        [STJS.JsonPropertyName("active_entitlements")]
+        public CustomerSessionComponentsActiveEntitlements ActiveEntitlements { get; set; }
+
+        /// <summary>
         /// This hash contains whether the buy button is enabled.
         /// </summary>
         [JsonProperty("buy_button")]

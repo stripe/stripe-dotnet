@@ -24967,6 +24967,24 @@ namespace StripeTests
                 {
                     Currency = "usd",
                     PayoutMethod = "payout_method",
+                    PayoutMethodOptions = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateToPayoutMethodOptionsOptions
+                    {
+                        BankAccount = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateToPayoutMethodOptionsBankAccountOptions
+                        {
+                            PreferredNetworkOptions = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateToPayoutMethodOptionsBankAccountPreferredNetworkOptionsOptions
+                            {
+                                Ach = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateToPayoutMethodOptionsBankAccountPreferredNetworkOptionsAchOptions
+                                {
+                                    Submission = "next_day",
+                                    TransactionPurpose = "payroll",
+                                },
+                            },
+                            PreferredNetworks = new List<string>
+                            {
+                                "sepa_credit",
+                            },
+                        },
+                    },
                     Recipient = "recipient",
                 },
             };
@@ -24999,6 +25017,24 @@ namespace StripeTests
                 {
                     Currency = "usd",
                     PayoutMethod = "payout_method",
+                    PayoutMethodOptions = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateToPayoutMethodOptionsOptions
+                    {
+                        BankAccount = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateToPayoutMethodOptionsBankAccountOptions
+                        {
+                            PreferredNetworkOptions = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateToPayoutMethodOptionsBankAccountPreferredNetworkOptionsOptions
+                            {
+                                Ach = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateToPayoutMethodOptionsBankAccountPreferredNetworkOptionsAchOptions
+                                {
+                                    Submission = "next_day",
+                                    TransactionPurpose = "payroll",
+                                },
+                            },
+                            PreferredNetworks = new List<string>
+                            {
+                                "sepa_credit",
+                            },
+                        },
+                    },
                     Recipient = "recipient",
                 },
             };
@@ -26611,6 +26647,43 @@ namespace StripeTests
                 .GetAsync("id_123");
             this.AssertRequest(
                 HttpMethod.Get,
+                "/v2/money_management/transactions/id_123");
+        }
+
+        [Fact]
+        public void TestV2MoneyManagementTransactionPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/transactions/id_123",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.money_management.transaction\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"category\":\"platform_earning_refund\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"pending\",\"status_transitions\":{}}");
+            var options = new Stripe.V2.MoneyManagement.TransactionUpdateOptions();
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.Transactions;
+            Stripe.V2.MoneyManagement.Transaction transaction = service.Update(
+                "id_123",
+                options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/transactions/id_123");
+        }
+
+        [Fact]
+        public async Task TestV2MoneyManagementTransactionPostAsync()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/transactions/id_123",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.money_management.transaction\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"category\":\"platform_earning_refund\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"pending\",\"status_transitions\":{}}");
+            var options = new Stripe.V2.MoneyManagement.TransactionUpdateOptions();
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.Transactions;
+            Stripe.V2.MoneyManagement.Transaction transaction = await service
+                .UpdateAsync("id_123", options);
+            this.AssertRequest(
+                HttpMethod.Post,
                 "/v2/money_management/transactions/id_123");
         }
 

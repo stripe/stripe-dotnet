@@ -7,8 +7,10 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ContractUpdateOptions : BaseOptions
+    public class ContractUpdateOptions : BaseOptions, IHasMetadata
     {
+        private Dictionary<string, string> metadata;
+
         /// <summary>
         /// Additional fields to include in the response.
         /// One of: <c>billing_settings</c>, <c>one_time_fees</c>, <c>pricing_lines</c>, or
@@ -17,6 +19,23 @@ namespace Stripe.V2.Billing
         [JsonProperty("include")]
         [STJS.JsonPropertyName("include")]
         public List<string> Include { get; set; }
+
+        /// <summary>
+        /// Set of key-value pairs.
+        /// </summary>
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("metadata")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        [STJS.JsonConverter(typeof(STJNullPreservingDictionaryConverter))]
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Pricing line actions to apply.

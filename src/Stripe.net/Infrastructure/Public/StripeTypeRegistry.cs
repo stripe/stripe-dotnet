@@ -41,7 +41,7 @@ namespace Stripe
                     Billing.CreditBalanceTransaction)
                 },
                 { "billing.credit_grant", typeof(Billing.CreditGrant) },
-                { "billing.feedback_options", typeof(Billing.FeedbackOptions) },
+                { "billing.feedback_option", typeof(Billing.FeedbackOption) },
                 { "billing.meter", typeof(Billing.Meter) },
                 { "billing.meter_event", typeof(Billing.MeterEvent) },
                 { "billing.meter_event_adjustment", typeof(Billing.MeterEventAdjustment) },
@@ -168,6 +168,7 @@ namespace Stripe
                 { "payment_method_balance", typeof(PaymentMethodBalance) },
                 { "payment_method_configuration", typeof(PaymentMethodConfiguration) },
                 { "payment_method_domain", typeof(PaymentMethodDomain) },
+                { "payment_plan", typeof(PaymentPlan) },
                 { "payment_record", typeof(PaymentRecord) },
                 { "payout", typeof(Payout) },
                 { "person", typeof(Person) },

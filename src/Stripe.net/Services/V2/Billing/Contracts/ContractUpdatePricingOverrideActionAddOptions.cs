@@ -1,12 +1,13 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Billing
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ContractUpdatePricingOverrideActionAddOptions : INestedOptions
+    public class ContractUpdatePricingOverrideActionAddOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// The end time for the pricing override.
@@ -21,6 +22,13 @@ namespace Stripe.V2.Billing
         [JsonProperty("lookup_key")]
         [STJS.JsonPropertyName("lookup_key")]
         public string LookupKey { get; set; }
+
+        /// <summary>
+        /// Metadata for the pricing override.
+        /// </summary>
+        [JsonProperty("metadata")]
+        [STJS.JsonPropertyName("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A multiply_pricing override to add.

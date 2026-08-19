@@ -2,6 +2,7 @@
 namespace Stripe.V2.MoneyManagement
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -14,7 +15,7 @@ namespace Stripe.V2.MoneyManagement
     /// TransactionEntries are created shortly after to reflect changes.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class Transaction : StripeEntity<Transaction>, IHasId, IHasObject
+    public class Transaction : StripeEntity<Transaction>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -118,6 +119,14 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
+
+        /// <summary>
+        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
+        /// additional information about the object in a structured format.
+        /// </summary>
+        [JsonProperty("metadata")]
+        [STJS.JsonPropertyName("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Closed Enum. Current status of the Transaction. A Transaction is <c>pending</c> if
