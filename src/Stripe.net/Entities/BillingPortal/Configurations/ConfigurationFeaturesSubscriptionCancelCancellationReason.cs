@@ -28,7 +28,7 @@ namespace Stripe.BillingPortal
         public List<string> FeedbackOptionIds
         {
             get => this.InternalFeedbackOptions?.Select((x) => x.Id).ToList();
-            set => this.InternalFeedbackOptions = SetExpandableArrayIds<Billing.FeedbackOptions>(value);
+            set => this.InternalFeedbackOptions = SetExpandableArrayIds<Billing.FeedbackOption>(value);
         }
 
         /// <summary>
@@ -39,15 +39,15 @@ namespace Stripe.BillingPortal
         /// </summary>
         [JsonIgnore]
         [STJS.JsonIgnore]
-        public List<Billing.FeedbackOptions> FeedbackOptions
+        public List<Billing.FeedbackOption> FeedbackOptions
         {
             get => this.InternalFeedbackOptions?.Select((x) => x.ExpandedObject).ToList();
             set => this.InternalFeedbackOptions = SetExpandableArrayObjects(value);
         }
 
-        [JsonProperty("feedback_options", ItemConverterType = typeof(ExpandableFieldConverter<Billing.FeedbackOptions>))]
+        [JsonProperty("feedback_options", ItemConverterType = typeof(ExpandableFieldConverter<Billing.FeedbackOption>))]
         [STJS.JsonPropertyName("feedback_options")]
-        internal List<ExpandableField<Billing.FeedbackOptions>> InternalFeedbackOptions { get; set; }
+        internal List<ExpandableField<Billing.FeedbackOption>> InternalFeedbackOptions { get; set; }
         #endregion
 
         /// <summary>

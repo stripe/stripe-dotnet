@@ -91,6 +91,13 @@ namespace Stripe
         public string Invoice { get; set; }
 
         /// <summary>
+        /// Settings for Managed Payments for this invoice item.
+        /// </summary>
+        [JsonProperty("managed_payments")]
+        [STJS.JsonPropertyName("managed_payments")]
+        public InvoiceItemManagedPaymentsOptions ManagedPayments { get; set; }
+
+        /// <summary>
         /// The ids of the margins to apply to the invoice item. When set, the
         /// <c>default_margins</c> on the invoice do not apply to this invoice item.
         /// </summary>

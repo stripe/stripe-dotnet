@@ -67,5 +67,21 @@ namespace Stripe.V2.MoneyManagement
         {
             return this.ListRequestAutoPagingAsync<Transaction>($"/v2/money_management/transactions", options, requestOptions, cancellationToken);
         }
+
+        /// <summary>
+        /// Updates the description of an existing Transaction.
+        /// </summary>
+        public virtual Transaction Update(string id, TransactionUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request<Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Updates the description of an existing Transaction.
+        /// </summary>
+        public virtual Task<Transaction> UpdateAsync(string id, TransactionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+        }
     }
 }
