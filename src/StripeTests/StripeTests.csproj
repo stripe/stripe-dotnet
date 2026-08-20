@@ -34,6 +34,10 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Stripe.net\Stripe.net.csproj" />
+  </ItemGroup>
+
   <!-- Include files in the Resources directory to be used across the test suite -->
   <ItemGroup>
     <EmbeddedResource Include="Resources\**\*.*" />
