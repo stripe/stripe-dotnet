@@ -189,6 +189,41 @@ namespace StripeTests
         }
 
         [Fact]
+        public void CannotRegisterNullHandler()
+        {
+            var handler = new StripeEventNotificationHandler(this.stripeClient, WebhookSecret, (s, e) => { });
+
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                handler.V1BillingMeterErrorReportTriggered += null;
+            });
+
+            // the event type must not have been recorded as handled, otherwise dispatch would
+            // take the registered branch and invoke a null delegate instead of the fallback
+            Assert.Empty(handler.HandledEventTypes());
+        }
+
+        [Fact]
+        public void RegisteringNullHandlerLeavesFallbackIntact()
+        {
+            var fallbackCalls = new List<string>();
+            var handler = new StripeEventNotificationHandler(
+                this.stripeClient,
+                WebhookSecret,
+                (s, e) => fallbackCalls.Add(e.EventNotification.Type));
+
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                handler.V1BillingMeterErrorReportTriggered += null;
+            });
+
+            handler.Handle(this.V1BillingMeterPayload, StripeTests.V2.EventTest.GenerateSigHeader(this.V1BillingMeterPayload));
+
+            Assert.Single(fallbackCalls);
+            Assert.Equal("v1.billing.meter.error_report_triggered", fallbackCalls[0]);
+        }
+
+        [Fact]
         public void CannotRegisterHandlerAfterHandling()
         {
             void Handler1(object sender, StripeEventNotificationEventArgs<V1BillingMeterErrorReportTriggeredEventNotification> e)
@@ -211,7 +246,7 @@ namespace StripeTests
                 handler.V1BillingMeterNoMeterFound += Handler2;
             });
 
-            Assert.Contains("after Handle has been called", exception.Message);
+            Assert.Contains("after an event has been handled", exception.Message);
         }
 
         [Fact]
@@ -624,7 +659,7 @@ namespace StripeTests
                 handler.PreHandle((notification, client) => true);
             });
 
-            Assert.Contains("after Handle has been called", exception.Message);
+            Assert.Contains("after an event has been handled", exception.Message);
         }
 
         [Fact]
@@ -894,7 +929,7 @@ namespace StripeTests
                 handler.V1BillingMeterNoMeterFound += Handler2;
             });
 
-            Assert.Contains("after Handle has been called", exception.Message);
+            Assert.Contains("after an event has been handled", exception.Message);
         }
 
         [Fact]
