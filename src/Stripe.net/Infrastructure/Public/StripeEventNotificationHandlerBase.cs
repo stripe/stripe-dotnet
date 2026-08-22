@@ -53,6 +53,7 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>> v2CoreEventDestinationPing;
 
         // private-event-handlers: The end of the section generated from our OpenAPI spec
+        private Func<V2.Core.EventNotification, StripeClient, bool> preHandleCallback;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StripeEventNotificationHandlerBase"/> class.
@@ -263,6 +264,51 @@ namespace Stripe
         }
 
         /// <summary>
+        /// Registers a hook that runs after <c>Handle</c> parses the payload but before any callback fires. Returning <c>false</c> stops handling: no callback runs at all.
+        /// </summary>
+        /// <param name="hook">
+        /// A function that receives the parsed event notification and the context-scoped
+        /// client, and returns whether handling should continue.
+        /// </param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="hook"/> is null.</exception>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if called after <c>Handle</c> has already been called, or if a hook is
+        /// already registered.
+        /// </exception>
+        public void PreHandle(Func<V2.Core.EventNotification, StripeClient, bool> hook)
+        {
+            if (hook == null)
+            {
+                throw new ArgumentNullException(nameof(hook));
+            }
+
+            this.AssertCanRegister();
+
+            if (this.preHandleCallback != null)
+            {
+                throw new InvalidOperationException("A PreHandle hook is already registered. Only one PreHandle hook is allowed.");
+            }
+
+            this.preHandleCallback = hook;
+        }
+
+        /// <summary>
+        /// Throws if callbacks can no longer be registered. Callbacks are expected to be
+        /// registered once at startup, so registering anything after handling has begun
+        /// indicates a bug.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if <c>Handle</c> has already been called.
+        /// </exception>
+        private void AssertCanRegister()
+        {
+            if (this.HasHandledEvent)
+            {
+                throw new InvalidOperationException("Cannot register new event handlers after Handle has been called. This is indicative of a bug.");
+            }
+        }
+
+        /// <summary>
         /// Dispatches the event with the event's StripeContext by creating a new client instance.
         /// </summary>
         /// <param name="eventNotification">The event notification to dispatch.</param>
@@ -293,10 +339,7 @@ namespace Stripe
         private void AddEventHandler<T>(ref EventHandler<T> handler, EventHandler<T> value, string eventType)
         where T : EventArgs
         {
-            if (this.HasHandledEvent)
-            {
-                throw new InvalidOperationException("Cannot register new event handlers after Handle has been called. This is indicative of a bug.");
-            }
+            this.AssertCanRegister();
 
             if (this.handledEventTypes.Add(eventType))
             {
@@ -321,6 +364,11 @@ namespace Stripe
             if (eventNotification == null)
             {
                 throw new ArgumentNullException(nameof(eventNotification));
+            }
+
+            if (this.preHandleCallback != null && !this.preHandleCallback(eventNotification, client))
+            {
+                return;
             }
 
             if (this.handledEventTypes.Contains(eventNotification.Type))
