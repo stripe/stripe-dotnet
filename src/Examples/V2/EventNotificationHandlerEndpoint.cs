@@ -17,8 +17,7 @@ namespace Examples.V2
     ///     - write a fallback callback to handle unrecognized event notifications
     ///     - create a StripeClient called client
     ///     - Initialize an EventNotificationHandler with the client, webhook secret, and fallback callback
-    ///     - register a PreHandle hook that deduplicates events we've already processed, so retried
-    ///       deliveries don't trigger the callback (or the fallback) a second time
+    ///     - register a PreHandle hook that deduplicates events by id before any callback runs
     ///     - register a specific handler for the "v1.billing.meter.no_meter_found" event notification type
     ///     - use handler.handle() to process the received notification webhook body.
     /// </summary>
@@ -34,8 +33,9 @@ namespace Examples.V2
         // this handler skips verification. Callbacks are registered separately from the one above.
         private readonly StripeEventNotificationHandlerWithoutVerification unverifiedHandler;
 
-        // Tracks event IDs we've already processed, so retried deliveries are skipped instead of
-        // re-triggering a callback. A real implementation would back this with persistent storage.
+        // Webhooks can be delivered more than once, so we track ids we've already
+        // processed. In production, back this with something durable and shared
+        // across processes (e.g. Redis or a database table) instead of an in-memory HashSet.
         private readonly HashSet<string> processedEventIds = new HashSet<string>();
 
         public EventNotificationHandlerEndpoint()
@@ -49,11 +49,15 @@ namespace Examples.V2
             handler.PreHandle(SkipAlreadyProcessedEvents);
             unverifiedHandler.PreHandle(SkipAlreadyProcessedEvents);
 
-            // register handlers
+            // can be anywhere in your codebase
             handler.V1BillingMeterErrorReportTriggered += HandleBillingMeterErrorReportTriggeredEventNotification;
             unverifiedHandler.V1BillingMeterErrorReportTriggered += HandleBillingMeterErrorReportTriggeredEventNotification;
         }
 
+        /// <summary>
+        /// Runs before any registered callback. Returning <c>false</c> here skips handling
+        /// entirely for this delivery, which is useful for deduplicating webhooks.
+        /// </summary>
         private bool SkipAlreadyProcessedEvents(Stripe.V2.Core.EventNotification eventNotification, StripeClient scopedClient)
         {
             // HashSet<T>.Add returns false if the item was already present, so this both records

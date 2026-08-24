@@ -264,7 +264,13 @@ namespace Stripe
         }
 
         /// <summary>
-        /// Registers a hook that runs after <c>Handle</c> parses the payload but before any callback fires. Returning <c>false</c> stops handling: no callback runs at all.
+        /// Registers a function that will be run before any event-specific callbacks. A useful
+        /// place to store event-agnostic logic, such as logging or checking for
+        /// <see href="https://docs.stripe.com/webhooks#handle-duplicate-events">duplicate event deliveries</see>.
+        ///
+        /// Returning <c>true</c> causes handling to continue as normal; returning <c>false</c>
+        /// returns from <c>Handle</c> immediately, so neither the registered callback nor the
+        /// fallback callback are called.
         /// </summary>
         /// <param name="hook">
         /// A function that receives the parsed event notification and the context-scoped
