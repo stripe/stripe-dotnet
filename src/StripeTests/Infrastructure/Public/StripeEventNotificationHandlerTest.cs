@@ -519,11 +519,11 @@ namespace StripeTests
 
             var handler = new StripeEventNotificationHandler(this.stripeClient, WebhookSecret, (s, e) => { });
             handler.V1BillingMeterErrorReportTriggered += Handler;
-            handler.PreHandle((notification, client) =>
+            handler.PreHandle = (notification, client) =>
             {
                 callOrder.Add("preHandle");
                 return true;
-            });
+            };
 
             var sigHeader = StripeTests.V2.EventTest.GenerateSigHeader(this.V1BillingMeterPayload);
             handler.Handle(this.V1BillingMeterPayload, sigHeader);
@@ -543,7 +543,7 @@ namespace StripeTests
 
             var handler = new StripeEventNotificationHandler(this.stripeClient, WebhookSecret, (s, e) => { });
             handler.V1BillingMeterErrorReportTriggered += Handler;
-            handler.PreHandle((notification, client) => false);
+            handler.PreHandle = (notification, client) => false;
 
             var sigHeader = StripeTests.V2.EventTest.GenerateSigHeader(this.V1BillingMeterPayload);
             handler.Handle(this.V1BillingMeterPayload, sigHeader);
@@ -562,7 +562,7 @@ namespace StripeTests
             }
 
             var handler = new StripeEventNotificationHandler(this.stripeClient, WebhookSecret, UnhandledHandler);
-            handler.PreHandle((notification, client) => false);
+            handler.PreHandle = (notification, client) => false;
 
             var sigHeader = StripeTests.V2.EventTest.GenerateSigHeader(this.UnknownEventPayload);
             handler.Handle(this.UnknownEventPayload, sigHeader);
@@ -583,12 +583,12 @@ namespace StripeTests
             var client = new StripeClient(clientOptions);
             var handler = new StripeEventNotificationHandler(client, WebhookSecret, (s, e) => { });
             handler.V1BillingMeterErrorReportTriggered += (sender, e) => { };
-            handler.PreHandle((notification, preHandleClient) =>
+            handler.PreHandle = (notification, preHandleClient) =>
             {
                 var requestor = preHandleClient.Requestor as LiveApiRequestor;
                 receivedContext = requestor?.CurrentStripeContext;
                 return true;
-            });
+            };
 
             var requestor = client.Requestor as LiveApiRequestor;
             Assert.Equal("original_context_123", requestor?.CurrentStripeContext?.ToString());
@@ -622,7 +622,7 @@ namespace StripeTests
 
             var handler = new StripeEventNotificationHandler(this.stripeClient, WebhookSecret, UnhandledHandler);
             handler.V1BillingMeterErrorReportTriggered += Handler;
-            handler.PreHandle((notification, client) => throw new InvalidOperationException("PreHandle blew up!"));
+            handler.PreHandle = (notification, client) => throw new InvalidOperationException("PreHandle blew up!");
 
             var sigHeader = StripeTests.V2.EventTest.GenerateSigHeader(this.V1BillingMeterPayload);
 
@@ -642,7 +642,7 @@ namespace StripeTests
 
             Assert.Throws<ArgumentNullException>(() =>
             {
-                handler.PreHandle(null);
+                handler.PreHandle = null;
             });
         }
 
@@ -656,24 +656,37 @@ namespace StripeTests
 
             var exception = Assert.Throws<InvalidOperationException>(() =>
             {
-                handler.PreHandle((notification, client) => true);
+                handler.PreHandle = (notification, client) => true;
             });
 
             Assert.Contains("after an event has been handled", exception.Message);
         }
 
         [Fact]
-        public void PreHandleRegisteredTwiceThrowsInvalidOperationException()
+        public void PreHandleSetTwiceThrowsInvalidOperationException()
         {
             var handler = new StripeEventNotificationHandler(this.stripeClient, WebhookSecret, (s, e) => { });
-            handler.PreHandle((notification, client) => true);
+            handler.PreHandle = (notification, client) => true;
 
             var exception = Assert.Throws<InvalidOperationException>(() =>
             {
-                handler.PreHandle((notification, client) => true);
+                handler.PreHandle = (notification, client) => true;
             });
 
             Assert.Contains("already registered", exception.Message);
+        }
+
+        [Fact]
+        public void PreHandleGetterReturnsTheSetHook()
+        {
+            var handler = new StripeEventNotificationHandler(this.stripeClient, WebhookSecret, (s, e) => { });
+
+            Assert.Null(handler.PreHandle);
+
+            Func<Stripe.V2.Core.EventNotification, StripeClient, bool> hook = (notification, client) => true;
+            handler.PreHandle = hook;
+
+            Assert.Same(hook, handler.PreHandle);
         }
 
         [Fact]
@@ -951,7 +964,7 @@ namespace StripeTests
 
             var handler = StripeEventNotificationHandler.WithoutVerification(this.stripeClient, UnhandledHandler);
             handler.V1BillingMeterErrorReportTriggered += Handler;
-            handler.PreHandle((notification, client) => false);
+            handler.PreHandle = (notification, client) => false;
 
             handler.Handle(this.V1BillingMeterPayload);
 

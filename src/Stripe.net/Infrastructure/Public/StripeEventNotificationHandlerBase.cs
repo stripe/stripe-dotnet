@@ -243,6 +243,47 @@ namespace Stripe
         // public-event-handlers: The end of the section generated from our OpenAPI spec
 
         /// <summary>
+        /// Gets or sets a function that runs before any event-specific callbacks. A useful
+        /// place for event-agnostic logic, such as logging or checking for
+        /// <see href="https://docs.stripe.com/webhooks#handle-duplicate-events">duplicate event deliveries</see>.
+        ///
+        /// The function receives the parsed event notification and the context-scoped client.
+        /// Returning <c>true</c> causes handling to continue as normal; returning <c>false</c>
+        /// returns from <c>Handle</c> immediately, so neither the registered callback nor the
+        /// fallback callback are called.
+        /// </summary>
+        /// <value>The function to run before any event-specific callbacks, if any.</value>
+        /// <exception cref="ArgumentNullException">Thrown if set to null.</exception>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if set after <c>Handle</c> has already been called, or if a function is
+        /// already set.
+        /// </exception>
+        public Func<V2.Core.EventNotification, StripeClient, bool> PreHandle
+        {
+            get
+            {
+                return this.preHandleCallback;
+            }
+
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(value));
+                }
+
+                this.AssertHasntHandled();
+
+                if (this.preHandleCallback != null)
+                {
+                    throw new InvalidOperationException("A PreHandle callback is already registered");
+                }
+
+                this.preHandleCallback = value;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets a value indicating whether this handler has already handled an event.
         /// Registering a callback afterwards is refused, since callbacks are expected to be
         /// registered once at startup; doing so later indicates a bug.
@@ -264,41 +305,6 @@ namespace Stripe
         }
 
         /// <summary>
-        /// Registers a function that will be run before any event-specific callbacks. A useful
-        /// place to store event-agnostic logic, such as logging or checking for
-        /// <see href="https://docs.stripe.com/webhooks#handle-duplicate-events">duplicate event deliveries</see>.
-        ///
-        /// Returning <c>true</c> causes handling to continue as normal; returning <c>false</c>
-        /// returns from <c>Handle</c> immediately, so neither the registered callback nor the
-        /// fallback callback are called.
-        /// </summary>
-        /// <param name="hook">
-        /// A function that receives the parsed event notification and the context-scoped
-        /// client, and returns whether handling should continue.
-        /// </param>
-        /// <exception cref="ArgumentNullException">Thrown if <paramref name="hook"/> is null.</exception>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown if called after <c>Handle</c> has already been called, or if a hook is
-        /// already registered.
-        /// </exception>
-        public void PreHandle(Func<V2.Core.EventNotification, StripeClient, bool> hook)
-        {
-            if (hook == null)
-            {
-                throw new ArgumentNullException(nameof(hook));
-            }
-
-            this.AssertCanRegister();
-
-            if (this.preHandleCallback != null)
-            {
-                throw new InvalidOperationException("A PreHandle callback is already registered");
-            }
-
-            this.preHandleCallback = hook;
-        }
-
-        /// <summary>
         /// Throws if callbacks can no longer be registered. Callbacks are expected to be
         /// registered once at startup, so registering anything after handling has begun
         /// indicates a bug.
@@ -306,7 +312,7 @@ namespace Stripe
         /// <exception cref="InvalidOperationException">
         /// Thrown if <c>Handle</c> has already been called.
         /// </exception>
-        private void AssertCanRegister()
+        private void AssertHasntHandled()
         {
             if (this.HasHandledEvent)
             {
@@ -355,7 +361,7 @@ namespace Stripe
                 throw new ArgumentNullException(nameof(value));
             }
 
-            this.AssertCanRegister();
+            this.AssertHasntHandled();
 
             if (this.handledEventTypes.Add(eventType))
             {

@@ -17,7 +17,7 @@ namespace Examples.V2
     ///     - write a fallback callback to handle unrecognized event notifications
     ///     - create a StripeClient called client
     ///     - Initialize an EventNotificationHandler with the client, webhook secret, and fallback callback
-    ///     - register a PreHandle hook that deduplicates events by id before any callback runs
+    ///     - set a PreHandle hook that deduplicates events by id before any callback runs
     ///     - register a specific handler for the "v1.billing.meter.no_meter_found" event notification type
     ///     - use handler.handle() to process the received notification webhook body.
     /// </summary>
@@ -46,8 +46,8 @@ namespace Examples.V2
 
             // PreHandle runs after Handle parses the payload but before any callback fires.
             // Returning false skips both the registered handler and the fallback for this event.
-            handler.PreHandle(SkipAlreadyProcessedEvents);
-            unverifiedHandler.PreHandle(SkipAlreadyProcessedEvents);
+            handler.PreHandle = SkipAlreadyProcessedEvents;
+            unverifiedHandler.PreHandle = SkipAlreadyProcessedEvents;
 
             // can be anywhere in your codebase
             handler.V1BillingMeterErrorReportTriggered += HandleBillingMeterErrorReportTriggeredEventNotification;
