@@ -29,8 +29,10 @@ jobs:
       latest-dotnet-version: ${{ steps.latest-dotnet-version.outputs.latest_dotnet_version }}
       test-matrix: ${{ steps.test-matrix.outputs.test_matrix }}
     steps:
-      - uses: extractions/setup-just@v2
-      - uses: actions/checkout@v6
+      - uses: extractions/setup-just@dd310ad5a97d8e7b41793f8ef055398d51ad4de6 # v2.0.0
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
       - name: Get latest .NET version
         id: latest-dotnet-version
         run: |
@@ -55,34 +57,43 @@ jobs:
         exclude:
           - framework: net462
     steps:
-      - uses: extractions/setup-just@v2
-      - uses: actions/checkout@v6
+      - uses: extractions/setup-just@dd310ad5a97d8e7b41793f8ef055398d51ad4de6 # v2.0.0
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
 
       - name: Setup .NET (latest SDK)
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@871f041373faaad213a635d9afb62905ec029bbb # v1.10.1
         with:
           dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
 
       - name: Install target framework runtime
         run: |
-          channel="${{ matrix.framework }}"
+          channel="${MATRIX_FRAMEWORK}"
           channel="${channel#net}"
-          if [ "$channel" != "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}" ]; then
+          if [ "$channel" != "${NEEDS_PREPARE_DOTNET_VERSIONS_OUTPUTS_LATEST_DOTNET_VERSION}" ]; then
             ./scripts/dotnet-install.sh --runtime dotnet --channel "$channel" --install-dir "$DOTNET_ROOT"
           fi
+        env:
+          MATRIX_FRAMEWORK: ${{ matrix.framework }}
+          NEEDS_PREPARE_DOTNET_VERSIONS_OUTPUTS_LATEST_DOTNET_VERSION: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
 
       - name: Install tools
         run: dotnet tool restore
 
       - name: Build
         run: |
-          echo "Building ${{ matrix.framework }} using dotnet v$(dotnet --version)"
-          dotnet build src/StripeTests/StripeTests.csproj -c Release -f ${{ matrix.framework }} /p:ContinuousIntegrationBuild=true
+          echo "Building ${MATRIX_FRAMEWORK} using dotnet v$(dotnet --version)"
+          dotnet build src/StripeTests/StripeTests.csproj -c Release -f ${MATRIX_FRAMEWORK} /p:ContinuousIntegrationBuild=true
+        env:
+          MATRIX_FRAMEWORK: ${{ matrix.framework }}
 
       - uses: stripe/openapi/actions/stripe-mock@master
 
       - name: Run tests
-        run: dotnet test --no-build -f ${{ matrix.framework }} src/StripeTests/StripeTests.csproj -c Release
+        run: dotnet test --no-build -f ${MATRIX_FRAMEWORK} src/StripeTests/StripeTests.csproj -c Release
+        env:
+          MATRIX_FRAMEWORK: ${{ matrix.framework }}
 
   test-net462:
     name: Test (net462, windows)
@@ -91,11 +102,13 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: extractions/setup-just@v2
-      - uses: actions/checkout@v6
+      - uses: extractions/setup-just@dd310ad5a97d8e7b41793f8ef055398d51ad4de6 # v2.0.0
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@871f041373faaad213a635d9afb62905ec029bbb # v1.10.1
         with:
           dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
 
@@ -119,11 +132,13 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: extractions/setup-just@v2
-      - uses: actions/checkout@v6
+      - uses: extractions/setup-just@dd310ad5a97d8e7b41793f8ef055398d51ad4de6 # v2.0.0
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@871f041373faaad213a635d9afb62905ec029bbb # v1.10.1
         with:
           dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
 
@@ -141,11 +156,13 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: extractions/setup-just@v2
-      - uses: actions/checkout@v6
+      - uses: extractions/setup-just@dd310ad5a97d8e7b41793f8ef055398d51ad4de6 # v2.0.0
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@871f041373faaad213a635d9afb62905ec029bbb # v1.10.1
         with:
           dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
 
@@ -159,7 +176,7 @@ jobs:
         run: dotnet pack src/Stripe.net -c Release --no-build --output nuget
 
       - name: Upload NuGet artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: nuget
           path: nuget/
@@ -171,10 +188,12 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@871f041373faaad213a635d9afb62905ec029bbb # v1.10.1
         with:
           dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
 
@@ -189,9 +208,11 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
       - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@871f041373faaad213a635d9afb62905ec029bbb # v1.10.1
         with:
           dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
       - name: Run backcompat check
@@ -206,12 +227,12 @@ jobs:
       contents: read
     steps:
       - name: Download all workflow run artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
           name: nuget
           path: nuget
       - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@871f041373faaad213a635d9afb62905ec029bbb # v1.10.1
         with:
           dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
       - name: Publish NuGet packages to NuGet
