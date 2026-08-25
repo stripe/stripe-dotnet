@@ -27,8 +27,12 @@ namespace StripeTests.Wholesome
             List<string> results = new List<string>();
             List<string> skipTheseClasses = new List<string>
             {
-                // For some reason, Secret.Deleted is not nullable
+                // Some classes have non-generated, non-nullable `Deleted` fields
+                // The beginning of the section generated from our OpenAPI spec
                 "Stripe.Apps.Secret",
+                "Stripe.CustomerTaxExemption",
+
+                // The end of the section generated from our OpenAPI spec
             };
 
             // Get all StripeEntity subclasses
@@ -64,7 +68,7 @@ namespace StripeTests.Wholesome
 
                     if (!hasNullValueHandling)
                     {
-                        results.Add($"{entityClass.Name}.{property.Name}");
+                        results.Add($"{entityClass.FullName}.{property.Name}");
                     }
                 }
             }
