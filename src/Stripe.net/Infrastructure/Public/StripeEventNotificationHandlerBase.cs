@@ -53,7 +53,7 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>> v2CoreEventDestinationPing;
 
         // private-event-handlers: The end of the section generated from our OpenAPI spec
-        private Func<V2.Core.EventNotification, StripeClient, bool> preHandleCallback;
+        private EventHandler<StripePreHandleEventNotificationEventArgs> preHandleCallback;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StripeEventNotificationHandlerBase"/> class.
@@ -243,29 +243,17 @@ namespace Stripe
         // public-event-handlers: The end of the section generated from our OpenAPI spec
 
         /// <summary>
-        /// Gets or sets a function that runs before any event-specific callbacks. A useful
-        /// place for event-agnostic logic, such as logging or checking for
+        /// A callback that runs before any event-specific callbacks. A useful place for
+        /// event-agnostic logic, such as logging or checking for
         /// <see href="https://docs.stripe.com/webhooks#handle-duplicate-events">duplicate event deliveries</see>.
         ///
-        /// The function receives the parsed event notification and the context-scoped client.
-        /// Returning <c>true</c> causes handling to continue as normal; returning <c>false</c>
-        /// returns from <c>Handle</c> immediately, so neither the registered callback nor the
-        /// fallback callback are called.
+        /// The callback receives the parsed event notification and the context-scoped client.
+        /// Setting <see cref="StripePreHandleEventNotificationEventArgs.Cancel"/> to <c>true</c>
+        /// returns from <c>Handle</c> once the preHandle callback finishes, so further callbacks are called.
         /// </summary>
-        /// <value>The function to run before any event-specific callbacks, if any.</value>
-        /// <exception cref="ArgumentNullException">Thrown if set to null.</exception>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown if set after <c>Handle</c> has already been called, or if a function is
-        /// already set.
-        /// </exception>
-        public Func<V2.Core.EventNotification, StripeClient, bool> PreHandle
+        public event EventHandler<StripePreHandleEventNotificationEventArgs> PreHandle
         {
-            get
-            {
-                return this.preHandleCallback;
-            }
-
-            set
+            add
             {
                 if (value == null)
                 {
@@ -280,6 +268,11 @@ namespace Stripe
                 }
 
                 this.preHandleCallback = value;
+            }
+
+            remove
+            {
+                this.RemoveEventHandler();
             }
         }
 
@@ -388,9 +381,15 @@ namespace Stripe
                 throw new ArgumentNullException(nameof(eventNotification));
             }
 
-            if (this.preHandleCallback != null && !this.preHandleCallback(eventNotification, client))
+            if (this.preHandleCallback != null)
             {
-                return;
+                var preHandleArgs = new StripePreHandleEventNotificationEventArgs(eventNotification, client);
+                this.preHandleCallback.Invoke(this, preHandleArgs);
+
+                if (preHandleArgs.Cancel)
+                {
+                    return;
+                }
             }
 
             if (this.handledEventTypes.Contains(eventNotification.Type))
