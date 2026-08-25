@@ -71,12 +71,12 @@ jobs:
         run: |
           channel="${MATRIX_FRAMEWORK}"
           channel="${channel#net}"
-          if [ "$channel" != "${NEEDS_PREPARE_DOTNET_VERSIONS_OUTPUTS_LATEST_DOTNET_VERSION}" ]; then
+          if [ "$channel" != "${LATEST_DOTNET_VERSION}" ]; then
             ./scripts/dotnet-install.sh --runtime dotnet --channel "$channel" --install-dir "$DOTNET_ROOT"
           fi
         env:
           MATRIX_FRAMEWORK: ${{ matrix.framework }}
-          NEEDS_PREPARE_DOTNET_VERSIONS_OUTPUTS_LATEST_DOTNET_VERSION: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
+          LATEST_DOTNET_VERSION: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
 
       - name: Install tools
         run: dotnet tool restore
