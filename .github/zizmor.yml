@@ -1,8 +1,6 @@
-# Actions under the stripe namespace are referenced by branch on purpose: master is
-# how openapi delivers an action change to every consumer at once, so hash-pinning
-# them would trade one maintenance problem for another. This is deliberately scoped
-# to that namespace -- any owner not matched here keeps zizmor's default, which
-# requires a full commit hash.
+# Actions under the stripe namespace are unpinned on purpose.
+# This is deliberately scoped to that namespace so that other actions
+# still require a full commit hash.
 rules:
   unpinned-uses:
     config:
