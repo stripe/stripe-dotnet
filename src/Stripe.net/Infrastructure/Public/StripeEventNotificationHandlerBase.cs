@@ -53,6 +53,7 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>> v2CoreEventDestinationPing;
 
         // private-event-handlers: The end of the section generated from our OpenAPI spec
+        private EventHandler<StripePreHandleEventNotificationEventArgs> preHandleCallback;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StripeEventNotificationHandlerBase"/> class.
@@ -242,6 +243,40 @@ namespace Stripe
         // public-event-handlers: The end of the section generated from our OpenAPI spec
 
         /// <summary>
+        /// A callback that runs before any event-specific callbacks. A useful place for
+        /// event-agnostic logic, such as logging or checking for
+        /// <see href="https://docs.stripe.com/webhooks#handle-duplicate-events">duplicate event deliveries</see>.
+        ///
+        /// The callback receives the parsed event notification and the context-scoped client.
+        /// Setting <see cref="StripePreHandleEventNotificationEventArgs.Cancel"/> to <c>true</c>
+        /// returns from <c>Handle</c> once the preHandle callback finishes, so further callbacks are called.
+        /// </summary>
+        public event EventHandler<StripePreHandleEventNotificationEventArgs> PreHandle
+        {
+            add
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(value));
+                }
+
+                this.AssertHasntHandled();
+
+                if (this.preHandleCallback != null)
+                {
+                    throw new InvalidOperationException("A PreHandle callback is already registered");
+                }
+
+                this.preHandleCallback = value;
+            }
+
+            remove
+            {
+                this.RemoveEventHandler();
+            }
+        }
+
+        /// <summary>
         /// Gets or sets a value indicating whether this handler has already handled an event.
         /// Registering a callback afterwards is refused, since callbacks are expected to be
         /// registered once at startup; doing so later indicates a bug.
@@ -260,6 +295,22 @@ namespace Stripe
             var events = new List<string>(this.handledEventTypes);
             events.Sort();
             return events;
+        }
+
+        /// <summary>
+        /// Throws if callbacks can no longer be registered. Callbacks are expected to be
+        /// registered once at startup, so registering anything after handling has begun
+        /// indicates a bug.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if <c>Handle</c> has already been called.
+        /// </exception>
+        private void AssertHasntHandled()
+        {
+            if (this.HasHandledEvent)
+            {
+                throw new InvalidOperationException("Cannot register new callbacks after an event has been handled. This is indicative of a bug.");
+            }
         }
 
         /// <summary>
@@ -289,14 +340,21 @@ namespace Stripe
 
         /// <summary>
         /// Centralizes the logic for adding event handlers.
+        ///
+        /// Rejects a null callback rather than storing it. C# permits <c>SomeEvent += null</c>,
+        /// which would otherwise record the event type as handled while leaving the backing
+        /// delegate null — dispatch would then take the registered branch (bypassing the
+        /// fallback) and throw a NullReferenceException far from the offending registration.
         /// </summary>
         private void AddEventHandler<T>(ref EventHandler<T> handler, EventHandler<T> value, string eventType)
         where T : EventArgs
         {
-            if (this.HasHandledEvent)
+            if (value == null)
             {
-                throw new InvalidOperationException("Cannot register new event handlers after Handle has been called. This is indicative of a bug.");
+                throw new ArgumentNullException(nameof(value));
             }
+
+            this.AssertHasntHandled();
 
             if (this.handledEventTypes.Add(eventType))
             {
@@ -304,7 +362,7 @@ namespace Stripe
             }
             else
             {
-                throw new InvalidOperationException($"A handler for event type '{eventType}' is already registered. Only one handler per event type is allowed.");
+                throw new InvalidOperationException($"Callback for event type '{eventType}' is already registered");
             }
         }
 
@@ -313,7 +371,7 @@ namespace Stripe
         /// </summary>
         private void RemoveEventHandler()
         {
-            throw new InvalidOperationException("Removing handlers is not supported.");
+            throw new InvalidOperationException("Removing callbacks is not supported.");
         }
 
         private void DispatchEvent(V2.Core.EventNotification eventNotification, StripeClient client)
@@ -321,6 +379,17 @@ namespace Stripe
             if (eventNotification == null)
             {
                 throw new ArgumentNullException(nameof(eventNotification));
+            }
+
+            if (this.preHandleCallback != null)
+            {
+                var preHandleArgs = new StripePreHandleEventNotificationEventArgs(eventNotification, client);
+                this.preHandleCallback.Invoke(this, preHandleArgs);
+
+                if (preHandleArgs.Cancel)
+                {
+                    return;
+                }
             }
 
             if (this.handledEventTypes.Contains(eventNotification.Type))
@@ -432,7 +501,7 @@ namespace Stripe
                 // event-handler-dispatch: The end of the section generated from our OpenAPI spec
                 else
                 {
-                    throw new Exception("unexpected state, please file a bug");
+                    throw new Exception("Unexpected state, please file a bug.");
                 }
             }
             else
