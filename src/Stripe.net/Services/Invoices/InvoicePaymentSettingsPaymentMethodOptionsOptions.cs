@@ -10,6 +10,7 @@ namespace Stripe
     {
         private InvoicePaymentSettingsPaymentMethodOptionsAcssDebitOptions acssDebit;
         private InvoicePaymentSettingsPaymentMethodOptionsBancontactOptions bancontact;
+        private InvoicePaymentSettingsPaymentMethodOptionsBillieOptions billie;
         private InvoicePaymentSettingsPaymentMethodOptionsBizumOptions bizum;
         private InvoicePaymentSettingsPaymentMethodOptionsBlikOptions blik;
         private InvoicePaymentSettingsPaymentMethodOptionsCardOptions card;
@@ -58,6 +59,23 @@ namespace Stripe
             set
             {
                 this.bancontact = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If paying by <c>billie</c>, this sub-hash contains details about the Billie payment
+        /// method options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("billie", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("billie")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public InvoicePaymentSettingsPaymentMethodOptionsBillieOptions Billie
+        {
+            get => this.billie;
+            set
+            {
+                this.billie = value;
                 this.SetTracker.Track();
             }
         }

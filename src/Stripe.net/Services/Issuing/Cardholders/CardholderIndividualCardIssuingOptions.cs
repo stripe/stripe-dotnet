@@ -10,8 +10,8 @@ namespace Stripe.Issuing
     {
         /// <summary>
         /// Information about cardholder acceptance of Celtic <a
-        /// href="https://stripe.com/docs/issuing/cards#accept-authorized-user-terms">Authorized
-        /// User Terms</a>. Required for cards backed by a Celtic program.
+        /// href="https://docs.stripe.com/issuing/compliance-us#issuing-terms">Authorized User
+        /// Terms</a>. Required for cards backed by a Celtic program.
         /// </summary>
         [JsonProperty("user_terms_acceptance")]
         [STJS.JsonPropertyName("user_terms_acceptance")]

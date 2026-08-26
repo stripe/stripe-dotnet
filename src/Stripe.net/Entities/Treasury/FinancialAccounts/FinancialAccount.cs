@@ -8,9 +8,9 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// Stripe Treasury provides users with a container for money called a FinancialAccount that
-    /// is separate from their Payments balance. FinancialAccounts serve as the source and
-    /// destination of Treasury’s money movement APIs.
+    /// Stripe Treasury for Platforms provides users with a container for money called a
+    /// FinancialAccount that is separate from their Payments balance. FinancialAccounts serve
+    /// as the source and destination of Treasury for Platform’s money movement APIs.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FinancialAccount : StripeEntity<FinancialAccount>, IHasId, IHasMetadata, IHasObject

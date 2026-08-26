@@ -17,9 +17,8 @@ namespace Stripe
         public string Country { get; set; }
 
         /// <summary>
-        /// The funding source group applied to this Link payment at confirmation time. Maps to a
-        /// bundle in your Stripe pricing contract and on Stripe's published pricing page. Omitted
-        /// if group lookup failed at confirmation time.
+        /// The <a href="https://docs.stripe.com/payments/link/link-payment-methods">funding source
+        /// group code</a> applied to this Link payment at confirmation time.
         /// </summary>
         [JsonProperty("funding_source_group")]
         [STJS.JsonPropertyName("funding_source_group")]

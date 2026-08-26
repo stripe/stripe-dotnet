@@ -75,6 +75,7 @@ namespace Stripe
                 { "customer_balance_transaction", typeof(CustomerBalanceTransaction) },
                 { "customer_cash_balance_transaction", typeof(CustomerCashBalanceTransaction) },
                 { "customer_session", typeof(CustomerSession) },
+                { "customer_tax_exemption", typeof(CustomerTaxExemption) },
                 { "delegated_checkout.order", typeof(DelegatedCheckout.Order) },
                 { "delegated_checkout.order_event", typeof(DelegatedCheckout.OrderEvent) },
                 {

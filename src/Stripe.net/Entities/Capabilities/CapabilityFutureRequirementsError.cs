@@ -81,6 +81,10 @@ namespace Stripe
         [STJS.JsonPropertyName("code")]
         public string Code { get; set; }
 
+        [JsonProperty("details")]
+        [STJS.JsonPropertyName("details")]
+        public CapabilityFutureRequirementsErrorDetails Details { get; set; }
+
         /// <summary>
         /// An informative message that indicates the error type and provides additional details
         /// about the error.

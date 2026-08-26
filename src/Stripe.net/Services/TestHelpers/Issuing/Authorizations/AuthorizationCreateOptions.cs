@@ -126,6 +126,16 @@ namespace Stripe.TestHelpers.Issuing
         public AuthorizationNetworkDataOptions NetworkData { get; set; }
 
         /// <summary>
+        /// The point-of-sale initiation condition for this test authorization.
+        /// One of: <c>account_verification</c>, <c>card_not_present</c>, <c>card_present</c>,
+        /// <c>e_commerce</c>, <c>key_entered_pos</c>, <c>other</c>, <c>pin_entered</c>, or
+        /// <c>recurring_or_moto</c>.
+        /// </summary>
+        [JsonProperty("pos_condition")]
+        [STJS.JsonPropertyName("pos_condition")]
+        public string PosCondition { get; set; }
+
+        /// <summary>
         /// Stripe’s assessment of the fraud risk for this authorization.
         /// </summary>
         [JsonProperty("risk_assessment")]

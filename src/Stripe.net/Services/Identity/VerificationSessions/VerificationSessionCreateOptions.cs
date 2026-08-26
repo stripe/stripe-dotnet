@@ -88,6 +88,13 @@ namespace Stripe.Identity
         public string Type { get; set; }
 
         /// <summary>
+        /// Details on the user's consent to Stripe Terms of Service and Privacy Policy.
+        /// </summary>
+        [JsonProperty("user_consent")]
+        [STJS.JsonPropertyName("user_consent")]
+        public VerificationSessionUserConsentOptions UserConsent { get; set; }
+
+        /// <summary>
         /// The ID of a verification flow from the Dashboard. See
         /// https://docs.stripe.com/identity/verification-flows.
         /// </summary>

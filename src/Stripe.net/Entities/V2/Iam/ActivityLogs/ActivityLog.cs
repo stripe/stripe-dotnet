@@ -65,8 +65,9 @@ namespace Stripe.V2.Iam
         /// <summary>
         /// The type of action that was performed.
         /// One of: <c>api_key_created</c>, <c>api_key_deleted</c>, <c>api_key_updated</c>,
-        /// <c>api_key_viewed</c>, <c>user_invite_accepted</c>, <c>user_invite_created</c>,
-        /// <c>user_invite_deleted</c>, <c>user_roles_deleted</c>, or <c>user_roles_updated</c>.
+        /// <c>api_key_viewed</c>, <c>user_access_started</c>, <c>user_invite_accepted</c>,
+        /// <c>user_invite_created</c>, <c>user_invite_deleted</c>, <c>user_roles_deleted</c>, or
+        /// <c>user_roles_updated</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

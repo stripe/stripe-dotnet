@@ -106,7 +106,10 @@ namespace Stripe
         public SubscriptionBillingModeOptions BillingMode { get; set; }
 
         /// <summary>
-        /// Sets the billing schedules for the subscription.
+        /// An array of billing schedules, which allow you to bill customers in advance for multiple
+        /// service periods. Requires flexible billing mode and API version 2026-05-27.dahlia or
+        /// later. Learn more about <a
+        /// href="https://docs.stripe.com/billing/subscriptions/prebilling">prebilling</a>.
         /// </summary>
         [JsonProperty("billing_schedules")]
         [STJS.JsonPropertyName("billing_schedules")]

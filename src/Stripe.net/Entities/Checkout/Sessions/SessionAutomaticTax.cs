@@ -24,6 +24,14 @@ namespace Stripe.Checkout
         public bool Enabled { get; set; }
 
         /// <summary>
+        /// How <c>automatic_tax</c> was set (<c>explicit</c>, <c>managed_payments</c>, or
+        /// <c>tax_integration_configuration</c>) and why it may have been disabled.
+        /// </summary>
+        [JsonProperty("enablement_details")]
+        [STJS.JsonPropertyName("enablement_details")]
+        public SessionAutomaticTaxEnablementDetails EnablementDetails { get; set; }
+
+        /// <summary>
         /// The account that's liable for tax. If set, the business address and tax registrations
         /// required to perform the tax calculation are loaded from this account. The tax
         /// transaction is returned in the report of the connected account.

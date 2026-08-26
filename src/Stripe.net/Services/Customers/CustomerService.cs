@@ -23,6 +23,7 @@ namespace Stripe
         private CustomerFundingInstructionsService fundingInstructions;
         private CustomerPaymentMethodService paymentMethods;
         private CustomerPaymentSourceService paymentSources;
+        private CustomerTaxExemptionService taxExemptions;
         private CustomerTaxIdService taxIds;
 
         public CustomerService()
@@ -55,6 +56,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual CustomerPaymentSourceService PaymentSources => this.paymentSources ??= new CustomerPaymentSourceService(
+            this.Requestor);
+
+        public virtual CustomerTaxExemptionService TaxExemptions => this.taxExemptions ??= new CustomerTaxExemptionService(
             this.Requestor);
 
         public virtual CustomerTaxIdService TaxIds => this.taxIds ??= new CustomerTaxIdService(
