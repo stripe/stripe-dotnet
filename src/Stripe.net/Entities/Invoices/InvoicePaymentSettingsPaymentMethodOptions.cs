@@ -25,6 +25,14 @@ namespace Stripe
         public InvoicePaymentSettingsPaymentMethodOptionsBancontact Bancontact { get; set; }
 
         /// <summary>
+        /// If paying by <c>billie</c>, this sub-hash contains details about the Billie payment
+        /// method options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("billie")]
+        [STJS.JsonPropertyName("billie")]
+        public InvoicePaymentSettingsPaymentMethodOptionsBillie Billie { get; set; }
+
+        /// <summary>
         /// If paying by <c>card</c>, this sub-hash contains details about the Card payment method
         /// options to pass to the invoice’s PaymentIntent.
         /// </summary>

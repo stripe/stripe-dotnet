@@ -136,6 +136,15 @@ namespace Stripe
 
         /// <summary>
         /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/payment-method-settings/">payment
+        /// method settings</a> embedded component.
+        /// </summary>
+        [JsonProperty("payment_method_settings")]
+        [STJS.JsonPropertyName("payment_method_settings")]
+        public AccountSessionComponentsPaymentMethodSettingsOptions PaymentMethodSettings { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
         /// href="https://stripe.com/connect/supported-embedded-components/payments/">payments</a>
         /// embedded component.
         /// </summary>

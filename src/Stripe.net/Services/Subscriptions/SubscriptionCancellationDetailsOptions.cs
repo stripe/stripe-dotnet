@@ -52,6 +52,14 @@ namespace Stripe
             }
         }
 
+        /// <summary>
+        /// Customized feedback options that provide deeper insight into why the subscription was
+        /// canceled, if the subscription was canceled explicitly by the user.
+        /// </summary>
+        [JsonProperty("feedback_option")]
+        [STJS.JsonPropertyName("feedback_option")]
+        public string FeedbackOption { get; set; }
+
         bool IHasSetTracking.IsPropertySet(string propertyName)
         {
             return this.SetTracker.IsSet(propertyName);

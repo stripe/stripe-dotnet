@@ -9047,7 +9047,7 @@ namespace StripeTests
         {
             var options = new SetupIntentCreateOptions
             {
-                PaymentMethodTypes = new List<string> { "card" },
+                AllowedPaymentMethodTypes = new List<string> { "card" },
             };
             var service = new SetupIntentService(this.StripeClient);
             SetupIntent setupIntent = service.Create(options);
@@ -9059,7 +9059,7 @@ namespace StripeTests
         {
             var options = new SetupIntentCreateOptions
             {
-                PaymentMethodTypes = new List<string> { "card" },
+                AllowedPaymentMethodTypes = new List<string> { "card" },
             };
             var service = new SetupIntentService(this.StripeClient);
             SetupIntent setupIntent = await service.CreateAsync(options);

@@ -18,5 +18,14 @@ namespace Stripe.Checkout
         [JsonProperty("brands_blocked")]
         [STJS.JsonPropertyName("brands_blocked")]
         public List<string> BrandsBlocked { get; set; }
+
+        /// <summary>
+        /// Card funding types to block for this Checkout Session. Supported values are
+        /// <c>credit</c>, <c>debit</c>, and <c>prepaid</c>.
+        /// One of: <c>credit</c>, <c>debit</c>, or <c>prepaid</c>.
+        /// </summary>
+        [JsonProperty("funding_types_blocked")]
+        [STJS.JsonPropertyName("funding_types_blocked")]
+        public List<string> FundingTypesBlocked { get; set; }
     }
 }

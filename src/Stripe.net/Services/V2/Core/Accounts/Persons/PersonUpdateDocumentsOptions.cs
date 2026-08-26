@@ -17,7 +17,7 @@ namespace Stripe.V2.Core.Accounts
         public PersonUpdateDocumentsCompanyAuthorizationOptions CompanyAuthorization { get; set; }
 
         /// <summary>
-        /// One or more documents showing the person’s passport page with photo and personal data.
+        /// One or more documents showing the person's passport page with photo and personal data.
         /// </summary>
         [JsonProperty("passport")]
         [STJS.JsonPropertyName("passport")]
@@ -39,7 +39,7 @@ namespace Stripe.V2.Core.Accounts
         public PersonUpdateDocumentsSecondaryVerificationOptions SecondaryVerification { get; set; }
 
         /// <summary>
-        /// One or more documents showing the person’s visa required for living in the country where
+        /// One or more documents showing the person's visa required for living in the country where
         /// they are residing.
         /// </summary>
         [JsonProperty("visa")]

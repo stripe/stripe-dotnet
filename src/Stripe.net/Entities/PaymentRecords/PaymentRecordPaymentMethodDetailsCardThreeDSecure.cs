@@ -18,13 +18,6 @@ namespace Stripe
         public string AuthenticationFlow { get; set; }
 
         /// <summary>
-        /// The 3D Secure cryptogram, also known as the "authentication value" (AAV, CAVV or AEVV).
-        /// </summary>
-        [JsonProperty("cryptogram")]
-        [STJS.JsonPropertyName("cryptogram")]
-        public string Cryptogram { get; set; }
-
-        /// <summary>
         /// The Electronic Commerce Indicator (ECI). A protocol-level field indicating what degree
         /// of authentication was performed.
         /// One of: <c>01</c>, <c>02</c>, <c>03</c>, <c>04</c>, <c>05</c>, <c>06</c>, or <c>07</c>.

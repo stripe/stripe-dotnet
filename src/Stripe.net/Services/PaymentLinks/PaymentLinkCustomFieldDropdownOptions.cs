@@ -10,7 +10,7 @@ namespace Stripe
     public class PaymentLinkCustomFieldDropdownOptions : INestedOptions
     {
         /// <summary>
-        /// The value that pre-fills the field on the payment page.Must match a <c>value</c> in the
+        /// The value that pre-fills the field on the payment page. Must match a <c>value</c> in the
         /// <c>options</c> array.
         /// </summary>
         [JsonProperty("default_value")]

@@ -10,7 +10,7 @@ namespace Stripe.V2.Core
     {
         /// <summary>
         /// One or more documents that support the bank account ownership verification requirement.
-        /// Must be a document associated with the account’s primary active bank account that
+        /// Must be a document associated with the account's primary active bank account that
         /// displays the last 4 digits of the account number, either a statement or a check.
         /// </summary>
         [JsonProperty("bank_account_ownership_verification")]
@@ -18,14 +18,14 @@ namespace Stripe.V2.Core
         public AccountUpdateIdentityBusinessDetailsDocumentsBankAccountOwnershipVerificationOptions BankAccountOwnershipVerification { get; set; }
 
         /// <summary>
-        /// One or more documents that demonstrate proof of a company’s license to operate.
+        /// One or more documents that demonstrate proof of a company's license to operate.
         /// </summary>
         [JsonProperty("company_license")]
         [STJS.JsonPropertyName("company_license")]
         public AccountUpdateIdentityBusinessDetailsDocumentsCompanyLicenseOptions CompanyLicense { get; set; }
 
         /// <summary>
-        /// One or more documents showing the company’s Memorandum of Association.
+        /// One or more documents showing the company's Memorandum of Association.
         /// </summary>
         [JsonProperty("company_memorandum_of_association")]
         [STJS.JsonPropertyName("company_memorandum_of_association")]
@@ -33,14 +33,14 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// Certain countries only: One or more documents showing the ministerial decree legalizing
-        /// the company’s establishment.
+        /// the company's establishment.
         /// </summary>
         [JsonProperty("company_ministerial_decree")]
         [STJS.JsonPropertyName("company_ministerial_decree")]
         public AccountUpdateIdentityBusinessDetailsDocumentsCompanyMinisterialDecreeOptions CompanyMinisterialDecree { get; set; }
 
         /// <summary>
-        /// One or more documents that demonstrate proof of a company’s registration with the
+        /// One or more documents that demonstrate proof of a company's registration with the
         /// appropriate local authorities.
         /// </summary>
         [JsonProperty("company_registration_verification")]
@@ -48,7 +48,7 @@ namespace Stripe.V2.Core
         public AccountUpdateIdentityBusinessDetailsDocumentsCompanyRegistrationVerificationOptions CompanyRegistrationVerification { get; set; }
 
         /// <summary>
-        /// One or more documents that demonstrate proof of a company’s tax ID.
+        /// One or more documents that demonstrate proof of a company's tax ID.
         /// </summary>
         [JsonProperty("company_tax_id_verification")]
         [STJS.JsonPropertyName("company_tax_id_verification")]

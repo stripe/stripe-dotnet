@@ -26,7 +26,7 @@ namespace Stripe.V2.Core
         public bool? Executive { get; set; }
 
         /// <summary>
-        /// Whether the person is an owner of the account’s identity.
+        /// Whether the person is an owner of the account's identity.
         /// </summary>
         [JsonProperty("owner")]
         [STJS.JsonPropertyName("owner")]
