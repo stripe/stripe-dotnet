@@ -264,6 +264,17 @@ namespace Stripe.Issuing
         public AuthorizationPendingRequest PendingRequest { get; set; }
 
         /// <summary>
+        /// The point-of-sale initiation condition. This is null when the card network did not
+        /// provide one.
+        /// One of: <c>account_verification</c>, <c>card_not_present</c>, <c>card_present</c>,
+        /// <c>e_commerce</c>, <c>key_entered_pos</c>, <c>other</c>, <c>pin_entered</c>, or
+        /// <c>recurring_or_moto</c>.
+        /// </summary>
+        [JsonProperty("pos_condition")]
+        [STJS.JsonPropertyName("pos_condition")]
+        public string PosCondition { get; set; }
+
+        /// <summary>
         /// Redaction status of this authorization. If the authorization is not redacted, this field
         /// will be null.
         /// </summary>

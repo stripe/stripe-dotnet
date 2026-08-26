@@ -17,11 +17,18 @@ namespace Stripe.V2.Iam
 
         /// <summary>
         /// The action group type of the activity log entry.
-        /// One of: <c>api_key</c>, <c>user_invite</c>, or <c>user_roles</c>.
+        /// One of: <c>api_key</c>, <c>user_access</c>, <c>user_invite</c>, or <c>user_roles</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// Details of a user access action.
+        /// </summary>
+        [JsonProperty("user_access")]
+        [STJS.JsonPropertyName("user_access")]
+        public ActivityLogDetailsUserAccess UserAccess { get; set; }
 
         /// <summary>
         /// Details of a user invite action.

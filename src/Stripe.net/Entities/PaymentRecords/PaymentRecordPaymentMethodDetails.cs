@@ -262,10 +262,6 @@ namespace Stripe
         [STJS.JsonPropertyName("sepa_debit")]
         public PaymentRecordPaymentMethodDetailsSepaDebit SepaDebit { get; set; }
 
-        [JsonProperty("sequra")]
-        [STJS.JsonPropertyName("sequra")]
-        public PaymentRecordPaymentMethodDetailsSequra Sequra { get; set; }
-
         [JsonProperty("shopeepay")]
         [STJS.JsonPropertyName("shopeepay")]
         public PaymentRecordPaymentMethodDetailsShopeepay Shopeepay { get; set; }

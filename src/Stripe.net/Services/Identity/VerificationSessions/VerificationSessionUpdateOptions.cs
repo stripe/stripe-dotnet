@@ -48,5 +48,12 @@ namespace Stripe.Identity
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// Details on the user's consent to Stripe Terms of Service and Privacy Policy.
+        /// </summary>
+        [JsonProperty("user_consent")]
+        [STJS.JsonPropertyName("user_consent")]
+        public VerificationSessionUserConsentOptions UserConsent { get; set; }
     }
 }

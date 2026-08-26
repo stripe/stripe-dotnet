@@ -20,6 +20,13 @@ namespace Stripe.Issuing
         public string Cardholder { get; set; }
 
         /// <summary>
+        /// The crypto wallet to attach this card to for Bridge integration.
+        /// </summary>
+        [JsonProperty("crypto_wallet")]
+        [STJS.JsonPropertyName("crypto_wallet")]
+        public CardCryptoWalletOptions CryptoWallet { get; set; }
+
+        /// <summary>
         /// The currency for the card.
         /// </summary>
         [JsonProperty("currency")]

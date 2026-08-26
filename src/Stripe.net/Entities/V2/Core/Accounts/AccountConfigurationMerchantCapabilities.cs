@@ -79,6 +79,13 @@ namespace Stripe.V2.Core
         public AccountConfigurationMerchantCapabilitiesBlikPayments BlikPayments { get; set; }
 
         /// <summary>
+        /// Allow the merchant to process recurring BLIK payments.
+        /// </summary>
+        [JsonProperty("blik_recurring_payments")]
+        [STJS.JsonPropertyName("blik_recurring_payments")]
+        public AccountConfigurationMerchantCapabilitiesBlikRecurringPayments BlikRecurringPayments { get; set; }
+
+        /// <summary>
         /// Allow the merchant to process Boleto payments.
         /// </summary>
         [JsonProperty("boleto_payments")]

@@ -17,7 +17,8 @@ namespace Stripe
         public List<InvoiceSubscriptionDetailsBillingScheduleAppliesToOptions> AppliesTo { get; set; }
 
         /// <summary>
-        /// The end date for the billing schedule.
+        /// The end date for the billing schedule. You must not set this earlier than current period
+        /// end for every applicable subscription item.
         /// </summary>
         [JsonProperty("bill_until")]
         [STJS.JsonPropertyName("bill_until")]

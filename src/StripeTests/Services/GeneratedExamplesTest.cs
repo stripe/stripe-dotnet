@@ -23347,7 +23347,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/iam/activity_logs",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.iam.activity_log\",\"actor\":{\"type\":\"api_key\"},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"details\":{\"type\":\"api_key\"},\"id\":\"obj_123\",\"livemode\":true,\"type\":\"api_key_created\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.iam.activity_log\",\"actor\":{\"type\":\"api_key\"},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"details\":{\"type\":\"user_invite\"},\"id\":\"obj_123\",\"livemode\":true,\"type\":\"api_key_created\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Iam.ActivityLogs;
             Stripe.V2.StripeList<Stripe.V2.Iam.ActivityLog> activityLogs = service
@@ -23362,7 +23362,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/iam/activity_logs",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.iam.activity_log\",\"actor\":{\"type\":\"api_key\"},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"details\":{\"type\":\"api_key\"},\"id\":\"obj_123\",\"livemode\":true,\"type\":\"api_key_created\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.iam.activity_log\",\"actor\":{\"type\":\"api_key\"},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"details\":{\"type\":\"user_invite\"},\"id\":\"obj_123\",\"livemode\":true,\"type\":\"api_key_created\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Iam.ActivityLogs;
             Stripe.V2.StripeList<Stripe.V2.Iam.ActivityLog> activityLogs = await service
@@ -23377,7 +23377,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/iam/activity_logs",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.iam.activity_log\",\"actor\":{\"type\":\"api_key\"},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"details\":{\"type\":\"api_key\"},\"id\":\"obj_123\",\"livemode\":true,\"type\":\"api_key_created\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.iam.activity_log\",\"actor\":{\"type\":\"api_key\"},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"details\":{\"type\":\"user_invite\"},\"id\":\"obj_123\",\"livemode\":true,\"type\":\"api_key_created\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Iam.ActivityLogs;
             var activityLog = service.ListAutoPaging().First();
@@ -23391,7 +23391,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/iam/activity_logs",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.iam.activity_log\",\"actor\":{\"type\":\"api_key\"},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"details\":{\"type\":\"api_key\"},\"id\":\"obj_123\",\"livemode\":true,\"type\":\"api_key_created\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.iam.activity_log\",\"actor\":{\"type\":\"api_key\"},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"details\":{\"type\":\"user_invite\"},\"id\":\"obj_123\",\"livemode\":true,\"type\":\"api_key_created\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Iam.ActivityLogs;
             var activityLog = await service.ListAutoPagingAsync().FirstAsync();
@@ -23405,7 +23405,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/iam/activity_logs/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.iam.activity_log\",\"actor\":{\"type\":\"api_key\"},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"details\":{\"type\":\"api_key\"},\"id\":\"obj_123\",\"livemode\":true,\"type\":\"api_key_created\"}");
+                "{\"object\":\"v2.iam.activity_log\",\"actor\":{\"type\":\"api_key\"},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"details\":{\"type\":\"user_invite\"},\"id\":\"obj_123\",\"livemode\":true,\"type\":\"api_key_created\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Iam.ActivityLogs;
             Stripe.V2.Iam.ActivityLog activityLog = service.Get("id_123");
@@ -23419,7 +23419,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/iam/activity_logs/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.iam.activity_log\",\"actor\":{\"type\":\"api_key\"},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"details\":{\"type\":\"api_key\"},\"id\":\"obj_123\",\"livemode\":true,\"type\":\"api_key_created\"}");
+                "{\"object\":\"v2.iam.activity_log\",\"actor\":{\"type\":\"api_key\"},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"details\":{\"type\":\"user_invite\"},\"id\":\"obj_123\",\"livemode\":true,\"type\":\"api_key_created\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Iam.ActivityLogs;
             Stripe.V2.Iam.ActivityLog activityLog = await service.GetAsync(

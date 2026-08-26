@@ -148,6 +148,10 @@ namespace Stripe
         [STJS.JsonPropertyName("payment_disputes")]
         public AccountSessionComponentsPaymentDisputes PaymentDisputes { get; set; }
 
+        [JsonProperty("payment_method_settings")]
+        [STJS.JsonPropertyName("payment_method_settings")]
+        public AccountSessionComponentsPaymentMethodSettings PaymentMethodSettings { get; set; }
+
         [JsonProperty("payments")]
         [STJS.JsonPropertyName("payments")]
         public AccountSessionComponentsPayments Payments { get; set; }

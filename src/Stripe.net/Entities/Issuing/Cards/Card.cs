@@ -64,6 +64,10 @@ namespace Stripe.Issuing
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
+        [JsonProperty("crypto_wallet")]
+        [STJS.JsonPropertyName("crypto_wallet")]
+        public CardCryptoWallet CryptoWallet { get; set; }
+
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
         /// code</a>, in lowercase. Supported currencies are <c>usd</c> in the US, <c>eur</c> in the

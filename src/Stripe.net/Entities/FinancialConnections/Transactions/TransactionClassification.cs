@@ -8,16 +8,14 @@ namespace Stripe.FinancialConnections
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TransactionClassification : StripeEntity<TransactionClassification>
     {
-        /// <summary>
-        /// Money movement classification labels for this transaction.
-        /// </summary>
+        [JsonProperty("credit")]
+        [STJS.JsonPropertyName("credit")]
+        public TransactionClassificationCredit Credit { get; set; }
+
         [JsonProperty("money_movement")]
         [STJS.JsonPropertyName("money_movement")]
         public TransactionClassificationMoneyMovement MoneyMovement { get; set; }
 
-        /// <summary>
-        /// Personal finance classification labels for this transaction.
-        /// </summary>
         [JsonProperty("personal_finance")]
         [STJS.JsonPropertyName("personal_finance")]
         public TransactionClassificationPersonalFinance PersonalFinance { get; set; }

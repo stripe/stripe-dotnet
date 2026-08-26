@@ -20,6 +20,13 @@ namespace Stripe.Issuing
         public string CancellationReason { get; set; }
 
         /// <summary>
+        /// Updates the cryptocurrency used to fund this card's existing crypto wallet.
+        /// </summary>
+        [JsonProperty("crypto_wallet")]
+        [STJS.JsonPropertyName("crypto_wallet")]
+        public CardCryptoWalletOptions CryptoWallet { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
