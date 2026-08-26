@@ -10,7 +10,7 @@ namespace Stripe
     public class DisputeSmartDisputes : StripeEntity<DisputeSmartDisputes>
     {
         /// <summary>
-        /// Evidence that could be provided to improve the SmartDisputes packet.
+        /// Evidence that could be provided to improve the Smart Disputes packet.
         /// </summary>
         [JsonProperty("recommended_evidence")]
         [STJS.JsonPropertyName("recommended_evidence")]

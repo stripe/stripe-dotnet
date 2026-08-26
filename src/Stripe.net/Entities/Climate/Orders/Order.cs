@@ -131,7 +131,8 @@ namespace Stripe.Climate
         public List<OrderDeliveryDetail> DeliveryDetails { get; set; }
 
         /// <summary>
-        /// The year this order is expected to be delivered.
+        /// The year this order is expected to be delivered. If the year is in the past, the order
+        /// is a spot purchase and will be delivered within 30 days of purchase.
         /// </summary>
         [JsonProperty("expected_delivery_year")]
         [STJS.JsonPropertyName("expected_delivery_year")]

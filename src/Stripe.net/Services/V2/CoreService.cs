@@ -10,6 +10,7 @@ namespace Stripe.V2
         private V2.Core.AccountService accounts;
         private V2.Core.AccountLinkService accountLinks;
         private V2.Core.AccountTokenService accountTokens;
+        private V2.Core.ApprovalRequestService approvalRequests;
         private V2.Core.BatchJobService batchJobs;
         private V2.Core.EventService events;
         private V2.Core.EventDestinationService eventDestinations;
@@ -32,6 +33,9 @@ namespace Stripe.V2
             this.Requestor);
 
         public virtual V2.Core.AccountTokenService AccountTokens => this.accountTokens ??= new V2.Core.AccountTokenService(
+            this.Requestor);
+
+        public virtual V2.Core.ApprovalRequestService ApprovalRequests => this.approvalRequests ??= new V2.Core.ApprovalRequestService(
             this.Requestor);
 
         public virtual V2.Core.BatchJobService BatchJobs => this.batchJobs ??= new V2.Core.BatchJobService(

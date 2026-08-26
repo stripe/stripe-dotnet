@@ -23,7 +23,7 @@ namespace Stripe.V2.MoneyManagement
         public OutboundSetupIntentCreatePayoutMethodDataCardOptions Card { get; set; }
 
         /// <summary>
-        /// Closed Enum. The type of payout method to be created.
+        /// Open Enum. The type of payout method to be created.
         /// One of: <c>bank_account</c>, <c>card</c>, or <c>crypto_wallet</c>.
         /// </summary>
         [JsonProperty("type")]

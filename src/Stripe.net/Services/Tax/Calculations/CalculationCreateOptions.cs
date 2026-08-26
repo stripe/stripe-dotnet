@@ -35,7 +35,8 @@ namespace Stripe.Tax
         public CalculationCustomerDetailsOptions CustomerDetails { get; set; }
 
         /// <summary>
-        /// A list of items the customer is purchasing.
+        /// A list of items the customer is purchasing. You can pass up to 100 line items, or 1,000
+        /// if your account has an increased limit.
         /// </summary>
         [JsonProperty("line_items")]
         [STJS.JsonPropertyName("line_items")]
