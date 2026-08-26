@@ -34,8 +34,8 @@ namespace Stripe
         /// <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
         /// <c>scalapay</c>, <c>sepa_debit</c>, <c>sequra</c>, <c>shop_pay</c>, <c>shopeepay</c>,
         /// <c>sofort</c>, <c>south_korea_market</c>, <c>stripe_balance</c>, <c>sunbit</c>,
-        /// <c>swish</c>, <c>tamara</c>, <c>test_pay</c>, <c>truemoney</c>, <c>twint</c>,
-        /// <c>upi</c>, <c>us_bank_account</c>, <c>us_cash_voucher</c>, <c>vipps</c>,
+        /// <c>swish</c>, <c>tamara</c>, <c>test_pay</c>, <c>touch_n_go</c>, <c>truemoney</c>,
+        /// <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>us_cash_voucher</c>, <c>vipps</c>,
         /// <c>wechat_pay</c>, <c>wero</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("allowed_payment_method_types")]
@@ -213,17 +213,6 @@ namespace Stripe
         [JsonProperty("payment_method_options")]
         [STJS.JsonPropertyName("payment_method_options")]
         public SetupIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
-
-        /// <summary>
-        /// The list of payment method types (for example, card) that this SetupIntent can use. If
-        /// you don't provide this, Stripe will dynamically show relevant payment methods from your
-        /// <a href="https://dashboard.stripe.com/settings/payment_methods">payment method
-        /// settings</a>. A list of valid payment method types can be found <a
-        /// href="https://docs.stripe.com/api/payment_methods/object#payment_method_object-type">here</a>.
-        /// </summary>
-        [JsonProperty("payment_method_types")]
-        [STJS.JsonPropertyName("payment_method_types")]
-        public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
         /// The URL to redirect your customer back to after they authenticate or cancel their

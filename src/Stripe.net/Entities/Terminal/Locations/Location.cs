@@ -31,7 +31,7 @@ namespace Stripe.Terminal
 
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
-        public Address Address { get; set; }
+        public LocationAddress Address { get; set; }
 
         [JsonProperty("address_kana")]
         [STJS.JsonPropertyName("address_kana")]

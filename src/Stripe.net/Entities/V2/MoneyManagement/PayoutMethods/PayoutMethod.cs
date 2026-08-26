@@ -88,7 +88,7 @@ namespace Stripe.V2.MoneyManagement
         public bool Restricted { get; set; }
 
         /// <summary>
-        /// Closed Enum. The type of payout method.
+        /// Open Enum. The type of payout method.
         /// One of: <c>bank_account</c>, <c>card</c>, or <c>crypto_wallet</c>.
         /// </summary>
         [JsonProperty("type")]

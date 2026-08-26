@@ -37,6 +37,7 @@ namespace Stripe
                     Billing.CreditBalanceTransaction)
                 },
                 { "billing.credit_grant", typeof(Billing.CreditGrant) },
+                { "billing.feedback_option", typeof(Billing.FeedbackOption) },
                 { "billing.meter", typeof(Billing.Meter) },
                 { "billing.meter_event", typeof(Billing.MeterEvent) },
                 { "billing.meter_event_adjustment", typeof(Billing.MeterEventAdjustment) },
@@ -264,6 +265,7 @@ namespace Stripe
                 { "v2.core.account_person", typeof(V2.Core.AccountPerson) },
                 { "v2.core.account_person_token", typeof(V2.Core.AccountPersonToken) },
                 { "v2.core.account_token", typeof(V2.Core.AccountToken) },
+                { "v2.core.approval_request", typeof(V2.Core.ApprovalRequest) },
                 { "v2.core.batch_job", typeof(V2.Core.BatchJob) },
                 { "v2.core.event", typeof(V2.Core.Event) },
                 { "v2.core.event_destination", typeof(V2.Core.EventDestination) },
@@ -325,6 +327,9 @@ namespace Stripe
                     "v2.orchestrated_commerce.agreement", typeof(
                     V2.OrchestratedCommerce.Agreement)
                 },
+                { "v2.signals.account_activity", typeof(V2.Signals.AccountActivity) },
+                { "v2.signals.account_evaluation", typeof(V2.Signals.AccountEvaluation) },
+                { "v2.signals.account_signal", typeof(V2.Signals.AccountSignal) },
 
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
             });
@@ -423,6 +428,34 @@ namespace Stripe
                 {
                     "v2.core.account_person.updated", typeof(
                     Events.V2CoreAccountPersonUpdatedEvent)
+                },
+                {
+                    "v2.core.approval_request.approved", typeof(
+                    Events.V2CoreApprovalRequestApprovedEvent)
+                },
+                {
+                    "v2.core.approval_request.canceled", typeof(
+                    Events.V2CoreApprovalRequestCanceledEvent)
+                },
+                {
+                    "v2.core.approval_request.created", typeof(
+                    Events.V2CoreApprovalRequestCreatedEvent)
+                },
+                {
+                    "v2.core.approval_request.expired", typeof(
+                    Events.V2CoreApprovalRequestExpiredEvent)
+                },
+                {
+                    "v2.core.approval_request.failed", typeof(
+                    Events.V2CoreApprovalRequestFailedEvent)
+                },
+                {
+                    "v2.core.approval_request.rejected", typeof(
+                    Events.V2CoreApprovalRequestRejectedEvent)
+                },
+                {
+                    "v2.core.approval_request.succeeded", typeof(
+                    Events.V2CoreApprovalRequestSucceededEvent)
                 },
                 {
                     "v2.core.batch_job.batch_failed", typeof(
@@ -650,6 +683,10 @@ namespace Stripe
                     "v2.orchestrated_commerce.agreement.terminated", typeof(
                     Events.V2OrchestratedCommerceAgreementTerminatedEvent)
                 },
+                {
+                    "v2.signals.account_evaluation.complete", typeof(
+                    Events.V2SignalsAccountEvaluationCompleteEvent)
+                },
 
                 // V2EventsToTypes: The end of the section generated from our OpenAPI spec
             });
@@ -757,6 +794,34 @@ namespace Stripe
                 {
                     "v2.core.account_person.updated", typeof(
                     Events.V2CoreAccountPersonUpdatedEventNotification)
+                },
+                {
+                    "v2.core.approval_request.approved", typeof(
+                    Events.V2CoreApprovalRequestApprovedEventNotification)
+                },
+                {
+                    "v2.core.approval_request.canceled", typeof(
+                    Events.V2CoreApprovalRequestCanceledEventNotification)
+                },
+                {
+                    "v2.core.approval_request.created", typeof(
+                    Events.V2CoreApprovalRequestCreatedEventNotification)
+                },
+                {
+                    "v2.core.approval_request.expired", typeof(
+                    Events.V2CoreApprovalRequestExpiredEventNotification)
+                },
+                {
+                    "v2.core.approval_request.failed", typeof(
+                    Events.V2CoreApprovalRequestFailedEventNotification)
+                },
+                {
+                    "v2.core.approval_request.rejected", typeof(
+                    Events.V2CoreApprovalRequestRejectedEventNotification)
+                },
+                {
+                    "v2.core.approval_request.succeeded", typeof(
+                    Events.V2CoreApprovalRequestSucceededEventNotification)
                 },
                 {
                     "v2.core.batch_job.batch_failed", typeof(
@@ -1001,6 +1066,10 @@ namespace Stripe
                 {
                     "v2.orchestrated_commerce.agreement.terminated", typeof(
                     Events.V2OrchestratedCommerceAgreementTerminatedEventNotification)
+                },
+                {
+                    "v2.signals.account_evaluation.complete", typeof(
+                    Events.V2SignalsAccountEvaluationCompleteEventNotification)
                 },
 
                 // V2EventNotificationsToTypes: The end of the section generated from our OpenAPI spec

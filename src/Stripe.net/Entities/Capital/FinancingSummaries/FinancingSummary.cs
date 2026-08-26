@@ -25,7 +25,7 @@ namespace Stripe.Capital
         /// fee amount, withhold rate, remaining amount, paid amount, current repayment interval,
         /// repayment start date, and advance payout date.
         ///
-        /// Only present for financing offers with the <c>paid_out</c> status.
+        /// Only present for financing offers with a <c>status</c> other than <c>none</c>.
         /// </summary>
         [JsonProperty("details")]
         [STJS.JsonPropertyName("details")]

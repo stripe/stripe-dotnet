@@ -52,6 +52,13 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonCreatedEventNotification>> v2CoreAccountPersonCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonDeletedEventNotification>> v2CoreAccountPersonDeleted;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonUpdatedEventNotification>> v2CoreAccountPersonUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestApprovedEventNotification>> v2CoreApprovalRequestApproved;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestCanceledEventNotification>> v2CoreApprovalRequestCanceled;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestCreatedEventNotification>> v2CoreApprovalRequestCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestExpiredEventNotification>> v2CoreApprovalRequestExpired;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestFailedEventNotification>> v2CoreApprovalRequestFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestRejectedEventNotification>> v2CoreApprovalRequestRejected;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestSucceededEventNotification>> v2CoreApprovalRequestSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobBatchFailedEventNotification>> v2CoreBatchJobBatchFailed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobCanceledEventNotification>> v2CoreBatchJobCanceled;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobCompletedEventNotification>> v2CoreBatchJobCompleted;
@@ -113,8 +120,10 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2OrchestratedCommerceAgreementCreatedEventNotification>> v2OrchestratedCommerceAgreementCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2OrchestratedCommerceAgreementPartiallyConfirmedEventNotification>> v2OrchestratedCommerceAgreementPartiallyConfirmed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2OrchestratedCommerceAgreementTerminatedEventNotification>> v2OrchestratedCommerceAgreementTerminated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountEvaluationCompleteEventNotification>> v2SignalsAccountEvaluationComplete;
 
         // private-event-handlers: The end of the section generated from our OpenAPI spec
+        private EventHandler<StripePreHandleEventNotificationEventArgs> preHandleCallback;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StripeEventNotificationHandlerBase"/> class.
@@ -304,6 +313,48 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonUpdatedEventNotification>> V2CoreAccountPersonUpdated
         {
             add { this.AddEventHandler(ref this.v2CoreAccountPersonUpdated, value, "v2.core.account_person.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestApprovedEventNotification>> V2CoreApprovalRequestApproved
+        {
+            add { this.AddEventHandler(ref this.v2CoreApprovalRequestApproved, value, "v2.core.approval_request.approved"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestCanceledEventNotification>> V2CoreApprovalRequestCanceled
+        {
+            add { this.AddEventHandler(ref this.v2CoreApprovalRequestCanceled, value, "v2.core.approval_request.canceled"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestCreatedEventNotification>> V2CoreApprovalRequestCreated
+        {
+            add { this.AddEventHandler(ref this.v2CoreApprovalRequestCreated, value, "v2.core.approval_request.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestExpiredEventNotification>> V2CoreApprovalRequestExpired
+        {
+            add { this.AddEventHandler(ref this.v2CoreApprovalRequestExpired, value, "v2.core.approval_request.expired"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestFailedEventNotification>> V2CoreApprovalRequestFailed
+        {
+            add { this.AddEventHandler(ref this.v2CoreApprovalRequestFailed, value, "v2.core.approval_request.failed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestRejectedEventNotification>> V2CoreApprovalRequestRejected
+        {
+            add { this.AddEventHandler(ref this.v2CoreApprovalRequestRejected, value, "v2.core.approval_request.rejected"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestSucceededEventNotification>> V2CoreApprovalRequestSucceeded
+        {
+            add { this.AddEventHandler(ref this.v2CoreApprovalRequestSucceeded, value, "v2.core.approval_request.succeeded"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -673,7 +724,47 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountEvaluationCompleteEventNotification>> V2SignalsAccountEvaluationComplete
+        {
+            add { this.AddEventHandler(ref this.v2SignalsAccountEvaluationComplete, value, "v2.signals.account_evaluation.complete"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         // public-event-handlers: The end of the section generated from our OpenAPI spec
+
+        /// <summary>
+        /// A callback that runs before any event-specific callbacks. A useful place for
+        /// event-agnostic logic, such as logging or checking for
+        /// <see href="https://docs.stripe.com/webhooks#handle-duplicate-events">duplicate event deliveries</see>.
+        ///
+        /// The callback receives the parsed event notification and the context-scoped client.
+        /// Setting <see cref="StripePreHandleEventNotificationEventArgs.Cancel"/> to <c>true</c>
+        /// returns from <c>Handle</c> once the preHandle callback finishes, so further callbacks are called.
+        /// </summary>
+        public event EventHandler<StripePreHandleEventNotificationEventArgs> PreHandle
+        {
+            add
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(value));
+                }
+
+                this.AssertHasntHandled();
+
+                if (this.preHandleCallback != null)
+                {
+                    throw new InvalidOperationException("A PreHandle callback is already registered");
+                }
+
+                this.preHandleCallback = value;
+            }
+
+            remove
+            {
+                this.RemoveEventHandler();
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether this handler has already handled an event.
@@ -694,6 +785,22 @@ namespace Stripe
             var events = new List<string>(this.handledEventTypes);
             events.Sort();
             return events;
+        }
+
+        /// <summary>
+        /// Throws if callbacks can no longer be registered. Callbacks are expected to be
+        /// registered once at startup, so registering anything after handling has begun
+        /// indicates a bug.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if <c>Handle</c> has already been called.
+        /// </exception>
+        private void AssertHasntHandled()
+        {
+            if (this.HasHandledEvent)
+            {
+                throw new InvalidOperationException("Cannot register new callbacks after an event has been handled. This is indicative of a bug.");
+            }
         }
 
         /// <summary>
@@ -723,14 +830,21 @@ namespace Stripe
 
         /// <summary>
         /// Centralizes the logic for adding event handlers.
+        ///
+        /// Rejects a null callback rather than storing it. C# permits <c>SomeEvent += null</c>,
+        /// which would otherwise record the event type as handled while leaving the backing
+        /// delegate null — dispatch would then take the registered branch (bypassing the
+        /// fallback) and throw a NullReferenceException far from the offending registration.
         /// </summary>
         private void AddEventHandler<T>(ref EventHandler<T> handler, EventHandler<T> value, string eventType)
         where T : EventArgs
         {
-            if (this.HasHandledEvent)
+            if (value == null)
             {
-                throw new InvalidOperationException("Cannot register new event handlers after Handle has been called. This is indicative of a bug.");
+                throw new ArgumentNullException(nameof(value));
             }
+
+            this.AssertHasntHandled();
 
             if (this.handledEventTypes.Add(eventType))
             {
@@ -738,7 +852,7 @@ namespace Stripe
             }
             else
             {
-                throw new InvalidOperationException($"A handler for event type '{eventType}' is already registered. Only one handler per event type is allowed.");
+                throw new InvalidOperationException($"Callback for event type '{eventType}' is already registered");
             }
         }
 
@@ -747,7 +861,7 @@ namespace Stripe
         /// </summary>
         private void RemoveEventHandler()
         {
-            throw new InvalidOperationException("Removing handlers is not supported.");
+            throw new InvalidOperationException("Removing callbacks is not supported.");
         }
 
         private void DispatchEvent(V2.Core.EventNotification eventNotification, StripeClient client)
@@ -755,6 +869,17 @@ namespace Stripe
             if (eventNotification == null)
             {
                 throw new ArgumentNullException(nameof(eventNotification));
+            }
+
+            if (this.preHandleCallback != null)
+            {
+                var preHandleArgs = new StripePreHandleEventNotificationEventArgs(eventNotification, client);
+                this.preHandleCallback.Invoke(this, preHandleArgs);
+
+                if (preHandleArgs.Cancel)
+                {
+                    return;
+                }
             }
 
             if (this.handledEventTypes.Contains(eventNotification.Type))
@@ -865,6 +990,34 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2CoreAccountPersonUpdatedEventNotification)
                 {
                     this.v2CoreAccountPersonUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonUpdatedEventNotification>((Stripe.Events.V2CoreAccountPersonUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreApprovalRequestApprovedEventNotification)
+                {
+                    this.v2CoreApprovalRequestApproved.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestApprovedEventNotification>((Stripe.Events.V2CoreApprovalRequestApprovedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreApprovalRequestCanceledEventNotification)
+                {
+                    this.v2CoreApprovalRequestCanceled.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestCanceledEventNotification>((Stripe.Events.V2CoreApprovalRequestCanceledEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreApprovalRequestCreatedEventNotification)
+                {
+                    this.v2CoreApprovalRequestCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestCreatedEventNotification>((Stripe.Events.V2CoreApprovalRequestCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreApprovalRequestExpiredEventNotification)
+                {
+                    this.v2CoreApprovalRequestExpired.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestExpiredEventNotification>((Stripe.Events.V2CoreApprovalRequestExpiredEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreApprovalRequestFailedEventNotification)
+                {
+                    this.v2CoreApprovalRequestFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestFailedEventNotification>((Stripe.Events.V2CoreApprovalRequestFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreApprovalRequestRejectedEventNotification)
+                {
+                    this.v2CoreApprovalRequestRejected.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestRejectedEventNotification>((Stripe.Events.V2CoreApprovalRequestRejectedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreApprovalRequestSucceededEventNotification)
+                {
+                    this.v2CoreApprovalRequestSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreApprovalRequestSucceededEventNotification>((Stripe.Events.V2CoreApprovalRequestSucceededEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreBatchJobBatchFailedEventNotification)
                 {
@@ -1110,11 +1263,15 @@ namespace Stripe
                 {
                     this.v2OrchestratedCommerceAgreementTerminated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2OrchestratedCommerceAgreementTerminatedEventNotification>((Stripe.Events.V2OrchestratedCommerceAgreementTerminatedEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V2SignalsAccountEvaluationCompleteEventNotification)
+                {
+                    this.v2SignalsAccountEvaluationComplete.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountEvaluationCompleteEventNotification>((Stripe.Events.V2SignalsAccountEvaluationCompleteEventNotification)eventNotification, client));
+                }
 
                 // event-handler-dispatch: The end of the section generated from our OpenAPI spec
                 else
                 {
-                    throw new Exception("unexpected state, please file a bug");
+                    throw new Exception("Unexpected state, please file a bug.");
                 }
             }
             else

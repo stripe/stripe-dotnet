@@ -9,6 +9,7 @@ namespace Stripe.BillingPortal
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ConfigurationFeaturesSubscriptionCancelCancellationReasonOptions : INestedOptions, IHasSetTracking
     {
+        private List<string> feedbackOptions;
         private List<string> options;
 
         [JsonIgnore]
@@ -21,6 +22,22 @@ namespace Stripe.BillingPortal
         [JsonProperty("enabled")]
         [STJS.JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// The IDs of custom feedback options to use for this cancellation reason.
+        /// </summary>
+        [JsonProperty("feedback_options", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("feedback_options")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public List<string> FeedbackOptions
+        {
+            get => this.feedbackOptions;
+            set
+            {
+                this.feedbackOptions = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Which cancellation reasons will be given as options to the customer.

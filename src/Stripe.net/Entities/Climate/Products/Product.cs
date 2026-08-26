@@ -48,7 +48,8 @@ namespace Stripe.Climate
         public Dictionary<string, ProductCurrentPricesPerMetricTon> CurrentPricesPerMetricTon { get; set; }
 
         /// <summary>
-        /// The year in which the carbon removal is expected to be delivered.
+        /// The year in which the carbon removal is expected to be delivered. If the year is in the
+        /// past, this represents spot inventory with guaranteed delivery.
         /// </summary>
         [JsonProperty("delivery_year")]
         [STJS.JsonPropertyName("delivery_year")]

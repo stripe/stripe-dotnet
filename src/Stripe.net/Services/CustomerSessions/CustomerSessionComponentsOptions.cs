@@ -9,11 +9,25 @@ namespace Stripe
     public class CustomerSessionComponentsOptions : INestedOptions
     {
         /// <summary>
+        /// Configuration for active entitlements.
+        /// </summary>
+        [JsonProperty("active_entitlements")]
+        [STJS.JsonPropertyName("active_entitlements")]
+        public CustomerSessionComponentsActiveEntitlementsOptions ActiveEntitlements { get; set; }
+
+        /// <summary>
         /// Configuration for buy button.
         /// </summary>
         [JsonProperty("buy_button")]
         [STJS.JsonPropertyName("buy_button")]
         public CustomerSessionComponentsBuyButtonOptions BuyButton { get; set; }
+
+        /// <summary>
+        /// Configuration for customer portal.
+        /// </summary>
+        [JsonProperty("customer_portal")]
+        [STJS.JsonPropertyName("customer_portal")]
+        public CustomerSessionComponentsCustomerPortalOptions CustomerPortal { get; set; }
 
         /// <summary>
         /// Configuration for the customer sheet.
