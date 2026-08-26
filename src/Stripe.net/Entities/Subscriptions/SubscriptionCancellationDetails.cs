@@ -27,6 +27,43 @@ namespace Stripe
         [STJS.JsonPropertyName("feedback")]
         public string Feedback { get; set; }
 
+        #region Expandable FeedbackOption
+
+        /// <summary>
+        /// (ID of the Billing.FeedbackOption)
+        /// Customized feedback options that provide deeper insight into why the subscription was
+        /// canceled, if the subscription was canceled explicitly by the user.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public string FeedbackOptionId
+        {
+            get => this.InternalFeedbackOption?.Id;
+            set => this.InternalFeedbackOption = SetExpandableFieldId(value, this.InternalFeedbackOption);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// Customized feedback options that provide deeper insight into why the subscription was
+        /// canceled, if the subscription was canceled explicitly by the user.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public Billing.FeedbackOption FeedbackOption
+        {
+            get => this.InternalFeedbackOption?.ExpandedObject;
+            set => this.InternalFeedbackOption = SetExpandableFieldObject(value, this.InternalFeedbackOption);
+        }
+
+        [JsonProperty("feedback_option")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Billing.FeedbackOption>))]
+        [STJS.JsonPropertyName("feedback_option")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Billing.FeedbackOption>))]
+        internal ExpandableField<Billing.FeedbackOption> InternalFeedbackOption { get; set; }
+        #endregion
+
         /// <summary>
         /// Why this subscription was canceled.
         /// One of: <c>canceled_by_retention_policy</c>, <c>cancellation_requested</c>,

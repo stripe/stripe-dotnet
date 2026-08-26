@@ -38,8 +38,9 @@ namespace Stripe.BillingPortal
 
         /// <summary>
         /// Type of flow that the customer will go through.
-        /// One of: <c>payment_method_update</c>, <c>subscription_cancel</c>,
-        /// <c>subscription_update</c>, or <c>subscription_update_confirm</c>.
+        /// One of: <c>customer_update</c>, <c>payment_method_update</c>,
+        /// <c>subscription_cancel</c>, <c>subscription_update</c>, or
+        /// <c>subscription_update_confirm</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
