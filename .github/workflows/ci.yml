@@ -241,38 +241,3 @@ jobs:
         if: always()
         with:
           bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
-
-  release-probe-pack:
-    if: github.event_name == 'workflow_dispatch'
-    needs: [build, prepare-dotnet-versions]
-    runs-on: ubuntu-24.04
-    permissions:
-      contents: read
-    steps:
-      - uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4.0.0
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
-        with:
-          dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
-      - run: dotnet tool restore
-      - run: dotnet build src/Stripe.net -c Release /p:ContinuousIntegrationBuild=true
-      - run: dotnet pack src/Stripe.net -c Release --no-build --output nuget
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: release-probe-nuget
-          path: nuget/
-
-  release-probe-consume:
-    if: github.event_name == 'workflow_dispatch'
-    needs: release-probe-pack
-    runs-on: ubuntu-24.04
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
-        with:
-          name: release-probe-nuget
-          path: nuget
-      - run: test -n "$(find nuget -name '*.nupkg' -print -quit)"
