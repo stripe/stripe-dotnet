@@ -98,7 +98,7 @@ namespace Stripe.V2.Core
         public List<AccountIdentityIndividualIdNumber> IdNumbers { get; set; }
 
         /// <summary>
-        /// The individual's gender (International regulations require either "male” or "female").
+        /// The individual's gender (International regulations require either "male" or "female").
         /// One of: <c>female</c>, or <c>male</c>.
         /// </summary>
         [JsonProperty("legal_gender")]

@@ -37,6 +37,9 @@ namespace Stripe
         [STJS.JsonPropertyName("address_kanji")]
         public AddressJapanOptions AddressKanji { get; set; }
 
+        /// <summary>
+        /// The location where the business is administered.
+        /// </summary>
         [JsonProperty("administrative_address")]
         [STJS.JsonPropertyName("administrative_address")]
         public AddressOptions AdministrativeAddress { get; set; }
@@ -162,6 +165,9 @@ namespace Stripe
         [STJS.JsonPropertyName("phone")]
         public string Phone { get; set; }
 
+        /// <summary>
+        /// The primary location where the business conducts operations.
+        /// </summary>
         [JsonProperty("principal_place_of_business")]
         [STJS.JsonPropertyName("principal_place_of_business")]
         public AddressOptions PrincipalPlaceOfBusiness { get; set; }

@@ -9,6 +9,13 @@ namespace Stripe.Tax
     public class RegistrationCountryOptionsFrOptions : INestedOptions
     {
         /// <summary>
+        /// Options for the IGIC registration.
+        /// </summary>
+        [JsonProperty("igic")]
+        [STJS.JsonPropertyName("igic")]
+        public RegistrationCountryOptionsFrIgicOptions Igic { get; set; }
+
+        /// <summary>
         /// Options for the standard registration.
         /// </summary>
         [JsonProperty("standard")]

@@ -28,6 +28,13 @@ namespace Stripe.FinancialConnections
         public List<string> Countries { get; set; }
 
         /// <summary>
+        /// Country from which to filter accounts.
+        /// </summary>
+        [JsonProperty("country")]
+        [STJS.JsonPropertyName("country")]
+        public string Country { get; set; }
+
+        /// <summary>
         /// Whether the Session should require that linked accounts support payments and retrieve
         /// account numbers before completion.
         /// One of: <c>all</c>, <c>at_least_one</c>, or <c>none</c>.
