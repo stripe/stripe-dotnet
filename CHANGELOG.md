@@ -1,5 +1,28 @@
 # Changelog
 
+## 52.5.0-alpha.1 - 2026-08-26
+* [#3430](https://github.com/stripe/stripe-dotnet/pull/3430) Update generated code for private-preview
+  * Add support for new resource `CustomerTaxExemption`
+  * Add support for `Create`, `Delete`, `Get`, and `List` methods on resource `CustomerTaxExemption`
+  * Add support for `Details` on `Account.FutureRequirements.Errors`, `Account.Requirements.Errors`, `BankAccount.FutureRequirements.Errors`, `BankAccount.Requirements.Errors`, `Capability.FutureRequirements.Error`, `Capability.Requirements.Error`, `Person.FutureRequirements.Error`, and `Person.Requirements.Error`
+  * Add support for `PaymentMethodSettings` on `AccountSession.Components`
+  * ⚠️ Remove support for `SequraPayments` on `Account.Capabilities`
+  * Add support for `SubscriptionPause` on `BillingPortalSessionFlowDataOptions`
+  * ⚠️ Remove support for `Sequra` on `Charge.PaymentMethodDetails`, `Checkout.Session.PaymentMethodOptions`, `ConfirmationToken.PaymentMethodPreview`, `PaymentAttemptRecord.PaymentMethodDetails`, `PaymentIntent.PaymentMethodOptions`, and `PaymentRecord.PaymentMethodDetails`
+  * Add support for `FundingSourceGroup` on `Charge.PaymentMethodDetails.Card.Wallet.Link`
+  * Add support for `EnablementDetails` on `Checkout.Session.AutomaticTax`
+  * Add support for `Credit` on `FinancialConnections.Transaction.Classifications`
+  * Add support for `UserConsent` on `Identity.VerificationSessionCreateOptions` and `Identity.VerificationSessionUpdateOptions`
+  * Add support for `Billie` on `InvoicePaymentSettingsPaymentMethodOptionsOptions` and `SubscriptionPaymentSettingsPaymentMethodOptionsOptions`
+  * Add support for `CompanyDetails` on `Invoice.PaymentSettings.PaymentMethodOptions.Billie`, `PaymentIntent.PaymentMethodOptions.Billie`, `PaymentIntentPaymentMethodOptionsBillieOptions`, `QuotePreviewInvoice.PaymentSettings.PaymentMethodOptions.Billie`, and `Subscription.PaymentSettings.PaymentMethodOptions.Billie`
+  * Add support for `Reference` on `Invoice.PaymentSettings.PaymentMethodOptions.Billie`, `PaymentIntent.PaymentMethodOptions.Billie`, `PaymentIntentPaymentMethodOptionsBillieOptions`, and `QuotePreviewInvoice.PaymentSettings.PaymentMethodOptions.Billie`
+  * Add support for `PosCondition` on `Issuing.Authorization` and `Issuing.TestHelpersAuthorizationCreateOptions`
+  * Add support for `CryptoWallet` on `Issuing.CardCreateOptions`, `Issuing.CardUpdateOptions`, and `Issuing.Card`
+  * Add support for `PaymentEvaluations` and `PaymentMethodDetails` on `PaymentAttemptRecordReportAuthorizedOptions`
+  * Add support for `BlikRecurringPayments` on `V2.Core.Account.Configuration.Merchant.Capabilities` and `V2CoreAccountConfigurationMerchantCapabilitiesOptions`
+  * Add support for `UserAccess` on `V2.Iam.ActivityLog.Details`
+* [#3425](https://github.com/stripe/stripe-dotnet/pull/3425) Add non-verified manged handlers
+
 ## 52.4.0-alpha.2 - 2026-08-19
 * [#3423](https://github.com/stripe/stripe-dotnet/pull/3423) Update generated code for private-preview
   * Add support for new resources `Billing.FeedbackOption` and `PaymentPlan`
