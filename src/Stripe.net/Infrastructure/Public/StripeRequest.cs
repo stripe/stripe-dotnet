@@ -165,8 +165,7 @@ namespace Stripe
         /// <param name="path">The relative request path.</param>
         internal static void ValidatePath(string path)
         {
-            if (path == null || !path.StartsWith('/')
-                || path.StartsWith("//"))
+            if (path == null || !path.StartsWith("/") || path.StartsWith("//"))
             {
                 throw new ArgumentException(
                     $"Request path must begin with a single \"/\", got: {path}",
