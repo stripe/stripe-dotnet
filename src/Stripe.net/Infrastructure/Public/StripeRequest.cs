@@ -139,6 +139,41 @@ namespace Stripe
                 this.Uri.ToString());
         }
 
+        /// <summary>
+        /// Asserts that a request path is origin-relative: that it begins with a single
+        /// <c>"/"</c>.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// The absolute URL is built by concatenating a base URL onto this path, and no base URL
+        /// ends in a slash. A path like <c>"@evil.example/v1/x"</c> or
+        /// <c>".evil.example/v1/x"</c> would therefore land inside the authority component and
+        /// send the request -- <c>Authorization</c> header included -- to a host of the path's
+        /// choosing. Some request paths originate in remote data (a webhook body's
+        /// <c>related_object.url</c>, a response's <c>next_page_url</c>), so the path cannot be
+        /// assumed to be well-formed.
+        /// </para>
+        /// <para>
+        /// A single leading slash is sufficient: it terminates the authority component, after
+        /// which nothing in the path can extend it.
+        /// </para>
+        /// <para>
+        /// Stripe only ever issues plain paths, so anything else is tampering and is rejected
+        /// rather than sanitized.
+        /// </para>
+        /// </remarks>
+        /// <param name="path">The relative request path.</param>
+        internal static void ValidatePath(string path)
+        {
+            if (path == null || !path.StartsWith('/')
+                || path.StartsWith("//"))
+            {
+                throw new ArgumentException(
+                    $"Request path must begin with a single \"/\", got: {path}",
+                    nameof(path));
+            }
+        }
+
         internal static Uri BuildUri(
             string baseUrl,
             HttpMethod method,
@@ -146,6 +181,8 @@ namespace Stripe
             BaseOptions options,
             ApiMode apiMode)
         {
+            ValidatePath(path);
+
             var b = new StringBuilder();
 
             b.Append(baseUrl);
