@@ -19,6 +19,8 @@ namespace Stripe.Events
         /// The effect this indicator had on the overall risk level.
         /// One of: <c>decrease</c>, <c>neutral</c>, <c>slight_increase</c>, or
         /// <c>strong_increase</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("impact")]
         [STJS.JsonPropertyName("impact")]
@@ -31,6 +33,8 @@ namespace Stripe.Events
         /// <c>firmographic</c>, <c>lifetime_metrics</c>, <c>payment_processing</c>,
         /// <c>payment_volume</c>, <c>payouts</c>, <c>refunds</c>, <c>tenure</c>, or
         /// <c>transfers</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("indicator")]
         [STJS.JsonPropertyName("indicator")]

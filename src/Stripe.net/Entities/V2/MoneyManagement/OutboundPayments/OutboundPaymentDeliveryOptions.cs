@@ -11,6 +11,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Open Enum. Method for bank account.
         /// One of: <c>automatic</c>, <c>local</c>, or <c>wire</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("bank_account")]
         [STJS.JsonPropertyName("bank_account")]
@@ -26,6 +28,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Open Enum. Speed of the payout.
         /// One of: <c>instant</c>, <c>next_business_day</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("speed")]
         [STJS.JsonPropertyName("speed")]

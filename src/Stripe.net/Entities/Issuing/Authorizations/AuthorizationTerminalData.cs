@@ -12,6 +12,8 @@ namespace Stripe.Issuing
         /// The method used to confirm the cardholder's identity.
         /// One of: <c>failed</c>, <c>none</c>, <c>pin</c>, <c>pin_and_signature</c>,
         /// <c>signature</c>, or <c>unknown</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("cardholder_verification_result")]
         [STJS.JsonPropertyName("cardholder_verification_result")]

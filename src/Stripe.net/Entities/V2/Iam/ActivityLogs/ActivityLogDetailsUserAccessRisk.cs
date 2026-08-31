@@ -12,6 +12,8 @@ namespace Stripe.V2.Iam
         /// <summary>
         /// Risk level for the user access action.
         /// One of: <c>high</c>, <c>low</c>, or <c>medium</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("level")]
         [STJS.JsonPropertyName("level")]

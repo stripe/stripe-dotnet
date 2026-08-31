@@ -12,6 +12,8 @@ namespace Stripe.V2.Core.Health
         /// The impacted Metronome billing pipeline.
         /// One of: <c>configuration_triggered</c>, <c>high_cardinality_usage_triggered</c>,
         /// <c>standard_usage_triggered</c>, or <c>time_triggered</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("pipeline")]
         [STJS.JsonPropertyName("pipeline")]

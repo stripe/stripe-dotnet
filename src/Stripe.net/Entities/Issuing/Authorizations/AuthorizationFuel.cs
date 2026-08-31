@@ -30,6 +30,8 @@ namespace Stripe.Issuing
         /// The type of fuel that was purchased.
         /// One of: <c>diesel</c>, <c>other</c>, <c>unleaded_plus</c>, <c>unleaded_regular</c>, or
         /// <c>unleaded_super</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
@@ -39,6 +41,8 @@ namespace Stripe.Issuing
         /// The units for <c>quantity_decimal</c>.
         /// One of: <c>charging_minute</c>, <c>imperial_gallon</c>, <c>kilogram</c>,
         /// <c>kilowatt_hour</c>, <c>liter</c>, <c>other</c>, <c>pound</c>, or <c>us_gallon</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("unit")]
         [STJS.JsonPropertyName("unit")]

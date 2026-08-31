@@ -23,14 +23,6 @@ namespace Stripe
         public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>
-        /// Indicates whether this subscription should cancel at the end of the current period if
-        /// the update is applied.
-        /// </summary>
-        [JsonProperty("cancel_at_period_end")]
-        [STJS.JsonPropertyName("cancel_at_period_end")]
-        public bool? CancelAtPeriodEnd { get; set; }
-
-        /// <summary>
         /// The pending subscription-level discount that will be applied when the pending update is
         /// applied.
         /// </summary>

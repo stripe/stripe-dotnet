@@ -34,6 +34,8 @@ namespace Stripe.V2.Payments
         /// <summary>
         /// The frequency of the underlying payment.
         /// One of: <c>recurring</c>, or <c>unscheduled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("cadence")]
         [STJS.JsonPropertyName("cadence")]

@@ -20,6 +20,8 @@ namespace Stripe.V2.TestHelpers
         /// in the resulting ReceivedCredit.
         /// One of: <c>ach</c>, <c>acss</c>, <c>chaps</c>, <c>fps</c>, <c>rtp</c>,
         /// <c>sepa_credit_transfer</c>, or <c>wire</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]

@@ -23,6 +23,33 @@
   * Add support for `UserAccess` on `V2.Iam.ActivityLog.Details`
 * [#3425](https://github.com/stripe/stripe-dotnet/pull/3425) Add non-verified manged handlers
 
+## 52.4.0 - 2026-08-26
+This release changes the pinned API version to 2026-08-26.dahlia.
+
+* [#3426](https://github.com/stripe/stripe-dotnet/pull/3426) Add new `EventNotificationHandler` class for better thin event management
+  
+  - We've been putting a lot of time into rethinking the event handling experience in the SDKs. This new class is the culmination [of that effort](https://stripe.dev/blog/event-notification-handlers-thin-events).
+  - They're designed for a tight coupling with both `StripeClient` and the fully-typed nature of [thin events](https://docs.stripe.com/event-destinations#thin-events). This delivers painless event destination upgrades, in-editor checks for common mistakes, and better code modularity.
+  - Now that we've released [thin event notifications for v1 objects](https://docs.stripe.com/changelog#2026-08-26.dahlia), these new handlers are our recommended path for all integrations using thin event notifications.
+  - See more detailed docs here: https://docs.stripe.com/webhooks/event-notification-handlers
+* [#3436](https://github.com/stripe/stripe-dotnet/pull/3436) Update generated code
+  * Add support for new resource `Billing.FeedbackOption`
+  * Add support for `Create`, `Deactivate`, `Get`, `List`, and `Update` methods on resource `Billing.FeedbackOption`
+  * Add support for `PaymentMethodSettings` on `AccountSession.Components` and `AccountSessionComponentsOptions`
+  * Add support for `FeedbackOptions` on `BillingPortal.Configuration.Features.SubscriptionCancel.CancellationReason` and `BillingPortalConfigurationFeaturesSubscriptionCancelCancellationReasonOptions`
+  * Add support for `CustomerUpdate` on `BillingPortal.Session.Flow`
+  * Add support for `FundingSourceGroup` on `Charge.PaymentMethodDetails.Card.Wallet.Link` and `Charge.PaymentMethodDetails.Link`
+  * Add support for `FundingTypesBlocked` on `Checkout.Session.PaymentMethodOptions.Card.Restrictions` and `CheckoutSessionPaymentMethodOptionsCardRestrictionsOptions`
+  * Add support for `Metadata` on `ConfirmationToken`
+  * Add support for `ActiveEntitlements` and `CustomerPortal` on `CustomerSession.Components` and `CustomerSessionComponentsOptions`
+  * Add support for `Country` on `FinancialConnections.Session.Filters`
+  * Add support for `FrozenFields` on `InvoiceItem`
+  * Add support for `Billie` on `Invoice.PaymentSettings.PaymentMethodOptions`, `InvoicePaymentSettingsPaymentMethodOptionsOptions`, `Subscription.PaymentSettings.PaymentMethodOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsOptions`
+  * ⚠️ Remove support for `Cryptogram` on `PaymentAttemptRecord.PaymentMethodDetails.Card.ThreeDSecure` and `PaymentRecord.PaymentMethodDetails.Card.ThreeDSecure`
+  * Add support for `ApplicationFeeAmount`, `ApplicationFeePercent`, `OnBehalfOf`, and `TransferData` on `PaymentLinkUpdateOptions`
+  * Add support for `FeedbackOption` on `Subscription.CancellationDetails` and `SubscriptionCancellationDetailsOptions`
+  * Add support for `Igic` on `Tax.Registration.CountryOptions.At`, `Tax.Registration.CountryOptions.Be`, `Tax.Registration.CountryOptions.Bg`, `Tax.Registration.CountryOptions.Cy`, `Tax.Registration.CountryOptions.Cz`, `Tax.Registration.CountryOptions.De`, `Tax.Registration.CountryOptions.Dk`, `Tax.Registration.CountryOptions.Ee`, `Tax.Registration.CountryOptions.Es`, `Tax.Registration.CountryOptions.Fi`, `Tax.Registration.CountryOptions.Fr`, `Tax.Registration.CountryOptions.Gr`, `Tax.Registration.CountryOptions.Hr`, `Tax.Registration.CountryOptions.Hu`, `Tax.Registration.CountryOptions.Ie`, `Tax.Registration.CountryOptions.It`, `Tax.Registration.CountryOptions.Lt`, `Tax.Registration.CountryOptions.Lu`, `Tax.Registration.CountryOptions.Lv`, `Tax.Registration.CountryOptions.Mt`, `Tax.Registration.CountryOptions.Nl`, `Tax.Registration.CountryOptions.Pl`, `Tax.Registration.CountryOptions.Pt`, `Tax.Registration.CountryOptions.Ro`, `Tax.Registration.CountryOptions.Se`, `Tax.Registration.CountryOptions.Si`, `Tax.Registration.CountryOptions.Sk`, `TaxRegistrationCountryOptionsAtOptions`, `TaxRegistrationCountryOptionsBeOptions`, `TaxRegistrationCountryOptionsBgOptions`, `TaxRegistrationCountryOptionsCyOptions`, `TaxRegistrationCountryOptionsCzOptions`, `TaxRegistrationCountryOptionsDeOptions`, `TaxRegistrationCountryOptionsDkOptions`, `TaxRegistrationCountryOptionsEeOptions`, `TaxRegistrationCountryOptionsEsOptions`, `TaxRegistrationCountryOptionsFiOptions`, `TaxRegistrationCountryOptionsFrOptions`, `TaxRegistrationCountryOptionsGrOptions`, `TaxRegistrationCountryOptionsHrOptions`, `TaxRegistrationCountryOptionsHuOptions`, `TaxRegistrationCountryOptionsIeOptions`, `TaxRegistrationCountryOptionsItOptions`, `TaxRegistrationCountryOptionsLtOptions`, `TaxRegistrationCountryOptionsLuOptions`, `TaxRegistrationCountryOptionsLvOptions`, `TaxRegistrationCountryOptionsMtOptions`, `TaxRegistrationCountryOptionsNlOptions`, `TaxRegistrationCountryOptionsPlOptions`, `TaxRegistrationCountryOptionsPtOptions`, `TaxRegistrationCountryOptionsRoOptions`, `TaxRegistrationCountryOptionsSeOptions`, `TaxRegistrationCountryOptionsSiOptions`, and `TaxRegistrationCountryOptionsSkOptions`
+
 ## 52.4.0-alpha.2 - 2026-08-19
 * [#3423](https://github.com/stripe/stripe-dotnet/pull/3423) Update generated code for private-preview
   * Add support for new resources `Billing.FeedbackOption` and `PaymentPlan`

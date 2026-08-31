@@ -38,6 +38,8 @@ namespace Stripe.Crypto
         /// The type of customer acceptance information included with the Mandate. One of
         /// <c>online</c> or <c>offline</c>.
         /// One of: <c>offline</c>, or <c>online</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

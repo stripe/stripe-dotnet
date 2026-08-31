@@ -31,6 +31,8 @@ namespace Stripe
         /// When to resume the subscription. Use <c>now</c> to resume immediately, <c>duration</c>
         /// to resume after a set duration, or <c>timestamp</c> to resume at a specific time.
         /// One of: <c>duration</c>, <c>now</c>, or <c>timestamp</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -25,6 +25,8 @@ namespace Stripe.Radar
         /// <summary>
         /// The type of context entry.
         /// One of: <c>client_details</c>, or <c>customer_details</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

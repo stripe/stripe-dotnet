@@ -39,6 +39,8 @@ namespace Stripe
         /// and the value is one of <c>enabled</c>, <c>disabled</c>, or
         /// <c>restricted_by_application</c>.
         /// One of: <c>disabled</c>, <c>enabled</c>, or <c>restricted_by_application</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("settlement_currencies")]
         [STJS.JsonPropertyName("settlement_currencies")]

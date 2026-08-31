@@ -53,6 +53,8 @@ namespace Stripe.DelegatedCheckout
         /// <summary>
         /// The type of discount.
         /// One of: <c>cart</c>, or <c>fulfillment</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -19,6 +19,8 @@ namespace Stripe
         /// <summary>
         /// Only <c>maximum</c> is supported.
         /// One of: <c>fixed</c>, or <c>maximum</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("amount_type")]
         [STJS.JsonPropertyName("amount_type")]
@@ -30,6 +32,8 @@ namespace Stripe
         /// One of: <c>dependant_support</c>, <c>government</c>, <c>loan</c>, <c>mortgage</c>,
         /// <c>other</c>, <c>pension</c>, <c>personal</c>, <c>retail</c>, <c>salary</c>, <c>tax</c>,
         /// or <c>utility</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("purpose")]
         [STJS.JsonPropertyName("purpose")]

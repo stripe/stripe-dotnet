@@ -10,6 +10,9 @@ namespace Stripe.V2.Tax
     {
         /// <summary>
         /// A code describing the issue.
+        /// One of: <c>required_for_improved_precision</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]

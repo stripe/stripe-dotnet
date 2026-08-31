@@ -7,8 +7,19 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SessionPaymentIntentDataOptions : INestedOptions, IHasMetadata
+    public class SessionPaymentIntentDataOptions : INestedOptions, IHasMetadata, IHasSetTracking
     {
+        private string description;
+        private Dictionary<string, string> metadata;
+        private string receiptEmail;
+        private string setupFutureUsage;
+        private string statementDescriptor;
+        private string statementDescriptorSuffix;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The amount of the application fee (if any) that will be requested to be applied to the
         /// payment and transferred to the application owner's Stripe account. The amount of the
@@ -24,17 +35,29 @@ namespace Stripe.Checkout
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("capture_method")]
         [STJS.JsonPropertyName("capture_method")]
         public string CaptureMethod { get; set; }
 
         /// <summary>
-        /// An arbitrary string attached to the object. Often useful for displaying to users.
+        /// An arbitrary string attached to the object. Often useful for displaying to users. Pass
+        /// an empty string to clear a previously configured value.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("description")]
-        public string Description { get; set; }
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public string Description
+        {
+            get => this.description;
+            set
+            {
+                this.description = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
@@ -42,9 +65,18 @@ namespace Stripe.Checkout
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public Dictionary<string, string> Metadata
+        {
+            get => this.metadata;
+            set
+            {
+                this.metadata = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The Stripe account ID for which these funds are intended. For details, see the
@@ -59,11 +91,20 @@ namespace Stripe.Checkout
         /// Email address that the receipt for the resulting payment will be sent to. If
         /// <c>receipt_email</c> is specified for a payment in live mode, a receipt will be sent
         /// regardless of your <a href="https://dashboard.stripe.com/account/emails">email
-        /// settings</a>.
+        /// settings</a>. Pass an empty string to clear a previously configured recipient.
         /// </summary>
-        [JsonProperty("receipt_email")]
+        [JsonProperty("receipt_email", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("receipt_email")]
-        public string ReceiptEmail { get; set; }
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public string ReceiptEmail
+        {
+            get => this.receiptEmail;
+            set
+            {
+                this.receiptEmail = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Indicates that you intend to <a
@@ -86,11 +127,24 @@ namespace Stripe.Checkout
         /// When processing card payments, Checkout also uses <c>setup_future_usage</c> to
         /// dynamically optimize your payment flow and comply with regional legislation and network
         /// rules, such as SCA.
+        ///
+        /// Pass an empty string to remove a previously supplied configuration.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
-        [JsonProperty("setup_future_usage")]
+        [JsonProperty("setup_future_usage", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("setup_future_usage")]
-        public string SetupFutureUsage { get; set; }
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public string SetupFutureUsage
+        {
+            get => this.setupFutureUsage;
+            set
+            {
+                this.setupFutureUsage = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Shipping information for this payment.
@@ -108,21 +162,39 @@ namespace Stripe.Checkout
         ///
         /// Setting this value for a card charge returns an error. For card charges, set the <a
         /// href="https://docs.stripe.com/get-started/account/statement-descriptors#dynamic">statement_descriptor_suffix</a>
-        /// instead.
+        /// instead. Pass an empty string to clear a previously configured value.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonProperty("statement_descriptor", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("statement_descriptor")]
-        public string StatementDescriptor { get; set; }
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public string StatementDescriptor
+        {
+            get => this.statementDescriptor;
+            set
+            {
+                this.statementDescriptor = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Provides information about a card charge. Concatenated to the account's <a
         /// href="https://docs.stripe.com/get-started/account/statement-descriptors#static">statement
         /// descriptor prefix</a> to form the complete statement descriptor that appears on the
-        /// customer's statement.
+        /// customer's statement. Pass an empty string to clear a previously configured value.
         /// </summary>
-        [JsonProperty("statement_descriptor_suffix")]
+        [JsonProperty("statement_descriptor_suffix", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("statement_descriptor_suffix")]
-        public string StatementDescriptorSuffix { get; set; }
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public string StatementDescriptorSuffix
+        {
+            get => this.statementDescriptorSuffix;
+            set
+            {
+                this.statementDescriptorSuffix = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The parameters used to automatically create a Transfer when the payment succeeds. For
@@ -143,5 +215,10 @@ namespace Stripe.Checkout
         [JsonProperty("transfer_group")]
         [STJS.JsonPropertyName("transfer_group")]
         public string TransferGroup { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

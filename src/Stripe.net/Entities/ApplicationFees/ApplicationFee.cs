@@ -278,6 +278,8 @@ namespace Stripe
         /// Type of settlement for the application fee. One of <c>net_settled</c> or
         /// <c>gross_settled</c>.
         /// One of: <c>gross_settled</c>, or <c>net_settled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("settlement_type")]
         [STJS.JsonPropertyName("settlement_type")]

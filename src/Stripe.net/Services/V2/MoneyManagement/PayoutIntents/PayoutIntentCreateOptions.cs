@@ -20,6 +20,8 @@ namespace Stripe.V2.MoneyManagement
         /// Controls whether the intent requires explicit confirmation before transitioning to
         /// pending. Defaults to automatic.
         /// One of: <c>automatic</c>, or <c>manual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("confirmation_method")]
         [STJS.JsonPropertyName("confirmation_method")]

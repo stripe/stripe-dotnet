@@ -75,6 +75,8 @@ namespace Stripe
         /// <c>fraudulent</c>, <c>general</c>, <c>incorrect_account_details</c>,
         /// <c>insufficient_funds</c>, <c>noncompliant</c>, <c>product_not_received</c>,
         /// <c>product_unacceptable</c>, <c>subscription_canceled</c>, or <c>unrecognized</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

@@ -13,6 +13,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Open Enum. Duration of the FX rate lock.
         /// One of: <c>five_minutes</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("lock_duration")]
         [STJS.JsonPropertyName("lock_duration")]
@@ -28,6 +30,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Open Enum. Lock status of the FX rate.
         /// One of: <c>active</c>, <c>expired</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("lock_status")]
         [STJS.JsonPropertyName("lock_status")]

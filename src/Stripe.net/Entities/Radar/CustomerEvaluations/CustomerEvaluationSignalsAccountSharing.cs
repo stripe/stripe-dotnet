@@ -22,6 +22,8 @@ namespace Stripe.Radar
         /// The risk level for this signal.
         /// One of: <c>elevated</c>, <c>highest</c>, <c>low</c>, <c>normal</c>, <c>not_assessed</c>,
         /// or <c>unknown</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("risk_level")]
         [STJS.JsonPropertyName("risk_level")]

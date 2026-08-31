@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// The code for the type of error.
         /// One of: <c>information_missing</c>, or <c>invalid_value_other</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]

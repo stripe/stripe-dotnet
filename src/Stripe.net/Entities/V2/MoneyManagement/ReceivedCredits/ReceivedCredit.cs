@@ -115,6 +115,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Open Enum. The status of the ReceivedCredit.
         /// One of: <c>failed</c>, <c>pending</c>, <c>returned</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -157,6 +159,8 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>balance_transfer</c>, <c>bank_transfer</c>, <c>card_spend</c>,
         /// <c>crypto_wallet_transfer</c>, <c>external_credit</c>, <c>stripe_balance_payment</c>, or
         /// <c>stripe_network_transfer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

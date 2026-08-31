@@ -12,6 +12,8 @@ namespace Stripe.V2.Payments
         /// The code of the error that occurred when validating the current amount details.
         /// One of: <c>amount_details_amount_mismatch</c>, or
         /// <c>amount_details_amount_greater_than_tax_shipping_discount</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]

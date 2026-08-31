@@ -18,6 +18,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Filter by status.
         /// One of: <c>failed</c>, <c>submitted</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

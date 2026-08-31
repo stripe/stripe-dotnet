@@ -14,6 +14,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/payments/deposit-mode-stablecoin-payments#token-and-network-support">supported
         /// networks and tokens</a>.
         /// One of: <c>base</c>, <c>ethereum</c>, <c>polygon</c>, <c>solana</c>, or <c>tempo</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("networks")]
         [STJS.JsonPropertyName("networks")]

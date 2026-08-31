@@ -50,6 +50,15 @@ namespace Stripe
         [STJS.JsonPropertyName("capital_financing_application")]
         public AccountSessionComponentsCapitalFinancingApplication CapitalFinancingApplication { get; set; }
 
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/capital-financing-manual-payment/">Capital
+        /// financing manual payment</a> embedded component.
+        /// </summary>
+        [JsonProperty("capital_financing_manual_payment")]
+        [STJS.JsonPropertyName("capital_financing_manual_payment")]
+        public AccountSessionComponentsCapitalFinancingManualPayment CapitalFinancingManualPayment { get; set; }
+
         [JsonProperty("capital_financing_promotion")]
         [STJS.JsonPropertyName("capital_financing_promotion")]
         public AccountSessionComponentsCapitalFinancingPromotion CapitalFinancingPromotion { get; set; }

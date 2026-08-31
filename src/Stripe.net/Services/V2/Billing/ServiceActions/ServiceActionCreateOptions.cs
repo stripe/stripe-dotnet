@@ -49,6 +49,8 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// The type of the service action.
         /// One of: <c>credit_grant</c>, or <c>credit_grant_per_tenant</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

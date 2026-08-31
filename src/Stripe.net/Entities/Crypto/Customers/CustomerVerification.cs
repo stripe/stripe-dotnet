@@ -13,6 +13,8 @@ namespace Stripe.Crypto
         /// List of errors associated with the verification.
         /// One of: <c>id_document_verification_failed</c>, <c>phone_verification_failed</c>, or
         /// <c>user_has_reached_max_verification_attempts</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("errors")]
         [STJS.JsonPropertyName("errors")]
@@ -21,6 +23,8 @@ namespace Stripe.Crypto
         /// <summary>
         /// Type of verification.
         /// One of: <c>id_document_verified</c>, <c>kyc_verified</c>, or <c>phone_verified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("name")]
         [STJS.JsonPropertyName("name")]
@@ -30,6 +34,8 @@ namespace Stripe.Crypto
         /// Outcome of the verification.
         /// One of: <c>not_available</c>, <c>not_started</c>, <c>pending</c>, <c>rejected</c>, or
         /// <c>verified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

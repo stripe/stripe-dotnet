@@ -12,6 +12,8 @@ namespace Stripe
         /// <summary>
         /// Supported meal voucher issuers for card payments.
         /// One of: <c>bimpli</c>, <c>edenred</c>, <c>pluxee</c>, or <c>up</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("card")]
         [STJS.JsonPropertyName("card")]
@@ -20,6 +22,8 @@ namespace Stripe
         /// <summary>
         /// Supported meal voucher issuers for card present payments.
         /// One of: <c>bimpli</c>, <c>edenred</c>, <c>pluxee</c>, or <c>up</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("card_present")]
         [STJS.JsonPropertyName("card_present")]

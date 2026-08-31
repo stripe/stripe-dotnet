@@ -48,6 +48,8 @@ namespace Stripe.V2.Core.Health
         /// <summary>
         /// Filter by alert severity.
         /// One of: <c>critical</c>, or <c>non_critical</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("severity")]
         [STJS.JsonPropertyName("severity")]
@@ -56,6 +58,8 @@ namespace Stripe.V2.Core.Health
         /// <summary>
         /// Filter by alert status.
         /// One of: <c>open</c>, or <c>resolved</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -69,6 +73,8 @@ namespace Stripe.V2.Core.Health
         /// <c>issuing_authorization_request_timeout</c>, <c>meter_event_summaries_delayed</c>,
         /// <c>metronome_notification_latency</c>, <c>payment_method_error</c>,
         /// <c>sepa_debit_delayed</c>, <c>traffic_volume_drop</c>, or <c>webhook_latency</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("types")]
         [STJS.JsonPropertyName("types")]

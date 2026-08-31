@@ -34,6 +34,8 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// The frequency at which a cadence bills.
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

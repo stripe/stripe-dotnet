@@ -52,6 +52,8 @@ namespace Stripe.V2.Payments
         /// Filter the SettlementAllocationIntents by status.
         /// One of: <c>canceled</c>, <c>errored</c>, <c>matched</c>, <c>pending</c>, <c>settled</c>,
         /// or <c>submitted</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

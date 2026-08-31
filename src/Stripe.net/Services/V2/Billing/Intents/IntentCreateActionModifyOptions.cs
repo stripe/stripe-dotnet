@@ -12,6 +12,8 @@ namespace Stripe.V2.Billing
         /// When the invoice is collected. If not specified, the default behavior is
         /// next_billing_date.
         /// One of: <c>next_billing_date</c>, or <c>on_effective_at</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("collect_at")]
         [STJS.JsonPropertyName("collect_at")]

@@ -18,6 +18,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// The type of funding source for this credit FinancialAccount.
         /// One of: <c>platform</c>, or <c>stripe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

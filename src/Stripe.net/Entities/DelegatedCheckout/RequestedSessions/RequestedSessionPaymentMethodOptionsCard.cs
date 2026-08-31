@@ -12,6 +12,8 @@ namespace Stripe.DelegatedCheckout
         /// <summary>
         /// The card brands blocked by the agent.
         /// One of: <c>american_express</c>, <c>mastercard</c>, or <c>visa</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("brands_blocked")]
         [STJS.JsonPropertyName("brands_blocked")]

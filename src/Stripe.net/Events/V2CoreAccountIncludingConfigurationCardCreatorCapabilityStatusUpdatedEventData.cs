@@ -19,6 +19,8 @@ namespace Stripe.Events
         /// <c>commercial.stripe.spend_card</c>, <c>consumer.celtic.revolving_credit_card</c>,
         /// <c>consumer.cross_river_bank.prepaid_card</c>, <c>consumer.lead.debit_card</c>, or
         /// <c>consumer.lead.prepaid_card</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("updated_capability")]
         [STJS.JsonPropertyName("updated_capability")]

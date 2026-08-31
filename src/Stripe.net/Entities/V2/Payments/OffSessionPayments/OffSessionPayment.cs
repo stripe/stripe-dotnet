@@ -75,6 +75,8 @@ namespace Stripe.V2.Payments
         /// <summary>
         /// The frequency of the underlying payment.
         /// One of: <c>recurring</c>, or <c>unscheduled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("cadence")]
         [STJS.JsonPropertyName("cadence")]
@@ -113,6 +115,8 @@ namespace Stripe.V2.Payments
         /// The reason why the OffSessionPayment failed.
         /// One of: <c>authorization_expired</c>, <c>exceeded_retry_window</c>,
         /// <c>no_valid_payment_method</c>, <c>rejected_by_partner</c>, or <c>retries_exhausted</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("failure_reason")]
         [STJS.JsonPropertyName("failure_reason")]
@@ -220,6 +224,8 @@ namespace Stripe.V2.Payments
         /// <c>succeeded</c>.
         /// One of: <c>canceled</c>, <c>failed</c>, <c>paused</c>, <c>pending</c>,
         /// <c>pending_retry</c>, <c>processing</c>, <c>requires_capture</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

@@ -18,6 +18,8 @@ namespace Stripe.V2.Iam
         /// <summary>
         /// The action group type of the activity log entry.
         /// One of: <c>api_key</c>, <c>user_access</c>, <c>user_invite</c>, or <c>user_roles</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

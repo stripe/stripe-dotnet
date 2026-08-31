@@ -10,6 +10,9 @@ namespace Stripe.V2.Billing
     {
         /// <summary>
         /// The type of maximum applications configuration.
+        /// One of: <c>indefinite</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

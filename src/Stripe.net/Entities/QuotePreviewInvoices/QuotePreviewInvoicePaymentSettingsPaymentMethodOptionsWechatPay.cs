@@ -19,6 +19,8 @@ namespace Stripe
         /// <summary>
         /// The client type that the end customer will pay from.
         /// One of: <c>android</c>, <c>ios</c>, <c>mobile_web</c>, or <c>web</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("client")]
         [STJS.JsonPropertyName("client")]

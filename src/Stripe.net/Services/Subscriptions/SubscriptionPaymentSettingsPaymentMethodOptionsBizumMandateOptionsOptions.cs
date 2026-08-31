@@ -17,6 +17,9 @@ namespace Stripe
 
         /// <summary>
         /// Indicates the mandate amount type.
+        /// One of: <c>fixed</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("amount_type")]
         [STJS.JsonPropertyName("amount_type")]

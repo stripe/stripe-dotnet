@@ -30,6 +30,8 @@ namespace Stripe.V2.MoneyManagement
         /// <c>type</c> are returned.
         /// One of: <c>accrued_fees</c>, <c>credit</c>, <c>multiprocessor_settlement</c>,
         /// <c>payments</c>, or <c>storage</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("types")]
         [STJS.JsonPropertyName("types")]

@@ -10,6 +10,9 @@ namespace Stripe.V2.Billing
     {
         /// <summary>
         /// The entity that the discount rule applies to, for example, the cadence.
+        /// One of: <c>cadence</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("applies_to")]
         [STJS.JsonPropertyName("applies_to")]
@@ -24,6 +27,9 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// Type of the discount rule.
+        /// One of: <c>percent_off</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

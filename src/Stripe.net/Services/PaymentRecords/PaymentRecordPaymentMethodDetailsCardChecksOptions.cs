@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// The result of the check on the cardholder's address line 1.
         /// One of: <c>fail</c>, <c>pass</c>, <c>unavailable</c>, or <c>unchecked</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("address_line1_check")]
         [STJS.JsonPropertyName("address_line1_check")]
@@ -19,6 +21,8 @@ namespace Stripe
         /// <summary>
         /// The result of the check on the cardholder's postal code.
         /// One of: <c>fail</c>, <c>pass</c>, <c>unavailable</c>, or <c>unchecked</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("address_postal_code_check")]
         [STJS.JsonPropertyName("address_postal_code_check")]
@@ -27,6 +31,8 @@ namespace Stripe
         /// <summary>
         /// The result of the check on the card's CVC.
         /// One of: <c>fail</c>, <c>pass</c>, <c>unavailable</c>, or <c>unchecked</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("cvc_check")]
         [STJS.JsonPropertyName("cvc_check")]

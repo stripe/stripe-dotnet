@@ -45,6 +45,8 @@ namespace Stripe
         /// The type of connector used for the charging session.
         /// One of: <c>ac_gb_t</c>, <c>ac_j1772</c>, <c>ac_mennekes</c>, <c>dc_ccs1</c>,
         /// <c>dc_ccs2</c>, <c>dc_chademo</c>, <c>dc_gb_t</c>, <c>dc_mcs</c>, or <c>nacs</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("connector_type")]
         [STJS.JsonPropertyName("connector_type")]

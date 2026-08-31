@@ -230,6 +230,8 @@ namespace Stripe.Billing.Analytics
         /// <c>US/East-Indiana</c>, <c>US/Eastern</c>, <c>US/Hawaii</c>, <c>US/Indiana-Starke</c>,
         /// <c>US/Michigan</c>, <c>US/Mountain</c>, <c>US/Pacific</c>, <c>US/Pacific-New</c>,
         /// <c>US/Samoa</c>, <c>UTC</c>, <c>Universal</c>, <c>W-SU</c>, <c>WET</c>, or <c>Zulu</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("timezone")]
         [STJS.JsonPropertyName("timezone")]
@@ -239,6 +241,8 @@ namespace Stripe.Billing.Analytics
         /// Specifies what granularity to use when aggregating meter usage events. If not specified,
         /// a single event would be returned for the specified time range.
         /// One of: <c>day</c>, <c>hour</c>, <c>month</c>, or <c>week</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("value_grouping_window")]
         [STJS.JsonPropertyName("value_grouping_window")]

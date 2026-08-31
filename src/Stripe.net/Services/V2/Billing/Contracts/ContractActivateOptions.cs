@@ -13,6 +13,8 @@ namespace Stripe.V2.Billing
         /// Additional fields to include in the response.
         /// One of: <c>billing_settings</c>, <c>one_time_fees</c>, <c>pricing_lines</c>, or
         /// <c>pricing_overrides</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("include")]
         [STJS.JsonPropertyName("include")]

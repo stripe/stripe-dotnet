@@ -44,6 +44,8 @@ namespace Stripe.Tax
         /// <summary>
         /// The status of the Tax <c>Settings</c>.
         /// One of: <c>active</c>, or <c>pending</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

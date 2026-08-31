@@ -33,6 +33,8 @@ namespace Stripe.V2.Core
         /// <c>sk</c>, <c>sk-SK</c>, <c>sl</c>, <c>sl-SI</c>, <c>sv</c>, <c>sv-SE</c>, <c>th</c>,
         /// <c>th-TH</c>, <c>tr</c>, <c>tr-TR</c>, <c>vi</c>, <c>vi-VN</c>, <c>zh</c>,
         /// <c>zh-Hans</c>, <c>zh-Hant-HK</c>, <c>zh-Hant-TW</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("locales")]
         [STJS.JsonPropertyName("locales")]

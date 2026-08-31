@@ -25,6 +25,8 @@ namespace Stripe.Billing
         /// <summary>
         /// What type of filter is being applied to this credit balance alert.
         /// One of: <c>customer</c>, or <c>tenant</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -45,6 +45,8 @@ namespace Stripe
         /// phase changes and generate prorations at transition time. <c>prorate_up_front</c> will
         /// bill for all phases within the current billing cycle up front.
         /// One of: <c>prorate_on_next_phase</c>, or <c>prorate_up_front</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("billing_behavior")]
         [STJS.JsonPropertyName("billing_behavior")]
@@ -135,6 +137,8 @@ namespace Stripe
         /// <summary>
         /// Behavior of the subscription schedule and underlying subscription when it ends.
         /// One of: <c>cancel</c>, or <c>release</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("end_behavior")]
         [STJS.JsonPropertyName("end_behavior")]
@@ -166,6 +170,8 @@ namespace Stripe
         /// Configures how the subscription schedule handles billing for phase transitions when the
         /// quote is accepted.
         /// One of: <c>billing_period_start</c>, or <c>phase_start</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("phase_effective_at")]
         [STJS.JsonPropertyName("phase_effective_at")]
@@ -204,6 +210,8 @@ namespace Stripe
         ///
         /// Prorations can be disabled by passing <c>none</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]

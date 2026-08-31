@@ -104,6 +104,8 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// The current status of the contract.
         /// One of: <c>active</c>, <c>canceled</c>, <c>draft</c>, or <c>ended</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

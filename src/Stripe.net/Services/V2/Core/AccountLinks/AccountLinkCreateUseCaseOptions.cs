@@ -44,6 +44,8 @@ namespace Stripe.V2.Core
         /// Open Enum. The type of Account Link the user is requesting.
         /// One of: <c>account_onboarding</c>, <c>account_update</c>, <c>recipient_onboarding</c>,
         /// or <c>recipient_update</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

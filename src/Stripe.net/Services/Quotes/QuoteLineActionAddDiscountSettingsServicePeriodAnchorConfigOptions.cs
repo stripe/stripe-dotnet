@@ -18,6 +18,8 @@ namespace Stripe
         /// <summary>
         /// The type of service period anchor config. Defaults to <c>inherit</c> if omitted.
         /// One of: <c>custom</c>, or <c>inherit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -21,6 +21,8 @@ namespace Stripe.V2.Billing
         /// When the deactivate action takes effect.
         /// One of: <c>current_billing_period_end</c>, <c>current_billing_period_start</c>,
         /// <c>on_reserve</c>, or <c>timestamp</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

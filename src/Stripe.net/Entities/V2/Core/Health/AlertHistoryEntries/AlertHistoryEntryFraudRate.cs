@@ -11,6 +11,8 @@ namespace Stripe.V2.Core.Health
         /// <summary>
         /// Fraud attack type.
         /// One of: <c>spike</c>, or <c>sustained_attack</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("attack_type")]
         [STJS.JsonPropertyName("attack_type")]

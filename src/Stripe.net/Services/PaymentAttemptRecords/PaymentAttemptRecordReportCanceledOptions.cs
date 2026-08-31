@@ -49,6 +49,9 @@ namespace Stripe
 
         /// <summary>
         /// The reason the payment attempt was canceled.
+        /// One of: <c>blocked_for_fraud</c>, or <c>merchant_canceled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

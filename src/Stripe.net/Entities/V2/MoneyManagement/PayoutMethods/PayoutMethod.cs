@@ -105,6 +105,8 @@ namespace Stripe.V2.MoneyManagement
         /// Closed Enum. The type of payout method.
         /// One of: <c>bank_account</c>, <c>card</c>, <c>crypto_wallet</c>, or
         /// <c>network_business_profile_wallet</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

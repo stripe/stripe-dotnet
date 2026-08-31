@@ -30,6 +30,8 @@ namespace Stripe
         /// <summary>
         /// The status of the capability protection.
         /// One of: <c>active</c>, <c>disrupted</c>, <c>expired</c>, or <c>inactive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

@@ -40,6 +40,8 @@ namespace Stripe
         /// The type of parent that generated this invoice item.
         /// One of: <c>pricing_plan_subscription_details</c>, <c>rate_card_subscription_details</c>,
         /// <c>schedule_details</c>, or <c>subscription_details</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

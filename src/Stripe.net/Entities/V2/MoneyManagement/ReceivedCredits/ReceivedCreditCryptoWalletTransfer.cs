@@ -27,6 +27,8 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>ca_bank_account</c>, <c>crypto_wallet</c>, <c>eu_bank_account</c>,
         /// <c>gb_bank_account</c>, <c>mx_bank_account</c>, <c>sepa_bank_account</c>, or
         /// <c>us_bank_account</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("origin_type")]
         [STJS.JsonPropertyName("origin_type")]

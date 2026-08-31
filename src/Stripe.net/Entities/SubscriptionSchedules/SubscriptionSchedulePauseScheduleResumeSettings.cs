@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// The billing cycle anchor that applies when the subscription is resumed.
         /// One of: <c>resume_at</c>, or <c>unchanged</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [STJS.JsonPropertyName("billing_cycle_anchor")]
@@ -20,6 +22,8 @@ namespace Stripe
         /// Controls whether Stripe attempts payment on the resumption invoice and how that affects
         /// the subscription's status.
         /// One of: <c>resume_on_payment_attempt</c>, or <c>resume_on_payment_success</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_behavior")]
         [STJS.JsonPropertyName("payment_behavior")]
@@ -29,6 +33,8 @@ namespace Stripe
         /// Determines how to handle prorations resulting from the billing_cycle_anchor change on
         /// resume.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]

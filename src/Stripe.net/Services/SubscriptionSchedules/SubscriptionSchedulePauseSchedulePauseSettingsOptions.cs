@@ -18,6 +18,8 @@ namespace Stripe
         /// <summary>
         /// Determines whether to generate an invoice for outstanding amounts when pausing.
         /// One of: <c>invoice</c>, or <c>pending_invoice_item</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("invoicing_behavior")]
         [STJS.JsonPropertyName("invoicing_behavior")]
@@ -25,6 +27,9 @@ namespace Stripe
 
         /// <summary>
         /// The pause type. Currently only <c>subscription</c> is supported.
+        /// One of: <c>subscription</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -19,6 +19,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Filter by mandate status.
         /// One of: <c>active</c>, <c>canceled</c>, <c>expired</c>, or <c>pending_cancellation</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("statuses")]
         [STJS.JsonPropertyName("statuses")]
@@ -26,6 +28,9 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// The type of ReceivedDebitMandate to filter by.
+        /// One of: <c>bank_transfer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

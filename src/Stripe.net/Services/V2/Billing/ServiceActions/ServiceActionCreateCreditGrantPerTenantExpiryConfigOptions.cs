@@ -10,6 +10,9 @@ namespace Stripe.V2.Billing
     {
         /// <summary>
         /// The type of the expiry configuration. We currently support <c>end_of_service_period</c>.
+        /// One of: <c>end_of_service_period</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

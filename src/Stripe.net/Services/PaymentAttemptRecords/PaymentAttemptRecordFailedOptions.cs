@@ -26,6 +26,8 @@ namespace Stripe
         /// One of: <c>charge_for_pending_refund_disputed</c>, <c>declined</c>,
         /// <c>expired_or_canceled_card</c>, <c>insufficient_funds</c>, <c>lost_or_stolen_card</c>,
         /// <c>merchant_request</c>, or <c>unknown</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("failure_reason")]
         [STJS.JsonPropertyName("failure_reason")]

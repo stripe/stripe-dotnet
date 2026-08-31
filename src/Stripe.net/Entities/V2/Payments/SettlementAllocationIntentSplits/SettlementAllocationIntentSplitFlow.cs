@@ -34,6 +34,8 @@ namespace Stripe.V2.Payments
         /// SettlementAllocationIntentSplit. The field matching this value will contain the ID of
         /// the flow.
         /// One of: <c>outbound_payment</c>, <c>outbound_transfer</c>, or <c>received_credit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

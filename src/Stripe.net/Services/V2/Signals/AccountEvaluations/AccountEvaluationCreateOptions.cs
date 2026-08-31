@@ -27,6 +27,8 @@ namespace Stripe.V2.Signals
         /// List of signals to evaluate.
         /// One of: <c>fraudulent_website</c>, <c>user_account_sharing</c>, or
         /// <c>user_multi_accounting</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("requested_signals")]
         [STJS.JsonPropertyName("requested_signals")]

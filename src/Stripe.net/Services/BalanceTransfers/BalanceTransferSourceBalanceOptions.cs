@@ -15,6 +15,8 @@ namespace Stripe
         /// <summary>
         /// Source balance type to pull funds from for the Balance Transfer.
         /// One of: <c>allocated_funds</c>, <c>issuing</c>, or <c>payments</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

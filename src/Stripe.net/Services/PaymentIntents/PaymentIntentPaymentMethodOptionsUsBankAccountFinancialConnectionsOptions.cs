@@ -30,6 +30,8 @@ namespace Stripe
         /// <c>balances</c>, <c>ownership</c>, <c>payment_method</c>, and <c>transactions</c>.
         /// One of: <c>balances</c>, <c>ownership</c>, <c>payment_method</c>, or
         /// <c>transactions</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("permissions")]
         [STJS.JsonPropertyName("permissions")]
@@ -39,6 +41,8 @@ namespace Stripe
         /// List of data features that you would like to retrieve upon account creation.
         /// One of: <c>balances</c>, <c>inferred_balances</c>, <c>ownership</c>, or
         /// <c>transactions</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("prefetch")]
         [STJS.JsonPropertyName("prefetch")]

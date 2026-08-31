@@ -12,6 +12,8 @@ namespace Stripe
         /// A code identifying the reason this product can't be used with Managed Payments.
         /// Additional values might be added as Managed Payments evolves its eligibility criteria.
         /// One of: <c>ineligible_tax_code</c>, or <c>no_tax_code_specified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]

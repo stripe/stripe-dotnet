@@ -31,6 +31,8 @@ namespace Stripe.Billing
         /// Defines the type of the alert.
         /// One of: <c>credit_balance_threshold</c>, <c>spend_threshold</c>, or
         /// <c>usage_threshold</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("alert_type")]
         [STJS.JsonPropertyName("alert_type")]
@@ -61,6 +63,8 @@ namespace Stripe.Billing
         /// <summary>
         /// Status of the alert. This can be active, inactive or archived.
         /// One of: <c>active</c>, <c>archived</c>, or <c>inactive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

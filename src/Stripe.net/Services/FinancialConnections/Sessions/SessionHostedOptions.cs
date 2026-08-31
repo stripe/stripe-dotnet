@@ -12,6 +12,8 @@ namespace Stripe.FinancialConnections
         /// How the user should enter the hosted flow. The values <c>email</c> and <c>url</c> can
         /// only be used if <c>relink_options</c> is provided.
         /// One of: <c>email</c>, or <c>url</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("delivery_method")]
         [STJS.JsonPropertyName("delivery_method")]

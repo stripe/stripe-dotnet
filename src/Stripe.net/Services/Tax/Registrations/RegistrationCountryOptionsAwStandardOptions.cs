@@ -11,6 +11,8 @@ namespace Stripe.Tax
         /// <summary>
         /// Place of supply scheme used in an standard registration.
         /// One of: <c>inbound_goods</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("place_of_supply_scheme")]
         [STJS.JsonPropertyName("place_of_supply_scheme")]

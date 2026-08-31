@@ -42,6 +42,8 @@ namespace Stripe.Capital
         /// <summary>
         /// The financing status of the connected account.
         /// One of: <c>accepted</c>, <c>delivered</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

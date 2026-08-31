@@ -11,6 +11,8 @@ namespace Stripe.Crypto
         /// <summary>
         /// Account type: <c>checkings</c> or <c>savings</c>.
         /// One of: <c>checking</c>, or <c>savings</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("account_type")]
         [STJS.JsonPropertyName("account_type")]

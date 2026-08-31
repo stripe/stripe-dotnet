@@ -120,6 +120,8 @@ namespace Stripe
         /// whether a payment method can be shown as a saved payment method in a checkout flow. The
         /// field defaults to “unspecified”.
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allow_redisplay")]
         [STJS.JsonPropertyName("allow_redisplay")]
@@ -129,6 +131,8 @@ namespace Stripe
         /// A set of available payout methods for this card. Only values from this set should be
         /// passed as the <c>method</c> when creating a payout.
         /// One of: <c>instant</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("available_payout_methods")]
         [STJS.JsonPropertyName("available_payout_methods")]
@@ -349,6 +353,8 @@ namespace Stripe
         /// <summary>
         /// Status of a card based on the card issuer.
         /// One of: <c>regulated</c>, or <c>unregulated</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("regulated_status")]
         [STJS.JsonPropertyName("regulated_status")]

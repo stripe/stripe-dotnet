@@ -54,6 +54,8 @@ namespace Stripe.V2.Core
         /// The type of money movement object.
         /// One of: <c>balance_transaction</c>, <c>credit_transaction</c>,
         /// <c>money_management_transaction</c>, or <c>payable_invoice</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

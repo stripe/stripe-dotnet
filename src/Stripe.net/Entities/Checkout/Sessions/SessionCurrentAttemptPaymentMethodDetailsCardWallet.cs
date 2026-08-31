@@ -14,6 +14,8 @@ namespace Stripe.Checkout
         /// <c>meta_pay</c>, or <c>link</c>.
         /// One of: <c>amex_express_checkout</c>, <c>apple_pay</c>, <c>google_pay</c>, <c>link</c>,
         /// <c>masterpass</c>, <c>meta_pay</c>, <c>samsung_pay</c>, or <c>visa_checkout</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

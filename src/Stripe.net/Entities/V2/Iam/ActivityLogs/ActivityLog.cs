@@ -68,6 +68,8 @@ namespace Stripe.V2.Iam
         /// <c>api_key_viewed</c>, <c>user_access_started</c>, <c>user_invite_accepted</c>,
         /// <c>user_invite_created</c>, <c>user_invite_deleted</c>, <c>user_roles_deleted</c>, or
         /// <c>user_roles_updated</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

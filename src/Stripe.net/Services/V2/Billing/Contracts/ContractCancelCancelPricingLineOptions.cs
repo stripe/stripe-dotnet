@@ -26,6 +26,8 @@ namespace Stripe.V2.Billing
         /// Proration behavior scoped to this pricing line. If not provided, falls back to the
         /// top-level <c>proration_behavior</c> on the cancel request. Defaults to <c>prorated</c>.
         /// One of: <c>none</c>, or <c>prorated</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]

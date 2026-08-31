@@ -18,6 +18,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// The type of the alternative reference (e.g., external_account for V1 external accounts).
         /// One of: <c>external_account</c>, or <c>payment_method</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

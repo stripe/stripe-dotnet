@@ -180,6 +180,8 @@ namespace Stripe.Identity
         /// href="https://docs.stripe.com/identity/how-sessions-work">Learn more about the lifecycle
         /// of sessions</a>.
         /// One of: <c>canceled</c>, <c>processing</c>, <c>requires_input</c>, or <c>verified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -189,6 +191,8 @@ namespace Stripe.Identity
         /// The type of <a href="https://docs.stripe.com/identity/verification-checks">verification
         /// check</a> to be performed.
         /// One of: <c>document</c>, <c>email</c>, <c>id_number</c>, or <c>verification_flow</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

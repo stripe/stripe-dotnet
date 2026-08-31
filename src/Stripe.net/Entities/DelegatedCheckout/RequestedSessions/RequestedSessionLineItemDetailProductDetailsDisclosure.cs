@@ -18,6 +18,8 @@ namespace Stripe.DelegatedCheckout
         /// <summary>
         /// The content type of the disclosure.
         /// One of: <c>link</c>, <c>markdown</c>, or <c>plain</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("content_type")]
         [STJS.JsonPropertyName("content_type")]
@@ -25,6 +27,9 @@ namespace Stripe.DelegatedCheckout
 
         /// <summary>
         /// The type of disclosure.
+        /// One of: <c>disclaimer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -58,6 +58,9 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The type of the spend modifier.
+        /// One of: <c>max_billing_period_spend</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

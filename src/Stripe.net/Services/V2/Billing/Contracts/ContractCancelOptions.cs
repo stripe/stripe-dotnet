@@ -21,6 +21,8 @@ namespace Stripe.V2.Billing
         /// Additional fields to include in the response.
         /// One of: <c>billing_settings</c>, <c>one_time_fees</c>, <c>pricing_lines</c>, or
         /// <c>pricing_overrides</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("include")]
         [STJS.JsonPropertyName("include")]
@@ -30,6 +32,8 @@ namespace Stripe.V2.Billing
         /// Top-level proration behavior for the cancellation. Defaults to <c>prorated</c> if not
         /// set.
         /// One of: <c>none</c>, or <c>prorated</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]

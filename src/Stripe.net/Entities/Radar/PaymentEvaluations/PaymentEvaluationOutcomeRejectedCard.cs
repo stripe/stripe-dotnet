@@ -11,6 +11,8 @@ namespace Stripe.Radar
         /// <summary>
         /// Result of the address line 1 check.
         /// One of: <c>fail</c>, <c>pass</c>, <c>unavailable</c>, or <c>unchecked</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("address_line1_check")]
         [STJS.JsonPropertyName("address_line1_check")]
@@ -20,6 +22,8 @@ namespace Stripe.Radar
         /// Indicates whether the cardholder provided a postal code and if it matched the
         /// cardholder’s billing address.
         /// One of: <c>fail</c>, <c>pass</c>, <c>unavailable</c>, or <c>unchecked</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("address_postal_code_check")]
         [STJS.JsonPropertyName("address_postal_code_check")]
@@ -28,6 +32,8 @@ namespace Stripe.Radar
         /// <summary>
         /// Result of the CVC check.
         /// One of: <c>fail</c>, <c>pass</c>, <c>unavailable</c>, or <c>unchecked</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("cvc_check")]
         [STJS.JsonPropertyName("cvc_check")]
@@ -39,6 +45,8 @@ namespace Stripe.Radar
         /// <c>incorrect_cvc</c>, <c>incorrect_number</c>, <c>incorrect_postal_code</c>,
         /// <c>insufficient_funds</c>, <c>invalid_account</c>, <c>lost_card</c>, <c>other</c>,
         /// <c>processing_error</c>, <c>reported_stolen</c>, or <c>try_again_later</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

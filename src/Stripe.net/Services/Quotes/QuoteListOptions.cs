@@ -33,6 +33,8 @@ namespace Stripe
         /// The status of the quote.
         /// One of: <c>accepted</c>, <c>accepting</c>, <c>canceled</c>, <c>draft</c>, <c>open</c>,
         /// or <c>stale</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

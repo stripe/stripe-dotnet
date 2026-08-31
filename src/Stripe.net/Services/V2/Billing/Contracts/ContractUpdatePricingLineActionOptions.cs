@@ -25,6 +25,8 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// The type of pricing line action.
         /// One of: <c>add</c>, <c>remove</c>, or <c>update</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

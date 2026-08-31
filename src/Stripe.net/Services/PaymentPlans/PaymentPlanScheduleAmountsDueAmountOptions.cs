@@ -46,6 +46,8 @@ namespace Stripe
         /// <summary>
         /// Either 'fixed_amount' or 'percentage'.
         /// One of: <c>fixed_amount</c>, or <c>percentage</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

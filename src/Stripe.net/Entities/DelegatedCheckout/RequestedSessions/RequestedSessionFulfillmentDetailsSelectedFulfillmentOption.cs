@@ -25,6 +25,8 @@ namespace Stripe.DelegatedCheckout
         /// <summary>
         /// The type of the selected fulfillment option.
         /// One of: <c>digital</c>, or <c>shipping</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

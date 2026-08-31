@@ -126,6 +126,8 @@ namespace Stripe
         /// <summary>
         /// The reason the review was opened. One of <c>rule</c> or <c>manual</c>.
         /// One of: <c>manual</c>, or <c>rule</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("opened_reason")]
         [STJS.JsonPropertyName("opened_reason")]

@@ -33,6 +33,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// The type of wallet (standard or bridge_wallet).
         /// One of: <c>bridge_wallet</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

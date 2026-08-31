@@ -11,6 +11,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// A unit of time.
         /// One of: <c>business_day</c>, <c>day</c>, <c>hour</c>, <c>month</c>, or <c>week</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("unit")]
         [STJS.JsonPropertyName("unit")]

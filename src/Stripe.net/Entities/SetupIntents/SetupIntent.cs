@@ -79,9 +79,11 @@ namespace Stripe
         /// <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
         /// <c>scalapay</c>, <c>sepa_debit</c>, <c>sequra</c>, <c>shop_pay</c>, <c>shopeepay</c>,
         /// <c>sofort</c>, <c>south_korea_market</c>, <c>stripe_balance</c>, <c>sunbit</c>,
-        /// <c>swish</c>, <c>tamara</c>, <c>test_pay</c>, <c>truemoney</c>, <c>twint</c>,
-        /// <c>upi</c>, <c>us_bank_account</c>, <c>us_cash_voucher</c>, <c>vipps</c>,
+        /// <c>swish</c>, <c>tamara</c>, <c>test_pay</c>, <c>touch_n_go</c>, <c>truemoney</c>,
+        /// <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>us_cash_voucher</c>, <c>vipps</c>,
         /// <c>wechat_pay</c>, <c>wero</c>, or <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allowed_payment_method_types")]
         [STJS.JsonPropertyName("allowed_payment_method_types")]
@@ -146,6 +148,8 @@ namespace Stripe
         /// Reason for cancellation of this SetupIntent, one of <c>abandoned</c>,
         /// <c>requested_by_customer</c>, or <c>duplicate</c>.
         /// One of: <c>abandoned</c>, <c>duplicate</c>, or <c>requested_by_customer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("cancellation_reason")]
         [STJS.JsonPropertyName("cancellation_reason")]
@@ -245,9 +249,11 @@ namespace Stripe
         /// <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>,
         /// <c>paynow</c>, <c>paypal</c>, <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
-        /// <c>scalapay</c>, <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>,
+        /// <c>scalapay</c>, <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>,
         /// <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>, <c>tamara</c>, <c>twint</c>,
         /// <c>upi</c>, <c>us_bank_account</c>, <c>vipps</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("excluded_payment_method_types")]
         [STJS.JsonPropertyName("excluded_payment_method_types")]
@@ -262,6 +268,8 @@ namespace Stripe
         /// destination to send funds to. You can include both if you intend to use the payment
         /// method for both purposes.
         /// One of: <c>inbound</c>, or <c>outbound</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("flow_directions")]
         [STJS.JsonPropertyName("flow_directions")]
@@ -527,6 +535,8 @@ namespace Stripe
         /// <c>requires_action</c>, <c>processing</c>, <c>canceled</c>, or <c>succeeded</c>.
         /// One of: <c>canceled</c>, <c>processing</c>, <c>requires_action</c>,
         /// <c>requires_confirmation</c>, <c>requires_payment_method</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

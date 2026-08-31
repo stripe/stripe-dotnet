@@ -15,6 +15,8 @@ namespace Stripe
         /// <summary>
         /// The brand of the gift card.
         /// One of: <c>fiserv_valuelink</c>, <c>givex</c>, or <c>svs</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("brand")]
         [STJS.JsonPropertyName("brand")]

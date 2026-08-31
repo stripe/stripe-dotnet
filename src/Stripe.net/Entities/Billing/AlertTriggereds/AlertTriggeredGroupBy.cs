@@ -26,6 +26,8 @@ namespace Stripe.Billing
         /// <summary>
         /// The type of grouping used for this alert notification.
         /// One of: <c>billing_cadence</c>, or <c>pricing_plan_subscription</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

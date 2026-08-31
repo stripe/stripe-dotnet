@@ -32,6 +32,9 @@ namespace Stripe.Events
 
         /// <summary>
         /// The type of account signal. Currently only fraudulent_merchant is supported.
+        /// One of: <c>fraudulent_merchant</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -24,6 +24,9 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// The bank transfer network for this mandate.
+        /// One of: <c>bacs</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]

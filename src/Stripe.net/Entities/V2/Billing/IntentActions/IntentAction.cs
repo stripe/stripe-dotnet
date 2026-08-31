@@ -84,6 +84,8 @@ namespace Stripe.V2.Billing
         /// Type of the Billing Intent Action.
         /// One of: <c>apply</c>, <c>deactivate</c>, <c>modify</c>, <c>remove</c>, or
         /// <c>subscribe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

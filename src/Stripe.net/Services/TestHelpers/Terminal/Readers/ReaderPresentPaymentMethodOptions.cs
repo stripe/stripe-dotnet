@@ -46,6 +46,8 @@ namespace Stripe.TestHelpers.Terminal
         /// <summary>
         /// Simulated payment type.
         /// One of: <c>card</c>, <c>card_present</c>, <c>gift_card</c>, or <c>interac_present</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -9,7 +9,7 @@ namespace Stripe.Radar
     public class PaymentEvaluationPaymentDetailsMoneyMovementDetailsOptions : INestedOptions
     {
         /// <summary>
-        /// Describes card money movement details for the payment evaluation.
+        /// Describes card money movement details.
         /// </summary>
         [JsonProperty("card")]
         [STJS.JsonPropertyName("card")]

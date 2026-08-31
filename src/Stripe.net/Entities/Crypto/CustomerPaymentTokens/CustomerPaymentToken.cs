@@ -36,6 +36,8 @@ namespace Stripe.Crypto
         /// <summary>
         /// Type of the Payment Token.
         /// One of: <c>card</c>, or <c>us_bank_account</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

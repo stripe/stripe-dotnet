@@ -42,6 +42,8 @@ namespace Stripe
         /// Type of email to send to the customer, one of <c>credit_note</c> or <c>none</c> and the
         /// default is <c>credit_note</c>.
         /// One of: <c>credit_note</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("email_type")]
         [STJS.JsonPropertyName("email_type")]
@@ -92,6 +94,8 @@ namespace Stripe
         /// <c>order_change</c>, or <c>product_unsatisfactory</c>.
         /// One of: <c>duplicate</c>, <c>fraudulent</c>, <c>order_change</c>, or
         /// <c>product_unsatisfactory</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

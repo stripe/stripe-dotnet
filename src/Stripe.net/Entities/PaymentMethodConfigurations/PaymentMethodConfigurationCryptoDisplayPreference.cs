@@ -19,6 +19,8 @@ namespace Stripe
         /// <summary>
         /// The account's display preference.
         /// One of: <c>none</c>, <c>off</c>, or <c>on</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("preference")]
         [STJS.JsonPropertyName("preference")]
@@ -27,6 +29,8 @@ namespace Stripe
         /// <summary>
         /// The effective display preference value.
         /// One of: <c>off</c>, or <c>on</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("value")]
         [STJS.JsonPropertyName("value")]

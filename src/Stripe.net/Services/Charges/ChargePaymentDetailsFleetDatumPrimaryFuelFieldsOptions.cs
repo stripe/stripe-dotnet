@@ -43,6 +43,8 @@ namespace Stripe
         /// <c>united_refining_kwikfill</c>, <c>us_oil</c>, <c>usa_petroleum</c>, <c>valvoline</c>,
         /// <c>vg</c>, <c>w_morrison</c>, <c>warren_equities</c>, <c>wawa</c>,
         /// <c>western_energetix</c>, <c>wilco</c>, or <c>zions</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("brand")]
         [STJS.JsonPropertyName("brand")]

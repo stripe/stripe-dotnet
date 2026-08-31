@@ -10,6 +10,9 @@ namespace Stripe.Events
     {
         /// <summary>
         /// The ingestion method.
+        /// One of: <c>import_sets</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("ingestion_method")]
         [STJS.JsonPropertyName("ingestion_method")]

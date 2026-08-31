@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// Whether to enable meal voucher benefit for this setup intent.
         /// One of: <c>if_payment_method_is_eligible</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("enabled")]
         [STJS.JsonPropertyName("enabled")]

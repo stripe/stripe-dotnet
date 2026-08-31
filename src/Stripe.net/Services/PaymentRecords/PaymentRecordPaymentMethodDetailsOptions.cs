@@ -41,6 +41,8 @@ namespace Stripe
         /// payment_method_details with a name matching this value. It contains additional
         /// information specific to the type.
         /// One of: <c>card</c>, or <c>custom</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

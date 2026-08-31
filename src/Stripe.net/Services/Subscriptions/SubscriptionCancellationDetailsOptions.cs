@@ -38,6 +38,8 @@ namespace Stripe
         /// One of: <c>customer_service</c>, <c>low_quality</c>, <c>missing_features</c>,
         /// <c>other</c>, <c>switched_service</c>, <c>too_complex</c>, <c>too_expensive</c>, or
         /// <c>unused</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("feedback", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("feedback")]
@@ -51,6 +53,14 @@ namespace Stripe
                 this.SetTracker.Track();
             }
         }
+
+        /// <summary>
+        /// Customized feedback options that provide deeper insight into why the subscription was
+        /// canceled, if the subscription was canceled explicitly by the user.
+        /// </summary>
+        [JsonProperty("feedback_option")]
+        [STJS.JsonPropertyName("feedback_option")]
+        public string FeedbackOption { get; set; }
 
         bool IHasSetTracking.IsPropertySet(string propertyName)
         {

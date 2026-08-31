@@ -14,6 +14,8 @@ namespace Stripe.TestHelpers.Issuing
         /// One of: <c>geographic_location</c>, <c>inappropriate</c>, <c>network_name</c>,
         /// <c>non_binary_image</c>, <c>non_fiat_currency</c>, <c>other</c>, <c>other_entity</c>, or
         /// <c>promotional_material</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("card_logo")]
         [STJS.JsonPropertyName("card_logo")]
@@ -24,6 +26,8 @@ namespace Stripe.TestHelpers.Issuing
         /// One of: <c>geographic_location</c>, <c>inappropriate</c>, <c>network_name</c>,
         /// <c>non_fiat_currency</c>, <c>other</c>, <c>other_entity</c>, or
         /// <c>promotional_material</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("carrier_text")]
         [STJS.JsonPropertyName("carrier_text")]

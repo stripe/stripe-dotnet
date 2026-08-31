@@ -14,12 +14,20 @@ namespace Stripe.Identity
         /// One of: <c>abandoned</c>, <c>consent_declined</c>, <c>country_not_supported</c>,
         /// <c>device_not_supported</c>, <c>document_expired</c>,
         /// <c>document_type_not_supported</c>, <c>document_unverified_other</c>,
-        /// <c>email_unverified_other</c>, <c>email_verification_declined</c>,
-        /// <c>id_number_insufficient_document_data</c>, <c>id_number_mismatch</c>,
-        /// <c>id_number_unverified_other</c>, <c>phone_unverified_other</c>,
-        /// <c>phone_verification_declined</c>, <c>selfie_document_missing_photo</c>,
-        /// <c>selfie_face_mismatch</c>, <c>selfie_manipulated</c>, <c>selfie_unverified_other</c>,
-        /// or <c>under_supported_age</c>.
+        /// <c>email_address_mismatch</c>, <c>email_name_mismatch</c>,
+        /// <c>email_ownership_unverified</c>, <c>email_phone_mismatch</c>,
+        /// <c>email_short_tenure</c>, <c>email_unverified_other</c>,
+        /// <c>email_verification_declined</c>, <c>id_number_insufficient_document_data</c>,
+        /// <c>id_number_mismatch</c>, <c>id_number_unverified_other</c>,
+        /// <c>phone_address_mismatch</c>, <c>phone_invalid</c>, <c>phone_invalid_line_type</c>,
+        /// <c>phone_name_mismatch</c>, <c>phone_ownership_unverified</c>,
+        /// <c>phone_short_tenure</c>, <c>phone_unsupported_country</c>,
+        /// <c>phone_unverified_other</c>, <c>phone_verification_declined</c>,
+        /// <c>selfie_document_missing_photo</c>, <c>selfie_face_mismatch</c>,
+        /// <c>selfie_manipulated</c>, <c>selfie_unverified_other</c>, or
+        /// <c>under_supported_age</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]

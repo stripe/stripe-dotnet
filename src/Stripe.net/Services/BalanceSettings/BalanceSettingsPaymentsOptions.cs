@@ -30,6 +30,8 @@ namespace Stripe
         /// A hash of settlement currencies to update. Each key is an ISO 4217 currency code, and
         /// the value is either <c>enabled</c> or <c>disabled</c>.
         /// One of: <c>disabled</c>, or <c>enabled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("settlement_currencies")]
         [STJS.JsonPropertyName("settlement_currencies")]

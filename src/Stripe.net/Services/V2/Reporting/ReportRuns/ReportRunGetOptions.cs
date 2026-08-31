@@ -11,6 +11,9 @@ namespace Stripe.V2.Reporting
     {
         /// <summary>
         /// Any optional includes (see https://docs.stripe.com/api-includable-response-values).
+        /// One of: <c>result.file.schema</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("include")]
         [STJS.JsonPropertyName("include")]

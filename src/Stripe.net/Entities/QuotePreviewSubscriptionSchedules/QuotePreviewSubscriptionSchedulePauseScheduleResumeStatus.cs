@@ -16,6 +16,8 @@ namespace Stripe
         /// The lifecycle state of the resume operation.
         /// One of: <c>error</c>, <c>pending</c>, <c>requires_action</c>, <c>scheduled</c>, or
         /// <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

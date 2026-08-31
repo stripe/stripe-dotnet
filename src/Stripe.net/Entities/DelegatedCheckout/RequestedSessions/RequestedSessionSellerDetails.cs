@@ -12,6 +12,8 @@ namespace Stripe.DelegatedCheckout
         /// <summary>
         /// The card brands supported by the seller.
         /// One of: <c>american_express</c>, <c>mastercard</c>, or <c>visa</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("card_brands")]
         [STJS.JsonPropertyName("card_brands")]
@@ -62,6 +64,8 @@ namespace Stripe.DelegatedCheckout
         /// <summary>
         /// The payment method types supported by the seller.
         /// One of: <c>affirm</c>, <c>card</c>, or <c>klarna</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_types")]
         [STJS.JsonPropertyName("payment_method_types")]

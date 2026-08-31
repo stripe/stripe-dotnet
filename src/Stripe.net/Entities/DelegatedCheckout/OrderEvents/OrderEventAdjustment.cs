@@ -40,6 +40,8 @@ namespace Stripe.DelegatedCheckout
         /// <summary>
         /// The status of the adjustment.
         /// One of: <c>completed</c>, <c>failed</c>, or <c>pending</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -49,6 +51,8 @@ namespace Stripe.DelegatedCheckout
         /// The type of adjustment.
         /// One of: <c>cancellation</c>, <c>credit</c>, <c>dispute</c>,
         /// <c>original_payment_refund</c>, <c>return</c>, or <c>store_credit_refund</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

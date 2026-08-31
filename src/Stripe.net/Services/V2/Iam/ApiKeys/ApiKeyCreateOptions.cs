@@ -57,6 +57,8 @@ namespace Stripe.V2.Iam
         /// <summary>
         /// Type of the API key to create (secret or publishable).
         /// One of: <c>publishable_key</c>, or <c>secret_key</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

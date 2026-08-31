@@ -11,6 +11,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// Controls how invoices and invoice items display proration amounts and discount amounts.
         /// One of: <c>included</c>, or <c>itemized</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("proration_discounts")]
         [STJS.JsonPropertyName("proration_discounts")]

@@ -26,6 +26,8 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// Whether to include or exclude items matching these criteria.
         /// One of: <c>exclude</c>, or <c>include</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

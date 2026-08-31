@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -18,7 +19,7 @@ namespace Stripe
     /// confirmation</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ConfirmationToken : StripeEntity<ConfirmationToken>, IHasId, IHasObject
+    public class ConfirmationToken : StripeEntity<ConfirmationToken>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -69,6 +70,14 @@ namespace Stripe
         public ConfirmationTokenMandateData MandateData { get; set; }
 
         /// <summary>
+        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
+        /// additional information about the object in a structured format.
+        /// </summary>
+        [JsonProperty("metadata")]
+        [STJS.JsonPropertyName("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
         /// ID of the PaymentIntent that this ConfirmationToken was used to confirm, or null if this
         /// ConfirmationToken has not yet been used.
         /// </summary>
@@ -107,6 +116,8 @@ namespace Stripe
         /// method</a> to the PaymentIntent's Customer, if present, after the PaymentIntent is
         /// confirmed and any required actions from the user are complete.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]

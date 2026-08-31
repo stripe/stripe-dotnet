@@ -26,6 +26,8 @@ namespace Stripe.V2.Payments
         /// <summary>
         /// Indicates the strategy for how you want Stripe to retry the payment.
         /// One of: <c>heuristic</c>, <c>none</c>, <c>scheduled</c>, or <c>smart</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("retry_strategy")]
         [STJS.JsonPropertyName("retry_strategy")]

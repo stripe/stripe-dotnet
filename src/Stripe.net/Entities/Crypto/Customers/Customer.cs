@@ -30,6 +30,8 @@ namespace Stripe.Crypto
         /// <summary>
         /// The KYC region determined by the customer's address country.
         /// One of: <c>eu</c>, or <c>us</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("kyc_region")]
         [STJS.JsonPropertyName("kyc_region")]
@@ -49,6 +51,8 @@ namespace Stripe.Crypto
         /// <c>attestation</c>, <c>birth_city</c>, <c>birth_country</c>, <c>dob</c>,
         /// <c>first_name</c>, <c>id_document</c>, <c>id_number</c>, <c>id_type</c>,
         /// <c>identifiers</c>, <c>last_name</c>, <c>nationalities</c>, or <c>selfie</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("provided_fields")]
         [STJS.JsonPropertyName("provided_fields")]

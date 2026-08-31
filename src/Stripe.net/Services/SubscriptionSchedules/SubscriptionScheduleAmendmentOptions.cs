@@ -34,6 +34,8 @@ namespace Stripe
         /// <c>automatic</c>, which removes any previously configured billing cycle anchor resets
         /// scheduled to occur during the window of time spanned by the amendment.
         /// One of: <c>amendment_start</c>, or <c>automatic</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [STJS.JsonPropertyName("billing_cycle_anchor")]
@@ -57,6 +59,8 @@ namespace Stripe
         /// <summary>
         /// Configures how the subscription schedule handles billing for phase transitions.
         /// One of: <c>amendment_start</c>, or <c>billing_period_start</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("effective_at")]
         [STJS.JsonPropertyName("effective_at")]
@@ -83,6 +87,8 @@ namespace Stripe
         /// now, at the time of the request. Also supported as a point-in-time operation when
         /// <c>amendment_end</c> is <c>null</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]
@@ -100,6 +106,8 @@ namespace Stripe
         /// Ends the subscription schedule early as dictated by either the accompanying amendment's
         /// start or end.
         /// One of: <c>amendment_end</c>, or <c>amendment_start</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("set_schedule_end")]
         [STJS.JsonPropertyName("set_schedule_end")]

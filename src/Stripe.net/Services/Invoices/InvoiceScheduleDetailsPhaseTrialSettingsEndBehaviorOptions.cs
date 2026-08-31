@@ -12,6 +12,8 @@ namespace Stripe
         /// Configure how an opt-in following a paid trial is billed when using <c>billing_behavior:
         /// prorate_up_front</c>.
         /// One of: <c>defer</c>, or <c>include</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("prorate_up_front")]
         [STJS.JsonPropertyName("prorate_up_front")]

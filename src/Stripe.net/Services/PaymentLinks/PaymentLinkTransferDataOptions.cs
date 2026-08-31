@@ -6,14 +6,29 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentLinkTransferDataOptions : INestedOptions
+    public class PaymentLinkTransferDataOptions : INestedOptions, IHasSetTracking
     {
+        private long? amount;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// The amount that will be transferred automatically when a charge succeeds.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("amount")]
-        public long? Amount { get; set; }
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public long? Amount
+        {
+            get => this.amount;
+            set
+            {
+                this.amount = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// If specified, successful charges will be attributed to the destination account for tax
@@ -24,5 +39,10 @@ namespace Stripe
         [JsonProperty("destination")]
         [STJS.JsonPropertyName("destination")]
         public string Destination { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

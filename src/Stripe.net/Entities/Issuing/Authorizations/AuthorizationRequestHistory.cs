@@ -124,6 +124,8 @@ namespace Stripe.Issuing
         /// <c>spending_controls</c>, <c>stripe_internal_error</c>, <c>suspected_fraud</c>,
         /// <c>verification_failed</c>, <c>webhook_approved</c>, <c>webhook_declined</c>,
         /// <c>webhook_error</c>, or <c>webhook_timeout</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

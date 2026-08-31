@@ -256,6 +256,8 @@ namespace Stripe.V2.MoneyManagement
         /// <c>treasury_other</c>, <c>treasury_outbound_payment</c>,
         /// <c>treasury_outbound_transfer</c>, <c>treasury_received_credit</c>, or
         /// <c>treasury_received_debit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

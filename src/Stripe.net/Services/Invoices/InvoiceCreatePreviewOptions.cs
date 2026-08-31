@@ -121,6 +121,8 @@ namespace Stripe
         /// Customizes the types of values to include when calculating the invoice. Defaults to
         /// <c>next</c> if unspecified.
         /// One of: <c>next</c>, or <c>recurring</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("preview_mode")]
         [STJS.JsonPropertyName("preview_mode")]

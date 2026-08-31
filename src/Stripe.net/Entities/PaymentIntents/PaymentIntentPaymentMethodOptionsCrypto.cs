@@ -19,6 +19,8 @@ namespace Stripe
         /// <summary>
         /// The mode of the crypto payment.
         /// One of: <c>default</c>, <c>deposit</c>, or <c>transaction_verification</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("mode")]
         [STJS.JsonPropertyName("mode")]

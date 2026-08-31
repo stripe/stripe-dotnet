@@ -11,6 +11,8 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// When the remove action takes effect.
         /// One of: <c>current_billing_period_end</c>, or <c>on_reserve</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

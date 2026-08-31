@@ -11,6 +11,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// How manual entry should be handled.
         /// One of: <c>automatic</c>, <c>custom</c>, or <c>disabled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("mode")]
         [STJS.JsonPropertyName("mode")]

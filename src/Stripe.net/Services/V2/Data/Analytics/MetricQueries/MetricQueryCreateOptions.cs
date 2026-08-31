@@ -35,6 +35,8 @@ namespace Stripe.V2.Data.Analytics
         /// <summary>
         /// The time granularity to aggregate results by.
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("granularity")]
         [STJS.JsonPropertyName("granularity")]

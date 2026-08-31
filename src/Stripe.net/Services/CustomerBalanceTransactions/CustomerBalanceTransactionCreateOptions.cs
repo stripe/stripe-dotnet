@@ -70,6 +70,8 @@ namespace Stripe
         /// the customer's credit balance directly. Set to <c>applied_to_invoice</c> to apply the
         /// customer's existing credit balance to a specific open invoice.
         /// One of: <c>adjustment</c>, or <c>applied_to_invoice</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

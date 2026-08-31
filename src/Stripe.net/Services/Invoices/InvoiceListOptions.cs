@@ -20,6 +20,8 @@ namespace Stripe
         /// The collection method of the invoice to retrieve. Either <c>charge_automatically</c> or
         /// <c>send_invoice</c>.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("collection_method")]
         [STJS.JsonPropertyName("collection_method")]
@@ -61,6 +63,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/billing/invoices/workflow#workflow-overview">Learn
         /// more</a>.
         /// One of: <c>draft</c>, <c>open</c>, <c>paid</c>, <c>uncollectible</c>, or <c>void</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

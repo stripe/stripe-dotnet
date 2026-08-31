@@ -89,6 +89,8 @@ namespace Stripe
         /// <c>lost_or_stolen_card</c>, <c>pin_required</c>, <c>pin_tries_exceeded</c>,
         /// <c>processing_error</c>, <c>provider_unavailable</c>, <c>stolen_card</c>,
         /// <c>suspected_fraud</c>, <c>timeout</c>, or <c>try_again_later</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("failure_code")]
         [STJS.JsonPropertyName("failure_code")]
@@ -175,6 +177,8 @@ namespace Stripe
         /// <summary>
         /// The status of the operation.
         /// One of: <c>failed</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -184,6 +188,8 @@ namespace Stripe
         /// The type of operation performed.
         /// One of: <c>activation</c>, <c>activation_void</c>, <c>balance_check</c>, <c>cashout</c>,
         /// <c>cashout_void</c>, <c>reload</c>, or <c>reload_void</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

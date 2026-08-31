@@ -24,6 +24,9 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The type of the discount.
+        /// One of: <c>percent_off</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

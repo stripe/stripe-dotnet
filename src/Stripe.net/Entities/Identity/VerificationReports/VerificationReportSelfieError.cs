@@ -12,6 +12,8 @@ namespace Stripe.Identity
         /// A short machine-readable string giving the reason for the verification failure.
         /// One of: <c>selfie_document_missing_photo</c>, <c>selfie_face_mismatch</c>,
         /// <c>selfie_manipulated</c>, or <c>selfie_unverified_other</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]

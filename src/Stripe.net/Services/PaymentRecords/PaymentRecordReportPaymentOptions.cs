@@ -20,6 +20,13 @@ namespace Stripe
         public PaymentRecordAmountRequestedOptions AmountRequested { get; set; }
 
         /// <summary>
+        /// Information about the payment attempt cancelation.
+        /// </summary>
+        [JsonProperty("canceled")]
+        [STJS.JsonPropertyName("canceled")]
+        public PaymentRecordCanceledOptions Canceled { get; set; }
+
+        /// <summary>
         /// Customer information for this payment.
         /// </summary>
         [JsonProperty("customer_details")]
@@ -29,6 +36,8 @@ namespace Stripe
         /// <summary>
         /// Indicates whether the customer was present in your checkout flow during this payment.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("customer_presence")]
         [STJS.JsonPropertyName("customer_presence")]
@@ -86,6 +95,8 @@ namespace Stripe
         /// <summary>
         /// The outcome of the reported payment.
         /// One of: <c>failed</c>, or <c>guaranteed</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("outcome")]
         [STJS.JsonPropertyName("outcome")]

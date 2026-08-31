@@ -26,6 +26,8 @@ namespace Stripe.TestHelpers.Capital
         /// <summary>
         /// The type of financing offer.
         /// One of: <c>cash_advance</c>, <c>fixed_term_loan</c>, or <c>flex_loan</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("financing_type")]
         [STJS.JsonPropertyName("financing_type")]
@@ -36,6 +38,8 @@ namespace Stripe.TestHelpers.Capital
         /// One of: <c>accepted</c>, <c>accepted_other_offer</c>, <c>canceled</c>, <c>completed</c>,
         /// <c>delivered</c>, <c>expired</c>, <c>fully_repaid</c>, <c>paid_out</c>, <c>rejected</c>,
         /// <c>replaced</c>, or <c>undelivered</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

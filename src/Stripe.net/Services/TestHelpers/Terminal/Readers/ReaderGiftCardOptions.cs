@@ -10,6 +10,9 @@ namespace Stripe.TestHelpers.Terminal
     {
         /// <summary>
         /// The brand of the gift card.
+        /// One of: <c>svs</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("brand")]
         [STJS.JsonPropertyName("brand")]

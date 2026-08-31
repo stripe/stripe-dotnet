@@ -27,6 +27,8 @@ namespace Stripe.V2.Billing
         /// The type of the credit grant amount. We currently support <c>monetary</c> and
         /// <c>custom_pricing_unit</c> billing credits.
         /// One of: <c>custom_pricing_unit</c>, or <c>monetary</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

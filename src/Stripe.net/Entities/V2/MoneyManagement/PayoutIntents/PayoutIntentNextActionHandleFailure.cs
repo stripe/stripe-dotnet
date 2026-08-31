@@ -23,6 +23,8 @@ namespace Stripe.V2.MoneyManagement
         /// <c>payout_method_restricted</c>, <c>payout_method_unsupported</c>,
         /// <c>payout_method_usage_frequency_limit_exceeded</c>, <c>recalled</c>,
         /// <c>review_rejected</c>, <c>to_destination_invalid</c>, or <c>unknown_failure</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("failure_reason")]
         [STJS.JsonPropertyName("failure_reason")]

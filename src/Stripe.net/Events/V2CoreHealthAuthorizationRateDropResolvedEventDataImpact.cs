@@ -12,6 +12,8 @@ namespace Stripe.Events
         /// <summary>
         /// The type of the charge.
         /// One of: <c>money_moving</c>, or <c>validation</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("charge_type")]
         [STJS.JsonPropertyName("charge_type")]
@@ -50,6 +52,8 @@ namespace Stripe.Events
         /// <c>satispay</c>, <c>scalapay</c>, <c>sepa_debit</c>, <c>sequra</c>, <c>sofort</c>,
         /// <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>,
         /// <c>vipps</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_type")]
         [STJS.JsonPropertyName("payment_method_type")]

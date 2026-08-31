@@ -20,6 +20,8 @@ namespace Stripe
         /// with a service period duration. Defaults to <c>amendment_start</c> if omitted.
         /// One of: <c>amendment_start</c>, <c>current_period_end</c>, or
         /// <c>current_period_start</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("start_date")]
         [STJS.JsonPropertyName("start_date")]

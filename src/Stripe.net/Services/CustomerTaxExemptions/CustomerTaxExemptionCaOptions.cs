@@ -19,6 +19,8 @@ namespace Stripe
         /// <summary>
         /// The type of Canadian tax (gst_hst, PST, QST, RST).
         /// One of: <c>gst_hst</c>, <c>pst</c>, <c>qst</c>, or <c>rst</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_type")]
         [STJS.JsonPropertyName("tax_type")]
