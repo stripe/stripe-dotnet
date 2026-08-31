@@ -306,12 +306,6 @@ namespace StripeTests
             Assert.Contains("No API key provided.", exception.Message);
         }
 
-        // The absolute URL is built by concatenating a base URL onto a relative path, and no base
-        // URL ends in a slash. A path that does not begin with a single "/" can therefore land
-        // inside the URL's authority component and redirect the request -- Authorization header
-        // included -- to a host of the path's choosing. This matters because some request paths
-        // originate in remote data: a webhook body's related_object.url, a response's
-        // next_page_url.
         [Theory]
         [InlineData("/v1/customers/cus_123")]
         [InlineData("/v1/customers")]

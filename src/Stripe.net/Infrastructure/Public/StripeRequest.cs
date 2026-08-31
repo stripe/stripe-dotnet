@@ -147,19 +147,13 @@ namespace Stripe
         /// <para>
         /// The absolute URL is built by concatenating a base URL onto this path, and no base URL
         /// ends in a slash. A path like <c>"@evil.example/v1/x"</c> or
-        /// <c>".evil.example/v1/x"</c> would therefore land inside the authority component and
-        /// send the request -- <c>Authorization</c> header included -- to a host of the path's
-        /// choosing. Some request paths originate in remote data (a webhook body's
-        /// <c>related_object.url</c>, a response's <c>next_page_url</c>), so the path cannot be
-        /// assumed to be well-formed.
+        /// <c>".evil.example/v1/x"</c> would modify the resulting host and direct the request
+        /// (including the API key) to a non-Stripe host.
         /// </para>
         /// <para>
-        /// A single leading slash is sufficient: it terminates the authority component, after
-        /// which nothing in the path can extend it.
-        /// </para>
-        /// <para>
-        /// Stripe only ever issues plain paths, so anything else is tampering and is rejected
-        /// rather than sanitized.
+        /// Because some relative urls arrive from potentially untrusted sources (like webhook
+        /// bodies), we have to be a little defensive. So, we require that a path starts with a
+        /// leading slash.
         /// </para>
         /// </remarks>
         /// <param name="path">The relative request path.</param>
