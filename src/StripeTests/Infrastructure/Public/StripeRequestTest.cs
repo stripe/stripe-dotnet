@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System;
     using System.Net.Http;
     using System.Threading.Tasks;
     using Stripe;
@@ -303,6 +304,59 @@ namespace StripeTests
                 new StripeRequest(client, HttpMethod.Get, "/get", null, requestOptions));
 
             Assert.Contains("No API key provided.", exception.Message);
+        }
+
+        [Theory]
+        [InlineData("/v1/customers/cus_123")]
+        [InlineData("/v1/customers")]
+        [InlineData("/v2/core/accounts?page=page_123&limit=2")]
+
+        // '@' is legal inside a path or query string -- it only opens an authority when it
+        // precedes the first '/'.
+        [InlineData("/v1/customers?email=user%40example.com")]
+        [InlineData("/v1/invoices/in_123@456")]
+
+        // A backslash does not open an authority: the '/' already closed it.
+        [InlineData("/v1/\\evil.example")]
+        public void AssertOriginRelativePath_AcceptsOriginRelativePaths(string path)
+        {
+            StripeRequest.ValidatePath(path);
+        }
+
+        [Theory]
+
+        // Each of these moves the request's authority off api.stripe.com.
+        [InlineData("@evil.example/v1/leak")]
+        [InlineData(":pw@evil.example/v1/leak")]
+        [InlineData(":80@evil.example/v1/leak")]
+
+        // Extends the host into an attacker-owned subdomain
+        // (api.stripe.com.evil.example), which has a valid certificate.
+        [InlineData(".evil.example/v1/leak")]
+        [InlineData("-evil.example/v1/leak")]
+        [InlineData("https://evil.example/v1/leak")]
+        [InlineData("//evil.example/v1/leak")]
+        [InlineData("")]
+        [InlineData("v1/customers")]
+        [InlineData(null)]
+        public void AssertOriginRelativePath_RejectsHostilePaths(string path)
+        {
+            Assert.Throws<ArgumentException>(() =>
+                StripeRequest.ValidatePath(path));
+        }
+
+        [Fact]
+        public void Ctor_RejectsHostilePath()
+        {
+            var exception = Assert.Throws<ArgumentException>(() =>
+                new StripeRequest(
+                    this.stripeClient,
+                    HttpMethod.Get,
+                    "@evil.example/v1/leak",
+                    null,
+                    new RequestOptions()));
+
+            Assert.Contains("must begin with a single", exception.Message);
         }
     }
 }
