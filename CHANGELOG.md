@@ -1,5 +1,8 @@
 # Changelog
 
+## 52.4.1 - 2026-09-01
+* [#3441](https://github.com/stripe/stripe-dotnet/pull/3441) Harden API requestor code against malicious URLs
+
 ## 52.4.0 - 2026-08-26
 This release changes the pinned API version to 2026-08-26.dahlia.
 
