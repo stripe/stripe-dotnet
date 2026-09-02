@@ -193,6 +193,7 @@ namespace Stripe
                     QuotePreviewSubscriptionSchedule)
                 },
                 { "radar.account_evaluation", typeof(Radar.AccountEvaluation) },
+                { "radar.billing_evaluation", typeof(Radar.BillingEvaluation) },
                 { "radar.customer_evaluation", typeof(Radar.CustomerEvaluation) },
                 { "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning) },
                 {

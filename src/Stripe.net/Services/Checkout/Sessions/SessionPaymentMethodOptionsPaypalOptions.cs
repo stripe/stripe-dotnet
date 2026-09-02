@@ -39,6 +39,8 @@ namespace Stripe.Checkout
         /// <c>el-GR</c>, <c>en-GB</c>, <c>en-US</c>, <c>es-ES</c>, <c>fi-FI</c>, <c>fr-BE</c>,
         /// <c>fr-FR</c>, <c>fr-LU</c>, <c>hu-HU</c>, <c>it-IT</c>, <c>nl-BE</c>, <c>nl-NL</c>,
         /// <c>pl-PL</c>, <c>pt-PT</c>, <c>sk-SK</c>, or <c>sv-SE</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("preferred_locale")]
         [STJS.JsonPropertyName("preferred_locale")]
@@ -93,6 +95,8 @@ namespace Stripe.Checkout
         /// publishable key, you can only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// One of: <c>none</c>, or <c>off_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("setup_future_usage")]

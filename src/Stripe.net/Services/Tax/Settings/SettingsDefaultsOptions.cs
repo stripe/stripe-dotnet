@@ -15,6 +15,8 @@ namespace Stripe.Tax
         /// inclusive, exclusive, or inferred_by_currency. Once specified, it cannot be changed back
         /// to null.
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>inferred_by_currency</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_behavior")]
         [STJS.JsonPropertyName("tax_behavior")]

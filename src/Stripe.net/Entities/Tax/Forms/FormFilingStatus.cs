@@ -25,6 +25,8 @@ namespace Stripe.Tax
         /// <summary>
         /// The current status of the filed form.
         /// One of: <c>accepted</c>, <c>filed</c>, or <c>rejected</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("value")]
         [STJS.JsonPropertyName("value")]

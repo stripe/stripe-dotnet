@@ -12,6 +12,8 @@ namespace Stripe.Checkout
         /// Indicates whether this payment method can be shown again to its customer in a checkout
         /// flow.
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allow_redisplay")]
         [STJS.JsonPropertyName("allow_redisplay")]

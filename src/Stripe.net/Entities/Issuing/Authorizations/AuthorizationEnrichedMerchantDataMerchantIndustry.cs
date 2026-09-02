@@ -100,6 +100,8 @@ namespace Stripe.Issuing
         /// <c>vintage_and_thrift</c>, <c>warehouses_and_wholesale_stores</c>,
         /// <c>water_and_waste_management_services</c>, <c>web_infrastructure</c>,
         /// <c>wedding_and_bridal</c>, <c>women_s_clothing</c>, or <c>zoos_and_aquariums</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("id")]
         [STJS.JsonPropertyName("id")]

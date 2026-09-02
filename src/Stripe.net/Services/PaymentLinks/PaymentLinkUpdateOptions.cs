@@ -9,15 +9,19 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentLinkUpdateOptions : BaseOptions, IHasMetadata
     {
+        private long? applicationFeeAmount;
+        private decimal? applicationFeePercent;
         private List<PaymentLinkCustomFieldOptions> customFields;
         private string inactiveMessage;
         private PaymentLinkNameCollectionOptions nameCollection;
+        private string onBehalfOf;
         private List<PaymentLinkOptionalItemOptions> optionalItems;
         private PaymentLinkPaymentMethodOptionsOptions paymentMethodOptions;
         private List<string> paymentMethodTypes;
         private PaymentLinkRestrictionsOptions restrictions;
         private PaymentLinkShippingAddressCollectionOptions shippingAddressCollection;
         private List<PaymentLinkShippingOptionOptions> shippingOptions;
+        private PaymentLinkTransferDataOptions transferData;
 
         /// <summary>
         /// Whether the payment link's <c>url</c> is active. If <c>false</c>, customers visiting the
@@ -42,6 +46,43 @@ namespace Stripe
         public bool? AllowPromotionCodes { get; set; }
 
         /// <summary>
+        /// The amount of the application fee (if any) that will be requested to be applied to the
+        /// payment and transferred to the application owner's Stripe account. Can only be applied
+        /// when there are no line items with recurring prices.
+        /// </summary>
+        [JsonProperty("application_fee_amount", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("application_fee_amount")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public long? ApplicationFeeAmount
+        {
+            get => this.applicationFeeAmount;
+            set
+            {
+                this.applicationFeeAmount = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// A non-negative decimal between 0 and 100, with at most two decimal places. This
+        /// represents the percentage of the subscription invoice total that will be transferred to
+        /// the application owner's Stripe account. There must be at least 1 line item with a
+        /// recurring price to use this field.
+        /// </summary>
+        [JsonProperty("application_fee_percent", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("application_fee_percent")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public decimal? ApplicationFeePercent
+        {
+            get => this.applicationFeePercent;
+            set
+            {
+                this.applicationFeePercent = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
         /// Configuration for automatic tax collection.
         /// </summary>
         [JsonProperty("automatic_tax")]
@@ -51,6 +92,8 @@ namespace Stripe
         /// <summary>
         /// Configuration for collecting the customer's billing address. Defaults to <c>auto</c>.
         /// One of: <c>auto</c>, or <c>required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("billing_address_collection")]
         [STJS.JsonPropertyName("billing_address_collection")]
@@ -93,6 +136,8 @@ namespace Stripe
         /// sessions</a> created by this payment link create a <a
         /// href="https://docs.stripe.com/api/customers">Customer</a>.
         /// One of: <c>always</c>, or <c>if_required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("customer_creation")]
         [STJS.JsonPropertyName("customer_creation")]
@@ -160,6 +205,22 @@ namespace Stripe
         }
 
         /// <summary>
+        /// The account on behalf of which to charge.
+        /// </summary>
+        [JsonProperty("on_behalf_of", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("on_behalf_of")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public string OnBehalfOf
+        {
+            get => this.onBehalfOf;
+            set
+            {
+                this.onBehalfOf = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
         /// A list of optional items the customer can add to their order at checkout. Use this
         /// parameter to pass one-time or recurring <a
         /// href="https://docs.stripe.com/api/prices">Prices</a>. There is a maximum of 10 optional
@@ -200,6 +261,8 @@ namespace Stripe
         /// the guide on <a href="https://docs.stripe.com/payments/checkout/free-trials">configuring
         /// subscriptions with a free trial</a>.
         /// One of: <c>always</c>, or <c>if_required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_collection")]
         [STJS.JsonPropertyName("payment_method_collection")]
@@ -236,6 +299,8 @@ namespace Stripe
         /// <c>satispay</c>, <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>sunbit</c>,
         /// <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
         /// <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_types", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("payment_method_types")]
@@ -316,6 +381,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/api/payment_links/payment_links/object#url">url</a>
         /// property (example: <c>donate.stripe.com</c>).
         /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("submit_type")]
         [STJS.JsonPropertyName("submit_type")]
@@ -335,5 +402,22 @@ namespace Stripe
         [JsonProperty("tax_id_collection")]
         [STJS.JsonPropertyName("tax_id_collection")]
         public PaymentLinkTaxIdCollectionOptions TaxIdCollection { get; set; }
+
+        /// <summary>
+        /// The account (if any) the payments will be attributed to for tax reporting, and where
+        /// funds from each payment will be transferred to.
+        /// </summary>
+        [JsonProperty("transfer_data", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("transfer_data")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentLinkTransferDataOptions TransferData
+        {
+            get => this.transferData;
+            set
+            {
+                this.transferData = value;
+                this.SetTracker.Track();
+            }
+        }
     }
 }

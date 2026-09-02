@@ -71,6 +71,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// The status of the ReceivedDebitMandate.
         /// One of: <c>active</c>, <c>canceled</c>, <c>expired</c>, or <c>pending_cancellation</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -92,6 +94,9 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// The type of the ReceivedDebitMandate.
+        /// One of: <c>bank_transfer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

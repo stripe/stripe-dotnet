@@ -28,6 +28,8 @@ namespace Stripe
         /// <summary>
         /// The type of calculation made to determine when the discount ends.
         /// One of: <c>duration</c>, or <c>timestamp</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

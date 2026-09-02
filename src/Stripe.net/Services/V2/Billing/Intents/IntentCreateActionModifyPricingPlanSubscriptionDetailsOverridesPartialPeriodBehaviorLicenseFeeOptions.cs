@@ -13,6 +13,8 @@ namespace Stripe.V2.Billing
         /// license fee when the user modifies the subscription. If not specified, defaults to
         /// prorated.
         /// One of: <c>none</c>, or <c>prorated</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("credit_proration_behavior")]
         [STJS.JsonPropertyName("credit_proration_behavior")]
@@ -23,6 +25,8 @@ namespace Stripe.V2.Billing
         /// license fee when the user modifies the subscription. If not specified, defaults to
         /// prorated.
         /// One of: <c>none</c>, or <c>prorated</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("debit_proration_behavior")]
         [STJS.JsonPropertyName("debit_proration_behavior")]

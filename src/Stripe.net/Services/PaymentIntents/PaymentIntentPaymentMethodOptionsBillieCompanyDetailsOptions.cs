@@ -50,6 +50,8 @@ namespace Stripe
         /// One of: <c>ch_ein</c>, <c>de_hrb</c>, <c>dk_cvr</c>, <c>es_cif</c>, <c>fi_tunnus</c>,
         /// <c>fr_siren</c>, <c>fr_siret</c>, <c>it_rea</c>, <c>nl_kvk</c>, <c>no_org_number</c>,
         /// <c>no_pno</c>, <c>se_org_number</c>, <c>se_pno</c>, or <c>uk_crn</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("registration_type", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("registration_type")]

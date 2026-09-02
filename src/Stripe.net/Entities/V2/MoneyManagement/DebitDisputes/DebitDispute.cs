@@ -75,6 +75,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// The status of the DebitDispute.
         /// One of: <c>failed</c>, <c>submitted</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -96,6 +98,9 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// The type of the DebitDispute.
+        /// One of: <c>bank_transfer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

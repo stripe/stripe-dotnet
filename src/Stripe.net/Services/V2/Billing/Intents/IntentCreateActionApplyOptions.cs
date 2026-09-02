@@ -39,6 +39,8 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// Type of the apply action details.
         /// One of: <c>discount</c>, <c>invoice_discount_rule</c>, or <c>spend_modifier_rule</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

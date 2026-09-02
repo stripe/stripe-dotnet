@@ -21,6 +21,8 @@ namespace Stripe.Crypto
         /// One of: <c>avalanche</c>, <c>base</c>, <c>bitcoin</c>, <c>celo</c>, <c>ethereum</c>,
         /// <c>optimism</c>, <c>polygon</c>, <c>solana</c>, <c>stellar</c>, <c>sui</c>,
         /// <c>tempo</c>, or <c>worldchain</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("destination_network")]
         [STJS.JsonPropertyName("destination_network")]

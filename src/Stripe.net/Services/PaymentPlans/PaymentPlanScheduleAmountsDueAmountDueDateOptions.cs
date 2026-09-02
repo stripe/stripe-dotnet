@@ -28,6 +28,8 @@ namespace Stripe
         /// <summary>
         /// Either 'absolute' or 'relative'.
         /// One of: <c>absolute</c>, or <c>relative</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

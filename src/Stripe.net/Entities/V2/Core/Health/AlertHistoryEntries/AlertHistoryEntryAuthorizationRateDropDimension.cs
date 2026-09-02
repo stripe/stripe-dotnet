@@ -25,6 +25,8 @@ namespace Stripe.V2.Core.Health
         /// <summary>
         /// The type of the dimension. Determines which field is populated.
         /// One of: <c>acquirer</c>, or <c>issuer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -87,6 +87,8 @@ namespace Stripe.DelegatedCheckout
         /// <summary>
         /// Whether this is the first or last touchpoint.
         /// One of: <c>first</c>, or <c>last</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("touchpoint")]
         [STJS.JsonPropertyName("touchpoint")]

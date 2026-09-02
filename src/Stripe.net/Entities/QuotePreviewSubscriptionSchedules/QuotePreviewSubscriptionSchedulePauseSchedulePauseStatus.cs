@@ -15,6 +15,8 @@ namespace Stripe
         /// <summary>
         /// The lifecycle state of the pause operation.
         /// One of: <c>error</c>, <c>scheduled</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -30,6 +30,8 @@ namespace Stripe.Radar
         /// The digital wallet used for this transaction. One of <c>apple_pay</c>,
         /// <c>google_pay</c>, or <c>samsung_pay</c>.
         /// One of: <c>apple_pay</c>, <c>google_pay</c>, or <c>samsung_pay</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("wallet")]
         [STJS.JsonPropertyName("wallet")]

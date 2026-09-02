@@ -51,6 +51,8 @@ namespace Stripe
         /// <summary>
         /// The type of money services transaction.
         /// One of: <c>account_funding</c>, or <c>debt_repayment</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("transaction_type", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("transaction_type")]

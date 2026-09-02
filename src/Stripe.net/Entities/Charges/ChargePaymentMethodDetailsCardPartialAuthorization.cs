@@ -13,6 +13,8 @@ namespace Stripe
         /// authorization outcome.
         /// One of: <c>declined</c>, <c>fully_authorized</c>, <c>not_requested</c>, or
         /// <c>partially_authorized</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

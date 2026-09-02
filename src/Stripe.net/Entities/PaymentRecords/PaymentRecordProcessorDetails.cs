@@ -41,6 +41,8 @@ namespace Stripe
         /// <summary>
         /// The processor used for this payment attempt.
         /// One of: <c>custom</c>, <c>fiserv_valuelink</c>, <c>givex</c>, or <c>svs</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

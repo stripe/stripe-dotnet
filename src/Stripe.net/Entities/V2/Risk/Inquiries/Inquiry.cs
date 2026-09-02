@@ -90,6 +90,8 @@ namespace Stripe.V2.Risk
         /// <summary>
         /// The type of inquiry.
         /// One of: <c>appeal</c>, <c>authorization_documents</c>, or <c>product_removal</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

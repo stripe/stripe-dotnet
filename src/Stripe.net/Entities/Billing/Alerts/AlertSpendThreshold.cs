@@ -10,6 +10,9 @@ namespace Stripe.Billing
     {
         /// <summary>
         /// Defines the period over which spend is aggregated.
+        /// One of: <c>billing</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("aggregation_period")]
         [STJS.JsonPropertyName("aggregation_period")]
@@ -25,6 +28,8 @@ namespace Stripe.Billing
         /// <summary>
         /// Defines the granularity of spend aggregation.
         /// One of: <c>billing_cadence</c>, or <c>pricing_plan_subscription</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("group_by")]
         [STJS.JsonPropertyName("group_by")]

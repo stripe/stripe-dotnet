@@ -11,6 +11,8 @@ namespace Stripe.Radar
         /// <summary>
         /// The reason why this login failed.
         /// One of: <c>other</c>, or <c>suspected_account_sharing</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

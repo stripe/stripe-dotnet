@@ -24,6 +24,9 @@ namespace Stripe.V2.Payments
 
         /// <summary>
         /// Open Enum. The <c>errored</c> status reason.
+        /// One of: <c>amount_mismatch</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason_code")]
         [STJS.JsonPropertyName("reason_code")]

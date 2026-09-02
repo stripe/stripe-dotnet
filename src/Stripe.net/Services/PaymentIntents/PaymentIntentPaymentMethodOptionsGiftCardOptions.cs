@@ -27,6 +27,8 @@ namespace Stripe
         /// <summary>
         /// Request partial authorization on this PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_partial_authorization")]
         [STJS.JsonPropertyName("request_partial_authorization")]

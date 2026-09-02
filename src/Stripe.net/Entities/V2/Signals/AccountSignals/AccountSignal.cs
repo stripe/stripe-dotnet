@@ -94,6 +94,8 @@ namespace Stripe.V2.Signals
         /// One of: <c>fraudulent_merchant</c>, <c>fraudulent_website</c>,
         /// <c>merchant_delinquency</c>, <c>payment_delinquency_exposure</c>,
         /// <c>user_account_sharing</c>, or <c>user_multi_accounting</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -38,6 +38,8 @@ namespace Stripe.Issuing
         /// Category of the third party.
         /// One of: <c>buy_now_pay_later</c>, <c>delivery_service</c>, <c>marketplace</c>,
         /// <c>other</c>, <c>payment_processor</c>, or <c>platform</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

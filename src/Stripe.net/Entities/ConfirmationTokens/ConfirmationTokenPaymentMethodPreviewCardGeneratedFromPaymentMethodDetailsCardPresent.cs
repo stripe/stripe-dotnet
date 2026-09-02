@@ -214,6 +214,8 @@ namespace Stripe
         /// How card details were read in this transaction.
         /// One of: <c>contact_emv</c>, <c>contactless_emv</c>, <c>contactless_magstripe_mode</c>,
         /// <c>magnetic_stripe_fallback</c>, or <c>magnetic_stripe_track2</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("read_method")]
         [STJS.JsonPropertyName("read_method")]

@@ -10,6 +10,9 @@ namespace Stripe.V2.MoneyManagement
     {
         /// <summary>
         /// Open Enum. The reason the ReceivedDebit was returned.
+        /// One of: <c>originator_initiated</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

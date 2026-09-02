@@ -19,6 +19,8 @@ namespace Stripe.Events
         /// <summary>
         /// The HTTP method.
         /// One of: <c>DELETE</c>, <c>GET</c>, <c>POST</c>, or <c>PUT</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("http_method")]
         [STJS.JsonPropertyName("http_method")]

@@ -60,6 +60,8 @@ namespace Stripe.Checkout
         /// Determines how to handle prorations resulting from the <c>billing_cycle_anchor</c>. If
         /// no value is passed, the default is <c>create_prorations</c>.
         /// One of: <c>create_prorations</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]

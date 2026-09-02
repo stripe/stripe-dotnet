@@ -10,7 +10,12 @@ namespace Stripe.Identity
     {
         /// <summary>
         /// A short machine-readable string giving the reason for the verification failure.
-        /// One of: <c>email_unverified_other</c>, or <c>email_verification_declined</c>.
+        /// One of: <c>email_address_mismatch</c>, <c>email_name_mismatch</c>,
+        /// <c>email_ownership_unverified</c>, <c>email_phone_mismatch</c>,
+        /// <c>email_short_tenure</c>, <c>email_unverified_other</c>, or
+        /// <c>email_verification_declined</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]

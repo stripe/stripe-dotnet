@@ -49,6 +49,8 @@ namespace Stripe.Issuing
         /// The status of the provisional credit obligation.
         /// One of: <c>delinquent</c>, <c>granted</c>, <c>not_required</c>, <c>permanent</c>,
         /// <c>required</c>, <c>revocable</c>, <c>revocation_notice_period</c>, or <c>revoked</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

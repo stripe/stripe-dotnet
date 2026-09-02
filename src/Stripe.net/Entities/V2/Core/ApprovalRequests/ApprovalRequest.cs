@@ -36,6 +36,8 @@ namespace Stripe.V2.Core
         /// <c>payment_intent.update</c>, <c>payout.create</c>, <c>price.update</c>,
         /// <c>refund.create</c>, <c>setup_intent.create</c>, <c>subscription.create</c>,
         /// <c>subscription.update</c>, <c>topup.create</c>, or <c>transfer.create</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("action")]
         [STJS.JsonPropertyName("action")]
@@ -103,6 +105,8 @@ namespace Stripe.V2.Core
         /// <c>execution_started</c>, <c>execution_succeeded</c>, <c>expired</c>, <c>failed</c>,
         /// <c>pending</c>, <c>rejected</c>, <c>requires_execution</c>, <c>requires_review</c>, or
         /// <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

@@ -46,6 +46,8 @@ namespace Stripe.DelegatedCheckout
         /// The status of the fulfillment.
         /// One of: <c>confirmed</c>, <c>delivered</c>, <c>fulfilled</c>, <c>pending</c>,
         /// <c>returned</c>, or <c>shipped</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

@@ -19,6 +19,8 @@ namespace Stripe.Tax
         /// <summary>
         /// Indicates the level of the jurisdiction where the form was filed.
         /// One of: <c>country</c>, or <c>state</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("level")]
         [STJS.JsonPropertyName("level")]

@@ -18,6 +18,8 @@ namespace Stripe
         /// <summary>
         /// Whether this tax is inclusive or exclusive.
         /// One of: <c>exclusive</c>, or <c>inclusive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_behavior")]
         [STJS.JsonPropertyName("tax_behavior")]
@@ -40,6 +42,8 @@ namespace Stripe
         /// <c>product_exempt_holiday</c>, <c>proportionally_rated</c>, <c>reduced_rated</c>,
         /// <c>reverse_charge</c>, <c>standard_rated</c>, <c>taxable_basis_reduced</c>, or
         /// <c>zero_rated</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("taxability_reason")]
         [STJS.JsonPropertyName("taxability_reason")]

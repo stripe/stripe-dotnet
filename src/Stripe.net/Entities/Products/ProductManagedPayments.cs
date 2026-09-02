@@ -13,6 +13,8 @@ namespace Stripe
         /// Whether this product is eligible for use with Managed Payments. Possible values are
         /// <c>eligible</c> and <c>ineligible</c>.
         /// One of: <c>eligible</c>, or <c>ineligible</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("eligibility")]
         [STJS.JsonPropertyName("eligibility")]

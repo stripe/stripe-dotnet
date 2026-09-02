@@ -21,6 +21,8 @@ namespace Stripe.Crypto
         /// List of errors associated with this KYC tier verification.
         /// One of: <c>id_document_verification_failed</c>, <c>phone_verification_failed</c>, or
         /// <c>user_has_reached_max_verification_attempts</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("verification_errors")]
         [STJS.JsonPropertyName("verification_errors")]
@@ -30,6 +32,8 @@ namespace Stripe.Crypto
         /// The verification status for this KYC tier.
         /// One of: <c>not_available</c>, <c>not_started</c>, <c>pending</c>, <c>rejected</c>, or
         /// <c>verified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("verification_status")]
         [STJS.JsonPropertyName("verification_status")]

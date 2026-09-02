@@ -18,6 +18,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// The network's recommendation to Stripe for this token activation request.
         /// One of: <c>approve</c>, <c>decline</c>, or <c>recommend_id_and_v</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("token_decision_recommendation")]
         [STJS.JsonPropertyName("token_decision_recommendation")]

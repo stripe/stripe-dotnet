@@ -22,6 +22,8 @@ namespace Stripe.Crypto
         /// The destination cryptocurrency to filter by.
         /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>sol</c>, <c>usdc</c>,
         /// <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("destination_currency")]
         [STJS.JsonPropertyName("destination_currency")]
@@ -32,6 +34,8 @@ namespace Stripe.Crypto
         /// One of: <c>avalanche</c>, <c>base</c>, <c>bitcoin</c>, <c>celo</c>, <c>ethereum</c>,
         /// <c>optimism</c>, <c>polygon</c>, <c>solana</c>, <c>stellar</c>, <c>sui</c>,
         /// <c>tempo</c>, or <c>worldchain</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("destination_network")]
         [STJS.JsonPropertyName("destination_network")]
@@ -42,6 +46,8 @@ namespace Stripe.Crypto
         /// fulfillment_processing, fulfillment_complete}</c>.
         /// One of: <c>fulfillment_complete</c>, <c>fulfillment_processing</c>, <c>initialized</c>,
         /// <c>rejected</c>, or <c>requires_payment</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

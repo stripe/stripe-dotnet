@@ -22,6 +22,8 @@ namespace Stripe.V2.MoneyManagement
         /// <c>credentials.gb_bank_account.account_number</c>,
         /// <c>credentials.sepa_bank_account.iban</c>, or
         /// <c>credentials.us_bank_account.account_number</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("include")]
         [STJS.JsonPropertyName("include")]

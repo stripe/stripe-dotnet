@@ -12,6 +12,8 @@ namespace Stripe
         /// For authenticated transactions: Indicates how the issuing bank authenticated the
         /// customer.
         /// One of: <c>challenge</c>, or <c>frictionless</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("authentication_flow")]
         [STJS.JsonPropertyName("authentication_flow")]
@@ -21,6 +23,8 @@ namespace Stripe
         /// The Electronic Commerce Indicator (ECI). A protocol-level field indicating what degree
         /// of authentication was performed.
         /// One of: <c>01</c>, <c>02</c>, <c>03</c>, <c>04</c>, <c>05</c>, <c>06</c>, or <c>07</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("electronic_commerce_indicator")]
         [STJS.JsonPropertyName("electronic_commerce_indicator")]
@@ -29,6 +33,8 @@ namespace Stripe
         /// <summary>
         /// The exemption requested via 3DS and accepted by the issuer at authentication time.
         /// One of: <c>low_risk</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("exemption_indicator")]
         [STJS.JsonPropertyName("exemption_indicator")]
@@ -44,8 +50,10 @@ namespace Stripe
 
         /// <summary>
         /// Indicates the outcome of 3D Secure authentication.
-        /// One of: <c>attempt_acknowledged</c>, <c>authenticated</c>, <c>data_share_only</c>,
-        /// <c>exempted</c>, <c>failed</c>, <c>not_supported</c>, or <c>processing_error</c>.
+        /// One of: <c>attempt_acknowledged</c>, <c>authenticated</c>, <c>exempted</c>,
+        /// <c>failed</c>, <c>not_supported</c>, or <c>processing_error</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("result")]
         [STJS.JsonPropertyName("result")]
@@ -56,6 +64,8 @@ namespace Stripe
         /// <c>result</c>.
         /// One of: <c>abandoned</c>, <c>bypassed</c>, <c>canceled</c>, <c>card_not_enrolled</c>,
         /// <c>network_not_supported</c>, <c>protocol_error</c>, or <c>rejected</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("result_reason")]
         [STJS.JsonPropertyName("result_reason")]
@@ -64,6 +74,8 @@ namespace Stripe
         /// <summary>
         /// The version of 3D Secure that was used.
         /// One of: <c>1.0.2</c>, <c>2.1.0</c>, or <c>2.2.0</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("version")]
         [STJS.JsonPropertyName("version")]

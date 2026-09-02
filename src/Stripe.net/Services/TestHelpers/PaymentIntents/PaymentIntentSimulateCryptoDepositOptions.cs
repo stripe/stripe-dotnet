@@ -18,6 +18,8 @@ namespace Stripe.TestHelpers
         /// <summary>
         /// The blockchain network of the simulated crypto deposit.
         /// One of: <c>base</c>, <c>ethereum</c>, <c>polygon</c>, <c>solana</c>, or <c>tempo</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]

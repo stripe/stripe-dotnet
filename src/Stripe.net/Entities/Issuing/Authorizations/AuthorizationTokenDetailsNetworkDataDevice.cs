@@ -48,6 +48,8 @@ namespace Stripe.Issuing
         /// <c>ty</c>, <c>ug</c>, <c>uk</c>, <c>ur</c>, <c>uz</c>, <c>ve</c>, <c>vi</c>, <c>vo</c>,
         /// <c>wa</c>, <c>wo</c>, <c>xh</c>, <c>yi</c>, <c>yo</c>, <c>za</c>, <c>zh</c>, or
         /// <c>zu</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("language")]
         [STJS.JsonPropertyName("language")]

@@ -19,6 +19,8 @@ namespace Stripe.Radar
         /// <summary>
         /// Pasted fields from the checkout flow.
         /// One of: <c>cvc</c>, <c>exp</c>, <c>number</c>, <c>other</c>, or <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("pasted_fields")]
         [STJS.JsonPropertyName("pasted_fields")]

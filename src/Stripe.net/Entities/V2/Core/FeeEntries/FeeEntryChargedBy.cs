@@ -32,6 +32,8 @@ namespace Stripe.V2.Core
         /// <summary>
         /// The type of entity that charged this fee.
         /// One of: <c>application</c>, <c>network</c>, or <c>stripe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

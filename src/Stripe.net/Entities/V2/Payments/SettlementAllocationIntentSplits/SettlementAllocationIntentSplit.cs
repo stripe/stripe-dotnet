@@ -81,6 +81,8 @@ namespace Stripe.V2.Payments
         /// <summary>
         /// The status of the SettlementAllocationIntentSplit.
         /// One of: <c>canceled</c>, <c>pending</c>, or <c>settled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -89,6 +91,8 @@ namespace Stripe.V2.Payments
         /// <summary>
         /// The type of the SettlementAllocationIntentSplit.
         /// One of: <c>credit</c>, or <c>debit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

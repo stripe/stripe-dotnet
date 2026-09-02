@@ -21,6 +21,8 @@ namespace Stripe
         /// <summary>
         /// Type of the mandate.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

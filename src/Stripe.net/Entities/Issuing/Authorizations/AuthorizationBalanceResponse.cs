@@ -12,6 +12,8 @@ namespace Stripe.Issuing
         /// The cardholder account type affected by this authorization.
         /// One of: <c>checking</c>, <c>credit</c>, <c>default</c>, <c>other</c>, <c>savings</c>, or
         /// <c>universal</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("account_type")]
         [STJS.JsonPropertyName("account_type")]

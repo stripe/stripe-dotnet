@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// The type of outstanding usage billing behavior.
         /// One of: <c>none</c>, or <c>pause_at</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

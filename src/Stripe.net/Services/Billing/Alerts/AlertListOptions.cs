@@ -12,6 +12,8 @@ namespace Stripe.Billing
         /// Filter results to only include this type of alert.
         /// One of: <c>credit_balance_threshold</c>, <c>spend_threshold</c>, or
         /// <c>usage_threshold</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("alert_type")]
         [STJS.JsonPropertyName("alert_type")]

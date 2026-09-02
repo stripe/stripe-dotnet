@@ -18,6 +18,9 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// The type of the grant condition. We currently support
         /// <c>meter_event_first_per_period</c>.
+        /// One of: <c>meter_event_first_per_period</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

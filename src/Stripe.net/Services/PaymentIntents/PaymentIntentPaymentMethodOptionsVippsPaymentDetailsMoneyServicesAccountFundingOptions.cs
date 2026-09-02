@@ -12,6 +12,8 @@ namespace Stripe
         /// The category of digital asset being acquired through this account funding transaction.
         /// One of: <c>blockchain_native</c>, <c>nft</c>, <c>other_non_fiat</c>, or
         /// <c>stablecoin</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("digital_asset_category")]
         [STJS.JsonPropertyName("digital_asset_category")]

@@ -29,6 +29,8 @@ namespace Stripe
         /// One of: <c>license_fee_details</c>, <c>price_details</c>,
         /// <c>rate_card_custom_pricing_unit_overage_rate_details</c>, or
         /// <c>rate_card_rate_details</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

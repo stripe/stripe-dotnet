@@ -11,6 +11,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Open Enum. ACH submission timing.
         /// One of: <c>next_day</c>, or <c>same_day</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("submission")]
         [STJS.JsonPropertyName("submission")]
@@ -18,6 +20,9 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// The transaction purpose for this ACH payment.
+        /// One of: <c>payroll</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("transaction_purpose")]
         [STJS.JsonPropertyName("transaction_purpose")]

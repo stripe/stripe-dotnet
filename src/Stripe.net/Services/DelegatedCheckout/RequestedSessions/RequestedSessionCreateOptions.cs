@@ -81,6 +81,9 @@ namespace Stripe.DelegatedCheckout
 
         /// <summary>
         /// The setup future usage for this requested session.
+        /// One of: <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]

@@ -19,6 +19,8 @@ namespace Stripe.DelegatedCheckout
         /// <summary>
         /// The payment method types to exclude from the session.
         /// One of: <c>affirm</c>, <c>card</c>, or <c>klarna</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("excluded_payment_method_types")]
         [STJS.JsonPropertyName("excluded_payment_method_types")]

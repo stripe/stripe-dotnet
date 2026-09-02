@@ -74,6 +74,8 @@ namespace Stripe.V2.Core
         /// The reason this fee entry was created.
         /// One of: <c>other</c>, <c>processing_fee</c>, <c>refund</c>, <c>refund_failure</c>,
         /// <c>reprice</c>, or <c>tier_true_up</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]
@@ -89,6 +91,8 @@ namespace Stripe.V2.Core
         /// <summary>
         /// The category of this fee.
         /// One of: <c>application_fee</c>, <c>passthrough_fee</c>, or <c>stripe_fee</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

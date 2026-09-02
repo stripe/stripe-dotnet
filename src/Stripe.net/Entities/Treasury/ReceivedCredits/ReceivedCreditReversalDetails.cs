@@ -22,6 +22,8 @@ namespace Stripe.Treasury
         /// Set if a ReceivedCredit cannot be reversed.
         /// One of: <c>already_reversed</c>, <c>deadline_passed</c>, <c>network_restricted</c>,
         /// <c>other</c>, or <c>source_flow_restricted</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("restricted_reason")]
         [STJS.JsonPropertyName("restricted_reason")]

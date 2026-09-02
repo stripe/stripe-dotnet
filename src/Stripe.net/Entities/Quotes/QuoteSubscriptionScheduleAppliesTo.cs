@@ -27,6 +27,8 @@ namespace Stripe
         /// <summary>
         /// Describes whether the quote line is affecting a new schedule or an existing schedule.
         /// One of: <c>new_reference</c>, or <c>subscription_schedule</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -83,6 +83,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// The status of the transaction.
         /// One of: <c>pending</c>, <c>posted</c>, or <c>void</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

@@ -168,6 +168,10 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("sepa_debit")]
         public SessionPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
 
+        [JsonProperty("sequra")]
+        [STJS.JsonPropertyName("sequra")]
+        public SessionPaymentMethodOptionsSequra Sequra { get; set; }
+
         [JsonProperty("sofort")]
         [STJS.JsonPropertyName("sofort")]
         public SessionPaymentMethodOptionsSofort Sofort { get; set; }

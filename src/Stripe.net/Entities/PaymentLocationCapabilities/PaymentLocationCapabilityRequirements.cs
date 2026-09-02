@@ -21,6 +21,8 @@ namespace Stripe
         /// One of: <c>account.capability_required</c>, <c>pending.onboarding</c>,
         /// <c>pending.review</c>, <c>rejected.other</c>, <c>rejected.unsupported_business</c>, or
         /// <c>requirements.fields_needed</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("disabled_reason")]
         [STJS.JsonPropertyName("disabled_reason")]

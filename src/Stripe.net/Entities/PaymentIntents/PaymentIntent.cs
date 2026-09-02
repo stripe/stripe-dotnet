@@ -79,9 +79,11 @@ namespace Stripe
         /// <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
         /// <c>scalapay</c>, <c>sepa_debit</c>, <c>sequra</c>, <c>shop_pay</c>, <c>shopeepay</c>,
         /// <c>sofort</c>, <c>south_korea_market</c>, <c>stripe_balance</c>, <c>sunbit</c>,
-        /// <c>swish</c>, <c>tamara</c>, <c>test_pay</c>, <c>truemoney</c>, <c>twint</c>,
-        /// <c>upi</c>, <c>us_bank_account</c>, <c>us_cash_voucher</c>, <c>vipps</c>,
+        /// <c>swish</c>, <c>tamara</c>, <c>test_pay</c>, <c>touch_n_go</c>, <c>truemoney</c>,
+        /// <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>us_cash_voucher</c>, <c>vipps</c>,
         /// <c>wechat_pay</c>, <c>wero</c>, or <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allowed_payment_method_types")]
         [STJS.JsonPropertyName("allowed_payment_method_types")]
@@ -196,6 +198,8 @@ namespace Stripe
         /// One of: <c>abandoned</c>, <c>automatic</c>, <c>duplicate</c>, <c>expired</c>,
         /// <c>failed_invoice</c>, <c>fraudulent</c>, <c>requested_by_customer</c>, or
         /// <c>void_invoice</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("cancellation_reason")]
         [STJS.JsonPropertyName("cancellation_reason")]
@@ -204,6 +208,8 @@ namespace Stripe
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("capture_method")]
         [STJS.JsonPropertyName("capture_method")]
@@ -229,6 +235,8 @@ namespace Stripe
         /// Describes whether we can confirm this PaymentIntent automatically, or if it requires
         /// customer action to confirm the payment.
         /// One of: <c>automatic</c>, or <c>manual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("confirmation_method")]
         [STJS.JsonPropertyName("confirmation_method")]
@@ -347,9 +355,11 @@ namespace Stripe
         /// <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>,
         /// <c>paynow</c>, <c>paypal</c>, <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
-        /// <c>scalapay</c>, <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>,
+        /// <c>scalapay</c>, <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>,
         /// <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>, <c>tamara</c>, <c>twint</c>,
         /// <c>upi</c>, <c>us_bank_account</c>, <c>vipps</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("excluded_payment_method_types")]
         [STJS.JsonPropertyName("excluded_payment_method_types")]
@@ -674,6 +684,8 @@ namespace Stripe
         /// Indicates whether confirmation for this PaymentIntent using a secret key is
         /// <c>required</c> or <c>optional</c>.
         /// One of: <c>optional</c>, or <c>required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("secret_key_confirmation")]
         [STJS.JsonPropertyName("secret_key_confirmation")]
@@ -699,6 +711,8 @@ namespace Stripe
         /// with regional legislation and network rules, such as <a
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
@@ -782,6 +796,8 @@ namespace Stripe
         /// One of: <c>canceled</c>, <c>expired</c>, <c>processing</c>, <c>requires_action</c>,
         /// <c>requires_capture</c>, <c>requires_confirmation</c>, <c>requires_payment_method</c>,
         /// <c>requires_reauthorization</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

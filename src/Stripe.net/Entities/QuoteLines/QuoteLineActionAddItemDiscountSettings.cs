@@ -16,6 +16,8 @@ namespace Stripe
         /// The start date of the discount's service period when applying a coupon or promotion code
         /// with a service period duration.
         /// One of: <c>current_period_end</c>, <c>current_period_start</c>, or <c>line_start</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("start_date")]
         [STJS.JsonPropertyName("start_date")]

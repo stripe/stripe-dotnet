@@ -32,6 +32,8 @@ namespace Stripe
         /// <c>insufficient_funds</c>, <c>payment_method_customer_decline</c>,
         /// <c>payment_method_provider_unknown_outcome</c>, <c>payment_method_restricted</c>, or
         /// <c>processing_error</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("failure_code")]
         [STJS.JsonPropertyName("failure_code")]

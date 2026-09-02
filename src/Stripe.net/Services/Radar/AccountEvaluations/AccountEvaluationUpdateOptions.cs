@@ -40,6 +40,8 @@ namespace Stripe.Radar
         /// The type of event to report.
         /// One of: <c>login_failed</c>, <c>login_succeeded</c>, <c>registration_failed</c>, or
         /// <c>registration_succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

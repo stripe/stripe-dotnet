@@ -26,6 +26,8 @@ namespace Stripe.Billing
         /// <summary>
         /// Whether the alert was triggered or recovered.
         /// One of: <c>recovered</c>, or <c>triggered</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("action")]
         [STJS.JsonPropertyName("action")]
@@ -62,6 +64,8 @@ namespace Stripe.Billing
         /// The type of billing alert that generated this notification.
         /// One of: <c>credit_balance_threshold</c>, <c>spend_threshold</c>, or
         /// <c>usage_threshold</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("alert_type")]
         [STJS.JsonPropertyName("alert_type")]

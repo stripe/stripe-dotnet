@@ -20,6 +20,8 @@ namespace Stripe.V2.MoneyManagement
         /// The preferred networks to use for this OutboundPayment.
         /// One of: <c>ach</c>, <c>becs</c>, <c>eft</c>, <c>fedwire</c>, <c>fps</c>, <c>npp</c>,
         /// <c>rtp</c>, <c>sepa_credit</c>, <c>sepa_instant</c>, or <c>swift</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("preferred_networks")]
         [STJS.JsonPropertyName("preferred_networks")]

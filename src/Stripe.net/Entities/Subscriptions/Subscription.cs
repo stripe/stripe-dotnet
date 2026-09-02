@@ -175,6 +175,8 @@ namespace Stripe
         /// customer an invoice with payment instructions and mark the subscription as
         /// <c>active</c>.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("collection_method")]
         [STJS.JsonPropertyName("collection_method")]
@@ -708,6 +710,8 @@ namespace Stripe
         /// information from a customer, you may choose to reopen and pay their closed invoices.
         /// One of: <c>active</c>, <c>canceled</c>, <c>incomplete</c>, <c>incomplete_expired</c>,
         /// <c>past_due</c>, <c>paused</c>, <c>trialing</c>, or <c>unpaid</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

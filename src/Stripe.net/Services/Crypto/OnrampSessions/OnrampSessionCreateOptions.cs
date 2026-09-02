@@ -49,6 +49,8 @@ namespace Stripe.Crypto
         /// override this parameter.
         /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>sol</c>, <c>usdc</c>,
         /// <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("destination_currencies")]
         [STJS.JsonPropertyName("destination_currencies")]
@@ -65,6 +67,8 @@ namespace Stripe.Crypto
         /// UI subject to <c>destination_currencies</c> if set.
         /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>sol</c>, <c>usdc</c>,
         /// <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("destination_currency")]
         [STJS.JsonPropertyName("destination_currency")]
@@ -81,6 +85,8 @@ namespace Stripe.Crypto
         /// One of: <c>avalanche</c>, <c>base</c>, <c>bitcoin</c>, <c>celo</c>, <c>ethereum</c>,
         /// <c>optimism</c>, <c>polygon</c>, <c>solana</c>, <c>stellar</c>, <c>sui</c>,
         /// <c>tempo</c>, or <c>worldchain</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("destination_network")]
         [STJS.JsonPropertyName("destination_network")]
@@ -96,6 +102,8 @@ namespace Stripe.Crypto
         /// One of: <c>avalanche</c>, <c>base</c>, <c>bitcoin</c>, <c>celo</c>, <c>ethereum</c>,
         /// <c>optimism</c>, <c>polygon</c>, <c>solana</c>, <c>stellar</c>, <c>sui</c>,
         /// <c>tempo</c>, or <c>worldchain</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("destination_networks")]
         [STJS.JsonPropertyName("destination_networks")]
@@ -136,6 +144,8 @@ namespace Stripe.Crypto
         /// (default): crypto is delivered when payment is confirmed <c>standard</c>: crypto is
         /// delivered when payment settles.
         /// One of: <c>instant</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("settlement_speed")]
         [STJS.JsonPropertyName("settlement_speed")]
@@ -161,6 +171,8 @@ namespace Stripe.Crypto
         /// must be one of the fiat currencies supported by onramp. Users can still select a
         /// different currency in the onramp UI.
         /// One of: <c>eur</c>, <c>gbp</c>, or <c>usd</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("source_currency")]
         [STJS.JsonPropertyName("source_currency")]

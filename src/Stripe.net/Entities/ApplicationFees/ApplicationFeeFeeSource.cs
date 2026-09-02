@@ -39,6 +39,8 @@ namespace Stripe
         /// <summary>
         /// Type of object that created the application fee.
         /// One of: <c>charge</c>, <c>payout</c>, or <c>transfer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

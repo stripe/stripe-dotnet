@@ -11,6 +11,8 @@ namespace Stripe.Billing
         /// <summary>
         /// The type of this balance. We currently only support <c>monetary</c> amounts.
         /// One of: <c>custom_pricing_unit</c>, or <c>monetary</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("balance_type")]
         [STJS.JsonPropertyName("balance_type")]

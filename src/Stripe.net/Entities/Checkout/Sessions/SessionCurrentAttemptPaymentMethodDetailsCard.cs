@@ -54,6 +54,8 @@ namespace Stripe.Checkout
         /// Card funding type. Can be <c>credit</c>, <c>debit</c>, <c>prepaid</c>, or
         /// <c>unknown</c>.
         /// One of: <c>credit</c>, <c>debit</c>, <c>prepaid</c>, or <c>unknown</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("funding")]
         [STJS.JsonPropertyName("funding")]

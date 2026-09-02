@@ -36,9 +36,18 @@ namespace Stripe.SharedPayment
         public long MaxAmount { get; set; }
 
         /// <summary>
+        /// The recurring schedule for the shared payment token's amount usage restrictions.
+        /// </summary>
+        [JsonProperty("recurring")]
+        [STJS.JsonPropertyName("recurring")]
+        public IssuedTokenUsageLimitsRecurring Recurring { get; set; }
+
+        /// <summary>
         /// The recurring interval at which the shared payment token's amount usage restrictions
         /// reset.
         /// One of: <c>month</c>, <c>week</c>, or <c>year</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("recurring_interval")]
         [STJS.JsonPropertyName("recurring_interval")]

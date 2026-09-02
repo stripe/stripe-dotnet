@@ -29,6 +29,8 @@ namespace Stripe.V2.MoneyManagement
         /// <c>instant_card_payout_fee</c>, <c>next_day_payout_fee</c>, <c>real_time_payout_fee</c>,
         /// <c>stablecoin_payout_fee</c>, <c>stablecoin_routing_fee</c>, <c>standard_payout_fee</c>,
         /// or <c>wire_payout_fee</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

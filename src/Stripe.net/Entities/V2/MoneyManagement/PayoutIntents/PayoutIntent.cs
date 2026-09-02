@@ -40,6 +40,8 @@ namespace Stripe.V2.MoneyManagement
         /// Controls whether the intent requires explicit confirmation before transitioning to
         /// pending.
         /// One of: <c>automatic</c>, or <c>manual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("confirmation_method")]
         [STJS.JsonPropertyName("confirmation_method")]
@@ -140,6 +142,8 @@ namespace Stripe.V2.MoneyManagement
         /// <c>posted</c>, <c>canceled</c>, <c>requires_action</c>.
         /// One of: <c>canceled</c>, <c>pending</c>, <c>posted</c>, <c>processing</c>, or
         /// <c>requires_action</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

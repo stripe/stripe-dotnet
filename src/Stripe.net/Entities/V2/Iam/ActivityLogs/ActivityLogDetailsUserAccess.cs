@@ -62,6 +62,8 @@ namespace Stripe.V2.Iam
         /// <summary>
         /// Surface where the user access action started.
         /// One of: <c>dashboard</c>, or <c>express</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("surface")]
         [STJS.JsonPropertyName("surface")]

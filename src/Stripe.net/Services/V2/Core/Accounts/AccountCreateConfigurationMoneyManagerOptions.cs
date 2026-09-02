@@ -26,6 +26,8 @@ namespace Stripe.V2.Core
         /// <c>pharmaceuticals</c>, <c>precious_metals_precious_stones_jewelry</c>,
         /// <c>safe_deposit_box_rentals</c>, <c>third_party_payment_processing</c>, or
         /// <c>weapons_firearms_and_explosives</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("high_risk_activities")]
         [STJS.JsonPropertyName("high_risk_activities")]
@@ -67,6 +69,8 @@ namespace Stripe.V2.Core
         /// <c>purchase_goods_and_services</c>, <c>receive_payments_for_goods_and_services</c>,
         /// <c>tax_optimization</c>, <c>third_party_money_transmission</c>, or
         /// <c>treasury_management</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("purpose_of_funds")]
         [STJS.JsonPropertyName("purpose_of_funds")]
@@ -92,6 +96,8 @@ namespace Stripe.V2.Core
         /// <c>investment_proceeds</c>, <c>legal_settlement</c>, <c>owners_capital</c>,
         /// <c>pension_retirement</c>, <c>sales_of_assets</c>, <c>sales_of_goods_and_services</c>,
         /// <c>tax_refund</c>, <c>third_party_funds</c>, or <c>treasury_reserves</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("source_of_funds")]
         [STJS.JsonPropertyName("source_of_funds")]

@@ -11,6 +11,8 @@ namespace Stripe.TestHelpers.Issuing
         /// <summary>
         /// Whether to close the dispute as <c>won</c> or <c>lost</c>.
         /// One of: <c>lost</c>, or <c>won</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

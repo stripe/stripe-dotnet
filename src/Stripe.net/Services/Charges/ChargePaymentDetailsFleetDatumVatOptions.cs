@@ -12,6 +12,8 @@ namespace Stripe
         /// Indicates the merchant's agreement for Invoice on Behalf (IOB) VAT processing.
         /// One of: <c>issuer_to_iob</c>, <c>issuer_to_iob_and_incremental_certification</c>, or
         /// <c>merchant_does_not_agree_to_iob</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("iob_indicator")]
         [STJS.JsonPropertyName("iob_indicator")]

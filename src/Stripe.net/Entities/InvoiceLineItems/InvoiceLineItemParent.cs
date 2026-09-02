@@ -48,6 +48,8 @@ namespace Stripe
         /// One of: <c>invoice_item_details</c>, <c>pricing_plan_subscription_details</c>,
         /// <c>rate_card_subscription_details</c>, <c>schedule_details</c>, or
         /// <c>subscription_item_details</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

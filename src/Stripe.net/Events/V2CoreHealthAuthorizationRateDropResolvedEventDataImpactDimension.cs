@@ -25,6 +25,8 @@ namespace Stripe.Events
         /// <summary>
         /// The type of the dimension.
         /// One of: <c>acquirer</c>, or <c>issuer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

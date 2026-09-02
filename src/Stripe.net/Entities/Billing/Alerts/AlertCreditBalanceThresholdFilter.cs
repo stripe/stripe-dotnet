@@ -45,6 +45,8 @@ namespace Stripe.Billing
 
         /// <summary>
         /// One of: <c>customer</c>, or <c>tenant</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

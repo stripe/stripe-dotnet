@@ -20,6 +20,9 @@ namespace Stripe.V2.Billing
         /// The price type that credit grants can apply to. Stripe supports the <c>metered</c> price
         /// type, which applies to metered prices and rate cards. Cannot be used in combination with
         /// <c>billable_items</c>.
+        /// One of: <c>metered</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("price_type")]
         [STJS.JsonPropertyName("price_type")]

@@ -11,6 +11,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// The taxonomy classification status for this account. One of 'pending' or 'completed'.
         /// One of: <c>completed</c>, or <c>pending</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

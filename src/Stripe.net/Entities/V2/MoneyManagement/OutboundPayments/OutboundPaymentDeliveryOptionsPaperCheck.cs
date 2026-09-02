@@ -25,6 +25,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Open Enum. Shipping speed of the paper check.
         /// One of: <c>priority</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("shipping_speed")]
         [STJS.JsonPropertyName("shipping_speed")]

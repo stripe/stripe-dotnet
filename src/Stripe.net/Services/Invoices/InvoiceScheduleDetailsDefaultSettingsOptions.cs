@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// Configures how the subscription schedule handles billing for phase transitions.
         /// One of: <c>billing_period_start</c>, or <c>phase_start</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("phase_effective_at")]
         [STJS.JsonPropertyName("phase_effective_at")]

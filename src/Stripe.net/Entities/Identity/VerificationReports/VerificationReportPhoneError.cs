@@ -10,7 +10,13 @@ namespace Stripe.Identity
     {
         /// <summary>
         /// A short machine-readable string giving the reason for the verification failure.
-        /// One of: <c>phone_unverified_other</c>, or <c>phone_verification_declined</c>.
+        /// One of: <c>phone_address_mismatch</c>, <c>phone_invalid</c>,
+        /// <c>phone_invalid_line_type</c>, <c>phone_name_mismatch</c>,
+        /// <c>phone_ownership_unverified</c>, <c>phone_short_tenure</c>,
+        /// <c>phone_unsupported_country</c>, <c>phone_unverified_other</c>, or
+        /// <c>phone_verification_declined</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]

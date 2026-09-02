@@ -18,6 +18,8 @@ namespace Stripe
         ///
         /// If omitted, funds are captured before the authorization expires.
         /// One of: <c>auth_expiry</c>, <c>end_of_day</c>, or <c>target_delay</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("capture_by")]
         [STJS.JsonPropertyName("capture_by")]
@@ -60,6 +62,8 @@ namespace Stripe
         /// Request ability to make <a href="https://docs.stripe.com/payments/multicapture">multiple
         /// captures</a> for this PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_multicapture")]
         [STJS.JsonPropertyName("request_multicapture")]
@@ -70,6 +74,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/payments/reauthorization">reauthorize</a> for this
         /// PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_reauthorization")]
         [STJS.JsonPropertyName("request_reauthorization")]

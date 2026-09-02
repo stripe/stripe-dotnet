@@ -12,6 +12,8 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// Expand to include additional data such as discount_details.
         /// One of: <c>discount_details</c>, or <c>pricing_plan_component_details</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("include")]
         [STJS.JsonPropertyName("include")]

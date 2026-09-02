@@ -60,6 +60,8 @@ namespace Stripe
         /// <summary>
         /// The outcome of the reported refund.
         /// One of: <c>failed</c>, or <c>refunded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("outcome")]
         [STJS.JsonPropertyName("outcome")]
@@ -76,6 +78,8 @@ namespace Stripe
         /// The reason for the refund. One of <c>duplicate</c>, <c>fraudulent</c>, or
         /// <c>requested_by_customer</c>.
         /// One of: <c>duplicate</c>, <c>fraudulent</c>, or <c>requested_by_customer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

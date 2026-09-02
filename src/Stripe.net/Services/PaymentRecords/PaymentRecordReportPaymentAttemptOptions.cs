@@ -13,6 +13,13 @@ namespace Stripe
         private Dictionary<string, string> metadata;
 
         /// <summary>
+        /// Information about the payment attempt cancelation.
+        /// </summary>
+        [JsonProperty("canceled")]
+        [STJS.JsonPropertyName("canceled")]
+        public PaymentRecordCanceledOptions Canceled { get; set; }
+
+        /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
@@ -64,6 +71,8 @@ namespace Stripe
         /// <summary>
         /// The outcome of the reported payment.
         /// One of: <c>failed</c>, or <c>guaranteed</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("outcome")]
         [STJS.JsonPropertyName("outcome")]

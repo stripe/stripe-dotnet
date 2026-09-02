@@ -11,6 +11,8 @@ namespace Stripe.Events
         /// <summary>
         /// The type of the element.
         /// One of: <c>expressCheckout</c>, or <c>payment</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("element_type")]
         [STJS.JsonPropertyName("element_type")]

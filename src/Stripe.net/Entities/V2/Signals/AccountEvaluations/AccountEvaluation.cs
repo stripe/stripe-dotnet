@@ -68,6 +68,8 @@ namespace Stripe.V2.Signals
         /// List of signals still pending evaluation.
         /// One of: <c>fraudulent_website</c>, <c>user_account_sharing</c>, or
         /// <c>user_multi_accounting</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("pending_signals")]
         [STJS.JsonPropertyName("pending_signals")]
@@ -77,6 +79,8 @@ namespace Stripe.V2.Signals
         /// List of signals requested for evaluation.
         /// One of: <c>fraudulent_website</c>, <c>user_account_sharing</c>, or
         /// <c>user_multi_accounting</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("requested_signals")]
         [STJS.JsonPropertyName("requested_signals")]

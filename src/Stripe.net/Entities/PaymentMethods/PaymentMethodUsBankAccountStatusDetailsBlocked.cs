@@ -12,6 +12,8 @@ namespace Stripe
         /// The ACH network code that resulted in this block.
         /// One of: <c>R02</c>, <c>R03</c>, <c>R04</c>, <c>R05</c>, <c>R07</c>, <c>R08</c>,
         /// <c>R10</c>, <c>R11</c>, <c>R16</c>, <c>R20</c>, <c>R29</c>, or <c>R31</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network_code")]
         [STJS.JsonPropertyName("network_code")]
@@ -23,6 +25,8 @@ namespace Stripe
         /// <c>bank_account_invalid_details</c>, <c>bank_account_restricted</c>,
         /// <c>bank_account_unusable</c>, <c>debit_not_authorized</c>, or
         /// <c>tokenized_account_number_deactivated</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

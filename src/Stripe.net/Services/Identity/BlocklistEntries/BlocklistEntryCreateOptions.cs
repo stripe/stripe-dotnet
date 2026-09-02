@@ -19,6 +19,8 @@ namespace Stripe.Identity
         /// <summary>
         /// The type of blocklist entry to be created.
         /// One of: <c>document</c>, or <c>selfie</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("entry_type")]
         [STJS.JsonPropertyName("entry_type")]

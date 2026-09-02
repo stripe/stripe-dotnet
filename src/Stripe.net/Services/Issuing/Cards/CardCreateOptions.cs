@@ -151,6 +151,8 @@ namespace Stripe.Issuing
         /// Whether authorizations can be approved on this card. May be blocked from activating
         /// cards depending on past-due Cardholder requirements. Defaults to <c>inactive</c>.
         /// One of: <c>active</c>, or <c>inactive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -159,6 +161,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// The type of card to issue. Possible values are <c>physical</c> or <c>virtual</c>.
         /// One of: <c>physical</c>, or <c>virtual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

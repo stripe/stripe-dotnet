@@ -38,6 +38,8 @@ namespace Stripe
         /// Describes how the billing schedule will determine the end date. Either <c>duration</c>
         /// or <c>timestamp</c>.
         /// One of: <c>duration</c>, or <c>timestamp</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

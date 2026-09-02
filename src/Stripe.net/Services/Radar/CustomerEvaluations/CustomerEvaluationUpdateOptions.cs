@@ -18,6 +18,8 @@ namespace Stripe.Radar
         /// <summary>
         /// The outcome status of the evaluation: allowed, restricted, or blocked.
         /// One of: <c>allowed</c>, <c>blocked</c>, or <c>restricted</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

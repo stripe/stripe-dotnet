@@ -26,6 +26,8 @@ namespace Stripe
         /// <c>regular_ethanol</c>, <c>repairs</c>, <c>self_service_car_wash</c>, <c>shower</c>,
         /// <c>store_service</c>, <c>tobacco</c>, <c>vehicle_accessories</c>,
         /// <c>vehicle_parking</c>, <c>vehicle_parts</c>, or <c>wash_out</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("product_type")]
         [STJS.JsonPropertyName("product_type")]
@@ -35,6 +37,8 @@ namespace Stripe
         /// The type of service received at the acceptor location.
         /// One of: <c>full_service</c>, <c>high_speed_diesel</c>, <c>non_fuel_only</c>, or
         /// <c>self_service</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("service_type")]
         [STJS.JsonPropertyName("service_type")]

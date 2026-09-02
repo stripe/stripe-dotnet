@@ -18,6 +18,8 @@ namespace Stripe
         /// <summary>
         /// Type of the account referenced in the request.
         /// One of: <c>account</c>, <c>application</c>, or <c>self</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

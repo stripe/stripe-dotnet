@@ -78,6 +78,8 @@ namespace Stripe
         /// The source balance to use for this transfer. One of <c>bank_account</c>, <c>card</c>, or
         /// <c>fpx</c>. For most users, this will default to <c>card</c>.
         /// One of: <c>bank_account</c>, <c>card</c>, or <c>fpx</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("source_type")]
         [STJS.JsonPropertyName("source_type")]

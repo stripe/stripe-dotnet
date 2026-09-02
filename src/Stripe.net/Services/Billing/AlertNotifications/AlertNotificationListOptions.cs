@@ -12,6 +12,8 @@ namespace Stripe.Billing
         /// <summary>
         /// Filter results to only include triggered or recovered notifications.
         /// One of: <c>recovered</c>, or <c>triggered</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("action")]
         [STJS.JsonPropertyName("action")]

@@ -15,6 +15,8 @@ namespace Stripe.Issuing
         /// Cannot be set with <c>blocked_card_presences</c>. Provide an empty value to unset this
         /// control.
         /// One of: <c>not_present</c>, or <c>present</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allowed_card_presences")]
         [STJS.JsonPropertyName("allowed_card_presences")]
@@ -170,6 +172,8 @@ namespace Stripe.Issuing
         /// <c>wig_and_toupee_stores</c>, <c>wires_money_orders</c>,
         /// <c>womens_accessory_and_specialty_shops</c>, <c>womens_ready_to_wear_stores</c>, or
         /// <c>wrecking_and_salvage_yards</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allowed_categories")]
         [STJS.JsonPropertyName("allowed_categories")]
@@ -190,6 +194,8 @@ namespace Stripe.Issuing
         /// options are <c>present</c>, <c>not_present</c>. Cannot be set with
         /// <c>allowed_card_presences</c>. Provide an empty value to unset this control.
         /// One of: <c>not_present</c>, or <c>present</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("blocked_card_presences")]
         [STJS.JsonPropertyName("blocked_card_presences")]
@@ -345,6 +351,8 @@ namespace Stripe.Issuing
         /// <c>wig_and_toupee_stores</c>, <c>wires_money_orders</c>,
         /// <c>womens_accessory_and_specialty_shops</c>, <c>womens_ready_to_wear_stores</c>, or
         /// <c>wrecking_and_salvage_yards</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("blocked_categories")]
         [STJS.JsonPropertyName("blocked_categories")]

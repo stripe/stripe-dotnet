@@ -11,6 +11,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// Determines which amount serves as the basis for calculating the surcharge.
         /// One of: <c>total_after_tax</c>, or <c>total_before_tax</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("calculation_basis")]
         [STJS.JsonPropertyName("calculation_basis")]
@@ -27,6 +29,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// Specifies whether the surcharge is considered inclusive or exclusive of taxes.
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_behavior")]
         [STJS.JsonPropertyName("tax_behavior")]

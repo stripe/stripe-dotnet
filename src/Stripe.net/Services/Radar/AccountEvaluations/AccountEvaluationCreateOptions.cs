@@ -25,6 +25,8 @@ namespace Stripe.Radar
         /// <summary>
         /// The type of evaluation requested.
         /// One of: <c>login_initiated</c>, or <c>registration_initiated</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

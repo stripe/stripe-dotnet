@@ -46,6 +46,8 @@ namespace Stripe.Radar
         /// <summary>
         /// The type of evaluation event.
         /// One of: <c>login</c>, or <c>registration</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("event_type")]
         [STJS.JsonPropertyName("event_type")]

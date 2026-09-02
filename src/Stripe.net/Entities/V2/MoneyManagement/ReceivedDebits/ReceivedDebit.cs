@@ -122,6 +122,8 @@ namespace Stripe.V2.MoneyManagement
         /// Open Enum. The status of the ReceivedDebit.
         /// One of: <c>canceled</c>, <c>failed</c>, <c>pending</c>, <c>returned</c>,
         /// <c>scheduled</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -153,6 +155,8 @@ namespace Stripe.V2.MoneyManagement
         /// Open Enum. The type of the ReceivedDebit.
         /// One of: <c>balance_transfer</c>, <c>bank_transfer</c>, <c>card_spend</c>,
         /// <c>external_debit</c>, or <c>stripe_balance_payment</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

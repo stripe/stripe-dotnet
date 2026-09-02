@@ -65,6 +65,8 @@ namespace Stripe.Issuing
         /// the associated card’s primary network.
         /// One of: <c>cirrus</c>, <c>interlink</c>, <c>maestro</c>, <c>mastercard</c>,
         /// <c>other</c>, <c>plus</c>, or <c>visa</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("routed_network")]
         [STJS.JsonPropertyName("routed_network")]

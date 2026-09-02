@@ -10,6 +10,9 @@ namespace Stripe.V2.MoneyManagement
     {
         /// <summary>
         /// The reason for the failure of the DebitDispute.
+        /// One of: <c>unknown</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

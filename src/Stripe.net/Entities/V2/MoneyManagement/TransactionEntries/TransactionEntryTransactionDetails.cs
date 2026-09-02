@@ -32,6 +32,8 @@ namespace Stripe.V2.MoneyManagement
         /// <c>stripe_balance_payment_debit</c>, <c>stripe_balance_payment_debit_reversal</c>,
         /// <c>stripe_fee</c>, <c>stripe_fee_tax</c>, <c>tax_fund</c>, <c>tax_withholding</c>,
         /// <c>transfer_reversal</c>, or <c>unreconciled_customer_funds</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("category")]
         [STJS.JsonPropertyName("category")]

@@ -168,6 +168,9 @@ namespace Stripe.DelegatedCheckout
 
         /// <summary>
         /// Whether or not the payment method should be saved for future use.
+        /// One of: <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
@@ -218,6 +221,8 @@ namespace Stripe.DelegatedCheckout
         /// <summary>
         /// The status of the requested session.
         /// One of: <c>completed</c>, <c>expired</c>, <c>open</c>, or <c>requires_action</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

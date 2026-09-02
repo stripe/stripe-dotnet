@@ -12,6 +12,8 @@ namespace Stripe
         /// Verification status, one of <c>pending</c>, <c>verified</c>, <c>unverified</c>, or
         /// <c>unavailable</c>.
         /// One of: <c>pending</c>, <c>unavailable</c>, <c>unverified</c>, or <c>verified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

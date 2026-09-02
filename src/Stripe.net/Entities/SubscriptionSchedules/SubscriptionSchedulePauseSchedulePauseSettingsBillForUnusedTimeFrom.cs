@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// The type of unused time credit behavior.
         /// One of: <c>item_current_period_start</c>, <c>none</c>, or <c>pause_at</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

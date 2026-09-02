@@ -45,6 +45,8 @@ namespace Stripe.V2.Core
         /// <c>sk_ico</c>, <c>sk_vat</c>, <c>sl_tin</c>, <c>sv_nit</c>, <c>th_crn</c>,
         /// <c>th_prn</c>, <c>th_tin</c>, <c>us_ein</c>, <c>uy_ruc</c>, <c>vg_cn</c>, or
         /// <c>za_tin</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

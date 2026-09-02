@@ -22,6 +22,8 @@ namespace Stripe.V2.Billing
         /// One of: <c>customer_service</c>, <c>low_quality</c>, <c>missing_features</c>,
         /// <c>other</c>, <c>switched_service</c>, <c>too_complex</c>, <c>too_expensive</c>, or
         /// <c>unused</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("feedback")]
         [STJS.JsonPropertyName("feedback")]

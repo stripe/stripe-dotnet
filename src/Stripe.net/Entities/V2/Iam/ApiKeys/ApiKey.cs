@@ -117,6 +117,8 @@ namespace Stripe.V2.Iam
         /// <summary>
         /// Current status of the API key (e.g., active, expired).
         /// One of: <c>active</c>, or <c>expired</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -125,6 +127,8 @@ namespace Stripe.V2.Iam
         /// <summary>
         /// Type of the API key.
         /// One of: <c>publishable_key</c>, or <c>secret_key</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

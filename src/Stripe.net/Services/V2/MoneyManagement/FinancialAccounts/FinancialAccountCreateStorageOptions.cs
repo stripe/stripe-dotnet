@@ -13,6 +13,8 @@ namespace Stripe.V2.MoneyManagement
         /// The usage type for funds in this FinancialAccount. Can be used to specify that the funds
         /// are for Consumer activity.
         /// One of: <c>business</c>, or <c>consumer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("funds_usage_type")]
         [STJS.JsonPropertyName("funds_usage_type")]

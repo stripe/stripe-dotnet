@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// Whether the QR Code scan's payment should succeed or fail.
         /// One of: <c>failure</c>, or <c>success</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("result")]
         [STJS.JsonPropertyName("result")]

@@ -26,6 +26,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Open Enum. The type of next action required.
         /// One of: <c>confirm</c>, or <c>handle_failure</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

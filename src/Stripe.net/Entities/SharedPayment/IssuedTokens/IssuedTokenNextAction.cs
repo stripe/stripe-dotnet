@@ -20,6 +20,8 @@ namespace Stripe.SharedPayment
         /// Specifies the type of next action required. Determines which child attribute contains
         /// action details.
         /// One of: <c>redirect_to_url</c>, or <c>use_stripe_sdk</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

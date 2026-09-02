@@ -17,6 +17,9 @@ namespace Stripe.V2.Iam
 
         /// <summary>
         /// Type of risk signal.
+        /// One of: <c>novel_device</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

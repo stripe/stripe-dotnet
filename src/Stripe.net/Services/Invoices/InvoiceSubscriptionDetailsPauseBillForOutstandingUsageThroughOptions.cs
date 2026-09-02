@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// When to bill metered usage in the current period.
         /// One of: <c>none</c>, or <c>now</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

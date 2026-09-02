@@ -23,6 +23,8 @@ namespace Stripe
         /// When to pause the subscription. Use <c>now</c> to pause immediately or <c>timestamp</c>
         /// to pause at a specific time.
         /// One of: <c>now</c>, or <c>timestamp</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
