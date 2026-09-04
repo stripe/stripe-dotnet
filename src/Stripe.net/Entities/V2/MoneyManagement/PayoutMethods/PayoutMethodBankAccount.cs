@@ -52,9 +52,9 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// List of enabled flows for this bank account (wire or local).
         /// </summary>
-        [JsonProperty("enabled_delivery_options")]
-        [STJS.JsonPropertyName("enabled_delivery_options")]
-        public List<string> EnabledDeliveryOptions { get; set; }
+        [JsonProperty("enabled_delivery_schemes")]
+        [STJS.JsonPropertyName("enabled_delivery_schemes")]
+        public List<string> EnabledDeliverySchemes { get; set; }
 
         /// <summary>
         /// The ID of the Financial Connections Account used to create the bank account.

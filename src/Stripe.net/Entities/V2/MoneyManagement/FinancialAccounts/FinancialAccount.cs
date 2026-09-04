@@ -117,6 +117,14 @@ namespace Stripe.V2.MoneyManagement
         public FinancialAccountPayments Payments { get; set; }
 
         /// <summary>
+        /// If this is a <c>savings</c> FinancialAccount, this hash includes details specific to
+        /// <c>savings</c> FinancialAccounts.
+        /// </summary>
+        [JsonProperty("savings")]
+        [STJS.JsonPropertyName("savings")]
+        public FinancialAccountSavings Savings { get; set; }
+
+        /// <summary>
         /// Closed Enum. An enum representing the status of the FinancialAccount. This indicates
         /// whether or not the FinancialAccount can be used for any money movement flows.
         /// One of: <c>closed</c>, <c>open</c>, or <c>pending</c>.
@@ -145,7 +153,7 @@ namespace Stripe.V2.MoneyManagement
         /// with a name matching this value. It contains additional information specific to the
         /// FinancialAccount type.
         /// One of: <c>accrued_fees</c>, <c>credit</c>, <c>multiprocessor_settlement</c>,
-        /// <c>other</c>, <c>payments</c>, or <c>storage</c>.
+        /// <c>other</c>, <c>payments</c>, <c>savings</c>, or <c>storage</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

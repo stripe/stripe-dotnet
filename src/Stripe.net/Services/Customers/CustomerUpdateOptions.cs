@@ -116,7 +116,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// The prefix for the customer used to generate unique invoice numbers. Must be 3–12
+        /// The prefix for the customer used to generate unique invoice numbers. Must be 1–12
         /// uppercase letters or numbers.
         /// </summary>
         [JsonProperty("invoice_prefix")]

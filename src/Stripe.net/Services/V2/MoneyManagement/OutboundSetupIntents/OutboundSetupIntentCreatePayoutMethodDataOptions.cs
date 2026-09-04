@@ -30,7 +30,7 @@ namespace Stripe.V2.MoneyManagement
         public OutboundSetupIntentCreatePayoutMethodDataCryptoWalletOptions CryptoWallet { get; set; }
 
         /// <summary>
-        /// Closed Enum. The type of payout method to be created.
+        /// Open Enum. The type of payout method to be created.
         /// One of: <c>bank_account</c>, <c>card</c>, <c>crypto_wallet</c>, or
         /// <c>network_business_profile_wallet</c>.
         ///

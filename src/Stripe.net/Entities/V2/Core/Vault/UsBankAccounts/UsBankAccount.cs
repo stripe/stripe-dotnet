@@ -96,6 +96,15 @@ namespace Stripe.V2.Core.Vault
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// Whether the US Bank Account is currently unusable for money movement, despite
+        /// potentially being correctly set up. Please reach out to Stripe Support for more
+        /// information.
+        /// </summary>
+        [JsonProperty("restricted")]
+        [STJS.JsonPropertyName("restricted")]
+        public bool Restricted { get; set; }
+
+        /// <summary>
         /// The ACH routing number of the bank account.
         /// </summary>
         [JsonProperty("routing_number")]

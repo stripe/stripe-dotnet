@@ -49,8 +49,8 @@ namespace Stripe
 
         /// <summary>
         /// Indicates the outcome of 3D Secure authentication.
-        /// One of: <c>attempt_acknowledged</c>, <c>authenticated</c>, <c>exempted</c>,
-        /// <c>failed</c>, <c>not_supported</c>, or <c>processing_error</c>.
+        /// One of: <c>attempt_acknowledged</c>, <c>authenticated</c>, <c>data_share_only</c>,
+        /// <c>exempted</c>, <c>failed</c>, <c>not_supported</c>, or <c>processing_error</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

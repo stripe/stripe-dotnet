@@ -353,6 +353,8 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthIssuingAuthorizationRequestTimeoutResolvedEventNotification>> v2CoreHealthIssuingAuthorizationRequestTimeoutResolved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthMeterEventSummariesDelayedFiringEventNotification>> v2CoreHealthMeterEventSummariesDelayedFiring;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthMeterEventSummariesDelayedResolvedEventNotification>> v2CoreHealthMeterEventSummariesDelayedResolved;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthMetronomeNotificationLatencyFiringEventNotification>> v2CoreHealthMetronomeNotificationLatencyFiring;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthMetronomeNotificationLatencyResolvedEventNotification>> v2CoreHealthMetronomeNotificationLatencyResolved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthPaymentMethodErrorFiringEventNotification>> v2CoreHealthPaymentMethodErrorFiring;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthPaymentMethodErrorResolvedEventNotification>> v2CoreHealthPaymentMethodErrorResolved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthSepaDebitDelayedFiringEventNotification>> v2CoreHealthSepaDebitDelayedFiring;
@@ -411,6 +413,11 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferReturnedEventNotification>> v2MoneyManagementOutboundTransferReturned;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferUnderReviewEventNotification>> v2MoneyManagementOutboundTransferUnderReview;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferUpdatedEventNotification>> v2MoneyManagementOutboundTransferUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentCanceledEventNotification>> v2MoneyManagementPayoutIntentCanceled;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentCreatedEventNotification>> v2MoneyManagementPayoutIntentCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentPostedEventNotification>> v2MoneyManagementPayoutIntentPosted;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentProcessingEventNotification>> v2MoneyManagementPayoutIntentProcessing;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentRequiresActionEventNotification>> v2MoneyManagementPayoutIntentRequiresAction;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutMethodCreatedEventNotification>> v2MoneyManagementPayoutMethodCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutMethodUpdatedEventNotification>> v2MoneyManagementPayoutMethodUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditAvailableEventNotification>> v2MoneyManagementReceivedCreditAvailable;
@@ -468,6 +475,7 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalFraudulentWebsiteReadyEventNotification>> v2SignalsAccountSignalFraudulentWebsiteReady;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification>> v2SignalsAccountSignalMerchantDelinquencyReady;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification>> v2SignalsAccountSignalPaymentDelinquencyExposureReady;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationsRetryRecommendedEventNotification>> v2SignalsPaymentRetryEvaluationsRetryRecommended;
 
         // private-event-handlers: The end of the section generated from our OpenAPI spec
         private EventHandler<StripePreHandleEventNotificationEventArgs> preHandleCallback;
@@ -2469,6 +2477,18 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthMetronomeNotificationLatencyFiringEventNotification>> V2CoreHealthMetronomeNotificationLatencyFiring
+        {
+            add { this.AddEventHandler(ref this.v2CoreHealthMetronomeNotificationLatencyFiring, value, "v2.core.health.metronome_notification_latency.firing"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthMetronomeNotificationLatencyResolvedEventNotification>> V2CoreHealthMetronomeNotificationLatencyResolved
+        {
+            add { this.AddEventHandler(ref this.v2CoreHealthMetronomeNotificationLatencyResolved, value, "v2.core.health.metronome_notification_latency.resolved"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthPaymentMethodErrorFiringEventNotification>> V2CoreHealthPaymentMethodErrorFiring
         {
             add { this.AddEventHandler(ref this.v2CoreHealthPaymentMethodErrorFiring, value, "v2.core.health.payment_method_error.firing"); }
@@ -2817,6 +2837,36 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentCanceledEventNotification>> V2MoneyManagementPayoutIntentCanceled
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementPayoutIntentCanceled, value, "v2.money_management.payout_intent.canceled"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentCreatedEventNotification>> V2MoneyManagementPayoutIntentCreated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementPayoutIntentCreated, value, "v2.money_management.payout_intent.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentPostedEventNotification>> V2MoneyManagementPayoutIntentPosted
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementPayoutIntentPosted, value, "v2.money_management.payout_intent.posted"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentProcessingEventNotification>> V2MoneyManagementPayoutIntentProcessing
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementPayoutIntentProcessing, value, "v2.money_management.payout_intent.processing"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentRequiresActionEventNotification>> V2MoneyManagementPayoutIntentRequiresAction
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementPayoutIntentRequiresAction, value, "v2.money_management.payout_intent.requires_action"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutMethodCreatedEventNotification>> V2MoneyManagementPayoutMethodCreated
         {
             add { this.AddEventHandler(ref this.v2MoneyManagementPayoutMethodCreated, value, "v2.money_management.payout_method.created"); }
@@ -3156,6 +3206,12 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification>> V2SignalsAccountSignalPaymentDelinquencyExposureReady
         {
             add { this.AddEventHandler(ref this.v2SignalsAccountSignalPaymentDelinquencyExposureReady, value, "v2.signals.account_signal.payment_delinquency_exposure_ready"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationsRetryRecommendedEventNotification>> V2SignalsPaymentRetryEvaluationsRetryRecommended
+        {
+            add { this.AddEventHandler(ref this.v2SignalsPaymentRetryEvaluationsRetryRecommended, value, "v2.signals.payment_retry_evaluations.retry_recommended"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -4624,6 +4680,14 @@ namespace Stripe
                 {
                     this.v2CoreHealthMeterEventSummariesDelayedResolved.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthMeterEventSummariesDelayedResolvedEventNotification>((Stripe.Events.V2CoreHealthMeterEventSummariesDelayedResolvedEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V2CoreHealthMetronomeNotificationLatencyFiringEventNotification)
+                {
+                    this.v2CoreHealthMetronomeNotificationLatencyFiring.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthMetronomeNotificationLatencyFiringEventNotification>((Stripe.Events.V2CoreHealthMetronomeNotificationLatencyFiringEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreHealthMetronomeNotificationLatencyResolvedEventNotification)
+                {
+                    this.v2CoreHealthMetronomeNotificationLatencyResolved.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthMetronomeNotificationLatencyResolvedEventNotification>((Stripe.Events.V2CoreHealthMetronomeNotificationLatencyResolvedEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V2CoreHealthPaymentMethodErrorFiringEventNotification)
                 {
                     this.v2CoreHealthPaymentMethodErrorFiring.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthPaymentMethodErrorFiringEventNotification>((Stripe.Events.V2CoreHealthPaymentMethodErrorFiringEventNotification)eventNotification, client));
@@ -4856,6 +4920,26 @@ namespace Stripe
                 {
                     this.v2MoneyManagementOutboundTransferUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferUpdatedEventNotification>((Stripe.Events.V2MoneyManagementOutboundTransferUpdatedEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementPayoutIntentCanceledEventNotification)
+                {
+                    this.v2MoneyManagementPayoutIntentCanceled.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentCanceledEventNotification>((Stripe.Events.V2MoneyManagementPayoutIntentCanceledEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementPayoutIntentCreatedEventNotification)
+                {
+                    this.v2MoneyManagementPayoutIntentCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentCreatedEventNotification>((Stripe.Events.V2MoneyManagementPayoutIntentCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementPayoutIntentPostedEventNotification)
+                {
+                    this.v2MoneyManagementPayoutIntentPosted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentPostedEventNotification>((Stripe.Events.V2MoneyManagementPayoutIntentPostedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementPayoutIntentProcessingEventNotification)
+                {
+                    this.v2MoneyManagementPayoutIntentProcessing.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentProcessingEventNotification>((Stripe.Events.V2MoneyManagementPayoutIntentProcessingEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementPayoutIntentRequiresActionEventNotification)
+                {
+                    this.v2MoneyManagementPayoutIntentRequiresAction.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentRequiresActionEventNotification>((Stripe.Events.V2MoneyManagementPayoutIntentRequiresActionEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementPayoutMethodCreatedEventNotification)
                 {
                     this.v2MoneyManagementPayoutMethodCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutMethodCreatedEventNotification>((Stripe.Events.V2MoneyManagementPayoutMethodCreatedEventNotification)eventNotification, client));
@@ -5083,6 +5167,10 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification)
                 {
                     this.v2SignalsAccountSignalPaymentDelinquencyExposureReady.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification>((Stripe.Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2SignalsPaymentRetryEvaluationsRetryRecommendedEventNotification)
+                {
+                    this.v2SignalsPaymentRetryEvaluationsRetryRecommended.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationsRetryRecommendedEventNotification>((Stripe.Events.V2SignalsPaymentRetryEvaluationsRetryRecommendedEventNotification)eventNotification, client));
                 }
 
                 // event-handler-dispatch: The end of the section generated from our OpenAPI spec

@@ -58,13 +58,6 @@ namespace Stripe.V2.Core
         public string DashboardUrl { get; set; }
 
         /// <summary>
-        /// A description of the approval request.
-        /// </summary>
-        [JsonProperty("description")]
-        [STJS.JsonPropertyName("description")]
-        public string Description { get; set; }
-
-        /// <summary>
         /// The timestamp at which this ApprovalRequest will expire.
         /// </summary>
         [JsonProperty("expires_at")]
@@ -77,6 +70,14 @@ namespace Stripe.V2.Core
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
+
+        /// <summary>
+        /// Context provided by the requester (e.g. an agent) to help reviewers evaluate the
+        /// request.
+        /// </summary>
+        [JsonProperty("reason")]
+        [STJS.JsonPropertyName("reason")]
+        public string Reason { get; set; }
 
         /// <summary>
         /// The requester of this ApprovalRequest.
