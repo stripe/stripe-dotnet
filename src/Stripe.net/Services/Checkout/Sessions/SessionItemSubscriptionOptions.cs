@@ -11,6 +11,15 @@ namespace Stripe.Checkout
     public class SessionItemSubscriptionOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
+        /// A past timestamp to backdate the subscription's start date to.
+        /// </summary>
+        [JsonProperty("backdate_start_date")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        [STJS.JsonPropertyName("backdate_start_date")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+        public DateTime? BackdateStartDate { get; set; }
+
+        /// <summary>
         /// Configures when the subscription schedule's billing cycle anchors to a specific day of
         /// the week or month.
         /// </summary>

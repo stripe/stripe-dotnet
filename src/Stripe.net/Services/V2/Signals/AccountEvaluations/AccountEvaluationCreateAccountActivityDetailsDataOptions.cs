@@ -32,8 +32,8 @@ namespace Stripe.V2.Signals
 
         /// <summary>
         /// The type of activity. Must be registration_attempt or login_attempt.
-        /// One of: <c>login_attempt</c>, <c>login_decision</c>, <c>registration_attempt</c>, or
-        /// <c>registration_decision</c>.
+        /// One of: <c>account_restricted</c>, <c>account_suspended</c>, <c>login_attempt</c>,
+        /// <c>login_decision</c>, <c>registration_attempt</c>, or <c>registration_decision</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

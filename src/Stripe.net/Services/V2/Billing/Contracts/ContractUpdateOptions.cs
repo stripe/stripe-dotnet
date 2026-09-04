@@ -40,6 +40,13 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
+        /// One-time fee actions to apply.
+        /// </summary>
+        [JsonProperty("one_time_fee_actions")]
+        [STJS.JsonPropertyName("one_time_fee_actions")]
+        public List<ContractUpdateOneTimeFeeActionOptions> OneTimeFeeActions { get; set; }
+
+        /// <summary>
         /// Pricing line actions to apply.
         /// </summary>
         [JsonProperty("pricing_line_actions")]

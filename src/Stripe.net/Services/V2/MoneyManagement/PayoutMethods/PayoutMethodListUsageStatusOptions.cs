@@ -11,7 +11,7 @@ namespace Stripe.V2.MoneyManagement
     {
         /// <summary>
         /// List of payments status to filter by.
-        /// One of: <c>eligible</c>, <c>invalid</c>, or <c>requires_action</c>.
+        /// One of: <c>disabled</c>, <c>eligible</c>, <c>invalid</c>, or <c>requires_action</c>.
         /// </summary>
         [JsonProperty("payments")]
         [STJS.JsonPropertyName("payments")]
@@ -19,7 +19,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// List of transfers status to filter by.
-        /// One of: <c>eligible</c>, <c>invalid</c>, or <c>requires_action</c>.
+        /// One of: <c>disabled</c>, <c>eligible</c>, <c>invalid</c>, or <c>requires_action</c>.
         /// </summary>
         [JsonProperty("transfers")]
         [STJS.JsonPropertyName("transfers")]

@@ -39,6 +39,30 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
+        /// Disable a PayoutMethod object. The payout method will not be available for use in
+        /// outbound money movement. To re-enable the payout method, create an OutboundSetupIntent
+        /// using <a
+        /// href="https://docs.stripe.com/api/v2/money-management/outbound-setup-intents/create"><c>POST
+        /// /v2/money_management/outbound_setup_intents</c></a>.
+        /// </summary>
+        public virtual PayoutMethod Disable(string id, PayoutMethodDisableOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<PayoutMethod>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/payout_methods/{WebUtility.UrlEncode(id)}/disable", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Disable a PayoutMethod object. The payout method will not be available for use in
+        /// outbound money movement. To re-enable the payout method, create an OutboundSetupIntent
+        /// using <a
+        /// href="https://docs.stripe.com/api/v2/money-management/outbound-setup-intents/create"><c>POST
+        /// /v2/money_management/outbound_setup_intents</c></a>.
+        /// </summary>
+        public virtual Task<PayoutMethod> DisableAsync(string id, PayoutMethodDisableOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<PayoutMethod>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/payout_methods/{WebUtility.UrlEncode(id)}/disable", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// Retrieve a PayoutMethod object.
         /// </summary>
         public virtual PayoutMethod Get(string id, PayoutMethodGetOptions options = null, RequestOptions requestOptions = null)

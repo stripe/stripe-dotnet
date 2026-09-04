@@ -9,6 +9,13 @@ namespace Stripe.V2.MoneyManagement
     public class ReceivedDebitBalanceTransfer : StripeEntity<ReceivedDebitBalanceTransfer>
     {
         /// <summary>
+        /// The ID of the v1 account that received the balance transfer.
+        /// </summary>
+        [JsonProperty("to_account")]
+        [STJS.JsonPropertyName("to_account")]
+        public string ToAccount { get; set; }
+
+        /// <summary>
         /// The ID of the topup object that originated the ReceivedDebit.
         /// </summary>
         [JsonProperty("topup")]

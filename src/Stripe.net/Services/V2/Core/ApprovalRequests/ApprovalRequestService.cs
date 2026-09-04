@@ -37,22 +37,6 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// POST /v2/core/approval_requests/:id/execute Executes an approved approval request.
-        /// </summary>
-        public virtual ApprovalRequest Execute(string id, ApprovalRequestExecuteOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<ApprovalRequest>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/approval_requests/{WebUtility.UrlEncode(id)}/execute", options, requestOptions);
-        }
-
-        /// <summary>
-        /// POST /v2/core/approval_requests/:id/execute Executes an approved approval request.
-        /// </summary>
-        public virtual Task<ApprovalRequest> ExecuteAsync(string id, ApprovalRequestExecuteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<ApprovalRequest>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/approval_requests/{WebUtility.UrlEncode(id)}/execute", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
         /// GET /v2/core/approval_requests/:id Retrieves an approval request by ID.
         /// </summary>
         public virtual ApprovalRequest Get(string id, ApprovalRequestGetOptions options = null, RequestOptions requestOptions = null)
@@ -101,21 +85,19 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// POST /v2/core/approval_requests/:id/submit Moves a pending approval request into the
-        /// reviewer queue for auto-execution upon approval.
+        /// POST /v2/core/approval_requests/:id Updates a pending approval request's mutable fields.
         /// </summary>
-        public virtual ApprovalRequest Submit(string id, ApprovalRequestSubmitOptions options = null, RequestOptions requestOptions = null)
+        public virtual ApprovalRequest Update(string id, ApprovalRequestUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<ApprovalRequest>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/approval_requests/{WebUtility.UrlEncode(id)}/submit", options, requestOptions);
+            return this.Request<ApprovalRequest>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/approval_requests/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
-        /// POST /v2/core/approval_requests/:id/submit Moves a pending approval request into the
-        /// reviewer queue for auto-execution upon approval.
+        /// POST /v2/core/approval_requests/:id Updates a pending approval request's mutable fields.
         /// </summary>
-        public virtual Task<ApprovalRequest> SubmitAsync(string id, ApprovalRequestSubmitOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<ApprovalRequest> UpdateAsync(string id, ApprovalRequestUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ApprovalRequest>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/approval_requests/{WebUtility.UrlEncode(id)}/submit", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ApprovalRequest>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/approval_requests/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

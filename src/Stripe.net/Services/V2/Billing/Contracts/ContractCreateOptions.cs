@@ -26,7 +26,8 @@ namespace Stripe.V2.Billing
         public ContractCreateBillingSettingsOptions BillingSettings { get; set; }
 
         /// <summary>
-        /// A unique user-provided contract number e.g. C-2026-0001.
+        /// A unique user-provided contract number e.g. C-2026-0001. Maximum length of 200
+        /// characters.
         /// </summary>
         [JsonProperty("contract_number")]
         [STJS.JsonPropertyName("contract_number")]
@@ -56,6 +57,14 @@ namespace Stripe.V2.Billing
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// A list of one-time fees to create with the contract. Each fee is billed as individual
+        /// invoice items per its bill_schedule.
+        /// </summary>
+        [JsonProperty("one_time_fees")]
+        [STJS.JsonPropertyName("one_time_fees")]
+        public List<ContractCreateOneTimeFeeOptions> OneTimeFees { get; set; }
 
         /// <summary>
         /// A list of pricing lines to create with the contract.

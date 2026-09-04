@@ -92,6 +92,15 @@ namespace Stripe.V2.Core.Vault
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// Whether the GB Bank Account is currently unusable for money movement, despite
+        /// potentially being correctly set up. Please reach out to Stripe Support for more
+        /// information.
+        /// </summary>
+        [JsonProperty("restricted")]
+        [STJS.JsonPropertyName("restricted")]
+        public bool Restricted { get; set; }
+
+        /// <summary>
         /// The Sort Code of the bank account.
         /// </summary>
         [JsonProperty("sort_code")]

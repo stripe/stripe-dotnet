@@ -106,6 +106,15 @@ namespace Stripe.Issuing
         public AuthorizationRequestHistoryNetworkData NetworkData { get; set; }
 
         /// <summary>
+        /// The network-specific response code associated with Stripe's decision for this
+        /// authorization request. The value is a Visa or Mastercard response code depending on the
+        /// network over which the authorization was routed.
+        /// </summary>
+        [JsonProperty("network_response_code")]
+        [STJS.JsonPropertyName("network_response_code")]
+        public string NetworkResponseCode { get; set; }
+
+        /// <summary>
         /// The card network's estimate of the likelihood that an authorization is fraudulent. Takes
         /// on values between 1 and 99.
         /// </summary>

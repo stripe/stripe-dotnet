@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Signals
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -10,18 +9,15 @@ namespace Stripe.V2.Signals
     public class AccountSignalMerchantDelinquency : StripeEntity<AccountSignalMerchantDelinquency>
     {
         /// <summary>
-        /// Array of objects representing individual factors that contributed to the calculated
-        /// probability of delinquency. Absent when risk level is not_assessed or unknown, or when
-        /// the user is not on a product tier that includes indicators.
+        /// Supplementary contextual data for the signal, including indicators.
         /// </summary>
-        [JsonProperty("indicators")]
-        [STJS.JsonPropertyName("indicators")]
-        public List<AccountSignalMerchantDelinquencyIndicator> Indicators { get; set; }
+        [JsonProperty("additional_details")]
+        [STJS.JsonPropertyName("additional_details")]
+        public AccountSignalMerchantDelinquencyAdditionalDetails AdditionalDetails { get; set; }
 
         /// <summary>
         /// The probability of delinquency. Can be between 0.00 and 100.00. Absent when risk level
-        /// is not_assessed or unknown, or when the user is not on a product tier that includes
-        /// numeric scores.
+        /// is unknown, or when the user is not on a product tier that includes numeric scores.
         /// </summary>
         [JsonProperty("probability")]
         [JsonConverter(typeof(DecimalStringConverter))]
@@ -31,8 +27,7 @@ namespace Stripe.V2.Signals
 
         /// <summary>
         /// Categorical assessment of the delinquency risk based on probability.
-        /// One of: <c>elevated</c>, <c>highest</c>, <c>low</c>, <c>normal</c>, <c>not_assessed</c>,
-        /// or <c>unknown</c>.
+        /// One of: <c>elevated</c>, <c>highest</c>, <c>low</c>, <c>normal</c>, or <c>unknown</c>.
         /// </summary>
         [JsonProperty("risk_level")]
         [STJS.JsonPropertyName("risk_level")]

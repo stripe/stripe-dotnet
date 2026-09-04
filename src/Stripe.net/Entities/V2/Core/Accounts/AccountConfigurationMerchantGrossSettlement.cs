@@ -14,13 +14,5 @@ namespace Stripe.V2.Core
         [JsonProperty("payment_method")]
         [STJS.JsonPropertyName("payment_method")]
         public string PaymentMethod { get; set; }
-
-        /// <summary>
-        /// Whether to collect a payment method for gross settlement.
-        /// One of: <c>always</c>, or <c>never</c>.
-        /// </summary>
-        [JsonProperty("payment_method_collection")]
-        [STJS.JsonPropertyName("payment_method_collection")]
-        public string PaymentMethodCollection { get; set; }
     }
 }

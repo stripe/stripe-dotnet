@@ -1,15 +1,15 @@
 // File generated from our OpenAPI spec
-namespace Stripe.V2.Signals
+namespace Stripe.Identity
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountSignalMerchantDelinquencyIndicator : StripeEntity<AccountSignalMerchantDelinquencyIndicator>
+    public class VerificationReportSignalsFraudulentPersonIndicator : StripeEntity<VerificationReportSignalsFraudulentPersonIndicator>
     {
         /// <summary>
-        /// A brief explanation of how this indicator contributed to the delinquency probability.
+        /// A brief explanation of how this indicator contributed to the risk level.
         /// </summary>
         [JsonProperty("explanation")]
         [STJS.JsonPropertyName("explanation")]
@@ -19,6 +19,8 @@ namespace Stripe.V2.Signals
         /// The effect this indicator had on the overall risk level.
         /// One of: <c>decrease</c>, <c>neutral</c>, <c>slight_increase</c>, or
         /// <c>strong_increase</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("impact")]
         [STJS.JsonPropertyName("impact")]
@@ -26,11 +28,9 @@ namespace Stripe.V2.Signals
 
         /// <summary>
         /// The name of the specific indicator used in the risk assessment.
-        /// One of: <c>account_balance</c>, <c>aov</c>, <c>charge_concentration</c>,
-        /// <c>disputes</c>, <c>dispute_window</c>, <c>exposure</c>, <c>firmographic</c>,
-        /// <c>lifetime_metrics</c>, <c>other</c>, <c>payment_processing</c>, <c>payment_volume</c>,
-        /// <c>payouts</c>, <c>refunds</c>, <c>related_accounts</c>, <c>tenure</c>, or
-        /// <c>transfers</c>.
+        /// One of: <c>fraudulent_person_match</c>, <c>no_transaction_match</c>, or <c>other</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("indicator")]
         [STJS.JsonPropertyName("indicator")]
