@@ -35,6 +35,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// Type of account holder to collect accounts for.
         /// One of: <c>account</c>, or <c>customer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

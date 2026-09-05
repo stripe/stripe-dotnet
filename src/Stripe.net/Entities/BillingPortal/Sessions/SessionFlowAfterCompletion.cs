@@ -25,6 +25,8 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// The specified type of behavior after the flow is completed.
         /// One of: <c>hosted_confirmation</c>, <c>portal_homepage</c>, or <c>redirect</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

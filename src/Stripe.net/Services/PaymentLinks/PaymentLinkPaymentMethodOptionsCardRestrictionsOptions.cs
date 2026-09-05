@@ -20,6 +20,8 @@ namespace Stripe
         /// brand, they can't complete the payment.
         /// One of: <c>american_express</c>, <c>discover_global_network</c>, <c>mastercard</c>, or
         /// <c>visa</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("brands_blocked", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("brands_blocked")]

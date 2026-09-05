@@ -81,6 +81,8 @@ namespace Stripe
         /// One of: <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,
         /// <c>eftpos_au</c>, <c>girocard</c>, <c>interac</c>, <c>jcb</c>, <c>link</c>,
         /// <c>mastercard</c>, <c>unionpay</c>, <c>unknown</c>, or <c>visa</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]
@@ -91,6 +93,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/payments/extended-authorization">capture beyond the
         /// standard authorization validity window</a> for this PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_extended_authorization")]
         [STJS.JsonPropertyName("request_extended_authorization")]
@@ -101,6 +105,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/payments/incremental-authorization">increment the
         /// authorization</a> for this PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_incremental_authorization")]
         [STJS.JsonPropertyName("request_incremental_authorization")]
@@ -110,6 +116,8 @@ namespace Stripe
         /// Request ability to make <a href="https://docs.stripe.com/payments/multicapture">multiple
         /// captures</a> for this PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_multicapture")]
         [STJS.JsonPropertyName("request_multicapture")]
@@ -120,6 +128,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/payments/overcapture">overcapture</a> for this
         /// PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_overcapture")]
         [STJS.JsonPropertyName("request_overcapture")]
@@ -136,6 +146,8 @@ namespace Stripe
         /// requesting 3D Secure</a> for more information on how this configuration interacts with
         /// Radar and our SCA Engine.
         /// One of: <c>any</c>, <c>automatic</c>, or <c>challenge</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_three_d_secure")]
         [STJS.JsonPropertyName("request_three_d_secure")]
@@ -173,6 +185,8 @@ namespace Stripe
         /// publishable key, you can only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("setup_future_usage")]

@@ -77,6 +77,8 @@ namespace Stripe.V2.Core.Accounts
         /// <summary>
         /// The person's gender (International regulations require either "male" or "female").
         /// One of: <c>female</c>, or <c>male</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("legal_gender")]
         [STJS.JsonPropertyName("legal_gender")]
@@ -124,6 +126,8 @@ namespace Stripe.V2.Core.Accounts
         /// <summary>
         /// The person's political exposure.
         /// One of: <c>existing</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("political_exposure")]
         [STJS.JsonPropertyName("political_exposure")]

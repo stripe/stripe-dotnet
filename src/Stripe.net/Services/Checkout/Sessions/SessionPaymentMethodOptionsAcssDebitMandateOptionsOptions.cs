@@ -39,6 +39,8 @@ namespace Stripe.Checkout
         /// List of Stripe products where this mandate can be selected automatically. Only usable in
         /// <c>setup</c> mode.
         /// One of: <c>invoice</c>, or <c>subscription</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("default_for")]
         [STJS.JsonPropertyName("default_for")]
@@ -55,6 +57,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// Payment schedule for the mandate.
         /// One of: <c>combined</c>, <c>interval</c>, or <c>sporadic</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_schedule")]
         [STJS.JsonPropertyName("payment_schedule")]
@@ -63,6 +67,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// Transaction type of the mandate.
         /// One of: <c>business</c>, or <c>personal</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("transaction_type")]
         [STJS.JsonPropertyName("transaction_type")]

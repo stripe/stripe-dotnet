@@ -33,6 +33,8 @@ namespace Stripe.Radar
         /// <c>customer_initiated</c>, <c>duplicate</c>, <c>fraudulent</c>, <c>general</c>,
         /// <c>noncompliant</c>, <c>product_not_received</c>, <c>product_unacceptable</c>,
         /// <c>subscription_canceled</c>, or <c>unrecognized</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

@@ -27,6 +27,8 @@ namespace Stripe.V2.Core
         /// the "inquiry" field. Otherwise the type is an API resource, the token for which can be
         /// found in the "resource" field.
         /// One of: <c>inquiry</c>, <c>payment_method</c>, or <c>person</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

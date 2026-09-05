@@ -12,6 +12,8 @@ namespace Stripe
         /// A value indicating who is liable when this account can't pay back negative balances
         /// resulting from payments. Defaults to <c>stripe</c>.
         /// One of: <c>application</c>, or <c>stripe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payments")]
         [STJS.JsonPropertyName("payments")]

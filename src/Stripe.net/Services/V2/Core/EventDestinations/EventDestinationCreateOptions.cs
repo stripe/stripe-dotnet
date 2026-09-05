@@ -60,6 +60,8 @@ namespace Stripe.V2.Core
         /// <summary>
         /// Additional fields to include in the response.
         /// One of: <c>webhook_endpoint.signing_secret</c>, or <c>webhook_endpoint.url</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("include")]
         [STJS.JsonPropertyName("include")]
@@ -89,6 +91,8 @@ namespace Stripe.V2.Core
         /// <summary>
         /// Event destination type.
         /// One of: <c>amazon_eventbridge</c>, <c>azure_event_grid</c>, or <c>webhook_endpoint</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

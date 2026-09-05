@@ -282,6 +282,8 @@ namespace Stripe
         /// <c>order_change</c>, or <c>product_unsatisfactory</c>.
         /// One of: <c>duplicate</c>, <c>fraudulent</c>, <c>order_change</c>, or
         /// <c>product_unsatisfactory</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]
@@ -306,6 +308,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/billing/invoices/credit-notes#voiding">voiding credit
         /// notes</a>.
         /// One of: <c>issued</c>, or <c>void</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -355,6 +359,8 @@ namespace Stripe
         /// <c>pre_payment</c> credit note means it was issued when the invoice was open. A
         /// <c>post_payment</c> credit note means it was issued when the invoice was paid.
         /// One of: <c>mixed</c>, <c>post_payment</c>, or <c>pre_payment</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

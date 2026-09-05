@@ -30,6 +30,8 @@ namespace Stripe
         /// The type of the microdeposit sent to the customer. Used to distinguish between different
         /// verification methods.
         /// One of: <c>amounts</c>, or <c>descriptor_code</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("microdeposit_type")]
         [STJS.JsonPropertyName("microdeposit_type")]
