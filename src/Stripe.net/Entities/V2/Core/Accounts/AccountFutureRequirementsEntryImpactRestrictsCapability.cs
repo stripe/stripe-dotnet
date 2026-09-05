@@ -28,6 +28,8 @@ namespace Stripe.V2.Core
         /// <c>stripe_balance.payouts</c>, <c>stripe_balance.stripe_transfers</c>,
         /// <c>swish_payments</c>, <c>twint_payments</c>, <c>us_bank_transfer_payments</c>, or
         /// <c>zip_payments</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("capability")]
         [STJS.JsonPropertyName("capability")]
@@ -36,6 +38,8 @@ namespace Stripe.V2.Core
         /// <summary>
         /// The configuration which specifies the Capability which will be restricted.
         /// One of: <c>customer</c>, <c>merchant</c>, or <c>recipient</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("configuration")]
         [STJS.JsonPropertyName("configuration")]

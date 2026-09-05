@@ -14,6 +14,8 @@ namespace Stripe.V2.Core
         /// (<c>eventually_due</c>). If you don’t specify collection_options, the default value is
         /// currently_due.
         /// One of: <c>currently_due</c>, or <c>eventually_due</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("fields")]
         [STJS.JsonPropertyName("fields")]
@@ -23,6 +25,8 @@ namespace Stripe.V2.Core
         /// Specifies whether the platform collects future_requirements in addition to requirements
         /// in Connect Onboarding. The default value is <c>omit</c>.
         /// One of: <c>include</c>, or <c>omit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("future_requirements")]
         [STJS.JsonPropertyName("future_requirements")]

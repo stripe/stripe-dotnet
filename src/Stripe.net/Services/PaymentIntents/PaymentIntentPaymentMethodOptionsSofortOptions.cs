@@ -18,6 +18,8 @@ namespace Stripe
         /// <summary>
         /// Language shown to the payer on redirect.
         /// One of: <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, <c>it</c>, <c>nl</c>, or <c>pl</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("preferred_language", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("preferred_language")]
@@ -56,6 +58,8 @@ namespace Stripe
         /// publishable key, you can only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// One of: <c>none</c>, or <c>off_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("setup_future_usage")]

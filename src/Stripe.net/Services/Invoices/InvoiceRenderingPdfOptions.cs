@@ -13,6 +13,8 @@ namespace Stripe
         /// set to <c>auto</c>, invoice PDF page size defaults to <c>a4</c> for customers with
         /// Japanese locale and <c>letter</c> for customers with other locales.
         /// One of: <c>a4</c>, <c>auto</c>, or <c>letter</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("page_size")]
         [STJS.JsonPropertyName("page_size")]

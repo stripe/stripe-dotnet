@@ -45,6 +45,8 @@ namespace Stripe.BillingPortal
         /// One of: <c>customer_update</c>, <c>payment_method_update</c>,
         /// <c>subscription_cancel</c>, <c>subscription_update</c>, or
         /// <c>subscription_update_confirm</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

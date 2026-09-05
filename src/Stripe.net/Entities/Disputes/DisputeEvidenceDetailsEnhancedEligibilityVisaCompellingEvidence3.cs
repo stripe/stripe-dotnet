@@ -16,6 +16,8 @@ namespace Stripe
         /// <c>missing_disputed_transaction_description</c>, <c>missing_merchandise_or_services</c>,
         /// <c>missing_prior_undisputed_transaction_description</c>, or
         /// <c>missing_prior_undisputed_transactions</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("required_actions")]
         [STJS.JsonPropertyName("required_actions")]
@@ -24,6 +26,8 @@ namespace Stripe
         /// <summary>
         /// Visa Compelling Evidence 3.0 eligibility status.
         /// One of: <c>not_qualified</c>, <c>qualified</c>, or <c>requires_action</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

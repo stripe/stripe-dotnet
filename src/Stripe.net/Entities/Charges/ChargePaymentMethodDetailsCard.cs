@@ -194,6 +194,8 @@ namespace Stripe
         /// <summary>
         /// Status of a card based on the card issuer.
         /// One of: <c>regulated</c>, or <c>unregulated</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("regulated_status")]
         [STJS.JsonPropertyName("regulated_status")]

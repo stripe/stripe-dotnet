@@ -11,6 +11,8 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// The type of condition.
         /// One of: <c>decreasing_item_amount</c>, or <c>shortening_interval</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
