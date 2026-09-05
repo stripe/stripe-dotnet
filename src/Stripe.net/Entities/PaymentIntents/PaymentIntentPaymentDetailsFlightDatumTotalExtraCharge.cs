@@ -19,6 +19,8 @@ namespace Stripe
         /// Type of extra charge.
         /// One of: <c>additional_fees</c>, <c>ancillary_service_charges</c>, or
         /// <c>exchange_fee</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -99,6 +99,8 @@ namespace Stripe
         /// <c>issuing.credit_limit_decreased</c>, <c>issuing.credit_line_closed</c>,
         /// <c>issuing.dispute_lost</c>, <c>issuing.dispute_submitted</c>, or
         /// <c>issuing.dispute_won</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

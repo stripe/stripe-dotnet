@@ -32,6 +32,8 @@ namespace Stripe
         /// with regional legislation and network rules, such as <a
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
@@ -49,6 +51,8 @@ namespace Stripe
         /// <summary>
         /// Bank account verification method. The default value is <c>automatic</c>.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("verification_method")]
         [STJS.JsonPropertyName("verification_method")]

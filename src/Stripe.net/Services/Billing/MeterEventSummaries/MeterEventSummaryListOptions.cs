@@ -43,6 +43,8 @@ namespace Stripe.Billing
         /// ..., 23:00). For daily granularity, start and end times must align with UTC day
         /// boundaries (00:00 UTC).
         /// One of: <c>day</c>, or <c>hour</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("value_grouping_window")]
         [STJS.JsonPropertyName("value_grouping_window")]

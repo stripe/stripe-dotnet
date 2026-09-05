@@ -33,6 +33,8 @@ namespace Stripe.V2.Billing
         /// requesting 3D Secure</a> for more information on how this configuration interacts with
         /// Radar and our SCA Engine.
         /// One of: <c>any</c>, <c>automatic</c>, or <c>challenge</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_three_d_secure")]
         [STJS.JsonPropertyName("request_three_d_secure")]

@@ -41,6 +41,8 @@ namespace Stripe
         /// The payment networks supported by this FinancialAddress.
         /// One of: <c>ach</c>, <c>bacs</c>, <c>chaps</c>, <c>domestic_wire_us</c>, <c>fps</c>,
         /// <c>sepa</c>, <c>spei</c>, <c>swift</c>, or <c>zengin</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("supported_networks")]
         [STJS.JsonPropertyName("supported_networks")]
@@ -57,6 +59,8 @@ namespace Stripe
         /// The type of financial address.
         /// One of: <c>aba</c>, <c>iban</c>, <c>sort_code</c>, <c>spei</c>, <c>swift</c>, or
         /// <c>zengin</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

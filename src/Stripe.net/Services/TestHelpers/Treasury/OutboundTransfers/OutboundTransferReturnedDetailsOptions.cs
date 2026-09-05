@@ -14,6 +14,8 @@ namespace Stripe.TestHelpers.Treasury
         /// <c>bank_ownership_changed</c>, <c>declined</c>, <c>incorrect_account_holder_name</c>,
         /// <c>invalid_account_number</c>, <c>invalid_currency</c>, <c>no_account</c>, or
         /// <c>other</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]

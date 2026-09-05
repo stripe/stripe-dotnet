@@ -14,6 +14,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/connect/direct-charges-fee-payer-behavior">fee behavior on
         /// connected accounts</a>.
         /// One of: <c>account</c>, or <c>application</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payer")]
         [STJS.JsonPropertyName("payer")]

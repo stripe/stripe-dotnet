@@ -23,6 +23,8 @@ namespace Stripe.V2.Core
         /// v2/account configuration/s.
         /// One of: <c>customer</c>, <c>merchant</c>, <c>money_manager</c>, <c>recipient</c>, or
         /// <c>storer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("configurations")]
         [STJS.JsonPropertyName("configurations")]

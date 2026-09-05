@@ -91,6 +91,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// The rails used to reverse the funds.
         /// One of: <c>ach</c>, or <c>stripe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]
@@ -106,6 +108,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// Status of the CreditReversal.
         /// One of: <c>canceled</c>, <c>posted</c>, or <c>processing</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

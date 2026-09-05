@@ -13,6 +13,8 @@ namespace Stripe.Tax
         /// One of: <c>another_payment_associated_with_calculation</c>, <c>calculation_expired</c>,
         /// <c>currency_mismatch</c>, <c>original_transaction_voided</c>, or
         /// <c>unique_reference_violation</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

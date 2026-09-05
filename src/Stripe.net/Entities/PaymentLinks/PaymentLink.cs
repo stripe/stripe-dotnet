@@ -112,6 +112,8 @@ namespace Stripe
         /// <summary>
         /// Configuration for collecting the customer's billing address. Defaults to <c>auto</c>.
         /// One of: <c>auto</c>, or <c>required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("billing_address_collection")]
         [STJS.JsonPropertyName("billing_address_collection")]
@@ -148,6 +150,8 @@ namespace Stripe
         /// <summary>
         /// Configuration for Customer creation during checkout.
         /// One of: <c>always</c>, or <c>if_required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("customer_creation")]
         [STJS.JsonPropertyName("customer_creation")]
@@ -264,6 +268,8 @@ namespace Stripe
         /// Configuration for collecting a payment method during checkout. Defaults to
         /// <c>always</c>.
         /// One of: <c>always</c>, or <c>if_required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_collection")]
         [STJS.JsonPropertyName("payment_method_collection")]
@@ -291,6 +297,8 @@ namespace Stripe
         /// <c>satispay</c>, <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>sunbit</c>,
         /// <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
         /// <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_types")]
         [STJS.JsonPropertyName("payment_method_types")]
@@ -325,6 +333,8 @@ namespace Stripe
         /// Indicates the type of transaction being performed which customizes relevant text on the
         /// page, such as the submit button.
         /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("submit_type")]
         [STJS.JsonPropertyName("submit_type")]

@@ -71,6 +71,8 @@ namespace Stripe.Issuing
         /// <c>inactive</c>. If this card is being canceled because it was lost or stolen, this
         /// information should be provided as <c>cancellation_reason</c>.
         /// One of: <c>active</c>, <c>canceled</c>, or <c>inactive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

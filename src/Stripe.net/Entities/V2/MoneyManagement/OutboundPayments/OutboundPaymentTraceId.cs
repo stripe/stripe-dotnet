@@ -15,6 +15,8 @@ namespace Stripe.V2.MoneyManagement
         /// status may not align with the OutboundPayment or OutboundTransfer status and can remain
         /// <c>pending</c> even after the payment or transfer is posted.
         /// One of: <c>pending</c>, <c>supported</c>, or <c>unsupported</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

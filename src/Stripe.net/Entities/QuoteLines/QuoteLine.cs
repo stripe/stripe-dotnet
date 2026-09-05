@@ -49,6 +49,8 @@ namespace Stripe
         /// removes any previously configured billing cycle anchor resets during the window of time
         /// spanning the quote line.
         /// One of: <c>automatic</c>, or <c>line_starts_at</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [STJS.JsonPropertyName("billing_cycle_anchor")]
@@ -79,6 +81,8 @@ namespace Stripe
         /// Changes to how Stripe handles prorations during the quote line's time span. Affects if
         /// and how prorations are created when a future phase starts.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]
@@ -95,6 +99,8 @@ namespace Stripe
         /// Timestamp helper to end the underlying schedule early, based on the acompanying line's
         /// start or end date.
         /// One of: <c>line_ends_at</c>, or <c>line_starts_at</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("set_schedule_end")]
         [STJS.JsonPropertyName("set_schedule_end")]

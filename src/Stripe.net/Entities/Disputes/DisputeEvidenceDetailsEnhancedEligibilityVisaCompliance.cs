@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// Visa compliance eligibility status.
         /// One of: <c>fee_acknowledged</c>, or <c>requires_fee_acknowledgement</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

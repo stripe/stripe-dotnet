@@ -38,6 +38,8 @@ namespace Stripe
         /// In cases where the amendment changes the currently active phase, specifies if and how to
         /// prorate at the time of the request.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]

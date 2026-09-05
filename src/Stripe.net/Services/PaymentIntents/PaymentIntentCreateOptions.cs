@@ -37,6 +37,8 @@ namespace Stripe
         /// <c>swish</c>, <c>tamara</c>, <c>test_pay</c>, <c>touch_n_go</c>, <c>truemoney</c>,
         /// <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>us_cash_voucher</c>, <c>vipps</c>,
         /// <c>wechat_pay</c>, <c>wero</c>, or <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allowed_payment_method_types")]
         [STJS.JsonPropertyName("allowed_payment_method_types")]
@@ -87,6 +89,8 @@ namespace Stripe
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("capture_method")]
         [STJS.JsonPropertyName("capture_method")]
@@ -108,6 +112,8 @@ namespace Stripe
         /// Describes whether we can confirm this PaymentIntent automatically, or if it requires
         /// customer action to confirm the payment.
         /// One of: <c>automatic</c>, or <c>manual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("confirmation_method")]
         [STJS.JsonPropertyName("confirmation_method")]
@@ -204,6 +210,8 @@ namespace Stripe
         /// <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>stripe_balance</c>,
         /// <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>,
         /// <c>wechat_pay</c>, or <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("excluded_payment_method_types")]
         [STJS.JsonPropertyName("excluded_payment_method_types")]
@@ -363,6 +371,8 @@ namespace Stripe
         /// Indicates whether confirmation for this PaymentIntent using a secret key is
         /// <c>required</c> or <c>optional</c>.
         /// One of: <c>optional</c>, or <c>required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("secret_key_confirmation")]
         [STJS.JsonPropertyName("secret_key_confirmation")]
@@ -388,6 +398,8 @@ namespace Stripe
         /// with regional legislation and network rules, such as <a
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]

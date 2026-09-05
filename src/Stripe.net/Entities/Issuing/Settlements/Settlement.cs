@@ -97,6 +97,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// The card network for this settlement report. One of ["visa", "maestro", "mastercard"].
         /// One of: <c>maestro</c>, <c>mastercard</c>, or <c>visa</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]
@@ -140,6 +142,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// The current processing status of this settlement.
         /// One of: <c>complete</c>, or <c>pending</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

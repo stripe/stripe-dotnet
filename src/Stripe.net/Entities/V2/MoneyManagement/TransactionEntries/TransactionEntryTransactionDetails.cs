@@ -17,6 +17,8 @@ namespace Stripe.V2.MoneyManagement
         /// <c>outbound_transfer_reversal</c>, <c>received_credit</c>,
         /// <c>received_credit_reversal</c>, <c>received_debit</c>, <c>received_debit_reversal</c>,
         /// <c>stripe_fee</c>, or <c>stripe_fee_tax</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("category")]
         [STJS.JsonPropertyName("category")]

@@ -15,6 +15,8 @@ namespace Stripe
         /// When set to <c>hidden</c>, the payment method reuse agreement text will always be hidden
         /// in the UI.
         /// One of: <c>auto</c>, or <c>hidden</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("position")]
         [STJS.JsonPropertyName("position")]

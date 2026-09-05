@@ -20,6 +20,8 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// The AmountType for the mandate. One of <c>fixed</c> or <c>maximum</c>.
         /// One of: <c>fixed</c>, or <c>maximum</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("amount_type")]
         [STJS.JsonPropertyName("amount_type")]

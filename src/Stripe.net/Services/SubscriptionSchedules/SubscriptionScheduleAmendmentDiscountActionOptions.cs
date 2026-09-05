@@ -32,6 +32,8 @@ namespace Stripe
         /// <summary>
         /// Determines the type of discount action.
         /// One of: <c>add</c>, <c>remove</c>, or <c>set</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

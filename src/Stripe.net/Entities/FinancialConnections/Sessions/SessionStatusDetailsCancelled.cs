@@ -11,6 +11,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// The reason for the Session being cancelled.
         /// One of: <c>custom_manual_entry</c>, or <c>other</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

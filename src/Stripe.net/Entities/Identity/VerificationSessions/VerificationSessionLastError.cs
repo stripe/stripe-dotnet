@@ -20,6 +20,8 @@ namespace Stripe.Identity
         /// <c>phone_verification_declined</c>, <c>selfie_document_missing_photo</c>,
         /// <c>selfie_face_mismatch</c>, <c>selfie_manipulated</c>, <c>selfie_unverified_other</c>,
         /// or <c>under_supported_age</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]

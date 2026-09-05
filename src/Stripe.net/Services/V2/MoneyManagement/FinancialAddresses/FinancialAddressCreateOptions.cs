@@ -18,6 +18,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// The type of FinancialAddress details to provision.
         /// One of: <c>gb_bank_account</c>, or <c>us_bank_account</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

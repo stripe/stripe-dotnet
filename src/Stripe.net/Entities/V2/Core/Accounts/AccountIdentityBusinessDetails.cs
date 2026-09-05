@@ -108,6 +108,8 @@ namespace Stripe.V2.Core
         /// <c>tax_exempt_government_instrumentality</c>, <c>trust</c>,
         /// <c>unincorporated_association</c>, <c>unincorporated_non_profit</c>, or
         /// <c>unincorporated_partnership</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("structure")]
         [STJS.JsonPropertyName("structure")]
