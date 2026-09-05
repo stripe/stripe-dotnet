@@ -13,6 +13,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/declines#retrying-issuer-declines">how to proceed with an
         /// error</a>.
         /// One of: <c>confirm_card_data</c>, <c>do_not_try_again</c>, or <c>try_again_later</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("advice_code")]
         [STJS.JsonPropertyName("advice_code")]

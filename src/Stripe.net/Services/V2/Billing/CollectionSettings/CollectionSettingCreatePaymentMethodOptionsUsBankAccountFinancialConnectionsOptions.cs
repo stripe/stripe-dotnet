@@ -22,6 +22,8 @@ namespace Stripe.V2.Billing
         /// <c>payment_method</c> permission must be included.
         /// One of: <c>balances</c>, <c>ownership</c>, <c>payment_method</c>, or
         /// <c>transactions</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("permissions")]
         [STJS.JsonPropertyName("permissions")]
@@ -30,6 +32,8 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// List of data features that you would like to retrieve upon account creation.
         /// One of: <c>balances</c>, <c>ownership</c>, or <c>transactions</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("prefetch")]
         [STJS.JsonPropertyName("prefetch")]

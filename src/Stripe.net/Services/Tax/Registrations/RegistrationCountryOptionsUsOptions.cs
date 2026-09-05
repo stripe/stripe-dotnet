@@ -114,6 +114,8 @@ namespace Stripe.Tax
         /// <c>local_lease_tax</c>, <c>luxury_tax</c>, <c>mass_transit_parking_tax</c>,
         /// <c>parking_tax</c>, <c>resort_tax</c>, <c>state_communications_tax</c>,
         /// <c>state_retail_delivery_fee</c>, <c>state_sales_tax</c>, or <c>tourism_tax</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

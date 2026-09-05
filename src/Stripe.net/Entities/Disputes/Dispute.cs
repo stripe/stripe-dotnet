@@ -104,6 +104,8 @@ namespace Stripe
         /// List of eligibility types that are included in <c>enhanced_evidence</c>.
         /// One of: <c>mastercard_compliance</c>, <c>visa_compelling_evidence_3</c>, or
         /// <c>visa_compliance</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("enhanced_eligibility_types")]
         [STJS.JsonPropertyName("enhanced_eligibility_types")]
@@ -222,6 +224,8 @@ namespace Stripe
         /// One of: <c>lost</c>, <c>needs_response</c>, <c>prevented</c>, <c>under_review</c>,
         /// <c>warning_closed</c>, <c>warning_needs_response</c>, <c>warning_under_review</c>, or
         /// <c>won</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

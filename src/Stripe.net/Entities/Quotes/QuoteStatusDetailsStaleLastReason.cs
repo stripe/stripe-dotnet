@@ -73,6 +73,8 @@ namespace Stripe
         /// <c>subscription_canceled</c>, <c>subscription_changed</c>, <c>subscription_expired</c>,
         /// <c>subscription_schedule_canceled</c>, <c>subscription_schedule_changed</c>, or
         /// <c>subscription_schedule_released</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

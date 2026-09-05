@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// When to credit for unused time.
         /// One of: <c>item_current_period_start</c>, <c>none</c>, or <c>now</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

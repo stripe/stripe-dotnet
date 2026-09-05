@@ -51,6 +51,8 @@ namespace Stripe
         /// Select one of three ways to update phase-level <c>metadata</c> on subscription
         /// schedules.
         /// One of: <c>add</c>, <c>remove</c>, or <c>set</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

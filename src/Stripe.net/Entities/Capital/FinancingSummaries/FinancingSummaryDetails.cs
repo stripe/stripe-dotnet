@@ -45,6 +45,8 @@ namespace Stripe.Capital
         /// compliance docs</a>.
         /// One of: <c>celtic_us_loan</c>, <c>fundbox_au_financing</c>, <c>youlend_de_financing</c>,
         /// <c>youlend_fr_financing</c>, <c>youlend_uk_mca</c>, or <c>youlend_us_mca</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("disclaimer_variant")]
         [STJS.JsonPropertyName("disclaimer_variant")]

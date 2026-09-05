@@ -103,6 +103,8 @@ namespace Stripe.FinancialConnections
         /// Permissions requested for accounts collected during this session.
         /// One of: <c>balances</c>, <c>ownership</c>, <c>payment_method</c>, or
         /// <c>transactions</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("permissions")]
         [STJS.JsonPropertyName("permissions")]
@@ -112,6 +114,8 @@ namespace Stripe.FinancialConnections
         /// Data features requested to be retrieved upon account creation.
         /// One of: <c>balances</c>, <c>inferred_balances</c>, <c>ownership</c>, or
         /// <c>transactions</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("prefetch")]
         [STJS.JsonPropertyName("prefetch")]
@@ -136,6 +140,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// The current state of the session.
         /// One of: <c>cancelled</c>, <c>failed</c>, <c>pending</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -148,6 +154,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// The UI mode for this session.
         /// One of: <c>hosted</c>, or <c>modal</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("ui_mode")]
         [STJS.JsonPropertyName("ui_mode")]

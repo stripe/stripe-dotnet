@@ -85,6 +85,8 @@ namespace Stripe
         /// One of <c>forever</c>, <c>once</c>, or <c>repeating</c>. Describes how long a customer
         /// who applies this coupon will get the discount.
         /// One of: <c>forever</c>, <c>once</c>, or <c>repeating</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("duration")]
         [STJS.JsonPropertyName("duration")]
@@ -167,6 +169,8 @@ namespace Stripe
         /// <summary>
         /// The type of coupon logic used to calculate the discount.
         /// One of: <c>amount_off</c>, <c>percent_off</c>, or <c>script</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

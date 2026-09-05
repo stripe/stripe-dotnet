@@ -27,6 +27,8 @@ namespace Stripe.FinancialConnections
         /// Reason for why relink failed. One of <c>no_authorization</c>, <c>no_account</c>, or
         /// <c>other</c>.
         /// One of: <c>no_account</c>, <c>no_authorization</c>, or <c>other</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("failure_reason")]
         [STJS.JsonPropertyName("failure_reason")]

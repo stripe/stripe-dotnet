@@ -23,6 +23,8 @@ namespace Stripe.Billing
         /// <summary>
         /// The type of credit transaction.
         /// One of: <c>credits_application_invoice_voided</c>, or <c>credits_granted</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

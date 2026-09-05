@@ -42,6 +42,8 @@ namespace Stripe.Capital
         /// One of: <c>automatic_withholding</c>, <c>automatic_withholding_refund</c>,
         /// <c>collection</c>, <c>collection_failure</c>, <c>financing_cancellation</c>,
         /// <c>refill</c>, <c>requested_by_user</c>, or <c>user_initiated</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

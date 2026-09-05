@@ -71,6 +71,8 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>adjustment</c>, <c>currency_conversion</c>, <c>fee_transaction</c>,
         /// <c>inbound_transfer</c>, <c>outbound_payment</c>, <c>outbound_transfer</c>,
         /// <c>received_credit</c>, or <c>received_debit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

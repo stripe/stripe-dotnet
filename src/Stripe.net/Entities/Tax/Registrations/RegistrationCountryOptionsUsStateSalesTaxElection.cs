@@ -20,6 +20,8 @@ namespace Stripe.Tax
         /// The type of the election for the state sales tax registration.
         /// One of: <c>local_use_tax</c>, <c>simplified_sellers_use_tax</c>, or
         /// <c>single_local_use_tax</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

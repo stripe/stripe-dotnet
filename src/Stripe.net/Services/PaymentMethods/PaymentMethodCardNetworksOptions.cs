@@ -19,6 +19,8 @@ namespace Stripe
         /// <c>cartes_bancaires</c>, <c>mastercard</c>, or <c>visa</c>. Selection of a network that
         /// does not apply to the card will be stored as <c>invalid_preference</c> on the card.
         /// One of: <c>cartes_bancaires</c>, <c>mastercard</c>, or <c>visa</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("preferred", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("preferred")]

@@ -61,6 +61,8 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// Open Enum. The meter event adjustment's status.
         /// One of: <c>complete</c>, or <c>pending</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -69,6 +71,9 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// Open Enum. Specifies the type of cancellation. Currently supports canceling a single
         /// event.
+        /// One of: <c>cancel</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

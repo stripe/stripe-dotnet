@@ -37,6 +37,8 @@ namespace Stripe
         /// Select one of three ways to pass the <c>amendment_start</c>.
         /// One of: <c>amendment_end</c>, <c>discount_end</c>, <c>now</c>, <c>schedule_end</c>,
         /// <c>timestamp</c>, <c>trial_end</c>, <c>trial_start</c>, or <c>upcoming_invoice</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -26,6 +26,8 @@ namespace Stripe.V2.Extend
         /// <summary>
         /// Which type of trigger this is.
         /// One of: <c>event_trigger</c>, or <c>manual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

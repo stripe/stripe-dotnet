@@ -12,6 +12,8 @@ namespace Stripe.Checkout
         /// The desired country code of the bank account information. Permitted values include:
         /// <c>DE</c>, <c>FR</c>, <c>IE</c>, or <c>NL</c>.
         /// One of: <c>BE</c>, <c>DE</c>, <c>ES</c>, <c>FR</c>, <c>IE</c>, or <c>NL</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("country")]
         [STJS.JsonPropertyName("country")]
