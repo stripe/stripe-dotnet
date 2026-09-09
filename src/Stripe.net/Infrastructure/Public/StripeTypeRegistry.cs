@@ -446,6 +446,12 @@ namespace Stripe
                 { "v2.signals.account_activity", typeof(V2.Signals.AccountActivity) },
                 { "v2.signals.account_evaluation", typeof(V2.Signals.AccountEvaluation) },
                 { "v2.signals.account_signal", typeof(V2.Signals.AccountSignal) },
+                {
+                    "v2.signals.payment_retry_evaluation", typeof(
+                    V2.Signals.PaymentRetryEvaluation)
+                },
+                { "v2.signals.payment_retry_signal", typeof(V2.Signals.PaymentRetrySignal) },
+                { "v2.tax.integration_configuration", typeof(V2.Tax.IntegrationConfiguration) },
                 { "v2.tax.manual_rule", typeof(V2.Tax.ManualRule) },
                 {
                     "v2.tax.operations_resolve_address_result", typeof(
@@ -1365,6 +1371,14 @@ namespace Stripe
                     Events.V2CoreHealthMeterEventSummariesDelayedResolvedEvent)
                 },
                 {
+                    "v2.core.health.metronome_notification_latency.firing", typeof(
+                    Events.V2CoreHealthMetronomeNotificationLatencyFiringEvent)
+                },
+                {
+                    "v2.core.health.metronome_notification_latency.resolved", typeof(
+                    Events.V2CoreHealthMetronomeNotificationLatencyResolvedEvent)
+                },
+                {
                     "v2.core.health.payment_method_error.firing", typeof(
                     Events.V2CoreHealthPaymentMethodErrorFiringEvent)
                 },
@@ -1583,6 +1597,26 @@ namespace Stripe
                 {
                     "v2.money_management.outbound_transfer.updated", typeof(
                     Events.V2MoneyManagementOutboundTransferUpdatedEvent)
+                },
+                {
+                    "v2.money_management.payout_intent.canceled", typeof(
+                    Events.V2MoneyManagementPayoutIntentCanceledEvent)
+                },
+                {
+                    "v2.money_management.payout_intent.created", typeof(
+                    Events.V2MoneyManagementPayoutIntentCreatedEvent)
+                },
+                {
+                    "v2.money_management.payout_intent.posted", typeof(
+                    Events.V2MoneyManagementPayoutIntentPostedEvent)
+                },
+                {
+                    "v2.money_management.payout_intent.processing", typeof(
+                    Events.V2MoneyManagementPayoutIntentProcessingEvent)
+                },
+                {
+                    "v2.money_management.payout_intent.requires_action", typeof(
+                    Events.V2MoneyManagementPayoutIntentRequiresActionEvent)
                 },
                 {
                     "v2.money_management.payout_method.created", typeof(
@@ -1811,6 +1845,10 @@ namespace Stripe
                 {
                     "v2.signals.account_signal.payment_delinquency_exposure_ready", typeof(
                     Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEvent)
+                },
+                {
+                    "v2.signals.payment_retry_evaluations.retry_recommended", typeof(
+                    Events.V2SignalsPaymentRetryEvaluationsRetryRecommendedEvent)
                 },
 
                 // V2EventsToTypes: The end of the section generated from our OpenAPI spec
@@ -2918,6 +2956,14 @@ namespace Stripe
                     Events.V2CoreHealthMeterEventSummariesDelayedResolvedEventNotification)
                 },
                 {
+                    "v2.core.health.metronome_notification_latency.firing", typeof(
+                    Events.V2CoreHealthMetronomeNotificationLatencyFiringEventNotification)
+                },
+                {
+                    "v2.core.health.metronome_notification_latency.resolved", typeof(
+                    Events.V2CoreHealthMetronomeNotificationLatencyResolvedEventNotification)
+                },
+                {
                     "v2.core.health.payment_method_error.firing", typeof(
                     Events.V2CoreHealthPaymentMethodErrorFiringEventNotification)
                 },
@@ -3136,6 +3182,26 @@ namespace Stripe
                 {
                     "v2.money_management.outbound_transfer.updated", typeof(
                     Events.V2MoneyManagementOutboundTransferUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.payout_intent.canceled", typeof(
+                    Events.V2MoneyManagementPayoutIntentCanceledEventNotification)
+                },
+                {
+                    "v2.money_management.payout_intent.created", typeof(
+                    Events.V2MoneyManagementPayoutIntentCreatedEventNotification)
+                },
+                {
+                    "v2.money_management.payout_intent.posted", typeof(
+                    Events.V2MoneyManagementPayoutIntentPostedEventNotification)
+                },
+                {
+                    "v2.money_management.payout_intent.processing", typeof(
+                    Events.V2MoneyManagementPayoutIntentProcessingEventNotification)
+                },
+                {
+                    "v2.money_management.payout_intent.requires_action", typeof(
+                    Events.V2MoneyManagementPayoutIntentRequiresActionEventNotification)
                 },
                 {
                     "v2.money_management.payout_method.created", typeof(
@@ -3364,6 +3430,10 @@ namespace Stripe
                 {
                     "v2.signals.account_signal.payment_delinquency_exposure_ready", typeof(
                     Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification)
+                },
+                {
+                    "v2.signals.payment_retry_evaluations.retry_recommended", typeof(
+                    Events.V2SignalsPaymentRetryEvaluationsRetryRecommendedEventNotification)
                 },
 
                 // V2EventNotificationsToTypes: The end of the section generated from our OpenAPI spec

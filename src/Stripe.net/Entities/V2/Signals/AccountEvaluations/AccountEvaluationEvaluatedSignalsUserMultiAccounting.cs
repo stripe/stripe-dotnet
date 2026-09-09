@@ -18,8 +18,7 @@ namespace Stripe.V2.Signals
 
         /// <summary>
         /// Categorical assessment of the multi-accounting risk.
-        /// One of: <c>elevated</c>, <c>highest</c>, <c>low</c>, <c>normal</c>, <c>not_assessed</c>,
-        /// or <c>unknown</c>.
+        /// One of: <c>elevated</c>, <c>highest</c>, <c>low</c>, <c>normal</c>, or <c>unknown</c>.
         /// </summary>
         [JsonProperty("risk_level")]
         [STJS.JsonPropertyName("risk_level")]

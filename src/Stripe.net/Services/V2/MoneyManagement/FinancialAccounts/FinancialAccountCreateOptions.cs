@@ -25,6 +25,13 @@ namespace Stripe.V2.MoneyManagement
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Parameters specific to creating <c>savings</c> type FinancialAccounts.
+        /// </summary>
+        [JsonProperty("savings")]
+        [STJS.JsonPropertyName("savings")]
+        public FinancialAccountCreateSavingsOptions Savings { get; set; }
+
+        /// <summary>
         /// Parameters specific to creating <c>storage</c> type FinancialAccounts.
         /// </summary>
         [JsonProperty("storage")]
@@ -33,7 +40,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// The type of FinancialAccount to create.
-        /// One of: <c>credit</c>, or <c>storage</c>.
+        /// One of: <c>credit</c>, <c>savings</c>, or <c>storage</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

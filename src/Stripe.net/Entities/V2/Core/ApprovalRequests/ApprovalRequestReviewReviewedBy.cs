@@ -6,20 +6,30 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class ApprovalRequestReviewReviewedBy : StripeEntity<ApprovalRequestReviewReviewedBy>, IHasId
+    public class ApprovalRequestReviewReviewedBy : StripeEntity<ApprovalRequestReviewReviewedBy>
     {
         /// <summary>
-        /// Stripe-defined identifier for the reviewer (e.g. a restricted API key token).
+        /// Present when <c>type</c> is <c>api_key</c>.
         /// </summary>
-        [JsonProperty("id")]
-        [STJS.JsonPropertyName("id")]
-        public string Id { get; set; }
+        [JsonProperty("api_key")]
+        [STJS.JsonPropertyName("api_key")]
+        public ApprovalRequestReviewReviewedByApiKey ApiKey { get; set; }
 
         /// <summary>
-        /// Merchant-defined name for the reviewer.
+        /// The type of actor that reviewed the request.
+        /// One of: <c>api_key</c>, or <c>user</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
-        [JsonProperty("name")]
-        [STJS.JsonPropertyName("name")]
-        public string Name { get; set; }
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Present when <c>type</c> is <c>user</c>.
+        /// </summary>
+        [JsonProperty("user")]
+        [STJS.JsonPropertyName("user")]
+        public ApprovalRequestReviewReviewedByUser User { get; set; }
     }
 }

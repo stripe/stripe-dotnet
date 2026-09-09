@@ -6,11 +6,10 @@ namespace Stripe.V2.Signals
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountSignalFraudulentMerchantIndicator : StripeEntity<AccountSignalFraudulentMerchantIndicator>
+    public class AccountSignalMerchantDelinquencyAdditionalDetailsIndicator : StripeEntity<AccountSignalMerchantDelinquencyAdditionalDetailsIndicator>
     {
         /// <summary>
-        /// A brief explanation of how this indicator contributed to the fraudulent merchant
-        /// probability.
+        /// A brief explanation of how this indicator contributed to the delinquency probability.
         /// </summary>
         [JsonProperty("explanation")]
         [STJS.JsonPropertyName("explanation")]
@@ -27,9 +26,11 @@ namespace Stripe.V2.Signals
 
         /// <summary>
         /// The name of the specific indicator used in the risk assessment.
-        /// One of: <c>bank_account</c>, <c>business_information_and_account_activity</c>,
-        /// <c>disputes</c>, <c>failures</c>, <c>geolocation</c>, <c>other</c>,
-        /// <c>other_related_accounts</c>, <c>other_transaction_activity</c>, or <c>owner_email</c>.
+        /// One of: <c>account_balance</c>, <c>aov</c>, <c>charge_concentration</c>,
+        /// <c>disputes</c>, <c>dispute_window</c>, <c>exposure</c>, <c>firmographic</c>,
+        /// <c>lifetime_metrics</c>, <c>other</c>, <c>payment_processing</c>, <c>payment_volume</c>,
+        /// <c>payouts</c>, <c>refunds</c>, <c>related_accounts</c>, <c>tenure</c>, or
+        /// <c>transfers</c>.
         /// </summary>
         [JsonProperty("indicator")]
         [STJS.JsonPropertyName("indicator")]

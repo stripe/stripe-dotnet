@@ -105,6 +105,10 @@ namespace Stripe.Identity
         [STJS.JsonPropertyName("selfie")]
         public VerificationReportSelfie Selfie { get; set; }
 
+        [JsonProperty("signals")]
+        [STJS.JsonPropertyName("signals")]
+        public VerificationReportSignals Signals { get; set; }
+
         /// <summary>
         /// Type of report.
         /// One of: <c>document</c>, <c>email</c>, <c>id_number</c>, or <c>verification_flow</c>.

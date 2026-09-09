@@ -11,6 +11,14 @@ namespace Stripe.ProductCatalog
     public class TrialOfferListOptions : ListOptions
     {
         /// <summary>
+        /// Only return trial offers that are active (<c>true</c>) or archived (<c>false</c>). If
+        /// omitted, both active and archived trial offers are returned.
+        /// </summary>
+        [JsonProperty("active")]
+        [STJS.JsonPropertyName("active")]
+        public bool? Active { get; set; }
+
+        /// <summary>
         /// Only return trial offers that were created during the given date interval.
         /// </summary>
         [JsonProperty("created")]

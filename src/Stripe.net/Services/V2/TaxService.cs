@@ -7,6 +7,7 @@ namespace Stripe.V2
 
     public class TaxService : Service
     {
+        private V2.Tax.IntegrationConfigurationService integrationConfigurations;
         private V2.Tax.ManualRuleService manualRules;
         private V2.Tax.OperationService operations;
 
@@ -19,6 +20,9 @@ namespace Stripe.V2
             : base(client)
         {
         }
+
+        public virtual V2.Tax.IntegrationConfigurationService IntegrationConfigurations => this.integrationConfigurations ??= new V2.Tax.IntegrationConfigurationService(
+            this.Requestor);
 
         public virtual V2.Tax.ManualRuleService ManualRules => this.manualRules ??= new V2.Tax.ManualRuleService(
             this.Requestor);

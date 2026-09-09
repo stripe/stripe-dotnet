@@ -41,6 +41,15 @@ namespace Stripe.V2.Core
         public List<string> Locales { get; set; }
 
         /// <summary>
+        /// Default payout methods per currency. Keys are three-letter <a
+        /// href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency codes</a>, in
+        /// lowercase. Values are v2 Payout Method IDs.
+        /// </summary>
+        [JsonProperty("payout_methods")]
+        [STJS.JsonPropertyName("payout_methods")]
+        public Dictionary<string, string> PayoutMethods { get; set; }
+
+        /// <summary>
         /// Account profile information.
         /// </summary>
         [JsonProperty("profile")]

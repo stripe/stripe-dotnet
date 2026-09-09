@@ -11,6 +11,15 @@ namespace Stripe.Checkout
     public class SessionItemSubscription : StripeEntity<SessionItemSubscription>, IHasMetadata
     {
         /// <summary>
+        /// The Unix timestamp marking the subscription's backdated start date.
+        /// </summary>
+        [JsonProperty("backdate_start_date")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        [STJS.JsonPropertyName("backdate_start_date")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+        public DateTime? BackdateStartDate { get; set; }
+
+        /// <summary>
         /// The description for the subscription.
         /// </summary>
         [JsonProperty("description")]

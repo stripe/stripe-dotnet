@@ -384,7 +384,7 @@ namespace Stripe.Checkout
         /// For <c>subscription</c> mode, there is a maximum of 20 line items and optional items
         /// with recurring Prices and 20 line items and optional items with one-time Prices.
         ///
-        /// You can't set this parameter if <c>ui_mode</c> is <c>custom</c>.
+        /// You can't set this parameter if <c>ui_mode</c> is <c>elements</c> or <c>form</c>.
         /// </summary>
         [JsonProperty("optional_items")]
         [STJS.JsonPropertyName("optional_items")]

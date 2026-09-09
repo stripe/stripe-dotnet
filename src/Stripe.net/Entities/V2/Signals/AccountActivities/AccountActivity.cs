@@ -2,6 +2,7 @@
 namespace Stripe.V2.Signals
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -10,7 +11,7 @@ namespace Stripe.V2.Signals
     /// Account Activity resource for the Signals API.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountActivity : StripeEntity<AccountActivity>, IHasId, IHasObject
+    public class AccountActivity : StripeEntity<AccountActivity>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the account activity.
@@ -42,6 +43,24 @@ namespace Stripe.V2.Signals
         public string AccountEvaluation { get; set; }
 
         /// <summary>
+        /// Details for the account restriction. Present only when type is account_restricted. The
+        /// activity requires an existing account_details.account or account_details.customer;
+        /// inline data is unsupported.
+        /// </summary>
+        [JsonProperty("account_restricted")]
+        [STJS.JsonPropertyName("account_restricted")]
+        public AccountActivityAccountRestricted AccountRestricted { get; set; }
+
+        /// <summary>
+        /// Details for the account suspension. Present only when type is account_suspended. The
+        /// activity requires an existing account_details.customer; account_details.account and
+        /// inline data are unsupported.
+        /// </summary>
+        [JsonProperty("account_suspended")]
+        [STJS.JsonPropertyName("account_suspended")]
+        public AccountActivityAccountSuspended AccountSuspended { get; set; }
+
+        /// <summary>
         /// Timestamp at which the account activity was created.
         /// </summary>
         [JsonProperty("created")]
@@ -71,6 +90,13 @@ namespace Stripe.V2.Signals
         public AccountActivityLoginDecision LoginDecision { get; set; }
 
         /// <summary>
+        /// Additional information about the activity.
+        /// </summary>
+        [JsonProperty("metadata")]
+        [STJS.JsonPropertyName("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
         /// Timestamp at which the activity occurred. Defaults to the created time if not provided.
         /// </summary>
         [JsonProperty("occurred_at")]
@@ -93,8 +119,8 @@ namespace Stripe.V2.Signals
 
         /// <summary>
         /// The type of activity.
-        /// One of: <c>login_attempt</c>, <c>login_decision</c>, <c>registration_attempt</c>, or
-        /// <c>registration_decision</c>.
+        /// One of: <c>account_restricted</c>, <c>account_suspended</c>, <c>login_attempt</c>,
+        /// <c>login_decision</c>, <c>registration_attempt</c>, or <c>registration_decision</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

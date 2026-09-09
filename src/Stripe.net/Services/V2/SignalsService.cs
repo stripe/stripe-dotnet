@@ -10,6 +10,8 @@ namespace Stripe.V2
         private V2.Signals.AccountActivityService accountActivity;
         private V2.Signals.AccountEvaluationService accountEvaluations;
         private V2.Signals.AccountSignalService accountSignals;
+        private V2.Signals.PaymentRetryEvaluationService paymentRetryEvaluations;
+        private V2.Signals.PaymentRetrySignalService paymentRetrySignals;
 
         internal SignalsService(ApiRequestor requestor)
             : base(requestor)
@@ -28,6 +30,12 @@ namespace Stripe.V2
             this.Requestor);
 
         public virtual V2.Signals.AccountSignalService AccountSignals => this.accountSignals ??= new V2.Signals.AccountSignalService(
+            this.Requestor);
+
+        public virtual V2.Signals.PaymentRetryEvaluationService PaymentRetryEvaluations => this.paymentRetryEvaluations ??= new V2.Signals.PaymentRetryEvaluationService(
+            this.Requestor);
+
+        public virtual V2.Signals.PaymentRetrySignalService PaymentRetrySignals => this.paymentRetrySignals ??= new V2.Signals.PaymentRetrySignalService(
             this.Requestor);
     }
 }

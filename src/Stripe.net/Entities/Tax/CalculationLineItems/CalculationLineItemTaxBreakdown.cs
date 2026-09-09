@@ -16,6 +16,14 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("amount")]
         public long Amount { get; set; }
 
+        /// <summary>
+        /// The ID of the <a href="https://stripe.com/api/tax/exemptions">customer tax exemption</a>
+        /// that was applied to this tax breakdown.
+        /// </summary>
+        [JsonProperty("customer_tax_exemption")]
+        [STJS.JsonPropertyName("customer_tax_exemption")]
+        public string CustomerTaxExemption { get; set; }
+
         [JsonProperty("jurisdiction")]
         [STJS.JsonPropertyName("jurisdiction")]
         public CalculationLineItemTaxBreakdownJurisdiction Jurisdiction { get; set; }

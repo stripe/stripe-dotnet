@@ -10,6 +10,13 @@ namespace Stripe.V2.Core
     public class ApprovalRequestStatusTransitions : StripeEntity<ApprovalRequestStatusTransitions>
     {
         /// <summary>
+        /// Timestamp when the approval request was approved.
+        /// </summary>
+        [JsonProperty("approved_at")]
+        [STJS.JsonPropertyName("approved_at")]
+        public DateTime? ApprovedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
         /// Timestamp when the approval request was canceled.
         /// </summary>
         [JsonProperty("canceled_at")]
@@ -36,13 +43,6 @@ namespace Stripe.V2.Core
         [JsonProperty("rejected_at")]
         [STJS.JsonPropertyName("rejected_at")]
         public DateTime? RejectedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
-
-        /// <summary>
-        /// Timestamp when the approval request moved to requires_execution status.
-        /// </summary>
-        [JsonProperty("requires_execution_at")]
-        [STJS.JsonPropertyName("requires_execution_at")]
-        public DateTime? RequiresExecutionAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Timestamp when the approval request succeeded.
