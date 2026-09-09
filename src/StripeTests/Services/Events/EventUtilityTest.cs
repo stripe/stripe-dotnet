@@ -154,7 +154,23 @@ namespace StripeTests
         public void ValidateSignatureHandlesIncorrectHeaderValues(string headerValue)
         {
             Assert.Throws<StripeException>(() =>
-                EventUtility.ValidateSignature("{}", headerValue, string.Empty));
+                EventUtility.ValidateSignature("{}", headerValue, this.secret));
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        public void ValidateSignature_EmptyOrNullSecretThrows(string emptySecret)
+        {
+            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var header = EventUtility.GenerateSignatureHeader("{}", this.secret, timestamp);
+
+            var exception = Assert.Throws<StripeException>(() =>
+                EventUtility.ValidateSignature("{}", header, emptySecret, EventUtility.DefaultTimeTolerance, timestamp));
+
+            Assert.Equal(
+                "No webhook secret value was provided. It should start with `whsec_`",
+                exception.Message);
         }
 
         [Fact]
