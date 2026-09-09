@@ -1,5 +1,8 @@
 # Changelog
 
+## 52.4.2 - 2026-09-09
+* [#3445](https://github.com/stripe/stripe-dotnet/pull/3445) Validate that webhook secrets are non-empty
+
 ## 52.4.1 - 2026-09-01
 * [#3441](https://github.com/stripe/stripe-dotnet/pull/3441) Harden API requestor code against malicious URLs
 
