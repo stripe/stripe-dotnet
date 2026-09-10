@@ -30,13 +30,7 @@ namespace Stripe.V2.Core
         protected virtual T FetchRelatedObject<T>(EventRelatedObject relatedObject)
             where T : IStripeEntity
         {
-            Task<T> objectTask = this.FetchRelatedObjectAsync<T>(relatedObject);
-            if (objectTask == null)
-            {
-                return default(T);
-            }
-
-            return objectTask.ConfigureAwait(false).GetAwaiter().GetResult();
+            return this.FetchRelatedObject<T>(relatedObject?.Url);
         }
 
         /// <summary>
@@ -46,12 +40,45 @@ namespace Stripe.V2.Core
         protected virtual Task<T> FetchRelatedObjectAsync<T>(EventRelatedObject relatedObject, CancellationToken cancellationToken = default)
             where T : IStripeEntity
         {
-            if (relatedObject == null)
+            return this.FetchRelatedObjectAsync<T>(relatedObject?.Url, cancellationToken);
+        }
+
+        /// <summary>
+        /// Makes an API request to fetch the object associated with this event.
+        /// </summary>
+        /// <typeparam name="T">The type of the object to fetch.</typeparam>
+        protected virtual T FetchRelatedObject<T>(EventRelatedSingletonObject relatedObject)
+            where T : IStripeEntity
+        {
+            return this.FetchRelatedObject<T>(relatedObject?.Url);
+        }
+
+        /// <summary>
+        /// Makes an API request to fetch the object associated with this event.
+        /// </summary>
+        /// <typeparam name="T">The type of the object to fetch.</typeparam>
+        protected virtual Task<T> FetchRelatedObjectAsync<T>(EventRelatedSingletonObject relatedObject, CancellationToken cancellationToken = default)
+            where T : IStripeEntity
+        {
+            return this.FetchRelatedObjectAsync<T>(relatedObject?.Url, cancellationToken);
+        }
+
+        private T FetchRelatedObject<T>(string url)
+            where T : IStripeEntity
+        {
+            Task<T> objectTask = this.FetchRelatedObjectAsync<T>(url, default);
+            if (objectTask == null)
             {
-                return null;
+                return default(T);
             }
 
-            if (relatedObject.Url == null)
+            return objectTask.ConfigureAwait(false).GetAwaiter().GetResult();
+        }
+
+        private Task<T> FetchRelatedObjectAsync<T>(string url, CancellationToken cancellationToken)
+            where T : IStripeEntity
+        {
+            if (url == null)
             {
                 return null;
             }
@@ -68,7 +95,7 @@ namespace Stripe.V2.Core
             return this.Requestor.RequestAsync<T>(
                     BaseAddress.Api,
                     HttpMethod.Get,
-                    relatedObject.Url,
+                    url,
                     null,
                     opts,
                     cancellationToken: cancellationToken);
