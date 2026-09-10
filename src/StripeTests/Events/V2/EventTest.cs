@@ -15,6 +15,7 @@ namespace StripeTests.V2
     using Stripe.Infrastructure;
     using Stripe.V2;
     using Xunit;
+    using STJ = System.Text.Json;
 
     public class EventTest : BaseStripeTest
     {
@@ -128,6 +129,18 @@ namespace StripeTests.V2
                 }
               }";
 
+        private static string singletonRelatedObjectPayload =
+            @"{
+                ""type"": ""billing.meter"",
+                ""url"": ""/v1/billing/meters/me_123""
+              }";
+
+        private static string meterPayload =
+            @"{
+                ""id"": ""meter_123"",
+                ""object"": ""billing.meter""
+              }";
+
         private StripeClient stripeClient;
 
         public EventTest(MockHttpClientFixture mockHttpClientFixture)
@@ -209,6 +222,23 @@ namespace StripeTests.V2
         {
             Assert.IsType<T>(o);
             return (T)o;
+        }
+
+        /// <summary>
+        /// Sets up the mock http client to answer any request with the given payload.
+        /// </summary>
+        /// <param name="payload">The json payload to respond with.</param>
+        private void MockResponse(string payload)
+        {
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(new HttpResponseMessage
+                {
+                    Content = new StringContent(payload),
+                });
         }
 
         [Fact]
@@ -479,6 +509,97 @@ namespace StripeTests.V2
             var v2EventService = new Stripe.V2.Core.EventService(this.stripeClient);
             var v2Event = await v2EventService.GetAsync("evt_234");
             Assert.Equal(this.stripeClient.Requestor, v2Event.Requestor);
+        }
+
+        [Fact]
+        public void ParseEventRelatedSingletonObject()
+        {
+            var nsjRelatedObject = JsonUtils.DeserializeObject<Stripe.V2.Core.EventRelatedSingletonObject>(
+                singletonRelatedObjectPayload);
+            Assert.Equal("billing.meter", nsjRelatedObject.Type);
+            Assert.Equal("/v1/billing/meters/me_123", nsjRelatedObject.Url);
+
+            var stjRelatedObject = STJ.JsonSerializer.Deserialize<Stripe.V2.Core.EventRelatedSingletonObject>(
+                singletonRelatedObjectPayload, StripeConfiguration.SerializerOptions);
+            Assert.Equal("billing.meter", stjRelatedObject.Type);
+            Assert.Equal("/v1/billing/meters/me_123", stjRelatedObject.Url);
+
+            // Singleton related objects have no id at all, so they don't implement IHasId.
+            Assert.Null(typeof(Stripe.V2.Core.EventRelatedSingletonObject).GetProperty("Id"));
+            Assert.DoesNotContain(
+                typeof(IHasId),
+                typeof(Stripe.V2.Core.EventRelatedSingletonObject).GetInterfaces());
+        }
+
+        [Fact]
+        public void ParseEventNotificationRelatedSingletonObject()
+        {
+            var nsjRelatedObject = JsonUtils.DeserializeObject<Stripe.V2.Core.EventNotificationRelatedSingletonObject>(
+                singletonRelatedObjectPayload);
+            Assert.Equal("billing.meter", nsjRelatedObject.Type);
+            Assert.Equal("/v1/billing/meters/me_123", nsjRelatedObject.Url);
+
+            var stjRelatedObject = STJ.JsonSerializer.Deserialize<Stripe.V2.Core.EventNotificationRelatedSingletonObject>(
+                singletonRelatedObjectPayload, StripeConfiguration.SerializerOptions);
+            Assert.Equal("billing.meter", stjRelatedObject.Type);
+            Assert.Equal("/v1/billing/meters/me_123", stjRelatedObject.Url);
+
+            Assert.Null(typeof(Stripe.V2.Core.EventNotificationRelatedSingletonObject).GetProperty("Id"));
+        }
+
+        [Fact]
+        public async Task FetchRelatedSingletonObjectFromNotif()
+        {
+            this.MockResponse(meterPayload);
+            var eventNotif = new SingletonEventNotification(this.stripeClient);
+
+            var relatedObject = await eventNotif.DoFetchRelatedObjectAsync(
+                new Stripe.V2.Core.EventNotificationRelatedSingletonObject
+                {
+                    Type = "billing.meter",
+                    Url = "/v1/billing/meters/me_123",
+                });
+            Assert.Equal("meter_123", relatedObject.Id);
+            Assert.Equal("billing.meter", relatedObject.Object);
+        }
+
+        /// <summary>
+        /// No singleton event is generated yet, so this stands in for one to exercise the
+        /// EventRelatedSingletonObject fetch helpers.
+        /// </summary>
+        private class SingletonEvent : Stripe.V2.Core.Event
+        {
+            public Meter DoFetchRelatedObject(Stripe.V2.Core.EventRelatedSingletonObject relatedObject)
+            {
+                return this.FetchRelatedObject<Meter>(relatedObject);
+            }
+
+            public Task<Meter> DoFetchRelatedObjectAsync(Stripe.V2.Core.EventRelatedSingletonObject relatedObject)
+            {
+                return this.FetchRelatedObjectAsync<Meter>(relatedObject);
+            }
+        }
+
+        /// <summary>
+        /// No singleton event is generated yet, so this stands in for one to exercise the
+        /// EventNotificationRelatedSingletonObject fetch helpers.
+        /// </summary>
+        private class SingletonEventNotification : Stripe.V2.Core.EventNotification
+        {
+            public SingletonEventNotification(StripeClient client)
+            {
+                this.Client = client;
+            }
+
+            public Meter DoFetchRelatedObject(Stripe.V2.Core.EventNotificationRelatedSingletonObject relatedObject)
+            {
+                return this.FetchRelatedObject<Meter>(relatedObject);
+            }
+
+            public Task<Meter> DoFetchRelatedObjectAsync(Stripe.V2.Core.EventNotificationRelatedSingletonObject relatedObject)
+            {
+                return this.FetchRelatedObjectAsync<Meter>(relatedObject);
+            }
         }
     }
 }
