@@ -33,6 +33,8 @@ namespace Stripe
         /// Only return top-ups that have the given status. One of <c>canceled</c>, <c>failed</c>,
         /// <c>pending</c> or <c>succeeded</c>.
         /// One of: <c>canceled</c>, <c>failed</c>, <c>pending</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

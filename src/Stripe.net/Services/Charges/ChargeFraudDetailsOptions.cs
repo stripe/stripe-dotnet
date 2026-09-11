@@ -17,6 +17,8 @@ namespace Stripe
         /// <summary>
         /// Either <c>safe</c> or <c>fraudulent</c>.
         /// One of: <c>fraudulent</c>, or <c>safe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("user_report", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("user_report")]

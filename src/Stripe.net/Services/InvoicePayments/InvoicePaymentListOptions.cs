@@ -35,6 +35,8 @@ namespace Stripe
         /// <summary>
         /// The status of the invoice payments to return.
         /// One of: <c>canceled</c>, <c>open</c>, or <c>paid</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

@@ -47,6 +47,8 @@ namespace Stripe.FinancialConnections
         /// The <c>type</c> of the balance. An additional hash is included on the balance with a
         /// name matching this value.
         /// One of: <c>cash</c>, or <c>credit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

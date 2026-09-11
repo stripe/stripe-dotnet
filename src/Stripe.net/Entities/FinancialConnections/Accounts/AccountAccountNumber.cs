@@ -22,6 +22,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// The type of account number associated with the account.
         /// One of: <c>account_number</c>, or <c>tokenized_account_number</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("identifier_type")]
         [STJS.JsonPropertyName("identifier_type")]
@@ -30,6 +32,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// Whether the account number is currently active and usable for transactions.
         /// One of: <c>deactivated</c>, or <c>transactable</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

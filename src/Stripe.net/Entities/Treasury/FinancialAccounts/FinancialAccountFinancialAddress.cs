@@ -19,6 +19,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// The list of networks that the address supports.
         /// One of: <c>ach</c>, or <c>us_domestic_wire</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("supported_networks")]
         [STJS.JsonPropertyName("supported_networks")]

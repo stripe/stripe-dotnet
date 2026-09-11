@@ -56,6 +56,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// Only return the Checkout Sessions matching the given status.
         /// One of: <c>complete</c>, <c>expired</c>, or <c>open</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

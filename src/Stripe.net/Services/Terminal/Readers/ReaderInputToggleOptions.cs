@@ -11,6 +11,8 @@ namespace Stripe.Terminal
         /// <summary>
         /// The default value of the toggle. Can be <c>enabled</c> or <c>disabled</c>.
         /// One of: <c>disabled</c>, or <c>enabled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("default_value")]
         [STJS.JsonPropertyName("default_value")]

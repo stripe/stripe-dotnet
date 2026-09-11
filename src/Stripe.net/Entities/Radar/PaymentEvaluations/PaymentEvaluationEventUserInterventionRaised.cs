@@ -25,6 +25,8 @@ namespace Stripe.Radar
         /// <summary>
         /// Type of user intervention raised.
         /// One of: <c>3ds</c>, <c>captcha</c>, or <c>custom</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

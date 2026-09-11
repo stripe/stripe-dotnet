@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// Filter external accounts according to a particular object type.
         /// One of: <c>bank_account</c>, or <c>card</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("object")]
         [STJS.JsonPropertyName("object")]

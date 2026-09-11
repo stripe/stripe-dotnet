@@ -12,6 +12,8 @@ namespace Stripe
         /// The type of mobile wallet, one of <c>apple_pay</c>, <c>google_pay</c>,
         /// <c>samsung_pay</c>, or <c>unknown</c>.
         /// One of: <c>apple_pay</c>, <c>google_pay</c>, <c>samsung_pay</c>, or <c>unknown</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

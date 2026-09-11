@@ -39,6 +39,8 @@ namespace Stripe.V2.Commerce
         /// <summary>
         /// The type of feed data being imported into the product catalog.
         /// One of: <c>inventory</c>, <c>pricing</c>, <c>product</c>, or <c>promotion</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("feed_type")]
         [STJS.JsonPropertyName("feed_type")]
@@ -62,6 +64,8 @@ namespace Stripe.V2.Commerce
         /// <summary>
         /// The import strategy for handling existing catalog data.
         /// One of: <c>replace</c>, or <c>upsert</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("mode")]
         [STJS.JsonPropertyName("mode")]

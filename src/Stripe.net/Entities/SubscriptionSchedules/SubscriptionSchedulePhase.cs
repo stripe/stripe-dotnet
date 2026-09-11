@@ -38,6 +38,8 @@ namespace Stripe
         /// as needed when entering the phase. For more information, see the billing cycle <a
         /// href="https://docs.stripe.com/billing/subscriptions/billing-cycle">documentation</a>.
         /// One of: <c>automatic</c>, or <c>phase_start</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [STJS.JsonPropertyName("billing_cycle_anchor")]
@@ -58,6 +60,8 @@ namespace Stripe
         /// email your customer an invoice with payment instructions and mark the subscription as
         /// <c>active</c>.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("collection_method")]
         [STJS.JsonPropertyName("collection_method")]
@@ -212,6 +216,8 @@ namespace Stripe
         /// When transitioning phases, controls how prorations are handled (if any). Possible values
         /// are <c>create_prorations</c>, <c>none</c>, and <c>always_invoice</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]

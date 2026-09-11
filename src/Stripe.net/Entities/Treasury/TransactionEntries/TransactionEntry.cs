@@ -87,6 +87,8 @@ namespace Stripe.Treasury
         /// One of: <c>credit_reversal</c>, <c>debit_reversal</c>, <c>inbound_transfer</c>,
         /// <c>issuing_authorization</c>, <c>other</c>, <c>outbound_payment</c>,
         /// <c>outbound_transfer</c>, <c>received_credit</c>, or <c>received_debit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("flow_type")]
         [STJS.JsonPropertyName("flow_type")]
@@ -146,6 +148,8 @@ namespace Stripe.Treasury
         /// <c>outbound_transfer_cancellation</c>, <c>outbound_transfer_failure</c>,
         /// <c>outbound_transfer_posting</c>, <c>outbound_transfer_return</c>,
         /// <c>received_credit</c>, or <c>received_debit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

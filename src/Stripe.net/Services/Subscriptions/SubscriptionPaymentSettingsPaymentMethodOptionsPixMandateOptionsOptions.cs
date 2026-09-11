@@ -18,6 +18,8 @@ namespace Stripe
         /// <summary>
         /// Determines if the amount includes the IOF tax. Defaults to <c>never</c>.
         /// One of: <c>always</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("amount_includes_iof")]
         [STJS.JsonPropertyName("amount_includes_iof")]
@@ -36,6 +38,8 @@ namespace Stripe
         /// servicing interval.
         /// One of: <c>halfyearly</c>, <c>monthly</c>, <c>quarterly</c>, <c>weekly</c>, or
         /// <c>yearly</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_schedule")]
         [STJS.JsonPropertyName("payment_schedule")]

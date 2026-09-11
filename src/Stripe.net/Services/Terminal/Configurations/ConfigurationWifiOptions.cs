@@ -33,6 +33,8 @@ namespace Stripe.Terminal
         /// Security type of the WiFi network. Fill out the hash with the corresponding name to
         /// provide the set of credentials for this security type.
         /// One of: <c>enterprise_eap_peap</c>, <c>enterprise_eap_tls</c>, or <c>personal_psk</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

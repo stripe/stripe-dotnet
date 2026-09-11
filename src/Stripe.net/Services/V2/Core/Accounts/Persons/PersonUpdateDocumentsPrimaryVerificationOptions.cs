@@ -18,6 +18,9 @@ namespace Stripe.V2.Core.Accounts
 
         /// <summary>
         /// The format of the verification document. Currently supports <c>front_back</c> only.
+        /// One of: <c>front_back</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

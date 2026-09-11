@@ -13,6 +13,8 @@ namespace Stripe
         /// information.
         /// One of: <c>failed</c>, <c>not_collecting</c>, <c>supported</c>, or
         /// <c>unrecognized_location</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("automatic_tax")]
         [STJS.JsonPropertyName("automatic_tax")]
@@ -37,6 +39,8 @@ namespace Stripe
         /// when not using a <a href="https://stripe.com/tax/third-party-apps">third-party
         /// provider</a>.
         /// One of: <c>anrok</c>, <c>avalara</c>, <c>sphere</c>, or <c>stripe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("provider")]
         [STJS.JsonPropertyName("provider")]

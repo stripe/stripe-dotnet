@@ -25,6 +25,8 @@ namespace Stripe
         /// <c>pbac_z_ipko</c>, <c>plus_bank</c>, <c>santander_przelew24</c>,
         /// <c>tmobile_usbugi_bankowe</c>, <c>toyota_bank</c>, <c>velobank</c>, or
         /// <c>volkswagen_bank</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("bank")]
         [STJS.JsonPropertyName("bank")]

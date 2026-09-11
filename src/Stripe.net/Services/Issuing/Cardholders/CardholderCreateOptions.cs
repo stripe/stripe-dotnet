@@ -73,6 +73,8 @@ namespace Stripe.Issuing
         /// the <a href="https://docs.stripe.com/issuing/3d-secure">3D Secure flow</a> and one-time
         /// password messages sent to the cardholder.
         /// One of: <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, or <c>it</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("preferred_locales")]
         [STJS.JsonPropertyName("preferred_locales")]
@@ -91,6 +93,8 @@ namespace Stripe.Issuing
         /// Specifies whether to permit authorizations on this cardholder's cards. Defaults to
         /// <c>active</c>.
         /// One of: <c>active</c>, or <c>inactive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -101,6 +105,8 @@ namespace Stripe.Issuing
         /// href="https://docs.stripe.com/issuing/other/choose-cardholder">Choose a cardholder
         /// type</a> for more details.
         /// One of: <c>company</c>, or <c>individual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

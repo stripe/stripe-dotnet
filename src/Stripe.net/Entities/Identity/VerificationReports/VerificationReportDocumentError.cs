@@ -12,6 +12,8 @@ namespace Stripe.Identity
         /// A short machine-readable string giving the reason for the verification failure.
         /// One of: <c>document_expired</c>, <c>document_type_not_supported</c>, or
         /// <c>document_unverified_other</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]

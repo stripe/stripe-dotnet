@@ -256,6 +256,8 @@ namespace Stripe
         /// <c>initial</c>, <c>invoice_overpaid</c>, <c>invoice_too_large</c>,
         /// <c>invoice_too_small</c>, <c>migration</c>, <c>unapplied_from_invoice</c>, or
         /// <c>unspent_receiver_credit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

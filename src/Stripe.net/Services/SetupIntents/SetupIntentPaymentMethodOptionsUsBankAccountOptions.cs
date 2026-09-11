@@ -32,6 +32,8 @@ namespace Stripe
         /// <summary>
         /// Bank account verification method. The default value is <c>automatic</c>.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("verification_method")]
         [STJS.JsonPropertyName("verification_method")]

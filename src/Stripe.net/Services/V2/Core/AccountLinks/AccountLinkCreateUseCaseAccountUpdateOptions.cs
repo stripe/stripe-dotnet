@@ -22,6 +22,8 @@ namespace Stripe.V2.Core
         /// configuration param targets the v2/account_link to collect information for the specified
         /// v2/account configuration/s.
         /// One of: <c>customer</c>, <c>merchant</c>, or <c>recipient</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("configurations")]
         [STJS.JsonPropertyName("configurations")]
