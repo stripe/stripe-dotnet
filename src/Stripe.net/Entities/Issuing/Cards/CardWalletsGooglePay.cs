@@ -19,6 +19,8 @@ namespace Stripe.Issuing
         /// Reason the card is ineligible for Google Pay.
         /// One of: <c>missing_agreement</c>, <c>missing_cardholder_contact</c>, or
         /// <c>unsupported_region</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("ineligible_reason")]
         [STJS.JsonPropertyName("ineligible_reason")]

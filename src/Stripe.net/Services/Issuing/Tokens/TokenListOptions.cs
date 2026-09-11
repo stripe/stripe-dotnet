@@ -28,6 +28,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Select Issuing tokens with the given status.
         /// One of: <c>active</c>, <c>deleted</c>, <c>requested</c>, or <c>suspended</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

@@ -23,6 +23,8 @@ namespace Stripe
         /// One of: <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,
         /// <c>eftpos_au</c>, <c>interac</c>, <c>jcb</c>, <c>link</c>, <c>mastercard</c>,
         /// <c>unionpay</c>, <c>unknown</c>, or <c>visa</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("brand")]
         [STJS.JsonPropertyName("brand")]
@@ -91,6 +93,8 @@ namespace Stripe
         /// Card funding type. Can be <c>credit</c>, <c>debit</c>, <c>prepaid</c>, or
         /// <c>unknown</c>.
         /// One of: <c>credit</c>, <c>debit</c>, <c>prepaid</c>, or <c>unknown</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("funding")]
         [STJS.JsonPropertyName("funding")]
@@ -139,6 +143,8 @@ namespace Stripe
         /// One of: <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,
         /// <c>eftpos_au</c>, <c>interac</c>, <c>jcb</c>, <c>link</c>, <c>mastercard</c>,
         /// <c>unionpay</c>, <c>unknown</c>, or <c>visa</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]

@@ -11,6 +11,8 @@ namespace Stripe.TestHelpers.Terminal
         /// <summary>
         /// This parameter defines the skip behavior for input collection.
         /// One of: <c>all</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("skip_non_required_inputs")]
         [STJS.JsonPropertyName("skip_non_required_inputs")]

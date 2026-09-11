@@ -114,6 +114,8 @@ namespace Stripe
         /// additional <c>invoice_line_item</c> property on the resource the value of which is the
         /// id of the credited line item on the invoice.
         /// One of: <c>custom_line_item</c>, or <c>invoice_line_item</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -12,6 +12,8 @@ namespace Stripe.Radar
         /// The reason the payment was blocked by the merchant.
         /// One of: <c>authentication_required</c>, <c>blocked_for_fraud</c>,
         /// <c>invalid_payment</c>, or <c>other</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

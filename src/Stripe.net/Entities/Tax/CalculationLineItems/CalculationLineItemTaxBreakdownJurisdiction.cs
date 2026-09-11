@@ -26,6 +26,8 @@ namespace Stripe.Tax
         /// <summary>
         /// Indicates the level of the jurisdiction imposing the tax.
         /// One of: <c>city</c>, <c>country</c>, <c>county</c>, <c>district</c>, or <c>state</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("level")]
         [STJS.JsonPropertyName("level")]

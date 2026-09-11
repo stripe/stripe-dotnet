@@ -43,6 +43,8 @@ namespace Stripe.Checkout
         /// <c>TV</c>, <c>TW</c>, <c>TZ</c>, <c>UA</c>, <c>UG</c>, <c>US</c>, <c>UY</c>, <c>UZ</c>,
         /// <c>VA</c>, <c>VC</c>, <c>VE</c>, <c>VG</c>, <c>VN</c>, <c>VU</c>, <c>WF</c>, <c>WS</c>,
         /// <c>XK</c>, <c>YE</c>, <c>YT</c>, <c>ZA</c>, <c>ZM</c>, <c>ZW</c>, or <c>ZZ</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allowed_countries")]
         [STJS.JsonPropertyName("allowed_countries")]

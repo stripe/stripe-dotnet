@@ -15,6 +15,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// The US bank account network used to send funds.
         /// One of: <c>ach</c>, or <c>us_domestic_wire</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

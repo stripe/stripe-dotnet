@@ -63,6 +63,8 @@ namespace Stripe
         /// <c>tj_tin</c>, <c>tr_tin</c>, <c>tw_vat</c>, <c>tz_vat</c>, <c>ua_vat</c>,
         /// <c>ug_tin</c>, <c>us_ein</c>, <c>uy_ruc</c>, <c>uz_tin</c>, <c>uz_vat</c>,
         /// <c>ve_rif</c>, <c>vn_tin</c>, <c>za_vat</c>, <c>zm_tin</c>, or <c>zw_tin</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

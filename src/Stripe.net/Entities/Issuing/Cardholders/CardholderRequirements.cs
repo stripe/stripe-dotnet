@@ -14,6 +14,8 @@ namespace Stripe.Issuing
         /// <c>cardholder_verification_required</c> reason.
         /// One of: <c>listed</c>, <c>rejected.listed</c>, <c>requirements.past_due</c>, or
         /// <c>under_review</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("disabled_reason")]
         [STJS.JsonPropertyName("disabled_reason")]
@@ -27,6 +29,8 @@ namespace Stripe.Issuing
         /// <c>individual.card_issuing.user_terms_acceptance.ip</c>, <c>individual.dob.day</c>,
         /// <c>individual.dob.month</c>, <c>individual.dob.year</c>, <c>individual.first_name</c>,
         /// <c>individual.last_name</c>, or <c>individual.verification.document</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("past_due")]
         [STJS.JsonPropertyName("past_due")]

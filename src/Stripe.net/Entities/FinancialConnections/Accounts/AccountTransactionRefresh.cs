@@ -40,6 +40,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// The status of the last refresh attempt.
         /// One of: <c>failed</c>, <c>pending</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

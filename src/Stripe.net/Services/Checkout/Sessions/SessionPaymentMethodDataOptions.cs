@@ -13,6 +13,8 @@ namespace Stripe.Checkout
         /// this payment method can be shown again to the customer in a checkout flow. Only set this
         /// field if you wish to override the allow_redisplay value determined by Checkout.
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allow_redisplay")]
         [STJS.JsonPropertyName("allow_redisplay")]

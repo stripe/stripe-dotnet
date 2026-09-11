@@ -30,6 +30,8 @@ namespace Stripe
         /// A value indicating responsibility for collecting requirements on this account. Only
         /// returned when the Connect application retrieving the resource controls the account.
         /// One of: <c>application</c>, or <c>stripe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("requirement_collection")]
         [STJS.JsonPropertyName("requirement_collection")]
@@ -43,6 +45,8 @@ namespace Stripe
         /// The controller type. Can be <c>application</c>, if a Connect application controls the
         /// account, or <c>account</c>, if the account controls itself.
         /// One of: <c>account</c>, or <c>application</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

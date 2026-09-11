@@ -19,6 +19,8 @@ namespace Stripe.Events
         /// <summary>
         /// Configurations on the Account that was onboarded via the account link.
         /// One of: <c>customer</c>, <c>merchant</c>, or <c>recipient</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("configurations")]
         [STJS.JsonPropertyName("configurations")]
@@ -27,6 +29,8 @@ namespace Stripe.Events
         /// <summary>
         /// Open Enum. The use case type of the account link that has been completed.
         /// One of: <c>account_onboarding</c>, or <c>account_update</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("use_case")]
         [STJS.JsonPropertyName("use_case")]

@@ -37,6 +37,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// The border style for the Checkout Session.
         /// One of: <c>pill</c>, <c>rectangular</c>, or <c>rounded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("border_style", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("border_style")]
@@ -88,6 +90,8 @@ namespace Stripe.Checkout
         /// <c>pt_serif</c>, <c>raleway</c>, <c>roboto</c>, <c>roboto_slab</c>,
         /// <c>source_sans_pro</c>, <c>titillium_web</c>, <c>ubuntu_mono</c>, or
         /// <c>zen_maru_gothic</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("font_family", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("font_family")]

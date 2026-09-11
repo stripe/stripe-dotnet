@@ -115,6 +115,8 @@ namespace Stripe
         /// manually defined tax rates.
         /// One of: <c>city</c>, <c>country</c>, <c>county</c>, <c>district</c>, <c>multiple</c>, or
         /// <c>state</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("jurisdiction_level")]
         [STJS.JsonPropertyName("jurisdiction_level")]
@@ -150,6 +152,8 @@ namespace Stripe
         /// <c>null</c> when no tax applies to the location. This field is only present for TaxRates
         /// created by Stripe Tax.
         /// One of: <c>flat_amount</c>, or <c>percentage</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("rate_type")]
         [STJS.JsonPropertyName("rate_type")]
@@ -169,6 +173,8 @@ namespace Stripe
         /// <c>igst</c>, <c>jct</c>, <c>lease_tax</c>, <c>mass_transit_parking_tax</c>,
         /// <c>parking_tax</c>, <c>pst</c>, <c>qst</c>, <c>retail_delivery_fee</c>, <c>rst</c>,
         /// <c>sales_tax</c>, <c>service_tax</c>, or <c>vat</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_type")]
         [STJS.JsonPropertyName("tax_type")]

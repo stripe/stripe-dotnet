@@ -84,6 +84,8 @@ namespace Stripe.TestHelpers
         /// <summary>
         /// The status of the Test Clock.
         /// One of: <c>advancing</c>, <c>internal_failure</c>, or <c>ready</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

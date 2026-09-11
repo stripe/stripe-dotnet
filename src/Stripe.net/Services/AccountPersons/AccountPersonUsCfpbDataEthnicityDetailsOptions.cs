@@ -14,6 +14,8 @@ namespace Stripe
         /// One of: <c>cuban</c>, <c>hispanic_or_latino</c>, <c>mexican</c>,
         /// <c>not_hispanic_or_latino</c>, <c>other_hispanic_or_latino</c>,
         /// <c>prefer_not_to_answer</c>, or <c>puerto_rican</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("ethnicity")]
         [STJS.JsonPropertyName("ethnicity")]

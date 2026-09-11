@@ -15,6 +15,8 @@ namespace Stripe.Treasury
         /// <c>rejected_unsupported_business</c>, <c>requirements_past_due</c>,
         /// <c>requirements_pending_verification</c>, <c>restricted_by_platform</c>, or
         /// <c>restricted_other</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]
@@ -23,6 +25,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// Represents what the user should do, if anything, to activate the Feature.
         /// One of: <c>contact_stripe</c>, <c>provide_information</c>, or <c>remove_restriction</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("resolution")]
         [STJS.JsonPropertyName("resolution")]
@@ -31,6 +35,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// The <c>platform_restrictions</c> that are restricting this Feature.
         /// One of: <c>inbound_flows</c>, or <c>outbound_flows</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("restriction")]
         [STJS.JsonPropertyName("restriction")]
