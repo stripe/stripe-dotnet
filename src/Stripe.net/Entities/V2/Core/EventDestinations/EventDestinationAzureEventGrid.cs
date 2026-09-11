@@ -18,6 +18,8 @@ namespace Stripe.V2.Core
         /// <summary>
         /// The status of the Azure partner topic.
         /// One of: <c>activated</c>, <c>deleted</c>, <c>never_activated</c>, or <c>unknown</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("azure_partner_topic_status")]
         [STJS.JsonPropertyName("azure_partner_topic_status")]

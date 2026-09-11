@@ -19,6 +19,8 @@ namespace Stripe
         /// If not specified, defaults to ["always"]. In order to display all saved payment methods,
         /// specify ["always", "limited", "unspecified"].
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_allow_redisplay_filters")]
         [STJS.JsonPropertyName("payment_method_allow_redisplay_filters")]
@@ -34,6 +36,8 @@ namespace Stripe
         /// object</a> from that <a
         /// href="https://docs.stripe.com/api/payment_methods">PaymentMethod</a>.
         /// One of: <c>disabled</c>, or <c>enabled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_remove")]
         [STJS.JsonPropertyName("payment_method_remove")]

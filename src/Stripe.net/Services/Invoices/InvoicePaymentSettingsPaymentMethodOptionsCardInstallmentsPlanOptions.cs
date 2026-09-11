@@ -28,6 +28,8 @@ namespace Stripe
         /// <summary>
         /// Type of installment plan, one of <c>fixed_count</c>, <c>bonus</c>, or <c>revolving</c>.
         /// One of: <c>bonus</c>, <c>fixed_count</c>, or <c>revolving</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

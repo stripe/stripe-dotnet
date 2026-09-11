@@ -15,6 +15,8 @@ namespace Stripe.ProductCatalog
         /// <summary>
         /// The type of trial offer duration.
         /// One of: <c>relative</c>, or <c>timestamp</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

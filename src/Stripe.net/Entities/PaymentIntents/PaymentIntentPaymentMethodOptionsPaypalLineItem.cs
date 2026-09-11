@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// Type of the line item.
         /// One of: <c>digital_goods</c>, <c>donation</c>, or <c>physical_goods</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("category")]
         [STJS.JsonPropertyName("category")]

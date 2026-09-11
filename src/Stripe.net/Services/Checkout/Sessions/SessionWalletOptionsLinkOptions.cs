@@ -13,6 +13,8 @@ namespace Stripe.Checkout
         /// will display all the supported wallets that the Checkout Session was created with. This
         /// is the <c>auto</c> behavior, and it is the default choice.
         /// One of: <c>auto</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("display")]
         [STJS.JsonPropertyName("display")]

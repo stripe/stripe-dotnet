@@ -45,6 +45,8 @@ namespace Stripe.TestHelpers
         /// method</a> to the PaymentIntent's Customer, if present, after the PaymentIntent is
         /// confirmed and any required actions from the user are complete.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]

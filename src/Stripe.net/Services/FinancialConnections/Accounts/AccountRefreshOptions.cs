@@ -13,6 +13,8 @@ namespace Stripe.FinancialConnections
         /// The list of account features that you would like to refresh.
         /// One of: <c>balance</c>, <c>inferred_balances</c>, <c>ownership</c>, or
         /// <c>transactions</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("features")]
         [STJS.JsonPropertyName("features")]

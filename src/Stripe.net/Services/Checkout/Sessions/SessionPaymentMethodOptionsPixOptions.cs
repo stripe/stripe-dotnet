@@ -11,6 +11,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// Determines if the amount includes the IOF tax. Defaults to <c>never</c>.
         /// One of: <c>always</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("amount_includes_iof")]
         [STJS.JsonPropertyName("amount_includes_iof")]
@@ -51,6 +53,8 @@ namespace Stripe.Checkout
         /// with regional legislation and network rules, such as <a
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// One of: <c>none</c>, or <c>off_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]

@@ -25,6 +25,8 @@ namespace Stripe
         /// <summary>
         /// Only return invoice payments associated by this payment type.
         /// One of: <c>payment_intent</c>, or <c>payment_record</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -19,6 +19,8 @@ namespace Stripe
         /// Type of extra charge.
         /// One of: <c>gift_shop</c>, <c>laundry</c>, <c>mini_bar</c>, <c>other</c>, <c>phone</c>,
         /// or <c>restaurant</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

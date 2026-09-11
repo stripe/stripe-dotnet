@@ -40,6 +40,8 @@ namespace Stripe.Tax
         /// If <c>partial</c>, the provided line item or shipping cost amounts are reversed. If
         /// <c>full</c>, the original transaction is fully reversed.
         /// One of: <c>full</c>, or <c>partial</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("mode")]
         [STJS.JsonPropertyName("mode")]

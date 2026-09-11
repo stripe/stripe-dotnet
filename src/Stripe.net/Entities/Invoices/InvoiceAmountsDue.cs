@@ -66,6 +66,8 @@ namespace Stripe
         /// <summary>
         /// The status of the payment, one of <c>open</c>, <c>paid</c>, or <c>past_due</c>.
         /// One of: <c>open</c>, <c>paid</c>, or <c>past_due</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

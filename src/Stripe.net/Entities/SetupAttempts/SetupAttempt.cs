@@ -147,6 +147,8 @@ namespace Stripe
         /// destination to send funds to. You can include both if you intend to use the payment
         /// method for both purposes.
         /// One of: <c>inbound</c>, or <c>outbound</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("flow_directions")]
         [STJS.JsonPropertyName("flow_directions")]

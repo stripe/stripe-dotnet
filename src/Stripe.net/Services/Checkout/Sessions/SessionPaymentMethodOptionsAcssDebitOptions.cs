@@ -13,6 +13,8 @@ namespace Stripe.Checkout
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>. This is only accepted for Checkout Sessions in <c>setup</c> mode.
         /// One of: <c>cad</c>, or <c>usd</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("currency")]
         [STJS.JsonPropertyName("currency")]
@@ -45,6 +47,8 @@ namespace Stripe.Checkout
         /// with regional legislation and network rules, such as <a
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
@@ -62,6 +66,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// Verification method for the intent.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("verification_method")]
         [STJS.JsonPropertyName("verification_method")]

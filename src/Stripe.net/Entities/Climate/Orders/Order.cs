@@ -66,6 +66,8 @@ namespace Stripe.Climate
         /// <summary>
         /// Reason for the cancellation of this order.
         /// One of: <c>expired</c>, <c>product_unavailable</c>, or <c>requested</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("cancellation_reason")]
         [STJS.JsonPropertyName("cancellation_reason")]
@@ -213,6 +215,8 @@ namespace Stripe.Climate
         /// The current status of this order.
         /// One of: <c>awaiting_funds</c>, <c>canceled</c>, <c>confirmed</c>, <c>delivered</c>, or
         /// <c>open</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

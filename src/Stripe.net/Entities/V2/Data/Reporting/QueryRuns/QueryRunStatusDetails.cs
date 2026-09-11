@@ -11,6 +11,8 @@ namespace Stripe.V2.Data.Reporting
         /// <summary>
         /// Error code categorizing the reason the <c>QueryRun</c> failed.
         /// One of: <c>file_size_above_limit</c>, or <c>internal_error</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("error_code")]
         [STJS.JsonPropertyName("error_code")]

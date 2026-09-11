@@ -54,6 +54,8 @@ namespace Stripe
         /// The balance that this transaction impacts.
         /// One of: <c>issuing</c>, <c>payments</c>, <c>refund_and_dispute_prefunding</c>, or
         /// <c>risk_reserved</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("balance_type")]
         [STJS.JsonPropertyName("balance_type")]
@@ -213,6 +215,8 @@ namespace Stripe
         /// <c>stripe_balance_payment_debit_reversal</c>, <c>stripe_fee</c>, <c>stripe_fx_fee</c>,
         /// <c>tax_fee</c>, <c>tax_fund</c>, <c>topup</c>, <c>topup_reversal</c>, <c>transfer</c>,
         /// <c>transfer_cancel</c>, <c>transfer_failure</c>, or <c>transfer_refund</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

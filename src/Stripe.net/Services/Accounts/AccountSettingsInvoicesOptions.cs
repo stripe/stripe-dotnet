@@ -37,6 +37,8 @@ namespace Stripe
         /// or a subscription invoice when the customer already has a default payment method on the
         /// hosted invoice page.
         /// One of: <c>always</c>, <c>never</c>, or <c>offer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("hosted_payment_method_save")]
         [STJS.JsonPropertyName("hosted_payment_method_save")]

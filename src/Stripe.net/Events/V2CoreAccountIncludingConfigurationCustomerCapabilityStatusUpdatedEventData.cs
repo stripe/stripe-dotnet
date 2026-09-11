@@ -10,6 +10,9 @@ namespace Stripe.Events
     {
         /// <summary>
         /// Open Enum. The capability which had its status updated.
+        /// One of: <c>automatic_indirect_tax</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("updated_capability")]
         [STJS.JsonPropertyName("updated_capability")]

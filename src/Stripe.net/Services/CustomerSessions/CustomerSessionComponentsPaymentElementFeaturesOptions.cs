@@ -19,6 +19,8 @@ namespace Stripe
         /// If not specified, defaults to ["always"]. In order to display all saved payment methods,
         /// specify ["always", "limited", "unspecified"].
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_allow_redisplay_filters")]
         [STJS.JsonPropertyName("payment_method_allow_redisplay_filters")]
@@ -28,6 +30,8 @@ namespace Stripe
         /// Controls whether or not the Payment Element shows saved payment methods. This parameter
         /// defaults to <c>disabled</c>.
         /// One of: <c>disabled</c>, or <c>enabled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_redisplay")]
         [STJS.JsonPropertyName("payment_method_redisplay")]
@@ -51,6 +55,8 @@ namespace Stripe
         /// object</a> from that <a
         /// href="https://docs.stripe.com/api/payment_methods">PaymentMethod</a>.
         /// One of: <c>disabled</c>, or <c>enabled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_remove")]
         [STJS.JsonPropertyName("payment_method_remove")]
@@ -67,6 +73,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/api/payment_intents/object#payment_intent_object-setup_future_usage"><c>setup_future_usage</c></a>
         /// value is also set to the value defined in <c>payment_method_save_usage</c>.
         /// One of: <c>disabled</c>, or <c>enabled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_save")]
         [STJS.JsonPropertyName("payment_method_save")]
@@ -82,6 +90,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/api/setup_intents/object#setup_intent_object-usage"><c>usage</c></a>
         /// value on SetupIntent creation.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_save_usage")]
         [STJS.JsonPropertyName("payment_method_save_usage")]

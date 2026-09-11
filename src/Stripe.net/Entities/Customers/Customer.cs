@@ -300,6 +300,8 @@ namespace Stripe
         /// <c>reverse</c>. When set to <c>reverse</c>, invoice and receipt PDFs include the
         /// following text: <strong>"Reverse charge"</strong>.
         /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_exempt")]
         [STJS.JsonPropertyName("tax_exempt")]

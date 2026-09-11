@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// Determines if the amount includes the IOF tax.
         /// One of: <c>always</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("amount_includes_iof")]
         [STJS.JsonPropertyName("amount_includes_iof")]
@@ -19,6 +21,8 @@ namespace Stripe
         /// <summary>
         /// Type of amount.
         /// One of: <c>fixed</c>, or <c>maximum</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("amount_type")]
         [STJS.JsonPropertyName("amount_type")]
@@ -36,6 +40,8 @@ namespace Stripe
         /// Schedule at which the future payments will be charged.
         /// One of: <c>halfyearly</c>, <c>monthly</c>, <c>quarterly</c>, <c>weekly</c>, or
         /// <c>yearly</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_schedule")]
         [STJS.JsonPropertyName("payment_schedule")]

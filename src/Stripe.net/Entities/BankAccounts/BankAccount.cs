@@ -105,6 +105,8 @@ namespace Stripe
         /// A set of available payout methods for this bank account. Only values from this set
         /// should be passed as the <c>method</c> when creating a payout.
         /// One of: <c>instant</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("available_payout_methods")]
         [STJS.JsonPropertyName("available_payout_methods")]

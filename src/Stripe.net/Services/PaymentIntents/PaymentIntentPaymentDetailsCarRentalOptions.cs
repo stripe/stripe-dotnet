@@ -91,6 +91,8 @@ namespace Stripe
         /// List of additional charges being billed.
         /// One of: <c>extra_mileage</c>, <c>gas</c>, <c>late_return</c>, <c>one_way_service</c>, or
         /// <c>parking_violation</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("extra_charges")]
         [STJS.JsonPropertyName("extra_charges")]
@@ -137,6 +139,8 @@ namespace Stripe
         /// The frequency at which the rate amount is applied. One of <c>day</c>, <c>week</c> or
         /// <c>month</c>.
         /// One of: <c>day</c>, <c>month</c>, or <c>week</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("rate_interval")]
         [STJS.JsonPropertyName("rate_interval")]

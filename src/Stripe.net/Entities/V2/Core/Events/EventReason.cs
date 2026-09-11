@@ -17,6 +17,9 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// Event reason type.
+        /// One of: <c>request</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -70,6 +70,8 @@ namespace Stripe.Radar
         /// <c>case_sensitive_string</c>, <c>country</c>, <c>crypto_fingerprint</c>,
         /// <c>customer_id</c>, <c>email</c>, <c>ip_address</c>, <c>sepa_debit_fingerprint</c>,
         /// <c>string</c>, or <c>us_bank_account_fingerprint</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("item_type")]
         [STJS.JsonPropertyName("item_type")]

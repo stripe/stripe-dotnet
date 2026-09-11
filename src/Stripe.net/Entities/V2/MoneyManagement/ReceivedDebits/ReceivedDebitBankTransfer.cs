@@ -17,6 +17,9 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. The type of the payment method used to originate the debit.
+        /// One of: <c>us_bank_account</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_type")]
         [STJS.JsonPropertyName("payment_method_type")]

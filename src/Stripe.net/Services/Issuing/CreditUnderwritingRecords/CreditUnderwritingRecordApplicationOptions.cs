@@ -13,6 +13,8 @@ namespace Stripe.Issuing
         /// The channel through which the applicant has submitted their application. Defaults to
         /// <c>online</c>.
         /// One of: <c>in_person</c>, <c>mail</c>, <c>online</c>, or <c>phone</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("application_method")]
         [STJS.JsonPropertyName("application_method")]
@@ -21,6 +23,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Scope of demand made by the applicant.
         /// One of: <c>credit_limit_increase</c>, or <c>credit_line_opening</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("purpose")]
         [STJS.JsonPropertyName("purpose")]

@@ -52,6 +52,8 @@ namespace Stripe.SharedPayment
         /// <summary>
         /// The reason why the SharedPaymentIssuedToken has been deactivated.
         /// One of: <c>consumed</c>, <c>expired</c>, <c>resolved</c>, or <c>revoked</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("deactivated_reason")]
         [STJS.JsonPropertyName("deactivated_reason")]
@@ -121,6 +123,8 @@ namespace Stripe.SharedPayment
         /// Status of this SharedPaymentIssuedToken, one of <c>active</c>, <c>requires_action</c>,
         /// or <c>deactivated</c>.
         /// One of: <c>active</c>, <c>deactivated</c>, or <c>requires_action</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

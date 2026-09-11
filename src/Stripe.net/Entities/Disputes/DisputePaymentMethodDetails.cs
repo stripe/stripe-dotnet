@@ -27,6 +27,8 @@ namespace Stripe
         /// <summary>
         /// Payment method type.
         /// One of: <c>amazon_pay</c>, <c>card</c>, <c>klarna</c>, or <c>paypal</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

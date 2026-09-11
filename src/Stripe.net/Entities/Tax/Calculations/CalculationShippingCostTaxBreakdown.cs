@@ -24,6 +24,8 @@ namespace Stripe.Tax
         /// Indicates whether the jurisdiction was determined by the origin (merchant's address) or
         /// destination (customer's address).
         /// One of: <c>destination</c>, <c>origin</c>, or <c>performance</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("sourcing")]
         [STJS.JsonPropertyName("sourcing")]
@@ -45,6 +47,8 @@ namespace Stripe.Tax
         /// <c>portion_standard_rated</c>, <c>product_exempt</c>, <c>product_exempt_holiday</c>,
         /// <c>proportionally_rated</c>, <c>reduced_rated</c>, <c>reverse_charge</c>,
         /// <c>standard_rated</c>, <c>taxable_basis_reduced</c>, or <c>zero_rated</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("taxability_reason")]
         [STJS.JsonPropertyName("taxability_reason")]

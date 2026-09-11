@@ -37,6 +37,8 @@ namespace Stripe.V2.Billing
         /// Filter billing profiles by status. Can be combined with all other filters. If not
         /// provided, all billing profiles are returned.
         /// One of: <c>active</c>, or <c>inactive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

@@ -59,6 +59,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// The customer’s tax exempt status after a completed Checkout Session.
         /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_exempt")]
         [STJS.JsonPropertyName("tax_exempt")]

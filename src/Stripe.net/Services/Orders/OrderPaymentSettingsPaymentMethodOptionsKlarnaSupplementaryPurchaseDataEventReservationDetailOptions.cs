@@ -58,6 +58,8 @@ namespace Stripe
         /// Type of the event.
         /// One of: <c>concert</c>, <c>conference</c>, <c>digital_education</c>, <c>expo</c>,
         /// <c>festival</c>, <c>in_person_education</c>, <c>sport</c>, or <c>tour</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("event_type")]
         [STJS.JsonPropertyName("event_type")]

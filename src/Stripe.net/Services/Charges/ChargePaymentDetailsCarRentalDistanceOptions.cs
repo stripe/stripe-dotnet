@@ -18,6 +18,8 @@ namespace Stripe
         /// <summary>
         /// Unit of measurement for the distance traveled. One of <c>miles</c> or <c>kilometers</c>.
         /// One of: <c>kilometers</c>, or <c>miles</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("unit")]
         [STJS.JsonPropertyName("unit")]

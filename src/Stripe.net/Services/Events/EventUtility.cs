@@ -184,6 +184,13 @@ namespace Stripe
         public static void ValidateSignature(string json, string stripeSignatureHeader, string secret, long tolerance, long utcNow)
         {
             var signatureItems = ParseStripeSignature(stripeSignatureHeader);
+
+            if (string.IsNullOrEmpty(secret))
+            {
+                throw new StripeException(
+                    "No webhook secret value was provided. It should start with `whsec_`");
+            }
+
             var signature = string.Empty;
 
             try

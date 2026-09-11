@@ -89,6 +89,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Whether the product was a merchandise or service.
         /// One of: <c>merchandise</c>, or <c>service</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("product_type", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("product_type")]

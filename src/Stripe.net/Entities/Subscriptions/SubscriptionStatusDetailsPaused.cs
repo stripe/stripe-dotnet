@@ -27,6 +27,9 @@ namespace Stripe
 
         /// <summary>
         /// The type of pause.
+        /// One of: <c>subscription</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

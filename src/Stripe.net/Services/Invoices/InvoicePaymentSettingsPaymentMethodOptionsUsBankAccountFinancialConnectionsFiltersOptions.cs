@@ -13,6 +13,8 @@ namespace Stripe
         /// The account subcategories to use to filter for selectable accounts. Valid subcategories
         /// are <c>checking</c> and <c>savings</c>.
         /// One of: <c>checking</c>, or <c>savings</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("account_subcategories")]
         [STJS.JsonPropertyName("account_subcategories")]

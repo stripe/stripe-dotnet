@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// The name of the convenience store chain where the payment was completed.
         /// One of: <c>familymart</c>, <c>lawson</c>, <c>ministop</c>, or <c>seicomart</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("chain")]
         [STJS.JsonPropertyName("chain")]
