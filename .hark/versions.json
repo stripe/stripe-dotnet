@@ -1,0 +1,857 @@
+{
+  "versions": [
+    {
+      "version": "52.5.0-beta.1",
+      "released_on": "2026-08-26",
+      "pinned_api_version": "2026-08-26.preview",
+      "minimum_runtime_version": "net462"
+    },
+    {
+      "version": "52.3.0-beta.1",
+      "released_on": "2026-07-29",
+      "pinned_api_version": "2026-07-29.preview",
+      "minimum_runtime_version": "net462"
+    },
+    {
+      "version": "52.2.0-beta.1",
+      "released_on": "2026-06-24",
+      "pinned_api_version": "2026-06-24.preview",
+      "minimum_runtime_version": "net462"
+    },
+    {
+      "version": "51.3.0-beta.1",
+      "released_on": "2026-05-27",
+      "pinned_api_version": "2026-05-27.preview",
+      "minimum_runtime_version": "net462"
+    },
+    {
+      "version": "51.2.0-beta.2",
+      "released_on": "2026-04-24",
+      "pinned_api_version": "2026-04-22.preview",
+      "minimum_runtime_version": "net462"
+    },
+    {
+      "version": "51.2.0-beta.1",
+      "released_on": "2026-04-23",
+      "pinned_api_version": "2026-04-22.preview",
+      "minimum_runtime_version": "net462"
+    },
+    {
+      "version": "51.1.0-beta.2",
+      "released_on": "2026-04-17",
+      "pinned_api_version": "2026-03-25.preview",
+      "minimum_runtime_version": "net462"
+    },
+    {
+      "version": "51.1.0-beta.1",
+      "released_on": "2026-03-25",
+      "pinned_api_version": "2026-03-25.preview",
+      "minimum_runtime_version": "net462"
+    },
+    {
+      "version": "50.5.0-beta.1",
+      "released_on": "2026-02-25",
+      "pinned_api_version": "2026-02-25.preview",
+      "minimum_runtime_version": "net462"
+    },
+    {
+      "version": "50.4.0-beta.1",
+      "released_on": "2026-01-28",
+      "pinned_api_version": "2026-01-28.preview",
+      "minimum_runtime_version": "net462"
+    },
+    {
+      "version": "50.2.0-beta.1",
+      "released_on": "2025-12-16",
+      "pinned_api_version": "2025-12-15.preview",
+      "minimum_runtime_version": "net462"
+    },
+    {
+      "version": "50.1.0-beta.1",
+      "released_on": "2025-11-18",
+      "pinned_api_version": "2025-11-17.preview",
+      "minimum_runtime_version": "net462"
+    },
+    {
+      "version": "49.2.0-beta.1",
+      "released_on": "2025-10-29",
+      "pinned_api_version": "2025-10-29.preview",
+      "minimum_runtime_version": "net462"
+    },
+    {
+      "version": "49.1.0-beta.1",
+      "released_on": "2025-09-30",
+      "pinned_api_version": "2025-09-30.preview",
+      "minimum_runtime_version": "net462"
+    },
+    {
+      "version": "48.6.0-beta.1",
+      "released_on": "2025-08-27",
+      "pinned_api_version": "2025-08-27.preview",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "48.5.0-beta.2",
+      "released_on": "2025-08-08",
+      "pinned_api_version": "2025-07-30.preview",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "48.5.0-beta.1",
+      "released_on": "2025-07-30",
+      "pinned_api_version": "2025-07-30.preview",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "48.4.0-beta.2",
+      "released_on": "2025-07-09",
+      "pinned_api_version": "2025-06-30.preview",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "48.4.0-beta.1",
+      "released_on": "2025-07-01",
+      "pinned_api_version": "2025-06-30.preview",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "48.3.0-beta.2",
+      "released_on": "2025-06-26",
+      "pinned_api_version": "2025-05-28.preview",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "48.3.0-beta.1",
+      "released_on": "2025-05-29",
+      "pinned_api_version": "2025-05-28.preview",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "48.2.0-beta.2",
+      "released_on": "2025-04-30",
+      "pinned_api_version": "2025-04-30.preview",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "48.2.0-beta.1",
+      "released_on": "2025-04-30",
+      "pinned_api_version": "2025-04-30.preview",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "48.1.0-beta.4",
+      "released_on": "2025-04-17",
+      "pinned_api_version": "2025-03-31.preview",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "48.1.0-beta.3",
+      "released_on": "2025-04-10",
+      "pinned_api_version": "2025-03-31.preview",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "48.1.0-beta.2",
+      "released_on": "2025-04-02",
+      "pinned_api_version": "2025-03-31.preview",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "48.1.0-beta.1",
+      "released_on": "2025-04-02",
+      "pinned_api_version": "2025-03-31.preview",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "47.5.0-beta.1",
+      "released_on": "2025-03-18",
+      "pinned_api_version": "2025-02-24.acacia",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "47.4.0-beta.1",
+      "released_on": "2025-02-07",
+      "pinned_api_version": "2025-01-27.acacia",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "47.3.0-beta.3",
+      "released_on": "2025-01-23",
+      "pinned_api_version": "2025-01-27.acacia",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "47.3.0-beta.2",
+      "released_on": "2025-01-17",
+      "pinned_api_version": "2025-01-27.acacia",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "47.3.0-beta.1",
+      "released_on": "2025-01-09",
+      "pinned_api_version": "2024-12-18.acacia",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "47.2.0-beta.3",
+      "released_on": "2024-12-12",
+      "pinned_api_version": "2024-12-18.acacia",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "47.2.0-beta.2",
+      "released_on": "2024-12-05",
+      "pinned_api_version": "2024-11-20.acacia",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "47.2.0-beta.1",
+      "released_on": "2024-11-21",
+      "pinned_api_version": "2024-11-20.acacia",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "47.1.0-beta.3",
+      "released_on": "2024-11-14",
+      "pinned_api_version": "2024-11-20.acacia",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "47.1.0-beta.2",
+      "released_on": "2024-11-07",
+      "pinned_api_version": "2024-10-28.acacia",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "47.1.0-beta.1",
+      "released_on": "2024-10-29",
+      "pinned_api_version": "2024-10-28.acacia",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "46.3.0-beta.1",
+      "released_on": "2024-10-18",
+      "pinned_api_version": "2024-09-30.acacia",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "46.2.0-beta.3",
+      "released_on": "2024-10-08",
+      "pinned_api_version": "2024-09-30.acacia",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "46.2.0-beta.2",
+      "released_on": "2024-10-08",
+      "pinned_api_version": "2024-09-30.acacia",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "46.2.0-beta.1",
+      "released_on": "2024-10-03",
+      "pinned_api_version": "2024-09-30.acacia",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "45.15.0-beta.1",
+      "released_on": "2024-09-18",
+      "pinned_api_version": "2024-06-20",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "45.13.0-beta.1",
+      "released_on": "2024-09-13",
+      "pinned_api_version": "2024-06-20",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "45.12.0-beta.1",
+      "released_on": "2024-09-05",
+      "pinned_api_version": "2024-06-20",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "45.10.0-beta.1",
+      "released_on": "2024-08-23",
+      "pinned_api_version": "2024-06-20",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "45.9.0-beta.2",
+      "released_on": "2024-08-22",
+      "pinned_api_version": "2024-06-20",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "45.9.0-beta.1",
+      "released_on": "2024-08-15",
+      "pinned_api_version": "2024-06-20",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "45.8.0-beta.1",
+      "released_on": "2024-08-12",
+      "pinned_api_version": "2024-06-20",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "45.7.0-beta.1",
+      "released_on": "2024-08-01",
+      "pinned_api_version": "2024-06-20",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "45.6.0-beta.1",
+      "released_on": "2024-07-25",
+      "pinned_api_version": "2024-06-20",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "45.3.0-beta.1",
+      "released_on": "2024-07-05",
+      "pinned_api_version": "2024-06-20",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "45.2.0-beta.1",
+      "released_on": "2024-06-27",
+      "pinned_api_version": "2024-06-20",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "44.13.0-beta.1",
+      "released_on": "2024-06-13",
+      "pinned_api_version": "2024-04-10",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "44.12.0-beta.1",
+      "released_on": "2024-06-06",
+      "pinned_api_version": "2024-04-10",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "44.11.0-beta.1",
+      "released_on": "2024-05-30",
+      "pinned_api_version": "2024-04-10",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "44.10.0-beta.1",
+      "released_on": "2024-05-23",
+      "pinned_api_version": "2024-04-10",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "44.9.0-beta.1",
+      "released_on": "2024-05-16",
+      "pinned_api_version": "2024-04-10",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "44.7.0-beta.1",
+      "released_on": "2024-05-09",
+      "pinned_api_version": "2024-04-10",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "44.6.0-beta.1",
+      "released_on": "2024-05-02",
+      "pinned_api_version": "2024-04-10",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "44.5.0-beta.1",
+      "released_on": "2024-04-25",
+      "pinned_api_version": "2024-04-10",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "44.4.0-beta.1",
+      "released_on": "2024-04-18",
+      "pinned_api_version": "2024-04-10",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "44.2.0-beta.1",
+      "released_on": "2024-04-11",
+      "pinned_api_version": "2024-04-10",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.23.0-beta.1",
+      "released_on": "2024-04-04",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.22.0-beta.1",
+      "released_on": "2024-03-28",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.21.0-beta.1",
+      "released_on": "2024-03-21",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.20.0-beta.1",
+      "released_on": "2024-03-14",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.19.0-beta.1",
+      "released_on": "2024-03-07",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.18.0-beta.1",
+      "released_on": "2024-02-29",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.17.0-beta.1",
+      "released_on": "2024-02-22",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.16.0-beta.1",
+      "released_on": "2024-02-16",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.15.0-beta.1",
+      "released_on": "2024-02-08",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.14.0-beta.1",
+      "released_on": "2024-02-01",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.13.0-beta.1",
+      "released_on": "2024-01-26",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.12.0-beta.1",
+      "released_on": "2024-01-18",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.11.0-beta.1",
+      "released_on": "2024-01-12",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.10.0-beta.1",
+      "released_on": "2024-01-04",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.9.0-beta.1",
+      "released_on": "2023-12-22",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.8.0-beta.1",
+      "released_on": "2023-12-14",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.7.0-beta.1",
+      "released_on": "2023-12-08",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.6.0-beta.1",
+      "released_on": "2023-11-30",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.5.0-beta.1",
+      "released_on": "2023-11-21",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.4.0-beta.1",
+      "released_on": "2023-11-16",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.3.0-beta.1",
+      "released_on": "2023-11-10",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.2.0-beta.1",
+      "released_on": "2023-11-02",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.1.0-beta.2",
+      "released_on": "2023-10-26",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "43.1.0-beta.1",
+      "released_on": "2023-10-17",
+      "pinned_api_version": "2023-10-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "42.11.0-beta.1",
+      "released_on": "2023-10-16",
+      "pinned_api_version": "2023-08-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "42.10.0-beta.1",
+      "released_on": "2023-10-11",
+      "pinned_api_version": "2023-08-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "42.9.0-beta.1",
+      "released_on": "2023-10-05",
+      "pinned_api_version": "2023-08-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "42.8.0-beta.1",
+      "released_on": "2023-09-28",
+      "pinned_api_version": "2023-08-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "42.7.0-beta.1",
+      "released_on": "2023-09-21",
+      "pinned_api_version": "2023-08-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "42.6.0-beta.1",
+      "released_on": "2023-09-14",
+      "pinned_api_version": "2023-08-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "42.5.0-beta.1",
+      "released_on": "2023-09-07",
+      "pinned_api_version": "2023-08-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "42.4.0-beta.1",
+      "released_on": "2023-09-01",
+      "pinned_api_version": "2023-08-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "42.0.0-beta.1",
+      "released_on": "2023-08-24",
+      "pinned_api_version": "2023-08-16",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.29.0-beta.1",
+      "released_on": "2023-08-10",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.28.0-beta.1",
+      "released_on": "2023-08-03",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.27.0-beta.1",
+      "released_on": "2023-07-27",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.25.0-beta.1",
+      "released_on": "2023-07-13",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.23.0-beta.1",
+      "released_on": "2023-06-29",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.22.0-beta.1",
+      "released_on": "2023-06-22",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.21.0-beta.2",
+      "released_on": "2023-06-15",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.21.0-beta.1",
+      "released_on": "2023-06-08",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.20.0-beta.1",
+      "released_on": "2023-06-01",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.19.0-beta.1",
+      "released_on": "2023-05-25",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.18.0-beta.1",
+      "released_on": "2023-05-19",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.17.0-beta.1",
+      "released_on": "2023-05-11",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.16.0-beta.1",
+      "released_on": "2023-05-04",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.15.0-beta.1",
+      "released_on": "2023-04-27",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.14.0-beta.3",
+      "released_on": "2023-04-20",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.14.0-beta.2",
+      "released_on": "2023-04-13",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.14.0-beta.1",
+      "released_on": "2023-04-06",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.13.0-beta.1",
+      "released_on": "2023-03-30",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.12.0-beta.1",
+      "released_on": "2023-03-23",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.11.0-beta.1",
+      "released_on": "2023-03-16",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.10.0-beta.1",
+      "released_on": "2023-03-09",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.9.0-beta.1",
+      "released_on": "2023-03-02",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.8.0-beta.2",
+      "released_on": "2023-02-23",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.8.0-beta.1",
+      "released_on": "2023-02-16",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.7.0-beta.1",
+      "released_on": "2023-02-02",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.6.0-beta.2",
+      "released_on": "2023-01-26",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.6.0-beta.1",
+      "released_on": "2023-01-19",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.5.0-beta.2",
+      "released_on": "2023-01-12",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.5.0-beta.1",
+      "released_on": "2023-01-05",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.4.0-beta.1",
+      "released_on": "2022-12-22",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.3.0-beta.2",
+      "released_on": "2022-12-15",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "41.3.0-beta.1",
+      "released_on": "2022-12-08",
+      "pinned_api_version": "2022-11-15",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "40.17.0-beta.1",
+      "released_on": "2022-11-10",
+      "pinned_api_version": "2022-08-01",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "40.15.0-beta.2",
+      "released_on": "2022-11-02",
+      "pinned_api_version": "2022-08-01",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "40.15.0-beta.1",
+      "released_on": "2022-10-21",
+      "pinned_api_version": "2022-08-01",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "40.14.0-beta.1",
+      "released_on": "2022-10-14",
+      "pinned_api_version": "2022-08-01",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "40.13.0-beta.1",
+      "released_on": "2022-10-07",
+      "pinned_api_version": "2022-08-01",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "40.12.0-beta.2",
+      "released_on": "2022-10-04",
+      "pinned_api_version": "2022-08-01",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "40.12.0-beta.1",
+      "released_on": "2022-10-04",
+      "pinned_api_version": "2022-08-01",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "40.11.0-beta.1",
+      "released_on": "2022-09-26",
+      "pinned_api_version": "2022-08-01",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "40.5.0-beta.1",
+      "released_on": "2022-08-26",
+      "pinned_api_version": "2022-08-01",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "40.4.0-beta.1",
+      "released_on": "2022-08-23",
+      "pinned_api_version": "2022-08-01",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "40.3.0-beta.1",
+      "released_on": "2022-08-11",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "40.1.0-beta.1",
+      "released_on": "2022-08-03",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "39.125.0-beta.1",
+      "released_on": "2022-07-22",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "39.123.0-beta.1",
+      "released_on": "2022-07-07",
+      "minimum_runtime_version": "net461"
+    },
+    {
+      "version": "39.119.0-beta.1",
+      "released_on": "2022-06-15",
+      "minimum_runtime_version": "net461"
+    }
+  ]
+}
