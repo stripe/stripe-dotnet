@@ -18,7 +18,8 @@ namespace Stripe
         public InvoiceItemProrationDetailsCreditedItems CreditedItems { get; set; }
 
         /// <summary>
-        /// Discount amounts applied when the proration was created.
+        /// Discount amounts applied when the proration was created. This field is only populated
+        /// for prorations created from subscriptions with <c>billing_mode=flexible</c>.
         /// </summary>
         [JsonProperty("discount_amounts")]
         [STJS.JsonPropertyName("discount_amounts")]

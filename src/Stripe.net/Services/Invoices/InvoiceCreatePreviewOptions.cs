@@ -129,6 +129,15 @@ namespace Stripe
         public string PreviewMode { get; set; }
 
         /// <summary>
+        /// A pricing token whose presentment currency and exchange rate are used to convert the
+        /// amounts on the previewed invoice into the customer-facing presentment currency. When
+        /// omitted, amounts are returned in the settlement currency.
+        /// </summary>
+        [JsonProperty("pricing_token")]
+        [STJS.JsonPropertyName("pricing_token")]
+        public string PricingToken { get; set; }
+
+        /// <summary>
         /// The identifier of the schedule whose upcoming invoice you'd like to retrieve. Cannot be
         /// used with subscription or subscription fields.
         /// </summary>

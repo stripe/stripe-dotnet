@@ -722,8 +722,9 @@ namespace Stripe
 
         /// <summary>
         /// <p>Draft invoices are fully editable. Once an invoice is <a
-        /// href="https://stripe.com/docs/billing/invoices/workflow#finalized">finalized</a>,
-        /// monetary values, as well as <c>collection_method</c>, become uneditable.</p>.
+        /// href="https://stripe.com/docs/billing/invoices/workflow#finalized">finalized</a>, you
+        /// can no longer change most of its details, including monetary values and
+        /// <c>collection_method</c>. For most invoices, this also includes <c>description</c>.</p>.
         ///
         /// <p>If you would like to stop the Stripe Billing engine from automatically finalizing,
         /// reattempting payments on, sending reminders for, or <a
@@ -737,8 +738,9 @@ namespace Stripe
 
         /// <summary>
         /// <p>Draft invoices are fully editable. Once an invoice is <a
-        /// href="https://stripe.com/docs/billing/invoices/workflow#finalized">finalized</a>,
-        /// monetary values, as well as <c>collection_method</c>, become uneditable.</p>.
+        /// href="https://stripe.com/docs/billing/invoices/workflow#finalized">finalized</a>, you
+        /// can no longer change most of its details, including monetary values and
+        /// <c>collection_method</c>. For most invoices, this also includes <c>description</c>.</p>.
         ///
         /// <p>If you would like to stop the Stripe Billing engine from automatically finalizing,
         /// reattempting payments on, sending reminders for, or <a

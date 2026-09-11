@@ -17,6 +17,10 @@ namespace Stripe
         [STJS.JsonPropertyName("access_activity_log")]
         public string AccessActivityLog { get; set; }
 
+        [JsonProperty("appeal")]
+        [STJS.JsonPropertyName("appeal")]
+        public DisputeEvidenceAppeal Appeal { get; set; }
+
         /// <summary>
         /// The billing address provided by the customer.
         /// </summary>

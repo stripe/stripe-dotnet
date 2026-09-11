@@ -129,15 +129,6 @@ namespace Stripe
 
         /// <summary>
         /// Configuration for the <a
-        /// href="https://stripe.com/connect/supported-embedded-components/nesting-demo/">Nestingdemo</a>
-        /// embedded component.
-        /// </summary>
-        [JsonProperty("nesting_demo")]
-        [STJS.JsonPropertyName("nesting_demo")]
-        public AccountSessionComponentsNestingDemo NestingDemo { get; set; }
-
-        /// <summary>
-        /// Configuration for the <a
         /// href="https://stripe.com/connect/supported-embedded-components/network-cost-passthrough-report/">network
         /// cost passthrough report</a> embedded component.
         /// </summary>

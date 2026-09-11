@@ -25,7 +25,7 @@ namespace Stripe.FinancialConnections
         }
 
         /// <summary>
-        /// <p>Retrieves the details of an Financial Connections <c>Authorization</c>.</p>.
+        /// <p>Retrieves the details of a Financial Connections <c>Authorization</c>.</p>.
         /// </summary>
         public virtual Authorization Get(string id, AuthorizationGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -33,7 +33,7 @@ namespace Stripe.FinancialConnections
         }
 
         /// <summary>
-        /// <p>Retrieves the details of an Financial Connections <c>Authorization</c>.</p>.
+        /// <p>Retrieves the details of a Financial Connections <c>Authorization</c>.</p>.
         /// </summary>
         public virtual Task<Authorization> GetAsync(string id, AuthorizationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
