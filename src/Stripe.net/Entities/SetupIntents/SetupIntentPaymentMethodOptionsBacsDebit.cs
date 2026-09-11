@@ -14,6 +14,8 @@ namespace Stripe
 
         /// <summary>
         /// One of: <c>automatic</c>, or <c>payer_name_verification</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("verification_method")]
         [STJS.JsonPropertyName("verification_method")]

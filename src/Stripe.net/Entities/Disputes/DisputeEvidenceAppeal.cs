@@ -6,7 +6,10 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class AccountSessionComponentsNestingDemoFeatures : StripeEntity<AccountSessionComponentsNestingDemoFeatures>
+    public class DisputeEvidenceAppeal : StripeEntity<DisputeEvidenceAppeal>
     {
+        [JsonProperty("card")]
+        [STJS.JsonPropertyName("card")]
+        public DisputeEvidenceAppealCard Card { get; set; }
     }
 }

@@ -73,7 +73,7 @@ namespace Stripe
 
         /// <summary>
         /// The version of 3D Secure that was used.
-        /// One of: <c>1.0.2</c>, <c>2.1.0</c>, or <c>2.2.0</c>.
+        /// One of: <c>1.0.2</c>, <c>2.1.0</c>, <c>2.2.0</c>, <c>2.3.0</c>, or <c>2.3.1</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

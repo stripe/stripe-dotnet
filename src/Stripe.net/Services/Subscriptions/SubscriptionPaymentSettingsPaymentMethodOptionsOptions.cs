@@ -9,6 +9,7 @@ namespace Stripe
     public class SubscriptionPaymentSettingsPaymentMethodOptionsOptions : INestedOptions, IHasSetTracking
     {
         private SubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitOptions acssDebit;
+        private SubscriptionPaymentSettingsPaymentMethodOptionsBacsDebitOptions bacsDebit;
         private SubscriptionPaymentSettingsPaymentMethodOptionsBancontactOptions bancontact;
         private SubscriptionPaymentSettingsPaymentMethodOptionsBillieOptions billie;
         private SubscriptionPaymentSettingsPaymentMethodOptionsBizumOptions bizum;
@@ -42,6 +43,23 @@ namespace Stripe
             set
             {
                 this.acssDebit = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// This sub-hash contains details about the Bacs Direct Debit payment method options to
+        /// pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("bacs_debit", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("bacs_debit")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsBacsDebitOptions BacsDebit
+        {
+            get => this.bacsDebit;
+            set
+            {
+                this.bacsDebit = value;
                 this.SetTracker.Track();
             }
         }

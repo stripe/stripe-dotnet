@@ -47,8 +47,8 @@ namespace Stripe.Crypto
         /// values in the array are valid cryptocurrencies. You can use it to lock users to a
         /// specific cryptocurrency by passing a single value array. Users <strong>cannot</strong>
         /// override this parameter.
-        /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>sol</c>, <c>usdc</c>,
-        /// <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
+        /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>ripusd</c>, <c>sol</c>,
+        /// <c>usdc</c>, <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -65,8 +65,8 @@ namespace Stripe.Crypto
         /// <c>destination_currency</c>, specify that value as the single value for
         /// <c>destination_currencies</c>. Users can select a different cryptocurrency in the onramp
         /// UI subject to <c>destination_currencies</c> if set.
-        /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>sol</c>, <c>usdc</c>,
-        /// <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
+        /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>ripusd</c>, <c>sol</c>,
+        /// <c>usdc</c>, <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -170,7 +170,7 @@ namespace Stripe.Crypto
         /// * When left null, a default currency is selected based on user locale. * When set, it
         /// must be one of the fiat currencies supported by onramp. Users can still select a
         /// different currency in the onramp UI.
-        /// One of: <c>eur</c>, <c>gbp</c>, or <c>usd</c>.
+        /// One of: <c>cad</c>, <c>cop</c>, <c>eur</c>, <c>gbp</c>, <c>php</c>, or <c>usd</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

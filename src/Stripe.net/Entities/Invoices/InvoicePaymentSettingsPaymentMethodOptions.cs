@@ -17,6 +17,14 @@ namespace Stripe
         public InvoicePaymentSettingsPaymentMethodOptionsAcssDebit AcssDebit { get; set; }
 
         /// <summary>
+        /// If paying by <c>bacs_debit</c>, this sub-hash contains details about the Bacs Direct
+        /// Debit payment method options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("bacs_debit")]
+        [STJS.JsonPropertyName("bacs_debit")]
+        public InvoicePaymentSettingsPaymentMethodOptionsBacsDebit BacsDebit { get; set; }
+
+        /// <summary>
         /// If paying by <c>bancontact</c>, this sub-hash contains details about the Bancontact
         /// payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>

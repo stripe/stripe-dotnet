@@ -55,7 +55,7 @@ namespace Stripe
         public string AllowRedisplay { get; set; }
 
         /// <summary>
-        /// If this is a Alma PaymentMethod, this hash contains details about the Alma payment
+        /// If this is an Alma PaymentMethod, this hash contains details about the Alma payment
         /// method.
         /// </summary>
         [JsonProperty("alma")]
@@ -63,7 +63,7 @@ namespace Stripe
         public SetupIntentPaymentMethodDataAlmaOptions Alma { get; set; }
 
         /// <summary>
-        /// If this is a AmazonPay PaymentMethod, this hash contains details about the AmazonPay
+        /// If this is an AmazonPay PaymentMethod, this hash contains details about the AmazonPay
         /// payment method.
         /// </summary>
         [JsonProperty("amazon_pay")]
