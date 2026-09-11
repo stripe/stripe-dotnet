@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// Indicates whether or not the decremental authorization feature is supported.
         /// One of: <c>available</c>, or <c>unavailable</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

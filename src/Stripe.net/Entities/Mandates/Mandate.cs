@@ -95,6 +95,8 @@ namespace Stripe
         /// <summary>
         /// The mandate status indicates whether or not you can use it to initiate a payment.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -103,6 +105,8 @@ namespace Stripe
         /// <summary>
         /// The type of the mandate.
         /// One of: <c>multi_use</c>, or <c>single_use</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

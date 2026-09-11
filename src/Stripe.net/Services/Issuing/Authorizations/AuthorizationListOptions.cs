@@ -36,6 +36,8 @@ namespace Stripe.Issuing
         /// Only return authorizations with the given status. One of <c>pending</c>, <c>closed</c>,
         /// or <c>reversed</c>.
         /// One of: <c>closed</c>, <c>expired</c>, <c>pending</c>, or <c>reversed</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

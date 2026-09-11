@@ -22,6 +22,12 @@ This release changes the pinned API version to 2026-08-26.preview.
   * Add support for event notification `V2SignalsAccountEvaluationCompleteEvent` with related object `V2.Signals.AccountEvaluation`
 * [#3424](https://github.com/stripe/stripe-dotnet/pull/3424) Add non-verified methods to managed handlers
 
+## 52.4.2 - 2026-09-09
+* [#3445](https://github.com/stripe/stripe-dotnet/pull/3445) Validate that webhook secrets are non-empty
+
+## 52.4.1 - 2026-09-01
+* [#3441](https://github.com/stripe/stripe-dotnet/pull/3441) Harden API requestor code against malicious URLs
+
 ## 52.4.0 - 2026-08-26
 This release changes the pinned API version to 2026-08-26.dahlia.
 

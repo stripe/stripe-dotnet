@@ -22,6 +22,8 @@ namespace Stripe.Issuing
         /// Select Issuing disputes with the given status.
         /// One of: <c>expired</c>, <c>lost</c>, <c>submitted</c>, <c>unsubmitted</c>, or
         /// <c>won</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

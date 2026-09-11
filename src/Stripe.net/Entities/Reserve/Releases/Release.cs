@@ -47,6 +47,8 @@ namespace Stripe.Reserve
         /// <summary>
         /// Indicates which party created this ReserveRelease.
         /// One of: <c>application</c>, or <c>stripe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("created_by")]
         [STJS.JsonPropertyName("created_by")]
@@ -82,6 +84,8 @@ namespace Stripe.Reserve
         /// The reason for the ReserveRelease, indicating why the funds were released.
         /// One of: <c>bulk_hold_expiry</c>, <c>hold_released_early</c>, <c>hold_reversed</c>, or
         /// <c>plan_disabled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

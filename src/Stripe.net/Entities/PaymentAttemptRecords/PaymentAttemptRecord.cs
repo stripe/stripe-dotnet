@@ -105,6 +105,8 @@ namespace Stripe
         /// <summary>
         /// Indicates whether the customer was present in your checkout flow during this payment.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("customer_presence")]
         [STJS.JsonPropertyName("customer_presence")]
@@ -158,6 +160,8 @@ namespace Stripe
         /// <summary>
         /// Indicates who reported the payment.
         /// One of: <c>self</c>, or <c>stripe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reported_by")]
         [STJS.JsonPropertyName("reported_by")]

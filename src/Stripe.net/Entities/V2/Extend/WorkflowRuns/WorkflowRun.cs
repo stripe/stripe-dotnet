@@ -45,6 +45,8 @@ namespace Stripe.V2.Extend
         /// <summary>
         /// The current Workflow Run execution status.
         /// One of: <c>failed</c>, <c>started</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

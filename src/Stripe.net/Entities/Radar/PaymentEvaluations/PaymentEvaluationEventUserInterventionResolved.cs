@@ -18,6 +18,8 @@ namespace Stripe.Radar
         /// <summary>
         /// Result of the intervention if it has been completed.
         /// One of: <c>abandoned</c>, <c>failed</c>, or <c>passed</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("outcome")]
         [STJS.JsonPropertyName("outcome")]

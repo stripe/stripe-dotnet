@@ -15,6 +15,8 @@ namespace Stripe
         /// <c>kwangju</c>, <c>lotte</c>, <c>mg</c>, <c>nh</c>, <c>post</c>, <c>samsung</c>,
         /// <c>savingsbank</c>, <c>shinhan</c>, <c>shinhyup</c>, <c>suhyup</c>, <c>tossbank</c>, or
         /// <c>woori</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("brand")]
         [STJS.JsonPropertyName("brand")]

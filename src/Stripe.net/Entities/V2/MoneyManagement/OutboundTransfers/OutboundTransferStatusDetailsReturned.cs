@@ -16,6 +16,8 @@ namespace Stripe.V2.MoneyManagement
         /// <c>payout_method_holder_details_incorrect</c>,
         /// <c>payout_method_holder_name_incorrect</c>, <c>payout_method_invalid_account_number</c>,
         /// <c>payout_method_restricted</c>, <c>recalled</c>, or <c>unknown_failure</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

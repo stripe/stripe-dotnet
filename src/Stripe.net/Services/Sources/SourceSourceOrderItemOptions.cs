@@ -37,6 +37,8 @@ namespace Stripe
 
         /// <summary>
         /// One of: <c>discount</c>, <c>shipping</c>, <c>sku</c>, or <c>tax</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

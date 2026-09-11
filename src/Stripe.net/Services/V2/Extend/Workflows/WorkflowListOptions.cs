@@ -13,6 +13,8 @@ namespace Stripe.V2.Extend
         /// When retrieving Workflows, include only those with the specified status values. If not
         /// specified, all Workflows in active and inactive status are returned.
         /// One of: <c>active</c>, <c>archived</c>, <c>draft</c>, or <c>inactive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

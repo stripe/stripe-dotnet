@@ -18,6 +18,8 @@ namespace Stripe.V2.Core
         /// <summary>
         /// The type of actor that reviewed the request.
         /// One of: <c>api_key</c>, or <c>user</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -58,6 +58,8 @@ namespace Stripe
         /// computed using a tiering strategy as defined using the <c>tiers</c> and
         /// <c>tiers_mode</c> attributes.
         /// One of: <c>per_unit</c>, or <c>tiered</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("billing_scheme")]
         [STJS.JsonPropertyName("billing_scheme")]
@@ -195,6 +197,8 @@ namespace Stripe
         /// <c>exclusive</c>, or <c>unspecified</c>. Once specified as either <c>inclusive</c> or
         /// <c>exclusive</c>, it cannot be changed.
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_behavior")]
         [STJS.JsonPropertyName("tax_behavior")]
@@ -213,6 +217,8 @@ namespace Stripe
         /// <c>volume</c>-based tiering, the maximum quantity within a period determines the per
         /// unit price. In <c>graduated</c> tiering, pricing can change as the quantity grows.
         /// One of: <c>graduated</c>, or <c>volume</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tiers_mode")]
         [STJS.JsonPropertyName("tiers_mode")]
@@ -230,6 +236,8 @@ namespace Stripe
         /// One of <c>one_time</c> or <c>recurring</c> depending on whether the price is for a
         /// one-time purchase or a recurring (subscription) purchase.
         /// One of: <c>one_time</c>, or <c>recurring</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

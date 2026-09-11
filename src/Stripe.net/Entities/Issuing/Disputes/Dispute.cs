@@ -93,6 +93,8 @@ namespace Stripe.Issuing
         /// <c>transaction_electronically_read</c>,
         /// <c>transaction_qualifies_for_visa_easy_payment_service</c>, or
         /// <c>transaction_unattended</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("loss_reason")]
         [STJS.JsonPropertyName("loss_reason")]
@@ -119,6 +121,8 @@ namespace Stripe.Issuing
         /// Current status of the dispute.
         /// One of: <c>expired</c>, <c>lost</c>, <c>submitted</c>, <c>unsubmitted</c>, or
         /// <c>won</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

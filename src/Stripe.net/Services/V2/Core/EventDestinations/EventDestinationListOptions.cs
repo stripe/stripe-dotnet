@@ -12,6 +12,9 @@ namespace Stripe.V2.Core
         /// <summary>
         /// Additional fields to include in the response. Currently supports
         /// <c>webhook_endpoint.url</c>.
+        /// One of: <c>webhook_endpoint.url</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("include")]
         [STJS.JsonPropertyName("include")]

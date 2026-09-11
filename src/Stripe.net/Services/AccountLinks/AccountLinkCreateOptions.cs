@@ -18,6 +18,8 @@ namespace Stripe
         /// <summary>
         /// The collect parameter is deprecated. Use <c>collection_options</c> instead.
         /// One of: <c>currently_due</c>, or <c>eventually_due</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("collect")]
         [STJS.JsonPropertyName("collect")]
@@ -63,6 +65,8 @@ namespace Stripe
         /// where Stripe is liable for negative balances, you must use embedded components.
         /// One of: <c>account_onboarding</c>, <c>account_update</c>,
         /// <c>capital_financing_offer</c>, or <c>capital_financing_reporting</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

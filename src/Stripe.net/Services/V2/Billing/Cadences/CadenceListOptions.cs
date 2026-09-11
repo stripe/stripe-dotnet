@@ -11,6 +11,9 @@ namespace Stripe.V2.Billing
     {
         /// <summary>
         /// Additional resource to include in the response.
+        /// One of: <c>settings_data</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("include")]
         [STJS.JsonPropertyName("include")]

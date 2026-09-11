@@ -17,6 +17,8 @@ namespace Stripe
         /// PaymentIntent, you may be required to provide a <c>return_url</c> to redirect customers
         /// back to your site after they authenticate or complete the payment.
         /// One of: <c>always</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allow_redirects")]
         [STJS.JsonPropertyName("allow_redirects")]

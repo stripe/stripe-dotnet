@@ -78,6 +78,8 @@ namespace Stripe.Treasury
         /// The type of the source flow that originated the ReceivedCredit.
         /// One of: <c>credit_reversal</c>, <c>other</c>, <c>outbound_payment</c>,
         /// <c>outbound_transfer</c>, or <c>payout</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

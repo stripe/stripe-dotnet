@@ -22,6 +22,8 @@ namespace Stripe.TestHelpers.Issuing
         /// <c>fuel_and_non_fuel_purchase</c>.
         /// One of: <c>fuel_and_non_fuel_purchase</c>, <c>fuel_purchase</c>, or
         /// <c>non_fuel_purchase</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("purchase_type")]
         [STJS.JsonPropertyName("purchase_type")]
@@ -39,6 +41,8 @@ namespace Stripe.TestHelpers.Issuing
         /// The type of fuel service. One of <c>non_fuel_transaction</c>, <c>full_service</c>, or
         /// <c>self_service</c>.
         /// One of: <c>full_service</c>, <c>non_fuel_transaction</c>, or <c>self_service</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("service_type")]
         [STJS.JsonPropertyName("service_type")]

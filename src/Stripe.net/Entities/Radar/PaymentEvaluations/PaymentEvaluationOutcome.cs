@@ -39,6 +39,8 @@ namespace Stripe.Radar
         /// <summary>
         /// Indicates the outcome of the payment evaluation.
         /// One of: <c>failed</c>, <c>merchant_blocked</c>, <c>rejected</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

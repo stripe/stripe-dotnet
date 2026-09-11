@@ -32,6 +32,8 @@ namespace Stripe
         /// <summary>
         /// Type of insurance coverage.
         /// One of: <c>bankruptcy</c>, <c>cancelation</c>, <c>emergency</c>, or <c>medical</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("insurance_type")]
         [STJS.JsonPropertyName("insurance_type")]

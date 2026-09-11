@@ -20,6 +20,8 @@ namespace Stripe.Events
         /// <c>outbound_transfers.crypto_wallets</c>, <c>outbound_transfers.financial_accounts</c>,
         /// <c>received_credits.bank_accounts</c>, <c>received_credits.crypto_wallets</c>, or
         /// <c>received_debits.bank_accounts</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("updated_capability")]
         [STJS.JsonPropertyName("updated_capability")]

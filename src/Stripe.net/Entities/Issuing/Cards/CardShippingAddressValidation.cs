@@ -12,6 +12,8 @@ namespace Stripe.Issuing
         /// The address validation capabilities to use.
         /// One of: <c>disabled</c>, <c>normalization_only</c>, or
         /// <c>validation_and_normalization</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("mode")]
         [STJS.JsonPropertyName("mode")]
@@ -27,6 +29,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// The validation result for the shipping address.
         /// One of: <c>indeterminate</c>, <c>likely_deliverable</c>, or <c>likely_undeliverable</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("result")]
         [STJS.JsonPropertyName("result")]

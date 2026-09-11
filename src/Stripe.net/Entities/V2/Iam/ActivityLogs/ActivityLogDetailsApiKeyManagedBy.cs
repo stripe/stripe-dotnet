@@ -17,6 +17,9 @@ namespace Stripe.V2.Iam
 
         /// <summary>
         /// The type of entity.
+        /// One of: <c>application</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -11,6 +11,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Open Enum. Method for bank account.
         /// One of: <c>automatic</c>, <c>local</c>, or <c>wire</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("bank_account")]
         [STJS.JsonPropertyName("bank_account")]

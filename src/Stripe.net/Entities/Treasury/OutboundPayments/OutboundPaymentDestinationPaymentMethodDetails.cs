@@ -19,6 +19,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// The type of the payment method used in the OutboundPayment.
         /// One of: <c>financial_account</c>, or <c>us_bank_account</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

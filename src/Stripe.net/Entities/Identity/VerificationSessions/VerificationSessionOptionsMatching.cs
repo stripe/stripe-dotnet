@@ -11,6 +11,8 @@ namespace Stripe.Identity
         /// <summary>
         /// Strictness of the DOB matching policy to apply.
         /// One of: <c>none</c>, or <c>similar</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("dob")]
         [STJS.JsonPropertyName("dob")]
@@ -19,6 +21,8 @@ namespace Stripe.Identity
         /// <summary>
         /// Strictness of the name matching policy to apply.
         /// One of: <c>none</c>, or <c>similar</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("name")]
         [STJS.JsonPropertyName("name")]

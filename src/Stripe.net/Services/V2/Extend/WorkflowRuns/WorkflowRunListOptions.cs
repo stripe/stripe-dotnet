@@ -13,6 +13,8 @@ namespace Stripe.V2.Extend
         /// When retrieving Workflow Runs, include only those with the specified status values. If
         /// not specified, all Runs are returned.
         /// One of: <c>failed</c>, <c>started</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

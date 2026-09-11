@@ -22,6 +22,8 @@ namespace Stripe
         /// <summary>
         /// Select how to calculate the end of the invoice item period.
         /// One of: <c>min_item_period_end</c>, or <c>timestamp</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

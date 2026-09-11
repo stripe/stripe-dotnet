@@ -32,6 +32,8 @@ namespace Stripe.Tax
         /// <c>parking_tax</c>, <c>pst</c>, <c>qst</c>, <c>resort_tax</c>,
         /// <c>retail_delivery_fee</c>, <c>rst</c>, <c>sales_tax</c>, <c>service_tax</c>,
         /// <c>tourism_tax</c>, or <c>vat</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_type")]
         [STJS.JsonPropertyName("tax_type")]

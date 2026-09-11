@@ -78,6 +78,8 @@ namespace Stripe
         /// <c>clear_discounts</c>, <c>clear_metadata</c>, <c>remove_discount</c>,
         /// <c>remove_item</c>, <c>remove_metadata</c>, <c>set_discounts</c>, <c>set_items</c>, or
         /// <c>set_metadata</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

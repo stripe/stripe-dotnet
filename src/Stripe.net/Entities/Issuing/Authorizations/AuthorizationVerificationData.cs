@@ -12,6 +12,8 @@ namespace Stripe.Issuing
         /// Whether the cardholder provided an address first line and if it matched the cardholder’s
         /// <c>billing.address.line1</c>.
         /// One of: <c>match</c>, <c>mismatch</c>, or <c>not_provided</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("address_line1_check")]
         [STJS.JsonPropertyName("address_line1_check")]
@@ -21,6 +23,8 @@ namespace Stripe.Issuing
         /// Whether the cardholder provided a postal code and if it matched the cardholder’s
         /// <c>billing.address.postal_code</c>.
         /// One of: <c>match</c>, <c>mismatch</c>, or <c>not_provided</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("address_postal_code_check")]
         [STJS.JsonPropertyName("address_postal_code_check")]
@@ -36,6 +40,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Whether the cardholder provided a CVC and if it matched Stripe’s record.
         /// One of: <c>match</c>, <c>mismatch</c>, or <c>not_provided</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("cvc_check")]
         [STJS.JsonPropertyName("cvc_check")]
@@ -44,6 +50,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Whether the cardholder provided an expiry date and if it matched Stripe’s record.
         /// One of: <c>match</c>, <c>mismatch</c>, or <c>not_provided</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("expiry_check")]
         [STJS.JsonPropertyName("expiry_check")]

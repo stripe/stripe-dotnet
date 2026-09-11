@@ -19,6 +19,8 @@ namespace Stripe.V2.TestHelpers
         /// Open Enum. The network to use in simulating the funds flow. This will be the reflected
         /// in the resulting ReceivedCredit.
         /// One of: <c>ach</c>, <c>chaps</c>, <c>fps</c>, <c>rtp</c>, or <c>wire</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]

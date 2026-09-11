@@ -18,6 +18,8 @@ namespace Stripe
         /// <summary>
         /// The type of action to be simulated.
         /// One of: <c>expire</c>, or <c>fund</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

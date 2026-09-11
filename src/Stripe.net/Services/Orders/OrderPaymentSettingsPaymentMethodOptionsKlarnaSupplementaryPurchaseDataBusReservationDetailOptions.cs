@@ -68,6 +68,8 @@ namespace Stripe
         /// <summary>
         /// Ticket class.
         /// One of: <c>business</c>, <c>economy</c>, <c>first_class</c>, or <c>premium_economy</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("ticket_class")]
         [STJS.JsonPropertyName("ticket_class")]

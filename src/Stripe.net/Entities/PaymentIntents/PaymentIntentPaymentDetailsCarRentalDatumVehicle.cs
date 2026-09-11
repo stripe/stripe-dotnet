@@ -40,6 +40,8 @@ namespace Stripe
         /// <c>stretch</c>, <c>subcompact</c>, <c>taxi</c>, <c>twelve_foot_truck</c>,
         /// <c>twelve_passenger_van</c>, <c>twenty_foot_truck</c>, <c>twenty_four_foot_truck</c>,
         /// <c>twenty_six_foot_truck</c>, or <c>unique</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
@@ -48,6 +50,8 @@ namespace Stripe
         /// <summary>
         /// Class of the vehicle.
         /// One of: <c>business</c>, <c>economy</c>, <c>first_class</c>, or <c>premium_economy</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("vehicle_class")]
         [STJS.JsonPropertyName("vehicle_class")]

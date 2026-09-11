@@ -20,6 +20,9 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// The format of the document. Currently supports <c>files</c> only.
+        /// One of: <c>files</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -26,6 +26,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Open Enum. Indicates the origin of source from which external funds originated from.
         /// One of: <c>gb_bank_account</c>, <c>sepa_bank_account</c>, or <c>us_bank_account</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("origin_type")]
         [STJS.JsonPropertyName("origin_type")]

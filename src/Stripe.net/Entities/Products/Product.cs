@@ -221,6 +221,8 @@ namespace Stripe
         /// for use with Orders and SKUs, or <c>service</c>, which is eligible for use with
         /// Subscriptions and Plans.
         /// One of: <c>good</c>, or <c>service</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -31,6 +31,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// The delivery company that shipped a card.
         /// One of: <c>correos</c>, <c>dhl</c>, <c>fedex</c>, <c>royal_mail</c>, or <c>usps</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("carrier")]
         [STJS.JsonPropertyName("carrier")]
@@ -82,6 +84,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Shipment service, such as <c>standard</c> or <c>express</c>.
         /// One of: <c>express</c>, <c>priority</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("service")]
         [STJS.JsonPropertyName("service")]
@@ -91,6 +95,8 @@ namespace Stripe.Issuing
         /// The delivery status of the card.
         /// One of: <c>canceled</c>, <c>delivered</c>, <c>failure</c>, <c>pending</c>,
         /// <c>returned</c>, <c>shipped</c>, or <c>submitted</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -114,6 +120,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Packaging options.
         /// One of: <c>bulk</c>, or <c>individual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

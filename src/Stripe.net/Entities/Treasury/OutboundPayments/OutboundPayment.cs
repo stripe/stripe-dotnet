@@ -153,6 +153,9 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// The purpose of the OutboundPayment, if applicable.
+        /// One of: <c>payroll</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("purpose")]
         [STJS.JsonPropertyName("purpose")]
@@ -182,6 +185,8 @@ namespace Stripe.Treasury
         /// will change to <c>returned</c>.
         /// One of: <c>canceled</c>, <c>failed</c>, <c>posted</c>, <c>processing</c>, or
         /// <c>returned</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

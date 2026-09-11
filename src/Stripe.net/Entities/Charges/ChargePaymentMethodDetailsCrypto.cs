@@ -19,6 +19,8 @@ namespace Stripe
         /// The blockchain network that the transaction was sent on.
         /// One of: <c>base</c>, <c>ethereum</c>, <c>polygon</c>, <c>solana</c>, <c>sui</c>, or
         /// <c>tempo</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]
@@ -28,6 +30,8 @@ namespace Stripe
         /// The token currency that the transaction was sent with.
         /// One of: <c>phantom_cash</c>, <c>usdc</c>, <c>usdg</c>, <c>usdp</c>, <c>usdsui</c>, or
         /// <c>usdt</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("token_currency")]
         [STJS.JsonPropertyName("token_currency")]

@@ -40,6 +40,8 @@ namespace Stripe.Identity
         /// <summary>
         /// Type of ID number.
         /// One of: <c>br_cpf</c>, <c>sg_nric</c>, or <c>us_ssn</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("id_number_type")]
         [STJS.JsonPropertyName("id_number_type")]
@@ -55,6 +57,8 @@ namespace Stripe.Identity
         /// <summary>
         /// Status of this <c>id_number</c> check.
         /// One of: <c>unverified</c>, or <c>verified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

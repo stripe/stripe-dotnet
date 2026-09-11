@@ -35,6 +35,8 @@ namespace Stripe
         /// <summary>
         /// Interval at which the customer is making purchases.
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("purchase_interval")]
         [STJS.JsonPropertyName("purchase_interval")]
