@@ -1,6 +1,6 @@
 ---
 title: A few Billing changes
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1758
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1758
 released_in_version: 28.4.0
 ---
 

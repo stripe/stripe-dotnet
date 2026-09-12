@@ -1,6 +1,6 @@
 ---
 title: Make `OutOfBandAmount` nullable on  `CreditNote`
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1902
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1902
 released_in_version: 34.16.1
 ---
 

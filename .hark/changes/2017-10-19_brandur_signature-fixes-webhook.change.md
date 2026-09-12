@@ -1,6 +1,6 @@
 ---
 title: Signature fixes for webhook signature verification
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1035
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1035
 released_in_version: 11.6.0
 ---
 

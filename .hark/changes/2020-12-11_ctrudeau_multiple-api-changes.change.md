@@ -1,6 +1,6 @@
 ---
 title: Multiple API Changes
-pr_link: https://github.com/stripe/stripe-dotnet/pull/2262
+pr_url: https://github.com/stripe/stripe-dotnet/pull/2262
 is_stripe_api_change: true
 released_in_version: 39.30.0
 ---

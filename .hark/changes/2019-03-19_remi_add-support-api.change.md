@@ -1,6 +1,6 @@
 ---
 title: "Add support for API version [2019-03-14](https://docs.stripe.com/changelog/2019-03-14):"
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1552
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1552
 released_in_version: 25.0.0
 ---
 

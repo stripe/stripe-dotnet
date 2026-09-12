@@ -1,6 +1,6 @@
 ---
 title: "[#2431](https://github.com/stripe/stripe-dotnet/pull/2431) API Updates"
-pr_link: https://github.com/stripe/stripe-dotnet/pull/2430
+pr_url: https://github.com/stripe/stripe-dotnet/pull/2430
 is_stripe_api_change: true
 released_in_version: 39.94.0
 ---

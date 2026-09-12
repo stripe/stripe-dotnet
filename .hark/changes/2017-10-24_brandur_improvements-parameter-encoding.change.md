@@ -1,6 +1,6 @@
 ---
 title: Improvements to parameter encoding
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1044
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1044
 released_in_version: 11.6.1
 ---
 

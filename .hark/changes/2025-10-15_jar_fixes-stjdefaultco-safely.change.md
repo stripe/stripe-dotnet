@@ -1,6 +1,6 @@
 ---
 title: Fixes STJDefaultConverter to safely ignore unknown properties
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3223
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3223
 released_in_version: 49.1.0
 ---
 

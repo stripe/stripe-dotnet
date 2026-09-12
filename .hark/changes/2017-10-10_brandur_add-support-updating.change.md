@@ -1,5 +1,5 @@
 ---
 title: Add support for updating card source expiration date
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1005
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1005
 released_in_version: 11.1.0
 ---

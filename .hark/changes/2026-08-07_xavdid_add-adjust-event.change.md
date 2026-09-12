@@ -1,6 +1,6 @@
 ---
 title: add/adjust event parsing helpers
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3416
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3416
 released_in_version: 52.3.0
 ---
 

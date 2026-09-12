@@ -1,6 +1,6 @@
 ---
 title: Add multiple missing features and better docs
-pr_link: https://github.com/stripe/stripe-dotnet/pull/2053
+pr_url: https://github.com/stripe/stripe-dotnet/pull/2053
 released_in_version: 37.2.0
 ---
 

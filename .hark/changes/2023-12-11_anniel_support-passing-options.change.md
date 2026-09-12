@@ -1,6 +1,6 @@
 ---
 title: Support passing in options to singleton retrieve methods
-pr_link: https://github.com/stripe/stripe-dotnet/pull/2804
+pr_url: https://github.com/stripe/stripe-dotnet/pull/2804
 released_in_version: 43.7.0
 ---
 

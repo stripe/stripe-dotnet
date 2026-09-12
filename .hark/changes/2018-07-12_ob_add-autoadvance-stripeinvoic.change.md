@@ -1,5 +1,5 @@
 ---
 title: Add `AutoAdvance` to `StripeInvoice`
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1228
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1228
 released_in_version: 17.1.0
 ---

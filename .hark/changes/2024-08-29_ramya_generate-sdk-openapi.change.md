@@ -1,6 +1,6 @@
 ---
 title: Generate SDK for OpenAPI spec version 1230
-pr_link: https://github.com/stripe/stripe-dotnet/pull/2957
+pr_url: https://github.com/stripe/stripe-dotnet/pull/2957
 released_in_version: 45.10.0
 ---
 

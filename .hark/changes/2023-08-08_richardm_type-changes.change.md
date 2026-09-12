@@ -1,6 +1,6 @@
 ---
 title: Type changes
-pr_link: https://github.com/stripe/stripe-dotnet/pull/2744
+pr_url: https://github.com/stripe/stripe-dotnet/pull/2744
 is_breaking: true
 released_in_version: 42.0.0
 ---

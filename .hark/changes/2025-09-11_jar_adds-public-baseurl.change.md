@@ -1,6 +1,6 @@
 ---
 title: Adds public BaseUrl to RawRequestOptions
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3170
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3170
 released_in_version: 49.0.0
 ---
 

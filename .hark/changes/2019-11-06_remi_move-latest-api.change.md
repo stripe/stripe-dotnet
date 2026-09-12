@@ -1,6 +1,6 @@
 ---
 title: Move to the latest API version and add new changes
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1826
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1826
 released_in_version: 33.0.0
 ---
 

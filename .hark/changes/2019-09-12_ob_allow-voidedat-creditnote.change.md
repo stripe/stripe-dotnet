@@ -1,6 +1,6 @@
 ---
 title: Allow `VoidedAt` on `CreditNote` to be nullable
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1783
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1783
 released_in_version: 29.0.1
 ---
 

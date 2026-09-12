@@ -1,6 +1,6 @@
 ---
 title: Support for APIs in the new API version 2024-09-30.acacia
-pr_link: https://github.com/stripe/stripe-dotnet/pull/2980
+pr_url: https://github.com/stripe/stripe-dotnet/pull/2980
 is_stripe_api_change: true
 released_in_version: 46.0.0
 ---

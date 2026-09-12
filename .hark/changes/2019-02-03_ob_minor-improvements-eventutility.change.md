@@ -1,5 +1,5 @@
 ---
 title: Minor improvements in `EventUtility`
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1500
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1500
 released_in_version: 27.0.0
 ---

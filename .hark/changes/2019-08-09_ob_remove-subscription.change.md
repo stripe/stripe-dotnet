@@ -1,6 +1,6 @@
 ---
 title: Remove `SubscriptionScheduleRevision`.
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1734
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1734
 released_in_version: 27.24.0
 ---
 

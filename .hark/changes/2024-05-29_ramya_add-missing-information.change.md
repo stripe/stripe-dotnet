@@ -1,6 +1,6 @@
 ---
 title: Add missing information for InvoiceTaxAmount
-pr_link: https://github.com/stripe/stripe-dotnet/pull/2919
+pr_url: https://github.com/stripe/stripe-dotnet/pull/2919
 released_in_version: 44.10.0
 ---
 

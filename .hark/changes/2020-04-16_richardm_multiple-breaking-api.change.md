@@ -1,6 +1,6 @@
 ---
 title: Multiple breaking API changes while removing deprecated Issuing features
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1993
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1993
 released_in_version: 36.0.0
 ---
 

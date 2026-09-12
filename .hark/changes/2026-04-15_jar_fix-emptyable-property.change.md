@@ -1,6 +1,6 @@
 ---
 title: Fix emptyable property serialization for third-party serializers
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3366
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3366
 released_in_version: 51.0.1
 ---
 

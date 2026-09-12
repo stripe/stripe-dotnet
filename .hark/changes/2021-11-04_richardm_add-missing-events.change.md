@@ -1,6 +1,6 @@
 ---
 title: Add missing events to Events.cs
-pr_link: https://github.com/stripe/stripe-dotnet/pull/2390
+pr_url: https://github.com/stripe/stripe-dotnet/pull/2390
 released_in_version: 39.76.0
 ---
 

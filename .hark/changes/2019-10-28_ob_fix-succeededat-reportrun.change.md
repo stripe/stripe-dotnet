@@ -1,6 +1,6 @@
 ---
 title: Fix `SucceededAt` on `ReportRun` to be nullable
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1824
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1824
 released_in_version: 32.1.3
 ---
 

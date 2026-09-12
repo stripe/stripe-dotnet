@@ -1,6 +1,6 @@
 ---
 title: "and [#3085](https://github.com/stripe/stripe-dotnet/pull/3085) Remove `ListOptionsWithCreated` and clean up services that incorrectly extend `ListOptions`"
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3078
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3078
 released_in_version: 48.0.0
 ---
 

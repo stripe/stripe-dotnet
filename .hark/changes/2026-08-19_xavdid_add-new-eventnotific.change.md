@@ -1,6 +1,6 @@
 ---
 title: Add new `EventNotificationHandler` class for better thin event management
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3426
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3426
 released_in_version: 52.4.0
 ---
 

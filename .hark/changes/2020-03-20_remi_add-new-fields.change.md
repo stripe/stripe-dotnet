@@ -1,6 +1,6 @@
 ---
 title: Add new fields to Issuing `Card` and `Authorization`
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1960
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1960
 released_in_version: 35.7.0
 ---
 

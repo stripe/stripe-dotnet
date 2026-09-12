@@ -1,5 +1,5 @@
 ---
 title: Add support for Terminal resources
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1388
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1388
 released_in_version: 21.2.0
 ---

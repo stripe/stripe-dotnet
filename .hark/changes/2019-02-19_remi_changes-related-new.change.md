@@ -1,6 +1,6 @@
 ---
 title: "Changes related to the new API version `2019-02-19`:"
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1492
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1492
 released_in_version: 24.0.0
 ---
 

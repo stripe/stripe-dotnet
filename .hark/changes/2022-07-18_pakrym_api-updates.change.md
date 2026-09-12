@@ -1,6 +1,6 @@
 ---
 title: API Updates
-pr_link: https://github.com/stripe/stripe-dotnet/pull/2534
+pr_url: https://github.com/stripe/stripe-dotnet/pull/2534
 is_stripe_api_change: true
 released_in_version: 39.124.0
 ---

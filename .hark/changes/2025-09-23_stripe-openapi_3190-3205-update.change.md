@@ -1,6 +1,6 @@
 ---
 title: ", [#3190](https://github.com/stripe/stripe-dotnet/pull/3190), [#3205](https://github.com/stripe/stripe-dotnet/pull/3205) Update generated code based on incoming API changes in the `2025-09-30.clover` API version."
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3175
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3175
 is_breaking: true
 is_stripe_api_change: true
 released_in_version: 49.0.0

@@ -1,6 +1,6 @@
 ---
 title: Add support for API version `2019-02-11` with changes to Payment Intents
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1501
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1501
 released_in_version: 23.0.0
 ---
 

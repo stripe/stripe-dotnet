@@ -1,6 +1,6 @@
 ---
 title: Update generated code
-pr_link: https://github.com/stripe/stripe-dotnet/pull/2717
+pr_url: https://github.com/stripe/stripe-dotnet/pull/2717
 is_stripe_api_change: true
 released_in_version: 41.22.0
 ---

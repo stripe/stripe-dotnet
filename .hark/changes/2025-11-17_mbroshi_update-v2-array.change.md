@@ -1,6 +1,6 @@
 ---
 title: Update v2 array parameter serialization to use indexed format
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3249
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3249
 released_in_version: 50.0.0
 ---
 

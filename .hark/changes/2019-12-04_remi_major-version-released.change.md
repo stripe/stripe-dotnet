@@ -1,6 +1,6 @@
 ---
 title: "Major version released with the following breaking changes in it:"
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1838
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1838
 released_in_version: 34.0.0
 ---
 

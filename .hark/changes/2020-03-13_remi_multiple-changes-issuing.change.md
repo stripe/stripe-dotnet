@@ -1,6 +1,6 @@
 ---
 title: Multiple changes for Issuing APIs
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1955
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1955
 released_in_version: 35.6.0
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: update object tags for meter-related classes
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3008
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3008
 released_in_version: 46.2.1
 ---
 

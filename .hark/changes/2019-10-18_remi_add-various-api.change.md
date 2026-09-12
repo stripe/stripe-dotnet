@@ -1,6 +1,6 @@
 ---
 title: Add various API changes
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1814
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1814
 released_in_version: 31.2.0
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Add `StripeContext` object
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3194
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3194
 is_breaking: true
 released_in_version: 49.0.0
 ---

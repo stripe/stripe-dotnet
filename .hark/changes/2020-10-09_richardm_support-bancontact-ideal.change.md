@@ -1,6 +1,6 @@
 ---
 title: Support `Bancontact/iDEAL/Sofort -> SEPA DD`
-pr_link: https://github.com/stripe/stripe-dotnet/pull/2216
+pr_url: https://github.com/stripe/stripe-dotnet/pull/2216
 is_stripe_api_change: true
 released_in_version: 39.12.0
 ---

@@ -1,6 +1,6 @@
 ---
 title: System.Text.Json Serialization Support release to GA
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3074
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3074
 released_in_version: 48.0.0
 ---
 

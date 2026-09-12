@@ -1,6 +1,6 @@
 ---
 title: Merge breaking changes from sdk-release/next-major branch to master
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3065
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3065
 released_in_version: 48.0.0
 ---
 

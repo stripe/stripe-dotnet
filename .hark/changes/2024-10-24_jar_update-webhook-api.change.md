@@ -1,6 +1,6 @@
 ---
 title: Update webhook API version validation
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3010
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3010
 released_in_version: 46.2.2
 ---
 

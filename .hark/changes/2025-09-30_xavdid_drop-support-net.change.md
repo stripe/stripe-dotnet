@@ -1,6 +1,6 @@
 ---
 title: Drop support for .NET Core 3.1 & clarify policy
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3206
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3206
 is_breaking: true
 released_in_version: 49.0.0
 ---

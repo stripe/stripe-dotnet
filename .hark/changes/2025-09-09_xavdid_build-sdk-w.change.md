@@ -1,6 +1,6 @@
 ---
 title: Build SDK w/ V2 OpenAPI spec
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3167
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3167
 is_breaking: true
 released_in_version: 49.0.0
 ---

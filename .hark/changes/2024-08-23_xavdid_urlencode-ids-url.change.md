@@ -1,6 +1,6 @@
 ---
 title: urlencode ids in url paths
-pr_link: https://github.com/stripe/stripe-dotnet/pull/2955
+pr_url: https://github.com/stripe/stripe-dotnet/pull/2955
 released_in_version: 45.9.0
 ---
 

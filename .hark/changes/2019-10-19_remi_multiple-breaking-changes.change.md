@@ -1,6 +1,6 @@
 ---
 title: "Multiple breaking changes:"
-pr_link: https://github.com/stripe/stripe-dotnet/pull/1815
+pr_url: https://github.com/stripe/stripe-dotnet/pull/1815
 released_in_version: 32.0.0
 ---
 

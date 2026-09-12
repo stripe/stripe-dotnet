@@ -1,6 +1,6 @@
 ---
 title: Fix V2 list options base class
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3026
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3026
 released_in_version: 47.1.0
 ---
 

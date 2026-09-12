@@ -1,6 +1,6 @@
 ---
 title: Check if a datetime is in millis
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3254
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3254
 released_in_version: 50.0.0
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Update StripeTypeRegistry to be generated.
-pr_link: https://github.com/stripe/stripe-dotnet/pull/2395
+pr_url: https://github.com/stripe/stripe-dotnet/pull/2395
 released_in_version: 39.78.1
 ---
 
