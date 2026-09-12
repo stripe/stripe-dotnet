@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "language": "dotnet",
+    "channel": "private-preview"
+  },
   "versions": [
     {
       "version": "52.5.0-alpha.3",
