@@ -1,6 +1,6 @@
 ---
 title: Update generated code for beta
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3337
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3337
 is_breaking: true
 is_stripe_api_change: true
 released_in_version: 51.1.0-beta.1

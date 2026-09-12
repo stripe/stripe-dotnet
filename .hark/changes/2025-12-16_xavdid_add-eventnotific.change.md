@@ -1,6 +1,6 @@
 ---
 title: Add EventNotificationHandler
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3250
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3250
 released_in_version: 50.2.0-beta.1
 ---
 

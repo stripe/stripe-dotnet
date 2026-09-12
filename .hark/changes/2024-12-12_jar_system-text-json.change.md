@@ -1,6 +1,6 @@
 ---
 title: System.Text.Json Serialization Support in .NET SDK Objects
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3033
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3033
 released_in_version: 47.2.0-beta.3
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Enhance beta version handling in ApiVersion
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3069
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3069
 section: Changes
 released_in_version: 48.1.0-beta.1
 ---

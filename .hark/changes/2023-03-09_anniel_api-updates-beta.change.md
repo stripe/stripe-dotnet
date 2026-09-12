@@ -1,6 +1,6 @@
 ---
 title: API Updates for beta branch
-pr_link: https://github.com/stripe/stripe-dotnet/pull/2655
+pr_url: https://github.com/stripe/stripe-dotnet/pull/2655
 is_stripe_api_change: true
 released_in_version: 41.10.0-beta.1
 ---

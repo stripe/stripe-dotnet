@@ -1,6 +1,6 @@
 ---
 title: Do not allow setting API Version directly on StripeConfiguration
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3011
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3011
 released_in_version: 47.1.0-beta.1
 ---
 
