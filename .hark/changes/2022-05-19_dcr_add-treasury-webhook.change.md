@@ -1,0 +1,7 @@
+---
+title: Add Treasury webhook endpoints.
+pr_url: https://github.com/stripe/stripe-dotnet/pull/2488
+released_in_version: 39.112.0
+---
+
+* Add event constants `TreasuryCheckDepositCanceled`, `TreasuryCheckDepositCreated`, `TreasuryCheckDepositProcessing`, `TreasuryCheckDepositReceived`, `TreasuryCheckDepositRequiresAction`, `TreasuryCheckDepositRequiresConfirmation`, `TreasuryCheckDepositReversed`, `Treasury.CreditReversalCreated`, `Treasury.CreditReversalPosted`, `Treasury.DebitReversalCompleted`, `Treasury.DebitReversalCreated`, `Treasury.DebitReversalInitialCreditGranted`, `Treasury.FinancialAccountClosed`, `Treasury.FinancialAccountCreated`, `Treasury.FinancialAccountFeaturesStatusUpdated`, `Treasury.InboundTransferCanceled`, `Treasury.InboundTransferCreated`, `Treasury.InboundTransferFailed`, `Treasury.InboundTransferSucceeded`, `Treasury.OutboundPaymentCanceled`, `Treasury.OutboundPaymentCreated`, `Treasury.OutboundPaymentExpectedArrivalDateUpdated`, `Treasury.OutboundPaymentFailed`, `Treasury.OutboundPaymentPosted`, `Treasury.OutboundPaymentReturned`, `Treasury.OutboundTransferCanceled`, `Treasury.OutboundTransferCreated`, `Treasury.OutboundTransferExpectedArrivalDateUpdated`, `Treasury.OutboundTransferFailed`, `Treasury.OutboundTransferPosted`, `Treasury.OutboundTransferReturned`, `Treasury.ReceivedCreditCreated`, `Treasury.ReceivedCreditFailed`, `Treasury.ReceivedCreditReversed`, `Treasury.ReceivedCreditSucceeded`, and `Treasury.ReceivedDebitCreated`.
