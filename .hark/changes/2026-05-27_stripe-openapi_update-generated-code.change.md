@@ -1,6 +1,6 @@
 ---
 title: Update generated code for private-preview
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3387
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3387
 is_breaking: true
 is_stripe_api_change: true
 released_in_version: 51.3.0-alpha.1

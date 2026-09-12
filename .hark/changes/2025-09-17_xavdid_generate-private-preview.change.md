@@ -1,6 +1,6 @@
 ---
 title: generate private-preview SDK w/ mid Sept changes
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3173
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3173
 is_stripe_api_change: true
 released_in_version: 48.6.0-alpha.2
 ---

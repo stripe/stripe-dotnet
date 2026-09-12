@@ -1,6 +1,6 @@
 ---
 title: ParseThinEvent__Experimental is no longer needed
-pr_link: https://github.com/stripe/stripe-dotnet/pull/3188
+pr_url: https://github.com/stripe/stripe-dotnet/pull/3188
 is_breaking: true
 released_in_version: 49.1.0-alpha.1
 ---
