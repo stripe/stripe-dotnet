@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "language": "dotnet",
+    "channel": "ga"
+  },
   "versions": [
     {
       "version": "52.4.2",
