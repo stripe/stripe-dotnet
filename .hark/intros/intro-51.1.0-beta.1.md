@@ -1,0 +1,1 @@
+It is built on top of SDK version 51.0.0 which contains breaking changes. Please review the [changelog for 51.0.0](https://github.com/stripe/stripe-dotnet/blob/master/CHANGELOG.md#5100---2026-03-25) if upgrading from older SDK versions.
