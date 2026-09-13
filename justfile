@@ -91,3 +91,13 @@ update-version version:
 [working-directory("src/Examples/")]
 run-example example:
     dotnet run --project Examples.csproj {{ example }}
+
+# the lowest .NET Core this SDK supports, for the changelog. Update on version bumps
+minimum-runtime-version:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    floor=net6.0
+    rg -N --color never -o '<TargetFrameworks>([^<]+)</TargetFrameworks>' --replace '$1' src/Stripe.net/Stripe.net.csproj \
+      | tr ';' '\n' | rg -qx "$floor" \
+      || { echo "error: $floor is not in TargetFrameworks any more; update this recipe" >&2; exit 1; }
+    echo "$floor"
