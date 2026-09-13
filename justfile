@@ -92,12 +92,13 @@ update-version version:
 run-example example:
     dotnet run --project Examples.csproj {{ example }}
 
-# the lowest .NET Core this SDK supports, for the changelog. Update on version bumps
-minimum-runtime-version:
+# ⭐ print the API version this SDK pins and the lowest runtime it supports
+print-version-info:
     #!/usr/bin/env bash
     set -euo pipefail
     floor=net6.0
     rg -N --color never -o '<TargetFrameworks>([^<]+)</TargetFrameworks>' --replace '$1' src/Stripe.net/Stripe.net.csproj \
       | tr ';' '\n' | rg -qx "$floor" \
       || { echo "error: $floor is not in TargetFrameworks any more; update this recipe" >&2; exit 1; }
-    echo "$floor"
+    echo "pinned-api-version: $(rg -N --color never -m1 -o '[0-9]{4}-[0-9]{2}-[0-9]{2}[.\w-]*' src/Stripe.net/Constants/ApiVersion.cs)"
+    echo "minimum-runtime-version: $floor"
