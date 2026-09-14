@@ -1,6 +1,6 @@
 ---
 title: Removes `UnifiedProration` from `InvoiceItem` and `InvoiceLineItem`
 pr_url: https://github.com/stripe/stripe-dotnet/pull/2189
-is_breaking: true
+semver_level: major
 released_in_version: 39.1.2
 ---

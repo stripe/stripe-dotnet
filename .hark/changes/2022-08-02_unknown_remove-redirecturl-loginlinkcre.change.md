@@ -1,6 +1,6 @@
 ---
 title: Remove `RedirectUrl` from `LoginLinkCreateOptions`. The property was deprecated.
-is_breaking: true
+semver_level: major
 section: ⚠️ Removed
 released_in_version: 40.0.0
 ---

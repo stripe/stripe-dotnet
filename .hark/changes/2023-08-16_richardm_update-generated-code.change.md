@@ -1,7 +1,7 @@
 ---
 title: Update generated code
 pr_url: https://github.com/stripe/stripe-dotnet/pull/2751
-is_breaking: true
+semver_level: major
 released_in_version: 42.0.0
 ---
 

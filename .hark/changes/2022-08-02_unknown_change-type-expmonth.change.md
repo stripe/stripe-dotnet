@@ -1,6 +1,6 @@
 ---
 title: Change type of `ExpMonth` and `ExpYear` properties in `ExternalAccountUpdateOptions` and `TokenCardOptions` to `string`.
-is_breaking: true
+semver_level: major
 section: ⚠️ Changed
 released_in_version: 40.0.0
 ---

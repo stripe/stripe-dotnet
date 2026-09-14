@@ -1,6 +1,6 @@
 ---
 title: "Generated changes from [#3333](https://github.com/stripe/stripe-dotnet/pull/3333), [#3341](https://github.com/stripe/stripe-dotnet/pull/3341), [#3350](https://github.com/stripe/stripe-dotnet/pull/3350), [#3343](https://github.com/stripe/stripe-dotnet/pull/3343)"
-is_breaking: true
+semver_level: major
 is_stripe_api_change: true
 section: ⚠️ Breaking changes due to changes in the Stripe API
 released_in_version: 51.0.0

@@ -1,6 +1,6 @@
 ---
 title: Rename `BalanceDetails` to `BalanceIssuing`. Rename type of `Balance.Issuing` property.
-is_breaking: true
+semver_level: major
 section: ⚠️ Changed
 released_in_version: 40.0.0
 ---

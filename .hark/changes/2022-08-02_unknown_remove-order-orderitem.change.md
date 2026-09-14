@@ -1,6 +1,6 @@
 ---
 title: Remove `Order` and `OrderItem` resources and APIs as those have been deprecated for multiple years.
-is_breaking: true
+semver_level: major
 section: ⚠️ Removed
 released_in_version: 40.0.0
 ---

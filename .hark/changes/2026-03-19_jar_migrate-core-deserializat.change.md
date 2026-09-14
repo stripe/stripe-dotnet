@@ -1,7 +1,7 @@
 ---
 title: Migrate core deserialization and default JSON library to System.Text.Json
 pr_url: https://github.com/stripe/stripe-dotnet/pull/3327
-is_breaking: true
+semver_level: major
 released_in_version: 51.0.0
 ---
 

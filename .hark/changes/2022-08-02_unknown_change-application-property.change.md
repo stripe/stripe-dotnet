@@ -1,6 +1,6 @@
 ---
 title: Change `Application` property in `BillingPortal.Configuration` entity to be expandable.
-is_breaking: true
+semver_level: major
 section: ⚠️ Changed
 released_in_version: 40.0.0
 ---

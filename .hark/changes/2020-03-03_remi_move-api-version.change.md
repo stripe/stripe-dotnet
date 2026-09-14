@@ -1,7 +1,7 @@
 ---
 title: Move to API version `2020-03-02` and remove deprecated properties
 pr_url: https://github.com/stripe/stripe-dotnet/pull/1937
-is_breaking: true
+semver_level: major
 released_in_version: 35.0.0
 ---
 

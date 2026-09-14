@@ -1,7 +1,7 @@
 ---
 title: Replace Emptyable<T> with SetTracker pattern for explicit null support
 pr_url: https://github.com/stripe/stripe-dotnet/pull/3342
-is_breaking: true
+semver_level: major
 released_in_version: 51.0.0
 ---
 

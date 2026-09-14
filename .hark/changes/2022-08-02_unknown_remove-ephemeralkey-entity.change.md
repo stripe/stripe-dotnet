@@ -1,6 +1,6 @@
 ---
 title: Remove `EphemeralKeyAssociatedObject` entity.
-is_breaking: true
+semver_level: major
 section: ⚠️ Removed
 released_in_version: 40.0.0
 ---

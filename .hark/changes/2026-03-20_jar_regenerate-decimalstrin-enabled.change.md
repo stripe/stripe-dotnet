@@ -1,7 +1,7 @@
 ---
 title: Regenerate with decimal_string enabled for v2 APIs
 pr_url: https://github.com/stripe/stripe-dotnet/pull/3329
-is_breaking: true
+semver_level: major
 released_in_version: 51.0.0
 ---
 
