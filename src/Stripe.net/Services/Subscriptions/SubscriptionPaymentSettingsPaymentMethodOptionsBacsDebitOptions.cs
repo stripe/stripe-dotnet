@@ -6,14 +6,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SetupIntentPaymentMethodOptionsBacsDebitOptions : INestedOptions
+    public class SubscriptionPaymentSettingsPaymentMethodOptionsBacsDebitOptions : INestedOptions
     {
         /// <summary>
-        /// Additional fields for Mandate creation.
+        /// Controls when the funds will be captured from the customer's account.
         /// </summary>
-        [JsonProperty("mandate_options")]
-        [STJS.JsonPropertyName("mandate_options")]
-        public SetupIntentPaymentMethodOptionsBacsDebitMandateOptionsOptions MandateOptions { get; set; }
+        [JsonProperty("debit_behavior")]
+        [STJS.JsonPropertyName("debit_behavior")]
+        public string DebitBehavior { get; set; }
 
         /// <summary>
         /// One of: <c>automatic</c>, or <c>payer_name_verification</c>.

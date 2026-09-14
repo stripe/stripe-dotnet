@@ -41,7 +41,9 @@ namespace Examples.V2
         public EventNotificationHandlerEndpoint()
         {
             client = new StripeClient(Environment.GetEnvironmentVariable("STRIPE_API_KEY"));
-            handler = client.NotificationHandler(Environment.GetEnvironmentVariable("WEBHOOK_SECRET") ?? string.Empty, FallbackCallback);
+            var webhookSecret = Environment.GetEnvironmentVariable("WEBHOOK_SECRET")
+                ?? throw new InvalidOperationException("WEBHOOK_SECRET environment variable is not set.");
+            handler = client.NotificationHandler(webhookSecret, FallbackCallback);
             unverifiedHandler = client.NotificationHandlerWithoutVerification(FallbackCallback);
 
             // PreHandle runs after Handle parses the payload but before any callback fires.
