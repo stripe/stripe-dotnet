@@ -1307,7 +1307,7 @@ namespace Stripe
         public const string SetupIntentSetupFailed = "setup_intent.setup_failed";
 
         /// <summary>
-        /// Occurs when an SetupIntent has successfully setup a payment method.
+        /// Occurs when a SetupIntent has successfully setup a payment method.
         /// </summary>
         public const string SetupIntentSucceeded = "setup_intent.succeeded";
 
@@ -1495,12 +1495,12 @@ namespace Stripe
         public const string TransferUpdated = "transfer.updated";
 
         /// <summary>
-        /// Occurs whenever an CreditReversal is submitted and created.
+        /// Occurs whenever a CreditReversal is submitted and created.
         /// </summary>
         public const string TreasuryCreditReversalCreated = "treasury.credit_reversal.created";
 
         /// <summary>
-        /// Occurs whenever an CreditReversal post is posted.
+        /// Occurs whenever a CreditReversal post is posted.
         /// </summary>
         public const string TreasuryCreditReversalPosted = "treasury.credit_reversal.posted";
 

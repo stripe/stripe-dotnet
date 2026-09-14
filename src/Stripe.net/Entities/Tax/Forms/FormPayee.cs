@@ -51,7 +51,7 @@ namespace Stripe.Tax
         public string ExternalReference { get; set; }
 
         /// <summary>
-        /// Either <c>account</c> or <c>external_reference</c>.
+        /// Specifies the payee type.
         /// One of: <c>account</c>, or <c>external_reference</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

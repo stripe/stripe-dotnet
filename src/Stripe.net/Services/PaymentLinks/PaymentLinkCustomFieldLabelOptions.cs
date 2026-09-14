@@ -9,7 +9,7 @@ namespace Stripe
     public class PaymentLinkCustomFieldLabelOptions : INestedOptions
     {
         /// <summary>
-        /// Custom text for the label, displayed to the customer. Up to 50 characters.
+        /// Custom text for the label, displayed to the customer. Up to 100 characters.
         /// </summary>
         [JsonProperty("custom")]
         [STJS.JsonPropertyName("custom")]

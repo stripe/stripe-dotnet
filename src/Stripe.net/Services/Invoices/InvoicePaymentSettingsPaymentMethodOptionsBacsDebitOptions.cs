@@ -6,14 +6,16 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class SetupIntentPaymentMethodOptionsBacsDebitOptions : INestedOptions
+    public class InvoicePaymentSettingsPaymentMethodOptionsBacsDebitOptions : INestedOptions
     {
         /// <summary>
-        /// Additional fields for Mandate creation.
+        /// Controls when Stripe will attempt to debit the funds from the customer's account. The
+        /// date must be a string in YYYY-MM-DD format. The date must be in the future and between 3
+        /// and 15 calendar days from now.
         /// </summary>
-        [JsonProperty("mandate_options")]
-        [STJS.JsonPropertyName("mandate_options")]
-        public SetupIntentPaymentMethodOptionsBacsDebitMandateOptionsOptions MandateOptions { get; set; }
+        [JsonProperty("target_date")]
+        [STJS.JsonPropertyName("target_date")]
+        public string TargetDate { get; set; }
 
         /// <summary>
         /// One of: <c>automatic</c>, or <c>payer_name_verification</c>.
