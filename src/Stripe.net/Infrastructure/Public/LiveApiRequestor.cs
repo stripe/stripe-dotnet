@@ -266,7 +266,7 @@ namespace Stripe
             }
 
             return string.IsNullOrEmpty(aiAgent)
-                ? notice + "\nTo suppress Stripe notices in test and sandbox environments, set STRIPE_SUPPRESS_NOTICES=true."
+                ? notice + "\nTo suppress Stripe notices in test and sandbox environments, set the STRIPE_SUPPRESS_NOTICES environment variable to true."
                 : notice;
         }
 

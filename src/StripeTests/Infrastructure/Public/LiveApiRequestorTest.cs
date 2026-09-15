@@ -744,7 +744,7 @@ namespace StripeTests
             var headers = BuildHeaders("Stripe-Notice", "test notice message");
 
             Assert.Equal(
-                "test notice message\nTo suppress Stripe notices in test and sandbox environments, set STRIPE_SUPPRESS_NOTICES=true.",
+                "test notice message\nTo suppress Stripe notices in test and sandbox environments, set the STRIPE_SUPPRESS_NOTICES environment variable to true.",
                 LiveApiRequestor.BuildStripeNoticeMessage(headers, _ => null));
         }
 
