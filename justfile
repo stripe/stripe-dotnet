@@ -96,9 +96,16 @@ run-example example:
 print-version-info:
     #!/usr/bin/env bash
     set -euo pipefail
-    floor=net6.0
-    rg -N --color never -o '<TargetFrameworks>([^<]+)</TargetFrameworks>' --replace '$1' src/Stripe.net/Stripe.net.csproj \
-      | tr ';' '\n' | rg -qx "$floor" \
-      || { echo "error: $floor is not in TargetFrameworks any more; update this recipe" >&2; exit 1; }
+    # dotnet supports two runtimes whose floors move independently, so we just hardcode them
+    core_floor=net6.0
+    framework_floor=net462
+
+    # and verify that they're actually supported
+    targets=$(rg -N --color never -o '<TargetFrameworks>([^<]+)</TargetFrameworks>' --replace '$1' src/Stripe.net/Stripe.net.csproj | tr ';' '\n')
+    for floor in "$core_floor" "$framework_floor"; do
+      rg -qx "$floor" <<<"$targets" \
+        || { echo "error: $floor is not in TargetFrameworks any more; update this recipe" >&2; exit 1; }
+    done
+
     echo "pinned-api-version: $(rg -N --color never -m1 -o '[0-9]{4}-[0-9]{2}-[0-9]{2}[.\w-]*' src/Stripe.net/Constants/ApiVersion.cs)"
-    echo "minimum-runtime-version: $floor"
+    echo "minimum-runtime-version: core=$core_floor,framework=$framework_floor"
