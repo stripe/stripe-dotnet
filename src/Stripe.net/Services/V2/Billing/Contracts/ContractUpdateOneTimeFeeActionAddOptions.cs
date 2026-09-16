@@ -1,12 +1,13 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Billing
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class ContractUpdateOneTimeFeeActionAddOptions : INestedOptions
+    public class ContractUpdateOneTimeFeeActionAddOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// The amount to bill.
@@ -28,6 +29,13 @@ namespace Stripe.V2.Billing
         [JsonProperty("lookup_key")]
         [STJS.JsonPropertyName("lookup_key")]
         public string LookupKey { get; set; }
+
+        /// <summary>
+        /// Metadata for the one-time fee.
+        /// </summary>
+        [JsonProperty("metadata")]
+        [STJS.JsonPropertyName("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The id of the product for this fee.

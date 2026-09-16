@@ -8,6 +8,7 @@ namespace Stripe.V2.Core
     public class VaultService : Service
     {
         private V2.Core.Vault.GbBankAccountService gbBankAccounts;
+        private V2.Core.Vault.NetworkTokenService networkTokens;
         private V2.Core.Vault.UsBankAccountService usBankAccounts;
 
         internal VaultService(ApiRequestor requestor)
@@ -21,6 +22,9 @@ namespace Stripe.V2.Core
         }
 
         public virtual V2.Core.Vault.GbBankAccountService GbBankAccounts => this.gbBankAccounts ??= new V2.Core.Vault.GbBankAccountService(
+            this.Requestor);
+
+        public virtual V2.Core.Vault.NetworkTokenService NetworkTokens => this.networkTokens ??= new V2.Core.Vault.NetworkTokenService(
             this.Requestor);
 
         public virtual V2.Core.Vault.UsBankAccountService UsBankAccounts => this.usBankAccounts ??= new V2.Core.Vault.UsBankAccountService(

@@ -13,10 +13,10 @@ namespace Stripe
         /// Date when the mandate expires and no further payments will be charged. If not provided,
         /// the mandate will be set to be indefinite.
         /// </summary>
-        [JsonProperty("expires_after")]
+        [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        [STJS.JsonPropertyName("expires_after")]
+        [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime? ExpiresAfter { get; set; }
+        public DateTime? ExpiresAt { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace Stripe
     public class PayoutCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// A positive integer in cents representing how much to payout.
+        /// A positive integer in cents representing how much to pay out.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
@@ -70,6 +70,14 @@ namespace Stripe
         [JsonProperty("payout_method")]
         [STJS.JsonPropertyName("payout_method")]
         public string PayoutMethod { get; set; }
+
+        /// <summary>
+        /// Additional options that complement the payout_method. The keys in this dictionary
+        /// identify the type of payout method the options apply to.
+        /// </summary>
+        [JsonProperty("payout_method_options")]
+        [STJS.JsonPropertyName("payout_method_options")]
+        public PayoutPayoutMethodOptionsOptions PayoutMethodOptions { get; set; }
 
         /// <summary>
         /// The balance type of your Stripe balance to draw this payout from. Balances for different

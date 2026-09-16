@@ -12,11 +12,11 @@ namespace Stripe
         /// <summary>
         /// Date at which the mandate expires.
         /// </summary>
-        [JsonProperty("expires_after")]
+        [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        [STJS.JsonPropertyName("expires_after")]
+        [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime? ExpiresAfter { get; set; }
+        public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
         /// Type of the mandate.

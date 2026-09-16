@@ -11,8 +11,10 @@ namespace Stripe
     /// The <c>Charge</c> object represents a single attempt to move money into your Stripe
     /// account. PaymentIntent confirmation is the most common way to create Charges, but <a
     /// href="https://docs.stripe.com/connect/account-debits">Account Debits</a> may also create
-    /// Charges. Some legacy payment flows create Charges directly, which is not recommended for
-    /// new integrations.
+    /// Charges. The create and capture methods are deprecated and will be deleted soon. If your
+    /// integration uses either of them, you need to update it to use a different payment flow,
+    /// such as <a href="https://docs.stripe.com/payments/payment-intents">the Payment Intents
+    /// API</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Charge : StripeEntity<Charge>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource

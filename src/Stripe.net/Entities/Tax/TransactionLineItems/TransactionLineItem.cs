@@ -6,6 +6,9 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+    /// <summary>
+    /// A Tax Transaction Line Item represents an individual item in a Tax Transaction.
+    /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TransactionLineItem : StripeEntity<TransactionLineItem>, IHasId, IHasMetadata, IHasObject
     {

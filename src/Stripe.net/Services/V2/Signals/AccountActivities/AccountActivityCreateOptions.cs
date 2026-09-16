@@ -34,6 +34,15 @@ namespace Stripe.V2.Signals
         public AccountActivityCreateAccountRestrictedOptions AccountRestricted { get; set; }
 
         /// <summary>
+        /// Details for the account review. Provide only when type is account_reviewed. The activity
+        /// requires an existing account_details.account or account_details.customer; inline data is
+        /// unsupported.
+        /// </summary>
+        [JsonProperty("account_reviewed")]
+        [STJS.JsonPropertyName("account_reviewed")]
+        public AccountActivityCreateAccountReviewedOptions AccountReviewed { get; set; }
+
+        /// <summary>
         /// Details for the account suspension. Provide only when type is account_suspended. The
         /// activity requires an existing account_details.customer; account_details.account and
         /// inline data are unsupported.
@@ -86,8 +95,9 @@ namespace Stripe.V2.Signals
 
         /// <summary>
         /// The type of activity.
-        /// One of: <c>account_restricted</c>, <c>account_suspended</c>, <c>login_attempt</c>,
-        /// <c>login_decision</c>, <c>registration_attempt</c>, or <c>registration_decision</c>.
+        /// One of: <c>account_restricted</c>, <c>account_reviewed</c>, <c>account_suspended</c>,
+        /// <c>login_attempt</c>, <c>login_decision</c>, <c>registration_attempt</c>, or
+        /// <c>registration_decision</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

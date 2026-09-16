@@ -99,6 +99,10 @@ namespace Stripe
                     ret = Stripe.V2.InvalidPayoutMethodException.Parse(httpStatusCode, body);
                     break;
 
+                case "merchant_not_gated":
+                    ret = Stripe.V2.MerchantNotGatedException.Parse(httpStatusCode, body);
+                    break;
+
                 case "non_zero_balance":
                     ret = Stripe.V2.NonZeroBalanceException.Parse(httpStatusCode, body);
                     break;

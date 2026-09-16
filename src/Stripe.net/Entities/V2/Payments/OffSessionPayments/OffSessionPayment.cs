@@ -52,7 +52,7 @@ namespace Stripe.V2.Payments
         public OffSessionPaymentAmountDetails AmountDetails { get; set; }
 
         /// <summary>
-        /// The "presentment amount" to be collected from the customer.
+        /// Amount intended to be collected by this payment.
         /// </summary>
         [JsonProperty("amount_requested")]
         [STJS.JsonPropertyName("amount_requested")]
@@ -135,6 +135,13 @@ namespace Stripe.V2.Payments
         [JsonProperty("latest_payment_attempt_record")]
         [STJS.JsonPropertyName("latest_payment_attempt_record")]
         public string LatestPaymentAttemptRecord { get; set; }
+
+        /// <summary>
+        /// Details from the latest Payment Attempt Record, if one exists.
+        /// </summary>
+        [JsonProperty("latest_payment_attempt_record_details")]
+        [STJS.JsonPropertyName("latest_payment_attempt_record_details")]
+        public OffSessionPaymentLatestPaymentAttemptRecordDetails LatestPaymentAttemptRecordDetails { get; set; }
 
         /// <summary>
         /// Has the value true if the object exists in live mode or the value false if the object

@@ -335,8 +335,8 @@ namespace Stripe
         public InvoicePaymentSettingsOptions PaymentSettings { get; set; }
 
         /// <summary>
-        /// The rendering-related settings that control how the invoice is displayed on
-        /// customer-facing surfaces such as PDF and Hosted Invoice Page.
+        /// The rendering-related settings that control how invoices render in customer-facing
+        /// interfaces such as the PDF or hosted invoice page.
         /// </summary>
         [JsonProperty("rendering")]
         [STJS.JsonPropertyName("rendering")]

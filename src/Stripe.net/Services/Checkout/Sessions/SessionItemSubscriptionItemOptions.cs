@@ -9,6 +9,13 @@ namespace Stripe.Checkout
     public class SessionItemSubscriptionItemOptions : INestedOptions
     {
         /// <summary>
+        /// The trial offer to apply to this subscription item.
+        /// </summary>
+        [JsonProperty("current_trial")]
+        [STJS.JsonPropertyName("current_trial")]
+        public SessionItemSubscriptionItemCurrentTrialOptions CurrentTrial { get; set; }
+
+        /// <summary>
         /// The ID of the <a href="https://docs.stripe.com/api/prices">Price</a>. One of
         /// <c>price</c> or <c>price_data</c> is required.
         /// </summary>

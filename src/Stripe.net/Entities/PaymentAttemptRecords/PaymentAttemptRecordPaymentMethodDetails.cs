@@ -171,6 +171,10 @@ namespace Stripe
         [STJS.JsonPropertyName("mobilepay")]
         public PaymentAttemptRecordPaymentMethodDetailsMobilepay Mobilepay { get; set; }
 
+        [JsonProperty("momo")]
+        [STJS.JsonPropertyName("momo")]
+        public PaymentAttemptRecordPaymentMethodDetailsMomo Momo { get; set; }
+
         [JsonProperty("multibanco")]
         [STJS.JsonPropertyName("multibanco")]
         public PaymentAttemptRecordPaymentMethodDetailsMultibanco Multibanco { get; set; }

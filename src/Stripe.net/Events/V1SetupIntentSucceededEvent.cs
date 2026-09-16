@@ -6,7 +6,7 @@ namespace Stripe.Events
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// Occurs when an SetupIntent has successfully setup a payment method.
+    /// Occurs when a SetupIntent has successfully setup a payment method.
     /// </summary>
     public class V1SetupIntentSucceededEvent : V2.Core.Event
     {

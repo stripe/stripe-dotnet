@@ -23,8 +23,8 @@ namespace Stripe.Radar
         public string CustomerAccount { get; set; }
 
         /// <summary>
-        /// Attributes of the customer being evaluated. These are populated from the <c>customer</c>
-        /// or <c>customer_account</c> object when one was supplied, and from the request otherwise.
+        /// Attributes of the customer being evaluated, as supplied on the request. Null when the
+        /// customer was identified by <c>customer</c> or <c>customer_account</c>.
         /// </summary>
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]

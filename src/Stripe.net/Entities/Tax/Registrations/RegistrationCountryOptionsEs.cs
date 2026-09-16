@@ -17,8 +17,9 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsEsStandard Standard { get; set; }
 
         /// <summary>
-        /// Type of registration in an EU country.
-        /// One of: <c>ioss</c>, <c>oss_non_union</c>, <c>oss_union</c>, or <c>standard</c>.
+        /// Type of registration in ES.
+        /// One of: <c>igic</c>, <c>ioss</c>, <c>oss_non_union</c>, <c>oss_union</c>, or
+        /// <c>standard</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

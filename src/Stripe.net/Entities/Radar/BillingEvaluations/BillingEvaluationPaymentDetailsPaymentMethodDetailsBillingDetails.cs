@@ -13,7 +13,7 @@ namespace Stripe.Radar
         /// </summary>
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
-        public BillingEvaluationPaymentDetailsPaymentMethodDetailsBillingDetailsAddress Address { get; set; }
+        public Address Address { get; set; }
 
         /// <summary>
         /// Email address.

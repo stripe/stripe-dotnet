@@ -24,9 +24,9 @@ namespace Stripe.Radar
         public string CustomerAccount { get; set; }
 
         /// <summary>
-        /// Attributes of the customer being evaluated. Supply these when the customer isn't
-        /// represented by a Customer or an Account. If <c>customer</c> or <c>customer_account</c>
-        /// is also supplied, the attributes on that object are used and these are ignored.
+        /// Attributes of the customer being evaluated. Exactly one of <c>customer</c>,
+        /// <c>customer_account</c>, and <c>data</c> must be supplied: use <c>data</c> when the
+        /// customer isn't represented by a Customer or an Account.
         /// </summary>
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]
