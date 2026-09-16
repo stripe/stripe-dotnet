@@ -62,6 +62,8 @@ namespace Stripe.V2.Signals
         /// The type of activity.
         /// One of: <c>login_attempt</c>, <c>login_decision</c>, <c>registration_attempt</c>, or
         /// <c>registration_decision</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

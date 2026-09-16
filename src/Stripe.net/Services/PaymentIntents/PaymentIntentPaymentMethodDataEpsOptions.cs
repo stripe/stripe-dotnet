@@ -24,6 +24,8 @@ namespace Stripe
         /// <c>raiffeisen_bankengruppe_osterreich</c>, <c>schoellerbank_ag</c>,
         /// <c>sparda_bank_wien</c>, <c>volksbank_gruppe</c>, <c>volkskreditbank_ag</c>, or
         /// <c>vr_bank_braunau</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("bank")]
         [STJS.JsonPropertyName("bank")]

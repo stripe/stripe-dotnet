@@ -14,6 +14,8 @@ namespace Stripe.V2.MoneyManagement
         /// The duration the exchange rate lock remains valid from creation time. Allowed value is
         /// five_minutes or none.
         /// One of: <c>five_minutes</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("lock_duration")]
         [STJS.JsonPropertyName("lock_duration")]
@@ -31,6 +33,8 @@ namespace Stripe.V2.MoneyManagement
         /// Lock status of the quote. Transitions from active to expired once past the
         /// lock_expires_at timestamp. Value can be active, expired or none.
         /// One of: <c>active</c>, <c>expired</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("lock_status")]
         [STJS.JsonPropertyName("lock_status")]

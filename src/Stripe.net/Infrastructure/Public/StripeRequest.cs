@@ -139,6 +139,34 @@ namespace Stripe
                 this.Uri.ToString());
         }
 
+        /// <summary>
+        /// Asserts that a request path is origin-relative: that it begins with a single
+        /// <c>"/"</c>.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// The absolute URL is built by concatenating a base URL onto this path, and no base URL
+        /// ends in a slash. A path like <c>"@evil.example/v1/x"</c> or
+        /// <c>".evil.example/v1/x"</c> would modify the resulting host and direct the request
+        /// (including the API key) to a non-Stripe host.
+        /// </para>
+        /// <para>
+        /// Because some relative urls arrive from potentially untrusted sources (like webhook
+        /// bodies), we have to be a little defensive. So, we require that a path starts with a
+        /// leading slash.
+        /// </para>
+        /// </remarks>
+        /// <param name="path">The relative request path.</param>
+        internal static void ValidatePath(string path)
+        {
+            if (path == null || !path.StartsWith("/") || path.StartsWith("//"))
+            {
+                throw new ArgumentException(
+                    $"Request path must begin with a single \"/\", got: {path}",
+                    nameof(path));
+            }
+        }
+
         internal static Uri BuildUri(
             string baseUrl,
             HttpMethod method,
@@ -146,6 +174,8 @@ namespace Stripe
             BaseOptions options,
             ApiMode apiMode)
         {
+            ValidatePath(path);
+
             var b = new StringBuilder();
 
             b.Append(baseUrl);

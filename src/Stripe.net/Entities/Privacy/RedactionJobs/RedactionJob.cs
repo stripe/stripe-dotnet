@@ -56,6 +56,8 @@ namespace Stripe.Privacy
         /// The status of the job.
         /// One of: <c>canceled</c>, <c>canceling</c>, <c>created</c>, <c>failed</c>, <c>ready</c>,
         /// <c>redacting</c>, <c>succeeded</c>, or <c>validating</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -65,6 +67,8 @@ namespace Stripe.Privacy
         /// Validation behavior determines how a job validates objects for redaction eligibility.
         /// Default is <c>error</c>.
         /// One of: <c>error</c>, or <c>fix</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("validation_behavior")]
         [STJS.JsonPropertyName("validation_behavior")]

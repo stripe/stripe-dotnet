@@ -11,6 +11,8 @@ namespace Stripe.TestHelpers
         /// <summary>
         /// Two-letter ISO code representing the country the bank account is located in.
         /// One of: <c>AT</c>, <c>BE</c>, <c>DE</c>, <c>ES</c>, <c>IT</c>, or <c>NL</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("country")]
         [STJS.JsonPropertyName("country")]

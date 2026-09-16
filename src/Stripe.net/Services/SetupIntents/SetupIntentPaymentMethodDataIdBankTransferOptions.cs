@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// Bank where the account is held.
         /// One of: <c>bca</c>, <c>bni</c>, <c>bri</c>, <c>cimb</c>, or <c>permata</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("bank")]
         [STJS.JsonPropertyName("bank")]

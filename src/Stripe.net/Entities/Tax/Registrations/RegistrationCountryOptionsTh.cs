@@ -10,6 +10,9 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// Type of registration in <c>country</c>.
+        /// One of: <c>simplified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

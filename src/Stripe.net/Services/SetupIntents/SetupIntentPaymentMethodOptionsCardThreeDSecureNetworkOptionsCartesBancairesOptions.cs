@@ -13,6 +13,8 @@ namespace Stripe
         /// Authentication cryptogram. Also known as <c>cavvAlgorithm</c>. messageExtension:
         /// CB-AVALGO.
         /// One of: <c>0</c>, <c>1</c>, <c>2</c>, <c>3</c>, <c>4</c>, or <c>A</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("cb_avalgo")]
         [STJS.JsonPropertyName("cb_avalgo")]

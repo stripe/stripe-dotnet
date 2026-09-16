@@ -36,6 +36,8 @@ namespace Stripe
         /// <c>satispay</c>, <c>sepa_credit_transfer</c>, <c>sepa_debit</c>, <c>sofort</c>,
         /// <c>stripe_balance</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>,
         /// or <c>wechat_pay</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_types")]
         [STJS.JsonPropertyName("payment_method_types")]
@@ -45,6 +47,8 @@ namespace Stripe
         /// Configure whether Stripe updates <c>subscription.default_payment_method</c> when payment
         /// succeeds. Defaults to <c>off</c>.
         /// One of: <c>off</c>, or <c>on_subscription</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("save_default_payment_method")]
         [STJS.JsonPropertyName("save_default_payment_method")]

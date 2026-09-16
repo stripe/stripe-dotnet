@@ -12,6 +12,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// Requested bank partner for this Financial Account.
         /// One of: <c>evolve</c>, <c>fifth_third</c>, or <c>goldman_sachs</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("bank")]
         [STJS.JsonPropertyName("bank")]
@@ -27,6 +29,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// Whether the Feature is operational.
         /// One of: <c>active</c>, <c>pending</c>, or <c>restricted</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

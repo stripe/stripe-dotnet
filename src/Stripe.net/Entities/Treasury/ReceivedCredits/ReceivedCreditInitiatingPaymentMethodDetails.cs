@@ -36,6 +36,8 @@ namespace Stripe.Treasury
         /// external account, a Stripe balance, or a FinancialAccount.
         /// One of: <c>balance</c>, <c>financial_account</c>, <c>issuing_card</c>, <c>stripe</c>, or
         /// <c>us_bank_account</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

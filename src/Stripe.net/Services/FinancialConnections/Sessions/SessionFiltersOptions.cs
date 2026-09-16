@@ -15,6 +15,8 @@ namespace Stripe.FinancialConnections
         /// <c>line_of_credit</c>, <c>credit_card</c>.
         /// One of: <c>checking</c>, <c>credit_card</c>, <c>line_of_credit</c>, <c>mortgage</c>, or
         /// <c>savings</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("account_subcategories")]
         [STJS.JsonPropertyName("account_subcategories")]

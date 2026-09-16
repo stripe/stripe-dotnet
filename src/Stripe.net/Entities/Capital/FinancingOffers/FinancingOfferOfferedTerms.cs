@@ -20,6 +20,8 @@ namespace Stripe.Capital
         /// Describes the type of user the offer is being extended to.
         /// One of: <c>newly_eligible_user</c>, <c>previously_eligible_user</c>, or
         /// <c>repeat_user</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("campaign_type")]
         [STJS.JsonPropertyName("campaign_type")]

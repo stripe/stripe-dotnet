@@ -20,6 +20,8 @@ namespace Stripe.V2.MoneyManagement
         /// Open Enum. A list of fields to reveal in the FinancialAddresses returned.
         /// One of: <c>credentials.gb_bank_account.account_number</c>, or
         /// <c>credentials.us_bank_account.account_number</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("include")]
         [STJS.JsonPropertyName("include")]

@@ -11,6 +11,8 @@ namespace Stripe.V2.Data.Reporting
         /// <summary>
         /// The content type of the file.
         /// One of: <c>csv</c>, or <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("content_type")]
         [STJS.JsonPropertyName("content_type")]

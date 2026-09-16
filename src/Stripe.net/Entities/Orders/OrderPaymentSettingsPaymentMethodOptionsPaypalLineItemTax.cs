@@ -18,6 +18,8 @@ namespace Stripe
         /// <summary>
         /// The tax behavior for the line item.
         /// One of: <c>exclusive</c>, or <c>inclusive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("behavior")]
         [STJS.JsonPropertyName("behavior")]

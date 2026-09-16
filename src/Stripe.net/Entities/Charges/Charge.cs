@@ -640,6 +640,8 @@ namespace Stripe
         /// <summary>
         /// The status of the payment is either <c>succeeded</c>, <c>pending</c>, or <c>failed</c>.
         /// One of: <c>failed</c>, <c>pending</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

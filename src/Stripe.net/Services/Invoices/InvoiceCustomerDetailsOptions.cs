@@ -61,6 +61,8 @@ namespace Stripe
         /// <summary>
         /// The customer's tax exemption. One of <c>none</c>, <c>exempt</c>, or <c>reverse</c>.
         /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_exempt", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("tax_exempt")]

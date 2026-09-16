@@ -35,6 +35,8 @@ namespace Stripe
         /// is <c>application</c>, which includes Custom accounts.
         /// One of: <c>company</c>, <c>government_entity</c>, <c>individual</c>, or
         /// <c>non_profit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("business_type")]
         [STJS.JsonPropertyName("business_type")]
@@ -213,6 +215,8 @@ namespace Stripe
         /// instead to configure dashboard access, fee payer, loss liability, and requirement
         /// collection.
         /// One of: <c>custom</c>, <c>express</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

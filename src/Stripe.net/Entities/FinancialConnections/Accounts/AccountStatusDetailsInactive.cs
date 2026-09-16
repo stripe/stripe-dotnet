@@ -11,6 +11,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// The action (if any) to relink the inactive Account.
         /// One of: <c>none</c>, or <c>relink_required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("action")]
         [STJS.JsonPropertyName("action")]
@@ -20,6 +22,8 @@ namespace Stripe.FinancialConnections
         /// The underlying cause of the Account being inactive.
         /// One of: <c>access_denied</c>, <c>access_expired</c>, <c>account_closed</c>,
         /// <c>account_unavailable</c>, <c>institution_requirement</c>, or <c>unspecified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("cause")]
         [STJS.JsonPropertyName("cause")]

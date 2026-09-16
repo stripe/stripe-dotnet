@@ -37,6 +37,8 @@ namespace Stripe
         /// <c>swish</c>, <c>tamara</c>, <c>test_pay</c>, <c>touch_n_go</c>, <c>truemoney</c>,
         /// <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>us_cash_voucher</c>, <c>vipps</c>,
         /// <c>wechat_pay</c>, <c>wero</c>, or <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allowed_payment_method_types")]
         [STJS.JsonPropertyName("allowed_payment_method_types")]
@@ -127,6 +129,8 @@ namespace Stripe
         /// <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>stripe_balance</c>,
         /// <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>,
         /// <c>wechat_pay</c>, or <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("excluded_payment_method_types")]
         [STJS.JsonPropertyName("excluded_payment_method_types")]
@@ -141,6 +145,8 @@ namespace Stripe
         /// destination to send funds to. You can include both if you intend to use the payment
         /// method for both purposes.
         /// One of: <c>inbound</c>, or <c>outbound</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("flow_directions")]
         [STJS.JsonPropertyName("flow_directions")]
@@ -241,6 +247,8 @@ namespace Stripe
         /// Indicates how the payment method is intended to be used in the future. If not provided,
         /// this value defaults to <c>off_session</c>.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("usage")]
         [STJS.JsonPropertyName("usage")]
