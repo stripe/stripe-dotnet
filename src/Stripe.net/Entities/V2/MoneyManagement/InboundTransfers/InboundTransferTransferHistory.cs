@@ -10,35 +10,38 @@ namespace Stripe.V2.MoneyManagement
     public class InboundTransferTransferHistory : StripeEntity<InboundTransferTransferHistory>, IHasId
     {
         /// <summary>
-        /// The history entry for a failed InboundTransfer.
+        /// The InboundTransfer failed. See <c>failure_reason</c> for more details.
         /// </summary>
         [JsonProperty("bank_debit_failed")]
         [STJS.JsonPropertyName("bank_debit_failed")]
         public InboundTransferTransferHistoryBankDebitFailed BankDebitFailed { get; set; }
 
         /// <summary>
-        /// The history entry for a processing InboundTransfer.
+        /// The InboundTransfer was submitted to the scheme for processing. The debit is still in
+        /// progress and can later succeed or fail.
         /// </summary>
         [JsonProperty("bank_debit_processing")]
         [STJS.JsonPropertyName("bank_debit_processing")]
         public InboundTransferTransferHistoryBankDebitProcessing BankDebitProcessing { get; set; }
 
         /// <summary>
-        /// The history entry for a queued InboundTransfer.
+        /// The InboundTransfer was created and is waiting to be submitted to the scheme for
+        /// processing.
         /// </summary>
         [JsonProperty("bank_debit_queued")]
         [STJS.JsonPropertyName("bank_debit_queued")]
         public InboundTransferTransferHistoryBankDebitQueued BankDebitQueued { get; set; }
 
         /// <summary>
-        /// The history entry for a returned InboundTransfer.
+        /// The InboundTransfer was returned. The original transaction has been reversed.
         /// </summary>
         [JsonProperty("bank_debit_returned")]
         [STJS.JsonPropertyName("bank_debit_returned")]
         public InboundTransferTransferHistoryBankDebitReturned BankDebitReturned { get; set; }
 
         /// <summary>
-        /// The history entry for a succeeded InboundTransfer.
+        /// The InboundTransfer succeeded. Funds might not yet be available; check the associated
+        /// Transaction for availability.
         /// </summary>
         [JsonProperty("bank_debit_succeeded")]
         [STJS.JsonPropertyName("bank_debit_succeeded")]

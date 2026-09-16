@@ -93,11 +93,14 @@ namespace Stripe.Checkout
         }
 
         /// <summary>
-        /// A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in
+        /// A subset of parameters to apply to the PaymentIntent for Checkout Sessions in
         /// <c>payment</c> mode.
         ///
         /// You can only update these parameters when <c>ui_mode</c> is <c>elements</c> and while
-        /// the session is active.
+        /// the session is active. If the PaymentIntent requires customer action or confirmation,
+        /// updating these parameters abandons the current payment attempt and returns the
+        /// PaymentIntent to <c>requires_payment_method</c>. You can't update these parameters after
+        /// the PaymentIntent begins processing, requires capture, succeeds, or is canceled.
         /// </summary>
         [JsonProperty("payment_intent_data")]
         [STJS.JsonPropertyName("payment_intent_data")]

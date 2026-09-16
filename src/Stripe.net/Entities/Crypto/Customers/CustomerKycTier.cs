@@ -19,7 +19,8 @@ namespace Stripe.Crypto
 
         /// <summary>
         /// List of errors associated with this KYC tier verification.
-        /// One of: <c>id_document_verification_failed</c>, <c>phone_verification_failed</c>, or
+        /// One of: <c>address_validation_failed</c>, <c>id_document_verification_failed</c>,
+        /// <c>person_verification_failed</c>, <c>phone_verification_failed</c>, or
         /// <c>user_has_reached_max_verification_attempts</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

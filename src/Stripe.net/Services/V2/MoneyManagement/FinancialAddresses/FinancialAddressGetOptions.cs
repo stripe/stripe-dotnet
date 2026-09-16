@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.MoneyManagement
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -9,17 +8,5 @@ namespace Stripe.V2.MoneyManagement
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class FinancialAddressGetOptions : BaseOptions
     {
-        /// <summary>
-        /// Open Enum. A list of fields to reveal in the FinancialAddresses returned.
-        /// One of: <c>credentials.ca_bank_account.account_number</c>,
-        /// <c>credentials.gb_bank_account.account_number</c>,
-        /// <c>credentials.sepa_bank_account.iban</c>, or
-        /// <c>credentials.us_bank_account.account_number</c>.
-        ///
-        /// This enum can grow over time; additional values may be added in the future.
-        /// </summary>
-        [JsonProperty("include")]
-        [STJS.JsonPropertyName("include")]
-        public List<string> Include { get; set; }
     }
 }

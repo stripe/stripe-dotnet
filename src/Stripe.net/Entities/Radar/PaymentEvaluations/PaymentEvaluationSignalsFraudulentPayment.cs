@@ -30,10 +30,9 @@ namespace Stripe.Radar
         public string RiskLevel { get; set; }
 
         /// <summary>
-        /// Score for this signal. Possible values for evaluated payments are between 0 and 100. The
-        /// value is returned with two decimal places and higher scores indicate a higher likelihood
-        /// of the signal being true. A score of -1 is returned when a model evaluation was not
-        /// performed, such as requests from incomplete integrations.
+        /// Numeric score for this signal, returned with two decimal places. Possible values for
+        /// evaluated payments are between 0 and 100, where higher scores indicate a higher
+        /// likelihood of the signal being true.
         /// </summary>
         [JsonProperty("score")]
         [STJS.JsonPropertyName("score")]

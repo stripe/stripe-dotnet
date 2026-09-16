@@ -10,7 +10,7 @@ namespace Stripe.V2.Payments
     public class OffSessionPaymentCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The "presentment amount" to be collected from the customer.
+        /// Amount intended to be collected by this payment.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
@@ -61,6 +61,13 @@ namespace Stripe.V2.Payments
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Additional fields to include in the response.
+        /// </summary>
+        [JsonProperty("include")]
+        [STJS.JsonPropertyName("include")]
+        public List<string> Include { get; set; }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can

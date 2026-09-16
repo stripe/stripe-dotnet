@@ -20,8 +20,8 @@ namespace Stripe.Crypto
         /// If a platform wants to lock the currencies an session will support, they can add
         /// supported currencies to this array. If left null, the experience will allow selection of
         /// all supported destination currencies.
-        /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>sol</c>, <c>usdc</c>,
-        /// <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
+        /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>ripusd</c>, <c>sol</c>,
+        /// <c>usdc</c>, <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -33,8 +33,8 @@ namespace Stripe.Crypto
         /// The selected <c>destination_currency</c> to convert the <c>source</c> to. This should be
         /// a crypto currency code. If <c>destination_currencies</c> is set, it must be a value in
         /// that array.
-        /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>sol</c>, <c>usdc</c>,
-        /// <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
+        /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>ripusd</c>, <c>sol</c>,
+        /// <c>usdc</c>, <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -103,7 +103,7 @@ namespace Stripe.Crypto
 
         /// <summary>
         /// A fiat currency code.
-        /// One of: <c>eur</c>, <c>gbp</c>, or <c>usd</c>.
+        /// One of: <c>cad</c>, <c>cop</c>, <c>eur</c>, <c>gbp</c>, <c>php</c>, or <c>usd</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

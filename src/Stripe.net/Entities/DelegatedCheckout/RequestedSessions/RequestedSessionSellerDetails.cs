@@ -62,7 +62,11 @@ namespace Stripe.DelegatedCheckout
         #endregion
 
         /// <summary>
-        /// The payment method types supported by the seller.
+        /// The payment method types supported by the seller. Stripe sources these from a non-empty
+        /// <c>allowed_payment_method_types</c> response from the seller's checkout customization
+        /// hook when present. Otherwise, Stripe resolves them from the seller's active or default
+        /// payment method configuration. Stripe might filter agent-facing displayable payment
+        /// methods for compatibility.
         /// One of: <c>affirm</c>, <c>card</c>, or <c>klarna</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

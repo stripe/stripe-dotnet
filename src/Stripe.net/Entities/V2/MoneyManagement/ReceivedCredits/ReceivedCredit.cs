@@ -36,6 +36,13 @@ namespace Stripe.V2.MoneyManagement
         public V2.Amount Amount { get; set; }
 
         /// <summary>
+        /// The amount and currency of the ReceivedCredit that was received.
+        /// </summary>
+        [JsonProperty("amount_received")]
+        [STJS.JsonPropertyName("amount_received")]
+        public V2.Amount AmountReceived { get; set; }
+
+        /// <summary>
         /// This object stores details about the originating Stripe transaction that resulted in the
         /// ReceivedCredit. Present if <c>type</c> field value is <c>balance_transfer</c>.
         /// </summary>

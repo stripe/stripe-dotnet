@@ -9,16 +9,14 @@ namespace Stripe.V2.Core
     public class FeeEntryTaxAmount : StripeEntity<FeeEntryTaxAmount>
     {
         /// <summary>
-        /// A lowercase alpha3 currency code like "usd" For the taxonomy label choice, see
-        /// SECURE_FRAMEWORKS-2849.
+        /// A lowercase alpha3 currency code like "usd".
         /// </summary>
         [JsonProperty("currency")]
         [STJS.JsonPropertyName("currency")]
         public string Currency { get; set; }
 
         /// <summary>
-        /// In major units like "1.23" for 1.23 USD For the taxonomy label choice, see
-        /// SECURE_FRAMEWORKS-2849.
+        /// In major units like "1.23" for 1.23 USD.
         /// </summary>
         [JsonProperty("value")]
         [STJS.JsonPropertyName("value")]

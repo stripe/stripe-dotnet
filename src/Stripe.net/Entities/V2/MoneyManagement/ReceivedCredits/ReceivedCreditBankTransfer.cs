@@ -9,16 +9,14 @@ namespace Stripe.V2.MoneyManagement
     public class ReceivedCreditBankTransfer : StripeEntity<ReceivedCreditBankTransfer>
     {
         /// <summary>
-        /// Hash containing the transaction bank details. Present if <c>origin_type</c> field value
-        /// is <c>ca_bank_account</c>.
+        /// Deprecated. Use <c>originating_bank_account.cpa</c> instead.
         /// </summary>
         [JsonProperty("ca_bank_account")]
         [STJS.JsonPropertyName("ca_bank_account")]
         public ReceivedCreditBankTransferCaBankAccount CaBankAccount { get; set; }
 
         /// <summary>
-        /// Hash containing the transaction bank details. Present if <c>origin_type</c> field value
-        /// is <c>eu_bank_account</c>.
+        /// Deprecated. Use <c>originating_bank_account.iban</c> instead.
         /// </summary>
         [JsonProperty("eu_bank_account")]
         [STJS.JsonPropertyName("eu_bank_account")]
@@ -32,36 +30,28 @@ namespace Stripe.V2.MoneyManagement
         public string FinancialAddress { get; set; }
 
         /// <summary>
-        /// Hash containing the transaction bank details. Present if <c>origin_type</c> field value
-        /// is <c>gb_bank_account</c>.
+        /// Deprecated. Use <c>originating_bank_account.sort_code</c> instead.
         /// </summary>
         [JsonProperty("gb_bank_account")]
         [STJS.JsonPropertyName("gb_bank_account")]
         public ReceivedCreditBankTransferGbBankAccount GbBankAccount { get; set; }
 
         /// <summary>
-        /// Hash containing the transaction bank details. Present if  <c>origin_type</c> field value
-        /// is <c>mx_bank_account</c>.
+        /// Deprecated. Use <c>originating_bank_account.clabe</c> instead.
         /// </summary>
         [JsonProperty("mx_bank_account")]
         [STJS.JsonPropertyName("mx_bank_account")]
         public ReceivedCreditBankTransferMxBankAccount MxBankAccount { get; set; }
 
         /// <summary>
-        /// Open Enum. Indicates the origin of source from which external funds originated from.
-        /// One of: <c>ca_bank_account</c>, <c>crypto_wallet</c>, <c>eu_bank_account</c>,
-        /// <c>gb_bank_account</c>, <c>mx_bank_account</c>, <c>sepa_bank_account</c>, or
-        /// <c>us_bank_account</c>.
-        ///
-        /// This enum can grow over time; additional values may be added in the future.
+        /// Hash containing the originating bank account details and type for this bank transfer.
         /// </summary>
-        [JsonProperty("origin_type")]
-        [STJS.JsonPropertyName("origin_type")]
-        public string OriginType { get; set; }
+        [JsonProperty("originating_bank_account")]
+        [STJS.JsonPropertyName("originating_bank_account")]
+        public ReceivedCreditBankTransferOriginatingBankAccount OriginatingBankAccount { get; set; }
 
         /// <summary>
-        /// Hash containing the transaction bank details. Present if <c>origin_type</c> field value
-        /// is <c>sepa_bank_account</c>.
+        /// Deprecated. Use <c>originating_bank_account.iban</c> instead.
         /// </summary>
         [JsonProperty("sepa_bank_account")]
         [STJS.JsonPropertyName("sepa_bank_account")]
@@ -75,8 +65,7 @@ namespace Stripe.V2.MoneyManagement
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// Hash containing the transaction bank details. Present if <c>origin_type</c> field value
-        /// is <c>us_bank_account</c>.
+        /// Deprecated. Use <c>originating_bank_account.aba</c> instead.
         /// </summary>
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]

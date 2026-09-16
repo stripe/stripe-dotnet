@@ -23,22 +23,20 @@ namespace Stripe.V2.MoneyManagement
         public string FinancialAddress { get; set; }
 
         /// <summary>
-        /// Open Enum. Indicates the origin of source from which external funds originated from.
-        /// One of: <c>ca_bank_account</c>, <c>crypto_wallet</c>, <c>eu_bank_account</c>,
-        /// <c>gb_bank_account</c>, <c>mx_bank_account</c>, <c>sepa_bank_account</c>, or
-        /// <c>us_bank_account</c>.
-        ///
-        /// This enum can grow over time; additional values may be added in the future.
-        /// </summary>
-        [JsonProperty("origin_type")]
-        [STJS.JsonPropertyName("origin_type")]
-        public string OriginType { get; set; }
-
-        /// <summary>
         /// Freeform string set by originator of the external ReceivedCredit.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         [STJS.JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
+
+        /// <summary>
+        /// Open Enum. The type of crypto wallet transfer that originated this ReceivedCredit.
+        /// One of: <c>crypto_wallet</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }

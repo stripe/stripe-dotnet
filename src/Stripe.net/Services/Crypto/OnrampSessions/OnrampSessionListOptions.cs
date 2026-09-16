@@ -20,8 +20,8 @@ namespace Stripe.Crypto
 
         /// <summary>
         /// The destination cryptocurrency to filter by.
-        /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>sol</c>, <c>usdc</c>,
-        /// <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
+        /// One of: <c>avax</c>, <c>btc</c>, <c>eth</c>, <c>matic</c>, <c>ripusd</c>, <c>sol</c>,
+        /// <c>usdc</c>, <c>usdt</c>, <c>wld</c>, or <c>xlm</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

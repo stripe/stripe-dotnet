@@ -17,6 +17,14 @@ namespace Stripe
         public SubscriptionPaymentSettingsPaymentMethodOptionsAcssDebit AcssDebit { get; set; }
 
         /// <summary>
+        /// This sub-hash contains details about the Bacs Direct Debit payment method options to
+        /// pass to invoices created by the subscription.
+        /// </summary>
+        [JsonProperty("bacs_debit")]
+        [STJS.JsonPropertyName("bacs_debit")]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsBacsDebit BacsDebit { get; set; }
+
+        /// <summary>
         /// This sub-hash contains details about the Bancontact payment method options to pass to
         /// invoices created by the subscription.
         /// </summary>

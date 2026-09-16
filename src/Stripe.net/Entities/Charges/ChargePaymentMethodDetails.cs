@@ -236,6 +236,13 @@ namespace Stripe
         [STJS.JsonPropertyName("sequra")]
         public ChargePaymentMethodDetailsSequra Sequra { get; set; }
 
+        /// <summary>
+        /// ID of the shared payment granted token used to make this payment.
+        /// </summary>
+        [JsonProperty("shared_payment_granted_token")]
+        [STJS.JsonPropertyName("shared_payment_granted_token")]
+        public string SharedPaymentGrantedToken { get; set; }
+
         [JsonProperty("shopeepay")]
         [STJS.JsonPropertyName("shopeepay")]
         public ChargePaymentMethodDetailsShopeepay Shopeepay { get; set; }

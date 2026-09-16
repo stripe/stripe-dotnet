@@ -170,12 +170,40 @@ namespace Stripe
         [STJS.JsonPropertyName("last4")]
         public string Last4 { get; set; }
 
+        #region Expandable Mandate
+
         /// <summary>
+        /// (ID of the Mandate)
         /// ID of the mandate used to make this payment or created by it.
         /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public string MandateId
+        {
+            get => this.InternalMandate?.Id;
+            set => this.InternalMandate = SetExpandableFieldId(value, this.InternalMandate);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the mandate used to make this payment or created by it.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public Mandate Mandate
+        {
+            get => this.InternalMandate?.ExpandedObject;
+            set => this.InternalMandate = SetExpandableFieldObject(value, this.InternalMandate);
+        }
+
         [JsonProperty("mandate")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Mandate>))]
         [STJS.JsonPropertyName("mandate")]
-        public string Mandate { get; set; }
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Mandate>))]
+        internal ExpandableField<Mandate> InternalMandate { get; set; }
+        #endregion
 
         /// <summary>
         /// True if this payment was marked as MOTO and out of scope for SCA.

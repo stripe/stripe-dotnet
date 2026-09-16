@@ -8,6 +8,13 @@ namespace Stripe.Checkout
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionItemSubscriptionItem : StripeEntity<SessionItemSubscriptionItem>
     {
+        /// <summary>
+        /// The trial offer applied to this subscription item.
+        /// </summary>
+        [JsonProperty("current_trial")]
+        [STJS.JsonPropertyName("current_trial")]
+        public SessionItemSubscriptionItemCurrentTrial CurrentTrial { get; set; }
+
         #region Expandable Price
 
         /// <summary>

@@ -23,6 +23,7 @@ namespace Stripe
                 { "apple_pay_domain", typeof(ApplePayDomain) },
                 { "application", typeof(Application) },
                 { "application_fee", typeof(ApplicationFee) },
+                { "apps.install", typeof(Apps.Install) },
                 { "apps.secret", typeof(Apps.Secret) },
                 { "balance", typeof(Balance) },
                 { "balance_settings", typeof(BalanceSettings) },
@@ -347,6 +348,7 @@ namespace Stripe
                     V2.Core.Health.AlertHistoryEntry)
                 },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },
+                { "v2.core.vault.network_token", typeof(V2.Core.Vault.NetworkToken) },
                 { "v2.core.vault.us_bank_account", typeof(V2.Core.Vault.UsBankAccount) },
                 {
                     "v2.data.analytics.metric_query_result", typeof(
