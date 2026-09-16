@@ -26,6 +26,8 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// Whether to cancel subscriptions immediately or at the end of the billing period.
         /// One of: <c>at_period_end</c>, or <c>immediately</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("mode")]
         [STJS.JsonPropertyName("mode")]
@@ -38,6 +40,8 @@ namespace Stripe.BillingPortal
         /// prorations are generated when canceling a subscription at the end of its natural billing
         /// period.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]

@@ -73,6 +73,8 @@ namespace Stripe.Issuing
         /// The type of event corresponding to this dispute settlement detail, representing the
         /// stage in the dispute network lifecycle.
         /// One of: <c>filing</c>, <c>loss</c>, <c>representment</c>, or <c>win</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("event_type")]
         [STJS.JsonPropertyName("event_type")]
@@ -90,6 +92,8 @@ namespace Stripe.Issuing
         /// The card network for this dispute settlement detail. One of ["visa", "mastercard",
         /// "maestro"].
         /// One of: <c>maestro</c>, <c>mastercard</c>, or <c>visa</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]

@@ -12,6 +12,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// The array that contains reasons for a FinancialAccount closure.
         /// One of: <c>account_rejected</c>, <c>closed_by_platform</c>, or <c>other</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reasons")]
         [STJS.JsonPropertyName("reasons")]

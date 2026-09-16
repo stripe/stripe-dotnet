@@ -48,6 +48,8 @@ namespace Stripe
         /// <summary>
         /// Categorization of disputed payment.
         /// One of: <c>merchandise</c>, or <c>services</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("merchandise_or_services")]
         [STJS.JsonPropertyName("merchandise_or_services")]

@@ -43,6 +43,8 @@ namespace Stripe.Issuing
         /// One of: <c>additional_information_requested</c>, <c>application_rejected</c>,
         /// <c>credit_limit_approved</c>, <c>credit_limit_decreased</c>, <c>credit_line_closed</c>,
         /// <c>no_changes</c>, or <c>withdrawn_by_applicant</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

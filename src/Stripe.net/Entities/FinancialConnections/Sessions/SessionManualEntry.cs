@@ -11,6 +11,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// Controls how manual entry of bank account details is presented to the user.
         /// One of: <c>automatic</c>, <c>custom</c>, or <c>disabled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("mode")]
         [STJS.JsonPropertyName("mode")]

@@ -53,6 +53,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// The event that triggered the underwriting.
         /// One of: <c>application</c>, or <c>proactive_review</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("created_from")]
         [STJS.JsonPropertyName("created_from")]

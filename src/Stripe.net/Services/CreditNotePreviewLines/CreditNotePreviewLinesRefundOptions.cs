@@ -36,6 +36,8 @@ namespace Stripe
         /// Type of the refund, one of <c>refund</c> or <c>payment_record_refund</c>. Defaults to
         /// <c>refund</c>.
         /// One of: <c>payment_record_refund</c>, or <c>refund</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

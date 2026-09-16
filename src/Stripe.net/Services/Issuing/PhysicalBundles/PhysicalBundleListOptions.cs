@@ -11,6 +11,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Only return physical bundles with the given status.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>review</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -19,6 +21,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Only return physical bundles with the given type.
         /// One of: <c>custom</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

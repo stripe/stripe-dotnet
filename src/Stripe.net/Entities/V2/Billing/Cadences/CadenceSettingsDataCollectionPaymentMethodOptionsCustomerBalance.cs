@@ -19,6 +19,9 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// The funding method type to be used when there are not enough funds in the customer
         /// balance. Currently the only supported value is <c>bank_transfer</c>.
+        /// One of: <c>bank_transfer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("funding_type")]
         [STJS.JsonPropertyName("funding_type")]

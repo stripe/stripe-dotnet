@@ -76,6 +76,8 @@ namespace Stripe
         /// Type of flight transaction.
         /// One of: <c>exchange_ticket</c>, <c>miscellaneous</c>, <c>refund</c>, or
         /// <c>ticket_purchase</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("transaction_type")]
         [STJS.JsonPropertyName("transaction_type")]

@@ -87,6 +87,8 @@ namespace Stripe.Tax
         /// The status of the registration. This field is present for convenience and can be deduced
         /// from <c>active_from</c> and <c>expires_at</c>.
         /// One of: <c>active</c>, <c>expired</c>, or <c>scheduled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

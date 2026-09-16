@@ -14,6 +14,8 @@ namespace Stripe.Identity
         /// isn’t one of the allowed types, the verification check will fail with a
         /// document_type_not_allowed error code.
         /// One of: <c>driving_license</c>, <c>id_card</c>, or <c>passport</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allowed_types")]
         [STJS.JsonPropertyName("allowed_types")]

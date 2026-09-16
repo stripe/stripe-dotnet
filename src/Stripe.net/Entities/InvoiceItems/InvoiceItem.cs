@@ -174,6 +174,8 @@ namespace Stripe
         /// Array of field names that can't be modified. Attempting to update a frozen field returns
         /// an error.
         /// One of: <c>discounts</c>, <c>pricing</c>, or <c>quantity</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("frozen_fields")]
         [STJS.JsonPropertyName("frozen_fields")]

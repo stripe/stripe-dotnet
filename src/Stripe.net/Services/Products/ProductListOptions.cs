@@ -46,6 +46,8 @@ namespace Stripe
         /// <summary>
         /// Only return products of this type.
         /// One of: <c>good</c>, or <c>service</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

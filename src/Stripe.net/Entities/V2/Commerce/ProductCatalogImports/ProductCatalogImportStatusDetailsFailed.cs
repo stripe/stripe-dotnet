@@ -11,6 +11,8 @@ namespace Stripe.V2.Commerce
         /// <summary>
         /// The error code for this product catalog processing failure.
         /// One of: <c>file_not_found</c>, <c>internal_error</c>, or <c>invalid_file</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]
@@ -26,6 +28,8 @@ namespace Stripe.V2.Commerce
         /// <summary>
         /// The error type for this product catalog processing failure.
         /// One of: <c>cannot_proceed</c>, or <c>transient_failure</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

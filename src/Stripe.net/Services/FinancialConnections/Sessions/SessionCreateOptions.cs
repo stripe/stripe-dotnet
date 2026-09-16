@@ -51,6 +51,8 @@ namespace Stripe.FinancialConnections
         /// <c>payment_method</c>.
         /// One of: <c>balances</c>, <c>ownership</c>, <c>payment_method</c>, or
         /// <c>transactions</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("permissions")]
         [STJS.JsonPropertyName("permissions")]
@@ -60,6 +62,8 @@ namespace Stripe.FinancialConnections
         /// List of data features that you would like to retrieve upon account creation.
         /// One of: <c>balances</c>, <c>inferred_balances</c>, <c>ownership</c>, or
         /// <c>transactions</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("prefetch")]
         [STJS.JsonPropertyName("prefetch")]
@@ -83,6 +87,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// The UI mode of the Session. Defaults to <c>modal</c>.
         /// One of: <c>hosted</c>, or <c>modal</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("ui_mode")]
         [STJS.JsonPropertyName("ui_mode")]

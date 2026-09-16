@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// The configuration for how funds that land in the customer cash balance are reconciled.
         /// One of: <c>automatic</c>, or <c>manual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reconciliation_mode")]
         [STJS.JsonPropertyName("reconciliation_mode")]
