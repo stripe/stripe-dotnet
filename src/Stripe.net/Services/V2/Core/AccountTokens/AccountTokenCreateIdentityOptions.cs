@@ -27,6 +27,8 @@ namespace Stripe.V2.Core
         /// The entity type.
         /// One of: <c>company</c>, <c>government_entity</c>, <c>individual</c>, or
         /// <c>non_profit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("entity_type")]
         [STJS.JsonPropertyName("entity_type")]

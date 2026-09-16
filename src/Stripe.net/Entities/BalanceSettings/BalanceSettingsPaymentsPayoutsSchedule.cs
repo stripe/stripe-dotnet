@@ -13,6 +13,8 @@ namespace Stripe
         /// How frequently funds will be paid out. One of <c>manual</c> (payouts only created via
         /// API call), <c>daily</c>, <c>weekly</c>, or <c>monthly</c>.
         /// One of: <c>daily</c>, <c>manual</c>, <c>monthly</c>, or <c>weekly</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("interval")]
         [STJS.JsonPropertyName("interval")]
@@ -32,6 +34,8 @@ namespace Stripe
         /// example, [<c>monday</c>, <c>tuesday</c>]. Only shown if <c>interval</c> is weekly.
         /// One of: <c>friday</c>, <c>monday</c>, <c>thursday</c>, <c>tuesday</c>, or
         /// <c>wednesday</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("weekly_payout_days")]
         [STJS.JsonPropertyName("weekly_payout_days")]

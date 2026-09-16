@@ -12,6 +12,8 @@ namespace Stripe.TestHelpers.Issuing
         /// The outcome of the 3D Secure authentication request.
         /// One of: <c>attempt_acknowledged</c>, <c>authenticated</c>, <c>failed</c>, or
         /// <c>required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("result")]
         [STJS.JsonPropertyName("result")]

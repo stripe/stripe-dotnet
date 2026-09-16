@@ -14,6 +14,8 @@ namespace Stripe.Checkout
         /// presented to a returning customer. By default, only saved payment methods with
         /// ’allow_redisplay: ‘always’ are shown in Checkout.
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allow_redisplay_filters")]
         [STJS.JsonPropertyName("allow_redisplay_filters")]
@@ -23,6 +25,8 @@ namespace Stripe.Checkout
         /// Enable customers to choose if they wish to remove their saved payment methods. Disabled
         /// by default.
         /// One of: <c>disabled</c>, or <c>enabled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_remove")]
         [STJS.JsonPropertyName("payment_method_remove")]
@@ -32,6 +36,8 @@ namespace Stripe.Checkout
         /// Enable customers to choose if they wish to save their payment method for future use.
         /// Disabled by default.
         /// One of: <c>disabled</c>, or <c>enabled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_save")]
         [STJS.JsonPropertyName("payment_method_save")]

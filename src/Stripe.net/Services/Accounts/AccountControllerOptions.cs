@@ -27,6 +27,8 @@ namespace Stripe
         /// A value indicating responsibility for collecting updated information when requirements
         /// on the account are due or change. Defaults to <c>stripe</c>.
         /// One of: <c>application</c>, or <c>stripe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("requirement_collection")]
         [STJS.JsonPropertyName("requirement_collection")]

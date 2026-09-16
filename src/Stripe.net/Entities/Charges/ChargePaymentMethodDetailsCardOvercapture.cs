@@ -18,6 +18,8 @@ namespace Stripe
         /// <summary>
         /// Indicates whether or not the authorized amount can be over-captured.
         /// One of: <c>available</c>, or <c>unavailable</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

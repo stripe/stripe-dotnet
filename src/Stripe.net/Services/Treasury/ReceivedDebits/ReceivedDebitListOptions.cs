@@ -19,6 +19,8 @@ namespace Stripe.Treasury
         /// Only return ReceivedDebits that have the given status: <c>succeeded</c> or
         /// <c>failed</c>.
         /// One of: <c>failed</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

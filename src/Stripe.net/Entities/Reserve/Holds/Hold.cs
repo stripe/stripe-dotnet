@@ -54,6 +54,8 @@ namespace Stripe.Reserve
         /// <summary>
         /// Indicates which party created this ReserveHold.
         /// One of: <c>application</c>, or <c>stripe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("created_by")]
         [STJS.JsonPropertyName("created_by")]
@@ -97,6 +99,8 @@ namespace Stripe.Reserve
         /// <summary>
         /// The reason for the ReserveHold.
         /// One of: <c>charge</c>, or <c>standalone</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]
@@ -187,6 +191,8 @@ namespace Stripe.Reserve
         /// Which source balance type this ReserveHold reserves funds from. One of
         /// <c>bank_account</c>, <c>card</c>, or <c>fpx</c>.
         /// One of: <c>bank_account</c>, <c>card</c>, or <c>fpx</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("source_type")]
         [STJS.JsonPropertyName("source_type")]

@@ -155,6 +155,8 @@ namespace Stripe.Treasury
         /// <c>transaction</c> is created and posted. The status changes to <c>failed</c> if the
         /// transfer fails.
         /// One of: <c>canceled</c>, <c>failed</c>, <c>processing</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

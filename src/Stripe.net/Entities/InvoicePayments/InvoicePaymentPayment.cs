@@ -128,6 +128,8 @@ namespace Stripe
         /// <summary>
         /// Type of payment object associated with this invoice payment.
         /// One of: <c>charge</c>, <c>payment_intent</c>, or <c>payment_record</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

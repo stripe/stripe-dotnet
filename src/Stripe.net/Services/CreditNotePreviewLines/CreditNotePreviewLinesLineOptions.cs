@@ -98,6 +98,8 @@ namespace Stripe
         /// <c>custom_line_item</c>. <c>custom_line_item</c> is not valid when the invoice is set up
         /// with <c>automatic_tax[enabled]=true</c>.
         /// One of: <c>custom_line_item</c>, or <c>invoice_line_item</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
