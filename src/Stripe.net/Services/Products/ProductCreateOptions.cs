@@ -115,6 +115,8 @@ namespace Stripe
         /// <c>good</c> to use this product with Orders and SKUs. On API versions before
         /// <c>2018-02-05</c>, this field defaults to <c>good</c> for compatibility reasons.
         /// One of: <c>good</c>, or <c>service</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

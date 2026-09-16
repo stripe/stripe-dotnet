@@ -86,6 +86,8 @@ namespace Stripe.Checkout
         /// Describes whether Checkout should collect the customer's billing address. Defaults to
         /// <c>auto</c>.
         /// One of: <c>auto</c>, or <c>required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("billing_address_collection")]
         [STJS.JsonPropertyName("billing_address_collection")]
@@ -238,6 +240,8 @@ namespace Stripe.Checkout
         /// Configure whether a Checkout Session creates a Customer when the Checkout Session
         /// completes.
         /// One of: <c>always</c>, or <c>if_required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("customer_creation")]
         [STJS.JsonPropertyName("customer_creation")]
@@ -361,6 +365,8 @@ namespace Stripe.Checkout
         /// <c>lt</c>, <c>lv</c>, <c>ms</c>, <c>mt</c>, <c>nb</c>, <c>nl</c>, <c>pl</c>, <c>pt</c>,
         /// <c>pt-BR</c>, <c>ro</c>, <c>ru</c>, <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>,
         /// <c>tr</c>, <c>vi</c>, <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("locale")]
         [STJS.JsonPropertyName("locale")]
@@ -388,6 +394,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// The mode of the Checkout Session.
         /// One of: <c>payment</c>, <c>setup</c>, or <c>subscription</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("mode")]
         [STJS.JsonPropertyName("mode")]
@@ -408,6 +416,8 @@ namespace Stripe.Checkout
         /// Where the user is coming from. This informs the optimizations that are applied to the
         /// session.
         /// One of: <c>mobile_app</c>, or <c>web</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("origin_context")]
         [STJS.JsonPropertyName("origin_context")]
@@ -493,6 +503,8 @@ namespace Stripe.Checkout
         /// Configure whether a Checkout Session should collect a payment method for sessions with
         /// mode <c>payment</c>. Defaults to <c>always</c>.
         /// One of: <c>always</c>, or <c>if_required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_collection")]
         [STJS.JsonPropertyName("payment_method_collection")]
@@ -527,6 +539,8 @@ namespace Stripe.Checkout
         /// <c>no_payment_required</c>. You can use this value to decide when to fulfill your
         /// customer's order.
         /// One of: <c>no_payment_required</c>, <c>paid</c>, or <c>unpaid</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_status")]
         [STJS.JsonPropertyName("payment_status")]
@@ -563,6 +577,8 @@ namespace Stripe.Checkout
         /// href="https://docs.stripe.com/payments/checkout/custom-success-page?payment-ui=embedded-form">redirect
         /// behavior</a> of embedded sessions. Defaults to <c>always</c>.
         /// One of: <c>always</c>, <c>if_required</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("redirect_on_completion")]
         [STJS.JsonPropertyName("redirect_on_completion")]
@@ -653,6 +669,8 @@ namespace Stripe.Checkout
         /// The status of the Checkout Session, one of <c>open</c>, <c>complete</c>, or
         /// <c>expired</c>.
         /// One of: <c>complete</c>, <c>expired</c>, or <c>open</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -664,6 +682,8 @@ namespace Stripe.Checkout
         /// specified on Checkout Sessions in <c>payment</c> mode. If blank or <c>auto</c>,
         /// <c>pay</c> is used.
         /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("submit_type")]
         [STJS.JsonPropertyName("submit_type")]
@@ -728,6 +748,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// The UI mode of the Session. Defaults to <c>hosted_page</c>.
         /// One of: <c>elements</c>, <c>embedded_page</c>, <c>form</c>, or <c>hosted_page</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("ui_mode")]
         [STJS.JsonPropertyName("ui_mode")]

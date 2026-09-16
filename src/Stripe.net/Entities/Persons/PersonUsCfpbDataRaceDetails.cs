@@ -19,6 +19,8 @@ namespace Stripe
         /// <c>other_black_or_african_american</c>, <c>other_pacific_islander</c>,
         /// <c>prefer_not_to_answer</c>, <c>samoan</c>, <c>somali</c>, <c>vietnamese</c>, or
         /// <c>white</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("race")]
         [STJS.JsonPropertyName("race")]

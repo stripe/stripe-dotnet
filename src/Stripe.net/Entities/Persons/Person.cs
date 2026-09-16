@@ -234,6 +234,8 @@ namespace Stripe
         /// closely related persons, declares that they hold or have held an important public job or
         /// function, in any jurisdiction.
         /// One of: <c>existing</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("political_exposure")]
         [STJS.JsonPropertyName("political_exposure")]

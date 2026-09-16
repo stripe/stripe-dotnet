@@ -12,6 +12,8 @@ namespace Stripe.Checkout
         /// If <c>opt_in</c>, the customer consents to receiving promotional communications from the
         /// merchant about this Checkout Session.
         /// One of: <c>opt_in</c>, or <c>opt_out</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("promotions")]
         [STJS.JsonPropertyName("promotions")]

@@ -13,6 +13,8 @@ namespace Stripe.Checkout
         /// always collect a full billing address, use <c>billing_address_collection</c>. Defaults
         /// to <c>never</c>.
         /// One of: <c>auto</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
@@ -22,6 +24,8 @@ namespace Stripe.Checkout
         /// Describes whether Checkout saves the name onto <c>customer.name</c>. Defaults to
         /// <c>never</c>.
         /// One of: <c>auto</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("name")]
         [STJS.JsonPropertyName("name")]
@@ -32,6 +36,8 @@ namespace Stripe.Checkout
         /// collect shipping information, use <c>shipping_address_collection</c>. Defaults to
         /// <c>never</c>.
         /// One of: <c>auto</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("shipping")]
         [STJS.JsonPropertyName("shipping")]

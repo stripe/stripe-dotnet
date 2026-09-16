@@ -12,6 +12,8 @@ namespace Stripe
         /// <summary>
         /// An array of conditions that are covered for the transaction, if applicable.
         /// One of: <c>fraudulent</c>, or <c>product_not_received</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("dispute_categories")]
         [STJS.JsonPropertyName("dispute_categories")]
@@ -20,6 +22,8 @@ namespace Stripe
         /// <summary>
         /// Indicates whether the transaction is eligible for PayPal's seller protection.
         /// One of: <c>eligible</c>, <c>not_eligible</c>, or <c>partially_eligible</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

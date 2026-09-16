@@ -15,6 +15,8 @@ namespace Stripe
         /// connected accounts</a>.
         /// One of: <c>account</c>, <c>application</c>, <c>application_custom</c>, or
         /// <c>application_express</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payer")]
         [STJS.JsonPropertyName("payer")]

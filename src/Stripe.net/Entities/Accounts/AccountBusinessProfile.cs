@@ -37,6 +37,8 @@ namespace Stripe
         /// Whether the business is a minority-owned, women-owned, and/or LGBTQI+ -owned business.
         /// One of: <c>lgbtqi_owned_business</c>, <c>minority_owned_business</c>,
         /// <c>none_of_these_apply</c>, <c>prefer_not_to_answer</c>, or <c>women_owned_business</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("minority_owned_business_designation")]
         [STJS.JsonPropertyName("minority_owned_business_designation")]

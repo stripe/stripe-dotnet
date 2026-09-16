@@ -12,6 +12,8 @@ namespace Stripe
         /// A value indicating the Stripe dashboard this account has access to independent of the
         /// Connect application.
         /// One of: <c>express</c>, <c>full</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

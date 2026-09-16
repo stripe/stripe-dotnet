@@ -50,6 +50,8 @@ namespace Stripe
         /// a single debit), <c>scheduled</c> (with debits on an agreed schedule or for
         /// clearly-defined events), or <c>variable</c>(for debits with any frequency).
         /// One of: <c>one_time</c>, <c>scheduled</c>, or <c>variable</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("interval")]
         [STJS.JsonPropertyName("interval")]
@@ -64,6 +66,8 @@ namespace Stripe
         /// require any notification).
         /// One of: <c>deprecated_none</c>, <c>email</c>, <c>manual</c>, <c>none</c>, or
         /// <c>stripe_email</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("notification_method")]
         [STJS.JsonPropertyName("notification_method")]

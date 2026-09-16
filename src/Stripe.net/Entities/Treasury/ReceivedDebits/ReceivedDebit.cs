@@ -65,6 +65,8 @@ namespace Stripe.Treasury
         /// have sufficient funds, is closed, or is frozen.
         /// One of: <c>account_closed</c>, <c>account_frozen</c>, <c>insufficient_funds</c>,
         /// <c>international_transaction</c>, or <c>other</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("failure_code")]
         [STJS.JsonPropertyName("failure_code")]
@@ -105,6 +107,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// The network used for the ReceivedDebit.
         /// One of: <c>ach</c>, <c>card</c>, or <c>stripe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]
@@ -122,6 +126,8 @@ namespace Stripe.Treasury
         /// <c>succeeded</c> (approved) or <c>failed</c> (declined). The failure reason can be found
         /// under the <c>failure_code</c>.
         /// One of: <c>failed</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
