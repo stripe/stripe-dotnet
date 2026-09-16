@@ -3,6 +3,7 @@ title: Update generated code
 pr_url: https://github.com/stripe/stripe-dotnet/pull/3446
 semver_level: major
 is_stripe_api_change: true
+released_in_version: 52.5.0-alpha.4
 ---
 
 * Add support for new resources `Apps.Install` and `V2.Core.Vault.NetworkToken`
