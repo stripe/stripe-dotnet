@@ -8,6 +8,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentMethodOptionsBlik : StripeEntity<PaymentIntentPaymentMethodOptionsBlik>
     {
+        [JsonProperty("mandate_options")]
+        [STJS.JsonPropertyName("mandate_options")]
+        public PaymentIntentPaymentMethodOptionsBlikMandateOptions MandateOptions { get; set; }
+
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
@@ -27,6 +31,9 @@ namespace Stripe
         /// When processing card payments, Stripe uses <c>setup_future_usage</c> to help you comply
         /// with regional legislation and network rules, such as <a
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
+        /// One of: <c>none</c>, or <c>off_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]

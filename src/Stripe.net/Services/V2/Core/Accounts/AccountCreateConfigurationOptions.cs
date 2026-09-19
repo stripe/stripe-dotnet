@@ -24,6 +24,13 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationCustomerOptions Customer { get; set; }
 
         /// <summary>
+        /// The Developer Configuration allows the Account to use developer tooling.
+        /// </summary>
+        [JsonProperty("developer")]
+        [STJS.JsonPropertyName("developer")]
+        public AccountCreateConfigurationDeveloperOptions Developer { get; set; }
+
+        /// <summary>
         /// Enables the Account to act as a connected account and collect payments facilitated by a
         /// Connect platform. You must onboard your platform to Connect before you can add this
         /// configuration to your connected accounts. Utilize this configuration when the Account

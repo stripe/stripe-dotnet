@@ -173,6 +173,16 @@ namespace Stripe
         public bool RequireCvcRecollection { get; set; }
 
         /// <summary>
+        /// Set to indicate the future transaction type usage for the card being set up.
+        /// One of: <c>recurring</c>, or <c>unscheduled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("setup_credential_usage")]
+        [STJS.JsonPropertyName("setup_credential_usage")]
+        public string SetupCredentialUsage { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
@@ -224,5 +234,15 @@ namespace Stripe
         [JsonProperty("statement_details")]
         [STJS.JsonPropertyName("statement_details")]
         public PaymentIntentPaymentMethodOptionsCardStatementDetails StatementDetails { get; set; }
+
+        /// <summary>
+        /// Selected usage to indicate the transaction type of the off-session payment.
+        /// One of: <c>recurring</c>, or <c>unscheduled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("stored_credential_usage")]
+        [STJS.JsonPropertyName("stored_credential_usage")]
+        public string StoredCredentialUsage { get; set; }
     }
 }

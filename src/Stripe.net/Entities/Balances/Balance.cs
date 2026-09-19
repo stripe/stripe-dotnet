@@ -29,8 +29,8 @@ namespace Stripe
 
         /// <summary>
         /// Available funds that you can transfer or pay out automatically by Stripe or explicitly
-        /// through the <a href="https://api.stripe.com#transfers">Transfers API</a> or <a
-        /// href="https://api.stripe.com#payouts">Payouts API</a>. You can find the available
+        /// through the <a href="https://docs.stripe.com/api#transfers">Transfers API</a> or <a
+        /// href="https://docs.stripe.com/api#payouts">Payouts API</a>. You can find the available
         /// balance for each currency and payment type in the <c>source_types</c> property.
         /// </summary>
         [JsonProperty("available")]

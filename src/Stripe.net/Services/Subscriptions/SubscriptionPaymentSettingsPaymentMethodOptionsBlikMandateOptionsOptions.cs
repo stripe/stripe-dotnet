@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -15,5 +16,15 @@ namespace Stripe
         [JsonProperty("expires_after")]
         [STJS.JsonPropertyName("expires_after")]
         public long? ExpiresAfter { get; set; }
+
+        /// <summary>
+        /// Date when the mandate expires and no further payments will be charged. If not provided,
+        /// the mandate will be set to be indefinite.
+        /// </summary>
+        [JsonProperty("expires_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        [STJS.JsonPropertyName("expires_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+        public DateTime? ExpiresAt { get; set; }
     }
 }

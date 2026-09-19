@@ -435,7 +435,7 @@ namespace Stripe
         /// <summary>
         /// Serializes an Invoice add_lines request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchAddLines(string invoice, InvoiceAddLinesOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchAddLines(string id, InvoiceAddLinesOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -444,7 +444,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "invoice", invoice } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -507,7 +507,7 @@ namespace Stripe
         /// <summary>
         /// Serializes an Invoice delete request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchDelete(string invoice, InvoiceDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchDelete(string id, InvoiceDeleteOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -516,7 +516,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "invoice", invoice } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -531,7 +531,7 @@ namespace Stripe
         /// <summary>
         /// Serializes an Invoice finalize_invoice request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchFinalizeInvoice(string invoice, InvoiceFinalizeOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchFinalizeInvoice(string id, InvoiceFinalizeOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -540,7 +540,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "invoice", invoice } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -555,7 +555,7 @@ namespace Stripe
         /// <summary>
         /// Serializes an Invoice mark_uncollectible request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchMarkUncollectible(string invoice, InvoiceMarkUncollectibleOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchMarkUncollectible(string id, InvoiceMarkUncollectibleOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -564,7 +564,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "invoice", invoice } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -579,7 +579,7 @@ namespace Stripe
         /// <summary>
         /// Serializes an Invoice pay request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchPay(string invoice, InvoicePayOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchPay(string id, InvoicePayOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -588,7 +588,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "invoice", invoice } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -603,7 +603,7 @@ namespace Stripe
         /// <summary>
         /// Serializes an Invoice remove_lines request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchRemoveLines(string invoice, InvoiceRemoveLinesOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchRemoveLines(string id, InvoiceRemoveLinesOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -612,7 +612,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "invoice", invoice } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -627,7 +627,7 @@ namespace Stripe
         /// <summary>
         /// Serializes an Invoice send_invoice request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchSendInvoice(string invoice, InvoiceSendOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchSendInvoice(string id, InvoiceSendOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -636,7 +636,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "invoice", invoice } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -651,7 +651,7 @@ namespace Stripe
         /// <summary>
         /// Serializes an Invoice update request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchUpdate(string invoice, InvoiceUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchUpdate(string id, InvoiceUpdateOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -660,7 +660,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "invoice", invoice } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -675,7 +675,7 @@ namespace Stripe
         /// <summary>
         /// Serializes an Invoice update_lines request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchUpdateLines(string invoice, InvoiceUpdateLinesOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchUpdateLines(string id, InvoiceUpdateLinesOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -684,7 +684,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "invoice", invoice } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -699,7 +699,7 @@ namespace Stripe
         /// <summary>
         /// Serializes an Invoice void_invoice request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchVoidInvoice(string invoice, InvoiceVoidOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchVoidInvoice(string id, InvoiceVoidOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -708,7 +708,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "invoice", invoice } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };

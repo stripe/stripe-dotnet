@@ -269,7 +269,7 @@ namespace Stripe
         /// Payment methods attached to other Customers cannot be used with this PaymentIntent.
         ///
         /// If <a
-        /// href="https://api.stripe.com#payment_intent_object-setup_future_usage">setup_future_usage</a>
+        /// href="https://docs.stripe.com/api#payment_intent_object-setup_future_usage">setup_future_usage</a>
         /// is set and this PaymentIntent's payment method is not <c>card_present</c>, then the
         /// payment method attaches to the Customer after the PaymentIntent has been confirmed and
         /// any required actions from the user are complete. If the payment method is
@@ -292,7 +292,7 @@ namespace Stripe
         /// Payment methods attached to other Customers cannot be used with this PaymentIntent.
         ///
         /// If <a
-        /// href="https://api.stripe.com#payment_intent_object-setup_future_usage">setup_future_usage</a>
+        /// href="https://docs.stripe.com/api#payment_intent_object-setup_future_usage">setup_future_usage</a>
         /// is set and this PaymentIntent's payment method is not <c>card_present</c>, then the
         /// payment method attaches to the Customer after the PaymentIntent has been confirmed and
         /// any required actions from the user are complete. If the payment method is
@@ -324,7 +324,7 @@ namespace Stripe
         /// Payment methods attached to other Accounts cannot be used with this PaymentIntent.
         ///
         /// If <a
-        /// href="https://api.stripe.com#payment_intent_object-setup_future_usage">setup_future_usage</a>
+        /// href="https://docs.stripe.com/api#payment_intent_object-setup_future_usage">setup_future_usage</a>
         /// is set and this PaymentIntent's payment method is not <c>card_present</c>, then the
         /// payment method attaches to the Account after the PaymentIntent has been confirmed and
         /// any required actions from the user are complete. If the payment method is

@@ -43,6 +43,25 @@ namespace Stripe.V2.Billing
         public ContractBillingSettings BillingSettings { get; set; }
 
         /// <summary>
+        /// The collection status of the contract that indicates whether there are any outstanding
+        /// invoices for the contract.
+        /// One of: <c>blocked</c>, <c>current</c>, <c>past_due</c>, or <c>unpaid</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("collection_status")]
+        [STJS.JsonPropertyName("collection_status")]
+        public string CollectionStatus { get; set; }
+
+        /// <summary>
+        /// Historical timestamps of when the contract's collection status transitioned into each
+        /// status.
+        /// </summary>
+        [JsonProperty("collection_status_transitions")]
+        [STJS.JsonPropertyName("collection_status_transitions")]
+        public ContractCollectionStatusTransitions CollectionStatusTransitions { get; set; }
+
+        /// <summary>
         /// A unique user-provided contract number e.g. C-2026-0001.
         /// </summary>
         [JsonProperty("contract_number")]

@@ -20,6 +20,10 @@ namespace Stripe
         [STJS.JsonPropertyName("branding")]
         public AccountSettingsBranding Branding { get; set; }
 
+        [JsonProperty("capital")]
+        [STJS.JsonPropertyName("capital")]
+        public AccountSettingsCapital Capital { get; set; }
+
         [JsonProperty("card_issuing")]
         [STJS.JsonPropertyName("card_issuing")]
         public AccountSettingsCardIssuing CardIssuing { get; set; }

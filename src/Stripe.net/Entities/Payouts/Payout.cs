@@ -331,6 +331,10 @@ namespace Stripe
         [STJS.JsonPropertyName("payout_method")]
         public string PayoutMethod { get; set; }
 
+        [JsonProperty("payout_method_options")]
+        [STJS.JsonPropertyName("payout_method_options")]
+        public PayoutPayoutMethodOptions PayoutMethodOptions { get; set; }
+
         /// <summary>
         /// If <c>completed</c>, you can use the <a
         /// href="https://docs.stripe.com/api/balance_transactions/list#balance_transaction_list-payout">Balance

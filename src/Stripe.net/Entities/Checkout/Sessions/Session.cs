@@ -620,6 +620,13 @@ namespace Stripe.Checkout
         #endregion
 
         /// <summary>
+        /// The ID of the Payment Reservation for this Checkout Session.
+        /// </summary>
+        [JsonProperty("payment_reservation")]
+        [STJS.JsonPropertyName("payment_reservation")]
+        public string PaymentReservation { get; set; }
+
+        /// <summary>
         /// The payment status of the Checkout Session, one of <c>paid</c>, <c>unpaid</c>, or
         /// <c>no_payment_required</c>. You can use this value to decide when to fulfill your
         /// customer's order.

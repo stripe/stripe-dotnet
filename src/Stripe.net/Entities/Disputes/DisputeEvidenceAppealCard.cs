@@ -17,8 +17,9 @@ namespace Stripe
         public string ReasonForFiling { get; set; }
 
         /// <summary>
-        /// One or more document IDs returned by a <a href="https://api.stripe.com#create_file">file
-        /// upload</a> with a <c>purpose</c> value of <c>dispute_evidence</c> to support the appeal.
+        /// One or more document IDs returned by a <a
+        /// href="https://docs.stripe.com/api#create_file">file upload</a> with a <c>purpose</c>
+        /// value of <c>dispute_evidence</c> to support the appeal.
         /// </summary>
         [JsonProperty("supporting_files")]
         [STJS.JsonPropertyName("supporting_files")]

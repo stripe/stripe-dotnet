@@ -105,7 +105,7 @@ namespace Stripe
         /// <summary>
         /// Serializes a Dispute close request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchClose(string dispute, DisputeCloseOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchClose(string id, DisputeCloseOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -114,7 +114,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "dispute", dispute } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };

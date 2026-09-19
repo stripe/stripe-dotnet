@@ -31,7 +31,7 @@ namespace Stripe.FinancialConnections
 
         /// <summary>
         /// Whether the account number is currently active and usable for transactions.
-        /// One of: <c>deactivated</c>, or <c>transactable</c>.
+        /// One of: <c>deactivated</c>, <c>expired</c>, or <c>transactable</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

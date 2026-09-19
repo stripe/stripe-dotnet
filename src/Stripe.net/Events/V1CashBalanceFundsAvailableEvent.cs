@@ -18,7 +18,7 @@ namespace Stripe.Events
         [JsonProperty("related_object")]
         [STJS.JsonPropertyName("related_object")]
 
-        public V2.Core.EventRelatedObject RelatedObject { get; set; }
+        public V2.Core.EventRelatedSingletonObject RelatedObject { get; set; }
 
         /// <summary>
         /// Asynchronously retrieves the related object from the API. Make an API request on every

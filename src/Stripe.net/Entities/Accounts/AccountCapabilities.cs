@@ -162,6 +162,17 @@ namespace Stripe
         public string BlikPayments { get; set; }
 
         /// <summary>
+        /// The status of the BLIK recurring payments capability of the account, or whether the
+        /// account can accept recurring and subscription BLIK payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("blik_recurring_payments")]
+        [STJS.JsonPropertyName("blik_recurring_payments")]
+        public string BlikRecurringPayments { get; set; }
+
+        /// <summary>
         /// The status of the boleto payments capability of the account, or whether the account can
         /// directly process boleto charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.

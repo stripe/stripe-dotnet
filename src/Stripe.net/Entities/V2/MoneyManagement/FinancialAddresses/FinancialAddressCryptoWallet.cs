@@ -8,15 +8,22 @@ namespace Stripe.V2.MoneyManagement
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FinancialAddressCryptoWallet : StripeEntity<FinancialAddressCryptoWallet>
     {
+        /// <summary>
+        /// The blockchain wallet address.
+        /// </summary>
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
         public string Address { get; set; }
 
+        /// <summary>
+        /// An optional memo or tag required by some networks to identify the recipient.
+        /// </summary>
         [JsonProperty("memo")]
         [STJS.JsonPropertyName("memo")]
         public string Memo { get; set; }
 
         /// <summary>
+        /// Open Enum. The blockchain network of the crypto wallet.
         /// One of: <c>arbitrum</c>, <c>avalanche_c_chain</c>, <c>base</c>, <c>ethereum</c>,
         /// <c>optimism</c>, <c>polygon</c>, <c>solana</c>, <c>stellar</c>, or <c>tempo</c>.
         ///

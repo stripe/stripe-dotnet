@@ -8,7 +8,7 @@ namespace Stripe.Treasury
 
     /// <summary>
     /// TransactionEntries represent individual units of money movements within a single <a
-    /// href="https://api.stripe.com#transactions">Transaction</a>.
+    /// href="https://docs.stripe.com/api#transactions">Transaction</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TransactionEntry : StripeEntity<TransactionEntry>, IHasId, IHasObject

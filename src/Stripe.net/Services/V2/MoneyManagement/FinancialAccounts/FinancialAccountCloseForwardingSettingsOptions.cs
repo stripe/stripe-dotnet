@@ -21,5 +21,14 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("payout_method")]
         [STJS.JsonPropertyName("payout_method")]
         public string PayoutMethod { get; set; }
+
+        /// <summary>
+        /// Whether to skip forwarding exportable self-custodied wallet balances. Defaults to false.
+        /// This does not skip non-exportable or fiat balances, inbound-pending checks, or
+        /// negative-balance requirements.
+        /// </summary>
+        [JsonProperty("skip_exportable_balances")]
+        [STJS.JsonPropertyName("skip_exportable_balances")]
+        public bool? SkipExportableBalances { get; set; }
     }
 }

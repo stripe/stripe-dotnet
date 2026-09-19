@@ -21,8 +21,8 @@ namespace Stripe.V2.Core
         /// Open Enum. A v2/account can be configured to enable certain functionality. The
         /// configuration param targets the v2/account_link to collect information for the specified
         /// v2/account configuration/s.
-        /// One of: <c>customer</c>, <c>merchant</c>, <c>money_manager</c>, <c>recipient</c>, or
-        /// <c>storer</c>.
+        /// One of: <c>customer</c>, <c>developer</c>, <c>merchant</c>, <c>money_manager</c>,
+        /// <c>recipient</c>, or <c>storer</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

@@ -11,6 +11,7 @@ namespace Stripe.V2.MoneyManagement
     public class FinancialAccountService : Service
     {
         private V2.MoneyManagement.FinancialAccounts.StatementService statements;
+        private V2.MoneyManagement.FinancialAccounts.WalletExportService walletExport;
 
         internal FinancialAccountService(ApiRequestor requestor)
             : base(requestor)
@@ -23,6 +24,9 @@ namespace Stripe.V2.MoneyManagement
         }
 
         public virtual V2.MoneyManagement.FinancialAccounts.StatementService Statements => this.statements ??= new V2.MoneyManagement.FinancialAccounts.StatementService(
+            this.Requestor);
+
+        public virtual V2.MoneyManagement.FinancialAccounts.WalletExportService WalletExport => this.walletExport ??= new V2.MoneyManagement.FinancialAccounts.WalletExportService(
             this.Requestor);
 
         /// <summary>

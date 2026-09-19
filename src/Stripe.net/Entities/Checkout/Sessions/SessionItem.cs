@@ -15,9 +15,6 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("key")]
         public string Key { get; set; }
 
-        /// <summary>
-        /// Details on the subscription for this item.
-        /// </summary>
         [JsonProperty("subscription")]
         [STJS.JsonPropertyName("subscription")]
         public SessionItemSubscription Subscription { get; set; }

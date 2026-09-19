@@ -149,7 +149,7 @@ namespace Stripe
         /// <summary>
         /// Serializes an InvoiceItem delete request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchDelete(string invoiceitem, InvoiceItemDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchDelete(string id, InvoiceItemDeleteOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -158,7 +158,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "invoiceitem", invoiceitem } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -173,7 +173,7 @@ namespace Stripe
         /// <summary>
         /// Serializes an InvoiceItem update request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchUpdate(string invoiceitem, InvoiceItemUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchUpdate(string id, InvoiceItemUpdateOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -182,7 +182,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "invoiceitem", invoiceitem } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };

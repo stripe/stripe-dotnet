@@ -104,7 +104,7 @@ namespace Stripe
         /// <summary>
         /// Serializes a CustomerBalanceTransaction create request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchCreate(string customer, CustomerBalanceTransactionCreateOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchCreate(string id, CustomerBalanceTransactionCreateOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -113,7 +113,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "customer", customer } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -128,7 +128,7 @@ namespace Stripe
         /// <summary>
         /// Serializes a CustomerBalanceTransaction update request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchUpdate(string customer, string transaction, CustomerBalanceTransactionUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchUpdate(string customerId, string id, CustomerBalanceTransactionUpdateOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -137,7 +137,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "customer", customer }, { "transaction", transaction } } },
+                { "path_params", new Dictionary<string, string> { { "customer_id", customerId }, { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };

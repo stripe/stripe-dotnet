@@ -20,8 +20,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Creates or returns a NetworkToken from raw card data for POST
-        /// /v2/core/vault/network_tokens.
+        /// Create or Return a Network Token Using Raw Card Data.
         /// </summary>
         public virtual NetworkToken Create(NetworkTokenCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -29,8 +28,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Creates or returns a NetworkToken from raw card data for POST
-        /// /v2/core/vault/network_tokens.
+        /// Create or Return a Network Token Using Raw Card Data.
         /// </summary>
         public virtual Task<NetworkToken> CreateAsync(NetworkTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -38,8 +36,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Creates or returns a NetworkToken from an existing card reference for POST
-        /// /v2/core/vault/network_tokens/create_from_credential.
+        /// Creates or returns a Network Token from an existing card reference.
         /// </summary>
         public virtual NetworkToken CreateFromCredential(NetworkTokenCreateFromCredentialOptions options = null, RequestOptions requestOptions = null)
         {
@@ -47,8 +44,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Creates or returns a NetworkToken from an existing card reference for POST
-        /// /v2/core/vault/network_tokens/create_from_credential.
+        /// Creates or returns a Network Token from an existing card reference.
         /// </summary>
         public virtual Task<NetworkToken> CreateFromCredentialAsync(NetworkTokenCreateFromCredentialOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -56,10 +52,8 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Generates a single-use cryptogram for POST
-        /// /v2/core/vault/network_tokens/:id/generate_cryptogram. Every successful call generates a
-        /// new cryptogram, and retrying can generate another cryptogram. The cryptogram is returned
-        /// only in this response and is never persisted.
+        /// Every successful call generates a new cryptogram, and retrying can generate another
+        /// cryptogram. The cryptogram is returned only in this response and is never persisted.
         /// </summary>
         public virtual NetworkToken GenerateCryptogram(string id, NetworkTokenGenerateCryptogramOptions options = null, RequestOptions requestOptions = null)
         {
@@ -67,10 +61,8 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Generates a single-use cryptogram for POST
-        /// /v2/core/vault/network_tokens/:id/generate_cryptogram. Every successful call generates a
-        /// new cryptogram, and retrying can generate another cryptogram. The cryptogram is returned
-        /// only in this response and is never persisted.
+        /// Every successful call generates a new cryptogram, and retrying can generate another
+        /// cryptogram. The cryptogram is returned only in this response and is never persisted.
         /// </summary>
         public virtual Task<NetworkToken> GenerateCryptogramAsync(string id, NetworkTokenGenerateCryptogramOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -78,8 +70,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Retrieves the persisted NetworkToken projection for GET
-        /// /v2/core/vault/network_tokens/:id.
+        /// Retrieves an existing network token.
         /// </summary>
         public virtual NetworkToken Get(string id, NetworkTokenGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -87,8 +78,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Retrieves the persisted NetworkToken projection for GET
-        /// /v2/core/vault/network_tokens/:id.
+        /// Retrieves an existing network token.
         /// </summary>
         public virtual Task<NetworkToken> GetAsync(string id, NetworkTokenGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

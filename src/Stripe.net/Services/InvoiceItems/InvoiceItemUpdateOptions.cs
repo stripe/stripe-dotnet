@@ -60,6 +60,14 @@ namespace Stripe
         }
 
         /// <summary>
+        /// Pass an empty string to remove previously-defined invoicing rules. Setting invoicing
+        /// rules is not supported.
+        /// </summary>
+        [JsonProperty("invoicing_rules")]
+        [STJS.JsonPropertyName("invoicing_rules")]
+        public string InvoicingRules { get; set; }
+
+        /// <summary>
         /// The ids of the margins to apply to the invoice item. When set, the
         /// <c>default_margins</c> on the invoice do not apply to this invoice item.
         /// </summary>

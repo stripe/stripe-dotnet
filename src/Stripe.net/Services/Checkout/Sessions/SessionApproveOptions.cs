@@ -24,6 +24,14 @@ namespace Stripe.Checkout
         public SessionPaymentIntentDataOptions PaymentIntentData { get; set; }
 
         /// <summary>
+        /// Payment method-specific configuration to apply to the Checkout Session during approval.
+        /// Currently only supports <c>card</c> payment method options.
+        /// </summary>
+        [JsonProperty("payment_method_options")]
+        [STJS.JsonPropertyName("payment_method_options")]
+        public SessionPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
+
+        /// <summary>
         /// The URL to redirect your customer back to after they authenticate or cancel their
         /// payment on the payment method's app or site. This parameter is allowed and required if
         /// and only if you did not set the return URL during Checkout Session creation or in

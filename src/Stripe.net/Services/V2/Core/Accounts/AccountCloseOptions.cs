@@ -12,8 +12,8 @@ namespace Stripe.V2.Core
         /// <summary>
         /// Configurations on the Account to be closed. All configurations on the Account must be
         /// passed in for this request to succeed.
-        /// One of: <c>card_creator</c>, <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or
-        /// <c>money_manager</c>.
+        /// One of: <c>card_creator</c>, <c>customer</c>, <c>developer</c>, <c>merchant</c>,
+        /// <c>recipient</c>, or <c>money_manager</c>.
         /// </summary>
         [JsonProperty("applied_configurations")]
         [STJS.JsonPropertyName("applied_configurations")]
