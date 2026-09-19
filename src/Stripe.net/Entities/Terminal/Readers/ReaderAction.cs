@@ -94,6 +94,8 @@ namespace Stripe.Terminal
         /// <summary>
         /// Status of the action performed by the reader.
         /// One of: <c>failed</c>, <c>in_progress</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -104,6 +106,8 @@ namespace Stripe.Terminal
         /// One of: <c>collect_inputs</c>, <c>collect_payment_method</c>,
         /// <c>confirm_payment_intent</c>, <c>print_content</c>, <c>process_payment_intent</c>,
         /// <c>process_setup_intent</c>, <c>refund_payment</c>, or <c>set_reader_display</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

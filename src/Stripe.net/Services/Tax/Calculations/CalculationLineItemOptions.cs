@@ -57,6 +57,8 @@ namespace Stripe.Tax
         /// <summary>
         /// Specifies whether the <c>amount</c> includes taxes. Defaults to <c>exclusive</c>.
         /// One of: <c>exclusive</c>, or <c>inclusive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_behavior")]
         [STJS.JsonPropertyName("tax_behavior")]

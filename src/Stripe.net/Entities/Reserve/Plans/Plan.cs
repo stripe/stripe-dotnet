@@ -41,6 +41,8 @@ namespace Stripe.Reserve
         /// <summary>
         /// Indicates which party created this ReservePlan.
         /// One of: <c>application</c>, or <c>stripe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("created_by")]
         [STJS.JsonPropertyName("created_by")]
@@ -100,6 +102,8 @@ namespace Stripe.Reserve
         /// The current status of the ReservePlan. The ReservePlan only affects charges if it is
         /// <c>active</c>.
         /// One of: <c>active</c>, <c>disabled</c>, or <c>expired</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -108,6 +112,8 @@ namespace Stripe.Reserve
         /// <summary>
         /// The type of the ReservePlan.
         /// One of: <c>fixed_release</c>, or <c>rolling_release</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

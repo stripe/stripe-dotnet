@@ -15,6 +15,8 @@ namespace Stripe
         /// endpoint). Refer to each payment method's documentation to learn which refund attributes
         /// may be required.
         /// One of: <c>email</c>, <c>manual</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("refund_attributes_method")]
         [STJS.JsonPropertyName("refund_attributes_method")]

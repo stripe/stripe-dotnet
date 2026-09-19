@@ -43,6 +43,8 @@ namespace Stripe
         /// <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>, <c>satispay</c>,
         /// <c>sepa_credit_transfer</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>,
         /// <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, or <c>wechat_pay</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_types")]
         [STJS.JsonPropertyName("payment_method_types")]

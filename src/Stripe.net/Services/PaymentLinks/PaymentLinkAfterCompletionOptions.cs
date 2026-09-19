@@ -26,6 +26,8 @@ namespace Stripe
         /// The specified behavior after the purchase is complete. Either <c>redirect</c> or
         /// <c>hosted_confirmation</c>.
         /// One of: <c>hosted_confirmation</c>, or <c>redirect</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

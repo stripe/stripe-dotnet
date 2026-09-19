@@ -13,6 +13,8 @@ namespace Stripe.Events
         /// One of: <c>bank_accounts.local</c>, <c>bank_accounts.wire</c>, <c>cards</c>,
         /// <c>stripe_balance.payouts</c>, <c>stripe_balance.stripe_transfers</c>, or
         /// <c>stripe.transfers</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("updated_capability")]
         [STJS.JsonPropertyName("updated_capability")]

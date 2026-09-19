@@ -96,6 +96,8 @@ namespace Stripe.FinancialConnections
         /// Permissions requested for accounts collected during this session.
         /// One of: <c>balances</c>, <c>ownership</c>, <c>payment_method</c>, or
         /// <c>transactions</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("permissions")]
         [STJS.JsonPropertyName("permissions")]
@@ -104,6 +106,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// Data features requested to be retrieved upon account creation.
         /// One of: <c>balances</c>, <c>ownership</c>, or <c>transactions</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("prefetch")]
         [STJS.JsonPropertyName("prefetch")]
