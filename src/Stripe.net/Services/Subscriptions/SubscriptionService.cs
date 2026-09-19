@@ -337,7 +337,7 @@ namespace Stripe
         /// <summary>
         /// Serializes a Subscription cancel request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchCancel(string subscriptionExposedId, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchCancel(string id, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -346,7 +346,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "subscription_exposed_id", subscriptionExposedId } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -385,7 +385,7 @@ namespace Stripe
         /// <summary>
         /// Serializes a Subscription migrate request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchMigrate(string subscription, SubscriptionMigrateOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchMigrate(string id, SubscriptionMigrateOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -394,7 +394,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "subscription", subscription } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -409,7 +409,7 @@ namespace Stripe
         /// <summary>
         /// Serializes a Subscription pause request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchPause(string subscription, SubscriptionPauseOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchPause(string id, SubscriptionPauseOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -418,7 +418,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "subscription", subscription } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -433,7 +433,7 @@ namespace Stripe
         /// <summary>
         /// Serializes a Subscription resume request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchResume(string subscription, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchResume(string id, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -442,7 +442,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "subscription", subscription } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -457,7 +457,7 @@ namespace Stripe
         /// <summary>
         /// Serializes a Subscription update request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchUpdate(string subscriptionExposedId, SubscriptionUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchUpdate(string id, SubscriptionUpdateOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -466,7 +466,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "subscription_exposed_id", subscriptionExposedId } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };

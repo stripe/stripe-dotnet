@@ -9,6 +9,14 @@ namespace Stripe
     public class BalanceSettingsPaymentsPayoutsAutomaticTransferRulesByCurrencyOptions : INestedOptions
     {
         /// <summary>
+        /// The currency of the FinancialAccount balance that receives the automatic transfer. If
+        /// specified, funds are converted from the source currency before transfer.
+        /// </summary>
+        [JsonProperty("destination_currency")]
+        [STJS.JsonPropertyName("destination_currency")]
+        public string DestinationCurrency { get; set; }
+
+        /// <summary>
         /// The ID of the FinancialAccount that funds will be transferred to during automatic
         /// transfers.
         /// </summary>

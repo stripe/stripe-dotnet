@@ -112,7 +112,7 @@ namespace Stripe
         /// <summary>
         /// Serializes a ProductFeature create request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchCreate(string product, ProductFeatureCreateOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchCreate(string id, ProductFeatureCreateOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -121,7 +121,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "product", product } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -136,7 +136,7 @@ namespace Stripe
         /// <summary>
         /// Serializes a ProductFeature delete request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchDelete(string product, string id, ProductFeatureDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchDelete(string productId, string id, ProductFeatureDeleteOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -145,7 +145,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "product", product }, { "id", id } } },
+                { "path_params", new Dictionary<string, string> { { "product_id", productId }, { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };

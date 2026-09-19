@@ -44,7 +44,7 @@ namespace Stripe
         /// <summary>
         /// Serializes a CustomerCashBalance update request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchUpdate(string customer, CustomerCashBalanceUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchUpdate(string id, CustomerCashBalanceUpdateOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -53,7 +53,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "customer", customer } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };

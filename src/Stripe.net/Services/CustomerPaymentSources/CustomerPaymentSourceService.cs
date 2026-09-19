@@ -125,7 +125,7 @@ namespace Stripe
         /// <summary>
         /// Serializes a CustomerPaymentSource create request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchCreate(string customer, CustomerPaymentSourceCreateOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchCreate(string id, CustomerPaymentSourceCreateOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -134,7 +134,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "customer", customer } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -149,7 +149,7 @@ namespace Stripe
         /// <summary>
         /// Serializes a CustomerPaymentSource delete request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchDelete(string customer, string id, CustomerPaymentSourceDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchDelete(string customerId, string id, CustomerPaymentSourceDeleteOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -158,7 +158,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "customer", customer }, { "id", id } } },
+                { "path_params", new Dictionary<string, string> { { "customer_id", customerId }, { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -173,7 +173,7 @@ namespace Stripe
         /// <summary>
         /// Serializes a CustomerPaymentSource update request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchUpdate(string customer, string id, CustomerPaymentSourceUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchUpdate(string customerId, string id, CustomerPaymentSourceUpdateOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -182,7 +182,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "customer", customer }, { "id", id } } },
+                { "path_params", new Dictionary<string, string> { { "customer_id", customerId }, { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -197,7 +197,7 @@ namespace Stripe
         /// <summary>
         /// Serializes a CustomerPaymentSource verify request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchVerify(string customer, string id, CustomerPaymentSourceVerifyOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchVerify(string customerId, string id, CustomerPaymentSourceVerifyOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -206,7 +206,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "customer", customer }, { "id", id } } },
+                { "path_params", new Dictionary<string, string> { { "customer_id", customerId }, { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };

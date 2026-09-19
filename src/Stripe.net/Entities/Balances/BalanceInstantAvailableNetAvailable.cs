@@ -22,6 +22,13 @@ namespace Stripe
         [STJS.JsonPropertyName("destination")]
         public string Destination { get; set; }
 
+        /// <summary>
+        /// ID of the v2 Payout Method for this net balance (not expandable).
+        /// </summary>
+        [JsonProperty("payout_method")]
+        [STJS.JsonPropertyName("payout_method")]
+        public string PayoutMethod { get; set; }
+
         [JsonProperty("source_types")]
         [STJS.JsonPropertyName("source_types")]
         public BalanceInstantAvailableNetAvailableSourceTypes SourceTypes { get; set; }

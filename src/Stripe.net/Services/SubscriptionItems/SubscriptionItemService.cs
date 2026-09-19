@@ -141,7 +141,7 @@ namespace Stripe
         /// <summary>
         /// Serializes a SubscriptionItem delete request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchDelete(string item, SubscriptionItemDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchDelete(string id, SubscriptionItemDeleteOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -150,7 +150,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "item", item } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };
@@ -165,7 +165,7 @@ namespace Stripe
         /// <summary>
         /// Serializes a SubscriptionItem update request into a batch job JSONL line.
         /// </summary>
-        public virtual string SerializeBatchUpdate(string item, SubscriptionItemUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual string SerializeBatchUpdate(string id, SubscriptionItemUpdateOptions options = null, RequestOptions requestOptions = null)
         {
             var requestId = Guid.NewGuid().ToString();
             var stripeVersion = StripeConfiguration.ApiVersion;
@@ -174,7 +174,7 @@ namespace Stripe
             var requestBody = new Dictionary<string, object>
             {
                 { "id", requestId },
-                { "path_params", new Dictionary<string, string> { { "item", item } } },
+                { "path_params", new Dictionary<string, string> { { "id", id } } },
                 { "params", options },
                 { "stripe_version", stripeVersion },
             };

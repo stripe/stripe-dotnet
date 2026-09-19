@@ -11,7 +11,7 @@ namespace Stripe
     /// payment location.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class PaymentLocationCapability : StripeEntity<PaymentLocationCapability>, IHasObject, IHasId
+    public class PaymentLocationCapability : StripeEntity<PaymentLocationCapability>, IHasObject
     {
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
@@ -81,9 +81,5 @@ namespace Stripe
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
         public string Status { get; set; }
-
-        [JsonIgnore]
-        [STJS.JsonIgnore]
-        public string Id { get => this.Capability; set => this.Capability = value; }
     }
 }

@@ -9,8 +9,9 @@ namespace Stripe.V2.Core
 
     /// <summary>
     /// Set up an event destination to receive events from Stripe across multiple destination
-    /// types, including <a href="https://docs.stripe.com/webhooks">webhook endpoints</a> and <a
-    /// href="https://docs.stripe.com/event-destinations/eventbridge">Amazon EventBridge</a>.
+    /// types, including <a href="https://docs.stripe.com/webhooks">webhook endpoints</a>, <a
+    /// href="https://docs.stripe.com/event-destinations/eventbridge">Amazon EventBridge</a>,
+    /// and <a href="https://docs.stripe.com/event-destinations/eventgrid">Azure Event Grid</a>.
     /// Event destinations support receiving <a
     /// href="https://docs.stripe.com/api/v2/events">thin events</a> and <a
     /// href="https://docs.stripe.com/api/events">snapshot events</a>.

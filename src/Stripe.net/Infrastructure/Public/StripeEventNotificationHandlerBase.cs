@@ -248,6 +248,10 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingCadenceCreatedEventNotification>> v2BillingCadenceCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractActivatedEventNotification>> v2BillingContractActivated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCanceledEventNotification>> v2BillingContractCanceled;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCollectionBlockedEventNotification>> v2BillingContractCollectionBlocked;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCollectionCurrentEventNotification>> v2BillingContractCollectionCurrent;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCollectionPastDueEventNotification>> v2BillingContractCollectionPastDue;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCollectionUnpaidEventNotification>> v2BillingContractCollectionUnpaid;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCreatedEventNotification>> v2BillingContractCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractEndedEventNotification>> v2BillingContractEnded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractUpdatedEventNotification>> v2BillingContractUpdated;
@@ -363,6 +367,11 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthTrafficVolumeDropResolvedEventNotification>> v2CoreHealthTrafficVolumeDropResolved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthWebhookLatencyFiringEventNotification>> v2CoreHealthWebhookLatencyFiring;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthWebhookLatencyResolvedEventNotification>> v2CoreHealthWebhookLatencyResolved;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenActivatedEventNotification>> v2CoreVaultNetworkTokenActivated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenAuthorizationRequirementsChangedEventNotification>> v2CoreVaultNetworkTokenAuthorizationRequirementsChanged;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenDeactivatedEventNotification>> v2CoreVaultNetworkTokenDeactivated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenDetailsUpdatedEventNotification>> v2CoreVaultNetworkTokenDetailsUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenSuspendedEventNotification>> v2CoreVaultNetworkTokenSuspended;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunCreatedEventNotification>> v2DataReportingQueryRunCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunFailedEventNotification>> v2DataReportingQueryRunFailed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunSucceededEventNotification>> v2DataReportingQueryRunSucceeded;
@@ -389,6 +398,9 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDebitDisputeSucceededEventNotification>> v2MoneyManagementDebitDisputeSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification>> v2MoneyManagementFinancialAccountCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification>> v2MoneyManagementFinancialAccountUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountWalletExportCompletedEventNotification>> v2MoneyManagementFinancialAccountWalletExportCompleted;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountWalletExportPendingEventNotification>> v2MoneyManagementFinancialAccountWalletExportPending;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountWalletExportReadyEventNotification>> v2MoneyManagementFinancialAccountWalletExportReady;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountStatementCreatedEventNotification>> v2MoneyManagementFinancialAccountStatementCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountStatementRestatedEventNotification>> v2MoneyManagementFinancialAccountStatementRestated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAddressActivatedEventNotification>> v2MoneyManagementFinancialAddressActivated;
@@ -1847,6 +1859,30 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCollectionBlockedEventNotification>> V2BillingContractCollectionBlocked
+        {
+            add { this.AddEventHandler(ref this.v2BillingContractCollectionBlocked, value, "v2.billing.contract.collection_blocked"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCollectionCurrentEventNotification>> V2BillingContractCollectionCurrent
+        {
+            add { this.AddEventHandler(ref this.v2BillingContractCollectionCurrent, value, "v2.billing.contract.collection_current"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCollectionPastDueEventNotification>> V2BillingContractCollectionPastDue
+        {
+            add { this.AddEventHandler(ref this.v2BillingContractCollectionPastDue, value, "v2.billing.contract.collection_past_due"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCollectionUnpaidEventNotification>> V2BillingContractCollectionUnpaid
+        {
+            add { this.AddEventHandler(ref this.v2BillingContractCollectionUnpaid, value, "v2.billing.contract.collection_unpaid"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCreatedEventNotification>> V2BillingContractCreated
         {
             add { this.AddEventHandler(ref this.v2BillingContractCreated, value, "v2.billing.contract.created"); }
@@ -2537,6 +2573,36 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenActivatedEventNotification>> V2CoreVaultNetworkTokenActivated
+        {
+            add { this.AddEventHandler(ref this.v2CoreVaultNetworkTokenActivated, value, "v2.core.vault.network_token.activated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenAuthorizationRequirementsChangedEventNotification>> V2CoreVaultNetworkTokenAuthorizationRequirementsChanged
+        {
+            add { this.AddEventHandler(ref this.v2CoreVaultNetworkTokenAuthorizationRequirementsChanged, value, "v2.core.vault.network_token.authorization_requirements_changed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenDeactivatedEventNotification>> V2CoreVaultNetworkTokenDeactivated
+        {
+            add { this.AddEventHandler(ref this.v2CoreVaultNetworkTokenDeactivated, value, "v2.core.vault.network_token.deactivated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenDetailsUpdatedEventNotification>> V2CoreVaultNetworkTokenDetailsUpdated
+        {
+            add { this.AddEventHandler(ref this.v2CoreVaultNetworkTokenDetailsUpdated, value, "v2.core.vault.network_token.details_updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenSuspendedEventNotification>> V2CoreVaultNetworkTokenSuspended
+        {
+            add { this.AddEventHandler(ref this.v2CoreVaultNetworkTokenSuspended, value, "v2.core.vault.network_token.suspended"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunCreatedEventNotification>> V2DataReportingQueryRunCreated
         {
             add { this.AddEventHandler(ref this.v2DataReportingQueryRunCreated, value, "v2.data.reporting.query_run.created"); }
@@ -2690,6 +2756,24 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification>> V2MoneyManagementFinancialAccountUpdated
         {
             add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAccountUpdated, value, "v2.money_management.financial_account.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountWalletExportCompletedEventNotification>> V2MoneyManagementFinancialAccountWalletExportCompleted
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAccountWalletExportCompleted, value, "v2.money_management.financial_account.wallet_export.completed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountWalletExportPendingEventNotification>> V2MoneyManagementFinancialAccountWalletExportPending
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAccountWalletExportPending, value, "v2.money_management.financial_account.wallet_export.pending"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountWalletExportReadyEventNotification>> V2MoneyManagementFinancialAccountWalletExportReady
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAccountWalletExportReady, value, "v2.money_management.financial_account.wallet_export.ready"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -4260,6 +4344,22 @@ namespace Stripe
                 {
                     this.v2BillingContractCanceled.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCanceledEventNotification>((Stripe.Events.V2BillingContractCanceledEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V2BillingContractCollectionBlockedEventNotification)
+                {
+                    this.v2BillingContractCollectionBlocked.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCollectionBlockedEventNotification>((Stripe.Events.V2BillingContractCollectionBlockedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2BillingContractCollectionCurrentEventNotification)
+                {
+                    this.v2BillingContractCollectionCurrent.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCollectionCurrentEventNotification>((Stripe.Events.V2BillingContractCollectionCurrentEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2BillingContractCollectionPastDueEventNotification)
+                {
+                    this.v2BillingContractCollectionPastDue.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCollectionPastDueEventNotification>((Stripe.Events.V2BillingContractCollectionPastDueEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2BillingContractCollectionUnpaidEventNotification)
+                {
+                    this.v2BillingContractCollectionUnpaid.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCollectionUnpaidEventNotification>((Stripe.Events.V2BillingContractCollectionUnpaidEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V2BillingContractCreatedEventNotification)
                 {
                     this.v2BillingContractCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCreatedEventNotification>((Stripe.Events.V2BillingContractCreatedEventNotification)eventNotification, client));
@@ -4720,6 +4820,26 @@ namespace Stripe
                 {
                     this.v2CoreHealthWebhookLatencyResolved.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthWebhookLatencyResolvedEventNotification>((Stripe.Events.V2CoreHealthWebhookLatencyResolvedEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V2CoreVaultNetworkTokenActivatedEventNotification)
+                {
+                    this.v2CoreVaultNetworkTokenActivated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenActivatedEventNotification>((Stripe.Events.V2CoreVaultNetworkTokenActivatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreVaultNetworkTokenAuthorizationRequirementsChangedEventNotification)
+                {
+                    this.v2CoreVaultNetworkTokenAuthorizationRequirementsChanged.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenAuthorizationRequirementsChangedEventNotification>((Stripe.Events.V2CoreVaultNetworkTokenAuthorizationRequirementsChangedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreVaultNetworkTokenDeactivatedEventNotification)
+                {
+                    this.v2CoreVaultNetworkTokenDeactivated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenDeactivatedEventNotification>((Stripe.Events.V2CoreVaultNetworkTokenDeactivatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreVaultNetworkTokenDetailsUpdatedEventNotification)
+                {
+                    this.v2CoreVaultNetworkTokenDetailsUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenDetailsUpdatedEventNotification>((Stripe.Events.V2CoreVaultNetworkTokenDetailsUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreVaultNetworkTokenSuspendedEventNotification)
+                {
+                    this.v2CoreVaultNetworkTokenSuspended.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenSuspendedEventNotification>((Stripe.Events.V2CoreVaultNetworkTokenSuspendedEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V2DataReportingQueryRunCreatedEventNotification)
                 {
                     this.v2DataReportingQueryRunCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunCreatedEventNotification>((Stripe.Events.V2DataReportingQueryRunCreatedEventNotification)eventNotification, client));
@@ -4823,6 +4943,18 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification)
                 {
                     this.v2MoneyManagementFinancialAccountUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification>((Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAccountWalletExportCompletedEventNotification)
+                {
+                    this.v2MoneyManagementFinancialAccountWalletExportCompleted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountWalletExportCompletedEventNotification>((Stripe.Events.V2MoneyManagementFinancialAccountWalletExportCompletedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAccountWalletExportPendingEventNotification)
+                {
+                    this.v2MoneyManagementFinancialAccountWalletExportPending.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountWalletExportPendingEventNotification>((Stripe.Events.V2MoneyManagementFinancialAccountWalletExportPendingEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAccountWalletExportReadyEventNotification)
+                {
+                    this.v2MoneyManagementFinancialAccountWalletExportReady.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountWalletExportReadyEventNotification>((Stripe.Events.V2MoneyManagementFinancialAccountWalletExportReadyEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAccountStatementCreatedEventNotification)
                 {

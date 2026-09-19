@@ -110,6 +110,10 @@ namespace Stripe.FinancialConnections
         [STJS.JsonPropertyName("permissions")]
         public List<string> Permissions { get; set; }
 
+        [JsonProperty("pre_collected_consent")]
+        [STJS.JsonPropertyName("pre_collected_consent")]
+        public SessionPreCollectedConsent PreCollectedConsent { get; set; }
+
         /// <summary>
         /// Data features requested to be retrieved upon account creation.
         /// One of: <c>balances</c>, <c>inferred_balances</c>, <c>ownership</c>, or

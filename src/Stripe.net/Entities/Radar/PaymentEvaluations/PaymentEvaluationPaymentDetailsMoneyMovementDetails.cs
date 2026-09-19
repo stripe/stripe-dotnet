@@ -16,7 +16,7 @@ namespace Stripe.Radar
         public PaymentEvaluationPaymentDetailsMoneyMovementDetailsCard Card { get; set; }
 
         /// <summary>
-        /// Describes the type of money movement. Currently only <c>card</c> is supported.
+        /// Describes the type of money movement.
         /// </summary>
         [JsonProperty("money_movement_type")]
         [STJS.JsonPropertyName("money_movement_type")]

@@ -9,7 +9,7 @@ namespace Stripe.Issuing
     public class TokenNetworkDataMastercard : StripeEntity<TokenNetworkDataMastercard>
     {
         /// <summary>
-        /// A unique reference ID from MasterCard to represent the card account number.
+        /// A unique reference ID from Mastercard to represent the card account number.
         /// </summary>
         [JsonProperty("card_reference_id")]
         [STJS.JsonPropertyName("card_reference_id")]
@@ -23,7 +23,7 @@ namespace Stripe.Issuing
         public string TokenReferenceId { get; set; }
 
         /// <summary>
-        /// The ID of the entity requesting tokenization, specific to MasterCard.
+        /// The ID of the entity requesting tokenization, specific to Mastercard.
         /// </summary>
         [JsonProperty("token_requestor_id")]
         [STJS.JsonPropertyName("token_requestor_id")]
@@ -31,7 +31,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// The name of the entity requesting tokenization, if known. This is directly provided from
-        /// MasterCard.
+        /// Mastercard.
         /// </summary>
         [JsonProperty("token_requestor_name")]
         [STJS.JsonPropertyName("token_requestor_name")]

@@ -11,7 +11,7 @@ namespace Stripe.Treasury
     /// Use <a
     /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/into/inbound-transfers">InboundTransfers</a>
     /// to add funds to your <a
-    /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a> via a
+    /// href="https://docs.stripe.com/api#financial_accounts">FinancialAccount</a> via a
     /// PaymentMethod that is owned by you. The funds will be transferred via an ACH debit.
     ///
     /// Related guide: <a
@@ -75,7 +75,8 @@ namespace Stripe.Treasury
         public string Description { get; set; }
 
         /// <summary>
-        /// Details about this InboundTransfer's failure. Only set when status is <c>failed</c>.
+        /// Details about this InboundTransfer's failure. Will be set when <c>status=failed</c> or
+        /// <c>returned=true</c>.
         /// </summary>
         [JsonProperty("failure_details")]
         [STJS.JsonPropertyName("failure_details")]
