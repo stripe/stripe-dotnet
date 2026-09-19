@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// The account's preference for whether or not to display this payment method.
         /// One of: <c>none</c>, <c>off</c>, or <c>on</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("preference")]
         [STJS.JsonPropertyName("preference")]

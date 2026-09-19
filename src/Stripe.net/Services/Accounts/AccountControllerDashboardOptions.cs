@@ -13,6 +13,8 @@ namespace Stripe
         /// the Express Dashboard (<c>express</c>), or to no Stripe-hosted dashboard (<c>none</c>).
         /// Defaults to <c>full</c>.
         /// One of: <c>express</c>, <c>full</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

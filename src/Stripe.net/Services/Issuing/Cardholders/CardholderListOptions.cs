@@ -36,6 +36,8 @@ namespace Stripe.Issuing
         /// Only return cardholders that have the given status. One of <c>active</c>,
         /// <c>inactive</c>, or <c>blocked</c>.
         /// One of: <c>active</c>, <c>blocked</c>, or <c>inactive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -45,6 +47,8 @@ namespace Stripe.Issuing
         /// Only return cardholders that have the given type. One of <c>individual</c> or
         /// <c>company</c>.
         /// One of: <c>company</c>, or <c>individual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

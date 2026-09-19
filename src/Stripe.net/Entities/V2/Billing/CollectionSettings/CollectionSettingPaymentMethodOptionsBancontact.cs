@@ -12,6 +12,8 @@ namespace Stripe.V2.Billing
         /// Preferred language of the Bancontact authorization page that the customer is redirected
         /// to.
         /// One of: <c>de</c>, <c>en</c>, <c>fr</c>, or <c>nl</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("preferred_language")]
         [STJS.JsonPropertyName("preferred_language")]

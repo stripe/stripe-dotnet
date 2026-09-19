@@ -19,6 +19,8 @@ namespace Stripe.V2.MoneyManagement
         /// The fee type.
         /// One of: <c>cross_border_payout_fee</c>, <c>foreign_exchange_fee</c>,
         /// <c>instant_payout_fee</c>, <c>standard_payout_fee</c>, or <c>wire_payout_fee</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

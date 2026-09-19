@@ -57,6 +57,8 @@ namespace Stripe
         /// The business type.
         /// One of: <c>company</c>, <c>government_entity</c>, <c>individual</c>, or
         /// <c>non_profit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("business_type")]
         [STJS.JsonPropertyName("business_type")]
@@ -211,6 +213,8 @@ namespace Stripe
         /// The Stripe account type. Can be <c>standard</c>, <c>express</c>, <c>custom</c>, or
         /// <c>none</c>.
         /// One of: <c>custom</c>, <c>express</c>, <c>none</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

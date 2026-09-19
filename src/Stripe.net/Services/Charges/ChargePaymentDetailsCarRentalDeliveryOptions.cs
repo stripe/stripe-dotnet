@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// The delivery method for the payment.
         /// One of: <c>email</c>, <c>phone</c>, <c>pickup</c>, or <c>post</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("mode")]
         [STJS.JsonPropertyName("mode")]

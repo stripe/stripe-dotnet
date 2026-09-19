@@ -30,6 +30,8 @@ namespace Stripe
         /// <summary>
         /// The reason the reestimation failed.
         /// One of: <c>automation_failure</c>, or <c>internal_error</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

@@ -73,6 +73,8 @@ namespace Stripe.Reporting
         /// <c>refund_failure</c>, <c>risk_reserved_funds</c>, <c>tax</c>, <c>topup</c>,
         /// <c>topup_reversal</c>, <c>transfer</c>, <c>transfer_reversal</c>, or
         /// <c>unreconciled_customer_funds</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reporting_category")]
         [STJS.JsonPropertyName("reporting_category")]
@@ -266,6 +268,8 @@ namespace Stripe.Reporting
         /// <c>US/East-Indiana</c>, <c>US/Eastern</c>, <c>US/Hawaii</c>, <c>US/Indiana-Starke</c>,
         /// <c>US/Michigan</c>, <c>US/Mountain</c>, <c>US/Pacific</c>, <c>US/Pacific-New</c>,
         /// <c>US/Samoa</c>, <c>UTC</c>, <c>Universal</c>, <c>W-SU</c>, <c>WET</c>, or <c>Zulu</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("timezone")]
         [STJS.JsonPropertyName("timezone")]

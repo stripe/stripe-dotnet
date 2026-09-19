@@ -336,6 +336,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/api/balance_transactions/list#balance_transaction_list-payout">Balance
         /// Transactions API</a> to list all balance transactions that are paid out in this payout.
         /// One of: <c>completed</c>, <c>in_progress</c>, or <c>not_applicable</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reconciliation_status")]
         [STJS.JsonPropertyName("reconciliation_status")]
@@ -414,6 +416,8 @@ namespace Stripe
         /// <summary>
         /// Can be <c>bank_account</c> or <c>card</c>.
         /// One of: <c>bank_account</c>, or <c>card</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

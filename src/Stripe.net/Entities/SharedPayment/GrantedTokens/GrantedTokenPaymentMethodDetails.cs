@@ -37,6 +37,8 @@ namespace Stripe.SharedPayment
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
         /// One of: <c>affirm</c>, <c>card</c>, <c>klarna</c>, or <c>link</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

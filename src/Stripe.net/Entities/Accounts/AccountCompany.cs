@@ -133,6 +133,8 @@ namespace Stripe
         /// for more details.
         /// One of: <c>qualified_entity_exceeds_ownership_threshold</c>, or
         /// <c>qualifies_as_financial_institution</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("ownership_exemption_reason")]
         [STJS.JsonPropertyName("ownership_exemption_reason")]
@@ -178,6 +180,8 @@ namespace Stripe
         /// <c>sole_proprietorship</c>, <c>tax_exempt_government_instrumentality</c>,
         /// <c>unincorporated_association</c>, <c>unincorporated_non_profit</c>, or
         /// <c>unincorporated_partnership</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("structure")]
         [STJS.JsonPropertyName("structure")]

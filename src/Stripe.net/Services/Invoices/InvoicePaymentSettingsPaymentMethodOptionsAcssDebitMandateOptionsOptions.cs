@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// Transaction type of the mandate.
         /// One of: <c>business</c>, or <c>personal</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("transaction_type")]
         [STJS.JsonPropertyName("transaction_type")]

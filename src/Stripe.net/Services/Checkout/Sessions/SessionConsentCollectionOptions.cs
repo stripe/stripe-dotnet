@@ -22,6 +22,8 @@ namespace Stripe.Checkout
         /// into promotional communication from the merchant depending on the customer's locale.
         /// Only available to US merchants and US customers.
         /// One of: <c>auto</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("promotions")]
         [STJS.JsonPropertyName("promotions")]
@@ -32,6 +34,8 @@ namespace Stripe.Checkout
         /// before being able to pay. There must be a valid terms of service URL set in your <a
         /// href="https://dashboard.stripe.com/settings/public">Dashboard settings</a>.
         /// One of: <c>none</c>, or <c>required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("terms_of_service")]
         [STJS.JsonPropertyName("terms_of_service")]

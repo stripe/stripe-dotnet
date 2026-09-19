@@ -12,6 +12,8 @@ namespace Stripe
         /// Indicates whether or not the capture window is extended beyond the standard
         /// authorization.
         /// One of: <c>disabled</c>, or <c>enabled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

@@ -29,6 +29,8 @@ namespace Stripe.Treasury
         /// The results are in reverse chronological order by <c>created</c> or <c>posted_at</c>.
         /// The default is <c>created</c>.
         /// One of: <c>created</c>, or <c>posted_at</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("order_by")]
         [STJS.JsonPropertyName("order_by")]
@@ -38,6 +40,8 @@ namespace Stripe.Treasury
         /// Only return Transactions that have the given status: <c>open</c>, <c>posted</c>, or
         /// <c>void</c>.
         /// One of: <c>open</c>, <c>posted</c>, or <c>void</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

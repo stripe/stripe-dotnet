@@ -14,6 +14,8 @@ namespace Stripe
         /// For more information about these reconciliation modes, see <a
         /// href="https://docs.stripe.com/payments/customer-balance/reconciliation">Reconciliation</a>.
         /// One of: <c>automatic</c>, <c>manual</c>, or <c>merchant_default</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reconciliation_mode")]
         [STJS.JsonPropertyName("reconciliation_mode")]

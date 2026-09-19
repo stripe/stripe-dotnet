@@ -22,6 +22,8 @@ namespace Stripe
         /// to the exact amount to be charged in future payments. If <c>maximum</c>, the amount
         /// charged can be up to the value passed for the <c>amount</c> param.
         /// One of: <c>fixed</c>, or <c>maximum</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("amount_type")]
         [STJS.JsonPropertyName("amount_type")]
@@ -59,6 +61,8 @@ namespace Stripe
         /// Specifies payment frequency. One of <c>day</c>, <c>week</c>, <c>month</c>, <c>year</c>,
         /// or <c>sporadic</c>.
         /// One of: <c>day</c>, <c>month</c>, <c>sporadic</c>, <c>week</c>, or <c>year</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("interval")]
         [STJS.JsonPropertyName("interval")]

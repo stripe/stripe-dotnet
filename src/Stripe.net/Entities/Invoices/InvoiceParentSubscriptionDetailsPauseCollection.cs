@@ -12,6 +12,8 @@ namespace Stripe
         /// <summary>
         /// The payment collection behavior for this subscription while paused.
         /// One of: <c>keep_as_draft</c>, <c>mark_uncollectible</c>, or <c>void</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("behavior")]
         [STJS.JsonPropertyName("behavior")]

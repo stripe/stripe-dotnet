@@ -19,6 +19,8 @@ namespace Stripe.Tax
         /// <summary>
         /// Type of registration in an EU country.
         /// One of: <c>ioss</c>, <c>oss_non_union</c>, <c>oss_union</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
