@@ -13,6 +13,8 @@ namespace Stripe.Terminal
         /// checkout flow. Stripe products such as Checkout and Elements use this field to determine
         /// whether a payment method can be shown as a saved payment method in a checkout flow.
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allow_redisplay")]
         [STJS.JsonPropertyName("allow_redisplay")]

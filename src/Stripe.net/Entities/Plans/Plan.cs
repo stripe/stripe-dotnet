@@ -77,6 +77,8 @@ namespace Stripe
         /// that the unit pricing will be computed using a tiering strategy as defined using the
         /// <c>tiers</c> and <c>tiers_mode</c> attributes.
         /// One of: <c>per_unit</c>, or <c>tiered</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("billing_scheme")]
         [STJS.JsonPropertyName("billing_scheme")]
@@ -112,6 +114,8 @@ namespace Stripe
         /// The frequency at which a subscription is billed. One of <c>day</c>, <c>week</c>,
         /// <c>month</c> or <c>year</c>.
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("interval")]
         [STJS.JsonPropertyName("interval")]
@@ -205,6 +209,8 @@ namespace Stripe
         /// <c>volume</c>-based tiering, the maximum quantity within a period determines the per
         /// unit price. In <c>graduated</c> tiering, pricing can change as the quantity grows.
         /// One of: <c>graduated</c>, or <c>volume</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tiers_mode")]
         [STJS.JsonPropertyName("tiers_mode")]
@@ -232,6 +238,8 @@ namespace Stripe
         /// <c>quantity</c> set when adding it to a subscription. <c>metered</c> aggregates the
         /// total usage based on usage records. Defaults to <c>licensed</c>.
         /// One of: <c>licensed</c>, or <c>metered</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("usage_type")]
         [STJS.JsonPropertyName("usage_type")]

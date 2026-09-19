@@ -19,6 +19,8 @@ namespace Stripe
         /// <summary>
         /// The client type that the end customer will pay from.
         /// One of: <c>android</c>, <c>ios</c>, or <c>web</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("client")]
         [STJS.JsonPropertyName("client")]
@@ -47,6 +49,9 @@ namespace Stripe
         /// If you've already set <c>setup_future_usage</c> and you're performing a request using a
         /// publishable key, you can only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
+        /// One of: <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]

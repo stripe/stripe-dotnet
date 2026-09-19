@@ -61,6 +61,8 @@ namespace Stripe
         /// <summary>
         /// Only return prices of type <c>recurring</c> or <c>one_time</c>.
         /// One of: <c>one_time</c>, or <c>recurring</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

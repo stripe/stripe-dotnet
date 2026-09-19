@@ -21,6 +21,8 @@ namespace Stripe
         /// An additional hash is included on the Wallet subhash with a name matching this value. It
         /// contains additional information specific to the card wallet type.
         /// One of: <c>apple_pay</c>, <c>google_pay</c>, or <c>link</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
