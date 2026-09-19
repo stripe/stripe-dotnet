@@ -19,6 +19,8 @@ namespace Stripe
         /// <summary>
         /// Latest status of the reestimation.
         /// One of: <c>failed</c>, <c>in_progress</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

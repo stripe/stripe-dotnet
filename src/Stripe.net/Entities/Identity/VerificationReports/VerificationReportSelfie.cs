@@ -34,6 +34,8 @@ namespace Stripe.Identity
         /// <summary>
         /// Status of this <c>selfie</c> check.
         /// One of: <c>unverified</c>, or <c>verified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

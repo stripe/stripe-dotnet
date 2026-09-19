@@ -21,6 +21,8 @@ namespace Stripe
         /// One of: <c>other</c>, <c>partial_ticket_refund</c>,
         /// <c>passenger_transport_ancillary_cancellation</c>,
         /// <c>ticket_and_ancillary_cancellation</c>, or <c>ticket_cancellation</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("credit_reason")]
         [STJS.JsonPropertyName("credit_reason")]

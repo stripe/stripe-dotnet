@@ -46,6 +46,8 @@ namespace Stripe.Identity
         /// <summary>
         /// The user's verified id number type.
         /// One of: <c>br_cpf</c>, <c>sg_nric</c>, or <c>us_ssn</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("id_number_type")]
         [STJS.JsonPropertyName("id_number_type")]
@@ -68,6 +70,8 @@ namespace Stripe.Identity
         /// <summary>
         /// The user's verified sex.
         /// One of: <c>[redacted]</c>, <c>female</c>, <c>male</c>, or <c>unknown</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("sex")]
         [STJS.JsonPropertyName("sex")]

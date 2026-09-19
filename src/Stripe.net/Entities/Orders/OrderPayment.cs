@@ -56,6 +56,8 @@ namespace Stripe
         /// One of: <c>canceled</c>, <c>complete</c>, <c>not_required</c>, <c>processing</c>,
         /// <c>requires_action</c>, <c>requires_capture</c>, <c>requires_confirmation</c>, or
         /// <c>requires_payment_method</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

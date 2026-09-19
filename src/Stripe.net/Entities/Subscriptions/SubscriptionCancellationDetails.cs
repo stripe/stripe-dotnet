@@ -22,6 +22,8 @@ namespace Stripe
         /// One of: <c>customer_service</c>, <c>low_quality</c>, <c>missing_features</c>,
         /// <c>other</c>, <c>switched_service</c>, <c>too_complex</c>, <c>too_expensive</c>, or
         /// <c>unused</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("feedback")]
         [STJS.JsonPropertyName("feedback")]
@@ -68,6 +70,8 @@ namespace Stripe
         /// Why this subscription was canceled.
         /// One of: <c>canceled_by_retention_policy</c>, <c>cancellation_requested</c>,
         /// <c>payment_disputed</c>, or <c>payment_failed</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

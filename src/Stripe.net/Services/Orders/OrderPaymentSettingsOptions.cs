@@ -51,6 +51,8 @@ namespace Stripe
         /// <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>,
         /// <c>ideal</c>, <c>klarna</c>, <c>link</c>, <c>oxxo</c>, <c>p24</c>, <c>paypal</c>,
         /// <c>sepa_debit</c>, <c>sofort</c>, or <c>wechat_pay</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_types")]
         [STJS.JsonPropertyName("payment_method_types")]

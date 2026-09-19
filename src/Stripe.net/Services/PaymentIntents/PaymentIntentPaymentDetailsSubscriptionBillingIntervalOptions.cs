@@ -20,6 +20,8 @@ namespace Stripe
         /// Specifies a type of interval unit. Either <c>day</c>, <c>week</c>, <c>month</c> or
         /// <c>year</c>.
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("interval")]
         [STJS.JsonPropertyName("interval")]

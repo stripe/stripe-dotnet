@@ -56,6 +56,9 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// The purpose of the OutboundPayment.
+        /// One of: <c>payroll</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("purpose")]
         [STJS.JsonPropertyName("purpose")]

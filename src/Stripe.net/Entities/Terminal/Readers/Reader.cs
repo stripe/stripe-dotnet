@@ -62,6 +62,8 @@ namespace Stripe.Terminal
         /// <c>simulated_wisepos_e</c>, <c>stripe_m2</c>, <c>stripe_s700</c>, <c>stripe_s710</c>,
         /// <c>verifone_P400</c>, <c>verifone_m425</c>, <c>verifone_p630</c>, <c>verifone_ux700</c>,
         /// or <c>verifone_v660p</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("device_type")]
         [STJS.JsonPropertyName("device_type")]
@@ -155,6 +157,8 @@ namespace Stripe.Terminal
         /// The networking status of the reader. We do not recommend using this field in flows that
         /// may block taking payments.
         /// One of: <c>offline</c>, or <c>online</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

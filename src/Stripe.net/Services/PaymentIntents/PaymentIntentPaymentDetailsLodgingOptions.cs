@@ -41,6 +41,8 @@ namespace Stripe
         /// <summary>
         /// The lodging category.
         /// One of: <c>hotel</c>, or <c>vacation_rental</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("category")]
         [STJS.JsonPropertyName("category")]
@@ -89,6 +91,8 @@ namespace Stripe
         /// List of additional charges being billed.
         /// One of: <c>gift_shop</c>, <c>laundry</c>, <c>mini_bar</c>, <c>other</c>,
         /// <c>restaurant</c>, or <c>telephone</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("extra_charges")]
         [STJS.JsonPropertyName("extra_charges")]

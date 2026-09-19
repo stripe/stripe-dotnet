@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// Behavior of the subscription schedule and underlying subscription when it ends.
         /// One of: <c>cancel</c>, or <c>release</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("end_behavior")]
         [STJS.JsonPropertyName("end_behavior")]

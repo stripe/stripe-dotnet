@@ -120,6 +120,8 @@ namespace Stripe.Tax
         /// matching this value. It contains additional information specific to the tax form type.
         /// One of: <c>au_serr</c>, <c>ca_mrdp</c>, <c>eu_dac7</c>, <c>gb_mrdp</c>, <c>nz_mrdp</c>,
         /// <c>us_1099_k</c>, <c>us_1099_misc</c>, or <c>us_1099_nec</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

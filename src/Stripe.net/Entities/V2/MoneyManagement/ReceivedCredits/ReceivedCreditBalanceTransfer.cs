@@ -47,6 +47,8 @@ namespace Stripe.V2.MoneyManagement
         /// Open Enum. The type of Stripe Money Movement that originated the ReceivedCredit.
         /// One of: <c>outbound_payment</c>, <c>outbound_transfer</c>, <c>payout</c>,
         /// <c>transfer</c>, or <c>payout_v1</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

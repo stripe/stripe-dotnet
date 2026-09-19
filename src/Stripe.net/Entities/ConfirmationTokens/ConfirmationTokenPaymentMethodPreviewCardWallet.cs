@@ -46,6 +46,8 @@ namespace Stripe
         /// this value. It contains additional information specific to the card wallet type.
         /// One of: <c>amex_express_checkout</c>, <c>apple_pay</c>, <c>google_pay</c>, <c>link</c>,
         /// <c>masterpass</c>, <c>samsung_pay</c>, or <c>visa_checkout</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

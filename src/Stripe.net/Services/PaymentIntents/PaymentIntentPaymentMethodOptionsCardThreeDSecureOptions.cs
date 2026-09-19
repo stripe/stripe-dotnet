@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// The <c>transStatus</c> returned from the card Issuer’s ACS in the ARes.
         /// One of: <c>A</c>, <c>C</c>, <c>I</c>, <c>N</c>, <c>R</c>, <c>U</c>, or <c>Y</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("ares_trans_status")]
         [STJS.JsonPropertyName("ares_trans_status")]
@@ -29,6 +31,8 @@ namespace Stripe
         /// The Electronic Commerce Indicator (ECI) is returned by your 3D Secure provider and
         /// indicates what degree of authentication was performed.
         /// One of: <c>01</c>, <c>02</c>, <c>05</c>, <c>06</c>, or <c>07</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("electronic_commerce_indicator")]
         [STJS.JsonPropertyName("electronic_commerce_indicator")]
@@ -37,6 +41,8 @@ namespace Stripe
         /// <summary>
         /// The exemption requested via 3DS and accepted by the issuer at authentication time.
         /// One of: <c>low_risk</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("exemption_indicator")]
         [STJS.JsonPropertyName("exemption_indicator")]
@@ -70,6 +76,8 @@ namespace Stripe
         /// <summary>
         /// The version of 3D Secure that was performed.
         /// One of: <c>1.0.2</c>, <c>2.1.0</c>, <c>2.2.0</c>, <c>2.3.0</c>, or <c>2.3.1</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("version")]
         [STJS.JsonPropertyName("version")]

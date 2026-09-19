@@ -31,7 +31,8 @@ namespace Examples.V2
             var apiKey = Environment.GetEnvironmentVariable("STRIPE_API_KEY");
             client = new StripeClient(apiKey);
 
-            webhookSecret = Environment.GetEnvironmentVariable("WEBHOOK_SECRET") ?? string.Empty;
+            webhookSecret = Environment.GetEnvironmentVariable("WEBHOOK_SECRET")
+                ?? throw new InvalidOperationException("WEBHOOK_SECRET environment variable is not set.");
         }
 
         [HttpPost]

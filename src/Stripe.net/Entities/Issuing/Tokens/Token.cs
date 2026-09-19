@@ -99,6 +99,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// The token service provider / card network associated with the token.
         /// One of: <c>mastercard</c>, or <c>visa</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]
@@ -121,6 +123,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// The usage state of the token.
         /// One of: <c>active</c>, <c>deleted</c>, <c>requested</c>, or <c>suspended</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -129,6 +133,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// The digital wallet for this token, if one was used.
         /// One of: <c>apple_pay</c>, <c>google_pay</c>, or <c>samsung_pay</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("wallet_provider")]
         [STJS.JsonPropertyName("wallet_provider")]

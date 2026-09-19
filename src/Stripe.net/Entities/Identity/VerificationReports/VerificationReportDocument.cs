@@ -83,6 +83,8 @@ namespace Stripe.Identity
         /// <summary>
         /// Sex of the person in the document.
         /// One of: <c>[redacted]</c>, <c>female</c>, <c>male</c>, or <c>unknown</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("sex")]
         [STJS.JsonPropertyName("sex")]
@@ -91,6 +93,8 @@ namespace Stripe.Identity
         /// <summary>
         /// Status of this <c>document</c> check.
         /// One of: <c>unverified</c>, or <c>verified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -99,6 +103,8 @@ namespace Stripe.Identity
         /// <summary>
         /// Type of the document.
         /// One of: <c>driving_license</c>, <c>id_card</c>, or <c>passport</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

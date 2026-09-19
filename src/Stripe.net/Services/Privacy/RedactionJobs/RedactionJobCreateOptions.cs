@@ -19,6 +19,8 @@ namespace Stripe.Privacy
         /// <summary>
         /// Determines the validation behavior of the job. Default is <c>error</c>.
         /// One of: <c>error</c>, or <c>fix</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("validation_behavior")]
         [STJS.JsonPropertyName("validation_behavior")]
