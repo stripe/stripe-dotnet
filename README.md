@@ -194,6 +194,10 @@ requestOptions.IdempotencyKey = "SOME STRING";
 requestOptions.StripeAccount = "CONNECTED ACCOUNT ID";
 ```
 
+### Suppressing Stripe notices
+
+The SDK may print notices from Stripe that it receives in the `Stripe-Notice` header. These notices are always printed when the SDK runs in an agent environment. For API calls to test accounts or sandboxes, notices are also printed when the SDK runs outside an agent environment. To suppress notices when the SDK runs outside an agent environment, set the `STRIPE_SUPPRESS_NOTICES` environment variable to `true` before running your integration.
+
 ### Using a custom `HttpClient`
 
 You can configure the library with your own custom `HttpClient`:
