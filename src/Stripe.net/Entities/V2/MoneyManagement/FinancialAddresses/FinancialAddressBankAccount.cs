@@ -15,6 +15,9 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("aba")]
         public FinancialAddressBankAccountAba Aba { get; set; }
 
+        /// <summary>
+        /// CLABE bank account details (Mexico).
+        /// </summary>
         [JsonProperty("clabe")]
         [STJS.JsonPropertyName("clabe")]
         public FinancialAddressBankAccountClabe Clabe { get; set; }
@@ -26,6 +29,9 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("country")]
         public string Country { get; set; }
 
+        /// <summary>
+        /// CPA bank account details (Canada).
+        /// </summary>
         [JsonProperty("cpa")]
         [STJS.JsonPropertyName("cpa")]
         public FinancialAddressBankAccountCpa Cpa { get; set; }

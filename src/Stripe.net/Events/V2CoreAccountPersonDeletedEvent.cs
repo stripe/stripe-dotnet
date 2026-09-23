@@ -15,7 +15,6 @@ namespace Stripe.Events
         /// </summary>
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]
-
         public V2CoreAccountPersonDeletedEventData Data { get; set; }
 
         /// <summary>
@@ -23,7 +22,6 @@ namespace Stripe.Events
         /// </summary>
         [JsonProperty("related_object")]
         [STJS.JsonPropertyName("related_object")]
-
         public V2.Core.EventRelatedObject RelatedObject { get; set; }
 
         /// <summary>

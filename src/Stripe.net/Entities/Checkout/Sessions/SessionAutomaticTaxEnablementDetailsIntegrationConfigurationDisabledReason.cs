@@ -9,7 +9,7 @@ namespace Stripe.Checkout
     public class SessionAutomaticTaxEnablementDetailsIntegrationConfigurationDisabledReason : StripeEntity<SessionAutomaticTaxEnablementDetailsIntegrationConfigurationDisabledReason>
     {
         /// <summary>
-        /// The parameter that prevented <c>automatic_tax</c> from being enabled (e.g.
+        /// The parameter that prevented <c>automatic_tax</c> from being enabled (for example
         /// <c>line_items[][tax_rates]</c>).
         /// </summary>
         [JsonProperty("conflicting_field")]

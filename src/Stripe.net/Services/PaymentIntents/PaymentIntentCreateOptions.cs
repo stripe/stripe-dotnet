@@ -152,7 +152,7 @@ namespace Stripe
         /// Payment methods attached to other Customers cannot be used with this PaymentIntent.
         ///
         /// If <a
-        /// href="https://api.stripe.com#payment_intent_object-setup_future_usage">setup_future_usage</a>
+        /// href="https://docs.stripe.com/api#payment_intent_object-setup_future_usage">setup_future_usage</a>
         /// is set and this PaymentIntent's payment method is not <c>card_present</c>, then the
         /// payment method attaches to the Customer after the PaymentIntent has been confirmed and
         /// any required actions from the user are complete. If the payment method is
@@ -171,7 +171,7 @@ namespace Stripe
         /// Payment methods attached to other Accounts cannot be used with this PaymentIntent.
         ///
         /// If <a
-        /// href="https://api.stripe.com#payment_intent_object-setup_future_usage">setup_future_usage</a>
+        /// href="https://docs.stripe.com/api#payment_intent_object-setup_future_usage">setup_future_usage</a>
         /// is set and this PaymentIntent's payment method is not <c>card_present</c>, then the
         /// payment method attaches to the Account after the PaymentIntent has been confirmed and
         /// any required actions from the user are complete. If the payment method is
@@ -313,7 +313,7 @@ namespace Stripe
         /// <c>customer.default_source</c> to improve migration for users of the Charges API. We
         /// recommend that you explicitly provide the <c>payment_method</c> moving forward. If the
         /// payment method is attached to a Customer, you must also provide the ID of that Customer
-        /// as the <a href="https://api.stripe.com#create_payment_intent-customer">customer</a>
+        /// as the <a href="https://docs.stripe.com/api#create_payment_intent-customer">customer</a>
         /// parameter of this PaymentIntent. end.
         /// </summary>
         [JsonProperty("payment_method")]

@@ -44,6 +44,14 @@ namespace Stripe.V2.MoneyManagement
         public ReceivedCreditBankTransferMxBankAccount MxBankAccount { get; set; }
 
         /// <summary>
+        /// Network-level detail for the transfer that created this ReceivedCredit. Present only for
+        /// ACH.
+        /// </summary>
+        [JsonProperty("network_details")]
+        [STJS.JsonPropertyName("network_details")]
+        public ReceivedCreditBankTransferNetworkDetails NetworkDetails { get; set; }
+
+        /// <summary>
         /// Hash containing the originating bank account details and type for this bank transfer.
         /// </summary>
         [JsonProperty("originating_bank_account")]

@@ -9,7 +9,8 @@ namespace Stripe
     public class ProductTaxDetails : StripeEntity<ProductTaxDetails>
     {
         /// <summary>
-        /// The performance location.
+        /// The ID of a tax location with type <c>performance</c>, representing where the
+        /// performance takes place.
         /// </summary>
         [JsonProperty("performance_location")]
         [STJS.JsonPropertyName("performance_location")]

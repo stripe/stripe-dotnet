@@ -123,6 +123,10 @@ namespace Stripe
                     ret = Stripe.V2.RecipientNotNotifiableException.Parse(httpStatusCode, body);
                     break;
 
+                case "service_unavailable":
+                    ret = Stripe.V2.ServiceUnavailableException.Parse(httpStatusCode, body);
+                    break;
+
                 case "temporary_session_expired":
                     ret = Stripe.V2.TemporarySessionExpiredException.Parse(httpStatusCode, body);
                     break;

@@ -113,6 +113,7 @@ namespace Stripe
                     "financial_connections.authorization", typeof(
                     FinancialConnections.Authorization)
                 },
+                { "financial_connections.consent", typeof(FinancialConnections.Consent) },
                 {
                     "financial_connections.institution", typeof(
                     FinancialConnections.Institution)
@@ -194,7 +195,6 @@ namespace Stripe
                     QuotePreviewSubscriptionSchedule)
                 },
                 { "radar.account_evaluation", typeof(Radar.AccountEvaluation) },
-                { "radar.billing_evaluation", typeof(Radar.BillingEvaluation) },
                 { "radar.customer_evaluation", typeof(Radar.CustomerEvaluation) },
                 { "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning) },
                 {
@@ -374,6 +374,14 @@ namespace Stripe
                     V2.MoneyManagement.FinancialAccountStatement)
                 },
                 {
+                    "v2.money_management.financial_account_wallet_export", typeof(
+                    V2.MoneyManagement.FinancialAccountWalletExport)
+                },
+                {
+                    "v2.money_management.financial_account_wallet_export_credentials", typeof(
+                    V2.MoneyManagement.FinancialAccountWalletExportCredentials)
+                },
+                {
                     "v2.money_management.financial_address", typeof(
                     V2.MoneyManagement.FinancialAddress)
                 },
@@ -442,6 +450,27 @@ namespace Stripe
                     "v2.payments.settlement_allocation_intent_split", typeof(
                     V2.Payments.SettlementAllocationIntentSplit)
                 },
+                { "v2.provisioning.eligibility", typeof(V2.Provisioning.Eligibility) },
+                {
+                    "v2.provisioning.payment_method_request", typeof(
+                    V2.Provisioning.PaymentMethodRequest)
+                },
+                { "v2.provisioning.payment_profile", typeof(V2.Provisioning.PaymentProfile) },
+                { "v2.provisioning.project", typeof(V2.Provisioning.Project) },
+                { "v2.provisioning.provider", typeof(V2.Provisioning.Provider) },
+                {
+                    "v2.provisioning.provider_connection", typeof(
+                    V2.Provisioning.ProviderConnection)
+                },
+                {
+                    "v2.provisioning.provider_connection_request", typeof(
+                    V2.Provisioning.ProviderConnectionRequest)
+                },
+                {
+                    "v2.provisioning.provider_service_detail", typeof(
+                    V2.Provisioning.ProviderServiceDetail)
+                },
+                { "v2.provisioning.resource", typeof(V2.Provisioning.Resource) },
                 { "v2.reporting.report", typeof(V2.Reporting.Report) },
                 { "v2.reporting.report_run", typeof(V2.Reporting.ReportRun) },
                 { "v2.risk.inquiry", typeof(V2.Risk.Inquiry) },
@@ -994,6 +1023,22 @@ namespace Stripe
                     "v2.billing.contract.canceled", typeof(
                     Events.V2BillingContractCanceledEvent)
                 },
+                {
+                    "v2.billing.contract.collection_blocked", typeof(
+                    Events.V2BillingContractCollectionBlockedEvent)
+                },
+                {
+                    "v2.billing.contract.collection_current", typeof(
+                    Events.V2BillingContractCollectionCurrentEvent)
+                },
+                {
+                    "v2.billing.contract.collection_past_due", typeof(
+                    Events.V2BillingContractCollectionPastDueEvent)
+                },
+                {
+                    "v2.billing.contract.collection_unpaid", typeof(
+                    Events.V2BillingContractCollectionUnpaidEvent)
+                },
                 { "v2.billing.contract.created", typeof(Events.V2BillingContractCreatedEvent) },
                 { "v2.billing.contract.ended", typeof(Events.V2BillingContractEndedEvent) },
                 { "v2.billing.contract.updated", typeof(Events.V2BillingContractUpdatedEvent) },
@@ -1413,6 +1458,26 @@ namespace Stripe
                     Events.V2CoreHealthWebhookLatencyResolvedEvent)
                 },
                 {
+                    "v2.core.vault.network_token.activated", typeof(
+                    Events.V2CoreVaultNetworkTokenActivatedEvent)
+                },
+                {
+                    "v2.core.vault.network_token.authorization_requirements_changed", typeof(
+                    Events.V2CoreVaultNetworkTokenAuthorizationRequirementsChangedEvent)
+                },
+                {
+                    "v2.core.vault.network_token.deactivated", typeof(
+                    Events.V2CoreVaultNetworkTokenDeactivatedEvent)
+                },
+                {
+                    "v2.core.vault.network_token.details_updated", typeof(
+                    Events.V2CoreVaultNetworkTokenDetailsUpdatedEvent)
+                },
+                {
+                    "v2.core.vault.network_token.suspended", typeof(
+                    Events.V2CoreVaultNetworkTokenSuspendedEvent)
+                },
+                {
                     "v2.data.reporting.query_run.created", typeof(
                     Events.V2DataReportingQueryRunCreatedEvent)
                 },
@@ -1503,6 +1568,18 @@ namespace Stripe
                 {
                     "v2.money_management.financial_account.updated", typeof(
                     Events.V2MoneyManagementFinancialAccountUpdatedEvent)
+                },
+                {
+                    "v2.money_management.financial_account.wallet_export.completed", typeof(
+                    Events.V2MoneyManagementFinancialAccountWalletExportCompletedEvent)
+                },
+                {
+                    "v2.money_management.financial_account.wallet_export.pending", typeof(
+                    Events.V2MoneyManagementFinancialAccountWalletExportPendingEvent)
+                },
+                {
+                    "v2.money_management.financial_account.wallet_export.ready", typeof(
+                    Events.V2MoneyManagementFinancialAccountWalletExportReadyEvent)
                 },
                 {
                     "v2.money_management.financial_account_statement.created", typeof(
@@ -2538,6 +2615,22 @@ namespace Stripe
                     Events.V2BillingContractCanceledEventNotification)
                 },
                 {
+                    "v2.billing.contract.collection_blocked", typeof(
+                    Events.V2BillingContractCollectionBlockedEventNotification)
+                },
+                {
+                    "v2.billing.contract.collection_current", typeof(
+                    Events.V2BillingContractCollectionCurrentEventNotification)
+                },
+                {
+                    "v2.billing.contract.collection_past_due", typeof(
+                    Events.V2BillingContractCollectionPastDueEventNotification)
+                },
+                {
+                    "v2.billing.contract.collection_unpaid", typeof(
+                    Events.V2BillingContractCollectionUnpaidEventNotification)
+                },
+                {
                     "v2.billing.contract.created", typeof(
                     Events.V2BillingContractCreatedEventNotification)
                 },
@@ -2998,6 +3091,26 @@ namespace Stripe
                     Events.V2CoreHealthWebhookLatencyResolvedEventNotification)
                 },
                 {
+                    "v2.core.vault.network_token.activated", typeof(
+                    Events.V2CoreVaultNetworkTokenActivatedEventNotification)
+                },
+                {
+                    "v2.core.vault.network_token.authorization_requirements_changed", typeof(
+                    Events.V2CoreVaultNetworkTokenAuthorizationRequirementsChangedEventNotification)
+                },
+                {
+                    "v2.core.vault.network_token.deactivated", typeof(
+                    Events.V2CoreVaultNetworkTokenDeactivatedEventNotification)
+                },
+                {
+                    "v2.core.vault.network_token.details_updated", typeof(
+                    Events.V2CoreVaultNetworkTokenDetailsUpdatedEventNotification)
+                },
+                {
+                    "v2.core.vault.network_token.suspended", typeof(
+                    Events.V2CoreVaultNetworkTokenSuspendedEventNotification)
+                },
+                {
                     "v2.data.reporting.query_run.created", typeof(
                     Events.V2DataReportingQueryRunCreatedEventNotification)
                 },
@@ -3088,6 +3201,18 @@ namespace Stripe
                 {
                     "v2.money_management.financial_account.updated", typeof(
                     Events.V2MoneyManagementFinancialAccountUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.financial_account.wallet_export.completed", typeof(
+                    Events.V2MoneyManagementFinancialAccountWalletExportCompletedEventNotification)
+                },
+                {
+                    "v2.money_management.financial_account.wallet_export.pending", typeof(
+                    Events.V2MoneyManagementFinancialAccountWalletExportPendingEventNotification)
+                },
+                {
+                    "v2.money_management.financial_account.wallet_export.ready", typeof(
+                    Events.V2MoneyManagementFinancialAccountWalletExportReadyEventNotification)
                 },
                 {
                     "v2.money_management.financial_account_statement.created", typeof(

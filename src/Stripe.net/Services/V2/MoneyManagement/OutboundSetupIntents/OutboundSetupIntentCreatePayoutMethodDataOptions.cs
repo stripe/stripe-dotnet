@@ -9,6 +9,13 @@ namespace Stripe.V2.MoneyManagement
     public class OutboundSetupIntentCreatePayoutMethodDataOptions : INestedOptions
     {
         /// <summary>
+        /// The type specific details of the Apple Pay payout method.
+        /// </summary>
+        [JsonProperty("apple_pay")]
+        [STJS.JsonPropertyName("apple_pay")]
+        public OutboundSetupIntentCreatePayoutMethodDataApplePayOptions ApplePay { get; set; }
+
+        /// <summary>
         /// The type specific details of the bank account payout method.
         /// </summary>
         [JsonProperty("bank_account")]
@@ -31,7 +38,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. The type of payout method to be created.
-        /// One of: <c>bank_account</c>, <c>card</c>, <c>crypto_wallet</c>, or
+        /// One of: <c>apple_pay</c>, <c>bank_account</c>, <c>card</c>, <c>crypto_wallet</c>, or
         /// <c>network_business_profile_wallet</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

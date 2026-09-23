@@ -193,6 +193,15 @@ namespace Stripe.Issuing
         public AuthorizationFuel Fuel { get; set; }
 
         /// <summary>
+        /// Information about the list of fuel items that were purchased with this transaction.
+        /// Typically this information is received from the merchant after the authorization has
+        /// been approved and the fuel dispensed.
+        /// </summary>
+        [JsonProperty("fuels")]
+        [STJS.JsonPropertyName("fuels")]
+        public List<AuthorizationFuels> Fuels { get; set; }
+
+        /// <summary>
         /// Details about the IIAS FSA/HSA healthcare amounts on this authorization.
         /// </summary>
         [JsonProperty("healthcare")]

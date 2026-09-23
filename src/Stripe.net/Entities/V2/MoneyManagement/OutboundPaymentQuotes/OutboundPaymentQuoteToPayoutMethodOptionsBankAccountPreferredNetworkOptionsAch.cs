@@ -9,6 +9,13 @@ namespace Stripe.V2.MoneyManagement
     public class OutboundPaymentQuoteToPayoutMethodOptionsBankAccountPreferredNetworkOptionsAch : StripeEntity<OutboundPaymentQuoteToPayoutMethodOptionsBankAccountPreferredNetworkOptionsAch>
     {
         /// <summary>
+        /// Freeform ACH addenda (max 80 characters) included in the NACHA submission.
+        /// </summary>
+        [JsonProperty("addenda")]
+        [STJS.JsonPropertyName("addenda")]
+        public string Addenda { get; set; }
+
+        /// <summary>
         /// Open Enum. ACH submission timing.
         /// One of: <c>next_day</c>, or <c>same_day</c>.
         ///

@@ -57,6 +57,13 @@ namespace Stripe.Treasury
         public string OriginPaymentMethod { get; set; }
 
         /// <summary>
+        /// Additional options about the origin PaymentMethod.
+        /// </summary>
+        [JsonProperty("origin_payment_method_options")]
+        [STJS.JsonPropertyName("origin_payment_method_options")]
+        public InboundTransferOriginPaymentMethodOptionsOptions OriginPaymentMethodOptions { get; set; }
+
+        /// <summary>
         /// The complete description that appears on your customers' statements. Maximum 10
         /// characters. Can only include -#.$&amp;*, spaces, and alphanumeric characters.
         /// </summary>

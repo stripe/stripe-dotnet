@@ -9,6 +9,7 @@ namespace Stripe
     {
         private FinancialConnections.AccountService accounts;
         private FinancialConnections.AuthorizationService authorizations;
+        private FinancialConnections.ConsentService consents;
         private FinancialConnections.InstitutionService institutions;
         private FinancialConnections.SessionService sessions;
         private FinancialConnections.TransactionService transactions;
@@ -27,6 +28,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual FinancialConnections.AuthorizationService Authorizations => this.authorizations ??= new FinancialConnections.AuthorizationService(
+            this.Requestor);
+
+        public virtual FinancialConnections.ConsentService Consents => this.consents ??= new FinancialConnections.ConsentService(
             this.Requestor);
 
         public virtual FinancialConnections.InstitutionService Institutions => this.institutions ??= new FinancialConnections.InstitutionService(

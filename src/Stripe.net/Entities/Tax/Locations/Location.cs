@@ -32,8 +32,8 @@ namespace Stripe.Tax
         /// <summary>
         /// A descriptive text providing additional context about the tax location. This can include
         /// information about the venue, types of events held, services available, or any relevant
-        /// details for better identification (e.g., "A spacious auditorium suitable for large
-        /// concerts and events.").
+        /// details for better identification (for example, "A spacious auditorium suitable for
+        /// large concerts and events.").
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]

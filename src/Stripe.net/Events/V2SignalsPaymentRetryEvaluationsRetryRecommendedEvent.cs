@@ -16,7 +16,6 @@ namespace Stripe.Events
         /// </summary>
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]
-
         public V2SignalsPaymentRetryEvaluationsRetryRecommendedEventData Data { get; set; }
     }
 }

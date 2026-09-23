@@ -8,9 +8,9 @@ namespace Stripe.FinancialConnections
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TransactionClassification : StripeEntity<TransactionClassification>
     {
-        [JsonProperty("credit")]
-        [STJS.JsonPropertyName("credit")]
-        public TransactionClassificationCredit Credit { get; set; }
+        [JsonProperty("financial_activity")]
+        [STJS.JsonPropertyName("financial_activity")]
+        public TransactionClassificationFinancialActivity FinancialActivity { get; set; }
 
         [JsonProperty("money_movement")]
         [STJS.JsonPropertyName("money_movement")]

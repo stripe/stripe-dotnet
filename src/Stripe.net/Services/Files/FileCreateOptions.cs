@@ -18,7 +18,7 @@ namespace Stripe
 
         /// <summary>
         /// Optional parameters that automatically create a <a
-        /// href="https://api.stripe.com#file_links">file link</a> for the newly created file.
+        /// href="https://docs.stripe.com/api#file_links">file link</a> for the newly created file.
         /// </summary>
         [JsonProperty("file_link_data")]
         [STJS.JsonPropertyName("file_link_data")]

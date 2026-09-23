@@ -31,7 +31,7 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// The customer's address.
+        /// The customer's billing address.
         /// </summary>
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]

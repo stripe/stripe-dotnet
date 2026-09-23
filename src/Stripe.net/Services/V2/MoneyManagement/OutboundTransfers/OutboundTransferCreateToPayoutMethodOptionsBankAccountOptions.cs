@@ -10,6 +10,13 @@ namespace Stripe.V2.MoneyManagement
     public class OutboundTransferCreateToPayoutMethodOptionsBankAccountOptions : INestedOptions
     {
         /// <summary>
+        /// Per-network configuration options.
+        /// </summary>
+        [JsonProperty("preferred_network_options")]
+        [STJS.JsonPropertyName("preferred_network_options")]
+        public OutboundTransferCreateToPayoutMethodOptionsBankAccountPreferredNetworkOptionsOptions PreferredNetworkOptions { get; set; }
+
+        /// <summary>
         /// The preferred networks to use for this OutboundTransfer.
         /// One of: <c>ach</c>, <c>becs</c>, <c>eft</c>, <c>fedwire</c>, <c>fps</c>, <c>npp</c>,
         /// <c>rtp</c>, <c>sepa_credit</c>, <c>sepa_instant</c>, or <c>swift</c>.

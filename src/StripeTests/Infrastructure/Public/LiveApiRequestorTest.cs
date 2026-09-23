@@ -739,6 +739,59 @@ namespace StripeTests
         }
 
         [Fact]
+        public void StripeNoticeMessage_TellsHumansHowToSuppressNotices()
+        {
+            var headers = BuildHeaders("Stripe-Notice", "test notice message");
+
+            Assert.Equal(
+                "test notice message\nTo suppress Stripe notices in test and sandbox environments, set the STRIPE_SUPPRESS_NOTICES environment variable to true.",
+                LiveApiRequestor.BuildStripeNoticeMessage(headers, _ => null));
+        }
+
+        [Theory]
+        [InlineData("true")]
+        [InlineData("TRUE")]
+        public void StripeNoticeMessage_SuppressesNoticesForHumans(string suppressionValue)
+        {
+            var headers = BuildHeaders("Stripe-Notice", "test notice message");
+
+            Assert.Null(LiveApiRequestor.BuildStripeNoticeMessage(
+                headers,
+                key => key == "STRIPE_SUPPRESS_NOTICES" ? suppressionValue : null));
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData("false")]
+        [InlineData("1")]
+        [InlineData("invalid")]
+        public void StripeNoticeMessage_DoesNotSuppressNoticesForOtherValues(string suppressionValue)
+        {
+            var headers = BuildHeaders("Stripe-Notice", "test notice message");
+
+            Assert.NotNull(LiveApiRequestor.BuildStripeNoticeMessage(
+                headers,
+                key => key == "STRIPE_SUPPRESS_NOTICES" ? suppressionValue : null));
+        }
+
+        [Fact]
+        public void StripeNoticeMessage_DoesNotSuppressNoticesForAIAgents()
+        {
+            var headers = BuildHeaders("Stripe-Notice", "test notice message");
+            var environment = new Dictionary<string, string>
+            {
+                ["STRIPE_SUPPRESS_NOTICES"] = "true",
+                ["CODEX_SANDBOX"] = "1",
+            };
+
+            Assert.Equal(
+                "test notice message",
+                LiveApiRequestor.BuildStripeNoticeMessage(
+                    headers,
+                    key => environment.TryGetValue(key, out var value) ? value : null));
+        }
+
+        [Fact]
         public async Task RequestAsync_NoStderrWrite_WhenStripeNoticeHeaderAbsent()
         {
             var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");

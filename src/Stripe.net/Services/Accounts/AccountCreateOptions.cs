@@ -12,7 +12,7 @@ namespace Stripe
         private Dictionary<string, string> metadata;
 
         /// <summary>
-        /// An <a href="https://api.stripe.com#create_account_token">account token</a>, used to
+        /// An <a href="https://docs.stripe.com/api#create_account_token">account token</a>, used to
         /// securely provide details to the account.
         /// </summary>
         [JsonProperty("account_token")]

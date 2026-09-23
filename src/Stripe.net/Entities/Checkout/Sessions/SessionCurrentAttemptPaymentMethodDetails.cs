@@ -35,6 +35,10 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("card")]
         public SessionCurrentAttemptPaymentMethodDetailsCard Card { get; set; }
 
+        [JsonProperty("custom")]
+        [STJS.JsonPropertyName("custom")]
+        public SessionCurrentAttemptPaymentMethodDetailsCustom Custom { get; set; }
+
         [JsonProperty("link")]
         [STJS.JsonPropertyName("link")]
         public SessionCurrentAttemptPaymentMethodDetailsLink Link { get; set; }

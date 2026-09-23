@@ -36,6 +36,13 @@ namespace Stripe.V2.MoneyManagement
         public PayoutMethodAlternativeReference AlternativeReference { get; set; }
 
         /// <summary>
+        /// The PayoutMethodApplePay object details.
+        /// </summary>
+        [JsonProperty("apple_pay")]
+        [STJS.JsonPropertyName("apple_pay")]
+        public PayoutMethodApplePay ApplePay { get; set; }
+
+        /// <summary>
         /// A set of available payout speeds for this payout method.
         /// One of: <c>instant</c>, or <c>standard</c>.
         /// </summary>
@@ -103,7 +110,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. The type of payout method.
-        /// One of: <c>bank_account</c>, <c>card</c>, <c>crypto_wallet</c>, or
+        /// One of: <c>apple_pay</c>, <c>bank_account</c>, <c>card</c>, <c>crypto_wallet</c>, or
         /// <c>network_business_profile_wallet</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

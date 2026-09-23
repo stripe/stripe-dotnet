@@ -15,7 +15,6 @@ namespace Stripe.Events
         /// </summary>
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]
-
         public V2CoreHealthApiErrorFiringEventData Data { get; set; }
     }
 }
