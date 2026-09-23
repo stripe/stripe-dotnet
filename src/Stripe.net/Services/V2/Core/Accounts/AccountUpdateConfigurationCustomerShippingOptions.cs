@@ -13,7 +13,7 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
-        public V2.AddressOptions Address { get; set; }
+        public AddressOptions Address { get; set; }
 
         /// <summary>
         /// Customer name.
