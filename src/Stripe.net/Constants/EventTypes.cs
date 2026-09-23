@@ -65,6 +65,24 @@ namespace Stripe
         public const string ApplicationFeeRefunded = "application_fee.refunded";
 
         /// <summary>
+        /// Occurs whenever a user installs a Stripe app. Sent to the app developer, embedding
+        /// platform, and installing merchant.
+        /// </summary>
+        public const string AppsInstallCreated = "apps.install.created";
+
+        /// <summary>
+        /// Occurs whenever a user uninstalls a Stripe app. Sent to the app developer, embedding
+        /// platform, and installing merchant.
+        /// </summary>
+        public const string AppsInstallDeleted = "apps.install.deleted";
+
+        /// <summary>
+        /// Occurs whenever a user updates a Stripe app. Sent to the app developer, embedding
+        /// platform, and installing merchant.
+        /// </summary>
+        public const string AppsInstallUpdated = "apps.install.updated";
+
+        /// <summary>
         /// Occurs whenever a balance settings status or property has changed.
         /// </summary>
         public const string BalanceSettingsUpdated = "balance_settings.updated";

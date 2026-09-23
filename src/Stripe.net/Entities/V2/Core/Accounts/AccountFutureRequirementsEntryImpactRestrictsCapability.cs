@@ -46,7 +46,7 @@ namespace Stripe.V2.Core
         /// <c>outbound_payments.paper_checks</c>, <c>outbound_transfers.bank_accounts</c>,
         /// <c>outbound_transfers.financial_accounts</c>, <c>oxxo_payments</c>, <c>p24_payments</c>,
         /// <c>paper_checks</c>, <c>payco_payments</c>, <c>paynow_payments</c>,
-        /// <c>pay_by_bank_payments</c>, <c>promptpay_payments</c>,
+        /// <c>pay_by_bank_payments</c>, <c>projects</c>, <c>promptpay_payments</c>,
         /// <c>received_credits.bank_accounts</c>, <c>received_debits.bank_accounts</c>,
         /// <c>revolut_pay_payments</c>, <c>samsung_pay_payments</c>,
         /// <c>sepa_bank_transfer_payments</c>, <c>sepa_debit_payments</c>,
@@ -62,8 +62,8 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// The configuration which specifies the Capability which will be restricted.
-        /// One of: <c>card_creator</c>, <c>customer</c>, <c>merchant</c>, <c>money_manager</c>,
-        /// <c>recipient</c>, or <c>storer</c>.
+        /// One of: <c>card_creator</c>, <c>customer</c>, <c>developer</c>, <c>merchant</c>,
+        /// <c>money_manager</c>, <c>recipient</c>, or <c>storer</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

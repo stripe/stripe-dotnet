@@ -101,7 +101,8 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsBoletoOptions Boleto { get; set; }
 
         /// <summary>
-        /// contains details about the Card payment method options.
+        /// Card-specific payment method options. Use this to control 3D Secure behavior during
+        /// approval.
         /// </summary>
         [JsonProperty("card")]
         [STJS.JsonPropertyName("card")]

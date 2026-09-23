@@ -8,7 +8,11 @@ namespace Stripe.Apps
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// An object representing an app installation.
+    /// An app install represents a Stripe App that is installed on an account. It reports the
+    /// permissions, content security policy entries, and endpoints that the installing account
+    /// has authorized, along with any that the app's latest version requests but the account
+    /// has not authorized yet. Use the Install API to install, reauthorize, and uninstall apps,
+    /// and to check the state of existing installs.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Install : StripeEntity<Install>, IHasId, IHasObject
@@ -43,7 +47,8 @@ namespace Stripe.Apps
 
         /// <summary>
         /// Whether the installer must authorize pending permissions, content security policy
-        /// entries, or endpoints.
+        /// entries, or endpoints. For private apps, <c>approval_required</c> stays <c>false</c>.
+        /// Install a new version from the Dashboard to grant its permissions.
         /// </summary>
         [JsonProperty("approval_required")]
         [STJS.JsonPropertyName("approval_required")]

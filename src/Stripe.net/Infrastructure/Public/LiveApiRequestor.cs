@@ -235,14 +235,39 @@ namespace Stripe
 
         private static void MaybeEmitStripeNotice(HttpResponseHeaders headers)
         {
-            if (headers != null && headers.Contains("Stripe-Notice"))
+            var message = BuildStripeNoticeMessage(headers, Environment.GetEnvironmentVariable);
+            if (message != null)
             {
-                var notice = headers.GetValues("Stripe-Notice").FirstOrDefault();
-                if (!string.IsNullOrEmpty(notice))
-                {
-                    Console.Error.WriteLine(notice);
-                }
+                Console.Error.WriteLine(message);
             }
+        }
+
+        internal static string BuildStripeNoticeMessage(
+            HttpResponseHeaders headers,
+            Func<string, string> getEnvironmentVariable)
+        {
+            if (headers == null || !headers.Contains("Stripe-Notice"))
+            {
+                return null;
+            }
+
+            var notice = headers.GetValues("Stripe-Notice").FirstOrDefault();
+            if (string.IsNullOrEmpty(notice))
+            {
+                return null;
+            }
+
+            var aiAgent = SystemNetHttpClient.DetectAIAgent(getEnvironmentVariable);
+            var suppressionValue = getEnvironmentVariable("STRIPE_SUPPRESS_NOTICES");
+            if (string.IsNullOrEmpty(aiAgent)
+                && string.Equals(suppressionValue, "true", StringComparison.OrdinalIgnoreCase))
+            {
+                return null;
+            }
+
+            return string.IsNullOrEmpty(aiAgent)
+                ? notice + "\nTo suppress Stripe notices in test and sandbox environments, set the STRIPE_SUPPRESS_NOTICES environment variable to true."
+                : notice;
         }
 
         // Note: BaseOptions options really means query params here

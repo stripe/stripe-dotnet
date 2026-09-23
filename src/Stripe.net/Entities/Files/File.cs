@@ -8,9 +8,9 @@ namespace Stripe
 
     /// <summary>
     /// This object represents files hosted on Stripe's servers. You can upload files with the
-    /// <a href="https://api.stripe.com#create_file">create file</a> request (for example, when
-    /// uploading dispute evidence). Stripe also creates files independently (for example, the
-    /// results of a <a href="https://stripe.com/docs/api#scheduled_queries">Sigma scheduled
+    /// <a href="https://docs.stripe.com/api#create_file">create file</a> request (for example,
+    /// when uploading dispute evidence). Stripe also creates files independently (for example,
+    /// the results of a <a href="https://stripe.com/docs/api#scheduled_queries">Sigma scheduled
     /// query</a>).
     ///
     /// Related guide: <a href="https://docs.stripe.com/file-upload">File upload guide</a>.
@@ -58,8 +58,8 @@ namespace Stripe
         public string Filename { get; set; }
 
         /// <summary>
-        /// A list of <a href="https://api.stripe.com#file_links">file links</a> that point at this
-        /// file.
+        /// A list of <a href="https://docs.stripe.com/api#file_links">file links</a> that point at
+        /// this file.
         /// </summary>
         [JsonProperty("links")]
         [STJS.JsonPropertyName("links")]

@@ -29,6 +29,13 @@ namespace Stripe.Treasury
         public string AccountType { get; set; }
 
         /// <summary>
+        /// Details about an ACH transaction.
+        /// </summary>
+        [JsonProperty("ach")]
+        [STJS.JsonPropertyName("ach")]
+        public InboundTransferOriginPaymentMethodDetailsUsBankAccountAch Ach { get; set; }
+
+        /// <summary>
         /// Name of the bank associated with the bank account.
         /// </summary>
         [JsonProperty("bank_name")]

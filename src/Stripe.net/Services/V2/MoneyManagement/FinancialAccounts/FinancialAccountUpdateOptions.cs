@@ -20,6 +20,14 @@ namespace Stripe.V2.MoneyManagement
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// Forwarding settings for a closed FinancialAccount. Post-close forwarding updates are not
+        /// yet implemented.
+        /// </summary>
+        [JsonProperty("forwarding_settings")]
+        [STJS.JsonPropertyName("forwarding_settings")]
+        public FinancialAccountUpdateForwardingSettingsOptions ForwardingSettings { get; set; }
+
+        /// <summary>
         /// Metadata associated with the FinancialAccount.
         /// </summary>
         [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]

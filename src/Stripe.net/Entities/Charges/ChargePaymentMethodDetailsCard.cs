@@ -87,8 +87,8 @@ namespace Stripe
         /// <summary>
         /// The Electronic Commerce Indicator (ECI) returned by the card network in the
         /// authorization response. Indicates the level of authentication used. Only populated for
-        /// Visa and Mastercard transactions. The response value is the source of truth; it may
-        /// differ from the request value if the network downgraded the transaction.
+        /// Visa and Mastercard transactions. This is the network's final ECI and can differ from
+        /// the request value. An authenticated ECI alone doesn't determine liability shift.
         /// </summary>
         [JsonProperty("electronic_commerce_indicator")]
         [STJS.JsonPropertyName("electronic_commerce_indicator")]
@@ -278,6 +278,30 @@ namespace Stripe
         [JsonProperty("regulated_status")]
         [STJS.JsonPropertyName("regulated_status")]
         public string RegulatedStatus { get; set; }
+
+        /// <summary>
+        /// The payment_method_options.card.setup_credential_usage value that was passed when
+        /// setup_future_usage was present at confirmation, one of <c>recurring</c>,
+        /// <c>unscheduled</c>, or <c>installment</c>.
+        /// One of: <c>installment</c>, <c>recurring</c>, or <c>unscheduled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("setup_credential_usage")]
+        [STJS.JsonPropertyName("setup_credential_usage")]
+        public string SetupCredentialUsage { get; set; }
+
+        /// <summary>
+        /// The payment_method_options.card.stored_credential_usage value that was passed for an off
+        /// session, merchant-initiated transaction, one of <c>recurring</c>, <c>unscheduled</c>,
+        /// <c>on_session</c>, or <c>installment</c>.
+        /// One of: <c>installment</c>, <c>recurring</c>, or <c>unscheduled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("stored_credential_usage")]
+        [STJS.JsonPropertyName("stored_credential_usage")]
+        public string StoredCredentialUsage { get; set; }
 
         /// <summary>
         /// Populated if this transaction used 3D Secure authentication.

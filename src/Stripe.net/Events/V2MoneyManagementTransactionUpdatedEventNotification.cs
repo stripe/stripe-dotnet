@@ -16,7 +16,6 @@ namespace Stripe.Events
         /// </summary>
         [JsonProperty("related_object")]
         [STJS.JsonPropertyName("related_object")]
-
         public V2.Core.EventNotificationRelatedObject RelatedObject { get; set; }
 
         /// <summary>

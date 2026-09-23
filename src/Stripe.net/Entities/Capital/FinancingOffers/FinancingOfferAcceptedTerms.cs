@@ -40,6 +40,14 @@ namespace Stripe.Capital
         public long? PreviousFinancingFeeDiscountAmount { get; set; }
 
         /// <summary>
+        /// Total amount due for the financing independent of what's already been paid, in minor
+        /// units. For example, 100 USD is represented as 10000.
+        /// </summary>
+        [JsonProperty("total_due_amount")]
+        [STJS.JsonPropertyName("total_due_amount")]
+        public long TotalDueAmount { get; set; }
+
+        /// <summary>
         /// Per-transaction rate at which Stripe withholds funds to repay the financing.
         /// </summary>
         [JsonProperty("withhold_rate")]

@@ -8,8 +8,8 @@ namespace Stripe.Treasury
 
     /// <summary>
     /// ReceivedDebits represent funds pulled from a <a
-    /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a>. These are not
-    /// initiated from the FinancialAccount.
+    /// href="https://docs.stripe.com/api#financial_accounts">FinancialAccount</a>. These are
+    /// not initiated from the FinancialAccount.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReceivedDebit : StripeEntity<ReceivedDebit>, IHasId, IHasObject

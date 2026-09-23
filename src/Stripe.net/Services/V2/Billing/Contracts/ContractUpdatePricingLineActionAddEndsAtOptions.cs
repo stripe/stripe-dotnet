@@ -18,7 +18,7 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The type of end time to apply.
-        /// One of: <c>timestamp</c>.
+        /// One of: <c>never</c>, <c>now</c>, or <c>timestamp</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

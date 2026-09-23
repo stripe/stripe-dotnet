@@ -8,9 +8,10 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// You can reverse some <a href="https://api.stripe.com#received_debits">ReceivedDebits</a>
-    /// depending on their network and source flow. Reversing a ReceivedDebit leads to the
-    /// creation of a new object known as a DebitReversal.
+    /// You can reverse some <a
+    /// href="https://docs.stripe.com/api#received_debits">ReceivedDebits</a> depending on their
+    /// network and source flow. Reversing a ReceivedDebit leads to the creation of a new object
+    /// known as a DebitReversal.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class DebitReversal : StripeEntity<DebitReversal>, IHasId, IHasMetadata, IHasObject

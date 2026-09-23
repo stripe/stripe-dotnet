@@ -47,5 +47,15 @@ namespace Stripe.Terminal
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
         public string Status { get; set; }
+
+        /// <summary>
+        /// Filters readers by tamper state.
+        /// One of: <c>secure</c>, or <c>tampered</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("tamper_state")]
+        [STJS.JsonPropertyName("tamper_state")]
+        public string TamperState { get; set; }
     }
 }

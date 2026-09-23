@@ -8,8 +8,8 @@ namespace Stripe.Treasury
 
     /// <summary>
     /// ReceivedCredits represent funds sent to a <a
-    /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a> (for example, via
-    /// ACH or wire). These money movements are not initiated from the FinancialAccount.
+    /// href="https://docs.stripe.com/api#financial_accounts">FinancialAccount</a> (for example,
+    /// via ACH or wire). These money movements are not initiated from the FinancialAccount.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReceivedCredit : StripeEntity<ReceivedCredit>, IHasId, IHasObject

@@ -6,6 +6,9 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+    /// <summary>
+    /// A Tax Calculation Line Item represents a single item in a tax calculation.
+    /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CalculationLineItem : StripeEntity<CalculationLineItem>, IHasId, IHasMetadata, IHasObject
     {
