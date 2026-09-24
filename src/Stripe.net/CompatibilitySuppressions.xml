@@ -17,7 +17,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountCreateIdentityIndividualOptions.get_Address</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityIndividualScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityIndividualScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/net462/Stripe.net.dll</Left>
     <Right>lib/net462/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -31,7 +59,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonCreateScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonCreateScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.Accounts.PersonTokenCreateOptions.get_Address</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonTokenCreateScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonTokenCreateScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/net462/Stripe.net.dll</Left>
     <Right>lib/net462/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -45,6 +101,20 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonUpdateScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonUpdateScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsOptions.get_Address</Target>
     <Left>lib/net462/Stripe.net.dll</Left>
     <Right>lib/net462/Stripe.net.dll</Right>
@@ -52,7 +122,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityIndividualOptions.get_Address</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityIndividualScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityIndividualScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/net462/Stripe.net.dll</Left>
     <Right>lib/net462/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -73,7 +171,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityBusinessDetailsScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityBusinessDetailsScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountUpdateIdentityIndividualOptions.get_Address</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityIndividualScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net462/Stripe.net.dll</Left>
+    <Right>lib/net462/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityIndividualScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/net462/Stripe.net.dll</Left>
     <Right>lib/net462/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -94,7 +220,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountCreateIdentityIndividualOptions.get_Address</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityIndividualScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityIndividualScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/net6.0/Stripe.net.dll</Left>
     <Right>lib/net6.0/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -108,7 +262,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonCreateScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonCreateScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.Accounts.PersonTokenCreateOptions.get_Address</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonTokenCreateScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonTokenCreateScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/net6.0/Stripe.net.dll</Left>
     <Right>lib/net6.0/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -122,6 +304,20 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonUpdateScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonUpdateScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsOptions.get_Address</Target>
     <Left>lib/net6.0/Stripe.net.dll</Left>
     <Right>lib/net6.0/Stripe.net.dll</Right>
@@ -129,7 +325,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityIndividualOptions.get_Address</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityIndividualScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityIndividualScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/net6.0/Stripe.net.dll</Left>
     <Right>lib/net6.0/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -150,7 +374,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityBusinessDetailsScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityBusinessDetailsScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountUpdateIdentityIndividualOptions.get_Address</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityIndividualScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityIndividualScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/net6.0/Stripe.net.dll</Left>
     <Right>lib/net6.0/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -171,7 +423,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountCreateIdentityIndividualOptions.get_Address</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityIndividualScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityIndividualScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/net8.0/Stripe.net.dll</Left>
     <Right>lib/net8.0/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -185,7 +465,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonCreateScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonCreateScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.Accounts.PersonTokenCreateOptions.get_Address</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonTokenCreateScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonTokenCreateScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/net8.0/Stripe.net.dll</Left>
     <Right>lib/net8.0/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -199,6 +507,20 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonUpdateScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonUpdateScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsOptions.get_Address</Target>
     <Left>lib/net8.0/Stripe.net.dll</Left>
     <Right>lib/net8.0/Stripe.net.dll</Right>
@@ -206,7 +528,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityIndividualOptions.get_Address</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityIndividualScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityIndividualScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/net8.0/Stripe.net.dll</Left>
     <Right>lib/net8.0/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -227,7 +577,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityBusinessDetailsScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityBusinessDetailsScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountUpdateIdentityIndividualOptions.get_Address</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityIndividualScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net8.0/Stripe.net.dll</Left>
+    <Right>lib/net8.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityIndividualScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/net8.0/Stripe.net.dll</Left>
     <Right>lib/net8.0/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -248,7 +626,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountCreateIdentityIndividualOptions.get_Address</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityIndividualScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityIndividualScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/net9.0/Stripe.net.dll</Left>
     <Right>lib/net9.0/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -262,7 +668,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonCreateScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonCreateScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.Accounts.PersonTokenCreateOptions.get_Address</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonTokenCreateScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonTokenCreateScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/net9.0/Stripe.net.dll</Left>
     <Right>lib/net9.0/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -276,6 +710,20 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonUpdateScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonUpdateScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsOptions.get_Address</Target>
     <Left>lib/net9.0/Stripe.net.dll</Left>
     <Right>lib/net9.0/Stripe.net.dll</Right>
@@ -283,7 +731,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityIndividualOptions.get_Address</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityIndividualScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityIndividualScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/net9.0/Stripe.net.dll</Left>
     <Right>lib/net9.0/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -304,7 +780,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityBusinessDetailsScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityBusinessDetailsScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountUpdateIdentityIndividualOptions.get_Address</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityIndividualScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/net9.0/Stripe.net.dll</Left>
+    <Right>lib/net9.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityIndividualScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/net9.0/Stripe.net.dll</Left>
     <Right>lib/net9.0/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -325,7 +829,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountCreateIdentityIndividualOptions.get_Address</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityIndividualScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountCreateIdentityIndividualScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/netstandard2.0/Stripe.net.dll</Left>
     <Right>lib/netstandard2.0/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -339,7 +871,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonCreateScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonCreateScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.Accounts.PersonTokenCreateOptions.get_Address</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonTokenCreateScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonTokenCreateScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/netstandard2.0/Stripe.net.dll</Left>
     <Right>lib/netstandard2.0/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -353,6 +913,20 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonUpdateScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.Accounts.PersonUpdateScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsOptions.get_Address</Target>
     <Left>lib/netstandard2.0/Stripe.net.dll</Left>
     <Right>lib/netstandard2.0/Stripe.net.dll</Right>
@@ -360,7 +934,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityIndividualOptions.get_Address</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityIndividualScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountTokenCreateIdentityIndividualScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/netstandard2.0/Stripe.net.dll</Left>
     <Right>lib/netstandard2.0/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -381,7 +983,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityBusinessDetailsScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityBusinessDetailsScriptAddressesOptions.get_Kanji</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Stripe.V2.Core.AccountUpdateIdentityIndividualOptions.get_Address</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityIndividualScriptAddressesOptions.get_Kana</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.V2.Core.AccountUpdateIdentityIndividualScriptAddressesOptions.get_Kanji</Target>
     <Left>lib/netstandard2.0/Stripe.net.dll</Left>
     <Right>lib/netstandard2.0/Stripe.net.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
