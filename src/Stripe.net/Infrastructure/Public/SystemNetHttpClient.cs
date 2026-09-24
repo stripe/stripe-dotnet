@@ -25,12 +25,8 @@ namespace Stripe
         public const int DefaultMaxNumberRetries = 2;
 
         private const string StripeNetTargetFramework =
-#if NET6_0
-            "net6.0"
-#elif NET8_0
+#if NET8_0
             "net8.0"
-#elif NET9_0
-            "net9.0"
 #elif NETCOREAPP3_1
             "netcoreapp3.1"
 #elif NETSTANDARD2_0
@@ -76,8 +72,6 @@ namespace Stripe
             // The end of the section generated from our OpenAPI spec
         };
 
-        // Deprecated in .NET 9; but tls 1.2 became a default after .NET Framework 4.7
-#if !NET9_0_OR_GREATER
         static SystemNetHttpClient()
         {
             // Enable support for TLS 1.2, as Stripe's API requires it. This should only be
@@ -86,7 +80,6 @@ namespace Stripe
             ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol |
                 SecurityProtocolType.Tls12;
         }
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SystemNetHttpClient"/> class.
