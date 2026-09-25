@@ -6,6 +6,9 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+    /// <summary>
+    /// A Tax Calculation Line Item represents a single item in a tax calculation.
+    /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CalculationLineItem : StripeEntity<CalculationLineItem>, IHasId, IHasMetadata, IHasObject
     {
@@ -59,6 +62,16 @@ namespace Stripe.Tax
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Indicates the line item represents a performance where the venue location might
+        /// determine the tax, not the customer address. Leave empty if the tax code doesn't require
+        /// a tax location. If you provide this value for tax codes with an <c>optional</c> location
+        /// requirement, it overrides the customer address.
+        /// </summary>
+        [JsonProperty("performance_location")]
+        [STJS.JsonPropertyName("performance_location")]
+        public string PerformanceLocation { get; set; }
+
+        /// <summary>
         /// The ID of an existing <a href="https://docs.stripe.com/api/products/object">Product</a>.
         /// </summary>
         [JsonProperty("product")]
@@ -84,6 +97,8 @@ namespace Stripe.Tax
         /// Specifies whether the <c>amount</c> includes taxes. If <c>tax_behavior=inclusive</c>,
         /// then the amount includes taxes.
         /// One of: <c>exclusive</c>, or <c>inclusive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_behavior")]
         [STJS.JsonPropertyName("tax_behavior")]

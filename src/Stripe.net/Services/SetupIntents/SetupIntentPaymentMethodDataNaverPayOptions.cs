@@ -12,6 +12,8 @@ namespace Stripe
         /// Whether to use Naver Pay points or a card to fund this transaction. If not provided,
         /// this defaults to <c>card</c>.
         /// One of: <c>card</c>, or <c>points</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("funding")]
         [STJS.JsonPropertyName("funding")]

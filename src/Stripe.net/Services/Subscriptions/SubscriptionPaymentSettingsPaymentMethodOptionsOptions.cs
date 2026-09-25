@@ -11,6 +11,7 @@ namespace Stripe
         private SubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitOptions acssDebit;
         private SubscriptionPaymentSettingsPaymentMethodOptionsBancontactOptions bancontact;
         private SubscriptionPaymentSettingsPaymentMethodOptionsBillieOptions billie;
+        private SubscriptionPaymentSettingsPaymentMethodOptionsBlikOptions blik;
         private SubscriptionPaymentSettingsPaymentMethodOptionsCardOptions card;
         private SubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalanceOptions customerBalance;
         private SubscriptionPaymentSettingsPaymentMethodOptionsKonbiniOptions konbini;
@@ -71,6 +72,23 @@ namespace Stripe
             set
             {
                 this.billie = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// This sub-hash contains details about the Blik payment method options to pass to the
+        /// invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("blik", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("blik")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsBlikOptions Blik
+        {
+            get => this.blik;
+            set
+            {
+                this.blik = value;
                 this.SetTracker.Track();
             }
         }

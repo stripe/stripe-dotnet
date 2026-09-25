@@ -13,7 +13,7 @@ namespace Stripe
         private Dictionary<string, string> metadata;
 
         /// <summary>
-        /// An <a href="https://api.stripe.com#create_account_token">account token</a>, used to
+        /// An <a href="https://docs.stripe.com/api#create_account_token">account token</a>, used to
         /// securely provide details to the account.
         /// </summary>
         [JsonProperty("account_token")]
@@ -36,6 +36,8 @@ namespace Stripe
         /// is <c>application</c>, which includes Custom accounts.
         /// One of: <c>company</c>, <c>government_entity</c>, <c>individual</c>, or
         /// <c>non_profit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("business_type")]
         [STJS.JsonPropertyName("business_type")]

@@ -100,6 +100,13 @@ namespace Stripe
         public AccountCapabilitiesBlikPaymentsOptions BlikPayments { get; set; }
 
         /// <summary>
+        /// The blik_recurring_payments capability.
+        /// </summary>
+        [JsonProperty("blik_recurring_payments")]
+        [STJS.JsonPropertyName("blik_recurring_payments")]
+        public AccountCapabilitiesBlikRecurringPaymentsOptions BlikRecurringPayments { get; set; }
+
+        /// <summary>
         /// The boleto_payments capability.
         /// </summary>
         [JsonProperty("boleto_payments")]
@@ -324,6 +331,13 @@ namespace Stripe
         public AccountCapabilitiesPaynowPaymentsOptions PaynowPayments { get; set; }
 
         /// <summary>
+        /// The paypay_payments capability.
+        /// </summary>
+        [JsonProperty("paypay_payments")]
+        [STJS.JsonPropertyName("paypay_payments")]
+        public AccountCapabilitiesPaypayPaymentsOptions PaypayPayments { get; set; }
+
+        /// <summary>
         /// The payto_payments capability.
         /// </summary>
         [JsonProperty("payto_payments")]
@@ -385,6 +399,13 @@ namespace Stripe
         [JsonProperty("sepa_debit_payments")]
         [STJS.JsonPropertyName("sepa_debit_payments")]
         public AccountCapabilitiesSepaDebitPaymentsOptions SepaDebitPayments { get; set; }
+
+        /// <summary>
+        /// The sequra_payments capability.
+        /// </summary>
+        [JsonProperty("sequra_payments")]
+        [STJS.JsonPropertyName("sequra_payments")]
+        public AccountCapabilitiesSequraPaymentsOptions SequraPayments { get; set; }
 
         /// <summary>
         /// The sofort_payments capability.

@@ -104,6 +104,8 @@ namespace Stripe
         /// <c>card</c>, <c>card_present</c>, <c>eps</c>, <c>giropay</c>, <c>ideal</c>,
         /// <c>klarna</c>, <c>multibanco</c>, <c>p24</c>, <c>sepa_debit</c>, <c>sofort</c>,
         /// <c>three_d_secure</c>, or <c>wechat</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

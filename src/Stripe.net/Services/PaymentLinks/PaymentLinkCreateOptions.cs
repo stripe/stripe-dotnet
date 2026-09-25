@@ -52,6 +52,8 @@ namespace Stripe
         /// <summary>
         /// Configuration for collecting the customer's billing address. Defaults to <c>auto</c>.
         /// One of: <c>auto</c>, or <c>required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("billing_address_collection")]
         [STJS.JsonPropertyName("billing_address_collection")]
@@ -94,6 +96,8 @@ namespace Stripe
         /// sessions</a> created by this payment link create a <a
         /// href="https://docs.stripe.com/api/customers">Customer</a>.
         /// One of: <c>always</c>, or <c>if_required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("customer_creation")]
         [STJS.JsonPropertyName("customer_creation")]
@@ -192,6 +196,8 @@ namespace Stripe
         /// the guide on <a href="https://docs.stripe.com/payments/checkout/free-trials">configuring
         /// subscriptions with a free trial</a>.
         /// One of: <c>always</c>, or <c>if_required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_collection")]
         [STJS.JsonPropertyName("payment_method_collection")]
@@ -215,10 +221,12 @@ namespace Stripe
         /// <c>blik</c>, <c>boleto</c>, <c>card</c>, <c>cashapp</c>, <c>eps</c>, <c>fpx</c>,
         /// <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>, <c>konbini</c>,
         /// <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>oxxo</c>,
-        /// <c>p24</c>, <c>pay_by_bank</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>,
-        /// <c>promptpay</c>, <c>satispay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>sunbit</c>,
-        /// <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
-        /// <c>zip</c>.
+        /// <c>p24</c>, <c>pay_by_bank</c>, <c>paynow</c>, <c>paypal</c>, <c>paypay</c>,
+        /// <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>satispay</c>, <c>sepa_debit</c>,
+        /// <c>sequra</c>, <c>sofort</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_types")]
         [STJS.JsonPropertyName("payment_method_types")]
@@ -263,6 +271,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/api/payment_links/payment_links/object#url">url</a>
         /// property (example: <c>donate.stripe.com</c>).
         /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("submit_type")]
         [STJS.JsonPropertyName("submit_type")]

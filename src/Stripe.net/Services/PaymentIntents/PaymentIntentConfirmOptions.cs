@@ -25,24 +25,27 @@ namespace Stripe
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
         /// <c>bancontact</c>, <c>billie</c>, <c>bizum</c>, <c>blik</c>, <c>boku_promptpay</c>,
-        /// <c>boleto</c>, <c>capchase_pay</c>, <c>card</c>, <c>cashapp</c>, <c>check_scan</c>,
-        /// <c>click_to_pay</c>, <c>crypto</c>, <c>customer_balance</c>, <c>demo_pay</c>,
-        /// <c>duitnow</c>, <c>dummy_auth_push</c>, <c>dummy_passthrough_card</c>, <c>edenred</c>,
-        /// <c>eps</c>, <c>fpx</c>, <c>gcash</c>, <c>getbalance</c>, <c>gift_card</c>,
-        /// <c>giropay</c>, <c>gopay</c>, <c>grabpay</c>, <c>id_bank_transfer</c>, <c>ideal</c>,
-        /// <c>kakao_pay</c>, <c>klarna</c>, <c>knet</c>, <c>konbini</c>, <c>kr_card</c>,
-        /// <c>kr_market</c>, <c>kriya</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>,
-        /// <c>momo</c>, <c>mondu</c>, <c>multibanco</c>, <c>naver_pay</c>, <c>netbanking</c>,
-        /// <c>ng_bank</c>, <c>ng_bank_transfer</c>, <c>ng_card</c>, <c>ng_market</c>,
-        /// <c>ng_ussd</c>, <c>ng_wallet</c>, <c>nz_bank_account</c>, <c>octopus</c>, <c>oxxo</c>,
-        /// <c>p24</c>, <c>paper_check</c>, <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>,
-        /// <c>paypal</c>, <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>,
-        /// <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
-        /// <c>scalapay</c>, <c>sepa_debit</c>, <c>sequra</c>, <c>shop_pay</c>, <c>shopeepay</c>,
-        /// <c>sofort</c>, <c>south_korea_market</c>, <c>stripe_balance</c>, <c>sunbit</c>,
-        /// <c>swish</c>, <c>tamara</c>, <c>test_pay</c>, <c>touch_n_go</c>, <c>truemoney</c>,
-        /// <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>us_cash_voucher</c>, <c>vipps</c>,
+        /// <c>boleto</c>, <c>capchase_pay</c>, <c>card</c>, <c>card_present</c>, <c>cashapp</c>,
+        /// <c>check_scan</c>, <c>click_to_pay</c>, <c>crypto</c>, <c>customer_balance</c>,
+        /// <c>demo_pay</c>, <c>duitnow</c>, <c>dummy_auth_push</c>, <c>dummy_passthrough_card</c>,
+        /// <c>edenred</c>, <c>eps</c>, <c>fpx</c>, <c>gcash</c>, <c>getbalance</c>,
+        /// <c>gift_card</c>, <c>giropay</c>, <c>gopay</c>, <c>grabpay</c>, <c>id_bank_transfer</c>,
+        /// <c>ideal</c>, <c>interac_present</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>knet</c>,
+        /// <c>konbini</c>, <c>kr_card</c>, <c>kr_market</c>, <c>kriya</c>, <c>link</c>,
+        /// <c>mb_way</c>, <c>mobilepay</c>, <c>momo</c>, <c>mondu</c>, <c>multibanco</c>,
+        /// <c>naver_pay</c>, <c>netbanking</c>, <c>ng_bank</c>, <c>ng_bank_transfer</c>,
+        /// <c>ng_card</c>, <c>ng_market</c>, <c>ng_ussd</c>, <c>ng_wallet</c>,
+        /// <c>nz_bank_account</c>, <c>octopus</c>, <c>oxxo</c>, <c>p24</c>, <c>paper_check</c>,
+        /// <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>paypay</c>,
+        /// <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
+        /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>scalapay</c>,
+        /// <c>sepa_debit</c>, <c>sequra</c>, <c>shop_pay</c>, <c>shopeepay</c>, <c>sofort</c>,
+        /// <c>south_korea_market</c>, <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>,
+        /// <c>tamara</c>, <c>test_pay</c>, <c>touch_n_go</c>, <c>truemoney</c>, <c>twint</c>,
+        /// <c>upi</c>, <c>us_bank_account</c>, <c>us_cash_voucher</c>, <c>vipps</c>,
         /// <c>wechat_pay</c>, <c>wero</c>, or <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allowed_payment_method_types")]
         [STJS.JsonPropertyName("allowed_payment_method_types")]
@@ -74,6 +77,8 @@ namespace Stripe
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("capture_method")]
         [STJS.JsonPropertyName("capture_method")]
@@ -114,10 +119,13 @@ namespace Stripe
         /// <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>,
         /// <c>konbini</c>, <c>kr_card</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>,
         /// <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
-        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
-        /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>scalapay</c>,
-        /// <c>sepa_debit</c>, <c>sofort</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
-        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>paypay</c>, <c>payto</c>, <c>pix</c>,
+        /// <c>promptpay</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
+        /// <c>scalapay</c>, <c>sepa_debit</c>, <c>sequra</c>, <c>sofort</c>, <c>sunbit</c>,
+        /// <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
+        /// <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("excluded_payment_method_types", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("excluded_payment_method_types")]
@@ -190,8 +198,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/payments/payment-methods/transitioning#compatibility">compatible
         /// Source</a> object) to attach to this PaymentIntent. If the payment method is attached to
         /// a Customer, it must match the <a
-        /// href="https://api.stripe.com#create_payment_intent-customer">customer</a> that is set on
-        /// this PaymentIntent.
+        /// href="https://docs.stripe.com/api#create_payment_intent-customer">customer</a> that is
+        /// set on this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method")]
         [STJS.JsonPropertyName("payment_method")]
@@ -213,17 +221,6 @@ namespace Stripe
         [JsonProperty("payment_method_options")]
         [STJS.JsonPropertyName("payment_method_options")]
         public PaymentIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
-
-        /// <summary>
-        /// The list of payment method types (for example, a card) that this PaymentIntent can use.
-        /// If you don't provide this, Stripe will dynamically show relevant payment methods from
-        /// your <a href="https://dashboard.stripe.com/settings/payment_methods">payment method
-        /// settings</a>. A list of valid payment method types can be found <a
-        /// href="https://docs.stripe.com/api/payment_methods/object#payment_method_object-type">here</a>.
-        /// </summary>
-        [JsonProperty("payment_method_types")]
-        [STJS.JsonPropertyName("payment_method_types")]
-        public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
         /// Options to configure Radar. Learn more about <a
@@ -286,6 +283,8 @@ namespace Stripe
         /// publishable key, you can only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("setup_future_usage")]

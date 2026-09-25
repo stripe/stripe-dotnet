@@ -40,6 +40,8 @@ namespace Stripe.Treasury
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
         /// One of: <c>financial_account</c>, or <c>us_bank_account</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -15,6 +15,7 @@ namespace Stripe
         private Dictionary<string, string> metadata;
         private ProductPackageDimensionsOptions packageDimensions;
         private string taxCode;
+        private ProductTaxDetailsOptions taxDetails;
         private string unitLabel;
         private string url;
 
@@ -161,6 +162,24 @@ namespace Stripe
             set
             {
                 this.taxCode = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// Tax details for this product, including the <a
+        /// href="https://stripe.com/tax/tax-codes">tax code</a> and an optional performance
+        /// location.
+        /// </summary>
+        [JsonProperty("tax_details", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("tax_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public ProductTaxDetailsOptions TaxDetails
+        {
+            get => this.taxDetails;
+            set
+            {
+                this.taxDetails = value;
                 this.SetTracker.Track();
             }
         }

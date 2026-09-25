@@ -55,6 +55,24 @@ namespace Stripe
         public const string ApplicationFeeRefunded = "application_fee.refunded";
 
         /// <summary>
+        /// Occurs whenever a user installs a Stripe app. Sent to the app developer, embedding
+        /// platform, and installing merchant.
+        /// </summary>
+        public const string AppsInstallCreated = "apps.install.created";
+
+        /// <summary>
+        /// Occurs whenever a user uninstalls a Stripe app. Sent to the app developer, embedding
+        /// platform, and installing merchant.
+        /// </summary>
+        public const string AppsInstallDeleted = "apps.install.deleted";
+
+        /// <summary>
+        /// Occurs whenever a user updates a Stripe app. Sent to the app developer, embedding
+        /// platform, and installing merchant.
+        /// </summary>
+        public const string AppsInstallUpdated = "apps.install.updated";
+
+        /// <summary>
         /// Occurs whenever a balance settings status or property has changed.
         /// </summary>
         public const string BalanceSettingsUpdated = "balance_settings.updated";
@@ -650,7 +668,8 @@ namespace Stripe
         public const string InvoiceItemDeleted = "invoiceitem.deleted";
 
         /// <summary>
-        /// Occurs whenever an authorization is created.
+        /// Occurs whenever an authorization is created. For verification authorizations, this event
+        /// is only accessible via private preview.
         /// </summary>
         public const string IssuingAuthorizationCreated = "issuing_authorization.created";
 
@@ -662,7 +681,8 @@ namespace Stripe
         public const string IssuingAuthorizationRequest = "issuing_authorization.request";
 
         /// <summary>
-        /// Occurs whenever an authorization is updated.
+        /// Occurs whenever an authorization is updated. For verification authorizations, this event
+        /// is only accessible via private preview.
         /// </summary>
         public const string IssuingAuthorizationUpdated = "issuing_authorization.updated";
 
@@ -1082,7 +1102,7 @@ namespace Stripe
         public const string SetupIntentSetupFailed = "setup_intent.setup_failed";
 
         /// <summary>
-        /// Occurs when an SetupIntent has successfully setup a payment method.
+        /// Occurs when a SetupIntent has successfully setup a payment method.
         /// </summary>
         public const string SetupIntentSucceeded = "setup_intent.succeeded";
 
@@ -1259,12 +1279,12 @@ namespace Stripe
         public const string TransferUpdated = "transfer.updated";
 
         /// <summary>
-        /// Occurs whenever an CreditReversal is submitted and created.
+        /// Occurs whenever a CreditReversal is submitted and created.
         /// </summary>
         public const string TreasuryCreditReversalCreated = "treasury.credit_reversal.created";
 
         /// <summary>
-        /// Occurs whenever an CreditReversal post is posted.
+        /// Occurs whenever a CreditReversal post is posted.
         /// </summary>
         public const string TreasuryCreditReversalPosted = "treasury.credit_reversal.posted";
 

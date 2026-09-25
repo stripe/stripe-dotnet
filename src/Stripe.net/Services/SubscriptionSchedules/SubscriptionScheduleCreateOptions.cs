@@ -47,6 +47,8 @@ namespace Stripe
         /// running. <c>cancel</c> will end the subscription schedule and cancel the underlying
         /// subscription.
         /// One of: <c>cancel</c>, <c>none</c>, <c>release</c>, or <c>renew</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("end_behavior")]
         [STJS.JsonPropertyName("end_behavior")]
@@ -81,6 +83,14 @@ namespace Stripe
                 this.SetTracker.Track();
             }
         }
+
+        /// <summary>
+        /// Configures the subscription's pause behavior and, optionally, its resume behavior. Only
+        /// one entry is supported.
+        /// </summary>
+        [JsonProperty("pause_schedules")]
+        [STJS.JsonPropertyName("pause_schedules")]
+        public List<SubscriptionSchedulePauseScheduleOptions> PauseSchedules { get; set; }
 
         /// <summary>
         /// List representing phases of the subscription schedule. Each phase can be customized to

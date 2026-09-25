@@ -164,6 +164,8 @@ namespace Stripe
         /// running. <c>cancel</c> will end the subscription schedule and cancel the underlying
         /// subscription.
         /// One of: <c>cancel</c>, <c>none</c>, <c>release</c>, or <c>renew</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("end_behavior")]
         [STJS.JsonPropertyName("end_behavior")]
@@ -185,6 +187,13 @@ namespace Stripe
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The pause schedules for this subscription schedule.
+        /// </summary>
+        [JsonProperty("pause_schedules")]
+        [STJS.JsonPropertyName("pause_schedules")]
+        public List<SubscriptionSchedulePauseSchedule> PauseSchedules { get; set; }
 
         /// <summary>
         /// Configuration for the subscription schedule's phases.
@@ -218,6 +227,8 @@ namespace Stripe
         /// guide</a>.
         /// One of: <c>active</c>, <c>canceled</c>, <c>completed</c>, <c>not_started</c>, or
         /// <c>released</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

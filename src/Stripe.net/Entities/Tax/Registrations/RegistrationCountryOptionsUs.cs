@@ -8,6 +8,26 @@ namespace Stripe.Tax
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class RegistrationCountryOptionsUs : StripeEntity<RegistrationCountryOptionsUs>
     {
+        [JsonProperty("admissions_tax")]
+        [STJS.JsonPropertyName("admissions_tax")]
+        public RegistrationCountryOptionsUsAdmissionsTax AdmissionsTax { get; set; }
+
+        [JsonProperty("attendance_tax")]
+        [STJS.JsonPropertyName("attendance_tax")]
+        public RegistrationCountryOptionsUsAttendanceTax AttendanceTax { get; set; }
+
+        [JsonProperty("entertainment_tax")]
+        [STJS.JsonPropertyName("entertainment_tax")]
+        public RegistrationCountryOptionsUsEntertainmentTax EntertainmentTax { get; set; }
+
+        [JsonProperty("gross_receipts_tax")]
+        [STJS.JsonPropertyName("gross_receipts_tax")]
+        public RegistrationCountryOptionsUsGrossReceiptsTax GrossReceiptsTax { get; set; }
+
+        [JsonProperty("hospitality_tax")]
+        [STJS.JsonPropertyName("hospitality_tax")]
+        public RegistrationCountryOptionsUsHospitalityTax HospitalityTax { get; set; }
+
         [JsonProperty("local_amusement_tax")]
         [STJS.JsonPropertyName("local_amusement_tax")]
         public RegistrationCountryOptionsUsLocalAmusementTax LocalAmusementTax { get; set; }
@@ -16,6 +36,10 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("local_lease_tax")]
         public RegistrationCountryOptionsUsLocalLeaseTax LocalLeaseTax { get; set; }
 
+        [JsonProperty("luxury_tax")]
+        [STJS.JsonPropertyName("luxury_tax")]
+        public RegistrationCountryOptionsUsLuxuryTax LuxuryTax { get; set; }
+
         [JsonProperty("mass_transit_parking_tax")]
         [STJS.JsonPropertyName("mass_transit_parking_tax")]
         public RegistrationCountryOptionsUsMassTransitParkingTax MassTransitParkingTax { get; set; }
@@ -23,6 +47,10 @@ namespace Stripe.Tax
         [JsonProperty("parking_tax")]
         [STJS.JsonPropertyName("parking_tax")]
         public RegistrationCountryOptionsUsParkingTax ParkingTax { get; set; }
+
+        [JsonProperty("resort_tax")]
+        [STJS.JsonPropertyName("resort_tax")]
+        public RegistrationCountryOptionsUsResortTax ResortTax { get; set; }
 
         /// <summary>
         /// Two-letter US state code (<a href="https://en.wikipedia.org/wiki/ISO_3166-2">ISO
@@ -36,11 +64,19 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("state_sales_tax")]
         public RegistrationCountryOptionsUsStateSalesTax StateSalesTax { get; set; }
 
+        [JsonProperty("tourism_tax")]
+        [STJS.JsonPropertyName("tourism_tax")]
+        public RegistrationCountryOptionsUsTourismTax TourismTax { get; set; }
+
         /// <summary>
         /// Type of registration in the US.
-        /// One of: <c>local_amusement_tax</c>, <c>local_lease_tax</c>,
-        /// <c>mass_transit_parking_tax</c>, <c>parking_tax</c>, <c>state_communications_tax</c>,
-        /// <c>state_retail_delivery_fee</c>, or <c>state_sales_tax</c>.
+        /// One of: <c>admissions_tax</c>, <c>attendance_tax</c>, <c>entertainment_tax</c>,
+        /// <c>gross_receipts_tax</c>, <c>hospitality_tax</c>, <c>local_amusement_tax</c>,
+        /// <c>local_lease_tax</c>, <c>luxury_tax</c>, <c>mass_transit_parking_tax</c>,
+        /// <c>parking_tax</c>, <c>resort_tax</c>, <c>state_communications_tax</c>,
+        /// <c>state_retail_delivery_fee</c>, <c>state_sales_tax</c>, or <c>tourism_tax</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

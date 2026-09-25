@@ -7,6 +7,7 @@ namespace Stripe
 
     public class AppsService : Service
     {
+        private Apps.InstallService installs;
         private Apps.SecretService secrets;
 
         internal AppsService(ApiRequestor requestor)
@@ -18,6 +19,9 @@ namespace Stripe
             : base(client)
         {
         }
+
+        public virtual Apps.InstallService Installs => this.installs ??= new Apps.InstallService(
+            this.Requestor);
 
         public virtual Apps.SecretService Secrets => this.secrets ??= new Apps.SecretService(
             this.Requestor);

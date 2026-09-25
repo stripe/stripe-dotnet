@@ -39,5 +39,15 @@ namespace Stripe
         [JsonProperty("name")]
         [STJS.JsonPropertyName("name")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// An object that describes more information about the tax location required for this tax
+        /// code. Some tax codes require a <a
+        /// href="https://stripe.com/tax/location-sales#required-versus-optional-performance-locations">performance
+        /// location</a> to calculate tax correctly.
+        /// </summary>
+        [JsonProperty("requirements")]
+        [STJS.JsonPropertyName("requirements")]
+        public TaxCodeRequirements Requirements { get; set; }
     }
 }

@@ -29,6 +29,15 @@ namespace Stripe.Tax
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// A tax location ID. Depending on the <a
+        /// href="https://stripe.com/tax/tax-for-tickets/reference/tax-location-performance">tax
+        /// code</a>, this is required, optional, or not supported.
+        /// </summary>
+        [JsonProperty("performance_location")]
+        [STJS.JsonPropertyName("performance_location")]
+        public string PerformanceLocation { get; set; }
+
+        /// <summary>
         /// If provided, the product's <c>tax_code</c> will be used as the line item's
         /// <c>tax_code</c>.
         /// </summary>
@@ -57,6 +66,8 @@ namespace Stripe.Tax
         /// <summary>
         /// Specifies whether the <c>amount</c> includes taxes. Defaults to <c>exclusive</c>.
         /// One of: <c>exclusive</c>, or <c>inclusive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_behavior")]
         [STJS.JsonPropertyName("tax_behavior")]

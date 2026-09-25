@@ -13,7 +13,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
-        public PaymentAttemptRecordShippingDetailsAddress Address { get; set; }
+        public Address Address { get; set; }
 
         /// <summary>
         /// The shipping recipient's name.

@@ -17,7 +17,8 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// Set if the ReceivedCredit was created due to an <a
-        /// href="https://api.stripe.com#issuing_authorizations">Issuing Authorization</a> object.
+        /// href="https://docs.stripe.com/api#issuing_authorizations">Issuing Authorization</a>
+        /// object.
         /// </summary>
         [JsonProperty("issuing_authorization")]
         [STJS.JsonPropertyName("issuing_authorization")]
@@ -25,7 +26,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// Set if the ReceivedCredit is also viewable as an <a
-        /// href="https://api.stripe.com#issuing_transactions">Issuing transaction</a> object.
+        /// href="https://docs.stripe.com/api#issuing_transactions">Issuing transaction</a> object.
         /// </summary>
         [JsonProperty("issuing_transaction")]
         [STJS.JsonPropertyName("issuing_transaction")]

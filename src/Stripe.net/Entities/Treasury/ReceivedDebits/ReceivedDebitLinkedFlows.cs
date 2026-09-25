@@ -24,7 +24,8 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// Set if the ReceivedDebit was created due to an <a
-        /// href="https://api.stripe.com#issuing_authorizations">Issuing Authorization</a> object.
+        /// href="https://docs.stripe.com/api#issuing_authorizations">Issuing Authorization</a>
+        /// object.
         /// </summary>
         [JsonProperty("issuing_authorization")]
         [STJS.JsonPropertyName("issuing_authorization")]
@@ -32,7 +33,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// Set if the ReceivedDebit is also viewable as an <a
-        /// href="https://api.stripe.com#issuing_disputes">Issuing Dispute</a> object.
+        /// href="https://docs.stripe.com/api#issuing_disputes">Issuing Dispute</a> object.
         /// </summary>
         [JsonProperty("issuing_transaction")]
         [STJS.JsonPropertyName("issuing_transaction")]
@@ -40,7 +41,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// Set if the ReceivedDebit was created due to a <a
-        /// href="https://api.stripe.com#payouts">Payout</a> object.
+        /// href="https://docs.stripe.com/api#payouts">Payout</a> object.
         /// </summary>
         [JsonProperty("payout")]
         [STJS.JsonPropertyName("payout")]
@@ -48,7 +49,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// Set if the ReceivedDebit was created due to a <a
-        /// href="https://api.stripe.com#topups">Topup</a> object.
+        /// href="https://docs.stripe.com/api#topups">Topup</a> object.
         /// </summary>
         [JsonProperty("topup")]
         [STJS.JsonPropertyName("topup")]

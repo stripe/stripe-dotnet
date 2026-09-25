@@ -10,7 +10,7 @@ namespace Stripe
     public class PayoutCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// A positive integer in cents representing how much to payout.
+        /// A positive integer in cents representing how much to pay out.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
@@ -57,6 +57,8 @@ namespace Stripe
         /// href="https://stripe.com/docs/payouts/instant-payouts-banks">bank support for Instant
         /// Payouts</a>.
         /// One of: <c>instant</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("method")]
         [STJS.JsonPropertyName("method")]
@@ -74,6 +76,8 @@ namespace Stripe
         /// payment sources are kept separately. You can find the amounts with the Balances API. One
         /// of <c>bank_account</c>, <c>card</c>, or <c>fpx</c>.
         /// One of: <c>bank_account</c>, <c>card</c>, or <c>fpx</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("source_type")]
         [STJS.JsonPropertyName("source_type")]

@@ -44,6 +44,13 @@ namespace Stripe
         public bool? ClearUsage { get; set; }
 
         /// <summary>
+        /// The trial offer to apply to this subscription item.
+        /// </summary>
+        [JsonProperty("current_trial")]
+        [STJS.JsonPropertyName("current_trial")]
+        public SubscriptionItemCurrentTrialOptions CurrentTrial { get; set; }
+
+        /// <summary>
         /// A flag that, if set to <c>true</c>, will delete the specified item.
         /// </summary>
         [JsonProperty("deleted")]
@@ -94,9 +101,10 @@ namespace Stripe
         public string Plan { get; set; }
 
         /// <summary>
-        /// The ID of the price object. One of <c>price</c> or <c>price_data</c> is required. When
-        /// changing a subscription item's price, <c>quantity</c> is set to 1 unless a
-        /// <c>quantity</c> parameter is provided.
+        /// The ID of the price object. You can use either <c>price</c> or <c>price_data</c>, but
+        /// not both, to set or change this item's price. If you're updating an existing item
+        /// without changing its price, omit both. When changing a subscription item's price,
+        /// <c>quantity</c> is set to 1 unless a <c>quantity</c> parameter is provided.
         /// </summary>
         [JsonProperty("price")]
         [STJS.JsonPropertyName("price")]
@@ -104,7 +112,9 @@ namespace Stripe
 
         /// <summary>
         /// Data used to generate a new <a href="https://docs.stripe.com/api/prices">Price</a>
-        /// object inline. One of <c>price</c> or <c>price_data</c> is required.
+        /// object inline. You can use either <c>price</c> or <c>price_data</c>, but not both, to
+        /// set or change this item's price. If you're updating an existing item without changing
+        /// its price, omit both.
         /// </summary>
         [JsonProperty("price_data")]
         [STJS.JsonPropertyName("price_data")]

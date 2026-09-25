@@ -37,6 +37,8 @@ namespace Stripe.Treasury
         /// <c>failed</c>, <c>posted</c>, <c>returned</c>, or <c>canceled</c>.
         /// One of: <c>canceled</c>, <c>failed</c>, <c>posted</c>, <c>processing</c>, or
         /// <c>returned</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

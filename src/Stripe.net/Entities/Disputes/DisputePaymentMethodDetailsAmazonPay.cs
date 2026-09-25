@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// The AmazonPay dispute type, chargeback or claim.
         /// One of: <c>chargeback</c>, or <c>claim</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("dispute_type")]
         [STJS.JsonPropertyName("dispute_type")]

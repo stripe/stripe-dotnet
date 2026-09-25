@@ -18,6 +18,8 @@ namespace Stripe
         /// <summary>
         /// After division, either round the result <c>up</c> or <c>down</c>.
         /// One of: <c>down</c>, or <c>up</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("round")]
         [STJS.JsonPropertyName("round")]

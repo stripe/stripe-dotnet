@@ -26,6 +26,8 @@ namespace Stripe
         /// <summary>
         /// The bank_transfer type.
         /// One of: <c>eu_bank_transfer</c>, or <c>jp_bank_transfer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

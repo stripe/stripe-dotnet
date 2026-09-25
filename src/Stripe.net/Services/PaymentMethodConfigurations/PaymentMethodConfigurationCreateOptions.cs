@@ -454,6 +454,13 @@ namespace Stripe
         public PaymentMethodConfigurationPaypalOptions Paypal { get; set; }
 
         /// <summary>
+        /// Customers can pay with PayPay online or using the PayPay app.
+        /// </summary>
+        [JsonProperty("paypay")]
+        [STJS.JsonPropertyName("paypay")]
+        public PaymentMethodConfigurationPaypayOptions Paypay { get; set; }
+
+        /// <summary>
         /// PayTo is a <a href="https://docs.stripe.com/payments/real-time">real-time</a> payment
         /// method that enables customers in Australia to pay by providing their bank account
         /// details. Customers must accept a mandate authorizing you to debit their account. Check
@@ -535,6 +542,19 @@ namespace Stripe
         [JsonProperty("sepa_debit")]
         [STJS.JsonPropertyName("sepa_debit")]
         public PaymentMethodConfigurationSepaDebitOptions SepaDebit { get; set; }
+
+        /// <summary>
+        /// SeQura is a <a
+        /// href="https://docs.stripe.com/payments/payment-methods#usage">single-use</a> payment
+        /// method that offers customers payment terms ranging from 7-120 days. Customers are
+        /// redirected from your website or app, authorize the payment with SeQura, then return to
+        /// your website or app. You get <a
+        /// href="https://docs.stripe.com/payments/payment-methods#payment-notification">immediate
+        /// notification</a> of whether the payment succeeded or failed.
+        /// </summary>
+        [JsonProperty("sequra")]
+        [STJS.JsonPropertyName("sequra")]
+        public PaymentMethodConfigurationSequraOptions Sequra { get; set; }
 
         /// <summary>
         /// Stripe users in Europe and the United States can use the <a
