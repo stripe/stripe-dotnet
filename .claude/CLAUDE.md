@@ -31,7 +31,7 @@
 ## Conventions
 
 - Uses .NET `System.Net.Http.HttpClient`
-- Multi-target framework (net461+, net6.0+, etc.)
+- Multi-target framework (net462+, net8.0+, etc.)
 - Solution file: `src/Stripe.net.sln`
 - .NET version managed via mise
 - All code must run on all supported .NET versions (full list in the test section of @.github/workflows/ci.yml)

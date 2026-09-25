@@ -6,7 +6,7 @@
 > [!TIP]
 > Want to chat live with Stripe engineers? Join us on our [Discord server](https://stripe.com/go/discord/dotnet).
 
-The official [Stripe][stripe] .NET library, supporting .NET Standard 2.0+, .NET Core 5+, and .NET Framework 4.6.2+.
+The official [Stripe][stripe] .NET library, supporting .NET Standard 2.0+, .NET Core 8+, and .NET Framework 4.6.2+.
 
 ## Installation
 
@@ -39,9 +39,7 @@ From within Visual Studio:
 
 ### Requirements
 
-Per our [Language Version Support Policy](https://docs.stripe.com/sdks/versioning?lang=dotnet#stripe-sdk-language-version-support-policy), we currently support **.NET Standard 2.0+, LTS versions of .NET Core 6+, and .NET Framework 4.6.2+.**.
-
-Support for version 6 will be removed in a future version. Read more and see the full schedule in the docs: https://docs.stripe.com/sdks/versioning?lang=dotnet#stripe-sdk-language-version-support-policy
+Per our [Language Version Support Policy](https://docs.stripe.com/sdks/versioning?lang=dotnet#stripe-sdk-language-version-support-policy), we currently support **.NET Standard 2.0+, LTS versions of .NET Core 8+, and .NET Framework 4.6.2+.**
 
 ## Documentation
 
