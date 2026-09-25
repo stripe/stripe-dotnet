@@ -29,6 +29,8 @@ namespace Stripe
             "net8.0"
 #elif NET9_0
             "net9.0"
+#elif NET10_0
+            "net10.0"
 #elif NETCOREAPP3_1
             "netcoreapp3.1"
 #elif NETSTANDARD2_0
