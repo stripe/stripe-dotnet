@@ -58,6 +58,14 @@ namespace Stripe.Reserve
         public string Currency { get; set; }
 
         /// <summary>
+        /// The balance destination to which the reserved funds are sent.
+        /// One of: <c>other</c>, <c>risk_reserved</c>, or <c>settlement_reserved</c>.
+        /// </summary>
+        [JsonProperty("destination")]
+        [STJS.JsonPropertyName("destination")]
+        public string Destination { get; set; }
+
+        /// <summary>
         /// Time at which the ReservePlan was disabled.
         /// </summary>
         [JsonProperty("disabled_at")]
@@ -77,6 +85,10 @@ namespace Stripe.Reserve
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
+
+        [JsonProperty("manual_release")]
+        [STJS.JsonPropertyName("manual_release")]
+        public PlanManualRelease ManualRelease { get; set; }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
@@ -101,9 +113,7 @@ namespace Stripe.Reserve
         /// <summary>
         /// The current status of the ReservePlan. The ReservePlan only affects charges if it is
         /// <c>active</c>.
-        /// One of: <c>active</c>, <c>disabled</c>, or <c>expired</c>.
-        ///
-        /// This enum can grow over time; additional values may be added in the future.
+        /// One of: <c>active</c>, <c>disabled</c>, <c>expired</c>, or <c>other</c>.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -111,9 +121,8 @@ namespace Stripe.Reserve
 
         /// <summary>
         /// The type of the ReservePlan.
-        /// One of: <c>fixed_release</c>, or <c>rolling_release</c>.
-        ///
-        /// This enum can grow over time; additional values may be added in the future.
+        /// One of: <c>fixed_release</c>, <c>manual_release</c>, <c>other</c>, or
+        /// <c>rolling_release</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

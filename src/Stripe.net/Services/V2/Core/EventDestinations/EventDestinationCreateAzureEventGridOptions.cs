@@ -9,21 +9,21 @@ namespace Stripe.V2.Core
     public class EventDestinationCreateAzureEventGridOptions : INestedOptions
     {
         /// <summary>
-        /// The Azure region.
+        /// The Azure region where Stripe creates the partner topic.
         /// </summary>
         [JsonProperty("azure_region")]
         [STJS.JsonPropertyName("azure_region")]
         public string AzureRegion { get; set; }
 
         /// <summary>
-        /// The name of the Azure resource group.
+        /// The Azure resource group where Stripe creates the partner topic.
         /// </summary>
         [JsonProperty("azure_resource_group_name")]
         [STJS.JsonPropertyName("azure_resource_group_name")]
         public string AzureResourceGroupName { get; set; }
 
         /// <summary>
-        /// The Azure subscription ID.
+        /// The Azure subscription where Stripe creates the partner topic.
         /// </summary>
         [JsonProperty("azure_subscription_id")]
         [STJS.JsonPropertyName("azure_subscription_id")]

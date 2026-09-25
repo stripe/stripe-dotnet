@@ -11,9 +11,10 @@ namespace Stripe.Events
         /// <summary>
         /// Open Enum. The capability which had its status updated.
         /// One of: <c>business_storage.inbound.cad</c>, <c>business_storage.inbound.eur</c>,
-        /// <c>business_storage.inbound.gbp</c>, <c>business_storage.inbound.usd</c>,
-        /// <c>business_storage.inbound.usdc</c>, <c>business_storage.outbound.cad</c>,
-        /// <c>business_storage.outbound.eur</c>, <c>business_storage.outbound.gbp</c>,
+        /// <c>business_storage.inbound.gbp</c>, <c>business_storage.inbound.ousd</c>,
+        /// <c>business_storage.inbound.usd</c>, <c>business_storage.inbound.usdc</c>,
+        /// <c>business_storage.outbound.cad</c>, <c>business_storage.outbound.eur</c>,
+        /// <c>business_storage.outbound.gbp</c>, <c>business_storage.outbound.ousd</c>,
         /// <c>business_storage.outbound.usd</c>, <c>business_storage.outbound.usdc</c>,
         /// <c>consumer_storage.inbound.usd</c>, <c>consumer_storage.inbound.usdc</c>,
         /// <c>consumer_storage.outbound.usd</c>, <c>consumer_storage.outbound.usdc</c>,

@@ -69,16 +69,6 @@ namespace Stripe.V2.MoneyManagement
         public string Id { get; set; }
 
         /// <summary>
-        /// Open Enum. The Level of the HistoryEntry.
-        /// One of: <c>canonical</c>, or <c>debug</c>.
-        ///
-        /// This enum can grow over time; additional values may be added in the future.
-        /// </summary>
-        [JsonProperty("level")]
-        [STJS.JsonPropertyName("level")]
-        public string Level { get; set; }
-
-        /// <summary>
         /// Open Enum. The type of the HistoryEntry.
         /// One of: <c>bank_debit_failed</c>, <c>bank_debit_processing</c>,
         /// <c>bank_debit_queued</c>, <c>bank_debit_returned</c>, or <c>bank_debit_succeeded</c>.

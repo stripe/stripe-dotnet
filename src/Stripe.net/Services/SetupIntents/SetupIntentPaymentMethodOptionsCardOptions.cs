@@ -56,6 +56,16 @@ namespace Stripe
         public string RequestThreeDSecure { get; set; }
 
         /// <summary>
+        /// Set to indicate the future transaction type usage for the card being set up.
+        /// One of: <c>installment</c>, <c>recurring</c>, or <c>unscheduled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("setup_credential_usage")]
+        [STJS.JsonPropertyName("setup_credential_usage")]
+        public string SetupCredentialUsage { get; set; }
+
+        /// <summary>
         /// If 3D Secure authentication was performed with a third-party provider, the
         /// authentication details to use for this setup.
         /// </summary>

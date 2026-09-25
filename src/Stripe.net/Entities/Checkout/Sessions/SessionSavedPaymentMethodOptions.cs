@@ -22,6 +22,20 @@ namespace Stripe.Checkout
         public List<string> AllowRedisplayFilters { get; set; }
 
         /// <summary>
+        /// The ID of a saved payment method to select when the Payment Element renders, for example
+        /// <c>pm_1MqLiJLkdIwHu7ixUEgbFdYF</c>. Takes precedence over the customer's default payment
+        /// method. If the ID doesn't match one of the payment methods the Element is displaying,
+        /// the Element selects a payment method as it normally would and no error is returned.
+        /// Preselecting a payment method never changes which payment methods the Element displays,
+        /// and never modifies the payment method, the customer, or this session. The preselection
+        /// is fixed once set. To preselect a different payment method, create a new session. An
+        /// Element that's already on the page keeps its current selection.
+        /// </summary>
+        [JsonProperty("payment_method_preselect")]
+        [STJS.JsonPropertyName("payment_method_preselect")]
+        public string PaymentMethodPreselect { get; set; }
+
+        /// <summary>
         /// Enable customers to choose if they wish to remove their saved payment methods. Disabled
         /// by default.
         /// One of: <c>disabled</c>, or <c>enabled</c>.

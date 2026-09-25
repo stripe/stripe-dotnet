@@ -61,34 +61,17 @@ namespace Stripe.Apps
         [STJS.JsonPropertyName("auth_code")]
         public string AuthCode { get; set; }
 
-        [JsonProperty("authorized_content_security_policy")]
-        [STJS.JsonPropertyName("authorized_content_security_policy")]
-        public InstallAuthorizedContentSecurityPolicy AuthorizedContentSecurityPolicy { get; set; }
-
-        /// <summary>
-        /// The endpoint URLs authorized by the installer.
-        /// </summary>
-        [JsonProperty("authorized_endpoints")]
-        [STJS.JsonPropertyName("authorized_endpoints")]
-        public List<string> AuthorizedEndpoints { get; set; }
-
-        /// <summary>
-        /// The permissions authorized by the installer.
-        /// </summary>
-        [JsonProperty("authorized_permissions")]
-        [STJS.JsonPropertyName("authorized_permissions")]
-        public List<string> AuthorizedPermissions { get; set; }
-
         /// <summary>
         /// The distribution channel associated with the app install.
+        /// One of: <c>private_live</c>, <c>private_test</c>, <c>public</c>, <c>review</c>, or
+        /// <c>testing</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("channel")]
         [STJS.JsonPropertyName("channel")]
         public string Channel { get; set; }
 
-        /// <summary>
-        /// The content security policy entries authorized by the installer.
-        /// </summary>
         [JsonProperty("content_security_policy_granted")]
         [STJS.JsonPropertyName("content_security_policy_granted")]
         public InstallContentSecurityPolicyGranted ContentSecurityPolicyGranted { get; set; }
@@ -150,13 +133,6 @@ namespace Stripe.Apps
         [JsonProperty("permissions_pending")]
         [STJS.JsonPropertyName("permissions_pending")]
         public List<string> PermissionsPending { get; set; }
-
-        /// <summary>
-        /// The status of the app install.
-        /// </summary>
-        [JsonProperty("state")]
-        [STJS.JsonPropertyName("state")]
-        public string State { get; set; }
 
         /// <summary>
         /// The status of the app install.

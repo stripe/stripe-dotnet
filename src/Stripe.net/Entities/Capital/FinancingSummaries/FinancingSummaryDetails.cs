@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Capital
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -52,6 +53,16 @@ namespace Stripe.Capital
         [JsonProperty("disclaimer_variant")]
         [STJS.JsonPropertyName("disclaimer_variant")]
         public string DisclaimerVariant { get; set; }
+
+        /// <summary>
+        /// The ways the connected account can pay toward its financing(s).
+        /// One of: <c>automatic_debits</c>, <c>manual_payment</c>, or <c>withholding</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("enabled_payment_types")]
+        [STJS.JsonPropertyName("enabled_payment_types")]
+        public List<string> EnabledPaymentTypes { get; set; }
 
         /// <summary>
         /// Fixed fee amount, in minor units. For example, 100 USD is represented as 10000.

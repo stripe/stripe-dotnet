@@ -15,7 +15,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>balance_transfer</c>, <c>climate_order_purchase</c>, <c>climate_order_refund</c>,
         /// <c>connect_collection_transfer</c>, <c>connect_reserved_funds</c>, <c>contribution</c>,
         /// <c>crypto_wallet_export</c>, <c>currency_conversion</c>, <c>debit_dispute</c>,
-        /// <c>dispute</c>, <c>dispute_reversal</c>, <c>financing_paydown</c>,
+        /// <c>dispute</c>, <c>dispute_reversal</c>, <c>earned_credit</c>, <c>financing_paydown</c>,
         /// <c>financing_paydown_reversal</c>, <c>inbound_payment</c>,
         /// <c>inbound_payment_failure</c>, <c>inbound_transfer</c>,
         /// <c>inbound_transfer_reversal</c>, <c>india_mdr_processing_fee</c>,

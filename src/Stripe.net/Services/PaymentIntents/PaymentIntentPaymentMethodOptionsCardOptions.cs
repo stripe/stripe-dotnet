@@ -124,6 +124,17 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsCardPaymentDetailsOptions PaymentDetails { get; set; }
 
         /// <summary>
+        /// Controls whether Stripe may synchronously request a real-time card account update on
+        /// this confirmation. Use <c>if_available</c> to allow the update and <c>never</c> to opt
+        /// out. Defaults to <c>if_available</c> when omitted. Only valid on confirmation; does not
+        /// affect batch Card Account Updater.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_card_account_update")]
+        [STJS.JsonPropertyName("request_card_account_update")]
+        public string RequestCardAccountUpdate { get; set; }
+
+        /// <summary>
         /// Request ability to <a
         /// href="https://docs.stripe.com/payments/decremental-authorization">decrement the
         /// authorization</a> for this PaymentIntent.
@@ -231,6 +242,16 @@ namespace Stripe
         public bool? RequireCvcRecollection { get; set; }
 
         /// <summary>
+        /// Set to indicate the future transaction type usage for the card being set up.
+        /// One of: <c>installment</c>, <c>recurring</c>, or <c>unscheduled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("setup_credential_usage")]
+        [STJS.JsonPropertyName("setup_credential_usage")]
+        public string SetupCredentialUsage { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
@@ -326,6 +347,28 @@ namespace Stripe
                 this.SetTracker.Track();
             }
         }
+
+        /// <summary>
+        /// Use this parameter in scenarios where you collect card details and <a
+        /// href="https://stripe.com/docs/payments/cards/charging-saved-cards">charge them
+        /// later</a>.
+        ///
+        /// When making an off session payment with a previously saved card (that was saved with a
+        /// SetupIntent or with a PaymentIntent with <c>setup_future_usage</c>), set this parameter
+        /// to indicate the type of transaction.
+        ///
+        /// You can set this parameter at any time before or during PaymentIntent confirmation, and
+        /// confirm this PaymentIntent with <c>off_session=true</c>.
+        ///
+        /// Note that this parameter is currently unsupported with the <c>setup_future_usage</c>
+        /// parameter.
+        /// One of: <c>installment</c>, <c>recurring</c>, or <c>unscheduled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("stored_credential_usage")]
+        [STJS.JsonPropertyName("stored_credential_usage")]
+        public string StoredCredentialUsage { get; set; }
 
         /// <summary>
         /// If 3D Secure authentication was performed with a third-party provider, the

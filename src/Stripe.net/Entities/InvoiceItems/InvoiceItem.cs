@@ -217,6 +217,14 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// The rules that control when this invoice item is eligible for invoicing. All rules must
+        /// be satisfied for the item to be invoiced.
+        /// </summary>
+        [JsonProperty("invoicing_rules")]
+        [STJS.JsonPropertyName("invoicing_rules")]
+        public List<InvoiceItemInvoicingRule> InvoicingRules { get; set; }
+
+        /// <summary>
         /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
         /// test mode, the value is <c>false</c>.
         /// </summary>

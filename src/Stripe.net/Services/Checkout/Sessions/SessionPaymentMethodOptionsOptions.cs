@@ -320,6 +320,13 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsSepaDebitOptions SepaDebit { get; set; }
 
         /// <summary>
+        /// contains details about the SeQura payment method options.
+        /// </summary>
+        [JsonProperty("sequra")]
+        [STJS.JsonPropertyName("sequra")]
+        public SessionPaymentMethodOptionsSequraOptions Sequra { get; set; }
+
+        /// <summary>
         /// contains details about the Sofort payment method options.
         /// </summary>
         [JsonProperty("sofort")]

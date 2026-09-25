@@ -11,6 +11,13 @@ namespace Stripe.Events
     public class V2MoneyManagementTransactionUpdatedEvent : V2.Core.Event
     {
         /// <summary>
+        /// Data for the v2.money_management.transaction.updated event.
+        /// </summary>
+        [JsonProperty("data")]
+        [STJS.JsonPropertyName("data")]
+        public V2MoneyManagementTransactionUpdatedEventData Data { get; set; }
+
+        /// <summary>
         /// Object containing the reference to API resource relevant to the event.
         /// </summary>
         [JsonProperty("related_object")]

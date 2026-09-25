@@ -70,7 +70,7 @@ namespace Stripe
 
         /// <summary>
         /// The outcome of the reported payment.
-        /// One of: <c>failed</c>, or <c>guaranteed</c>.
+        /// One of: <c>canceled</c>, <c>failed</c>, or <c>guaranteed</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

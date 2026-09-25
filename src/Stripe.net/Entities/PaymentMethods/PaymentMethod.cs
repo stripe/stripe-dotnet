@@ -363,6 +363,10 @@ namespace Stripe
         [STJS.JsonPropertyName("sepa_debit")]
         public PaymentMethodSepaDebit SepaDebit { get; set; }
 
+        [JsonProperty("sequra")]
+        [STJS.JsonPropertyName("sequra")]
+        public PaymentMethodSequra Sequra { get; set; }
+
         /// <summary>
         /// ID of the shared payment granted token used in the creation of this PaymentMethod.
         /// </summary>

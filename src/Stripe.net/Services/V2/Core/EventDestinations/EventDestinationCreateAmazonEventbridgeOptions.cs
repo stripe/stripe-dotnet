@@ -9,14 +9,14 @@ namespace Stripe.V2.Core
     public class EventDestinationCreateAmazonEventbridgeOptions : INestedOptions
     {
         /// <summary>
-        /// The AWS account ID.
+        /// Your AWS account where Stripe creates the partner event source.
         /// </summary>
         [JsonProperty("aws_account_id")]
         [STJS.JsonPropertyName("aws_account_id")]
         public string AwsAccountId { get; set; }
 
         /// <summary>
-        /// The region of the AWS event source.
+        /// The AWS region where Stripe creates the partner event source.
         /// </summary>
         [JsonProperty("aws_region")]
         [STJS.JsonPropertyName("aws_region")]

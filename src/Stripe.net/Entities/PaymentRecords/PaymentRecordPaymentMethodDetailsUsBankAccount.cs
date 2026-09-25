@@ -100,6 +100,13 @@ namespace Stripe
         public string PaymentReference { get; set; }
 
         /// <summary>
+        /// NACHA ACH return code for a failed US bank account payment.
+        /// </summary>
+        [JsonProperty("return_code")]
+        [STJS.JsonPropertyName("return_code")]
+        public string ReturnCode { get; set; }
+
+        /// <summary>
         /// The routing number for the bank account.
         /// </summary>
         [JsonProperty("routing_number")]

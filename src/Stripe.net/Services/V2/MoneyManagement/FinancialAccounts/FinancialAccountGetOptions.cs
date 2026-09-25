@@ -11,7 +11,8 @@ namespace Stripe.V2.MoneyManagement
     {
         /// <summary>
         /// Additional fields to include in the response.
-        /// One of: <c>payments.balance_by_funds_type</c>, or <c>storage.crypto</c>.
+        /// One of: <c>payments.balance_by_funds_type</c>, <c>storage.crypto</c>, or
+        /// <c>storage.deposit_insurance_eligibility</c>.
         /// </summary>
         [JsonProperty("include")]
         [STJS.JsonPropertyName("include")]

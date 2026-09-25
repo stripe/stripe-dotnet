@@ -14,13 +14,10 @@ namespace Stripe
         /// <c>now</c> or <c>unchanged</c>. The default is <c>now</c>. For more information, see the
         /// billing cycle <a
         /// href="https://docs.stripe.com/billing/subscriptions/billing-cycle">documentation</a>.
-        /// One of: <c>now</c>, or <c>unchanged</c>.
-        ///
-        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [STJS.JsonPropertyName("billing_cycle_anchor")]
-        public SubscriptionBillingCycleAnchor BillingCycleAnchor { get; set; }
+        public SubscriptionBillingCycleAnchorOptions BillingCycleAnchor { get; set; }
 
         /// <summary>
         /// Controls whether Stripe attempts payment on the resumption invoice in the resume

@@ -8,5 +8,8 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class MandatePaymentMethodDetailsCard : StripeEntity<MandatePaymentMethodDetailsCard>
     {
+        [JsonProperty("india")]
+        [STJS.JsonPropertyName("india")]
+        public MandatePaymentMethodDetailsCardIndia India { get; set; }
     }
 }

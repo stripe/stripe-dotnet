@@ -10,6 +10,7 @@ namespace Stripe.V2
         private V2.MoneyManagement.AdjustmentService adjustments;
         private V2.MoneyManagement.CurrencyConversionService currencyConversions;
         private V2.MoneyManagement.DebitDisputeService debitDisputes;
+        private V2.MoneyManagement.EarnedCreditService earnedCredits;
         private V2.MoneyManagement.FinancialAccountService financialAccounts;
         private V2.MoneyManagement.FinancialAddressService financialAddresses;
         private V2.MoneyManagement.InboundTransferService inboundTransfers;
@@ -24,7 +25,7 @@ namespace Stripe.V2
         private V2.MoneyManagement.ReceivedDebitService receivedDebits;
         private V2.MoneyManagement.ReceivedDebitMandateService receivedDebitMandates;
         private V2.MoneyManagement.RecipientVerificationService recipientVerifications;
-        private V2.MoneyManagement.TestHelpersService testHelpers;
+        private V2.MoneyManagement.TestHelperService testHelpers;
         private V2.MoneyManagement.TransactionService transactions;
         private V2.MoneyManagement.TransactionEntryService transactionEntries;
 
@@ -45,6 +46,9 @@ namespace Stripe.V2
             this.Requestor);
 
         public virtual V2.MoneyManagement.DebitDisputeService DebitDisputes => this.debitDisputes ??= new V2.MoneyManagement.DebitDisputeService(
+            this.Requestor);
+
+        public virtual V2.MoneyManagement.EarnedCreditService EarnedCredits => this.earnedCredits ??= new V2.MoneyManagement.EarnedCreditService(
             this.Requestor);
 
         public virtual V2.MoneyManagement.FinancialAccountService FinancialAccounts => this.financialAccounts ??= new V2.MoneyManagement.FinancialAccountService(
@@ -89,7 +93,7 @@ namespace Stripe.V2
         public virtual V2.MoneyManagement.RecipientVerificationService RecipientVerifications => this.recipientVerifications ??= new V2.MoneyManagement.RecipientVerificationService(
             this.Requestor);
 
-        public virtual V2.MoneyManagement.TestHelpersService TestHelpers => this.testHelpers ??= new V2.MoneyManagement.TestHelpersService(
+        public virtual V2.MoneyManagement.TestHelperService TestHelpers => this.testHelpers ??= new V2.MoneyManagement.TestHelperService(
             this.Requestor);
 
         public virtual V2.MoneyManagement.TransactionService Transactions => this.transactions ??= new V2.MoneyManagement.TransactionService(

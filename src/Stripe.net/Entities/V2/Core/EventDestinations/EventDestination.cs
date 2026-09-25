@@ -35,42 +35,42 @@ namespace Stripe.V2.Core
         public string Object { get; set; }
 
         /// <summary>
-        /// Amazon EventBridge configuration.
+        /// Configuration for delivering events through an Amazon EventBridge partner event source.
         /// </summary>
         [JsonProperty("amazon_eventbridge")]
         [STJS.JsonPropertyName("amazon_eventbridge")]
         public EventDestinationAmazonEventbridge AmazonEventbridge { get; set; }
 
         /// <summary>
-        /// Azure Event Grid configuration.
+        /// Configuration for delivering events through an Azure Event Grid partner topic.
         /// </summary>
         [JsonProperty("azure_event_grid")]
         [STJS.JsonPropertyName("azure_event_grid")]
         public EventDestinationAzureEventGrid AzureEventGrid { get; set; }
 
         /// <summary>
-        /// Time at which the object was created.
+        /// The time when the destination was created.
         /// </summary>
         [JsonProperty("created")]
         [STJS.JsonPropertyName("created")]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// An optional description of what the event destination is used for.
+        /// An optional user-defined description of the destination's purpose.
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
-        /// The list of events to enable for this endpoint.
+        /// The list of event types enabled for delivery to this destination.
         /// </summary>
         [JsonProperty("enabled_events")]
         [STJS.JsonPropertyName("enabled_events")]
         public List<string> EnabledEvents { get; set; }
 
         /// <summary>
-        /// Payload type of events being subscribed to.
+        /// Whether to deliver as snapshot or thin events.
         /// One of: <c>snapshot</c>, or <c>thin</c>.
         /// </summary>
         [JsonProperty("event_payload")]
@@ -98,28 +98,33 @@ namespace Stripe.V2.Core
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Metadata.
+        /// User-defined key/value data for the destination; it has no effect on event matching or
+        /// delivery.
         /// </summary>
         [JsonProperty("metadata")]
         [STJS.JsonPropertyName("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Event destination name.
+        /// A user-defined label for identifying the destination in Stripe.
         /// </summary>
         [JsonProperty("name")]
         [STJS.JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// If using the snapshot event payload, the API version events are rendered as.
+        /// For snapshot events only, the Stripe API version used to render event objects. You can't
+        /// change this value after you create the event destination. Thin events are not pinned to
+        /// an API version.
         /// </summary>
         [JsonProperty("snapshot_api_version")]
         [STJS.JsonPropertyName("snapshot_api_version")]
         public string SnapshotApiVersion { get; set; }
 
         /// <summary>
-        /// Status. It can be set to either enabled or disabled.
+        /// Whether Stripe currently attempts delivery. Stripe attempts delivery to enabled
+        /// destinations when their provider configuration is active; disabled destinations do not
+        /// receive delivery attempts.
         /// One of: <c>disabled</c>, or <c>enabled</c>.
         /// </summary>
         [JsonProperty("status")]
@@ -127,14 +132,15 @@ namespace Stripe.V2.Core
         public string Status { get; set; }
 
         /// <summary>
-        /// Additional information about event destination status.
+        /// Additional lifecycle context for the destination status, when available.
         /// </summary>
         [JsonProperty("status_details")]
         [STJS.JsonPropertyName("status_details")]
         public EventDestinationStatusDetails StatusDetails { get; set; }
 
         /// <summary>
-        /// Event destination type.
+        /// The delivery transport. Chosen when the destination is created and cannot be changed by
+        /// update.
         /// One of: <c>amazon_eventbridge</c>, <c>azure_event_grid</c>, or <c>webhook_endpoint</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
@@ -144,14 +150,15 @@ namespace Stripe.V2.Core
         public string Type { get; set; }
 
         /// <summary>
-        /// Time at which the object was last updated.
+        /// The time when the destination object was last updated.
         /// </summary>
         [JsonProperty("updated")]
         [STJS.JsonPropertyName("updated")]
         public DateTime Updated { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Webhook endpoint configuration.
+        /// Configuration for delivering events to a webhook endpoint. Live mode requires HTTPS;
+        /// sandbox mode also supports HTTP.
         /// </summary>
         [JsonProperty("webhook_endpoint")]
         [STJS.JsonPropertyName("webhook_endpoint")]

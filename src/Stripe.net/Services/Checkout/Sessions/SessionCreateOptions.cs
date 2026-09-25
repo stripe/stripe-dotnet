@@ -34,6 +34,34 @@ namespace Stripe.Checkout
         public bool? AllowPromotionCodes { get; set; }
 
         /// <summary>
+        /// A list of the types of payment methods (e.g., <c>card</c>) this Checkout Session can
+        /// accept.
+        ///
+        /// Unlike <c>payment_method_types</c>, this acts as a filter on the dynamically computed
+        /// set of eligible payment methods rather than an explicit static list. Only payment
+        /// methods that are both dynamically eligible and present in this list will be offered to
+        /// the customer.
+        /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
+        /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
+        /// <c>bancontact</c>, <c>billie</c>, <c>bizum</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
+        /// <c>cashapp</c>, <c>crypto</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>,
+        /// <c>giropay</c>, <c>gopay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>,
+        /// <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mb_way</c>,
+        /// <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>, <c>nz_bank_account</c>,
+        /// <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>,
+        /// <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
+        /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>scalapay</c>,
+        /// <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>, <c>sunbit</c>,
+        /// <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
+        /// <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("allowed_payment_method_types")]
+        [STJS.JsonPropertyName("allowed_payment_method_types")]
+        public List<string> AllowedPaymentMethodTypes { get; set; }
+
+        /// <summary>
         /// Determines whether the customer's attempt to pay must be manually approved.
         ///
         /// Default is <c>auto</c>, when the customer's attempt to pay is approved automatically
@@ -250,8 +278,9 @@ namespace Stripe.Checkout
         /// <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>paypay</c>,
         /// <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>scalapay</c>,
-        /// <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>sunbit</c>, <c>swish</c>,
-        /// <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>, <c>sunbit</c>,
+        /// <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
+        /// <c>zip</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -450,43 +479,6 @@ namespace Stripe.Checkout
         [JsonProperty("payment_method_options")]
         [STJS.JsonPropertyName("payment_method_options")]
         public SessionPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
-
-        /// <summary>
-        /// A list of the types of payment methods (e.g., <c>card</c>) this Checkout Session can
-        /// accept.
-        ///
-        /// You can omit this attribute to manage your payment methods from the <a
-        /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>. See
-        /// <a
-        /// href="https://docs.stripe.com/payments/payment-methods/integration-options#using-dynamic-payment-methods">Dynamic
-        /// Payment Methods</a> for more details.
-        ///
-        /// Read more about the supported payment methods and their requirements in our <a
-        /// href="https://stripe.com/docs/payments/checkout/payment-methods">payment method details
-        /// guide</a>.
-        ///
-        /// If multiple payment methods are passed, Checkout will dynamically reorder them to
-        /// prioritize the most relevant payment methods based on the customer's location and other
-        /// characteristics.
-        /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
-        /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
-        /// <c>bancontact</c>, <c>billie</c>, <c>bizum</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
-        /// <c>cashapp</c>, <c>crypto</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>,
-        /// <c>giropay</c>, <c>gopay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>,
-        /// <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mb_way</c>,
-        /// <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>, <c>nz_bank_account</c>,
-        /// <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>,
-        /// <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
-        /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>scalapay</c>,
-        /// <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>, <c>sunbit</c>,
-        /// <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
-        /// <c>zip</c>.
-        ///
-        /// This enum can grow over time; additional values may be added in the future.
-        /// </summary>
-        [JsonProperty("payment_method_types")]
-        [STJS.JsonPropertyName("payment_method_types")]
-        public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
         /// This property is used to set up permissions for various actions (e.g., update) on the

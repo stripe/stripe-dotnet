@@ -12,22 +12,23 @@ namespace Stripe.V2.Core
         private Dictionary<string, string> metadata;
 
         /// <summary>
-        /// An optional description of what the event destination is used for.
+        /// An optional user-defined description of the destination's purpose; it does not control
+        /// routing.
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
-        /// The list of events to enable for this endpoint.
+        /// The list of event types enabled for delivery to this destination. Event scopes are
+        /// configured when the destination is created.
         /// </summary>
         [JsonProperty("enabled_events")]
         [STJS.JsonPropertyName("enabled_events")]
         public List<string> EnabledEvents { get; set; }
 
         /// <summary>
-        /// Additional fields to include in the response. Currently supports
-        /// <c>webhook_endpoint.url</c>.
+        /// Include the normally redacted <c>webhook_endpoint.url</c> in the response.
         /// One of: <c>webhook_endpoint.url</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
@@ -54,14 +55,15 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// Event destination name.
+        /// A user-defined label for identifying the destination; it does not control routing.
         /// </summary>
         [JsonProperty("name")]
         [STJS.JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Webhook endpoint configuration.
+        /// New delivery target for the webhook endpoint. Live mode requires HTTPS; sandbox mode
+        /// also supports HTTP.
         /// </summary>
         [JsonProperty("webhook_endpoint")]
         [STJS.JsonPropertyName("webhook_endpoint")]

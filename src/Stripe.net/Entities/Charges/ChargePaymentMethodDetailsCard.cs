@@ -58,6 +58,19 @@ namespace Stripe
         public DateTime CaptureBefore { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// If present, indicates that the Card Account Updater changed the card's credentials
+        /// during this authorization. <c>number_changed</c> means the card number was updated (the
+        /// expiration date may have changed as well); <c>expiry_changed</c> means only the
+        /// expiration date was updated.
+        /// One of: <c>expiry_changed</c>, or <c>number_changed</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("card_account_update")]
+        [STJS.JsonPropertyName("card_account_update")]
+        public string CardAccountUpdate { get; set; }
+
+        /// <summary>
         /// Check results by Card networks on Card address and CVC at time of payment.
         /// </summary>
         [JsonProperty("checks")]
