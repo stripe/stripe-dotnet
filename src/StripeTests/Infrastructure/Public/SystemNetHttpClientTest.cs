@@ -316,7 +316,11 @@ namespace StripeTests
             Assert.Equal(".net", userAgentJson.Value<string>("lang"));
             Assert.NotEqual("?", userAgentJson.Value<string>("lang_version"));
             Assert.NotEqual("(unknown)", userAgentJson.Value<string>("lang_version"));
+#if NET10_0
+            Assert.Equal("net10.0", userAgentJson.Value<string>("stripe_net_target_framework"));
+#else
             Assert.NotEqual("unknown", userAgentJson.Value<string>("stripe_net_target_framework"));
+#endif
             Assert.NotEqual("?", userAgentJson.Value<string>("platform"));
             Assert.NotEmpty(userAgentJson.Value<string>("bindings_version"));
             Assert.NotEmpty(userAgentJson.Value<string>("newtonsoft_json_version"));
