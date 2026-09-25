@@ -93,6 +93,20 @@ namespace Stripe.Checkout
         }
 
         /// <summary>
+        /// A subset of parameters to apply to the PaymentIntent for Checkout Sessions in
+        /// <c>payment</c> mode.
+        ///
+        /// You can only update these parameters when <c>ui_mode</c> is <c>elements</c> and while
+        /// the session is active. If the PaymentIntent requires customer action or confirmation,
+        /// updating these parameters abandons the current payment attempt and returns the
+        /// PaymentIntent to <c>requires_payment_method</c>. You can't update these parameters after
+        /// the PaymentIntent begins processing, requires capture, succeeds, or is canceled.
+        /// </summary>
+        [JsonProperty("payment_intent_data")]
+        [STJS.JsonPropertyName("payment_intent_data")]
+        public SessionPaymentIntentDataOptions PaymentIntentData { get; set; }
+
+        /// <summary>
         /// The shipping rate options to apply to this Session. Up to a maximum of 5.
         /// </summary>
         [JsonProperty("shipping_options", NullValueHandling = NullValueHandling.Ignore)]

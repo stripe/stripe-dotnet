@@ -10,8 +10,8 @@ namespace Stripe.Treasury
     {
         /// <summary>
         /// You can reverse some <a
-        /// href="https://api.stripe.com#received_credits">ReceivedCredits</a> depending on their
-        /// network and source flow. Reversing a ReceivedCredit leads to the creation of a new
+        /// href="https://docs.stripe.com/api#received_credits">ReceivedCredits</a> depending on
+        /// their network and source flow. Reversing a ReceivedCredit leads to the creation of a new
         /// object known as a CreditReversal.
         /// </summary>
         [JsonProperty("credit_reversal")]
@@ -19,9 +19,10 @@ namespace Stripe.Treasury
         public CreditReversal CreditReversal { get; set; }
 
         /// <summary>
-        /// You can reverse some <a href="https://api.stripe.com#received_debits">ReceivedDebits</a>
-        /// depending on their network and source flow. Reversing a ReceivedDebit leads to the
-        /// creation of a new object known as a DebitReversal.
+        /// You can reverse some <a
+        /// href="https://docs.stripe.com/api#received_debits">ReceivedDebits</a> depending on their
+        /// network and source flow. Reversing a ReceivedDebit leads to the creation of a new object
+        /// known as a DebitReversal.
         /// </summary>
         [JsonProperty("debit_reversal")]
         [STJS.JsonPropertyName("debit_reversal")]
@@ -31,7 +32,7 @@ namespace Stripe.Treasury
         /// Use <a
         /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/into/inbound-transfers">InboundTransfers</a>
         /// to add funds to your <a
-        /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a> via a
+        /// href="https://docs.stripe.com/api#financial_accounts">FinancialAccount</a> via a
         /// PaymentMethod that is owned by you. The funds will be transferred via an ACH debit.
         ///
         /// Related guide: <a
@@ -59,9 +60,9 @@ namespace Stripe.Treasury
         /// Use <a
         /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-payments">OutboundPayments</a>
         /// to send funds to another party's external bank account or <a
-        /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a>. To send money to
-        /// an account belonging to the same user, use an <a
-        /// href="https://api.stripe.com#outbound_transfers">OutboundTransfer</a>.
+        /// href="https://docs.stripe.com/api#financial_accounts">FinancialAccount</a>. To send
+        /// money to an account belonging to the same user, use an <a
+        /// href="https://docs.stripe.com/api#outbound_transfers">OutboundTransfer</a>.
         ///
         /// Simulate OutboundPayment state changes with the
         /// <c>/v1/test_helpers/treasury/outbound_payments</c> endpoints. These methods can only be
@@ -79,11 +80,11 @@ namespace Stripe.Treasury
         /// Use <a
         /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-transfers">OutboundTransfers</a>
         /// to transfer funds from a <a
-        /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a> to a PaymentMethod
-        /// belonging to the same entity. To send funds to a different party, use <a
-        /// href="https://api.stripe.com#outbound_payments">OutboundPayments</a> instead. You can
-        /// send funds over ACH rails or through a domestic wire transfer to a user's own external
-        /// bank account.
+        /// href="https://docs.stripe.com/api#financial_accounts">FinancialAccount</a> to a
+        /// PaymentMethod belonging to the same entity. To send funds to a different party, use <a
+        /// href="https://docs.stripe.com/api#outbound_payments">OutboundPayments</a> instead. You
+        /// can send funds over ACH rails or through a domestic wire transfer to a user's own
+        /// external bank account.
         ///
         /// Simulate OutboundTransfer state changes with the
         /// <c>/v1/test_helpers/treasury/outbound_transfers</c> endpoints. These methods can only be
@@ -99,8 +100,8 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// ReceivedCredits represent funds sent to a <a
-        /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a> (for example, via
-        /// ACH or wire). These money movements are not initiated from the FinancialAccount.
+        /// href="https://docs.stripe.com/api#financial_accounts">FinancialAccount</a> (for example,
+        /// via ACH or wire). These money movements are not initiated from the FinancialAccount.
         /// </summary>
         [JsonProperty("received_credit")]
         [STJS.JsonPropertyName("received_credit")]
@@ -108,8 +109,8 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// ReceivedDebits represent funds pulled from a <a
-        /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a>. These are not
-        /// initiated from the FinancialAccount.
+        /// href="https://docs.stripe.com/api#financial_accounts">FinancialAccount</a>. These are
+        /// not initiated from the FinancialAccount.
         /// </summary>
         [JsonProperty("received_debit")]
         [STJS.JsonPropertyName("received_debit")]
@@ -121,6 +122,8 @@ namespace Stripe.Treasury
         /// One of: <c>credit_reversal</c>, <c>debit_reversal</c>, <c>inbound_transfer</c>,
         /// <c>issuing_authorization</c>, <c>other</c>, <c>outbound_payment</c>,
         /// <c>outbound_transfer</c>, <c>received_credit</c>, or <c>received_debit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

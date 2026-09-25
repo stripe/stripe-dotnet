@@ -22,6 +22,8 @@ namespace Stripe
         /// The duration that you wish the quote to be locked for. The quote will be usable for the
         /// duration specified. The default is <c>none</c>. The maximum is 1 day.
         /// One of: <c>day</c>, <c>five_minutes</c>, <c>hour</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("lock_duration")]
         [STJS.JsonPropertyName("lock_duration")]

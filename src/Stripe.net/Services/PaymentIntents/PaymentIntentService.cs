@@ -289,9 +289,8 @@ namespace Stripe
         /// <c>client_secret</c> is in the query string. </p>.
         ///
         /// <p>If you retrieve a PaymentIntent with a publishable key, it only returns a subset of
-        /// properties. Refer to the <a
-        /// href="https://stripe.com/docs/api#payment_intent_object">payment intent</a> object
-        /// reference for more details.</p>.
+        /// properties. Refer to the <a href="https://stripe.com/api/payment_intents/object">payment
+        /// intent</a> object reference for more details.</p>.
         /// </summary>
         public virtual PaymentIntent Get(string id, PaymentIntentGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -305,9 +304,8 @@ namespace Stripe
         /// <c>client_secret</c> is in the query string. </p>.
         ///
         /// <p>If you retrieve a PaymentIntent with a publishable key, it only returns a subset of
-        /// properties. Refer to the <a
-        /// href="https://stripe.com/docs/api#payment_intent_object">payment intent</a> object
-        /// reference for more details.</p>.
+        /// properties. Refer to the <a href="https://stripe.com/api/payment_intents/object">payment
+        /// intent</a> object reference for more details.</p>.
         /// </summary>
         public virtual Task<PaymentIntent> GetAsync(string id, PaymentIntentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

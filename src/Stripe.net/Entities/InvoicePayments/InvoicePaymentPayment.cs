@@ -12,7 +12,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Charge)
-        /// ID of the successful charge for this payment when <c>type</c> is <c>charge</c>.Note:
+        /// ID of the successful charge for this payment when <c>type</c> is <c>charge</c>. Note:
         /// charge is only surfaced if the charge object is not associated with a payment intent. If
         /// the charge object does have a payment intent, the Invoice Payment surfaces the payment
         /// intent instead.
@@ -27,7 +27,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// ID of the successful charge for this payment when <c>type</c> is <c>charge</c>.Note:
+        /// ID of the successful charge for this payment when <c>type</c> is <c>charge</c>. Note:
         /// charge is only surfaced if the charge object is not associated with a payment intent. If
         /// the charge object does have a payment intent, the Invoice Payment surfaces the payment
         /// intent instead.
@@ -128,6 +128,8 @@ namespace Stripe
         /// <summary>
         /// Type of payment object associated with this invoice payment.
         /// One of: <c>charge</c>, <c>payment_intent</c>, or <c>payment_record</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

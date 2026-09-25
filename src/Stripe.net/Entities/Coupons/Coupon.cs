@@ -10,10 +10,10 @@ namespace Stripe
     /// <summary>
     /// A coupon contains information about a percent-off or amount-off discount you might want
     /// to apply to a customer. Coupons may be applied to <a
-    /// href="https://api.stripe.com#subscriptions">subscriptions</a>, <a
-    /// href="https://api.stripe.com#invoices">invoices</a>, <a
+    /// href="https://docs.stripe.com/api#subscriptions">subscriptions</a>, <a
+    /// href="https://docs.stripe.com/api#invoices">invoices</a>, <a
     /// href="https://docs.stripe.com/api/checkout/sessions">checkout sessions</a>, <a
-    /// href="https://api.stripe.com#quotes">quotes</a>, and more. Coupons do not work with
+    /// href="https://docs.stripe.com/api#quotes">quotes</a>, and more. Coupons do not work with
     /// conventional one-off <a href="https://stripe.com/api/charges/create">charges</a> or <a
     /// href="https://docs.stripe.com/api/payment_intents">payment intents</a>.
     /// </summary>
@@ -85,6 +85,8 @@ namespace Stripe
         /// One of <c>forever</c>, <c>once</c>, or <c>repeating</c>. Describes how long a customer
         /// who applies this coupon will get the discount.
         /// One of: <c>forever</c>, <c>once</c>, or <c>repeating</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("duration")]
         [STJS.JsonPropertyName("duration")]
@@ -167,6 +169,8 @@ namespace Stripe
         /// <summary>
         /// The type of coupon logic used to calculate the discount.
         /// One of: <c>amount_off</c>, <c>percent_off</c>, or <c>script</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

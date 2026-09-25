@@ -8,5 +8,8 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SubscriptionPaymentSettingsPaymentMethodOptionsBillie : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptionsBillie>
     {
+        [JsonProperty("company_details")]
+        [STJS.JsonPropertyName("company_details")]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsBillieCompanyDetails CompanyDetails { get; set; }
     }
 }

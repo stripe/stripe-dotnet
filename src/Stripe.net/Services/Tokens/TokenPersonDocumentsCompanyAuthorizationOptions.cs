@@ -10,8 +10,9 @@ namespace Stripe
     public class TokenPersonDocumentsCompanyAuthorizationOptions : INestedOptions
     {
         /// <summary>
-        /// One or more document ids returned by a <a href="https://api.stripe.com#create_file">file
-        /// upload</a> with a <c>purpose</c> value of <c>account_requirement</c>.
+        /// One or more document ids returned by a <a
+        /// href="https://docs.stripe.com/api#create_file">file upload</a> with a <c>purpose</c>
+        /// value of <c>account_requirement</c>.
         /// </summary>
         [JsonProperty("files")]
         [STJS.JsonPropertyName("files")]

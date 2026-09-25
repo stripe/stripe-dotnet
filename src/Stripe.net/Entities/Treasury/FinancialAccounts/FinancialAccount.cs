@@ -36,6 +36,8 @@ namespace Stripe.Treasury
         /// <c>intra_stripe_flows</c>, <c>outbound_payments.ach</c>,
         /// <c>outbound_payments.us_domestic_wire</c>, <c>outbound_transfers.ach</c>,
         /// <c>outbound_transfers.us_domestic_wire</c>, or <c>remote_deposit_capture</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("active_features")]
         [STJS.JsonPropertyName("active_features")]
@@ -125,6 +127,8 @@ namespace Stripe.Treasury
         /// <c>intra_stripe_flows</c>, <c>outbound_payments.ach</c>,
         /// <c>outbound_payments.us_domestic_wire</c>, <c>outbound_transfers.ach</c>,
         /// <c>outbound_transfers.us_domestic_wire</c>, or <c>remote_deposit_capture</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("pending_features")]
         [STJS.JsonPropertyName("pending_features")]
@@ -144,6 +148,8 @@ namespace Stripe.Treasury
         /// <c>intra_stripe_flows</c>, <c>outbound_payments.ach</c>,
         /// <c>outbound_payments.us_domestic_wire</c>, <c>outbound_transfers.ach</c>,
         /// <c>outbound_transfers.us_domestic_wire</c>, or <c>remote_deposit_capture</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("restricted_features")]
         [STJS.JsonPropertyName("restricted_features")]
@@ -152,6 +158,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// Status of this FinancialAccount.
         /// One of: <c>closed</c>, or <c>open</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

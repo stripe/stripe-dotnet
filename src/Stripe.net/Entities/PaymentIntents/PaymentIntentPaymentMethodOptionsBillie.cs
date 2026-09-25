@@ -14,5 +14,16 @@ namespace Stripe
         [JsonProperty("capture_method")]
         [STJS.JsonPropertyName("capture_method")]
         public string CaptureMethod { get; set; }
+
+        [JsonProperty("company_details")]
+        [STJS.JsonPropertyName("company_details")]
+        public PaymentIntentPaymentMethodOptionsBillieCompanyDetails CompanyDetails { get; set; }
+
+        /// <summary>
+        /// An identifier or reference that this payment corresponds to.
+        /// </summary>
+        [JsonProperty("reference")]
+        [STJS.JsonPropertyName("reference")]
+        public string Reference { get; set; }
     }
 }

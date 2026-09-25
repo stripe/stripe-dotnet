@@ -43,6 +43,8 @@ namespace Stripe.Radar
         /// Indicates the type of event attached to the payment evaluation.
         /// One of: <c>dispute_opened</c>, <c>early_fraud_warning_received</c>, <c>refunded</c>,
         /// <c>user_intervention_raised</c>, or <c>user_intervention_resolved</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

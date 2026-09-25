@@ -22,6 +22,7 @@ namespace Stripe
                 { "apple_pay_domain", typeof(ApplePayDomain) },
                 { "application", typeof(Application) },
                 { "application_fee", typeof(ApplicationFee) },
+                { "apps.install", typeof(Apps.Install) },
                 { "apps.secret", typeof(Apps.Secret) },
                 { "balance", typeof(Balance) },
                 { "balance_settings", typeof(BalanceSettings) },
@@ -165,6 +166,7 @@ namespace Stripe
                     "quote_preview_subscription_schedule", typeof(
                     QuotePreviewSubscriptionSchedule)
                 },
+                { "radar.billing_evaluation", typeof(Radar.BillingEvaluation) },
                 { "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning) },
                 { "radar.payment_evaluation", typeof(Radar.PaymentEvaluation) },
                 { "radar.value_list", typeof(Radar.ValueList) },
@@ -209,6 +211,7 @@ namespace Stripe
                 { "terminal.reader", typeof(Terminal.Reader) },
                 { "terminal.reader_collected_data", typeof(Terminal.ReaderCollectedData) },
                 { "test_helpers.test_clock", typeof(TestHelpers.TestClock) },
+                { "three_d_secure.authentication", typeof(ThreeDSecure.Authentication) },
                 { "token", typeof(Token) },
                 { "topup", typeof(Topup) },
                 { "transfer", typeof(Transfer) },

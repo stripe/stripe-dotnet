@@ -34,6 +34,34 @@ namespace Stripe.Checkout
         public bool? AllowPromotionCodes { get; set; }
 
         /// <summary>
+        /// A list of the types of payment methods (e.g., <c>card</c>) this Checkout Session can
+        /// accept.
+        ///
+        /// Unlike <c>payment_method_types</c>, this acts as a filter on the dynamically computed
+        /// set of eligible payment methods rather than an explicit static list. Only payment
+        /// methods that are both dynamically eligible and present in this list will be offered to
+        /// the customer.
+        /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
+        /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
+        /// <c>bancontact</c>, <c>billie</c>, <c>bizum</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
+        /// <c>cashapp</c>, <c>crypto</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>,
+        /// <c>giropay</c>, <c>gopay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>,
+        /// <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mb_way</c>,
+        /// <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>, <c>nz_bank_account</c>,
+        /// <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>,
+        /// <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
+        /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>scalapay</c>,
+        /// <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>, <c>sunbit</c>,
+        /// <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
+        /// <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("allowed_payment_method_types")]
+        [STJS.JsonPropertyName("allowed_payment_method_types")]
+        public List<string> AllowedPaymentMethodTypes { get; set; }
+
+        /// <summary>
         /// Settings for automatic tax lookup for this session and resulting payments, invoices, and
         /// subscriptions.
         /// </summary>
@@ -45,6 +73,8 @@ namespace Stripe.Checkout
         /// Specify whether Checkout should collect the customer's billing address. Defaults to
         /// <c>auto</c>.
         /// One of: <c>auto</c>, or <c>required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("billing_address_collection")]
         [STJS.JsonPropertyName("billing_address_collection")]
@@ -158,6 +188,8 @@ namespace Stripe.Checkout
         ///
         /// Can only be set in <c>payment</c> and <c>setup</c> mode.
         /// One of: <c>always</c>, or <c>if_required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("customer_creation")]
         [STJS.JsonPropertyName("customer_creation")]
@@ -204,8 +236,11 @@ namespace Stripe.Checkout
         /// <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>paypay</c>,
         /// <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>scalapay</c>,
-        /// <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>sunbit</c>, <c>swish</c>,
-        /// <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>, <c>sunbit</c>,
+        /// <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
+        /// <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("excluded_payment_method_types")]
         [STJS.JsonPropertyName("excluded_payment_method_types")]
@@ -262,6 +297,8 @@ namespace Stripe.Checkout
         /// <c>lt</c>, <c>lv</c>, <c>ms</c>, <c>mt</c>, <c>nb</c>, <c>nl</c>, <c>pl</c>, <c>pt</c>,
         /// <c>pt-BR</c>, <c>ro</c>, <c>ru</c>, <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>,
         /// <c>tr</c>, <c>vi</c>, <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("locale")]
         [STJS.JsonPropertyName("locale")]
@@ -291,6 +328,8 @@ namespace Stripe.Checkout
         /// The mode of the Checkout Session. Pass <c>subscription</c> if the Checkout Session
         /// includes at least one recurring item.
         /// One of: <c>payment</c>, <c>setup</c>, or <c>subscription</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("mode")]
         [STJS.JsonPropertyName("mode")]
@@ -325,7 +364,7 @@ namespace Stripe.Checkout
         /// For <c>subscription</c> mode, there is a maximum of 20 line items and optional items
         /// with recurring Prices and 20 line items and optional items with one-time Prices.
         ///
-        /// You can't set this parameter if <c>ui_mode</c> is <c>custom</c>.
+        /// You can't set this parameter if <c>ui_mode</c> is <c>elements</c> or <c>form</c>.
         /// </summary>
         [JsonProperty("optional_items")]
         [STJS.JsonPropertyName("optional_items")]
@@ -335,6 +374,8 @@ namespace Stripe.Checkout
         /// Where the user is coming from. This informs the optimizations that are applied to the
         /// session. You can't set this parameter if <c>ui_mode</c> is <c>elements</c>.
         /// One of: <c>mobile_app</c>, or <c>web</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("origin_context")]
         [STJS.JsonPropertyName("origin_context")]
@@ -361,6 +402,8 @@ namespace Stripe.Checkout
         /// href="https://docs.stripe.com/payments/checkout/free-trials">subscriptions with a free
         /// trial</a>.
         /// One of: <c>always</c>, or <c>if_required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_method_collection")]
         [STJS.JsonPropertyName("payment_method_collection")]
@@ -387,40 +430,6 @@ namespace Stripe.Checkout
         [JsonProperty("payment_method_options")]
         [STJS.JsonPropertyName("payment_method_options")]
         public SessionPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
-
-        /// <summary>
-        /// A list of the types of payment methods (e.g., <c>card</c>) this Checkout Session can
-        /// accept.
-        ///
-        /// You can omit this attribute to manage your payment methods from the <a
-        /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>. See
-        /// <a
-        /// href="https://docs.stripe.com/payments/payment-methods/integration-options#using-dynamic-payment-methods">Dynamic
-        /// Payment Methods</a> for more details.
-        ///
-        /// Read more about the supported payment methods and their requirements in our <a
-        /// href="https://stripe.com/docs/payments/checkout/payment-methods">payment method details
-        /// guide</a>.
-        ///
-        /// If multiple payment methods are passed, Checkout will dynamically reorder them to
-        /// prioritize the most relevant payment methods based on the customer's location and other
-        /// characteristics.
-        /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
-        /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
-        /// <c>bancontact</c>, <c>billie</c>, <c>bizum</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
-        /// <c>cashapp</c>, <c>crypto</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>,
-        /// <c>giropay</c>, <c>gopay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>,
-        /// <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mb_way</c>,
-        /// <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>, <c>nz_bank_account</c>,
-        /// <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>,
-        /// <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
-        /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>scalapay</c>,
-        /// <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>sunbit</c>, <c>swish</c>,
-        /// <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
-        /// </summary>
-        [JsonProperty("payment_method_types")]
-        [STJS.JsonPropertyName("payment_method_types")]
-        public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
         /// This property is used to set up permissions for various actions (e.g., update) on the
@@ -451,6 +460,8 @@ namespace Stripe.Checkout
         /// href="https://docs.stripe.com/payments/checkout/custom-success-page?payment-ui=embedded-form">redirect
         /// behavior</a> of embedded sessions. Defaults to <c>always</c>.
         /// One of: <c>always</c>, <c>if_required</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("redirect_on_completion")]
         [STJS.JsonPropertyName("redirect_on_completion")]
@@ -504,6 +515,8 @@ namespace Stripe.Checkout
         /// or <c>auto</c>, <c>pay</c> is used. You can't set this parameter if <c>ui_mode</c> is
         /// <c>elements</c>.
         /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("submit_type")]
         [STJS.JsonPropertyName("submit_type")]
@@ -539,6 +552,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// The UI mode of the Session. Defaults to <c>hosted_page</c>.
         /// One of: <c>elements</c>, <c>embedded_page</c>, <c>form</c>, or <c>hosted_page</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("ui_mode")]
         [STJS.JsonPropertyName("ui_mode")]

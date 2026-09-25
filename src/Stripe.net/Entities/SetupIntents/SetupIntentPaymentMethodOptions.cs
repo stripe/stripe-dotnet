@@ -24,6 +24,10 @@ namespace Stripe
         [STJS.JsonPropertyName("bizum")]
         public SetupIntentPaymentMethodOptionsBizum Bizum { get; set; }
 
+        [JsonProperty("blik")]
+        [STJS.JsonPropertyName("blik")]
+        public SetupIntentPaymentMethodOptionsBlik Blik { get; set; }
+
         [JsonProperty("card")]
         [STJS.JsonPropertyName("card")]
         public SetupIntentPaymentMethodOptionsCard Card { get; set; }

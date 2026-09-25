@@ -77,6 +77,8 @@ namespace Stripe.Capital
         /// <summary>
         /// The type of the financing transaction.
         /// One of: <c>payment</c>, <c>payout</c>, or <c>reversal</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

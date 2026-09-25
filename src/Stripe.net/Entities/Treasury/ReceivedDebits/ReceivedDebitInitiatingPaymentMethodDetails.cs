@@ -25,7 +25,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// Set when <c>type</c> is <c>issuing_card</c>. This is an <a
-        /// href="https://api.stripe.com#issuing_cards">Issuing Card</a> ID.
+        /// href="https://docs.stripe.com/api#issuing_cards">Issuing Card</a> ID.
         /// </summary>
         [JsonProperty("issuing_card")]
         [STJS.JsonPropertyName("issuing_card")]
@@ -36,6 +36,8 @@ namespace Stripe.Treasury
         /// external account, a Stripe balance, or a FinancialAccount.
         /// One of: <c>balance</c>, <c>financial_account</c>, <c>issuing_card</c>, <c>stripe</c>, or
         /// <c>us_bank_account</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

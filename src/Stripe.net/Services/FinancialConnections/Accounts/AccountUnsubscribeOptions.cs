@@ -12,6 +12,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// The list of account features from which you would like to unsubscribe.
         /// One of: <c>balance</c>, <c>inferred_balances</c>, or <c>transactions</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("features")]
         [STJS.JsonPropertyName("features")]

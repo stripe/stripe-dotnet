@@ -572,6 +572,19 @@ namespace Stripe
         public PaymentMethodConfigurationSepaDebitOptions SepaDebit { get; set; }
 
         /// <summary>
+        /// SeQura is a <a
+        /// href="https://docs.stripe.com/payments/payment-methods#usage">single-use</a> payment
+        /// method that offers customers payment terms ranging from 7-120 days. Customers are
+        /// redirected from your website or app, authorize the payment with SeQura, then return to
+        /// your website or app. You get <a
+        /// href="https://docs.stripe.com/payments/payment-methods#payment-notification">immediate
+        /// notification</a> of whether the payment succeeded or failed.
+        /// </summary>
+        [JsonProperty("sequra")]
+        [STJS.JsonPropertyName("sequra")]
+        public PaymentMethodConfigurationSequraOptions Sequra { get; set; }
+
+        /// <summary>
         /// ShopeePay is a <a href="https://docs.stripe.com/payments/payment-methods#usage">single
         /// use</a> digital wallet payment method popular in Indonesia. When paying with GoPay,
         /// customers authenticate and approve payments using the Shopee app. Desktop checkout is

@@ -6,7 +6,12 @@ namespace Stripe.Billing
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// A resource for the feedback options model (for custom cancellation reasons).
+    /// A feedback option is a reason you can present to customers when they cancel a
+    /// subscription through the customer portal. Configure the set of options a customer can
+    /// choose from on a <a href="https://stripe.com/api/customer_portal/configuration">portal
+    /// configuration</a>.
+    ///
+    /// Related guide: <a href="https://stripe.com/customer-management">Customer management</a>.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FeedbackOption : StripeEntity<FeedbackOption>, IHasId, IHasObject

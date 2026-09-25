@@ -87,6 +87,8 @@ namespace Stripe
         /// <c>collection_method=charge_automatically</c>.
         /// One of: <c>allow_incomplete</c>, <c>default_incomplete</c>, <c>error_if_incomplete</c>,
         /// or <c>pending_if_incomplete</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_behavior")]
         [STJS.JsonPropertyName("payment_behavior")]
@@ -100,9 +102,10 @@ namespace Stripe
         public string Plan { get; set; }
 
         /// <summary>
-        /// The ID of the price object. One of <c>price</c> or <c>price_data</c> is required. When
-        /// changing a subscription item's price, <c>quantity</c> is set to 1 unless a
-        /// <c>quantity</c> parameter is provided.
+        /// The ID of the price object. You can use either <c>price</c> or <c>price_data</c>, but
+        /// not both, to set or change this item's price. If you're updating an existing item
+        /// without changing its price, omit both. When changing a subscription item's price,
+        /// <c>quantity</c> is set to 1 unless a <c>quantity</c> parameter is provided.
         /// </summary>
         [JsonProperty("price")]
         [STJS.JsonPropertyName("price")]
@@ -110,7 +113,9 @@ namespace Stripe
 
         /// <summary>
         /// Data used to generate a new <a href="https://docs.stripe.com/api/prices">Price</a>
-        /// object inline. One of <c>price</c> or <c>price_data</c> is required.
+        /// object inline. You can use either <c>price</c> or <c>price_data</c>, but not both, to
+        /// set or change this item's price. If you're updating an existing item without changing
+        /// its price, omit both.
         /// </summary>
         [JsonProperty("price_data")]
         [STJS.JsonPropertyName("price_data")]
@@ -123,6 +128,8 @@ namespace Stripe
         /// <c>billing_cycle_anchor=now</c>, or starting a trial), or if an item's <c>quantity</c>
         /// changes. The default value is <c>create_prorations</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]

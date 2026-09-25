@@ -82,6 +82,8 @@ namespace Stripe
         /// One of: <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,
         /// <c>eftpos_au</c>, <c>girocard</c>, <c>interac</c>, <c>jcb</c>, <c>link</c>,
         /// <c>mastercard</c>, <c>unionpay</c>, <c>unknown</c>, or <c>visa</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]
@@ -92,6 +94,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/payments/decremental-authorization">decrement the
         /// authorization</a> for this PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_decremental_authorization")]
         [STJS.JsonPropertyName("request_decremental_authorization")]
@@ -102,6 +106,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/payments/extended-authorization">capture beyond the
         /// standard authorization validity window</a> for this PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_extended_authorization")]
         [STJS.JsonPropertyName("request_extended_authorization")]
@@ -112,6 +118,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/payments/incremental-authorization">increment the
         /// authorization</a> for this PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_incremental_authorization")]
         [STJS.JsonPropertyName("request_incremental_authorization")]
@@ -121,6 +129,8 @@ namespace Stripe
         /// Request ability to make <a href="https://docs.stripe.com/payments/multicapture">multiple
         /// captures</a> for this PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_multicapture")]
         [STJS.JsonPropertyName("request_multicapture")]
@@ -131,6 +141,8 @@ namespace Stripe
         /// href="https://docs.stripe.com/payments/overcapture">overcapture</a> for this
         /// PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_overcapture")]
         [STJS.JsonPropertyName("request_overcapture")]
@@ -139,6 +151,8 @@ namespace Stripe
         /// <summary>
         /// Request partial authorization on this PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_partial_authorization")]
         [STJS.JsonPropertyName("request_partial_authorization")]
@@ -155,6 +169,8 @@ namespace Stripe
         /// requesting 3D Secure</a> for more information on how this configuration interacts with
         /// Radar and our SCA Engine.
         /// One of: <c>any</c>, <c>automatic</c>, or <c>challenge</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_three_d_secure")]
         [STJS.JsonPropertyName("request_three_d_secure")]
@@ -167,6 +183,16 @@ namespace Stripe
         [JsonProperty("require_cvc_recollection")]
         [STJS.JsonPropertyName("require_cvc_recollection")]
         public bool? RequireCvcRecollection { get; set; }
+
+        /// <summary>
+        /// Set to indicate the future transaction type usage for the card being set up.
+        /// One of: <c>installment</c>, <c>recurring</c>, or <c>unscheduled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("setup_credential_usage")]
+        [STJS.JsonPropertyName("setup_credential_usage")]
+        public string SetupCredentialUsage { get; set; }
 
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
@@ -192,6 +218,8 @@ namespace Stripe
         /// publishable key, you can only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("setup_future_usage")]
@@ -262,6 +290,28 @@ namespace Stripe
                 this.SetTracker.Track();
             }
         }
+
+        /// <summary>
+        /// Use this parameter in scenarios where you collect card details and <a
+        /// href="https://stripe.com/docs/payments/cards/charging-saved-cards">charge them
+        /// later</a>.
+        ///
+        /// When making an off session payment with a previously saved card (that was saved with a
+        /// SetupIntent or with a PaymentIntent with <c>setup_future_usage</c>), set this parameter
+        /// to indicate the type of transaction.
+        ///
+        /// You can set this parameter at any time before or during PaymentIntent confirmation, and
+        /// confirm this PaymentIntent with <c>off_session=true</c>.
+        ///
+        /// Note that this parameter is currently unsupported with the <c>setup_future_usage</c>
+        /// parameter.
+        /// One of: <c>installment</c>, <c>recurring</c>, or <c>unscheduled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("stored_credential_usage")]
+        [STJS.JsonPropertyName("stored_credential_usage")]
+        public string StoredCredentialUsage { get; set; }
 
         /// <summary>
         /// If 3D Secure authentication was performed with a third-party provider, the

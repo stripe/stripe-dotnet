@@ -22,6 +22,8 @@ namespace Stripe.Checkout
         /// into promotional communication from the merchant depending on the customer's locale.
         /// Only available to US merchants and US customers.
         /// One of: <c>auto</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("promotions")]
         [STJS.JsonPropertyName("promotions")]
@@ -31,6 +33,8 @@ namespace Stripe.Checkout
         /// If set to <c>required</c>, it requires customers to accept the terms of service before
         /// being able to pay.
         /// One of: <c>none</c>, or <c>required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("terms_of_service")]
         [STJS.JsonPropertyName("terms_of_service")]

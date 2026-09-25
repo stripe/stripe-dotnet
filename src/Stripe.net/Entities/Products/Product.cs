@@ -11,8 +11,8 @@ namespace Stripe
     /// Products describe the specific goods or services you offer to your customers. For
     /// example, you might offer a Standard and Premium version of your goods or service; each
     /// version would be a separate Product. They can be used in conjunction with <a
-    /// href="https://api.stripe.com#prices">Prices</a> to configure pricing in Payment Links,
-    /// Checkout, and Subscriptions.
+    /// href="https://docs.stripe.com/api#prices">Prices</a> to configure pricing in Payment
+    /// Links, Checkout, and Subscriptions.
     ///
     /// Related guides: <a
     /// href="https://docs.stripe.com/billing/subscriptions/set-up-subscription">Set up a
@@ -221,6 +221,8 @@ namespace Stripe
         /// for use with Orders and SKUs, or <c>service</c>, which is eligible for use with
         /// Subscriptions and Plans.
         /// One of: <c>good</c>, or <c>service</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

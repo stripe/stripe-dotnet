@@ -20,6 +20,8 @@ namespace Stripe.Checkout
         /// The border style for the Checkout Session. Must be one of <c>rounded</c>,
         /// <c>rectangular</c>, or <c>pill</c>.
         /// One of: <c>pill</c>, <c>rectangular</c>, or <c>rounded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("border_style")]
         [STJS.JsonPropertyName("border_style")]

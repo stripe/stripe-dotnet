@@ -67,8 +67,11 @@ namespace Stripe.Capital
         /// The type of disclaimer to use for a financing offer in user-facing surfaces. The
         /// corresponding disclaimer text to use for each disclaimer_variant value can be found in
         /// the <a href="https://docs.stripe.com/capital/marketing">marketing docs</a>.
-        /// One of: <c>celtic_us_loan</c>, <c>fundbox_au_financing</c>, <c>youlend_de_financing</c>,
-        /// <c>youlend_fr_financing</c>, <c>youlend_uk_mca</c>, or <c>youlend_us_mca</c>.
+        /// One of: <c>celtic_us_loan</c>, <c>fundbox_au_financing</c>, <c>fundbox_ca_financing</c>,
+        /// <c>youlend_de_financing</c>, <c>youlend_fr_financing</c>, <c>youlend_uk_mca</c>, or
+        /// <c>youlend_us_mca</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("disclaimer_variant")]
         [STJS.JsonPropertyName("disclaimer_variant")]
@@ -84,6 +87,8 @@ namespace Stripe.Capital
         /// <summary>
         /// The type of financing being offered.
         /// One of: <c>cash_advance</c>, or <c>flex_loan</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("financing_type")]
         [STJS.JsonPropertyName("financing_type")]
@@ -118,6 +123,8 @@ namespace Stripe.Capital
         /// <summary>
         /// Financing product identifier.
         /// One of: <c>refill</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("product_type")]
         [STJS.JsonPropertyName("product_type")]
@@ -142,6 +149,8 @@ namespace Stripe.Capital
         /// One of: <c>accepted</c>, <c>canceled</c>, <c>completed</c>, <c>delivered</c>,
         /// <c>expired</c>, <c>fully_repaid</c>, <c>paid_out</c>, <c>rejected</c>, <c>replaced</c>,
         /// or <c>undelivered</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -151,6 +160,8 @@ namespace Stripe.Capital
         /// See <a
         /// href="https://docs.stripe.com/api/capital/connect_financing_object#financing_offer_object-financing_type">financing_type</a>.
         /// One of: <c>cash_advance</c>, <c>fixed_term_loan</c>, or <c>flex_loan</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

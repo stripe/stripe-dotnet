@@ -15,17 +15,19 @@ namespace Stripe.FinancialConnections
         /// <c>line_of_credit</c>, <c>credit_card</c>.
         /// One of: <c>checking</c>, <c>credit_card</c>, <c>line_of_credit</c>, <c>mortgage</c>, or
         /// <c>savings</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("account_subcategories")]
         [STJS.JsonPropertyName("account_subcategories")]
         public List<string> AccountSubcategories { get; set; }
 
         /// <summary>
-        /// List of countries from which to collect accounts.
+        /// Country from which to collect accounts.
         /// </summary>
-        [JsonProperty("countries")]
-        [STJS.JsonPropertyName("countries")]
-        public List<string> Countries { get; set; }
+        [JsonProperty("country")]
+        [STJS.JsonPropertyName("country")]
+        public string Country { get; set; }
 
         /// <summary>
         /// Stripe ID of the institution with which the customer should be directed to log in.

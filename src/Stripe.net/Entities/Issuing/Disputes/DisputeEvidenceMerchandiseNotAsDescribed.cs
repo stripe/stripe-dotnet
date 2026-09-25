@@ -72,6 +72,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Result of cardholder's attempt to return the product.
         /// One of: <c>merchant_rejected</c>, or <c>successful</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("return_status")]
         [STJS.JsonPropertyName("return_status")]
