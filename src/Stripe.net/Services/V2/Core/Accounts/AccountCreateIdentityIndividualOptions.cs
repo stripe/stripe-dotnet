@@ -28,7 +28,7 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
-        public AddressJapanOptions Address { get; set; }
+        public AccountCreateIdentityIndividualAddressOptions Address { get; set; }
 
         /// <summary>
         /// The individual's date of birth.

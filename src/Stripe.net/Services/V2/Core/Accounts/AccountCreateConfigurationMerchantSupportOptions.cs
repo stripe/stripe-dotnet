@@ -13,7 +13,7 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
-        public AddressJapanOptions Address { get; set; }
+        public AccountCreateConfigurationMerchantSupportAddressOptions Address { get; set; }
 
         /// <summary>
         /// A publicly available email address for sending support issues to.
