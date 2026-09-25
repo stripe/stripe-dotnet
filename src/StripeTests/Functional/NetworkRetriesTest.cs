@@ -199,12 +199,7 @@ namespace StripeTests
 
             Assert.NotNull(exception);
 
-#if NET6_0
-            Assert.NotNull(exception.InnerException);
-            Assert.Equal("Timeout 3", exception.InnerException.Message);
-#else
             Assert.Equal("Timeout 3", exception.Message);
-#endif
         }
 
         [Fact]

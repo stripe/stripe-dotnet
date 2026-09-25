@@ -25,9 +25,7 @@ namespace Stripe
         public const int DefaultMaxNumberRetries = 2;
 
         private const string StripeNetTargetFramework =
-#if NET6_0
-            "net6.0"
-#elif NET8_0
+#if NET8_0
             "net8.0"
 #elif NET9_0
             "net9.0"
