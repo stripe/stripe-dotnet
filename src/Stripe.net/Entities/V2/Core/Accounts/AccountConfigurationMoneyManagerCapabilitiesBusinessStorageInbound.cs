@@ -37,6 +37,13 @@ namespace Stripe.V2.Core
         public AccountConfigurationMoneyManagerCapabilitiesBusinessStorageInboundGbp Gbp { get; set; }
 
         /// <summary>
+        /// Can receive business storage-type funds on Stripe in OUSD.
+        /// </summary>
+        [JsonProperty("ousd")]
+        [STJS.JsonPropertyName("ousd")]
+        public AccountConfigurationMoneyManagerCapabilitiesBusinessStorageInboundOusd Ousd { get; set; }
+
+        /// <summary>
         /// Can receive business storage-type funds on Stripe in USD.
         /// </summary>
         [JsonProperty("usd")]

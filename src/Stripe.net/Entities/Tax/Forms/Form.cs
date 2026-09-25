@@ -116,6 +116,14 @@ namespace Stripe.Tax
         public FormPayee Payee { get; set; }
 
         /// <summary>
+        /// Whether the tax form is a mutable draft or a finalized form.
+        /// One of: <c>draft</c>, or <c>finalized</c>.
+        /// </summary>
+        [JsonProperty("status")]
+        [STJS.JsonPropertyName("status")]
+        public string Status { get; set; }
+
+        /// <summary>
         /// The type of the tax form. An additional hash is included on the tax form with a name
         /// matching this value. It contains additional information specific to the tax form type.
         /// One of: <c>au_serr</c>, <c>ca_mrdp</c>, <c>eu_dac7</c>, <c>gb_mrdp</c>, <c>nz_mrdp</c>,

@@ -9,6 +9,13 @@ namespace Stripe.V2.MoneyManagement
     public class OutboundSetupIntentCreateOptions : BaseOptions
     {
         /// <summary>
+        /// An existing resource to use as the source for setting up outbound credentials.
+        /// </summary>
+        [JsonProperty("from_resource")]
+        [STJS.JsonPropertyName("from_resource")]
+        public OutboundSetupIntentCreateFromResourceOptions FromResource { get; set; }
+
+        /// <summary>
         /// If provided, the existing payout method resource to link to this setup intent. Any
         /// payout_method_data provided is used to update information on this linked payout method
         /// resource.

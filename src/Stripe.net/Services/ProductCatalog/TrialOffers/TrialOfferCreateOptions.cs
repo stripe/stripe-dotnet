@@ -9,6 +9,13 @@ namespace Stripe.ProductCatalog
     public class TrialOfferCreateOptions : BaseOptions
     {
         /// <summary>
+        /// Whether the trial offer can be used for new subscriptions. Defaults to true.
+        /// </summary>
+        [JsonProperty("active")]
+        [STJS.JsonPropertyName("active")]
+        public bool? Active { get; set; }
+
+        /// <summary>
         /// Duration of one service period of the trial.
         /// </summary>
         [JsonProperty("duration")]
@@ -23,11 +30,11 @@ namespace Stripe.ProductCatalog
         public TrialOfferEndBehaviorOptions EndBehavior { get; set; }
 
         /// <summary>
-        /// A brief, user-friendly name for the trial offer-for identification purposes.
+        /// A brief description of the trial offer, hidden from customers.
         /// </summary>
-        [JsonProperty("name")]
-        [STJS.JsonPropertyName("name")]
-        public string Name { get; set; }
+        [JsonProperty("nickname")]
+        [STJS.JsonPropertyName("nickname")]
+        public string Nickname { get; set; }
 
         /// <summary>
         /// Price configuration during the trial period (amount, billing scheme, etc).

@@ -11,13 +11,6 @@ namespace Stripe.Events
     public class V2SignalsAccountSignalFraudulentMerchantReadyEvent : V2.Core.Event
     {
         /// <summary>
-        /// Data for the v2.signals.account_signal.fraudulent_merchant_ready event.
-        /// </summary>
-        [JsonProperty("data")]
-        [STJS.JsonPropertyName("data")]
-        public V2SignalsAccountSignalFraudulentMerchantReadyEventData Data { get; set; }
-
-        /// <summary>
         /// Object containing the reference to API resource relevant to the event.
         /// </summary>
         [JsonProperty("related_object")]

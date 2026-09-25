@@ -9,6 +9,13 @@ namespace Stripe.V2.Iam
     public class ActivityLogDetails : StripeEntity<ActivityLogDetails>
     {
         /// <summary>
+        /// Details of an account security action.
+        /// </summary>
+        [JsonProperty("account_security")]
+        [STJS.JsonPropertyName("account_security")]
+        public ActivityLogDetailsAccountSecurity AccountSecurity { get; set; }
+
+        /// <summary>
         /// Details of an API key action.
         /// </summary>
         [JsonProperty("api_key")]
@@ -16,8 +23,31 @@ namespace Stripe.V2.Iam
         public ActivityLogDetailsApiKey ApiKey { get; set; }
 
         /// <summary>
+        /// Details of an authentication action.
+        /// </summary>
+        [JsonProperty("authentication")]
+        [STJS.JsonPropertyName("authentication")]
+        public ActivityLogDetailsAuthentication Authentication { get; set; }
+
+        /// <summary>
+        /// Details of a SCIM action.
+        /// </summary>
+        [JsonProperty("scim")]
+        [STJS.JsonPropertyName("scim")]
+        public ActivityLogDetailsScim Scim { get; set; }
+
+        /// <summary>
+        /// Details of an SSO action.
+        /// </summary>
+        [JsonProperty("sso")]
+        [STJS.JsonPropertyName("sso")]
+        public ActivityLogDetailsSso Sso { get; set; }
+
+        /// <summary>
         /// The action group type of the activity log entry.
-        /// One of: <c>api_key</c>, <c>user_access</c>, <c>user_invite</c>, or <c>user_roles</c>.
+        /// One of: <c>account_security</c>, <c>api_key</c>, <c>authentication</c>, <c>issuing</c>,
+        /// <c>payout</c>, <c>scim</c>, <c>sso</c>, <c>user_access</c>, <c>user_invite</c>,
+        /// <c>user_profile</c>, or <c>user_roles</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -38,6 +68,13 @@ namespace Stripe.V2.Iam
         [JsonProperty("user_invite")]
         [STJS.JsonPropertyName("user_invite")]
         public ActivityLogDetailsUserInvite UserInvite { get; set; }
+
+        /// <summary>
+        /// Details of a user profile action.
+        /// </summary>
+        [JsonProperty("user_profile")]
+        [STJS.JsonPropertyName("user_profile")]
+        public ActivityLogDetailsUserProfile UserProfile { get; set; }
 
         /// <summary>
         /// Details of a user role change action.

@@ -32,6 +32,13 @@ namespace Stripe
         public string EffectiveDate { get; set; }
 
         /// <summary>
+        /// Spain-specific exemption details. Optional when country is ES; must be absent otherwise.
+        /// </summary>
+        [JsonProperty("es")]
+        [STJS.JsonPropertyName("es")]
+        public CustomerTaxExemptionEsOptions Es { get; set; }
+
+        /// <summary>
         /// ISO 8601 date (YYYY-MM-DD) when the exemption expires.
         /// </summary>
         [JsonProperty("expiration_date")]

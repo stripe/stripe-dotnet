@@ -9,6 +9,13 @@ namespace Stripe.BillingPortal
     public class SessionCreateOptions : BaseOptions
     {
         /// <summary>
+        /// Behavior after the portal session expires.
+        /// </summary>
+        [JsonProperty("after_expiration")]
+        [STJS.JsonPropertyName("after_expiration")]
+        public SessionAfterExpirationOptions AfterExpiration { get; set; }
+
+        /// <summary>
         /// The ID of an existing <a
         /// href="https://docs.stripe.com/api/customer_portal/configurations">configuration</a> to
         /// use for this session, describing its functionality and features. If not specified, the

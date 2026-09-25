@@ -18,7 +18,8 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// The status of the Capability.
-        /// One of: <c>active</c>, <c>pending</c>, <c>restricted</c>, or <c>unsupported</c>.
+        /// One of: <c>active</c>, <c>pending</c>, <c>rejected</c>, <c>restricted</c>, or
+        /// <c>unsupported</c>.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

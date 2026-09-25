@@ -73,17 +73,14 @@ namespace Stripe
         public string BillingCadence { get; set; }
 
         /// <summary>
-        /// Either <c>now</c> or <c>unchanged</c>. Setting the value to <c>now</c> resets the
-        /// subscription's billing cycle anchor to the current time (in UTC). For more information,
-        /// see the billing cycle <a
+        /// Controls how the subscription's billing cycle anchor changes. Set <c>type</c> to
+        /// <c>now</c> to reset the billing cycle anchor to the current time (in UTC), or
+        /// <c>unchanged</c> to preserve it. For more information, see the billing cycle <a
         /// href="https://docs.stripe.com/billing/subscriptions/billing-cycle">documentation</a>.
-        /// One of: <c>now</c>, or <c>unchanged</c>.
-        ///
-        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [STJS.JsonPropertyName("billing_cycle_anchor")]
-        public SubscriptionBillingCycleAnchor BillingCycleAnchor { get; set; }
+        public SubscriptionBillingCycleAnchorOptions BillingCycleAnchor { get; set; }
 
         /// <summary>
         /// An array of billing schedules, which allow you to bill customers in advance for multiple
@@ -464,7 +461,8 @@ namespace Stripe
         /// Indicates if a plan's <c>trial_period_days</c> should be applied to the subscription.
         /// Setting <c>trial_end</c> per subscription is preferred, and this defaults to
         /// <c>false</c>. Setting this flag to <c>true</c> together with <c>trial_end</c> is not
-        /// allowed. See <a href="https://docs.stripe.com/billing/subscriptions/trials">Using trial
+        /// allowed. See <a
+        /// href="https://docs.stripe.com/billing/subscriptions/trials/free-trials">Using trial
         /// periods on subscriptions</a> to learn more.
         /// </summary>
         [JsonProperty("trial_from_plan")]

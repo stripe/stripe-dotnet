@@ -65,6 +65,14 @@ namespace Stripe.Checkout
         public bool? AllowPromotionCodes { get; set; }
 
         /// <summary>
+        /// A list of the types of payment methods (e.g., <c>card</c>) this Checkout Session can
+        /// accept.
+        /// </summary>
+        [JsonProperty("allowed_payment_method_types")]
+        [STJS.JsonPropertyName("allowed_payment_method_types")]
+        public List<string> AllowedPaymentMethodTypes { get; set; }
+
+        /// <summary>
         /// Total of all items before discounts or taxes are applied.
         /// </summary>
         [JsonProperty("amount_subtotal")]

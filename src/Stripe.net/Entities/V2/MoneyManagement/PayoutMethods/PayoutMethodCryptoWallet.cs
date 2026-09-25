@@ -16,15 +16,6 @@ namespace Stripe.V2.MoneyManagement
         public string Address { get; set; }
 
         /// <summary>
-        /// Whether the crypto wallet was archived. Crypto wallets can be archived through the
-        /// /archive API, and they will not be automatically archived by Stripe. Archived crypto
-        /// wallets cannot be used as payout method and will not appear in the payout method list.
-        /// </summary>
-        [JsonProperty("archived")]
-        [STJS.JsonPropertyName("archived")]
-        public bool Archived { get; set; }
-
-        /// <summary>
         /// Optional field, required if network supports memos (only "stellar" currently).
         /// </summary>
         [JsonProperty("memo")]

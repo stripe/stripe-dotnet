@@ -396,6 +396,7 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDebitDisputeFailedEventNotification>> v2MoneyManagementDebitDisputeFailed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDebitDisputeSubmittedEventNotification>> v2MoneyManagementDebitDisputeSubmitted;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDebitDisputeSucceededEventNotification>> v2MoneyManagementDebitDisputeSucceeded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementEarnedCreditSucceededEventNotification>> v2MoneyManagementEarnedCreditSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification>> v2MoneyManagementFinancialAccountCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification>> v2MoneyManagementFinancialAccountUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountWalletExportCompletedEventNotification>> v2MoneyManagementFinancialAccountWalletExportCompleted;
@@ -2747,6 +2748,12 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementEarnedCreditSucceededEventNotification>> V2MoneyManagementEarnedCreditSucceeded
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementEarnedCreditSucceeded, value, "v2.money_management.earned_credit.succeeded"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification>> V2MoneyManagementFinancialAccountCreated
         {
             add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAccountCreated, value, "v2.money_management.financial_account.created"); }
@@ -4935,6 +4942,10 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2MoneyManagementDebitDisputeSucceededEventNotification)
                 {
                     this.v2MoneyManagementDebitDisputeSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDebitDisputeSucceededEventNotification>((Stripe.Events.V2MoneyManagementDebitDisputeSucceededEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementEarnedCreditSucceededEventNotification)
+                {
+                    this.v2MoneyManagementEarnedCreditSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementEarnedCreditSucceededEventNotification>((Stripe.Events.V2MoneyManagementEarnedCreditSucceededEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification)
                 {

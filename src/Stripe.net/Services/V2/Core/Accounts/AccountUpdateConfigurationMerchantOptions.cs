@@ -75,6 +75,13 @@ namespace Stripe.V2.Core
         public AccountUpdateConfigurationMerchantScriptStatementDescriptorOptions ScriptStatementDescriptor { get; set; }
 
         /// <summary>
+        /// Settings for SEPA Direct Debit payments.
+        /// </summary>
+        [JsonProperty("sepa_debit_payments")]
+        [STJS.JsonPropertyName("sepa_debit_payments")]
+        public AccountUpdateConfigurationMerchantSepaDebitPaymentsOptions SepaDebitPayments { get; set; }
+
+        /// <summary>
         /// Settings for Smart Disputes automatic response feature.
         /// </summary>
         [JsonProperty("smart_disputes")]

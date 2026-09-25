@@ -58,7 +58,8 @@ namespace Stripe.V2.Core
         public string Url { get; set; }
 
         /// <summary>
-        /// Hash containing usage options.
+        /// Describes the Stripe-hosted flow for this Account Link, including its type and
+        /// flow-specific configuration.
         /// </summary>
         [JsonProperty("use_case")]
         [STJS.JsonPropertyName("use_case")]

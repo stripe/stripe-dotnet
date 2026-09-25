@@ -17,7 +17,7 @@ namespace Stripe.V2.Iam
 
         /// <summary>
         /// The type of actor.
-        /// One of: <c>api_key</c>, or <c>user</c>.
+        /// One of: <c>api_key</c>, <c>stripe_action</c>, or <c>user</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

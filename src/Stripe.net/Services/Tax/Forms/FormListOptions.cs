@@ -16,6 +16,16 @@ namespace Stripe.Tax
         public FormPayeeOptions Payee { get; set; }
 
         /// <summary>
+        /// Filter forms by draft or finalized status.
+        /// One of: <c>draft</c>, or <c>finalized</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("status")]
+        [STJS.JsonPropertyName("status")]
+        public string Status { get; set; }
+
+        /// <summary>
         /// An optional filter on the list, based on the object <c>type</c> field. Without the
         /// filter, the list includes all current and future tax form types. If your integration
         /// expects only one type of tax form in the response, make sure to provide a type value in

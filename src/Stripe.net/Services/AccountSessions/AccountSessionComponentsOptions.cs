@@ -91,6 +91,15 @@ namespace Stripe
 
         /// <summary>
         /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/capital-financing-manual-payment/">Capital
+        /// financing manual payment</a> embedded component.
+        /// </summary>
+        [JsonProperty("capital_financing_manual_payment")]
+        [STJS.JsonPropertyName("capital_financing_manual_payment")]
+        public AccountSessionComponentsCapitalFinancingManualPaymentOptions CapitalFinancingManualPayment { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
         /// href="https://stripe.com/connect/supported-embedded-components/capital-financing-promotion/">Capital
         /// financing promotion</a> embedded component.
         /// </summary>

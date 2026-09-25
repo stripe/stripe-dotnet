@@ -12,6 +12,13 @@ namespace Stripe.V2.Billing
         private Dictionary<string, string> metadata;
 
         /// <summary>
+        /// The billing settings to update on the contract.
+        /// </summary>
+        [JsonProperty("billing_settings")]
+        [STJS.JsonPropertyName("billing_settings")]
+        public ContractUpdateBillingSettingsOptions BillingSettings { get; set; }
+
+        /// <summary>
         /// Additional fields to include in the response.
         /// One of: <c>billing_settings</c>, <c>one_time_fees</c>, <c>pricing_lines</c>, or
         /// <c>pricing_overrides</c>.

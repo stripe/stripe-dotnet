@@ -27,10 +27,8 @@ namespace Stripe
         /// subscriptions, the value can only be set to <c>now</c> or <c>unchanged</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
-        [JsonConverter(typeof(AnyOfConverter))]
         [STJS.JsonPropertyName("billing_cycle_anchor")]
-        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-        public AnyOf<DateTime?, InvoiceSubscriptionDetailsBillingCycleAnchor> BillingCycleAnchor { get; set; }
+        public InvoiceSubscriptionDetailsBillingCycleAnchorOptions BillingCycleAnchor { get; set; }
 
         /// <summary>
         /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
