@@ -8,6 +8,7 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class DisputeEvidenceOptions : INestedOptions, IHasSetTracking
     {
+        private DisputeEvidenceAppealOptions appeal;
         private DisputeEvidenceEnhancedEvidenceOptions enhancedEvidence;
 
         [JsonIgnore]
@@ -22,6 +23,22 @@ namespace Stripe
         [JsonProperty("access_activity_log")]
         [STJS.JsonPropertyName("access_activity_log")]
         public string AccessActivityLog { get; set; }
+
+        /// <summary>
+        /// Evidence to submit when appealing a dispute.
+        /// </summary>
+        [JsonProperty("appeal", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("appeal")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public DisputeEvidenceAppealOptions Appeal
+        {
+            get => this.appeal;
+            set
+            {
+                this.appeal = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// The billing address provided by the customer.

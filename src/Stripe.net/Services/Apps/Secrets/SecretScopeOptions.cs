@@ -11,6 +11,8 @@ namespace Stripe.Apps
         /// <summary>
         /// The secret scope type.
         /// One of: <c>account</c>, or <c>user</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

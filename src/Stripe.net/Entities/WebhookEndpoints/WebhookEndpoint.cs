@@ -37,7 +37,8 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// The API version events are rendered as for this webhook endpoint.
+        /// The API version that events are rendered as for this webhook endpoint. You can't change
+        /// this value after you create the endpoint.
         /// </summary>
         [JsonProperty("api_version")]
         [STJS.JsonPropertyName("api_version")]

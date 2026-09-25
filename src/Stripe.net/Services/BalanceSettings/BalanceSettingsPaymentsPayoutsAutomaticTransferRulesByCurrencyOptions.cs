@@ -27,6 +27,8 @@ namespace Stripe
         /// <summary>
         /// The type of automatic transfer rule.
         /// One of: <c>transfer_all</c>, or <c>transfer_up_to_amount</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

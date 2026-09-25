@@ -55,6 +55,8 @@ namespace Stripe
         /// example, [<c>monday</c>, <c>tuesday</c>]. Only shown if <c>interval</c> is weekly.
         /// One of: <c>friday</c>, <c>monday</c>, <c>thursday</c>, <c>tuesday</c>, or
         /// <c>wednesday</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("weekly_payout_days")]
         [STJS.JsonPropertyName("weekly_payout_days")]

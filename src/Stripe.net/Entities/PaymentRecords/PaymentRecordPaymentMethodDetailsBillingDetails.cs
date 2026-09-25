@@ -13,7 +13,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
-        public PaymentRecordPaymentMethodDetailsBillingDetailsAddress Address { get; set; }
+        public Address Address { get; set; }
 
         /// <summary>
         /// The billing email associated with the method of payment.

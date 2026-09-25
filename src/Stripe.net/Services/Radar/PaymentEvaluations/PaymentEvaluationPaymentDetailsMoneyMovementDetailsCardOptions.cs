@@ -11,6 +11,8 @@ namespace Stripe.Radar
         /// <summary>
         /// Describes the presence of the customer during the payment.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("customer_presence")]
         [STJS.JsonPropertyName("customer_presence")]
@@ -20,6 +22,8 @@ namespace Stripe.Radar
         /// Describes the type of payment.
         /// One of: <c>one_off</c>, <c>recurring</c>, <c>setup_one_off</c>, or
         /// <c>setup_recurring</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_type")]
         [STJS.JsonPropertyName("payment_type")]

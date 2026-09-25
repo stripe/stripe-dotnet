@@ -12,6 +12,8 @@ namespace Stripe.V2.Billing
         /// Determines if tax is calculated automatically based on a PTC or manually based on rules
         /// defined by the business. Defaults to "manual".
         /// One of: <c>automatic</c>, or <c>manual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

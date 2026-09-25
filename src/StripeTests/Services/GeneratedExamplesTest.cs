@@ -492,7 +492,7 @@ namespace StripeTests
         [Fact]
         public void TestAccountsRejectPost()
         {
-            var options = new AccountRejectOptions { Reason = "fraud" };
+            var options = new AccountRejectOptions { Reason = "fraud_other" };
             var service = new AccountService(this.StripeClient);
             Account account = service.Reject("acct_xxxxxxxxxxxxx", options);
             this.AssertRequest(
@@ -503,7 +503,7 @@ namespace StripeTests
         [Fact]
         public async Task TestAccountsRejectPostAsync()
         {
-            var options = new AccountRejectOptions { Reason = "fraud" };
+            var options = new AccountRejectOptions { Reason = "fraud_other" };
             var service = new AccountService(this.StripeClient);
             Account account = await service.RejectAsync(
                 "acct_xxxxxxxxxxxxx",
@@ -3997,7 +3997,7 @@ namespace StripeTests
                 Permissions = new List<string> { "payment_method", "balances" },
                 Filters = new Stripe.FinancialConnections.SessionFiltersOptions
                 {
-                    Countries = new List<string> { "US" },
+                    Country = "US",
                 },
             };
             var service = new Stripe.FinancialConnections.SessionService(
@@ -4022,7 +4022,7 @@ namespace StripeTests
                 Permissions = new List<string> { "payment_method", "balances" },
                 Filters = new Stripe.FinancialConnections.SessionFiltersOptions
                 {
-                    Countries = new List<string> { "US" },
+                    Country = "US",
                 },
             };
             var service = new Stripe.FinancialConnections.SessionService(

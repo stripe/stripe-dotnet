@@ -75,6 +75,8 @@ namespace Stripe.Identity
         /// check</a> to be performed. You must provide a <c>type</c> if not passing
         /// <c>verification_flow</c>.
         /// One of: <c>document</c>, or <c>id_number</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -27,6 +27,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// The method used for tokenizing a card.
         /// One of: <c>app</c>, <c>manual</c>, <c>on_file</c>, or <c>other</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("card_number_source")]
         [STJS.JsonPropertyName("card_number_source")]
@@ -72,6 +74,8 @@ namespace Stripe.Issuing
         /// <c>same_device_successful_prior_authentication</c>, <c>software_update</c>,
         /// <c>suspicious_activity</c>, <c>too_many_different_cardholders</c>,
         /// <c>too_many_recent_attempts</c>, or <c>too_many_recent_tokens</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason_codes")]
         [STJS.JsonPropertyName("reason_codes")]
@@ -80,6 +84,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// The recommendation on responding to the tokenization request.
         /// One of: <c>approve</c>, <c>decline</c>, or <c>require_auth</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("suggested_decision")]
         [STJS.JsonPropertyName("suggested_decision")]

@@ -11,6 +11,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// The policy for how to use card logo images in a card design with this physical bundle.
         /// One of: <c>optional</c>, <c>required</c>, or <c>unsupported</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("card_logo")]
         [STJS.JsonPropertyName("card_logo")]
@@ -20,6 +22,8 @@ namespace Stripe.Issuing
         /// The policy for how to use carrier letter text in a card design with this physical
         /// bundle.
         /// One of: <c>optional</c>, <c>required</c>, or <c>unsupported</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("carrier_text")]
         [STJS.JsonPropertyName("carrier_text")]
@@ -28,6 +32,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// The policy for how to use a second line on a card with this physical bundle.
         /// One of: <c>optional</c>, <c>required</c>, or <c>unsupported</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("second_line")]
         [STJS.JsonPropertyName("second_line")]

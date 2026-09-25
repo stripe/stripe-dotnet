@@ -27,6 +27,8 @@ namespace Stripe.Reserve
 
         /// <summary>
         /// One of: <c>charge</c>, or <c>standalone</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

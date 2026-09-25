@@ -85,6 +85,7 @@ namespace Stripe
         private TaxRateService taxRates;
         private TerminalService terminal;
         private TestHelpersService testHelpers;
+        private ThreeDSecureService threeDSecure;
         private TokenService tokens;
         private TopupService topups;
         private TransferService transfers;
@@ -333,6 +334,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual TestHelpersService TestHelpers => this.testHelpers ??= new TestHelpersService(
+            this.Requestor);
+
+        public virtual ThreeDSecureService ThreeDSecure => this.threeDSecure ??= new ThreeDSecureService(
             this.Requestor);
 
         public virtual TokenService Tokens => this.tokens ??= new TokenService(

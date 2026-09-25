@@ -24,6 +24,8 @@ namespace Stripe.Issuing
         /// reissue the card.
         /// One of: <c>card_testing_exposure</c>, <c>fraud_dispute_filed</c>,
         /// <c>third_party_reported</c>, or <c>user_indicated_fraud</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

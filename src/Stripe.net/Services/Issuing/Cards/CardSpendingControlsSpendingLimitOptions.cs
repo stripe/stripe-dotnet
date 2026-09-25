@@ -165,6 +165,8 @@ namespace Stripe.Issuing
         /// <c>wig_and_toupee_stores</c>, <c>wires_money_orders</c>,
         /// <c>womens_accessory_and_specialty_shops</c>, <c>womens_ready_to_wear_stores</c>, or
         /// <c>wrecking_and_salvage_yards</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("categories")]
         [STJS.JsonPropertyName("categories")]
@@ -174,6 +176,8 @@ namespace Stripe.Issuing
         /// Interval (or event) to which the amount applies.
         /// One of: <c>all_time</c>, <c>daily</c>, <c>monthly</c>, <c>per_authorization</c>,
         /// <c>weekly</c>, or <c>yearly</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("interval")]
         [STJS.JsonPropertyName("interval")]

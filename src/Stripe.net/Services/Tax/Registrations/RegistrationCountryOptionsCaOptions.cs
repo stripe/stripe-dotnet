@@ -18,6 +18,8 @@ namespace Stripe.Tax
         /// <summary>
         /// Type of registration to be created in Canada.
         /// One of: <c>province_standard</c>, <c>simplified</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

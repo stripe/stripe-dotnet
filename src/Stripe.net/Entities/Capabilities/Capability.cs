@@ -91,6 +91,8 @@ namespace Stripe
         /// <summary>
         /// The status of the capability.
         /// One of: <c>active</c>, <c>inactive</c>, <c>pending</c>, or <c>unrequested</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

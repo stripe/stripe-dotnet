@@ -22,7 +22,9 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsBlikMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>
-        /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
+        /// One of: <c>none</c>, or <c>off_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("setup_future_usage")]
