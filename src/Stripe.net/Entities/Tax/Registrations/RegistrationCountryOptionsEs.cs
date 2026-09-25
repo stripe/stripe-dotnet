@@ -8,17 +8,15 @@ namespace Stripe.Tax
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class RegistrationCountryOptionsEs : StripeEntity<RegistrationCountryOptionsEs>
     {
-        [JsonProperty("igic")]
-        [STJS.JsonPropertyName("igic")]
-        public RegistrationCountryOptionsEsIgic Igic { get; set; }
-
         [JsonProperty("standard")]
         [STJS.JsonPropertyName("standard")]
         public RegistrationCountryOptionsEsStandard Standard { get; set; }
 
         /// <summary>
-        /// Type of registration in an EU country.
+        /// Type of registration in ES.
         /// One of: <c>ioss</c>, <c>oss_non_union</c>, <c>oss_union</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -3997,7 +3997,7 @@ namespace StripeTests
                 Permissions = new List<string> { "payment_method", "balances" },
                 Filters = new Stripe.FinancialConnections.SessionFiltersOptions
                 {
-                    Countries = new List<string> { "US" },
+                    Country = "US",
                 },
             };
             var service = new Stripe.FinancialConnections.SessionService(
@@ -4022,7 +4022,7 @@ namespace StripeTests
                 Permissions = new List<string> { "payment_method", "balances" },
                 Filters = new Stripe.FinancialConnections.SessionFiltersOptions
                 {
-                    Countries = new List<string> { "US" },
+                    Country = "US",
                 },
             };
             var service = new Stripe.FinancialConnections.SessionService(

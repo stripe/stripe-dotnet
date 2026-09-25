@@ -12,6 +12,8 @@ namespace Stripe.Identity
         /// A short machine-readable string giving the reason for the verification failure.
         /// One of: <c>id_number_insufficient_document_data</c>, <c>id_number_mismatch</c>, or
         /// <c>id_number_unverified_other</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]

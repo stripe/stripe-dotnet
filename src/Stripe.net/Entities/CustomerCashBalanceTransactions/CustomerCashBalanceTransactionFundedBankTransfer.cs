@@ -33,6 +33,8 @@ namespace Stripe
         /// <c>mx_bank_transfer</c>, or <c>us_bank_transfer</c>.
         /// One of: <c>eu_bank_transfer</c>, <c>gb_bank_transfer</c>, <c>jp_bank_transfer</c>,
         /// <c>mx_bank_transfer</c>, or <c>us_bank_transfer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

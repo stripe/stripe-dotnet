@@ -31,7 +31,7 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// The customer's address.
+        /// The customer's billing address.
         /// </summary>
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
@@ -292,6 +292,8 @@ namespace Stripe
         /// <c>reverse</c>. When set to <c>reverse</c>, invoice and receipt PDFs include the
         /// following text: <strong>"Reverse charge"</strong>.
         /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_exempt")]
         [STJS.JsonPropertyName("tax_exempt")]

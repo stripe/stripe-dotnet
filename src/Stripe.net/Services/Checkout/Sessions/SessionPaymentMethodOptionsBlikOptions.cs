@@ -1,0 +1,47 @@
+// File generated from our OpenAPI spec
+namespace Stripe.Checkout
+{
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
+    public class SessionPaymentMethodOptionsBlikOptions : INestedOptions, IHasSetTracking
+    {
+        private string setupFutureUsage;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
+        /// <summary>
+        /// Additional fields for Mandate creation.
+        /// </summary>
+        [JsonProperty("mandate_options")]
+        [STJS.JsonPropertyName("mandate_options")]
+        public SessionPaymentMethodOptionsBlikMandateOptionsOptions MandateOptions { get; set; }
+
+        /// <summary>
+        /// One of: <c>none</c>, or <c>off_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("setup_future_usage", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("setup_future_usage")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public string SetupFutureUsage
+        {
+            get => this.setupFutureUsage;
+            set
+            {
+                this.setupFutureUsage = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
+    }
+}

@@ -9,6 +9,7 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsBillieOptions : INestedOptions, IHasSetTracking
     {
         private string captureMethod;
+        private PaymentIntentPaymentMethodOptionsBillieCompanyDetailsOptions companyDetails;
 
         [JsonIgnore]
         [STJS.JsonIgnore]
@@ -36,6 +37,29 @@ namespace Stripe
                 this.SetTracker.Track();
             }
         }
+
+        /// <summary>
+        /// Registration details about the buyer's organization.
+        /// </summary>
+        [JsonProperty("company_details", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("company_details")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsBillieCompanyDetailsOptions CompanyDetails
+        {
+            get => this.companyDetails;
+            set
+            {
+                this.companyDetails = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// An identifier or reference that this payment corresponds to.
+        /// </summary>
+        [JsonProperty("reference")]
+        [STJS.JsonPropertyName("reference")]
+        public string Reference { get; set; }
 
         bool IHasSetTracking.IsPropertySet(string propertyName)
         {

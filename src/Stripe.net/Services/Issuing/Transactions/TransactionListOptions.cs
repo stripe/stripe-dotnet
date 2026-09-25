@@ -36,6 +36,8 @@ namespace Stripe.Issuing
         /// Only return transactions that have the given type. One of <c>capture</c> or
         /// <c>refund</c>.
         /// One of: <c>capture</c>, or <c>refund</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

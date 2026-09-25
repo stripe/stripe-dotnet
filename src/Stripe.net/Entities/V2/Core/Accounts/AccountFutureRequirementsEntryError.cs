@@ -74,6 +74,8 @@ namespace Stripe.V2.Core
         /// <c>verification_selfie_face_mismatch</c>, <c>verification_selfie_manipulated</c>,
         /// <c>verification_selfie_unverified_other</c>, <c>verification_supportability</c>, or
         /// <c>verification_token_stale</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]

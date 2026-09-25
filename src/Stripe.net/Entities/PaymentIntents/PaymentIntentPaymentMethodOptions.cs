@@ -168,6 +168,10 @@ namespace Stripe
         [STJS.JsonPropertyName("paypal")]
         public PaymentIntentPaymentMethodOptionsPaypal Paypal { get; set; }
 
+        [JsonProperty("paypay")]
+        [STJS.JsonPropertyName("paypay")]
+        public PaymentIntentPaymentMethodOptionsPaypay Paypay { get; set; }
+
         [JsonProperty("payto")]
         [STJS.JsonPropertyName("payto")]
         public PaymentIntentPaymentMethodOptionsPayto Payto { get; set; }
@@ -199,6 +203,10 @@ namespace Stripe
         [JsonProperty("sepa_debit")]
         [STJS.JsonPropertyName("sepa_debit")]
         public PaymentIntentPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
+
+        [JsonProperty("sequra")]
+        [STJS.JsonPropertyName("sequra")]
+        public PaymentIntentPaymentMethodOptionsSequra Sequra { get; set; }
 
         [JsonProperty("sofort")]
         [STJS.JsonPropertyName("sofort")]

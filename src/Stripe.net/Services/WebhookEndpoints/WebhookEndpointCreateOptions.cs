@@ -48,7 +48,8 @@ namespace Stripe
         /// <c>2025-09-30.clover</c>, <c>2025-10-29.clover</c>, <c>2025-11-17.clover</c>,
         /// <c>2025-12-15.clover</c>, <c>2026-01-28.clover</c>, <c>2026-02-25.clover</c>,
         /// <c>2026-03-25.dahlia</c>, <c>2026-04-22.dahlia</c>, <c>2026-05-27.dahlia</c>,
-        /// <c>2026-06-24.dahlia</c>, <c>2026-07-29.dahlia</c>, or <c>2026-08-26.dahlia</c>.
+        /// <c>2026-06-24.dahlia</c>, <c>2026-07-29.dahlia</c>, <c>2026-08-26.dahlia</c>, or
+        /// <c>2026-09-30.endive</c>.
         /// </summary>
         [JsonProperty("api_version")]
         [STJS.JsonPropertyName("api_version")]
@@ -86,6 +87,7 @@ namespace Stripe
         /// <c>account.external_account.deleted</c>, <c>account.external_account.updated</c>,
         /// <c>account.updated</c>, <c>application_fee.created</c>,
         /// <c>application_fee.refund.updated</c>, <c>application_fee.refunded</c>,
+        /// <c>apps.install.created</c>, <c>apps.install.deleted</c>, <c>apps.install.updated</c>,
         /// <c>balance.available</c>, <c>balance_settings.updated</c>,
         /// <c>billing.alert.triggered</c>, <c>billing.credit_balance_transaction.created</c>,
         /// <c>billing.credit_grant.created</c>, <c>billing.credit_grant.updated</c>,

@@ -9,13 +9,6 @@ namespace Stripe.Tax
     public class RegistrationCountryOptionsEsOptions : INestedOptions
     {
         /// <summary>
-        /// Options for the IGIC registration.
-        /// </summary>
-        [JsonProperty("igic")]
-        [STJS.JsonPropertyName("igic")]
-        public RegistrationCountryOptionsEsIgicOptions Igic { get; set; }
-
-        /// <summary>
         /// Options for the standard registration.
         /// </summary>
         [JsonProperty("standard")]
@@ -23,8 +16,10 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsEsStandardOptions Standard { get; set; }
 
         /// <summary>
-        /// Type of registration to be created in an EU country.
+        /// Type of registration to be created in ES.
         /// One of: <c>ioss</c>, <c>oss_non_union</c>, <c>oss_union</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

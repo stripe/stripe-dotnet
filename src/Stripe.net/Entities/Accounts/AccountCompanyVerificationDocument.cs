@@ -12,10 +12,10 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the File)
-        /// The back of a document returned by a <a href="https://api.stripe.com#create_file">file
-        /// upload</a> with a <c>purpose</c> value of <c>additional_verification</c>. Note that
-        /// <c>additional_verification</c> files are <a
-        /// href="https://stripe.com/file-upload#uploading-a-file">not downloadable</a>.
+        /// The back of a document returned by a <a
+        /// href="https://docs.stripe.com/api#create_file">file upload</a> with a <c>purpose</c>
+        /// value of <c>additional_verification</c>. Note that <c>additional_verification</c> files
+        /// are <a href="https://stripe.com/file-upload#uploading-a-file">not downloadable</a>.
         /// </summary>
         [JsonIgnore]
         [STJS.JsonIgnore]
@@ -27,10 +27,10 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The back of a document returned by a <a href="https://api.stripe.com#create_file">file
-        /// upload</a> with a <c>purpose</c> value of <c>additional_verification</c>. Note that
-        /// <c>additional_verification</c> files are <a
-        /// href="https://stripe.com/file-upload#uploading-a-file">not downloadable</a>.
+        /// The back of a document returned by a <a
+        /// href="https://docs.stripe.com/api#create_file">file upload</a> with a <c>purpose</c>
+        /// value of <c>additional_verification</c>. Note that <c>additional_verification</c> files
+        /// are <a href="https://stripe.com/file-upload#uploading-a-file">not downloadable</a>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -73,10 +73,10 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the File)
-        /// The front of a document returned by a <a href="https://api.stripe.com#create_file">file
-        /// upload</a> with a <c>purpose</c> value of <c>additional_verification</c>. Note that
-        /// <c>additional_verification</c> files are <a
-        /// href="https://stripe.com/file-upload#uploading-a-file">not downloadable</a>.
+        /// The front of a document returned by a <a
+        /// href="https://docs.stripe.com/api#create_file">file upload</a> with a <c>purpose</c>
+        /// value of <c>additional_verification</c>. Note that <c>additional_verification</c> files
+        /// are <a href="https://stripe.com/file-upload#uploading-a-file">not downloadable</a>.
         /// </summary>
         [JsonIgnore]
         [STJS.JsonIgnore]
@@ -88,10 +88,10 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The front of a document returned by a <a href="https://api.stripe.com#create_file">file
-        /// upload</a> with a <c>purpose</c> value of <c>additional_verification</c>. Note that
-        /// <c>additional_verification</c> files are <a
-        /// href="https://stripe.com/file-upload#uploading-a-file">not downloadable</a>.
+        /// The front of a document returned by a <a
+        /// href="https://docs.stripe.com/api#create_file">file upload</a> with a <c>purpose</c>
+        /// value of <c>additional_verification</c>. Note that <c>additional_verification</c> files
+        /// are <a href="https://stripe.com/file-upload#uploading-a-file">not downloadable</a>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>

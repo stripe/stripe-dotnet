@@ -139,6 +139,8 @@ namespace Stripe.Issuing
         /// One of: <c>canceled</c>, <c>duplicate</c>, <c>fraudulent</c>,
         /// <c>merchandise_not_as_described</c>, <c>no_valid_authorization</c>, <c>not_received</c>,
         /// <c>other</c>, or <c>service_not_as_described</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

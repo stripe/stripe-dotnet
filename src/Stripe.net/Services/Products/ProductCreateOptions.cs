@@ -110,11 +110,22 @@ namespace Stripe
         public string TaxCode { get; set; }
 
         /// <summary>
+        /// Tax details for this product, including the <a
+        /// href="https://stripe.com/tax/tax-codes">tax code</a> and an optional performance
+        /// location.
+        /// </summary>
+        [JsonProperty("tax_details")]
+        [STJS.JsonPropertyName("tax_details")]
+        public ProductTaxDetailsOptions TaxDetails { get; set; }
+
+        /// <summary>
         /// The type of the product. Defaults to <c>service</c> if not explicitly specified,
         /// enabling use of this product with Subscriptions and Plans. Set this parameter to
         /// <c>good</c> to use this product with Orders and SKUs. On API versions before
         /// <c>2018-02-05</c>, this field defaults to <c>good</c> for compatibility reasons.
         /// One of: <c>good</c>, or <c>service</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

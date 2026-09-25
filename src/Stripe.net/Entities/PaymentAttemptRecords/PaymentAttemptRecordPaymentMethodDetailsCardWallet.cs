@@ -23,10 +23,14 @@ namespace Stripe
         [STJS.JsonPropertyName("google_pay")]
         public PaymentAttemptRecordPaymentMethodDetailsCardWalletGooglePay GooglePay { get; set; }
 
+        [JsonProperty("link")]
+        [STJS.JsonPropertyName("link")]
+        public PaymentAttemptRecordPaymentMethodDetailsCardWalletLink Link { get; set; }
+
         /// <summary>
-        /// The type of the card wallet, one of <c>apple_pay</c> or <c>google_pay</c>. An additional
-        /// hash is included on the Wallet subhash with a name matching this value. It contains
-        /// additional information specific to the card wallet type.
+        /// The type of the card wallet, one of <c>apple_pay</c>, <c>google_pay</c>, or <c>link</c>.
+        /// An additional hash is included on the Wallet subhash with a name matching this value. It
+        /// contains additional information specific to the card wallet type.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

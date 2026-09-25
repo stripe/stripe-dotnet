@@ -112,6 +112,8 @@ namespace Stripe
         /// Preferred language of the Sofort authorization page that the customer is redirected to.
         /// Can be one of <c>en</c>, <c>de</c>, <c>fr</c>, or <c>nl</c>.
         /// One of: <c>de</c>, <c>en</c>, <c>fr</c>, or <c>nl</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("preferred_language")]
         [STJS.JsonPropertyName("preferred_language")]
