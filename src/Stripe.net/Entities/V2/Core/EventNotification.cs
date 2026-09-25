@@ -117,7 +117,25 @@ namespace Stripe.V2.Core
             return this.FetchRelatedObjectAsync<T>(relatedObject).ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
-        protected virtual async Task<T> FetchRelatedObjectAsync<T>(EventNotificationRelatedObject relatedObject, CancellationToken cancellationToken = default)
+        protected virtual Task<T> FetchRelatedObjectAsync<T>(EventNotificationRelatedObject relatedObject, CancellationToken cancellationToken = default)
+        where T : IStripeEntity
+        {
+            return this.FetchRelatedObjectAsync<T>(relatedObject.Url, cancellationToken);
+        }
+
+        protected virtual T FetchRelatedObject<T>(EventNotificationRelatedSingletonObject relatedObject)
+        where T : IStripeEntity
+        {
+            return this.FetchRelatedObjectAsync<T>(relatedObject).ConfigureAwait(false).GetAwaiter().GetResult();
+        }
+
+        protected virtual Task<T> FetchRelatedObjectAsync<T>(EventNotificationRelatedSingletonObject relatedObject, CancellationToken cancellationToken = default)
+        where T : IStripeEntity
+        {
+            return this.FetchRelatedObjectAsync<T>(relatedObject.Url, cancellationToken);
+        }
+
+        private async Task<T> FetchRelatedObjectAsync<T>(string url, CancellationToken cancellationToken)
         where T : IStripeEntity
         {
             if (this.Client == null)
@@ -127,7 +145,7 @@ namespace Stripe.V2.Core
 
             var res = await this.Client.RawRequestAsync(
                 HttpMethod.Get,
-                relatedObject.Url,
+                url,
                 requestOptions: new RawRequestOptions
                 {
                     Usage = new List<string> { "fetch_related_object" },
