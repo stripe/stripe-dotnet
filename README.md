@@ -339,7 +339,7 @@ New features and bug fixes are released on the latest major version of the Strip
 
 [Contribution guidelines for this project](CONTRIBUTING.md)
 
-.NET 8 is required to build and test Stripe.net SDK, you can install it from [get.dot.net](https://get.dot.net/).
+.NET 10 is required to build and test Stripe.net SDK, you can install it from [get.dot.net](https://get.dot.net/).
 
 The test suite depends on [stripe-mock][stripe-mock], so make sure to fetch
 and run it from a background terminal
@@ -369,7 +369,7 @@ dotnet test src --filter FullyQualifiedName~InvoiceServiceTest
 Run tests for a single target framework:
 
 ```sh
-dotnet test src --framework net8.0
+dotnet test src --framework net10.0
 ```
 
 The library uses [`dotnet-format`][dotnet-format] for code formatting. Code

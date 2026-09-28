@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0;net9.0;net462</TargetFrameworks>
+    <TargetFrameworks>net8.0;net9.0;net10.0;net462</TargetFrameworks>
     <LangVersion>8</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
@@ -25,7 +25,7 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
 
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
-    <PackageReference Include="System.Linq.Async" Version="4.1.1" />
+    <PackageReference Include="System.Linq.Async" Version="4.1.1" Condition="'$(TargetFramework)' != 'net10.0'" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
