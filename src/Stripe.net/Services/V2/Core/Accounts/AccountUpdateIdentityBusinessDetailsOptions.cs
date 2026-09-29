@@ -21,7 +21,7 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
-        public AddressJapanOptions Address { get; set; }
+        public AccountUpdateIdentityBusinessDetailsAddressOptions Address { get; set; }
 
         /// <summary>
         /// The business gross annual revenue for its preceding fiscal year.

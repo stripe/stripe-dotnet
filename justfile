@@ -76,7 +76,7 @@ format *args:
     # This sets TargetFramework because of a race condition in dotnet format when it tries to format to multiple targets at a time,
     # which could lead to code with compiler errors after it completes
     # NOTE: this will work on the target framework version or any version after
-    TargetFramework=net6.0 dotnet format src/Stripe.net.sln --severity warn {{args}}
+    TargetFramework=net8.0 dotnet format src/Stripe.net.sln --severity warn {{args}}
 
 # verify, but don't modify, the project's formatting
 format-check: (format "--verify-no-changes")
@@ -97,7 +97,7 @@ print-version-info:
     #!/usr/bin/env bash
     set -euo pipefail
     # dotnet supports two runtimes whose floors move independently, so we just hardcode them
-    core_floor=net6.0
+    core_floor=net8.0
     framework_floor=net462
 
     # and verify that they're actually supported
