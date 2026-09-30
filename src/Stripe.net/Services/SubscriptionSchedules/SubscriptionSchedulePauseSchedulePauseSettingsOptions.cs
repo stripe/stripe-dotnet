@@ -16,7 +16,9 @@ namespace Stripe
         public SubscriptionSchedulePauseSchedulePauseSettingsBillForOptions BillFor { get; set; }
 
         /// <summary>
-        /// Determines whether to generate an invoice for outstanding amounts when pausing.
+        /// Determines whether to generate an invoice for outstanding amounts when pausing. When
+        /// adding a pause schedule, defaults to <c>pending_invoice_item</c>. On updates, the
+        /// existing value is preserved if not provided.
         /// One of: <c>invoice</c>, or <c>pending_invoice_item</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

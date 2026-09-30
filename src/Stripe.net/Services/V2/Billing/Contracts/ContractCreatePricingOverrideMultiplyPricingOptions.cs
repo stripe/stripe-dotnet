@@ -17,11 +17,12 @@ namespace Stripe.V2.Billing
         public List<ContractCreatePricingOverrideMultiplyPricingCriterionOptions> Criteria { get; set; }
 
         /// <summary>
-        /// The multiply_pricing factor, represented as a decimal string. e.g. "0.8" for a 20%
-        /// reduction.
+        /// The multiply_pricing factor. e.g. "0.8" for a 20% reduction.
         /// </summary>
         [JsonProperty("factor")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("factor")]
-        public string Factor { get; set; }
+        public decimal? Factor { get; set; }
     }
 }

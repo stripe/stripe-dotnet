@@ -84,7 +84,7 @@ namespace Stripe
 
         /// <summary>
         /// Collect additional information from your customer using custom fields. Up to 3 fields
-        /// are supported. You can't set this parameter if <c>ui_mode</c> is <c>custom</c>.
+        /// are supported. You can't set this parameter if <c>ui_mode</c> is <c>elements</c>.
         /// </summary>
         [JsonProperty("custom_fields")]
         [STJS.JsonPropertyName("custom_fields")]
@@ -92,7 +92,7 @@ namespace Stripe
 
         /// <summary>
         /// Display additional text for your customers using custom text. You can't set this
-        /// parameter if <c>ui_mode</c> is <c>custom</c>.
+        /// parameter if <c>ui_mode</c> is <c>elements</c>.
         /// </summary>
         [JsonProperty("custom_text")]
         [STJS.JsonPropertyName("custom_text")]
@@ -230,9 +230,9 @@ namespace Stripe
         /// <c>konbini</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>,
         /// <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>paynow</c>, <c>paypal</c>,
         /// <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
-        /// <c>satispay</c>, <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>sunbit</c>,
-        /// <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
-        /// <c>zip</c>.
+        /// <c>satispay</c>, <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>,
+        /// <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>,
+        /// <c>wechat_pay</c>, or <c>zip</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

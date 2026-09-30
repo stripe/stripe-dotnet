@@ -64,6 +64,14 @@ namespace Stripe.Reserve
         public string Currency { get; set; }
 
         /// <summary>
+        /// The balance destination to which the released funds are sent.
+        /// One of: <c>other</c>, or <c>payments</c>.
+        /// </summary>
+        [JsonProperty("destination")]
+        [STJS.JsonPropertyName("destination")]
+        public string Destination { get; set; }
+
+        /// <summary>
         /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
         /// test mode, the value is <c>false</c>.
         /// </summary>
@@ -82,7 +90,7 @@ namespace Stripe.Reserve
 
         /// <summary>
         /// The reason for the ReserveRelease, indicating why the funds were released.
-        /// One of: <c>bulk_hold_expiry</c>, <c>hold_released_early</c>, <c>hold_reversed</c>, or
+        /// One of: <c>hold_expired</c>, <c>hold_released_early</c>, <c>hold_reversed</c>, or
         /// <c>plan_disabled</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

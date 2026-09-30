@@ -45,7 +45,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// The money transmission network used to send funds for this ReceivedCredit.
-        /// One of: <c>sepa_credit_transfer</c>.
+        /// One of: <c>sepa_credit_transfer</c>, or <c>swift</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

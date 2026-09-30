@@ -30,6 +30,13 @@ namespace Stripe.V2.MoneyManagement
         public string BankName { get; set; }
 
         /// <summary>
+        /// The SWIFT/BIC code.
+        /// </summary>
+        [JsonProperty("bic")]
+        [STJS.JsonPropertyName("bic")]
+        public string Bic { get; set; }
+
+        /// <summary>
         /// The institution number.
         /// </summary>
         [JsonProperty("institution_number")]

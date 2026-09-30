@@ -9,8 +9,7 @@ namespace Stripe.Terminal
     public class ConfigurationCellularOptions : INestedOptions
     {
         /// <summary>
-        /// Determines whether to allow the reader to connect to a cellular network. Defaults to
-        /// false.
+        /// Determines whether to allow the reader to connect to a cellular network.
         /// </summary>
         [JsonProperty("enabled")]
         [STJS.JsonPropertyName("enabled")]

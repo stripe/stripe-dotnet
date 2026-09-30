@@ -43,10 +43,7 @@ namespace Stripe
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
-        /// If the account is disabled, this string describes why the account can’t create charges
-        /// or receive payouts. Can be <c>rejected.fraud</c>, <c>rejected.terms_of_service</c>,
-        /// <c>rejected.listed</c>, <c>rejected.other</c>, <c>fields_needed</c>, <c>listed</c>,
-        /// <c>under_review</c>, or <c>other</c>.
+        /// This is typed as an enum for consistency with <c>requirements.disabled_reason</c>.
         /// One of: <c>action_required.requested_capabilities</c>, <c>listed</c>, <c>other</c>,
         /// <c>platform_paused</c>, <c>rejected.fraud</c>, <c>rejected.incomplete_verification</c>,
         /// <c>rejected.listed</c>, <c>rejected.other</c>, <c>rejected.platform_fraud</c>,

@@ -17,6 +17,9 @@ namespace Stripe.V2.Core.Vault
 
         /// <summary>
         /// Private preview supports card only.
+        /// One of: <c>card</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

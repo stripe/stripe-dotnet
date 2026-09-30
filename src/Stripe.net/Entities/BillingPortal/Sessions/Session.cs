@@ -38,6 +38,13 @@ namespace Stripe.BillingPortal
         [STJS.JsonPropertyName("object")]
         public string Object { get; set; }
 
+        /// <summary>
+        /// Behavior after the portal session expires.
+        /// </summary>
+        [JsonProperty("after_expiration")]
+        [STJS.JsonPropertyName("after_expiration")]
+        public SessionAfterExpiration AfterExpiration { get; set; }
+
         #region Expandable Configuration
 
         /// <summary>

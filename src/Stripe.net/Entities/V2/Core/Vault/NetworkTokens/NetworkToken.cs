@@ -71,8 +71,20 @@ namespace Stripe.V2.Core.Vault
         public string Number { get; set; }
 
         /// <summary>
+        /// The origin of the resource used to provision this network token.
+        /// One of: <c>card_on_file</c>, or <c>wallet</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("origin")]
+        [STJS.JsonPropertyName("origin")]
+        public string Origin { get; set; }
+
+        /// <summary>
         /// Closed Enum. The status of the network token.
         /// One of: <c>active</c>, <c>deactivated</c>, or <c>suspended</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

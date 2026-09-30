@@ -84,6 +84,28 @@ namespace Stripe.V2.Provisioning
         }
 
         /// <summary>
+        /// Reveals the current provider-issued access configuration for a completed Resource. This
+        /// is a read-only disclosure: it does not create, refresh, mint, or rotate credentials.
+        /// Repeated calls are safe and do not require an idempotency key, but can return a newer
+        /// configuration after a separate Rotate operation completes.
+        /// </summary>
+        public virtual ResourceAccessConfiguration RevealAccessConfiguration(string id, ResourceRevealAccessConfigurationOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<ResourceAccessConfiguration>(BaseAddress.Api, HttpMethod.Post, $"/v2/provisioning/resources/{WebUtility.UrlEncode(id)}/reveal_access_configuration", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Reveals the current provider-issued access configuration for a completed Resource. This
+        /// is a read-only disclosure: it does not create, refresh, mint, or rotate credentials.
+        /// Repeated calls are safe and do not require an idempotency key, but can return a newer
+        /// configuration after a separate Rotate operation completes.
+        /// </summary>
+        public virtual Task<ResourceAccessConfiguration> RevealAccessConfigurationAsync(string id, ResourceRevealAccessConfigurationOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<ResourceAccessConfiguration>(BaseAddress.Api, HttpMethod.Post, $"/v2/provisioning/resources/{WebUtility.UrlEncode(id)}/reveal_access_configuration", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// Rotates a resource's credentials.
         /// </summary>
         public virtual Resource RotateCredentials(string id, ResourceRotateCredentialsOptions options = null, RequestOptions requestOptions = null)

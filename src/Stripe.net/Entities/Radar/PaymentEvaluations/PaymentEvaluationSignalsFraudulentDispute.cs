@@ -36,6 +36,6 @@ namespace Stripe.Radar
         /// </summary>
         [JsonProperty("score")]
         [STJS.JsonPropertyName("score")]
-        public decimal Score { get; set; }
+        public decimal? Score { get; set; }
     }
 }

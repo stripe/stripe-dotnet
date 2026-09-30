@@ -16,7 +16,10 @@ namespace Stripe.V2.Core
         public string Account { get; set; }
 
         /// <summary>
-        /// The use case of the AccountLink.
+        /// Specifies the Stripe-hosted flow for this Account Link. Set <c>type</c> and the matching
+        /// options hash—for example, <c>account_onboarding</c>—to configure the flow, including
+        /// which Account configurations to collect information for and any flow-specific collection
+        /// or redirect options.
         /// </summary>
         [JsonProperty("use_case")]
         [STJS.JsonPropertyName("use_case")]

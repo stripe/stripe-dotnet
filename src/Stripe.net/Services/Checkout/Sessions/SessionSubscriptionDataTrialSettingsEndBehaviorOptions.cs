@@ -9,6 +9,17 @@ namespace Stripe.Checkout
     public class SessionSubscriptionDataTrialSettingsEndBehaviorOptions : INestedOptions
     {
         /// <summary>
+        /// Indicates how the subscription's billing cycle anchor is reset when a trial ends.
+        /// Defaults to <c>now</c>.
+        /// One of: <c>now</c>, or <c>unchanged</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("billing_cycle_anchor")]
+        [STJS.JsonPropertyName("billing_cycle_anchor")]
+        public string BillingCycleAnchor { get; set; }
+
+        /// <summary>
         /// Indicates how the subscription should change when the trial ends if the user did not
         /// provide a payment method.
         /// One of: <c>cancel</c>, <c>create_invoice</c>, or <c>pause</c>.

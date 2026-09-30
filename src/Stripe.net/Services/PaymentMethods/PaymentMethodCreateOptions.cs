@@ -501,6 +501,14 @@ namespace Stripe
         public PaymentMethodSepaDebitOptions SepaDebit { get; set; }
 
         /// <summary>
+        /// If this is a SeQura PaymentMethod, this hash contains details about the SeQura payment
+        /// method.
+        /// </summary>
+        [JsonProperty("sequra")]
+        [STJS.JsonPropertyName("sequra")]
+        public PaymentMethodSequraOptions Sequra { get; set; }
+
+        /// <summary>
         /// If this is a Shopeepay PaymentMethod, this hash contains details about the Shopeepay
         /// payment method.
         /// </summary>

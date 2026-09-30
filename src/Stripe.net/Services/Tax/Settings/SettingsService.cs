@@ -82,7 +82,8 @@ namespace Stripe.Tax
 
         /// <summary>
         /// <p>Updates Tax <c>Settings</c> parameters used in tax calculations. All parameters are
-        /// editable but none can be removed once set.</p>.
+        /// editable but none can be removed once set. Check the returned Tax <c>Settings</c> object
+        /// and validate that its status is <c>active</c>.</p>.
         /// </summary>
         public virtual Settings Update(SettingsUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -91,7 +92,8 @@ namespace Stripe.Tax
 
         /// <summary>
         /// <p>Updates Tax <c>Settings</c> parameters used in tax calculations. All parameters are
-        /// editable but none can be removed once set.</p>.
+        /// editable but none can be removed once set. Check the returned Tax <c>Settings</c> object
+        /// and validate that its status is <c>active</c>.</p>.
         /// </summary>
         public virtual Task<Settings> UpdateAsync(SettingsUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

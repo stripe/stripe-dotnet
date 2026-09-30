@@ -7,7 +7,7 @@ namespace Stripe.V2
 
     public class SignalsService : Service
     {
-        private V2.Signals.AccountActivityService accountActivity;
+        private V2.Signals.AccountActivityService accountActivities;
         private V2.Signals.AccountEvaluationService accountEvaluations;
         private V2.Signals.AccountSignalService accountSignals;
         private V2.Signals.PaymentRetryEvaluationService paymentRetryEvaluations;
@@ -23,7 +23,7 @@ namespace Stripe.V2
         {
         }
 
-        public virtual V2.Signals.AccountActivityService AccountActivity => this.accountActivity ??= new V2.Signals.AccountActivityService(
+        public virtual V2.Signals.AccountActivityService AccountActivities => this.accountActivities ??= new V2.Signals.AccountActivityService(
             this.Requestor);
 
         public virtual V2.Signals.AccountEvaluationService AccountEvaluations => this.accountEvaluations ??= new V2.Signals.AccountEvaluationService(

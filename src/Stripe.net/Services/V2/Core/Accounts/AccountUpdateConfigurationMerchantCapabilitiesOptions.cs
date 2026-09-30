@@ -282,6 +282,13 @@ namespace Stripe.V2.Core
         public AccountUpdateConfigurationMerchantCapabilitiesSamsungPayPaymentsOptions SamsungPayPayments { get; set; }
 
         /// <summary>
+        /// Allow the merchant to process Satispay payments.
+        /// </summary>
+        [JsonProperty("satispay_payments")]
+        [STJS.JsonPropertyName("satispay_payments")]
+        public AccountUpdateConfigurationMerchantCapabilitiesSatispayPaymentsOptions SatispayPayments { get; set; }
+
+        /// <summary>
         /// Allow the merchant to process SEPA bank transfer payments.
         /// </summary>
         [JsonProperty("sepa_bank_transfer_payments")]
@@ -294,6 +301,13 @@ namespace Stripe.V2.Core
         [JsonProperty("sepa_debit_payments")]
         [STJS.JsonPropertyName("sepa_debit_payments")]
         public AccountUpdateConfigurationMerchantCapabilitiesSepaDebitPaymentsOptions SepaDebitPayments { get; set; }
+
+        /// <summary>
+        /// Allow the merchant to process SeQura payments.
+        /// </summary>
+        [JsonProperty("sequra_payments")]
+        [STJS.JsonPropertyName("sequra_payments")]
+        public AccountUpdateConfigurationMerchantCapabilitiesSequraPaymentsOptions SequraPayments { get; set; }
 
         /// <summary>
         /// Allow the merchant to process Sunbit payments.

@@ -9,7 +9,9 @@ namespace Stripe
     public class SubscriptionSchedulePauseSchedulePauseSettingsBillForUnusedTimeFromOptions : INestedOptions
     {
         /// <summary>
-        /// Determines which point in the billing period unused time is credited from.
+        /// Determines which point in the billing period unused time is credited from. When adding a
+        /// pause schedule, defaults to <c>pause_at</c>. On updates, the existing value is preserved
+        /// if not provided.
         /// One of: <c>item_current_period_start</c>, <c>none</c>, or <c>pause_at</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

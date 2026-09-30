@@ -31,6 +31,14 @@ namespace Stripe.V2.MoneyManagement
         public InboundTransferCreateFromOptions From { get; set; }
 
         /// <summary>
+        /// An optional statement descriptor surfaced on the payer's bank statement. Max 10
+        /// characters. When omitted, Stripe sends its default descriptor.
+        /// </summary>
+        [JsonProperty("statement_descriptor")]
+        [STJS.JsonPropertyName("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
+
+        /// <summary>
         /// Object containing details about where the funds will land.
         /// </summary>
         [JsonProperty("to")]

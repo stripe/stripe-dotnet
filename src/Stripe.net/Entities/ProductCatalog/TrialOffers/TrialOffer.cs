@@ -29,6 +29,13 @@ namespace Stripe.ProductCatalog
         [STJS.JsonPropertyName("object")]
         public string Object { get; set; }
 
+        /// <summary>
+        /// Whether the trial offer is active. Set to false to archive the trial offer.
+        /// </summary>
+        [JsonProperty("active")]
+        [STJS.JsonPropertyName("active")]
+        public bool Active { get; set; }
+
         [JsonProperty("duration")]
         [STJS.JsonPropertyName("duration")]
         public TrialOfferDuration Duration { get; set; }
@@ -46,11 +53,11 @@ namespace Stripe.ProductCatalog
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// A brief, user-friendly name for the trial offer-for identification purposes.
+        /// A brief description of the trial offer, hidden from customers.
         /// </summary>
-        [JsonProperty("name")]
-        [STJS.JsonPropertyName("name")]
-        public string Name { get; set; }
+        [JsonProperty("nickname")]
+        [STJS.JsonPropertyName("nickname")]
+        public string Nickname { get; set; }
 
         #region Expandable Price
 

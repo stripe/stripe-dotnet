@@ -9,13 +9,6 @@ namespace Stripe.V2.Payments
     public class OffSessionPaymentCreatePaymentMethodDataCardOptions : INestedOptions
     {
         /// <summary>
-        /// The card CVC.
-        /// </summary>
-        [JsonProperty("cvc")]
-        [STJS.JsonPropertyName("cvc")]
-        public string Cvc { get; set; }
-
-        /// <summary>
         /// The card expiration month.
         /// </summary>
         [JsonProperty("exp_month")]

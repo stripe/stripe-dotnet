@@ -13,7 +13,7 @@ namespace Stripe.V2.Payments
         /// </summary>
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
-        public AddressOptions Address { get; set; }
+        public OffSessionPaymentCreatePaymentMethodDataBillingDetailsAddressOptions Address { get; set; }
 
         /// <summary>
         /// Email address.

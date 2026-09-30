@@ -16,7 +16,7 @@ namespace Stripe.V2.Core
         public string NetworkBusinessProfile { get; set; }
 
         /// <summary>
-        /// Closed Enum. The type of related network object.
+        /// Open Enum. The type of related network object.
         /// One of: <c>link</c>, or <c>network_business_profile</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

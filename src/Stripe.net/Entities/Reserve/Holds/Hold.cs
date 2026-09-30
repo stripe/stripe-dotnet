@@ -71,6 +71,14 @@ namespace Stripe.Reserve
         public string Currency { get; set; }
 
         /// <summary>
+        /// The balance destination to which the reserved funds are sent.
+        /// One of: <c>other</c>, <c>risk_reserved</c>, or <c>settlement_reserved</c>.
+        /// </summary>
+        [JsonProperty("destination")]
+        [STJS.JsonPropertyName("destination")]
+        public string Destination { get; set; }
+
+        /// <summary>
         /// Whether there are any funds available to release on this ReserveHold. Note that if the
         /// ReserveHold is in the process of being released, this could be false, even though the
         /// funds haven't been fully released yet.

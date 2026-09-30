@@ -10,6 +10,9 @@ namespace Stripe.V2.Core.Vault
     {
         /// <summary>
         /// The cryptogram type. When omitted, token_cryptogram is used.
+        /// One of: <c>token_cryptogram</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

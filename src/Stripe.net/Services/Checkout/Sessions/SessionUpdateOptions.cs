@@ -23,7 +23,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Information about the customer collected within the Checkout Session. Can only be set
-        /// when updating <c>embedded</c> or <c>custom</c> sessions.
+        /// when updating <c>embedded_page</c> or <c>elements</c> sessions.
         /// </summary>
         [JsonProperty("collected_information")]
         [STJS.JsonPropertyName("collected_information")]

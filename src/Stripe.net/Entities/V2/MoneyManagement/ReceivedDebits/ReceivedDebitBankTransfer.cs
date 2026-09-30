@@ -24,6 +24,13 @@ namespace Stripe.V2.MoneyManagement
         public ReceivedDebitBankTransferGbBankAccount GbBankAccount { get; set; }
 
         /// <summary>
+        /// Network-specific details about the bank transfer.
+        /// </summary>
+        [JsonProperty("network_details")]
+        [STJS.JsonPropertyName("network_details")]
+        public ReceivedDebitBankTransferNetworkDetails NetworkDetails { get; set; }
+
+        /// <summary>
         /// Open Enum. Indicates the origin type through which this debit was initiated.
         /// One of: <c>gb_bank_account</c>, or <c>us_bank_account</c>.
         ///
