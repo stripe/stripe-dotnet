@@ -159,6 +159,10 @@ namespace Stripe
         [STJS.JsonPropertyName("mobilepay")]
         public PaymentAttemptRecordPaymentMethodDetailsMobilepay Mobilepay { get; set; }
 
+        [JsonProperty("momo")]
+        [STJS.JsonPropertyName("momo")]
+        public PaymentAttemptRecordPaymentMethodDetailsMomo Momo { get; set; }
+
         [JsonProperty("multibanco")]
         [STJS.JsonPropertyName("multibanco")]
         public PaymentAttemptRecordPaymentMethodDetailsMultibanco Multibanco { get; set; }
@@ -202,6 +206,10 @@ namespace Stripe
         [STJS.JsonPropertyName("paypal")]
         public PaymentAttemptRecordPaymentMethodDetailsPaypal Paypal { get; set; }
 
+        [JsonProperty("paypay")]
+        [STJS.JsonPropertyName("paypay")]
+        public PaymentAttemptRecordPaymentMethodDetailsPaypay Paypay { get; set; }
+
         [JsonProperty("payto")]
         [STJS.JsonPropertyName("payto")]
         public PaymentAttemptRecordPaymentMethodDetailsPayto Payto { get; set; }
@@ -237,6 +245,10 @@ namespace Stripe
         [JsonProperty("sepa_debit")]
         [STJS.JsonPropertyName("sepa_debit")]
         public PaymentAttemptRecordPaymentMethodDetailsSepaDebit SepaDebit { get; set; }
+
+        [JsonProperty("sequra")]
+        [STJS.JsonPropertyName("sequra")]
+        public PaymentAttemptRecordPaymentMethodDetailsSequra Sequra { get; set; }
 
         [JsonProperty("sofort")]
         [STJS.JsonPropertyName("sofort")]

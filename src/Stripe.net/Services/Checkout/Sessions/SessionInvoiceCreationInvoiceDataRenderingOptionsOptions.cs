@@ -21,6 +21,8 @@ namespace Stripe.Checkout
         /// <c>exclude_tax</c> will exclude all tax (inclusive and exclusive alike) from invoice PDF
         /// amounts.
         /// One of: <c>exclude_tax</c>, or <c>include_inclusive_tax</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("amount_tax_display", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("amount_tax_display")]

@@ -65,6 +65,13 @@ namespace Stripe.V2.Core
         public EventReason Reason { get; set; }
 
         /// <summary>
+        /// For interop events, this is the snapshot event ID.
+        /// </summary>
+        [JsonProperty("snapshot_event")]
+        [STJS.JsonPropertyName("snapshot_event")]
+        public string SnapshotEvent { get; set; }
+
+        /// <summary>
         /// The type of the event.
         /// </summary>
         [JsonProperty("type")]

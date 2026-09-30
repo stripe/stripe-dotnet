@@ -9,7 +9,8 @@ namespace Stripe.V2.Core
     public class EventDestinationCreateWebhookEndpointOptions : INestedOptions
     {
         /// <summary>
-        /// The URL of the webhook endpoint.
+        /// The URL where Stripe sends matching events. Live mode requires HTTPS; sandbox mode also
+        /// supports HTTP.
         /// </summary>
         [JsonProperty("url")]
         [STJS.JsonPropertyName("url")]

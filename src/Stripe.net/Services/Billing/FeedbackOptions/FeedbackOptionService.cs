@@ -63,7 +63,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Retrieves a feedback options object given an ID.</p>.
+        /// <p>Retrieves a feedback option object given an ID.</p>.
         /// </summary>
         public virtual FeedbackOption Get(string id, FeedbackOptionGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -71,7 +71,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Retrieves a feedback options object given an ID.</p>.
+        /// <p>Retrieves a feedback option object given an ID.</p>.
         /// </summary>
         public virtual Task<FeedbackOption> GetAsync(string id, FeedbackOptionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -79,7 +79,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>An API method for listing the feedback options model</p>.
+        /// <p>Returns a list of your feedback options.</p>.
         /// </summary>
         public virtual StripeList<FeedbackOption> List(FeedbackOptionListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -87,7 +87,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>An API method for listing the feedback options model</p>.
+        /// <p>Returns a list of your feedback options.</p>.
         /// </summary>
         public virtual Task<StripeList<FeedbackOption>> ListAsync(FeedbackOptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -95,7 +95,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>An API method for listing the feedback options model</p>.
+        /// <p>Returns a list of your feedback options.</p>.
         /// </summary>
         public virtual IEnumerable<FeedbackOption> ListAutoPaging(FeedbackOptionListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -103,7 +103,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>An API method for listing the feedback options model</p>.
+        /// <p>Returns a list of your feedback options.</p>.
         /// </summary>
         public virtual IAsyncEnumerable<FeedbackOption> ListAutoPagingAsync(FeedbackOptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

@@ -12,6 +12,8 @@ namespace Stripe.Radar
         /// The type of fraud labeled by the issuer.
         /// One of: <c>made_with_lost_card</c>, <c>made_with_stolen_card</c>, <c>other</c>, or
         /// <c>unauthorized_use_of_card</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("fraud_type")]
         [STJS.JsonPropertyName("fraud_type")]

@@ -16,6 +16,8 @@ namespace Stripe.TestHelpers
         /// <c>moneyou</c>, <c>n26</c>, <c>nn</c>, <c>rabobank</c>, <c>regiobank</c>,
         /// <c>revolut</c>, <c>sns_bank</c>, <c>triodos_bank</c>, <c>van_lanschot</c>, or
         /// <c>yoursafe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("bank")]
         [STJS.JsonPropertyName("bank")]

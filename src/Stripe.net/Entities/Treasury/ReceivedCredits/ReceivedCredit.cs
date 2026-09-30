@@ -8,8 +8,8 @@ namespace Stripe.Treasury
 
     /// <summary>
     /// ReceivedCredits represent funds sent to a <a
-    /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a> (for example, via
-    /// ACH or wire). These money movements are not initiated from the FinancialAccount.
+    /// href="https://docs.stripe.com/api#financial_accounts">FinancialAccount</a> (for example,
+    /// via ACH or wire). These money movements are not initiated from the FinancialAccount.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReceivedCredit : StripeEntity<ReceivedCredit>, IHasId, IHasObject
@@ -65,6 +65,8 @@ namespace Stripe.Treasury
         /// FinancialAccount is closed or frozen.
         /// One of: <c>account_closed</c>, <c>account_frozen</c>, <c>international_transaction</c>,
         /// or <c>other</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("failure_code")]
         [STJS.JsonPropertyName("failure_code")]
@@ -104,7 +106,9 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// The rails used to send the funds.
-        /// One of: <c>ach</c>, <c>card</c>, <c>stripe</c>, or <c>us_domestic_wire</c>.
+        /// One of: <c>ach</c>, <c>card</c>, <c>rtp</c>, <c>stripe</c>, or <c>us_domestic_wire</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]
@@ -122,6 +126,8 @@ namespace Stripe.Treasury
         /// (approved) or <c>failed</c> (declined). If a ReceivedCredit is declined, the failure
         /// reason can be found in the <c>failure_code</c> field.
         /// One of: <c>failed</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

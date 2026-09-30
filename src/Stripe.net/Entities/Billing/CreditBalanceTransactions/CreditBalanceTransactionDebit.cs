@@ -23,6 +23,8 @@ namespace Stripe.Billing
         /// <summary>
         /// The type of debit transaction.
         /// One of: <c>credits_applied</c>, <c>credits_expired</c>, or <c>credits_voided</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

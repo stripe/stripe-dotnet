@@ -21,6 +21,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// Only return FinancialAccounts that have the given status: <c>open</c> or <c>closed</c>.
         /// One of: <c>closed</c>, or <c>open</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

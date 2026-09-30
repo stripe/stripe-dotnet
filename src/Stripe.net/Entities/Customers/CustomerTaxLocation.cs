@@ -19,6 +19,8 @@ namespace Stripe
         /// The data source used to infer the customer's location.
         /// One of: <c>billing_address</c>, <c>ip_address</c>, <c>payment_method</c>, or
         /// <c>shipping_destination</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("source")]
         [STJS.JsonPropertyName("source")]

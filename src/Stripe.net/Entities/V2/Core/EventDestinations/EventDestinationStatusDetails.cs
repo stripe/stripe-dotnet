@@ -9,7 +9,8 @@ namespace Stripe.V2.Core
     public class EventDestinationStatusDetails : StripeEntity<EventDestinationStatusDetails>
     {
         /// <summary>
-        /// Details about why the event destination has been disabled.
+        /// Present when the destination was disabled; identifies the cause, time, and provider-side
+        /// object involved when available.
         /// </summary>
         [JsonProperty("disabled")]
         [STJS.JsonPropertyName("disabled")]

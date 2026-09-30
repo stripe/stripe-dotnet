@@ -9,14 +9,16 @@ namespace Stripe.V2.Core
     public class EventDestinationWebhookEndpoint : StripeEntity<EventDestinationWebhookEndpoint>
     {
         /// <summary>
-        /// The signing secret of the webhook endpoint, only includable on creation.
+        /// The secret used to verify Stripe signatures on delivered events. Returned only in the
+        /// create response when explicitly included; public API clients cannot retrieve it later.
         /// </summary>
         [JsonProperty("signing_secret")]
         [STJS.JsonPropertyName("signing_secret")]
         public string SigningSecret { get; set; }
 
         /// <summary>
-        /// The URL of the webhook endpoint, includable.
+        /// The URL where Stripe sends matching events. Live mode requires HTTPS; sandbox mode also
+        /// supports HTTP. Returned only when explicitly included.
         /// </summary>
         [JsonProperty("url")]
         [STJS.JsonPropertyName("url")]

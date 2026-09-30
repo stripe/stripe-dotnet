@@ -16,6 +16,8 @@ namespace Stripe.Events
         /// <c>meter_event_no_customer_defined</c>, <c>meter_event_value_too_many_digits</c>,
         /// <c>missing_dimension_payload_keys</c>, <c>no_meter</c>, <c>timestamp_in_future</c>, or
         /// <c>timestamp_too_far_in_past</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]

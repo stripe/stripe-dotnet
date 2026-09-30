@@ -83,6 +83,8 @@ namespace Stripe.Forwarding
         /// The field kinds to be replaced in the forwarded request.
         /// One of: <c>card_cvc</c>, <c>card_expiry</c>, <c>card_number</c>, <c>cardholder_name</c>,
         /// or <c>request_signature</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("replacements")]
         [STJS.JsonPropertyName("replacements")]

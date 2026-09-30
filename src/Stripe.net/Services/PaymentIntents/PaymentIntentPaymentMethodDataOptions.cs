@@ -47,13 +47,15 @@ namespace Stripe
         /// whether a payment method can be shown as a saved payment method in a checkout flow. The
         /// field defaults to <c>unspecified</c>.
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allow_redisplay")]
         [STJS.JsonPropertyName("allow_redisplay")]
         public string AllowRedisplay { get; set; }
 
         /// <summary>
-        /// If this is a Alma PaymentMethod, this hash contains details about the Alma payment
+        /// If this is an Alma PaymentMethod, this hash contains details about the Alma payment
         /// method.
         /// </summary>
         [JsonProperty("alma")]
@@ -61,7 +63,7 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataAlmaOptions Alma { get; set; }
 
         /// <summary>
-        /// If this is a AmazonPay PaymentMethod, this hash contains details about the AmazonPay
+        /// If this is an AmazonPay PaymentMethod, this hash contains details about the AmazonPay
         /// payment method.
         /// </summary>
         [JsonProperty("amazon_pay")]
@@ -343,6 +345,14 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataPaypalOptions Paypal { get; set; }
 
         /// <summary>
+        /// If this is a <c>paypay</c> PaymentMethod, this hash contains details about the PayPay
+        /// payment method.
+        /// </summary>
+        [JsonProperty("paypay")]
+        [STJS.JsonPropertyName("paypay")]
+        public PaymentIntentPaymentMethodDataPaypayOptions Paypay { get; set; }
+
+        /// <summary>
         /// If this is a <c>payto</c> PaymentMethod, this hash contains details about the PayTo
         /// payment method.
         /// </summary>
@@ -416,6 +426,14 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataSepaDebitOptions SepaDebit { get; set; }
 
         /// <summary>
+        /// If this is a SeQura PaymentMethod, this hash contains details about the SeQura payment
+        /// method.
+        /// </summary>
+        [JsonProperty("sequra")]
+        [STJS.JsonPropertyName("sequra")]
+        public PaymentIntentPaymentMethodDataSequraOptions Sequra { get; set; }
+
+        /// <summary>
         /// If this is a <c>sofort</c> PaymentMethod, this hash contains details about the SOFORT
         /// payment method.
         /// </summary>
@@ -458,10 +476,13 @@ namespace Stripe
         /// <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>,
         /// <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>,
         /// <c>multibanco</c>, <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>,
-        /// <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>,
-        /// <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
-        /// <c>scalapay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>sunbit</c>, <c>swish</c>,
-        /// <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>paypay</c>,
+        /// <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>, <c>samsung_pay</c>,
+        /// <c>satispay</c>, <c>scalapay</c>, <c>sepa_debit</c>, <c>sequra</c>, <c>sofort</c>,
+        /// <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>,
+        /// <c>wechat_pay</c>, or <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

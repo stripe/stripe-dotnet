@@ -1760,7 +1760,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/events/ll_123",
                 HttpStatusCode.OK,
-                "{\"object\":\"v2.core.event\",\"changes\":{\"int_key\":123,\"string_key\":\"value\",\"boolean_key\":true,\"object_key\":{\"object_int_key\":123,\"object_string_key\":\"value\",\"object_boolean_key\":true},\"array_key\":[1,2,3]},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"reason\":{\"request\":{\"id\":\"obj_123\",\"idempotency_key\":\"idempotency_key\"},\"type\":\"request\"},\"type\":\"type\"}");
+                "{\"object\":\"v2.core.event\",\"changes\":{\"int_key\":123,\"string_key\":\"value\",\"boolean_key\":true,\"object_key\":{\"object_int_key\":123,\"object_string_key\":\"value\",\"object_boolean_key\":true},\"array_key\":[1,2,3]},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"reason\":{\"request\":{\"id\":\"obj_123\",\"idempotency_key\":\"idempotency_key\"},\"type\":\"request\"},\"snapshot_event\":\"snapshot_event\",\"type\":\"type\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Events;
             Stripe.V2.Core.Event result = service.Get("ll_123");
@@ -1774,7 +1774,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/events/ll_123",
                 HttpStatusCode.OK,
-                "{\"object\":\"v2.core.event\",\"changes\":{\"int_key\":123,\"string_key\":\"value\",\"boolean_key\":true,\"object_key\":{\"object_int_key\":123,\"object_string_key\":\"value\",\"object_boolean_key\":true},\"array_key\":[1,2,3]},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"reason\":{\"request\":{\"id\":\"obj_123\",\"idempotency_key\":\"idempotency_key\"},\"type\":\"request\"},\"type\":\"type\"}");
+                "{\"object\":\"v2.core.event\",\"changes\":{\"int_key\":123,\"string_key\":\"value\",\"boolean_key\":true,\"object_key\":{\"object_int_key\":123,\"object_string_key\":\"value\",\"object_boolean_key\":true},\"array_key\":[1,2,3]},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"reason\":{\"request\":{\"id\":\"obj_123\",\"idempotency_key\":\"idempotency_key\"},\"type\":\"request\"},\"snapshot_event\":\"snapshot_event\",\"type\":\"type\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Events;
             Stripe.V2.Core.Event result = await service.GetAsync("ll_123");
@@ -3997,7 +3997,7 @@ namespace StripeTests
                 Permissions = new List<string> { "payment_method", "balances" },
                 Filters = new Stripe.FinancialConnections.SessionFiltersOptions
                 {
-                    Countries = new List<string> { "US" },
+                    Country = "US",
                 },
             };
             var service = new Stripe.FinancialConnections.SessionService(
@@ -4022,7 +4022,7 @@ namespace StripeTests
                 Permissions = new List<string> { "payment_method", "balances" },
                 Filters = new Stripe.FinancialConnections.SessionFiltersOptions
                 {
-                    Countries = new List<string> { "US" },
+                    Country = "US",
                 },
             };
             var service = new Stripe.FinancialConnections.SessionService(
@@ -15911,7 +15911,6 @@ namespace StripeTests
                             Fields = "eventually_due",
                             FutureRequirements = "include",
                         },
-                        Configurations = new List<string> { "merchant" },
                         RefreshUrl = "refresh_url",
                         ReturnUrl = "return_url",
                     },
@@ -15922,7 +15921,6 @@ namespace StripeTests
                             Fields = "eventually_due",
                             FutureRequirements = "include",
                         },
-                        Configurations = new List<string> { "merchant" },
                         RefreshUrl = "refresh_url",
                         ReturnUrl = "return_url",
                     },
@@ -15955,7 +15953,6 @@ namespace StripeTests
                             Fields = "eventually_due",
                             FutureRequirements = "include",
                         },
-                        Configurations = new List<string> { "merchant" },
                         RefreshUrl = "refresh_url",
                         ReturnUrl = "return_url",
                     },
@@ -15966,7 +15963,6 @@ namespace StripeTests
                             Fields = "eventually_due",
                             FutureRequirements = "include",
                         },
-                        Configurations = new List<string> { "merchant" },
                         RefreshUrl = "refresh_url",
                         ReturnUrl = "return_url",
                     },

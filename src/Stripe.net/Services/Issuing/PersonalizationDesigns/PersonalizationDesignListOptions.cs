@@ -26,6 +26,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Only return personalization designs with the given status.
         /// One of: <c>active</c>, <c>inactive</c>, <c>rejected</c>, or <c>review</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

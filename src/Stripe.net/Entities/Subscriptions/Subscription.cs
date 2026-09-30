@@ -164,6 +164,8 @@ namespace Stripe
         /// customer an invoice with payment instructions and mark the subscription as
         /// <c>active</c>.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("collection_method")]
         [STJS.JsonPropertyName("collection_method")]
@@ -661,7 +663,7 @@ namespace Stripe
         /// <c>active</c> when the trial period is over.
         ///
         /// A subscription can only enter a <c>paused</c> status <a
-        /// href="https://docs.stripe.com/billing/subscriptions/trials#create-free-trials-without-payment">when
+        /// href="https://docs.stripe.com/billing/subscriptions/trials/free-trials#create-free-trials-without-payment">when
         /// a trial ends without a payment method</a>. A <c>paused</c> subscription doesn't generate
         /// invoices and can be resumed after your customer adds their payment method. The
         /// <c>paused</c> status is different from <a
@@ -683,10 +685,19 @@ namespace Stripe
         /// information from a customer, you may choose to reopen and pay their closed invoices.
         /// One of: <c>active</c>, <c>canceled</c>, <c>incomplete</c>, <c>incomplete_expired</c>,
         /// <c>past_due</c>, <c>paused</c>, <c>trialing</c>, or <c>unpaid</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
         public string Status { get; set; }
+
+        /// <summary>
+        /// Describes changes to the subscription's status.
+        /// </summary>
+        [JsonProperty("status_details")]
+        [STJS.JsonPropertyName("status_details")]
+        public SubscriptionStatusDetails StatusDetails { get; set; }
 
         #region Expandable TestClock
 

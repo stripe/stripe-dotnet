@@ -18,8 +18,14 @@ namespace Stripe
         public string PayoutsAction { get; set; }
 
         /// <summary>
-        /// The reason for rejecting the account. Can be <c>fraud</c>, <c>terms_of_service</c>, or
-        /// <c>other</c>.
+        /// The reason for rejecting the account. Can be <c>fraud_payment_method_casher</c>,
+        /// <c>fraud_payment_method_tester</c>, <c>fraud_no_intent_to_fulfill</c>,
+        /// <c>fraud_other</c>, <c>credit</c>, <c>terms_of_service</c>, or <c>other</c>.
+        /// One of: <c>credit</c>, <c>fraud_no_intent_to_fulfill</c>, <c>fraud_other</c>,
+        /// <c>fraud_payment_method_casher</c>, <c>fraud_payment_method_tester</c>, <c>other</c>, or
+        /// <c>terms_of_service</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

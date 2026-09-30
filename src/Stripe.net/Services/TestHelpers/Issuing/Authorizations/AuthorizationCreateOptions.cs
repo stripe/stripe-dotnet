@@ -30,6 +30,8 @@ namespace Stripe.TestHelpers.Issuing
         /// How the card details were provided. Defaults to online.
         /// One of: <c>chip</c>, <c>contactless</c>, <c>keyed_in</c>, <c>online</c>, or
         /// <c>swipe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("authorization_method")]
         [STJS.JsonPropertyName("authorization_method")]
@@ -63,6 +65,8 @@ namespace Stripe.TestHelpers.Issuing
         /// Probability that this transaction can be disputed in the event of fraud. Assessed by
         /// comparing the characteristics of the authorization to card network rules.
         /// One of: <c>neutral</c>, <c>unknown</c>, <c>very_likely</c>, or <c>very_unlikely</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("fraud_disputability_likelihood")]
         [STJS.JsonPropertyName("fraud_disputability_likelihood")]
@@ -138,6 +142,8 @@ namespace Stripe.TestHelpers.Issuing
         /// <c>google_pay</c>, or <c>samsung_pay</c>. Will populate as <c>null</c> when no digital
         /// wallet was utilized.
         /// One of: <c>apple_pay</c>, <c>google_pay</c>, or <c>samsung_pay</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("wallet")]
         [STJS.JsonPropertyName("wallet")]

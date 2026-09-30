@@ -48,6 +48,7 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsPaycoOptions payco;
         private PaymentIntentPaymentMethodOptionsPaynowOptions paynow;
         private PaymentIntentPaymentMethodOptionsPaypalOptions paypal;
+        private PaymentIntentPaymentMethodOptionsPaypayOptions paypay;
         private PaymentIntentPaymentMethodOptionsPaytoOptions payto;
         private PaymentIntentPaymentMethodOptionsPixOptions pix;
         private PaymentIntentPaymentMethodOptionsPromptpayOptions promptpay;
@@ -56,6 +57,7 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsSatispayOptions satispay;
         private PaymentIntentPaymentMethodOptionsScalapayOptions scalapay;
         private PaymentIntentPaymentMethodOptionsSepaDebitOptions sepaDebit;
+        private PaymentIntentPaymentMethodOptionsSequraOptions sequra;
         private PaymentIntentPaymentMethodOptionsSofortOptions sofort;
         private PaymentIntentPaymentMethodOptionsSunbitOptions sunbit;
         private PaymentIntentPaymentMethodOptionsSwishOptions swish;
@@ -749,6 +751,23 @@ namespace Stripe
         }
 
         /// <summary>
+        /// If this is a <c>paypay</c> PaymentMethod, this sub-hash contains details about the
+        /// PayPay payment method options.
+        /// </summary>
+        [JsonProperty("paypay", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("paypay")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsPaypayOptions Paypay
+        {
+            get => this.paypay;
+            set
+            {
+                this.paypay = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
         /// If this is a <c>payto</c> PaymentMethod, this sub-hash contains details about the PayTo
         /// payment method options.
         /// </summary>
@@ -880,6 +899,23 @@ namespace Stripe
             set
             {
                 this.sepaDebit = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If this is a <c>sequra</c> PaymentMethod, this sub-hash contains details about the
+        /// SeQura payment method options.
+        /// </summary>
+        [JsonProperty("sequra", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("sequra")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsSequraOptions Sequra
+        {
+            get => this.sequra;
+            set
+            {
+                this.sequra = value;
                 this.SetTracker.Track();
             }
         }

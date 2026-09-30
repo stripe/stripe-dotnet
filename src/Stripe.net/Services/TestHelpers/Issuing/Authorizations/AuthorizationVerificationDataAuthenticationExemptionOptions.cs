@@ -12,6 +12,8 @@ namespace Stripe.TestHelpers.Issuing
         /// The entity that requested the exemption, either the acquiring merchant or the Issuing
         /// user.
         /// One of: <c>acquirer</c>, or <c>issuer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("claimed_by")]
         [STJS.JsonPropertyName("claimed_by")]
@@ -21,6 +23,8 @@ namespace Stripe.TestHelpers.Issuing
         /// The specific exemption claimed for this authorization.
         /// One of: <c>low_value_transaction</c>, <c>transaction_risk_analysis</c>, or
         /// <c>unknown</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

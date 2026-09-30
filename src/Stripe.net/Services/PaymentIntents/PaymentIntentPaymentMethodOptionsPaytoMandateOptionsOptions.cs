@@ -40,6 +40,8 @@ namespace Stripe
         /// value of <c>amount</c> param for <c>fixed</c> or <c>maximum</c> type respectively.
         /// Defaults to <c>maximum</c>.
         /// One of: <c>fixed</c>, or <c>maximum</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("amount_type", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("amount_type")]
@@ -75,6 +77,8 @@ namespace Stripe
         /// The periodicity at which payments will be collected. Defaults to <c>adhoc</c>.
         /// One of: <c>adhoc</c>, <c>annual</c>, <c>daily</c>, <c>fortnightly</c>, <c>monthly</c>,
         /// <c>quarterly</c>, <c>semi_annual</c>, or <c>weekly</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_schedule", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("payment_schedule")]
@@ -112,6 +116,8 @@ namespace Stripe
         /// One of: <c>dependant_support</c>, <c>government</c>, <c>loan</c>, <c>mortgage</c>,
         /// <c>other</c>, <c>pension</c>, <c>personal</c>, <c>retail</c>, <c>salary</c>, <c>tax</c>,
         /// or <c>utility</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("purpose", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("purpose")]

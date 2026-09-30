@@ -22,6 +22,8 @@ namespace Stripe
         /// impact.
         /// One of: <c>block</c>, <c>chargeback</c>, <c>compliance</c>, <c>inquiry</c>, or
         /// <c>resolution</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("case_type")]
         [STJS.JsonPropertyName("case_type")]

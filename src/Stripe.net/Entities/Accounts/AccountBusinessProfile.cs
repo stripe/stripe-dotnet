@@ -37,6 +37,8 @@ namespace Stripe
         /// Whether the business is a minority-owned, women-owned, and/or LGBTQI+ -owned business.
         /// One of: <c>lgbtqi_owned_business</c>, <c>minority_owned_business</c>,
         /// <c>none_of_these_apply</c>, <c>prefer_not_to_answer</c>, or <c>women_owned_business</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("minority_owned_business_designation")]
         [STJS.JsonPropertyName("minority_owned_business_designation")]
@@ -60,6 +62,14 @@ namespace Stripe
         [JsonProperty("product_description")]
         [STJS.JsonPropertyName("product_description")]
         public string ProductDescription { get; set; }
+
+        /// <summary>
+        /// A link to the business's publicly available terms related to the Specified Commercial
+        /// Transaction Act. Only used for accounts in Japan.
+        /// </summary>
+        [JsonProperty("specified_commercial_transactions_act_url")]
+        [STJS.JsonPropertyName("specified_commercial_transactions_act_url")]
+        public string SpecifiedCommercialTransactionsActUrl { get; set; }
 
         /// <summary>
         /// A publicly available mailing address for sending support issues to.

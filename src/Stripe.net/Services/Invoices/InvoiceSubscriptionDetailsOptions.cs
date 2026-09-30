@@ -27,10 +27,8 @@ namespace Stripe
         /// subscriptions, the value can only be set to <c>now</c> or <c>unchanged</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
-        [JsonConverter(typeof(AnyOfConverter))]
         [STJS.JsonPropertyName("billing_cycle_anchor")]
-        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-        public AnyOf<DateTime?, InvoiceSubscriptionDetailsBillingCycleAnchor> BillingCycleAnchor { get; set; }
+        public InvoiceSubscriptionDetailsBillingCycleAnchorOptions BillingCycleAnchor { get; set; }
 
         /// <summary>
         /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
@@ -136,12 +134,28 @@ namespace Stripe
         }
 
         /// <summary>
+        /// Previews the invoice that would be generated when pausing the subscription. Passing an
+        /// empty hash won't preview pausing and instead returns the next invoice.
+        ///
+        /// To receive a preview invoice, set <c>invoicing_behavior</c> to <c>invoice</c>. A preview
+        /// isn't available if the <c>bill_for</c> options produce no billable amounts.
+        ///
+        /// <c>pending_invoice_item</c> never has a preview available because pausing wouldn't
+        /// generate an invoice, and paused subscriptions don't generate invoices either.
+        /// </summary>
+        [JsonProperty("pause")]
+        [STJS.JsonPropertyName("pause")]
+        public InvoiceSubscriptionDetailsPauseOptions Pause { get; set; }
+
+        /// <summary>
         /// Determines how to handle <a
         /// href="https://docs.stripe.com/billing/subscriptions/prorations">prorations</a> when the
         /// billing cycle changes (e.g., when switching plans, resetting
         /// <c>billing_cycle_anchor=now</c>, or starting a trial), or if an item's <c>quantity</c>
         /// changes. The default value is <c>create_prorations</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]

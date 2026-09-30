@@ -46,6 +46,8 @@ namespace Stripe
         /// The status of the mandate acceptance. Either <c>accepted</c> (the mandate was accepted)
         /// or <c>refused</c> (the mandate was refused).
         /// One of: <c>accepted</c>, <c>pending</c>, <c>refused</c>, or <c>revoked</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -55,6 +57,8 @@ namespace Stripe
         /// The type of acceptance information included with the mandate. Either <c>online</c> or
         /// <c>offline</c>.
         /// One of: <c>offline</c>, or <c>online</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

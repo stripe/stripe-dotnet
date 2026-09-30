@@ -56,6 +56,8 @@ namespace Stripe
         /// whether a payment method can be shown as a saved payment method in a checkout flow. The
         /// field defaults to “unspecified”.
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allow_redisplay")]
         [STJS.JsonPropertyName("allow_redisplay")]
@@ -280,6 +282,10 @@ namespace Stripe
         [STJS.JsonPropertyName("paypal")]
         public PaymentMethodPaypal Paypal { get; set; }
 
+        [JsonProperty("paypay")]
+        [STJS.JsonPropertyName("paypay")]
+        public PaymentMethodPaypay Paypay { get; set; }
+
         [JsonProperty("payto")]
         [STJS.JsonPropertyName("payto")]
         public PaymentMethodPayto Payto { get; set; }
@@ -321,6 +327,10 @@ namespace Stripe
         [STJS.JsonPropertyName("sepa_debit")]
         public PaymentMethodSepaDebit SepaDebit { get; set; }
 
+        [JsonProperty("sequra")]
+        [STJS.JsonPropertyName("sequra")]
+        public PaymentMethodSequra Sequra { get; set; }
+
         [JsonProperty("sofort")]
         [STJS.JsonPropertyName("sofort")]
         public PaymentMethodSofort Sofort { get; set; }
@@ -349,10 +359,13 @@ namespace Stripe
         /// <c>ideal</c>, <c>interac_present</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>,
         /// <c>kr_card</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>,
         /// <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
-        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
-        /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>scalapay</c>,
-        /// <c>sepa_debit</c>, <c>sofort</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
-        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>paypay</c>, <c>payto</c>, <c>pix</c>,
+        /// <c>promptpay</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
+        /// <c>scalapay</c>, <c>sepa_debit</c>, <c>sequra</c>, <c>sofort</c>, <c>sunbit</c>,
+        /// <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
+        /// <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
