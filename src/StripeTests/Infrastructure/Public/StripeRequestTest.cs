@@ -1,7 +1,9 @@
 namespace StripeTests
 {
     using System;
+    using System.Globalization;
     using System.Net.Http;
+    using System.Threading;
     using System.Threading.Tasks;
     using Stripe;
     using StripeTests.Infrastructure.TestData;
@@ -344,6 +346,24 @@ namespace StripeTests
         {
             Assert.Throws<ArgumentException>(() =>
                 StripeRequest.ValidatePath(path));
+        }
+
+        [Fact]
+        public void AssertOriginRelativePath_RejectsCultureSensitiveSlash()
+        {
+            var currentCulture = Thread.CurrentThread.CurrentCulture;
+
+            try
+            {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("ja-JP");
+
+                Assert.Throws<ArgumentException>(() =>
+                    StripeRequest.ValidatePath("\uFF0F@evil.example/v1/leak"));
+            }
+            finally
+            {
+                Thread.CurrentThread.CurrentCulture = currentCulture;
+            }
         }
 
         [Fact]

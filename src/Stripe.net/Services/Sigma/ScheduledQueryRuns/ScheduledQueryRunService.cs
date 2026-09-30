@@ -27,7 +27,7 @@ namespace Stripe.Sigma
         }
 
         /// <summary>
-        /// <p>Retrieves the details of an scheduled query run.</p>.
+        /// <p>Retrieves the details of a scheduled query run.</p>.
         /// </summary>
         public virtual ScheduledQueryRun Get(string id, ScheduledQueryRunGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -35,7 +35,7 @@ namespace Stripe.Sigma
         }
 
         /// <summary>
-        /// <p>Retrieves the details of an scheduled query run.</p>.
+        /// <p>Retrieves the details of a scheduled query run.</p>.
         /// </summary>
         public virtual Task<ScheduledQueryRun> GetAsync(string id, ScheduledQueryRunGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

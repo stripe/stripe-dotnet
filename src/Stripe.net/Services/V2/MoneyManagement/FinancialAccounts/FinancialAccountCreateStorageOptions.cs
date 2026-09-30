@@ -19,6 +19,13 @@ namespace Stripe.V2.MoneyManagement
         public FinancialAccountCreateStorageCryptoOptions Crypto { get; set; }
 
         /// <summary>
+        /// Array of eligibility objects, segmented by bank name and deposit insurance scheme.
+        /// </summary>
+        [JsonProperty("deposit_insurance_eligibility")]
+        [STJS.JsonPropertyName("deposit_insurance_eligibility")]
+        public List<FinancialAccountCreateStorageDepositInsuranceEligibilityOptions> DepositInsuranceEligibility { get; set; }
+
+        /// <summary>
         /// The usage type for funds in this FinancialAccount. Can be used to specify that the funds
         /// are for Consumer activity.
         /// One of: <c>business</c>, or <c>consumer</c>.

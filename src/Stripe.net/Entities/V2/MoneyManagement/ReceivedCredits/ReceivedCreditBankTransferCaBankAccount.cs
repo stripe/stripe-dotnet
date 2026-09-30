@@ -32,7 +32,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. The money transmission network used to send funds for this ReceivedCredit.
-        /// One of: <c>acss</c>.
+        /// One of: <c>acss</c>, or <c>swift</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

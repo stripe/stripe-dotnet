@@ -9,11 +9,12 @@ namespace Stripe.V2.Billing
     public class ContractCreatePricingLinePricingPriceDetailsPricingOverrideOverwritePriceOptions : INestedOptions
     {
         /// <summary>
-        /// The per-unit amount to be charged, represented as a decimal string in minor currency
-        /// units.
+        /// The per-unit amount to be charged in minor currency units.
         /// </summary>
         [JsonProperty("unit_amount")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("unit_amount")]
-        public string UnitAmount { get; set; }
+        public decimal? UnitAmount { get; set; }
     }
 }

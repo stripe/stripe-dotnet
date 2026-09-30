@@ -31,6 +31,9 @@ namespace Stripe.V2.Core.Vault
 
         /// <summary>
         /// The optional origin attestation for the card.
+        /// One of: <c>card_on_file</c>, or <c>wallet</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("origin")]
         [STJS.JsonPropertyName("origin")]

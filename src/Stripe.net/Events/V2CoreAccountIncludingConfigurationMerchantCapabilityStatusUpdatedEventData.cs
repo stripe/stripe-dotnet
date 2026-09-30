@@ -23,9 +23,10 @@ namespace Stripe.Events
         /// <c>naver_pay_payments</c>, <c>oxxo_payments</c>, <c>p24_payments</c>,
         /// <c>payco_payments</c>, <c>paynow_payments</c>, <c>stripe_balance.payouts</c>,
         /// <c>pay_by_bank_payments</c>, <c>promptpay_payments</c>, <c>revolut_pay_payments</c>,
-        /// <c>samsung_pay_payments</c>, <c>sepa_bank_transfer_payments</c>,
-        /// <c>sepa_debit_payments</c>, <c>sunbit_payments</c>, <c>swish_payments</c>,
-        /// <c>twint_payments</c>, <c>us_bank_transfer_payments</c>, or <c>zip_payments</c>.
+        /// <c>samsung_pay_payments</c>, <c>satispay_payments</c>,
+        /// <c>sepa_bank_transfer_payments</c>, <c>sepa_debit_payments</c>, <c>sequra_payments</c>,
+        /// <c>sunbit_payments</c>, <c>swish_payments</c>, <c>twint_payments</c>,
+        /// <c>us_bank_transfer_payments</c>, or <c>zip_payments</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

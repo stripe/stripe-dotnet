@@ -31,7 +31,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. The money transmission network used to send funds for this ReceivedCredit.
-        /// One of: <c>ach</c>, <c>rtp</c>, or <c>us_domestic_wire</c>.
+        /// One of: <c>ach</c>, <c>rtp</c>, <c>swift</c>, or <c>us_domestic_wire</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

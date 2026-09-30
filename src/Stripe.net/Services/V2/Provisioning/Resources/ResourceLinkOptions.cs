@@ -26,7 +26,8 @@ namespace Stripe.V2.Provisioning
 
         /// <summary>
         /// Whether the resource should use Stripe live-mode objects. When omitted, this resolves to
-        /// true.
+        /// false for a sandbox target and true otherwise. Sandbox targets cannot link live-mode
+        /// resources.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

@@ -23,6 +23,20 @@ namespace Stripe.V2.MoneyManagement
         public string AccountNumber { get; set; }
 
         /// <summary>
+        /// The SWIFT/BIC code.
+        /// </summary>
+        [JsonProperty("bic")]
+        [STJS.JsonPropertyName("bic")]
+        public string Bic { get; set; }
+
+        /// <summary>
+        /// The full IBAN.
+        /// </summary>
+        [JsonProperty("iban")]
+        [STJS.JsonPropertyName("iban")]
+        public string Iban { get; set; }
+
+        /// <summary>
         /// The last four digits of the account number.
         /// </summary>
         [JsonProperty("last4")]

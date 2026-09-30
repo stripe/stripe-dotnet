@@ -71,7 +71,7 @@ namespace Stripe
         /// <summary>
         /// The ID of a source to transfer funds from. For most users, this should be left
         /// unspecified which will use the bank account that was set up in the dashboard for the
-        /// specified currency. In test mode, this can be a test bank token (see <a
+        /// specified currency. While testing, this can be a test bank token (see <a
         /// href="https://docs.stripe.com/connect/testing#testing-top-ups">Testing Top-ups</a>).
         /// </summary>
         [JsonProperty("source")]

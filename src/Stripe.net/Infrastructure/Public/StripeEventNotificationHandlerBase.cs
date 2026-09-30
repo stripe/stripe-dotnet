@@ -372,6 +372,14 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenDeactivatedEventNotification>> v2CoreVaultNetworkTokenDeactivated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenDetailsUpdatedEventNotification>> v2CoreVaultNetworkTokenDetailsUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenSuspendedEventNotification>> v2CoreVaultNetworkTokenSuspended;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataQueryRunCreatedEventNotification>> v2DataQueryRunCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataQueryRunFailedEventNotification>> v2DataQueryRunFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataQueryRunSucceededEventNotification>> v2DataQueryRunSucceeded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataQueryRunUpdatedEventNotification>> v2DataQueryRunUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportRunCreatedEventNotification>> v2DataReportRunCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportRunFailedEventNotification>> v2DataReportRunFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportRunSucceededEventNotification>> v2DataReportRunSucceeded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportRunUpdatedEventNotification>> v2DataReportRunUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunCreatedEventNotification>> v2DataReportingQueryRunCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunFailedEventNotification>> v2DataReportingQueryRunFailed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunSucceededEventNotification>> v2DataReportingQueryRunSucceeded;
@@ -396,6 +404,7 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDebitDisputeFailedEventNotification>> v2MoneyManagementDebitDisputeFailed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDebitDisputeSubmittedEventNotification>> v2MoneyManagementDebitDisputeSubmitted;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDebitDisputeSucceededEventNotification>> v2MoneyManagementDebitDisputeSucceeded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementEarnedCreditSucceededEventNotification>> v2MoneyManagementEarnedCreditSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification>> v2MoneyManagementFinancialAccountCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification>> v2MoneyManagementFinancialAccountUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountWalletExportCompletedEventNotification>> v2MoneyManagementFinancialAccountWalletExportCompleted;
@@ -2603,6 +2612,54 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataQueryRunCreatedEventNotification>> V2DataQueryRunCreated
+        {
+            add { this.AddEventHandler(ref this.v2DataQueryRunCreated, value, "v2.data.query_run.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataQueryRunFailedEventNotification>> V2DataQueryRunFailed
+        {
+            add { this.AddEventHandler(ref this.v2DataQueryRunFailed, value, "v2.data.query_run.failed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataQueryRunSucceededEventNotification>> V2DataQueryRunSucceeded
+        {
+            add { this.AddEventHandler(ref this.v2DataQueryRunSucceeded, value, "v2.data.query_run.succeeded"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataQueryRunUpdatedEventNotification>> V2DataQueryRunUpdated
+        {
+            add { this.AddEventHandler(ref this.v2DataQueryRunUpdated, value, "v2.data.query_run.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportRunCreatedEventNotification>> V2DataReportRunCreated
+        {
+            add { this.AddEventHandler(ref this.v2DataReportRunCreated, value, "v2.data.report_run.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportRunFailedEventNotification>> V2DataReportRunFailed
+        {
+            add { this.AddEventHandler(ref this.v2DataReportRunFailed, value, "v2.data.report_run.failed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportRunSucceededEventNotification>> V2DataReportRunSucceeded
+        {
+            add { this.AddEventHandler(ref this.v2DataReportRunSucceeded, value, "v2.data.report_run.succeeded"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportRunUpdatedEventNotification>> V2DataReportRunUpdated
+        {
+            add { this.AddEventHandler(ref this.v2DataReportRunUpdated, value, "v2.data.report_run.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunCreatedEventNotification>> V2DataReportingQueryRunCreated
         {
             add { this.AddEventHandler(ref this.v2DataReportingQueryRunCreated, value, "v2.data.reporting.query_run.created"); }
@@ -2744,6 +2801,12 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDebitDisputeSucceededEventNotification>> V2MoneyManagementDebitDisputeSucceeded
         {
             add { this.AddEventHandler(ref this.v2MoneyManagementDebitDisputeSucceeded, value, "v2.money_management.debit_dispute.succeeded"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementEarnedCreditSucceededEventNotification>> V2MoneyManagementEarnedCreditSucceeded
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementEarnedCreditSucceeded, value, "v2.money_management.earned_credit.succeeded"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -4840,6 +4903,38 @@ namespace Stripe
                 {
                     this.v2CoreVaultNetworkTokenSuspended.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreVaultNetworkTokenSuspendedEventNotification>((Stripe.Events.V2CoreVaultNetworkTokenSuspendedEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V2DataQueryRunCreatedEventNotification)
+                {
+                    this.v2DataQueryRunCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2DataQueryRunCreatedEventNotification>((Stripe.Events.V2DataQueryRunCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2DataQueryRunFailedEventNotification)
+                {
+                    this.v2DataQueryRunFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2DataQueryRunFailedEventNotification>((Stripe.Events.V2DataQueryRunFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2DataQueryRunSucceededEventNotification)
+                {
+                    this.v2DataQueryRunSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2DataQueryRunSucceededEventNotification>((Stripe.Events.V2DataQueryRunSucceededEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2DataQueryRunUpdatedEventNotification)
+                {
+                    this.v2DataQueryRunUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2DataQueryRunUpdatedEventNotification>((Stripe.Events.V2DataQueryRunUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2DataReportRunCreatedEventNotification)
+                {
+                    this.v2DataReportRunCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2DataReportRunCreatedEventNotification>((Stripe.Events.V2DataReportRunCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2DataReportRunFailedEventNotification)
+                {
+                    this.v2DataReportRunFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2DataReportRunFailedEventNotification>((Stripe.Events.V2DataReportRunFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2DataReportRunSucceededEventNotification)
+                {
+                    this.v2DataReportRunSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2DataReportRunSucceededEventNotification>((Stripe.Events.V2DataReportRunSucceededEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2DataReportRunUpdatedEventNotification)
+                {
+                    this.v2DataReportRunUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2DataReportRunUpdatedEventNotification>((Stripe.Events.V2DataReportRunUpdatedEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V2DataReportingQueryRunCreatedEventNotification)
                 {
                     this.v2DataReportingQueryRunCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunCreatedEventNotification>((Stripe.Events.V2DataReportingQueryRunCreatedEventNotification)eventNotification, client));
@@ -4935,6 +5030,10 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2MoneyManagementDebitDisputeSucceededEventNotification)
                 {
                     this.v2MoneyManagementDebitDisputeSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDebitDisputeSucceededEventNotification>((Stripe.Events.V2MoneyManagementDebitDisputeSucceededEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementEarnedCreditSucceededEventNotification)
+                {
+                    this.v2MoneyManagementEarnedCreditSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementEarnedCreditSucceededEventNotification>((Stripe.Events.V2MoneyManagementEarnedCreditSucceededEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification)
                 {

@@ -66,6 +66,17 @@ namespace Stripe
         public string Network { get; set; }
 
         /// <summary>
+        /// Indicates whether Stripe may synchronously request a real-time card account update for
+        /// this confirmation. <c>if_available</c> allows the update; <c>never</c> opts out.
+        /// Defaults to <c>if_available</c> and is omitted from the response unless explicitly set
+        /// on this confirmation. This does not affect batch Card Account Updater.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_card_account_update")]
+        [STJS.JsonPropertyName("request_card_account_update")]
+        public string RequestCardAccountUpdate { get; set; }
+
+        /// <summary>
         /// Request ability to <a
         /// href="https://docs.stripe.com/payments/decremental-authorization">decrement the
         /// authorization</a> for this PaymentIntent.

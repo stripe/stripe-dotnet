@@ -75,6 +75,14 @@ namespace Stripe.V2.MoneyManagement
         public string ReceiptUrl { get; set; }
 
         /// <summary>
+        /// The statement descriptor surfaced on the payer's bank statement. Echoes the submitted
+        /// value.
+        /// </summary>
+        [JsonProperty("statement_descriptor")]
+        [STJS.JsonPropertyName("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
+
+        /// <summary>
         /// A nested object containing information about the destination of the InboundTransfer.
         /// </summary>
         [JsonProperty("to")]

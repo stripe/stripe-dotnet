@@ -960,6 +960,10 @@ namespace Stripe
         [STJS.JsonPropertyName("status")]
         public string Status { get; set; }
 
+        [JsonProperty("status_details")]
+        [STJS.JsonPropertyName("status_details")]
+        public InvoiceStatusDetails StatusDetails { get; set; }
+
         [JsonProperty("status_transitions")]
         [STJS.JsonPropertyName("status_transitions")]
         public InvoiceStatusTransitions StatusTransitions { get; set; }

@@ -466,6 +466,14 @@ namespace Stripe.TestHelpers
         public ConfirmationTokenPaymentMethodDataSepaDebitOptions SepaDebit { get; set; }
 
         /// <summary>
+        /// If this is a SeQura PaymentMethod, this hash contains details about the SeQura payment
+        /// method.
+        /// </summary>
+        [JsonProperty("sequra")]
+        [STJS.JsonPropertyName("sequra")]
+        public ConfirmationTokenPaymentMethodDataSequraOptions Sequra { get; set; }
+
+        /// <summary>
         /// ID of the SharedPaymentGrantedToken used to confirm this PaymentIntent.
         /// </summary>
         [JsonProperty("shared_payment_granted_token")]

@@ -195,6 +195,7 @@ namespace Stripe
                     QuotePreviewSubscriptionSchedule)
                 },
                 { "radar.account_evaluation", typeof(Radar.AccountEvaluation) },
+                { "radar.billing_evaluation", typeof(Radar.BillingEvaluation) },
                 { "radar.customer_evaluation", typeof(Radar.CustomerEvaluation) },
                 { "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning) },
                 {
@@ -246,6 +247,7 @@ namespace Stripe
                 { "terminal.reader", typeof(Terminal.Reader) },
                 { "terminal.reader_collected_data", typeof(Terminal.ReaderCollectedData) },
                 { "test_helpers.test_clock", typeof(TestHelpers.TestClock) },
+                { "three_d_secure.authentication", typeof(ThreeDSecure.Authentication) },
                 { "token", typeof(Token) },
                 { "topup", typeof(Topup) },
                 { "transfer", typeof(Transfer) },
@@ -274,14 +276,6 @@ namespace Stripe
             new Dictionary<string, Type>
             {
                 // V2ObjectsToTypes: The beginning of the section generated from our OpenAPI spec
-                {
-                    "financial_address_credit_simulation", typeof(
-                    V2.FinancialAddressCreditSimulation)
-                },
-                {
-                    "financial_address_generated_microdeposits", typeof(
-                    V2.FinancialAddressGeneratedMicrodeposits)
-                },
                 { "v2.billing.bill_setting", typeof(V2.Billing.BillSetting) },
                 { "v2.billing.bill_setting_version", typeof(V2.Billing.BillSettingVersion) },
                 { "v2.billing.cadence", typeof(V2.Billing.Cadence) },
@@ -354,7 +348,11 @@ namespace Stripe
                     "v2.data.analytics.metric_query_result", typeof(
                     V2.Data.Analytics.MetricQueryResult)
                 },
+                { "v2.data.query_run", typeof(V2.Data.QueryRun) },
+                { "v2.data.report", typeof(V2.Data.Report) },
+                { "v2.data.report_run", typeof(V2.Data.ReportRun) },
                 { "v2.data.reporting.query_run", typeof(V2.Data.Reporting.QueryRun) },
+                { "v2.data.schema", typeof(V2.Data.Schema) },
                 { "v2.extend.workflow", typeof(V2.Extend.Workflow) },
                 { "v2.extend.workflow_run", typeof(V2.Extend.WorkflowRun) },
                 { "v2.iam.activity_log", typeof(V2.Iam.ActivityLog) },
@@ -365,6 +363,11 @@ namespace Stripe
                     V2.MoneyManagement.CurrencyConversion)
                 },
                 { "v2.money_management.debit_dispute", typeof(V2.MoneyManagement.DebitDispute) },
+                { "v2.money_management.earned_credit", typeof(V2.MoneyManagement.EarnedCredit) },
+                {
+                    "v2.money_management.earned_credit_simulation", typeof(
+                    V2.MoneyManagement.EarnedCreditSimulation)
+                },
                 {
                     "v2.money_management.financial_account", typeof(
                     V2.MoneyManagement.FinancialAccount)
@@ -386,8 +389,16 @@ namespace Stripe
                     V2.MoneyManagement.FinancialAddress)
                 },
                 {
+                    "v2.money_management.financial_address_credit_simulation", typeof(
+                    V2.MoneyManagement.FinancialAddressCreditSimulation)
+                },
+                {
                     "v2.money_management.financial_address_debit_simulation", typeof(
                     V2.MoneyManagement.FinancialAddressDebitSimulation)
+                },
+                {
+                    "v2.money_management.financial_address_generated_microdeposits", typeof(
+                    V2.MoneyManagement.FinancialAddressGeneratedMicrodeposits)
                 },
                 {
                     "v2.money_management.inbound_transfer", typeof(
@@ -471,6 +482,10 @@ namespace Stripe
                     V2.Provisioning.ProviderServiceDetail)
                 },
                 { "v2.provisioning.resource", typeof(V2.Provisioning.Resource) },
+                {
+                    "v2.provisioning.resource_access_configuration", typeof(
+                    V2.Provisioning.ResourceAccessConfiguration)
+                },
                 { "v2.reporting.report", typeof(V2.Reporting.Report) },
                 { "v2.reporting.report_run", typeof(V2.Reporting.ReportRun) },
                 { "v2.risk.inquiry", typeof(V2.Risk.Inquiry) },
@@ -1477,6 +1492,14 @@ namespace Stripe
                     "v2.core.vault.network_token.suspended", typeof(
                     Events.V2CoreVaultNetworkTokenSuspendedEvent)
                 },
+                { "v2.data.query_run.created", typeof(Events.V2DataQueryRunCreatedEvent) },
+                { "v2.data.query_run.failed", typeof(Events.V2DataQueryRunFailedEvent) },
+                { "v2.data.query_run.succeeded", typeof(Events.V2DataQueryRunSucceededEvent) },
+                { "v2.data.query_run.updated", typeof(Events.V2DataQueryRunUpdatedEvent) },
+                { "v2.data.report_run.created", typeof(Events.V2DataReportRunCreatedEvent) },
+                { "v2.data.report_run.failed", typeof(Events.V2DataReportRunFailedEvent) },
+                { "v2.data.report_run.succeeded", typeof(Events.V2DataReportRunSucceededEvent) },
+                { "v2.data.report_run.updated", typeof(Events.V2DataReportRunUpdatedEvent) },
                 {
                     "v2.data.reporting.query_run.created", typeof(
                     Events.V2DataReportingQueryRunCreatedEvent)
@@ -1560,6 +1583,10 @@ namespace Stripe
                 {
                     "v2.money_management.debit_dispute.succeeded", typeof(
                     Events.V2MoneyManagementDebitDisputeSucceededEvent)
+                },
+                {
+                    "v2.money_management.earned_credit.succeeded", typeof(
+                    Events.V2MoneyManagementEarnedCreditSucceededEvent)
                 },
                 {
                     "v2.money_management.financial_account.created", typeof(
@@ -3111,6 +3138,38 @@ namespace Stripe
                     Events.V2CoreVaultNetworkTokenSuspendedEventNotification)
                 },
                 {
+                    "v2.data.query_run.created", typeof(
+                    Events.V2DataQueryRunCreatedEventNotification)
+                },
+                {
+                    "v2.data.query_run.failed", typeof(
+                    Events.V2DataQueryRunFailedEventNotification)
+                },
+                {
+                    "v2.data.query_run.succeeded", typeof(
+                    Events.V2DataQueryRunSucceededEventNotification)
+                },
+                {
+                    "v2.data.query_run.updated", typeof(
+                    Events.V2DataQueryRunUpdatedEventNotification)
+                },
+                {
+                    "v2.data.report_run.created", typeof(
+                    Events.V2DataReportRunCreatedEventNotification)
+                },
+                {
+                    "v2.data.report_run.failed", typeof(
+                    Events.V2DataReportRunFailedEventNotification)
+                },
+                {
+                    "v2.data.report_run.succeeded", typeof(
+                    Events.V2DataReportRunSucceededEventNotification)
+                },
+                {
+                    "v2.data.report_run.updated", typeof(
+                    Events.V2DataReportRunUpdatedEventNotification)
+                },
+                {
                     "v2.data.reporting.query_run.created", typeof(
                     Events.V2DataReportingQueryRunCreatedEventNotification)
                 },
@@ -3193,6 +3252,10 @@ namespace Stripe
                 {
                     "v2.money_management.debit_dispute.succeeded", typeof(
                     Events.V2MoneyManagementDebitDisputeSucceededEventNotification)
+                },
+                {
+                    "v2.money_management.earned_credit.succeeded", typeof(
+                    Events.V2MoneyManagementEarnedCreditSucceededEventNotification)
                 },
                 {
                     "v2.money_management.financial_account.created", typeof(

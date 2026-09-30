@@ -43,6 +43,15 @@ namespace Stripe.V2.MoneyManagement
         public PayoutMethodApplePay ApplePay { get; set; }
 
         /// <summary>
+        /// Whether the payout method was archived. Payout methods can be archived through the
+        /// /archive API, and they will not be automatically archived by Stripe. Archived payout
+        /// methods cannot be used for outbound money movement.
+        /// </summary>
+        [JsonProperty("archived")]
+        [STJS.JsonPropertyName("archived")]
+        public bool Archived { get; set; }
+
+        /// <summary>
         /// A set of available payout speeds for this payout method.
         /// One of: <c>instant</c>, or <c>standard</c>.
         /// </summary>

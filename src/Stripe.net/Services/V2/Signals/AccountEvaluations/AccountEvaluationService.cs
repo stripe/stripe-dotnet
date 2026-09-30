@@ -38,7 +38,8 @@ namespace Stripe.V2.Signals
         }
 
         /// <summary>
-        /// Retrieves an AccountEvaluation by its ID.
+        /// Retrieves an AccountEvaluation by its ID for up to 90 days after creation. Evaluations
+        /// more than 90 days old are inaccessible.
         /// </summary>
         public virtual AccountEvaluation Get(string id, AccountEvaluationGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -46,7 +47,8 @@ namespace Stripe.V2.Signals
         }
 
         /// <summary>
-        /// Retrieves an AccountEvaluation by its ID.
+        /// Retrieves an AccountEvaluation by its ID for up to 90 days after creation. Evaluations
+        /// more than 90 days old are inaccessible.
         /// </summary>
         public virtual Task<AccountEvaluation> GetAsync(string id, AccountEvaluationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

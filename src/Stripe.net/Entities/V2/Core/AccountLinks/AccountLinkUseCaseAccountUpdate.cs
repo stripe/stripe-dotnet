@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Core
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -16,19 +15,6 @@ namespace Stripe.V2.Core
         [JsonProperty("collection_options")]
         [STJS.JsonPropertyName("collection_options")]
         public AccountLinkUseCaseAccountUpdateCollectionOptions CollectionOptions { get; set; }
-
-        /// <summary>
-        /// Open Enum. A v2/account can be configured to enable certain functionality. The
-        /// configuration param targets the v2/account_link to collect information for the specified
-        /// v2/account configuration/s.
-        /// One of: <c>customer</c>, <c>developer</c>, <c>merchant</c>, <c>money_manager</c>,
-        /// <c>recipient</c>, or <c>storer</c>.
-        ///
-        /// This enum can grow over time; additional values may be added in the future.
-        /// </summary>
-        [JsonProperty("configurations")]
-        [STJS.JsonPropertyName("configurations")]
-        public List<string> Configurations { get; set; }
 
         /// <summary>
         /// The URL the user will be redirected to if the Account Link is expired, has been used, or

@@ -106,7 +106,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// The rails used to send the funds.
-        /// One of: <c>ach</c>, <c>card</c>, <c>stripe</c>, or <c>us_domestic_wire</c>.
+        /// One of: <c>ach</c>, <c>card</c>, <c>rtp</c>, <c>stripe</c>, or <c>us_domestic_wire</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

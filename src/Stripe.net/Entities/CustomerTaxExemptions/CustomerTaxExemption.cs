@@ -68,6 +68,10 @@ namespace Stripe
         [STJS.JsonPropertyName("effective_date")]
         public string EffectiveDate { get; set; }
 
+        [JsonProperty("es")]
+        [STJS.JsonPropertyName("es")]
+        public CustomerTaxExemptionEs Es { get; set; }
+
         /// <summary>
         /// ISO 8601 date (YYYY-MM-DD) when the exemption expires.
         /// </summary>

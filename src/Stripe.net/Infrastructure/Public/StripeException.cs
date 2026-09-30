@@ -67,10 +67,6 @@ namespace Stripe
                     ret = Stripe.V2.ControlledByAlternateResourceException.Parse(httpStatusCode, body);
                     break;
 
-                case "controlled_by_dashboard":
-                    ret = Stripe.V2.ControlledByDashboardException.Parse(httpStatusCode, body);
-                    break;
-
                 case "feature_not_enabled":
                     ret = Stripe.V2.FeatureNotEnabledException.Parse(httpStatusCode, body);
                     break;
@@ -97,6 +93,10 @@ namespace Stripe
 
                 case "invalid_payout_method":
                     ret = Stripe.V2.InvalidPayoutMethodException.Parse(httpStatusCode, body);
+                    break;
+
+                case "invalid_vaulted_credential":
+                    ret = Stripe.V2.InvalidVaultedCredentialException.Parse(httpStatusCode, body);
                     break;
 
                 case "merchant_not_gated":
@@ -129,6 +129,18 @@ namespace Stripe
 
                 case "temporary_session_expired":
                     ret = Stripe.V2.TemporarySessionExpiredException.Parse(httpStatusCode, body);
+                    break;
+
+                case "verification_attempt_failed":
+                    ret = Stripe.V2.VerificationAttemptFailedException.Parse(httpStatusCode, body);
+                    break;
+
+                case "verification_expired":
+                    ret = Stripe.V2.VerificationExpiredException.Parse(httpStatusCode, body);
+                    break;
+
+                case "verification_not_initiated":
+                    ret = Stripe.V2.VerificationNotInitiatedException.Parse(httpStatusCode, body);
                     break;
 
                 // The end of the section generated from our OpenAPI spec

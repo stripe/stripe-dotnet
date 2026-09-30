@@ -99,7 +99,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Restrictions to apply to the card payment method. For example, you can block specific
-        /// card brands. You can't set this parameter if <c>ui_mode</c> is <c>custom</c>.
+        /// card brands. You can't set this parameter if <c>ui_mode</c> is <c>elements</c>.
         /// </summary>
         [JsonProperty("restrictions")]
         [STJS.JsonPropertyName("restrictions")]

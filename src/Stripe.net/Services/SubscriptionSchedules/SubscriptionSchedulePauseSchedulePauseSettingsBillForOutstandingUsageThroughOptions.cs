@@ -9,7 +9,9 @@ namespace Stripe
     public class SubscriptionSchedulePauseSchedulePauseSettingsBillForOutstandingUsageThroughOptions : INestedOptions
     {
         /// <summary>
-        /// Determines whether to collect metered usage accrued up to the pause date.
+        /// Determines whether to collect metered usage accrued up to the pause date. When adding a
+        /// pause schedule, defaults to <c>pause_at</c>. On updates, the existing value is preserved
+        /// if not provided.
         /// One of: <c>none</c>, or <c>pause_at</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
