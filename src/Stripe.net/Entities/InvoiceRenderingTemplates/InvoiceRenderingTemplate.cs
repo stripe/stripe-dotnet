@@ -65,6 +65,8 @@ namespace Stripe
         /// <summary>
         /// The status of the template, one of <c>active</c> or <c>archived</c>.
         /// One of: <c>active</c>, or <c>archived</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

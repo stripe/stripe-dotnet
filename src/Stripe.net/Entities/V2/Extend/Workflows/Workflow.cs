@@ -49,6 +49,8 @@ namespace Stripe.V2.Extend
         /// Whether this Workflow is active, inactive, or in some other state. Only active Workflows
         /// may be invoked.
         /// One of: <c>active</c>, <c>archived</c>, <c>draft</c>, or <c>inactive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

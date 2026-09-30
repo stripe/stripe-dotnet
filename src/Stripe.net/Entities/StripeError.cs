@@ -10,8 +10,8 @@ namespace Stripe
 
         /// <summary>
         /// For card errors resulting from a card issuer decline, a short string indicating <a
-        /// href="https://docs.stripe.com/declines#retrying-issuer-declines">how to proceed with an
-        /// error</a> if they provide one.
+        /// href="https://docs.stripe.com/declines/card#retrying-issuer-declines">how to proceed
+        /// with an error</a> if they provide one.
         /// </summary>
         [JsonProperty("advice_code")]
         [STJS.JsonPropertyName("advice_code")]

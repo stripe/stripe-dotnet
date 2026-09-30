@@ -1,0 +1,56 @@
+// File generated from our OpenAPI spec
+namespace Stripe.V2.MoneyManagement.TestHelpers
+{
+    using System;
+    using System.Net;
+    using System.Net.Http;
+    using System.Threading;
+    using System.Threading.Tasks;
+
+    public class FinancialAddressService : Service
+    {
+        internal FinancialAddressService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
+        internal FinancialAddressService(IStripeClient client)
+            : base(client)
+        {
+        }
+
+        /// <summary>
+        /// Simulate crediting a FinancialAddress in a Sandbox environment. This can be used to add
+        /// virtual funds and increase your balance for testing.
+        /// </summary>
+        public virtual V2.MoneyManagement.FinancialAddressCreditSimulation Credit(string id, FinancialAddressCreditOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<V2.MoneyManagement.FinancialAddressCreditSimulation>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/test_helpers/financial_addresses/{WebUtility.UrlEncode(id)}/credit", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Simulate crediting a FinancialAddress in a Sandbox environment. This can be used to add
+        /// virtual funds and increase your balance for testing.
+        /// </summary>
+        public virtual Task<V2.MoneyManagement.FinancialAddressCreditSimulation> CreditAsync(string id, FinancialAddressCreditOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<V2.MoneyManagement.FinancialAddressCreditSimulation>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/test_helpers/financial_addresses/{WebUtility.UrlEncode(id)}/credit", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Generates microdeposits for a FinancialAddress in a Sandbox environment.
+        /// </summary>
+        public virtual V2.MoneyManagement.FinancialAddressGeneratedMicrodeposits GenerateMicrodeposits(string id, FinancialAddressGenerateMicrodepositsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<V2.MoneyManagement.FinancialAddressGeneratedMicrodeposits>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/test_helpers/financial_addresses/{WebUtility.UrlEncode(id)}/generate_microdeposits", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Generates microdeposits for a FinancialAddress in a Sandbox environment.
+        /// </summary>
+        public virtual Task<V2.MoneyManagement.FinancialAddressGeneratedMicrodeposits> GenerateMicrodepositsAsync(string id, FinancialAddressGenerateMicrodepositsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<V2.MoneyManagement.FinancialAddressGeneratedMicrodeposits>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/test_helpers/financial_addresses/{WebUtility.UrlEncode(id)}/generate_microdeposits", options, requestOptions, cancellationToken);
+        }
+    }
+}

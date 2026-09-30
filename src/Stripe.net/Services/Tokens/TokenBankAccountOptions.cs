@@ -21,6 +21,8 @@ namespace Stripe
         /// <c>individual</c>. This field is required when attaching the bank account to a
         /// <c>Customer</c> object.
         /// One of: <c>company</c>, or <c>individual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("account_holder_type")]
         [STJS.JsonPropertyName("account_holder_type")]
@@ -37,6 +39,8 @@ namespace Stripe
         /// The bank account type. This can only be <c>checking</c> or <c>savings</c> in most
         /// countries. In Japan, this can only be <c>futsu</c> or <c>toza</c>.
         /// One of: <c>checking</c>, <c>futsu</c>, <c>savings</c>, or <c>toza</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("account_type")]
         [STJS.JsonPropertyName("account_type")]

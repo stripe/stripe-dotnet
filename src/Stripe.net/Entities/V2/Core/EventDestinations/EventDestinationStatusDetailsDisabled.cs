@@ -12,6 +12,8 @@ namespace Stripe.V2.Core
         /// Reason event destination has been disabled.
         /// One of: <c>no_aws_event_source_exists</c>, <c>no_azure_partner_topic_exists</c>, or
         /// <c>user</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

@@ -60,6 +60,7 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsSatispayOptions satispay;
         private PaymentIntentPaymentMethodOptionsScalapayOptions scalapay;
         private PaymentIntentPaymentMethodOptionsSepaDebitOptions sepaDebit;
+        private PaymentIntentPaymentMethodOptionsSequraOptions sequra;
         private PaymentIntentPaymentMethodOptionsShopeepayOptions shopeepay;
         private PaymentIntentPaymentMethodOptionsSofortOptions sofort;
         private PaymentIntentPaymentMethodOptionsStripeBalanceOptions stripeBalance;
@@ -962,6 +963,23 @@ namespace Stripe
             set
             {
                 this.sepaDebit = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If this is a <c>sequra</c> PaymentMethod, this sub-hash contains details about the
+        /// SeQura payment method options.
+        /// </summary>
+        [JsonProperty("sequra", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("sequra")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsSequraOptions Sequra
+        {
+            get => this.sequra;
+            set
+            {
+                this.sequra = value;
                 this.SetTracker.Track();
             }
         }

@@ -29,6 +29,8 @@ namespace Stripe.Identity
         /// <summary>
         /// Only return VerificationReports of this type.
         /// One of: <c>document</c>, or <c>id_number</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

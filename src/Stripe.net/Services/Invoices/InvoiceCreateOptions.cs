@@ -94,6 +94,8 @@ namespace Stripe
         /// customer. When sending an invoice, Stripe will email this invoice to the customer with
         /// payment instructions. Defaults to <c>charge_automatically</c>.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("collection_method")]
         [STJS.JsonPropertyName("collection_method")]
@@ -302,14 +304,16 @@ namespace Stripe
         /// How to handle pending invoice items on invoice creation. Defaults to <c>exclude</c> if
         /// the parameter is omitted.
         /// One of: <c>exclude</c>, or <c>include</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("pending_invoice_items_behavior")]
         [STJS.JsonPropertyName("pending_invoice_items_behavior")]
         public string PendingInvoiceItemsBehavior { get; set; }
 
         /// <summary>
-        /// The rendering-related settings that control how the invoice is displayed on
-        /// customer-facing surfaces such as PDF and Hosted Invoice Page.
+        /// The rendering-related settings that control how invoices render in customer-facing
+        /// interfaces such as the PDF or hosted invoice page.
         /// </summary>
         [JsonProperty("rendering")]
         [STJS.JsonPropertyName("rendering")]

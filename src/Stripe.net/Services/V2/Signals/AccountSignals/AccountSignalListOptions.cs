@@ -19,7 +19,10 @@ namespace Stripe.V2.Signals
 
         /// <summary>
         /// Signal types to filter by.
-        /// One of: <c>user_account_sharing</c>, or <c>user_multi_accounting</c>.
+        /// One of: <c>fraudulent_merchant</c>, <c>fraudulent_website</c>,
+        /// <c>user_account_sharing</c>, or <c>user_multi_accounting</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

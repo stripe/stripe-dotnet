@@ -29,8 +29,8 @@ namespace Stripe
 
         /// <summary>
         /// Only return products with the given IDs. Cannot be used with <a
-        /// href="https://api.stripe.com#list_products-starting_after">starting_after</a> or <a
-        /// href="https://api.stripe.com#list_products-ending_before">ending_before</a>.
+        /// href="https://docs.stripe.com/api#list_products-starting_after">starting_after</a> or <a
+        /// href="https://docs.stripe.com/api#list_products-ending_before">ending_before</a>.
         /// </summary>
         [JsonProperty("ids")]
         [STJS.JsonPropertyName("ids")]
@@ -46,6 +46,8 @@ namespace Stripe
         /// <summary>
         /// Only return products of this type.
         /// One of: <c>good</c>, or <c>service</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

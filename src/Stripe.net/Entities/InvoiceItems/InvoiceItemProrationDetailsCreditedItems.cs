@@ -24,6 +24,8 @@ namespace Stripe
         /// Whether the credit references a pending invoice item or one or more invoice line items
         /// on an invoice.
         /// One of: <c>invoice_item</c>, or <c>invoice_line_items</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

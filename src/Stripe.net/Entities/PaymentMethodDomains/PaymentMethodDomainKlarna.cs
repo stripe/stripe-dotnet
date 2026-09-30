@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// The status of the payment method on the domain.
         /// One of: <c>active</c>, or <c>inactive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

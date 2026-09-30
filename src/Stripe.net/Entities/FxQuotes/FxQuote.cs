@@ -44,9 +44,19 @@ namespace Stripe
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
+        /// </summary>
+        [JsonProperty("livemode")]
+        [STJS.JsonPropertyName("livemode")]
+        public bool Livemode { get; set; }
+
+        /// <summary>
         /// The duration that the quote is locked for, from creation time. The quote will be usable
         /// for the duration specified.
         /// One of: <c>day</c>, <c>five_minutes</c>, <c>hour</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("lock_duration")]
         [STJS.JsonPropertyName("lock_duration")]
@@ -69,6 +79,8 @@ namespace Stripe
         ///
         /// Can return value none, active, or expired.
         /// One of: <c>active</c>, <c>expired</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("lock_status")]
         [STJS.JsonPropertyName("lock_status")]

@@ -12,6 +12,8 @@ namespace Stripe.Checkout
         /// Indicates how the subscription should change when the trial ends if the user did not
         /// provide a payment method.
         /// One of: <c>cancel</c>, <c>create_invoice</c>, or <c>pause</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("missing_payment_method")]
         [STJS.JsonPropertyName("missing_payment_method")]

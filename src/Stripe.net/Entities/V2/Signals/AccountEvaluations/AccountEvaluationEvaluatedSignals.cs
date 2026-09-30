@@ -9,6 +9,13 @@ namespace Stripe.V2.Signals
     public class AccountEvaluationEvaluatedSignals : StripeEntity<AccountEvaluationEvaluatedSignals>
     {
         /// <summary>
+        /// Fraudulent website result for the evaluation, when available.
+        /// </summary>
+        [JsonProperty("fraudulent_website")]
+        [STJS.JsonPropertyName("fraudulent_website")]
+        public AccountEvaluationEvaluatedSignalsFraudulentWebsite FraudulentWebsite { get; set; }
+
+        /// <summary>
         /// User account-sharing result for the evaluation, when available.
         /// </summary>
         [JsonProperty("user_account_sharing")]

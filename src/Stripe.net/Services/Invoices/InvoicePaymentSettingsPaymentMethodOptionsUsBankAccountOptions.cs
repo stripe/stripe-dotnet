@@ -18,6 +18,8 @@ namespace Stripe
         /// <summary>
         /// Verification method for the intent.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("verification_method")]
         [STJS.JsonPropertyName("verification_method")]

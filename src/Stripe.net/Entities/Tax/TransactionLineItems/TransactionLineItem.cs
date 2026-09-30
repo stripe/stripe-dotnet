@@ -6,6 +6,9 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+    /// <summary>
+    /// A Tax Transaction Line Item represents an individual item in a Tax Transaction.
+    /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TransactionLineItem : StripeEntity<TransactionLineItem>, IHasId, IHasMetadata, IHasObject
     {
@@ -91,6 +94,8 @@ namespace Stripe.Tax
         /// Specifies whether the <c>amount</c> includes taxes. If <c>tax_behavior=inclusive</c>,
         /// then the amount includes taxes.
         /// One of: <c>exclusive</c>, or <c>inclusive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_behavior")]
         [STJS.JsonPropertyName("tax_behavior")]
@@ -107,6 +112,8 @@ namespace Stripe.Tax
         /// <summary>
         /// If <c>reversal</c>, this line item reverses an earlier transaction.
         /// One of: <c>reversal</c>, or <c>transaction</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

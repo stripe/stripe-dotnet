@@ -20,6 +20,8 @@ namespace Stripe
         /// <summary>
         /// Determines the type of trial for this item.
         /// One of: <c>free</c>, or <c>paid</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -13,13 +13,13 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("kana")]
         [STJS.JsonPropertyName("kana")]
-        public AddressJapanOptions Kana { get; set; }
+        public AccountCreateIdentityBusinessDetailsScriptAddressesKanaOptions Kana { get; set; }
 
         /// <summary>
         /// Kanji Address.
         /// </summary>
         [JsonProperty("kanji")]
         [STJS.JsonPropertyName("kanji")]
-        public AddressJapanOptions Kanji { get; set; }
+        public AccountCreateIdentityBusinessDetailsScriptAddressesKanjiOptions Kanji { get; set; }
     }
 }

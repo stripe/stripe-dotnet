@@ -22,6 +22,8 @@ namespace Stripe
         ///
         /// Permitted values include: <c>sort_code</c>, <c>zengin</c>, <c>iban</c>, or <c>spei</c>.
         /// One of: <c>iban</c>, <c>sort_code</c>, <c>spei</c>, or <c>zengin</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("requested_address_types")]
         [STJS.JsonPropertyName("requested_address_types")]
@@ -31,6 +33,8 @@ namespace Stripe
         /// The type of the <c>bank_transfer</c>.
         /// One of: <c>eu_bank_transfer</c>, <c>gb_bank_transfer</c>, <c>jp_bank_transfer</c>,
         /// <c>mx_bank_transfer</c>, or <c>us_bank_transfer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

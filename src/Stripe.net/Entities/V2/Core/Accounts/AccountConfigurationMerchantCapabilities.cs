@@ -79,6 +79,13 @@ namespace Stripe.V2.Core
         public AccountConfigurationMerchantCapabilitiesBlikPayments BlikPayments { get; set; }
 
         /// <summary>
+        /// Allow the merchant to process recurring BLIK payments.
+        /// </summary>
+        [JsonProperty("blik_recurring_payments")]
+        [STJS.JsonPropertyName("blik_recurring_payments")]
+        public AccountConfigurationMerchantCapabilitiesBlikRecurringPayments BlikRecurringPayments { get; set; }
+
+        /// <summary>
         /// Allow the merchant to process Boleto payments.
         /// </summary>
         [JsonProperty("boleto_payments")]
@@ -275,6 +282,13 @@ namespace Stripe.V2.Core
         public AccountConfigurationMerchantCapabilitiesSamsungPayPayments SamsungPayPayments { get; set; }
 
         /// <summary>
+        /// Allow the merchant to process Satispay payments.
+        /// </summary>
+        [JsonProperty("satispay_payments")]
+        [STJS.JsonPropertyName("satispay_payments")]
+        public AccountConfigurationMerchantCapabilitiesSatispayPayments SatispayPayments { get; set; }
+
+        /// <summary>
         /// Allow the merchant to process SEPA bank transfer payments.
         /// </summary>
         [JsonProperty("sepa_bank_transfer_payments")]
@@ -287,6 +301,13 @@ namespace Stripe.V2.Core
         [JsonProperty("sepa_debit_payments")]
         [STJS.JsonPropertyName("sepa_debit_payments")]
         public AccountConfigurationMerchantCapabilitiesSepaDebitPayments SepaDebitPayments { get; set; }
+
+        /// <summary>
+        /// Allow the merchant to process SeQura payments.
+        /// </summary>
+        [JsonProperty("sequra_payments")]
+        [STJS.JsonPropertyName("sequra_payments")]
+        public AccountConfigurationMerchantCapabilitiesSequraPayments SequraPayments { get; set; }
 
         /// <summary>
         /// Capabilities that enable the merchant to manage their Stripe Balance (/v1/balance).

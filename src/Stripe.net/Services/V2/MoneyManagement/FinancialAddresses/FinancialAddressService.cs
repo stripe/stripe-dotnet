@@ -21,7 +21,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Create a new FinancialAddress for a FinancialAccount.
+        /// Create a new FinancialAddress for a FinancialAccount (V2 shape).
         /// </summary>
         public virtual FinancialAddress Create(FinancialAddressCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -29,7 +29,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Create a new FinancialAddress for a FinancialAccount.
+        /// Create a new FinancialAddress for a FinancialAccount (V2 shape).
         /// </summary>
         public virtual Task<FinancialAddress> CreateAsync(FinancialAddressCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -37,8 +37,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Retrieve a FinancialAddress. By default, the FinancialAddress will be returned in its
-        /// unexpanded state, revealing only the last 4 digits of the account number.
+        /// Retrieve a FinancialAddress (V2 shape).
         /// </summary>
         public virtual FinancialAddress Get(string id, FinancialAddressGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -46,8 +45,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Retrieve a FinancialAddress. By default, the FinancialAddress will be returned in its
-        /// unexpanded state, revealing only the last 4 digits of the account number.
+        /// Retrieve a FinancialAddress (V2 shape).
         /// </summary>
         public virtual Task<FinancialAddress> GetAsync(string id, FinancialAddressGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -55,7 +53,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// List all FinancialAddresses for a FinancialAccount.
+        /// List all FinancialAddresses for a FinancialAccount (V2 shape).
         /// </summary>
         public virtual V2.StripeList<FinancialAddress> List(FinancialAddressListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -63,7 +61,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// List all FinancialAddresses for a FinancialAccount.
+        /// List all FinancialAddresses for a FinancialAccount (V2 shape).
         /// </summary>
         public virtual Task<V2.StripeList<FinancialAddress>> ListAsync(FinancialAddressListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -71,7 +69,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// List all FinancialAddresses for a FinancialAccount.
+        /// List all FinancialAddresses for a FinancialAccount (V2 shape).
         /// </summary>
         public virtual IEnumerable<FinancialAddress> ListAutoPaging(FinancialAddressListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -79,7 +77,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// List all FinancialAddresses for a FinancialAccount.
+        /// List all FinancialAddresses for a FinancialAccount (V2 shape).
         /// </summary>
         public virtual IAsyncEnumerable<FinancialAddress> ListAutoPagingAsync(FinancialAddressListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

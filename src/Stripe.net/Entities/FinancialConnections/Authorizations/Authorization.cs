@@ -88,6 +88,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// The status of the connection to the Authorization.
         /// One of: <c>active</c>, <c>disconnected</c>, or <c>inactive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

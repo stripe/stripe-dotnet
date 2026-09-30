@@ -14,5 +14,12 @@ namespace Stripe.V2.Signals
         [JsonProperty("defaults")]
         [STJS.JsonPropertyName("defaults")]
         public AccountEvaluationAccountDetailsDataDefaults Defaults { get; set; }
+
+        /// <summary>
+        /// Identity data.
+        /// </summary>
+        [JsonProperty("identity")]
+        [STJS.JsonPropertyName("identity")]
+        public AccountEvaluationAccountDetailsDataIdentity Identity { get; set; }
     }
 }

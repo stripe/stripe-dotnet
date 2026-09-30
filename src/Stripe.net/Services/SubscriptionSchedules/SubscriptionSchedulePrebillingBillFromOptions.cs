@@ -28,6 +28,8 @@ namespace Stripe
         /// <summary>
         /// Select one of several ways to pass the <c>bill_from</c> value.
         /// One of: <c>amendment_start</c>, <c>now</c>, or <c>timestamp</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

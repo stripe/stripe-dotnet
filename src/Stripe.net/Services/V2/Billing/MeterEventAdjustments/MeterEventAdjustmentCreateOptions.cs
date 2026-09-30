@@ -24,6 +24,9 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// Specifies the type of cancellation. Currently supports canceling a single event.
+        /// One of: <c>cancel</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

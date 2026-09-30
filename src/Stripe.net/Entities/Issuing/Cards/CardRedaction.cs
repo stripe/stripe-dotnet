@@ -11,6 +11,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Indicates whether this object and its related objects have been redacted or not.
         /// One of: <c>processing</c>, <c>redacted</c>, or <c>validated</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

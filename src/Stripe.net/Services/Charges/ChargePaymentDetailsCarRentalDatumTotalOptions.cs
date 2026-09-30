@@ -47,6 +47,8 @@ namespace Stripe
         /// <summary>
         /// Unit of measurement for the rate.
         /// One of: <c>days</c>, <c>kilometers</c>, <c>miles</c>, <c>months</c>, or <c>weeks</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("rate_unit")]
         [STJS.JsonPropertyName("rate_unit")]

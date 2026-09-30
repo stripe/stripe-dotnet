@@ -26,6 +26,8 @@ namespace Stripe.Checkout
         /// initializing the Stripe Checkout client and manually update the line items from your
         /// server using the Stripe API.
         /// One of: <c>client_only</c>, or <c>server_only</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("update_line_items")]
         [STJS.JsonPropertyName("update_line_items")]
@@ -40,6 +42,8 @@ namespace Stripe.Checkout
         ///
         /// This parameter is only supported when <c>ui_mode=elements</c>.
         /// One of: <c>client_only</c>, or <c>server_only</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("update_shipping_details")]
         [STJS.JsonPropertyName("update_shipping_details")]

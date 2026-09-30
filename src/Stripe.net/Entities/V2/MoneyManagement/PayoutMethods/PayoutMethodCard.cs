@@ -10,16 +10,6 @@ namespace Stripe.V2.MoneyManagement
     public class PayoutMethodCard : StripeEntity<PayoutMethodCard>
     {
         /// <summary>
-        /// Whether the PayoutMethodCard object was archived. PayoutMethodCard objects can be
-        /// archived through the /archive API, and they will not be automatically archived by
-        /// Stripe. Archived PayoutMethodCard objects cannot be used as payout methods and will not
-        /// appear in the payout method list.
-        /// </summary>
-        [JsonProperty("archived")]
-        [STJS.JsonPropertyName("archived")]
-        public bool Archived { get; set; }
-
-        /// <summary>
         /// The month the card expires.
         /// </summary>
         [JsonProperty("exp_month")]

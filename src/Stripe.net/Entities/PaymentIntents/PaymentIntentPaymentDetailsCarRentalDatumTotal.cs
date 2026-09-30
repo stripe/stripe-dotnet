@@ -44,6 +44,8 @@ namespace Stripe
         /// <summary>
         /// Unit for the rate.
         /// One of: <c>kilometers</c>, or <c>miles</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("rate_unit")]
         [STJS.JsonPropertyName("rate_unit")]

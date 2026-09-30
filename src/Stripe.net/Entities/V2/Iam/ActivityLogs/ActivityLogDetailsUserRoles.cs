@@ -26,6 +26,8 @@ namespace Stripe.V2.Iam
         /// <summary>
         /// Source of the role change.
         /// One of: <c>dashboard</c>, <c>scim</c>, or <c>sso</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("source")]
         [STJS.JsonPropertyName("source")]

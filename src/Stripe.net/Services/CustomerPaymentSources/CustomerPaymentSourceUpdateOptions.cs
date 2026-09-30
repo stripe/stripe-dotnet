@@ -22,6 +22,8 @@ namespace Stripe
         /// The type of entity that holds the account. This can be either <c>individual</c> or
         /// <c>company</c>.
         /// One of: <c>company</c>, or <c>individual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("account_holder_type")]
         [STJS.JsonPropertyName("account_holder_type")]

@@ -20,6 +20,8 @@ namespace Stripe
         /// One of: <c>extra_mileage</c>, <c>gas</c>, <c>gps</c>, <c>late_charge</c>,
         /// <c>one_way_drop_off</c>, <c>other</c>, <c>parking</c>, <c>phone</c>,
         /// <c>regular_mileage</c>, or <c>towing</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

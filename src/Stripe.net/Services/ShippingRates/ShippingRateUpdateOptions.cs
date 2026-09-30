@@ -49,6 +49,8 @@ namespace Stripe
         /// Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One
         /// of <c>inclusive</c>, <c>exclusive</c>, or <c>unspecified</c>.
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_behavior")]
         [STJS.JsonPropertyName("tax_behavior")]

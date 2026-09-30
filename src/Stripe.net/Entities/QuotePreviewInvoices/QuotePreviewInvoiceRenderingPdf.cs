@@ -12,6 +12,8 @@ namespace Stripe
         /// Page size of invoice pdf. Options include a4, letter, and auto. If set to auto, page
         /// size will be switched to a4 or letter based on customer locale.
         /// One of: <c>a4</c>, <c>auto</c>, or <c>letter</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("page_size")]
         [STJS.JsonPropertyName("page_size")]

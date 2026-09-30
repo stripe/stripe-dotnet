@@ -18,6 +18,8 @@ namespace Stripe
         /// <summary>
         /// Indicate whether to enforce validations on the surcharge amount.
         /// One of: <c>automatic</c>, <c>disabled</c>, or <c>enabled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("enforce_validation")]
         [STJS.JsonPropertyName("enforce_validation")]

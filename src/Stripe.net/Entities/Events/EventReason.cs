@@ -19,6 +19,8 @@ namespace Stripe
         /// <summary>
         /// The type of the reason for the event.
         /// One of: <c>automation_action</c>, or <c>request</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

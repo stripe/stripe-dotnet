@@ -28,6 +28,10 @@ namespace Stripe
         [STJS.JsonPropertyName("bancontact")]
         public SetupAttemptPaymentMethodDetailsBancontact Bancontact { get; set; }
 
+        [JsonProperty("blik")]
+        [STJS.JsonPropertyName("blik")]
+        public SetupAttemptPaymentMethodDetailsBlik Blik { get; set; }
+
         [JsonProperty("boleto")]
         [STJS.JsonPropertyName("boleto")]
         public SetupAttemptPaymentMethodDetailsBoleto Boleto { get; set; }

@@ -34,7 +34,7 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
-        public AddressJapanOptions Address { get; set; }
+        public AccountTokenCreateIdentityIndividualAddressOptions Address { get; set; }
 
         /// <summary>
         /// The individual's date of birth.
@@ -76,6 +76,8 @@ namespace Stripe.V2.Core
         /// <summary>
         /// The individual's gender (International regulations require either "male" or "female").
         /// One of: <c>female</c>, or <c>male</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("legal_gender")]
         [STJS.JsonPropertyName("legal_gender")]
@@ -117,6 +119,8 @@ namespace Stripe.V2.Core
         /// <summary>
         /// The individual's political exposure.
         /// One of: <c>existing</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("political_exposure")]
         [STJS.JsonPropertyName("political_exposure")]

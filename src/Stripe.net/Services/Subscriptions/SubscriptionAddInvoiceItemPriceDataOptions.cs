@@ -33,6 +33,8 @@ namespace Stripe
         /// <c>exclusive</c>, or <c>unspecified</c>. Once specified as either <c>inclusive</c> or
         /// <c>exclusive</c>, it cannot be changed.
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_behavior")]
         [STJS.JsonPropertyName("tax_behavior")]

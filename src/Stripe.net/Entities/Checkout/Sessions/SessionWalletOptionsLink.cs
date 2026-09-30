@@ -11,6 +11,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// Describes whether Checkout should display Link. Defaults to <c>auto</c>.
         /// One of: <c>auto</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("display")]
         [STJS.JsonPropertyName("display")]

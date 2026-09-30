@@ -12,6 +12,8 @@ namespace Stripe
         /// Filter by billing frequency. Either <c>day</c>, <c>week</c>, <c>month</c> or
         /// <c>year</c>.
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("interval")]
         [STJS.JsonPropertyName("interval")]
@@ -28,6 +30,8 @@ namespace Stripe
         /// Filter by the usage type for this price. Can be either <c>metered</c> or
         /// <c>licensed</c>.
         /// One of: <c>licensed</c>, or <c>metered</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("usage_type")]
         [STJS.JsonPropertyName("usage_type")]

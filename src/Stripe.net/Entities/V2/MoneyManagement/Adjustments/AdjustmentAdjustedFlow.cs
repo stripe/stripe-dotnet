@@ -51,11 +51,13 @@ namespace Stripe.V2.MoneyManagement
         public string ReceivedDebit { get; set; }
 
         /// <summary>
-        /// Closed Enum. If applicable, the type of flow linked to this Adjustment. The field
-        /// matching this value will contain the ID of the flow.
+        /// Open Enum. If applicable, the type of flow linked to this Adjustment. The field matching
+        /// this value will contain the ID of the flow.
         /// One of: <c>adjustment</c>, <c>balance_exchange</c>, <c>inbound_payment</c>,
         /// <c>inbound_transfer</c>, <c>outbound_payment</c>, <c>outbound_transfer</c>,
         /// <c>received_credit</c>, or <c>received_debit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

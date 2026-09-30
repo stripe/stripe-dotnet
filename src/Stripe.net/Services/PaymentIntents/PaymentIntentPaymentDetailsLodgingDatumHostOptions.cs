@@ -33,6 +33,8 @@ namespace Stripe
         /// <summary>
         /// Type of host.
         /// One of: <c>hostel</c>, <c>hotel</c>, <c>owner</c>, or <c>rental_agency</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("host_type")]
         [STJS.JsonPropertyName("host_type")]

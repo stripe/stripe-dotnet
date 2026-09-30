@@ -17,6 +17,8 @@ namespace Stripe
         /// whether a payment method can be shown as a saved payment method in a checkout flow. The
         /// field defaults to <c>unspecified</c>.
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allow_redisplay")]
         [STJS.JsonPropertyName("allow_redisplay")]
@@ -55,14 +57,6 @@ namespace Stripe
                 this.SetTracker.Track();
             }
         }
-
-        /// <summary>
-        /// If this is a <c>payto</c> PaymentMethod, this hash contains details about the PayTo
-        /// payment method.
-        /// </summary>
-        [JsonProperty("payto")]
-        [STJS.JsonPropertyName("payto")]
-        public PaymentMethodPaytoOptions Payto { get; set; }
 
         /// <summary>
         /// If this is an <c>us_bank_account</c> PaymentMethod, this hash contains details about the

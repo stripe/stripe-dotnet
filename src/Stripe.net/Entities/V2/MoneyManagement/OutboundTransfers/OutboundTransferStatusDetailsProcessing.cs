@@ -10,6 +10,9 @@ namespace Stripe.V2.MoneyManagement
     {
         /// <summary>
         /// Open Enum. The <c>processing</c> status reason.
+        /// One of: <c>under_review</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

@@ -13,7 +13,8 @@ namespace Stripe.V2.MoneyManagement
         /// disabled, enable the payout method by creating an OutboundSetupIntent using <a
         /// href="https://docs.stripe.com/api/v2/money-management/outbound-setup-intents/create"><c>POST
         /// /v2/money_management/outbound_setup_intents</c></a>.
-        /// One of: <c>disabled</c>, <c>eligible</c>, <c>invalid</c>, or <c>requires_action</c>.
+        /// One of: <c>disabled</c>, <c>eligible</c>, <c>ineligible</c>, <c>invalid</c>, or
+        /// <c>requires_action</c>.
         /// </summary>
         [JsonProperty("payments")]
         [STJS.JsonPropertyName("payments")]
@@ -24,7 +25,8 @@ namespace Stripe.V2.MoneyManagement
         /// disabled, enable the payout method by creating an OutboundSetupIntent using <a
         /// href="https://docs.stripe.com/api/v2/money-management/outbound-setup-intents/create"><c>POST
         /// /v2/money_management/outbound_setup_intents</c></a>.
-        /// One of: <c>disabled</c>, <c>eligible</c>, <c>invalid</c>, or <c>requires_action</c>.
+        /// One of: <c>disabled</c>, <c>eligible</c>, <c>ineligible</c>, <c>invalid</c>, or
+        /// <c>requires_action</c>.
         /// </summary>
         [JsonProperty("transfers")]
         [STJS.JsonPropertyName("transfers")]

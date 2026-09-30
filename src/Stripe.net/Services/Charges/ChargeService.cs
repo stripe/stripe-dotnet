@@ -30,16 +30,9 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Capture the payment of an existing, uncaptured charge that was created with the
-        /// <c>capture</c> option set to false.</p>.
-        ///
-        /// <p>Uncaptured payments expire a set number of days after they are created (<a
-        /// href="https://stripe.com/docs/charges/placing-a-hold">7 by default</a>), after which
-        /// they are marked as refunded and capture attempts will fail.</p>.
-        ///
-        /// <p>Don’t use this method to capture a PaymentIntent-initiated charge. Use <a
-        /// href="https://stripe.com/docs/api/payment_intents/capture">Capture a
-        /// PaymentIntent</a>.</p>.
+        /// <p>This method is deprecated and will be removed soon. If your integration uses it, you
+        /// need to update it to use a different payment flow, such as <a
+        /// href="https://stripe.com/docs/payments/payment-intents">the Payment Intents API</a>.</p>.
         /// </summary>
         public virtual Charge Capture(string id, ChargeCaptureOptions options = null, RequestOptions requestOptions = null)
         {
@@ -47,16 +40,9 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Capture the payment of an existing, uncaptured charge that was created with the
-        /// <c>capture</c> option set to false.</p>.
-        ///
-        /// <p>Uncaptured payments expire a set number of days after they are created (<a
-        /// href="https://stripe.com/docs/charges/placing-a-hold">7 by default</a>), after which
-        /// they are marked as refunded and capture attempts will fail.</p>.
-        ///
-        /// <p>Don’t use this method to capture a PaymentIntent-initiated charge. Use <a
-        /// href="https://stripe.com/docs/api/payment_intents/capture">Capture a
-        /// PaymentIntent</a>.</p>.
+        /// <p>This method is deprecated and will be removed soon. If your integration uses it, you
+        /// need to update it to use a different payment flow, such as <a
+        /// href="https://stripe.com/docs/payments/payment-intents">the Payment Intents API</a>.</p>.
         /// </summary>
         public virtual Task<Charge> CaptureAsync(string id, ChargeCaptureOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -64,10 +50,9 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>This method is no longer recommended—use the <a
-        /// href="https://stripe.com/docs/api/payment_intents">Payment Intents API</a> to initiate a
-        /// new payment instead. Confirmation of the PaymentIntent creates the <c>Charge</c> object
-        /// used to request payment.</p>.
+        /// <p>This method is deprecated and will be removed soon. If your integration uses it, you
+        /// need to update it to use a different payment flow, such as <a
+        /// href="https://stripe.com/docs/payments/payment-intents">the Payment Intents API</a>.</p>.
         /// </summary>
         public virtual Charge Create(ChargeCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -75,10 +60,9 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>This method is no longer recommended—use the <a
-        /// href="https://stripe.com/docs/api/payment_intents">Payment Intents API</a> to initiate a
-        /// new payment instead. Confirmation of the PaymentIntent creates the <c>Charge</c> object
-        /// used to request payment.</p>.
+        /// <p>This method is deprecated and will be removed soon. If your integration uses it, you
+        /// need to update it to use a different payment flow, such as <a
+        /// href="https://stripe.com/docs/payments/payment-intents">the Payment Intents API</a>.</p>.
         /// </summary>
         public virtual Task<Charge> CreateAsync(ChargeCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

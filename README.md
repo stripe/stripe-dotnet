@@ -6,7 +6,7 @@
 > [!TIP]
 > Want to chat live with Stripe engineers? Join us on our [Discord server](https://stripe.com/go/discord/dotnet).
 
-The official [Stripe][stripe] .NET library, supporting .NET Standard 2.0+, .NET Core 5+, and .NET Framework 4.6.2+.
+The official [Stripe][stripe] .NET library, supporting .NET Standard 2.0+, .NET Core 8+, and .NET Framework 4.6.2+.
 
 ## Installation
 
@@ -39,9 +39,7 @@ From within Visual Studio:
 
 ### Requirements
 
-Per our [Language Version Support Policy](https://docs.stripe.com/sdks/versioning?lang=dotnet#stripe-sdk-language-version-support-policy), we currently support **.NET Standard 2.0+, LTS versions of .NET Core 6+, and .NET Framework 4.6.2+.**.
-
-Support for version 6 will be removed in a future version. Read more and see the full schedule in the docs: https://docs.stripe.com/sdks/versioning?lang=dotnet#stripe-sdk-language-version-support-policy
+Per our [Language Version Support Policy](https://docs.stripe.com/sdks/versioning?lang=dotnet#stripe-sdk-language-version-support-policy), we currently support **.NET Standard 2.0+, LTS versions of .NET Core 8+, and .NET Framework 4.6.2+.**
 
 ## Documentation
 
@@ -391,7 +389,7 @@ New features and bug fixes are released on the latest major version of the Strip
 
 [Contribution guidelines for this project](CONTRIBUTING.md)
 
-.NET 8 is required to build and test Stripe.net SDK, you can install it from [get.dot.net](https://get.dot.net/).
+.NET 10 is required to build and test Stripe.net SDK, you can install it from [get.dot.net](https://get.dot.net/).
 
 The test suite depends on [stripe-mock][stripe-mock], so make sure to fetch
 and run it from a background terminal
@@ -421,7 +419,7 @@ dotnet test src --filter FullyQualifiedName~InvoiceServiceTest
 Run tests for a single target framework:
 
 ```sh
-dotnet test src --framework net8.0
+dotnet test src --framework net10.0
 ```
 
 The library uses [`dotnet-format`][dotnet-format] for code formatting. Code

@@ -63,6 +63,8 @@ namespace Stripe.Issuing
         /// How the card details were provided.
         /// One of: <c>chip</c>, <c>contactless</c>, <c>keyed_in</c>, <c>online</c>, or
         /// <c>swipe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("authorization_method")]
         [STJS.JsonPropertyName("authorization_method")]
@@ -86,6 +88,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Whether the card was present at the point of sale for the authorization.
         /// One of: <c>not_present</c>, or <c>present</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("card_presence")]
         [STJS.JsonPropertyName("card_presence")]
@@ -251,6 +255,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// The current status of the authorization in its lifecycle.
         /// One of: <c>closed</c>, <c>expired</c>, <c>pending</c>, or <c>reversed</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

@@ -9,6 +9,13 @@ namespace Stripe.V2.MoneyManagement
     public class FinancialAddressCreateOptions : BaseOptions
     {
         /// <summary>
+        /// Properties for creating a bank account FinancialAddress.
+        /// </summary>
+        [JsonProperty("bank_account")]
+        [STJS.JsonPropertyName("bank_account")]
+        public FinancialAddressCreateBankAccountOptions BankAccount { get; set; }
+
+        /// <summary>
         /// The ID of the FinancialAccount the new FinancialAddress should be associated with.
         /// </summary>
         [JsonProperty("financial_account")]
@@ -16,8 +23,18 @@ namespace Stripe.V2.MoneyManagement
         public string FinancialAccount { get; set; }
 
         /// <summary>
-        /// The type of FinancialAddress details to provision.
-        /// One of: <c>gb_bank_account</c>, or <c>us_bank_account</c>.
+        /// Open Enum. The currency the FinancialAddress settles into the FinancialAccount.
+        /// </summary>
+        [JsonProperty("settlement_currency")]
+        [STJS.JsonPropertyName("settlement_currency")]
+        public string SettlementCurrency { get; set; }
+
+        /// <summary>
+        /// The type of FinancialAddress to create. Must agree with which branch of
+        /// financial_address_type_properties is set.
+        /// One of: <c>bank_account</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

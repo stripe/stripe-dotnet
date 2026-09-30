@@ -25,12 +25,12 @@ namespace Stripe
         public const int DefaultMaxNumberRetries = 2;
 
         private const string StripeNetTargetFramework =
-#if NET6_0
-            "net6.0"
-#elif NET8_0
+#if NET8_0
             "net8.0"
 #elif NET9_0
             "net9.0"
+#elif NET10_0
+            "net10.0"
 #elif NETCOREAPP3_1
             "netcoreapp3.1"
 #elif NETSTANDARD2_0
@@ -70,6 +70,7 @@ namespace Stripe
             ("CODEX_CI", "codex_cli"),
             ("CURSOR_AGENT", "cursor"),
             ("GEMINI_CLI", "gemini_cli"),
+            ("HERMES_AGENT", "hermes"),
             ("OPENCLAW_SHELL", "openclaw"),
             ("OPENCODE", "open_code"),
 

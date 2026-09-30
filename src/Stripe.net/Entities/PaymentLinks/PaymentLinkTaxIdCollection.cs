@@ -17,6 +17,8 @@ namespace Stripe
 
         /// <summary>
         /// One of: <c>if_supported</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("required")]
         [STJS.JsonPropertyName("required")]

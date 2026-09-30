@@ -13,6 +13,8 @@ namespace Stripe
         /// The reason this quote was marked as canceled.
         /// One of: <c>canceled</c>, <c>quote_accepted</c>, <c>quote_expired</c>,
         /// <c>quote_superseded</c>, or <c>subscription_canceled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

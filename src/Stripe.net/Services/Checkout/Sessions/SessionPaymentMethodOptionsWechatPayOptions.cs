@@ -18,6 +18,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// The client type that the end customer will pay from.
         /// One of: <c>android</c>, <c>ios</c>, or <c>web</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("client")]
         [STJS.JsonPropertyName("client")]
@@ -42,6 +44,9 @@ namespace Stripe.Checkout
         /// When processing card payments, Stripe uses <c>setup_future_usage</c> to help you comply
         /// with regional legislation and network rules, such as <a
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
+        /// One of: <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]

@@ -42,8 +42,11 @@ namespace Stripe.Tax
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The status of the Tax <c>Settings</c>.
+        /// Whether these settings have the information Stripe Tax needs to calculate tax. It
+        /// doesn't reflect whether your integration is ready to collect tax.
         /// One of: <c>active</c>, or <c>pending</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

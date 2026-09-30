@@ -12,6 +12,8 @@ namespace Stripe
         /// Whether this account has access to the full Stripe dashboard (<c>full</c>), to the
         /// Express dashboard (<c>express</c>), or to no dashboard (<c>none</c>).
         /// One of: <c>express</c>, <c>full</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

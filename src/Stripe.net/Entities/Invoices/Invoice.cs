@@ -12,7 +12,7 @@ namespace Stripe
     /// Invoices are statements of amounts owed by a customer, and are either generated one-off,
     /// or generated periodically from a subscription.
     ///
-    /// They contain <a href="https://api.stripe.com#invoiceitems">invoice items</a>, and
+    /// They contain <a href="https://docs.stripe.com/api#invoiceitems">invoice items</a>, and
     /// proration adjustments that may be caused by subscription upgrades/downgrades (if
     /// necessary).
     ///
@@ -269,6 +269,8 @@ namespace Stripe
         /// <c>quote_accept</c>, <c>subscription</c>, <c>subscription_create</c>,
         /// <c>subscription_cycle</c>, <c>subscription_threshold</c>, <c>subscription_update</c>, or
         /// <c>upcoming</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("billing_reason")]
         [STJS.JsonPropertyName("billing_reason")]
@@ -280,6 +282,8 @@ namespace Stripe
         /// customer. When sending an invoice, Stripe will email this invoice to the customer with
         /// payment instructions.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("collection_method")]
         [STJS.JsonPropertyName("collection_method")]
@@ -410,6 +414,8 @@ namespace Stripe
         /// <c>customer.tax_exempt</c>. Once the invoice is finalized, this field will no longer be
         /// updated.
         /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("customer_tax_exempt")]
         [STJS.JsonPropertyName("customer_tax_exempt")]
@@ -854,8 +860,8 @@ namespace Stripe
         public string ReceiptNumber { get; set; }
 
         /// <summary>
-        /// The rendering-related settings that control how the invoice is displayed on
-        /// customer-facing surfaces such as PDF and Hosted Invoice Page.
+        /// The rendering-related settings that control how invoices render in customer-facing
+        /// interfaces such as the PDF or hosted invoice page.
         /// </summary>
         [JsonProperty("rendering")]
         [STJS.JsonPropertyName("rendering")]
@@ -899,10 +905,16 @@ namespace Stripe
         /// href="https://docs.stripe.com/billing/invoices/workflow#workflow-overview">Learn
         /// more</a>.
         /// One of: <c>draft</c>, <c>open</c>, <c>paid</c>, <c>uncollectible</c>, or <c>void</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
         public string Status { get; set; }
+
+        [JsonProperty("status_details")]
+        [STJS.JsonPropertyName("status_details")]
+        public InvoiceStatusDetails StatusDetails { get; set; }
 
         [JsonProperty("status_transitions")]
         [STJS.JsonPropertyName("status_transitions")]

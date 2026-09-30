@@ -18,6 +18,9 @@ namespace Stripe.V2.Data.Reporting
 
         /// <summary>
         /// The type of the <c>ReportRun</c> or <c>QueryRun</c> result.
+        /// One of: <c>file</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -17,8 +17,10 @@ namespace Stripe
 
         /// <summary>
         /// Describes whether a tax ID is required during checkout. Defaults to <c>never</c>. You
-        /// can't set this parameter if <c>ui_mode</c> is <c>custom</c>.
+        /// can't set this parameter if <c>ui_mode</c> is <c>elements</c>.
         /// One of: <c>if_supported</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("required")]
         [STJS.JsonPropertyName("required")]

@@ -19,6 +19,8 @@ namespace Stripe
         /// Whether to cancel or preserve <c>prebilling</c> if the subscription is updated during
         /// the prebilled period. The default value is <c>reset</c>.
         /// One of: <c>prebill</c>, or <c>reset</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("update_behavior")]
         [STJS.JsonPropertyName("update_behavior")]

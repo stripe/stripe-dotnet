@@ -10,16 +10,6 @@ namespace Stripe.V2.MoneyManagement
     public class PayoutMethodBankAccount : StripeEntity<PayoutMethodBankAccount>
     {
         /// <summary>
-        /// Whether this PayoutMethodBankAccount object was archived. PayoutMethodBankAccount
-        /// objects can be archived through the /archive API, and they will not be automatically
-        /// archived by Stripe. Archived PayoutMethodBankAccount objects cannot be used as payout
-        /// methods and will not appear in the payout method list.
-        /// </summary>
-        [JsonProperty("archived")]
-        [STJS.JsonPropertyName("archived")]
-        public bool Archived { get; set; }
-
-        /// <summary>
         /// The type of bank account (checking or savings).
         /// One of: <c>checking</c>, <c>futsu</c>, <c>savings</c>, or <c>toza</c>.
         /// </summary>

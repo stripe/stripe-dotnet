@@ -52,6 +52,8 @@ namespace Stripe
         /// The type of this voucher.
         /// One of: <c>digital_product</c>, <c>discount</c>, <c>gift_card</c>,
         /// <c>physical_product</c>, or <c>services</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("voucher_type")]
         [STJS.JsonPropertyName("voucher_type")]

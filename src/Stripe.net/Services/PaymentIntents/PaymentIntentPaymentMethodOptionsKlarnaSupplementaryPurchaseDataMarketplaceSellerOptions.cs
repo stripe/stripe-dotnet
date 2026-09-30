@@ -58,6 +58,8 @@ namespace Stripe
         /// <c>office_products</c>, <c>patio_lawn_and_garden</c>, <c>pet_supplies</c>, <c>shoes</c>,
         /// <c>software</c>, <c>sports_and_outdoors</c>, <c>tools_and_home_improvement</c>,
         /// <c>toys_and_games</c>, <c>video_games</c>, or <c>women_clothing</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("product_category")]
         [STJS.JsonPropertyName("product_category")]
@@ -76,6 +78,8 @@ namespace Stripe
         /// The current rating of the marketplace seller. If the marketplace uses numeric ranking,
         /// map these to the enum values.
         /// One of: <c>high</c>, <c>low</c>, <c>medium</c>, <c>very_high</c>, or <c>very_low</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("seller_rating")]
         [STJS.JsonPropertyName("seller_rating")]
