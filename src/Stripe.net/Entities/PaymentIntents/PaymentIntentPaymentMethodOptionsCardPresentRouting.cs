@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// Requested routing priority.
         /// One of: <c>domestic</c>, or <c>international</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("requested_priority")]
         [STJS.JsonPropertyName("requested_priority")]

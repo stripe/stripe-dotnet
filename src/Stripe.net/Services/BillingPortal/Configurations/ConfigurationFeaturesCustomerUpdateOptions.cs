@@ -20,6 +20,8 @@ namespace Stripe.BillingPortal
         /// updateable.
         /// One of: <c>address</c>, <c>email</c>, <c>name</c>, <c>phone</c>, <c>shipping</c>, or
         /// <c>tax_id</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("allowed_updates", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("allowed_updates")]

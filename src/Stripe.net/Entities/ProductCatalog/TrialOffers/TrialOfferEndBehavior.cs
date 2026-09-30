@@ -14,6 +14,9 @@ namespace Stripe.ProductCatalog
 
         /// <summary>
         /// The type of behavior when the trial offer ends.
+        /// One of: <c>transition</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

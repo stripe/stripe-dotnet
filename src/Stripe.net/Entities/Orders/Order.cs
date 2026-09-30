@@ -267,6 +267,8 @@ namespace Stripe
         /// The overall status of the order.
         /// One of: <c>canceled</c>, <c>complete</c>, <c>open</c>, <c>processing</c>, or
         /// <c>submitted</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

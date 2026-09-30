@@ -9,7 +9,7 @@ namespace Stripe.Issuing
     public class CardholderIndividualVerificationDocumentOptions : INestedOptions
     {
         /// <summary>
-        /// The back of an ID returned by a <a href="https://api.stripe.com#create_file">file
+        /// The back of an ID returned by a <a href="https://docs.stripe.com/api#create_file">file
         /// upload</a> with a <c>purpose</c> value of <c>identity_document</c>.
         /// </summary>
         [JsonProperty("back")]
@@ -17,7 +17,7 @@ namespace Stripe.Issuing
         public string Back { get; set; }
 
         /// <summary>
-        /// The front of an ID returned by a <a href="https://api.stripe.com#create_file">file
+        /// The front of an ID returned by a <a href="https://docs.stripe.com/api#create_file">file
         /// upload</a> with a <c>purpose</c> value of <c>identity_document</c>.
         /// </summary>
         [JsonProperty("front")]

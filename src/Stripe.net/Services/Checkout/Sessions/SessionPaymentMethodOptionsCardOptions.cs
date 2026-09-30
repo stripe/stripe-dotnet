@@ -26,6 +26,8 @@ namespace Stripe.Checkout
         /// Request ability to <a href="https://stripe.com/payments/extended-authorization">capture
         /// beyond the standard authorization validity window</a> for this CheckoutSession.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_decremental_authorization")]
         [STJS.JsonPropertyName("request_decremental_authorization")]
@@ -35,6 +37,8 @@ namespace Stripe.Checkout
         /// Request ability to <a href="https://stripe.com/payments/extended-authorization">capture
         /// beyond the standard authorization validity window</a> for this CheckoutSession.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_extended_authorization")]
         [STJS.JsonPropertyName("request_extended_authorization")]
@@ -45,6 +49,8 @@ namespace Stripe.Checkout
         /// href="https://stripe.com/payments/incremental-authorization">increment the
         /// authorization</a> for this CheckoutSession.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_incremental_authorization")]
         [STJS.JsonPropertyName("request_incremental_authorization")]
@@ -54,6 +60,8 @@ namespace Stripe.Checkout
         /// Request ability to make <a href="https://stripe.com/payments/multicapture">multiple
         /// captures</a> for this CheckoutSession.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_multicapture")]
         [STJS.JsonPropertyName("request_multicapture")]
@@ -63,6 +71,8 @@ namespace Stripe.Checkout
         /// Request ability to <a href="https://stripe.com/payments/overcapture">overcapture</a> for
         /// this CheckoutSession.
         /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_overcapture")]
         [STJS.JsonPropertyName("request_overcapture")]
@@ -79,6 +89,8 @@ namespace Stripe.Checkout
         /// requesting 3D Secure</a> for more information on how this configuration interacts with
         /// Radar and our SCA Engine.
         /// One of: <c>any</c>, <c>automatic</c>, or <c>challenge</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_three_d_secure")]
         [STJS.JsonPropertyName("request_three_d_secure")]
@@ -86,7 +98,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Restrictions to apply to the card payment method. For example, you can block specific
-        /// card brands. You can't set this parameter if <c>ui_mode</c> is <c>custom</c>.
+        /// card brands. You can't set this parameter if <c>ui_mode</c> is <c>elements</c>.
         /// </summary>
         [JsonProperty("restrictions")]
         [STJS.JsonPropertyName("restrictions")]
@@ -112,6 +124,8 @@ namespace Stripe.Checkout
         /// with regional legislation and network rules, such as <a
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]

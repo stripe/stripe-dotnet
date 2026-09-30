@@ -36,6 +36,13 @@ namespace Stripe.V2.MoneyManagement
         public V2.Amount Amount { get; set; }
 
         /// <summary>
+        /// The amount and currency of the ReceivedCredit that was received.
+        /// </summary>
+        [JsonProperty("amount_received")]
+        [STJS.JsonPropertyName("amount_received")]
+        public V2.Amount AmountReceived { get; set; }
+
+        /// <summary>
         /// This object stores details about the originating Stripe transaction that resulted in the
         /// ReceivedCredit. Present if <c>type</c> field value is <c>balance_transfer</c>.
         /// </summary>
@@ -92,6 +99,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Open Enum. The status of the ReceivedCredit.
         /// One of: <c>failed</c>, <c>pending</c>, <c>returned</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -116,6 +125,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Open Enum. The type of flow that caused the ReceivedCredit.
         /// One of: <c>balance_transfer</c>, <c>bank_transfer</c>, or <c>external_credit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

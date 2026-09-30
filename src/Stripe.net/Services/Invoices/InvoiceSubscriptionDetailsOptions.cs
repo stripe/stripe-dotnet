@@ -27,10 +27,8 @@ namespace Stripe
         /// subscriptions, the value can only be set to <c>now</c> or <c>unchanged</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
-        [JsonConverter(typeof(AnyOfConverter))]
         [STJS.JsonPropertyName("billing_cycle_anchor")]
-        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-        public AnyOf<DateTime?, InvoiceSubscriptionDetailsBillingCycleAnchor> BillingCycleAnchor { get; set; }
+        public InvoiceSubscriptionDetailsBillingCycleAnchorOptions BillingCycleAnchor { get; set; }
 
         /// <summary>
         /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
@@ -163,6 +161,8 @@ namespace Stripe
         /// <c>billing_cycle_anchor=now</c>, or starting a trial), or if an item's <c>quantity</c>
         /// changes. The default value is <c>create_prorations</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]

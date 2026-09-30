@@ -89,6 +89,8 @@ namespace Stripe
         /// <summary>
         /// Class of service.
         /// One of: <c>business</c>, <c>economy</c>, <c>first_class</c>, or <c>premium_economy</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("service_class")]
         [STJS.JsonPropertyName("service_class")]

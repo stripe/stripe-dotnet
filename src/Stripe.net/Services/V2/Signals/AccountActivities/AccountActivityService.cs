@@ -25,7 +25,7 @@ namespace Stripe.V2.Signals
         /// </summary>
         public virtual AccountActivity Create(AccountActivityCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<AccountActivity>(BaseAddress.Api, HttpMethod.Post, $"/v2/signals/account_activity", options, requestOptions);
+            return this.Request<AccountActivity>(BaseAddress.Api, HttpMethod.Post, $"/v2/signals/account_activities", options, requestOptions);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Stripe.V2.Signals
         /// </summary>
         public virtual Task<AccountActivity> CreateAsync(AccountActivityCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<AccountActivity>(BaseAddress.Api, HttpMethod.Post, $"/v2/signals/account_activity", options, requestOptions, cancellationToken);
+            return this.RequestAsync<AccountActivity>(BaseAddress.Api, HttpMethod.Post, $"/v2/signals/account_activities", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Stripe.V2.Signals
         /// </summary>
         public virtual V2.DeletedObject Delete(string id, AccountActivityDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<V2.DeletedObject>(BaseAddress.Api, HttpMethod.Delete, $"/v2/signals/account_activity/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<V2.DeletedObject>(BaseAddress.Api, HttpMethod.Delete, $"/v2/signals/account_activities/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Stripe.V2.Signals
         /// </summary>
         public virtual Task<V2.DeletedObject> DeleteAsync(string id, AccountActivityDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<V2.DeletedObject>(BaseAddress.Api, HttpMethod.Delete, $"/v2/signals/account_activity/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<V2.DeletedObject>(BaseAddress.Api, HttpMethod.Delete, $"/v2/signals/account_activities/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Stripe.V2.Signals
         /// </summary>
         public virtual AccountActivity Get(string id, AccountActivityGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<AccountActivity>(BaseAddress.Api, HttpMethod.Get, $"/v2/signals/account_activity/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<AccountActivity>(BaseAddress.Api, HttpMethod.Get, $"/v2/signals/account_activities/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Stripe.V2.Signals
         /// </summary>
         public virtual Task<AccountActivity> GetAsync(string id, AccountActivityGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<AccountActivity>(BaseAddress.Api, HttpMethod.Get, $"/v2/signals/account_activity/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<AccountActivity>(BaseAddress.Api, HttpMethod.Get, $"/v2/signals/account_activities/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

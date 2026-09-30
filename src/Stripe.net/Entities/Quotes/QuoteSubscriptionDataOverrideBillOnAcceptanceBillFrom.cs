@@ -38,6 +38,8 @@ namespace Stripe
         /// The type of method to specify the <c>bill_from</c> time.
         /// One of: <c>line_starts_at</c>, <c>now</c>, <c>pause_collection_start</c>,
         /// <c>quote_acceptance_date</c>, or <c>timestamp</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

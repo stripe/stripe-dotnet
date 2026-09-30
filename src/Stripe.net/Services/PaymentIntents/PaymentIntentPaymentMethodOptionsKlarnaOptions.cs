@@ -57,6 +57,8 @@ namespace Stripe
         /// <c>es-ES</c>, <c>es-US</c>, <c>fi-FI</c>, <c>fr-BE</c>, <c>fr-CA</c>, <c>fr-CH</c>,
         /// <c>fr-FR</c>, <c>it-CH</c>, <c>it-IT</c>, <c>nb-NO</c>, <c>nl-BE</c>, <c>nl-NL</c>,
         /// <c>pl-PL</c>, <c>pt-PT</c>, <c>ro-RO</c>, <c>sv-FI</c>, or <c>sv-SE</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("preferred_locale")]
         [STJS.JsonPropertyName("preferred_locale")]
@@ -86,6 +88,8 @@ namespace Stripe
         /// publishable key, you can only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]

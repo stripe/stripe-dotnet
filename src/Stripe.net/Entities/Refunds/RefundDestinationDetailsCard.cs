@@ -33,6 +33,8 @@ namespace Stripe
         /// <summary>
         /// The type of refund. This can be <c>refund</c>, <c>reversal</c>, or <c>pending</c>.
         /// One of: <c>pending</c>, <c>refund</c>, or <c>reversal</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

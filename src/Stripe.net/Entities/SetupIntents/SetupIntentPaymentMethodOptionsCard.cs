@@ -21,6 +21,8 @@ namespace Stripe
         /// One of: <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,
         /// <c>eftpos_au</c>, <c>girocard</c>, <c>interac</c>, <c>jcb</c>, <c>link</c>,
         /// <c>mastercard</c>, <c>unionpay</c>, <c>unknown</c>, or <c>visa</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]
@@ -37,9 +39,21 @@ namespace Stripe
         /// requesting 3D Secure</a> for more information on how this configuration interacts with
         /// Radar and our SCA Engine.
         /// One of: <c>any</c>, <c>automatic</c>, or <c>challenge</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("request_three_d_secure")]
         [STJS.JsonPropertyName("request_three_d_secure")]
         public string RequestThreeDSecure { get; set; }
+
+        /// <summary>
+        /// Set to indicate the future transaction type usage for the card being set up.
+        /// One of: <c>installment</c>, <c>recurring</c>, or <c>unscheduled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("setup_credential_usage")]
+        [STJS.JsonPropertyName("setup_credential_usage")]
+        public string SetupCredentialUsage { get; set; }
     }
 }

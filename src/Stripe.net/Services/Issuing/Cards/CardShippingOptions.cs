@@ -63,6 +63,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Shipment service.
         /// One of: <c>express</c>, <c>priority</c>, or <c>standard</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("service")]
         [STJS.JsonPropertyName("service")]
@@ -71,6 +73,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Packaging options.
         /// One of: <c>bulk</c>, or <c>individual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

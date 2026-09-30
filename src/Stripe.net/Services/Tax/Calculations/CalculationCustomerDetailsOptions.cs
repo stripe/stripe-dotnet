@@ -19,6 +19,8 @@ namespace Stripe.Tax
         /// <summary>
         /// The type of customer address provided.
         /// One of: <c>billing</c>, or <c>shipping</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("address_source")]
         [STJS.JsonPropertyName("address_source")]
@@ -46,6 +48,8 @@ namespace Stripe.Tax
         /// customer's <c>tax_ids</c> where possible, which automatically determines whether
         /// <c>reverse_charge</c> applies.
         /// One of: <c>customer_exempt</c>, <c>none</c>, or <c>reverse_charge</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("taxability_override")]
         [STJS.JsonPropertyName("taxability_override")]

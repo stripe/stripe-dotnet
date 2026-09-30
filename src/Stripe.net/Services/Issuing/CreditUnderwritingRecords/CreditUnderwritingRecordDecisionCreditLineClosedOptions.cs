@@ -55,6 +55,8 @@ namespace Stripe.Issuing
         /// <c>too_many_non_sufficient_funds_or_overdrafts</c>, <c>unable_to_verify_address</c>,
         /// <c>unable_to_verify_identity</c>, <c>unable_to_verify_income_or_revenue</c>,
         /// <c>unprofitable</c>, or <c>unsupportable_business_type</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("reasons")]
         [STJS.JsonPropertyName("reasons")]

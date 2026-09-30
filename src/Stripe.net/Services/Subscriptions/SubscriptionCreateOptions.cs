@@ -149,6 +149,8 @@ namespace Stripe
         /// customer an invoice with payment instructions and mark the subscription as
         /// <c>active</c>. Defaults to <c>charge_automatically</c>.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("collection_method")]
         [STJS.JsonPropertyName("collection_method")]
@@ -318,6 +320,8 @@ namespace Stripe
         /// first Invoice status.
         /// One of: <c>allow_incomplete</c>, <c>default_incomplete</c>, <c>error_if_incomplete</c>,
         /// or <c>pending_if_incomplete</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("payment_behavior")]
         [STJS.JsonPropertyName("payment_behavior")]
@@ -362,6 +366,8 @@ namespace Stripe
         /// from the <c>billing_cycle_anchor</c>. If no value is passed, the default is
         /// <c>create_prorations</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]
@@ -382,8 +388,8 @@ namespace Stripe
         /// period of the plan the customer is being subscribed to. The special value <c>now</c> can
         /// be provided to end the customer's trial immediately. Can be at most two years from
         /// <c>billing_cycle_anchor</c>. See <a
-        /// href="https://docs.stripe.com/billing/subscriptions/trials">Using trial periods on
-        /// subscriptions</a> to learn more.
+        /// href="https://docs.stripe.com/billing/subscriptions/trials/free-trials">Using trial
+        /// periods on subscriptions</a> to learn more.
         /// </summary>
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(AnyOfConverter))]
@@ -395,7 +401,8 @@ namespace Stripe
         /// Indicates if a plan's <c>trial_period_days</c> should be applied to the subscription.
         /// Setting <c>trial_end</c> per subscription is preferred, and this defaults to
         /// <c>false</c>. Setting this flag to <c>true</c> together with <c>trial_end</c> is not
-        /// allowed. See <a href="https://docs.stripe.com/billing/subscriptions/trials">Using trial
+        /// allowed. See <a
+        /// href="https://docs.stripe.com/billing/subscriptions/trials/free-trials">Using trial
         /// periods on subscriptions</a> to learn more.
         /// </summary>
         [JsonProperty("trial_from_plan")]
@@ -405,7 +412,8 @@ namespace Stripe
         /// <summary>
         /// Integer representing the number of trial period days before the customer is charged for
         /// the first time. This will always overwrite any trials that might apply via a subscribed
-        /// plan. See <a href="https://docs.stripe.com/billing/subscriptions/trials">Using trial
+        /// plan. See <a
+        /// href="https://docs.stripe.com/billing/subscriptions/trials/free-trials">Using trial
         /// periods on subscriptions</a> to learn more.
         /// </summary>
         [JsonProperty("trial_period_days")]

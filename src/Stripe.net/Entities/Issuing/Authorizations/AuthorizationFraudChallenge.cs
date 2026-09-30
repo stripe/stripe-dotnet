@@ -19,6 +19,8 @@ namespace Stripe.Issuing
         /// The status of the fraud challenge.
         /// One of: <c>expired</c>, <c>pending</c>, <c>rejected</c>, <c>undeliverable</c>, or
         /// <c>verified</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -27,6 +29,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// If the challenge is not deliverable, the reason why.
         /// One of: <c>no_phone_number</c>, or <c>unsupported_phone_number</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("undeliverable_reason")]
         [STJS.JsonPropertyName("undeliverable_reason")]

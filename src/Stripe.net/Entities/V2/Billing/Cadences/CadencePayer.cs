@@ -25,6 +25,9 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// A string identifying the type of the payer. Currently the only supported value is
         /// <c>customer</c>.
+        /// One of: <c>customer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

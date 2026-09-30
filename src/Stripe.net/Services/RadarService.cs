@@ -7,6 +7,7 @@ namespace Stripe
 
     public class RadarService : Service
     {
+        private Radar.BillingEvaluationService billingEvaluations;
         private Radar.EarlyFraudWarningService earlyFraudWarnings;
         private Radar.PaymentEvaluationService paymentEvaluations;
         private Radar.ValueListService valueLists;
@@ -21,6 +22,9 @@ namespace Stripe
             : base(client)
         {
         }
+
+        public virtual Radar.BillingEvaluationService BillingEvaluations => this.billingEvaluations ??= new Radar.BillingEvaluationService(
+            this.Requestor);
 
         public virtual Radar.EarlyFraudWarningService EarlyFraudWarnings => this.earlyFraudWarnings ??= new Radar.EarlyFraudWarningService(
             this.Requestor);

@@ -8,9 +8,10 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// You can reverse some <a href="https://api.stripe.com#received_debits">ReceivedDebits</a>
-    /// depending on their network and source flow. Reversing a ReceivedDebit leads to the
-    /// creation of a new object known as a DebitReversal.
+    /// You can reverse some <a
+    /// href="https://docs.stripe.com/api#received_debits">ReceivedDebits</a> depending on their
+    /// network and source flow. Reversing a ReceivedDebit leads to the creation of a new object
+    /// known as a DebitReversal.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class DebitReversal : StripeEntity<DebitReversal>, IHasId, IHasMetadata, IHasObject
@@ -97,6 +98,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// The rails used to reverse the funds.
         /// One of: <c>ach</c>, or <c>card</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]
@@ -112,6 +115,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// Status of the DebitReversal.
         /// One of: <c>failed</c>, <c>processing</c>, or <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

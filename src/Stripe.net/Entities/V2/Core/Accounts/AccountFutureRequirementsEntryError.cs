@@ -11,7 +11,8 @@ namespace Stripe.V2.Core
         /// <summary>
         /// Machine-readable code describing the error.
         /// One of: <c>invalid_address_city_state_postal_code</c>,
-        /// <c>invalid_address_highway_contract_box</c>, <c>invalid_address_private_mailbox</c>,
+        /// <c>invalid_address_cmra_address</c>, <c>invalid_address_highway_contract_box</c>,
+        /// <c>invalid_address_private_mailbox</c>, <c>invalid_address_registered_agent_address</c>,
         /// <c>invalid_business_profile_name</c>, <c>invalid_business_profile_name_denylisted</c>,
         /// <c>invalid_company_name_denylisted</c>, <c>invalid_dob_age_over_maximum</c>,
         /// <c>invalid_dob_age_under_18</c>, <c>invalid_dob_age_under_minimum</c>,
@@ -74,6 +75,8 @@ namespace Stripe.V2.Core
         /// <c>verification_selfie_face_mismatch</c>, <c>verification_selfie_manipulated</c>,
         /// <c>verification_selfie_unverified_other</c>, <c>verification_supportability</c>, or
         /// <c>verification_token_stale</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]

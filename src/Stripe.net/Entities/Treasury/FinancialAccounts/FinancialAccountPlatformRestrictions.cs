@@ -11,6 +11,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// Restricts all inbound money movement.
         /// One of: <c>restricted</c>, or <c>unrestricted</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("inbound_flows")]
         [STJS.JsonPropertyName("inbound_flows")]
@@ -19,6 +21,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// Restricts all outbound money movement.
         /// One of: <c>restricted</c>, or <c>unrestricted</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("outbound_flows")]
         [STJS.JsonPropertyName("outbound_flows")]

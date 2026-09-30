@@ -23,6 +23,8 @@ namespace Stripe.BillingPortal
         /// current time (in UTC). For more information, see the billing cycle <a
         /// href="https://docs.stripe.com/billing/subscriptions/billing-cycle">documentation</a>.
         /// One of: <c>now</c>, or <c>unchanged</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [STJS.JsonPropertyName("billing_cycle_anchor")]
@@ -32,6 +34,8 @@ namespace Stripe.BillingPortal
         /// The types of subscription updates that are supported. When empty, subscriptions are not
         /// updateable.
         /// One of: <c>price</c>, <c>promotion_code</c>, or <c>quantity</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("default_allowed_updates", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("default_allowed_updates")]
@@ -73,6 +77,8 @@ namespace Stripe.BillingPortal
         /// Determines how to handle prorations resulting from subscription updates. Valid values
         /// are <c>none</c>, <c>create_prorations</c>, and <c>always_invoice</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]
@@ -89,6 +95,8 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// The behavior when updating a subscription that is trialing.
         /// One of: <c>continue_trial</c>, or <c>end_trial</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("trial_update_behavior")]
         [STJS.JsonPropertyName("trial_update_behavior")]

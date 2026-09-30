@@ -29,8 +29,8 @@ namespace Stripe.Tax
 
         /// <summary>
         /// <p>Create a tax location to use in calculating taxes for a service, ticket, or other
-        /// type of product. The resulting object contains the id, address, name, description, and
-        /// current operational status of the tax location.</p>.
+        /// type of product. The resulting object contains the ID, address, type, and description of
+        /// the tax location.</p>.
         /// </summary>
         public virtual Location Create(LocationCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -39,8 +39,8 @@ namespace Stripe.Tax
 
         /// <summary>
         /// <p>Create a tax location to use in calculating taxes for a service, ticket, or other
-        /// type of product. The resulting object contains the id, address, name, description, and
-        /// current operational status of the tax location.</p>.
+        /// type of product. The resulting object contains the ID, address, type, and description of
+        /// the tax location.</p>.
         /// </summary>
         public virtual Task<Location> CreateAsync(LocationCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -76,7 +76,7 @@ namespace Stripe.Tax
         /// services, tickets, or other product types.</p>.
         ///
         /// <p>The response includes detailed information for each tax location, such as its
-        /// address, name, description, and current operational status.</p>.
+        /// address, type, and description.</p>.
         ///
         /// <p>You can paginate through the list by using the <c>limit</c> parameter to control the
         /// number of results returned in each request.</p>.
@@ -91,7 +91,7 @@ namespace Stripe.Tax
         /// services, tickets, or other product types.</p>.
         ///
         /// <p>The response includes detailed information for each tax location, such as its
-        /// address, name, description, and current operational status.</p>.
+        /// address, type, and description.</p>.
         ///
         /// <p>You can paginate through the list by using the <c>limit</c> parameter to control the
         /// number of results returned in each request.</p>.
@@ -106,7 +106,7 @@ namespace Stripe.Tax
         /// services, tickets, or other product types.</p>.
         ///
         /// <p>The response includes detailed information for each tax location, such as its
-        /// address, name, description, and current operational status.</p>.
+        /// address, type, and description.</p>.
         ///
         /// <p>You can paginate through the list by using the <c>limit</c> parameter to control the
         /// number of results returned in each request.</p>.
@@ -121,7 +121,7 @@ namespace Stripe.Tax
         /// services, tickets, or other product types.</p>.
         ///
         /// <p>The response includes detailed information for each tax location, such as its
-        /// address, name, description, and current operational status.</p>.
+        /// address, type, and description.</p>.
         ///
         /// <p>You can paginate through the list by using the <c>limit</c> parameter to control the
         /// number of results returned in each request.</p>.

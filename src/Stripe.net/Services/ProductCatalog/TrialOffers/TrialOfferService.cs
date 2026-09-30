@@ -11,7 +11,8 @@ namespace Stripe.ProductCatalog
     public class TrialOfferService : Service,
         ICreatable<TrialOffer, TrialOfferCreateOptions>,
         IListable<TrialOffer, TrialOfferListOptions>,
-        IRetrievable<TrialOffer, TrialOfferGetOptions>
+        IRetrievable<TrialOffer, TrialOfferGetOptions>,
+        IUpdatable<TrialOffer, TrialOfferUpdateOptions>
     {
         public TrialOfferService()
         {
@@ -89,6 +90,24 @@ namespace Stripe.ProductCatalog
         public virtual IAsyncEnumerable<TrialOffer> ListAutoPagingAsync(TrialOfferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<TrialOffer>($"/v1/product_catalog/trial_offers", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Updates the specified trial offer by setting the values of the parameters passed. Any
+        /// parameters not provided are left unchanged.</p>.
+        /// </summary>
+        public virtual TrialOffer Update(string id, TrialOfferUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request<TrialOffer>(BaseAddress.Api, HttpMethod.Post, $"/v1/product_catalog/trial_offers/{WebUtility.UrlEncode(id)}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Updates the specified trial offer by setting the values of the parameters passed. Any
+        /// parameters not provided are left unchanged.</p>.
+        /// </summary>
+        public virtual Task<TrialOffer> UpdateAsync(string id, TrialOfferUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<TrialOffer>(BaseAddress.Api, HttpMethod.Post, $"/v1/product_catalog/trial_offers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

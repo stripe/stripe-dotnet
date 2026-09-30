@@ -30,6 +30,8 @@ namespace Stripe
         /// The mandate includes the type of customer acceptance information, such as: <c>online</c>
         /// or <c>offline</c>.
         /// One of: <c>offline</c>, or <c>online</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

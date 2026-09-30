@@ -21,6 +21,8 @@ namespace Stripe
         /// <summary>
         /// Defines the type of the pause_collection behavior for the quote line.
         /// One of: <c>remove</c>, or <c>set</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

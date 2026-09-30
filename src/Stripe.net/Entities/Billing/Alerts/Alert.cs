@@ -45,6 +45,8 @@ namespace Stripe.Billing
         /// <summary>
         /// Status of the alert. This can be active, inactive or archived.
         /// One of: <c>active</c>, <c>archived</c>, or <c>inactive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

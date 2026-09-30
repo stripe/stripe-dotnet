@@ -44,6 +44,8 @@ namespace Stripe.Billing
         /// The category of this credit grant. This is for tracking purposes and isn't displayed to
         /// the customer.
         /// One of: <c>paid</c>, or <c>promotional</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("category")]
         [STJS.JsonPropertyName("category")]

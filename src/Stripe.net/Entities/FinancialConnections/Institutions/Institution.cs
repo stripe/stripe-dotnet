@@ -65,6 +65,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// The status of this institution in the Financial Connections authentication flow.
         /// One of: <c>active</c>, <c>degraded</c>, or <c>inactive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

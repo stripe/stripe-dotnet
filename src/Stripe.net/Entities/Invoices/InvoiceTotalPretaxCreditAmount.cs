@@ -123,6 +123,8 @@ namespace Stripe
         /// <summary>
         /// Type of the pretax credit amount referenced.
         /// One of: <c>credit_balance_transaction</c>, <c>discount</c>, or <c>margin</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

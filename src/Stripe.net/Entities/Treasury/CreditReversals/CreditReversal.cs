@@ -9,8 +9,8 @@ namespace Stripe.Treasury
 
     /// <summary>
     /// You can reverse some <a
-    /// href="https://api.stripe.com#received_credits">ReceivedCredits</a> depending on their
-    /// network and source flow. Reversing a ReceivedCredit leads to the creation of a new
+    /// href="https://docs.stripe.com/api#received_credits">ReceivedCredits</a> depending on
+    /// their network and source flow. Reversing a ReceivedCredit leads to the creation of a new
     /// object known as a CreditReversal.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
@@ -91,6 +91,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// The rails used to reverse the funds.
         /// One of: <c>ach</c>, or <c>stripe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]
@@ -106,6 +108,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// Status of the CreditReversal.
         /// One of: <c>canceled</c>, <c>posted</c>, or <c>processing</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

@@ -33,6 +33,8 @@ namespace Stripe
         /// <summary>
         /// Type of owner referenced.
         /// One of: <c>account</c>, <c>application</c>, <c>customer</c>, or <c>self</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

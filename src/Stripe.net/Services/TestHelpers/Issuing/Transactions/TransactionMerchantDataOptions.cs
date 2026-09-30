@@ -157,6 +157,8 @@ namespace Stripe.TestHelpers.Issuing
         /// <c>wig_and_toupee_stores</c>, <c>wires_money_orders</c>,
         /// <c>womens_accessory_and_specialty_shops</c>, <c>womens_ready_to_wear_stores</c>, or
         /// <c>wrecking_and_salvage_yards</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("category")]
         [STJS.JsonPropertyName("category")]

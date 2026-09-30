@@ -14,6 +14,9 @@ namespace Stripe
 
         /// <summary>
         /// Funding type of the underlying payment method.
+        /// One of: <c>card</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

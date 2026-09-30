@@ -16,9 +16,20 @@ namespace Stripe.V2.MoneyManagement
         public V2.Amount Amount { get; set; }
 
         /// <summary>
+        /// Details about the network and options associated with this fee. Present when type is
+        /// network_fee.
+        /// </summary>
+        [JsonProperty("network_fee_details")]
+        [STJS.JsonPropertyName("network_fee_details")]
+        public OutboundPaymentQuoteEstimatedFeeNetworkFeeDetails NetworkFeeDetails { get; set; }
+
+        /// <summary>
         /// The fee type.
         /// One of: <c>cross_border_payout_fee</c>, <c>foreign_exchange_fee</c>,
-        /// <c>instant_payout_fee</c>, <c>standard_payout_fee</c>, or <c>wire_payout_fee</c>.
+        /// <c>instant_payout_fee</c>, <c>network_fee</c>, <c>standard_payout_fee</c>, or
+        /// <c>wire_payout_fee</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

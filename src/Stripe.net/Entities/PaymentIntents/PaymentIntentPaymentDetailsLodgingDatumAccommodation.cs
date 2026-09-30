@@ -12,6 +12,8 @@ namespace Stripe
         /// Type of accommodation.
         /// One of: <c>apartment</c>, <c>cabana</c>, <c>house</c>, <c>penthouse</c>, <c>room</c>,
         /// <c>standard</c>, <c>suite</c>, or <c>villa</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("accommodation_type")]
         [STJS.JsonPropertyName("accommodation_type")]

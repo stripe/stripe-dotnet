@@ -19,6 +19,8 @@ namespace Stripe
         /// The status of the mandate on the Bacs network. Can be one of <c>pending</c>,
         /// <c>revoked</c>, <c>refused</c>, or <c>accepted</c>.
         /// One of: <c>accepted</c>, <c>pending</c>, <c>refused</c>, or <c>revoked</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network_status")]
         [STJS.JsonPropertyName("network_status")]
@@ -36,6 +38,8 @@ namespace Stripe
         /// revocation.
         /// One of: <c>account_closed</c>, <c>bank_account_restricted</c>,
         /// <c>bank_ownership_changed</c>, <c>could_not_process</c>, or <c>debit_not_authorized</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("revocation_reason")]
         [STJS.JsonPropertyName("revocation_reason")]

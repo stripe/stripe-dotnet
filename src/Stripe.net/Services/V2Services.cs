@@ -17,7 +17,6 @@ namespace Stripe
         private V2.NetworkService network;
         private V2.OrchestratedCommerceService orchestratedCommerce;
         private V2.SignalsService signals;
-        private V2.TestHelperService testHelpers;
 
         internal V2Services(ApiRequestor requestor)
             : base(requestor)
@@ -57,9 +56,6 @@ namespace Stripe
             this.Requestor);
 
         public virtual V2.SignalsService Signals => this.signals ??= new V2.SignalsService(
-            this.Requestor);
-
-        public virtual V2.TestHelperService TestHelpers => this.testHelpers ??= new V2.TestHelperService(
             this.Requestor);
     }
 }

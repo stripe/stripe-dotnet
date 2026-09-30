@@ -45,6 +45,8 @@ namespace Stripe
         /// The type of method to specify the <c>bill_until</c> time.
         /// One of: <c>duration</c>, <c>line_ends_at</c>, <c>schedule_end</c>, <c>timestamp</c>, or
         /// <c>upcoming_invoice</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

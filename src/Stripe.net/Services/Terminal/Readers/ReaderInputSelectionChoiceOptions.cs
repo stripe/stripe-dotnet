@@ -19,6 +19,8 @@ namespace Stripe.Terminal
         /// The style of the button which will be shown for this choice. Can be <c>primary</c> or
         /// <c>secondary</c>.
         /// One of: <c>primary</c>, or <c>secondary</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("style")]
         [STJS.JsonPropertyName("style")]

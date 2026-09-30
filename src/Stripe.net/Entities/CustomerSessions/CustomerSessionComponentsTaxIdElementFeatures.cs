@@ -15,6 +15,8 @@ namespace Stripe
         /// When enabled, the Tax ID Element will show existing tax IDs associated with the
         /// customer, allowing them to select from previously saved tax identification numbers.
         /// One of: <c>disabled</c>, or <c>enabled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_id_redisplay")]
         [STJS.JsonPropertyName("tax_id_redisplay")]
@@ -28,6 +30,8 @@ namespace Stripe
         /// payment flow, which will be stored securely and associated with their customer object
         /// for future use.
         /// One of: <c>disabled</c>, or <c>enabled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_id_save")]
         [STJS.JsonPropertyName("tax_id_save")]

@@ -52,6 +52,20 @@ namespace Stripe.V2.Signals
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// Data for the fraudulent merchant signal. Present only when type is fraudulent_merchant.
+        /// </summary>
+        [JsonProperty("fraudulent_merchant")]
+        [STJS.JsonPropertyName("fraudulent_merchant")]
+        public AccountSignalFraudulentMerchant FraudulentMerchant { get; set; }
+
+        /// <summary>
+        /// Data for the fraudulent website signal. Present only when type is fraudulent_website.
+        /// </summary>
+        [JsonProperty("fraudulent_website")]
+        [STJS.JsonPropertyName("fraudulent_website")]
+        public AccountSignalFraudulentWebsite FraudulentWebsite { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
@@ -61,7 +75,10 @@ namespace Stripe.V2.Signals
 
         /// <summary>
         /// The type of signal.
-        /// One of: <c>user_account_sharing</c>, or <c>user_multi_accounting</c>.
+        /// One of: <c>fraudulent_merchant</c>, <c>fraudulent_website</c>,
+        /// <c>user_account_sharing</c>, or <c>user_multi_accounting</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
