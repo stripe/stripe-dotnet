@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// Account holder type: individual or company.
         /// One of: <c>company</c>, or <c>individual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("account_holder_type")]
         [STJS.JsonPropertyName("account_holder_type")]
@@ -19,6 +21,8 @@ namespace Stripe
         /// <summary>
         /// Account type: checkings or savings. Defaults to checking if omitted.
         /// One of: <c>checking</c>, or <c>savings</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("account_type")]
         [STJS.JsonPropertyName("account_type")]

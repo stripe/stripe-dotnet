@@ -13,6 +13,8 @@ namespace Stripe
         /// <c>fraudulent</c>, <c>requested_by_customer</c>, or <c>abandoned</c>.
         /// One of: <c>abandoned</c>, <c>duplicate</c>, <c>fraudulent</c>, or
         /// <c>requested_by_customer</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("cancellation_reason")]
         [STJS.JsonPropertyName("cancellation_reason")]

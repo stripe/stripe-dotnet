@@ -40,6 +40,10 @@ namespace Stripe
         [STJS.JsonPropertyName("payouts")]
         public AccountSettingsPayouts Payouts { get; set; }
 
+        [JsonProperty("paypay_payments")]
+        [STJS.JsonPropertyName("paypay_payments")]
+        public AccountSettingsPaypayPayments PaypayPayments { get; set; }
+
         [JsonProperty("sepa_debit_payments")]
         [STJS.JsonPropertyName("sepa_debit_payments")]
         public AccountSettingsSepaDebitPayments SepaDebitPayments { get; set; }

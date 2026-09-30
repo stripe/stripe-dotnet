@@ -19,6 +19,8 @@ namespace Stripe
         /// If set to <c>auto</c>, enables the collection of customer consent for promotional
         /// communications.
         /// One of: <c>auto</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("promotions")]
         [STJS.JsonPropertyName("promotions")]
@@ -29,6 +31,8 @@ namespace Stripe
         /// being able to pay. If set to <c>none</c>, customers won't be shown a checkbox to accept
         /// the terms of service.
         /// One of: <c>none</c>, or <c>required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("terms_of_service")]
         [STJS.JsonPropertyName("terms_of_service")]

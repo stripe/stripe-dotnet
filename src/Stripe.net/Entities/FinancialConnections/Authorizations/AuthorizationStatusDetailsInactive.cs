@@ -11,6 +11,8 @@ namespace Stripe.FinancialConnections
         /// <summary>
         /// The action (if any) to relink the inactive Authorization.
         /// One of: <c>none</c>, or <c>relink_required</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("action")]
         [STJS.JsonPropertyName("action")]

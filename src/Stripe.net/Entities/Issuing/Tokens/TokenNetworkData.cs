@@ -20,6 +20,8 @@ namespace Stripe.Issuing
         /// The network that the token is associated with. An additional hash is included with a
         /// name matching this value, containing tokenization data specific to the card network.
         /// One of: <c>mastercard</c>, or <c>visa</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -10,7 +10,6 @@ namespace Stripe.Terminal
     {
         /// <summary>
         /// Determines whether to allow transactions to be collected while reader is offline.
-        /// Defaults to false.
         /// </summary>
         [JsonProperty("enabled")]
         [STJS.JsonPropertyName("enabled")]

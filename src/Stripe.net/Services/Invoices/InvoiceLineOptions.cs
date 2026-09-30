@@ -31,6 +31,8 @@ namespace Stripe
         /// Either <c>delete</c> or <c>unassign</c>. Deleted line items are permanently deleted.
         /// Unassigned line items can be reassigned to an invoice.
         /// One of: <c>delete</c>, or <c>unassign</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("behavior")]
         [STJS.JsonPropertyName("behavior")]

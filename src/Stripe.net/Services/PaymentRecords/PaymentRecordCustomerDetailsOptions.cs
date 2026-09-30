@@ -16,7 +16,7 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
-        /// The customer's phone number.
+        /// The customer's email address.
         /// </summary>
         [JsonProperty("email")]
         [STJS.JsonPropertyName("email")]

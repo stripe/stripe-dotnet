@@ -95,6 +95,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Whether the product was a merchandise or service.
         /// One of: <c>merchandise</c>, or <c>service</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("product_type")]
         [STJS.JsonPropertyName("product_type")]
@@ -103,6 +105,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Result of cardholder's attempt to return the product.
         /// One of: <c>merchant_rejected</c>, or <c>successful</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("return_status")]
         [STJS.JsonPropertyName("return_status")]

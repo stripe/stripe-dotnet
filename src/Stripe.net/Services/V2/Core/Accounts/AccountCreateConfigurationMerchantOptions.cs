@@ -60,6 +60,13 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationMerchantScriptStatementDescriptorOptions ScriptStatementDescriptor { get; set; }
 
         /// <summary>
+        /// Settings used for SEPA Direct Debit payments.
+        /// </summary>
+        [JsonProperty("sepa_debit_payments")]
+        [STJS.JsonPropertyName("sepa_debit_payments")]
+        public AccountCreateConfigurationMerchantSepaDebitPaymentsOptions SepaDebitPayments { get; set; }
+
+        /// <summary>
         /// Statement descriptor.
         /// </summary>
         [JsonProperty("statement_descriptor")]

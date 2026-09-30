@@ -100,7 +100,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// The prefix for the customer used to generate unique invoice numbers. Must be 3–12
+        /// The prefix for the customer used to generate unique invoice numbers. Must be 1–12
         /// uppercase letters or numbers.
         /// </summary>
         [JsonProperty("invoice_prefix")]
@@ -201,6 +201,8 @@ namespace Stripe
         /// <summary>
         /// The customer's tax exemption. One of <c>none</c>, <c>exempt</c>, or <c>reverse</c>.
         /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("tax_exempt", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("tax_exempt")]

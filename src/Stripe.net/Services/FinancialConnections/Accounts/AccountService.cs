@@ -50,7 +50,7 @@ namespace Stripe.FinancialConnections
         }
 
         /// <summary>
-        /// <p>Retrieves the details of an Financial Connections <c>Account</c>.</p>.
+        /// <p>Retrieves the details of a Financial Connections <c>Account</c>.</p>.
         /// </summary>
         public virtual Account Get(string id, AccountGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -58,7 +58,7 @@ namespace Stripe.FinancialConnections
         }
 
         /// <summary>
-        /// <p>Retrieves the details of an Financial Connections <c>Account</c>.</p>.
+        /// <p>Retrieves the details of a Financial Connections <c>Account</c>.</p>.
         /// </summary>
         public virtual Task<Account> GetAsync(string id, AccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

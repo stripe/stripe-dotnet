@@ -11,11 +11,11 @@ namespace Stripe.Treasury
     /// Use <a
     /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-transfers">OutboundTransfers</a>
     /// to transfer funds from a <a
-    /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a> to a PaymentMethod
-    /// belonging to the same entity. To send funds to a different party, use <a
-    /// href="https://api.stripe.com#outbound_payments">OutboundPayments</a> instead. You can
-    /// send funds over ACH rails or through a domestic wire transfer to a user's own external
-    /// bank account.
+    /// href="https://docs.stripe.com/api#financial_accounts">FinancialAccount</a> to a
+    /// PaymentMethod belonging to the same entity. To send funds to a different party, use <a
+    /// href="https://docs.stripe.com/api#outbound_payments">OutboundPayments</a> instead. You
+    /// can send funds over ACH rails or through a domestic wire transfer to a user's own
+    /// external bank account.
     ///
     /// Simulate OutboundTransfer state changes with the
     /// <c>/v1/test_helpers/treasury/outbound_transfers</c> endpoints. These methods can only be
@@ -157,6 +157,8 @@ namespace Stripe.Treasury
         /// at its destination, its status will change to <c>returned</c>.
         /// One of: <c>canceled</c>, <c>failed</c>, <c>posted</c>, <c>processing</c>, or
         /// <c>returned</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

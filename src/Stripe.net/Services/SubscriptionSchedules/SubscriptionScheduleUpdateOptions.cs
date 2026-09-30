@@ -10,6 +10,7 @@ namespace Stripe
     public class SubscriptionScheduleUpdateOptions : BaseOptions, IHasMetadata
     {
         private Dictionary<string, string> metadata;
+        private List<SubscriptionSchedulePauseScheduleOptions> pauseSchedules;
 
         /// <summary>
         /// Object representing the subscription schedule's default settings.
@@ -25,6 +26,8 @@ namespace Stripe
         /// running. <c>cancel</c> will end the subscription schedule and cancel the underlying
         /// subscription.
         /// One of: <c>cancel</c>, <c>none</c>, <c>release</c>, or <c>renew</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("end_behavior")]
         [STJS.JsonPropertyName("end_behavior")]
@@ -50,6 +53,24 @@ namespace Stripe
         }
 
         /// <summary>
+        /// Configures the subscription's pause behavior and, optionally, its resume behavior. Only
+        /// one entry is supported. Include a key to update an existing entry. Omit to leave an
+        /// existing pause schedule unchanged, or pass "" to clear it.
+        /// </summary>
+        [JsonProperty("pause_schedules", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("pause_schedules")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public List<SubscriptionSchedulePauseScheduleOptions> PauseSchedules
+        {
+            get => this.pauseSchedules;
+            set
+            {
+                this.pauseSchedules = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
         /// List representing phases of the subscription schedule. Each phase can be customized to
         /// have different durations, plans, and coupons. If there are multiple phases, the
         /// <c>end_date</c> of one phase will always equal the <c>start_date</c> of the next phase.
@@ -64,6 +85,8 @@ namespace Stripe
         /// current phase, indicates how prorations from this change should be handled. The default
         /// value is <c>create_prorations</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]

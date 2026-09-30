@@ -25,6 +25,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// Only return DebitReversals for a given resolution.
         /// One of: <c>lost</c>, or <c>won</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("resolution")]
         [STJS.JsonPropertyName("resolution")]
@@ -33,6 +35,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// Only return DebitReversals for a given status.
         /// One of: <c>canceled</c>, <c>completed</c>, or <c>processing</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

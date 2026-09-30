@@ -129,6 +129,8 @@ namespace Stripe
         /// <summary>
         /// Indicates whether the top-up was initiated by Stripe or by the user.
         /// One of: <c>stripe</c>, or <c>user</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("initiated_by")]
         [STJS.JsonPropertyName("initiated_by")]
@@ -215,6 +217,8 @@ namespace Stripe
         /// <c>reversed</c>, or <c>succeeded</c>.
         /// One of: <c>canceled</c>, <c>failed</c>, <c>pending</c>, <c>reversed</c>, or
         /// <c>succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

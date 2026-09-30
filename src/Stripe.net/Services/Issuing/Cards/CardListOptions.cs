@@ -54,6 +54,8 @@ namespace Stripe.Issuing
         /// Only return cards that have the given status. One of <c>active</c>, <c>inactive</c>, or
         /// <c>canceled</c>.
         /// One of: <c>active</c>, <c>canceled</c>, or <c>inactive</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
@@ -62,6 +64,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Only return cards that have the given type. One of <c>virtual</c> or <c>physical</c>.
         /// One of: <c>physical</c>, or <c>virtual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

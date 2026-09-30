@@ -11,9 +11,9 @@ namespace Stripe.Treasury
     /// Use <a
     /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-payments">OutboundPayments</a>
     /// to send funds to another party's external bank account or <a
-    /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a>. To send money to
-    /// an account belonging to the same user, use an <a
-    /// href="https://api.stripe.com#outbound_transfers">OutboundTransfer</a>.
+    /// href="https://docs.stripe.com/api#financial_accounts">FinancialAccount</a>. To send
+    /// money to an account belonging to the same user, use an <a
+    /// href="https://docs.stripe.com/api#outbound_transfers">OutboundTransfer</a>.
     ///
     /// Simulate OutboundPayment state changes with the
     /// <c>/v1/test_helpers/treasury/outbound_payments</c> endpoints. These methods can only be
@@ -175,6 +175,8 @@ namespace Stripe.Treasury
         /// will change to <c>returned</c>.
         /// One of: <c>canceled</c>, <c>failed</c>, <c>posted</c>, <c>processing</c>, or
         /// <c>returned</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]

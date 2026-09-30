@@ -55,6 +55,7 @@ namespace Stripe
         private PlanService plans;
         private PriceService prices;
         private ProductService products;
+        private ProductCatalogService productCatalog;
         private PromotionCodeService promotionCodes;
         private QuoteService quotes;
         private RadarService radar;
@@ -75,6 +76,7 @@ namespace Stripe
         private TaxRateService taxRates;
         private TerminalService terminal;
         private TestHelpersService testHelpers;
+        private ThreeDSecureService threeDSecure;
         private TokenService tokens;
         private TopupService topups;
         private TransferService transfers;
@@ -235,6 +237,9 @@ namespace Stripe
         public virtual ProductService Products => this.products ??= new ProductService(
             this.Requestor);
 
+        public virtual ProductCatalogService ProductCatalog => this.productCatalog ??= new ProductCatalogService(
+            this.Requestor);
+
         public virtual PromotionCodeService PromotionCodes => this.promotionCodes ??= new PromotionCodeService(
             this.Requestor);
 
@@ -293,6 +298,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual TestHelpersService TestHelpers => this.testHelpers ??= new TestHelpersService(
+            this.Requestor);
+
+        public virtual ThreeDSecureService ThreeDSecure => this.threeDSecure ??= new ThreeDSecureService(
             this.Requestor);
 
         public virtual TokenService Tokens => this.tokens ??= new TokenService(

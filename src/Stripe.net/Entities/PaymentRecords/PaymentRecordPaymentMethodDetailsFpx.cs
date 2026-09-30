@@ -11,6 +11,8 @@ namespace Stripe
         /// <summary>
         /// Account holder type, if provided. Can be one of <c>individual</c> or <c>company</c>.
         /// One of: <c>company</c>, or <c>individual</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("account_holder_type")]
         [STJS.JsonPropertyName("account_holder_type")]
@@ -30,6 +32,8 @@ namespace Stripe
         /// <c>hong_leong_bank</c>, <c>hsbc</c>, <c>kfh</c>, <c>maybank2e</c>, <c>maybank2u</c>,
         /// <c>mbsb_bank</c>, <c>ocbc</c>, <c>pb_enterprise</c>, <c>public_bank</c>, <c>rhb</c>,
         /// <c>standard_chartered</c>, or <c>uob</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("bank")]
         [STJS.JsonPropertyName("bank")]

@@ -18,7 +18,7 @@ namespace Stripe
 
         /// <summary>
         /// Optional parameters that automatically create a <a
-        /// href="https://api.stripe.com#file_links">file link</a> for the newly created file.
+        /// href="https://docs.stripe.com/api#file_links">file link</a> for the newly created file.
         /// </summary>
         [JsonProperty("file_link_data")]
         [STJS.JsonPropertyName("file_link_data")]
@@ -33,6 +33,8 @@ namespace Stripe
         /// <c>pci_document</c>, <c>platform_terms_of_service</c>, <c>tax_document_user_upload</c>,
         /// <c>terminal_android_apk</c>, <c>terminal_reader_splashscreen</c>,
         /// <c>terminal_wifi_certificate</c>, or <c>terminal_wifi_private_key</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("purpose")]
         [STJS.JsonPropertyName("purpose")]

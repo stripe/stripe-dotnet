@@ -80,6 +80,13 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsBillieOptions Billie { get; set; }
 
         /// <summary>
+        /// contains details about the BLIK payment method options.
+        /// </summary>
+        [JsonProperty("blik")]
+        [STJS.JsonPropertyName("blik")]
+        public SessionPaymentMethodOptionsBlikOptions Blik { get; set; }
+
+        /// <summary>
         /// contains details about the Boleto payment method options.
         /// </summary>
         [JsonProperty("boleto")]
@@ -303,6 +310,13 @@ namespace Stripe.Checkout
         [JsonProperty("sepa_debit")]
         [STJS.JsonPropertyName("sepa_debit")]
         public SessionPaymentMethodOptionsSepaDebitOptions SepaDebit { get; set; }
+
+        /// <summary>
+        /// contains details about the SeQura payment method options.
+        /// </summary>
+        [JsonProperty("sequra")]
+        [STJS.JsonPropertyName("sequra")]
+        public SessionPaymentMethodOptionsSequraOptions Sequra { get; set; }
 
         /// <summary>
         /// contains details about the Sofort payment method options.

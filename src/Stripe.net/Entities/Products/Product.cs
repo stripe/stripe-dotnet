@@ -11,8 +11,8 @@ namespace Stripe
     /// Products describe the specific goods or services you offer to your customers. For
     /// example, you might offer a Standard and Premium version of your goods or service; each
     /// version would be a separate Product. They can be used in conjunction with <a
-    /// href="https://api.stripe.com#prices">Prices</a> to configure pricing in Payment Links,
-    /// Checkout, and Subscriptions.
+    /// href="https://docs.stripe.com/api#prices">Prices</a> to configure pricing in Payment
+    /// Links, Checkout, and Subscriptions.
     ///
     /// Related guides: <a
     /// href="https://docs.stripe.com/billing/subscriptions/set-up-subscription">Set up a
@@ -208,10 +208,21 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// Tax details for this product, including the <a
+        /// href="https://stripe.com/tax/tax-codes">tax code</a> and an optional performance
+        /// location.
+        /// </summary>
+        [JsonProperty("tax_details")]
+        [STJS.JsonPropertyName("tax_details")]
+        public ProductTaxDetails TaxDetails { get; set; }
+
+        /// <summary>
         /// The type of the product. The product is either of type <c>good</c>, which is eligible
         /// for use with Orders and SKUs, or <c>service</c>, which is eligible for use with
         /// Subscriptions and Plans.
         /// One of: <c>good</c>, or <c>service</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

@@ -174,6 +174,8 @@ namespace Stripe
         /// Array of field names that can't be modified. Attempting to update a frozen field returns
         /// an error.
         /// One of: <c>discounts</c>, <c>pricing</c>, or <c>quantity</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("frozen_fields")]
         [STJS.JsonPropertyName("frozen_fields")]
@@ -213,6 +215,14 @@ namespace Stripe
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Invoice>))]
         internal ExpandableField<Invoice> InternalInvoice { get; set; }
         #endregion
+
+        /// <summary>
+        /// The rules that control when this invoice item is eligible for invoicing. All rules must
+        /// be satisfied for the item to be invoiced.
+        /// </summary>
+        [JsonProperty("invoicing_rules")]
+        [STJS.JsonPropertyName("invoicing_rules")]
+        public List<InvoiceItemInvoicingRule> InvoicingRules { get; set; }
 
         /// <summary>
         /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
