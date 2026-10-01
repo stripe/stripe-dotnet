@@ -3,6 +3,7 @@ title: Update generated code
 pr_url: https://github.com/stripe/stripe-dotnet/pull/3443
 semver_level: major
 is_stripe_api_change: true
+released_in_version: 53.0.0
 ---
 
 * Add support for new resources `Apps.Install`, `ProductCatalog.TrialOffer`, `Tax.Location`, and `ThreeDSecure.Authentication`
