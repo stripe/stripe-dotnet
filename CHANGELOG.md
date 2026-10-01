@@ -7,6 +7,64 @@ Instead, edit a corresponding `.change.md` file and run `hark build`.
 
 > This changelog only covers the **public preview** releases. Each release builds on the most recent GA release; see those notes in [the GA changelog](https://github.com/stripe/stripe-dotnet/blob/master/CHANGELOG.md).
 
+## <a id="53-1-0-beta-1"></a>53.1.0-beta.1 - 2026-09-30
+This release changes the pinned API version to `2026-09-30.preview`.
+
+* [#3472](https://github.com/stripe/stripe-dotnet/pull/3472) Update generated code
+  * Release specs are identical.
+* ⚠️ [#3437](https://github.com/stripe/stripe-dotnet/pull/3437) Update generated code
+  * Add support for new resources `Radar.BillingEvaluation`, `V2.MoneyManagement.FinancialAddressCreditSimulation`, and `V2.MoneyManagement.FinancialAddressGeneratedMicrodeposits`
+  * ⚠️ Remove support for resources `V2.FinancialAddressCreditSimulation` and `V2.FinancialAddressGeneratedMicrodeposits`
+  * Add support for `Create` method on resource `Radar.BillingEvaluation`
+  * Add support for `List` method on resource `Reserve.Plan`
+  * Add support for `Credit` method on resource `V2.MoneyManagement.FinancialAddressCreditSimulation`
+  * Add support for `GenerateMicrodeposits` method on resource `V2.MoneyManagement.FinancialAddressGeneratedMicrodeposits`
+  * ⚠️ Remove support for `Credit` method on resource `V2.FinancialAddressCreditSimulation`
+  * ⚠️ Remove support for `GenerateMicrodeposits` method on resource `V2.FinancialAddressGeneratedMicrodeposits`
+  * Add support for `AfterExpiration` on `BillingPortal.SessionCreateOptions` and `BillingPortal.Session`
+  * Add support for `SetupCredentialUsage` on `Charge.PaymentMethodDetails.Card`, `PaymentIntent.PaymentMethodOptions.Card`, `PaymentIntentPaymentMethodOptionsCardOptions`, `SetupIntent.PaymentMethodOptions.Card`, and `SetupIntentPaymentMethodOptionsCardOptions`
+  * Add support for `StoredCredentialUsage` on `Charge.PaymentMethodDetails.Card`, `PaymentAttemptRecord.PaymentMethodDetails.Card`, `PaymentIntent.PaymentMethodOptions.Card`, `PaymentIntentPaymentMethodOptionsCardOptions`, and `PaymentRecord.PaymentMethodDetails.Card`
+  * Add support for `ExpiresAt` on `CheckoutSessionPaymentMethodOptionsBlikMandateOptionsOptions`, `Subscription.PaymentSettings.PaymentMethodOptions.Blik.MandateOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsBlikMandateOptionsOptions`
+  * ⚠️ Remove support for `ExpiresAfter` on `CheckoutSessionPaymentMethodOptionsBlikMandateOptionsOptions`, `Subscription.PaymentSettings.PaymentMethodOptions.Blik.MandateOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsBlikMandateOptionsOptions`
+  * Add support for `PaymentIntentData` on `Checkout.SessionUpdateOptions`
+  * Add support for `Appeal` on `Dispute.Evidence` and `DisputeEvidenceOptions`
+  * Add support for `Livemode` on `FxQuote`
+  * ⚠️ Remove support for `CaptureMethod` on `PaymentIntentPaymentMethodOptionsPaypayOptions`
+  * Add support for `Active` on `ProductCatalog.TrialOfferCreateOptions`, `ProductCatalog.TrialOfferListOptions`, and `ProductCatalog.TrialOffer`
+  * Add support for `Nickname` on `ProductCatalog.TrialOfferCreateOptions` and `ProductCatalog.TrialOffer`
+  * ⚠️ Remove support for `Name` on `ProductCatalog.TrialOfferCreateOptions` and `ProductCatalog.TrialOffer`
+  * Add support for `StatusDetails` on `QuotePreviewInvoice`
+  * Add support for `CompanyDetails` and `Reference` on `QuotePreviewInvoice.PaymentSettings.PaymentMethodOptions.Billie`
+  * Add support for `PauseSchedules` on `QuotePreviewSubscriptionSchedule`
+  * Add support for `Destination` on `Reserve.Hold`, `Reserve.Plan`, and `Reserve.Release`
+  * Add support for `ManualRelease` on `Reserve.Plan`
+  * ⚠️ Remove support for `Configurations` on `V2.Core.AccountLink.UseCase.AccountOnboarding`, `V2.Core.AccountLink.UseCase.AccountUpdate`, `V2CoreAccountLinkUseCaseAccountOnboardingOptions`, and `V2CoreAccountLinkUseCaseAccountUpdateOptions`
+  * Add support for `RelatedObject` and `Request` on `V2.Iam.ActivityLog`
+  * Add support for `AccountSecurity`, `Authentication`, `Scim`, `Sso`, and `UserProfile` on `V2.Iam.ActivityLog.Details`
+  * Add support for `DepositInsuranceEligibility` on `V2.MoneyManagement.FinancialAccount.Storage` and `V2MoneyManagementFinancialAccountStorageOptions`
+  * Add support for `BankAccount` on `V2.MoneyManagement.FinancialAddressCreateOptions` and `V2.MoneyManagement.FinancialAddress`
+  * Add support for `Type` on `V2.MoneyManagement.FinancialAddress`
+  * ⚠️ Remove support for `Credentials` and `Currency` on `V2.MoneyManagement.FinancialAddress`
+  * ⚠️ Remove support for `Level` on `V2.MoneyManagement.InboundTransfer.TransferHistory`
+  * Add support for `NetworkFeeDetails` on `V2.MoneyManagement.OutboundPaymentQuote.EstimatedFee`
+  * Add support for `Archived` on `V2.MoneyManagement.PayoutMethod`
+  * ⚠️ Remove support for `Archived` on `V2.MoneyManagement.PayoutMethod.BankAccount` and `V2.MoneyManagement.PayoutMethod.Card`
+  * Add support for `AmountReceived` on `V2.MoneyManagement.ReceivedCredit`
+  * Add support for `OriginatingBankAccount` on `V2.MoneyManagement.ReceivedCredit.BankTransfer`
+  * ⚠️ Remove support for `OriginType` on `V2.MoneyManagement.ReceivedCredit.BankTransfer`
+  * Add support for `Identity` on `V2.Signals.AccountActivity.AccountDetails.Data`, `V2.Signals.AccountEvaluation.AccountDetails.Data`, `V2SignalsAccountActivityAccountDetailsDataOptions`, and `V2SignalsAccountEvaluationAccountDetailsDataOptions`
+  * Add support for `FraudulentWebsite` on `V2.Signals.AccountEvaluation.EvaluatedSignals` and `V2.Signals.AccountSignal`
+  * Add support for `FraudulentMerchant` on `V2.Signals.AccountSignal`
+  * ⚠️ Remove support for `CreatedGt`, `CreatedGte`, `CreatedLt`, and `CreatedLte` on `V2.MoneyManagement.AdjustmentListOptions`, `V2.MoneyManagement.InboundTransferListOptions`, `V2.MoneyManagement.ReceivedCreditListOptions`, `V2.MoneyManagement.TransactionEntryListOptions`, and `V2.MoneyManagement.TransactionListOptions`
+  * ⚠️ Change type of `V2.MoneyManagement.AdjustmentListOptions.Created`, `V2.MoneyManagement.InboundTransferListOptions.Created`, `V2.MoneyManagement.ReceivedCreditListOptions.Created`, `V2.MoneyManagement.TransactionEntryListOptions.Created`, and `V2.MoneyManagement.TransactionListOptions.Created` from `DateTime` to `an object`
+  * ⚠️ Remove support for `Include` on `V2.MoneyManagement.FinancialAddressGetOptions` and `V2.MoneyManagement.FinancialAddressListOptions`
+  * Add support for `SettlementCurrency` on `V2.MoneyManagement.FinancialAddressCreateOptions`
+  * Add support for `Include` on `V2.MoneyManagement.FinancialAccountGetOptions` and `V2.MoneyManagement.FinancialAccountListOptions`
+  * Add support for `TreasuryTransaction` on `EventsV2MoneyManagementTransactionUpdatedEvent`
+  * Add support for event notifications `V2SignalsAccountSignalFraudulentMerchantReadyEvent` and `V2SignalsAccountSignalFraudulentWebsiteReadyEvent` with related object `V2.Signals.AccountSignal`
+  * Add support for error types `InvalidVaultedCredentialException`, `VerificationAttemptFailedException`, `VerificationExpiredException`, and `VerificationNotInitiatedException`
+  * ⚠️ Remove support for error type `ControlledByDashboardException`
+
 ## <a id="52-5-0-beta-1"></a>52.5.0-beta.1 - 2026-08-26
 This release changes the pinned API version to `2026-08-26.preview`.
 
@@ -460,6 +518,7 @@ This release changes the pinned API version to `2025-06-30.preview`.
 This release changes the pinned API version to `2025-05-28.preview`.
 
 * [#3123](https://github.com/stripe/stripe-dotnet/pull/3123) Update generated code for beta
+
   ### Breaking changes
   * Remove support for deprecated previews
     * Remove support for resources `Billing.MeterErrorReport`, `GiftCards.Card`, `GiftCards.Transaction`, and `Privacy.RedactionJobRootObjects`
@@ -495,12 +554,14 @@ This release changes the pinned API version to `2025-05-28.preview`.
 
 ## <a id="48-2-0-beta-2"></a>48.2.0-beta.2 - 2025-04-30
 * [#3122](https://github.com/stripe/stripe-dotnet/pull/3122) Update generated code for beta
+
   Release specs are identical.
 
 ## <a id="48-2-0-beta-1"></a>48.2.0-beta.1 - 2025-04-30
 This release changes the pinned API version to `2025-04-30.preview`.
 
 * [#3107](https://github.com/stripe/stripe-dotnet/pull/3107) Update generated code for beta
+
   This release changes the pinned API version to `2025-04-30.preview`.
 
   * Add support for `BillingMode` on `CheckoutSessionSubscriptionDataOptions`, `InvoiceScheduleDetailsOptions`, `InvoiceSubscriptionDetailsOptions`, `Quote.SubscriptionData`, `QuotePreviewSubscriptionSchedule`, `QuoteSubscriptionDataOptions`, `SubscriptionCreateOptions`, `SubscriptionScheduleCreateOptions`, `SubscriptionSchedule`, and `Subscription`
@@ -843,6 +904,7 @@ This release changes the pinned API version to `2024-09-30.acacia`.
 
 ## <a id="45-6-0-beta-1"></a>45.6.0-beta.1 - 2024-07-25
 * [#2938](https://github.com/stripe/stripe-dotnet/pull/2938) Update generated code for beta
+
   ⚠️ `InvoicePayment.Charge` and `InvoicePayment.PaymentIntent` were removed in favor of `InvoicePaymentPayment`, which encapsulates both. The Charge and PaymentIntent fields are now found at `InvoicePaymentPayment.Charge` `InvoicePaymentPayment.PaymentIntent`
 
   * Add support for new resources `Billing.AlertTriggered`, `Billing.Alert`, and `Tax.Association`
@@ -928,6 +990,7 @@ This release changes the pinned API version to `2024-04-10`.
 
 ## <a id="43-21-0-beta-1"></a>43.21.0-beta.1 - 2024-03-21
 * [#2870](https://github.com/stripe/stripe-dotnet/pull/2870) Update generated code for beta
+
   Release specs are identical.
 * [#2875](https://github.com/stripe/stripe-dotnet/pull/2875) Update generated code for beta
   * Add support for new resources `Entitlements.ActiveEntitlementSummary` and `Entitlements.ActiveEntitlement`
@@ -1000,6 +1063,7 @@ This release changes the pinned API version to `2024-04-10`.
 ## <a id="43-12-0-beta-1"></a>43.12.0-beta.1 - 2024-01-18
 * [#2830](https://github.com/stripe/stripe-dotnet/pull/2830) Beta: report RawRequest usage
 * [#2835](https://github.com/stripe/stripe-dotnet/pull/2835) Update generated code for beta
+
   Release specs are identical.
 * [#2833](https://github.com/stripe/stripe-dotnet/pull/2833) Update generated code for beta
 
@@ -1193,6 +1257,7 @@ This release changes the pinned API version to `2023-08-16`.
 ## <a id="41-25-0-beta-1"></a>41.25.0-beta.1 - 2023-07-13
 * [#2721](https://github.com/stripe/stripe-dotnet/pull/2721) Update generated code for beta
 * [#2727](https://github.com/stripe/stripe-dotnet/pull/2727) Update generated code for beta
+
   Release specs are identical.
 * [#2724](https://github.com/stripe/stripe-dotnet/pull/2724) Update generated code for beta
   * Add support for new resource `PaymentMethodConfiguration`
@@ -1490,4 +1555,5 @@ This release changes the pinned API version to `2022-11-15`.
 
 ## <a id="39-119-0-beta-1"></a>39.119.0-beta.1 - 2022-06-15
 * [#2505](https://github.com/stripe/stripe-dotnet/pull/2505) API Updates
+
   Add support for NetworkDetails properties on ReceivedCredits/ReceivedDebits resources

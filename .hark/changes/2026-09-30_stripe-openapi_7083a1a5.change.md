@@ -3,6 +3,7 @@ title: Update generated code
 pr_url: https://github.com/stripe/stripe-dotnet/pull/3437
 semver_level: major
 is_stripe_api_change: true
+released_in_version: 53.1.0-beta.1
 ---
 
 * Add support for new resources `Radar.BillingEvaluation`, `V2.MoneyManagement.FinancialAddressCreditSimulation`, and `V2.MoneyManagement.FinancialAddressGeneratedMicrodeposits`
