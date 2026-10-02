@@ -129,8 +129,8 @@ namespace Stripe
         /// <summary>
         /// The email address to which this charge's <a
         /// href="https://docs.stripe.com/dashboard/receipts">receipt</a> will be sent. The receipt
-        /// will not be sent until the charge is paid, and no receipts will be sent for test mode
-        /// charges. If this charge is for a <a
+        /// will not be sent until the charge is paid, and receipts are only sent for payments in
+        /// live mode. If this charge is for a <a
         /// href="https://docs.stripe.com/api/customers/object">Customer</a>, the email address
         /// specified here will override the customer's email address. If <c>receipt_email</c> is
         /// specified for a charge in live mode, a receipt will be sent regardless of your <a

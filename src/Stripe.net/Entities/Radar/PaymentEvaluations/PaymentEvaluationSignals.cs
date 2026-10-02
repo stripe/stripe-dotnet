@@ -9,6 +9,13 @@ namespace Stripe.Radar
     public class PaymentEvaluationSignals : StripeEntity<PaymentEvaluationSignals>
     {
         /// <summary>
+        /// The likelihood that this <c>PaymentEvaluation</c> results in a bank-initiated return.
+        /// </summary>
+        [JsonProperty("bank_initiated_return")]
+        [STJS.JsonPropertyName("bank_initiated_return")]
+        public PaymentEvaluationSignalsBankInitiatedReturn BankInitiatedReturn { get; set; }
+
+        /// <summary>
         /// The likelihood that this <c>PaymentEvaluation</c> results in an early fraud warning.
         /// </summary>
         [JsonProperty("early_fraud_warning")]

@@ -67,6 +67,14 @@ namespace Stripe.V2.MoneyManagement
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// Network-specific details for the InboundTransfer. Present only when supplied at
+        /// creation.
+        /// </summary>
+        [JsonProperty("network_details")]
+        [STJS.JsonPropertyName("network_details")]
+        public InboundTransferNetworkDetails NetworkDetails { get; set; }
+
+        /// <summary>
         /// A hosted transaction receipt URL that is provided when money movement is considered
         /// regulated under Stripe's money transmission licenses.
         /// </summary>

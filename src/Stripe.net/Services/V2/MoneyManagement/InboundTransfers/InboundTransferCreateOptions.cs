@@ -31,6 +31,13 @@ namespace Stripe.V2.MoneyManagement
         public InboundTransferCreateFromOptions From { get; set; }
 
         /// <summary>
+        /// Network-specific details for the InboundTransfer.
+        /// </summary>
+        [JsonProperty("network_details")]
+        [STJS.JsonPropertyName("network_details")]
+        public InboundTransferCreateNetworkDetailsOptions NetworkDetails { get; set; }
+
+        /// <summary>
         /// An optional statement descriptor surfaced on the payer's bank statement. Max 10
         /// characters. When omitted, Stripe sends its default descriptor.
         /// </summary>

@@ -9,15 +9,19 @@ namespace Stripe.V2.MoneyManagement
     public class FinancialAddressCreateOptions : BaseOptions
     {
         /// <summary>
+        /// The ID of the Account that owns this FinancialAddress.
+        /// </summary>
+        [JsonProperty("account")]
+        [STJS.JsonPropertyName("account")]
+        public string Account { get; set; }
+
+        /// <summary>
         /// Properties for creating a bank account FinancialAddress.
         /// </summary>
         [JsonProperty("bank_account")]
         [STJS.JsonPropertyName("bank_account")]
         public FinancialAddressCreateBankAccountOptions BankAccount { get; set; }
 
-        /// <summary>
-        /// Properties for creating a crypto wallet FinancialAddress.
-        /// </summary>
         [JsonProperty("crypto_wallet")]
         [STJS.JsonPropertyName("crypto_wallet")]
         public FinancialAddressCreateCryptoWalletOptions CryptoWallet { get; set; }
@@ -29,9 +33,6 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("financial_account")]
         public string FinancialAccount { get; set; }
 
-        /// <summary>
-        /// Open Enum. The currency the FinancialAddress settles into the FinancialAccount.
-        /// </summary>
         [JsonProperty("settlement_currency")]
         [STJS.JsonPropertyName("settlement_currency")]
         public string SettlementCurrency { get; set; }

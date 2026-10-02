@@ -50,6 +50,13 @@ namespace Stripe
             }
         }
 
+        /// <summary>
+        /// The merchant's subscription identifier for this off-session charge.
+        /// </summary>
+        [JsonProperty("subscription_reference")]
+        [STJS.JsonPropertyName("subscription_reference")]
+        public string SubscriptionReference { get; set; }
+
         bool IHasSetTracking.IsPropertySet(string propertyName)
         {
             return this.SetTracker.IsSet(propertyName);

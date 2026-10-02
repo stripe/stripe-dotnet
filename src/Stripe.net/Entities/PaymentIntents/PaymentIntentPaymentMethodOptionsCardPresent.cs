@@ -38,6 +38,13 @@ namespace Stripe
         public string CaptureMethod { get; set; }
 
         /// <summary>
+        /// Fleet prompting data for this payment.
+        /// </summary>
+        [JsonProperty("fleet")]
+        [STJS.JsonPropertyName("fleet")]
+        public PaymentIntentPaymentMethodOptionsCardPresentFleet Fleet { get; set; }
+
+        /// <summary>
         /// Request ability to capture this payment beyond the standard <a
         /// href="https://docs.stripe.com/terminal/features/extended-authorizations#authorization-validity">authorization
         /// validity window</a>.
