@@ -268,6 +268,44 @@ namespace Stripe
         }
 
 #endif
+        internal IEnumerable<T> V2SearchRequestAutoPaging<T>(
+            string url,
+            BaseOptions options,
+            RequestOptions requestOptions)
+            where T : IStripeEntity
+        {
+            var originalOptions = (BaseOptions)options?.Clone() ?? new BaseOptions();
+            var page = this.Request<Stripe.V2.StripeSearchResult<T>>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                url,
+                originalOptions,
+                requestOptions);
+
+            while (true)
+            {
+                foreach (var item in page)
+                {
+                    if (item != null)
+                    {
+                        yield return item;
+                    }
+                }
+
+                if (page.NextPageUrl == null)
+                {
+                    break;
+                }
+
+                page = this.Request<Stripe.V2.StripeSearchResult<T>>(
+                    BaseAddress.Api,
+                    HttpMethod.Post,
+                    page.NextPageUrl,
+                    originalOptions,
+                    requestOptions);
+            }
+        }
+
         internal async IAsyncEnumerable<T> V2ListRequestAutoPagingAsync<T>(
             string url,
             BaseOptions options,
@@ -314,6 +352,49 @@ namespace Stripe
                     HttpMethod.Get,
                     page.NextPageUrl,
                     new BaseOptions(),
+                    requestOptions,
+                    cancellationToken).ConfigureAwait(false);
+            }
+        }
+
+        internal async IAsyncEnumerable<T> V2SearchRequestAutoPagingAsync<T>(
+            string url,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            [EnumeratorCancellation] CancellationToken cancellationToken = default)
+            where T : IStripeEntity
+        {
+            var originalOptions = (BaseOptions)options?.Clone() ?? new BaseOptions();
+            var page = await this.RequestAsync<Stripe.V2.StripeSearchResult<T>>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                url,
+                originalOptions,
+                requestOptions,
+                cancellationToken).ConfigureAwait(false);
+
+            while (true)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                foreach (var item in page)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+                    if (item != null)
+                    {
+                        yield return item;
+                    }
+                }
+
+                if (page.NextPageUrl == null)
+                {
+                    break;
+                }
+
+                page = await this.RequestAsync<Stripe.V2.StripeSearchResult<T>>(
+                    BaseAddress.Api,
+                    HttpMethod.Post,
+                    page.NextPageUrl,
+                    originalOptions,
                     requestOptions,
                     cancellationToken).ConfigureAwait(false);
             }
