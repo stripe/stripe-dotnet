@@ -128,7 +128,10 @@ namespace Stripe.Checkout
         /// dynamically optimize your payment flow and comply with regional legislation and network
         /// rules, such as SCA.
         ///
-        /// Pass an empty string to remove a previously supplied configuration.
+        /// You must wrap any Checkout Session update that mutates <c>setup_future_usage</c> in <a
+        /// href="https://stripe.com/js/custom_checkout/run_server_update"><c>runServerUpdate</c></a>
+        /// and await it before continuing with the payment. Pass an empty string to remove a
+        /// previously supplied configuration.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

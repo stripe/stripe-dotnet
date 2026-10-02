@@ -490,6 +490,13 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
+        /// A subset of parameters to configure the payment for this Checkout Session.
+        /// </summary>
+        [JsonProperty("payment_settings")]
+        [STJS.JsonPropertyName("payment_settings")]
+        public SessionPaymentSettingsOptions PaymentSettings { get; set; }
+
+        /// <summary>
         /// This property is used to set up permissions for various actions (for example, update) on
         /// the CheckoutSession object. Can only be set when creating <c>embedded_page</c> or
         /// <c>elements</c> sessions.

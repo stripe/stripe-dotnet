@@ -45,8 +45,8 @@ namespace Stripe
 
         /// <summary>
         /// The email address to send this charge's receipt to. This will override the
-        /// previously-specified email address for this charge, if one was set. Receipts will not be
-        /// sent in test mode.
+        /// previously-specified email address for this charge, if one was set. Receipts are only
+        /// sent for payments in live mode.
         /// </summary>
         [JsonProperty("receipt_email")]
         [STJS.JsonPropertyName("receipt_email")]

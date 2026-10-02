@@ -25216,6 +25216,68 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2MoneyManagementFundingSessionPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/funding_sessions",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.money_management.funding_session\",\"account\":\"account\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"financial_address_options\":{},\"financial_address_types\":[\"bank_account\"],\"id\":\"obj_123\",\"livemode\":true,\"return_url\":\"return_url\",\"url\":\"url\"}");
+            var options = new Stripe.V2.MoneyManagement.FundingSessionCreateOptions
+            {
+                Account = "account",
+                FinancialAccount = "financial_account",
+                FinancialAddressOptions = new Stripe.V2.MoneyManagement.FundingSessionCreateFinancialAddressOptionsOptions
+                {
+                    CryptoWallet = new Stripe.V2.MoneyManagement.FundingSessionCreateFinancialAddressOptionsCryptoWalletOptions
+                    {
+                        SettlementCurrency = "usd",
+                    },
+                },
+                FinancialAddressTypes = new List<string> { "bank_account" },
+                ReturnUrl = "return_url",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.FundingSessions;
+            Stripe.V2.MoneyManagement.FundingSession fundingSession = service
+                .Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/funding_sessions");
+        }
+
+        [Fact]
+        public async Task TestV2MoneyManagementFundingSessionPostAsync()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/funding_sessions",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.money_management.funding_session\",\"account\":\"account\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"financial_address_options\":{},\"financial_address_types\":[\"bank_account\"],\"id\":\"obj_123\",\"livemode\":true,\"return_url\":\"return_url\",\"url\":\"url\"}");
+            var options = new Stripe.V2.MoneyManagement.FundingSessionCreateOptions
+            {
+                Account = "account",
+                FinancialAccount = "financial_account",
+                FinancialAddressOptions = new Stripe.V2.MoneyManagement.FundingSessionCreateFinancialAddressOptionsOptions
+                {
+                    CryptoWallet = new Stripe.V2.MoneyManagement.FundingSessionCreateFinancialAddressOptionsCryptoWalletOptions
+                    {
+                        SettlementCurrency = "usd",
+                    },
+                },
+                FinancialAddressTypes = new List<string> { "bank_account" },
+                ReturnUrl = "return_url",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.FundingSessions;
+            Stripe.V2.MoneyManagement.FundingSession fundingSession = await service
+                .CreateAsync(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/funding_sessions");
+        }
+
+        [Fact]
         public void TestV2MoneyManagementInboundTransferGet()
         {
             this.StubRequest(

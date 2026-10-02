@@ -305,9 +305,7 @@ namespace Stripe
         public PaymentIntentPaymentDetailsOptions PaymentDetails { get; set; }
 
         /// <summary>
-        /// ID of the payment method (a PaymentMethod, Card, or <a
-        /// href="https://docs.stripe.com/payments/payment-methods#compatibility">compatible
-        /// Source</a> object) to attach to this PaymentIntent.
+        /// The ID of a PaymentMethod to attach to this PaymentIntent.
         ///
         /// If you don't provide the <c>payment_method</c> parameter or the <c>source</c> parameter
         /// with <c>confirm=true</c>, <c>source</c> automatically populates with

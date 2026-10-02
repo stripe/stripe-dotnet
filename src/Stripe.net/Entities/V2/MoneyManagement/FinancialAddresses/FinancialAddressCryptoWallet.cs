@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.MoneyManagement
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -8,29 +9,30 @@ namespace Stripe.V2.MoneyManagement
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FinancialAddressCryptoWallet : StripeEntity<FinancialAddressCryptoWallet>
     {
-        /// <summary>
-        /// The blockchain wallet address.
-        /// </summary>
         [JsonProperty("address")]
         [STJS.JsonPropertyName("address")]
         public string Address { get; set; }
 
-        /// <summary>
-        /// An optional memo or tag required by some networks to identify the recipient.
-        /// </summary>
         [JsonProperty("memo")]
         [STJS.JsonPropertyName("memo")]
         public string Memo { get; set; }
 
         /// <summary>
-        /// Open Enum. The blockchain network of the crypto wallet.
-        /// One of: <c>arbitrum</c>, <c>avalanche_c_chain</c>, <c>base</c>, <c>ethereum</c>,
-        /// <c>optimism</c>, <c>polygon</c>, <c>solana</c>, <c>stellar</c>, or <c>tempo</c>.
+        /// One of: <c>arbitrum</c>, <c>avalanche_c_chain</c>, <c>base</c>, <c>bitcoin</c>,
+        /// <c>ethereum</c>, <c>optimism</c>, <c>polygon</c>, <c>solana</c>, <c>stellar</c>, or
+        /// <c>tempo</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]
         public string Network { get; set; }
+
+        /// <summary>
+        /// A map of supported network names to their details, including supported token currencies.
+        /// </summary>
+        [JsonProperty("supported_network_details")]
+        [STJS.JsonPropertyName("supported_network_details")]
+        public Dictionary<string, FinancialAddressCryptoWalletSupportedNetworkDetails> SupportedNetworkDetails { get; set; }
     }
 }

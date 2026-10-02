@@ -232,10 +232,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// ID of the payment method (a PaymentMethod, Card, or <a
-        /// href="https://docs.stripe.com/payments/payment-methods/transitioning#compatibility">compatible
-        /// Source</a> object) to attach to this PaymentIntent. If the payment method is attached to
-        /// a Customer, it must match the <a
+        /// The ID of a PaymentMethod to attach to this PaymentIntent. If the payment method is
+        /// attached to a Customer, it must match the <a
         /// href="https://docs.stripe.com/api#create_payment_intent-customer">customer</a> that is
         /// set on this PaymentIntent.
         /// </summary>

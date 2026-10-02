@@ -203,6 +203,7 @@ namespace Stripe
                     Radar.IssuingAuthorizationEvaluation)
                 },
                 { "radar.payment_evaluation", typeof(Radar.PaymentEvaluation) },
+                { "radar.rule", typeof(Radar.Rule) },
                 { "radar.value_list", typeof(Radar.ValueList) },
                 { "radar.value_list_item", typeof(Radar.ValueListItem) },
                 { "refund", typeof(Refund) },
@@ -399,6 +400,10 @@ namespace Stripe
                 {
                     "v2.money_management.financial_address_generated_microdeposits", typeof(
                     V2.MoneyManagement.FinancialAddressGeneratedMicrodeposits)
+                },
+                {
+                    "v2.money_management.funding_session", typeof(
+                    V2.MoneyManagement.FundingSession)
                 },
                 {
                     "v2.money_management.inbound_transfer", typeof(
