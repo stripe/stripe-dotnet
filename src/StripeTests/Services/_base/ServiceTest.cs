@@ -199,6 +199,63 @@ namespace StripeTests
             Assert.Equal(4, ids.Count);
         }
 
+        [Fact]
+        public void V2SearchPagination_ReplaysPostAcrossEmptyPages()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/test_entities/search",
+                (HttpStatusCode)200,
+                @"{""object"":""v2.search_result"",""data"":[{""id"":""1""}],""next_page_url"":""/v2/test_entities/search?page=2"",""total_count"":2}",
+                string.Empty);
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/test_entities/search",
+                (HttpStatusCode)200,
+                @"{""object"":""v2.search_result"",""data"":[],""next_page_url"":""/v2/test_entities/search?page=3"",""total_count"":2}",
+                "?page=2");
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/test_entities/search",
+                (HttpStatusCode)200,
+                @"{""object"":""v2.search_result"",""data"":[{""id"":""2""}],""next_page_url"":null,""total_count"":2}",
+                "?page=3");
+
+            var options = new BaseOptions();
+            options.AddExtraParam("query", "widgets");
+            options.AddExtraParam("future", "value");
+            var service = new TestService(this.StripeClient);
+            var ids = new List<string>();
+            foreach (var entity in service.SearchV2AutoPaging(options))
+            {
+                ids.Add(entity.Id);
+            }
+
+            Assert.Equal(new[] { "1", "2" }, ids);
+            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search");
+            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?page=2");
+            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?page=3");
+        }
+
+        [Fact]
+        public async Task V2SearchPaginationAsync_ReplaysPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/test_entities/search",
+                (HttpStatusCode)200,
+                @"{""object"":""v2.search_result"",""data"":[{""id"":""1""}],""next_page_url"":null,""total_count"":1}",
+                string.Empty);
+
+            var ids = new List<string>();
+            await foreach (var entity in new TestService(this.StripeClient).SearchV2AutoPagingAsync(new BaseOptions()))
+            {
+                ids.Add(entity.Id);
+            }
+
+            Assert.Equal(new[] { "1" }, ids);
+        }
+
         private class TestClient : IStripeClient
         {
             public string ApiBase { get; }
@@ -295,6 +352,16 @@ namespace StripeTests
             public virtual IAsyncEnumerable<TestEntity> ListV2AutoPagingAsync(BaseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
             {
                 return this.ListRequestAutoPagingAsync<TestEntity>($"/v2/test_entities", options, requestOptions, cancellationToken);
+            }
+
+            public virtual IEnumerable<TestEntity> SearchV2AutoPaging(BaseOptions options = null, RequestOptions requestOptions = null)
+            {
+                return this.V2SearchRequestAutoPaging<TestEntity>($"/v2/test_entities/search", options, requestOptions);
+            }
+
+            public virtual IAsyncEnumerable<TestEntity> SearchV2AutoPagingAsync(BaseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+            {
+                return this.V2SearchRequestAutoPagingAsync<TestEntity>($"/v2/test_entities/search", options, requestOptions, cancellationToken);
             }
         }
     }
