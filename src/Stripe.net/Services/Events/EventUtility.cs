@@ -16,7 +16,9 @@ namespace Stripe
             = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
 
         private static readonly char[] WebhookSecretWhitespace =
-            { ' ', '\t', '\r', '\n', '\f', '\v' };
+        {
+            ' ', '\t', '\r', '\n', '\f', '\v',
+        };
 
         public const int DefaultTimeTolerance = 300;
 
