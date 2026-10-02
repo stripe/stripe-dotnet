@@ -15,6 +15,9 @@ namespace Stripe
         internal static readonly UTF8Encoding SafeUTF8
             = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
 
+        private static readonly char[] WebhookSecretWhitespace =
+            { ' ', '\t', '\r', '\n', '\f', '\v' };
+
         public const int DefaultTimeTolerance = 300;
 
         public static bool IsCompatibleApiVersion(string sdkApiVersion, string eventApiVersion)
@@ -185,7 +188,7 @@ namespace Stripe
         {
             var signatureItems = ParseStripeSignature(stripeSignatureHeader);
 
-            if (string.IsNullOrEmpty(secret))
+            if (string.IsNullOrEmpty(secret) || secret.Trim(WebhookSecretWhitespace).Length == 0)
             {
                 throw new StripeException(
                     "No webhook secret value was provided. It should start with `whsec_`");
