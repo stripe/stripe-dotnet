@@ -207,21 +207,21 @@ namespace StripeTests
                 "/v2/test_entities/search",
                 (HttpStatusCode)200,
                 @"{""object"":""v2.search_result"",""data"":[{""id"":""1""}],""next_page_url"":""/v2/test_entities/search?page=2"",""total_count"":2}",
-                string.Empty);
+                "?limit=2");
             this.StubRequest(
                 HttpMethod.Post,
                 "/v2/test_entities/search",
                 (HttpStatusCode)200,
                 @"{""object"":""v2.search_result"",""data"":[],""next_page_url"":""/v2/test_entities/search?page=3"",""total_count"":2}",
-                "?page=2");
+                "?page=2&limit=2");
             this.StubRequest(
                 HttpMethod.Post,
                 "/v2/test_entities/search",
                 (HttpStatusCode)200,
                 @"{""object"":""v2.search_result"",""data"":[{""id"":""2""}],""next_page_url"":null,""total_count"":2}",
-                "?page=3");
+                "?page=3&limit=2");
 
-            var options = new BaseOptions();
+            var options = new TestV2SearchOptions { Limit = 2 };
             options.AddExtraParam("query", "widgets");
             options.AddExtraParam("future", "value");
             var service = new TestService(this.StripeClient);
@@ -232,9 +232,9 @@ namespace StripeTests
             }
 
             Assert.Equal(new[] { "1", "2" }, ids);
-            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search");
-            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?page=2");
-            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?page=3");
+            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?limit=2");
+            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?page=2&limit=2");
+            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?page=3&limit=2");
         }
 
         [Fact]
@@ -308,6 +308,13 @@ namespace StripeTests
                 this.LastOptions = options;
                 return Task.FromResult(Stream.Null);
             }
+        }
+
+        private class TestV2SearchOptions : BaseOptions
+        {
+            [JsonProperty("limit")]
+            [STJS.JsonPropertyName("limit")]
+            public long? Limit { get; set; }
         }
 
         private class TestEntity : StripeEntity, IHasId

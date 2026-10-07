@@ -268,6 +268,60 @@ namespace Stripe
         }
 
 #endif
+        private static (string Url, BaseOptions Options) SplitV2SearchLimit(
+            string url,
+            BaseOptions options)
+        {
+            var bodyOptions = (BaseOptions)options?.Clone() ?? new BaseOptions();
+            var limitProperty = bodyOptions.GetType().GetProperty("Limit");
+            var limit = limitProperty?.GetValue(bodyOptions);
+            if (limit == null)
+            {
+                return (url, bodyOptions);
+            }
+
+            if (!url.Contains("limit="))
+            {
+                var separator = url.Contains("?") ? "&" : "?";
+                url += separator + "limit=" + Uri.EscapeDataString(limit.ToString());
+            }
+
+            limitProperty.SetValue(bodyOptions, null);
+            return (url, bodyOptions);
+        }
+
+        internal T V2SearchRequest<T>(
+            string url,
+            BaseOptions options,
+            RequestOptions requestOptions)
+            where T : IStripeEntity
+        {
+            var request = SplitV2SearchLimit(url, options);
+            return this.Request<T>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                request.Url,
+                request.Options,
+                requestOptions);
+        }
+
+        internal Task<T> V2SearchRequestAsync<T>(
+            string url,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken = default)
+            where T : IStripeEntity
+        {
+            var request = SplitV2SearchLimit(url, options);
+            return this.RequestAsync<T>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                request.Url,
+                request.Options,
+                requestOptions,
+                cancellationToken);
+        }
+
         internal IEnumerable<T> V2SearchRequestAutoPaging<T>(
             string url,
             BaseOptions options,
@@ -275,9 +329,7 @@ namespace Stripe
             where T : IStripeEntity
         {
             var originalOptions = (BaseOptions)options?.Clone() ?? new BaseOptions();
-            var page = this.Request<Stripe.V2.StripeSearchResult<T>>(
-                BaseAddress.Api,
-                HttpMethod.Post,
+            var page = this.V2SearchRequest<Stripe.V2.StripeSearchResult<T>>(
                 url,
                 originalOptions,
                 requestOptions);
@@ -297,9 +349,7 @@ namespace Stripe
                     break;
                 }
 
-                page = this.Request<Stripe.V2.StripeSearchResult<T>>(
-                    BaseAddress.Api,
-                    HttpMethod.Post,
+                page = this.V2SearchRequest<Stripe.V2.StripeSearchResult<T>>(
                     page.NextPageUrl,
                     originalOptions,
                     requestOptions);
@@ -365,9 +415,7 @@ namespace Stripe
             where T : IStripeEntity
         {
             var originalOptions = (BaseOptions)options?.Clone() ?? new BaseOptions();
-            var page = await this.RequestAsync<Stripe.V2.StripeSearchResult<T>>(
-                BaseAddress.Api,
-                HttpMethod.Post,
+            var page = await this.V2SearchRequestAsync<Stripe.V2.StripeSearchResult<T>>(
                 url,
                 originalOptions,
                 requestOptions,
@@ -390,9 +438,7 @@ namespace Stripe
                     break;
                 }
 
-                page = await this.RequestAsync<Stripe.V2.StripeSearchResult<T>>(
-                    BaseAddress.Api,
-                    HttpMethod.Post,
+                page = await this.V2SearchRequestAsync<Stripe.V2.StripeSearchResult<T>>(
                     page.NextPageUrl,
                     originalOptions,
                     requestOptions,
