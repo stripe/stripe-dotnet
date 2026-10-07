@@ -206,13 +206,13 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/test_entities/search",
                 (HttpStatusCode)200,
-                @"{""object"":""v2.search_result"",""data"":[{""id"":""1""}],""next_page_url"":""/v2/test_entities/search?page=2"",""total_count"":2}",
+                @"{""object"":""v2.search_result"",""data"":[{""id"":""1""}],""next_page_url"":""/v2/test_entities/search?page=2&limit=2"",""total_count"":2}",
                 "?limit=2");
             this.StubRequest(
                 HttpMethod.Post,
                 "/v2/test_entities/search",
                 (HttpStatusCode)200,
-                @"{""object"":""v2.search_result"",""data"":[],""next_page_url"":""/v2/test_entities/search?page=3"",""total_count"":2}",
+                @"{""object"":""v2.search_result"",""data"":[],""next_page_url"":""/v2/test_entities/search?page=3&limit=2"",""total_count"":2}",
                 "?page=2&limit=2");
             this.StubRequest(
                 HttpMethod.Post,

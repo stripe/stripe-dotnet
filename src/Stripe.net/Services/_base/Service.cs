@@ -270,7 +270,8 @@ namespace Stripe
 #endif
         private static (string Url, BaseOptions Options) SplitV2SearchLimit(
             string url,
-            BaseOptions options)
+            BaseOptions options,
+            bool addToUrl)
         {
             var bodyOptions = (BaseOptions)options?.Clone() ?? new BaseOptions();
             var limitProperty = bodyOptions.GetType().GetProperty("Limit");
@@ -280,7 +281,7 @@ namespace Stripe
                 return (url, bodyOptions);
             }
 
-            if (!url.Contains("limit="))
+            if (addToUrl)
             {
                 var separator = url.Contains("?") ? "&" : "?";
                 url += separator + "limit=" + Uri.EscapeDataString(limit.ToString());
@@ -293,10 +294,11 @@ namespace Stripe
         internal T V2SearchRequest<T>(
             string url,
             BaseOptions options,
-            RequestOptions requestOptions)
+            RequestOptions requestOptions,
+            bool addLimitToUrl = true)
             where T : IStripeEntity
         {
-            var request = SplitV2SearchLimit(url, options);
+            var request = SplitV2SearchLimit(url, options, addLimitToUrl);
             return this.Request<T>(
                 BaseAddress.Api,
                 HttpMethod.Post,
@@ -309,10 +311,11 @@ namespace Stripe
             string url,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default,
+            bool addLimitToUrl = true)
             where T : IStripeEntity
         {
-            var request = SplitV2SearchLimit(url, options);
+            var request = SplitV2SearchLimit(url, options, addLimitToUrl);
             return this.RequestAsync<T>(
                 BaseAddress.Api,
                 HttpMethod.Post,
@@ -352,7 +355,8 @@ namespace Stripe
                 page = this.V2SearchRequest<Stripe.V2.StripeSearchResult<T>>(
                     page.NextPageUrl,
                     originalOptions,
-                    requestOptions);
+                    requestOptions,
+                    addLimitToUrl: false);
             }
         }
 
@@ -442,7 +446,8 @@ namespace Stripe
                     page.NextPageUrl,
                     originalOptions,
                     requestOptions,
-                    cancellationToken).ConfigureAwait(false);
+                    cancellationToken,
+                    addLimitToUrl: false).ConfigureAwait(false);
             }
         }
 
