@@ -268,6 +268,98 @@ namespace Stripe
         }
 
 #endif
+        private static (string Url, BaseOptions Options) SplitV2SearchLimit(
+            string url,
+            BaseOptions options,
+            bool addToUrl)
+        {
+            var bodyOptions = (BaseOptions)options?.Clone() ?? new BaseOptions();
+            var limitProperty = bodyOptions.GetType().GetProperty("Limit");
+            var limit = limitProperty?.GetValue(bodyOptions);
+            if (limit == null)
+            {
+                return (url, bodyOptions);
+            }
+
+            if (addToUrl)
+            {
+                var separator = url.Contains("?") ? "&" : "?";
+                url += separator + "limit=" + Uri.EscapeDataString(limit.ToString());
+            }
+
+            limitProperty.SetValue(bodyOptions, null);
+            return (url, bodyOptions);
+        }
+
+        internal T V2SearchRequest<T>(
+            string url,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            bool addLimitToUrl = true)
+            where T : IStripeEntity
+        {
+            var request = SplitV2SearchLimit(url, options, addLimitToUrl);
+            return this.Request<T>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                request.Url,
+                request.Options,
+                requestOptions);
+        }
+
+        internal Task<T> V2SearchRequestAsync<T>(
+            string url,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken = default,
+            bool addLimitToUrl = true)
+            where T : IStripeEntity
+        {
+            var request = SplitV2SearchLimit(url, options, addLimitToUrl);
+            return this.RequestAsync<T>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                request.Url,
+                request.Options,
+                requestOptions,
+                cancellationToken);
+        }
+
+        internal IEnumerable<T> V2SearchRequestAutoPaging<T>(
+            string url,
+            BaseOptions options,
+            RequestOptions requestOptions)
+            where T : IStripeEntity
+        {
+            var originalOptions = (BaseOptions)options?.Clone() ?? new BaseOptions();
+            var page = this.V2SearchRequest<Stripe.V2.StripeSearchResult<T>>(
+                url,
+                originalOptions,
+                requestOptions);
+
+            while (true)
+            {
+                foreach (var item in page)
+                {
+                    if (item != null)
+                    {
+                        yield return item;
+                    }
+                }
+
+                if (page.NextPageUrl == null)
+                {
+                    break;
+                }
+
+                page = this.V2SearchRequest<Stripe.V2.StripeSearchResult<T>>(
+                    page.NextPageUrl,
+                    originalOptions,
+                    requestOptions,
+                    addLimitToUrl: false);
+            }
+        }
+
         internal async IAsyncEnumerable<T> V2ListRequestAutoPagingAsync<T>(
             string url,
             BaseOptions options,
@@ -316,6 +408,46 @@ namespace Stripe
                     new BaseOptions(),
                     requestOptions,
                     cancellationToken).ConfigureAwait(false);
+            }
+        }
+
+        internal async IAsyncEnumerable<T> V2SearchRequestAutoPagingAsync<T>(
+            string url,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            [EnumeratorCancellation] CancellationToken cancellationToken = default)
+            where T : IStripeEntity
+        {
+            var originalOptions = (BaseOptions)options?.Clone() ?? new BaseOptions();
+            var page = await this.V2SearchRequestAsync<Stripe.V2.StripeSearchResult<T>>(
+                url,
+                originalOptions,
+                requestOptions,
+                cancellationToken).ConfigureAwait(false);
+
+            while (true)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                foreach (var item in page)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+                    if (item != null)
+                    {
+                        yield return item;
+                    }
+                }
+
+                if (page.NextPageUrl == null)
+                {
+                    break;
+                }
+
+                page = await this.V2SearchRequestAsync<Stripe.V2.StripeSearchResult<T>>(
+                    page.NextPageUrl,
+                    originalOptions,
+                    requestOptions,
+                    cancellationToken,
+                    addLimitToUrl: false).ConfigureAwait(false);
             }
         }
 
