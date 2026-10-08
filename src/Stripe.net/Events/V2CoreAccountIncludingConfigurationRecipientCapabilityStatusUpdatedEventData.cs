@@ -16,7 +16,7 @@ namespace Stripe.Events
         /// <c>bank_accounts.sepa_credit</c>, <c>bank_accounts.sepa_instant</c>,
         /// <c>bank_accounts.swift</c>, <c>bank_accounts.wire</c>, <c>cards</c>,
         /// <c>crypto_wallets_v2</c>, <c>paper_checks</c>, <c>stripe_balance.payouts</c>,
-        /// <c>stripe_balance.stripe_transfers</c>, or <c>stripe.transfers</c>.
+        /// <c>pix</c>, <c>stripe_balance.stripe_transfers</c>, or <c>stripe.transfers</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

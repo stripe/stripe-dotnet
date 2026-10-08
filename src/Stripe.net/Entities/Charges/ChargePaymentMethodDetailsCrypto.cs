@@ -42,8 +42,8 @@ namespace Stripe
 
         /// <summary>
         /// The token currency that the transaction was sent with.
-        /// One of: <c>phantom_cash</c>, <c>usdc</c>, <c>usdg</c>, <c>usdp</c>, <c>usdsui</c>, or
-        /// <c>usdt</c>.
+        /// One of: <c>ousd</c>, <c>phantom_cash</c>, <c>usdc</c>, <c>usdg</c>, <c>usdp</c>,
+        /// <c>usdsui</c>, or <c>usdt</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

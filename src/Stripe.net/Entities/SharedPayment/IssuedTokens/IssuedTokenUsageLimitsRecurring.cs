@@ -10,7 +10,7 @@ namespace Stripe.SharedPayment
     {
         /// <summary>
         /// The interval at which the shared payment token's amount usage restrictions reset.
-        /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
+        /// One of: <c>day</c>, <c>hour</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

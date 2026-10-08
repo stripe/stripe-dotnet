@@ -34,5 +34,12 @@ namespace Stripe
         [JsonProperty("setup_future_usage")]
         [STJS.JsonPropertyName("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
+
+        /// <summary>
+        /// A reference to the merchant subscription this payment corresponds to.
+        /// </summary>
+        [JsonProperty("subscription_reference")]
+        [STJS.JsonPropertyName("subscription_reference")]
+        public string SubscriptionReference { get; set; }
     }
 }

@@ -176,6 +176,14 @@ namespace Stripe.Issuing
         public AuthorizationFleet Fleet { get; set; }
 
         /// <summary>
+        /// Details about the flexible credential options for this authorization. This is only
+        /// populated when enrolled to flex credentials.
+        /// </summary>
+        [JsonProperty("flexible_credential")]
+        [STJS.JsonPropertyName("flexible_credential")]
+        public AuthorizationFlexibleCredential FlexibleCredential { get; set; }
+
+        /// <summary>
         /// Fraud challenges sent to the cardholder, if this authorization was declined for fraud
         /// risk reasons.
         /// </summary>

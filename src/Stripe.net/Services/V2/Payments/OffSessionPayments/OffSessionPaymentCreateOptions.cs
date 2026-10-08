@@ -42,7 +42,7 @@ namespace Stripe.V2.Payments
         public string Cadence { get; set; }
 
         /// <summary>
-        /// Details about the capture configuration for the OffSessionPayment.
+        /// Deprecated. Details about the capture configuration for the OffSessionPayment.
         /// </summary>
         [JsonProperty("capture")]
         [STJS.JsonPropertyName("capture")]

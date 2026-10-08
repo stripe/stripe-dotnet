@@ -1,0 +1,30 @@
+// File generated from our OpenAPI spec
+namespace Stripe.Checkout
+{
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
+    public class SessionPaymentSettingsTransferDataTransferAmountOptions : INestedOptions
+    {
+        /// <summary>
+        /// The amount, in the currency's smallest unit, that will be transferred to the destination
+        /// account when the initial payment succeeds.
+        /// </summary>
+        [JsonProperty("initial_amount")]
+        [STJS.JsonPropertyName("initial_amount")]
+        public long? InitialAmount { get; set; }
+
+        /// <summary>
+        /// A non-negative decimal between 0 and 100, with at most two decimal places. This
+        /// represents the percentage of each payment total that will be transferred to the
+        /// destination account.
+        /// </summary>
+        [JsonProperty("percentage_decimal")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonPropertyName("percentage_decimal")]
+        public decimal? PercentageDecimal { get; set; }
+    }
+}

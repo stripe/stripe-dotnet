@@ -17,11 +17,27 @@ namespace Stripe
         public string Fingerprint { get; set; }
 
         /// <summary>
+        /// ID of the <a href="https://docs.stripe.com/api/terminal/locations">location</a> that
+        /// this transaction's reader is assigned to.
+        /// </summary>
+        [JsonProperty("location")]
+        [STJS.JsonPropertyName("location")]
+        public string Location { get; set; }
+
+        /// <summary>
         /// Payer bank reference number for the payment.
         /// </summary>
         [JsonProperty("payment_reference")]
         [STJS.JsonPropertyName("payment_reference")]
         public string PaymentReference { get; set; }
+
+        /// <summary>
+        /// ID of the <a href="https://docs.stripe.com/api/terminal/readers">reader</a> this
+        /// transaction was made on.
+        /// </summary>
+        [JsonProperty("reader")]
+        [STJS.JsonPropertyName("reader")]
+        public string Reader { get; set; }
 
         /// <summary>
         /// The last four digits of the Swish account phone number.

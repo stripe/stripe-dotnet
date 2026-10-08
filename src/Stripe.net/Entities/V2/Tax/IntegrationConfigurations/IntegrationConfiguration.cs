@@ -28,6 +28,13 @@ namespace Stripe.V2.Tax
         public IntegrationConfigurationCheckoutSessions CheckoutSessions { get; set; }
 
         /// <summary>
+        /// Configuration for standalone Invoices automatic tax behavior.
+        /// </summary>
+        [JsonProperty("invoices")]
+        [STJS.JsonPropertyName("invoices")]
+        public IntegrationConfigurationInvoices Invoices { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>

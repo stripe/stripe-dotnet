@@ -10,7 +10,7 @@ namespace Stripe
     {
         /// <summary>
         /// The banking network used for this funding.
-        /// One of: <c>ach</c>, <c>domestic_wire_us</c>, or <c>swift</c>.
+        /// One of: <c>ach</c>, <c>domestic_wire_us</c>, <c>fednow</c>, <c>rtp</c>, or <c>swift</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

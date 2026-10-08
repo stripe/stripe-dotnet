@@ -37,6 +37,13 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationRecipientCapabilitiesPaperChecksOptions PaperChecks { get; set; }
 
         /// <summary>
+        /// Capabilities that enable OutboundPayments to a Pix account.
+        /// </summary>
+        [JsonProperty("pix")]
+        [STJS.JsonPropertyName("pix")]
+        public AccountCreateConfigurationRecipientCapabilitiesPixOptions Pix { get; set; }
+
+        /// <summary>
         /// Capabilities that enable the recipient to manage their Stripe Balance (/v1/balance).
         /// </summary>
         [JsonProperty("stripe_balance")]

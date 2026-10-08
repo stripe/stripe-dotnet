@@ -10,7 +10,9 @@ namespace Stripe.V2.Data
     public class QueryRunGetOptions : BaseOptions
     {
         /// <summary>
-        /// Any optional includes (see https://docs.stripe.com/api-includable-response-values).
+        /// Any optional includes (see <a
+        /// href="https://docs.stripe.com/api-includable-response-values">include-dependent response
+        /// values</a>).
         /// One of: <c>result.inline</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

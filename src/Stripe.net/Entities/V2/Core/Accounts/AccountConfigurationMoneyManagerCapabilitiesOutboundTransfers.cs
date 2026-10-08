@@ -29,5 +29,19 @@ namespace Stripe.V2.Core
         [JsonProperty("financial_accounts")]
         [STJS.JsonPropertyName("financial_accounts")]
         public AccountConfigurationMoneyManagerCapabilitiesOutboundTransfersFinancialAccounts FinancialAccounts { get; set; }
+
+        /// <summary>
+        /// Can send crypto converted into fiat to a bank account belonging to the same user.
+        /// </summary>
+        [JsonProperty("offramp")]
+        [STJS.JsonPropertyName("offramp")]
+        public AccountConfigurationMoneyManagerCapabilitiesOutboundTransfersOfframp Offramp { get; set; }
+
+        /// <summary>
+        /// Can send fiat converted into crypto to a crypto wallet belonging to the same user.
+        /// </summary>
+        [JsonProperty("onramp")]
+        [STJS.JsonPropertyName("onramp")]
+        public AccountConfigurationMoneyManagerCapabilitiesOutboundTransfersOnramp Onramp { get; set; }
     }
 }

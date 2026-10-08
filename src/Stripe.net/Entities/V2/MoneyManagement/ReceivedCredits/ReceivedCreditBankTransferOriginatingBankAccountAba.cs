@@ -23,6 +23,13 @@ namespace Stripe.V2.MoneyManagement
         public string BankName { get; set; }
 
         /// <summary>
+        /// The BIC/SWIFT code of the account that originated the transfer.
+        /// </summary>
+        [JsonProperty("bic")]
+        [STJS.JsonPropertyName("bic")]
+        public string Bic { get; set; }
+
+        /// <summary>
         /// The last 4 digits of the account number that originated the transfer.
         /// </summary>
         [JsonProperty("last4")]

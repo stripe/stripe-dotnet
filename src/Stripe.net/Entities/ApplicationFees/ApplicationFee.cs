@@ -6,6 +6,15 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+    /// <summary>
+    /// When you collect a transaction fee on top of a charge made for your user (using <a
+    /// href="https://docs.stripe.com/connect">Connect</a>), an <c>Application Fee</c> object is
+    /// created in your account. You can list, retrieve, and refund application fees.
+    ///
+    /// Related guide: <a
+    /// href="https://docs.stripe.com/connect/direct-charges#collect-fees">Collecting
+    /// application fees</a>.
+    /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ApplicationFee : StripeEntity<ApplicationFee>, IHasId, IHasObject, IBalanceTransactionSource
     {

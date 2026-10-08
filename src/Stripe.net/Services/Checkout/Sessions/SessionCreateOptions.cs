@@ -68,7 +68,7 @@ namespace Stripe.Checkout
         /// with no action required on your server.
         ///
         /// When set to <c>manual</c>, you must approve the customer's attempt to pay by calling <a
-        /// href="api/checkout/sessions/approve">approve</a> from your server.
+        /// href="https://stripe.com/api/checkout/sessions/approve">approve</a> from your server.
         /// One of: <c>auto</c>, or <c>manual</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
@@ -488,6 +488,13 @@ namespace Stripe.Checkout
         [JsonProperty("payment_method_options")]
         [STJS.JsonPropertyName("payment_method_options")]
         public SessionPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
+
+        /// <summary>
+        /// A subset of parameters to configure the payment for this Checkout Session.
+        /// </summary>
+        [JsonProperty("payment_settings")]
+        [STJS.JsonPropertyName("payment_settings")]
+        public SessionPaymentSettingsOptions PaymentSettings { get; set; }
 
         /// <summary>
         /// This property is used to set up permissions for various actions (for example, update) on

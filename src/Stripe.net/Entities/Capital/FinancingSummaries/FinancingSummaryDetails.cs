@@ -19,7 +19,7 @@ namespace Stripe.Capital
 
         /// <summary>
         /// The time at which the funds were paid out to the connected account's Stripe balance.
-        /// Given in milliseconds since unix epoch.
+        /// Given in seconds since unix epoch.
         /// </summary>
         [JsonProperty("advance_paid_out_at")]
         [STJS.JsonPropertyName("advance_paid_out_at")]

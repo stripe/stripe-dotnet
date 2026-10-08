@@ -880,6 +880,17 @@ namespace Stripe
         public string UsBankTransferPayments { get; set; }
 
         /// <summary>
+        /// The status of the Wero capability of the account, or whether the account can directly
+        /// process Wero payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("wero_payments")]
+        [STJS.JsonPropertyName("wero_payments")]
+        public string WeroPayments { get; set; }
+
+        /// <summary>
         /// The status of the Zip capability of the account, or whether the account can directly
         /// process Zip charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.

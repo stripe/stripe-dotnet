@@ -15,9 +15,6 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("aba")]
         public FinancialAddressBankAccountAba Aba { get; set; }
 
-        /// <summary>
-        /// CLABE bank account details (Mexico).
-        /// </summary>
         [JsonProperty("clabe")]
         [STJS.JsonPropertyName("clabe")]
         public FinancialAddressBankAccountClabe Clabe { get; set; }
@@ -29,9 +26,6 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("country")]
         public string Country { get; set; }
 
-        /// <summary>
-        /// CPA bank account details (Canada).
-        /// </summary>
         [JsonProperty("cpa")]
         [STJS.JsonPropertyName("cpa")]
         public FinancialAddressBankAccountCpa Cpa { get; set; }
@@ -59,7 +53,8 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. The type of bank account details.
-        /// One of: <c>aba</c>, <c>clabe</c>, <c>cpa</c>, <c>iban</c>, or <c>sort_code</c>.
+        /// One of: <c>aba</c>, <c>bre_b</c>, <c>clabe</c>, <c>cpa</c>, <c>iban</c>, <c>nip</c>,
+        /// <c>pix</c>, or <c>sort_code</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

@@ -9,6 +9,9 @@ namespace Stripe.V2.Provisioning
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ProviderServiceDetailPricing : StripeEntity<ProviderServiceDetailPricing>
     {
+        /// <summary>
+        /// Parent-service-dependent pricing details, set when <c>type</c> is <c>component</c>.
+        /// </summary>
         [JsonProperty("component")]
         [STJS.JsonPropertyName("component")]
         public ProviderServiceDetailPricingComponent Component { get; set; }
@@ -31,6 +34,7 @@ namespace Stripe.V2.Provisioning
         public List<ProviderServiceDetailPricingPaidPricing> PaidPricing { get; set; }
 
         /// <summary>
+        /// Pricing model for the service: free, paid, or dependent on a parent service.
         /// One of: <c>component</c>, <c>free</c>, or <c>paid</c>.
         /// </summary>
         [JsonProperty("type")]

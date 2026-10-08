@@ -9,6 +9,9 @@ namespace Stripe.V2.Provisioning
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ProviderServiceDetailPricingComponent : StripeEntity<ProviderServiceDetailPricingComponent>
     {
+        /// <summary>
+        /// Pricing options selected according to the resource's active parent services.
+        /// </summary>
         [JsonProperty("options")]
         [STJS.JsonPropertyName("options")]
         public List<ProviderServiceDetailPricingComponentOption> Options { get; set; }
