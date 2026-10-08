@@ -46,13 +46,13 @@ namespace Stripe.V2.Core
         /// <c>outbound_payments.paper_checks</c>, <c>outbound_transfers.bank_accounts</c>,
         /// <c>outbound_transfers.financial_accounts</c>, <c>oxxo_payments</c>, <c>p24_payments</c>,
         /// <c>paper_checks</c>, <c>payco_payments</c>, <c>paynow_payments</c>,
-        /// <c>pay_by_bank_payments</c>, <c>projects</c>, <c>promptpay_payments</c>,
+        /// <c>pay_by_bank_payments</c>, <c>pix</c>, <c>projects</c>, <c>promptpay_payments</c>,
         /// <c>received_credits.bank_accounts</c>, <c>received_debits.bank_accounts</c>,
         /// <c>revolut_pay_payments</c>, <c>samsung_pay_payments</c>, <c>satispay_payments</c>,
         /// <c>sepa_bank_transfer_payments</c>, <c>sepa_debit_payments</c>,
         /// <c>stripe_balance.payouts</c>, <c>stripe_balance.stripe_transfers</c>,
-        /// <c>swish_payments</c>, <c>twint_payments</c>, <c>us_bank_transfer_payments</c>, or
-        /// <c>zip_payments</c>.
+        /// <c>swish_payments</c>, <c>twint_payments</c>, <c>us_bank_transfer_payments</c>,
+        /// <c>vipps_payments</c>, or <c>zip_payments</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

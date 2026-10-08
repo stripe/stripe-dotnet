@@ -13,7 +13,9 @@ namespace Stripe.V2
         private V2.MoneyManagement.EarnedCreditService earnedCredits;
         private V2.MoneyManagement.FinancialAccountService financialAccounts;
         private V2.MoneyManagement.FinancialAddressService financialAddresses;
+        private V2.MoneyManagement.FundingSessionService fundingSessions;
         private V2.MoneyManagement.InboundTransferService inboundTransfers;
+        private V2.MoneyManagement.InboundTransferMandateService inboundTransferMandates;
         private V2.MoneyManagement.OutboundPaymentService outboundPayments;
         private V2.MoneyManagement.OutboundPaymentQuoteService outboundPaymentQuotes;
         private V2.MoneyManagement.OutboundSetupIntentService outboundSetupIntents;
@@ -57,7 +59,13 @@ namespace Stripe.V2
         public virtual V2.MoneyManagement.FinancialAddressService FinancialAddresses => this.financialAddresses ??= new V2.MoneyManagement.FinancialAddressService(
             this.Requestor);
 
+        public virtual V2.MoneyManagement.FundingSessionService FundingSessions => this.fundingSessions ??= new V2.MoneyManagement.FundingSessionService(
+            this.Requestor);
+
         public virtual V2.MoneyManagement.InboundTransferService InboundTransfers => this.inboundTransfers ??= new V2.MoneyManagement.InboundTransferService(
+            this.Requestor);
+
+        public virtual V2.MoneyManagement.InboundTransferMandateService InboundTransferMandates => this.inboundTransferMandates ??= new V2.MoneyManagement.InboundTransferMandateService(
             this.Requestor);
 
         public virtual V2.MoneyManagement.OutboundPaymentService OutboundPayments => this.outboundPayments ??= new V2.MoneyManagement.OutboundPaymentService(

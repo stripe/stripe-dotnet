@@ -21,8 +21,11 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Archive a PayoutMethod object. Archived objects cannot be used as payout methods and
-        /// will not appear in the payout method list.
+        /// Archive a <c>PayoutMethod</c>. Archiving prevents the Payout Method from being used for
+        /// outbound payments or transfers and omits it from normal list results. To restore list
+        /// visibility, use the <a
+        /// href="https://docs.stripe.com/api/v2/money-management/payout-methods/unarchive">unarchive
+        /// endpoint</a>.
         /// </summary>
         public virtual PayoutMethod Archive(string id, PayoutMethodArchiveOptions options = null, RequestOptions requestOptions = null)
         {
@@ -30,8 +33,11 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Archive a PayoutMethod object. Archived objects cannot be used as payout methods and
-        /// will not appear in the payout method list.
+        /// Archive a <c>PayoutMethod</c>. Archiving prevents the Payout Method from being used for
+        /// outbound payments or transfers and omits it from normal list results. To restore list
+        /// visibility, use the <a
+        /// href="https://docs.stripe.com/api/v2/money-management/payout-methods/unarchive">unarchive
+        /// endpoint</a>.
         /// </summary>
         public virtual Task<PayoutMethod> ArchiveAsync(string id, PayoutMethodArchiveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -39,11 +45,11 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Disable a PayoutMethod object. The payout method will not be available for use in
-        /// outbound money movement. To re-enable the payout method, create an OutboundSetupIntent
-        /// using <a
-        /// href="https://docs.stripe.com/api/v2/money-management/outbound-setup-intents/create"><c>POST
-        /// /v2/money_management/outbound_setup_intents</c></a>.
+        /// Disable a <c>PayoutMethod</c>. Disabling temporarily prevents the Payout Method from
+        /// being used for outbound payments or transfers while keeping it in normal list results.
+        /// To re-enable it, complete setup again by <a
+        /// href="https://docs.stripe.com/api/v2/money-management/outbound-setup-intents/create">creating
+        /// an Outbound Setup Intent</a>.
         /// </summary>
         public virtual PayoutMethod Disable(string id, PayoutMethodDisableOptions options = null, RequestOptions requestOptions = null)
         {
@@ -51,11 +57,11 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Disable a PayoutMethod object. The payout method will not be available for use in
-        /// outbound money movement. To re-enable the payout method, create an OutboundSetupIntent
-        /// using <a
-        /// href="https://docs.stripe.com/api/v2/money-management/outbound-setup-intents/create"><c>POST
-        /// /v2/money_management/outbound_setup_intents</c></a>.
+        /// Disable a <c>PayoutMethod</c>. Disabling temporarily prevents the Payout Method from
+        /// being used for outbound payments or transfers while keeping it in normal list results.
+        /// To re-enable it, complete setup again by <a
+        /// href="https://docs.stripe.com/api/v2/money-management/outbound-setup-intents/create">creating
+        /// an Outbound Setup Intent</a>.
         /// </summary>
         public virtual Task<PayoutMethod> DisableAsync(string id, PayoutMethodDisableOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -111,7 +117,9 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Unarchive an PayoutMethod object.
+        /// Unarchive a <c>PayoutMethod</c>. Unarchiving restores the Payout Method to normal list
+        /// results and clears only its archived state. It doesn't guarantee that the Payout Method
+        /// can be used.
         /// </summary>
         public virtual PayoutMethod Unarchive(string id, PayoutMethodUnarchiveOptions options = null, RequestOptions requestOptions = null)
         {
@@ -119,7 +127,9 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Unarchive an PayoutMethod object.
+        /// Unarchive a <c>PayoutMethod</c>. Unarchiving restores the Payout Method to normal list
+        /// results and clears only its archived state. It doesn't guarantee that the Payout Method
+        /// can be used.
         /// </summary>
         public virtual Task<PayoutMethod> UnarchiveAsync(string id, PayoutMethodUnarchiveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

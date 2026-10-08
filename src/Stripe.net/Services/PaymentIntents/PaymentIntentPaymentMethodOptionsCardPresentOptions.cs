@@ -6,8 +6,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class PaymentIntentPaymentMethodOptionsCardPresentOptions : INestedOptions
+    public class PaymentIntentPaymentMethodOptionsCardPresentOptions : INestedOptions, IHasSetTracking
     {
+        private PaymentIntentPaymentMethodOptionsCardPresentFleetOptions fleet;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Greek e-invoicing data required for card-present transactions processed by merchants
         /// subject to AADE's myDATA POS compliance mandate (Governor's Decision A.1155/2023).
@@ -54,6 +60,22 @@ namespace Stripe
         [JsonProperty("capture_method")]
         [STJS.JsonPropertyName("capture_method")]
         public string CaptureMethod { get; set; }
+
+        /// <summary>
+        /// Fleet prompting data for this payment.
+        /// </summary>
+        [JsonProperty("fleet", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("fleet")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsCardPresentFleetOptions Fleet
+        {
+            get => this.fleet;
+            set
+            {
+                this.fleet = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// Payment details for payment method specific funding transaction fields.
@@ -113,5 +135,10 @@ namespace Stripe
         [JsonProperty("routing")]
         [STJS.JsonPropertyName("routing")]
         public PaymentIntentPaymentMethodOptionsCardPresentRoutingOptions Routing { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

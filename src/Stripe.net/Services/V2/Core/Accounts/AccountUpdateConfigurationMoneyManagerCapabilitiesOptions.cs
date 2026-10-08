@@ -9,6 +9,13 @@ namespace Stripe.V2.Core
     public class AccountUpdateConfigurationMoneyManagerCapabilitiesOptions : INestedOptions
     {
         /// <summary>
+        /// Can send or receive business custodial storage-type funds on Stripe.
+        /// </summary>
+        [JsonProperty("business_custodial_storage")]
+        [STJS.JsonPropertyName("business_custodial_storage")]
+        public AccountUpdateConfigurationMoneyManagerCapabilitiesBusinessCustodialStorageOptions BusinessCustodialStorage { get; set; }
+
+        /// <summary>
         /// Can send or receive business storage-type funds on Stripe.
         /// </summary>
         [JsonProperty("business_storage")]

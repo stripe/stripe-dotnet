@@ -37,7 +37,7 @@ namespace Stripe.V2.Payments
         }
 
         /// <summary>
-        /// Captures an OffSessionPayment that has previously been created.
+        /// Deprecated. Captures an OffSessionPayment that has previously been created.
         /// </summary>
         public virtual OffSessionPayment Capture(string id, OffSessionPaymentCaptureOptions options = null, RequestOptions requestOptions = null)
         {
@@ -45,7 +45,7 @@ namespace Stripe.V2.Payments
         }
 
         /// <summary>
-        /// Captures an OffSessionPayment that has previously been created.
+        /// Deprecated. Captures an OffSessionPayment that has previously been created.
         /// </summary>
         public virtual Task<OffSessionPayment> CaptureAsync(string id, OffSessionPaymentCaptureOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

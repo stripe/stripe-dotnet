@@ -38,6 +38,20 @@ namespace Stripe.V2.Core
         public AccountUpdateConfigurationMoneyManagerCapabilitiesOutboundPaymentsFinancialAccountsOptions FinancialAccounts { get; set; }
 
         /// <summary>
+        /// Can send crypto converted into fiat to a bank account.
+        /// </summary>
+        [JsonProperty("offramp")]
+        [STJS.JsonPropertyName("offramp")]
+        public AccountUpdateConfigurationMoneyManagerCapabilitiesOutboundPaymentsOfframpOptions Offramp { get; set; }
+
+        /// <summary>
+        /// Can send fiat converted into crypto to a crypto wallet.
+        /// </summary>
+        [JsonProperty("onramp")]
+        [STJS.JsonPropertyName("onramp")]
+        public AccountUpdateConfigurationMoneyManagerCapabilitiesOutboundPaymentsOnrampOptions Onramp { get; set; }
+
+        /// <summary>
         /// Can send funds from a FinancialAccount to someone else via paper check.
         /// </summary>
         [JsonProperty("paper_checks")]

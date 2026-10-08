@@ -23,5 +23,19 @@ namespace Stripe.V2.Core
         [JsonProperty("crypto_wallets")]
         [STJS.JsonPropertyName("crypto_wallets")]
         public AccountCreateConfigurationMoneyManagerCapabilitiesReceivedCreditsCryptoWalletsOptions CryptoWallets { get; set; }
+
+        /// <summary>
+        /// Can receive fiat converted from crypto through a bank-account-like financial address.
+        /// </summary>
+        [JsonProperty("offramp")]
+        [STJS.JsonPropertyName("offramp")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesReceivedCreditsOfframpOptions Offramp { get; set; }
+
+        /// <summary>
+        /// Can receive crypto converted from fiat through a crypto-wallet-like financial address.
+        /// </summary>
+        [JsonProperty("onramp")]
+        [STJS.JsonPropertyName("onramp")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesReceivedCreditsOnrampOptions Onramp { get; set; }
     }
 }

@@ -2,6 +2,8 @@
 namespace Stripe.Events
 {
     using System.Threading.Tasks;
+    using Newtonsoft.Json;
+    using STJS = System.Text.Json.Serialization;
 
     /// <summary>
     /// Occurs X number of days before a subscription is scheduled to create an invoice that is
@@ -11,5 +13,11 @@ namespace Stripe.Events
     /// </summary>
     public class V1InvoiceUpcomingEvent : V2.Core.Event
     {
+        /// <summary>
+        /// Data for the v1.invoice.upcoming event.
+        /// </summary>
+        [JsonProperty("data")]
+        [STJS.JsonPropertyName("data")]
+        public V1InvoiceUpcomingEventData Data { get; set; }
     }
 }

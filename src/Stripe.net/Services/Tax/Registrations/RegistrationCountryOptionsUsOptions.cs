@@ -116,12 +116,12 @@ namespace Stripe.Tax
 
         /// <summary>
         /// Type of registration to be created in the US.
-        /// One of: <c>admissions_tax</c>, <c>attendance_tax</c>, <c>entertainment_tax</c>,
-        /// <c>gross_receipts_tax</c>, <c>home_rule_tax</c>, <c>hospitality_tax</c>,
-        /// <c>local_amusement_tax</c>, <c>local_lease_tax</c>, <c>luxury_tax</c>,
-        /// <c>mass_transit_parking_tax</c>, <c>parking_tax</c>, <c>resort_tax</c>,
-        /// <c>state_communications_tax</c>, <c>state_retail_delivery_fee</c>,
-        /// <c>state_sales_tax</c>, or <c>tourism_tax</c>.
+        /// One of: <c>admissions_tax</c>, <c>attendance_tax</c>, <c>digital_excise_tax</c>,
+        /// <c>entertainment_tax</c>, <c>gross_receipts_tax</c>, <c>home_rule_tax</c>,
+        /// <c>hospitality_tax</c>, <c>local_amusement_tax</c>, <c>local_lease_tax</c>,
+        /// <c>luxury_tax</c>, <c>mass_transit_parking_tax</c>, <c>parking_tax</c>,
+        /// <c>resort_tax</c>, <c>state_communications_tax</c>, <c>state_retail_delivery_fee</c>,
+        /// <c>state_sales_tax</c>, <c>tourism_tax</c>, or <c>utility_users_tax</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

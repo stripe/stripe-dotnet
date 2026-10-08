@@ -203,6 +203,7 @@ namespace Stripe
                     Radar.IssuingAuthorizationEvaluation)
                 },
                 { "radar.payment_evaluation", typeof(Radar.PaymentEvaluation) },
+                { "radar.rule", typeof(Radar.Rule) },
                 { "radar.value_list", typeof(Radar.ValueList) },
                 { "radar.value_list_item", typeof(Radar.ValueListItem) },
                 { "refund", typeof(Refund) },
@@ -401,8 +402,16 @@ namespace Stripe
                     V2.MoneyManagement.FinancialAddressGeneratedMicrodeposits)
                 },
                 {
+                    "v2.money_management.funding_session", typeof(
+                    V2.MoneyManagement.FundingSession)
+                },
+                {
                     "v2.money_management.inbound_transfer", typeof(
                     V2.MoneyManagement.InboundTransfer)
+                },
+                {
+                    "v2.money_management.inbound_transfer_mandate", typeof(
+                    V2.MoneyManagement.InboundTransferMandate)
                 },
                 {
                     "v2.money_management.outbound_payment", typeof(
@@ -1647,6 +1656,26 @@ namespace Stripe
                 {
                     "v2.money_management.inbound_transfer.bank_debit_succeeded", typeof(
                     Events.V2MoneyManagementInboundTransferBankDebitSucceededEvent)
+                },
+                {
+                    "v2.money_management.inbound_transfer_mandate.activated", typeof(
+                    Events.V2MoneyManagementInboundTransferMandateActivatedEvent)
+                },
+                {
+                    "v2.money_management.inbound_transfer_mandate.created", typeof(
+                    Events.V2MoneyManagementInboundTransferMandateCreatedEvent)
+                },
+                {
+                    "v2.money_management.inbound_transfer_mandate.expired", typeof(
+                    Events.V2MoneyManagementInboundTransferMandateExpiredEvent)
+                },
+                {
+                    "v2.money_management.inbound_transfer_mandate.refused", typeof(
+                    Events.V2MoneyManagementInboundTransferMandateRefusedEvent)
+                },
+                {
+                    "v2.money_management.inbound_transfer_mandate.revoked", typeof(
+                    Events.V2MoneyManagementInboundTransferMandateRevokedEvent)
                 },
                 {
                     "v2.money_management.outbound_payment.canceled", typeof(
@@ -3316,6 +3345,26 @@ namespace Stripe
                 {
                     "v2.money_management.inbound_transfer.bank_debit_succeeded", typeof(
                     Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification)
+                },
+                {
+                    "v2.money_management.inbound_transfer_mandate.activated", typeof(
+                    Events.V2MoneyManagementInboundTransferMandateActivatedEventNotification)
+                },
+                {
+                    "v2.money_management.inbound_transfer_mandate.created", typeof(
+                    Events.V2MoneyManagementInboundTransferMandateCreatedEventNotification)
+                },
+                {
+                    "v2.money_management.inbound_transfer_mandate.expired", typeof(
+                    Events.V2MoneyManagementInboundTransferMandateExpiredEventNotification)
+                },
+                {
+                    "v2.money_management.inbound_transfer_mandate.refused", typeof(
+                    Events.V2MoneyManagementInboundTransferMandateRefusedEventNotification)
+                },
+                {
+                    "v2.money_management.inbound_transfer_mandate.revoked", typeof(
+                    Events.V2MoneyManagementInboundTransferMandateRevokedEventNotification)
                 },
                 {
                     "v2.money_management.outbound_payment.canceled", typeof(

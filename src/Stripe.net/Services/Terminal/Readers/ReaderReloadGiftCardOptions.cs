@@ -35,6 +35,13 @@ namespace Stripe.Terminal
         public string Currency { get; set; }
 
         /// <summary>
+        /// Enables cancel button on gift card operation screens.
+        /// </summary>
+        [JsonProperty("enable_customer_cancellation")]
+        [STJS.JsonPropertyName("enable_customer_cancellation")]
+        public bool? EnableCustomerCancellation { get; set; }
+
+        /// <summary>
         /// The Stripe account ID to process the gift card operation on behalf of.
         /// </summary>
         [JsonProperty("on_behalf_of")]

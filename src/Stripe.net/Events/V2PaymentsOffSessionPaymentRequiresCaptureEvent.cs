@@ -6,7 +6,7 @@ namespace Stripe.Events
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// Sent when the off-session payment becomes available for capture.
+    /// Deprecated. Sent when the off-session payment becomes available for capture.
     /// </summary>
     public class V2PaymentsOffSessionPaymentRequiresCaptureEvent : V2.Core.Event
     {

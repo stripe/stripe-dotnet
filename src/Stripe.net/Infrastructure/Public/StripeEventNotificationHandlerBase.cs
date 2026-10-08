@@ -420,6 +420,11 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitQueuedEventNotification>> v2MoneyManagementInboundTransferBankDebitQueued;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitReturnedEventNotification>> v2MoneyManagementInboundTransferBankDebitReturned;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification>> v2MoneyManagementInboundTransferBankDebitSucceeded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferMandateActivatedEventNotification>> v2MoneyManagementInboundTransferMandateActivated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferMandateCreatedEventNotification>> v2MoneyManagementInboundTransferMandateCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferMandateExpiredEventNotification>> v2MoneyManagementInboundTransferMandateExpired;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferMandateRefusedEventNotification>> v2MoneyManagementInboundTransferMandateRefused;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferMandateRevokedEventNotification>> v2MoneyManagementInboundTransferMandateRevoked;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentCanceledEventNotification>> v2MoneyManagementOutboundPaymentCanceled;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentCreatedEventNotification>> v2MoneyManagementOutboundPaymentCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentFailedEventNotification>> v2MoneyManagementOutboundPaymentFailed;
@@ -2900,6 +2905,36 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferMandateActivatedEventNotification>> V2MoneyManagementInboundTransferMandateActivated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferMandateActivated, value, "v2.money_management.inbound_transfer_mandate.activated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferMandateCreatedEventNotification>> V2MoneyManagementInboundTransferMandateCreated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferMandateCreated, value, "v2.money_management.inbound_transfer_mandate.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferMandateExpiredEventNotification>> V2MoneyManagementInboundTransferMandateExpired
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferMandateExpired, value, "v2.money_management.inbound_transfer_mandate.expired"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferMandateRefusedEventNotification>> V2MoneyManagementInboundTransferMandateRefused
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferMandateRefused, value, "v2.money_management.inbound_transfer_mandate.refused"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferMandateRevokedEventNotification>> V2MoneyManagementInboundTransferMandateRevoked
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferMandateRevoked, value, "v2.money_management.inbound_transfer_mandate.revoked"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentCanceledEventNotification>> V2MoneyManagementOutboundPaymentCanceled
         {
             add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentCanceled, value, "v2.money_management.outbound_payment.canceled"); }
@@ -5094,6 +5129,26 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification)
                 {
                     this.v2MoneyManagementInboundTransferBankDebitSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferMandateActivatedEventNotification)
+                {
+                    this.v2MoneyManagementInboundTransferMandateActivated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferMandateActivatedEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferMandateActivatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferMandateCreatedEventNotification)
+                {
+                    this.v2MoneyManagementInboundTransferMandateCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferMandateCreatedEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferMandateCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferMandateExpiredEventNotification)
+                {
+                    this.v2MoneyManagementInboundTransferMandateExpired.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferMandateExpiredEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferMandateExpiredEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferMandateRefusedEventNotification)
+                {
+                    this.v2MoneyManagementInboundTransferMandateRefused.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferMandateRefusedEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferMandateRefusedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferMandateRevokedEventNotification)
+                {
+                    this.v2MoneyManagementInboundTransferMandateRevoked.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferMandateRevokedEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferMandateRevokedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundPaymentCanceledEventNotification)
                 {

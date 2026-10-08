@@ -21,8 +21,8 @@ namespace Stripe.V2.Signals
         }
 
         /// <summary>
-        /// Retrieves an AccountSignal by its ID for up to 90 days after creation. Signals more than
-        /// 90 days old are inaccessible.
+        /// Retrieves an AccountSignal by its ID when its created timestamp is no more than 90 days
+        /// old.
         /// </summary>
         public virtual AccountSignal Get(string id, AccountSignalGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -30,8 +30,8 @@ namespace Stripe.V2.Signals
         }
 
         /// <summary>
-        /// Retrieves an AccountSignal by its ID for up to 90 days after creation. Signals more than
-        /// 90 days old are inaccessible.
+        /// Retrieves an AccountSignal by its ID when its created timestamp is no more than 90 days
+        /// old.
         /// </summary>
         public virtual Task<AccountSignal> GetAsync(string id, AccountSignalGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -39,8 +39,9 @@ namespace Stripe.V2.Signals
         }
 
         /// <summary>
-        /// Lists AccountSignals for a given account or customer. Signals more than 90 days old are
-        /// omitted. Returns only the latest AccountSignal for each requested signal type.
+        /// Lists AccountSignals whose created timestamps are no more than 90 days old for a given
+        /// account or customer. Returns only the latest AccountSignal for each requested signal
+        /// type.
         /// </summary>
         public virtual V2.StripeList<AccountSignal> List(AccountSignalListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -48,8 +49,9 @@ namespace Stripe.V2.Signals
         }
 
         /// <summary>
-        /// Lists AccountSignals for a given account or customer. Signals more than 90 days old are
-        /// omitted. Returns only the latest AccountSignal for each requested signal type.
+        /// Lists AccountSignals whose created timestamps are no more than 90 days old for a given
+        /// account or customer. Returns only the latest AccountSignal for each requested signal
+        /// type.
         /// </summary>
         public virtual Task<V2.StripeList<AccountSignal>> ListAsync(AccountSignalListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -57,8 +59,9 @@ namespace Stripe.V2.Signals
         }
 
         /// <summary>
-        /// Lists AccountSignals for a given account or customer. Signals more than 90 days old are
-        /// omitted. Returns only the latest AccountSignal for each requested signal type.
+        /// Lists AccountSignals whose created timestamps are no more than 90 days old for a given
+        /// account or customer. Returns only the latest AccountSignal for each requested signal
+        /// type.
         /// </summary>
         public virtual IEnumerable<AccountSignal> ListAutoPaging(AccountSignalListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -66,8 +69,9 @@ namespace Stripe.V2.Signals
         }
 
         /// <summary>
-        /// Lists AccountSignals for a given account or customer. Signals more than 90 days old are
-        /// omitted. Returns only the latest AccountSignal for each requested signal type.
+        /// Lists AccountSignals whose created timestamps are no more than 90 days old for a given
+        /// account or customer. Returns only the latest AccountSignal for each requested signal
+        /// type.
         /// </summary>
         public virtual IAsyncEnumerable<AccountSignal> ListAutoPagingAsync(AccountSignalListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

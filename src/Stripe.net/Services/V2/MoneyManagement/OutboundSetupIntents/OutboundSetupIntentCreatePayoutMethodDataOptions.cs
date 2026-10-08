@@ -37,9 +37,16 @@ namespace Stripe.V2.MoneyManagement
         public OutboundSetupIntentCreatePayoutMethodDataCryptoWalletOptions CryptoWallet { get; set; }
 
         /// <summary>
+        /// The type specific details of the PIX payout method.
+        /// </summary>
+        [JsonProperty("pix")]
+        [STJS.JsonPropertyName("pix")]
+        public OutboundSetupIntentCreatePayoutMethodDataPixOptions Pix { get; set; }
+
+        /// <summary>
         /// Open Enum. The type of payout method to be created.
-        /// One of: <c>apple_pay</c>, <c>bank_account</c>, <c>card</c>, <c>crypto_wallet</c>, or
-        /// <c>network_business_profile_wallet</c>.
+        /// One of: <c>apple_pay</c>, <c>bank_account</c>, <c>card</c>, <c>crypto_wallet</c>,
+        /// <c>network_business_profile_wallet</c>, or <c>pix</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

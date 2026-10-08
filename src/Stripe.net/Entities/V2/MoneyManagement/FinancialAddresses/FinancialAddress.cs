@@ -29,6 +29,13 @@ namespace Stripe.V2.MoneyManagement
         public string Object { get; set; }
 
         /// <summary>
+        /// The ID of the Account that owns this FinancialAddress.
+        /// </summary>
+        [JsonProperty("account")]
+        [STJS.JsonPropertyName("account")]
+        public string Account { get; set; }
+
+        /// <summary>
         /// Bank account details for this FinancialAddress.
         /// </summary>
         [JsonProperty("bank_account")]
@@ -42,9 +49,6 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("created")]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
-        /// <summary>
-        /// Crypto wallet details for this FinancialAddress.
-        /// </summary>
         [JsonProperty("crypto_wallet")]
         [STJS.JsonPropertyName("crypto_wallet")]
         public FinancialAddressCryptoWallet CryptoWallet { get; set; }
@@ -64,9 +68,6 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
-        /// <summary>
-        /// Open Enum. The currency the FinancialAddress settles into the FinancialAccount.
-        /// </summary>
         [JsonProperty("settlement_currency")]
         [STJS.JsonPropertyName("settlement_currency")]
         public string SettlementCurrency { get; set; }

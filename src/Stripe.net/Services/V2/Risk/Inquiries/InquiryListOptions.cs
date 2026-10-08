@@ -8,11 +8,5 @@ namespace Stripe.V2.Risk
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InquiryListOptions : V2.ListOptions
     {
-        /// <summary>
-        /// The account to list inquiries for.
-        /// </summary>
-        [JsonProperty("account")]
-        [STJS.JsonPropertyName("account")]
-        public string Account { get; set; }
     }
 }

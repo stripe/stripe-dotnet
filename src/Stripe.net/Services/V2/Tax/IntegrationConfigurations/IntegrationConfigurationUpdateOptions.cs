@@ -14,5 +14,12 @@ namespace Stripe.V2.Tax
         [JsonProperty("checkout_sessions")]
         [STJS.JsonPropertyName("checkout_sessions")]
         public IntegrationConfigurationUpdateCheckoutSessionsOptions CheckoutSessions { get; set; }
+
+        /// <summary>
+        /// Configuration for standalone Invoices automatic tax behavior.
+        /// </summary>
+        [JsonProperty("invoices")]
+        [STJS.JsonPropertyName("invoices")]
+        public IntegrationConfigurationUpdateInvoicesOptions Invoices { get; set; }
     }
 }

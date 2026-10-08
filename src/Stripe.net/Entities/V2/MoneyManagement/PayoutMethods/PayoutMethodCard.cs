@@ -25,7 +25,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Uniquely identifies this particular card number. You can use this attribute to check
-        /// whether two recipients who’ve signed up with you are using the same card number, for
+        /// whether two recipients who've signed up with you are using the same card number, for
         /// example.
         /// </summary>
         [JsonProperty("fingerprint")]

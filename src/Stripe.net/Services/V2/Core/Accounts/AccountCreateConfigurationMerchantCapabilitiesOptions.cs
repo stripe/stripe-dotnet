@@ -338,6 +338,13 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationMerchantCapabilitiesUsBankTransferPaymentsOptions UsBankTransferPayments { get; set; }
 
         /// <summary>
+        /// Allow the merchant to process Vipps payments.
+        /// </summary>
+        [JsonProperty("vipps_payments")]
+        [STJS.JsonPropertyName("vipps_payments")]
+        public AccountCreateConfigurationMerchantCapabilitiesVippsPaymentsOptions VippsPayments { get; set; }
+
+        /// <summary>
         /// Allow the merchant to process Zip payments.
         /// </summary>
         [JsonProperty("zip_payments")]

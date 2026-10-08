@@ -50,7 +50,7 @@ namespace Stripe.V2.Core
         /// <c>ne_bank_account</c>, <c>ng_bank_account</c>, <c>ni_bank_account</c>,
         /// <c>nl_bank_account</c>, <c>no_bank_account</c>, <c>nz_bank_account</c>,
         /// <c>om_bank_account</c>, <c>pa_bank_account</c>, <c>pe_bank_account</c>,
-        /// <c>ph_bank_account</c>, <c>pk_bank_account</c>, <c>pl_bank_account</c>,
+        /// <c>ph_bank_account</c>, <c>pix</c>, <c>pk_bank_account</c>, <c>pl_bank_account</c>,
         /// <c>pt_bank_account</c>, <c>py_bank_account</c>, <c>qa_bank_account</c>,
         /// <c>ro_bank_account</c>, <c>rs_bank_account</c>, <c>rw_bank_account</c>,
         /// <c>sa_bank_account</c>, <c>se_bank_account</c>, <c>sg_bank_account</c>,

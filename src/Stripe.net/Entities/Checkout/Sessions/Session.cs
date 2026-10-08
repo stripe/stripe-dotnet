@@ -93,7 +93,7 @@ namespace Stripe.Checkout
         /// with no action required on your server.
         ///
         /// When set to <c>manual</c>, you must approve the customer's attempt to pay by calling <a
-        /// href="api/checkout/sessions/approve">approve</a> from your server.
+        /// href="https://stripe.com/api/checkout/sessions/approve">approve</a> from your server.
         /// One of: <c>auto</c>, or <c>manual</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
@@ -462,6 +462,15 @@ namespace Stripe.Checkout
         public SessionNameCollection NameCollection { get; set; }
 
         /// <summary>
+        /// The account on behalf of which to charge. See the <a
+        /// href="https://support.stripe.com/questions/sending-invoices-on-behalf-of-connected-accounts">Connect
+        /// documentation</a> for details.
+        /// </summary>
+        [JsonProperty("on_behalf_of")]
+        [STJS.JsonPropertyName("on_behalf_of")]
+        public string OnBehalfOf { get; set; }
+
+        /// <summary>
         /// The optional items presented to the customer at checkout.
         /// </summary>
         [JsonProperty("optional_items")]
@@ -633,6 +642,10 @@ namespace Stripe.Checkout
         [JsonProperty("payment_reservation")]
         [STJS.JsonPropertyName("payment_reservation")]
         public string PaymentReservation { get; set; }
+
+        [JsonProperty("payment_settings")]
+        [STJS.JsonPropertyName("payment_settings")]
+        public SessionPaymentSettings PaymentSettings { get; set; }
 
         /// <summary>
         /// The payment status of the Checkout Session, one of <c>paid</c>, <c>unpaid</c>, or

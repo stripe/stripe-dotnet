@@ -1,0 +1,53 @@
+// File generated from our OpenAPI spec
+namespace Stripe.V2.Core
+{
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
+    public class AccountCreateConfigurationMoneyManagerCapabilitiesOutboundPaymentsOfframpBankAccountsOptions : INestedOptions
+    {
+        /// <summary>
+        /// Can send crypto converted into BRL to a bank account.
+        /// </summary>
+        [JsonProperty("brl")]
+        [STJS.JsonPropertyName("brl")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesOutboundPaymentsOfframpBankAccountsBrlOptions Brl { get; set; }
+
+        /// <summary>
+        /// Can send crypto converted into COP to a bank account.
+        /// </summary>
+        [JsonProperty("cop")]
+        [STJS.JsonPropertyName("cop")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesOutboundPaymentsOfframpBankAccountsCopOptions Cop { get; set; }
+
+        /// <summary>
+        /// Can send crypto converted into EUR to a bank account.
+        /// </summary>
+        [JsonProperty("eur")]
+        [STJS.JsonPropertyName("eur")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesOutboundPaymentsOfframpBankAccountsEurOptions Eur { get; set; }
+
+        /// <summary>
+        /// Can send crypto converted into GBP to a bank account.
+        /// </summary>
+        [JsonProperty("gbp")]
+        [STJS.JsonPropertyName("gbp")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesOutboundPaymentsOfframpBankAccountsGbpOptions Gbp { get; set; }
+
+        /// <summary>
+        /// Can send crypto converted into MXN to a bank account.
+        /// </summary>
+        [JsonProperty("mxn")]
+        [STJS.JsonPropertyName("mxn")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesOutboundPaymentsOfframpBankAccountsMxnOptions Mxn { get; set; }
+
+        /// <summary>
+        /// Can send crypto converted into USD to a bank account.
+        /// </summary>
+        [JsonProperty("usd")]
+        [STJS.JsonPropertyName("usd")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesOutboundPaymentsOfframpBankAccountsUsdOptions Usd { get; set; }
+    }
+}

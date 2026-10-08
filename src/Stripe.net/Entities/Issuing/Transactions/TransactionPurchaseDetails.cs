@@ -31,6 +31,15 @@ namespace Stripe.Issuing
         public TransactionPurchaseDetailsFuel Fuel { get; set; }
 
         /// <summary>
+        /// Information about the list of fuel items that were purchased with this transaction.
+        /// Typically this information is received from the merchant after the authorization has
+        /// been approved and the fuel dispensed.
+        /// </summary>
+        [JsonProperty("fuels")]
+        [STJS.JsonPropertyName("fuels")]
+        public List<TransactionPurchaseDetailsFuels> Fuels { get; set; }
+
+        /// <summary>
         /// Information about lodging that was purchased with this transaction.
         /// </summary>
         [JsonProperty("lodging")]

@@ -26,7 +26,7 @@ namespace Stripe.Events
         /// <c>samsung_pay_payments</c>, <c>satispay_payments</c>,
         /// <c>sepa_bank_transfer_payments</c>, <c>sepa_debit_payments</c>, <c>sequra_payments</c>,
         /// <c>sunbit_payments</c>, <c>swish_payments</c>, <c>twint_payments</c>,
-        /// <c>us_bank_transfer_payments</c>, or <c>zip_payments</c>.
+        /// <c>us_bank_transfer_payments</c>, <c>vipps_payments</c>, or <c>zip_payments</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

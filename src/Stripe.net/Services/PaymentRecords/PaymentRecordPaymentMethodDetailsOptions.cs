@@ -40,12 +40,19 @@ namespace Stripe
         /// The type of the payment method details. An additional hash is included on the
         /// payment_method_details with a name matching this value. It contains additional
         /// information specific to the type.
-        /// One of: <c>card</c>, or <c>custom</c>.
+        /// One of: <c>card</c>, <c>custom</c>, or <c>us_bank_account</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// Details about the US bank account payment method.
+        /// </summary>
+        [JsonProperty("us_bank_account")]
+        [STJS.JsonPropertyName("us_bank_account")]
+        public PaymentRecordPaymentMethodDetailsUsBankAccountOptions UsBankAccount { get; set; }
     }
 }
