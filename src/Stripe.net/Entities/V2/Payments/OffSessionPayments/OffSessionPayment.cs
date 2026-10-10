@@ -38,13 +38,6 @@ namespace Stripe.V2.Payments
         public string Object { get; set; }
 
         /// <summary>
-        /// The amount available to be captured.
-        /// </summary>
-        [JsonProperty("amount_capturable")]
-        [STJS.JsonPropertyName("amount_capturable")]
-        public V2.Amount AmountCapturable { get; set; }
-
-        /// <summary>
         /// Provides industry-specific information about the amount.
         /// </summary>
         [JsonProperty("amount_details")]
@@ -81,13 +74,6 @@ namespace Stripe.V2.Payments
         [JsonProperty("cadence")]
         [STJS.JsonPropertyName("cadence")]
         public string Cadence { get; set; }
-
-        /// <summary>
-        /// Details about the capture configuration for the OffSessionPayment.
-        /// </summary>
-        [JsonProperty("capture")]
-        [STJS.JsonPropertyName("capture")]
-        public OffSessionPaymentCapture Capture { get; set; }
 
         /// <summary>
         /// Creation time of the OffSessionPayment. Represented as a RFC 3339 date &amp; time UTC

@@ -16,7 +16,7 @@ namespace Stripe.V2.Signals
         public string Account { get; set; }
 
         /// <summary>
-        /// The v1 customer ID of the account, for users not yet migrated to v2/accounts.
+        /// The v1 customer ID of the account, for users not yet migrated to v2 accounts.
         /// </summary>
         [JsonProperty("customer")]
         [STJS.JsonPropertyName("customer")]

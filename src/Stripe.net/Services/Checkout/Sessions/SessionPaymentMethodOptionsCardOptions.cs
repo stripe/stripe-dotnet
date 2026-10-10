@@ -23,6 +23,13 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsCardInstallmentsOptions Installments { get; set; }
 
         /// <summary>
+        /// Configuration options for setting up an eMandate for cards issued in India.
+        /// </summary>
+        [JsonProperty("mandate_options")]
+        [STJS.JsonPropertyName("mandate_options")]
+        public SessionPaymentMethodOptionsCardMandateOptionsOptions MandateOptions { get; set; }
+
+        /// <summary>
         /// Request ability to <a href="https://stripe.com/payments/extended-authorization">capture
         /// beyond the standard authorization validity window</a> for this CheckoutSession.
         /// One of: <c>if_available</c>, or <c>never</c>.

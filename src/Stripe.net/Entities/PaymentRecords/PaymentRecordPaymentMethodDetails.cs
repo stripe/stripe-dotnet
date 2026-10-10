@@ -86,6 +86,10 @@ namespace Stripe
         [STJS.JsonPropertyName("card_present")]
         public PaymentRecordPaymentMethodDetailsCardPresent CardPresent { get; set; }
 
+        [JsonProperty("carecredit")]
+        [STJS.JsonPropertyName("carecredit")]
+        public PaymentRecordPaymentMethodDetailsCarecredit Carecredit { get; set; }
+
         [JsonProperty("cashapp")]
         [STJS.JsonPropertyName("cashapp")]
         public PaymentRecordPaymentMethodDetailsCashapp Cashapp { get; set; }
@@ -114,6 +118,10 @@ namespace Stripe
         [JsonProperty("fpx")]
         [STJS.JsonPropertyName("fpx")]
         public PaymentRecordPaymentMethodDetailsFpx Fpx { get; set; }
+
+        [JsonProperty("getflex")]
+        [STJS.JsonPropertyName("getflex")]
+        public PaymentRecordPaymentMethodDetailsGetflex Getflex { get; set; }
 
         [JsonProperty("gift_card")]
         [STJS.JsonPropertyName("gift_card")]
@@ -269,6 +277,10 @@ namespace Stripe
         [JsonProperty("sequra")]
         [STJS.JsonPropertyName("sequra")]
         public PaymentRecordPaymentMethodDetailsSequra Sequra { get; set; }
+
+        [JsonProperty("sezzle")]
+        [STJS.JsonPropertyName("sezzle")]
+        public PaymentRecordPaymentMethodDetailsSezzle Sezzle { get; set; }
 
         [JsonProperty("shopeepay")]
         [STJS.JsonPropertyName("shopeepay")]

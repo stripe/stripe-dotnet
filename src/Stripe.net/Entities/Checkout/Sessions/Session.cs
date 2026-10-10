@@ -567,7 +567,7 @@ namespace Stripe.Checkout
         /// <summary>
         /// Configure whether a Checkout Session should collect a payment method for sessions with
         /// mode <c>payment</c>. Defaults to <c>always</c>.
-        /// One of: <c>always</c>, or <c>if_required</c>.
+        /// One of: <c>always</c>, <c>auto</c>, or <c>if_required</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

@@ -56,13 +56,13 @@ namespace Stripe
         /// can still update its <a href="https://stripe.com/metadata">metadata</a> and
         /// <c>cancellation_details</c>.</p>.
         ///
-        /// <p>Any pending invoice items that you’ve created are still charged at the end of the
-        /// period, unless manually <a
-        /// href="https://stripe.com/api/invoiceitems/delete">deleted</a>. If you’ve set the
-        /// subscription to cancel at the end of the period, any pending prorations are also left in
-        /// place and collected at the end of the period. But if the subscription is set to cancel
-        /// immediately, pending prorations are removed if <c>invoice_now</c> and <c>prorate</c> are
-        /// both set to false.</p>.
+        /// <p>Pending invoice items are included on a final invoice if you generate one. Otherwise,
+        /// they remain pending and can be billed on another invoice for the customer. To prevent
+        /// billing, manually <a href="https://stripe.com/api/invoiceitems/delete">delete</a> them.
+        /// If you’ve set the subscription to cancel at the end of the period, any pending
+        /// prorations are also left in place and collected at the end of the period. But if the
+        /// subscription is set to cancel immediately, pending prorations are removed if
+        /// <c>invoice_now</c> and <c>prorate</c> are both set to false.</p>.
         ///
         /// <p>By default, upon subscription cancellation, Stripe stops automatic collection of all
         /// finalized invoices for the customer. This is intended to prevent unexpected payment
@@ -82,13 +82,13 @@ namespace Stripe
         /// can still update its <a href="https://stripe.com/metadata">metadata</a> and
         /// <c>cancellation_details</c>.</p>.
         ///
-        /// <p>Any pending invoice items that you’ve created are still charged at the end of the
-        /// period, unless manually <a
-        /// href="https://stripe.com/api/invoiceitems/delete">deleted</a>. If you’ve set the
-        /// subscription to cancel at the end of the period, any pending prorations are also left in
-        /// place and collected at the end of the period. But if the subscription is set to cancel
-        /// immediately, pending prorations are removed if <c>invoice_now</c> and <c>prorate</c> are
-        /// both set to false.</p>.
+        /// <p>Pending invoice items are included on a final invoice if you generate one. Otherwise,
+        /// they remain pending and can be billed on another invoice for the customer. To prevent
+        /// billing, manually <a href="https://stripe.com/api/invoiceitems/delete">delete</a> them.
+        /// If you’ve set the subscription to cancel at the end of the period, any pending
+        /// prorations are also left in place and collected at the end of the period. But if the
+        /// subscription is set to cancel immediately, pending prorations are removed if
+        /// <c>invoice_now</c> and <c>prorate</c> are both set to false.</p>.
         ///
         /// <p>By default, upon subscription cancellation, Stripe stops automatic collection of all
         /// finalized invoices for the customer. This is intended to prevent unexpected payment

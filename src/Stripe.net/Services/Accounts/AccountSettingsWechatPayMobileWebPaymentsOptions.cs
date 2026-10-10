@@ -7,27 +7,26 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class AccountSettingsWechatPayPaymentsOptions : INestedOptions, IHasSetTracking
+    public class AccountSettingsWechatPayMobileWebPaymentsOptions : INestedOptions, IHasSetTracking
     {
-        private List<string> mobileWebDomains;
+        private List<string> domains;
 
         [JsonIgnore]
         [STJS.JsonIgnore]
         internal SetTracker SetTracker { get; } = new SetTracker();
 
         /// <summary>
-        /// The domains of the user's mobile web checkout pages for WeChat Pay payments. At most 4
-        /// domains are allowed.
+        /// The domains of the user's mobile web checkout pages for WeChat Pay payments.
         /// </summary>
-        [JsonProperty("mobile_web_domains", NullValueHandling = NullValueHandling.Ignore)]
-        [STJS.JsonPropertyName("mobile_web_domains")]
+        [JsonProperty("domains", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("domains")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
-        public List<string> MobileWebDomains
+        public List<string> Domains
         {
-            get => this.mobileWebDomains;
+            get => this.domains;
             set
             {
-                this.mobileWebDomains = value;
+                this.domains = value;
                 this.SetTracker.Track();
             }
         }

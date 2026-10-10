@@ -76,6 +76,10 @@ namespace Stripe
         [STJS.JsonPropertyName("card_present")]
         public ChargePaymentMethodDetailsCardPresent CardPresent { get; set; }
 
+        [JsonProperty("carecredit")]
+        [STJS.JsonPropertyName("carecredit")]
+        public ChargePaymentMethodDetailsCarecredit Carecredit { get; set; }
+
         [JsonProperty("cashapp")]
         [STJS.JsonPropertyName("cashapp")]
         public ChargePaymentMethodDetailsCashapp Cashapp { get; set; }
@@ -95,6 +99,10 @@ namespace Stripe
         [JsonProperty("fpx")]
         [STJS.JsonPropertyName("fpx")]
         public ChargePaymentMethodDetailsFpx Fpx { get; set; }
+
+        [JsonProperty("getflex")]
+        [STJS.JsonPropertyName("getflex")]
+        public ChargePaymentMethodDetailsGetflex Getflex { get; set; }
 
         [JsonProperty("gift_card")]
         [STJS.JsonPropertyName("gift_card")]
@@ -235,6 +243,10 @@ namespace Stripe
         [JsonProperty("sequra")]
         [STJS.JsonPropertyName("sequra")]
         public ChargePaymentMethodDetailsSequra Sequra { get; set; }
+
+        [JsonProperty("sezzle")]
+        [STJS.JsonPropertyName("sezzle")]
+        public ChargePaymentMethodDetailsSezzle Sezzle { get; set; }
 
         /// <summary>
         /// ID of the shared payment granted token used to make this payment.
