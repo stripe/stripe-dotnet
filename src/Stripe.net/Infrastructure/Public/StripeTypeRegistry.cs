@@ -1890,10 +1890,6 @@ namespace Stripe
                     Events.V2PaymentsOffSessionPaymentPausedEvent)
                 },
                 {
-                    "v2.payments.off_session_payment.requires_capture", typeof(
-                    Events.V2PaymentsOffSessionPaymentRequiresCaptureEvent)
-                },
-                {
                     "v2.payments.off_session_payment.resumed", typeof(
                     Events.V2PaymentsOffSessionPaymentResumedEvent)
                 },
@@ -3577,10 +3573,6 @@ namespace Stripe
                 {
                     "v2.payments.off_session_payment.paused", typeof(
                     Events.V2PaymentsOffSessionPaymentPausedEventNotification)
-                },
-                {
-                    "v2.payments.off_session_payment.requires_capture", typeof(
-                    Events.V2PaymentsOffSessionPaymentRequiresCaptureEventNotification)
                 },
                 {
                     "v2.payments.off_session_payment.resumed", typeof(

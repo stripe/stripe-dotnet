@@ -478,7 +478,6 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2PaymentsOffSessionPaymentCreatedEventNotification>> v2PaymentsOffSessionPaymentCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2PaymentsOffSessionPaymentFailedEventNotification>> v2PaymentsOffSessionPaymentFailed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2PaymentsOffSessionPaymentPausedEventNotification>> v2PaymentsOffSessionPaymentPaused;
-        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2PaymentsOffSessionPaymentRequiresCaptureEventNotification>> v2PaymentsOffSessionPaymentRequiresCapture;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2PaymentsOffSessionPaymentResumedEventNotification>> v2PaymentsOffSessionPaymentResumed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2PaymentsOffSessionPaymentSucceededEventNotification>> v2PaymentsOffSessionPaymentSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2PaymentsSettlementAllocationIntentCanceledEventNotification>> v2PaymentsSettlementAllocationIntentCanceled;
@@ -3253,12 +3252,6 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
-        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2PaymentsOffSessionPaymentRequiresCaptureEventNotification>> V2PaymentsOffSessionPaymentRequiresCapture
-        {
-            add { this.AddEventHandler(ref this.v2PaymentsOffSessionPaymentRequiresCapture, value, "v2.payments.off_session_payment.requires_capture"); }
-            remove { this.RemoveEventHandler(); }
-        }
-
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2PaymentsOffSessionPaymentResumedEventNotification>> V2PaymentsOffSessionPaymentResumed
         {
             add { this.AddEventHandler(ref this.v2PaymentsOffSessionPaymentResumed, value, "v2.payments.off_session_payment.resumed"); }
@@ -5361,10 +5354,6 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2PaymentsOffSessionPaymentPausedEventNotification)
                 {
                     this.v2PaymentsOffSessionPaymentPaused.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2PaymentsOffSessionPaymentPausedEventNotification>((Stripe.Events.V2PaymentsOffSessionPaymentPausedEventNotification)eventNotification, client));
-                }
-                else if (eventNotification is Stripe.Events.V2PaymentsOffSessionPaymentRequiresCaptureEventNotification)
-                {
-                    this.v2PaymentsOffSessionPaymentRequiresCapture.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2PaymentsOffSessionPaymentRequiresCaptureEventNotification>((Stripe.Events.V2PaymentsOffSessionPaymentRequiresCaptureEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2PaymentsOffSessionPaymentResumedEventNotification)
                 {

@@ -184,6 +184,9 @@ namespace Stripe
         /// href="https://docs.stripe.com/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
         /// or <a
         /// href="https://docs.stripe.com/api/customers/object#customer_object-default_source">default_source</a>.
+        /// For subscriptions created by Checkout Sessions with Managed Payments enabled, you can't
+        /// update this field directly through the API. Customers can update it through the Customer
+        /// Portal.
         /// </summary>
         [JsonProperty("default_payment_method")]
         [STJS.JsonPropertyName("default_payment_method")]

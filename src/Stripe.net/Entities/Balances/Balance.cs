@@ -82,6 +82,10 @@ namespace Stripe
         [STJS.JsonPropertyName("risk_reserved")]
         public BalanceRiskReserved RiskReserved { get; set; }
 
+        [JsonProperty("settlement_reserved")]
+        [STJS.JsonPropertyName("settlement_reserved")]
+        public BalanceSettlementReserved SettlementReserved { get; set; }
+
         [JsonProperty("transit_balances_total")]
         [STJS.JsonPropertyName("transit_balances_total")]
         public BalanceTransitBalancesTotal TransitBalancesTotal { get; set; }

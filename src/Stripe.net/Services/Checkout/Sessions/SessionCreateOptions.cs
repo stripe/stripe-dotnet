@@ -459,7 +459,7 @@ namespace Stripe.Checkout
         /// the guide on configuring <a
         /// href="https://docs.stripe.com/payments/checkout/free-trials">subscriptions with a free
         /// trial</a>.
-        /// One of: <c>always</c>, or <c>if_required</c>.
+        /// One of: <c>always</c>, <c>auto</c>, or <c>if_required</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

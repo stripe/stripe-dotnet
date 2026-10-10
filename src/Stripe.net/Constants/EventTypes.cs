@@ -1475,6 +1475,41 @@ namespace Stripe
         public const string TestHelpersTestClockReady = "test_helpers.test_clock.ready";
 
         /// <summary>
+        /// Occurs when a 3DS Authentication's status transitions to 'canceled'.
+        /// </summary>
+        public const string ThreeDSecureAuthenticationCanceled = "three_d_secure.authentication.canceled";
+
+        /// <summary>
+        /// Occurs when a 3DS Authentication's 'challenge_url' was loaded.
+        /// </summary>
+        public const string ThreeDSecureAuthenticationChallengeStarted = "three_d_secure.authentication.challenge_started";
+
+        /// <summary>
+        /// Occurs when a 3DS Authentication's status transitions to 'error'.
+        /// </summary>
+        public const string ThreeDSecureAuthenticationErrored = "three_d_secure.authentication.errored";
+
+        /// <summary>
+        /// Occurs when a 3DS Authentication's status transitions to 'failed'.
+        /// </summary>
+        public const string ThreeDSecureAuthenticationFailed = "three_d_secure.authentication.failed";
+
+        /// <summary>
+        /// Occurs when a 3DS Authentication's status transitions to 'requires_challenge'.
+        /// </summary>
+        public const string ThreeDSecureAuthenticationRequiresChallenge = "three_d_secure.authentication.requires_challenge";
+
+        /// <summary>
+        /// Occurs when a 3DS Authentication's status transitions to 'requires_submission'.
+        /// </summary>
+        public const string ThreeDSecureAuthenticationRequiresSubmission = "three_d_secure.authentication.requires_submission";
+
+        /// <summary>
+        /// Occurs when a 3DS Authentication's status transitions to 'succeeded'.
+        /// </summary>
+        public const string ThreeDSecureAuthenticationSucceeded = "three_d_secure.authentication.succeeded";
+
+        /// <summary>
         /// Occurs whenever a top-up is canceled.
         /// </summary>
         public const string TopupCanceled = "topup.canceled";
