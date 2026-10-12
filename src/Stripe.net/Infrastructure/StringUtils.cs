@@ -8,6 +8,14 @@ namespace Stripe.Infrastructure
     {
         private static Regex whitespaceRegex = new Regex(@"\s", RegexOptions.CultureInvariant);
 
+        /// <summary>Converts bytes to a hexadecimal string.</summary>
+        /// <param name="bytes">The bytes to convert.</param>
+        /// <returns>A lowercase hexadecimal string.</returns>
+        public static string ToHexString(byte[] bytes)
+        {
+            return BitConverter.ToString(bytes).Replace("-", string.Empty).ToLowerInvariant();
+        }
+
         /// <summary>Converts the string to snake case.</summary>
         /// <param name="str">The string to convert.</param>
         /// <returns>A string with the contents of the input string converted to snake_case.</returns>
