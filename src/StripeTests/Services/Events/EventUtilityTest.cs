@@ -226,6 +226,141 @@ namespace StripeTests
                 exception.Message);
         }
 
+        // A mismatched secret links to the supplied destination.
+        [Theory]
+        [InlineData("whsec_abcdefghijklmnopqrstuvwxyz", "whsec_****************************1q84", "we_123", "wxyz", "/we_123")]
+
+        // A missing destination uses the bare Dashboard URL.
+        [InlineData("whsec_abcdefghijklmnopqrstuvwxyz", "whsec_****************************1q84", null, "wxyz", "")]
+
+        // Reports signature mismatch as secret length does not match masked secret length.
+        [InlineData("short1q84", "whsec_****************************1q84", null, "1q84", "")]
+
+        // A same-length, mostly unmasked value still reveals only the last four secret characters.
+        [InlineData("whsec_abcdefghijklmnopqrstuvwxyz", "whsec_*bcdefghijklmnopqrstuvwxyZ", null, "wxyz", "")]
+
+        // A secret shorter than four characters is shown in full without a slicing error.
+        [InlineData("abc", "*", null, "abc", "")]
+        public void ValidateSignature_SecretMetadataExplainsMismatch(
+            string secret,
+            string maskedSecret,
+            string destination,
+            string secretSuffix,
+            string dashboardPath)
+        {
+            var metadata = $"secret={maskedSecret},payload=00000000,destination={destination}";
+
+            var header = this.GenerateTestHeader(debugMetadata: metadata);
+            var exception = Assert.Throws<StripeException>(() =>
+                EventUtility.ValidateSignature("{}", header, secret, EventUtility.DefaultTimeTolerance, this.eventTimestamp));
+
+            Assert.Equal(
+                "Webhook signature verification failed. This request may not have originated from Stripe.\n\n"
+                + $"The signing secret you provided is {secret.Length} characters long and ends in `{secretSuffix}`. "
+                + $"However, the signing secret for this destination is {maskedSecret.Length} characters long "
+                + $"and looks like `{maskedSecret}`. Ensure you're using the signing secret for this "
+                + $"destination, as shown on the Dashboard: https://dashboard.stripe.com/webhooks{dashboardPath}\n\n"
+                + "Learn more: https://docs.stripe.com/webhooks/signature",
+                exception.Message);
+        }
+
+        [Fact]
+        public void ValidateSignature_PayloadMetadataExplainsMismatch()
+        {
+            var payload = "{}";
+
+            // Hash of payload ends with `1caaff8a` (echo -n '{}' | sha256sum)
+            var header = this.GenerateTestHeader(
+                payload: payload,
+                secret: this.secret,
+                debugMetadata: "secret=webhook_**cret,payload=1CAAFF8A,payload=00000000");
+
+            // User supplies the original body plus an errant trailing space.
+            var exception = Assert.Throws<StripeException>(() =>
+                EventUtility.ValidateSignature(payload + " ", header, this.secret, EventUtility.DefaultTimeTolerance, this.eventTimestamp));
+
+            Assert.Equal(
+                "Webhook signature verification failed.\n\n"
+                + "The request body you passed to this function differs from the request body sent by Stripe "
+                + "to this webhook destination.\n"
+                + "The SHA-256 hash of the body should end in `1caaff8a`. However, "
+                + "the SHA-256 hash of the body you provided ends in `882f37ad`.\n\n"
+                + "Make sure your code does not reformat or otherwise alter the raw HTTP request body "
+                + "before passing it to this function.\n\n"
+                + "Learn more: https://docs.stripe.com/webhooks/signature",
+                exception.Message);
+        }
+
+        [Fact]
+        public void ValidateSignature_UnusableSecretMetadataFallsBack()
+        {
+            foreach (var metadata in new[]
+            {
+                // Ignore masked secret values without any asterisks
+                "secret=unmasked",
+
+                // Ignore metadata longer than 100 characters
+                $"secret=whsec_{new string('*', 101)}wxyz",
+            })
+            {
+                var header = this.GenerateTestHeader(debugMetadata: metadata);
+                var exception = Assert.Throws<StripeException>(() =>
+                    EventUtility.ValidateSignature("{}", header, this.secret, EventUtility.DefaultTimeTolerance, this.eventTimestamp));
+
+                // Falls back to generic error
+                Assert.Equal(
+                    "The expected signature was not found in the Stripe-Signature header. "
+                    + "Make sure you're using the correct webhook secret (whsec_) and confirm the incoming request came from Stripe.",
+                    exception.Message);
+            }
+        }
+
+        // An invalid first hash must not be replaced by a later value.
+        [Theory]
+        [InlineData("payload=invalid!,payload=00000000")]
+
+        // A hexadecimal hash still needs exactly eight characters.
+        [InlineData("payload=1234567")]
+        public void ValidateSignature_UnusablePayloadMetadataFallsBack(string metadata)
+        {
+            var header = this.GenerateTestHeader(debugMetadata: metadata);
+            var exception = Assert.Throws<StripeException>(() =>
+                EventUtility.ValidateSignature("{}", header, this.secret, EventUtility.DefaultTimeTolerance, this.eventTimestamp));
+
+            // Falls back to generic error
+            Assert.Equal(
+                "The expected signature was not found in the Stripe-Signature header. "
+                + "Make sure you're using the correct webhook secret (whsec_) and confirm the incoming request came from Stripe.",
+                exception.Message);
+        }
+
+        [Fact]
+        public void ValidateSignature_MatchingMetadataDoesNotAuthenticate()
+        {
+            // Only length and the last four characters matter, not the prefix or earlier unmasked characters.
+            var secret = "whsec_abcdefghijklmnopqrstuvwxyz";
+            var header = this.GenerateTestHeader(debugMetadata: "secret=other_********************xxwxyz,payload=1CAAFF8A");
+            var exception = Assert.Throws<StripeException>(() =>
+                EventUtility.ValidateSignature("{}", header, secret, EventUtility.DefaultTimeTolerance, this.eventTimestamp));
+
+            // Falls back to generic error
+            Assert.Equal(
+                "The expected signature was not found in the Stripe-Signature header. "
+                + "Make sure you're using the correct webhook secret (whsec_) and confirm the incoming request came from Stripe.",
+                exception.Message);
+        }
+
+        [Fact]
+        public void ValidateSignature_ValidSignatureIgnoresDebugMetadata()
+        {
+            // A valid HMAC wins even when optional metadata is conflicting.
+            var header = this.GenerateTestHeader(
+                secret: this.secret,
+                debugMetadata: "secret=*wrong,destination=we_other,payload=00000000");
+
+            EventUtility.ValidateSignature("{}", header, this.secret, EventUtility.DefaultTimeTolerance, this.eventTimestamp);
+        }
+
         [Fact]
         public void RejectV2PayloadInParseEvent()
         {
@@ -436,6 +571,13 @@ namespace StripeTests
                 "The expected signature was not found in the Stripe-Signature header. " +
                 "Make sure you're using the correct webhook secret (whsec_) and confirm the incoming request came from Stripe.",
                 exception.Message);
+        }
+
+        private string GenerateTestHeader(string payload = "{}", string secret = "correct_secret", string debugMetadata = null)
+        {
+            var header = EventUtility.GenerateSignatureHeader(payload, secret, this.eventTimestamp);
+
+            return debugMetadata == null ? header : $"{header},{debugMetadata}";
         }
     }
 }

@@ -5,6 +5,7 @@ namespace Stripe
     using System.Linq;
     using System.Security.Cryptography;
     using System.Text;
+    using System.Text.RegularExpressions;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -212,8 +213,7 @@ namespace Stripe
             if (!IsSignaturePresent(signature, signatureItems["v1"]))
             {
                 throw new StripeException(
-                    "The expected signature was not found in the Stripe-Signature header. " +
-                    "Make sure you're using the correct webhook secret (whsec_) and confirm the incoming request came from Stripe.");
+                    SignatureErrorMessage(signatureItems, json, secret));
             }
 
             var webhookUtc = Convert.ToInt32(signatureItems["t"].FirstOrDefault());
@@ -223,6 +223,87 @@ namespace Stripe
                 throw new StripeException(
                     "The webhook cannot be processed because the current timestamp is outside of the allowed tolerance.");
             }
+        }
+
+        /// <summary>
+        /// Builds an HMAC-mismatch message using optional header metadata.
+        /// </summary>
+        /// <param name="header">The parsed Stripe-Signature header values.</param>
+        /// <param name="payload">The event payload.</param>
+        /// <param name="secret">The webhook endpoint's signing secret.</param>
+        /// <returns>The diagnostic or generic error message.</returns>
+        private static string SignatureErrorMessage(ILookup<string, string> header, string payload, string secret)
+        {
+            var metadata = SignatureDebugMetadata(header);
+
+            // If metadata has an asterisk-masked secret, compare against its length and last four characters
+            var maskedSecret = metadata.Secret ?? string.Empty;
+            var maskedSuffix = maskedSecret.Substring(Math.Max(0, maskedSecret.Length - 4));
+            var secretSuffix = secret.Substring(Math.Max(0, secret.Length - 4));
+            if (maskedSecret.Contains("*") && (secret.Length != maskedSecret.Length || secretSuffix != maskedSuffix))
+            {
+                var dashboardUrl = "https://dashboard.stripe.com/webhooks";
+                if (metadata.Destination != null)
+                {
+                    dashboardUrl += "/" + Uri.EscapeDataString(metadata.Destination);
+                }
+
+                return "Webhook signature verification failed. This request may not have originated from Stripe.\n\n"
+                    + $"The signing secret you provided is {secret.Length} characters long and ends in `{secretSuffix}`. "
+                    + $"However, the signing secret for this destination is {maskedSecret.Length} characters long "
+                    + $"and looks like `{maskedSecret}`. Ensure you're using the signing secret for this "
+                    + $"destination, as shown on the Dashboard: {dashboardUrl}\n\n"
+                    + "Learn more: https://docs.stripe.com/webhooks/signature";
+            }
+
+            // If metadata includes the truncated payload hash, compare with the payload passed in
+            if (metadata.Payload != null && Regex.IsMatch(metadata.Payload, @"\A[0-9a-fA-F]{8}\z"))
+            {
+                var expectedHash = metadata.Payload.ToLowerInvariant();
+                string actualHash;
+                using (var hasher = SHA256.Create())
+                {
+                    var hash = hasher.ComputeHash(SafeUTF8.GetBytes(payload ?? string.Empty));
+                    actualHash = StringUtils.ToHexString(hash);
+                    actualHash = actualHash.Substring(actualHash.Length - 8);
+                }
+
+                if (expectedHash != actualHash)
+                {
+                    return "Webhook signature verification failed.\n\n"
+                        + "The request body you passed to this function differs from the request body sent by Stripe "
+                        + "to this webhook destination.\n"
+                        + $"The SHA-256 hash of the body should end in `{expectedHash}`. However, "
+                        + $"the SHA-256 hash of the body you provided ends in `{actualHash}`.\n\n"
+                        + "Make sure your code does not reformat or otherwise alter the raw HTTP request body "
+                        + "before passing it to this function.\n\n"
+                        + "Learn more: https://docs.stripe.com/webhooks/signature";
+                }
+            }
+
+            // Fall back to the generic message if no debug metadata is available
+            return "The expected signature was not found in the Stripe-Signature header. "
+                + "Make sure you're using the correct webhook secret (whsec_) and confirm the incoming request came from Stripe.";
+        }
+
+        /// <summary>
+        /// Extracts metadata from the Stripe-Signature header to help debug verification failures.
+        /// </summary>
+        /// <param name="header">The parsed Stripe-Signature header values.</param>
+        /// <returns>The recognized fields, with unusable values set to null.</returns>
+        private static (string Secret, string Destination, string Payload) SignatureDebugMetadata(ILookup<string, string> header)
+        {
+            // For each metadata key, extract the first value found in the header
+            string MetadataValue(string key)
+            {
+                var value = header[key].FirstOrDefault();
+
+                // Ignore overly long, potentially attacker-provided metadata values
+                value = value != null && value.Length <= 100 ? value.Trim() : null;
+                return string.IsNullOrEmpty(value) ? null : value;
+            }
+
+            return (MetadataValue("secret"), MetadataValue("destination"), MetadataValue("payload"));
         }
 
         private static ILookup<string, string> ParseStripeSignature(string stripeSignatureHeader)
