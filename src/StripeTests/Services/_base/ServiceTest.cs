@@ -232,9 +232,10 @@ namespace StripeTests
             }
 
             Assert.Equal(new[] { "1", "2" }, ids);
-            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?limit=2");
-            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?page=2&limit=2");
-            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?page=3&limit=2");
+            var body = @"{""query"":""widgets"",""future"":""value""}";
+            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?limit=2", body: body);
+            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?page=2&limit=2", body: body);
+            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?page=3&limit=2", body: body);
         }
 
         [Fact]

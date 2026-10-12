@@ -10,6 +10,7 @@ namespace StripeTests
     using System.Web;
     using Moq;
     using Moq.Protected;
+    using Newtonsoft.Json.Linq;
     using Stripe;
 
     public class MockHttpClientFixture
@@ -45,7 +46,8 @@ namespace StripeTests
         /// <param name="path">The HTTP path.</param>
         /// <param name="query">The HTTP query.</param>
         /// <param name="host">The HTTP host.</param>
-        public void AssertRequest(HttpMethod method, string path, string query = null, string host = null)
+        /// <param name="body">The JSON request body.</param>
+        public void AssertRequest(HttpMethod method, string path, string query = null, string host = null, string body = null)
         {
             this.MockHandler.Protected()
                 .Verify(
@@ -55,8 +57,20 @@ namespace StripeTests
                         m.Method == method &&
                         m.RequestUri.AbsolutePath == path &&
                         QueryEquivalent(query, m.RequestUri.Query) &&
-                        HostEquivalent(host, m)),
+                        HostEquivalent(host, m) &&
+                        BodyEquivalent(body, m)),
                     ItExpr.IsAny<CancellationToken>());
+        }
+
+        private static bool BodyEquivalent(string expected, HttpRequestMessage request)
+        {
+            if (expected == null)
+            {
+                return true;
+            }
+
+            var actual = request.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            return JToken.DeepEquals(JToken.Parse(expected), JToken.Parse(actual));
         }
 
         private static bool MatchHttpRequest(HttpMethod method, string path, HttpStatusCode status, string response, string query, HttpRequestMessage m)
