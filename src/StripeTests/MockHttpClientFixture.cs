@@ -46,8 +46,7 @@ namespace StripeTests
         /// <param name="path">The HTTP path.</param>
         /// <param name="query">The HTTP query.</param>
         /// <param name="host">The HTTP host.</param>
-        /// <param name="body">The JSON request body.</param>
-        public void AssertRequest(HttpMethod method, string path, string query = null, string host = null, string body = null)
+        public void AssertRequest(HttpMethod method, string path, string query = null, string host = null)
         {
             this.MockHandler.Protected()
                 .Verify(
@@ -57,8 +56,7 @@ namespace StripeTests
                         m.Method == method &&
                         m.RequestUri.AbsolutePath == path &&
                         QueryEquivalent(query, m.RequestUri.Query) &&
-                        HostEquivalent(host, m) &&
-                        BodyEquivalent(body, m)),
+                        HostEquivalent(host, m)),
                     ItExpr.IsAny<CancellationToken>());
         }
 
@@ -73,7 +71,7 @@ namespace StripeTests
             return JToken.DeepEquals(JToken.Parse(expected), JToken.Parse(actual));
         }
 
-        private static bool MatchHttpRequest(HttpMethod method, string path, HttpStatusCode status, string response, string query, HttpRequestMessage m)
+        private static bool MatchHttpRequest(HttpMethod method, string path, HttpStatusCode status, string response, string query, string body, HttpRequestMessage m)
         {
             if (m.Method != method)
             {
@@ -90,7 +88,7 @@ namespace StripeTests
                 return false;
             }
 
-            return true;
+            return BodyEquivalent(body, m);
         }
 
         /// <summary>
@@ -102,7 +100,8 @@ namespace StripeTests
         /// <param name="status">The status code to return.</param>
         /// <param name="response">The response body to return.</param>
         /// <param name="query">The HTTP query.</param>
-        public void StubRequest(HttpMethod method, string path, HttpStatusCode status, string response, string query = null)
+        /// <param name="body">The JSON request body.</param>
+        public void StubRequest(HttpMethod method, string path, HttpStatusCode status, string response, string query = null, string body = null)
         {
             var responseMessage = new HttpResponseMessage(status);
             responseMessage.Content = new StringContent(response);
@@ -110,7 +109,7 @@ namespace StripeTests
             this.MockHandler.Protected()
                 .Setup<Task<HttpResponseMessage>>(
                     "SendAsync",
-                    ItExpr.Is<HttpRequestMessage>(m => MatchHttpRequest(method, path, status, response, query, m)),
+                    ItExpr.Is<HttpRequestMessage>(m => MatchHttpRequest(method, path, status, response, query, body, m)),
                     ItExpr.IsAny<CancellationToken>())
                 .Returns(Task.FromResult(responseMessage));
         }

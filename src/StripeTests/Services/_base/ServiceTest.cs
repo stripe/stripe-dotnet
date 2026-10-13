@@ -202,24 +202,28 @@ namespace StripeTests
         [Fact]
         public void V2SearchPagination_ReplaysPostAcrossEmptyPages()
         {
+            var body = @"{""query"":""widgets"",""future"":""value""}";
             this.StubRequest(
                 HttpMethod.Post,
                 "/v2/test_entities/search",
                 (HttpStatusCode)200,
                 @"{""object"":""v2.search_result"",""data"":[{""id"":""1""}],""next_page_url"":""/v2/test_entities/search?page=2&limit=2"",""total_count"":2}",
-                "?limit=2");
+                "?limit=2",
+                body);
             this.StubRequest(
                 HttpMethod.Post,
                 "/v2/test_entities/search",
                 (HttpStatusCode)200,
                 @"{""object"":""v2.search_result"",""data"":[],""next_page_url"":""/v2/test_entities/search?page=3&limit=2"",""total_count"":2}",
-                "?page=2&limit=2");
+                "?page=2&limit=2",
+                body);
             this.StubRequest(
                 HttpMethod.Post,
                 "/v2/test_entities/search",
                 (HttpStatusCode)200,
                 @"{""object"":""v2.search_result"",""data"":[{""id"":""2""}],""next_page_url"":null,""total_count"":2}",
-                "?page=3&limit=2");
+                "?page=3&limit=2",
+                body);
 
             var options = new TestV2SearchOptions { Limit = 2 };
             options.AddExtraParam("query", "widgets");
@@ -232,10 +236,9 @@ namespace StripeTests
             }
 
             Assert.Equal(new[] { "1", "2" }, ids);
-            var body = @"{""query"":""widgets"",""future"":""value""}";
-            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?limit=2", body: body);
-            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?page=2&limit=2", body: body);
-            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?page=3&limit=2", body: body);
+            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?limit=2");
+            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?page=2&limit=2");
+            this.MockHttpClientFixture.AssertRequest(HttpMethod.Post, "/v2/test_entities/search", "?page=3&limit=2");
         }
 
         [Fact]
