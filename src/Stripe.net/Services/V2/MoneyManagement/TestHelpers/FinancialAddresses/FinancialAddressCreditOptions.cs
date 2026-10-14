@@ -18,8 +18,8 @@ namespace Stripe.V2.MoneyManagement.TestHelpers
         /// <summary>
         /// Open Enum. The network to use in simulating the funds flow. This will be the reflected
         /// in the resulting ReceivedCredit.
-        /// One of: <c>ach</c>, <c>acss</c>, <c>chaps</c>, <c>fps</c>, <c>rtp</c>,
-        /// <c>sepa_credit_transfer</c>, <c>swift</c>, or <c>wire</c>.
+        /// One of: <c>ach</c>, <c>acss</c>, <c>bre_b</c>, <c>chaps</c>, <c>fps</c>, <c>pix</c>,
+        /// <c>rtp</c>, <c>sepa_credit_transfer</c>, <c>swift</c>, or <c>wire</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

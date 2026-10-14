@@ -33,6 +33,15 @@ namespace Stripe
 
         #region Expandable Account
 
+        /// <summary>
+        /// (ID of the Account)
+        /// The account this card belongs to. Only applicable on Accounts (not customers or
+        /// recipients) This property is only available when returned as an <a
+        /// href="https://stripe.com/api/external_account_cards/object">External Account</a> where
+        /// <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-is_controller">controller.is_controller</a>
+        /// is <c>true</c>.
+        /// </summary>
         [JsonIgnore]
         [STJS.JsonIgnore]
         public string AccountId
@@ -41,6 +50,17 @@ namespace Stripe
             set => this.InternalAccount = SetExpandableFieldId(value, this.InternalAccount);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The account this card belongs to. Only applicable on Accounts (not customers or
+        /// recipients) This property is only available when returned as an <a
+        /// href="https://stripe.com/api/external_account_cards/object">External Account</a> where
+        /// <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-is_controller">controller.is_controller</a>
+        /// is <c>true</c>.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         [STJS.JsonIgnore]
         public Account Account

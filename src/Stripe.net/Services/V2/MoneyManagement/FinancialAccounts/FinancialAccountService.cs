@@ -78,7 +78,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Lists FinancialAccounts in this compartment.
+        /// Lists FinancialAccounts in this account.
         /// </summary>
         public virtual V2.StripeList<FinancialAccount> List(FinancialAccountListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -86,7 +86,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Lists FinancialAccounts in this compartment.
+        /// Lists FinancialAccounts in this account.
         /// </summary>
         public virtual Task<V2.StripeList<FinancialAccount>> ListAsync(FinancialAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -94,7 +94,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Lists FinancialAccounts in this compartment.
+        /// Lists FinancialAccounts in this account.
         /// </summary>
         public virtual IEnumerable<FinancialAccount> ListAutoPaging(FinancialAccountListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -102,7 +102,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Lists FinancialAccounts in this compartment.
+        /// Lists FinancialAccounts in this account.
         /// </summary>
         public virtual IAsyncEnumerable<FinancialAccount> ListAutoPagingAsync(FinancialAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

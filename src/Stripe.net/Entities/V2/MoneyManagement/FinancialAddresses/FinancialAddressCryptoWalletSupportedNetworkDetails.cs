@@ -11,7 +11,7 @@ namespace Stripe.V2.MoneyManagement
     {
         /// <summary>
         /// The token currencies supported on this network.
-        /// One of: <c>btc</c>, <c>eth</c>, <c>sol</c>, <c>usdc</c>, or <c>usdt</c>.
+        /// One of: <c>btc</c>, <c>eth</c>, <c>ousd</c>, <c>sol</c>, <c>usdc</c>, or <c>usdt</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

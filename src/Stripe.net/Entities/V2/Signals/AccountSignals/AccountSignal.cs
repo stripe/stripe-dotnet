@@ -93,7 +93,7 @@ namespace Stripe.V2.Signals
         /// The type of signal.
         /// One of: <c>fraudulent_merchant</c>, <c>fraudulent_website</c>,
         /// <c>merchant_delinquency</c>, <c>payment_delinquency_exposure</c>,
-        /// <c>user_account_sharing</c>, or <c>user_multi_accounting</c>.
+        /// <c>user_account_sharing</c>, <c>user_merchant_fit</c>, or <c>user_multi_accounting</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -108,6 +108,13 @@ namespace Stripe.V2.Signals
         [JsonProperty("user_account_sharing")]
         [STJS.JsonPropertyName("user_account_sharing")]
         public AccountSignalUserAccountSharing UserAccountSharing { get; set; }
+
+        /// <summary>
+        /// Data for the user-merchant fit signal. Present only when type is user_merchant_fit.
+        /// </summary>
+        [JsonProperty("user_merchant_fit")]
+        [STJS.JsonPropertyName("user_merchant_fit")]
+        public AccountSignalUserMerchantFit UserMerchantFit { get; set; }
 
         /// <summary>
         /// Data for the user multi-accounting signal. Present only when type is

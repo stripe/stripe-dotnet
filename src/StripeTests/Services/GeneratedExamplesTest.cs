@@ -20977,7 +20977,7 @@ namespace StripeTests
                 "{\"object\":\"v2.core.account_evaluation\",\"created\":\"1970-01-12T21:42:34.472Z\",\"evaluations_triggered\":[\"user_multi_accounting\"],\"id\":\"obj_123\",\"livemode\":true}");
             var options = new Stripe.V2.Core.AccountEvaluationCreateOptions
             {
-                Signals = new List<string> { "fraudulent_website" },
+                Signals = new List<string> { "user_multi_accounting" },
             };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.AccountEvaluations;
@@ -20996,7 +20996,7 @@ namespace StripeTests
                 "{\"object\":\"v2.core.account_evaluation\",\"created\":\"1970-01-12T21:42:34.472Z\",\"evaluations_triggered\":[\"user_multi_accounting\"],\"id\":\"obj_123\",\"livemode\":true}");
             var options = new Stripe.V2.Core.AccountEvaluationCreateOptions
             {
-                Signals = new List<string> { "fraudulent_website" },
+                Signals = new List<string> { "user_multi_accounting" },
             };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.AccountEvaluations;
@@ -22530,40 +22530,6 @@ namespace StripeTests
         {
             this.StubRequest(
                 HttpMethod.Post,
-                "/v2/core/vault/gb_bank_accounts/id_123/acknowledge_confirmation_of_payee",
-                (HttpStatusCode)200,
-                "{\"object\":\"v2.core.vault.gb_bank_account\",\"archived\":true,\"bank_account_type\":\"toza\",\"bank_name\":\"bank_name\",\"confirmation_of_payee\":{\"result\":{\"created\":\"1970-01-12T21:42:34.472Z\",\"match_result\":\"unavailable\",\"matched\":{},\"message\":\"message\",\"provided\":{\"business_type\":\"personal\",\"name\":\"name\"}},\"status\":\"awaiting_acknowledgement\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"last4\":\"last4\",\"livemode\":true,\"restricted\":true,\"supported_currencies\":[\"supported_currencies\"]}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.Vault.GbBankAccounts;
-            Stripe.V2.Core.Vault.GbBankAccount gbBankAccount = service
-                .AcknowledgeConfirmationOfPayee("id_123");
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/core/vault/gb_bank_accounts/id_123/acknowledge_confirmation_of_payee");
-        }
-
-        [Fact]
-        public async Task TestV2CoreVaultGbBankAccountPost2Async()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/core/vault/gb_bank_accounts/id_123/acknowledge_confirmation_of_payee",
-                (HttpStatusCode)200,
-                "{\"object\":\"v2.core.vault.gb_bank_account\",\"archived\":true,\"bank_account_type\":\"toza\",\"bank_name\":\"bank_name\",\"confirmation_of_payee\":{\"result\":{\"created\":\"1970-01-12T21:42:34.472Z\",\"match_result\":\"unavailable\",\"matched\":{},\"message\":\"message\",\"provided\":{\"business_type\":\"personal\",\"name\":\"name\"}},\"status\":\"awaiting_acknowledgement\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"last4\":\"last4\",\"livemode\":true,\"restricted\":true,\"supported_currencies\":[\"supported_currencies\"]}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.Vault.GbBankAccounts;
-            Stripe.V2.Core.Vault.GbBankAccount gbBankAccount = await service
-                .AcknowledgeConfirmationOfPayeeAsync("id_123");
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/core/vault/gb_bank_accounts/id_123/acknowledge_confirmation_of_payee");
-        }
-
-        [Fact]
-        public void TestV2CoreVaultGbBankAccountPost3()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
                 "/v2/core/vault/gb_bank_accounts/id_123/archive",
                 (HttpStatusCode)200,
                 "{\"object\":\"v2.core.vault.gb_bank_account\",\"archived\":true,\"bank_account_type\":\"toza\",\"bank_name\":\"bank_name\",\"confirmation_of_payee\":{\"result\":{\"created\":\"1970-01-12T21:42:34.472Z\",\"match_result\":\"unavailable\",\"matched\":{},\"message\":\"message\",\"provided\":{\"business_type\":\"personal\",\"name\":\"name\"}},\"status\":\"awaiting_acknowledgement\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"last4\":\"last4\",\"livemode\":true,\"restricted\":true,\"supported_currencies\":[\"supported_currencies\"]}");
@@ -22577,7 +22543,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public async Task TestV2CoreVaultGbBankAccountPost3Async()
+        public async Task TestV2CoreVaultGbBankAccountPost2Async()
         {
             this.StubRequest(
                 HttpMethod.Post,
@@ -22591,40 +22557,6 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/core/vault/gb_bank_accounts/id_123/archive");
-        }
-
-        [Fact]
-        public void TestV2CoreVaultGbBankAccountPost4()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/core/vault/gb_bank_accounts/id_123/initiate_confirmation_of_payee",
-                (HttpStatusCode)200,
-                "{\"object\":\"v2.core.vault.gb_bank_account\",\"archived\":true,\"bank_account_type\":\"toza\",\"bank_name\":\"bank_name\",\"confirmation_of_payee\":{\"result\":{\"created\":\"1970-01-12T21:42:34.472Z\",\"match_result\":\"unavailable\",\"matched\":{},\"message\":\"message\",\"provided\":{\"business_type\":\"personal\",\"name\":\"name\"}},\"status\":\"awaiting_acknowledgement\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"last4\":\"last4\",\"livemode\":true,\"restricted\":true,\"supported_currencies\":[\"supported_currencies\"]}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.Vault.GbBankAccounts;
-            Stripe.V2.Core.Vault.GbBankAccount gbBankAccount = service
-                .InitiateConfirmationOfPayee("id_123");
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/core/vault/gb_bank_accounts/id_123/initiate_confirmation_of_payee");
-        }
-
-        [Fact]
-        public async Task TestV2CoreVaultGbBankAccountPost4Async()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/core/vault/gb_bank_accounts/id_123/initiate_confirmation_of_payee",
-                (HttpStatusCode)200,
-                "{\"object\":\"v2.core.vault.gb_bank_account\",\"archived\":true,\"bank_account_type\":\"toza\",\"bank_name\":\"bank_name\",\"confirmation_of_payee\":{\"result\":{\"created\":\"1970-01-12T21:42:34.472Z\",\"match_result\":\"unavailable\",\"matched\":{},\"message\":\"message\",\"provided\":{\"business_type\":\"personal\",\"name\":\"name\"}},\"status\":\"awaiting_acknowledgement\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"last4\":\"last4\",\"livemode\":true,\"restricted\":true,\"supported_currencies\":[\"supported_currencies\"]}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.Vault.GbBankAccounts;
-            Stripe.V2.Core.Vault.GbBankAccount gbBankAccount = await service
-                .InitiateConfirmationOfPayeeAsync("id_123");
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/core/vault/gb_bank_accounts/id_123/initiate_confirmation_of_payee");
         }
 
         [Fact]
@@ -27516,7 +27448,7 @@ namespace StripeTests
             var options = new Stripe.V2.MoneyManagement.TestHelpers.FinancialAddressCreditOptions
             {
                 Amount = new Stripe.V2.Amount { Value = 96, Currency = "USD" },
-                Network = "swift",
+                Network = "ach",
             };
             var client = new StripeClient(this.Requestor);
             var service = client
@@ -27542,7 +27474,7 @@ namespace StripeTests
             var options = new Stripe.V2.MoneyManagement.TestHelpers.FinancialAddressCreditOptions
             {
                 Amount = new Stripe.V2.Amount { Value = 96, Currency = "USD" },
-                Network = "swift",
+                Network = "ach",
             };
             var client = new StripeClient(this.Requestor);
             var service = client
@@ -28386,40 +28318,6 @@ namespace StripeTests
         {
             this.StubRequest(
                 HttpMethod.Post,
-                "/v2/payments/off_session_payments/id_123/capture",
-                (HttpStatusCode)200,
-                "{\"object\":\"v2.payments.off_session_payment\",\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"payment_method\":\"payment_method\",\"payments_orchestration\":{\"enabled\":true},\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"scheduled\"},\"status\":\"requires_capture\"}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Payments.OffSessionPayments;
-            Stripe.V2.Payments.OffSessionPayment offSessionPayment = service
-                .Capture("id_123");
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/payments/off_session_payments/id_123/capture");
-        }
-
-        [Fact]
-        public async Task TestV2PaymentsOffSessionPaymentPost3Async()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/payments/off_session_payments/id_123/capture",
-                (HttpStatusCode)200,
-                "{\"object\":\"v2.payments.off_session_payment\",\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"payment_method\":\"payment_method\",\"payments_orchestration\":{\"enabled\":true},\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"scheduled\"},\"status\":\"requires_capture\"}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Payments.OffSessionPayments;
-            Stripe.V2.Payments.OffSessionPayment offSessionPayment = await service
-                .CaptureAsync("id_123");
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/payments/off_session_payments/id_123/capture");
-        }
-
-        [Fact]
-        public void TestV2PaymentsOffSessionPaymentPost4()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
                 "/v2/payments/off_session_payments/id_123/pause",
                 (HttpStatusCode)200,
                 "{\"object\":\"v2.payments.off_session_payment\",\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"id\":\"obj_123\",\"livemode\":true,\"metadata\":{\"key\":\"metadata\"},\"payment_method\":\"payment_method\",\"payments_orchestration\":{\"enabled\":true},\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"scheduled\"},\"status\":\"requires_capture\"}");
@@ -28433,7 +28331,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public async Task TestV2PaymentsOffSessionPaymentPost4Async()
+        public async Task TestV2PaymentsOffSessionPaymentPost3Async()
         {
             this.StubRequest(
                 HttpMethod.Post,
@@ -28450,7 +28348,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestV2PaymentsOffSessionPaymentPost5()
+        public void TestV2PaymentsOffSessionPaymentPost4()
         {
             this.StubRequest(
                 HttpMethod.Post,
@@ -28467,7 +28365,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public async Task TestV2PaymentsOffSessionPaymentPost5Async()
+        public async Task TestV2PaymentsOffSessionPaymentPost4Async()
         {
             this.StubRequest(
                 HttpMethod.Post,
@@ -30269,7 +30167,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/signals/account_evaluations",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.signals.account_evaluation\",\"account_details\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"pending_signals\":[\"fraudulent_website\"],\"requested_signals\":[\"user_multi_accounting\"]}");
+                "{\"object\":\"v2.signals.account_evaluation\",\"account_details\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"pending_signals\":[\"user_account_sharing\"],\"requested_signals\":[\"user_merchant_fit\"]}");
             var options = new Stripe.V2.Signals.AccountEvaluationCreateOptions
             {
                 AccountDetails = new Stripe.V2.Signals.AccountEvaluationCreateAccountDetailsOptions
@@ -30278,6 +30176,7 @@ namespace StripeTests
                     Customer = "customer",
                     Data = new Stripe.V2.Signals.AccountEvaluationCreateAccountDetailsDataOptions
                     {
+                        ContactEmail = "contact_email",
                         Defaults = new Stripe.V2.Signals.AccountEvaluationCreateAccountDetailsDataDefaultsOptions
                         {
                             Profile = new Stripe.V2.Signals.AccountEvaluationCreateAccountDetailsDataDefaultsProfileOptions
@@ -30296,7 +30195,7 @@ namespace StripeTests
                         },
                     },
                 },
-                RequestedSignals = new List<string> { "user_multi_accounting" },
+                RequestedSignals = new List<string> { "user_merchant_fit" },
             };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Signals.AccountEvaluations;
@@ -30314,7 +30213,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/signals/account_evaluations",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.signals.account_evaluation\",\"account_details\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"pending_signals\":[\"fraudulent_website\"],\"requested_signals\":[\"user_multi_accounting\"]}");
+                "{\"object\":\"v2.signals.account_evaluation\",\"account_details\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"pending_signals\":[\"user_account_sharing\"],\"requested_signals\":[\"user_merchant_fit\"]}");
             var options = new Stripe.V2.Signals.AccountEvaluationCreateOptions
             {
                 AccountDetails = new Stripe.V2.Signals.AccountEvaluationCreateAccountDetailsOptions
@@ -30323,6 +30222,7 @@ namespace StripeTests
                     Customer = "customer",
                     Data = new Stripe.V2.Signals.AccountEvaluationCreateAccountDetailsDataOptions
                     {
+                        ContactEmail = "contact_email",
                         Defaults = new Stripe.V2.Signals.AccountEvaluationCreateAccountDetailsDataDefaultsOptions
                         {
                             Profile = new Stripe.V2.Signals.AccountEvaluationCreateAccountDetailsDataDefaultsProfileOptions
@@ -30341,7 +30241,7 @@ namespace StripeTests
                         },
                     },
                 },
-                RequestedSignals = new List<string> { "user_multi_accounting" },
+                RequestedSignals = new List<string> { "user_merchant_fit" },
             };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Signals.AccountEvaluations;
@@ -30359,7 +30259,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/signals/account_evaluations/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.signals.account_evaluation\",\"account_details\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"pending_signals\":[\"fraudulent_website\"],\"requested_signals\":[\"user_multi_accounting\"]}");
+                "{\"object\":\"v2.signals.account_evaluation\",\"account_details\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"pending_signals\":[\"user_account_sharing\"],\"requested_signals\":[\"user_merchant_fit\"]}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Signals.AccountEvaluations;
             Stripe.V2.Signals.AccountEvaluation accountEvaluation = service.Get(
@@ -30376,7 +30276,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/signals/account_evaluations/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.signals.account_evaluation\",\"account_details\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"pending_signals\":[\"fraudulent_website\"],\"requested_signals\":[\"user_multi_accounting\"]}");
+                "{\"object\":\"v2.signals.account_evaluation\",\"account_details\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"pending_signals\":[\"user_account_sharing\"],\"requested_signals\":[\"user_merchant_fit\"]}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Signals.AccountEvaluations;
             Stripe.V2.Signals.AccountEvaluation accountEvaluation = await service
@@ -30393,11 +30293,11 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/signals/account_signals",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.signals.account_signal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"type\":\"fraudulent_merchant\"}],\"next_page_url\":null,\"previous_page_url\":null}",
-                "type[0]=fraudulent_merchant");
+                "{\"data\":[{\"object\":\"v2.signals.account_signal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"type\":\"payment_delinquency_exposure\"}],\"next_page_url\":null,\"previous_page_url\":null}",
+                "type[0]=payment_delinquency_exposure");
             var options = new Stripe.V2.Signals.AccountSignalListOptions
             {
-                Type = new List<string> { "fraudulent_merchant" },
+                Type = new List<string> { "payment_delinquency_exposure" },
             };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Signals.AccountSignals;
@@ -30406,7 +30306,7 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v2/signals/account_signals",
-                "type[0]=fraudulent_merchant");
+                "type[0]=payment_delinquency_exposure");
         }
 
         [Fact]
@@ -30416,11 +30316,11 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/signals/account_signals",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.signals.account_signal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"type\":\"fraudulent_merchant\"}],\"next_page_url\":null,\"previous_page_url\":null}",
-                "type[0]=fraudulent_merchant");
+                "{\"data\":[{\"object\":\"v2.signals.account_signal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"type\":\"payment_delinquency_exposure\"}],\"next_page_url\":null,\"previous_page_url\":null}",
+                "type[0]=payment_delinquency_exposure");
             var options = new Stripe.V2.Signals.AccountSignalListOptions
             {
-                Type = new List<string> { "fraudulent_merchant" },
+                Type = new List<string> { "payment_delinquency_exposure" },
             };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Signals.AccountSignals;
@@ -30429,7 +30329,7 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v2/signals/account_signals",
-                "type[0]=fraudulent_merchant");
+                "type[0]=payment_delinquency_exposure");
         }
 
         [Fact]
@@ -30439,11 +30339,11 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/signals/account_signals",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.signals.account_signal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"type\":\"fraudulent_merchant\"}],\"next_page_url\":null,\"previous_page_url\":null}",
-                "type[0]=fraudulent_merchant");
+                "{\"data\":[{\"object\":\"v2.signals.account_signal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"type\":\"payment_delinquency_exposure\"}],\"next_page_url\":null,\"previous_page_url\":null}",
+                "type[0]=payment_delinquency_exposure");
             var options = new Stripe.V2.Signals.AccountSignalListOptions
             {
-                Type = new List<string> { "fraudulent_merchant" },
+                Type = new List<string> { "payment_delinquency_exposure" },
             };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Signals.AccountSignals;
@@ -30451,7 +30351,7 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v2/signals/account_signals",
-                "type[0]=fraudulent_merchant");
+                "type[0]=payment_delinquency_exposure");
         }
 
         [Fact]
@@ -30461,11 +30361,11 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/signals/account_signals",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.signals.account_signal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"type\":\"fraudulent_merchant\"}],\"next_page_url\":null,\"previous_page_url\":null}",
-                "type[0]=fraudulent_merchant");
+                "{\"data\":[{\"object\":\"v2.signals.account_signal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"type\":\"payment_delinquency_exposure\"}],\"next_page_url\":null,\"previous_page_url\":null}",
+                "type[0]=payment_delinquency_exposure");
             var options = new Stripe.V2.Signals.AccountSignalListOptions
             {
-                Type = new List<string> { "fraudulent_merchant" },
+                Type = new List<string> { "payment_delinquency_exposure" },
             };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Signals.AccountSignals;
@@ -30474,7 +30374,7 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v2/signals/account_signals",
-                "type[0]=fraudulent_merchant");
+                "type[0]=payment_delinquency_exposure");
         }
 
         [Fact]
@@ -30484,7 +30384,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/signals/account_signals/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.signals.account_signal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"type\":\"fraudulent_merchant\"}");
+                "{\"object\":\"v2.signals.account_signal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"type\":\"payment_delinquency_exposure\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Signals.AccountSignals;
             Stripe.V2.Signals.AccountSignal accountSignal = service.Get(
@@ -30501,7 +30401,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/signals/account_signals/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.signals.account_signal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"type\":\"fraudulent_merchant\"}");
+                "{\"object\":\"v2.signals.account_signal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"type\":\"payment_delinquency_exposure\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Signals.AccountSignals;
             Stripe.V2.Signals.AccountSignal accountSignal = await service

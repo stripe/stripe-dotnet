@@ -68,8 +68,8 @@ namespace Stripe
         [STJS.JsonPropertyName("treasury")]
         public AccountSettingsTreasury Treasury { get; set; }
 
-        [JsonProperty("wechat_pay_payments")]
-        [STJS.JsonPropertyName("wechat_pay_payments")]
-        public AccountSettingsWechatPayPayments WechatPayPayments { get; set; }
+        [JsonProperty("wechat_pay_mobile_web_payments")]
+        [STJS.JsonPropertyName("wechat_pay_mobile_web_payments")]
+        public AccountSettingsWechatPayMobileWebPayments WechatPayMobileWebPayments { get; set; }
     }
 }

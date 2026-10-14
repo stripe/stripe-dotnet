@@ -46,6 +46,7 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// Purpose of additional address.
+        /// One of: <c>birthplace</c>, or <c>registered</c>.
         /// </summary>
         [JsonProperty("purpose")]
         [STJS.JsonPropertyName("purpose")]

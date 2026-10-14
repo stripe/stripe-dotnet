@@ -15,6 +15,13 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("aba")]
         public FinancialAddressBankAccountAba Aba { get; set; }
 
+        /// <summary>
+        /// BRE-B bank account details (Colombia).
+        /// </summary>
+        [JsonProperty("bre_b")]
+        [STJS.JsonPropertyName("bre_b")]
+        public FinancialAddressBankAccountBreB BreB { get; set; }
+
         [JsonProperty("clabe")]
         [STJS.JsonPropertyName("clabe")]
         public FinancialAddressBankAccountClabe Clabe { get; set; }
@@ -43,6 +50,20 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("iban")]
         [STJS.JsonPropertyName("iban")]
         public FinancialAddressBankAccountIban Iban { get; set; }
+
+        /// <summary>
+        /// NIP bank account details (Nigeria).
+        /// </summary>
+        [JsonProperty("nip")]
+        [STJS.JsonPropertyName("nip")]
+        public FinancialAddressBankAccountNip Nip { get; set; }
+
+        /// <summary>
+        /// Pix bank account details (Brazil).
+        /// </summary>
+        [JsonProperty("pix")]
+        [STJS.JsonPropertyName("pix")]
+        public FinancialAddressBankAccountPix Pix { get; set; }
 
         /// <summary>
         /// Sort code bank account details (UK).

@@ -108,10 +108,10 @@ namespace Stripe
         public AccountSettingsTreasuryOptions Treasury { get; set; }
 
         /// <summary>
-        /// Settings specific to the WeChat Pay payments method.
+        /// Settings specific to WeChat Pay payments made through a mobile web browser.
         /// </summary>
-        [JsonProperty("wechat_pay_payments")]
-        [STJS.JsonPropertyName("wechat_pay_payments")]
-        public AccountSettingsWechatPayPaymentsOptions WechatPayPayments { get; set; }
+        [JsonProperty("wechat_pay_mobile_web_payments")]
+        [STJS.JsonPropertyName("wechat_pay_mobile_web_payments")]
+        public AccountSettingsWechatPayMobileWebPaymentsOptions WechatPayMobileWebPayments { get; set; }
     }
 }

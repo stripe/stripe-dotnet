@@ -8,6 +8,10 @@ namespace Stripe.Identity
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class VerificationReportSignals : StripeEntity<VerificationReportSignals>
     {
+        [JsonProperty("fraudulent_document")]
+        [STJS.JsonPropertyName("fraudulent_document")]
+        public VerificationReportSignalsFraudulentDocument FraudulentDocument { get; set; }
+
         [JsonProperty("fraudulent_email")]
         [STJS.JsonPropertyName("fraudulent_email")]
         public VerificationReportSignalsFraudulentEmail FraudulentEmail { get; set; }
