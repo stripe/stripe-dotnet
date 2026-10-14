@@ -9,6 +9,13 @@ namespace Stripe.V2.Core
     public class AccountEvaluationAccountData : StripeEntity<AccountEvaluationAccountData>
     {
         /// <summary>
+        /// The account's contact email.
+        /// </summary>
+        [JsonProperty("contact_email")]
+        [STJS.JsonPropertyName("contact_email")]
+        public string ContactEmail { get; set; }
+
+        /// <summary>
         /// Default account settings.
         /// </summary>
         [JsonProperty("defaults")]

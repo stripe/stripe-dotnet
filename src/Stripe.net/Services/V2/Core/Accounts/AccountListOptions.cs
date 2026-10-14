@@ -28,8 +28,10 @@ namespace Stripe.V2.Core
         public bool? Closed { get; set; }
 
         /// <summary>
-        /// Filter by the network object related to the account. If omitted, returns all Accounts
-        /// regardless of the network object they have.
+        /// The ID of a <a href="https://docs.stripe.com/api/v2/network/business-profiles">Business
+        /// Profile</a> to filter Accounts by. A Business Profile represents a business's public
+        /// identity on the Stripe network. Returns only Accounts associated with that profile. If
+        /// omitted, no profile filter is applied.
         /// </summary>
         [JsonProperty("related_network_object")]
         [STJS.JsonPropertyName("related_network_object")]

@@ -53,7 +53,8 @@ namespace Stripe
         /// <summary>
         /// The balance that this transaction impacts.
         /// One of: <c>fee_credits</c>, <c>issuing</c>, <c>payments</c>,
-        /// <c>refund_and_dispute_prefunding</c>, <c>risk_reserved</c>, or <c>transit</c>.
+        /// <c>refund_and_dispute_prefunding</c>, <c>risk_reserved</c>, <c>settlement_reserved</c>,
+        /// or <c>transit</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

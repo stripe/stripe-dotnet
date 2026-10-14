@@ -25,9 +25,8 @@ namespace Stripe.TestHelpers.SharedPayment
         }
 
         /// <summary>
-        /// <p>Creates a new test SharedPaymentGrantedToken object. This endpoint is only available
-        /// in test mode and allows sellers to create SharedPaymentGrantedTokens for testing their
-        /// integration</p>.
+        /// <p>Creates a new test SharedPaymentGrantedToken object. This test helper allows sellers
+        /// to create SharedPaymentGrantedTokens for testing their integration.</p>.
         /// </summary>
         public virtual Stripe.SharedPayment.GrantedToken Create(GrantedTokenCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -35,9 +34,8 @@ namespace Stripe.TestHelpers.SharedPayment
         }
 
         /// <summary>
-        /// <p>Creates a new test SharedPaymentGrantedToken object. This endpoint is only available
-        /// in test mode and allows sellers to create SharedPaymentGrantedTokens for testing their
-        /// integration</p>.
+        /// <p>Creates a new test SharedPaymentGrantedToken object. This test helper allows sellers
+        /// to create SharedPaymentGrantedTokens for testing their integration.</p>.
         /// </summary>
         public virtual Task<Stripe.SharedPayment.GrantedToken> CreateAsync(GrantedTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -45,9 +43,8 @@ namespace Stripe.TestHelpers.SharedPayment
         }
 
         /// <summary>
-        /// <p>Revokes a test SharedPaymentGrantedToken object. This endpoint is only available in
-        /// test mode and allows sellers to revoke SharedPaymentGrantedTokens for testing their
-        /// integration</p>.
+        /// <p>Revokes a test SharedPaymentGrantedToken object. This test helper allows sellers to
+        /// revoke SharedPaymentGrantedTokens for testing their integration.</p>.
         /// </summary>
         public virtual Stripe.SharedPayment.GrantedToken Revoke(string id, GrantedTokenRevokeOptions options = null, RequestOptions requestOptions = null)
         {
@@ -55,9 +52,8 @@ namespace Stripe.TestHelpers.SharedPayment
         }
 
         /// <summary>
-        /// <p>Revokes a test SharedPaymentGrantedToken object. This endpoint is only available in
-        /// test mode and allows sellers to revoke SharedPaymentGrantedTokens for testing their
-        /// integration</p>.
+        /// <p>Revokes a test SharedPaymentGrantedToken object. This test helper allows sellers to
+        /// revoke SharedPaymentGrantedTokens for testing their integration.</p>.
         /// </summary>
         public virtual Task<Stripe.SharedPayment.GrantedToken> RevokeAsync(string id, GrantedTokenRevokeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

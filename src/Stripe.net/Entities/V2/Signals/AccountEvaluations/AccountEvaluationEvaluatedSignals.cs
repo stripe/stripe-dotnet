@@ -23,6 +23,13 @@ namespace Stripe.V2.Signals
         public AccountEvaluationEvaluatedSignalsUserAccountSharing UserAccountSharing { get; set; }
 
         /// <summary>
+        /// User-merchant fit result for the evaluation, when available.
+        /// </summary>
+        [JsonProperty("user_merchant_fit")]
+        [STJS.JsonPropertyName("user_merchant_fit")]
+        public AccountEvaluationEvaluatedSignalsUserMerchantFit UserMerchantFit { get; set; }
+
+        /// <summary>
         /// User multi-accounting result for the evaluation, when available.
         /// </summary>
         [JsonProperty("user_multi_accounting")]

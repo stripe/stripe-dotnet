@@ -22,11 +22,13 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsBlikOptions blik;
         private PaymentIntentPaymentMethodOptionsBoletoOptions boleto;
         private PaymentIntentPaymentMethodOptionsCardPresentOptions cardPresent;
+        private PaymentIntentPaymentMethodOptionsCarecreditOptions carecredit;
         private PaymentIntentPaymentMethodOptionsCashappOptions cashapp;
         private PaymentIntentPaymentMethodOptionsCryptoOptions crypto;
         private PaymentIntentPaymentMethodOptionsCustomerBalanceOptions customerBalance;
         private PaymentIntentPaymentMethodOptionsEpsOptions eps;
         private PaymentIntentPaymentMethodOptionsFpxOptions fpx;
+        private PaymentIntentPaymentMethodOptionsGetflexOptions getflex;
         private PaymentIntentPaymentMethodOptionsGiftCardOptions giftCard;
         private PaymentIntentPaymentMethodOptionsGiropayOptions giropay;
         private PaymentIntentPaymentMethodOptionsGopayOptions gopay;
@@ -62,6 +64,7 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsScalapayOptions scalapay;
         private PaymentIntentPaymentMethodOptionsSepaDebitOptions sepaDebit;
         private PaymentIntentPaymentMethodOptionsSequraOptions sequra;
+        private PaymentIntentPaymentMethodOptionsSezzleOptions sezzle;
         private PaymentIntentPaymentMethodOptionsShopeepayOptions shopeepay;
         private PaymentIntentPaymentMethodOptionsSofortOptions sofort;
         private PaymentIntentPaymentMethodOptionsStripeBalanceOptions stripeBalance;
@@ -324,6 +327,23 @@ namespace Stripe
         }
 
         /// <summary>
+        /// If this is a <c>carecredit</c> PaymentMethod, this sub-hash contains details about the
+        /// CareCredit payment method options.
+        /// </summary>
+        [JsonProperty("carecredit", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("carecredit")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsCarecreditOptions Carecredit
+        {
+            get => this.carecredit;
+            set
+            {
+                this.carecredit = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
         /// If this is a <c>cashapp</c> PaymentMethod, this sub-hash contains details about the Cash
         /// App Pay payment method options.
         /// </summary>
@@ -404,6 +424,23 @@ namespace Stripe
             set
             {
                 this.fpx = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If this is a <c>getflex</c> PaymentMethod, this sub-hash contains details about the
+        /// GetFlex payment method options.
+        /// </summary>
+        [JsonProperty("getflex", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("getflex")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsGetflexOptions Getflex
+        {
+            get => this.getflex;
+            set
+            {
+                this.getflex = value;
                 this.SetTracker.Track();
             }
         }
@@ -999,6 +1036,23 @@ namespace Stripe
             set
             {
                 this.sequra = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If this is a <c>sezzle</c> PaymentMethod, this sub-hash contains details about the
+        /// Sezzle payment method options.
+        /// </summary>
+        [JsonProperty("sezzle", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("sezzle")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsSezzleOptions Sezzle
+        {
+            get => this.sezzle;
+            set
+            {
+                this.sezzle = value;
                 this.SetTracker.Track();
             }
         }

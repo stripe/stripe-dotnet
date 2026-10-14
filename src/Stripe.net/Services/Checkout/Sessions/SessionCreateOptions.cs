@@ -142,7 +142,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
-        /// currency</a>. Required in <c>setup</c> mode when <c>payment_method_types</c> is not set.
+        /// currency</a>. Required in <c>setup</c> mode when <c>allowed_payment_method_types</c> is
+        /// not set.
         /// </summary>
         [JsonProperty("currency")]
         [STJS.JsonPropertyName("currency")]
@@ -459,7 +460,7 @@ namespace Stripe.Checkout
         /// the guide on configuring <a
         /// href="https://docs.stripe.com/payments/checkout/free-trials">subscriptions with a free
         /// trial</a>.
-        /// One of: <c>always</c>, or <c>if_required</c>.
+        /// One of: <c>always</c>, <c>auto</c>, or <c>if_required</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
