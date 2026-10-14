@@ -3,6 +3,7 @@ title: Update generated code
 pr_url: https://github.com/stripe/stripe-dotnet/pull/3479
 semver_level: major
 is_stripe_api_change: true
+released_in_version: 53.1.0-alpha.3
 ---
 
 * ⚠️ Remove support for `Capture` method on resource `V2.Payments.OffSessionPayment`
