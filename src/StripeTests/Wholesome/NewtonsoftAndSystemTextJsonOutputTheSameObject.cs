@@ -399,6 +399,25 @@ namespace StripeTests.Wholesome
             this.CheckOneStripeClass(searchResult, results);
             var searchResultType = searchResult.GetType();
             genericTypes.RemoveAll(gt => searchResultType.FullName.StartsWith(gt.FullName));
+
+            var v2SearchResult = new Stripe.V2.StripeSearchResult<Stripe.V2.Core.Event>
+            {
+                Object = "v2.search_result",
+                Data = new List<Stripe.V2.Core.Event>
+                {
+                    this.PopulateWithReasonableDefaults(new V1BillingMeterErrorReportTriggeredEvent(), null, new Dictionary<Type, object>()),
+                    this.PopulateWithReasonableDefaults(new V1BillingMeterErrorReportTriggeredEvent(), null, new Dictionary<Type, object>()),
+                    this.PopulateWithReasonableDefaults(new V1BillingMeterErrorReportTriggeredEvent(), null, new Dictionary<Type, object>()),
+                },
+
+                NextPageUrl = "/v2/core/accounts/search?page=1234",
+                PreviousPageUrl = null,
+                TotalCount = 12,
+            };
+
+            this.CheckOneStripeClass(v2SearchResult, results);
+            var v2SearchResultType = v2SearchResult.GetType();
+            genericTypes.RemoveAll(gt => v2SearchResultType.FullName.StartsWith(gt.FullName));
         }
     }
 }
