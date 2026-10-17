@@ -111,7 +111,7 @@ namespace Stripe.Identity
 
         /// <summary>
         /// Type of report.
-        /// One of: <c>document</c>, <c>email</c>, <c>id_number</c>, or <c>verification_flow</c>.
+        /// One of: <c>document</c>, <c>id_number</c>, or <c>verification_flow</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

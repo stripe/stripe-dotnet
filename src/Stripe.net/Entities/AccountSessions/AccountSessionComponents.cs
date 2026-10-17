@@ -42,6 +42,15 @@ namespace Stripe
         [STJS.JsonPropertyName("bills")]
         public AccountSessionComponentsBills Bills { get; set; }
 
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/business-profile-management/">Business
+        /// profile management</a> embedded component.
+        /// </summary>
+        [JsonProperty("business_profile_management")]
+        [STJS.JsonPropertyName("business_profile_management")]
+        public AccountSessionComponentsBusinessProfileManagement BusinessProfileManagement { get; set; }
+
         [JsonProperty("capital_financing")]
         [STJS.JsonPropertyName("capital_financing")]
         public AccountSessionComponentsCapitalFinancing CapitalFinancing { get; set; }
@@ -189,20 +198,10 @@ namespace Stripe
         [STJS.JsonPropertyName("tax_settings")]
         public AccountSessionComponentsTaxSettings TaxSettings { get; set; }
 
-        /// <summary>
-        /// Configuration for the <a
-        /// href="https://stripe.com/connect/supported-embedded-components/terminal-hardware-orders/">Terminal
-        /// hardware orders</a> embedded component.
-        /// </summary>
         [JsonProperty("terminal_hardware_orders")]
         [STJS.JsonPropertyName("terminal_hardware_orders")]
         public AccountSessionComponentsTerminalHardwareOrders TerminalHardwareOrders { get; set; }
 
-        /// <summary>
-        /// Configuration for the <a
-        /// href="https://stripe.com/connect/supported-embedded-components/terminal-hardware-shop/">Terminal
-        /// hardware shop</a> embedded component.
-        /// </summary>
         [JsonProperty("terminal_hardware_shop")]
         [STJS.JsonPropertyName("terminal_hardware_shop")]
         public AccountSessionComponentsTerminalHardwareShop TerminalHardwareShop { get; set; }

@@ -214,6 +214,7 @@ namespace Stripe
                 { "reserve.release", typeof(Reserve.Release) },
                 { "reserve_transaction", typeof(ReserveTransaction) },
                 { "review", typeof(Review) },
+                { "risk.form", typeof(Risk.Form) },
                 { "risk_signals", typeof(RiskSignals) },
                 { "scheduled_query_run", typeof(Sigma.ScheduledQueryRun) },
                 { "setup_attempt", typeof(SetupAttempt) },
@@ -1962,6 +1963,10 @@ namespace Stripe
                     Events.V2SignalsAccountEvaluationCompleteEvent)
                 },
                 {
+                    "v2.signals.account_signal.customer_risk_ready", typeof(
+                    Events.V2SignalsAccountSignalCustomerRiskReadyEvent)
+                },
+                {
                     "v2.signals.account_signal.fraudulent_merchant_ready", typeof(
                     Events.V2SignalsAccountSignalFraudulentMerchantReadyEvent)
                 },
@@ -3645,6 +3650,10 @@ namespace Stripe
                 {
                     "v2.signals.account_evaluation.complete", typeof(
                     Events.V2SignalsAccountEvaluationCompleteEventNotification)
+                },
+                {
+                    "v2.signals.account_signal.customer_risk_ready", typeof(
+                    Events.V2SignalsAccountSignalCustomerRiskReadyEventNotification)
                 },
                 {
                     "v2.signals.account_signal.fraudulent_merchant_ready", typeof(

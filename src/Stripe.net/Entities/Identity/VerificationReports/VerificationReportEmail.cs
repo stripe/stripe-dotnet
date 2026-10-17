@@ -19,13 +19,6 @@ namespace Stripe.Identity
         public string AddressMatchConfidence { get; set; }
 
         /// <summary>
-        /// Additional email verification details.
-        /// </summary>
-        [JsonProperty("details")]
-        [STJS.JsonPropertyName("details")]
-        public VerificationReportEmailDetails Details { get; set; }
-
-        /// <summary>
         /// Two-letter country code of the email domain's country.
         /// </summary>
         [JsonProperty("domain_country")]

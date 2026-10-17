@@ -79,6 +79,7 @@ namespace Stripe
         private ReportingService reporting;
         private ReserveService reserve;
         private ReviewService reviews;
+        private RiskService risk;
         private SetupAttemptService setupAttempts;
         private SetupIntentService setupIntents;
         private SharedPaymentService sharedPayment;
@@ -326,6 +327,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual ReviewService Reviews => this.reviews ??= new ReviewService(
+            this.Requestor);
+
+        public virtual RiskService Risk => this.risk ??= new RiskService(
             this.Requestor);
 
         public virtual SetupAttemptService SetupAttempts => this.setupAttempts ??= new SetupAttemptService(
