@@ -26,7 +26,7 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// List of signals to evaluate.
-        /// One of: <c>fraudulent_website</c>, <c>user_account_sharing</c>,
+        /// One of: <c>account_takeover</c>, <c>fraudulent_website</c>, <c>user_account_sharing</c>,
         /// <c>user_merchant_fit</c>, or <c>user_multi_accounting</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

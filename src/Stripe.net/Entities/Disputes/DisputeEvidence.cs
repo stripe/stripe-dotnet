@@ -17,6 +17,9 @@ namespace Stripe
         [STJS.JsonPropertyName("access_activity_log")]
         public string AccessActivityLog { get; set; }
 
+        /// <summary>
+        /// Appeal evidence submitted during the appeal stage.
+        /// </summary>
         [JsonProperty("appeal")]
         [STJS.JsonPropertyName("appeal")]
         public DisputeEvidenceAppeal Appeal { get; set; }

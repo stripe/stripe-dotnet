@@ -45,11 +45,25 @@ namespace Stripe.V2.Signals
         public string AccountEvaluation { get; set; }
 
         /// <summary>
+        /// Data for the account takeover signal. Present only when type is account_takeover.
+        /// </summary>
+        [JsonProperty("account_takeover")]
+        [STJS.JsonPropertyName("account_takeover")]
+        public AccountSignalAccountTakeover AccountTakeover { get; set; }
+
+        /// <summary>
         /// Timestamp at which the signal was created.
         /// </summary>
         [JsonProperty("created")]
         [STJS.JsonPropertyName("created")]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// Data for the customer risk signal. Present only when type is customer_risk.
+        /// </summary>
+        [JsonProperty("customer_risk")]
+        [STJS.JsonPropertyName("customer_risk")]
+        public AccountSignalCustomerRisk CustomerRisk { get; set; }
 
         /// <summary>
         /// Data for the fraudulent merchant signal. Present only when type is fraudulent_merchant.
@@ -91,9 +105,10 @@ namespace Stripe.V2.Signals
 
         /// <summary>
         /// The type of signal.
-        /// One of: <c>fraudulent_merchant</c>, <c>fraudulent_website</c>,
-        /// <c>merchant_delinquency</c>, <c>payment_delinquency_exposure</c>,
-        /// <c>user_account_sharing</c>, <c>user_merchant_fit</c>, or <c>user_multi_accounting</c>.
+        /// One of: <c>account_takeover</c>, <c>customer_risk</c>, <c>fraudulent_merchant</c>,
+        /// <c>fraudulent_website</c>, <c>merchant_delinquency</c>,
+        /// <c>payment_delinquency_exposure</c>, <c>user_account_sharing</c>,
+        /// <c>user_merchant_fit</c>, or <c>user_multi_accounting</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

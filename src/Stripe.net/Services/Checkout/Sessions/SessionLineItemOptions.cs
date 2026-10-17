@@ -61,8 +61,10 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Data used to generate a new <a href="https://docs.stripe.com/api/prices">Price</a>
-        /// object inline. One of <c>price</c> or <c>price_data</c> is required when creating a new
-        /// line item.
+        /// object inline, for <a
+        /// href="https://docs.stripe.com/products-prices/how-products-and-prices-work#inline-pricing">dynamic
+        /// pricing</a> when the amount isn't known ahead of time. One of <c>price</c> or
+        /// <c>price_data</c> is required when creating a new line item.
         /// </summary>
         [JsonProperty("price_data")]
         [STJS.JsonPropertyName("price_data")]

@@ -76,6 +76,10 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("bs")]
         public RegistrationCountryOptionsBs Bs { get; set; }
 
+        [JsonProperty("bw")]
+        [STJS.JsonPropertyName("bw")]
+        public RegistrationCountryOptionsBw Bw { get; set; }
+
         [JsonProperty("by")]
         [STJS.JsonPropertyName("by")]
         public RegistrationCountryOptionsBy By { get; set; }
@@ -91,6 +95,10 @@ namespace Stripe.Tax
         [JsonProperty("ch")]
         [STJS.JsonPropertyName("ch")]
         public RegistrationCountryOptionsCh Ch { get; set; }
+
+        [JsonProperty("ci")]
+        [STJS.JsonPropertyName("ci")]
+        public RegistrationCountryOptionsCi Ci { get; set; }
 
         [JsonProperty("cl")]
         [STJS.JsonPropertyName("cl")]
@@ -163,6 +171,10 @@ namespace Stripe.Tax
         [JsonProperty("ge")]
         [STJS.JsonPropertyName("ge")]
         public RegistrationCountryOptionsGe Ge { get; set; }
+
+        [JsonProperty("gh")]
+        [STJS.JsonPropertyName("gh")]
+        public RegistrationCountryOptionsGh Gh { get; set; }
 
         [JsonProperty("gn")]
         [STJS.JsonPropertyName("gn")]
@@ -267,6 +279,10 @@ namespace Stripe.Tax
         [JsonProperty("mt")]
         [STJS.JsonPropertyName("mt")]
         public RegistrationCountryOptionsMt Mt { get; set; }
+
+        [JsonProperty("mu")]
+        [STJS.JsonPropertyName("mu")]
+        public RegistrationCountryOptionsMu Mu { get; set; }
 
         [JsonProperty("mx")]
         [STJS.JsonPropertyName("mx")]
