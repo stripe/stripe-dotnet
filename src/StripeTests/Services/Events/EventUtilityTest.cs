@@ -160,17 +160,45 @@ namespace StripeTests
         [Theory]
         [InlineData("")]
         [InlineData(null)]
-        public void ValidateSignature_EmptyOrNullSecretThrows(string emptySecret)
+        [InlineData(" ")]
+        [InlineData("\t")]
+        [InlineData("\r")]
+        [InlineData("\n")]
+        [InlineData("\f")]
+        [InlineData("\v")]
+        [InlineData(" \t\r\n\f\v")]
+        public void ValidateSignature_EmptyNullOrBlankSecretThrows(string blankSecret)
         {
             var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-            var header = EventUtility.GenerateSignatureHeader("{}", this.secret, timestamp);
+            var header = EventUtility.GenerateSignatureHeader("{}", blankSecret ?? this.secret, timestamp);
 
             var exception = Assert.Throws<StripeException>(() =>
-                EventUtility.ValidateSignature("{}", header, emptySecret, EventUtility.DefaultTimeTolerance, timestamp));
+                EventUtility.ValidateSignature("{}", header, blankSecret, EventUtility.DefaultTimeTolerance, timestamp));
 
             Assert.Equal(
                 "No webhook secret value was provided. It should start with `whsec_`",
                 exception.Message);
+        }
+
+        [Fact]
+        public void ValidateSignature_SecretWithSurroundingWhitespaceDoesNotThrow()
+        {
+            var secret = " \twebhook_secret\r\n";
+            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var header = EventUtility.GenerateSignatureHeader("{}", secret, timestamp);
+
+            EventUtility.ValidateSignature("{}", header, secret, EventUtility.DefaultTimeTolerance, timestamp);
+        }
+
+        [Fact]
+        public void ValidateSignature_NonBreakingSpaceSecretDoesNotThrow()
+        {
+            // Non-breaking space is outside the portable ASCII whitespace contract.
+            var secret = "\u00A0";
+            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var header = EventUtility.GenerateSignatureHeader("{}", secret, timestamp);
+
+            EventUtility.ValidateSignature("{}", header, secret, EventUtility.DefaultTimeTolerance, timestamp);
         }
 
         [Fact]
