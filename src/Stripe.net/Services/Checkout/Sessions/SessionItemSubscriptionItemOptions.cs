@@ -9,6 +9,14 @@ namespace Stripe.Checkout
     public class SessionItemSubscriptionItemOptions : INestedOptions
     {
         /// <summary>
+        /// When set, provides configuration for this item’s quantity to be adjusted by the customer
+        /// during Checkout.
+        /// </summary>
+        [JsonProperty("adjustable_quantity")]
+        [STJS.JsonPropertyName("adjustable_quantity")]
+        public SessionItemSubscriptionItemAdjustableQuantityOptions AdjustableQuantity { get; set; }
+
+        /// <summary>
         /// The trial offer to apply to this subscription item.
         /// </summary>
         [JsonProperty("current_trial")]

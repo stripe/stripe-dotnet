@@ -26,6 +26,15 @@ namespace Stripe.TestHelpers.Issuing
         public bool? CloseAuthorization { get; set; }
 
         /// <summary>
+        /// Exchange rate from merchant amount to capture amount, expressed in minor units. Must be
+        /// finite and positive for different currencies. Matching currencies ignore the supplied
+        /// numeric rate and use 1.0. The capture amount remains authoritative.
+        /// </summary>
+        [JsonProperty("merchant_amount_exchange_rate")]
+        [STJS.JsonPropertyName("merchant_amount_exchange_rate")]
+        public decimal? MerchantAmountExchangeRate { get; set; }
+
+        /// <summary>
         /// Details about the transaction, such as processing dates, set by the card network.
         /// </summary>
         [JsonProperty("network_data")]
@@ -38,5 +47,15 @@ namespace Stripe.TestHelpers.Issuing
         [JsonProperty("purchase_details")]
         [STJS.JsonPropertyName("purchase_details")]
         public AuthorizationPurchaseDetailsOptions PurchaseDetails { get; set; }
+
+        /// <summary>
+        /// Synthetic settlement values for this purchase capture. If omitted, defaults to the final
+        /// signed transaction amount, transaction currency, and effective merchant-to-cardholder
+        /// exchange rate. Supply all three fields to override. This does not create a settlement or
+        /// change funding.
+        /// </summary>
+        [JsonProperty("settlement_details")]
+        [STJS.JsonPropertyName("settlement_details")]
+        public AuthorizationSettlementDetailsOptions SettlementDetails { get; set; }
     }
 }

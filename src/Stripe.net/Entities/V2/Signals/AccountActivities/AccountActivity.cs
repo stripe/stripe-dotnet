@@ -70,11 +70,34 @@ namespace Stripe.V2.Signals
         public AccountActivityAccountSuspended AccountSuspended { get; set; }
 
         /// <summary>
+        /// Details for the merchant's takeover confirmation. Present only when type is
+        /// account_takeover_confirmation.
+        /// </summary>
+        [JsonProperty("account_takeover_confirmation")]
+        [STJS.JsonPropertyName("account_takeover_confirmation")]
+        public AccountActivityAccountTakeoverConfirmation AccountTakeoverConfirmation { get; set; }
+
+        /// <summary>
+        /// Details for the account holder's takeover report. Present only when type is
+        /// account_takeover_report.
+        /// </summary>
+        [JsonProperty("account_takeover_report")]
+        [STJS.JsonPropertyName("account_takeover_report")]
+        public AccountActivityAccountTakeoverReport AccountTakeoverReport { get; set; }
+
+        /// <summary>
         /// Timestamp at which the account activity was created.
         /// </summary>
         [JsonProperty("created")]
         [STJS.JsonPropertyName("created")]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// Details for the credential change. Present only when type is credential_change.
+        /// </summary>
+        [JsonProperty("credential_change")]
+        [STJS.JsonPropertyName("credential_change")]
+        public AccountActivityCredentialChange CredentialChange { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
@@ -106,6 +129,20 @@ namespace Stripe.V2.Signals
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Details for the MFA addition. Present only when type is mfa_addition.
+        /// </summary>
+        [JsonProperty("mfa_addition")]
+        [STJS.JsonPropertyName("mfa_addition")]
+        public AccountActivityMfaAddition MfaAddition { get; set; }
+
+        /// <summary>
+        /// Details for the MFA removal. Present only when type is mfa_removal.
+        /// </summary>
+        [JsonProperty("mfa_removal")]
+        [STJS.JsonPropertyName("mfa_removal")]
+        public AccountActivityMfaRemoval MfaRemoval { get; set; }
+
+        /// <summary>
         /// Timestamp at which the activity occurred. Defaults to the created time if not provided.
         /// </summary>
         [JsonProperty("occurred_at")]
@@ -129,8 +166,10 @@ namespace Stripe.V2.Signals
         /// <summary>
         /// The type of activity.
         /// One of: <c>account_restricted</c>, <c>account_reviewed</c>, <c>account_suspended</c>,
-        /// <c>login_attempt</c>, <c>login_decision</c>, <c>registration_attempt</c>, or
-        /// <c>registration_decision</c>.
+        /// <c>account_takeover_confirmation</c>, <c>account_takeover_mitigation</c>,
+        /// <c>account_takeover_report</c>, <c>credential_change</c>, <c>login_attempt</c>,
+        /// <c>login_decision</c>, <c>mfa_addition</c>, <c>mfa_removal</c>,
+        /// <c>registration_attempt</c>, or <c>registration_decision</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

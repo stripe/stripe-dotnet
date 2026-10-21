@@ -439,6 +439,13 @@ namespace Stripe.Checkout
         public SessionManagedPayments ManagedPayments { get; set; }
 
         /// <summary>
+        /// Advertising attribution information for this Checkout Session.
+        /// </summary>
+        [JsonProperty("marketing_attributions")]
+        [STJS.JsonPropertyName("marketing_attributions")]
+        public List<SessionMarketingAttribution> MarketingAttributions { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
@@ -565,8 +572,8 @@ namespace Stripe.Checkout
         #endregion
 
         /// <summary>
-        /// Configure whether a Checkout Session should collect a payment method for sessions with
-        /// mode <c>payment</c>. Defaults to <c>always</c>.
+        /// Configure whether a Checkout Session should collect a payment method. Can only be set in
+        /// <c>subscription</c> mode. Defaults to <c>always</c>.
         /// One of: <c>always</c>, <c>auto</c>, or <c>if_required</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

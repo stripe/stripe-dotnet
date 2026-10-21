@@ -81,7 +81,7 @@ namespace Stripe.Identity
         /// The type of <a href="https://docs.stripe.com/identity/verification-checks">verification
         /// check</a> to be performed. You must provide a <c>type</c> if not passing
         /// <c>verification_flow</c>.
-        /// One of: <c>document</c>, <c>email</c>, or <c>id_number</c>.
+        /// One of: <c>document</c>, or <c>id_number</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

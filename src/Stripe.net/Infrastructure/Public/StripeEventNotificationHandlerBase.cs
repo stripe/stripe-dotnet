@@ -496,6 +496,7 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ReportingReportRunSucceededEventNotification>> v2ReportingReportRunSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ReportingReportRunUpdatedEventNotification>> v2ReportingReportRunUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountEvaluationCompleteEventNotification>> v2SignalsAccountEvaluationComplete;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalCustomerRiskReadyEventNotification>> v2SignalsAccountSignalCustomerRiskReady;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalFraudulentMerchantReadyEventNotification>> v2SignalsAccountSignalFraudulentMerchantReady;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalFraudulentWebsiteReadyEventNotification>> v2SignalsAccountSignalFraudulentWebsiteReady;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification>> v2SignalsAccountSignalMerchantDelinquencyReady;
@@ -3360,6 +3361,12 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalCustomerRiskReadyEventNotification>> V2SignalsAccountSignalCustomerRiskReady
+        {
+            add { this.AddEventHandler(ref this.v2SignalsAccountSignalCustomerRiskReady, value, "v2.signals.account_signal.customer_risk_ready"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalFraudulentMerchantReadyEventNotification>> V2SignalsAccountSignalFraudulentMerchantReady
         {
             add { this.AddEventHandler(ref this.v2SignalsAccountSignalFraudulentMerchantReady, value, "v2.signals.account_signal.fraudulent_merchant_ready"); }
@@ -5426,6 +5433,10 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2SignalsAccountEvaluationCompleteEventNotification)
                 {
                     this.v2SignalsAccountEvaluationComplete.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountEvaluationCompleteEventNotification>((Stripe.Events.V2SignalsAccountEvaluationCompleteEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2SignalsAccountSignalCustomerRiskReadyEventNotification)
+                {
+                    this.v2SignalsAccountSignalCustomerRiskReady.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalCustomerRiskReadyEventNotification>((Stripe.Events.V2SignalsAccountSignalCustomerRiskReadyEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2SignalsAccountSignalFraudulentMerchantReadyEventNotification)
                 {

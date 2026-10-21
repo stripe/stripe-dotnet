@@ -296,6 +296,14 @@ namespace Stripe.Issuing
         public string PosCondition { get; set; }
 
         /// <summary>
+        /// Details about the authorization specific to product eligibility inquiries. This field is
+        /// only populated for <c>product_eligibility_inquiry</c> type authorizations.
+        /// </summary>
+        [JsonProperty("product_eligibility_inquiry")]
+        [STJS.JsonPropertyName("product_eligibility_inquiry")]
+        public AuthorizationProductEligibilityInquiry ProductEligibilityInquiry { get; set; }
+
+        /// <summary>
         /// Redaction status of this authorization. If the authorization is not redacted, this field
         /// will be null.
         /// </summary>
@@ -390,6 +398,16 @@ namespace Stripe.Issuing
         [JsonProperty("treasury")]
         [STJS.JsonPropertyName("treasury")]
         public AuthorizationTreasury Treasury { get; set; }
+
+        /// <summary>
+        /// The type of the authorization, whether it is for a payment or another type.
+        /// One of: <c>balance_inquiry</c>, <c>payment</c>, or <c>product_eligibility_inquiry</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
 
         [JsonProperty("verification_data")]
         [STJS.JsonPropertyName("verification_data")]

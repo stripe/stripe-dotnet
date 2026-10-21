@@ -9,7 +9,8 @@ namespace Stripe
     public class PaymentMethodIdBankTransfer : StripeEntity<PaymentMethodIdBankTransfer>
     {
         /// <summary>
-        /// One of: <c>bca</c>, <c>bni</c>, <c>bri</c>, <c>cimb</c>, or <c>permata</c>.
+        /// One of: <c>bca</c>, <c>bni</c>, <c>bri</c>, <c>cimb</c>, <c>mandiri</c>, or
+        /// <c>permata</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

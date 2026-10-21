@@ -50,9 +50,9 @@ namespace Stripe.V2.Core
         /// <c>received_credits.bank_accounts</c>, <c>received_debits.bank_accounts</c>,
         /// <c>revolut_pay_payments</c>, <c>samsung_pay_payments</c>, <c>satispay_payments</c>,
         /// <c>sepa_bank_transfer_payments</c>, <c>sepa_debit_payments</c>,
-        /// <c>stripe_balance.payouts</c>, <c>stripe_balance.stripe_transfers</c>,
-        /// <c>swish_payments</c>, <c>twint_payments</c>, <c>us_bank_transfer_payments</c>,
-        /// <c>vipps_payments</c>, or <c>zip_payments</c>.
+        /// <c>stripe_balance.payouts</c>, <c>stripe_balance.stablecoin_custodial</c>,
+        /// <c>stripe_balance.stripe_transfers</c>, <c>swish_payments</c>, <c>twint_payments</c>,
+        /// <c>us_bank_transfer_payments</c>, <c>vipps_payments</c>, or <c>zip_payments</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

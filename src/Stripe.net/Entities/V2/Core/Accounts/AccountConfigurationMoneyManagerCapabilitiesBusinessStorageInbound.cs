@@ -23,6 +23,13 @@ namespace Stripe.V2.Core
         public AccountConfigurationMoneyManagerCapabilitiesBusinessStorageInboundCad Cad { get; set; }
 
         /// <summary>
+        /// Can receive business storage-type funds on Stripe in CZK.
+        /// </summary>
+        [JsonProperty("czk")]
+        [STJS.JsonPropertyName("czk")]
+        public AccountConfigurationMoneyManagerCapabilitiesBusinessStorageInboundCzk Czk { get; set; }
+
+        /// <summary>
         /// Can receive business storage-type funds on Stripe in EUR.
         /// </summary>
         [JsonProperty("eur")]
@@ -37,11 +44,32 @@ namespace Stripe.V2.Core
         public AccountConfigurationMoneyManagerCapabilitiesBusinessStorageInboundGbp Gbp { get; set; }
 
         /// <summary>
+        /// Can receive business storage-type funds on Stripe in NOK.
+        /// </summary>
+        [JsonProperty("nok")]
+        [STJS.JsonPropertyName("nok")]
+        public AccountConfigurationMoneyManagerCapabilitiesBusinessStorageInboundNok Nok { get; set; }
+
+        /// <summary>
         /// Can receive business storage-type funds on Stripe in OUSD.
         /// </summary>
         [JsonProperty("ousd")]
         [STJS.JsonPropertyName("ousd")]
         public AccountConfigurationMoneyManagerCapabilitiesBusinessStorageInboundOusd Ousd { get; set; }
+
+        /// <summary>
+        /// Can receive business storage-type funds on Stripe in PLN.
+        /// </summary>
+        [JsonProperty("pln")]
+        [STJS.JsonPropertyName("pln")]
+        public AccountConfigurationMoneyManagerCapabilitiesBusinessStorageInboundPln Pln { get; set; }
+
+        /// <summary>
+        /// Can receive business storage-type funds on Stripe in SEK.
+        /// </summary>
+        [JsonProperty("sek")]
+        [STJS.JsonPropertyName("sek")]
+        public AccountConfigurationMoneyManagerCapabilitiesBusinessStorageInboundSek Sek { get; set; }
 
         /// <summary>
         /// Can receive business storage-type funds on Stripe in USD.
