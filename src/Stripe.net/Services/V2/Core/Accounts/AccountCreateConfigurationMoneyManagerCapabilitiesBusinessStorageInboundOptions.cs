@@ -23,6 +23,13 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageInboundCadOptions Cad { get; set; }
 
         /// <summary>
+        /// Can receive business storage-type funds on Stripe in CZK.
+        /// </summary>
+        [JsonProperty("czk")]
+        [STJS.JsonPropertyName("czk")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageInboundCzkOptions Czk { get; set; }
+
+        /// <summary>
         /// Can receive business storage-type funds on Stripe in EUR.
         /// </summary>
         [JsonProperty("eur")]
@@ -37,11 +44,32 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageInboundGbpOptions Gbp { get; set; }
 
         /// <summary>
+        /// Can receive business storage-type funds on Stripe in NOK.
+        /// </summary>
+        [JsonProperty("nok")]
+        [STJS.JsonPropertyName("nok")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageInboundNokOptions Nok { get; set; }
+
+        /// <summary>
         /// Can receive business storage-type funds on Stripe in OUSD.
         /// </summary>
         [JsonProperty("ousd")]
         [STJS.JsonPropertyName("ousd")]
         public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageInboundOusdOptions Ousd { get; set; }
+
+        /// <summary>
+        /// Can receive business storage-type funds on Stripe in PLN.
+        /// </summary>
+        [JsonProperty("pln")]
+        [STJS.JsonPropertyName("pln")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageInboundPlnOptions Pln { get; set; }
+
+        /// <summary>
+        /// Can receive business storage-type funds on Stripe in SEK.
+        /// </summary>
+        [JsonProperty("sek")]
+        [STJS.JsonPropertyName("sek")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageInboundSekOptions Sek { get; set; }
 
         /// <summary>
         /// Can receive business storage-type funds on Stripe in USD.

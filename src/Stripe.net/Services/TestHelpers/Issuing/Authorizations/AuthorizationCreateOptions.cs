@@ -105,6 +105,15 @@ namespace Stripe.TestHelpers.Issuing
         public long? MerchantAmount { get; set; }
 
         /// <summary>
+        /// Exchange rate from merchant amount to cardholder amount, expressed in minor units. Must
+        /// be finite and positive for different currencies. Matching currencies ignore the supplied
+        /// numeric rate and use 1.0.
+        /// </summary>
+        [JsonProperty("merchant_amount_exchange_rate")]
+        [STJS.JsonPropertyName("merchant_amount_exchange_rate")]
+        public decimal? MerchantAmountExchangeRate { get; set; }
+
+        /// <summary>
         /// The currency of the authorization. If not provided, defaults to the currency of the
         /// card. Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO
         /// currency code</a>, in lowercase. Must be a <a
@@ -145,6 +154,14 @@ namespace Stripe.TestHelpers.Issuing
         [JsonProperty("risk_assessment")]
         [STJS.JsonPropertyName("risk_assessment")]
         public AuthorizationRiskAssessmentOptions RiskAssessment { get; set; }
+
+        /// <summary>
+        /// The type of the authorization object, for example a payment authorization, an original
+        /// credit authorization, or a refund authorization.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
 
         /// <summary>
         /// Verifications that Stripe performed on information that the cardholder provided to the

@@ -214,6 +214,7 @@ namespace Stripe
                 { "reserve.release", typeof(Reserve.Release) },
                 { "reserve_transaction", typeof(ReserveTransaction) },
                 { "review", typeof(Review) },
+                { "risk.form", typeof(Risk.Form) },
                 { "risk_signals", typeof(RiskSignals) },
                 { "scheduled_query_run", typeof(Sigma.ScheduledQueryRun) },
                 { "setup_attempt", typeof(SetupAttempt) },
@@ -354,6 +355,7 @@ namespace Stripe
                 { "v2.data.report_run", typeof(V2.Data.ReportRun) },
                 { "v2.data.reporting.query_run", typeof(V2.Data.Reporting.QueryRun) },
                 { "v2.data.schema", typeof(V2.Data.Schema) },
+                { "v2.data.search_result_list", typeof(V2.Data.SearchResultList) },
                 { "v2.extend.workflow", typeof(V2.Extend.Workflow) },
                 { "v2.extend.workflow_run", typeof(V2.Extend.WorkflowRun) },
                 { "v2.iam.activity_log", typeof(V2.Iam.ActivityLog) },
@@ -1960,6 +1962,10 @@ namespace Stripe
                 {
                     "v2.signals.account_evaluation.complete", typeof(
                     Events.V2SignalsAccountEvaluationCompleteEvent)
+                },
+                {
+                    "v2.signals.account_signal.customer_risk_ready", typeof(
+                    Events.V2SignalsAccountSignalCustomerRiskReadyEvent)
                 },
                 {
                     "v2.signals.account_signal.fraudulent_merchant_ready", typeof(
@@ -3645,6 +3651,10 @@ namespace Stripe
                 {
                     "v2.signals.account_evaluation.complete", typeof(
                     Events.V2SignalsAccountEvaluationCompleteEventNotification)
+                },
+                {
+                    "v2.signals.account_signal.customer_risk_ready", typeof(
+                    Events.V2SignalsAccountSignalCustomerRiskReadyEventNotification)
                 },
                 {
                     "v2.signals.account_signal.fraudulent_merchant_ready", typeof(

@@ -9,6 +9,13 @@ namespace Stripe.V2.Signals
     public class AccountEvaluationEvaluatedSignals : StripeEntity<AccountEvaluationEvaluatedSignals>
     {
         /// <summary>
+        /// Synchronous account takeover result for the evaluation, when requested.
+        /// </summary>
+        [JsonProperty("account_takeover")]
+        [STJS.JsonPropertyName("account_takeover")]
+        public AccountEvaluationEvaluatedSignalsAccountTakeover AccountTakeover { get; set; }
+
+        /// <summary>
         /// Fraudulent website result for the evaluation, when available.
         /// </summary>
         [JsonProperty("fraudulent_website")]

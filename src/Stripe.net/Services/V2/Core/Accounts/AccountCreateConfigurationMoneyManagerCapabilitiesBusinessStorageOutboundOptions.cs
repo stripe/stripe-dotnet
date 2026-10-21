@@ -23,6 +23,13 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundCadOptions Cad { get; set; }
 
         /// <summary>
+        /// Can send business storage-type funds on Stripe in CZK.
+        /// </summary>
+        [JsonProperty("czk")]
+        [STJS.JsonPropertyName("czk")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundCzkOptions Czk { get; set; }
+
+        /// <summary>
         /// Can send business storage-type funds on Stripe in EUR.
         /// </summary>
         [JsonProperty("eur")]
@@ -37,11 +44,32 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundGbpOptions Gbp { get; set; }
 
         /// <summary>
+        /// Can send business storage-type funds on Stripe in NOK.
+        /// </summary>
+        [JsonProperty("nok")]
+        [STJS.JsonPropertyName("nok")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundNokOptions Nok { get; set; }
+
+        /// <summary>
         /// Can send business storage-type funds on Stripe in OUSD.
         /// </summary>
         [JsonProperty("ousd")]
         [STJS.JsonPropertyName("ousd")]
         public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundOusdOptions Ousd { get; set; }
+
+        /// <summary>
+        /// Can send business storage-type funds on Stripe in PLN.
+        /// </summary>
+        [JsonProperty("pln")]
+        [STJS.JsonPropertyName("pln")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundPlnOptions Pln { get; set; }
+
+        /// <summary>
+        /// Can send business storage-type funds on Stripe in SEK.
+        /// </summary>
+        [JsonProperty("sek")]
+        [STJS.JsonPropertyName("sek")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundSekOptions Sek { get; set; }
 
         /// <summary>
         /// Can send business storage-type funds on Stripe in USD.

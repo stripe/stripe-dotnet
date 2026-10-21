@@ -19,6 +19,10 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("installments")]
         public SessionPaymentMethodOptionsCardInstallments Installments { get; set; }
 
+        [JsonProperty("mandate_options")]
+        [STJS.JsonPropertyName("mandate_options")]
+        public SessionPaymentMethodOptionsCardMandateOptions MandateOptions { get; set; }
+
         /// <summary>
         /// Request ability to <a href="https://stripe.com/payments/extended-authorization">capture
         /// beyond the standard authorization validity window</a> for this CheckoutSession.

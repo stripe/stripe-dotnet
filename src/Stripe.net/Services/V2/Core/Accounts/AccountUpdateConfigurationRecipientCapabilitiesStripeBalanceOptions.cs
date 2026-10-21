@@ -9,6 +9,13 @@ namespace Stripe.V2.Core
     public class AccountUpdateConfigurationRecipientCapabilitiesStripeBalanceOptions : INestedOptions
     {
         /// <summary>
+        /// Enables this Account to hold USDC in their Stripe Balance via Bridge custodial wallets.
+        /// </summary>
+        [JsonProperty("stablecoin_custodial")]
+        [STJS.JsonPropertyName("stablecoin_custodial")]
+        public AccountUpdateConfigurationRecipientCapabilitiesStripeBalanceStablecoinCustodialOptions StablecoinCustodial { get; set; }
+
+        /// <summary>
         /// Enables this Account to receive /v1/transfers into their Stripe Balance (/v1/balance).
         /// </summary>
         [JsonProperty("stripe_transfers")]

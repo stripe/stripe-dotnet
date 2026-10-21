@@ -8,6 +8,7 @@ namespace Stripe.V2
     public class DataService : Service
     {
         private V2.Data.AnalyticsService analytics;
+        private V2.Data.OperationService operations;
         private V2.Data.QueryRunService queryRuns;
         private V2.Data.ReportService reports;
         private V2.Data.ReportRunService reportRuns;
@@ -25,6 +26,9 @@ namespace Stripe.V2
         }
 
         public virtual V2.Data.AnalyticsService Analytics => this.analytics ??= new V2.Data.AnalyticsService(
+            this.Requestor);
+
+        public virtual V2.Data.OperationService Operations => this.operations ??= new V2.Data.OperationService(
             this.Requestor);
 
         public virtual V2.Data.QueryRunService QueryRuns => this.queryRuns ??= new V2.Data.QueryRunService(

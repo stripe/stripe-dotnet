@@ -9,6 +9,13 @@ namespace Stripe.Checkout
     public class SessionItemOptions : INestedOptions
     {
         /// <summary>
+        /// Configuration for the Metronome commit item.
+        /// </summary>
+        [JsonProperty("metronome_commit")]
+        [STJS.JsonPropertyName("metronome_commit")]
+        public SessionItemMetronomeCommitOptions MetronomeCommit { get; set; }
+
+        /// <summary>
         /// Configuration for the subscription item.
         /// </summary>
         [JsonProperty("subscription")]
@@ -17,7 +24,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The type of item.
-        /// One of: <c>subscription</c>.
+        /// One of: <c>metronome_commit</c>, or <c>subscription</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
