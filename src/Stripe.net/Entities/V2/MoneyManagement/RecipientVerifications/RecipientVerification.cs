@@ -29,11 +29,11 @@ namespace Stripe.V2.MoneyManagement
         public string Object { get; set; }
 
         /// <summary>
-        /// The OBP/OBT ID that consumed this verification, present if one is successfully created.
+        /// The resource that consumed this verification.
         /// </summary>
         [JsonProperty("consumed_by")]
         [STJS.JsonPropertyName("consumed_by")]
-        public string ConsumedBy { get; set; }
+        public RecipientVerificationConsumedBy ConsumedBy { get; set; }
 
         /// <summary>
         /// Time at which the RecipientVerification was created. Represented as a RFC 3339 date
@@ -44,13 +44,13 @@ namespace Stripe.V2.MoneyManagement
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Time at which the RecipientVerification expires, 5 minutes after the creation.
-        /// Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for
-        /// example: 2022-09-18T13:22:18.123Z.
+        /// Time at which the RecipientVerification expires, 5 minutes after the creation. Only
+        /// applicable for Verification of Payee (VoP) verifications. Represented as a RFC 3339 date
+        /// &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
         /// </summary>
         [JsonProperty("expires_at")]
         [STJS.JsonPropertyName("expires_at")]
-        public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime? ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
@@ -77,8 +77,21 @@ namespace Stripe.V2.MoneyManagement
         public RecipientVerificationMatchResultDetails MatchResultDetails { get; set; }
 
         /// <summary>
-        /// Closed Enum. Current status of the RecipientVerification: <c>verified</c>,
-        /// <c>consumed</c>, <c>expired</c>, <c>awaiting_acknowledgement</c>, <c>acknowledged</c>.
+        /// ID of the payout method that was verified.
+        /// </summary>
+        [JsonProperty("payout_method")]
+        [STJS.JsonPropertyName("payout_method")]
+        public string PayoutMethod { get; set; }
+
+        /// <summary>
+        /// ID of the recipient account. Omitted for same-entity payouts.
+        /// </summary>
+        [JsonProperty("recipient")]
+        [STJS.JsonPropertyName("recipient")]
+        public string Recipient { get; set; }
+
+        /// <summary>
+        /// Current status of the recipient verification.
         /// One of: <c>acknowledged</c>, <c>awaiting_acknowledgement</c>, <c>consumed</c>,
         /// <c>expired</c>, or <c>verified</c>.
         /// </summary>
@@ -92,5 +105,16 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("status_transitions")]
         [STJS.JsonPropertyName("status_transitions")]
         public RecipientVerificationStatusTransitions StatusTransitions { get; set; }
+
+        /// <summary>
+        /// Open Enum. The type of verification performed: <c>verification_of_payee</c>,
+        /// <c>confirmation_of_payee</c>.
+        /// One of: <c>confirmation_of_payee</c>, or <c>verification_of_payee</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("verification_type")]
+        [STJS.JsonPropertyName("verification_type")]
+        public string VerificationType { get; set; }
     }
 }

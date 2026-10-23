@@ -21,7 +21,9 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// InboundTransfers APIs are used to create, retrieve or list InboundTransfers.
+        /// Creates an InboundTransfer to pull funds from a bank account into a financial account.
+        /// Per-transfer and rolling weekly limits vary by account and payment rail. See <a
+        /// href="https://stripe.com/treasury/add-funds#transfer-limits">transfer limits</a>.
         /// </summary>
         public virtual InboundTransfer Create(InboundTransferCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -29,7 +31,9 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// InboundTransfers APIs are used to create, retrieve or list InboundTransfers.
+        /// Creates an InboundTransfer to pull funds from a bank account into a financial account.
+        /// Per-transfer and rolling weekly limits vary by account and payment rail. See <a
+        /// href="https://stripe.com/treasury/add-funds#transfer-limits">transfer limits</a>.
         /// </summary>
         public virtual Task<InboundTransfer> CreateAsync(InboundTransferCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

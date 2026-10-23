@@ -9,31 +9,10 @@ namespace Stripe.V2.Iam
     public class ActivityLogDetailsUserAccessDashboardClient : StripeEntity<ActivityLogDetailsUserAccessDashboardClient>
     {
         /// <summary>
-        /// Browser used for the user access action.
+        /// User-Agent header for the user access action.
         /// </summary>
-        [JsonProperty("browser")]
-        [STJS.JsonPropertyName("browser")]
-        public string Browser { get; set; }
-
-        /// <summary>
-        /// Browser version used for the user access action.
-        /// </summary>
-        [JsonProperty("browser_version")]
-        [STJS.JsonPropertyName("browser_version")]
-        public string BrowserVersion { get; set; }
-
-        /// <summary>
-        /// Device type used for the user access action.
-        /// </summary>
-        [JsonProperty("device_type")]
-        [STJS.JsonPropertyName("device_type")]
-        public string DeviceType { get; set; }
-
-        /// <summary>
-        /// Operating system used for the user access action.
-        /// </summary>
-        [JsonProperty("os")]
-        [STJS.JsonPropertyName("os")]
-        public string Os { get; set; }
+        [JsonProperty("user_agent")]
+        [STJS.JsonPropertyName("user_agent")]
+        public string UserAgent { get; set; }
     }
 }

@@ -21,5 +21,12 @@ namespace Stripe.V2.Data
         [JsonProperty("schema")]
         [STJS.JsonPropertyName("schema")]
         public string Schema { get; set; }
+
+        /// <summary>
+        /// The name of the referenced schema.
+        /// </summary>
+        [JsonProperty("schema_name")]
+        [STJS.JsonPropertyName("schema_name")]
+        public string SchemaName { get; set; }
     }
 }

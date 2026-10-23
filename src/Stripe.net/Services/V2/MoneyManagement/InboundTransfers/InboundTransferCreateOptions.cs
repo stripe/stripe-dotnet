@@ -9,8 +9,7 @@ namespace Stripe.V2.MoneyManagement
     public class InboundTransferCreateOptions : BaseOptions
     {
         /// <summary>
-        /// The amount, in specified currency, by which the FinancialAccount balance will increase
-        /// due to the InboundTransfer.
+        /// The amount and currency to credit to the FinancialAccount.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
@@ -24,7 +23,7 @@ namespace Stripe.V2.MoneyManagement
         public string Description { get; set; }
 
         /// <summary>
-        /// Object containing details about where the funds will originate from.
+        /// The verified bank account credential to debit for this InboundTransfer.
         /// </summary>
         [JsonProperty("from")]
         [STJS.JsonPropertyName("from")]
@@ -46,7 +45,7 @@ namespace Stripe.V2.MoneyManagement
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// Object containing details about where the funds will land.
+        /// The FinancialAccount and currency to credit with the transferred funds.
         /// </summary>
         [JsonProperty("to")]
         [STJS.JsonPropertyName("to")]

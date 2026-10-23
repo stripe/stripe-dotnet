@@ -11,13 +11,6 @@ namespace Stripe.V2.Iam
     public class ActivityLogDetailsUserAccess : StripeEntity<ActivityLogDetailsUserAccess>
     {
         /// <summary>
-        /// Authentication details for the user access action.
-        /// </summary>
-        [JsonProperty("authentication")]
-        [STJS.JsonPropertyName("authentication")]
-        public ActivityLogDetailsUserAccessAuthentication Authentication { get; set; }
-
-        /// <summary>
         /// Dashboard client details for the user access action.
         /// </summary>
         [JsonProperty("dashboard_client")]
@@ -51,13 +44,6 @@ namespace Stripe.V2.Iam
         [JsonProperty("roles")]
         [STJS.JsonPropertyName("roles")]
         public List<string> Roles { get; set; }
-
-        /// <summary>
-        /// Session fingerprint for the user access action.
-        /// </summary>
-        [JsonProperty("session_fingerprint")]
-        [STJS.JsonPropertyName("session_fingerprint")]
-        public string SessionFingerprint { get; set; }
 
         /// <summary>
         /// Surface where the user access action started.

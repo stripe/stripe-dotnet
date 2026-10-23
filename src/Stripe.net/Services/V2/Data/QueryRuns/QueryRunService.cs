@@ -38,7 +38,8 @@ namespace Stripe.V2.Data
         }
 
         /// <summary>
-        /// Retrieves the status and results of a previously created <c>QueryRun</c>.
+        /// Retrieves the status and results of a previously created <c>QueryRun</c>. Returns a
+        /// <c>404</c> error if the <c>QueryRun</c> doesn't exist or its retention period has ended.
         /// </summary>
         public virtual QueryRun Get(string id, QueryRunGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -46,7 +47,8 @@ namespace Stripe.V2.Data
         }
 
         /// <summary>
-        /// Retrieves the status and results of a previously created <c>QueryRun</c>.
+        /// Retrieves the status and results of a previously created <c>QueryRun</c>. Returns a
+        /// <c>404</c> error if the <c>QueryRun</c> doesn't exist or its retention period has ended.
         /// </summary>
         public virtual Task<QueryRun> GetAsync(string id, QueryRunGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

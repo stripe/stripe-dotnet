@@ -9,7 +9,9 @@ namespace Stripe.V2.MoneyManagement
     public class FinancialAccountCloseOptions : BaseOptions
     {
         /// <summary>
-        /// The addresses to forward any incoming transactions to.
+        /// Settings that specify where to send positive balances and how to cover negative
+        /// balances. You must provide these settings if the FinancialAccount has a non-zero
+        /// balance.
         /// </summary>
         [JsonProperty("forwarding_settings")]
         [STJS.JsonPropertyName("forwarding_settings")]

@@ -102,6 +102,10 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("approval_method")]
         public string ApprovalMethod { get; set; }
 
+        [JsonProperty("automatic_pass_through_fee")]
+        [STJS.JsonPropertyName("automatic_pass_through_fee")]
+        public SessionAutomaticPassThroughFee AutomaticPassThroughFee { get; set; }
+
         [JsonProperty("automatic_surcharge")]
         [STJS.JsonPropertyName("automatic_surcharge")]
         public SessionAutomaticSurcharge AutomaticSurcharge { get; set; }

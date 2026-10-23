@@ -42,7 +42,8 @@ namespace Stripe.V2.Data
         /// <summary>
         /// Fetches the current state and details of a previously created <c>ReportRun</c>. If the
         /// <c>ReportRun</c> has succeeded, the endpoint provides details for how to retrieve the
-        /// results.
+        /// results. Returns a <c>404</c> error if the <c>ReportRun</c> doesn't exist or its
+        /// retention period has ended.
         /// </summary>
         public virtual ReportRun Get(string id, ReportRunGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -52,7 +53,8 @@ namespace Stripe.V2.Data
         /// <summary>
         /// Fetches the current state and details of a previously created <c>ReportRun</c>. If the
         /// <c>ReportRun</c> has succeeded, the endpoint provides details for how to retrieve the
-        /// results.
+        /// results. Returns a <c>404</c> error if the <c>ReportRun</c> doesn't exist or its
+        /// retention period has ended.
         /// </summary>
         public virtual Task<ReportRun> GetAsync(string id, ReportRunGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

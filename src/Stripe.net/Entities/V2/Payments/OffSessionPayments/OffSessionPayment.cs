@@ -213,10 +213,9 @@ namespace Stripe.V2.Payments
 
         /// <summary>
         /// Status of this OffSessionPayment, one of <c>pending</c>, <c>pending_retry</c>,
-        /// <c>processing</c>, <c>failed</c>, <c>canceled</c>, <c>requires_capture</c>, or
-        /// <c>succeeded</c>.
+        /// <c>processing</c>, <c>failed</c>, <c>canceled</c>, or <c>succeeded</c>.
         /// One of: <c>canceled</c>, <c>failed</c>, <c>paused</c>, <c>pending</c>,
-        /// <c>pending_retry</c>, <c>processing</c>, <c>requires_capture</c>, or <c>succeeded</c>.
+        /// <c>pending_retry</c>, <c>processing</c>, or <c>succeeded</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
