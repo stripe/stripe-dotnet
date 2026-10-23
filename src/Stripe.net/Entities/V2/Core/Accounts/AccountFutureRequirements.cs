@@ -11,6 +11,14 @@ namespace Stripe.V2.Core
     public class AccountFutureRequirements : StripeEntity<AccountFutureRequirements>
     {
         /// <summary>
+        /// A list of alternative sets of requirements that can be provided in lieu of requirements
+        /// in <c>entries</c>.
+        /// </summary>
+        [JsonProperty("alternatives")]
+        [STJS.JsonPropertyName("alternatives")]
+        public List<AccountFutureRequirementsAlternative> Alternatives { get; set; }
+
+        /// <summary>
         /// A list of requirements for the Account.
         /// </summary>
         [JsonProperty("entries")]

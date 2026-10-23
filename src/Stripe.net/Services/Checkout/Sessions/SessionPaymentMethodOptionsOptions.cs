@@ -271,6 +271,13 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsPaypalOptions Paypal { get; set; }
 
         /// <summary>
+        /// contains details about the PayPay payment method options.
+        /// </summary>
+        [JsonProperty("paypay")]
+        [STJS.JsonPropertyName("paypay")]
+        public SessionPaymentMethodOptionsPaypayOptions Paypay { get; set; }
+
+        /// <summary>
         /// contains details about the PayTo payment method options.
         /// </summary>
         [JsonProperty("payto")]

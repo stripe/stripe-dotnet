@@ -7,7 +7,7 @@ namespace Stripe.V2
 
     public class RiskService : Service
     {
-        private V2.Risk.InquiryService inquiries;
+        private V2.Risk.FormService forms;
 
         internal RiskService(ApiRequestor requestor)
             : base(requestor)
@@ -19,7 +19,7 @@ namespace Stripe.V2
         {
         }
 
-        public virtual V2.Risk.InquiryService Inquiries => this.inquiries ??= new V2.Risk.InquiryService(
+        public virtual V2.Risk.FormService Forms => this.forms ??= new V2.Risk.FormService(
             this.Requestor);
     }
 }

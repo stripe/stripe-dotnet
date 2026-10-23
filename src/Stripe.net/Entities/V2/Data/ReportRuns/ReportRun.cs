@@ -10,7 +10,10 @@ namespace Stripe.V2.Data
     /// <summary>
     /// The <c>ReportRun</c> resource represents an instance of a <c>Report</c> generated with
     /// specific parameter values. Once the object is created, Stripe begins processing the
-    /// report. When the report has finished running, it provides a reference to the results.
+    /// report. When the report has finished running, it provides a reference to the results. A
+    /// <c>ReportRun</c> and its results are retained for 90 days after the run completes. After
+    /// that, Stripe deletes them and retrieving the <c>ReportRun</c> returns a <c>404</c>
+    /// error.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReportRun : StripeEntity<ReportRun>, IHasId, IHasObject
@@ -36,6 +39,16 @@ namespace Stripe.V2.Data
         [JsonProperty("created")]
         [STJS.JsonPropertyName("created")]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// The file format of the result.
+        /// One of: <c>csv</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("format")]
+        [STJS.JsonPropertyName("format")]
+        public string Format { get; set; }
 
         /// <summary>
         /// Whether the <c>ReportRun</c> was executed in live mode.
@@ -87,8 +100,8 @@ namespace Stripe.V2.Data
         public ReportRunResultOptions ResultOptions { get; set; }
 
         /// <summary>
-        /// The fully-resolved SQL that was executed. Only present when requested via
-        /// <c>include[0]=sql</c>.
+        /// The fully-resolved SQL that was executed, or an explanatory message when the SQL cannot
+        /// be exposed. Only present when requested via <c>include[0]=sql</c>.
         /// </summary>
         [JsonProperty("sql")]
         [STJS.JsonPropertyName("sql")]

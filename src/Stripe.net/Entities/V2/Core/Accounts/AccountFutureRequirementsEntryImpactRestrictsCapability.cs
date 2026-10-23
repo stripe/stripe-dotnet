@@ -11,12 +11,13 @@ namespace Stripe.V2.Core
         /// <summary>
         /// The name of the Capability which will be restricted.
         /// One of: <c>ach_debit_payments</c>, <c>acss_debit_payments</c>, <c>affirm_payments</c>,
-        /// <c>afterpay_clearpay_payments</c>, <c>alma_payments</c>, <c>amazon_pay_payments</c>,
-        /// <c>automatic_indirect_tax</c>, <c>au_becs_debit_payments</c>,
-        /// <c>bacs_debit_payments</c>, <c>bancontact_payments</c>, <c>bank_accounts.ach</c>,
-        /// <c>bank_accounts.becs</c>, <c>bank_accounts.eft</c>, <c>bank_accounts.fedwire</c>,
-        /// <c>bank_accounts.fps</c>, <c>bank_accounts.instant</c>, <c>bank_accounts.local</c>,
-        /// <c>bank_accounts.npp</c>, <c>bank_accounts.rtp</c>, <c>bank_accounts.sepa_credit</c>,
+        /// <c>afterpay_clearpay_payments</c>, <c>alipay_payments</c>, <c>alma_payments</c>,
+        /// <c>amazon_pay_payments</c>, <c>automatic_indirect_tax</c>,
+        /// <c>au_becs_debit_payments</c>, <c>bacs_debit_payments</c>, <c>bancontact_payments</c>,
+        /// <c>bank_accounts.ach</c>, <c>bank_accounts.becs</c>, <c>bank_accounts.eft</c>,
+        /// <c>bank_accounts.fedwire</c>, <c>bank_accounts.fps</c>, <c>bank_accounts.instant</c>,
+        /// <c>bank_accounts.local</c>, <c>bank_accounts.npp</c>, <c>bank_accounts.rtp</c>,
+        /// <c>bank_accounts.sepa</c>, <c>bank_accounts.sepa_credit</c>,
         /// <c>bank_accounts.sepa_instant</c>, <c>bank_accounts.swift</c>,
         /// <c>bank_accounts.wire</c>, <c>blik_payments</c>, <c>blik_recurring_payments</c>,
         /// <c>boleto_payments</c>, <c>business_storage.inbound.eur</c>,
@@ -49,9 +50,10 @@ namespace Stripe.V2.Core
         /// <c>pay_by_bank_payments</c>, <c>pix</c>, <c>projects</c>, <c>promptpay_payments</c>,
         /// <c>received_credits.bank_accounts</c>, <c>received_debits.bank_accounts</c>,
         /// <c>revolut_pay_payments</c>, <c>samsung_pay_payments</c>, <c>satispay_payments</c>,
-        /// <c>sepa_bank_transfer_payments</c>, <c>sepa_debit_payments</c>,
-        /// <c>stripe_balance.payouts</c>, <c>stripe_balance.stablecoin_custodial</c>,
-        /// <c>stripe_balance.stripe_transfers</c>, <c>swish_payments</c>, <c>twint_payments</c>,
+        /// <c>scalapay_payments</c>, <c>sepa_bank_transfer_payments</c>,
+        /// <c>sepa_debit_payments</c>, <c>stripe_balance.payouts</c>,
+        /// <c>stripe_balance.stablecoin_custodial</c>, <c>stripe_balance.stripe_transfers</c>,
+        /// <c>swish_payments</c>, <c>twint_payments</c>, <c>upi_payments</c>,
         /// <c>us_bank_transfer_payments</c>, <c>vipps_payments</c>, or <c>zip_payments</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

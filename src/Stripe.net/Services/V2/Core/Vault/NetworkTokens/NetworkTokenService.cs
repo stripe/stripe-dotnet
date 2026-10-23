@@ -20,7 +20,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Create or Return a Network Token Using Raw Card Data.
+        /// Creates a Network Token from raw card data.
         /// </summary>
         public virtual NetworkToken Create(NetworkTokenCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -28,7 +28,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Create or Return a Network Token Using Raw Card Data.
+        /// Creates a Network Token from raw card data.
         /// </summary>
         public virtual Task<NetworkToken> CreateAsync(NetworkTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -36,7 +36,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Creates or returns a Network Token from an existing card reference.
+        /// Creates a Network Token from an existing card reference.
         /// </summary>
         public virtual NetworkToken CreateFromCredential(NetworkTokenCreateFromCredentialOptions options = null, RequestOptions requestOptions = null)
         {
@@ -44,7 +44,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Creates or returns a Network Token from an existing card reference.
+        /// Creates a Network Token from an existing card reference.
         /// </summary>
         public virtual Task<NetworkToken> CreateFromCredentialAsync(NetworkTokenCreateFromCredentialOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

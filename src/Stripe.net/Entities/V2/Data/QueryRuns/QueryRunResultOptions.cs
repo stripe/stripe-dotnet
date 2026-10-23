@@ -9,11 +9,14 @@ namespace Stripe.V2.Data
     public class QueryRunResultOptions : StripeEntity<QueryRunResultOptions>
     {
         /// <summary>
-        /// If set, the generated result file is compressed into a ZIP archive before it is stored.
-        /// This applies only to downloadable file results.
+        /// The compression applied to the generated result file. Defaults to <c>none</c>. This
+        /// applies only to downloadable file results.
+        /// One of: <c>none</c>, or <c>zip</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
-        [JsonProperty("compress_file")]
-        [STJS.JsonPropertyName("compress_file")]
-        public bool? CompressFile { get; set; }
+        [JsonProperty("compression")]
+        [STJS.JsonPropertyName("compression")]
+        public string Compression { get; set; }
     }
 }

@@ -105,5 +105,21 @@ namespace Stripe.V2.Core.Vault
         {
             return this.ListRequestAutoPagingAsync<GbBankAccount>($"/v2/core/vault/gb_bank_accounts", options, requestOptions, cancellationToken);
         }
+
+        /// <summary>
+        /// Unarchive a GBBankAccount object.
+        /// </summary>
+        public virtual GbBankAccount Unarchive(string id, GbBankAccountUnarchiveOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<GbBankAccount>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/vault/gb_bank_accounts/{WebUtility.UrlEncode(id)}/unarchive", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Unarchive a GBBankAccount object.
+        /// </summary>
+        public virtual Task<GbBankAccount> UnarchiveAsync(string id, GbBankAccountUnarchiveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<GbBankAccount>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/vault/gb_bank_accounts/{WebUtility.UrlEncode(id)}/unarchive", options, requestOptions, cancellationToken);
+        }
     }
 }

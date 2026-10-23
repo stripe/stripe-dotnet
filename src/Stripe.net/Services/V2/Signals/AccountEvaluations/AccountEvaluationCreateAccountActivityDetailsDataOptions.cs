@@ -76,9 +76,10 @@ namespace Stripe.V2.Signals
         /// or account_takeover_mitigation.
         /// One of: <c>account_restricted</c>, <c>account_reviewed</c>, <c>account_suspended</c>,
         /// <c>account_takeover_confirmation</c>, <c>account_takeover_mitigation</c>,
-        /// <c>account_takeover_report</c>, <c>credential_change</c>, <c>login_attempt</c>,
-        /// <c>login_decision</c>, <c>mfa_addition</c>, <c>mfa_removal</c>,
-        /// <c>registration_attempt</c>, or <c>registration_decision</c>.
+        /// <c>account_takeover_report</c>, <c>credential_change</c>,
+        /// <c>custom_marketing_action</c>, <c>login_attempt</c>, <c>login_decision</c>,
+        /// <c>mfa_addition</c>, <c>mfa_removal</c>, <c>registration_attempt</c>, or
+        /// <c>registration_decision</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

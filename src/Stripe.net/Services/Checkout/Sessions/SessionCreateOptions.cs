@@ -51,9 +51,9 @@ namespace Stripe.Checkout
         /// <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>,
         /// <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>scalapay</c>,
-        /// <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>, <c>sunbit</c>,
-        /// <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
-        /// <c>zip</c>.
+        /// <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>,
+        /// <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -76,6 +76,14 @@ namespace Stripe.Checkout
         [JsonProperty("approval_method")]
         [STJS.JsonPropertyName("approval_method")]
         public string ApprovalMethod { get; set; }
+
+        /// <summary>
+        /// Settings for calculating and adding a pass-through fee (a convenience or service fee) to
+        /// this session.
+        /// </summary>
+        [JsonProperty("automatic_pass_through_fee")]
+        [STJS.JsonPropertyName("automatic_pass_through_fee")]
+        public SessionAutomaticPassThroughFeeOptions AutomaticPassThroughFee { get; set; }
 
         /// <summary>
         /// Settings for automatic surcharge calculation for this session.
@@ -279,9 +287,9 @@ namespace Stripe.Checkout
         /// <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>paypay</c>,
         /// <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>scalapay</c>,
-        /// <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>, <c>sunbit</c>,
-        /// <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
-        /// <c>zip</c>.
+        /// <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>,
+        /// <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

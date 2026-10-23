@@ -9,7 +9,9 @@ namespace Stripe.V2.Data
     /// <summary>
     /// The <c>QueryRun</c> resource represents an execution of ad-hoc SQL against a dataset.
     /// Once created, Stripe processes the query. When the query has finished running, the
-    /// object provides a reference to the results.
+    /// object provides a reference to the results. A <c>QueryRun</c> and its results are
+    /// retained for 90 days after the run completes. After that, Stripe deletes them and
+    /// retrieving the <c>QueryRun</c> returns a <c>404</c> error.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class QueryRun : StripeEntity<QueryRun>, IHasId, IHasObject

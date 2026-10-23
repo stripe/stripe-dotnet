@@ -100,6 +100,14 @@ namespace Stripe.V2.Signals
         public AccountActivityCredentialChange CredentialChange { get; set; }
 
         /// <summary>
+        /// Details for the custom marketing action. Present only when type is
+        /// custom_marketing_action.
+        /// </summary>
+        [JsonProperty("custom_marketing_action")]
+        [STJS.JsonPropertyName("custom_marketing_action")]
+        public AccountActivityCustomMarketingAction CustomMarketingAction { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
@@ -164,12 +172,22 @@ namespace Stripe.V2.Signals
         public AccountActivityRegistrationDecision RegistrationDecision { get; set; }
 
         /// <summary>
+        /// The AccountSignal that prompted this activity, when applicable. This historical
+        /// reference may coexist with account_evaluation and remains present after the signal
+        /// expires.
+        /// </summary>
+        [JsonProperty("triggering_signal")]
+        [STJS.JsonPropertyName("triggering_signal")]
+        public string TriggeringSignal { get; set; }
+
+        /// <summary>
         /// The type of activity.
         /// One of: <c>account_restricted</c>, <c>account_reviewed</c>, <c>account_suspended</c>,
         /// <c>account_takeover_confirmation</c>, <c>account_takeover_mitigation</c>,
-        /// <c>account_takeover_report</c>, <c>credential_change</c>, <c>login_attempt</c>,
-        /// <c>login_decision</c>, <c>mfa_addition</c>, <c>mfa_removal</c>,
-        /// <c>registration_attempt</c>, or <c>registration_decision</c>.
+        /// <c>account_takeover_report</c>, <c>credential_change</c>,
+        /// <c>custom_marketing_action</c>, <c>login_attempt</c>, <c>login_decision</c>,
+        /// <c>mfa_addition</c>, <c>mfa_removal</c>, <c>registration_attempt</c>, or
+        /// <c>registration_decision</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

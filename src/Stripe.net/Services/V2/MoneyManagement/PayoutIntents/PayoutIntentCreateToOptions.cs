@@ -16,8 +16,9 @@ namespace Stripe.V2.MoneyManagement
         public string Currency { get; set; }
 
         /// <summary>
-        /// The payout method ID. Optional for OutboundPayment if recipient has default payment
-        /// method. Required for OutboundTransfer.
+        /// The payout method ID for the PayoutIntent. Optional when the PayoutIntent creates an
+        /// OutboundPayment and the recipient has a default payout method. Required when the
+        /// PayoutIntent creates an OutboundTransfer.
         /// </summary>
         [JsonProperty("payout_method")]
         [STJS.JsonPropertyName("payout_method")]
@@ -31,7 +32,7 @@ namespace Stripe.V2.MoneyManagement
         public PayoutIntentCreateToPayoutMethodOptionsOptions PayoutMethodOptions { get; set; }
 
         /// <summary>
-        /// The recipient ID. Only relevant for OutboundPayment.
+        /// The recipient ID for the PayoutIntent.
         /// </summary>
         [JsonProperty("recipient")]
         [STJS.JsonPropertyName("recipient")]

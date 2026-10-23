@@ -17,7 +17,10 @@ namespace Stripe.Checkout
         public SessionItemSubscriptionItemAdjustableQuantityOptions AdjustableQuantity { get; set; }
 
         /// <summary>
-        /// The trial offer to apply to this subscription item.
+        /// The <a
+        /// href="https://docs.stripe.com/api/product-catalog/trial-offer?api-version=2026-03-25.preview">Trial
+        /// Offer</a> to apply to this subscription item. One of <c>price</c>, <c>price_data</c> or
+        /// <c>current_trial</c> is required.
         /// </summary>
         [JsonProperty("current_trial")]
         [STJS.JsonPropertyName("current_trial")]
@@ -25,7 +28,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The ID of the <a href="https://docs.stripe.com/api/prices">Price</a>. One of
-        /// <c>price</c> or <c>price_data</c> is required.
+        /// <c>price</c>, <c>price_data</c> or <c>current_trial</c> is required.
         /// </summary>
         [JsonProperty("price")]
         [STJS.JsonPropertyName("price")]
@@ -33,7 +36,8 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Data used to generate a new <a href="https://docs.stripe.com/api/prices">Price</a>
-        /// object inline. One of <c>price</c> or <c>price_data</c> is required.
+        /// object inline. One of <c>price</c>, <c>price_data</c> or <c>current_trial</c> is
+        /// required.
         /// </summary>
         [JsonProperty("price_data")]
         [STJS.JsonPropertyName("price_data")]

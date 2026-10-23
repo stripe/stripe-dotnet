@@ -54,6 +54,15 @@ namespace Stripe.V2.MoneyManagement
         public string FinancialConnectionsAccount { get; set; }
 
         /// <summary>
+        /// Uniquely identifies this particular bank account. You can use this attribute to check
+        /// whether two recipients who've signed up with you are using the same bank account, for
+        /// example.
+        /// </summary>
+        [JsonProperty("fingerprint")]
+        [STJS.JsonPropertyName("fingerprint")]
+        public string Fingerprint { get; set; }
+
+        /// <summary>
         /// The last 4 digits of the account number.
         /// </summary>
         [JsonProperty("last4")]

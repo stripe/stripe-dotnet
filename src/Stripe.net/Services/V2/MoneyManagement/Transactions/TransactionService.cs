@@ -85,7 +85,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Updates the description of an existing Transaction.
+        /// Updates an existing Transaction. You can update its description and metadata.
         /// </summary>
         public virtual Transaction Update(string id, TransactionUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -93,7 +93,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Updates the description of an existing Transaction.
+        /// Updates an existing Transaction. You can update its description and metadata.
         /// </summary>
         public virtual Task<Transaction> UpdateAsync(string id, TransactionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

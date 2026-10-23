@@ -16,7 +16,9 @@ namespace Stripe.V2.MoneyManagement
         public string Country { get; set; }
 
         /// <summary>
-        /// The currency of the bank account to provision.
+        /// The currency of the bank account to provision. Available currencies depend on your
+        /// account's enabled features and rollout access; <c>eur</c> requires the Financial Address
+        /// Global Payouts EU preview.
         /// One of: <c>brl</c>, <c>cad</c>, <c>cop</c>, <c>eur</c>, <c>gbp</c>, <c>mxn</c>,
         /// <c>ngn</c>, or <c>usd</c>.
         ///

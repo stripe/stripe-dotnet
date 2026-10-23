@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Data
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -27,6 +28,16 @@ namespace Stripe.V2.Data
         [JsonProperty("format")]
         [STJS.JsonPropertyName("format")]
         public string Format { get; set; }
+
+        /// <summary>
+        /// Named bind parameters for the query. Keys are parameter names referenced in the SQL
+        /// (without any prefix). Omit this field for a non-parameterized query. Values are strings,
+        /// integers, or booleans. Fractional numbers, timestamps, and dates should be passed as
+        /// strings.
+        /// </summary>
+        [JsonProperty("parameters")]
+        [STJS.JsonPropertyName("parameters")]
+        public Dictionary<string, object> Parameters { get; set; }
 
         /// <summary>
         /// The query to execute.

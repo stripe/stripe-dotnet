@@ -10,8 +10,8 @@ namespace Stripe.V2.MoneyManagement
     {
         /// <summary>
         /// Closed Enum. Configuration option to enable or disable notifications to recipients. Do
-        /// not send notifications when setting is NONE. Default to account setting when setting is
-        /// CONFIGURED or not set.
+        /// not send notifications when <c>setting</c> is <c>none</c>. Use the account setting when
+        /// <c>setting</c> is <c>configured</c> or omitted.
         /// One of: <c>configured</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("setting")]

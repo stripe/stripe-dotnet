@@ -10,24 +10,16 @@ namespace Stripe.V2.MoneyManagement
     public class FinancialAccountCreateStorageOptions : INestedOptions
     {
         /// <summary>
-        /// Crypto-specific storage configuration. Only populated when <c>storage.crypto</c> is
-        /// passed in the <c>include</c> parameter and the FinancialAccount stores crypto assets.
-        /// Fiat currencies remain configured only through <c>holds_currencies</c>.
+        /// Crypto-specific storage configuration. Fiat currencies remain configured only through
+        /// <c>holds_currencies</c>.
         /// </summary>
         [JsonProperty("crypto")]
         [STJS.JsonPropertyName("crypto")]
         public FinancialAccountCreateStorageCryptoOptions Crypto { get; set; }
 
         /// <summary>
-        /// Array of eligibility objects, segmented by bank name and deposit insurance scheme.
-        /// </summary>
-        [JsonProperty("deposit_insurance_eligibility")]
-        [STJS.JsonPropertyName("deposit_insurance_eligibility")]
-        public List<FinancialAccountCreateStorageDepositInsuranceEligibilityOptions> DepositInsuranceEligibility { get; set; }
-
-        /// <summary>
-        /// The usage type for funds in this FinancialAccount. Can be used to specify that the funds
-        /// are for Consumer activity.
+        /// The usage type for funds in this FinancialAccount. Defaults to BUSINESS if not
+        /// specified.
         /// One of: <c>business</c>, or <c>consumer</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
@@ -37,7 +29,9 @@ namespace Stripe.V2.MoneyManagement
         public string FundsUsageType { get; set; }
 
         /// <summary>
-        /// The currencies that this FinancialAccount can hold.
+        /// The currencies that the storage FinancialAccount can hold a balance in. Three-letter ISO
+        /// currency code, in lowercase. Must be a subset of the currencies requested in
+        /// <c>configuration.storer.features.holds_currencies</c> of the v2/accounts API.
         /// </summary>
         [JsonProperty("holds_currencies")]
         [STJS.JsonPropertyName("holds_currencies")]

@@ -70,6 +70,7 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsStripeBalanceOptions stripeBalance;
         private PaymentIntentPaymentMethodOptionsSunbitOptions sunbit;
         private PaymentIntentPaymentMethodOptionsSwishOptions swish;
+        private PaymentIntentPaymentMethodOptionsTossPayOptions tossPay;
         private PaymentIntentPaymentMethodOptionsTwintOptions twint;
         private PaymentIntentPaymentMethodOptionsUpiOptions upi;
         private PaymentIntentPaymentMethodOptionsUsBankAccountOptions usBankAccount;
@@ -1138,6 +1139,23 @@ namespace Stripe
             set
             {
                 this.swish = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If this is a <c>toss_pay</c> PaymentMethod, this sub-hash contains details about the
+        /// Toss Pay payment method options.
+        /// </summary>
+        [JsonProperty("toss_pay", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("toss_pay")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsTossPayOptions TossPay
+        {
+            get => this.tossPay;
+            set
+            {
+                this.tossPay = value;
                 this.SetTracker.Track();
             }
         }

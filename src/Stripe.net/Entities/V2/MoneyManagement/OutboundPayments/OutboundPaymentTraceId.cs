@@ -11,8 +11,8 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Possible values are <c>pending</c>, <c>supported</c>, and <c>unsupported</c>. Initially
         /// set to <c>pending</c>, it changes to <c>supported</c> when the recipient bank provides a
-        /// trace ID, or <c>unsupported</c> if the recipient bank doesn't support it. Note that this
-        /// status may not align with the OutboundPayment or OutboundTransfer status and can remain
+        /// trace ID, or <c>unsupported</c> if the recipient bank doesn't support it. This status
+        /// may not align with the OutboundPayment or OutboundTransfer status and can remain
         /// <c>pending</c> even after the payment or transfer is posted.
         /// One of: <c>pending</c>, <c>supported</c>, or <c>unsupported</c>.
         ///
