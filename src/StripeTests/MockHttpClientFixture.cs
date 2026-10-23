@@ -10,6 +10,7 @@ namespace StripeTests
     using System.Web;
     using Moq;
     using Moq.Protected;
+    using Newtonsoft.Json.Linq;
     using Stripe;
 
     public class MockHttpClientFixture
@@ -59,7 +60,18 @@ namespace StripeTests
                     ItExpr.IsAny<CancellationToken>());
         }
 
-        private static bool MatchHttpRequest(HttpMethod method, string path, HttpStatusCode status, string response, string query, HttpRequestMessage m)
+        private static bool BodyEquivalent(string expected, HttpRequestMessage request)
+        {
+            if (expected == null)
+            {
+                return true;
+            }
+
+            var actual = request.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            return JToken.DeepEquals(JToken.Parse(expected), JToken.Parse(actual));
+        }
+
+        private static bool MatchHttpRequest(HttpMethod method, string path, HttpStatusCode status, string response, string query, string body, HttpRequestMessage m)
         {
             if (m.Method != method)
             {
@@ -76,7 +88,7 @@ namespace StripeTests
                 return false;
             }
 
-            return true;
+            return BodyEquivalent(body, m);
         }
 
         /// <summary>
@@ -88,7 +100,8 @@ namespace StripeTests
         /// <param name="status">The status code to return.</param>
         /// <param name="response">The response body to return.</param>
         /// <param name="query">The HTTP query.</param>
-        public void StubRequest(HttpMethod method, string path, HttpStatusCode status, string response, string query = null)
+        /// <param name="body">The JSON request body.</param>
+        public void StubRequest(HttpMethod method, string path, HttpStatusCode status, string response, string query = null, string body = null)
         {
             var responseMessage = new HttpResponseMessage(status);
             responseMessage.Content = new StringContent(response);
@@ -96,7 +109,7 @@ namespace StripeTests
             this.MockHandler.Protected()
                 .Setup<Task<HttpResponseMessage>>(
                     "SendAsync",
-                    ItExpr.Is<HttpRequestMessage>(m => MatchHttpRequest(method, path, status, response, query, m)),
+                    ItExpr.Is<HttpRequestMessage>(m => MatchHttpRequest(method, path, status, response, query, body, m)),
                     ItExpr.IsAny<CancellationToken>())
                 .Returns(Task.FromResult(responseMessage));
         }
