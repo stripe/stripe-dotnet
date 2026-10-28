@@ -10,8 +10,9 @@ namespace Stripe.Infrastructure
     using System.Text.Json.Serialization;
 
     /// <summary>
-    /// System.Text.Json converter factory for discriminated union interfaces.
+    /// System.Text.Json converter factory for discriminated unions.
     /// Reads the discriminator property from the JSON and dispatches to the correct variant type.
+    /// Unknown string discriminators are preserved on instantiable concrete union bases.
     /// </summary>
     internal class STJDiscriminatedUnionConverterFactory : JsonConverterFactory
     {
@@ -62,7 +63,7 @@ namespace Stripe.Infrastructure
             public Dictionary<string, Type> VariantMap { get; set; }
         }
 
-        private class STJDiscriminatedUnionConverter<T> : JsonConverter<T>
+        private class STJDiscriminatedUnionConverter<T> : STJDefaultConverter<T>
         {
             private readonly UnionMetadata metadata;
 
@@ -88,15 +89,41 @@ namespace Stripe.Infrastructure
                 }
 
                 var discriminatorValue = discriminatorProp.GetString();
-                if (discriminatorValue == null || !this.metadata.VariantMap.TryGetValue(discriminatorValue, out var variantType))
+                if (discriminatorValue != null && this.metadata.VariantMap.TryGetValue(discriminatorValue, out var variantType))
+                {
+                    return (T)JsonSerializer.Deserialize(jsonElement.GetRawText(), variantType, options);
+                }
+
+                if (discriminatorProp.ValueKind != JsonValueKind.String)
                 {
                     throw new JsonException(
                         $"Unknown discriminator value '{discriminatorValue}' for discriminated union {typeToConvert.Name}. " +
                         $"Known values: {string.Join(", ", this.metadata.VariantMap.Keys)}.");
                 }
 
+                if (typeToConvert.IsInterface || typeToConvert.IsAbstract || typeToConvert.GetConstructor(Type.EmptyTypes) == null)
+                {
+                    throw new JsonException(
+                        $"Cannot deserialize unknown discriminator value '{discriminatorValue}' for discriminated union {typeToConvert.Name}. " +
+                        "Fallback requires a concrete type with a public parameterless constructor.");
+                }
+
+                // Bypass only root union dispatch so nested values retain their converters.
                 var rawJson = jsonElement.GetRawText();
-                return (T)JsonSerializer.Deserialize(rawJson, variantType, options);
+                var newReader = new Utf8JsonReader(Encoding.UTF8.GetBytes(rawJson), new JsonReaderOptions
+                {
+                    AllowTrailingCommas = options.AllowTrailingCommas,
+                    CommentHandling = options.ReadCommentHandling,
+                    MaxDepth = options.MaxDepth,
+                });
+                newReader.Read();
+                var instance = this.ReadFullObject(ref newReader, typeToConvert, options);
+                if (instance is StripeEntity entity)
+                {
+                    entity.SetRawJsonString(rawJson);
+                }
+
+                return instance;
             }
 
             public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
@@ -107,7 +134,14 @@ namespace Stripe.Infrastructure
                     return;
                 }
 
-                JsonSerializer.Serialize(writer, value, value.GetType(), options);
+                if (value.GetType() == typeof(T))
+                {
+                    base.Write(writer, value, options);
+                }
+                else
+                {
+                    JsonSerializer.Serialize(writer, value, value.GetType(), options);
+                }
             }
         }
     }

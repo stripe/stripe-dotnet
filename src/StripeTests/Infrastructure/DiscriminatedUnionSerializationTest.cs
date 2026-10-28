@@ -3,6 +3,7 @@ namespace StripeTests
     using System.IO;
     using System.Text.Json;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using Stripe;
     using Stripe.Infrastructure;
     using Stripe.Infrastructure.FormEncoding;
@@ -16,10 +17,9 @@ namespace StripeTests
     /// </summary>
     public class DiscriminatedUnionSerializationTest : BaseStripeTest
     {
-        private static readonly System.Text.Json.JsonSerializerOptions StjOptions = new System.Text.Json.JsonSerializerOptions
-        {
-            Converters = { new STJDiscriminatedUnionConverterFactory() },
-        };
+        private static readonly System.Text.Json.JsonSerializerOptions StjOptions = new System.Text.Json.JsonSerializerOptions();
+
+        private static readonly JsonSerializerSettings NewtonsoftSettings = new JsonSerializerSettings();
 
         [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
         private interface ITestColorOptions : INestedOptions
@@ -191,36 +191,59 @@ namespace StripeTests
             Assert.False(root.TryGetProperty("bank", out _));
         }
 
-        [Fact]
-        public void StandaloneUnion_Newtonsoft_DeserializeRgb()
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void StandaloneUnion_DeserializeRgb(bool stj)
         {
-            var json = "{\"color\": {\"model\": \"rgb\", \"r\": 255, \"g\": 128, \"b\": 0}, \"name\": \"sunset\"}";
-            var obj = JsonConvert.DeserializeObject<TestColorContainer>(json);
+            var json = "{\"color\":{\"model\":\"rgb\",\"rgb\":{\"r\":255,\"g\":128,\"b\":0}},\"name\":\"sunset\"}";
+            var obj = Deserialize<TestColorContainer>(json, stj);
 
-            Assert.NotNull(obj.Color);
-            Assert.IsType<TestRgbColorEntity>(obj.Color);
-            var rgb = (TestRgbColorEntity)obj.Color;
+            var rgb = Assert.IsType<TestRgbColorEntity>(obj.Color);
             Assert.Equal("rgb", rgb.Model);
-            Assert.Equal(255, rgb.R);
-            Assert.Equal(128, rgb.G);
-            Assert.Equal(0, rgb.B);
+            Assert.Equal(255, rgb.Rgb.R);
+            Assert.Equal(128, rgb.Rgb.G);
+            Assert.Equal(0, rgb.Rgb.B);
             Assert.Equal("sunset", obj.Name);
         }
 
-        [Fact]
-        public void StandaloneUnion_Newtonsoft_DeserializeHsv()
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void StandaloneUnion_DeserializeHsl(bool stj)
         {
-            var json = "{\"color\": {\"model\": \"hsv\", \"h\": 30, \"s\": 100, \"v\": 100}, \"name\": \"orange\"}";
-            var obj = JsonConvert.DeserializeObject<TestColorContainer>(json);
+            var json = "{\"color\":{\"model\":\"hsl\",\"hsl\":{\"h\":30,\"s\":100,\"l\":50}},\"name\":\"orange\"}";
+            var obj = Deserialize<TestColorContainer>(json, stj);
 
-            Assert.NotNull(obj.Color);
-            Assert.IsType<TestHsvColorEntity>(obj.Color);
-            var hsv = (TestHsvColorEntity)obj.Color;
-            Assert.Equal("hsv", hsv.Model);
-            Assert.Equal(30, hsv.H);
-            Assert.Equal(100, hsv.S);
-            Assert.Equal(100, hsv.V);
+            var hsl = Assert.IsType<TestHslColorEntity>(obj.Color);
+            Assert.Equal("hsl", hsl.Model);
+            Assert.Equal(30, hsl.Hsl.H);
+            Assert.Equal(100, hsl.Hsl.S);
+            Assert.Equal(50, hsl.Hsl.L);
             Assert.Equal("orange", obj.Name);
+        }
+
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void StandaloneUnion_UnknownInsideResource(bool stj)
+        {
+            var obj = Deserialize<TestColorContainer>("{\"name\":\"example\",\"color\":{\"model\":\"future_variant\"}}", stj);
+
+            Assert.Equal("example", obj.Name);
+            Assert.Equal("future_variant", Assert.IsType<TestColorEntity>(obj.Color).Model);
+        }
+
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void StandaloneUnion_UnknownRoot(bool stj)
+        {
+            var color = Deserialize<TestColorEntity>("{\"model\":\"future_variant\"}", stj);
+
+            Assert.Equal("future_variant", Assert.IsType<TestColorEntity>(color).Model);
+            var roundTrip = Deserialize<TestColorEntity>(Serialize(color, stj), stj);
+            Assert.Equal("future_variant", Assert.IsType<TestColorEntity>(roundTrip).Model);
         }
 
         [Fact]
@@ -250,38 +273,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void StandaloneUnion_STJ_DeserializeRgb()
-        {
-            var json = "{\"color\": {\"model\": \"rgb\", \"r\": 255, \"g\": 128, \"b\": 0}, \"name\": \"sunset\"}";
-            var obj = System.Text.Json.JsonSerializer.Deserialize<TestColorContainer>(json, StjOptions);
-
-            Assert.NotNull(obj.Color);
-            Assert.IsType<TestRgbColorEntity>(obj.Color);
-            var rgb = (TestRgbColorEntity)obj.Color;
-            Assert.Equal("rgb", rgb.Model);
-            Assert.Equal(255, rgb.R);
-            Assert.Equal(128, rgb.G);
-            Assert.Equal(0, rgb.B);
-            Assert.Equal("sunset", obj.Name);
-        }
-
-        [Fact]
-        public void StandaloneUnion_STJ_DeserializeHsv()
-        {
-            var json = "{\"color\": {\"model\": \"hsv\", \"h\": 30, \"s\": 100, \"v\": 100}, \"name\": \"orange\"}";
-            var obj = System.Text.Json.JsonSerializer.Deserialize<TestColorContainer>(json, StjOptions);
-
-            Assert.NotNull(obj.Color);
-            Assert.IsType<TestHsvColorEntity>(obj.Color);
-            var hsv = (TestHsvColorEntity)obj.Color;
-            Assert.Equal("hsv", hsv.Model);
-            Assert.Equal(30, hsv.H);
-            Assert.Equal(100, hsv.S);
-            Assert.Equal(100, hsv.V);
-            Assert.Equal("orange", obj.Name);
-        }
-
-        [Fact]
         public void InlineUnion_STJ_DeserializeCard()
         {
             var json = "{\"type\": \"card\", \"card\": {\"number\": \"4242\", \"exp_month\": 12}}";
@@ -294,46 +285,120 @@ namespace StripeTests
             Assert.Null(obj.Bank);
         }
 
-        [Fact]
-        public void StandaloneUnion_Newtonsoft_RoundTrip()
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void StandaloneUnion_RoundTripWithReusedSettings(bool stj)
         {
-            var original = new TestColorContainer
+            var known = "{\"model\":\"rgb\",\"rgb\":{\"r\":255,\"g\":128,\"b\":0,\"amount\":\"12.50\",\"created\":1234567890}}";
+            var unknown = "{\"model\":\"future_variant\",\"unsupported\":{\"value\":42}}";
+
+            foreach (var input in new[] { known, unknown, known, unknown })
             {
-                Color = new TestRgbColorEntity { Model = "rgb", R = 10, G = 20, B = 30 },
-                Name = "test",
-            };
+                var color = Deserialize<TestColorEntity>(input, stj);
+                if (stj)
+                {
+                    Assert.Equal(color.Model, color.RawJsonElement.Value.GetProperty("model").GetString());
+                }
+                else
+                {
+                    Assert.Equal(color.Model, color.RawJObject["model"].Value<string>());
+                }
 
-            var json = JsonConvert.SerializeObject(original);
-            var deserialized = JsonConvert.DeserializeObject<TestColorContainer>(json);
-
-            Assert.IsType<TestRgbColorEntity>(deserialized.Color);
-            var rgb = (TestRgbColorEntity)deserialized.Color;
-            Assert.Equal("rgb", rgb.Model);
-            Assert.Equal(10, rgb.R);
-            Assert.Equal(20, rgb.G);
-            Assert.Equal(30, rgb.B);
-            Assert.Equal("test", deserialized.Name);
+                var json = Serialize(color, stj);
+                var roundTrip = Deserialize<TestColorEntity>(json, stj);
+                if (input == known)
+                {
+                    var rgb = Assert.IsType<TestRgbColorEntity>(roundTrip).Rgb;
+                    Assert.Equal(255, rgb.R);
+                    Assert.Equal(128, rgb.G);
+                    Assert.Equal(0, rgb.B);
+                    Assert.Equal(12.50m, rgb.Amount);
+                    Assert.Equal(new System.DateTime(2009, 2, 13, 23, 31, 30, System.DateTimeKind.Utc), rgb.Created);
+                    using (var doc = JsonDocument.Parse(json))
+                    {
+                        Assert.Equal(255, doc.RootElement.GetProperty("rgb").GetProperty("r").GetInt64());
+                        Assert.Equal("12.50", doc.RootElement.GetProperty("rgb").GetProperty("amount").GetString());
+                        Assert.Equal(1234567890, doc.RootElement.GetProperty("rgb").GetProperty("created").GetInt64());
+                    }
+                }
+                else
+                {
+                    Assert.Equal("future_variant", Assert.IsType<TestColorEntity>(roundTrip).Model);
+                    Assert.DoesNotContain("unsupported", json);
+                    if (stj)
+                    {
+                        Assert.Equal(42, color.RawJsonElement.Value.GetProperty("unsupported").GetProperty("value").GetInt32());
+                    }
+                    else
+                    {
+                        Assert.Equal(42, color.RawJObject["unsupported"]["value"].Value<int>());
+                    }
+                }
+            }
         }
 
-        [Fact]
-        public void StandaloneUnion_STJ_RoundTrip()
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void StandaloneUnion_NestedUnknown(bool stj)
         {
-            var original = new TestColorContainer
+            var json = "{\"model\":\"rgb\",\"rgb\":{\"r\":255,\"nested\":{\"model\":\"future_variant\"}}}";
+            var color = Deserialize<TestColorEntity>(json, stj);
+            var nested = Assert.IsType<TestRgbColorEntity>(color).Rgb.Nested;
+
+            Assert.Equal("future_variant", Assert.IsType<TestColorEntity>(nested).Model);
+            var roundTrip = Deserialize<TestColorEntity>(Serialize(color, stj), stj);
+            Assert.Equal("future_variant", Assert.IsType<TestColorEntity>(Assert.IsType<TestRgbColorEntity>(roundTrip).Rgb.Nested).Model);
+        }
+
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void StandaloneUnion_MixedArray(bool stj)
+        {
+            var json = "[{\"model\":\"rgb\",\"rgb\":{\"r\":255}},{\"model\":\"future_variant\"},null]";
+            var colors = Deserialize<TestColorEntity[]>(json, stj);
+            var roundTrip = Deserialize<TestColorEntity[]>(Serialize(colors, stj), stj);
+
+            Assert.Equal(3, roundTrip.Length);
+            Assert.Equal(255, Assert.IsType<TestRgbColorEntity>(roundTrip[0]).Rgb.R);
+            Assert.Equal("future_variant", Assert.IsType<TestColorEntity>(roundTrip[1]).Model);
+            Assert.Null(roundTrip[2]);
+        }
+
+        [Theory]
+        [InlineData(false, "{}")]
+        [InlineData(true, "{}")]
+        [InlineData(false, "{\"color\":null}")]
+        [InlineData(true, "{\"color\":null}")]
+        public void StandaloneUnion_OptionalNull(bool stj, string json)
+        {
+            var container = Deserialize<TestColorContainer>(json, stj);
+            Assert.Null(container.Color);
+            using (var doc = JsonDocument.Parse(Serialize(container, stj)))
             {
-                Color = new TestRgbColorEntity { Model = "rgb", R = 10, G = 20, B = 30 },
-                Name = "test",
-            };
+                Assert.Equal(JsonValueKind.Null, doc.RootElement.GetProperty("color").ValueKind);
+            }
 
-            var json = System.Text.Json.JsonSerializer.Serialize(original, StjOptions);
-            var deserialized = System.Text.Json.JsonSerializer.Deserialize<TestColorContainer>(json, StjOptions);
+            var ignored = stj
+                ? System.Text.Json.JsonSerializer.Serialize(container, new JsonSerializerOptions { DefaultIgnoreCondition = STJS.JsonIgnoreCondition.WhenWritingNull })
+                : JsonConvert.SerializeObject(container, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            Assert.DoesNotContain("color", ignored);
+        }
 
-            Assert.IsType<TestRgbColorEntity>(deserialized.Color);
-            var rgb = (TestRgbColorEntity)deserialized.Color;
-            Assert.Equal("rgb", rgb.Model);
-            Assert.Equal(10, rgb.R);
-            Assert.Equal(20, rgb.G);
-            Assert.Equal(30, rgb.B);
-            Assert.Equal("test", deserialized.Name);
+        private static T Deserialize<T>(string json, bool stj)
+        {
+            return stj
+                ? System.Text.Json.JsonSerializer.Deserialize<T>(json, StjOptions)
+                : JsonConvert.DeserializeObject<T>(json, NewtonsoftSettings);
+        }
+
+        private static string Serialize<T>(T value, bool stj)
+        {
+            return stj
+                ? System.Text.Json.JsonSerializer.Serialize(value, StjOptions)
+                : JsonConvert.SerializeObject(value, NewtonsoftSettings);
         }
 
         [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
@@ -430,7 +495,7 @@ namespace StripeTests
 
         [StripeDiscriminatedUnion("model")]
         [StripeUnionVariant(typeof(TestRgbColorEntity), "rgb")]
-        [StripeUnionVariant(typeof(TestHsvColorEntity), "hsv")]
+        [StripeUnionVariant(typeof(TestHslColorEntity), "hsl")]
         [JsonConverter(typeof(DiscriminatedUnionConverter))]
         [STJS.JsonConverter(typeof(STJDiscriminatedUnionConverterFactory))]
         private class TestColorEntity : StripeEntity<TestColorEntity>
@@ -440,7 +505,24 @@ namespace StripeTests
             public string Model { get; set; }
         }
 
+        [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
         private class TestRgbColorEntity : TestColorEntity
+        {
+            [JsonProperty("rgb")]
+            [STJS.JsonPropertyName("rgb")]
+            public TestRgbPayload Rgb { get; set; }
+        }
+
+        [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+        private class TestHslColorEntity : TestColorEntity
+        {
+            [JsonProperty("hsl")]
+            [STJS.JsonPropertyName("hsl")]
+            public TestHslPayload Hsl { get; set; }
+        }
+
+        [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+        private class TestRgbPayload : StripeEntity<TestRgbPayload>
         {
             [JsonProperty("r")]
             [STJS.JsonPropertyName("r")]
@@ -453,9 +535,26 @@ namespace StripeTests
             [JsonProperty("b")]
             [STJS.JsonPropertyName("b")]
             public long B { get; set; }
+
+            [JsonProperty("nested")]
+            [STJS.JsonPropertyName("nested")]
+            public TestColorEntity Nested { get; set; }
+
+            [JsonProperty("amount")]
+            [JsonConverter(typeof(DecimalStringConverter))]
+            [STJS.JsonPropertyName("amount")]
+            [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+            public decimal Amount { get; set; }
+
+            [JsonProperty("created")]
+            [JsonConverter(typeof(UnixDateTimeConverter))]
+            [STJS.JsonPropertyName("created")]
+            [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+            public System.DateTime Created { get; set; } = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
         }
 
-        private class TestHsvColorEntity : TestColorEntity
+        [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+        private class TestHslPayload : StripeEntity<TestHslPayload>
         {
             [JsonProperty("h")]
             [STJS.JsonPropertyName("h")]
@@ -465,11 +564,12 @@ namespace StripeTests
             [STJS.JsonPropertyName("s")]
             public long S { get; set; }
 
-            [JsonProperty("v")]
-            [STJS.JsonPropertyName("v")]
-            public long V { get; set; }
+            [JsonProperty("l")]
+            [STJS.JsonPropertyName("l")]
+            public long L { get; set; }
         }
 
+        [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
         private class TestColorContainer : StripeEntity<TestColorContainer>
         {
             [JsonProperty("color")]
