@@ -9,8 +9,9 @@ namespace Stripe.Infrastructure
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Deserializes a discriminated union interface by reading the discriminator property
+    /// Deserializes a discriminated union by reading the discriminator property
     /// from the JSON payload and dispatching to the matching variant type.
+    /// Unknown string discriminators are preserved on instantiable concrete union bases.
     /// </summary>
     public class DiscriminatedUnionConverter : JsonConverter
     {
@@ -46,15 +47,32 @@ namespace Stripe.Infrastructure
             var discriminatorValue = discriminatorToken.Value<string>();
             if (discriminatorValue == null || !metadata.VariantMap.TryGetValue(discriminatorValue, out var variantType))
             {
-                throw new JsonSerializationException(
-                    $"Unknown discriminator value '{discriminatorValue}' for discriminated union {objectType.Name}. " +
-                    $"Known values: {string.Join(", ", metadata.VariantMap.Keys)}.");
+                if (discriminatorToken.Type != JTokenType.String)
+                {
+                    throw new JsonSerializationException(
+                        $"Unknown discriminator value '{discriminatorValue}' for discriminated union {objectType.Name}. " +
+                        $"Known values: {string.Join(", ", metadata.VariantMap.Keys)}.");
+                }
+
+                if (objectType.IsInterface || objectType.IsAbstract || objectType.GetConstructor(Type.EmptyTypes) == null)
+                {
+                    throw new JsonSerializationException(
+                        $"Cannot deserialize unknown discriminator value '{discriminatorValue}' for discriminated union {objectType.Name}. " +
+                        "Fallback requires a concrete type with a public parameterless constructor.");
+                }
+
+                variantType = objectType;
             }
 
             var instance = Activator.CreateInstance(variantType);
             using (var subReader = jsonObject.CreateReader())
             {
                 serializer.Populate(subReader, instance);
+            }
+
+            if (instance is StripeEntity entity)
+            {
+                entity.SetRawJObject(jsonObject);
             }
 
             return instance;
