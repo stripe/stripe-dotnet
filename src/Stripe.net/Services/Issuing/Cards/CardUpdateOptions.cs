@@ -20,6 +20,14 @@ namespace Stripe.Issuing
         public string CancellationReason { get; set; }
 
         /// <summary>
+        /// The new financial account ID the card will be associated with. This field allows a card
+        /// to be reassigned to a different financial account.
+        /// </summary>
+        [JsonProperty("financial_account")]
+        [STJS.JsonPropertyName("financial_account")]
+        public string FinancialAccount { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to

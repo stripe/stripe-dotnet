@@ -662,11 +662,12 @@ namespace Stripe
         /// A subscription that is currently in a trial period is <c>trialing</c> and moves to
         /// <c>active</c> when the trial period is over.
         ///
-        /// A subscription can only enter a <c>paused</c> status <a
+        /// A subscription can enter a <c>paused</c> status in several ways, including <a
         /// href="https://docs.stripe.com/billing/subscriptions/trials/free-trials#create-free-trials-without-payment">when
-        /// a trial ends without a payment method</a>. A <c>paused</c> subscription doesn't generate
-        /// invoices and can be resumed after your customer adds their payment method. The
-        /// <c>paused</c> status is different from <a
+        /// a trial ends without a payment method</a> or when you pause it using the <a
+        /// href="https://docs.stripe.com/api/subscriptions/pause">pause endpoint</a>. A
+        /// <c>paused</c> subscription doesn't advance to a new billing period or generate invoices
+        /// until it resumes. The <c>paused</c> status is different from <a
         /// href="https://docs.stripe.com/billing/subscriptions/pause-payment">pausing
         /// collection</a>, which still generates invoices and leaves the subscription's status
         /// unchanged.

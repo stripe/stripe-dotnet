@@ -10,8 +10,8 @@ namespace Stripe.V2.Core
     public class AccountRequirementsEntry : StripeEntity<AccountRequirementsEntry>
     {
         /// <summary>
-        /// Indicates whether the platform or Stripe is currently responsible for taking action on
-        /// the requirement. Value can be <c>user</c> or <c>stripe</c>.
+        /// Indicates whether the user or Stripe is currently responsible for taking action on the
+        /// requirement. Value can be <c>user</c> or <c>stripe</c>.
         /// One of: <c>stripe</c>, or <c>user</c>.
         /// </summary>
         [JsonProperty("awaiting_action_from")]

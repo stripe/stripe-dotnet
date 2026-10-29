@@ -45,5 +45,15 @@ namespace Stripe
         [JsonProperty("request_three_d_secure")]
         [STJS.JsonPropertyName("request_three_d_secure")]
         public string RequestThreeDSecure { get; set; }
+
+        /// <summary>
+        /// Set to indicate the future transaction type usage for the card being set up.
+        /// One of: <c>installment</c>, <c>recurring</c>, or <c>unscheduled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("setup_credential_usage")]
+        [STJS.JsonPropertyName("setup_credential_usage")]
+        public string SetupCredentialUsage { get; set; }
     }
 }

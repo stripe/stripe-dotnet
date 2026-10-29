@@ -12,6 +12,7 @@ namespace Stripe.V2
         private V2.Core.AccountTokenService accountTokens;
         private V2.Core.EventService events;
         private V2.Core.EventDestinationService eventDestinations;
+        private V2.Core.VaultService vault;
 
         internal CoreService(ApiRequestor requestor)
             : base(requestor)
@@ -36,6 +37,9 @@ namespace Stripe.V2
             this.Requestor);
 
         public virtual V2.Core.EventDestinationService EventDestinations => this.eventDestinations ??= new V2.Core.EventDestinationService(
+            this.Requestor);
+
+        public virtual V2.Core.VaultService Vault => this.vault ??= new V2.Core.VaultService(
             this.Requestor);
     }
 }

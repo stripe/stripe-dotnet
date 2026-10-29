@@ -183,6 +183,17 @@ namespace Stripe
         public string NetworkTransactionId { get; set; }
 
         /// <summary>
+        /// The transaction type that was passed for an off-session, Merchant-Initiated transaction,
+        /// one of <c>recurring</c> or <c>unscheduled</c>.
+        /// One of: <c>installment</c>, <c>recurring</c>, or <c>unscheduled</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("stored_credential_usage")]
+        [STJS.JsonPropertyName("stored_credential_usage")]
+        public string StoredCredentialUsage { get; set; }
+
+        /// <summary>
         /// Populated if this transaction used 3D Secure authentication.
         /// </summary>
         [JsonProperty("three_d_secure")]

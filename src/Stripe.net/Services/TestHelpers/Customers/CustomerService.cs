@@ -24,7 +24,7 @@ namespace Stripe.TestHelpers
         }
 
         /// <summary>
-        /// <p>Create an incoming testmode bank transfer</p>.
+        /// <p>Create a test incoming bank transfer</p>.
         /// </summary>
         public virtual CustomerCashBalanceTransaction FundCashBalance(string id, CustomerFundCashBalanceOptions options = null, RequestOptions requestOptions = null)
         {
@@ -32,7 +32,7 @@ namespace Stripe.TestHelpers
         }
 
         /// <summary>
-        /// <p>Create an incoming testmode bank transfer</p>.
+        /// <p>Create a test incoming bank transfer</p>.
         /// </summary>
         public virtual Task<CustomerCashBalanceTransaction> FundCashBalanceAsync(string id, CustomerFundCashBalanceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

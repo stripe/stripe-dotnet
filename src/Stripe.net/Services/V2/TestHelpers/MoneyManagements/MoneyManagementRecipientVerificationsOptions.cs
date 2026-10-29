@@ -1,0 +1,37 @@
+// File generated from our OpenAPI spec
+namespace Stripe.V2.TestHelpers
+{
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
+    public class MoneyManagementRecipientVerificationsOptions : BaseOptions
+    {
+        /// <summary>
+        /// Expected match level of the RecipientVerification to be created: <c>match</c>,
+        /// <c>close_match</c>, <c>no_match</c>, <c>unavailable</c>. For <c>close_match</c>, the
+        /// simulated response appends "close_match" to the provided name in
+        /// match_result_details.matched_name.
+        /// One of: <c>close_match</c>, <c>match</c>, <c>no_match</c>, or <c>unavailable</c>.
+        /// </summary>
+        [JsonProperty("match_result")]
+        [STJS.JsonPropertyName("match_result")]
+        public string MatchResult { get; set; }
+
+        /// <summary>
+        /// ID of the payout method.
+        /// </summary>
+        [JsonProperty("payout_method")]
+        [STJS.JsonPropertyName("payout_method")]
+        public string PayoutMethod { get; set; }
+
+        /// <summary>
+        /// ID of the recipient account. Required if the recipient is different from the sender.
+        /// Omit for payouts to your own account.
+        /// </summary>
+        [JsonProperty("recipient")]
+        [STJS.JsonPropertyName("recipient")]
+        public string Recipient { get; set; }
+    }
+}
