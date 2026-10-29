@@ -65,6 +65,13 @@ namespace Stripe
         public AccountDocumentsProofOfAddressOptions ProofOfAddress { get; set; }
 
         /// <summary>
+        /// One or more documents that demonstrate proof of business presence.
+        /// </summary>
+        [JsonProperty("proof_of_business_presence")]
+        [STJS.JsonPropertyName("proof_of_business_presence")]
+        public AccountDocumentsProofOfBusinessPresenceOptions ProofOfBusinessPresence { get; set; }
+
+        /// <summary>
         /// One or more documents showing the company’s proof of registration with the national
         /// business registry.
         /// </summary>

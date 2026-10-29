@@ -87,32 +87,58 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerDeletedEventNotification>> v1CustomerDeleted;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerDiscountCreatedEventNotification>> v1CustomerDiscountCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerDiscountDeletedEventNotification>> v1CustomerDiscountDeleted;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerDiscountSourceChangedEventNotification>> v1CustomerDiscountSourceChanged;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerDiscountUpdatedEventNotification>> v1CustomerDiscountUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionActiveEventNotification>> v1CustomerSubscriptionActive;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionCancelAtChangedEventNotification>> v1CustomerSubscriptionCancelAtChanged;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionCreatedEventNotification>> v1CustomerSubscriptionCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionDefaultPaymentMethodChangedEventNotification>> v1CustomerSubscriptionDefaultPaymentMethodChanged;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionDeletedEventNotification>> v1CustomerSubscriptionDeleted;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionIncompleteEventNotification>> v1CustomerSubscriptionIncomplete;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionIncompleteExpiredEventNotification>> v1CustomerSubscriptionIncompleteExpired;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionItemAddedEventNotification>> v1CustomerSubscriptionItemAdded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionItemPriceChangedEventNotification>> v1CustomerSubscriptionItemPriceChanged;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionItemQuantityChangedEventNotification>> v1CustomerSubscriptionItemQuantityChanged;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionItemRemovedEventNotification>> v1CustomerSubscriptionItemRemoved;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionItemTaxRatesChangedEventNotification>> v1CustomerSubscriptionItemTaxRatesChanged;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionPastDueEventNotification>> v1CustomerSubscriptionPastDue;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionPausedEventNotification>> v1CustomerSubscriptionPaused;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionPendingUpdateAppliedEventNotification>> v1CustomerSubscriptionPendingUpdateApplied;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionPendingUpdateExpiredEventNotification>> v1CustomerSubscriptionPendingUpdateExpired;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionResumedEventNotification>> v1CustomerSubscriptionResumed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionTrialWillEndEventNotification>> v1CustomerSubscriptionTrialWillEnd;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionTrialingEventNotification>> v1CustomerSubscriptionTrialing;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionUnpaidEventNotification>> v1CustomerSubscriptionUnpaid;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionUpdatedEventNotification>> v1CustomerSubscriptionUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerTaxIdCreatedEventNotification>> v1CustomerTaxIdCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerTaxIdDeletedEventNotification>> v1CustomerTaxIdDeleted;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerTaxIdUpdatedEventNotification>> v1CustomerTaxIdUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerUpdatedEventNotification>> v1CustomerUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerCashBalanceTransactionCreatedEventNotification>> v1CustomerCashBalanceTransactionCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1EntitlementsActiveEntitlementSummaryEntitlementAddedEventNotification>> v1EntitlementsActiveEntitlementSummaryEntitlementAdded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1EntitlementsActiveEntitlementSummaryEntitlementRemovedEventNotification>> v1EntitlementsActiveEntitlementSummaryEntitlementRemoved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1EntitlementsActiveEntitlementSummaryUpdatedEventNotification>> v1EntitlementsActiveEntitlementSummaryUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FileCreatedEventNotification>> v1FileCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountAccountNumbersUpdatedEventNotification>> v1FinancialConnectionsAccountAccountNumbersUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountBalanceRefreshFailedEventNotification>> v1FinancialConnectionsAccountBalanceRefreshFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountBalanceRefreshSucceededEventNotification>> v1FinancialConnectionsAccountBalanceRefreshSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountCreatedEventNotification>> v1FinancialConnectionsAccountCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountDeactivatedEventNotification>> v1FinancialConnectionsAccountDeactivated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountDisconnectedEventNotification>> v1FinancialConnectionsAccountDisconnected;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountExpectedDeactivationDateUpdatedEventNotification>> v1FinancialConnectionsAccountExpectedDeactivationDateUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountInferredBalancesRefreshFailedEventNotification>> v1FinancialConnectionsAccountInferredBalancesRefreshFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountInferredBalancesRefreshSucceededEventNotification>> v1FinancialConnectionsAccountInferredBalancesRefreshSucceeded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountOwnershipRefreshFailedEventNotification>> v1FinancialConnectionsAccountOwnershipRefreshFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountOwnershipRefreshSucceededEventNotification>> v1FinancialConnectionsAccountOwnershipRefreshSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountReactivatedEventNotification>> v1FinancialConnectionsAccountReactivated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountRefreshedBalanceEventNotification>> v1FinancialConnectionsAccountRefreshedBalance;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountRefreshedOwnershipEventNotification>> v1FinancialConnectionsAccountRefreshedOwnership;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountRefreshedTransactionsEventNotification>> v1FinancialConnectionsAccountRefreshedTransactions;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountRiskIntelligenceRefreshFailedEventNotification>> v1FinancialConnectionsAccountRiskIntelligenceRefreshFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountRiskIntelligenceRefreshSucceededEventNotification>> v1FinancialConnectionsAccountRiskIntelligenceRefreshSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountSupportedPaymentMethodTypesUpdatedEventNotification>> v1FinancialConnectionsAccountSupportedPaymentMethodTypesUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountTransactionsRefreshFailedEventNotification>> v1FinancialConnectionsAccountTransactionsRefreshFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountTransactionsRefreshSucceededEventNotification>> v1FinancialConnectionsAccountTransactionsRefreshSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountUpcomingAccountNumberExpiryEventNotification>> v1FinancialConnectionsAccountUpcomingAccountNumberExpiry;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountUpcomingDeactivationEventNotification>> v1FinancialConnectionsAccountUpcomingDeactivation;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1IdentityVerificationSessionCanceledEventNotification>> v1IdentityVerificationSessionCanceled;
@@ -123,8 +149,14 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1IdentityVerificationSessionVerifiedEventNotification>> v1IdentityVerificationSessionVerified;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceCreatedEventNotification>> v1InvoiceCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceDeletedEventNotification>> v1InvoiceDeleted;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceDiscountAddedEventNotification>> v1InvoiceDiscountAdded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceDiscountRemovedEventNotification>> v1InvoiceDiscountRemoved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceFinalizationFailedEventNotification>> v1InvoiceFinalizationFailed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceFinalizedEventNotification>> v1InvoiceFinalized;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceLineItemAddedEventNotification>> v1InvoiceLineItemAdded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceLineItemPricingChangedEventNotification>> v1InvoiceLineItemPricingChanged;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceLineItemQuantityChangedEventNotification>> v1InvoiceLineItemQuantityChanged;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceLineItemRemovedEventNotification>> v1InvoiceLineItemRemoved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceMarkedUncollectibleEventNotification>> v1InvoiceMarkedUncollectible;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceOverdueEventNotification>> v1InvoiceOverdue;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceOverpaidEventNotification>> v1InvoiceOverpaid;
@@ -138,9 +170,14 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceUpdatedEventNotification>> v1InvoiceUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceVoidedEventNotification>> v1InvoiceVoided;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceWillBeDueEventNotification>> v1InvoiceWillBeDue;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoicePaymentCanceledEventNotification>> v1InvoicePaymentCanceled;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoicePaymentOpenEventNotification>> v1InvoicePaymentOpen;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoicePaymentPaidEventNotification>> v1InvoicePaymentPaid;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceitemAmountChangedEventNotification>> v1InvoiceitemAmountChanged;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceitemCreatedEventNotification>> v1InvoiceitemCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceitemDeletedEventNotification>> v1InvoiceitemDeleted;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceitemDiscountAddedEventNotification>> v1InvoiceitemDiscountAdded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceitemDiscountRemovedEventNotification>> v1InvoiceitemDiscountRemoved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1IssuingAuthorizationCreatedEventNotification>> v1IssuingAuthorizationCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1IssuingAuthorizationRequestEventNotification>> v1IssuingAuthorizationRequest;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1IssuingAuthorizationUpdatedEventNotification>> v1IssuingAuthorizationUpdated;
@@ -190,13 +227,22 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PlanCreatedEventNotification>> v1PlanCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PlanDeletedEventNotification>> v1PlanDeleted;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PlanUpdatedEventNotification>> v1PlanUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PriceActivatedEventNotification>> v1PriceActivated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PriceCreatedEventNotification>> v1PriceCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PriceDeactivatedEventNotification>> v1PriceDeactivated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PriceDeletedEventNotification>> v1PriceDeleted;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PriceLookupKeyChangedEventNotification>> v1PriceLookupKeyChanged;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PriceTaxBehaviorChangedEventNotification>> v1PriceTaxBehaviorChanged;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PriceUpdatedEventNotification>> v1PriceUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1ProductActivatedEventNotification>> v1ProductActivated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1ProductCreatedEventNotification>> v1ProductCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1ProductDeactivatedEventNotification>> v1ProductDeactivated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1ProductDefaultPriceChangedEventNotification>> v1ProductDefaultPriceChanged;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1ProductDeletedEventNotification>> v1ProductDeleted;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1ProductTaxCodeChangedEventNotification>> v1ProductTaxCodeChanged;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1ProductUpdatedEventNotification>> v1ProductUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PromotionCodeCreatedEventNotification>> v1PromotionCodeCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PromotionCodeFullyRedeemedEventNotification>> v1PromotionCodeFullyRedeemed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PromotionCodeUpdatedEventNotification>> v1PromotionCodeUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1QuoteAcceptedEventNotification>> v1QuoteAccepted;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1QuoteCanceledEventNotification>> v1QuoteCanceled;
@@ -224,6 +270,11 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionScheduleCompletedEventNotification>> v1SubscriptionScheduleCompleted;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionScheduleCreatedEventNotification>> v1SubscriptionScheduleCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionScheduleExpiringEventNotification>> v1SubscriptionScheduleExpiring;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionSchedulePhaseAddedEventNotification>> v1SubscriptionSchedulePhaseAdded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionSchedulePhaseDefaultTaxRatesChangedEventNotification>> v1SubscriptionSchedulePhaseDefaultTaxRatesChanged;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionSchedulePhaseEndDateChangedEventNotification>> v1SubscriptionSchedulePhaseEndDateChanged;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionSchedulePhaseRemovedEventNotification>> v1SubscriptionSchedulePhaseRemoved;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionSchedulePhaseTrialEndChangedEventNotification>> v1SubscriptionSchedulePhaseTrialEndChanged;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionScheduleReleasedEventNotification>> v1SubscriptionScheduleReleased;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionScheduleUpdatedEventNotification>> v1SubscriptionScheduleUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1TaxSettingsUpdatedEventNotification>> v1TaxSettingsUpdated;
@@ -267,6 +318,41 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonDeletedEventNotification>> v2CoreAccountPersonDeleted;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonUpdatedEventNotification>> v2CoreAccountPersonUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>> v2CoreEventDestinationPing;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementAdjustmentCreatedEventNotification>> v2MoneyManagementAdjustmentCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification>> v2MoneyManagementFinancialAccountCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification>> v2MoneyManagementFinancialAccountUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAddressActivatedEventNotification>> v2MoneyManagementFinancialAddressActivated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAddressFailedEventNotification>> v2MoneyManagementFinancialAddressFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferAvailableEventNotification>> v2MoneyManagementInboundTransferAvailable;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitFailedEventNotification>> v2MoneyManagementInboundTransferBankDebitFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitProcessingEventNotification>> v2MoneyManagementInboundTransferBankDebitProcessing;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitQueuedEventNotification>> v2MoneyManagementInboundTransferBankDebitQueued;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitReturnedEventNotification>> v2MoneyManagementInboundTransferBankDebitReturned;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification>> v2MoneyManagementInboundTransferBankDebitSucceeded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentCanceledEventNotification>> v2MoneyManagementOutboundPaymentCanceled;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentCreatedEventNotification>> v2MoneyManagementOutboundPaymentCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentFailedEventNotification>> v2MoneyManagementOutboundPaymentFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentPostedEventNotification>> v2MoneyManagementOutboundPaymentPosted;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentReturnedEventNotification>> v2MoneyManagementOutboundPaymentReturned;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentUnderReviewEventNotification>> v2MoneyManagementOutboundPaymentUnderReview;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentUpdatedEventNotification>> v2MoneyManagementOutboundPaymentUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentCanceledEventNotification>> v2MoneyManagementPayoutIntentCanceled;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentCreatedEventNotification>> v2MoneyManagementPayoutIntentCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentPendingEventNotification>> v2MoneyManagementPayoutIntentPending;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentPostedEventNotification>> v2MoneyManagementPayoutIntentPosted;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentProcessingEventNotification>> v2MoneyManagementPayoutIntentProcessing;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentRequiresActionEventNotification>> v2MoneyManagementPayoutIntentRequiresAction;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentUpdatedEventNotification>> v2MoneyManagementPayoutIntentUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutMethodCreatedEventNotification>> v2MoneyManagementPayoutMethodCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutMethodUpdatedEventNotification>> v2MoneyManagementPayoutMethodUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditAvailableEventNotification>> v2MoneyManagementReceivedCreditAvailable;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditFailedEventNotification>> v2MoneyManagementReceivedCreditFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditReturnedEventNotification>> v2MoneyManagementReceivedCreditReturned;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditSucceededEventNotification>> v2MoneyManagementReceivedCreditSucceeded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementRecipientVerificationCreatedEventNotification>> v2MoneyManagementRecipientVerificationCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementRecipientVerificationUpdatedEventNotification>> v2MoneyManagementRecipientVerificationUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionCreatedEventNotification>> v2MoneyManagementTransactionCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionUpdatedEventNotification>> v2MoneyManagementTransactionUpdated;
 
         // private-event-handlers: The end of the section generated from our OpenAPI spec
         private EventHandler<StripePreHandleEventNotificationEventArgs> preHandleCallback;
@@ -672,9 +758,27 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerDiscountSourceChangedEventNotification>> V1CustomerDiscountSourceChanged
+        {
+            add { this.AddEventHandler(ref this.v1CustomerDiscountSourceChanged, value, "v1.customer.discount.source_changed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerDiscountUpdatedEventNotification>> V1CustomerDiscountUpdated
         {
             add { this.AddEventHandler(ref this.v1CustomerDiscountUpdated, value, "v1.customer.discount.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionActiveEventNotification>> V1CustomerSubscriptionActive
+        {
+            add { this.AddEventHandler(ref this.v1CustomerSubscriptionActive, value, "v1.customer.subscription.active"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionCancelAtChangedEventNotification>> V1CustomerSubscriptionCancelAtChanged
+        {
+            add { this.AddEventHandler(ref this.v1CustomerSubscriptionCancelAtChanged, value, "v1.customer.subscription.cancel_at_changed"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -684,9 +788,63 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionDefaultPaymentMethodChangedEventNotification>> V1CustomerSubscriptionDefaultPaymentMethodChanged
+        {
+            add { this.AddEventHandler(ref this.v1CustomerSubscriptionDefaultPaymentMethodChanged, value, "v1.customer.subscription.default_payment_method_changed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionDeletedEventNotification>> V1CustomerSubscriptionDeleted
         {
             add { this.AddEventHandler(ref this.v1CustomerSubscriptionDeleted, value, "v1.customer.subscription.deleted"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionIncompleteEventNotification>> V1CustomerSubscriptionIncomplete
+        {
+            add { this.AddEventHandler(ref this.v1CustomerSubscriptionIncomplete, value, "v1.customer.subscription.incomplete"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionIncompleteExpiredEventNotification>> V1CustomerSubscriptionIncompleteExpired
+        {
+            add { this.AddEventHandler(ref this.v1CustomerSubscriptionIncompleteExpired, value, "v1.customer.subscription.incomplete_expired"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionItemAddedEventNotification>> V1CustomerSubscriptionItemAdded
+        {
+            add { this.AddEventHandler(ref this.v1CustomerSubscriptionItemAdded, value, "v1.customer.subscription.item_added"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionItemPriceChangedEventNotification>> V1CustomerSubscriptionItemPriceChanged
+        {
+            add { this.AddEventHandler(ref this.v1CustomerSubscriptionItemPriceChanged, value, "v1.customer.subscription.item_price_changed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionItemQuantityChangedEventNotification>> V1CustomerSubscriptionItemQuantityChanged
+        {
+            add { this.AddEventHandler(ref this.v1CustomerSubscriptionItemQuantityChanged, value, "v1.customer.subscription.item_quantity_changed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionItemRemovedEventNotification>> V1CustomerSubscriptionItemRemoved
+        {
+            add { this.AddEventHandler(ref this.v1CustomerSubscriptionItemRemoved, value, "v1.customer.subscription.item_removed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionItemTaxRatesChangedEventNotification>> V1CustomerSubscriptionItemTaxRatesChanged
+        {
+            add { this.AddEventHandler(ref this.v1CustomerSubscriptionItemTaxRatesChanged, value, "v1.customer.subscription.item_tax_rates_changed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionPastDueEventNotification>> V1CustomerSubscriptionPastDue
+        {
+            add { this.AddEventHandler(ref this.v1CustomerSubscriptionPastDue, value, "v1.customer.subscription.past_due"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -717,6 +875,18 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionTrialWillEndEventNotification>> V1CustomerSubscriptionTrialWillEnd
         {
             add { this.AddEventHandler(ref this.v1CustomerSubscriptionTrialWillEnd, value, "v1.customer.subscription.trial_will_end"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionTrialingEventNotification>> V1CustomerSubscriptionTrialing
+        {
+            add { this.AddEventHandler(ref this.v1CustomerSubscriptionTrialing, value, "v1.customer.subscription.trialing"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionUnpaidEventNotification>> V1CustomerSubscriptionUnpaid
+        {
+            add { this.AddEventHandler(ref this.v1CustomerSubscriptionUnpaid, value, "v1.customer.subscription.unpaid"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -756,6 +926,18 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1EntitlementsActiveEntitlementSummaryEntitlementAddedEventNotification>> V1EntitlementsActiveEntitlementSummaryEntitlementAdded
+        {
+            add { this.AddEventHandler(ref this.v1EntitlementsActiveEntitlementSummaryEntitlementAdded, value, "v1.entitlements.active_entitlement_summary.entitlement_added"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1EntitlementsActiveEntitlementSummaryEntitlementRemovedEventNotification>> V1EntitlementsActiveEntitlementSummaryEntitlementRemoved
+        {
+            add { this.AddEventHandler(ref this.v1EntitlementsActiveEntitlementSummaryEntitlementRemoved, value, "v1.entitlements.active_entitlement_summary.entitlement_removed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1EntitlementsActiveEntitlementSummaryUpdatedEventNotification>> V1EntitlementsActiveEntitlementSummaryUpdated
         {
             add { this.AddEventHandler(ref this.v1EntitlementsActiveEntitlementSummaryUpdated, value, "v1.entitlements.active_entitlement_summary.updated"); }
@@ -771,6 +953,18 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountAccountNumbersUpdatedEventNotification>> V1FinancialConnectionsAccountAccountNumbersUpdated
         {
             add { this.AddEventHandler(ref this.v1FinancialConnectionsAccountAccountNumbersUpdated, value, "v1.financial_connections.account.account_numbers_updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountBalanceRefreshFailedEventNotification>> V1FinancialConnectionsAccountBalanceRefreshFailed
+        {
+            add { this.AddEventHandler(ref this.v1FinancialConnectionsAccountBalanceRefreshFailed, value, "v1.financial_connections.account.balance_refresh_failed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountBalanceRefreshSucceededEventNotification>> V1FinancialConnectionsAccountBalanceRefreshSucceeded
+        {
+            add { this.AddEventHandler(ref this.v1FinancialConnectionsAccountBalanceRefreshSucceeded, value, "v1.financial_connections.account.balance_refresh_succeeded"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -798,6 +992,30 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountInferredBalancesRefreshFailedEventNotification>> V1FinancialConnectionsAccountInferredBalancesRefreshFailed
+        {
+            add { this.AddEventHandler(ref this.v1FinancialConnectionsAccountInferredBalancesRefreshFailed, value, "v1.financial_connections.account.inferred_balances_refresh_failed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountInferredBalancesRefreshSucceededEventNotification>> V1FinancialConnectionsAccountInferredBalancesRefreshSucceeded
+        {
+            add { this.AddEventHandler(ref this.v1FinancialConnectionsAccountInferredBalancesRefreshSucceeded, value, "v1.financial_connections.account.inferred_balances_refresh_succeeded"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountOwnershipRefreshFailedEventNotification>> V1FinancialConnectionsAccountOwnershipRefreshFailed
+        {
+            add { this.AddEventHandler(ref this.v1FinancialConnectionsAccountOwnershipRefreshFailed, value, "v1.financial_connections.account.ownership_refresh_failed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountOwnershipRefreshSucceededEventNotification>> V1FinancialConnectionsAccountOwnershipRefreshSucceeded
+        {
+            add { this.AddEventHandler(ref this.v1FinancialConnectionsAccountOwnershipRefreshSucceeded, value, "v1.financial_connections.account.ownership_refresh_succeeded"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountReactivatedEventNotification>> V1FinancialConnectionsAccountReactivated
         {
             add { this.AddEventHandler(ref this.v1FinancialConnectionsAccountReactivated, value, "v1.financial_connections.account.reactivated"); }
@@ -822,9 +1040,33 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountRiskIntelligenceRefreshFailedEventNotification>> V1FinancialConnectionsAccountRiskIntelligenceRefreshFailed
+        {
+            add { this.AddEventHandler(ref this.v1FinancialConnectionsAccountRiskIntelligenceRefreshFailed, value, "v1.financial_connections.account.risk_intelligence_refresh_failed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountRiskIntelligenceRefreshSucceededEventNotification>> V1FinancialConnectionsAccountRiskIntelligenceRefreshSucceeded
+        {
+            add { this.AddEventHandler(ref this.v1FinancialConnectionsAccountRiskIntelligenceRefreshSucceeded, value, "v1.financial_connections.account.risk_intelligence_refresh_succeeded"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountSupportedPaymentMethodTypesUpdatedEventNotification>> V1FinancialConnectionsAccountSupportedPaymentMethodTypesUpdated
         {
             add { this.AddEventHandler(ref this.v1FinancialConnectionsAccountSupportedPaymentMethodTypesUpdated, value, "v1.financial_connections.account.supported_payment_method_types_updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountTransactionsRefreshFailedEventNotification>> V1FinancialConnectionsAccountTransactionsRefreshFailed
+        {
+            add { this.AddEventHandler(ref this.v1FinancialConnectionsAccountTransactionsRefreshFailed, value, "v1.financial_connections.account.transactions_refresh_failed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountTransactionsRefreshSucceededEventNotification>> V1FinancialConnectionsAccountTransactionsRefreshSucceeded
+        {
+            add { this.AddEventHandler(ref this.v1FinancialConnectionsAccountTransactionsRefreshSucceeded, value, "v1.financial_connections.account.transactions_refresh_succeeded"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -888,6 +1130,18 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceDiscountAddedEventNotification>> V1InvoiceDiscountAdded
+        {
+            add { this.AddEventHandler(ref this.v1InvoiceDiscountAdded, value, "v1.invoice.discount_added"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceDiscountRemovedEventNotification>> V1InvoiceDiscountRemoved
+        {
+            add { this.AddEventHandler(ref this.v1InvoiceDiscountRemoved, value, "v1.invoice.discount_removed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceFinalizationFailedEventNotification>> V1InvoiceFinalizationFailed
         {
             add { this.AddEventHandler(ref this.v1InvoiceFinalizationFailed, value, "v1.invoice.finalization_failed"); }
@@ -897,6 +1151,30 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceFinalizedEventNotification>> V1InvoiceFinalized
         {
             add { this.AddEventHandler(ref this.v1InvoiceFinalized, value, "v1.invoice.finalized"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceLineItemAddedEventNotification>> V1InvoiceLineItemAdded
+        {
+            add { this.AddEventHandler(ref this.v1InvoiceLineItemAdded, value, "v1.invoice.line_item_added"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceLineItemPricingChangedEventNotification>> V1InvoiceLineItemPricingChanged
+        {
+            add { this.AddEventHandler(ref this.v1InvoiceLineItemPricingChanged, value, "v1.invoice.line_item_pricing_changed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceLineItemQuantityChangedEventNotification>> V1InvoiceLineItemQuantityChanged
+        {
+            add { this.AddEventHandler(ref this.v1InvoiceLineItemQuantityChanged, value, "v1.invoice.line_item_quantity_changed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceLineItemRemovedEventNotification>> V1InvoiceLineItemRemoved
+        {
+            add { this.AddEventHandler(ref this.v1InvoiceLineItemRemoved, value, "v1.invoice.line_item_removed"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -978,9 +1256,27 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoicePaymentCanceledEventNotification>> V1InvoicePaymentCanceled
+        {
+            add { this.AddEventHandler(ref this.v1InvoicePaymentCanceled, value, "v1.invoice_payment.canceled"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoicePaymentOpenEventNotification>> V1InvoicePaymentOpen
+        {
+            add { this.AddEventHandler(ref this.v1InvoicePaymentOpen, value, "v1.invoice_payment.open"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoicePaymentPaidEventNotification>> V1InvoicePaymentPaid
         {
             add { this.AddEventHandler(ref this.v1InvoicePaymentPaid, value, "v1.invoice_payment.paid"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceitemAmountChangedEventNotification>> V1InvoiceitemAmountChanged
+        {
+            add { this.AddEventHandler(ref this.v1InvoiceitemAmountChanged, value, "v1.invoiceitem.amount_changed"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -993,6 +1289,18 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceitemDeletedEventNotification>> V1InvoiceitemDeleted
         {
             add { this.AddEventHandler(ref this.v1InvoiceitemDeleted, value, "v1.invoiceitem.deleted"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceitemDiscountAddedEventNotification>> V1InvoiceitemDiscountAdded
+        {
+            add { this.AddEventHandler(ref this.v1InvoiceitemDiscountAdded, value, "v1.invoiceitem.discount_added"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceitemDiscountRemovedEventNotification>> V1InvoiceitemDiscountRemoved
+        {
+            add { this.AddEventHandler(ref this.v1InvoiceitemDiscountRemoved, value, "v1.invoiceitem.discount_removed"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -1290,9 +1598,21 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PriceActivatedEventNotification>> V1PriceActivated
+        {
+            add { this.AddEventHandler(ref this.v1PriceActivated, value, "v1.price.activated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PriceCreatedEventNotification>> V1PriceCreated
         {
             add { this.AddEventHandler(ref this.v1PriceCreated, value, "v1.price.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PriceDeactivatedEventNotification>> V1PriceDeactivated
+        {
+            add { this.AddEventHandler(ref this.v1PriceDeactivated, value, "v1.price.deactivated"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -1302,9 +1622,27 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PriceLookupKeyChangedEventNotification>> V1PriceLookupKeyChanged
+        {
+            add { this.AddEventHandler(ref this.v1PriceLookupKeyChanged, value, "v1.price.lookup_key_changed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PriceTaxBehaviorChangedEventNotification>> V1PriceTaxBehaviorChanged
+        {
+            add { this.AddEventHandler(ref this.v1PriceTaxBehaviorChanged, value, "v1.price.tax_behavior_changed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PriceUpdatedEventNotification>> V1PriceUpdated
         {
             add { this.AddEventHandler(ref this.v1PriceUpdated, value, "v1.price.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1ProductActivatedEventNotification>> V1ProductActivated
+        {
+            add { this.AddEventHandler(ref this.v1ProductActivated, value, "v1.product.activated"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -1314,9 +1652,27 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1ProductDeactivatedEventNotification>> V1ProductDeactivated
+        {
+            add { this.AddEventHandler(ref this.v1ProductDeactivated, value, "v1.product.deactivated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1ProductDefaultPriceChangedEventNotification>> V1ProductDefaultPriceChanged
+        {
+            add { this.AddEventHandler(ref this.v1ProductDefaultPriceChanged, value, "v1.product.default_price_changed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1ProductDeletedEventNotification>> V1ProductDeleted
         {
             add { this.AddEventHandler(ref this.v1ProductDeleted, value, "v1.product.deleted"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1ProductTaxCodeChangedEventNotification>> V1ProductTaxCodeChanged
+        {
+            add { this.AddEventHandler(ref this.v1ProductTaxCodeChanged, value, "v1.product.tax_code_changed"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -1329,6 +1685,12 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PromotionCodeCreatedEventNotification>> V1PromotionCodeCreated
         {
             add { this.AddEventHandler(ref this.v1PromotionCodeCreated, value, "v1.promotion_code.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1PromotionCodeFullyRedeemedEventNotification>> V1PromotionCodeFullyRedeemed
+        {
+            add { this.AddEventHandler(ref this.v1PromotionCodeFullyRedeemed, value, "v1.promotion_code.fully_redeemed"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -1491,6 +1853,36 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionScheduleExpiringEventNotification>> V1SubscriptionScheduleExpiring
         {
             add { this.AddEventHandler(ref this.v1SubscriptionScheduleExpiring, value, "v1.subscription_schedule.expiring"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionSchedulePhaseAddedEventNotification>> V1SubscriptionSchedulePhaseAdded
+        {
+            add { this.AddEventHandler(ref this.v1SubscriptionSchedulePhaseAdded, value, "v1.subscription_schedule.phase_added"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionSchedulePhaseDefaultTaxRatesChangedEventNotification>> V1SubscriptionSchedulePhaseDefaultTaxRatesChanged
+        {
+            add { this.AddEventHandler(ref this.v1SubscriptionSchedulePhaseDefaultTaxRatesChanged, value, "v1.subscription_schedule.phase_default_tax_rates_changed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionSchedulePhaseEndDateChangedEventNotification>> V1SubscriptionSchedulePhaseEndDateChanged
+        {
+            add { this.AddEventHandler(ref this.v1SubscriptionSchedulePhaseEndDateChanged, value, "v1.subscription_schedule.phase_end_date_changed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionSchedulePhaseRemovedEventNotification>> V1SubscriptionSchedulePhaseRemoved
+        {
+            add { this.AddEventHandler(ref this.v1SubscriptionSchedulePhaseRemoved, value, "v1.subscription_schedule.phase_removed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionSchedulePhaseTrialEndChangedEventNotification>> V1SubscriptionSchedulePhaseTrialEndChanged
+        {
+            add { this.AddEventHandler(ref this.v1SubscriptionSchedulePhaseTrialEndChanged, value, "v1.subscription_schedule.phase_trial_end_changed"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -1749,6 +2141,216 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>> V2CoreEventDestinationPing
         {
             add { this.AddEventHandler(ref this.v2CoreEventDestinationPing, value, "v2.core.event_destination.ping"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementAdjustmentCreatedEventNotification>> V2MoneyManagementAdjustmentCreated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementAdjustmentCreated, value, "v2.money_management.adjustment.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification>> V2MoneyManagementFinancialAccountCreated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAccountCreated, value, "v2.money_management.financial_account.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification>> V2MoneyManagementFinancialAccountUpdated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAccountUpdated, value, "v2.money_management.financial_account.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAddressActivatedEventNotification>> V2MoneyManagementFinancialAddressActivated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAddressActivated, value, "v2.money_management.financial_address.activated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAddressFailedEventNotification>> V2MoneyManagementFinancialAddressFailed
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAddressFailed, value, "v2.money_management.financial_address.failed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferAvailableEventNotification>> V2MoneyManagementInboundTransferAvailable
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferAvailable, value, "v2.money_management.inbound_transfer.available"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitFailedEventNotification>> V2MoneyManagementInboundTransferBankDebitFailed
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferBankDebitFailed, value, "v2.money_management.inbound_transfer.bank_debit_failed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitProcessingEventNotification>> V2MoneyManagementInboundTransferBankDebitProcessing
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferBankDebitProcessing, value, "v2.money_management.inbound_transfer.bank_debit_processing"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitQueuedEventNotification>> V2MoneyManagementInboundTransferBankDebitQueued
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferBankDebitQueued, value, "v2.money_management.inbound_transfer.bank_debit_queued"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitReturnedEventNotification>> V2MoneyManagementInboundTransferBankDebitReturned
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferBankDebitReturned, value, "v2.money_management.inbound_transfer.bank_debit_returned"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification>> V2MoneyManagementInboundTransferBankDebitSucceeded
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferBankDebitSucceeded, value, "v2.money_management.inbound_transfer.bank_debit_succeeded"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentCanceledEventNotification>> V2MoneyManagementOutboundPaymentCanceled
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentCanceled, value, "v2.money_management.outbound_payment.canceled"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentCreatedEventNotification>> V2MoneyManagementOutboundPaymentCreated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentCreated, value, "v2.money_management.outbound_payment.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentFailedEventNotification>> V2MoneyManagementOutboundPaymentFailed
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentFailed, value, "v2.money_management.outbound_payment.failed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentPostedEventNotification>> V2MoneyManagementOutboundPaymentPosted
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentPosted, value, "v2.money_management.outbound_payment.posted"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentReturnedEventNotification>> V2MoneyManagementOutboundPaymentReturned
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentReturned, value, "v2.money_management.outbound_payment.returned"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentUnderReviewEventNotification>> V2MoneyManagementOutboundPaymentUnderReview
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentUnderReview, value, "v2.money_management.outbound_payment.under_review"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentUpdatedEventNotification>> V2MoneyManagementOutboundPaymentUpdated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentUpdated, value, "v2.money_management.outbound_payment.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentCanceledEventNotification>> V2MoneyManagementPayoutIntentCanceled
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementPayoutIntentCanceled, value, "v2.money_management.payout_intent.canceled"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentCreatedEventNotification>> V2MoneyManagementPayoutIntentCreated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementPayoutIntentCreated, value, "v2.money_management.payout_intent.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentPendingEventNotification>> V2MoneyManagementPayoutIntentPending
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementPayoutIntentPending, value, "v2.money_management.payout_intent.pending"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentPostedEventNotification>> V2MoneyManagementPayoutIntentPosted
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementPayoutIntentPosted, value, "v2.money_management.payout_intent.posted"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentProcessingEventNotification>> V2MoneyManagementPayoutIntentProcessing
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementPayoutIntentProcessing, value, "v2.money_management.payout_intent.processing"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentRequiresActionEventNotification>> V2MoneyManagementPayoutIntentRequiresAction
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementPayoutIntentRequiresAction, value, "v2.money_management.payout_intent.requires_action"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentUpdatedEventNotification>> V2MoneyManagementPayoutIntentUpdated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementPayoutIntentUpdated, value, "v2.money_management.payout_intent.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutMethodCreatedEventNotification>> V2MoneyManagementPayoutMethodCreated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementPayoutMethodCreated, value, "v2.money_management.payout_method.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutMethodUpdatedEventNotification>> V2MoneyManagementPayoutMethodUpdated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementPayoutMethodUpdated, value, "v2.money_management.payout_method.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditAvailableEventNotification>> V2MoneyManagementReceivedCreditAvailable
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedCreditAvailable, value, "v2.money_management.received_credit.available"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditFailedEventNotification>> V2MoneyManagementReceivedCreditFailed
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedCreditFailed, value, "v2.money_management.received_credit.failed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditReturnedEventNotification>> V2MoneyManagementReceivedCreditReturned
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedCreditReturned, value, "v2.money_management.received_credit.returned"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditSucceededEventNotification>> V2MoneyManagementReceivedCreditSucceeded
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedCreditSucceeded, value, "v2.money_management.received_credit.succeeded"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementRecipientVerificationCreatedEventNotification>> V2MoneyManagementRecipientVerificationCreated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementRecipientVerificationCreated, value, "v2.money_management.recipient_verification.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementRecipientVerificationUpdatedEventNotification>> V2MoneyManagementRecipientVerificationUpdated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementRecipientVerificationUpdated, value, "v2.money_management.recipient_verification.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionCreatedEventNotification>> V2MoneyManagementTransactionCreated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementTransactionCreated, value, "v2.money_management.transaction.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionUpdatedEventNotification>> V2MoneyManagementTransactionUpdated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementTransactionUpdated, value, "v2.money_management.transaction.updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -2153,17 +2755,65 @@ namespace Stripe
                 {
                     this.v1CustomerDiscountDeleted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerDiscountDeletedEventNotification>((Stripe.Events.V1CustomerDiscountDeletedEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V1CustomerDiscountSourceChangedEventNotification)
+                {
+                    this.v1CustomerDiscountSourceChanged.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerDiscountSourceChangedEventNotification>((Stripe.Events.V1CustomerDiscountSourceChangedEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V1CustomerDiscountUpdatedEventNotification)
                 {
                     this.v1CustomerDiscountUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerDiscountUpdatedEventNotification>((Stripe.Events.V1CustomerDiscountUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1CustomerSubscriptionActiveEventNotification)
+                {
+                    this.v1CustomerSubscriptionActive.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionActiveEventNotification>((Stripe.Events.V1CustomerSubscriptionActiveEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1CustomerSubscriptionCancelAtChangedEventNotification)
+                {
+                    this.v1CustomerSubscriptionCancelAtChanged.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionCancelAtChangedEventNotification>((Stripe.Events.V1CustomerSubscriptionCancelAtChangedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V1CustomerSubscriptionCreatedEventNotification)
                 {
                     this.v1CustomerSubscriptionCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionCreatedEventNotification>((Stripe.Events.V1CustomerSubscriptionCreatedEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V1CustomerSubscriptionDefaultPaymentMethodChangedEventNotification)
+                {
+                    this.v1CustomerSubscriptionDefaultPaymentMethodChanged.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionDefaultPaymentMethodChangedEventNotification>((Stripe.Events.V1CustomerSubscriptionDefaultPaymentMethodChangedEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V1CustomerSubscriptionDeletedEventNotification)
                 {
                     this.v1CustomerSubscriptionDeleted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionDeletedEventNotification>((Stripe.Events.V1CustomerSubscriptionDeletedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1CustomerSubscriptionIncompleteEventNotification)
+                {
+                    this.v1CustomerSubscriptionIncomplete.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionIncompleteEventNotification>((Stripe.Events.V1CustomerSubscriptionIncompleteEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1CustomerSubscriptionIncompleteExpiredEventNotification)
+                {
+                    this.v1CustomerSubscriptionIncompleteExpired.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionIncompleteExpiredEventNotification>((Stripe.Events.V1CustomerSubscriptionIncompleteExpiredEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1CustomerSubscriptionItemAddedEventNotification)
+                {
+                    this.v1CustomerSubscriptionItemAdded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionItemAddedEventNotification>((Stripe.Events.V1CustomerSubscriptionItemAddedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1CustomerSubscriptionItemPriceChangedEventNotification)
+                {
+                    this.v1CustomerSubscriptionItemPriceChanged.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionItemPriceChangedEventNotification>((Stripe.Events.V1CustomerSubscriptionItemPriceChangedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1CustomerSubscriptionItemQuantityChangedEventNotification)
+                {
+                    this.v1CustomerSubscriptionItemQuantityChanged.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionItemQuantityChangedEventNotification>((Stripe.Events.V1CustomerSubscriptionItemQuantityChangedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1CustomerSubscriptionItemRemovedEventNotification)
+                {
+                    this.v1CustomerSubscriptionItemRemoved.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionItemRemovedEventNotification>((Stripe.Events.V1CustomerSubscriptionItemRemovedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1CustomerSubscriptionItemTaxRatesChangedEventNotification)
+                {
+                    this.v1CustomerSubscriptionItemTaxRatesChanged.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionItemTaxRatesChangedEventNotification>((Stripe.Events.V1CustomerSubscriptionItemTaxRatesChangedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1CustomerSubscriptionPastDueEventNotification)
+                {
+                    this.v1CustomerSubscriptionPastDue.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionPastDueEventNotification>((Stripe.Events.V1CustomerSubscriptionPastDueEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V1CustomerSubscriptionPausedEventNotification)
                 {
@@ -2184,6 +2834,14 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V1CustomerSubscriptionTrialWillEndEventNotification)
                 {
                     this.v1CustomerSubscriptionTrialWillEnd.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionTrialWillEndEventNotification>((Stripe.Events.V1CustomerSubscriptionTrialWillEndEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1CustomerSubscriptionTrialingEventNotification)
+                {
+                    this.v1CustomerSubscriptionTrialing.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionTrialingEventNotification>((Stripe.Events.V1CustomerSubscriptionTrialingEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1CustomerSubscriptionUnpaidEventNotification)
+                {
+                    this.v1CustomerSubscriptionUnpaid.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerSubscriptionUnpaidEventNotification>((Stripe.Events.V1CustomerSubscriptionUnpaidEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V1CustomerSubscriptionUpdatedEventNotification)
                 {
@@ -2209,6 +2867,14 @@ namespace Stripe
                 {
                     this.v1CustomerCashBalanceTransactionCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1CustomerCashBalanceTransactionCreatedEventNotification>((Stripe.Events.V1CustomerCashBalanceTransactionCreatedEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V1EntitlementsActiveEntitlementSummaryEntitlementAddedEventNotification)
+                {
+                    this.v1EntitlementsActiveEntitlementSummaryEntitlementAdded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1EntitlementsActiveEntitlementSummaryEntitlementAddedEventNotification>((Stripe.Events.V1EntitlementsActiveEntitlementSummaryEntitlementAddedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1EntitlementsActiveEntitlementSummaryEntitlementRemovedEventNotification)
+                {
+                    this.v1EntitlementsActiveEntitlementSummaryEntitlementRemoved.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1EntitlementsActiveEntitlementSummaryEntitlementRemovedEventNotification>((Stripe.Events.V1EntitlementsActiveEntitlementSummaryEntitlementRemovedEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V1EntitlementsActiveEntitlementSummaryUpdatedEventNotification)
                 {
                     this.v1EntitlementsActiveEntitlementSummaryUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1EntitlementsActiveEntitlementSummaryUpdatedEventNotification>((Stripe.Events.V1EntitlementsActiveEntitlementSummaryUpdatedEventNotification)eventNotification, client));
@@ -2220,6 +2886,14 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V1FinancialConnectionsAccountAccountNumbersUpdatedEventNotification)
                 {
                     this.v1FinancialConnectionsAccountAccountNumbersUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountAccountNumbersUpdatedEventNotification>((Stripe.Events.V1FinancialConnectionsAccountAccountNumbersUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1FinancialConnectionsAccountBalanceRefreshFailedEventNotification)
+                {
+                    this.v1FinancialConnectionsAccountBalanceRefreshFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountBalanceRefreshFailedEventNotification>((Stripe.Events.V1FinancialConnectionsAccountBalanceRefreshFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1FinancialConnectionsAccountBalanceRefreshSucceededEventNotification)
+                {
+                    this.v1FinancialConnectionsAccountBalanceRefreshSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountBalanceRefreshSucceededEventNotification>((Stripe.Events.V1FinancialConnectionsAccountBalanceRefreshSucceededEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V1FinancialConnectionsAccountCreatedEventNotification)
                 {
@@ -2237,6 +2911,22 @@ namespace Stripe
                 {
                     this.v1FinancialConnectionsAccountExpectedDeactivationDateUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountExpectedDeactivationDateUpdatedEventNotification>((Stripe.Events.V1FinancialConnectionsAccountExpectedDeactivationDateUpdatedEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V1FinancialConnectionsAccountInferredBalancesRefreshFailedEventNotification)
+                {
+                    this.v1FinancialConnectionsAccountInferredBalancesRefreshFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountInferredBalancesRefreshFailedEventNotification>((Stripe.Events.V1FinancialConnectionsAccountInferredBalancesRefreshFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1FinancialConnectionsAccountInferredBalancesRefreshSucceededEventNotification)
+                {
+                    this.v1FinancialConnectionsAccountInferredBalancesRefreshSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountInferredBalancesRefreshSucceededEventNotification>((Stripe.Events.V1FinancialConnectionsAccountInferredBalancesRefreshSucceededEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1FinancialConnectionsAccountOwnershipRefreshFailedEventNotification)
+                {
+                    this.v1FinancialConnectionsAccountOwnershipRefreshFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountOwnershipRefreshFailedEventNotification>((Stripe.Events.V1FinancialConnectionsAccountOwnershipRefreshFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1FinancialConnectionsAccountOwnershipRefreshSucceededEventNotification)
+                {
+                    this.v1FinancialConnectionsAccountOwnershipRefreshSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountOwnershipRefreshSucceededEventNotification>((Stripe.Events.V1FinancialConnectionsAccountOwnershipRefreshSucceededEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V1FinancialConnectionsAccountReactivatedEventNotification)
                 {
                     this.v1FinancialConnectionsAccountReactivated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountReactivatedEventNotification>((Stripe.Events.V1FinancialConnectionsAccountReactivatedEventNotification)eventNotification, client));
@@ -2253,9 +2943,25 @@ namespace Stripe
                 {
                     this.v1FinancialConnectionsAccountRefreshedTransactions.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountRefreshedTransactionsEventNotification>((Stripe.Events.V1FinancialConnectionsAccountRefreshedTransactionsEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V1FinancialConnectionsAccountRiskIntelligenceRefreshFailedEventNotification)
+                {
+                    this.v1FinancialConnectionsAccountRiskIntelligenceRefreshFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountRiskIntelligenceRefreshFailedEventNotification>((Stripe.Events.V1FinancialConnectionsAccountRiskIntelligenceRefreshFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1FinancialConnectionsAccountRiskIntelligenceRefreshSucceededEventNotification)
+                {
+                    this.v1FinancialConnectionsAccountRiskIntelligenceRefreshSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountRiskIntelligenceRefreshSucceededEventNotification>((Stripe.Events.V1FinancialConnectionsAccountRiskIntelligenceRefreshSucceededEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V1FinancialConnectionsAccountSupportedPaymentMethodTypesUpdatedEventNotification)
                 {
                     this.v1FinancialConnectionsAccountSupportedPaymentMethodTypesUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountSupportedPaymentMethodTypesUpdatedEventNotification>((Stripe.Events.V1FinancialConnectionsAccountSupportedPaymentMethodTypesUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1FinancialConnectionsAccountTransactionsRefreshFailedEventNotification)
+                {
+                    this.v1FinancialConnectionsAccountTransactionsRefreshFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountTransactionsRefreshFailedEventNotification>((Stripe.Events.V1FinancialConnectionsAccountTransactionsRefreshFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1FinancialConnectionsAccountTransactionsRefreshSucceededEventNotification)
+                {
+                    this.v1FinancialConnectionsAccountTransactionsRefreshSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1FinancialConnectionsAccountTransactionsRefreshSucceededEventNotification>((Stripe.Events.V1FinancialConnectionsAccountTransactionsRefreshSucceededEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V1FinancialConnectionsAccountUpcomingAccountNumberExpiryEventNotification)
                 {
@@ -2297,6 +3003,14 @@ namespace Stripe
                 {
                     this.v1InvoiceDeleted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceDeletedEventNotification>((Stripe.Events.V1InvoiceDeletedEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V1InvoiceDiscountAddedEventNotification)
+                {
+                    this.v1InvoiceDiscountAdded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceDiscountAddedEventNotification>((Stripe.Events.V1InvoiceDiscountAddedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1InvoiceDiscountRemovedEventNotification)
+                {
+                    this.v1InvoiceDiscountRemoved.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceDiscountRemovedEventNotification>((Stripe.Events.V1InvoiceDiscountRemovedEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V1InvoiceFinalizationFailedEventNotification)
                 {
                     this.v1InvoiceFinalizationFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceFinalizationFailedEventNotification>((Stripe.Events.V1InvoiceFinalizationFailedEventNotification)eventNotification, client));
@@ -2304,6 +3018,22 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V1InvoiceFinalizedEventNotification)
                 {
                     this.v1InvoiceFinalized.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceFinalizedEventNotification>((Stripe.Events.V1InvoiceFinalizedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1InvoiceLineItemAddedEventNotification)
+                {
+                    this.v1InvoiceLineItemAdded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceLineItemAddedEventNotification>((Stripe.Events.V1InvoiceLineItemAddedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1InvoiceLineItemPricingChangedEventNotification)
+                {
+                    this.v1InvoiceLineItemPricingChanged.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceLineItemPricingChangedEventNotification>((Stripe.Events.V1InvoiceLineItemPricingChangedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1InvoiceLineItemQuantityChangedEventNotification)
+                {
+                    this.v1InvoiceLineItemQuantityChanged.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceLineItemQuantityChangedEventNotification>((Stripe.Events.V1InvoiceLineItemQuantityChangedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1InvoiceLineItemRemovedEventNotification)
+                {
+                    this.v1InvoiceLineItemRemoved.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceLineItemRemovedEventNotification>((Stripe.Events.V1InvoiceLineItemRemovedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V1InvoiceMarkedUncollectibleEventNotification)
                 {
@@ -2357,9 +3087,21 @@ namespace Stripe
                 {
                     this.v1InvoiceWillBeDue.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceWillBeDueEventNotification>((Stripe.Events.V1InvoiceWillBeDueEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V1InvoicePaymentCanceledEventNotification)
+                {
+                    this.v1InvoicePaymentCanceled.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1InvoicePaymentCanceledEventNotification>((Stripe.Events.V1InvoicePaymentCanceledEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1InvoicePaymentOpenEventNotification)
+                {
+                    this.v1InvoicePaymentOpen.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1InvoicePaymentOpenEventNotification>((Stripe.Events.V1InvoicePaymentOpenEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V1InvoicePaymentPaidEventNotification)
                 {
                     this.v1InvoicePaymentPaid.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1InvoicePaymentPaidEventNotification>((Stripe.Events.V1InvoicePaymentPaidEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1InvoiceitemAmountChangedEventNotification)
+                {
+                    this.v1InvoiceitemAmountChanged.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceitemAmountChangedEventNotification>((Stripe.Events.V1InvoiceitemAmountChangedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V1InvoiceitemCreatedEventNotification)
                 {
@@ -2368,6 +3110,14 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V1InvoiceitemDeletedEventNotification)
                 {
                     this.v1InvoiceitemDeleted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceitemDeletedEventNotification>((Stripe.Events.V1InvoiceitemDeletedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1InvoiceitemDiscountAddedEventNotification)
+                {
+                    this.v1InvoiceitemDiscountAdded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceitemDiscountAddedEventNotification>((Stripe.Events.V1InvoiceitemDiscountAddedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1InvoiceitemDiscountRemovedEventNotification)
+                {
+                    this.v1InvoiceitemDiscountRemoved.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceitemDiscountRemovedEventNotification>((Stripe.Events.V1InvoiceitemDiscountRemovedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V1IssuingAuthorizationCreatedEventNotification)
                 {
@@ -2565,25 +3315,57 @@ namespace Stripe
                 {
                     this.v1PlanUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1PlanUpdatedEventNotification>((Stripe.Events.V1PlanUpdatedEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V1PriceActivatedEventNotification)
+                {
+                    this.v1PriceActivated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1PriceActivatedEventNotification>((Stripe.Events.V1PriceActivatedEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V1PriceCreatedEventNotification)
                 {
                     this.v1PriceCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1PriceCreatedEventNotification>((Stripe.Events.V1PriceCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1PriceDeactivatedEventNotification)
+                {
+                    this.v1PriceDeactivated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1PriceDeactivatedEventNotification>((Stripe.Events.V1PriceDeactivatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V1PriceDeletedEventNotification)
                 {
                     this.v1PriceDeleted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1PriceDeletedEventNotification>((Stripe.Events.V1PriceDeletedEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V1PriceLookupKeyChangedEventNotification)
+                {
+                    this.v1PriceLookupKeyChanged.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1PriceLookupKeyChangedEventNotification>((Stripe.Events.V1PriceLookupKeyChangedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1PriceTaxBehaviorChangedEventNotification)
+                {
+                    this.v1PriceTaxBehaviorChanged.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1PriceTaxBehaviorChangedEventNotification>((Stripe.Events.V1PriceTaxBehaviorChangedEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V1PriceUpdatedEventNotification)
                 {
                     this.v1PriceUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1PriceUpdatedEventNotification>((Stripe.Events.V1PriceUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1ProductActivatedEventNotification)
+                {
+                    this.v1ProductActivated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1ProductActivatedEventNotification>((Stripe.Events.V1ProductActivatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V1ProductCreatedEventNotification)
                 {
                     this.v1ProductCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1ProductCreatedEventNotification>((Stripe.Events.V1ProductCreatedEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V1ProductDeactivatedEventNotification)
+                {
+                    this.v1ProductDeactivated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1ProductDeactivatedEventNotification>((Stripe.Events.V1ProductDeactivatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1ProductDefaultPriceChangedEventNotification)
+                {
+                    this.v1ProductDefaultPriceChanged.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1ProductDefaultPriceChangedEventNotification>((Stripe.Events.V1ProductDefaultPriceChangedEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V1ProductDeletedEventNotification)
                 {
                     this.v1ProductDeleted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1ProductDeletedEventNotification>((Stripe.Events.V1ProductDeletedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1ProductTaxCodeChangedEventNotification)
+                {
+                    this.v1ProductTaxCodeChanged.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1ProductTaxCodeChangedEventNotification>((Stripe.Events.V1ProductTaxCodeChangedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V1ProductUpdatedEventNotification)
                 {
@@ -2592,6 +3374,10 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V1PromotionCodeCreatedEventNotification)
                 {
                     this.v1PromotionCodeCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1PromotionCodeCreatedEventNotification>((Stripe.Events.V1PromotionCodeCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1PromotionCodeFullyRedeemedEventNotification)
+                {
+                    this.v1PromotionCodeFullyRedeemed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1PromotionCodeFullyRedeemedEventNotification>((Stripe.Events.V1PromotionCodeFullyRedeemedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V1PromotionCodeUpdatedEventNotification)
                 {
@@ -2700,6 +3486,26 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V1SubscriptionScheduleExpiringEventNotification)
                 {
                     this.v1SubscriptionScheduleExpiring.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionScheduleExpiringEventNotification>((Stripe.Events.V1SubscriptionScheduleExpiringEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1SubscriptionSchedulePhaseAddedEventNotification)
+                {
+                    this.v1SubscriptionSchedulePhaseAdded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionSchedulePhaseAddedEventNotification>((Stripe.Events.V1SubscriptionSchedulePhaseAddedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1SubscriptionSchedulePhaseDefaultTaxRatesChangedEventNotification)
+                {
+                    this.v1SubscriptionSchedulePhaseDefaultTaxRatesChanged.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionSchedulePhaseDefaultTaxRatesChangedEventNotification>((Stripe.Events.V1SubscriptionSchedulePhaseDefaultTaxRatesChangedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1SubscriptionSchedulePhaseEndDateChangedEventNotification)
+                {
+                    this.v1SubscriptionSchedulePhaseEndDateChanged.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionSchedulePhaseEndDateChangedEventNotification>((Stripe.Events.V1SubscriptionSchedulePhaseEndDateChangedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1SubscriptionSchedulePhaseRemovedEventNotification)
+                {
+                    this.v1SubscriptionSchedulePhaseRemoved.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionSchedulePhaseRemovedEventNotification>((Stripe.Events.V1SubscriptionSchedulePhaseRemovedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1SubscriptionSchedulePhaseTrialEndChangedEventNotification)
+                {
+                    this.v1SubscriptionSchedulePhaseTrialEndChanged.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1SubscriptionSchedulePhaseTrialEndChangedEventNotification>((Stripe.Events.V1SubscriptionSchedulePhaseTrialEndChangedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V1SubscriptionScheduleReleasedEventNotification)
                 {
@@ -2872,6 +3678,146 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2CoreEventDestinationPingEventNotification)
                 {
                     this.v2CoreEventDestinationPing.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>((Stripe.Events.V2CoreEventDestinationPingEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementAdjustmentCreatedEventNotification)
+                {
+                    this.v2MoneyManagementAdjustmentCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementAdjustmentCreatedEventNotification>((Stripe.Events.V2MoneyManagementAdjustmentCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification)
+                {
+                    this.v2MoneyManagementFinancialAccountCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification>((Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification)
+                {
+                    this.v2MoneyManagementFinancialAccountUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification>((Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAddressActivatedEventNotification)
+                {
+                    this.v2MoneyManagementFinancialAddressActivated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAddressActivatedEventNotification>((Stripe.Events.V2MoneyManagementFinancialAddressActivatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAddressFailedEventNotification)
+                {
+                    this.v2MoneyManagementFinancialAddressFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAddressFailedEventNotification>((Stripe.Events.V2MoneyManagementFinancialAddressFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferAvailableEventNotification)
+                {
+                    this.v2MoneyManagementInboundTransferAvailable.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferAvailableEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferAvailableEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferBankDebitFailedEventNotification)
+                {
+                    this.v2MoneyManagementInboundTransferBankDebitFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitFailedEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferBankDebitFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferBankDebitProcessingEventNotification)
+                {
+                    this.v2MoneyManagementInboundTransferBankDebitProcessing.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitProcessingEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferBankDebitProcessingEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferBankDebitQueuedEventNotification)
+                {
+                    this.v2MoneyManagementInboundTransferBankDebitQueued.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitQueuedEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferBankDebitQueuedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferBankDebitReturnedEventNotification)
+                {
+                    this.v2MoneyManagementInboundTransferBankDebitReturned.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitReturnedEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferBankDebitReturnedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification)
+                {
+                    this.v2MoneyManagementInboundTransferBankDebitSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundPaymentCanceledEventNotification)
+                {
+                    this.v2MoneyManagementOutboundPaymentCanceled.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentCanceledEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentCanceledEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundPaymentCreatedEventNotification)
+                {
+                    this.v2MoneyManagementOutboundPaymentCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentCreatedEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundPaymentFailedEventNotification)
+                {
+                    this.v2MoneyManagementOutboundPaymentFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentFailedEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundPaymentPostedEventNotification)
+                {
+                    this.v2MoneyManagementOutboundPaymentPosted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentPostedEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentPostedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundPaymentReturnedEventNotification)
+                {
+                    this.v2MoneyManagementOutboundPaymentReturned.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentReturnedEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentReturnedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundPaymentUnderReviewEventNotification)
+                {
+                    this.v2MoneyManagementOutboundPaymentUnderReview.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentUnderReviewEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentUnderReviewEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundPaymentUpdatedEventNotification)
+                {
+                    this.v2MoneyManagementOutboundPaymentUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentUpdatedEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementPayoutIntentCanceledEventNotification)
+                {
+                    this.v2MoneyManagementPayoutIntentCanceled.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentCanceledEventNotification>((Stripe.Events.V2MoneyManagementPayoutIntentCanceledEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementPayoutIntentCreatedEventNotification)
+                {
+                    this.v2MoneyManagementPayoutIntentCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentCreatedEventNotification>((Stripe.Events.V2MoneyManagementPayoutIntentCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementPayoutIntentPendingEventNotification)
+                {
+                    this.v2MoneyManagementPayoutIntentPending.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentPendingEventNotification>((Stripe.Events.V2MoneyManagementPayoutIntentPendingEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementPayoutIntentPostedEventNotification)
+                {
+                    this.v2MoneyManagementPayoutIntentPosted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentPostedEventNotification>((Stripe.Events.V2MoneyManagementPayoutIntentPostedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementPayoutIntentProcessingEventNotification)
+                {
+                    this.v2MoneyManagementPayoutIntentProcessing.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentProcessingEventNotification>((Stripe.Events.V2MoneyManagementPayoutIntentProcessingEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementPayoutIntentRequiresActionEventNotification)
+                {
+                    this.v2MoneyManagementPayoutIntentRequiresAction.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentRequiresActionEventNotification>((Stripe.Events.V2MoneyManagementPayoutIntentRequiresActionEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementPayoutIntentUpdatedEventNotification)
+                {
+                    this.v2MoneyManagementPayoutIntentUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutIntentUpdatedEventNotification>((Stripe.Events.V2MoneyManagementPayoutIntentUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementPayoutMethodCreatedEventNotification)
+                {
+                    this.v2MoneyManagementPayoutMethodCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutMethodCreatedEventNotification>((Stripe.Events.V2MoneyManagementPayoutMethodCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementPayoutMethodUpdatedEventNotification)
+                {
+                    this.v2MoneyManagementPayoutMethodUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutMethodUpdatedEventNotification>((Stripe.Events.V2MoneyManagementPayoutMethodUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedCreditAvailableEventNotification)
+                {
+                    this.v2MoneyManagementReceivedCreditAvailable.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditAvailableEventNotification>((Stripe.Events.V2MoneyManagementReceivedCreditAvailableEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedCreditFailedEventNotification)
+                {
+                    this.v2MoneyManagementReceivedCreditFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditFailedEventNotification>((Stripe.Events.V2MoneyManagementReceivedCreditFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedCreditReturnedEventNotification)
+                {
+                    this.v2MoneyManagementReceivedCreditReturned.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditReturnedEventNotification>((Stripe.Events.V2MoneyManagementReceivedCreditReturnedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedCreditSucceededEventNotification)
+                {
+                    this.v2MoneyManagementReceivedCreditSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditSucceededEventNotification>((Stripe.Events.V2MoneyManagementReceivedCreditSucceededEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementRecipientVerificationCreatedEventNotification)
+                {
+                    this.v2MoneyManagementRecipientVerificationCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementRecipientVerificationCreatedEventNotification>((Stripe.Events.V2MoneyManagementRecipientVerificationCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementRecipientVerificationUpdatedEventNotification)
+                {
+                    this.v2MoneyManagementRecipientVerificationUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementRecipientVerificationUpdatedEventNotification>((Stripe.Events.V2MoneyManagementRecipientVerificationUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementTransactionCreatedEventNotification)
+                {
+                    this.v2MoneyManagementTransactionCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionCreatedEventNotification>((Stripe.Events.V2MoneyManagementTransactionCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementTransactionUpdatedEventNotification)
+                {
+                    this.v2MoneyManagementTransactionUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionUpdatedEventNotification>((Stripe.Events.V2MoneyManagementTransactionUpdatedEventNotification)eventNotification, client));
                 }
 
                 // event-handler-dispatch: The end of the section generated from our OpenAPI spec

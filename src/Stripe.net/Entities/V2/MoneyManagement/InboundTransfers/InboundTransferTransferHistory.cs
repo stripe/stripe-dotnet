@@ -1,0 +1,82 @@
+// File generated from our OpenAPI spec
+namespace Stripe.V2.MoneyManagement
+{
+    using System;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+    public class InboundTransferTransferHistory : StripeEntity<InboundTransferTransferHistory>, IHasId
+    {
+        /// <summary>
+        /// The InboundTransfer failed. See <c>failure_reason</c> for more details.
+        /// </summary>
+        [JsonProperty("bank_debit_failed")]
+        [STJS.JsonPropertyName("bank_debit_failed")]
+        public InboundTransferTransferHistoryBankDebitFailed BankDebitFailed { get; set; }
+
+        /// <summary>
+        /// The InboundTransfer was submitted to the scheme for processing. The debit is still in
+        /// progress and can later succeed or fail.
+        /// </summary>
+        [JsonProperty("bank_debit_processing")]
+        [STJS.JsonPropertyName("bank_debit_processing")]
+        public InboundTransferTransferHistoryBankDebitProcessing BankDebitProcessing { get; set; }
+
+        /// <summary>
+        /// The InboundTransfer was created and is waiting to be submitted to the scheme for
+        /// processing.
+        /// </summary>
+        [JsonProperty("bank_debit_queued")]
+        [STJS.JsonPropertyName("bank_debit_queued")]
+        public InboundTransferTransferHistoryBankDebitQueued BankDebitQueued { get; set; }
+
+        /// <summary>
+        /// The InboundTransfer was returned. The original transaction has been reversed.
+        /// </summary>
+        [JsonProperty("bank_debit_returned")]
+        [STJS.JsonPropertyName("bank_debit_returned")]
+        public InboundTransferTransferHistoryBankDebitReturned BankDebitReturned { get; set; }
+
+        /// <summary>
+        /// The InboundTransfer succeeded. Funds might not yet be available; check the associated
+        /// Transaction for availability.
+        /// </summary>
+        [JsonProperty("bank_debit_succeeded")]
+        [STJS.JsonPropertyName("bank_debit_succeeded")]
+        public InboundTransferTransferHistoryBankDebitSucceeded BankDebitSucceeded { get; set; }
+
+        /// <summary>
+        /// Creation time of the HistoryEntry in RFC 3339 format and UTC.
+        /// </summary>
+        [JsonProperty("created")]
+        [STJS.JsonPropertyName("created")]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// Effective at time of the HistoryEntry in RFC 3339 format and UTC.
+        /// </summary>
+        [JsonProperty("effective_at")]
+        [STJS.JsonPropertyName("effective_at")]
+        public DateTime EffectiveAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// A unique ID for the HistoryEntry.
+        /// </summary>
+        [JsonProperty("id")]
+        [STJS.JsonPropertyName("id")]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Open Enum. The type of the HistoryEntry.
+        /// One of: <c>bank_debit_failed</c>, <c>bank_debit_processing</c>,
+        /// <c>bank_debit_queued</c>, <c>bank_debit_returned</c>, or <c>bank_debit_succeeded</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
+    }
+}

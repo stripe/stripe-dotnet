@@ -7,8 +7,14 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
-    public class InvoiceScheduleDetailsOptions : INestedOptions
+    public class InvoiceScheduleDetailsOptions : INestedOptions, IHasSetTracking
     {
+        private List<InvoiceScheduleDetailsPauseScheduleOptions> pauseSchedules;
+
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        internal SetTracker SetTracker { get; } = new SetTracker();
+
         /// <summary>
         /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
         /// </summary>
@@ -31,6 +37,25 @@ namespace Stripe
         public string EndBehavior { get; set; }
 
         /// <summary>
+        /// The subscription's pause behavior and optional resume behavior. You can provide one
+        /// entry. Include its <c>key</c> to update an existing pause schedule. Omit
+        /// <c>pause_schedules</c> to leave the existing schedule unchanged, or pass an empty string
+        /// (<c>""</c>) to clear it.
+        /// </summary>
+        [JsonProperty("pause_schedules", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("pause_schedules")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public List<InvoiceScheduleDetailsPauseScheduleOptions> PauseSchedules
+        {
+            get => this.pauseSchedules;
+            set
+            {
+                this.pauseSchedules = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
         /// List representing phases of the subscription schedule. Each phase can be customized to
         /// have different durations, plans, and coupons. If there are multiple phases, the
         /// <c>end_date</c> of one phase will always equal the <c>start_date</c> of the next phase.
@@ -49,5 +74,10 @@ namespace Stripe
         [JsonProperty("proration_behavior")]
         [STJS.JsonPropertyName("proration_behavior")]
         public string ProrationBehavior { get; set; }
+
+        bool IHasSetTracking.IsPropertySet(string propertyName)
+        {
+            return this.SetTracker.IsSet(propertyName);
+        }
     }
 }

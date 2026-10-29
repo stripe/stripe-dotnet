@@ -1,0 +1,28 @@
+// File generated from our OpenAPI spec
+namespace Stripe.V2.MoneyManagement
+{
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
+    public class OutboundSetupIntentCreatePayoutMethodDataOptions : INestedOptions
+    {
+        /// <summary>
+        /// The type specific details of the bank account payout method.
+        /// </summary>
+        [JsonProperty("bank_account")]
+        [STJS.JsonPropertyName("bank_account")]
+        public OutboundSetupIntentCreatePayoutMethodDataBankAccountOptions BankAccount { get; set; }
+
+        /// <summary>
+        /// Open Enum. The type of payout method to be created.
+        /// One of: <c>bank_account</c>, or <c>card</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
+    }
+}
