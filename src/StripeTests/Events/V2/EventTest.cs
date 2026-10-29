@@ -156,7 +156,7 @@ namespace StripeTests.V2
 
             using var hmac = new HMACSHA256(keyBytes);
             byte[] hashBytes = hmac.ComputeHash(messageBytes);
-            return BitConverter.ToString(hashBytes).Replace("-", string.Empty).ToLower();
+            return StringUtils.ToHexString(hashBytes);
         }
 
         /// <summary>

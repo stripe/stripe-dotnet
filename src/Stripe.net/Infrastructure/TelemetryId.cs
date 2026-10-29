@@ -113,9 +113,7 @@ namespace Stripe.Infrastructure
                 rng.GetBytes(bytes);
             }
 
-            return BitConverter.ToString(bytes)
-                .Replace("-", string.Empty)
-                .ToLowerInvariant();
+            return StringUtils.ToHexString(bytes);
         }
 
         // For testing
