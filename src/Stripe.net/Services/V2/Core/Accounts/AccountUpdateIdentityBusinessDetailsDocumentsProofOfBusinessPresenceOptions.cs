@@ -1,0 +1,31 @@
+// File generated from our OpenAPI spec
+namespace Stripe.V2.Core
+{
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
+    public class AccountUpdateIdentityBusinessDetailsDocumentsProofOfBusinessPresenceOptions : INestedOptions
+    {
+        /// <summary>
+        /// One or more document IDs returned by a <a
+        /// href="https://docs.stripe.com/api/files/create">file upload</a> with a purpose value of
+        /// <c>account_requirement</c>.
+        /// </summary>
+        [JsonProperty("files")]
+        [STJS.JsonPropertyName("files")]
+        public List<string> Files { get; set; }
+
+        /// <summary>
+        /// The format of the document. Currently supports <c>files</c> only.
+        /// One of: <c>files</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
+    }
+}

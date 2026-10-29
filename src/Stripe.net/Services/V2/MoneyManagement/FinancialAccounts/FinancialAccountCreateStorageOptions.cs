@@ -10,14 +10,9 @@ namespace Stripe.V2.MoneyManagement
     public class FinancialAccountCreateStorageOptions : INestedOptions
     {
         /// <summary>
-        /// Array of eligibility objects, segmented by bank name and deposit insurance scheme.
-        /// </summary>
-        [JsonProperty("deposit_insurance_eligibility")]
-        [STJS.JsonPropertyName("deposit_insurance_eligibility")]
-        public List<FinancialAccountCreateStorageDepositInsuranceEligibilityOptions> DepositInsuranceEligibility { get; set; }
-
-        /// <summary>
-        /// The currencies that this FinancialAccount can hold.
+        /// The currencies that the storage FinancialAccount can hold a balance in. Three-letter ISO
+        /// currency code, in lowercase. Must be a subset of the currencies requested in
+        /// <c>configuration.storer.features.holds_currencies</c> of the v2/accounts API.
         /// </summary>
         [JsonProperty("holds_currencies")]
         [STJS.JsonPropertyName("holds_currencies")]

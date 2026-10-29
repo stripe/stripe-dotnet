@@ -47,7 +47,7 @@ namespace Stripe.V2.Core.Vault
 
         /// <summary>
         /// Closed Enum. The type of the bank account (checking or savings).
-        /// One of: <c>checking</c>, <c>futsu</c>, <c>savings</c>, or <c>toza</c>.
+        /// One of: <c>checking</c>, or <c>savings</c>.
         /// </summary>
         [JsonProperty("bank_account_type")]
         [STJS.JsonPropertyName("bank_account_type")]
@@ -75,6 +75,15 @@ namespace Stripe.V2.Core.Vault
         [JsonProperty("created")]
         [STJS.JsonPropertyName("created")]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// Uniquely identifies this particular bank account. You can use this attribute to check
+        /// whether two recipients who've signed up with you are using the same bank account, for
+        /// example.
+        /// </summary>
+        [JsonProperty("fingerprint")]
+        [STJS.JsonPropertyName("fingerprint")]
+        public string Fingerprint { get; set; }
 
         /// <summary>
         /// The last 4 digits of the account number or IBAN.

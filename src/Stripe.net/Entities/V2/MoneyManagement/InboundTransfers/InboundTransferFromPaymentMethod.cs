@@ -9,8 +9,8 @@ namespace Stripe.V2.MoneyManagement
     public class InboundTransferFromPaymentMethod : StripeEntity<InboundTransferFromPaymentMethod>
     {
         /// <summary>
-        /// The type of object this destination represents. For a us bank account, we expect
-        /// us_bank_account.
+        /// The type of PaymentMethod used to create the InboundTransfer. Clients should tolerate
+        /// future values.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

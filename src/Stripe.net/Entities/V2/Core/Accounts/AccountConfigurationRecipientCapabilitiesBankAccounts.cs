@@ -9,6 +9,28 @@ namespace Stripe.V2.Core
     public class AccountConfigurationRecipientCapabilitiesBankAccounts : StripeEntity<AccountConfigurationRecipientCapabilitiesBankAccounts>
     {
         /// <summary>
+        /// Enables this Account to receive OutboundPayments to linked bank accounts over ACH rails.
+        /// </summary>
+        [JsonProperty("ach")]
+        [STJS.JsonPropertyName("ach")]
+        public AccountConfigurationRecipientCapabilitiesBankAccountsAch Ach { get; set; }
+
+        /// <summary>
+        /// Enables this Account to receive OutboundPayments to linked bank accounts over Fedwire or
+        /// CHIPS.
+        /// </summary>
+        [JsonProperty("fedwire")]
+        [STJS.JsonPropertyName("fedwire")]
+        public AccountConfigurationRecipientCapabilitiesBankAccountsFedwire Fedwire { get; set; }
+
+        /// <summary>
+        /// Enables this Account to receive OutboundPayments to linked bank accounts over FPS rails.
+        /// </summary>
+        [JsonProperty("fps")]
+        [STJS.JsonPropertyName("fps")]
+        public AccountConfigurationRecipientCapabilitiesBankAccountsFps Fps { get; set; }
+
+        /// <summary>
         /// Enables this Account to receive OutboundPayments to linked bank accounts over local
         /// networks.
         /// </summary>
@@ -17,10 +39,25 @@ namespace Stripe.V2.Core
         public AccountConfigurationRecipientCapabilitiesBankAccountsLocal Local { get; set; }
 
         /// <summary>
-        /// Enables this Account to receive OutboundPayments to linked bank accounts over wire.
+        /// Enables this Account to receive OutboundPayments to linked bank accounts over RTP rails.
         /// </summary>
-        [JsonProperty("wire")]
-        [STJS.JsonPropertyName("wire")]
-        public AccountConfigurationRecipientCapabilitiesBankAccountsWire Wire { get; set; }
+        [JsonProperty("rtp")]
+        [STJS.JsonPropertyName("rtp")]
+        public AccountConfigurationRecipientCapabilitiesBankAccountsRtp Rtp { get; set; }
+
+        /// <summary>
+        /// Enables this Account to receive OutboundPayments to linked bank accounts over SEPA
+        /// rails.
+        /// </summary>
+        [JsonProperty("sepa")]
+        [STJS.JsonPropertyName("sepa")]
+        public AccountConfigurationRecipientCapabilitiesBankAccountsSepa Sepa { get; set; }
+
+        /// <summary>
+        /// Enables this Account to receive OutboundPayments to linked bank accounts over SWIFT.
+        /// </summary>
+        [JsonProperty("swift")]
+        [STJS.JsonPropertyName("swift")]
+        public AccountConfigurationRecipientCapabilitiesBankAccountsSwift Swift { get; set; }
     }
 }

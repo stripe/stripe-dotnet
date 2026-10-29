@@ -220,10 +220,11 @@ namespace Stripe
         /// <summary>
         /// The current status of a dispute. Possible values include:<c>warning_needs_response</c>,
         /// <c>warning_under_review</c>, <c>warning_closed</c>, <c>needs_response</c>,
-        /// <c>under_review</c>, <c>won</c>, <c>lost</c>, or <c>prevented</c>.
-        /// One of: <c>lost</c>, <c>needs_response</c>, <c>prevented</c>, <c>under_review</c>,
-        /// <c>warning_closed</c>, <c>warning_needs_response</c>, <c>warning_under_review</c>, or
-        /// <c>won</c>.
+        /// <c>under_review</c>, <c>appeal_needs_response</c>, <c>appeal_under_review</c>,
+        /// <c>won</c>, <c>lost</c>, or <c>prevented</c>.
+        /// One of: <c>appeal_needs_response</c>, <c>appeal_under_review</c>, <c>lost</c>,
+        /// <c>needs_response</c>, <c>prevented</c>, <c>under_review</c>, <c>warning_closed</c>,
+        /// <c>warning_needs_response</c>, <c>warning_under_review</c>, or <c>won</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

@@ -23,6 +23,13 @@ namespace Stripe.V2.Core
         public AccountUpdateConfigurationRecipientCapabilitiesCardsOptions Cards { get; set; }
 
         /// <summary>
+        /// Capabilities that enable OutboundPayments to a crypto wallet linked to this Account.
+        /// </summary>
+        [JsonProperty("crypto_wallets")]
+        [STJS.JsonPropertyName("crypto_wallets")]
+        public AccountUpdateConfigurationRecipientCapabilitiesCryptoWalletsOptions CryptoWallets { get; set; }
+
+        /// <summary>
         /// Capabilities that enable the recipient to manage their Stripe Balance (/v1/balance).
         /// </summary>
         [JsonProperty("stripe_balance")]

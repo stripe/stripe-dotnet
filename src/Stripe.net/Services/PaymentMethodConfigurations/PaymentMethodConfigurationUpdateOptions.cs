@@ -669,6 +669,15 @@ namespace Stripe
         public PaymentMethodConfigurationWechatPayOptions WechatPay { get; set; }
 
         /// <summary>
+        /// Wero is a pan-European payment method that enables secure and instant money transfers
+        /// between bank accounts. Learn more about the <a
+        /// href="https://docs.stripe.com/payments/wero">Wero</a> payment method.
+        /// </summary>
+        [JsonProperty("wero")]
+        [STJS.JsonPropertyName("wero")]
+        public PaymentMethodConfigurationWeroOptions Wero { get; set; }
+
+        /// <summary>
         /// Zip gives your customers a way to split purchases over a series of payments. Check this
         /// <a href="https://docs.stripe.com/payments/zip">page</a> for more details like country
         /// availability.

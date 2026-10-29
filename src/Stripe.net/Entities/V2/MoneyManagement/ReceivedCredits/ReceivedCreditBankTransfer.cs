@@ -16,11 +16,15 @@ namespace Stripe.V2.MoneyManagement
         public string FinancialAddress { get; set; }
 
         /// <summary>
-        /// Deprecated. Use <c>originating_bank_account.sort_code</c> instead.
+        /// The money transmission network used to send funds for this ReceivedCredit.
+        /// One of: <c>ach</c>, <c>chaps</c>, <c>fedwire</c>, <c>fps</c>, <c>rtp</c>, <c>sepa</c>,
+        /// or <c>sepa_instant</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
-        [JsonProperty("gb_bank_account")]
-        [STJS.JsonPropertyName("gb_bank_account")]
-        public ReceivedCreditBankTransferGbBankAccount GbBankAccount { get; set; }
+        [JsonProperty("network")]
+        [STJS.JsonPropertyName("network")]
+        public string Network { get; set; }
 
         /// <summary>
         /// Hash containing the originating bank account details and type for this bank transfer.
@@ -30,24 +34,10 @@ namespace Stripe.V2.MoneyManagement
         public ReceivedCreditBankTransferOriginatingBankAccount OriginatingBankAccount { get; set; }
 
         /// <summary>
-        /// Deprecated. Use <c>originating_bank_account.iban</c> instead.
-        /// </summary>
-        [JsonProperty("sepa_bank_account")]
-        [STJS.JsonPropertyName("sepa_bank_account")]
-        public ReceivedCreditBankTransferSepaBankAccount SepaBankAccount { get; set; }
-
-        /// <summary>
         /// Freeform string set by originator of the external ReceivedCredit.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         [STJS.JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
-
-        /// <summary>
-        /// Deprecated. Use <c>originating_bank_account.aba</c> instead.
-        /// </summary>
-        [JsonProperty("us_bank_account")]
-        [STJS.JsonPropertyName("us_bank_account")]
-        public ReceivedCreditBankTransferUsBankAccount UsBankAccount { get; set; }
     }
 }

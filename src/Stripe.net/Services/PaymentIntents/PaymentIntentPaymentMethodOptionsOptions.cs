@@ -70,6 +70,7 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsUpiOptions upi;
         private PaymentIntentPaymentMethodOptionsUsBankAccountOptions usBankAccount;
         private PaymentIntentPaymentMethodOptionsWechatPayOptions wechatPay;
+        private PaymentIntentPaymentMethodOptionsWeroOptions wero;
         private PaymentIntentPaymentMethodOptionsZipOptions zip;
 
         [JsonIgnore]
@@ -1133,6 +1134,23 @@ namespace Stripe
             set
             {
                 this.wechatPay = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If this is a <c>wero</c> PaymentMethod, this sub-hash contains details about the Wero
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("wero", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("wero")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsWeroOptions Wero
+        {
+            get => this.wero;
+            set
+            {
+                this.wero = value;
                 this.SetTracker.Track();
             }
         }

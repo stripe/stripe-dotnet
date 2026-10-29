@@ -145,6 +145,22 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
+        /// Unarchive a USBankAccount object.
+        /// </summary>
+        public virtual UsBankAccount Unarchive(string id, UsBankAccountUnarchiveOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<UsBankAccount>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/vault/us_bank_accounts/{WebUtility.UrlEncode(id)}/unarchive", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Unarchive a USBankAccount object.
+        /// </summary>
+        public virtual Task<UsBankAccount> UnarchiveAsync(string id, UsBankAccountUnarchiveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<UsBankAccount>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/vault/us_bank_accounts/{WebUtility.UrlEncode(id)}/unarchive", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// Update a USBankAccount object. This is limited to supplying a previously empty
         /// routing_number field.
         /// </summary>

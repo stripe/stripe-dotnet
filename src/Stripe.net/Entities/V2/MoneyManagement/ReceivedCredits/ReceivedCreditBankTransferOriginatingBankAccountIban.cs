@@ -42,15 +42,5 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("iban")]
         [STJS.JsonPropertyName("iban")]
         public string Iban { get; set; }
-
-        /// <summary>
-        /// Open Enum. The money transmission network used to send funds for this ReceivedCredit.
-        /// One of: <c>sepa_credit_transfer</c>.
-        ///
-        /// This enum can grow over time; additional values may be added in the future.
-        /// </summary>
-        [JsonProperty("network")]
-        [STJS.JsonPropertyName("network")]
-        public string Network { get; set; }
     }
 }

@@ -16,7 +16,8 @@ namespace Stripe.V2.MoneyManagement
         public V2.Amount Debited { get; set; }
 
         /// <summary>
-        /// The Payment Method object used to create the InboundTransfer.
+        /// The bank account credential used to fund the InboundTransfer (for example, a US bank
+        /// account), not a Payments API <c>pm_</c> PaymentMethod.
         /// </summary>
         [JsonProperty("payment_method")]
         [STJS.JsonPropertyName("payment_method")]

@@ -63,6 +63,10 @@ namespace Stripe
                     ret = Stripe.V2.CannotProceedException.Parse(httpStatusCode, body);
                     break;
 
+                case "capability_not_enabled":
+                    ret = Stripe.V2.CapabilityNotEnabledException.Parse(httpStatusCode, body);
+                    break;
+
                 case "controlled_by_alternate_resource":
                     ret = Stripe.V2.ControlledByAlternateResourceException.Parse(httpStatusCode, body);
                     break;
@@ -73,6 +77,10 @@ namespace Stripe
 
                 case "financial_account_not_open":
                     ret = Stripe.V2.FinancialAccountNotOpenException.Parse(httpStatusCode, body);
+                    break;
+
+                case "fx_quote_needs_refresh":
+                    ret = Stripe.V2.FxQuoteNeedsRefreshException.Parse(httpStatusCode, body);
                     break;
 
                 case "insufficient_funds":

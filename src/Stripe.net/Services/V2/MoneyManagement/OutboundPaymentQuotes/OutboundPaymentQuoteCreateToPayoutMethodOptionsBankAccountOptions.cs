@@ -1,0 +1,30 @@
+// File generated from our OpenAPI spec
+namespace Stripe.V2.MoneyManagement
+{
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
+    public class OutboundPaymentQuoteCreateToPayoutMethodOptionsBankAccountOptions : INestedOptions
+    {
+        /// <summary>
+        /// Per-network configuration options.
+        /// </summary>
+        [JsonProperty("preferred_network_options")]
+        [STJS.JsonPropertyName("preferred_network_options")]
+        public OutboundPaymentQuoteCreateToPayoutMethodOptionsBankAccountPreferredNetworkOptionsOptions PreferredNetworkOptions { get; set; }
+
+        /// <summary>
+        /// The preferred networks to use for this OutboundPayment.
+        /// One of: <c>ach</c>, <c>fedwire</c>, <c>fps</c>, <c>rtp</c>, <c>sepa</c>, or
+        /// <c>swift</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("preferred_networks")]
+        [STJS.JsonPropertyName("preferred_networks")]
+        public List<string> PreferredNetworks { get; set; }
+    }
+}

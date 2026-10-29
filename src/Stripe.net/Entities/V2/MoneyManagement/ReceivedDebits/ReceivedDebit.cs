@@ -7,7 +7,8 @@ namespace Stripe.V2.MoneyManagement
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// ReceivedDebit resource.
+    /// Use ReceivedDebits API to retrieve information on when, where, and how funds are debited
+    /// from your FinancialAccount.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReceivedDebit : StripeEntity<ReceivedDebit>, IHasId, IHasObject

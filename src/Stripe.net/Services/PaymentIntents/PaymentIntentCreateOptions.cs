@@ -210,7 +210,7 @@ namespace Stripe
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>scalapay</c>,
         /// <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>,
         /// <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
-        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, <c>wero</c>, or <c>zip</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -298,9 +298,7 @@ namespace Stripe
         public PaymentIntentPaymentDetailsOptions PaymentDetails { get; set; }
 
         /// <summary>
-        /// ID of the payment method (a PaymentMethod, Card, or <a
-        /// href="https://docs.stripe.com/payments/payment-methods#compatibility">compatible
-        /// Source</a> object) to attach to this PaymentIntent.
+        /// The ID of a PaymentMethod to attach to this PaymentIntent.
         ///
         /// If you don't provide the <c>payment_method</c> parameter or the <c>source</c> parameter
         /// with <c>confirm=true</c>, <c>source</c> automatically populates with

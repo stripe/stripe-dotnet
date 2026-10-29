@@ -1000,6 +1000,31 @@ namespace Stripe
         public const string PaymentMethodUpdated = "payment_method.updated";
 
         /// <summary>
+        /// Occurs whenever a new payment plan is created.
+        /// </summary>
+        public const string PaymentPlanCreated = "payment_plan.created";
+
+        /// <summary>
+        /// Occurs whenever a payment plan installment becomes due.
+        /// </summary>
+        public const string PaymentPlanInstallmentDue = "payment_plan.installment_due";
+
+        /// <summary>
+        /// Occurs whenever a payment plan installment is paid.
+        /// </summary>
+        public const string PaymentPlanInstallmentPaid = "payment_plan.installment_paid";
+
+        /// <summary>
+        /// Occurs whenever a payment plan installment is about to become due.
+        /// </summary>
+        public const string PaymentPlanInstallmentWillBeDue = "payment_plan.installment_will_be_due";
+
+        /// <summary>
+        /// Occurs whenever a payment plan is updated.
+        /// </summary>
+        public const string PaymentPlanUpdated = "payment_plan.updated";
+
+        /// <summary>
         /// Occurs whenever a payout is canceled.
         /// </summary>
         public const string PayoutCanceled = "payout.canceled";
@@ -1438,6 +1463,41 @@ namespace Stripe
         /// Occurs whenever a test clock transitions to a ready status.
         /// </summary>
         public const string TestHelpersTestClockReady = "test_helpers.test_clock.ready";
+
+        /// <summary>
+        /// Occurs when a 3DS Authentication's status transitions to 'canceled'.
+        /// </summary>
+        public const string ThreeDSecureAuthenticationCanceled = "three_d_secure.authentication.canceled";
+
+        /// <summary>
+        /// Occurs when a 3DS Authentication's 'challenge_url' was loaded.
+        /// </summary>
+        public const string ThreeDSecureAuthenticationChallengeStarted = "three_d_secure.authentication.challenge_started";
+
+        /// <summary>
+        /// Occurs when a 3DS Authentication's status transitions to 'error'.
+        /// </summary>
+        public const string ThreeDSecureAuthenticationErrored = "three_d_secure.authentication.errored";
+
+        /// <summary>
+        /// Occurs when a 3DS Authentication's status transitions to 'failed'.
+        /// </summary>
+        public const string ThreeDSecureAuthenticationFailed = "three_d_secure.authentication.failed";
+
+        /// <summary>
+        /// Occurs when a 3DS Authentication's status transitions to 'requires_challenge'.
+        /// </summary>
+        public const string ThreeDSecureAuthenticationRequiresChallenge = "three_d_secure.authentication.requires_challenge";
+
+        /// <summary>
+        /// Occurs when a 3DS Authentication's status transitions to 'requires_submission'.
+        /// </summary>
+        public const string ThreeDSecureAuthenticationRequiresSubmission = "three_d_secure.authentication.requires_submission";
+
+        /// <summary>
+        /// Occurs when a 3DS Authentication's status transitions to 'succeeded'.
+        /// </summary>
+        public const string ThreeDSecureAuthenticationSucceeded = "three_d_secure.authentication.succeeded";
 
         /// <summary>
         /// Occurs whenever a top-up is canceled.

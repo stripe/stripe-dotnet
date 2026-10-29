@@ -67,5 +67,37 @@ namespace Stripe.V2.MoneyManagement
         {
             return this.ListRequestAutoPagingAsync<Transaction>($"/v2/money_management/transactions", options, requestOptions, cancellationToken);
         }
+
+        /// <summary>
+        /// Creates a fresh hosted URL for a Transaction's regulatory receipt.
+        /// </summary>
+        public virtual Transaction RefreshRegulatoryReceipt(string id, TransactionRefreshRegulatoryReceiptOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/transactions/{WebUtility.UrlEncode(id)}/refresh_regulatory_receipt", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Creates a fresh hosted URL for a Transaction's regulatory receipt.
+        /// </summary>
+        public virtual Task<Transaction> RefreshRegulatoryReceiptAsync(string id, TransactionRefreshRegulatoryReceiptOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/transactions/{WebUtility.UrlEncode(id)}/refresh_regulatory_receipt", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Updates an existing Transaction. You can update its description and metadata.
+        /// </summary>
+        public virtual Transaction Update(string id, TransactionUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request<Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Updates an existing Transaction. You can update its description and metadata.
+        /// </summary>
+        public virtual Task<Transaction> UpdateAsync(string id, TransactionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+        }
     }
 }

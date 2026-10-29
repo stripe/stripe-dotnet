@@ -7,6 +7,11 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+    /// <summary>
+    /// A subscription schedule allows you to create and manage the lifecycle of a subscription
+    /// by predefining expected changes. A quote preview subscription schedule shows the
+    /// subscription schedule that would be created by accepting the quote.
+    /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class QuotePreviewSubscriptionSchedule : StripeEntity<QuotePreviewSubscriptionSchedule>, IHasId, IHasMetadata, IHasObject
     {

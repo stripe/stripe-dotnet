@@ -24,13 +24,5 @@ namespace Stripe.V2.Core
         [JsonProperty("capabilities")]
         [STJS.JsonPropertyName("capabilities")]
         public AccountConfigurationRecipientCapabilities Capabilities { get; set; }
-
-        /// <summary>
-        /// The payout method to be used as a default outbound destination. This will allow the
-        /// PayoutMethod to be omitted on OutboundPayments made through the dashboard or APIs.
-        /// </summary>
-        [JsonProperty("default_outbound_destination")]
-        [STJS.JsonPropertyName("default_outbound_destination")]
-        public AccountConfigurationRecipientDefaultOutboundDestination DefaultOutboundDestination { get; set; }
     }
 }

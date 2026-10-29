@@ -9,7 +9,8 @@ namespace Stripe.V2.MoneyManagement
     public class FinancialAccountStatusDetails : StripeEntity<FinancialAccountStatusDetails>
     {
         /// <summary>
-        /// Details related to the closed state of the FinancialAccount.
+        /// Details about the FinancialAccount's closure. Only populated when <c>status</c> is
+        /// <c>closed</c>.
         /// </summary>
         [JsonProperty("closed")]
         [STJS.JsonPropertyName("closed")]

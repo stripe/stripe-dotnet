@@ -9,8 +9,11 @@ namespace Stripe
     public class AccountControllerLossesOptions : INestedOptions
     {
         /// <summary>
-        /// A value indicating who is liable when this account can't pay back negative balances
-        /// resulting from payments. Defaults to <c>stripe</c>.
+        /// Controls who is responsible for payment-related negative balances on this account. The
+        /// platform remains liable for negative balances on its own account. To use Stripe negative
+        /// balance liability, your integration must meet <a
+        /// href="https://docs.stripe.com/connect/risk-management/managed-risk">Managed Risk
+        /// requirements</a>. Defaults to <c>stripe</c>.
         /// One of: <c>application</c>, or <c>stripe</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

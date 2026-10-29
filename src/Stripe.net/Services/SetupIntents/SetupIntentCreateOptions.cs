@@ -129,7 +129,7 @@ namespace Stripe
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>scalapay</c>,
         /// <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>,
         /// <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
-        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, <c>wero</c>, or <c>zip</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -189,8 +189,7 @@ namespace Stripe
         public string OnBehalfOf { get; set; }
 
         /// <summary>
-        /// ID of the payment method (a PaymentMethod, Card, or saved Source object) to attach to
-        /// this SetupIntent.
+        /// The ID of a PaymentMethod to attach to this SetupIntent.
         /// </summary>
         [JsonProperty("payment_method")]
         [STJS.JsonPropertyName("payment_method")]

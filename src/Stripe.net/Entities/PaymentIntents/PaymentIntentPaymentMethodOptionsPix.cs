@@ -20,14 +20,19 @@ namespace Stripe
         public string AmountIncludesIof { get; set; }
 
         /// <summary>
-        /// The number of seconds (between 10 and 1209600) after which Pix payment will expire.
+        /// The number of seconds after PaymentIntent confirmation when the Pix expires (between 60
+        /// and 1209600, inclusive). If neither expiration option is supplied, defaults to 14400
+        /// seconds (4 hours). Mutually exclusive with <c>expires_at</c>.
         /// </summary>
         [JsonProperty("expires_after_seconds")]
         [STJS.JsonPropertyName("expires_after_seconds")]
         public long? ExpiresAfterSeconds { get; set; }
 
         /// <summary>
-        /// The timestamp at which the Pix expires.
+        /// The absolute Unix timestamp at which the Pix expires. When supplied as an input, it must
+        /// be between 60 and 1209600 seconds from the current time at validation, inclusive. If
+        /// neither expiration option is supplied, the Pix expires 14400 seconds (4 hours) after
+        /// PaymentIntent confirmation. Mutually exclusive with <c>expires_after_seconds</c>.
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

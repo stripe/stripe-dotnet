@@ -146,7 +146,7 @@ namespace Stripe
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>scalapay</c>,
         /// <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>,
         /// <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
-        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, <c>wero</c>, or <c>zip</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -225,10 +225,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// ID of the payment method (a PaymentMethod, Card, or <a
-        /// href="https://docs.stripe.com/payments/payment-methods/transitioning#compatibility">compatible
-        /// Source</a> object) to attach to this PaymentIntent. If the payment method is attached to
-        /// a Customer, it must match the <a
+        /// The ID of a PaymentMethod to attach to this PaymentIntent. If the payment method is
+        /// attached to a Customer, it must match the <a
         /// href="https://docs.stripe.com/api#create_payment_intent-customer">customer</a> that is
         /// set on this PaymentIntent.
         /// </summary>

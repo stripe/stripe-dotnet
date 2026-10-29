@@ -147,6 +147,10 @@ namespace Stripe
         [STJS.JsonPropertyName("phone")]
         public string Phone { get; set; }
 
+        [JsonProperty("physical_address")]
+        [STJS.JsonPropertyName("physical_address")]
+        public Address PhysicalAddress { get; set; }
+
         [JsonProperty("principal_place_of_business")]
         [STJS.JsonPropertyName("principal_place_of_business")]
         public Address PrincipalPlaceOfBusiness { get; set; }

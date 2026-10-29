@@ -10,7 +10,7 @@ namespace Stripe.V2.MoneyManagement
     public class OutboundPaymentCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The "presentment amount" to be sent to the recipient.
+        /// The requested amount and currency for the OutboundPayment.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
@@ -70,6 +70,23 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("recipient_notification")]
         [STJS.JsonPropertyName("recipient_notification")]
         public OutboundPaymentCreateRecipientNotificationOptions RecipientNotification { get; set; }
+
+        /// <summary>
+        /// The ID of the RecipientVerification for this OutboundPayment. Required where
+        /// recipient-name verification is mandated before creating an OutboundPayment.
+        /// </summary>
+        [JsonProperty("recipient_verification")]
+        [STJS.JsonPropertyName("recipient_verification")]
+        public string RecipientVerification { get; set; }
+
+        /// <summary>
+        /// The description that appears on the receiving end for an OutboundPayment (for example,
+        /// on a bank statement). Must be between 3 and 22 characters long for most destinations
+        /// (500 for FinancialAccount destinations), and not contain profanity.
+        /// </summary>
+        [JsonProperty("statement_descriptor")]
+        [STJS.JsonPropertyName("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
 
         /// <summary>
         /// To which payout method to send the OutboundPayment.

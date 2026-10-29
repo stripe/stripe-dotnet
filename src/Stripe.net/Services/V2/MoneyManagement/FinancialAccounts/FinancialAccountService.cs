@@ -21,7 +21,8 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Closes a FinancialAccount with or without forwarding settings.
+        /// Closes a FinancialAccount. You must provide forwarding settings if it has a non-zero
+        /// balance.
         /// </summary>
         public virtual FinancialAccount Close(string id, FinancialAccountCloseOptions options = null, RequestOptions requestOptions = null)
         {
@@ -29,7 +30,8 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Closes a FinancialAccount with or without forwarding settings.
+        /// Closes a FinancialAccount. You must provide forwarding settings if it has a non-zero
+        /// balance.
         /// </summary>
         public virtual Task<FinancialAccount> CloseAsync(string id, FinancialAccountCloseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -69,7 +71,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Lists FinancialAccounts in this compartment.
+        /// Returns a list of FinancialAccounts in your account that match the provided filters.
         /// </summary>
         public virtual V2.StripeList<FinancialAccount> List(FinancialAccountListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -77,7 +79,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Lists FinancialAccounts in this compartment.
+        /// Returns a list of FinancialAccounts in your account that match the provided filters.
         /// </summary>
         public virtual Task<V2.StripeList<FinancialAccount>> ListAsync(FinancialAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -85,7 +87,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Lists FinancialAccounts in this compartment.
+        /// Returns a list of FinancialAccounts in your account that match the provided filters.
         /// </summary>
         public virtual IEnumerable<FinancialAccount> ListAutoPaging(FinancialAccountListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -93,7 +95,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Lists FinancialAccounts in this compartment.
+        /// Returns a list of FinancialAccounts in your account that match the provided filters.
         /// </summary>
         public virtual IAsyncEnumerable<FinancialAccount> ListAutoPagingAsync(FinancialAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -101,7 +103,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Updates an existing FinancialAccount.
+        /// Updates an existing FinancialAccount using the provided parameters.
         /// </summary>
         public virtual FinancialAccount Update(string id, FinancialAccountUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -109,7 +111,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Updates an existing FinancialAccount.
+        /// Updates an existing FinancialAccount using the provided parameters.
         /// </summary>
         public virtual Task<FinancialAccount> UpdateAsync(string id, FinancialAccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

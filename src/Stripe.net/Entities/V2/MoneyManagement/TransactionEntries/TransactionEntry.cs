@@ -7,7 +7,7 @@ namespace Stripe.V2.MoneyManagement
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// TransactionEntries represent individual money movements across different states within a
+    /// TransactionEntries model funds moving between availability states for a given
     /// Transaction.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
@@ -29,22 +29,24 @@ namespace Stripe.V2.MoneyManagement
         public string Object { get; set; }
 
         /// <summary>
-        /// The delta to the FinancialAccount's balance.
+        /// The change to the FinancialAccount's balance that takes effect at this
+        /// TransactionEntry's <c>effective_at</c> timestamp.
         /// </summary>
         [JsonProperty("balance_impact")]
         [STJS.JsonPropertyName("balance_impact")]
         public TransactionEntryBalanceImpact BalanceImpact { get; set; }
 
         /// <summary>
-        /// Time at which the object was created.
+        /// Time at which the object was created. Represented as an RFC 3339 timestamp in UTC with
+        /// millisecond precision, for example <c>2022-09-18T13:22:18.123Z</c>.
         /// </summary>
         [JsonProperty("created")]
         [STJS.JsonPropertyName("created")]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Time at which the entry impacted (or will impact if it's in the future) the
-        /// FinancialAccount balance.
+        /// Time at which the TransactionEntry affects the FinancialAccount balance. This can be in
+        /// the past or future.
         /// </summary>
         [JsonProperty("effective_at")]
         [STJS.JsonPropertyName("effective_at")]
@@ -59,14 +61,14 @@ namespace Stripe.V2.MoneyManagement
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The Transaction that this TransactionEntry belongs to.
+        /// The ID of the Transaction that this TransactionEntry belongs to.
         /// </summary>
         [JsonProperty("transaction")]
         [STJS.JsonPropertyName("transaction")]
         public string Transaction { get; set; }
 
         /// <summary>
-        /// Details copied from the transaction that this TransactionEntry belongs to.
+        /// Details copied from the Transaction that this TransactionEntry belongs to.
         /// </summary>
         [JsonProperty("transaction_details")]
         [STJS.JsonPropertyName("transaction_details")]

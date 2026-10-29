@@ -9,21 +9,21 @@ namespace Stripe.V2.MoneyManagement
     public class TransactionEntryBalanceImpact : StripeEntity<TransactionEntryBalanceImpact>
     {
         /// <summary>
-        /// Impact to the available balance.
+        /// The change to the available balance.
         /// </summary>
         [JsonProperty("available")]
         [STJS.JsonPropertyName("available")]
         public V2.Amount Available { get; set; }
 
         /// <summary>
-        /// Impact to the inbound_pending balance.
+        /// The change to the <c>inbound_pending</c> balance.
         /// </summary>
         [JsonProperty("inbound_pending")]
         [STJS.JsonPropertyName("inbound_pending")]
         public V2.Amount InboundPending { get; set; }
 
         /// <summary>
-        /// Impact to the outbound_pending balance.
+        /// The change to the <c>outbound_pending</c> balance.
         /// </summary>
         [JsonProperty("outbound_pending")]
         [STJS.JsonPropertyName("outbound_pending")]

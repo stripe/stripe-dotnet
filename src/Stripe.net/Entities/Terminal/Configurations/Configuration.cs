@@ -90,6 +90,10 @@ namespace Stripe.Terminal
         [STJS.JsonPropertyName("stripe_s710")]
         public ConfigurationStripeS710 StripeS710 { get; set; }
 
+        [JsonProperty("stripe_t600")]
+        [STJS.JsonPropertyName("stripe_t600")]
+        public ConfigurationStripeT600 StripeT600 { get; set; }
+
         [JsonProperty("tipping")]
         [STJS.JsonPropertyName("tipping")]
         public ConfigurationTipping Tipping { get; set; }

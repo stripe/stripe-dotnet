@@ -67,6 +67,14 @@ namespace Stripe.V2.Core.Vault
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// Same as <c>fingerprint</c>, but uniquely identifies the bank account using its
+        /// <c>fedwire_routing_number</c> instead of its <c>routing_number</c>.
+        /// </summary>
+        [JsonProperty("fedwire_fingerprint")]
+        [STJS.JsonPropertyName("fedwire_fingerprint")]
+        public string FedwireFingerprint { get; set; }
+
+        /// <summary>
         /// The fedwire routing number of the bank account.
         /// </summary>
         [JsonProperty("fedwire_routing_number")]
@@ -79,6 +87,15 @@ namespace Stripe.V2.Core.Vault
         [JsonProperty("financial_connections_account")]
         [STJS.JsonPropertyName("financial_connections_account")]
         public string FinancialConnectionsAccount { get; set; }
+
+        /// <summary>
+        /// Uniquely identifies this particular bank account. You can use this attribute to check
+        /// whether two recipients who've signed up with you are using the same bank account, for
+        /// example.
+        /// </summary>
+        [JsonProperty("fingerprint")]
+        [STJS.JsonPropertyName("fingerprint")]
+        public string Fingerprint { get; set; }
 
         /// <summary>
         /// The last 4 digits of the account number.

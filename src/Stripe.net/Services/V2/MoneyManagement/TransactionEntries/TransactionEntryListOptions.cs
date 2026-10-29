@@ -9,14 +9,16 @@ namespace Stripe.V2.MoneyManagement
     public class TransactionEntryListOptions : V2.ListOptions
     {
         /// <summary>
-        /// Set of filters to query TransactionEntries within a range of <c>created</c> timestamps.
+        /// Filter for TransactionEntries created within a specified time range.
         /// </summary>
         [JsonProperty("created")]
         [STJS.JsonPropertyName("created")]
         public TransactionEntryListCreatedOptions Created { get; set; }
 
         /// <summary>
-        /// Filter for TransactionEntries belonging to a Transaction.
+        /// Filter for TransactionEntries belonging to a specific Transaction. This filter only
+        /// supports filtering by a Transaction ID, which appears in each TransactionEntry's
+        /// <c>transaction</c> field.
         /// </summary>
         [JsonProperty("transaction")]
         [STJS.JsonPropertyName("transaction")]

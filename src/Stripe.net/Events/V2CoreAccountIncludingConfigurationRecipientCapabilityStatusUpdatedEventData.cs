@@ -10,9 +10,11 @@ namespace Stripe.Events
     {
         /// <summary>
         /// Open Enum. The capability which had its status updated.
-        /// One of: <c>bank_accounts.local</c>, <c>bank_accounts.wire</c>, <c>cards</c>,
-        /// <c>stripe_balance.payouts</c>, <c>stripe_balance.stripe_transfers</c>, or
-        /// <c>stripe.transfers</c>.
+        /// One of: <c>bank_accounts.ach</c>, <c>bank_accounts.fedwire</c>,
+        /// <c>bank_accounts.fps</c>, <c>bank_accounts.local</c>, <c>bank_accounts.rtp</c>,
+        /// <c>bank_accounts.sepa</c>, <c>bank_accounts.swift</c>, <c>bank_accounts.wire</c>,
+        /// <c>cards</c>, <c>crypto_wallets_v2</c>, <c>stripe_balance.payouts</c>,
+        /// <c>stripe_balance.stripe_transfers</c>, or <c>stripe.transfers</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
