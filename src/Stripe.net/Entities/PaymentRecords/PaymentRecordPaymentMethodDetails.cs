@@ -322,6 +322,10 @@ namespace Stripe
         [STJS.JsonPropertyName("wechat_pay")]
         public PaymentRecordPaymentMethodDetailsWechatPay WechatPay { get; set; }
 
+        [JsonProperty("wero")]
+        [STJS.JsonPropertyName("wero")]
+        public PaymentRecordPaymentMethodDetailsWero Wero { get; set; }
+
         [JsonProperty("zip")]
         [STJS.JsonPropertyName("zip")]
         public PaymentRecordPaymentMethodDetailsZip Zip { get; set; }

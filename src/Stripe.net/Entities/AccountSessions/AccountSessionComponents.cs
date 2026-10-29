@@ -100,6 +100,10 @@ namespace Stripe
         [STJS.JsonPropertyName("payouts_list")]
         public AccountSessionComponentsPayoutsList PayoutsList { get; set; }
 
+        [JsonProperty("reporting_chart")]
+        [STJS.JsonPropertyName("reporting_chart")]
+        public AccountSessionComponentsReportingChart ReportingChart { get; set; }
+
         [JsonProperty("tax_registrations")]
         [STJS.JsonPropertyName("tax_registrations")]
         public AccountSessionComponentsTaxRegistrations TaxRegistrations { get; set; }
@@ -107,5 +111,13 @@ namespace Stripe
         [JsonProperty("tax_settings")]
         [STJS.JsonPropertyName("tax_settings")]
         public AccountSessionComponentsTaxSettings TaxSettings { get; set; }
+
+        [JsonProperty("terminal_hardware_orders")]
+        [STJS.JsonPropertyName("terminal_hardware_orders")]
+        public AccountSessionComponentsTerminalHardwareOrders TerminalHardwareOrders { get; set; }
+
+        [JsonProperty("terminal_hardware_shop")]
+        [STJS.JsonPropertyName("terminal_hardware_shop")]
+        public AccountSessionComponentsTerminalHardwareShop TerminalHardwareShop { get; set; }
     }
 }

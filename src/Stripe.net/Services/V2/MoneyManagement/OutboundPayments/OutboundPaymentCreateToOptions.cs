@@ -12,9 +12,9 @@ namespace Stripe.V2.MoneyManagement
         /// Describes the currency to send to the recipient. If included, this currency must match a
         /// currency supported by the destination. Can be omitted in the following cases: -
         /// destination only supports one currency - destination supports multiple currencies and
-        /// one of the currencies matches the FA currency - destination supports multiple currencies
-        /// and one of the currencies matches the presentment currency Note - when both FA currency
-        /// and presentment currency are supported, we pick the FA currency to minimize FX.
+        /// one matches <c>from.currency</c> - destination supports multiple currencies and one
+        /// matches <c>amount.currency</c> When both <c>from.currency</c> and <c>amount.currency</c>
+        /// are supported, Stripe selects <c>from.currency</c> to minimize currency conversion.
         /// </summary>
         [JsonProperty("currency")]
         [STJS.JsonPropertyName("currency")]
@@ -26,6 +26,13 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("payout_method")]
         [STJS.JsonPropertyName("payout_method")]
         public string PayoutMethod { get; set; }
+
+        /// <summary>
+        /// Payout method options for the OutboundPayment.
+        /// </summary>
+        [JsonProperty("payout_method_options")]
+        [STJS.JsonPropertyName("payout_method_options")]
+        public OutboundPaymentCreateToPayoutMethodOptionsOptions PayoutMethodOptions { get; set; }
 
         /// <summary>
         /// To which account the OutboundPayment is sent.

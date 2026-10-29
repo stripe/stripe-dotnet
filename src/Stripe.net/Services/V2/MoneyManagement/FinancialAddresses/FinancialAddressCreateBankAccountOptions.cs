@@ -16,8 +16,10 @@ namespace Stripe.V2.MoneyManagement
         public string Country { get; set; }
 
         /// <summary>
-        /// The currency of the bank account to provision.
-        /// One of: <c>gbp</c>, or <c>usd</c>.
+        /// The currency of the bank account to provision. Available currencies depend on your
+        /// account's enabled features and rollout access; <c>eur</c> requires the Financial Address
+        /// Global Payouts EU preview.
+        /// One of: <c>eur</c>, <c>gbp</c>, or <c>usd</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

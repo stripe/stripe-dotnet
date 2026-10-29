@@ -411,7 +411,7 @@ namespace Stripe
         /// <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
         /// <c>scalapay</c>, <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>,
         /// <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
-        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, <c>wero</c>, or <c>zip</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -430,6 +430,10 @@ namespace Stripe
         [JsonProperty("wechat_pay")]
         [STJS.JsonPropertyName("wechat_pay")]
         public PaymentMethodWechatPay WechatPay { get; set; }
+
+        [JsonProperty("wero")]
+        [STJS.JsonPropertyName("wero")]
+        public PaymentMethodWero Wero { get; set; }
 
         [JsonProperty("zip")]
         [STJS.JsonPropertyName("zip")]

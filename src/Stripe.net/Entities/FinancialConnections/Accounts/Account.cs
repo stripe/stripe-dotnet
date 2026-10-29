@@ -160,7 +160,9 @@ namespace Stripe.FinancialConnections
 
         /// <summary>
         /// (ID of the AccountOwnership)
-        /// The most recent information about the account's owners.
+        /// The ID of the <a
+        /// href="https://docs.stripe.com/api/financial_connections/ownership">Financial Connections
+        /// Account Ownership</a> object associated with this account.
         /// </summary>
         [JsonIgnore]
         [STJS.JsonIgnore]
@@ -172,7 +174,9 @@ namespace Stripe.FinancialConnections
 
         /// <summary>
         /// (Expanded)
-        /// The most recent information about the account's owners.
+        /// The ID of the <a
+        /// href="https://docs.stripe.com/api/financial_connections/ownership">Financial Connections
+        /// Account Ownership</a> object associated with this account.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>

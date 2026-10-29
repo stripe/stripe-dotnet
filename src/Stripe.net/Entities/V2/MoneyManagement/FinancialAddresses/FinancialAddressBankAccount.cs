@@ -16,7 +16,8 @@ namespace Stripe.V2.MoneyManagement
         public FinancialAddressBankAccountAba Aba { get; set; }
 
         /// <summary>
-        /// The country of the bank account.
+        /// The country of the bank account. Always included in the response, but null while the
+        /// bank account is pending and its country is not yet known.
         /// </summary>
         [JsonProperty("country")]
         [STJS.JsonPropertyName("country")]

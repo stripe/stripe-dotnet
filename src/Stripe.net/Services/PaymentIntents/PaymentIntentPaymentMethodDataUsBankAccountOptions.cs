@@ -36,6 +36,13 @@ namespace Stripe
         public string AccountType { get; set; }
 
         /// <summary>
+        /// An external token used to create a payment method.
+        /// </summary>
+        [JsonProperty("external_token")]
+        [STJS.JsonPropertyName("external_token")]
+        public PaymentIntentPaymentMethodDataUsBankAccountExternalTokenOptions ExternalToken { get; set; }
+
+        /// <summary>
         /// The ID of a Financial Connections Account to use as a payment method.
         /// </summary>
         [JsonProperty("financial_connections_account")]

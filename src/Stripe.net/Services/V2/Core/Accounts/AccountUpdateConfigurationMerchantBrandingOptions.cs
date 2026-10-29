@@ -9,17 +9,17 @@ namespace Stripe.V2.Core
     public class AccountUpdateConfigurationMerchantBrandingOptions : INestedOptions
     {
         /// <summary>
-        /// ID of a <a href="https://docs.stripe.com/api/persons/update#create_file">file
-        /// upload</a>: An icon for the merchant. Must be square and at least 128px x 128px.
+        /// ID of a <a href="https://docs.stripe.com/api/files/create">file upload</a>: An icon for
+        /// the merchant. Must be square and at least 128px x 128px.
         /// </summary>
         [JsonProperty("icon")]
         [STJS.JsonPropertyName("icon")]
         public string Icon { get; set; }
 
         /// <summary>
-        /// ID of a <a href="https://docs.stripe.com/api/persons/update#create_file">file
-        /// upload</a>: A logo for the merchant that will be used in Checkout instead of the icon
-        /// and without the merchant's name next to it if provided. Must be at least 128px x 128px.
+        /// ID of a <a href="https://docs.stripe.com/api/files/create">file upload</a>: A logo for
+        /// the merchant that will be used in Checkout instead of the icon and without the
+        /// merchant's name next to it if provided. Must be at least 128px x 128px.
         /// </summary>
         [JsonProperty("logo")]
         [STJS.JsonPropertyName("logo")]

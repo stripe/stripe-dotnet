@@ -30,16 +30,6 @@ namespace Stripe.V2.MoneyManagement
         public string Last4 { get; set; }
 
         /// <summary>
-        /// Open Enum. The money transmission network used to send funds for this ReceivedCredit.
-        /// One of: <c>ach</c>, <c>rtp</c>, or <c>us_domestic_wire</c>.
-        ///
-        /// This enum can grow over time; additional values may be added in the future.
-        /// </summary>
-        [JsonProperty("network")]
-        [STJS.JsonPropertyName("network")]
-        public string Network { get; set; }
-
-        /// <summary>
         /// The routing number of the account that originated the transfer.
         /// </summary>
         [JsonProperty("routing_number")]

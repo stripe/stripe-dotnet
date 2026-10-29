@@ -31,7 +31,9 @@ namespace Stripe.V2.Signals
         public AccountEvaluationCreateAccountActivityDetailsDataRegistrationAttemptOptions RegistrationAttempt { get; set; }
 
         /// <summary>
-        /// The type of activity. Must be registration_attempt or login_attempt.
+        /// The type of activity. Supports registration_attempt, login_attempt, mfa_addition,
+        /// mfa_removal, credential_change, account_takeover_report, account_takeover_confirmation,
+        /// or account_takeover_mitigation.
         /// One of: <c>login_attempt</c>, <c>login_decision</c>, <c>registration_attempt</c>, or
         /// <c>registration_decision</c>.
         ///

@@ -105,6 +105,13 @@ namespace Stripe.Terminal
         public ConfigurationStripeS710Options StripeS710 { get; set; }
 
         /// <summary>
+        /// An object containing device type specific settings for Stripe T600 readers.
+        /// </summary>
+        [JsonProperty("stripe_t600")]
+        [STJS.JsonPropertyName("stripe_t600")]
+        public ConfigurationStripeT600Options StripeT600 { get; set; }
+
+        /// <summary>
         /// Tipping configurations for readers that support on-reader tips.
         /// </summary>
         [JsonProperty("tipping", NullValueHandling = NullValueHandling.Ignore)]

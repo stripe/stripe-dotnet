@@ -10,32 +10,32 @@ namespace Stripe.V2.MoneyManagement
     public class AdjustmentListCreatedOptions : INestedOptions
     {
         /// <summary>
-        /// Filter for objects created after the specified timestamp. Must be an RFC 3339 date &amp;
-        /// time value, for example: 2022-09-18T13:22:00Z.
+        /// Filter for Adjustments created after the specified timestamp. The timestamp must be in
+        /// RFC 3339 format, for example <c>2022-09-18T13:22:00Z</c>.
         /// </summary>
         [JsonProperty("gt")]
         [STJS.JsonPropertyName("gt")]
         public DateTime? Gt { get; set; }
 
         /// <summary>
-        /// Filter for objects created on or after the specified timestamp. Must be an RFC 3339 date
-        /// &amp; time value, for example: 2022-09-18T13:22:00Z.
+        /// Filter for Adjustments created on or after the specified timestamp. The timestamp must
+        /// be in RFC 3339 format, for example <c>2022-09-18T13:22:00Z</c>.
         /// </summary>
         [JsonProperty("gte")]
         [STJS.JsonPropertyName("gte")]
         public DateTime? Gte { get; set; }
 
         /// <summary>
-        /// Filter for objects created before the specified timestamp. Must be an RFC 3339 date
-        /// &amp; time value, for example: 2022-09-18T13:22:00Z.
+        /// Filter for Adjustments created before the specified timestamp. The timestamp must be in
+        /// RFC 3339 format, for example <c>2022-09-18T13:22:00Z</c>.
         /// </summary>
         [JsonProperty("lt")]
         [STJS.JsonPropertyName("lt")]
         public DateTime? Lt { get; set; }
 
         /// <summary>
-        /// Filter for objects created on or before the specified timestamp. Must be an RFC 3339
-        /// date &amp; time value, for example: 2022-09-18T13:22:00Z.
+        /// Filter for Adjustments created on or before the specified timestamp. The timestamp must
+        /// be in RFC 3339 format, for example <c>2022-09-18T13:22:00Z</c>.
         /// </summary>
         [JsonProperty("lte")]
         [STJS.JsonPropertyName("lte")]

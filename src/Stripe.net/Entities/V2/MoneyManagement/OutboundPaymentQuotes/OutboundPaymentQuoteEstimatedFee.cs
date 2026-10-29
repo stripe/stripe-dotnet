@@ -24,10 +24,18 @@ namespace Stripe.V2.MoneyManagement
         public OutboundPaymentQuoteEstimatedFeeNetworkFeeDetails NetworkFeeDetails { get; set; }
 
         /// <summary>
+        /// Tax charged for this fee, if applicable. Value expressed as a decimal string in major
+        /// units.
+        /// </summary>
+        [JsonProperty("tax_amount")]
+        [STJS.JsonPropertyName("tax_amount")]
+        public OutboundPaymentQuoteEstimatedFeeTaxAmount TaxAmount { get; set; }
+
+        /// <summary>
         /// The fee type.
         /// One of: <c>cross_border_payout_fee</c>, <c>foreign_exchange_fee</c>,
-        /// <c>instant_payout_fee</c>, <c>network_fee</c>, <c>standard_payout_fee</c>, or
-        /// <c>wire_payout_fee</c>.
+        /// <c>instant_payout_fee</c>, <c>network_fee</c>, <c>next_day_payout_fee</c>,
+        /// <c>standard_payout_fee</c>, or <c>wire_payout_fee</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

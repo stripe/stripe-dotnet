@@ -569,6 +569,13 @@ namespace Stripe
         public AccountCapabilitiesUsBankTransferPaymentsOptions UsBankTransferPayments { get; set; }
 
         /// <summary>
+        /// The wero_payments capability.
+        /// </summary>
+        [JsonProperty("wero_payments")]
+        [STJS.JsonPropertyName("wero_payments")]
+        public AccountCapabilitiesWeroPaymentsOptions WeroPayments { get; set; }
+
+        /// <summary>
         /// The zip_payments capability.
         /// </summary>
         [JsonProperty("zip_payments")]

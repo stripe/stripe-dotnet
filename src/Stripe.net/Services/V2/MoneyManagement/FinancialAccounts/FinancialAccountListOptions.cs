@@ -17,8 +17,8 @@ namespace Stripe.V2.MoneyManagement
         public List<string> Include { get; set; }
 
         /// <summary>
-        /// Filter for FinancialAccount <c>status</c>. By default, closed FinancialAccounts are not
-        /// returned.
+        /// Return FinancialAccounts whose <c>status</c> matches any of the provided values. If
+        /// omitted, closed FinancialAccounts are not returned.
         /// One of: <c>closed</c>, <c>open</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("statuses")]

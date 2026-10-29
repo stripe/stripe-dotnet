@@ -23,13 +23,6 @@ namespace Stripe.V2.MoneyManagement
         public string FinancialAccount { get; set; }
 
         /// <summary>
-        /// Open Enum. The currency the FinancialAddress settles into the FinancialAccount.
-        /// </summary>
-        [JsonProperty("settlement_currency")]
-        [STJS.JsonPropertyName("settlement_currency")]
-        public string SettlementCurrency { get; set; }
-
-        /// <summary>
         /// The type of FinancialAddress to create. Must agree with which branch of
         /// financial_address_type_properties is set.
         /// One of: <c>bank_account</c>.

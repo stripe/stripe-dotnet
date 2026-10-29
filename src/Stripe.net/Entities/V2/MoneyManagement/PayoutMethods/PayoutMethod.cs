@@ -74,6 +74,13 @@ namespace Stripe.V2.MoneyManagement
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// The PayoutMethodCryptoWallet object details.
+        /// </summary>
+        [JsonProperty("crypto_wallet")]
+        [STJS.JsonPropertyName("crypto_wallet")]
+        public PayoutMethodCryptoWallet CryptoWallet { get; set; }
+
+        /// <summary>
         /// ID of the underlying active OutboundSetupIntent object, if any.
         /// </summary>
         [JsonProperty("latest_outbound_setup_intent")]

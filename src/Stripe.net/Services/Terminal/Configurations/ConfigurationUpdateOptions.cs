@@ -16,6 +16,7 @@ namespace Stripe.Terminal
         private ConfigurationRebootWindowOptions rebootWindow;
         private ConfigurationStripeS700Options stripeS700;
         private ConfigurationStripeS710Options stripeS710;
+        private ConfigurationStripeT600Options stripeT600;
         private ConfigurationTippingOptions tipping;
         private ConfigurationVerifoneM425Options verifoneM425;
         private ConfigurationVerifoneP400Options verifoneP400;
@@ -155,6 +156,22 @@ namespace Stripe.Terminal
             set
             {
                 this.stripeS710 = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// An object containing device type specific settings for Stripe T600 readers.
+        /// </summary>
+        [JsonProperty("stripe_t600", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("stripe_t600")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public ConfigurationStripeT600Options StripeT600
+        {
+            get => this.stripeT600;
+            set
+            {
+                this.stripeT600 = value;
                 this.SetTracker.Track();
             }
         }

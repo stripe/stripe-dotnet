@@ -268,8 +268,7 @@ namespace Stripe
 
         /// <summary>
         /// The payment_method_options.card.stored_credential_usage value that was passed for an off
-        /// session, merchant-initiated transaction, one of <c>recurring</c>, <c>unscheduled</c>,
-        /// <c>on_session</c>, or <c>installment</c>.
+        /// session, merchant-initiated transaction.
         /// One of: <c>installment</c>, <c>recurring</c>, or <c>unscheduled</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

@@ -304,5 +304,23 @@ namespace Stripe
         [JsonProperty("tax_threshold_monitoring")]
         [STJS.JsonPropertyName("tax_threshold_monitoring")]
         public AccountSessionComponentsTaxThresholdMonitoringOptions TaxThresholdMonitoring { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/terminal-hardware-orders/">Terminal
+        /// hardware orders</a> embedded component.
+        /// </summary>
+        [JsonProperty("terminal_hardware_orders")]
+        [STJS.JsonPropertyName("terminal_hardware_orders")]
+        public AccountSessionComponentsTerminalHardwareOrdersOptions TerminalHardwareOrders { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/terminal-hardware-shop/">Terminal
+        /// hardware shop</a> embedded component.
+        /// </summary>
+        [JsonProperty("terminal_hardware_shop")]
+        [STJS.JsonPropertyName("terminal_hardware_shop")]
+        public AccountSessionComponentsTerminalHardwareShopOptions TerminalHardwareShop { get; set; }
     }
 }

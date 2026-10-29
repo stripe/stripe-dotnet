@@ -23,6 +23,13 @@ namespace Stripe.V2.MoneyManagement
         public OutboundSetupIntentCreatePayoutMethodDataCardOptions Card { get; set; }
 
         /// <summary>
+        /// The type specific details of the crypto wallet payout method.
+        /// </summary>
+        [JsonProperty("crypto_wallet")]
+        [STJS.JsonPropertyName("crypto_wallet")]
+        public OutboundSetupIntentCreatePayoutMethodDataCryptoWalletOptions CryptoWallet { get; set; }
+
+        /// <summary>
         /// Open Enum. The type of payout method to be created.
         /// One of: <c>bank_account</c>, <c>card</c>, or <c>crypto_wallet</c>.
         ///

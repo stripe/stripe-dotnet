@@ -803,6 +803,43 @@ namespace Stripe
         [STJS.JsonPropertyName("parent")]
         public InvoiceParent Parent { get; set; }
 
+        #region Expandable PaymentPlan
+
+        /// <summary>
+        /// (ID of the PaymentPlan)
+        /// The ID of the payment plan associated with this invoice, if any. Use
+        /// <c>expand[]=payment_plan</c> to include the full payment plan object.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public string PaymentPlanId
+        {
+            get => this.InternalPaymentPlan?.Id;
+            set => this.InternalPaymentPlan = SetExpandableFieldId(value, this.InternalPaymentPlan);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the payment plan associated with this invoice, if any. Use
+        /// <c>expand[]=payment_plan</c> to include the full payment plan object.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        [STJS.JsonIgnore]
+        public PaymentPlan PaymentPlan
+        {
+            get => this.InternalPaymentPlan?.ExpandedObject;
+            set => this.InternalPaymentPlan = SetExpandableFieldObject(value, this.InternalPaymentPlan);
+        }
+
+        [JsonProperty("payment_plan")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentPlan>))]
+        [STJS.JsonPropertyName("payment_plan")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentPlan>))]
+        internal ExpandableField<PaymentPlan> InternalPaymentPlan { get; set; }
+        #endregion
+
         [JsonProperty("payment_settings")]
         [STJS.JsonPropertyName("payment_settings")]
         public InvoicePaymentSettings PaymentSettings { get; set; }
