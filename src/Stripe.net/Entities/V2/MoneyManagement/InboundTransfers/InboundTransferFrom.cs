@@ -1,0 +1,26 @@
+// File generated from our OpenAPI spec
+namespace Stripe.V2.MoneyManagement
+{
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+    public class InboundTransferFrom : StripeEntity<InboundTransferFrom>
+    {
+        /// <summary>
+        /// The amount in specified currency that was debited from the Payment Method.
+        /// </summary>
+        [JsonProperty("debited")]
+        [STJS.JsonPropertyName("debited")]
+        public V2.Amount Debited { get; set; }
+
+        /// <summary>
+        /// The bank account credential used to fund the InboundTransfer (for example, a US bank
+        /// account), not a Payments API <c>pm_</c> PaymentMethod.
+        /// </summary>
+        [JsonProperty("payment_method")]
+        [STJS.JsonPropertyName("payment_method")]
+        public InboundTransferFromPaymentMethod PaymentMethod { get; set; }
+    }
+}

@@ -7,6 +7,12 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
+    /// Legacy Transactions are part of the v1 version of Treasury for platforms and do not
+    /// support many of the features introduced in <a
+    /// href="https://docs.stripe.com/treasury/connect">Treasury for platforms v2</a>. Use <a
+    /// href="https://docs.stripe.com/api/v2/money-management/transactions">Transactions</a>
+    /// instead of building a new v1 integration.
+    ///
     /// Transactions represent changes to a <a
     /// href="https://docs.stripe.com/api#financial_accounts">FinancialAccount's</a> balance.
     /// </summary>

@@ -9,6 +9,20 @@ namespace Stripe.V2.Core
     public class AccountConfigurationRecipientCapabilities : StripeEntity<AccountConfigurationRecipientCapabilities>
     {
         /// <summary>
+        /// Capabilities that enable OutboundPayments to a bank account linked to this Account.
+        /// </summary>
+        [JsonProperty("bank_accounts")]
+        [STJS.JsonPropertyName("bank_accounts")]
+        public AccountConfigurationRecipientCapabilitiesBankAccounts BankAccounts { get; set; }
+
+        /// <summary>
+        /// Enables this Account to receive OutboundPayments to a linked debit card.
+        /// </summary>
+        [JsonProperty("cards")]
+        [STJS.JsonPropertyName("cards")]
+        public AccountConfigurationRecipientCapabilitiesCards Cards { get; set; }
+
+        /// <summary>
         /// Capabilities that enable the recipient to manage their Stripe Balance (/v1/balance).
         /// </summary>
         [JsonProperty("stripe_balance")]

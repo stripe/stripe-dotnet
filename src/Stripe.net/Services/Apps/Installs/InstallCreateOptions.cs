@@ -16,9 +16,9 @@ namespace Stripe.Apps
         public string App { get; set; }
 
         /// <summary>
-        /// The distribution channel to install from. Defaults to <c>public</c>. A private app must
-        /// be installed on <c>private_test</c> or <c>private_live</c>, matching the mode of the API
-        /// key.
+        /// The distribution channel to install from. Defaults to <c>public</c>, which only app
+        /// developers and embedding platforms can use. An account installing its own private app
+        /// must pass <c>private_test</c> or <c>private_live</c>, matching the mode of the API key.
         /// One of: <c>private_live</c>, <c>private_test</c>, <c>public</c>, or <c>testing</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
