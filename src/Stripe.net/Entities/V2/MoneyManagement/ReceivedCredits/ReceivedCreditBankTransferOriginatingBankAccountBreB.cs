@@ -21,15 +21,5 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("last4")]
         [STJS.JsonPropertyName("last4")]
         public string Last4 { get; set; }
-
-        /// <summary>
-        /// Open Enum. The money transmission network used to send funds for this ReceivedCredit.
-        /// One of: <c>bre_b</c>.
-        ///
-        /// This enum can grow over time; additional values may be added in the future.
-        /// </summary>
-        [JsonProperty("network")]
-        [STJS.JsonPropertyName("network")]
-        public string Network { get; set; }
     }
 }

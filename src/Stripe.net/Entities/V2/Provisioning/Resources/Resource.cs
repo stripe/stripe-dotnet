@@ -38,6 +38,15 @@ namespace Stripe.V2.Provisioning
         public string Catalog { get; set; }
 
         /// <summary>
+        /// Names of the provider-issued configuration entries available for this resource. This is
+        /// null unless explicitly included on RetrieveResource and the resource is complete with an
+        /// available, unexpired configuration. Values are never exposed through this field.
+        /// </summary>
+        [JsonProperty("configuration")]
+        [STJS.JsonPropertyName("configuration")]
+        public ResourceConfiguration Configuration { get; set; }
+
+        /// <summary>
         /// Time at which the resource was created.
         /// </summary>
         [JsonProperty("created")]

@@ -2,6 +2,7 @@
 namespace Stripe.V2.Data
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -19,8 +20,8 @@ namespace Stripe.V2.Data
 
         /// <summary>
         /// Error code categorizing the reason the run failed.
-        /// One of: <c>file_size_above_limit</c>, <c>internal_error</c>, or
-        /// <c>query_run_invalid_sql</c>.
+        /// One of: <c>execution_failed</c>, <c>file_size_above_limit</c>, <c>internal_error</c>,
+        /// <c>query_run_invalid_sql</c>, or <c>resource_limit_exceeded</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -34,5 +35,12 @@ namespace Stripe.V2.Data
         [JsonProperty("message")]
         [STJS.JsonPropertyName("message")]
         public string Message { get; set; }
+
+        /// <summary>
+        /// Errors found in the submitted SQL. Populated when the failure was caused by invalid SQL.
+        /// </summary>
+        [JsonProperty("query_errors")]
+        [STJS.JsonPropertyName("query_errors")]
+        public List<ReportRunStatusDetailsQueryError> QueryErrors { get; set; }
     }
 }

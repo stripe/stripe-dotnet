@@ -137,6 +137,14 @@ namespace Stripe.V2.Core
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Information about the rejection of the Account. Null if the platform has not rejected
+        /// the Account.
+        /// </summary>
+        [JsonProperty("rejection")]
+        [STJS.JsonPropertyName("rejection")]
+        public AccountRejection Rejection { get; set; }
+
+        /// <summary>
         /// The network object related to this Account.
         /// </summary>
         [JsonProperty("related_network_object")]

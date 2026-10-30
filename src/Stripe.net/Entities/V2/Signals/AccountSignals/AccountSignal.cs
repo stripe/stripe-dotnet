@@ -107,8 +107,8 @@ namespace Stripe.V2.Signals
         /// The type of signal.
         /// One of: <c>account_takeover</c>, <c>customer_risk</c>, <c>fraudulent_merchant</c>,
         /// <c>fraudulent_website</c>, <c>merchant_delinquency</c>,
-        /// <c>payment_delinquency_exposure</c>, <c>user_account_sharing</c>,
-        /// <c>user_merchant_fit</c>, or <c>user_multi_accounting</c>.
+        /// <c>payment_delinquency_exposure</c>, <c>user_account_sharing</c>, <c>user_affinity</c>,
+        /// or <c>user_multi_accounting</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -125,11 +125,11 @@ namespace Stripe.V2.Signals
         public AccountSignalUserAccountSharing UserAccountSharing { get; set; }
 
         /// <summary>
-        /// Data for the user-merchant fit signal. Present only when type is user_merchant_fit.
+        /// Data for the user affinity signal. Present only when type is user_affinity.
         /// </summary>
-        [JsonProperty("user_merchant_fit")]
-        [STJS.JsonPropertyName("user_merchant_fit")]
-        public AccountSignalUserMerchantFit UserMerchantFit { get; set; }
+        [JsonProperty("user_affinity")]
+        [STJS.JsonPropertyName("user_affinity")]
+        public AccountSignalUserAffinity UserAffinity { get; set; }
 
         /// <summary>
         /// Data for the user multi-accounting signal. Present only when type is

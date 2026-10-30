@@ -37,6 +37,13 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationMerchantCapabilitiesAfterpayClearpayPaymentsOptions AfterpayClearpayPayments { get; set; }
 
         /// <summary>
+        /// Allow the merchant to process Alipay payments.
+        /// </summary>
+        [JsonProperty("alipay_payments")]
+        [STJS.JsonPropertyName("alipay_payments")]
+        public AccountCreateConfigurationMerchantCapabilitiesAlipayPaymentsOptions AlipayPayments { get; set; }
+
+        /// <summary>
         /// Allow the merchant to process Alma payments.
         /// </summary>
         [JsonProperty("alma_payments")]
@@ -289,6 +296,13 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationMerchantCapabilitiesSatispayPaymentsOptions SatispayPayments { get; set; }
 
         /// <summary>
+        /// Allow the merchant to process Scalapay payments.
+        /// </summary>
+        [JsonProperty("scalapay_payments")]
+        [STJS.JsonPropertyName("scalapay_payments")]
+        public AccountCreateConfigurationMerchantCapabilitiesScalapayPaymentsOptions ScalapayPayments { get; set; }
+
+        /// <summary>
         /// Allow the merchant to process SEPA bank transfer payments.
         /// </summary>
         [JsonProperty("sepa_bank_transfer_payments")]
@@ -329,6 +343,13 @@ namespace Stripe.V2.Core
         [JsonProperty("twint_payments")]
         [STJS.JsonPropertyName("twint_payments")]
         public AccountCreateConfigurationMerchantCapabilitiesTwintPaymentsOptions TwintPayments { get; set; }
+
+        /// <summary>
+        /// Allow the merchant to process UPI payments.
+        /// </summary>
+        [JsonProperty("upi_payments")]
+        [STJS.JsonPropertyName("upi_payments")]
+        public AccountCreateConfigurationMerchantCapabilitiesUpiPaymentsOptions UpiPayments { get; set; }
 
         /// <summary>
         /// Allow the merchant to process US bank transfer payments.

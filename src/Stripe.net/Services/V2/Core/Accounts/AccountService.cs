@@ -122,6 +122,40 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
+        /// Rejects an Account and prevents it from operating across its configurations.
+        /// </summary>
+        public virtual Account Reject(string id, AccountRejectOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Account>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/accounts/{WebUtility.UrlEncode(id)}/reject", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Rejects an Account and prevents it from operating across its configurations.
+        /// </summary>
+        public virtual Task<Account> RejectAsync(string id, AccountRejectOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Account>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/accounts/{WebUtility.UrlEncode(id)}/reject", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Reverses a platform rejection on an Account. Restrictions applied by Stripe or other
+        /// risk controls remain in place.
+        /// </summary>
+        public virtual Account Unreject(string id, AccountUnrejectOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Account>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/accounts/{WebUtility.UrlEncode(id)}/unreject", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Reverses a platform rejection on an Account. Restrictions applied by Stripe or other
+        /// risk controls remain in place.
+        /// </summary>
+        public virtual Task<Account> UnrejectAsync(string id, AccountUnrejectOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Account>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/accounts/{WebUtility.UrlEncode(id)}/unreject", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// Updates the details of an Account.
         /// </summary>
         public virtual Account Update(string id, AccountUpdateOptions options, RequestOptions requestOptions = null)

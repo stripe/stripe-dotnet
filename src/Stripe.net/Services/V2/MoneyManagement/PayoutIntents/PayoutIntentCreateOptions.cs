@@ -17,8 +17,11 @@ namespace Stripe.V2.MoneyManagement
         public V2.Amount Amount { get; set; }
 
         /// <summary>
-        /// Controls whether the intent requires explicit confirmation before transitioning to
-        /// pending. Defaults to automatic.
+        /// Controls whether the PayoutIntent requires explicit confirmation before transitioning to
+        /// <c>pending</c>. Defaults to <c>automatic</c>, but regulatory requirements may still
+        /// require confirmation. See <a
+        /// href="https://docs.stripe.com/global-payouts/send-money">Send money with Global
+        /// Payouts</a> for details.
         /// One of: <c>automatic</c>, or <c>manual</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
@@ -50,15 +53,16 @@ namespace Stripe.V2.MoneyManagement
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Details about the OutboundPayment notification settings for recipient. Only applicable
-        /// to OutboundPayment.
+        /// Recipient notification settings for the PayoutIntent. Only applicable when the
+        /// PayoutIntent creates an OutboundPayment.
         /// </summary>
         [JsonProperty("recipient_notification")]
         [STJS.JsonPropertyName("recipient_notification")]
         public PayoutIntentCreateRecipientNotificationOptions RecipientNotification { get; set; }
 
         /// <summary>
-        /// Scheduling options for the payout. If this is nil, we assume immediate execution.
+        /// Scheduling options for the payout. If omitted, the payout is scheduled for immediate
+        /// execution.
         /// </summary>
         [JsonProperty("schedule_options")]
         [STJS.JsonPropertyName("schedule_options")]

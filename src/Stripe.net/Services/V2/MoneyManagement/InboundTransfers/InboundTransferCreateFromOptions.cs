@@ -17,7 +17,8 @@ namespace Stripe.V2.MoneyManagement
         public string Currency { get; set; }
 
         /// <summary>
-        /// ID of the Payment Method using which IBT will be made.
+        /// ID of the verified bank account credential to debit for this InboundTransfer (for
+        /// example, <c>usba_</c>), not a Payments API <c>pm_</c> PaymentMethod.
         /// </summary>
         [JsonProperty("payment_method")]
         [STJS.JsonPropertyName("payment_method")]

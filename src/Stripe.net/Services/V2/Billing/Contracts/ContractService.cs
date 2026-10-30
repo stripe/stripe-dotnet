@@ -11,6 +11,7 @@ namespace Stripe.V2.Billing
     public class ContractService : Service
     {
         private V2.Billing.Contracts.PricingLinesService pricingLines;
+        private V2.Billing.Contracts.TermService terms;
 
         internal ContractService(ApiRequestor requestor)
             : base(requestor)
@@ -23,6 +24,9 @@ namespace Stripe.V2.Billing
         }
 
         public virtual V2.Billing.Contracts.PricingLinesService PricingLines => this.pricingLines ??= new V2.Billing.Contracts.PricingLinesService(
+            this.Requestor);
+
+        public virtual V2.Billing.Contracts.TermService Terms => this.terms ??= new V2.Billing.Contracts.TermService(
             this.Requestor);
 
         /// <summary>

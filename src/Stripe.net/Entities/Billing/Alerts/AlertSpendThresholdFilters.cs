@@ -16,6 +16,13 @@ namespace Stripe.Billing
         public string BillingCadence { get; set; }
 
         /// <summary>
+        /// Filter by billing group ID.
+        /// </summary>
+        [JsonProperty("billing_group")]
+        [STJS.JsonPropertyName("billing_group")]
+        public string BillingGroup { get; set; }
+
+        /// <summary>
         /// Filter by pricing plan ID.
         /// </summary>
         [JsonProperty("pricing_plan")]

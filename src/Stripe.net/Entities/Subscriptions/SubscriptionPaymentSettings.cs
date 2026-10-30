@@ -10,6 +10,13 @@ namespace Stripe
     public class SubscriptionPaymentSettings : StripeEntity<SubscriptionPaymentSettings>
     {
         /// <summary>
+        /// The ID of the mandate for the subscription's default payment method.
+        /// </summary>
+        [JsonProperty("mandate")]
+        [STJS.JsonPropertyName("mandate")]
+        public string Mandate { get; set; }
+
+        /// <summary>
         /// Payment-method-specific configuration to provide to invoices created by the
         /// subscription.
         /// </summary>

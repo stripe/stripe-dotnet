@@ -77,8 +77,16 @@ namespace Stripe.Billing
         public string AlertType { get; set; }
 
         /// <summary>
-        /// The billing cadence associated with this notification. Only present for spend threshold
-        /// alerts grouped by billing cadence.
+        /// The billing group associated with this notification. Only present for spend threshold
+        /// alerts grouped by billing group.
+        /// </summary>
+        [JsonProperty("billing_group")]
+        [STJS.JsonPropertyName("billing_group")]
+        public string BillingGroup { get; set; }
+
+        /// <summary>
+        /// The cadence associated with this notification. Only present for spend threshold alerts
+        /// grouped by cadence.
         /// </summary>
         [JsonProperty("cadence")]
         [STJS.JsonPropertyName("cadence")]
@@ -107,8 +115,9 @@ namespace Stripe.Billing
         public string Customer { get; set; }
 
         /// <summary>
-        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
-        /// test mode, the value is <c>false</c>.
+        /// The value is <c>true</c> for objects in live mode and <c>false</c> for objects in a
+        /// sandbox. For accounts that still have access to legacy test mode, the value is also
+        /// <c>false</c> for objects in that mode.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

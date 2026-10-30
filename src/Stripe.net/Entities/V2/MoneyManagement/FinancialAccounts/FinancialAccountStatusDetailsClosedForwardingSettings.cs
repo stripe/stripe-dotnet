@@ -9,14 +9,16 @@ namespace Stripe.V2.MoneyManagement
     public class FinancialAccountStatusDetailsClosedForwardingSettings : StripeEntity<FinancialAccountStatusDetailsClosedForwardingSettings>
     {
         /// <summary>
-        /// The address to send forwarded payments to.
+        /// ID of the FinancialAccount that supplies funds to cover negative balances during or
+        /// after this FinancialAccount's closure.
         /// </summary>
         [JsonProperty("payment_method")]
         [STJS.JsonPropertyName("payment_method")]
         public string PaymentMethod { get; set; }
 
         /// <summary>
-        /// The address to send forwarded payouts to.
+        /// ID of the FinancialAccount that receives funds forwarded from this FinancialAccount when
+        /// it closes.
         /// </summary>
         [JsonProperty("payout_method")]
         [STJS.JsonPropertyName("payout_method")]

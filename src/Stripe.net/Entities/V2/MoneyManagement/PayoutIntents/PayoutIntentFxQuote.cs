@@ -38,7 +38,7 @@ namespace Stripe.V2.MoneyManagement
         public string LockStatus { get; set; }
 
         /// <summary>
-        /// Key: source currency. Value: exchange rate from source currency to to_currency.
+        /// Maps each source currency to its exchange rate into <c>to_currency</c>.
         /// </summary>
         [JsonProperty("rates")]
         [STJS.JsonPropertyName("rates")]

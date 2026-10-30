@@ -44,8 +44,7 @@ namespace Stripe.V2.MoneyManagement
         public string Charge { get; set; }
 
         /// <summary>
-        /// In the future, this will be the ID of the currency conversion that created this
-        /// Transaction. For now, this field is always null.
+        /// When available, the ID of the CurrencyConversion that created this Transaction.
         /// </summary>
         [JsonProperty("currency_conversion")]
         [STJS.JsonPropertyName("currency_conversion")]
@@ -73,11 +72,11 @@ namespace Stripe.V2.MoneyManagement
         public string EarnedCredit { get; set; }
 
         /// <summary>
-        /// If applicable, the ID of the FeeTransaction that created this Transaction.
+        /// If applicable, the ID of the FeeBatch that created this Transaction.
         /// </summary>
-        [JsonProperty("fee_transaction")]
-        [STJS.JsonPropertyName("fee_transaction")]
-        public string FeeTransaction { get; set; }
+        [JsonProperty("fee_batch")]
+        [STJS.JsonPropertyName("fee_batch")]
+        public string FeeBatch { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the InboundTransfer that created this Transaction.
@@ -249,11 +248,11 @@ namespace Stripe.V2.MoneyManagement
         public string TreasuryReceivedDebit { get; set; }
 
         /// <summary>
-        /// Open Enum. Type of the flow that created the Transaction. The field matching this value
-        /// will contain the ID of the flow.
+        /// Open Enum. The type of flow that created the Transaction. When available, the flow's ID
+        /// is provided in the corresponding field.
         /// One of: <c>adjustment</c>, <c>application_fee</c>, <c>application_fee_refund</c>,
         /// <c>charge</c>, <c>currency_conversion</c>, <c>debit_dispute</c>, <c>dispute</c>,
-        /// <c>earned_credit</c>, <c>fee_transaction</c>, <c>inbound_transfer</c>,
+        /// <c>earned_credit</c>, <c>fee_batch</c>, <c>inbound_transfer</c>,
         /// <c>issuing_authorization</c>, <c>issuing_dispute</c>, <c>issuing_transaction</c>,
         /// <c>outbound_payment</c>, <c>outbound_transfer</c>, <c>payout</c>,
         /// <c>received_credit</c>, <c>received_debit</c>, <c>refund</c>, <c>reserve_hold</c>,

@@ -16,8 +16,8 @@ namespace Stripe.V2.MoneyManagement
         public V2.Amount Amount { get; set; }
 
         /// <summary>
-        /// Details about the network and options associated with this fee. Present when type is
-        /// network_fee.
+        /// Details about the network and options associated with this fee. Present when <c>type</c>
+        /// is <c>network_fee</c>.
         /// </summary>
         [JsonProperty("network_fee_details")]
         [STJS.JsonPropertyName("network_fee_details")]

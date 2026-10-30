@@ -16,7 +16,7 @@ namespace Stripe.Radar
         public PaymentEvaluationSignalsBankInitiatedReturn BankInitiatedReturn { get; set; }
 
         /// <summary>
-        /// A payment evaluation signal with evaluated_at, risk_level, and score fields.
+        /// The likelihood that this <c>PaymentEvaluation</c> results in an early fraud warning.
         /// </summary>
         [JsonProperty("early_fraud_warning")]
         [STJS.JsonPropertyName("early_fraud_warning")]

@@ -9,7 +9,7 @@ namespace Stripe.V2.MoneyManagement
     public class CurrencyConversionListOptions : V2.ListOptions
     {
         /// <summary>
-        /// The ID of the FinancialAccount to filter by.
+        /// The ID of the Financial Account for which conversions should be listed.
         /// </summary>
         [JsonProperty("financial_account")]
         [STJS.JsonPropertyName("financial_account")]

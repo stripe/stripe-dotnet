@@ -63,6 +63,10 @@ namespace Stripe
                     ret = Stripe.V2.CannotProceedException.Parse(httpStatusCode, body);
                     break;
 
+                case "capability_not_enabled":
+                    ret = Stripe.V2.CapabilityNotEnabledException.Parse(httpStatusCode, body);
+                    break;
+
                 case "controlled_by_alternate_resource":
                     ret = Stripe.V2.ControlledByAlternateResourceException.Parse(httpStatusCode, body);
                     break;

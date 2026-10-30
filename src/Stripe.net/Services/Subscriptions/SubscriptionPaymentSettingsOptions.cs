@@ -16,6 +16,13 @@ namespace Stripe
         internal SetTracker SetTracker { get; } = new SetTracker();
 
         /// <summary>
+        /// The ID of the mandate to use for the subscription's default payment method.
+        /// </summary>
+        [JsonProperty("mandate")]
+        [STJS.JsonPropertyName("mandate")]
+        public string Mandate { get; set; }
+
+        /// <summary>
         /// Payment-method-specific configuration to provide to invoices created by the
         /// subscription.
         /// </summary>

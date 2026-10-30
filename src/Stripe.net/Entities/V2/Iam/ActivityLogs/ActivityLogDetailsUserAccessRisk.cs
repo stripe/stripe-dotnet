@@ -10,16 +10,6 @@ namespace Stripe.V2.Iam
     public class ActivityLogDetailsUserAccessRisk : StripeEntity<ActivityLogDetailsUserAccessRisk>
     {
         /// <summary>
-        /// Risk level for the user access action.
-        /// One of: <c>high</c>, <c>low</c>, or <c>medium</c>.
-        ///
-        /// This enum can grow over time; additional values may be added in the future.
-        /// </summary>
-        [JsonProperty("level")]
-        [STJS.JsonPropertyName("level")]
-        public string Level { get; set; }
-
-        /// <summary>
         /// Risk signals for the user access action.
         /// </summary>
         [JsonProperty("signals")]

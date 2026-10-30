@@ -128,6 +128,13 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsBsOptions Bs { get; set; }
 
         /// <summary>
+        /// Options for the registration in BW.
+        /// </summary>
+        [JsonProperty("bw")]
+        [STJS.JsonPropertyName("bw")]
+        public RegistrationCountryOptionsBwOptions Bw { get; set; }
+
+        /// <summary>
         /// Options for the registration in BY.
         /// </summary>
         [JsonProperty("by")]
@@ -154,6 +161,13 @@ namespace Stripe.Tax
         [JsonProperty("ch")]
         [STJS.JsonPropertyName("ch")]
         public RegistrationCountryOptionsChOptions Ch { get; set; }
+
+        /// <summary>
+        /// Options for the registration in CI.
+        /// </summary>
+        [JsonProperty("ci")]
+        [STJS.JsonPropertyName("ci")]
+        public RegistrationCountryOptionsCiOptions Ci { get; set; }
 
         /// <summary>
         /// Options for the registration in CL.
@@ -280,6 +294,13 @@ namespace Stripe.Tax
         [JsonProperty("ge")]
         [STJS.JsonPropertyName("ge")]
         public RegistrationCountryOptionsGeOptions Ge { get; set; }
+
+        /// <summary>
+        /// Options for the registration in GH.
+        /// </summary>
+        [JsonProperty("gh")]
+        [STJS.JsonPropertyName("gh")]
+        public RegistrationCountryOptionsGhOptions Gh { get; set; }
 
         /// <summary>
         /// Options for the registration in GN.
@@ -462,6 +483,13 @@ namespace Stripe.Tax
         [JsonProperty("mt")]
         [STJS.JsonPropertyName("mt")]
         public RegistrationCountryOptionsMtOptions Mt { get; set; }
+
+        /// <summary>
+        /// Options for the registration in MU.
+        /// </summary>
+        [JsonProperty("mu")]
+        [STJS.JsonPropertyName("mu")]
+        public RegistrationCountryOptionsMuOptions Mu { get; set; }
 
         /// <summary>
         /// Options for the registration in MX.

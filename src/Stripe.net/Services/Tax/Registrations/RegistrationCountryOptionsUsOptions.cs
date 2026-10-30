@@ -128,5 +128,12 @@ namespace Stripe.Tax
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// Options for the utility users tax registration.
+        /// </summary>
+        [JsonProperty("utility_users_tax")]
+        [STJS.JsonPropertyName("utility_users_tax")]
+        public RegistrationCountryOptionsUsUtilityUsersTaxOptions UtilityUsersTax { get; set; }
     }
 }

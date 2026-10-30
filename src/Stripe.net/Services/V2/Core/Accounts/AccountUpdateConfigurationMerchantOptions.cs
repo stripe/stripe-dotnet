@@ -89,8 +89,7 @@ namespace Stripe.V2.Core
         public AccountUpdateConfigurationMerchantSmartDisputesOptions SmartDisputes { get; set; }
 
         /// <summary>
-        /// Settings for the default <a
-        /// href="https://stripe.com/connect/statement-descriptors">statement descriptor</a> text.
+        /// Settings for the default statement descriptor text.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         [STJS.JsonPropertyName("statement_descriptor")]

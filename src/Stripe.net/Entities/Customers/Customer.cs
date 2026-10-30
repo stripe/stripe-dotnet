@@ -223,6 +223,13 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// Advertising attribution information for this customer.
+        /// </summary>
+        [JsonProperty("marketing_attributions")]
+        [STJS.JsonPropertyName("marketing_attributions")]
+        public List<CustomerMarketingAttribution> MarketingAttributions { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.

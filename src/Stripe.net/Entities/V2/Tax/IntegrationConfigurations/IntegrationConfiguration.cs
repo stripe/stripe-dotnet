@@ -41,5 +41,12 @@ namespace Stripe.V2.Tax
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
+
+        /// <summary>
+        /// Configuration for Subscriptions automatic tax behavior.
+        /// </summary>
+        [JsonProperty("subscriptions")]
+        [STJS.JsonPropertyName("subscriptions")]
+        public IntegrationConfigurationSubscriptions Subscriptions { get; set; }
     }
 }

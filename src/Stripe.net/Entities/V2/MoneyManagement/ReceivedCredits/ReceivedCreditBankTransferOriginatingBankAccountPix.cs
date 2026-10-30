@@ -28,15 +28,5 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("br_code")]
         [STJS.JsonPropertyName("br_code")]
         public string BrCode { get; set; }
-
-        /// <summary>
-        /// Open Enum. The money transmission network used to send funds for this ReceivedCredit.
-        /// One of: <c>pix</c>.
-        ///
-        /// This enum can grow over time; additional values may be added in the future.
-        /// </summary>
-        [JsonProperty("network")]
-        [STJS.JsonPropertyName("network")]
-        public string Network { get; set; }
     }
 }

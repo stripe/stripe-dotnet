@@ -12,7 +12,8 @@ namespace Stripe.V2.MoneyManagement
         private Dictionary<string, string> metadata;
 
         /// <summary>
-        /// Description of this Transaction, up to 100 characters.
+        /// A description of the Transaction, up to 100 characters. Pass <c>null</c> to clear the
+        /// description, or omit this parameter to leave it unchanged.
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]

@@ -17,6 +17,9 @@ namespace Stripe
         [STJS.JsonPropertyName("on_behalf_of")]
         public string OnBehalfOf { get; set; }
 
+        /// <summary>
+        /// The ID of the payment method whose mandates you want to retrieve.
+        /// </summary>
         [JsonProperty("payment_method")]
         [STJS.JsonPropertyName("payment_method")]
         public string PaymentMethod { get; set; }

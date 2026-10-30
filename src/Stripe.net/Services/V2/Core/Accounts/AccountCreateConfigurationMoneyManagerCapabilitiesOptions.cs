@@ -30,6 +30,13 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationMoneyManagerCapabilitiesConsumerStorageOptions ConsumerStorage { get; set; }
 
         /// <summary>
+        /// Can fund a FinancialAccount.
+        /// </summary>
+        [JsonProperty("inbound_fundings")]
+        [STJS.JsonPropertyName("inbound_fundings")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesInboundFundingsOptions InboundFundings { get; set; }
+
+        /// <summary>
         /// Can pull funds from an external source, owned by yourself, to a FinancialAccount.
         /// </summary>
         [JsonProperty("inbound_transfers")]

@@ -30,6 +30,13 @@ namespace Stripe.V2.Core
         public AccountConfigurationMoneyManagerCapabilitiesConsumerStorage ConsumerStorage { get; set; }
 
         /// <summary>
+        /// Hash containing capabilities related to funding a FinancialAccount.
+        /// </summary>
+        [JsonProperty("inbound_fundings")]
+        [STJS.JsonPropertyName("inbound_fundings")]
+        public AccountConfigurationMoneyManagerCapabilitiesInboundFundings InboundFundings { get; set; }
+
+        /// <summary>
         /// Hash containing capabilities related to InboundTransfers.
         /// </summary>
         [JsonProperty("inbound_transfers")]

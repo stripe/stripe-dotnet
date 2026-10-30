@@ -13,7 +13,7 @@ namespace Stripe
         public PaymentPlanScheduleAmountsDue AmountsDue { get; set; }
 
         /// <summary>
-        /// The type of schedule. Currently always <c>amounts_due</c>.
+        /// The type of schedule. This is always <c>amounts_due</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

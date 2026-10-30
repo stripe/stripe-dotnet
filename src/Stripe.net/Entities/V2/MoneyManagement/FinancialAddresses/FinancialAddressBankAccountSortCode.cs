@@ -16,7 +16,7 @@ namespace Stripe.V2.MoneyManagement
         public string AccountHolderName { get; set; }
 
         /// <summary>
-        /// The full account number.
+        /// The full account number. Empty while the bank account is pending allocation.
         /// </summary>
         [JsonProperty("account_number")]
         [STJS.JsonPropertyName("account_number")]
@@ -35,13 +35,6 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("iban")]
         [STJS.JsonPropertyName("iban")]
         public string Iban { get; set; }
-
-        /// <summary>
-        /// The last four digits of the account number.
-        /// </summary>
-        [JsonProperty("last4")]
-        [STJS.JsonPropertyName("last4")]
-        public string Last4 { get; set; }
 
         /// <summary>
         /// The sort code.

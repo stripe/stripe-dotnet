@@ -13,7 +13,7 @@ namespace Stripe
         public PaymentPlanCollectsOnInvoiceDetails InvoiceDetails { get; set; }
 
         /// <summary>
-        /// The type of object this plan collects against. Currently always <c>invoice_details</c>.
+        /// The type of object this plan collects against. This is always <c>invoice_details</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

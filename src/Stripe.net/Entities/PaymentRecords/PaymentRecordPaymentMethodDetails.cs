@@ -314,6 +314,10 @@ namespace Stripe
         [STJS.JsonPropertyName("tamara")]
         public PaymentRecordPaymentMethodDetailsTamara Tamara { get; set; }
 
+        [JsonProperty("toss_pay")]
+        [STJS.JsonPropertyName("toss_pay")]
+        public PaymentRecordPaymentMethodDetailsTossPay TossPay { get; set; }
+
         [JsonProperty("twint")]
         [STJS.JsonPropertyName("twint")]
         public PaymentRecordPaymentMethodDetailsTwint Twint { get; set; }

@@ -9,6 +9,15 @@ namespace Stripe.V2.MoneyManagement
     public class RecipientVerificationMatchResultDetails : StripeEntity<RecipientVerificationMatchResultDetails>
     {
         /// <summary>
+        /// The business type matched by the provider. Only present for Confirmation of Payee (CoP)
+        /// verifications.
+        /// One of: <c>business</c>, or <c>personal</c>.
+        /// </summary>
+        [JsonProperty("matched_business_type")]
+        [STJS.JsonPropertyName("matched_business_type")]
+        public string MatchedBusinessType { get; set; }
+
+        /// <summary>
         /// The account name associated with the bank account as provided by the VoP provider, only
         /// present if there is a match or close match.
         /// </summary>
@@ -22,6 +31,15 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("message")]
         [STJS.JsonPropertyName("message")]
         public string Message { get; set; }
+
+        /// <summary>
+        /// The business type provided by the user. Only present for Confirmation of Payee (CoP)
+        /// verifications.
+        /// One of: <c>business</c>, or <c>personal</c>.
+        /// </summary>
+        [JsonProperty("provided_business_type")]
+        [STJS.JsonPropertyName("provided_business_type")]
+        public string ProvidedBusinessType { get; set; }
 
         /// <summary>
         /// The name associated with the provided recipient.

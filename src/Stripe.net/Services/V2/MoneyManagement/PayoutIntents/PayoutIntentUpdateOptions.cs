@@ -10,25 +10,11 @@ namespace Stripe.V2.MoneyManagement
     public class PayoutIntentUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The monetary amount to be sent.
-        /// </summary>
-        [JsonProperty("amount")]
-        [STJS.JsonPropertyName("amount")]
-        public V2.Amount Amount { get; set; }
-
-        /// <summary>
         /// An arbitrary string attached to the PayoutIntent. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
         public string Description { get; set; }
-
-        /// <summary>
-        /// From which FinancialAccount to pull funds.
-        /// </summary>
-        [JsonProperty("from")]
-        [STJS.JsonPropertyName("from")]
-        public PayoutIntentUpdateFromOptions From { get; set; }
 
         /// <summary>
         /// Set of key-value pairs that you can attach to an object. This can be useful for storing
@@ -39,15 +25,16 @@ namespace Stripe.V2.MoneyManagement
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Details about the OutboundPayment notification settings for recipient. Only applicable
-        /// to OutboundPayment.
+        /// Recipient notification settings for the PayoutIntent. Only applicable when the
+        /// PayoutIntent creates an OutboundPayment.
         /// </summary>
         [JsonProperty("recipient_notification")]
         [STJS.JsonPropertyName("recipient_notification")]
         public PayoutIntentUpdateRecipientNotificationOptions RecipientNotification { get; set; }
 
         /// <summary>
-        /// Scheduling options for the payout. If this is nil, we assume immediate execution.
+        /// Scheduling options for the payout. If omitted, the payout is scheduled for immediate
+        /// execution.
         /// </summary>
         [JsonProperty("schedule_options")]
         [STJS.JsonPropertyName("schedule_options")]
