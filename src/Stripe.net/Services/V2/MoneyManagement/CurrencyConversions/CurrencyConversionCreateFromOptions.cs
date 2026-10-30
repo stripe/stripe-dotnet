@@ -9,14 +9,16 @@ namespace Stripe.V2.MoneyManagement
     public class CurrencyConversionCreateFromOptions : INestedOptions
     {
         /// <summary>
-        /// Amount object.
+        /// An amount specified for conversion.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
         public V2.Amount Amount { get; set; }
 
         /// <summary>
-        /// A lowercase alpha3 currency code like "usd".
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
         [STJS.JsonPropertyName("currency")]

@@ -10,7 +10,7 @@ namespace Stripe
     public class PaymentPlanScheduleAmountsDueOptions : INestedOptions
     {
         /// <summary>
-        /// The list of installment entries. Must contain at least 2 entries.
+        /// The list of installment entries. Must contain at least two entries.
         /// </summary>
         [JsonProperty("amounts")]
         [STJS.JsonPropertyName("amounts")]

@@ -140,6 +140,10 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("paypal")]
         public SessionPaymentMethodOptionsPaypal Paypal { get; set; }
 
+        [JsonProperty("paypay")]
+        [STJS.JsonPropertyName("paypay")]
+        public SessionPaymentMethodOptionsPaypay Paypay { get; set; }
+
         [JsonProperty("payto")]
         [STJS.JsonPropertyName("payto")]
         public SessionPaymentMethodOptionsPayto Payto { get; set; }

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Data
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -64,5 +65,14 @@ namespace Stripe.V2.Data
         [JsonProperty("parameters")]
         [STJS.JsonPropertyName("parameters")]
         public Dictionary<string, ReportParameters> Parameters { get; set; }
+
+        /// <summary>
+        /// The most recent time through which data is available for this report, not the time the
+        /// report definition was updated. Unset if the report has no data-availability policy, or
+        /// if no freshness watermark is available yet.
+        /// </summary>
+        [JsonProperty("refreshed_at")]
+        [STJS.JsonPropertyName("refreshed_at")]
+        public DateTime? RefreshedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

@@ -144,5 +144,12 @@ namespace Stripe.V2.Billing
         [JsonProperty("status_transitions")]
         [STJS.JsonPropertyName("status_transitions")]
         public ContractStatusTransitions StatusTransitions { get; set; }
+
+        /// <summary>
+        /// All terms in display order. Only populated when <c>terms</c> is included.
+        /// </summary>
+        [JsonProperty("terms")]
+        [STJS.JsonPropertyName("terms")]
+        public ContractTerms Terms { get; set; }
     }
 }

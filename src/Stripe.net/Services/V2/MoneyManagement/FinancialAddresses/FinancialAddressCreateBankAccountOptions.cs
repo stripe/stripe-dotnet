@@ -9,16 +9,18 @@ namespace Stripe.V2.MoneyManagement
     public class FinancialAddressCreateBankAccountOptions : INestedOptions
     {
         /// <summary>
-        /// The country for the bank account. Used to select the appropriate rails (e.g. for SEPA).
+        /// The country where Stripe provisions the bank account. Each currency supports the country
+        /// listed in its description. If omitted, Stripe selects that country.
         /// </summary>
         [JsonProperty("country")]
         [STJS.JsonPropertyName("country")]
         public string Country { get; set; }
 
         /// <summary>
-        /// The currency of the bank account to provision.
+        /// The currency of the bank account to provision. Some currencies require preview or
+        /// rollout access, as configured for your account.
         /// One of: <c>brl</c>, <c>cad</c>, <c>cop</c>, <c>eur</c>, <c>gbp</c>, <c>mxn</c>,
-        /// <c>ngn</c>, or <c>usd</c>.
+        /// <c>ngn</c>, <c>pln</c>, or <c>usd</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

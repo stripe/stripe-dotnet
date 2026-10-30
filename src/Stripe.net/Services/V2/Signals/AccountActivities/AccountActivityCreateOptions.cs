@@ -76,6 +76,14 @@ namespace Stripe.V2.Signals
         public AccountActivityCreateCredentialChangeOptions CredentialChange { get; set; }
 
         /// <summary>
+        /// Details for the custom marketing action. Provide only when type is
+        /// custom_marketing_action.
+        /// </summary>
+        [JsonProperty("custom_marketing_action")]
+        [STJS.JsonPropertyName("custom_marketing_action")]
+        public AccountActivityCreateCustomMarketingActionOptions CustomMarketingAction { get; set; }
+
+        /// <summary>
         /// Details for the login attempt. Provide only when type is login_attempt.
         /// </summary>
         [JsonProperty("login_attempt")]
@@ -134,12 +142,22 @@ namespace Stripe.V2.Signals
         public AccountActivityCreateRegistrationDecisionOptions RegistrationDecision { get; set; }
 
         /// <summary>
+        /// An accessible AccountSignal that prompted this activity. The signal must be within its
+        /// 90-day retrieval window and match the existing account or customer in account_details.
+        /// Inline data is unsupported. May be supplied together with account_evaluation.
+        /// </summary>
+        [JsonProperty("triggering_signal")]
+        [STJS.JsonPropertyName("triggering_signal")]
+        public string TriggeringSignal { get; set; }
+
+        /// <summary>
         /// The type of activity.
         /// One of: <c>account_restricted</c>, <c>account_reviewed</c>, <c>account_suspended</c>,
         /// <c>account_takeover_confirmation</c>, <c>account_takeover_mitigation</c>,
-        /// <c>account_takeover_report</c>, <c>credential_change</c>, <c>login_attempt</c>,
-        /// <c>login_decision</c>, <c>mfa_addition</c>, <c>mfa_removal</c>,
-        /// <c>registration_attempt</c>, or <c>registration_decision</c>.
+        /// <c>account_takeover_report</c>, <c>credential_change</c>,
+        /// <c>custom_marketing_action</c>, <c>login_attempt</c>, <c>login_decision</c>,
+        /// <c>mfa_addition</c>, <c>mfa_removal</c>, <c>registration_attempt</c>, or
+        /// <c>registration_decision</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

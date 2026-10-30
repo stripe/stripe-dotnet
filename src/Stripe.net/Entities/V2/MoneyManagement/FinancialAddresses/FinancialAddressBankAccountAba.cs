@@ -9,13 +9,6 @@ namespace Stripe.V2.MoneyManagement
     public class FinancialAddressBankAccountAba : StripeEntity<FinancialAddressBankAccountAba>
     {
         /// <summary>
-        /// The address of the account holder.
-        /// </summary>
-        [JsonProperty("account_holder_address")]
-        [STJS.JsonPropertyName("account_holder_address")]
-        public FinancialAddressBankAccountAbaAccountHolderAddress AccountHolderAddress { get; set; }
-
-        /// <summary>
         /// The name of the account holder.
         /// </summary>
         [JsonProperty("account_holder_name")]
@@ -23,11 +16,18 @@ namespace Stripe.V2.MoneyManagement
         public string AccountHolderName { get; set; }
 
         /// <summary>
-        /// The full account number.
+        /// The full account number. Empty while the bank account is pending allocation.
         /// </summary>
         [JsonProperty("account_number")]
         [STJS.JsonPropertyName("account_number")]
         public string AccountNumber { get; set; }
+
+        /// <summary>
+        /// The address of the account holder.
+        /// </summary>
+        [JsonProperty("address")]
+        [STJS.JsonPropertyName("address")]
+        public FinancialAddressBankAccountAbaAddress Address { get; set; }
 
         /// <summary>
         /// The name of the bank.
@@ -42,13 +42,6 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("bic")]
         [STJS.JsonPropertyName("bic")]
         public string Bic { get; set; }
-
-        /// <summary>
-        /// The last four digits of the account number.
-        /// </summary>
-        [JsonProperty("last4")]
-        [STJS.JsonPropertyName("last4")]
-        public string Last4 { get; set; }
 
         /// <summary>
         /// The ABA routing number.

@@ -21,5 +21,12 @@ namespace Stripe.V2.Tax
         [JsonProperty("invoices")]
         [STJS.JsonPropertyName("invoices")]
         public IntegrationConfigurationUpdateInvoicesOptions Invoices { get; set; }
+
+        /// <summary>
+        /// Configuration for Subscriptions automatic tax behavior.
+        /// </summary>
+        [JsonProperty("subscriptions")]
+        [STJS.JsonPropertyName("subscriptions")]
+        public IntegrationConfigurationUpdateSubscriptionsOptions Subscriptions { get; set; }
     }
 }

@@ -36,8 +36,9 @@ namespace Stripe
         /// <c>satispay</c>, <c>scalapay</c>, <c>sepa_debit</c>, <c>sequra</c>, <c>sezzle</c>,
         /// <c>shop_pay</c>, <c>shopeepay</c>, <c>sofort</c>, <c>south_korea_market</c>,
         /// <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>, <c>tamara</c>, <c>test_pay</c>,
-        /// <c>touch_n_go</c>, <c>truemoney</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>,
-        /// <c>us_cash_voucher</c>, <c>vipps</c>, <c>wechat_pay</c>, <c>wero</c>, or <c>zip</c>.
+        /// <c>toss_pay</c>, <c>touch_n_go</c>, <c>truemoney</c>, <c>twint</c>, <c>upi</c>,
+        /// <c>us_bank_account</c>, <c>us_cash_voucher</c>, <c>vipps</c>, <c>wechat_pay</c>,
+        /// <c>wero</c>, or <c>zip</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

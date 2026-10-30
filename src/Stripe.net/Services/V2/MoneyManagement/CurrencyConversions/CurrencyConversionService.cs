@@ -21,7 +21,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Create a CurrencyConversion.
+        /// Create a new Currency Conversion in a Financial Account or the payments balance.
         /// </summary>
         public virtual CurrencyConversion Create(CurrencyConversionCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -29,7 +29,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Create a CurrencyConversion.
+        /// Create a new Currency Conversion in a Financial Account or the payments balance.
         /// </summary>
         public virtual Task<CurrencyConversion> CreateAsync(CurrencyConversionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -37,7 +37,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Retrieve details of a CurrencyConversion by id.
+        /// Retrieves the details of a Currency Conversion by its ID.
         /// </summary>
         public virtual CurrencyConversion Get(string id, CurrencyConversionGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -45,7 +45,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Retrieve details of a CurrencyConversion by id.
+        /// Retrieves the details of a Currency Conversion by its ID.
         /// </summary>
         public virtual Task<CurrencyConversion> GetAsync(string id, CurrencyConversionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -53,7 +53,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// List all CurrencyConversion on an account with the option to filter by FinancialAccount.
+        /// Lists all Currency Conversions that match the provided filters.
         /// </summary>
         public virtual V2.StripeList<CurrencyConversion> List(CurrencyConversionListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -61,7 +61,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// List all CurrencyConversion on an account with the option to filter by FinancialAccount.
+        /// Lists all Currency Conversions that match the provided filters.
         /// </summary>
         public virtual Task<V2.StripeList<CurrencyConversion>> ListAsync(CurrencyConversionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -69,7 +69,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// List all CurrencyConversion on an account with the option to filter by FinancialAccount.
+        /// Lists all Currency Conversions that match the provided filters.
         /// </summary>
         public virtual IEnumerable<CurrencyConversion> ListAutoPaging(CurrencyConversionListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -77,7 +77,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// List all CurrencyConversion on an account with the option to filter by FinancialAccount.
+        /// Lists all Currency Conversions that match the provided filters.
         /// </summary>
         public virtual IAsyncEnumerable<CurrencyConversion> ListAutoPagingAsync(CurrencyConversionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

@@ -8,11 +8,8 @@ namespace Stripe.V2.MoneyManagement
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// Use Transactions to view changes to your FinancialAccount balance over time. Every flow
-    /// that moves money, such as OutboundPayments or ReceivedCredits, will have one or more
-    /// Transactions that describes how the flow impacted your balance. Note that while the
-    /// FinancialAccount balance will always be up to date, be aware that Transactions and
-    /// TransactionEntries are created shortly after to reflect changes.
+    /// A Transaction records how a money movement flow affects your FinancialAccount balance. A
+    /// flow can create one or more Transactions.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Transaction : StripeEntity<Transaction>, IHasId, IHasMetadata, IHasObject
@@ -40,15 +37,15 @@ namespace Stripe.V2.MoneyManagement
         public V2.Amount Amount { get; set; }
 
         /// <summary>
-        /// The delta to the FinancialAccount's balance. The balance_impact for the Transaction is
-        /// equal to sum of its TransactionEntries that have <c>effective_at</c>s in the past.
+        /// The change to the FinancialAccount's balance. This is the sum of the balance impacts of
+        /// this Transaction's TransactionEntries with <c>effective_at</c> timestamps in the past.
         /// </summary>
         [JsonProperty("balance_impact")]
         [STJS.JsonPropertyName("balance_impact")]
         public TransactionBalanceImpact BalanceImpact { get; set; }
 
         /// <summary>
-        /// Open Enum. A descriptive category used to classify the Transaction.
+        /// Open Enum. A category used to classify the Transaction.
         /// One of: <c>adjustment</c>, <c>advance</c>, <c>anticipation_repayment</c>,
         /// <c>balance_transfer</c>, <c>climate_order_purchase</c>, <c>climate_order_refund</c>,
         /// <c>connect_collection_transfer</c>, <c>connect_reserved_funds</c>, <c>contribution</c>,
@@ -79,37 +76,42 @@ namespace Stripe.V2.MoneyManagement
         public string Category { get; set; }
 
         /// <summary>
-        /// Counterparty to this Transaction.
+        /// Details about the counterparty to this Transaction.
         /// </summary>
         [JsonProperty("counterparty")]
         [STJS.JsonPropertyName("counterparty")]
         public TransactionCounterparty Counterparty { get; set; }
 
         /// <summary>
-        /// Time at which the object was created. Represented as a RFC 3339 date &amp; time UTC
-        /// value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
+        /// Time at which the object was created. Represented as an RFC 3339 timestamp in UTC with
+        /// millisecond precision, for example <c>2022-09-18T13:22:18.123Z</c>.
         /// </summary>
         [JsonProperty("created")]
         [STJS.JsonPropertyName("created")]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Description of this Transaction. When applicable, the description is copied from the
-        /// Flow object at the time of transaction creation.
+        /// A description of the Transaction. When applicable, the description is copied from the
+        /// flow object when the Transaction is created. You can update it using the Update
+        /// Transaction endpoint.
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
-        /// Indicates the FinancialAccount affected by this Transaction.
+        /// The ID of the FinancialAccount affected by this Transaction.
         /// </summary>
         [JsonProperty("financial_account")]
         [STJS.JsonPropertyName("financial_account")]
         public string FinancialAccount { get; set; }
 
         /// <summary>
-        /// Details about the Flow object that created the Transaction.
+        /// Details about the flow object that created the Transaction, such as an InboundTransfer
+        /// or OutboundPayment. <c>flow.type</c> identifies the kind of object. The corresponding
+        /// field contains its ID, when available: for an InboundTransfer,
+        /// <c>flow.inbound_transfer</c> contains the InboundTransfer's ID. Pass that ID to the
+        /// <c>flow</c> parameter on List Transactions.
         /// </summary>
         [JsonProperty("flow")]
         [STJS.JsonPropertyName("flow")]
@@ -135,19 +137,19 @@ namespace Stripe.V2.MoneyManagement
         /// Hosted transaction receipt that is provided when money movement is considered regulated
         /// under Stripe's money transmission licenses. If not applicable,
         /// <c>regulatory_receipt.status</c> will be <c>not_applicable</c> and no URL will be
-        /// provided.
+        /// provided unless you opt in by calling <c>/refresh_regulatory_receipt</c>.
         /// </summary>
         [JsonProperty("regulatory_receipt")]
         [STJS.JsonPropertyName("regulatory_receipt")]
         public TransactionRegulatoryReceipt RegulatoryReceipt { get; set; }
 
         /// <summary>
-        /// Closed Enum. Current status of the Transaction. A Transaction is <c>pending</c> if
+        /// Closed Enum. The current status of the Transaction. A Transaction is <c>pending</c> if
         /// either <c>balance_impact.inbound_pending</c> or <c>balance_impact.outbound_pending</c>
         /// is non-zero. A Transaction is <c>posted</c> if only <c>balance_impact.available</c> is
         /// non-zero. A Transaction is <c>void</c> if there is no balance impact. <c>posted</c> and
-        /// <c>void</c> are terminal states, and no additional entries will be added to the
-        /// Transaction.
+        /// <c>void</c> are terminal states, and no additional TransactionEntries will be added to
+        /// the Transaction.
         /// One of: <c>pending</c>, <c>posted</c>, or <c>void</c>.
         /// </summary>
         [JsonProperty("status")]
@@ -155,7 +157,7 @@ namespace Stripe.V2.MoneyManagement
         public string Status { get; set; }
 
         /// <summary>
-        /// Timestamps for when the Transaction transitioned to a particular status.
+        /// Timestamps for when the Transaction transitioned to each status.
         /// </summary>
         [JsonProperty("status_transitions")]
         [STJS.JsonPropertyName("status_transitions")]

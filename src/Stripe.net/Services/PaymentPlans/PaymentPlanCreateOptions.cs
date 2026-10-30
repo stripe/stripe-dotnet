@@ -10,8 +10,7 @@ namespace Stripe
     public class PaymentPlanCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The invoice(s) this payment plan collects on. Currently must contain exactly one invoice
-        /// entry.
+        /// The invoices this payment plan collects on. It must contain exactly one invoice entry.
         /// </summary>
         [JsonProperty("collects_on")]
         [STJS.JsonPropertyName("collects_on")]

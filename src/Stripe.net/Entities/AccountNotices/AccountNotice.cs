@@ -93,6 +93,7 @@ namespace Stripe
         /// <c>issuing.account_closed_for_not_providing_url_clarification</c>,
         /// <c>issuing.account_closed_for_not_providing_use_case_clarification</c>,
         /// <c>issuing.account_closed_for_terms_of_service_violation</c>,
+        /// <c>issuing.application_rejected_because_prohibited_business</c>,
         /// <c>issuing.application_rejected_for_failure_to_verify</c>,
         /// <c>issuing.credit_application_rejected</c>,
         /// <c>issuing.credit_increase_application_rejected</c>,

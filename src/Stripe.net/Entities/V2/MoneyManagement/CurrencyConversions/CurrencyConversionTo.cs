@@ -9,7 +9,7 @@ namespace Stripe.V2.MoneyManagement
     public class CurrencyConversionTo : StripeEntity<CurrencyConversionTo>
     {
         /// <summary>
-        /// Amount object.
+        /// A specific amount.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]

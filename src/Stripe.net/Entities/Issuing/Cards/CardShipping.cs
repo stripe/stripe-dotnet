@@ -46,6 +46,16 @@ namespace Stripe.Issuing
         public CardShippingCustoms Customs { get; set; }
 
         /// <summary>
+        /// The time the card was reported as delivered. Null for undelivered or untracked
+        /// shipments, or if Stripe has not recorded a delivery time.
+        /// </summary>
+        [JsonProperty("delivered_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        [STJS.JsonPropertyName("delivered_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+        public DateTime? DeliveredAt { get; set; }
+
+        /// <summary>
         /// A unix timestamp representing a best estimate of when the card will be delivered.
         /// </summary>
         [JsonProperty("eta")]
@@ -90,6 +100,16 @@ namespace Stripe.Issuing
         [JsonProperty("service")]
         [STJS.JsonPropertyName("service")]
         public string Service { get; set; }
+
+        /// <summary>
+        /// The time the card was reported as shipped. Null if Stripe has not recorded a shipment
+        /// time.
+        /// </summary>
+        [JsonProperty("shipped_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        [STJS.JsonPropertyName("shipped_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+        public DateTime? ShippedAt { get; set; }
 
         /// <summary>
         /// The delivery status of the card.

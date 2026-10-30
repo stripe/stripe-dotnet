@@ -115,6 +115,14 @@ namespace Stripe
         public CustomerInvoiceSettingsOptions InvoiceSettings { get; set; }
 
         /// <summary>
+        /// Advertising attribution information for this customer. Only one attribution is
+        /// supported.
+        /// </summary>
+        [JsonProperty("marketing_attributions")]
+        [STJS.JsonPropertyName("marketing_attributions")]
+        public List<CustomerMarketingAttributionOptions> MarketingAttributions { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to

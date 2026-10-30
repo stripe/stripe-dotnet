@@ -46,14 +46,6 @@ namespace Stripe.V2.Core
         public AccountUpdateConfigurationRecipientCapabilitiesBankAccountsFpsOptions Fps { get; set; }
 
         /// <summary>
-        /// Enables this Account to receive OutboundPayments to linked bank accounts over real time
-        /// rails.
-        /// </summary>
-        [JsonProperty("instant")]
-        [STJS.JsonPropertyName("instant")]
-        public AccountUpdateConfigurationRecipientCapabilitiesBankAccountsInstantOptions Instant { get; set; }
-
-        /// <summary>
         /// Enables this Account to receive OutboundPayments to linked bank accounts over local
         /// networks.
         /// </summary>
@@ -78,11 +70,11 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// Enables this Account to receive OutboundPayments to linked bank accounts over SEPA
-        /// credit rails.
+        /// rails.
         /// </summary>
-        [JsonProperty("sepa_credit")]
-        [STJS.JsonPropertyName("sepa_credit")]
-        public AccountUpdateConfigurationRecipientCapabilitiesBankAccountsSepaCreditOptions SepaCredit { get; set; }
+        [JsonProperty("sepa")]
+        [STJS.JsonPropertyName("sepa")]
+        public AccountUpdateConfigurationRecipientCapabilitiesBankAccountsSepaOptions Sepa { get; set; }
 
         /// <summary>
         /// Enables this Account to receive OutboundPayments to linked bank accounts over SEPA
@@ -98,12 +90,5 @@ namespace Stripe.V2.Core
         [JsonProperty("swift")]
         [STJS.JsonPropertyName("swift")]
         public AccountUpdateConfigurationRecipientCapabilitiesBankAccountsSwiftOptions Swift { get; set; }
-
-        /// <summary>
-        /// Enables this Account to receive OutboundPayments to linked bank accounts over wire.
-        /// </summary>
-        [JsonProperty("wire")]
-        [STJS.JsonPropertyName("wire")]
-        public AccountUpdateConfigurationRecipientCapabilitiesBankAccountsWireOptions Wire { get; set; }
     }
 }

@@ -30,7 +30,7 @@ namespace Stripe.V2.MoneyManagement
         public string Object { get; set; }
 
         /// <summary>
-        /// The "presentment amount" for the OutboundPayment.
+        /// The amount and currency requested for this OutboundPayment.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
@@ -141,29 +141,26 @@ namespace Stripe.V2.MoneyManagement
         public OutboundPaymentRecipientNotification RecipientNotification { get; set; }
 
         /// <summary>
-        /// The recipient verification id for this OutboundPayment. Only required for countries with
-        /// regulatory mandates to verify recipient names before OutboundPayment creation.
+        /// The ID of the RecipientVerification for this OutboundPayment. Required where
+        /// recipient-name verification is mandated before creating an OutboundPayment.
         /// </summary>
         [JsonProperty("recipient_verification")]
         [STJS.JsonPropertyName("recipient_verification")]
         public string RecipientVerification { get; set; }
 
         /// <summary>
-        /// The description that appears on the receiving end for an OutboundPayment (for example,
-        /// bank statement for external bank transfer). It will default to <c>STRIPE</c> if not set
-        /// on the account settings.
+        /// The description that appears on the receiving end of an OutboundPayment (for example, on
+        /// a bank statement). Defaults to <c>STRIPE</c> if not configured in the account settings.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         [STJS.JsonPropertyName("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// Closed Enum. Current status of the OutboundPayment: <c>processing</c>, <c>failed</c>,
-        /// <c>posted</c>, <c>returned</c>, <c>canceled</c>. An OutboundPayment is <c>processing</c>
-        /// if it has been created and is processing. The status changes to <c>posted</c> once the
-        /// OutboundPayment has been "confirmed" and funds have left the account, or to
-        /// <c>failed</c> or <c>canceled</c>. If an OutboundPayment fails to arrive at its payout
-        /// method, its status will change to <c>returned</c>.
+        /// Current status of the OutboundPayment. An OutboundPayment is <c>processing</c> after
+        /// creation. It becomes <c>posted</c> when funds leave the account, <c>failed</c> if it
+        /// cannot be sent, <c>canceled</c> if canceled before posting, or <c>returned</c> if the
+        /// funds are returned.
         /// One of: <c>canceled</c>, <c>failed</c>, <c>posted</c>, <c>processing</c>, or
         /// <c>returned</c>.
         /// </summary>

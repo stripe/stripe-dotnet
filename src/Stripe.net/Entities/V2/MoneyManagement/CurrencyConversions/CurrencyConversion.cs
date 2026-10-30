@@ -7,14 +7,15 @@ namespace Stripe.V2.MoneyManagement
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// The CurrencyConversion object. Contains details such as the amount debited and credited
-    /// and the FinancialAccount the CurrencyConversion was performed on.
+    /// A Currency Conversion represents a standalone conversion between currencies in a <a
+    /// href="https://docs.stripe.com/api/v2/money-management/financial-accounts">Financial
+    /// Account</a> or the payments balance.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CurrencyConversion : StripeEntity<CurrencyConversion>, IHasId, IHasObject
     {
         /// <summary>
-        /// The id of the CurrencyConversion.
+        /// The ID of the Currency Conversion.
         /// </summary>
         [JsonProperty("id")]
         [STJS.JsonPropertyName("id")]
@@ -29,42 +30,44 @@ namespace Stripe.V2.MoneyManagement
         public string Object { get; set; }
 
         /// <summary>
-        /// The time the CurrencyConversion was created at.
+        /// The time the Currency Conversion was created at.
         /// </summary>
         [JsonProperty("created")]
         [STJS.JsonPropertyName("created")]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The exchange rate used when processing the CurrencyConversion.
+        /// The exchange rate used, excluding applicable fees.
         /// </summary>
         [JsonProperty("exchange_rate")]
         [STJS.JsonPropertyName("exchange_rate")]
         public string ExchangeRate { get; set; }
 
         /// <summary>
-        /// The FinancialAccount the CurrencyConversion was performed on.
+        /// The ID of the Financial Account the Currency Conversion was created in. If <c>null</c>,
+        /// it was created in the payments balance.
         /// </summary>
         [JsonProperty("financial_account")]
         [STJS.JsonPropertyName("financial_account")]
         public string FinancialAccount { get; set; }
 
         /// <summary>
-        /// The from block containing what was debited.
+        /// The amount that was debited from the source currency.
         /// </summary>
         [JsonProperty("from")]
         [STJS.JsonPropertyName("from")]
         public CurrencyConversionFrom From { get; set; }
 
         /// <summary>
-        /// If the CurrencyConversion was performed in livemode or not.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The to block containing what was credited.
+        /// The amount that was credited to the destination currency.
         /// </summary>
         [JsonProperty("to")]
         [STJS.JsonPropertyName("to")]

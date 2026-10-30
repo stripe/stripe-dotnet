@@ -9,6 +9,13 @@ namespace Stripe.Checkout
     public class SessionItemSubscriptionItem : StripeEntity<SessionItemSubscriptionItem>
     {
         /// <summary>
+        /// The adjustable quantity settings for this subscription item.
+        /// </summary>
+        [JsonProperty("adjustable_quantity")]
+        [STJS.JsonPropertyName("adjustable_quantity")]
+        public SessionItemSubscriptionItemAdjustableQuantity AdjustableQuantity { get; set; }
+
+        /// <summary>
         /// The trial offer applied to this subscription item.
         /// </summary>
         [JsonProperty("current_trial")]

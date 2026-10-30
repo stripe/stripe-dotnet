@@ -10,6 +10,7 @@ namespace Stripe
     public class InvoiceScheduleDetailsOptions : INestedOptions, IHasSetTracking
     {
         private List<InvoiceScheduleDetailsBillingScheduleOptions> billingSchedules;
+        private List<InvoiceScheduleDetailsPauseScheduleOptions> pauseSchedules;
         private List<InvoiceScheduleDetailsPrebillingOptions> prebilling;
 
         [JsonIgnore]
@@ -80,6 +81,25 @@ namespace Stripe
         [JsonProperty("end_behavior")]
         [STJS.JsonPropertyName("end_behavior")]
         public string EndBehavior { get; set; }
+
+        /// <summary>
+        /// The subscription's pause behavior and optional resume behavior. You can provide one
+        /// entry. Include its <c>key</c> to update an existing pause schedule. Omit
+        /// <c>pause_schedules</c> to leave the existing schedule unchanged, or pass an empty string
+        /// (<c>""</c>) to clear it.
+        /// </summary>
+        [JsonProperty("pause_schedules", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("pause_schedules")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public List<InvoiceScheduleDetailsPauseScheduleOptions> PauseSchedules
+        {
+            get => this.pauseSchedules;
+            set
+            {
+                this.pauseSchedules = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// List representing phases of the subscription schedule. Each phase can be customized to

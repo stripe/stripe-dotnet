@@ -9,7 +9,7 @@ namespace Stripe.V2.Data
     public class QueryRunCreateQueryOptions : INestedOptions
     {
         /// <summary>
-        /// Ad-hoc SQL to execute.
+        /// Ad-hoc SQL to execute. The maximum length is 100,000 characters.
         /// </summary>
         [JsonProperty("sql")]
         [STJS.JsonPropertyName("sql")]

@@ -9,8 +9,7 @@ namespace Stripe.V2.MoneyManagement
     public class TransactionEntryTransactionDetails : StripeEntity<TransactionEntryTransactionDetails>
     {
         /// <summary>
-        /// Closed Enum for now, and will be turned into an Open Enum soon. A descriptive category
-        /// used to classify the Transaction.
+        /// Open Enum. The category of this TransactionEntry's parent Transaction.
         /// One of: <c>adjustment</c>, <c>advance</c>, <c>anticipation_repayment</c>,
         /// <c>balance_transfer</c>, <c>climate_order_purchase</c>, <c>climate_order_refund</c>,
         /// <c>connect_collection_transfer</c>, <c>connect_reserved_funds</c>, <c>contribution</c>,
@@ -41,14 +40,20 @@ namespace Stripe.V2.MoneyManagement
         public string Category { get; set; }
 
         /// <summary>
-        /// Indicates the FinancialAccount affected by this Transaction.
+        /// The ID of the FinancialAccount affected by this Transaction.
         /// </summary>
         [JsonProperty("financial_account")]
         [STJS.JsonPropertyName("financial_account")]
         public string FinancialAccount { get; set; }
 
         /// <summary>
-        /// Details about the Flow object that created the Transaction.
+        /// Details about the flow object that created the Transaction this entry belongs to, such
+        /// as an InboundTransfer or OutboundPayment. <c>transaction_details.flow.type</c>
+        /// identifies the kind of object. The corresponding field contains its ID, when available:
+        /// for an InboundTransfer, <c>transaction_details.flow.inbound_transfer</c> contains the
+        /// InboundTransfer's ID. To list entries for the parent Transaction, pass the
+        /// TransactionEntry's <c>transaction</c> ID to the <c>transaction</c> parameter on List
+        /// Transaction Entries.
         /// </summary>
         [JsonProperty("flow")]
         [STJS.JsonPropertyName("flow")]

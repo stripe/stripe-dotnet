@@ -9,8 +9,8 @@ namespace Stripe.V2.MoneyManagement
     public class PayoutIntentFxQuoteRates : StripeEntity<PayoutIntentFxQuoteRates>
     {
         /// <summary>
-        /// The exchange rate going from_currency -&gt; to_currency, represented as a decimal string
-        /// (e.g., "1.1520") to preserve the full precision of the rate.
+        /// The exchange rate from the source currency to <c>to_currency</c>, represented as a
+        /// decimal string (for example, <c>1.1520</c>) to preserve the full precision of the rate.
         /// </summary>
         [JsonProperty("exchange_rate")]
         [STJS.JsonPropertyName("exchange_rate")]

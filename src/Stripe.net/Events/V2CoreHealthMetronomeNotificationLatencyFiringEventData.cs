@@ -31,6 +31,16 @@ namespace Stripe.Events
         public V2CoreHealthMetronomeNotificationLatencyFiringEventDataImpact Impact { get; set; }
 
         /// <summary>
+        /// The severity of the alert.
+        /// One of: <c>critical</c>, or <c>non_critical</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("severity")]
+        [STJS.JsonPropertyName("severity")]
+        public string Severity { get; set; }
+
+        /// <summary>
         /// The time when impact on the user experience was first detected.
         /// </summary>
         [JsonProperty("started_at")]

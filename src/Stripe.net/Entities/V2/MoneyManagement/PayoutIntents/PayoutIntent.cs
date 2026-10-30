@@ -37,8 +37,10 @@ namespace Stripe.V2.MoneyManagement
         public V2.Amount Amount { get; set; }
 
         /// <summary>
-        /// Controls whether the intent requires explicit confirmation before transitioning to
-        /// pending.
+        /// Controls whether the PayoutIntent requires explicit confirmation before transitioning to
+        /// <c>pending</c>. Even when <c>automatic</c>, regulatory requirements may require
+        /// confirmation. See <a href="https://docs.stripe.com/global-payouts/send-money">Send money
+        /// with Global Payouts</a> for details.
         /// One of: <c>automatic</c>, or <c>manual</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
@@ -107,23 +109,31 @@ namespace Stripe.V2.MoneyManagement
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Next action required for a PayoutIntent in the requires_action state. Populated when
-        /// status is requires_action.
+        /// Next action required for a PayoutIntent in the <c>requires_action</c> state. Populated
+        /// when <c>status</c> is <c>requires_action</c>.
         /// </summary>
         [JsonProperty("next_action")]
         [STJS.JsonPropertyName("next_action")]
         public PayoutIntentNextAction NextAction { get; set; }
 
         /// <summary>
-        /// Details about the OutboundPayment notification settings for recipient. Only applicable
-        /// to OutboundPayment.
+        /// Recipient notification settings for the PayoutIntent. Only applicable when the
+        /// PayoutIntent creates an OutboundPayment.
         /// </summary>
         [JsonProperty("recipient_notification")]
         [STJS.JsonPropertyName("recipient_notification")]
         public PayoutIntentRecipientNotification RecipientNotification { get; set; }
 
         /// <summary>
-        /// Scheduling options for the payout. If this is nil, we assume immediate execution.
+        /// Recipient verification details for this PayoutIntent.
+        /// </summary>
+        [JsonProperty("recipient_verification")]
+        [STJS.JsonPropertyName("recipient_verification")]
+        public PayoutIntentRecipientVerification RecipientVerification { get; set; }
+
+        /// <summary>
+        /// Scheduling options for the payout. If omitted, the payout is scheduled for immediate
+        /// execution.
         /// </summary>
         [JsonProperty("schedule_options")]
         [STJS.JsonPropertyName("schedule_options")]
@@ -138,8 +148,7 @@ namespace Stripe.V2.MoneyManagement
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// Open Enum. Current status of the PayoutIntent: <c>pending</c>, <c>processing</c>,
-        /// <c>posted</c>, <c>canceled</c>, <c>requires_action</c>.
+        /// Current status of the PayoutIntent.
         /// One of: <c>canceled</c>, <c>pending</c>, <c>posted</c>, <c>processing</c>, or
         /// <c>requires_action</c>.
         ///

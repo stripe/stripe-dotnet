@@ -13,7 +13,9 @@ namespace Stripe.V2
         private V2.MoneyManagement.EarnedCreditService earnedCredits;
         private V2.MoneyManagement.FinancialAccountService financialAccounts;
         private V2.MoneyManagement.FinancialAddressService financialAddresses;
+        private V2.MoneyManagement.FundingIntentService fundingIntents;
         private V2.MoneyManagement.FundingSessionService fundingSessions;
+        private V2.MoneyManagement.InboundFundingService inboundFundings;
         private V2.MoneyManagement.InboundTransferService inboundTransfers;
         private V2.MoneyManagement.InboundTransferMandateService inboundTransferMandates;
         private V2.MoneyManagement.OutboundPaymentService outboundPayments;
@@ -27,6 +29,8 @@ namespace Stripe.V2
         private V2.MoneyManagement.ReceivedDebitService receivedDebits;
         private V2.MoneyManagement.ReceivedDebitMandateService receivedDebitMandates;
         private V2.MoneyManagement.RecipientVerificationService recipientVerifications;
+        private V2.MoneyManagement.RewardProgramService rewardPrograms;
+        private V2.MoneyManagement.RewardProgramEnrollmentService rewardProgramEnrollments;
         private V2.MoneyManagement.TestHelperService testHelpers;
         private V2.MoneyManagement.TransactionService transactions;
         private V2.MoneyManagement.TransactionEntryService transactionEntries;
@@ -59,7 +63,13 @@ namespace Stripe.V2
         public virtual V2.MoneyManagement.FinancialAddressService FinancialAddresses => this.financialAddresses ??= new V2.MoneyManagement.FinancialAddressService(
             this.Requestor);
 
+        public virtual V2.MoneyManagement.FundingIntentService FundingIntents => this.fundingIntents ??= new V2.MoneyManagement.FundingIntentService(
+            this.Requestor);
+
         public virtual V2.MoneyManagement.FundingSessionService FundingSessions => this.fundingSessions ??= new V2.MoneyManagement.FundingSessionService(
+            this.Requestor);
+
+        public virtual V2.MoneyManagement.InboundFundingService InboundFundings => this.inboundFundings ??= new V2.MoneyManagement.InboundFundingService(
             this.Requestor);
 
         public virtual V2.MoneyManagement.InboundTransferService InboundTransfers => this.inboundTransfers ??= new V2.MoneyManagement.InboundTransferService(
@@ -99,6 +109,12 @@ namespace Stripe.V2
             this.Requestor);
 
         public virtual V2.MoneyManagement.RecipientVerificationService RecipientVerifications => this.recipientVerifications ??= new V2.MoneyManagement.RecipientVerificationService(
+            this.Requestor);
+
+        public virtual V2.MoneyManagement.RewardProgramService RewardPrograms => this.rewardPrograms ??= new V2.MoneyManagement.RewardProgramService(
+            this.Requestor);
+
+        public virtual V2.MoneyManagement.RewardProgramEnrollmentService RewardProgramEnrollments => this.rewardProgramEnrollments ??= new V2.MoneyManagement.RewardProgramEnrollmentService(
             this.Requestor);
 
         public virtual V2.MoneyManagement.TestHelperService TestHelpers => this.testHelpers ??= new V2.MoneyManagement.TestHelperService(

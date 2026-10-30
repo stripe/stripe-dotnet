@@ -9,8 +9,8 @@ namespace Stripe.V2.Core
     public class AccountIdentityIndividualDocumentsSecondaryVerification : StripeEntity<AccountIdentityIndividualDocumentsSecondaryVerification>
     {
         /// <summary>
-        /// The <a href="https://docs.stripe.com/api/persons/update#create_file">file upload</a>
-        /// tokens for the front and back of the verification document.
+        /// The <a href="https://docs.stripe.com/api/files/create">file upload</a> tokens for the
+        /// front and back of the verification document.
         /// </summary>
         [JsonProperty("front_back")]
         [STJS.JsonPropertyName("front_back")]

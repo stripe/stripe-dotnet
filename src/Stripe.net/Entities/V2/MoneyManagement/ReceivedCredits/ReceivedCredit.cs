@@ -29,14 +29,15 @@ namespace Stripe.V2.MoneyManagement
         public string Object { get; set; }
 
         /// <summary>
-        /// The amount and currency of the ReceivedCredit.
+        /// The amount and currency credited to the FinancialAccount.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
         public V2.Amount Amount { get; set; }
 
         /// <summary>
-        /// The amount and currency of the ReceivedCredit that was received.
+        /// The amount and currency Stripe received from the external source, before any conversion
+        /// or fees.
         /// </summary>
         [JsonProperty("amount_received")]
         [STJS.JsonPropertyName("amount_received")]

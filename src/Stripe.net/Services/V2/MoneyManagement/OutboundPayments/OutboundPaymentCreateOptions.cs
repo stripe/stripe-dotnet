@@ -10,7 +10,7 @@ namespace Stripe.V2.MoneyManagement
     public class OutboundPaymentCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The "presentment amount" to be sent to the recipient.
+        /// The requested amount and currency for the OutboundPayment.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
@@ -72,8 +72,8 @@ namespace Stripe.V2.MoneyManagement
         public OutboundPaymentCreateRecipientNotificationOptions RecipientNotification { get; set; }
 
         /// <summary>
-        /// The recipient verification id for this OutboundPayment. Only required for countries with
-        /// regulatory mandates to verify recipient names before OutboundPayment creation.
+        /// The ID of the RecipientVerification for this OutboundPayment. Required where
+        /// recipient-name verification is mandated before creating an OutboundPayment.
         /// </summary>
         [JsonProperty("recipient_verification")]
         [STJS.JsonPropertyName("recipient_verification")]

@@ -30,24 +30,17 @@ namespace Stripe.V2.MoneyManagement
         public string Bic { get; set; }
 
         /// <summary>
-        /// The country of the bank account.
-        /// </summary>
-        [JsonProperty("country")]
-        [STJS.JsonPropertyName("country")]
-        public string Country { get; set; }
-
-        /// <summary>
-        /// The full IBAN.
+        /// The full IBAN. Empty while the bank account is pending allocation.
         /// </summary>
         [JsonProperty("iban")]
         [STJS.JsonPropertyName("iban")]
         public string Iban { get; set; }
 
         /// <summary>
-        /// The last four digits of the IBAN.
+        /// The payment reference for this bank account.
         /// </summary>
-        [JsonProperty("last4")]
-        [STJS.JsonPropertyName("last4")]
-        public string Last4 { get; set; }
+        [JsonProperty("reference")]
+        [STJS.JsonPropertyName("reference")]
+        public string Reference { get; set; }
     }
 }

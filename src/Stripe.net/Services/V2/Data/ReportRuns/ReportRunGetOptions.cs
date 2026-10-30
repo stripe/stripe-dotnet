@@ -20,7 +20,7 @@ namespace Stripe.V2.Data
         public List<string> Include { get; set; }
 
         /// <summary>
-        /// The maximum number of inline <c>ReportRun</c> result rows to return. Defaults to 10.
+        /// The maximum number of inline <c>ReportRun</c> result rows to return. Defaults to 100.
         /// Maximum is 1000.
         /// </summary>
         [JsonProperty("limit")]
