@@ -211,6 +211,7 @@ namespace Stripe
                 { "v2.core.account_person", typeof(V2.Core.AccountPerson) },
                 { "v2.core.account_person_token", typeof(V2.Core.AccountPersonToken) },
                 { "v2.core.account_token", typeof(V2.Core.AccountToken) },
+                { "v2.core.claimable_sandbox", typeof(V2.Core.ClaimableSandbox) },
                 { "v2.core.event", typeof(V2.Core.Event) },
                 { "v2.core.event_destination", typeof(V2.Core.EventDestination) },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },
@@ -375,6 +376,7 @@ namespace Stripe
                     "v1.checkout.session.completed", typeof(
                     Events.V1CheckoutSessionCompletedEvent)
                 },
+                { "v1.checkout.session.created", typeof(Events.V1CheckoutSessionCreatedEvent) },
                 { "v1.checkout.session.expired", typeof(Events.V1CheckoutSessionExpiredEvent) },
                 { "v1.climate.order.canceled", typeof(Events.V1ClimateOrderCanceledEvent) },
                 { "v1.climate.order.created", typeof(Events.V1ClimateOrderCreatedEvent) },
@@ -696,10 +698,6 @@ namespace Stripe
                     Events.V1IssuingAuthorizationCreatedEvent)
                 },
                 {
-                    "v1.issuing_authorization.request", typeof(
-                    Events.V1IssuingAuthorizationRequestEvent)
-                },
-                {
                     "v1.issuing_authorization.updated", typeof(
                     Events.V1IssuingAuthorizationUpdatedEvent)
                 },
@@ -782,7 +780,9 @@ namespace Stripe
                     Events.V1PaymentIntentRequiresActionEvent)
                 },
                 { "v1.payment_intent.succeeded", typeof(Events.V1PaymentIntentSucceededEvent) },
+                { "v1.payment_link.activated", typeof(Events.V1PaymentLinkActivatedEvent) },
                 { "v1.payment_link.created", typeof(Events.V1PaymentLinkCreatedEvent) },
+                { "v1.payment_link.deactivated", typeof(Events.V1PaymentLinkDeactivatedEvent) },
                 { "v1.payment_link.updated", typeof(Events.V1PaymentLinkUpdatedEvent) },
                 { "v1.payment_method.attached", typeof(Events.V1PaymentMethodAttachedEvent) },
                 {
@@ -1033,6 +1033,26 @@ namespace Stripe
                 {
                     "v2.core.account_person.updated", typeof(
                     Events.V2CoreAccountPersonUpdatedEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.claimed", typeof(
+                    Events.V2CoreClaimableSandboxClaimedEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.created", typeof(
+                    Events.V2CoreClaimableSandboxCreatedEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.expired", typeof(
+                    Events.V2CoreClaimableSandboxExpiredEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.expiring", typeof(
+                    Events.V2CoreClaimableSandboxExpiringEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.updated", typeof(
+                    Events.V2CoreClaimableSandboxUpdatedEvent)
                 },
                 {
                     "v2.core.event_destination.ping", typeof(
@@ -1323,6 +1343,10 @@ namespace Stripe
                 {
                     "v1.checkout.session.completed", typeof(
                     Events.V1CheckoutSessionCompletedEventNotification)
+                },
+                {
+                    "v1.checkout.session.created", typeof(
+                    Events.V1CheckoutSessionCreatedEventNotification)
                 },
                 {
                     "v1.checkout.session.expired", typeof(
@@ -1708,10 +1732,6 @@ namespace Stripe
                     Events.V1IssuingAuthorizationCreatedEventNotification)
                 },
                 {
-                    "v1.issuing_authorization.request", typeof(
-                    Events.V1IssuingAuthorizationRequestEventNotification)
-                },
-                {
                     "v1.issuing_authorization.updated", typeof(
                     Events.V1IssuingAuthorizationUpdatedEventNotification)
                 },
@@ -1825,8 +1845,16 @@ namespace Stripe
                     Events.V1PaymentIntentSucceededEventNotification)
                 },
                 {
+                    "v1.payment_link.activated", typeof(
+                    Events.V1PaymentLinkActivatedEventNotification)
+                },
+                {
                     "v1.payment_link.created", typeof(
                     Events.V1PaymentLinkCreatedEventNotification)
+                },
+                {
+                    "v1.payment_link.deactivated", typeof(
+                    Events.V1PaymentLinkDeactivatedEventNotification)
                 },
                 {
                     "v1.payment_link.updated", typeof(
@@ -2129,6 +2157,26 @@ namespace Stripe
                 {
                     "v2.core.account_person.updated", typeof(
                     Events.V2CoreAccountPersonUpdatedEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.claimed", typeof(
+                    Events.V2CoreClaimableSandboxClaimedEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.created", typeof(
+                    Events.V2CoreClaimableSandboxCreatedEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.expired", typeof(
+                    Events.V2CoreClaimableSandboxExpiredEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.expiring", typeof(
+                    Events.V2CoreClaimableSandboxExpiringEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.updated", typeof(
+                    Events.V2CoreClaimableSandboxUpdatedEventNotification)
                 },
                 {
                     "v2.core.event_destination.ping", typeof(

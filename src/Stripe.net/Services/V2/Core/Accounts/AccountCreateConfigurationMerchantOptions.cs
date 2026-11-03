@@ -53,6 +53,13 @@ namespace Stripe.V2.Core
         public string Mcc { get; set; }
 
         /// <summary>
+        /// Settings for PayPay payments.
+        /// </summary>
+        [JsonProperty("paypay_payments")]
+        [STJS.JsonPropertyName("paypay_payments")]
+        public AccountCreateConfigurationMerchantPaypayPaymentsOptions PaypayPayments { get; set; }
+
+        /// <summary>
         /// Settings for the default text that appears on statements for language variations.
         /// </summary>
         [JsonProperty("script_statement_descriptor")]
