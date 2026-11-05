@@ -88,17 +88,17 @@ namespace Stripe.Infrastructure
                         $"for interface {typeToConvert.Name}.");
                 }
 
+                if (discriminatorProp.ValueKind != JsonValueKind.String)
+                {
+                    throw new JsonException(
+                        $"Discriminator value must be a string.  Received JSON contains " +
+                        $"{discriminatorProp} ({discriminatorProp.ValueKind}).");
+                }
+
                 var discriminatorValue = discriminatorProp.GetString();
                 if (discriminatorValue != null && this.metadata.VariantMap.TryGetValue(discriminatorValue, out var variantType))
                 {
                     return (T)JsonSerializer.Deserialize(jsonElement.GetRawText(), variantType, options);
-                }
-
-                if (discriminatorProp.ValueKind != JsonValueKind.String)
-                {
-                    throw new JsonException(
-                        $"Unknown discriminator value '{discriminatorValue}' for discriminated union {typeToConvert.Name}. " +
-                        $"Known values: {string.Join(", ", this.metadata.VariantMap.Keys)}.");
                 }
 
                 if (typeToConvert.IsInterface || typeToConvert.IsAbstract || typeToConvert.GetConstructor(Type.EmptyTypes) == null)

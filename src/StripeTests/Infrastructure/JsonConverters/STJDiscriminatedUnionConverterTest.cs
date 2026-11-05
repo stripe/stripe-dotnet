@@ -75,8 +75,7 @@ namespace StripeTests
         public void DeserializeNonStringDiscriminatorThrows(string discriminator)
         {
             var json = "{\"model\":" + discriminator + "}";
-            var exception = Assert.Throws<JsonException>(() => JsonSerializer.Deserialize<TestColor>(json, Options));
-            Assert.IsType<System.InvalidOperationException>(exception.InnerException);
+            Assert.Throws<JsonException>(() => JsonSerializer.Deserialize<TestColor>(json, Options));
         }
 
         [Theory]
