@@ -3,6 +3,7 @@ title: Update generated code
 pr_url: https://github.com/stripe/stripe-dotnet/pull/3489
 semver_level: minor
 is_stripe_api_change: true
+released_in_version: 53.2.0-alpha.2
 ---
 
 * Add support for new resources `Tax.Certificate`, `Tax.FormCorrection`, `V2.Extend.ObjectDefinitionVersion`, and `V2.Extend.ObjectDefinition`
