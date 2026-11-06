@@ -1,5 +1,8 @@
 namespace StripeTests
 {
+    using System.Net;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
     using System.Text.Json;
     using System.Threading.Tasks;
     using Stripe;
@@ -10,6 +13,62 @@ namespace StripeTests
         public StripeExceptionTest(StripeMockFixture stripeMockFixture)
             : base(stripeMockFixture)
         {
+        }
+
+        [Fact]
+        public void Message_PrependsRequestId_WhenResponseHasRequestId()
+        {
+            var response = new StripeResponse(HttpStatusCode.PaymentRequired, BuildHeaders("req_123"), "{}");
+            var exception = new StripeException("card declined") { StripeResponse = response };
+
+            Assert.Equal("[req_123] card declined", exception.Message);
+            Assert.Contains("[req_123] card declined", exception.ToString());
+        }
+
+        [Fact]
+        public void Message_IsUnchanged_WhenResponseHasNoRequestId()
+        {
+            var response = new StripeResponse(HttpStatusCode.PaymentRequired, null, "{}");
+            var exception = new StripeException("card declined") { StripeResponse = response };
+
+            Assert.Equal("card declined", exception.Message);
+        }
+
+        [Fact]
+        public void Message_IsUnchanged_WhenThereIsNoResponse()
+        {
+            var exception = new StripeException("card declined");
+
+            Assert.Equal("card declined", exception.Message);
+        }
+
+        [Fact]
+        public void Message_DoesNotDuplicatePrefix_OnRepeatedReads()
+        {
+            var response = new StripeResponse(HttpStatusCode.PaymentRequired, BuildHeaders("req_123"), "{}");
+            var exception = new StripeException("card declined") { StripeResponse = response };
+
+            Assert.Equal(exception.Message, exception.Message);
+            Assert.Equal("[req_123] card declined", exception.Message);
+        }
+
+        [Fact]
+        public void Message_StructuredErrorText_IsUnaffected()
+        {
+            var httpStatusCode = HttpStatusCode.PaymentRequired;
+            var stripeError = new StripeError { Type = "card_error", Message = "card declined" };
+            var response = new StripeResponse(httpStatusCode, BuildHeaders("req_123"), "{}");
+            var exception = new StripeException(httpStatusCode, stripeError) { StripeResponse = response };
+
+            Assert.Equal("[req_123] card declined", exception.Message);
+            Assert.Equal("card declined", exception.StripeError.Message);
+        }
+
+        private static HttpResponseHeaders BuildHeaders(string requestId)
+        {
+            var message = new HttpResponseMessage();
+            message.Headers.Add("Request-Id", requestId);
+            return message.Headers;
         }
 
         [Fact]
