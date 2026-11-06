@@ -231,7 +231,9 @@ namespace Stripe
                 { "tax.association", typeof(Tax.Association) },
                 { "tax.calculation", typeof(Tax.Calculation) },
                 { "tax.calculation_line_item", typeof(Tax.CalculationLineItem) },
+                { "tax.certificate", typeof(Tax.Certificate) },
                 { "tax.form", typeof(Tax.Form) },
+                { "tax.form_correction", typeof(Tax.FormCorrection) },
                 { "tax.location", typeof(Tax.Location) },
                 { "tax.registration", typeof(Tax.Registration) },
                 { "tax.settings", typeof(Tax.Settings) },
@@ -362,6 +364,11 @@ namespace Stripe
                 { "v2.data.reporting.query_run", typeof(V2.Data.Reporting.QueryRun) },
                 { "v2.data.schema", typeof(V2.Data.Schema) },
                 { "v2.data.search_result_list", typeof(V2.Data.SearchResultList) },
+                { "v2.extend.object_definition", typeof(V2.Extend.ObjectDefinition) },
+                {
+                    "v2.extend.object_definition_version", typeof(
+                    V2.Extend.ObjectDefinitionVersion)
+                },
                 { "v2.extend.workflow", typeof(V2.Extend.Workflow) },
                 { "v2.extend.workflow_run", typeof(V2.Extend.WorkflowRun) },
                 { "v2.iam.activity_log", typeof(V2.Iam.ActivityLog) },
@@ -1736,6 +1743,14 @@ namespace Stripe
                 {
                     "v2.extend.extension_run.failed", typeof(
                     Events.V2ExtendExtensionRunFailedEvent)
+                },
+                {
+                    "v2.extend.object_definition.created", typeof(
+                    Events.V2ExtendObjectDefinitionCreatedEvent)
+                },
+                {
+                    "v2.extend.object_definition_version.created", typeof(
+                    Events.V2ExtendObjectDefinitionVersionCreatedEvent)
                 },
                 {
                     "v2.extend.workflow_run.failed", typeof(
@@ -3704,6 +3719,14 @@ namespace Stripe
                 {
                     "v2.extend.extension_run.failed", typeof(
                     Events.V2ExtendExtensionRunFailedEventNotification)
+                },
+                {
+                    "v2.extend.object_definition.created", typeof(
+                    Events.V2ExtendObjectDefinitionCreatedEventNotification)
+                },
+                {
+                    "v2.extend.object_definition_version.created", typeof(
+                    Events.V2ExtendObjectDefinitionVersionCreatedEventNotification)
                 },
                 {
                     "v2.extend.workflow_run.failed", typeof(

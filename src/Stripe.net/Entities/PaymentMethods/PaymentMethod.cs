@@ -38,6 +38,10 @@ namespace Stripe
         [STJS.JsonPropertyName("acss_debit")]
         public PaymentMethodAcssDebit AcssDebit { get; set; }
 
+        [JsonProperty("aeon_pay")]
+        [STJS.JsonPropertyName("aeon_pay")]
+        public PaymentMethodAeonPay AeonPay { get; set; }
+
         [JsonProperty("affirm")]
         [STJS.JsonPropertyName("affirm")]
         public PaymentMethodAffirm Affirm { get; set; }
@@ -74,6 +78,10 @@ namespace Stripe
         [JsonProperty("au_becs_debit")]
         [STJS.JsonPropertyName("au_becs_debit")]
         public PaymentMethodAuBecsDebit AuBecsDebit { get; set; }
+
+        [JsonProperty("au_pay")]
+        [STJS.JsonPropertyName("au_pay")]
+        public PaymentMethodAuPay AuPay { get; set; }
 
         [JsonProperty("bacs_debit")]
         [STJS.JsonPropertyName("bacs_debit")]
@@ -181,6 +189,10 @@ namespace Stripe
         [STJS.JsonPropertyName("customer_balance")]
         public PaymentMethodCustomerBalance CustomerBalance { get; set; }
 
+        [JsonProperty("dbarai")]
+        [STJS.JsonPropertyName("dbarai")]
+        public PaymentMethodDbarai Dbarai { get; set; }
+
         [JsonProperty("eps")]
         [STJS.JsonPropertyName("eps")]
         public PaymentMethodEps Eps { get; set; }
@@ -260,6 +272,10 @@ namespace Stripe
         [JsonProperty("mb_way")]
         [STJS.JsonPropertyName("mb_way")]
         public PaymentMethodMbWay MbWay { get; set; }
+
+        [JsonProperty("merpay")]
+        [STJS.JsonPropertyName("merpay")]
+        public PaymentMethodMerpay Merpay { get; set; }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
@@ -426,14 +442,15 @@ namespace Stripe
         /// The type of the PaymentMethod. An additional hash is included on the PaymentMethod with
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
-        /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
-        /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
-        /// <c>bancontact</c>, <c>billie</c>, <c>bizum</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
-        /// <c>card_present</c>, <c>carecredit</c>, <c>cashapp</c>, <c>crypto</c>, <c>custom</c>,
-        /// <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>getflex</c>, <c>gift_card</c>,
-        /// <c>giropay</c>, <c>gopay</c>, <c>grabpay</c>, <c>id_bank_transfer</c>, <c>ideal</c>,
-        /// <c>interac_present</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>,
-        /// <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>,
+        /// One of: <c>acss_debit</c>, <c>aeon_pay</c>, <c>affirm</c>, <c>afterpay_clearpay</c>,
+        /// <c>alipay</c>, <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>au_pay</c>,
+        /// <c>bacs_debit</c>, <c>bancontact</c>, <c>billie</c>, <c>bizum</c>, <c>blik</c>,
+        /// <c>boleto</c>, <c>card</c>, <c>card_present</c>, <c>carecredit</c>, <c>cashapp</c>,
+        /// <c>crypto</c>, <c>custom</c>, <c>customer_balance</c>, <c>dbarai</c>, <c>eps</c>,
+        /// <c>fpx</c>, <c>getflex</c>, <c>gift_card</c>, <c>giropay</c>, <c>gopay</c>,
+        /// <c>grabpay</c>, <c>id_bank_transfer</c>, <c>ideal</c>, <c>interac_present</c>,
+        /// <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>, <c>link</c>,
+        /// <c>mb_way</c>, <c>merpay</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>,
         /// <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>,
         /// <c>paynow</c>, <c>paypal</c>, <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>qris</c>, <c>rakuten_pay</c>, <c>rechnung</c>, <c>revolut_pay</c>,

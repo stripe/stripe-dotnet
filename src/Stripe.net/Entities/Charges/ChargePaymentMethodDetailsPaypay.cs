@@ -9,6 +9,14 @@ namespace Stripe
     public class ChargePaymentMethodDetailsPaypay : StripeEntity<ChargePaymentMethodDetailsPaypay>
     {
         /// <summary>
+        /// Uniquely identifies this particular PayPay account. You can use this attribute to check
+        /// whether two PayPay accounts are the same.
+        /// </summary>
+        [JsonProperty("fingerprint")]
+        [STJS.JsonPropertyName("fingerprint")]
+        public string Fingerprint { get; set; }
+
+        /// <summary>
         /// ID of the multi-use Mandate created by, or used to make, this PayPay payment.
         /// </summary>
         [JsonProperty("mandate")]

@@ -14,5 +14,16 @@ namespace Stripe
         [JsonProperty("state")]
         [STJS.JsonPropertyName("state")]
         public string State { get; set; }
+
+        /// <summary>
+        /// The group of tax codes this exemption applies to. Exemptions created without one have
+        /// <c>all</c>.
+        /// One of: <c>all</c>, or <c>saas</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("tax_code_group")]
+        [STJS.JsonPropertyName("tax_code_group")]
+        public string TaxCodeGroup { get; set; }
     }
 }

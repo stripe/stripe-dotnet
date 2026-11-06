@@ -99,6 +99,17 @@ namespace Stripe
         public SubscriptionBillingCycleAnchorConfigOptions BillingCycleAnchorConfig { get; set; }
 
         /// <summary>
+        /// The Billing Group which controls the timing of recurring invoice generation for this
+        /// subscription. If unset, the subscription will bill according to its own configured
+        /// schedule and create its own invoices. If set, this subscription will be billed by the
+        /// cadence instead, potentially sharing invoices with the other subscriptions linked to
+        /// that Cadence.
+        /// </summary>
+        [JsonProperty("billing_group")]
+        [STJS.JsonPropertyName("billing_group")]
+        public string BillingGroup { get; set; }
+
+        /// <summary>
         /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
         /// </summary>
         [JsonProperty("billing_mode")]

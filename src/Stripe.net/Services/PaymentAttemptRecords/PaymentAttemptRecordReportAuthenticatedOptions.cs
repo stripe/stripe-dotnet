@@ -39,5 +39,12 @@ namespace Stripe
                 this.SetTracker.Track();
             }
         }
+
+        /// <summary>
+        /// Information about the Payment Method debited for this payment.
+        /// </summary>
+        [JsonProperty("payment_method_details")]
+        [STJS.JsonPropertyName("payment_method_details")]
+        public PaymentAttemptRecordPaymentMethodDetailsOptions PaymentMethodDetails { get; set; }
     }
 }

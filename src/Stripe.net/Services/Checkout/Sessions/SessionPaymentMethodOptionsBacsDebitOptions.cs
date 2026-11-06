@@ -52,7 +52,7 @@ namespace Stripe.Checkout
         public string TargetDate { get; set; }
 
         /// <summary>
-        /// One of: <c>automatic</c>, or <c>payer_name_verification</c>.
+        /// One of: <c>automatic</c>, <c>instant</c>, or <c>payer_name_verification</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

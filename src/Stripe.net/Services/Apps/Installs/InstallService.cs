@@ -33,9 +33,10 @@ namespace Stripe.Apps
         /// public and testing installs are made from the Dashboard. An app developer acting on a
         /// connected account through <c>Stripe-Account</c> installs or reinstalls its app there,
         /// and an embedding platform can do the same once the app’s developer approves its request
-        /// to embed the app. For a private app, creating an install installs the newest completed
-        /// upload; when that version is already installed with nothing pending, the existing
-        /// install is returned.</p>.
+        /// to embed the app and the platform has accepted the Embedding Platform Terms and
+        /// Conditions in the Dashboard. For a private app, creating an install installs the newest
+        /// completed upload; when that version is already installed with nothing pending, the
+        /// existing install is returned.</p>.
         /// </summary>
         public virtual Install Create(InstallCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -47,9 +48,10 @@ namespace Stripe.Apps
         /// public and testing installs are made from the Dashboard. An app developer acting on a
         /// connected account through <c>Stripe-Account</c> installs or reinstalls its app there,
         /// and an embedding platform can do the same once the app’s developer approves its request
-        /// to embed the app. For a private app, creating an install installs the newest completed
-        /// upload; when that version is already installed with nothing pending, the existing
-        /// install is returned.</p>.
+        /// to embed the app and the platform has accepted the Embedding Platform Terms and
+        /// Conditions in the Dashboard. For a private app, creating an install installs the newest
+        /// completed upload; when that version is already installed with nothing pending, the
+        /// existing install is returned.</p>.
         /// </summary>
         public virtual Task<Install> CreateAsync(InstallCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

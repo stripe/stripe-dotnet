@@ -52,8 +52,8 @@ namespace Stripe.Checkout
         /// <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>scalapay</c>,
         /// <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>,
-        /// <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
-        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>, <c>tamara</c>, <c>twint</c>,
+        /// <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -164,6 +164,15 @@ namespace Stripe.Checkout
         [JsonProperty("custom_fields")]
         [STJS.JsonPropertyName("custom_fields")]
         public List<SessionCustomFieldOptions> CustomFields { get; set; }
+
+        /// <summary>
+        /// Options keyed by custom payment method type IDs (e.g., <c>cpmt_123</c>). Each ID must
+        /// belong to your account and be included in <c>custom_payment_method_types</c>. Only
+        /// available in <c>payment</c> mode.
+        /// </summary>
+        [JsonProperty("custom_payment_method_options")]
+        [STJS.JsonPropertyName("custom_payment_method_options")]
+        public Dictionary<string, SessionCustomPaymentMethodOptionsOptions> CustomPaymentMethodOptions { get; set; }
 
         /// <summary>
         /// A list of custom payment methods (e.g., <c>cpmt_123</c>) this Checkout Session can
@@ -288,8 +297,8 @@ namespace Stripe.Checkout
         /// <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>scalapay</c>,
         /// <c>sepa_debit</c>, <c>sequra</c>, <c>shopeepay</c>, <c>sofort</c>,
-        /// <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
-        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>stripe_balance</c>, <c>sunbit</c>, <c>swish</c>, <c>tamara</c>, <c>twint</c>,
+        /// <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

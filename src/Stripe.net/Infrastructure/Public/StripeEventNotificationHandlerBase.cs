@@ -439,6 +439,8 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunSucceededEventNotification>> v2DataReportingQueryRunSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataReportingQueryRunUpdatedEventNotification>> v2DataReportingQueryRunUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ExtendExtensionRunFailedEventNotification>> v2ExtendExtensionRunFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ExtendObjectDefinitionCreatedEventNotification>> v2ExtendObjectDefinitionCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ExtendObjectDefinitionVersionCreatedEventNotification>> v2ExtendObjectDefinitionVersionCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ExtendWorkflowRunFailedEventNotification>> v2ExtendWorkflowRunFailed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ExtendWorkflowRunStartedEventNotification>> v2ExtendWorkflowRunStarted;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ExtendWorkflowRunSucceededEventNotification>> v2ExtendWorkflowRunSucceeded;
@@ -3091,6 +3093,18 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ExtendObjectDefinitionCreatedEventNotification>> V2ExtendObjectDefinitionCreated
+        {
+            add { this.AddEventHandler(ref this.v2ExtendObjectDefinitionCreated, value, "v2.extend.object_definition.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ExtendObjectDefinitionVersionCreatedEventNotification>> V2ExtendObjectDefinitionVersionCreated
+        {
+            add { this.AddEventHandler(ref this.v2ExtendObjectDefinitionVersionCreated, value, "v2.extend.object_definition_version.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ExtendWorkflowRunFailedEventNotification>> V2ExtendWorkflowRunFailed
         {
             add { this.AddEventHandler(ref this.v2ExtendWorkflowRunFailed, value, "v2.extend.workflow_run.failed"); }
@@ -5709,6 +5723,14 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2ExtendExtensionRunFailedEventNotification)
                 {
                     this.v2ExtendExtensionRunFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2ExtendExtensionRunFailedEventNotification>((Stripe.Events.V2ExtendExtensionRunFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2ExtendObjectDefinitionCreatedEventNotification)
+                {
+                    this.v2ExtendObjectDefinitionCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2ExtendObjectDefinitionCreatedEventNotification>((Stripe.Events.V2ExtendObjectDefinitionCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2ExtendObjectDefinitionVersionCreatedEventNotification)
+                {
+                    this.v2ExtendObjectDefinitionVersionCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2ExtendObjectDefinitionVersionCreatedEventNotification>((Stripe.Events.V2ExtendObjectDefinitionVersionCreatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2ExtendWorkflowRunFailedEventNotification)
                 {

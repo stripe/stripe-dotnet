@@ -106,6 +106,10 @@ namespace Stripe
         [STJS.JsonPropertyName("fingerprint")]
         public string Fingerprint { get; set; }
 
+        [JsonProperty("fleet")]
+        [STJS.JsonPropertyName("fleet")]
+        public PaymentMethodCardGeneratedFromPaymentMethodDetailsCardPresentFleet Fleet { get; set; }
+
         /// <summary>
         /// Card funding type. Can be <c>credit</c>, <c>debit</c>, <c>prepaid</c>, or
         /// <c>unknown</c>.

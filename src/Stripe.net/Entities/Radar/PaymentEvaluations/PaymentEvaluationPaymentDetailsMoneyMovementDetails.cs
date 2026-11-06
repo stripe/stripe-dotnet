@@ -17,13 +17,20 @@ namespace Stripe.Radar
 
         /// <summary>
         /// Describes the type of money movement.
-        /// One of: <c>card</c>, or <c>us_bank_account</c>.
+        /// One of: <c>card</c>, <c>sepa_debit</c>, or <c>us_bank_account</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("money_movement_type")]
         [STJS.JsonPropertyName("money_movement_type")]
         public string MoneyMovementType { get; set; }
+
+        /// <summary>
+        /// Describes SEPA debit money movement details.
+        /// </summary>
+        [JsonProperty("sepa_debit")]
+        [STJS.JsonPropertyName("sepa_debit")]
+        public PaymentEvaluationPaymentDetailsMoneyMovementDetailsSepaDebit SepaDebit { get; set; }
 
         /// <summary>
         /// Describes US bank account money movement details.

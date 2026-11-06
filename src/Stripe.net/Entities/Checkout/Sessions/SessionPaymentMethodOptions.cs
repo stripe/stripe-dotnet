@@ -180,6 +180,10 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("sofort")]
         public SessionPaymentMethodOptionsSofort Sofort { get; set; }
 
+        [JsonProperty("stripe_balance")]
+        [STJS.JsonPropertyName("stripe_balance")]
+        public SessionPaymentMethodOptionsStripeBalance StripeBalance { get; set; }
+
         [JsonProperty("sunbit")]
         [STJS.JsonPropertyName("sunbit")]
         public SessionPaymentMethodOptionsSunbit Sunbit { get; set; }

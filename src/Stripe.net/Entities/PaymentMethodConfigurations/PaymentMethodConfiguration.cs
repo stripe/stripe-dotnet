@@ -292,6 +292,10 @@ namespace Stripe
         [STJS.JsonPropertyName("qris")]
         public PaymentMethodConfigurationQris Qris { get; set; }
 
+        [JsonProperty("rakuten_pay")]
+        [STJS.JsonPropertyName("rakuten_pay")]
+        public PaymentMethodConfigurationRakutenPay RakutenPay { get; set; }
+
         [JsonProperty("revolut_pay")]
         [STJS.JsonPropertyName("revolut_pay")]
         public PaymentMethodConfigurationRevolutPay RevolutPay { get; set; }

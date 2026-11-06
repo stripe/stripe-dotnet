@@ -73,6 +73,24 @@ namespace Stripe
 
         /// <summary>
         /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/bills/">Bills</a>
+        /// embedded component.
+        /// </summary>
+        [JsonProperty("bills")]
+        [STJS.JsonPropertyName("bills")]
+        public AccountSessionComponentsBillsOptions Bills { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/business-profile-management/">Business
+        /// profile management</a> embedded component.
+        /// </summary>
+        [JsonProperty("business_profile_management")]
+        [STJS.JsonPropertyName("business_profile_management")]
+        public AccountSessionComponentsBusinessProfileManagementOptions BusinessProfileManagement { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
         /// href="https://stripe.com/connect/supported-embedded-components/capital-financing/">Capital
         /// financing</a> embedded component.
         /// </summary>
@@ -163,12 +181,39 @@ namespace Stripe
 
         /// <summary>
         /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/financial-account-rewards/">financial
+        /// account rewards</a> embedded component.
+        /// </summary>
+        [JsonProperty("financial_account_rewards")]
+        [STJS.JsonPropertyName("financial_account_rewards")]
+        public AccountSessionComponentsFinancialAccountRewardsOptions FinancialAccountRewards { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
         /// href="https://stripe.com/connect/supported-embedded-components/financial-account-transactions/">financial
         /// account transactions</a> embedded component.
         /// </summary>
         [JsonProperty("financial_account_transactions")]
         [STJS.JsonPropertyName("financial_account_transactions")]
         public AccountSessionComponentsFinancialAccountTransactionsOptions FinancialAccountTransactions { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/financial-accounts/">financial
+        /// accounts</a> embedded component.
+        /// </summary>
+        [JsonProperty("financial_accounts")]
+        [STJS.JsonPropertyName("financial_accounts")]
+        public AccountSessionComponentsFinancialAccountsOptions FinancialAccounts { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/financial-accounts-transactions/">financial
+        /// accounts transactions</a> embedded component.
+        /// </summary>
+        [JsonProperty("financial_accounts_transactions")]
+        [STJS.JsonPropertyName("financial_accounts_transactions")]
+        public AccountSessionComponentsFinancialAccountsTransactionsOptions FinancialAccountsTransactions { get; set; }
 
         /// <summary>
         /// Configuration for the <a
@@ -196,6 +241,15 @@ namespace Stripe
         [JsonProperty("issuing_cards_list")]
         [STJS.JsonPropertyName("issuing_cards_list")]
         public AccountSessionComponentsIssuingCardsListOptions IssuingCardsList { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/network-cost-passthrough-report/">network
+        /// cost passthrough report</a> embedded component.
+        /// </summary>
+        [JsonProperty("network_cost_passthrough_report")]
+        [STJS.JsonPropertyName("network_cost_passthrough_report")]
+        public AccountSessionComponentsNetworkCostPassthroughReportOptions NetworkCostPassthroughReport { get; set; }
 
         /// <summary>
         /// Configuration for the <a
@@ -295,6 +349,15 @@ namespace Stripe
         [JsonProperty("recipients")]
         [STJS.JsonPropertyName("recipients")]
         public AccountSessionComponentsRecipientsOptions Recipients { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/recipients-list/">recipients
+        /// list</a> embedded component.
+        /// </summary>
+        [JsonProperty("recipients_list")]
+        [STJS.JsonPropertyName("recipients_list")]
+        public AccountSessionComponentsRecipientsListOptions RecipientsList { get; set; }
 
         /// <summary>
         /// Configuration for the <a

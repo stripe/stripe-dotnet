@@ -28,6 +28,24 @@ namespace Stripe.Tax
         }
 
         /// <summary>
+        /// <p>Creates a correction for a filed tax form. Supply either payee details or numerical
+        /// values for the tax form type. Created correction forms are not filed automatically.</p>.
+        /// </summary>
+        public virtual FormCorrection Create(string id, FormCreateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request<FormCorrection>(BaseAddress.Api, HttpMethod.Post, $"/v1/tax/forms/{WebUtility.UrlEncode(id)}/corrections", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Creates a correction for a filed tax form. Supply either payee details or numerical
+        /// values for the tax form type. Created correction forms are not filed automatically.</p>.
+        /// </summary>
+        public virtual Task<FormCorrection> CreateAsync(string id, FormCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<FormCorrection>(BaseAddress.Api, HttpMethod.Post, $"/v1/tax/forms/{WebUtility.UrlEncode(id)}/corrections", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Retrieves the details of a tax form that has previously been created. Supply the
         /// unique tax form ID that was returned from your previous request, and Stripe will return
         /// the corresponding tax form information.</p>.
