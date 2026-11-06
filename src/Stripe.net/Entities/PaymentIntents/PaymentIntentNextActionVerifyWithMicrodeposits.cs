@@ -10,7 +10,8 @@ namespace Stripe
     public class PaymentIntentNextActionVerifyWithMicrodeposits : StripeEntity<PaymentIntentNextActionVerifyWithMicrodeposits>
     {
         /// <summary>
-        /// The timestamp when the microdeposits are expected to land.
+        /// The timestamp when the microdeposits are expected to land. Null for instant
+        /// microdeposits.
         /// </summary>
         [JsonProperty("arrival_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

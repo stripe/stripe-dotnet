@@ -16,6 +16,13 @@ namespace Stripe.Radar
         public PaymentEvaluationSignalsBankInitiatedReturn BankInitiatedReturn { get; set; }
 
         /// <summary>
+        /// The likelihood that this <c>PaymentEvaluation</c> is part of a card testing attack.
+        /// </summary>
+        [JsonProperty("card_testing")]
+        [STJS.JsonPropertyName("card_testing")]
+        public PaymentEvaluationSignalsCardTesting CardTesting { get; set; }
+
+        /// <summary>
         /// The likelihood that this <c>PaymentEvaluation</c> results in an early fraud warning.
         /// </summary>
         [JsonProperty("early_fraud_warning")]

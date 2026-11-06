@@ -21,5 +21,12 @@ namespace Stripe
         [JsonProperty("network_decline_code")]
         [STJS.JsonPropertyName("network_decline_code")]
         public string NetworkDeclineCode { get; set; }
+
+        /// <summary>
+        /// Populated if this transaction used 3D Secure authentication.
+        /// </summary>
+        [JsonProperty("three_d_secure")]
+        [STJS.JsonPropertyName("three_d_secure")]
+        public PaymentAttemptRecordPaymentMethodDetailsCardThreeDSecureOptions ThreeDSecure { get; set; }
     }
 }

@@ -44,6 +44,10 @@ namespace Stripe
         [STJS.JsonPropertyName("fleet")]
         public PaymentIntentPaymentMethodOptionsCardPresentFleet Fleet { get; set; }
 
+        [JsonProperty("payment_details")]
+        [STJS.JsonPropertyName("payment_details")]
+        public PaymentIntentPaymentMethodOptionsCardPresentPaymentDetails PaymentDetails { get; set; }
+
         /// <summary>
         /// Request ability to capture this payment beyond the standard <a
         /// href="https://docs.stripe.com/terminal/features/extended-authorizations#authorization-validity">authorization

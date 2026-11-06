@@ -65,6 +65,13 @@ namespace Stripe.V2.Core
         public AccountSessionComponentsBills Bills { get; set; }
 
         /// <summary>
+        /// Settings for the Business Profile Management embedded component.
+        /// </summary>
+        [JsonProperty("business_profile_management")]
+        [STJS.JsonPropertyName("business_profile_management")]
+        public AccountSessionComponentsBusinessProfileManagement BusinessProfileManagement { get; set; }
+
+        /// <summary>
         /// Settings for the Capital Financing embedded component.
         /// </summary>
         [JsonProperty("capital_financing")]

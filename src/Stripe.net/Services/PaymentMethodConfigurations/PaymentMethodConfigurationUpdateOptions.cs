@@ -517,6 +517,16 @@ namespace Stripe
         public PaymentMethodConfigurationQrisOptions Qris { get; set; }
 
         /// <summary>
+        /// Rakuten Pay is a single-use payment method that requires customers to authenticate their
+        /// payment. Customers pay by being redirected from your website or app, authorizing the
+        /// payment with Rakuten Pay, then returning to your website or app. You get immediate
+        /// notification of whether the payment succeeded or failed.
+        /// </summary>
+        [JsonProperty("rakuten_pay")]
+        [STJS.JsonPropertyName("rakuten_pay")]
+        public PaymentMethodConfigurationRakutenPayOptions RakutenPay { get; set; }
+
+        /// <summary>
         /// Revolut Pay, developed by Revolut, a global finance app, is a digital wallet payment
         /// method. Revolut Pay uses the customer’s stored balance or cards to fund the payment, and
         /// offers the option for non-Revolut customers to save their details after their first

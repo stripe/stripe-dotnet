@@ -65,6 +65,10 @@ namespace Stripe
         [STJS.JsonPropertyName("network")]
         public string Network { get; set; }
 
+        [JsonProperty("payment_details")]
+        [STJS.JsonPropertyName("payment_details")]
+        public PaymentIntentPaymentMethodOptionsCardPaymentDetails PaymentDetails { get; set; }
+
         /// <summary>
         /// Indicates whether Stripe may synchronously request a real-time card account update for
         /// this confirmation. <c>if_available</c> allows the update; <c>never</c> opts out.

@@ -87,6 +87,13 @@ namespace Stripe
         public string PaymentIntent { get; set; }
 
         /// <summary>
+        /// The ID of a PaymentMethod that will receive the refund.
+        /// </summary>
+        [JsonProperty("payment_method")]
+        [STJS.JsonPropertyName("payment_method")]
+        public string PaymentMethod { get; set; }
+
+        /// <summary>
         /// Used to create the PaymentMethod that will receive the refund.
         /// </summary>
         [JsonProperty("payment_method_data")]

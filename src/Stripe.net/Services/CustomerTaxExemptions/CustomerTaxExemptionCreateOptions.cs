@@ -46,6 +46,24 @@ namespace Stripe
         public string ExpirationDate { get; set; }
 
         /// <summary>
+        /// The reason the customer is exempt. Required when <c>us.tax_code_group</c> is
+        /// <c>saas</c>.
+        /// One of: <c>direct_pay_permit</c>, <c>legacy_contract</c>, or <c>other</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("reason")]
+        [STJS.JsonPropertyName("reason")]
+        public string Reason { get; set; }
+
+        /// <summary>
+        /// Additional details about the exemption reason.
+        /// </summary>
+        [JsonProperty("reason_details")]
+        [STJS.JsonPropertyName("reason_details")]
+        public CustomerTaxExemptionReasonDetailsOptions ReasonDetails { get; set; }
+
+        /// <summary>
         /// US-specific exemption details. Required when country is US; must be absent otherwise.
         /// </summary>
         [JsonProperty("us")]

@@ -120,6 +120,13 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
+        /// Summary information about disputes associated with this Payment Attempt Record.
+        /// </summary>
+        [JsonProperty("dispute_details")]
+        [STJS.JsonPropertyName("dispute_details")]
+        public PaymentAttemptRecordDisputeDetails DisputeDetails { get; set; }
+
+        /// <summary>
         /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
         /// test mode, the value is <c>false</c>.
         /// </summary>

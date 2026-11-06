@@ -94,9 +94,9 @@ namespace Stripe.Radar
         public PaymentEvaluationPaymentDetails PaymentDetails { get; set; }
 
         /// <summary>
-        /// Recommended action based on the score of the <c>fraudulent_payment</c> signal. Possible
-        /// values are <c>block</c>, <c>continue</c> and <c>request_three_d_secure</c>.
-        /// One of: <c>block</c>, <c>continue</c>, <c>request_three_d_secure</c>, or <c>reroute</c>.
+        /// Recommended action for this payment based on its evaluated signals and rules.
+        /// One of: <c>block</c>, <c>continue</c>, <c>continue_with_manual_review</c>,
+        /// <c>request_three_d_secure</c>, or <c>reroute</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

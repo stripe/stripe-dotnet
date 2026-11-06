@@ -318,6 +318,13 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// ID of the PaymentRecord associated with the payment that has been refunded.
+        /// </summary>
+        [JsonProperty("payment_record")]
+        [STJS.JsonPropertyName("payment_record")]
+        public string PaymentRecord { get; set; }
+
+        /// <summary>
         /// Provides the reason for why the refund is pending. Possible values are:
         /// <c>processing</c>, <c>insufficient_funds</c>, or <c>charge_pending</c>.
         /// One of: <c>charge_pending</c>, <c>insufficient_funds</c>, or <c>processing</c>.

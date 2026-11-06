@@ -20,6 +20,10 @@ namespace Stripe
         [STJS.JsonPropertyName("acss_debit")]
         public ChargePaymentMethodDetailsAcssDebit AcssDebit { get; set; }
 
+        [JsonProperty("aeon_pay")]
+        [STJS.JsonPropertyName("aeon_pay")]
+        public ChargePaymentMethodDetailsAeonPay AeonPay { get; set; }
+
         [JsonProperty("affirm")]
         [STJS.JsonPropertyName("affirm")]
         public ChargePaymentMethodDetailsAffirm Affirm { get; set; }
@@ -43,6 +47,10 @@ namespace Stripe
         [JsonProperty("au_becs_debit")]
         [STJS.JsonPropertyName("au_becs_debit")]
         public ChargePaymentMethodDetailsAuBecsDebit AuBecsDebit { get; set; }
+
+        [JsonProperty("au_pay")]
+        [STJS.JsonPropertyName("au_pay")]
+        public ChargePaymentMethodDetailsAuPay AuPay { get; set; }
 
         [JsonProperty("bacs_debit")]
         [STJS.JsonPropertyName("bacs_debit")]
@@ -91,6 +99,10 @@ namespace Stripe
         [JsonProperty("customer_balance")]
         [STJS.JsonPropertyName("customer_balance")]
         public ChargePaymentMethodDetailsCustomerBalance CustomerBalance { get; set; }
+
+        [JsonProperty("dbarai")]
+        [STJS.JsonPropertyName("dbarai")]
+        public ChargePaymentMethodDetailsDbarai Dbarai { get; set; }
 
         [JsonProperty("eps")]
         [STJS.JsonPropertyName("eps")]
@@ -155,6 +167,10 @@ namespace Stripe
         [JsonProperty("mb_way")]
         [STJS.JsonPropertyName("mb_way")]
         public ChargePaymentMethodDetailsMbWay MbWay { get; set; }
+
+        [JsonProperty("merpay")]
+        [STJS.JsonPropertyName("merpay")]
+        public ChargePaymentMethodDetailsMerpay Merpay { get; set; }
 
         [JsonProperty("mobilepay")]
         [STJS.JsonPropertyName("mobilepay")]

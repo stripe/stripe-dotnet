@@ -7,6 +7,7 @@ namespace Stripe.V2
 
     public class ExtendService : Service
     {
+        private V2.Extend.ObjectDefinitionService objectDefinitions;
         private V2.Extend.WorkflowService workflows;
         private V2.Extend.WorkflowRunService workflowRuns;
 
@@ -19,6 +20,9 @@ namespace Stripe.V2
             : base(client)
         {
         }
+
+        public virtual V2.Extend.ObjectDefinitionService ObjectDefinitions => this.objectDefinitions ??= new V2.Extend.ObjectDefinitionService(
+            this.Requestor);
 
         public virtual V2.Extend.WorkflowService Workflows => this.workflows ??= new V2.Extend.WorkflowService(
             this.Requestor);

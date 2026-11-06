@@ -87,6 +87,23 @@ namespace Stripe
         [STJS.JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
 
+        /// <summary>
+        /// The reason the customer is exempt.
+        /// One of: <c>direct_pay_permit</c>, <c>legacy_contract</c>, or <c>other</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("reason")]
+        [STJS.JsonPropertyName("reason")]
+        public string Reason { get; set; }
+
+        /// <summary>
+        /// Additional details about the exemption reason.
+        /// </summary>
+        [JsonProperty("reason_details")]
+        [STJS.JsonPropertyName("reason_details")]
+        public CustomerTaxExemptionReasonDetails ReasonDetails { get; set; }
+
         [JsonProperty("us")]
         [STJS.JsonPropertyName("us")]
         public CustomerTaxExemptionUs Us { get; set; }

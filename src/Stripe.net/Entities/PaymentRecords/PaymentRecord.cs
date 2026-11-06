@@ -121,6 +121,13 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
+        /// Summary information about disputes associated with this Payment Record.
+        /// </summary>
+        [JsonProperty("dispute_details")]
+        [STJS.JsonPropertyName("dispute_details")]
+        public PaymentRecordDisputeDetails DisputeDetails { get; set; }
+
+        /// <summary>
         /// ID of the latest Payment Attempt Record attached to this Payment Record.
         /// </summary>
         [JsonProperty("latest_payment_attempt_record")]

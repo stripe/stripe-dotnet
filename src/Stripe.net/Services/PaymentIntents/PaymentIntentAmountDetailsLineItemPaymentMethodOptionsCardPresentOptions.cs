@@ -15,5 +15,19 @@ namespace Stripe
         [JsonProperty("commodity_code")]
         [STJS.JsonPropertyName("commodity_code")]
         public string CommodityCode { get; set; }
+
+        /// <summary>
+        /// EV charging data for this line item.
+        /// </summary>
+        [JsonProperty("ev_charging")]
+        [STJS.JsonPropertyName("ev_charging")]
+        public PaymentIntentAmountDetailsLineItemPaymentMethodOptionsCardPresentEvChargingOptions EvCharging { get; set; }
+
+        /// <summary>
+        /// Fleet data for this line item.
+        /// </summary>
+        [JsonProperty("fleet_data")]
+        [STJS.JsonPropertyName("fleet_data")]
+        public PaymentIntentAmountDetailsLineItemPaymentMethodOptionsCardPresentFleetDataOptions FleetData { get; set; }
     }
 }

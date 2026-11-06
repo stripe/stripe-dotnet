@@ -47,7 +47,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Transaction type of the mandate.
-        /// One of: <c>business</c>, or <c>personal</c>.
+        /// One of: <c>business</c>, <c>buyer_choice</c>, or <c>personal</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

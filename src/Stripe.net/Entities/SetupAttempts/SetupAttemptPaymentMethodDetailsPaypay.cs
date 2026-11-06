@@ -8,5 +8,12 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SetupAttemptPaymentMethodDetailsPaypay : StripeEntity<SetupAttemptPaymentMethodDetailsPaypay>
     {
+        /// <summary>
+        /// Uniquely identifies this particular PayPay account. You can use this attribute to check
+        /// whether two PayPay accounts are the same.
+        /// </summary>
+        [JsonProperty("fingerprint")]
+        [STJS.JsonPropertyName("fingerprint")]
+        public string Fingerprint { get; set; }
     }
 }

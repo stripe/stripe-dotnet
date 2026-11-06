@@ -341,6 +341,13 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsSofortOptions Sofort { get; set; }
 
         /// <summary>
+        /// contains details about the Stripe Balance payment method options.
+        /// </summary>
+        [JsonProperty("stripe_balance")]
+        [STJS.JsonPropertyName("stripe_balance")]
+        public SessionPaymentMethodOptionsStripeBalanceOptions StripeBalance { get; set; }
+
+        /// <summary>
         /// contains details about the Sunbit payment method options.
         /// </summary>
         [JsonProperty("sunbit")]
