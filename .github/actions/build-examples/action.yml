@@ -1,0 +1,18 @@
+name: Build examples
+description: Build the examples solution. Shared by CI and Canary CI; expects the repository to be checked out.
+
+inputs:
+  latest-dotnet-version:
+    description: Latest supported .NET version, from the prepare action.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Setup .NET
+      uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+      with:
+        dotnet-version: "${{ inputs.latest-dotnet-version }}.x"
+    - name: Build examples
+      shell: bash
+      run: dotnet build src/Examples/Examples.sln -c Release
