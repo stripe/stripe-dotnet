@@ -2449,6 +2449,12 @@ namespace Stripe
             eventClientOptions.StripeContext = eventNotification.Context;
             var eventClient = new StripeClient(eventClientOptions);
 
+            // Rebind the notification's own Client so that callbacks can call
+            // eventNotification.FetchEvent()/FetchRelatedObject() directly and still get a
+            // context-scoped client, rather than needing to know to use the separate Client
+            // passed alongside it in the event args.
+            eventNotification.Client = eventClient;
+
             this.DispatchEvent(eventNotification, eventClient);
         }
 
