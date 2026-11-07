@@ -7,15 +7,23 @@ namespace StripeTests
 
     public class DiscriminatedUnionConverterTest : BaseStripeTest
     {
+        private static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
+        {
+            Converters = { new DiscriminatedUnionConverter() },
+        };
+
+        [StripeDiscriminatedUnion("model")]
+        private interface IAbstractColor
+        {
+        }
+
         [Fact]
         public void DeserializeFirstVariant()
         {
             var json = "{\"color\": {\"model\": \"rgb\", \"r\": 255, \"g\": 128, \"b\": 0}}";
-            var obj = JsonConvert.DeserializeObject<TestContainer>(json);
+            var obj = JsonConvert.DeserializeObject<TestContainer>(json, Settings);
 
-            Assert.NotNull(obj.Color);
-            Assert.IsType<TestRgbColor>(obj.Color);
-            var rgb = (TestRgbColor)obj.Color;
+            var rgb = Assert.IsType<TestRgbColor>(obj.Color);
             Assert.Equal("rgb", rgb.Model);
             Assert.Equal(255, rgb.R);
             Assert.Equal(128, rgb.G);
@@ -26,11 +34,9 @@ namespace StripeTests
         public void DeserializeSecondVariant()
         {
             var json = "{\"color\": {\"model\": \"hsv\", \"h\": 120, \"s\": 100, \"v\": 50}}";
-            var obj = JsonConvert.DeserializeObject<TestContainer>(json);
+            var obj = JsonConvert.DeserializeObject<TestContainer>(json, Settings);
 
-            Assert.NotNull(obj.Color);
-            Assert.IsType<TestHsvColor>(obj.Color);
-            var hsv = (TestHsvColor)obj.Color;
+            var hsv = Assert.IsType<TestHsvColor>(obj.Color);
             Assert.Equal("hsv", hsv.Model);
             Assert.Equal(120, hsv.H);
             Assert.Equal(100, hsv.S);
@@ -41,20 +47,41 @@ namespace StripeTests
         public void DeserializeNull()
         {
             var json = "{\"color\": null}";
-            var obj = JsonConvert.DeserializeObject<TestContainer>(json);
+            var obj = JsonConvert.DeserializeObject<TestContainer>(json, Settings);
 
             Assert.Null(obj.Color);
         }
 
         [Fact]
-        public void DeserializeUnknownDiscriminatorThrows()
+        public void DeserializeUnknownDiscriminator()
         {
-            var json = "{\"color\": {\"model\": \"cmyk\", \"c\": 1}}";
+            var obj = JsonConvert.DeserializeObject<TestContainer>("{\"color\":{\"model\":\"future_variant\"}}", Settings);
 
+            Assert.Equal("future_variant", Assert.IsType<TestColor>(obj.Color).Model);
+            var roundTrip = JsonConvert.DeserializeObject<TestContainer>(JsonConvert.SerializeObject(obj, Settings), Settings);
+            Assert.Equal("future_variant", Assert.IsType<TestColor>(roundTrip.Color).Model);
+        }
+
+        [Theory]
+        [InlineData("null")]
+        [InlineData("42")]
+        [InlineData("true")]
+        public void DeserializeInvalidDiscriminatorThrows(string discriminator)
+        {
+            var json = "{\"model\":" + discriminator + "}";
+            Assert.Throws<JsonSerializationException>(() => JsonConvert.DeserializeObject<TestColor>(json, Settings));
+        }
+
+        [Theory]
+        [InlineData(typeof(IAbstractColor))]
+        [InlineData(typeof(AbstractColor))]
+        [InlineData(typeof(NoDefaultConstructorColor))]
+        public void UnknownNonInstantiableTargetThrows(System.Type type)
+        {
             var exception = Assert.Throws<JsonSerializationException>(() =>
-                JsonConvert.DeserializeObject<TestContainer>(json));
-
-            Assert.Contains("Unknown discriminator value 'cmyk'", exception.Message);
+                JsonConvert.DeserializeObject("{\"model\":\"future_variant\"}", type, Settings));
+            Assert.Contains(type.Name, exception.Message);
+            Assert.Contains("Fallback requires a concrete type with a public parameterless constructor", exception.Message);
         }
 
         [Fact]
@@ -63,7 +90,7 @@ namespace StripeTests
             var json = "{\"color\": {\"r\": 255}}";
 
             var exception = Assert.Throws<JsonSerializationException>(() =>
-                JsonConvert.DeserializeObject<TestContainer>(json));
+                JsonConvert.DeserializeObject<TestContainer>(json, Settings));
 
             Assert.Contains("missing the discriminator property 'model'", exception.Message);
         }
@@ -76,7 +103,7 @@ namespace StripeTests
                 Color = new TestRgbColor { Model = "rgb", R = 255, G = 128, B = 0 },
             };
 
-            var json = JsonConvert.SerializeObject(obj);
+            var json = JsonConvert.SerializeObject(obj, Settings);
             Assert.Contains("\"model\":\"rgb\"", json);
             Assert.Contains("\"r\":255", json);
             Assert.Contains("\"g\":128", json);
@@ -88,7 +115,7 @@ namespace StripeTests
         {
             var obj = new TestContainer { Color = null };
 
-            var json = JsonConvert.SerializeObject(obj);
+            var json = JsonConvert.SerializeObject(obj, Settings);
             Assert.Contains("\"color\":null", json);
         }
 
@@ -100,11 +127,10 @@ namespace StripeTests
                 Color = new TestHsvColor { Model = "hsv", H = 240, S = 80, V = 90 },
             };
 
-            var json = JsonConvert.SerializeObject(original);
-            var deserialized = JsonConvert.DeserializeObject<TestContainer>(json);
+            var json = JsonConvert.SerializeObject(original, Settings);
+            var deserialized = JsonConvert.DeserializeObject<TestContainer>(json, Settings);
 
-            Assert.IsType<TestHsvColor>(deserialized.Color);
-            var hsv = (TestHsvColor)deserialized.Color;
+            var hsv = Assert.IsType<TestHsvColor>(deserialized.Color);
             Assert.Equal("hsv", hsv.Model);
             Assert.Equal(240, hsv.H);
             Assert.Equal(80, hsv.S);
@@ -112,9 +138,21 @@ namespace StripeTests
         }
 
         [StripeDiscriminatedUnion("model")]
+        private abstract class AbstractColor
+        {
+        }
+
+        [StripeDiscriminatedUnion("model")]
+        private class NoDefaultConstructorColor
+        {
+            public NoDefaultConstructorColor(string model)
+            {
+            }
+        }
+
+        [StripeDiscriminatedUnion("model")]
         [StripeUnionVariant(typeof(TestRgbColor), "rgb")]
         [StripeUnionVariant(typeof(TestHsvColor), "hsv")]
-        [JsonConverter(typeof(DiscriminatedUnionConverter))]
         private class TestColor
         {
             [JsonProperty("model")]
