@@ -31,6 +31,7 @@ namespace StripeTests.Wholesome
                 // The beginning of the section generated from our OpenAPI spec
                 "Stripe.Apps.Secret",
                 "Stripe.CustomerTaxExemption",
+                "Stripe.Tax.Certificate",
 
                 // The end of the section generated from our OpenAPI spec
             };
