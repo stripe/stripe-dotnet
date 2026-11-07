@@ -6,4 +6,4 @@ jira_tickets_closed:
 - RUN_DEVSDK-3692
 ---
 
-Adds `StripeClient.WithStripeContext()`, which returns a client scoped to a given `StripeContext` with `Stripe-Account` cleared. `EventNotification.FetchEvent()`/`FetchRelatedObject()` and `Event.FetchRelatedObject()` now use it (or the equivalent on the underlying requestor) so a connected account configured on the parsing or retrieving client no longer rides along on requests scoped to an event's own context. Dispatch callbacks registered on `StripeEventNotificationHandler`/`StripeEventNotificationHandlerWithoutVerification` can now call `args.EventNotification.FetchRelatedObject()` directly and get the same context-scoped behavior as `args.Client`.
+Adds `StripeClient.WithStripeContext()` to construct a `StripeClient` with the supplied `StripeContext` with `Stripe-Account` cleared.  Adds calls to `WithStripeClient` from `EventNotification.FromJson` and when processing a `V2.Core.Event` API response.
