@@ -9,8 +9,8 @@ namespace Stripe.V2.Core
     public class AccountCreateIdentityIndividualDocumentsPrimaryVerificationOptions : INestedOptions
     {
         /// <summary>
-        /// The <a href="https://docs.stripe.com/api/persons/update#create_file">file upload</a>
-        /// tokens referring to each side of the document.
+        /// The <a href="https://docs.stripe.com/api/files/create">file upload</a> tokens referring
+        /// to each side of the document.
         /// </summary>
         [JsonProperty("front_back")]
         [STJS.JsonPropertyName("front_back")]

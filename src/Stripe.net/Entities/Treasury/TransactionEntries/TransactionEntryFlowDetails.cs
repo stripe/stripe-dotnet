@@ -9,6 +9,12 @@ namespace Stripe.Treasury
     public class TransactionEntryFlowDetails : StripeEntity<TransactionEntryFlowDetails>
     {
         /// <summary>
+        /// Legacy CreditReversals are part of the v1 version of Treasury for platforms and do not
+        /// support many of the features introduced in <a
+        /// href="https://docs.stripe.com/treasury/connect">Treasury for platforms v2</a>. Use <a
+        /// href="https://docs.stripe.com/api/v2/money-management/received-credits?api-version=preview">Received
+        /// Credits</a> instead of building a new v1 integration.
+        ///
         /// You can reverse some <a
         /// href="https://docs.stripe.com/api#received_credits">ReceivedCredits</a> depending on
         /// their network and source flow. Reversing a ReceivedCredit leads to the creation of a new
@@ -19,6 +25,10 @@ namespace Stripe.Treasury
         public CreditReversal CreditReversal { get; set; }
 
         /// <summary>
+        /// Legacy DebitReversals are part of the v1 version of Treasury for platforms and do not
+        /// support many of the features introduced in <a
+        /// href="https://docs.stripe.com/treasury/connect">Treasury for platforms v2</a>.
+        ///
         /// You can reverse some <a
         /// href="https://docs.stripe.com/api#received_debits">ReceivedDebits</a> depending on their
         /// network and source flow. Reversing a ReceivedDebit leads to the creation of a new object
@@ -29,6 +39,12 @@ namespace Stripe.Treasury
         public DebitReversal DebitReversal { get; set; }
 
         /// <summary>
+        /// Legacy InboundTransfers are part of the v1 version of Treasury for platforms and do not
+        /// support many of the features introduced in <a
+        /// href="https://docs.stripe.com/treasury/connect">Treasury for platforms v2</a>. Use <a
+        /// href="https://docs.stripe.com/api/v2/money-management/inbound-transfers">Inbound
+        /// Transfers</a> instead of building a new v1 integration.
+        ///
         /// Use <a
         /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/into/inbound-transfers">InboundTransfers</a>
         /// to add funds to your <a
@@ -57,6 +73,12 @@ namespace Stripe.Treasury
         public Issuing.Authorization IssuingAuthorization { get; set; }
 
         /// <summary>
+        /// Legacy OutboundPayments are part of the v1 version of Treasury for platforms and do not
+        /// support many of the features introduced in <a
+        /// href="https://docs.stripe.com/treasury/connect">Treasury for platforms v2</a>. Use <a
+        /// href="https://docs.stripe.com/api/v2/money-management/outbound-payments">Outbound
+        /// Payments</a> instead of building a new v1 integration.
+        ///
         /// Use <a
         /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-payments">OutboundPayments</a>
         /// to send funds to another party's external bank account or <a
@@ -77,6 +99,12 @@ namespace Stripe.Treasury
         public OutboundPayment OutboundPayment { get; set; }
 
         /// <summary>
+        /// Legacy OutboundTransfers are part of the v1 version of Treasury for platforms and do not
+        /// support many of the features introduced in <a
+        /// href="https://docs.stripe.com/treasury/connect">Treasury for platforms v2</a>. Use <a
+        /// href="https://docs.stripe.com/api/v2/money-management/outbound-transfers?api-version=preview">Outbound
+        /// Transfers</a> instead of building a new v1 integration.
+        ///
         /// Use <a
         /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-transfers">OutboundTransfers</a>
         /// to transfer funds from a <a
@@ -99,6 +127,12 @@ namespace Stripe.Treasury
         public OutboundTransfer OutboundTransfer { get; set; }
 
         /// <summary>
+        /// Legacy ReceivedCredits are part of the v1 version of Treasury for platforms and do not
+        /// support many of the features introduced in <a
+        /// href="https://docs.stripe.com/treasury/connect">Treasury for platforms v2</a>. Use <a
+        /// href="https://docs.stripe.com/api/v2/money-management/received-credits?api-version=preview">Received
+        /// Credits</a> instead of building a new v1 integration.
+        ///
         /// ReceivedCredits represent funds sent to a <a
         /// href="https://docs.stripe.com/api#financial_accounts">FinancialAccount</a> (for example,
         /// via ACH or wire). These money movements are not initiated from the FinancialAccount.
@@ -108,6 +142,12 @@ namespace Stripe.Treasury
         public ReceivedCredit ReceivedCredit { get; set; }
 
         /// <summary>
+        /// Legacy ReceivedDebits are part of the v1 version of Treasury for platforms and do not
+        /// support many of the features introduced in <a
+        /// href="https://docs.stripe.com/treasury/connect">Treasury for platforms v2</a>. Use <a
+        /// href="https://docs.stripe.com/api/v2/money-management/received-debits?api-version=preview">Received
+        /// Debits</a> instead of building a new v1 integration.
+        ///
         /// ReceivedDebits represent funds pulled from a <a
         /// href="https://docs.stripe.com/api#financial_accounts">FinancialAccount</a>. These are
         /// not initiated from the FinancialAccount.

@@ -113,8 +113,9 @@ namespace Stripe.V2.Core
         public string Name { get; set; }
 
         /// <summary>
-        /// For snapshot events only, the Stripe API version used to render event objects. Thin
-        /// events are not pinned to an API version.
+        /// For snapshot events only, the Stripe API version used to render event objects. You can't
+        /// change this value after you create the event destination. Thin events are not pinned to
+        /// an API version.
         /// </summary>
         [JsonProperty("snapshot_api_version")]
         [STJS.JsonPropertyName("snapshot_api_version")]

@@ -9,6 +9,12 @@ namespace Stripe.Treasury
     public class ReceivedCreditLinkedFlowsSourceFlowDetails : StripeEntity<ReceivedCreditLinkedFlowsSourceFlowDetails>
     {
         /// <summary>
+        /// Legacy CreditReversals are part of the v1 version of Treasury for platforms and do not
+        /// support many of the features introduced in <a
+        /// href="https://docs.stripe.com/treasury/connect">Treasury for platforms v2</a>. Use <a
+        /// href="https://docs.stripe.com/api/v2/money-management/received-credits?api-version=preview">Received
+        /// Credits</a> instead of building a new v1 integration.
+        ///
         /// You can reverse some <a
         /// href="https://docs.stripe.com/api#received_credits">ReceivedCredits</a> depending on
         /// their network and source flow. Reversing a ReceivedCredit leads to the creation of a new
@@ -19,6 +25,12 @@ namespace Stripe.Treasury
         public CreditReversal CreditReversal { get; set; }
 
         /// <summary>
+        /// Legacy OutboundPayments are part of the v1 version of Treasury for platforms and do not
+        /// support many of the features introduced in <a
+        /// href="https://docs.stripe.com/treasury/connect">Treasury for platforms v2</a>. Use <a
+        /// href="https://docs.stripe.com/api/v2/money-management/outbound-payments">Outbound
+        /// Payments</a> instead of building a new v1 integration.
+        ///
         /// Use <a
         /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-payments">OutboundPayments</a>
         /// to send funds to another party's external bank account or <a
@@ -39,6 +51,12 @@ namespace Stripe.Treasury
         public OutboundPayment OutboundPayment { get; set; }
 
         /// <summary>
+        /// Legacy OutboundTransfers are part of the v1 version of Treasury for platforms and do not
+        /// support many of the features introduced in <a
+        /// href="https://docs.stripe.com/treasury/connect">Treasury for platforms v2</a>. Use <a
+        /// href="https://docs.stripe.com/api/v2/money-management/outbound-transfers?api-version=preview">Outbound
+        /// Transfers</a> instead of building a new v1 integration.
+        ///
         /// Use <a
         /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-transfers">OutboundTransfers</a>
         /// to transfer funds from a <a

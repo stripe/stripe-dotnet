@@ -47,5 +47,15 @@ namespace Stripe
         [JsonProperty("submission_count")]
         [STJS.JsonPropertyName("submission_count")]
         public long SubmissionCount { get; set; }
+
+        /// <summary>
+        /// Whether the dispute was submitted manually, with Smart Disputes, or not submitted.
+        /// One of: <c>manual</c>, <c>not_submitted</c>, or <c>smart_disputes</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("submission_method")]
+        [STJS.JsonPropertyName("submission_method")]
+        public string SubmissionMethod { get; set; }
     }
 }

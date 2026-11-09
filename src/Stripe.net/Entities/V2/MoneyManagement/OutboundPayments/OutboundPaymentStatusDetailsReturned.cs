@@ -1,0 +1,26 @@
+// File generated from our OpenAPI spec
+namespace Stripe.V2.MoneyManagement
+{
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+    public class OutboundPaymentStatusDetailsReturned : StripeEntity<OutboundPaymentStatusDetailsReturned>
+    {
+        /// <summary>
+        /// Open Enum. The <c>returned</c> status reason.
+        /// One of: <c>payout_method_canceled_by_customer</c>, <c>payout_method_closed</c>,
+        /// <c>payout_method_currency_unsupported</c>, <c>payout_method_does_not_exist</c>,
+        /// <c>payout_method_holder_address_incorrect</c>,
+        /// <c>payout_method_holder_details_incorrect</c>,
+        /// <c>payout_method_holder_name_incorrect</c>, <c>payout_method_invalid_account_number</c>,
+        /// <c>payout_method_restricted</c>, <c>recalled</c>, or <c>unknown_failure</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("reason")]
+        [STJS.JsonPropertyName("reason")]
+        public string Reason { get; set; }
+    }
+}

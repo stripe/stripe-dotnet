@@ -11,8 +11,8 @@ namespace Stripe.V2.Core
     {
         /// <summary>
         /// One or more document IDs returned by a <a
-        /// href="https://docs.stripe.com/api/persons/update#create_file">file upload</a> with a
-        /// purpose value of <c>account_requirement</c>.
+        /// href="https://docs.stripe.com/api/files/create">file upload</a> with a purpose value of
+        /// <c>account_requirement</c>.
         /// </summary>
         [JsonProperty("files")]
         [STJS.JsonPropertyName("files")]

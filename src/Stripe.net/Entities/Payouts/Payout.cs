@@ -247,8 +247,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Error code that provides a reason for a payout failure, if available. View our <a
-        /// href="https://docs.stripe.com/api#payout_failures">list of failure codes</a>.
+        /// Error code that provides a reason for a payout failure, if available.
         /// </summary>
         [JsonProperty("failure_code")]
         [STJS.JsonPropertyName("failure_code")]

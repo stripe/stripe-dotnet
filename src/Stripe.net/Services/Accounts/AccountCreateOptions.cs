@@ -70,7 +70,8 @@ namespace Stripe
         public AccountCompanyOptions Company { get; set; }
 
         /// <summary>
-        /// A hash of configuration describing the account controller's attributes.
+        /// Configures the account's Dashboard access, loss liability, requirements collection, and
+        /// Stripe fee responsibility.
         /// </summary>
         [JsonProperty("controller")]
         [STJS.JsonPropertyName("controller")]

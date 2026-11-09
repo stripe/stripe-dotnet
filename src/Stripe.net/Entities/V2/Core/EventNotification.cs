@@ -66,7 +66,10 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("context")]
         public StripeContext? Context { get; internal set; }
 
-        protected StripeClient? Client { get; set; }
+        // internal so StripeEventNotificationHandlerBase can rebind this to a context-scoped
+        // client before invoking dispatch callbacks; protected so subclasses can still set it
+        // directly (e.g. in unit tests).
+        protected internal StripeClient? Client { get; set; }
 
         /// <summary>
         /// Helper for constructing an Event Notification. Doesn't perform signature validation, so you
@@ -81,7 +84,11 @@ namespace Stripe.V2.Core
         {
             var en = JsonUtils.DeserializeObject<EventNotification>(payload, client.GetJsonSerializationSettings());
 
-            en.Client = client;
+            // Scope the client to this event's own context (clearing any Stripe-Account the
+            // caller's client was configured with) so that fetching the event or its related
+            // object never leaks a stale connected-account header alongside the event's context.
+            // If the event carries no context, there's nothing to scope: use the client as-is.
+            en.Client = en.Context != null ? client.WithStripeContext(en.Context) : client;
 
             return en;
         }

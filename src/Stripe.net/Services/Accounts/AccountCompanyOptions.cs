@@ -160,6 +160,13 @@ namespace Stripe
         public string Phone { get; set; }
 
         /// <summary>
+        /// A location where the business has a meaningful physical operating presence.
+        /// </summary>
+        [JsonProperty("physical_address")]
+        [STJS.JsonPropertyName("physical_address")]
+        public AddressOptions PhysicalAddress { get; set; }
+
+        /// <summary>
         /// The primary location where the business conducts operations.
         /// </summary>
         [JsonProperty("principal_place_of_business")]

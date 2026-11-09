@@ -1,0 +1,27 @@
+name: Prepare .NET versions
+description: Resolve the latest supported .NET version and the test framework matrix. Shared by CI and Canary CI; expects the repository to be checked out.
+
+outputs:
+  latest-dotnet-version:
+    description: Latest supported .NET major version, e.g. 10.0.
+    value: ${{ steps.latest-dotnet-version.outputs.latest_dotnet_version }}
+  test-matrix:
+    description: JSON array of target framework monikers to test.
+    value: ${{ steps.test-matrix.outputs.test_matrix }}
+
+runs:
+  using: composite
+  steps:
+    - uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4.0.0
+    - name: Get latest .NET version
+      id: latest-dotnet-version
+      shell: bash
+      run: |
+        latest_dotnet_version=`just print_latest_supported_dotnet_version`
+        echo "latest_dotnet_version=$latest_dotnet_version" >> $GITHUB_OUTPUT
+    - name: Get test framework matrix
+      id: test-matrix
+      shell: bash
+      run: |
+        test_matrix=`just print_test_matrix_json`
+        echo "test_matrix=$test_matrix" >> $GITHUB_OUTPUT

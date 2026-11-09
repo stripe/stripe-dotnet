@@ -27,23 +27,14 @@ jobs:
     permissions:
       contents: read
     outputs:
-      latest-dotnet-version: ${{ steps.latest-dotnet-version.outputs.latest_dotnet_version }}
-      test-matrix: ${{ steps.test-matrix.outputs.test_matrix }}
+      latest-dotnet-version: ${{ steps.prepare.outputs.latest-dotnet-version }}
+      test-matrix: ${{ steps.prepare.outputs.test-matrix }}
     steps:
-      - uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4.0.0
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: Get latest .NET version
-        id: latest-dotnet-version
-        run: |
-          latest_dotnet_version=`just print_latest_supported_dotnet_version`
-          echo "latest_dotnet_version=$latest_dotnet_version" >> $GITHUB_OUTPUT
-      - name: Get test framework matrix
-        id: test-matrix
-        run: |
-          test_matrix=`just print_test_matrix_json`
-          echo "test_matrix=$test_matrix" >> $GITHUB_OUTPUT
+      - id: prepare
+        uses: ./.github/actions/prepare
 
   test:
     name: Test (${{ matrix.framework }}, ubuntu)
@@ -58,49 +49,13 @@ jobs:
         exclude:
           - framework: net462
     steps:
-      - uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4.0.0
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: Read OpenAPI version
-        id: openapi
-        shell: bash
-        run: echo "version=$(< OPENAPI_VERSION)" >> "$GITHUB_OUTPUT"
-
-      - name: Setup .NET (latest SDK)
-        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+      - uses: ./.github/actions/test
         with:
-          dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
-
-      - name: Install target framework runtime
-        run: |
-          channel="${MATRIX_FRAMEWORK}"
-          channel="${channel#net}"
-          if [ "$channel" != "${LATEST_DOTNET_VERSION}" ]; then
-            ./scripts/dotnet-install.sh --runtime dotnet --channel "$channel" --install-dir "$DOTNET_ROOT"
-          fi
-        env:
-          MATRIX_FRAMEWORK: ${{ matrix.framework }}
-          LATEST_DOTNET_VERSION: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
-
-      - name: Install tools
-        run: dotnet tool restore
-
-      - name: Build
-        run: |
-          echo "Building ${MATRIX_FRAMEWORK} using dotnet v$(dotnet --version)"
-          dotnet build src/StripeTests/StripeTests.csproj -c Release -f ${MATRIX_FRAMEWORK} /p:ContinuousIntegrationBuild=true
-        env:
-          MATRIX_FRAMEWORK: ${{ matrix.framework }}
-
-      - uses: stripe/openapi/actions/stripe-mock@master
-        with:
-          openapi_version: ${{ steps.openapi.outputs.version }}
-
-      - name: Run tests
-        run: dotnet test --no-build -f ${MATRIX_FRAMEWORK} src/StripeTests/StripeTests.csproj -c Release
-        env:
-          MATRIX_FRAMEWORK: ${{ matrix.framework }}
+          framework: ${{ matrix.framework }}
+          latest-dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
 
   test-net462:
     name: Test (net462, windows)
@@ -109,34 +64,13 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4.0.0
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: Read OpenAPI version
-        id: openapi
-        shell: bash
-        run: echo "version=$(< OPENAPI_VERSION)" >> "$GITHUB_OUTPUT"
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+      - uses: ./.github/actions/test
         with:
-          dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
-
-      - name: Install tools
-        run: dotnet tool restore
-
-      - name: Build
-        run: |
-          echo "Building net462 using dotnet v$(dotnet --version)"
-          dotnet build src/StripeTests/StripeTests.csproj -c Release -f net462 /p:ContinuousIntegrationBuild=true
-
-      - uses: stripe/openapi/actions/stripe-mock@master
-        with:
-          openapi_version: ${{ steps.openapi.outputs.version }}
-
-      - name: Run tests
-        run: dotnet test --no-build --configuration Release --framework net462 src/StripeTests/StripeTests.csproj
+          framework: net462
+          latest-dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
 
   build:
     name: Build
@@ -145,21 +79,12 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4.0.0
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+      - uses: ./.github/actions/build
         with:
-          dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
-
-      - name: Install tools
-        run: dotnet tool restore
-
-      - name: Build Release
-        run: dotnet build src/Stripe.net -c Release /p:ContinuousIntegrationBuild=true
+          latest-dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
 
   pack:
     name: Pack NuGet
@@ -204,14 +129,9 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+      - uses: ./.github/actions/build-examples
         with:
-          dotnet-version: "${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}.x"
-
-      - name: Build examples
-        run: dotnet build src/Examples/Examples.sln -c Release
+          latest-dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
 
   compat:
     name: Compat

@@ -10,6 +10,7 @@ namespace Stripe.Terminal
     {
         private ConfigurationCellularOptions cellular;
         private ConfigurationOfflineOptions offline;
+        private ConfigurationReaderSecurityOptions readerSecurity;
         private ConfigurationTippingOptions tipping;
         private ConfigurationWifiOptions wifi;
 
@@ -67,6 +68,22 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
+        /// Configurations for reader security settings.
+        /// </summary>
+        [JsonProperty("reader_security", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("reader_security")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public ConfigurationReaderSecurityOptions ReaderSecurity
+        {
+            get => this.readerSecurity;
+            set
+            {
+                this.readerSecurity = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
         /// Reboot time settings for readers. that support customized reboot time configuration.
         /// </summary>
         [JsonProperty("reboot_window")]
@@ -86,6 +103,13 @@ namespace Stripe.Terminal
         [JsonProperty("stripe_s710")]
         [STJS.JsonPropertyName("stripe_s710")]
         public ConfigurationStripeS710Options StripeS710 { get; set; }
+
+        /// <summary>
+        /// An object containing device type specific settings for Stripe T600 readers.
+        /// </summary>
+        [JsonProperty("stripe_t600")]
+        [STJS.JsonPropertyName("stripe_t600")]
+        public ConfigurationStripeT600Options StripeT600 { get; set; }
 
         /// <summary>
         /// Tipping configurations for readers that support on-reader tips.

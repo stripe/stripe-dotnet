@@ -10,8 +10,7 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// A <a href="https://www.census.gov/library/reference/code-lists/ansi.html">FIPS code</a>
-        /// representing the local jurisdiction. Supported FIPS codes are: <c>003</c> (Allegheny
-        /// County) and <c>60000</c> (Philadelphia City).
+        /// representing the local jurisdiction.
         /// </summary>
         [JsonProperty("jurisdiction")]
         [STJS.JsonPropertyName("jurisdiction")]

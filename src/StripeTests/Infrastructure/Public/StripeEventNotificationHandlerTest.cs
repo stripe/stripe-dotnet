@@ -3,8 +3,14 @@ namespace StripeTests
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net.Http;
     using System.Reflection;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Moq;
+    using Moq.Protected;
     using Stripe;
+    using Stripe.Billing;
     using Stripe.Events;
     using Xunit;
 
@@ -486,6 +492,131 @@ namespace StripeTests
 
             // Original context should be restored even after exception
             Assert.Equal("original_context_123", requestor?.CurrentStripeContext?.ToString());
+        }
+
+        [Fact]
+        public void DispatchedNotificationFetchRelatedObjectDoesNotLeakStaleStripeAccount()
+        {
+            // The handler's own client is configured with a default Stripe-Account. Calling
+            // e.EventNotification.FetchRelatedObject() directly -- not e.Client -- must still be
+            // scoped to the event's own context, with that stale account cleared.
+            Meter relatedObject = null;
+
+            void Handler(object sender, StripeEventNotificationEventArgs<V1BillingMeterErrorReportTriggeredEventNotification> e)
+            {
+                relatedObject = e.EventNotification.FetchRelatedObject();
+            }
+
+            var httpClient = new SystemNetHttpClient(new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
+            var clientOptions = new StripeClientOptions
+            {
+                ApiKey = "sk_test_123",
+                StripeAccount = "acct_stale",
+                HttpClient = httpClient,
+            };
+            var client = new StripeClient(clientOptions);
+            var handler = new StripeEventNotificationHandler(client, WebhookSecret, (s, e) => { });
+            handler.V1BillingMeterErrorReportTriggered += Handler;
+
+            var relatedObjectPayload = @"{
+                ""id"": ""mtr_123"",
+                ""object"": ""billing.meter""
+            }";
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(new HttpResponseMessage
+                {
+                    Content = new StringContent(relatedObjectPayload),
+                });
+
+            var sigHeader = StripeTests.V2.EventTest.GenerateSigHeader(this.V1BillingMeterPayload);
+            handler.Handle(this.V1BillingMeterPayload, sigHeader);
+
+            Assert.NotNull(relatedObject);
+            Assert.Equal("mtr_123", relatedObject.Id);
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    Times.AtLeastOnce(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        !m.Headers.Contains("Stripe-Account") &&
+                        m.Headers.Contains("Stripe-Context") &&
+                        m.Headers.GetValues("Stripe-Context").First() == "event_context_456"),
+                    ItExpr.IsAny<CancellationToken>());
+        }
+
+        [Fact]
+        public void DispatchedNotificationWithNullContextFetchRelatedObjectDoesNotLeakStaleStripeAccount()
+        {
+            // Same as above, but for an event that carries no context at all. EventNotification.
+            // FromJson only scopes the client when a context is present, so without
+            // DispatchEventWithContext also rebinding eventNotification.Client, a context-less
+            // event would fall through to the original, unscoped client -- the one place the
+            // account-clearing in EventNotification.FromJson alone wouldn't reach.
+            Meter relatedObject = null;
+
+            void Handler(object sender, StripeEventNotificationEventArgs<V1BillingMeterErrorReportTriggeredEventNotification> e)
+            {
+                relatedObject = e.EventNotification.FetchRelatedObject();
+            }
+
+            var httpClient = new SystemNetHttpClient(new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
+            var clientOptions = new StripeClientOptions
+            {
+                ApiKey = "sk_test_123",
+                StripeAccount = "acct_stale",
+                HttpClient = httpClient,
+            };
+            var client = new StripeClient(clientOptions);
+            var handler = new StripeEventNotificationHandler(client, WebhookSecret, (s, e) => { });
+            handler.V1BillingMeterErrorReportTriggered += Handler;
+
+            var payload = @"{
+                ""id"": ""evt_123"",
+                ""object"": ""v2.core.event"",
+                ""type"": ""v1.billing.meter.error_report_triggered"",
+                ""livemode"": false,
+                ""created"": ""2022-02-15T00:27:45.330Z"",
+                ""context"": null,
+                ""related_object"": {
+                    ""id"": ""mtr_123"",
+                    ""type"": ""billing.meter"",
+                    ""url"": ""/v1/billing/meters/mtr_123""
+                }
+            }";
+
+            var relatedObjectPayload = @"{
+                ""id"": ""mtr_123"",
+                ""object"": ""billing.meter""
+            }";
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(new HttpResponseMessage
+                {
+                    Content = new StringContent(relatedObjectPayload),
+                });
+
+            var sigHeader = StripeTests.V2.EventTest.GenerateSigHeader(payload);
+            handler.Handle(payload, sigHeader);
+
+            Assert.NotNull(relatedObject);
+            Assert.Equal("mtr_123", relatedObject.Id);
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    Times.AtLeastOnce(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        !m.Headers.Contains("Stripe-Account") &&
+                        !m.Headers.Contains("Stripe-Context")),
+                    ItExpr.IsAny<CancellationToken>());
         }
 
         [Fact]

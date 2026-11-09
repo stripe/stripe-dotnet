@@ -10,8 +10,9 @@ namespace Stripe.Apps
     public class InstallListOptions : ListOptions
     {
         /// <summary>
-        /// Only return installs made by this account. Only useful to app developers and embedding
-        /// platforms, whose lists span the accounts that installed their app.
+        /// Only return installs made by this account. Only useful to an app developer filtering by
+        /// its own app with its own key, whose list spans the accounts that installed the app;
+        /// other lists only accept the authenticated account.
         /// </summary>
         [JsonProperty("account")]
         [STJS.JsonPropertyName("account")]
@@ -59,7 +60,8 @@ namespace Stripe.Apps
         public string CreatedBy { get; set; }
 
         /// <summary>
-        /// Only return installs with the given status.
+        /// Only return installs with the given status: <c>installed</c>, <c>installing</c>,
+        /// <c>install_failed</c>, <c>uninstalling</c>, or <c>uninstall_failed</c>.
         /// One of: <c>install_failed</c>, <c>installed</c>, <c>installing</c>,
         /// <c>uninstall_failed</c>, or <c>uninstalling</c>.
         ///

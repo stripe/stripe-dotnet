@@ -74,8 +74,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// ID of the payment method (a PaymentMethod, Card, or saved Source object) to attach to
-        /// this SetupIntent.
+        /// The ID of a PaymentMethod to attach to this SetupIntent.
         /// </summary>
         [JsonProperty("payment_method")]
         [STJS.JsonPropertyName("payment_method")]

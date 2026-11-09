@@ -296,6 +296,27 @@ namespace Stripe
             return StripeEventNotificationHandler.WithoutVerification(this, fallbackCallback);
         }
 
+        /// <summary>
+        /// Returns a new <see cref="StripeClient"/> with the same configuration as this one, but
+        /// scoped to the given <see cref="StripeContext"/>. The returned client's Stripe-Account
+        /// is cleared, since <paramref name="context"/> carries its own account scoping. Useful
+        /// when handling event notifications, where each event may carry its own context.
+        /// </summary>
+        /// <param name="context">The StripeContext to scope the new client to.</param>
+        /// <returns>A new StripeClient scoped to <paramref name="context"/>.</returns>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if this client's requestor is not a <see cref="LiveApiRequestor"/>.
+        /// </exception>
+        public StripeClient WithStripeContext(StripeContext context)
+        {
+            if (!(this.Requestor is LiveApiRequestor requestor))
+            {
+                throw new InvalidOperationException("WithStripeContext requires a StripeClient with a LiveApiRequestor.");
+            }
+
+            return new StripeClient(requestor.WithStripeContext(context));
+        }
+
         internal JsonSerializerSettings GetJsonSerializationSettings()
         {
             return this.jsonSerializerSettings;

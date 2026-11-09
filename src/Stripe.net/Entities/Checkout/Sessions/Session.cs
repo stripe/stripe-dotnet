@@ -369,10 +369,10 @@ namespace Stripe.Checkout
         /// the browser's locale is used.
         /// One of: <c>auto</c>, <c>bg</c>, <c>cs</c>, <c>da</c>, <c>de</c>, <c>el</c>, <c>en</c>,
         /// <c>en-GB</c>, <c>es</c>, <c>es-419</c>, <c>et</c>, <c>fi</c>, <c>fil</c>, <c>fr</c>,
-        /// <c>fr-CA</c>, <c>hr</c>, <c>hu</c>, <c>id</c>, <c>it</c>, <c>ja</c>, <c>ko</c>,
-        /// <c>lt</c>, <c>lv</c>, <c>ms</c>, <c>mt</c>, <c>nb</c>, <c>nl</c>, <c>pl</c>, <c>pt</c>,
-        /// <c>pt-BR</c>, <c>ro</c>, <c>ru</c>, <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>,
-        /// <c>tr</c>, <c>vi</c>, <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
+        /// <c>fr-CA</c>, <c>hi-IN</c>, <c>hr</c>, <c>hu</c>, <c>id</c>, <c>it</c>, <c>ja</c>,
+        /// <c>ko</c>, <c>lt</c>, <c>lv</c>, <c>ms</c>, <c>mt</c>, <c>nb</c>, <c>nl</c>, <c>pl</c>,
+        /// <c>pt</c>, <c>pt-BR</c>, <c>ro</c>, <c>ru</c>, <c>sk</c>, <c>sl</c>, <c>sv</c>,
+        /// <c>th</c>, <c>tr</c>, <c>vi</c>, <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -508,8 +508,8 @@ namespace Stripe.Checkout
         #endregion
 
         /// <summary>
-        /// Configure whether a Checkout Session should collect a payment method for sessions with
-        /// mode <c>payment</c>. Defaults to <c>always</c>.
+        /// Configure whether a Checkout Session should collect a payment method. Can only be set in
+        /// <c>subscription</c> mode. Defaults to <c>always</c>.
         /// One of: <c>always</c>, or <c>if_required</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

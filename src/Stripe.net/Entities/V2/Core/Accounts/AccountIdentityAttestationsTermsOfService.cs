@@ -9,9 +9,7 @@ namespace Stripe.V2.Core
     public class AccountIdentityAttestationsTermsOfService : StripeEntity<AccountIdentityAttestationsTermsOfService>
     {
         /// <summary>
-        /// Details on the Account's acceptance of the <a
-        /// href="https://docs.stripe.com/connect/updating-accounts#tos-acceptance">Stripe Services
-        /// Agreement</a>.
+        /// Details on the Account's acceptance of the Stripe Services Agreement.
         /// </summary>
         [JsonProperty("account")]
         [STJS.JsonPropertyName("account")]

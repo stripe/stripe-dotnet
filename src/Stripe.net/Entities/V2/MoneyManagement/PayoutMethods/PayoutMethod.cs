@@ -1,0 +1,101 @@
+// File generated from our OpenAPI spec
+namespace Stripe.V2.MoneyManagement
+{
+    using System;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    /// <summary>
+    /// Use the PayoutMethods API to list and interact with PayoutMethod objects.
+    /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+    public class PayoutMethod : StripeEntity<PayoutMethod>, IHasId, IHasObject
+    {
+        /// <summary>
+        /// ID of the PayoutMethod object.
+        /// </summary>
+        [JsonProperty("id")]
+        [STJS.JsonPropertyName("id")]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// String representing the object's type. Objects of the same type share the same value of
+        /// the object field.
+        /// </summary>
+        [JsonProperty("object")]
+        [STJS.JsonPropertyName("object")]
+        public string Object { get; set; }
+
+        /// <summary>
+        /// Whether the payout method was archived. Payout methods can be archived through the
+        /// /archive API, and they will not be automatically archived by Stripe. Archived payout
+        /// methods cannot be used for outbound money movement.
+        /// </summary>
+        [JsonProperty("archived")]
+        [STJS.JsonPropertyName("archived")]
+        public bool Archived { get; set; }
+
+        /// <summary>
+        /// The PayoutMethodBankAccount object details.
+        /// </summary>
+        [JsonProperty("bank_account")]
+        [STJS.JsonPropertyName("bank_account")]
+        public PayoutMethodBankAccount BankAccount { get; set; }
+
+        /// <summary>
+        /// The PayoutMethodCard object details.
+        /// </summary>
+        [JsonProperty("card")]
+        [STJS.JsonPropertyName("card")]
+        public PayoutMethodCard Card { get; set; }
+
+        /// <summary>
+        /// Created timestamp.
+        /// </summary>
+        [JsonProperty("created")]
+        [STJS.JsonPropertyName("created")]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// ID of the underlying active OutboundSetupIntent object, if any.
+        /// </summary>
+        [JsonProperty("latest_outbound_setup_intent")]
+        [STJS.JsonPropertyName("latest_outbound_setup_intent")]
+        public string LatestOutboundSetupIntent { get; set; }
+
+        /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
+        /// </summary>
+        [JsonProperty("livemode")]
+        [STJS.JsonPropertyName("livemode")]
+        public bool Livemode { get; set; }
+
+        /// <summary>
+        /// Whether the Payout Method is currently unusable for money movement, despite potentially
+        /// being correctly set up. Please reach out to Stripe Support for more information.
+        /// </summary>
+        [JsonProperty("restricted")]
+        [STJS.JsonPropertyName("restricted")]
+        public bool Restricted { get; set; }
+
+        /// <summary>
+        /// Open Enum. The type of payout method.
+        /// One of: <c>bank_account</c>, or <c>card</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Indicates whether the payout method has met the necessary requirements for outbound
+        /// money movement.
+        /// </summary>
+        [JsonProperty("usage_status")]
+        [STJS.JsonPropertyName("usage_status")]
+        public PayoutMethodUsageStatus UsageStatus { get; set; }
+    }
+}
