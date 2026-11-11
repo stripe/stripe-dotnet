@@ -3,6 +3,7 @@ title: Update generated code
 pr_url: https://github.com/stripe/stripe-dotnet/pull/3495
 semver_level: major
 is_stripe_api_change: true
+released_in_version: 53.2.0-alpha.3
 ---
 
 * Add support for new resource `V2.MoneyManagement.SpendingMandate`

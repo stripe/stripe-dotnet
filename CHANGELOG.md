@@ -7,6 +7,27 @@ Instead, edit a corresponding `.change.md` file and run `hark build`.
 
 > This changelog only covers the **private preview** releases. Each release builds on the most recent GA release; see those notes in [the GA changelog](https://github.com/stripe/stripe-dotnet/blob/master/CHANGELOG.md).
 
+## <a id="53-2-0-alpha-3"></a>53.2.0-alpha.3 - 2026-11-11
+* ⚠️ [#3495](https://github.com/stripe/stripe-dotnet/pull/3495) Update generated code
+  * Add support for new resource `V2.MoneyManagement.SpendingMandate`
+  * Add support for `Cancel`, `Get`, and `List` methods on resource `V2.MoneyManagement.SpendingMandate`
+  * Add support for `CardholderMessage` on `Charge.PaymentMethodDetails.CardPresent.Receipt`, `ConfirmationToken.PaymentMethodPreview.Card.GeneratedFrom.PaymentMethodDetails.CardPresent.Receipt`, `PaymentAttemptRecord.PaymentMethodDetails.CardPresent.Receipt`, `PaymentMethod.Card.GeneratedFrom.PaymentMethodDetails.CardPresent.Receipt`, and `PaymentRecord.PaymentMethodDetails.CardPresent.Receipt`
+  * Add support for `PricingToken` on `Checkout.SessionCreateOptions`
+  * Add support for `MarketingAttributions` on `CustomerUpdateOptions`
+  * Add support for `FraudulentSelfie` on `Identity.VerificationReport.Signals`
+  * Add support for `TossPay` on `Mandate.PaymentMethodDetails`, `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, and `SetupAttempt.PaymentMethodDetails`
+  * Add support for `PaymentEvaluations` on `PaymentAttemptRecordReportAuthenticatedOptions`
+  * Add support for `ThreeDSecure` on `PaymentAttemptRecordPaymentMethodDetailsCardOptions` and `PaymentRecordPaymentMethodDetailsCardOptions`
+  * Add support for `WechatPayRedirectToMiniProgram` on `PaymentIntent.NextAction`
+  * Add support for `CustomerPresence` and `PaymentType` on `Radar.PaymentEvaluation.PaymentDetails.MoneyMovementDetails.SepaDebit` and `RadarPaymentEvaluationPaymentDetailsMoneyMovementDetailsSepaDebitOptions`
+  * Add support for `FinancialConnections` on `SetupIntent.PaymentMethodOptions.BacsDebit` and `SetupIntentPaymentMethodOptionsBacsDebitOptions`
+  * Add support for `ReferralFeeDetails` on `SharedPayment.GrantedToken`, `SharedPayment.IssuedTokenCreateOptions`, and `SharedPayment.IssuedToken`
+  * Add support for `DeviceHealthDetails` and `DeviceHealth` on `Terminal.Reader`
+  * Add support for `CheckSend` on `V2.MoneyManagement.OutboundPayment.To.PayoutMethodOptions`, `V2.MoneyManagement.OutboundPayment.TrackingDetails`, `V2.MoneyManagement.PayoutIntent.To.PayoutMethodOptions`, `V2.MoneyManagement.PayoutMethod`, `V2MoneyManagementOutboundPaymentToPayoutMethodOptionsOptions`, `V2MoneyManagementOutboundSetupIntentPayoutMethodDataOptions`, and `V2MoneyManagementPayoutIntentToPayoutMethodOptionsOptions`
+  * Add support for `SpendingMandate` on `V2.MoneyManagement.ReceivedDebit.BankTransfer` and `V2.MoneyManagement.ReceivedDebitListOptions`
+  * Add support for event notifications `V2MoneyManagementSpendingMandateCanceledEvent`, `V2MoneyManagementSpendingMandateCreatedEvent`, `V2MoneyManagementSpendingMandateExpiredEvent`, `V2MoneyManagementSpendingMandatePendingCancellationEvent`, and `V2MoneyManagementSpendingMandateUpdatedEvent` with related object `V2.MoneyManagement.SpendingMandate`
+  * ⚠️ Add error type `MerchantNotGatedException` on `V2.Core.Vault.NetworkToken#CreateFromCredential`
+
 ## <a id="53-2-0-alpha-2"></a>53.2.0-alpha.2 - 2026-11-05
 * [#3489](https://github.com/stripe/stripe-dotnet/pull/3489) Update generated code
   * Add support for new resources `Tax.Certificate`, `Tax.FormCorrection`, `V2.Extend.ObjectDefinitionVersion`, and `V2.Extend.ObjectDefinition`
