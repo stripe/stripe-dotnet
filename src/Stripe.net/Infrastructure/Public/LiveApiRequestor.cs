@@ -97,6 +97,24 @@ namespace Stripe
             get => this.clientOptions.StripeContext;
         }
 
+        /// <summary>
+        /// Returns a new <see cref="LiveApiRequestor"/> with the same configuration as this one,
+        /// but scoped to the given <see cref="StripeContext"/>. The returned requestor's
+        /// Stripe-Account is cleared, since <paramref name="context"/> carries its own account
+        /// scoping. Backs <see cref="StripeClient.WithStripeContext"/> and the equivalent
+        /// scoping applied to deserialized <see cref="V2.Core.Event"/> objects.
+        /// </summary>
+        /// <param name="context">The StripeContext to scope the new requestor to.</param>
+        /// <returns>A new LiveApiRequestor scoped to <paramref name="context"/>.</returns>
+        internal LiveApiRequestor WithStripeContext(StripeContext context)
+        {
+            var scopedOptions = this.clientOptions.Clone();
+            scopedOptions.StripeAccount = null;
+            scopedOptions.StripeContext = context;
+
+            return new LiveApiRequestor(scopedOptions, this.defaultUsage);
+        }
+
         /// <summary>Sends a request to Stripe's API as an asynchronous operation.</summary>
         /// <typeparam name="T">Type of the Stripe entity returned by the API.</typeparam>
         /// <param name="baseAddress">The base address of the request.</param>
@@ -347,7 +365,14 @@ namespace Stripe
             // and ensure the type exposes an internal Requestor property.
             if (obj is V2.Core.Event v2Event)
             {
-                v2Event.Requestor = this;
+                // Scope the requestor to this event's own context (clearing any Stripe-Account
+                // this requestor was configured with) so that fetching the event's related
+                // object never leaks a stale connected-account header alongside the event's
+                // context. If the event carries no context, there's nothing to scope: use the
+                // requestor as-is.
+                v2Event.Requestor = string.IsNullOrEmpty(v2Event.Context)
+                    ? this
+                    : this.WithStripeContext(v2Event.Context);
             }
 
             return obj;

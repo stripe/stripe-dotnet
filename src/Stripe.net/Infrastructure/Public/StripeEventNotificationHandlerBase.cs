@@ -21,9 +21,6 @@ namespace Stripe
         protected readonly StripeClient client;
 #pragma warning restore SA1401 // Fields should be private
         private readonly HashSet<string> handledEventTypes = new HashSet<string>();
-#pragma warning disable SA1401 // Fields should be private
-        protected readonly StripeClientOptions clientOptions;
-#pragma warning restore SA1401 // Fields should be private
 
         // A private EventHandler for each EventNotification. We'll route notifications to the correct handler.
         // private-event-handlers: The beginning of the section generated from our OpenAPI spec
@@ -540,6 +537,11 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementRecipientVerificationUpdatedEventNotification>> v2MoneyManagementRecipientVerificationUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementRewardProgramRewardEarnedEventNotification>> v2MoneyManagementRewardProgramRewardEarned;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementRewardProgramRewardReversedEventNotification>> v2MoneyManagementRewardProgramRewardReversed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementSpendingMandateCanceledEventNotification>> v2MoneyManagementSpendingMandateCanceled;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementSpendingMandateCreatedEventNotification>> v2MoneyManagementSpendingMandateCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementSpendingMandateExpiredEventNotification>> v2MoneyManagementSpendingMandateExpired;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementSpendingMandatePendingCancellationEventNotification>> v2MoneyManagementSpendingMandatePendingCancellation;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementSpendingMandateUpdatedEventNotification>> v2MoneyManagementSpendingMandateUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionCreatedEventNotification>> v2MoneyManagementTransactionCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionUpdatedEventNotification>> v2MoneyManagementTransactionUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2OrchestratedCommerceAgreementConfirmedEventNotification>> v2OrchestratedCommerceAgreementConfirmed;
@@ -596,25 +598,13 @@ namespace Stripe
 
             this.FallbackCallback += new EventHandler<StripeUnhandledEventNotificationEventArgs>(fallbackCallback);
 
-            // Capture the client options to reuse configuration when creating new clients
-            var requestor = client.Requestor as LiveApiRequestor;
-            if (requestor == null)
+            // Fail fast if this client can't back a context-scoped client later (see
+            // DispatchEventWithContext/StripeClient.WithStripeContext), rather than only
+            // discovering it on first dispatch.
+            if (!(client.Requestor is LiveApiRequestor))
             {
                 throw new InvalidOperationException("StripeEventNotificationHandler requires a StripeClient with a LiveApiRequestor.");
             }
-
-            this.clientOptions = new StripeClientOptions
-            {
-                ApiKey = requestor.ApiKey,
-                ClientId = requestor.ClientId,
-                HttpClient = requestor.HttpClient,
-                ApiBase = requestor.ApiBase,
-                ConnectBase = requestor.ConnectBase,
-                FilesBase = requestor.FilesBase,
-                MeterEventsBase = requestor.MeterEventsBase,
-                StripeAccount = null, // Don't copy StripeAccount or StripeContext
-                StripeContext = null,
-            };
         }
 
         private event EventHandler<StripeUnhandledEventNotificationEventArgs> FallbackCallback;
@@ -3699,6 +3689,36 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementSpendingMandateCanceledEventNotification>> V2MoneyManagementSpendingMandateCanceled
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementSpendingMandateCanceled, value, "v2.money_management.spending_mandate.canceled"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementSpendingMandateCreatedEventNotification>> V2MoneyManagementSpendingMandateCreated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementSpendingMandateCreated, value, "v2.money_management.spending_mandate.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementSpendingMandateExpiredEventNotification>> V2MoneyManagementSpendingMandateExpired
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementSpendingMandateExpired, value, "v2.money_management.spending_mandate.expired"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementSpendingMandatePendingCancellationEventNotification>> V2MoneyManagementSpendingMandatePendingCancellation
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementSpendingMandatePendingCancellation, value, "v2.money_management.spending_mandate.pending_cancellation"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementSpendingMandateUpdatedEventNotification>> V2MoneyManagementSpendingMandateUpdated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementSpendingMandateUpdated, value, "v2.money_management.spending_mandate.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionCreatedEventNotification>> V2MoneyManagementTransactionCreated
         {
             add { this.AddEventHandler(ref this.v2MoneyManagementTransactionCreated, value, "v2.money_management.transaction.created"); }
@@ -3999,16 +4019,13 @@ namespace Stripe
                 throw new ArgumentNullException(nameof(eventNotification));
             }
 
-            // If client options somehow didn't get created, bail.
-            if (this.clientOptions == null)
-            {
-                throw new InvalidOperationException("Unable to create client with event context: client options not available.");
-            }
-
-            // Create a new client with the event's context
-            var eventClientOptions = this.clientOptions.Clone();
-            eventClientOptions.StripeContext = eventNotification.Context;
-            var eventClient = new StripeClient(eventClientOptions);
+            // Build a client scoped to this event's own context, with Stripe-Account cleared
+            // (see StripeClient.WithStripeContext). Rebind the notification's own Client to it
+            // too, so that callbacks can call eventNotification.FetchEvent()/FetchRelatedObject()
+            // directly and still get the same context-scoped behavior as the separate Client
+            // passed alongside it in the event args.
+            var eventClient = this.client.WithStripeContext(eventNotification.Context);
+            eventNotification.Client = eventClient;
 
             this.DispatchEvent(eventNotification, eventClient);
         }
@@ -6127,6 +6144,26 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2MoneyManagementRewardProgramRewardReversedEventNotification)
                 {
                     this.v2MoneyManagementRewardProgramRewardReversed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementRewardProgramRewardReversedEventNotification>((Stripe.Events.V2MoneyManagementRewardProgramRewardReversedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementSpendingMandateCanceledEventNotification)
+                {
+                    this.v2MoneyManagementSpendingMandateCanceled.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementSpendingMandateCanceledEventNotification>((Stripe.Events.V2MoneyManagementSpendingMandateCanceledEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementSpendingMandateCreatedEventNotification)
+                {
+                    this.v2MoneyManagementSpendingMandateCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementSpendingMandateCreatedEventNotification>((Stripe.Events.V2MoneyManagementSpendingMandateCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementSpendingMandateExpiredEventNotification)
+                {
+                    this.v2MoneyManagementSpendingMandateExpired.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementSpendingMandateExpiredEventNotification>((Stripe.Events.V2MoneyManagementSpendingMandateExpiredEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementSpendingMandatePendingCancellationEventNotification)
+                {
+                    this.v2MoneyManagementSpendingMandatePendingCancellation.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementSpendingMandatePendingCancellationEventNotification>((Stripe.Events.V2MoneyManagementSpendingMandatePendingCancellationEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementSpendingMandateUpdatedEventNotification)
+                {
+                    this.v2MoneyManagementSpendingMandateUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementSpendingMandateUpdatedEventNotification>((Stripe.Events.V2MoneyManagementSpendingMandateUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementTransactionCreatedEventNotification)
                 {

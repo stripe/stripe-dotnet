@@ -336,6 +336,10 @@ namespace Stripe
         [STJS.JsonPropertyName("swish")]
         public PaymentMethodConfigurationSwish Swish { get; set; }
 
+        [JsonProperty("toss_pay")]
+        [STJS.JsonPropertyName("toss_pay")]
+        public PaymentMethodConfigurationTossPay TossPay { get; set; }
+
         [JsonProperty("twint")]
         [STJS.JsonPropertyName("twint")]
         public PaymentMethodConfigurationTwint Twint { get; set; }

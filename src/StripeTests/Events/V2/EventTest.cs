@@ -156,7 +156,7 @@ namespace StripeTests.V2
 
             using var hmac = new HMACSHA256(keyBytes);
             byte[] hashBytes = hmac.ComputeHash(messageBytes);
-            return BitConverter.ToString(hashBytes).Replace("-", string.Empty).ToLower();
+            return StringUtils.ToHexString(hashBytes);
         }
 
         /// <summary>
@@ -239,6 +239,23 @@ namespace StripeTests.V2
                 {
                     Content = new StringContent(payload),
                 });
+        }
+
+        /// <summary>
+        /// Builds a client configured with a Stripe-Account, wired to the shared mock HTTP
+        /// handler. Used to verify that an event's own context-scoping clears a stale account
+        /// the client was otherwise configured with.
+        /// </summary>
+        /// <param name="stripeAccount">The Stripe-Account to configure the client with.</param>
+        private StripeClient BuildClientWithStripeAccount(string stripeAccount)
+        {
+            var httpClient = new SystemNetHttpClient(new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
+            return new StripeClient(new StripeClientOptions
+            {
+                ApiKey = "sk_test_123",
+                StripeAccount = stripeAccount,
+                HttpClient = httpClient,
+            });
         }
 
         [Fact]
@@ -360,7 +377,13 @@ namespace StripeTests.V2
             var stripeEvent = this.DoParseSignedEventAndFetch(v2KnownEventPayload);
             Assert.NotNull(stripeEvent);
             Assert.True(stripeEvent is V1BillingMeterErrorReportTriggeredEvent);
-            Assert.Equal(this.stripeClient.Requestor, stripeEvent.Requestor);
+
+            // The requestor isn't the same instance once the event carries its own context: it's
+            // scoped to that context (see LiveApiRequestor.WithStripeContext) rather than being
+            // literally the client's requestor.
+            var requestor = Assert.IsType<LiveApiRequestor>(stripeEvent.Requestor);
+            Assert.Equal(this.stripeClient.ApiKey, requestor.ApiKey);
+            Assert.Equal("context 123", requestor.CurrentStripeContext?.ToString());
         }
 
         [Fact]
@@ -410,6 +433,39 @@ namespace StripeTests.V2
         }
 
         [Fact]
+        public async Task FetchRelatedObjectDoesNotLeakStaleStripeAccount()
+        {
+            // The event was retrieved (directly, not via a webhook) through a client configured
+            // with a default Stripe-Account. That account must not ride along when fetching the
+            // event's related object alongside the event's own context.
+            var client = this.BuildClientWithStripeAccount("acct_stale");
+            this.MockResponse(v2KnownEventPayload);
+
+            var v2EventService = new Stripe.V2.Core.EventService(client);
+            var v2Event = await v2EventService.GetAsync("evt_234");
+            var stripeEvent = this.AssertAndCast<V1BillingMeterErrorReportTriggeredEvent>(v2Event);
+
+            var relatedObjectPayload = @"
+            {
+                ""id"": ""meter_123"",
+                ""object"": ""billing.meter""
+            }";
+            this.MockResponse(relatedObjectPayload);
+            var relatedObject = stripeEvent.FetchRelatedObject();
+            Assert.Equal("meter_123", relatedObject.Id);
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    Times.AtLeastOnce(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        !m.Headers.Contains("Stripe-Account") &&
+                        m.Headers.Contains("Stripe-Context") &&
+                        m.Headers.GetValues("Stripe-Context").First() == "context 123"),
+                    ItExpr.IsAny<CancellationToken>());
+        }
+
+        [Fact]
         public void FetchRelatedObjectFromNotif()
         {
             var notif = this.DoParseSignedEventNotification(v2KnownEventPayload);
@@ -444,6 +500,58 @@ namespace StripeTests.V2
                     ItExpr.Is<HttpRequestMessage>(m =>
                         m.Headers.Contains("Stripe-Request-Trigger") &&
                         m.Headers.GetValues("Stripe-Request-Trigger").First() == "event=evt_234"),
+                    ItExpr.IsAny<CancellationToken>());
+        }
+
+        [Fact]
+        public void FetchEventFromNotifDoesNotLeakStaleStripeAccount()
+        {
+            // The notification was parsed through a client configured with a default
+            // Stripe-Account. That account must not ride along when fetching the full event
+            // alongside the event's own context.
+            var client = this.BuildClientWithStripeAccount("acct_stale");
+            var notif = client.ParseEventNotification(v2KnownEventPayload, GenerateSigHeader(v2KnownEventPayload), WebhookSecret);
+
+            this.MockResponse(v2KnownEventPayload);
+            var fetched = notif.FetchEvent<Stripe.V2.Core.Event>();
+            Assert.NotNull(fetched);
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    Times.AtLeastOnce(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        !m.Headers.Contains("Stripe-Account") &&
+                        m.Headers.Contains("Stripe-Context") &&
+                        m.Headers.GetValues("Stripe-Context").First() == "context 123"),
+                    ItExpr.IsAny<CancellationToken>());
+        }
+
+        [Fact]
+        public void FetchRelatedObjectFromNotifDoesNotLeakStaleStripeAccount()
+        {
+            // Same as above, but for FetchRelatedObject instead of FetchEvent.
+            var client = this.BuildClientWithStripeAccount("acct_stale");
+            var notif = client.ParseEventNotification(v2KnownEventPayload, GenerateSigHeader(v2KnownEventPayload), WebhookSecret);
+            var evt = this.AssertAndCast<V1BillingMeterErrorReportTriggeredEventNotification>(notif);
+
+            var relatedObjectPayload = @"
+            {
+                ""id"": ""meter_123"",
+                ""object"": ""billing.meter""
+            }";
+            this.MockResponse(relatedObjectPayload);
+            var relatedObject = evt.FetchRelatedObject();
+            Assert.Equal("meter_123", relatedObject.Id);
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    Times.AtLeastOnce(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        !m.Headers.Contains("Stripe-Account") &&
+                        m.Headers.Contains("Stripe-Context") &&
+                        m.Headers.GetValues("Stripe-Context").First() == "context 123"),
                     ItExpr.IsAny<CancellationToken>());
         }
 
@@ -508,7 +616,13 @@ namespace StripeTests.V2
 
             var v2EventService = new Stripe.V2.Core.EventService(this.stripeClient);
             var v2Event = await v2EventService.GetAsync("evt_234");
-            Assert.Equal(this.stripeClient.Requestor, v2Event.Requestor);
+
+            // The requestor isn't the same instance once the event carries its own context: it's
+            // scoped to that context (see LiveApiRequestor.WithStripeContext) rather than being
+            // literally the client's requestor.
+            var requestor = Assert.IsType<LiveApiRequestor>(v2Event.Requestor);
+            Assert.Equal(this.stripeClient.ApiKey, requestor.ApiKey);
+            Assert.Equal("context 123", requestor.CurrentStripeContext?.ToString());
         }
 
         [Fact]

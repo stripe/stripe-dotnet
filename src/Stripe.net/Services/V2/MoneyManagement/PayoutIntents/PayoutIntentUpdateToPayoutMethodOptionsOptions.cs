@@ -14,5 +14,12 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("bank_account")]
         [STJS.JsonPropertyName("bank_account")]
         public PayoutIntentUpdateToPayoutMethodOptionsBankAccountOptions BankAccount { get; set; }
+
+        /// <summary>
+        /// Options for check send payout methods.
+        /// </summary>
+        [JsonProperty("check_send")]
+        [STJS.JsonPropertyName("check_send")]
+        public PayoutIntentUpdateToPayoutMethodOptionsCheckSendOptions CheckSend { get; set; }
     }
 }

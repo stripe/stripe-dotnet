@@ -27,7 +27,7 @@ namespace Stripe.Reserve
         }
 
         /// <summary>
-        /// <p>Retrieve a ReservePlan.</p>.
+        /// <p>Retrieve a ReservePlan on your account or on one of your connected accounts.</p>.
         /// </summary>
         public virtual Plan Get(string id, PlanGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -35,7 +35,7 @@ namespace Stripe.Reserve
         }
 
         /// <summary>
-        /// <p>Retrieve a ReservePlan.</p>.
+        /// <p>Retrieve a ReservePlan on your account or on one of your connected accounts.</p>.
         /// </summary>
         public virtual Task<Plan> GetAsync(string id, PlanGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -43,8 +43,9 @@ namespace Stripe.Reserve
         }
 
         /// <summary>
-        /// <p>Returns a list of ReservePlans previously created. The ReservePlans are returned in
-        /// sorted order, with the most recent ReservePlans appearing first.</p>.
+        /// <p>Returns a list of ReservePlans on your account or on one of your connected accounts.
+        /// The ReservePlans are returned in sorted order, with the most recent ReservePlans
+        /// appearing first.</p>.
         /// </summary>
         public virtual StripeList<Plan> List(PlanListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -52,8 +53,9 @@ namespace Stripe.Reserve
         }
 
         /// <summary>
-        /// <p>Returns a list of ReservePlans previously created. The ReservePlans are returned in
-        /// sorted order, with the most recent ReservePlans appearing first.</p>.
+        /// <p>Returns a list of ReservePlans on your account or on one of your connected accounts.
+        /// The ReservePlans are returned in sorted order, with the most recent ReservePlans
+        /// appearing first.</p>.
         /// </summary>
         public virtual Task<StripeList<Plan>> ListAsync(PlanListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -61,8 +63,9 @@ namespace Stripe.Reserve
         }
 
         /// <summary>
-        /// <p>Returns a list of ReservePlans previously created. The ReservePlans are returned in
-        /// sorted order, with the most recent ReservePlans appearing first.</p>.
+        /// <p>Returns a list of ReservePlans on your account or on one of your connected accounts.
+        /// The ReservePlans are returned in sorted order, with the most recent ReservePlans
+        /// appearing first.</p>.
         /// </summary>
         public virtual IEnumerable<Plan> ListAutoPaging(PlanListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -70,8 +73,9 @@ namespace Stripe.Reserve
         }
 
         /// <summary>
-        /// <p>Returns a list of ReservePlans previously created. The ReservePlans are returned in
-        /// sorted order, with the most recent ReservePlans appearing first.</p>.
+        /// <p>Returns a list of ReservePlans on your account or on one of your connected accounts.
+        /// The ReservePlans are returned in sorted order, with the most recent ReservePlans
+        /// appearing first.</p>.
         /// </summary>
         public virtual IAsyncEnumerable<Plan> ListAutoPagingAsync(PlanListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

@@ -6,7 +6,7 @@ namespace Stripe.Events
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// This event occurs when account defaults are created or updated.
+    /// Occurs when an Account's defaults are created or updated.
     /// </summary>
     public class V2CoreAccountIncludingDefaultsUpdatedEvent : V2.Core.Event
     {

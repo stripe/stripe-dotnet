@@ -7,7 +7,8 @@ namespace Stripe.Events
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// Occurs when a ReceivedDebitMandate is updated.
+    /// Deprecated: Use v2.money_management.spending_mandate.updated instead. Occurs when a
+    /// ReceivedDebitMandate is updated.
     /// </summary>
     public class V2MoneyManagementReceivedDebitMandateUpdatedEventNotification : V2.Core.EventNotification
     {

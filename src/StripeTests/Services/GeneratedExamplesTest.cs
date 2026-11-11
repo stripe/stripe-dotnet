@@ -26979,6 +26979,13 @@ namespace StripeTests
                             },
                             PreferredNetworks = new List<string> { "fedwire" },
                         },
+                        CheckSend = new Stripe.V2.MoneyManagement.OutboundPaymentCreateToPayoutMethodOptionsCheckSendOptions
+                        {
+                            AttachmentFile = "attachment_file",
+                            Memo = "memo",
+                            ShippingSpeed = "priority",
+                            Signature = "signature",
+                        },
                     },
                     Recipient = "recipient",
                 },
@@ -27026,6 +27033,13 @@ namespace StripeTests
                                 },
                             },
                             PreferredNetworks = new List<string> { "fedwire" },
+                        },
+                        CheckSend = new Stripe.V2.MoneyManagement.OutboundPaymentCreateToPayoutMethodOptionsCheckSendOptions
+                        {
+                            AttachmentFile = "attachment_file",
+                            Memo = "memo",
+                            ShippingSpeed = "priority",
+                            Signature = "signature",
                         },
                     },
                     Recipient = "recipient",
@@ -27771,6 +27785,13 @@ namespace StripeTests
                             },
                             PreferredNetworks = new List<string> { "fedwire" },
                         },
+                        CheckSend = new Stripe.V2.MoneyManagement.PayoutIntentCreateToPayoutMethodOptionsCheckSendOptions
+                        {
+                            AttachmentFile = "attachment_file",
+                            Memo = "memo",
+                            ShippingSpeed = "priority",
+                            Signature = "signature",
+                        },
                     },
                     Recipient = "recipient",
                 },
@@ -27818,6 +27839,13 @@ namespace StripeTests
                                 },
                             },
                             PreferredNetworks = new List<string> { "fedwire" },
+                        },
+                        CheckSend = new Stripe.V2.MoneyManagement.PayoutIntentCreateToPayoutMethodOptionsCheckSendOptions
+                        {
+                            AttachmentFile = "attachment_file",
+                            Memo = "memo",
+                            ShippingSpeed = "priority",
+                            Signature = "signature",
                         },
                     },
                     Recipient = "recipient",
@@ -28045,7 +28073,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/payout_methods",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"apple_pay\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"check_send\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutMethods;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.PayoutMethod> payoutMethods = service
@@ -28062,7 +28090,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/payout_methods",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"apple_pay\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"check_send\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutMethods;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.PayoutMethod> payoutMethods = await service
@@ -28079,7 +28107,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/payout_methods",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"apple_pay\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"check_send\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutMethods;
             var payoutMethod = service.ListAutoPaging().First();
@@ -28095,7 +28123,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/payout_methods",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"apple_pay\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"check_send\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutMethods;
             var payoutMethod = await service.ListAutoPagingAsync().FirstAsync();
@@ -28111,7 +28139,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/payout_methods/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"apple_pay\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}");
+                "{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"check_send\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutMethods;
             Stripe.V2.MoneyManagement.PayoutMethod payoutMethod = service.Get(
@@ -28128,7 +28156,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/payout_methods/id_123",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"apple_pay\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}");
+                "{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"check_send\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutMethods;
             Stripe.V2.MoneyManagement.PayoutMethod payoutMethod = await service
@@ -28145,7 +28173,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/payout_methods/id_123/archive",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"apple_pay\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}");
+                "{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"check_send\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutMethods;
             Stripe.V2.MoneyManagement.PayoutMethod payoutMethod = service
@@ -28162,7 +28190,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/payout_methods/id_123/archive",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"apple_pay\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}");
+                "{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"check_send\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutMethods;
             Stripe.V2.MoneyManagement.PayoutMethod payoutMethod = await service
@@ -28179,7 +28207,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/payout_methods/id_123/disable",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"apple_pay\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}");
+                "{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"check_send\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutMethods;
             Stripe.V2.MoneyManagement.PayoutMethod payoutMethod = service
@@ -28196,7 +28224,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/payout_methods/id_123/disable",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"apple_pay\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}");
+                "{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"check_send\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutMethods;
             Stripe.V2.MoneyManagement.PayoutMethod payoutMethod = await service
@@ -28213,7 +28241,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/payout_methods/id_123/unarchive",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"apple_pay\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}");
+                "{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"check_send\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutMethods;
             Stripe.V2.MoneyManagement.PayoutMethod payoutMethod = service
@@ -28230,7 +28258,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/payout_methods/id_123/unarchive",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"apple_pay\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}");
+                "{\"object\":\"v2.money_management.payout_method\",\"archived\":true,\"available_payout_speeds\":[\"standard\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"restricted\":true,\"type\":\"check_send\",\"usage_status\":{\"payments\":\"invalid\",\"transfers\":\"invalid\"}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.PayoutMethods;
             Stripe.V2.MoneyManagement.PayoutMethod payoutMethod = await service
@@ -29459,6 +29487,141 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/money_management/reward_program_enrollments/id_123/deactivate");
+        }
+
+        [Fact]
+        public void TestV2MoneyManagementSpendingMandateGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/money_management/spending_mandates",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"object\":\"v2.money_management.spending_mandate\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"expired\",\"type\":\"bank_transfer\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.SpendingMandates;
+            Stripe.V2.StripeList<Stripe.V2.MoneyManagement.SpendingMandate> spendingMandates = service
+                .List();
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/money_management/spending_mandates");
+        }
+
+        [Fact]
+        public async Task TestV2MoneyManagementSpendingMandateGetAsync()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/money_management/spending_mandates",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"object\":\"v2.money_management.spending_mandate\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"expired\",\"type\":\"bank_transfer\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.SpendingMandates;
+            Stripe.V2.StripeList<Stripe.V2.MoneyManagement.SpendingMandate> spendingMandates = await service
+                .ListAsync();
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/money_management/spending_mandates");
+        }
+
+        [Fact]
+        public void TestV2MoneyManagementSpendingMandateGetAutoPaging()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/money_management/spending_mandates",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"object\":\"v2.money_management.spending_mandate\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"expired\",\"type\":\"bank_transfer\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.SpendingMandates;
+            var spendingMandate = service.ListAutoPaging().First();
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/money_management/spending_mandates");
+        }
+
+        [Fact]
+        public async Task TestV2MoneyManagementSpendingMandateGetAutoPagingAsync()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/money_management/spending_mandates",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"object\":\"v2.money_management.spending_mandate\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"expired\",\"type\":\"bank_transfer\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.SpendingMandates;
+            var spendingMandate = await service.ListAutoPagingAsync()
+                .FirstAsync();
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/money_management/spending_mandates");
+        }
+
+        [Fact]
+        public void TestV2MoneyManagementSpendingMandateGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/money_management/spending_mandates/id_123",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.money_management.spending_mandate\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"expired\",\"type\":\"bank_transfer\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.SpendingMandates;
+            Stripe.V2.MoneyManagement.SpendingMandate spendingMandate = service
+                .Get("id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/money_management/spending_mandates/id_123");
+        }
+
+        [Fact]
+        public async Task TestV2MoneyManagementSpendingMandateGet2Async()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/money_management/spending_mandates/id_123",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.money_management.spending_mandate\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"expired\",\"type\":\"bank_transfer\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.SpendingMandates;
+            Stripe.V2.MoneyManagement.SpendingMandate spendingMandate = await service
+                .GetAsync("id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/money_management/spending_mandates/id_123");
+        }
+
+        [Fact]
+        public void TestV2MoneyManagementSpendingMandatePost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/spending_mandates/id_123/cancel",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.money_management.spending_mandate\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"expired\",\"type\":\"bank_transfer\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.SpendingMandates;
+            Stripe.V2.MoneyManagement.SpendingMandate spendingMandate = service
+                .Cancel("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/spending_mandates/id_123/cancel");
+        }
+
+        [Fact]
+        public async Task TestV2MoneyManagementSpendingMandatePostAsync()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/spending_mandates/id_123/cancel",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.money_management.spending_mandate\",\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"livemode\":true,\"status\":\"expired\",\"type\":\"bank_transfer\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.SpendingMandates;
+            Stripe.V2.MoneyManagement.SpendingMandate spendingMandate = await service
+                .CancelAsync("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/spending_mandates/id_123/cancel");
         }
 
         [Fact]

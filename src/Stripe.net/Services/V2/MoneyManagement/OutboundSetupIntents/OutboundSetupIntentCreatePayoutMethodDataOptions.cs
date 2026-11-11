@@ -30,6 +30,13 @@ namespace Stripe.V2.MoneyManagement
         public OutboundSetupIntentCreatePayoutMethodDataCardOptions Card { get; set; }
 
         /// <summary>
+        /// The type specific details of the check send payout method.
+        /// </summary>
+        [JsonProperty("check_send")]
+        [STJS.JsonPropertyName("check_send")]
+        public OutboundSetupIntentCreatePayoutMethodDataCheckSendOptions CheckSend { get; set; }
+
+        /// <summary>
         /// The type specific details of the crypto wallet payout method.
         /// </summary>
         [JsonProperty("crypto_wallet")]
@@ -45,8 +52,8 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. The type of payout method to be created.
-        /// One of: <c>apple_pay</c>, <c>bank_account</c>, <c>card</c>, <c>crypto_wallet</c>,
-        /// <c>network_business_profile_wallet</c>, or <c>pix</c>.
+        /// One of: <c>apple_pay</c>, <c>bank_account</c>, <c>card</c>, <c>check_send</c>,
+        /// <c>crypto_wallet</c>, <c>network_business_profile_wallet</c>, or <c>pix</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

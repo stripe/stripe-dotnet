@@ -12,7 +12,9 @@ namespace Stripe
         /// <summary>
         /// A list of three letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO
         /// currency code</a>, in lowercase. Must be <a
-        /// href="https://stripe.com/docs/currencies">supported currencies</a>.
+        /// href="https://stripe.com/docs/currencies">supported currencies</a>. Payout-only
+        /// currencies are also supported, but only for informational quotes
+        /// (<c>lock_duration=none</c>).
         /// </summary>
         [JsonProperty("from_currencies")]
         [STJS.JsonPropertyName("from_currencies")]
@@ -32,7 +34,8 @@ namespace Stripe
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
-        /// currency</a>.
+        /// currency</a>. Payout-only currencies are also supported, but only for informational
+        /// quotes (<c>lock_duration=none</c>).
         /// </summary>
         [JsonProperty("to_currency")]
         [STJS.JsonPropertyName("to_currency")]

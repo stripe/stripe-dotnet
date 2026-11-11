@@ -80,6 +80,10 @@ namespace Stripe
         [STJS.JsonPropertyName("sepa_debit")]
         public MandatePaymentMethodDetailsSepaDebit SepaDebit { get; set; }
 
+        [JsonProperty("toss_pay")]
+        [STJS.JsonPropertyName("toss_pay")]
+        public MandatePaymentMethodDetailsTossPay TossPay { get; set; }
+
         [JsonProperty("twint")]
         [STJS.JsonPropertyName("twint")]
         public MandatePaymentMethodDetailsTwint Twint { get; set; }

@@ -41,6 +41,13 @@ namespace Stripe
         }
 
         /// <summary>
+        /// Payment evaluations associated with this reported payment.
+        /// </summary>
+        [JsonProperty("payment_evaluations")]
+        [STJS.JsonPropertyName("payment_evaluations")]
+        public List<string> PaymentEvaluations { get; set; }
+
+        /// <summary>
         /// Information about the Payment Method debited for this payment.
         /// </summary>
         [JsonProperty("payment_method_details")]

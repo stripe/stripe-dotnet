@@ -8,6 +8,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SetupIntentPaymentMethodOptionsBacsDebit : StripeEntity<SetupIntentPaymentMethodOptionsBacsDebit>
     {
+        [JsonProperty("financial_connections")]
+        [STJS.JsonPropertyName("financial_connections")]
+        public SetupIntentPaymentMethodOptionsBacsDebitFinancialConnections FinancialConnections { get; set; }
+
         [JsonProperty("mandate_options")]
         [STJS.JsonPropertyName("mandate_options")]
         public SetupIntentPaymentMethodOptionsBacsDebitMandateOptions MandateOptions { get; set; }

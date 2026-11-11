@@ -23,6 +23,13 @@ namespace Stripe.V2.MoneyManagement
         public OutboundPaymentTrackingDetailsCard Card { get; set; }
 
         /// <summary>
+        /// Check send tracking details.
+        /// </summary>
+        [JsonProperty("check_send")]
+        [STJS.JsonPropertyName("check_send")]
+        public OutboundPaymentTrackingDetailsCheckSend CheckSend { get; set; }
+
+        /// <summary>
         /// Crypto wallet tracking details.
         /// </summary>
         [JsonProperty("crypto_wallet")]

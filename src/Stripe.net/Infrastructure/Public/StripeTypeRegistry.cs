@@ -486,6 +486,10 @@ namespace Stripe
                     "v2.money_management.reward_program_rule", typeof(
                     V2.MoneyManagement.RewardProgramRule)
                 },
+                {
+                    "v2.money_management.spending_mandate", typeof(
+                    V2.MoneyManagement.SpendingMandate)
+                },
                 { "v2.money_management.transaction", typeof(V2.MoneyManagement.Transaction) },
                 {
                     "v2.money_management.transaction_entry", typeof(
@@ -2135,6 +2139,26 @@ namespace Stripe
                 {
                     "v2.money_management.reward_program.reward_reversed", typeof(
                     Events.V2MoneyManagementRewardProgramRewardReversedEvent)
+                },
+                {
+                    "v2.money_management.spending_mandate.canceled", typeof(
+                    Events.V2MoneyManagementSpendingMandateCanceledEvent)
+                },
+                {
+                    "v2.money_management.spending_mandate.created", typeof(
+                    Events.V2MoneyManagementSpendingMandateCreatedEvent)
+                },
+                {
+                    "v2.money_management.spending_mandate.expired", typeof(
+                    Events.V2MoneyManagementSpendingMandateExpiredEvent)
+                },
+                {
+                    "v2.money_management.spending_mandate.pending_cancellation", typeof(
+                    Events.V2MoneyManagementSpendingMandatePendingCancellationEvent)
+                },
+                {
+                    "v2.money_management.spending_mandate.updated", typeof(
+                    Events.V2MoneyManagementSpendingMandateUpdatedEvent)
                 },
                 {
                     "v2.money_management.transaction.created", typeof(
@@ -4111,6 +4135,26 @@ namespace Stripe
                 {
                     "v2.money_management.reward_program.reward_reversed", typeof(
                     Events.V2MoneyManagementRewardProgramRewardReversedEventNotification)
+                },
+                {
+                    "v2.money_management.spending_mandate.canceled", typeof(
+                    Events.V2MoneyManagementSpendingMandateCanceledEventNotification)
+                },
+                {
+                    "v2.money_management.spending_mandate.created", typeof(
+                    Events.V2MoneyManagementSpendingMandateCreatedEventNotification)
+                },
+                {
+                    "v2.money_management.spending_mandate.expired", typeof(
+                    Events.V2MoneyManagementSpendingMandateExpiredEventNotification)
+                },
+                {
+                    "v2.money_management.spending_mandate.pending_cancellation", typeof(
+                    Events.V2MoneyManagementSpendingMandatePendingCancellationEventNotification)
+                },
+                {
+                    "v2.money_management.spending_mandate.updated", typeof(
+                    Events.V2MoneyManagementSpendingMandateUpdatedEventNotification)
                 },
                 {
                     "v2.money_management.transaction.created", typeof(

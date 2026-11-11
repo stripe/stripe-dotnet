@@ -641,6 +641,16 @@ namespace Stripe
         public PaymentMethodConfigurationSwishOptions Swish { get; set; }
 
         /// <summary>
+        /// Customers are redirected to Toss Pay to authenticate their payment, then return to your
+        /// website or app. You receive immediate notification of whether the payment succeeded or
+        /// failed. With recurring access, customers can authorize a reusable mandate for future
+        /// off-session payments.
+        /// </summary>
+        [JsonProperty("toss_pay")]
+        [STJS.JsonPropertyName("toss_pay")]
+        public PaymentMethodConfigurationTossPayOptions TossPay { get; set; }
+
+        /// <summary>
         /// Twint is a payment method popular in Switzerland. It allows customers to pay using their
         /// mobile phone. Check this <a href="https://docs.stripe.com/payments/twint">page</a> for
         /// more details.

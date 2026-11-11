@@ -88,13 +88,13 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// If applicable, this transaction uses an exchange rate. If money converts from currency A
-        /// to currency B, then the <c>amount</c> in currency A, multiplied by the
-        /// <c>exchange_rate</c>, equals the <c>amount</c> in currency B. For example, if you charge
-        /// a customer 10.00 EUR, the PaymentIntent's <c>amount</c> is <c>1000</c> and
-        /// <c>currency</c> is <c>eur</c>. If this converts to 12.34 USD in your Stripe account, the
-        /// BalanceTransaction's <c>amount</c> is <c>1234</c>, its <c>currency</c> is <c>usd</c>,
-        /// and the <c>exchange_rate</c> is <c>1.234</c>.
+        /// The exchange rate used for this transaction, if applicable. Multiplying the source
+        /// <c>amount</c> by the <c>exchange_rate</c> gives the destination <c>amount</c>, both in
+        /// their currencies' smallest units. For example, <c>1000</c> EUR cents converts to
+        /// <c>1234</c> USD cents at <c>1.234</c>. For a zero-decimal currency such as JPY,
+        /// <c>1000</c> JPY converts to <c>640</c> USD cents (6.40 USD) at <c>0.64</c>, equivalent
+        /// to <c>0.0064</c> USD per JPY. For JPY to USD, the API multiplier is 100 times the
+        /// whole-unit rate because JPY amounts use yen and USD amounts use cents.
         /// </summary>
         [JsonProperty("exchange_rate")]
         [STJS.JsonPropertyName("exchange_rate")]

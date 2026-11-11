@@ -115,5 +115,9 @@ namespace Stripe
         [JsonProperty("wechat_pay_redirect_to_ios_app")]
         [STJS.JsonPropertyName("wechat_pay_redirect_to_ios_app")]
         public PaymentIntentNextActionWechatPayRedirectToIosApp WechatPayRedirectToIosApp { get; set; }
+
+        [JsonProperty("wechat_pay_redirect_to_mini_program")]
+        [STJS.JsonPropertyName("wechat_pay_redirect_to_mini_program")]
+        public PaymentIntentNextActionWechatPayRedirectToMiniProgram WechatPayRedirectToMiniProgram { get; set; }
     }
 }
