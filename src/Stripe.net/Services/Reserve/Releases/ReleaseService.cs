@@ -27,7 +27,7 @@ namespace Stripe.Reserve
         }
 
         /// <summary>
-        /// <p>Retrieve a ReserveRelease.</p>.
+        /// <p>Retrieve a ReserveRelease on your account or on one of your connected accounts.</p>.
         /// </summary>
         public virtual Release Get(string id, ReleaseGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -35,7 +35,7 @@ namespace Stripe.Reserve
         }
 
         /// <summary>
-        /// <p>Retrieve a ReserveRelease.</p>.
+        /// <p>Retrieve a ReserveRelease on your account or on one of your connected accounts.</p>.
         /// </summary>
         public virtual Task<Release> GetAsync(string id, ReleaseGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -43,8 +43,9 @@ namespace Stripe.Reserve
         }
 
         /// <summary>
-        /// <p>Returns a list of ReserveReleases previously created. The ReserveReleases are
-        /// returned in sorted order, with the most recent ReserveReleases appearing first.</p>.
+        /// <p>Returns a list of ReserveReleases on your account or on one of your connected
+        /// accounts. The ReserveReleases are returned in sorted order, with the most recent
+        /// ReserveReleases appearing first.</p>.
         /// </summary>
         public virtual StripeList<Release> List(ReleaseListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -52,8 +53,9 @@ namespace Stripe.Reserve
         }
 
         /// <summary>
-        /// <p>Returns a list of ReserveReleases previously created. The ReserveReleases are
-        /// returned in sorted order, with the most recent ReserveReleases appearing first.</p>.
+        /// <p>Returns a list of ReserveReleases on your account or on one of your connected
+        /// accounts. The ReserveReleases are returned in sorted order, with the most recent
+        /// ReserveReleases appearing first.</p>.
         /// </summary>
         public virtual Task<StripeList<Release>> ListAsync(ReleaseListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -61,8 +63,9 @@ namespace Stripe.Reserve
         }
 
         /// <summary>
-        /// <p>Returns a list of ReserveReleases previously created. The ReserveReleases are
-        /// returned in sorted order, with the most recent ReserveReleases appearing first.</p>.
+        /// <p>Returns a list of ReserveReleases on your account or on one of your connected
+        /// accounts. The ReserveReleases are returned in sorted order, with the most recent
+        /// ReserveReleases appearing first.</p>.
         /// </summary>
         public virtual IEnumerable<Release> ListAutoPaging(ReleaseListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -70,8 +73,9 @@ namespace Stripe.Reserve
         }
 
         /// <summary>
-        /// <p>Returns a list of ReserveReleases previously created. The ReserveReleases are
-        /// returned in sorted order, with the most recent ReserveReleases appearing first.</p>.
+        /// <p>Returns a list of ReserveReleases on your account or on one of your connected
+        /// accounts. The ReserveReleases are returned in sorted order, with the most recent
+        /// ReserveReleases appearing first.</p>.
         /// </summary>
         public virtual IAsyncEnumerable<Release> ListAutoPagingAsync(ReleaseListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

@@ -6,6 +6,7 @@ namespace Stripe.Events
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
+    /// Deprecated: Use v2.money_management.spending_mandate.pending_cancellation instead.
     /// Occurs when a ReceivedDebitMandate transitions to pending_cancellation status.
     /// </summary>
     public class V2MoneyManagementReceivedDebitMandatePendingCancellationEvent : V2.Core.Event

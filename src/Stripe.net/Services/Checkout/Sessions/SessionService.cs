@@ -53,6 +53,11 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// <p>Creates a Checkout Session object.</p>.
+        ///
+        /// <p>Validate requests on your server and protect your application’s Session-creation
+        /// endpoint with access controls and limits on repeated creation. See <a
+        /// href="https://docs.stripe.com/payments/accept-a-payment?payment-ui=elements&amp;api-integration=checkout#protect-session-creation">Protect
+        /// your Session-creation endpoint</a>.</p>.
         /// </summary>
         public virtual Session Create(SessionCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -61,6 +66,11 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// <p>Creates a Checkout Session object.</p>.
+        ///
+        /// <p>Validate requests on your server and protect your application’s Session-creation
+        /// endpoint with access controls and limits on repeated creation. See <a
+        /// href="https://docs.stripe.com/payments/accept-a-payment?payment-ui=elements&amp;api-integration=checkout#protect-session-creation">Protect
+        /// your Session-creation endpoint</a>.</p>.
         /// </summary>
         public virtual Task<Session> CreateAsync(SessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

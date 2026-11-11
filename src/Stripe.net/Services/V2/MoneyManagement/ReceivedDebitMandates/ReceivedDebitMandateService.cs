@@ -21,7 +21,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Cancels an active ReceivedDebitMandate.
+        /// Deprecated: Use CancelSpendingMandate instead. Cancels an active ReceivedDebitMandate.
         /// </summary>
         public virtual ReceivedDebitMandate Cancel(string id, ReceivedDebitMandateCancelOptions options = null, RequestOptions requestOptions = null)
         {
@@ -29,7 +29,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Cancels an active ReceivedDebitMandate.
+        /// Deprecated: Use CancelSpendingMandate instead. Cancels an active ReceivedDebitMandate.
         /// </summary>
         public virtual Task<ReceivedDebitMandate> CancelAsync(string id, ReceivedDebitMandateCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -37,7 +37,8 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Retrieves the details of an existing ReceivedDebitMandate.
+        /// Deprecated: Use RetrieveSpendingMandate instead. Retrieves the details of an existing
+        /// ReceivedDebitMandate.
         /// </summary>
         public virtual ReceivedDebitMandate Get(string id, ReceivedDebitMandateGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -45,7 +46,8 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Retrieves the details of an existing ReceivedDebitMandate.
+        /// Deprecated: Use RetrieveSpendingMandate instead. Retrieves the details of an existing
+        /// ReceivedDebitMandate.
         /// </summary>
         public virtual Task<ReceivedDebitMandate> GetAsync(string id, ReceivedDebitMandateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -53,7 +55,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Returns a list of ReceivedDebitMandates.
+        /// Deprecated: Use ListSpendingMandates instead. Returns a list of ReceivedDebitMandates.
         /// </summary>
         public virtual V2.StripeList<ReceivedDebitMandate> List(ReceivedDebitMandateListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -61,7 +63,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Returns a list of ReceivedDebitMandates.
+        /// Deprecated: Use ListSpendingMandates instead. Returns a list of ReceivedDebitMandates.
         /// </summary>
         public virtual Task<V2.StripeList<ReceivedDebitMandate>> ListAsync(ReceivedDebitMandateListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -69,7 +71,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Returns a list of ReceivedDebitMandates.
+        /// Deprecated: Use ListSpendingMandates instead. Returns a list of ReceivedDebitMandates.
         /// </summary>
         public virtual IEnumerable<ReceivedDebitMandate> ListAutoPaging(ReceivedDebitMandateListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -77,7 +79,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Returns a list of ReceivedDebitMandates.
+        /// Deprecated: Use ListSpendingMandates instead. Returns a list of ReceivedDebitMandates.
         /// </summary>
         public virtual IAsyncEnumerable<ReceivedDebitMandate> ListAutoPagingAsync(ReceivedDebitMandateListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

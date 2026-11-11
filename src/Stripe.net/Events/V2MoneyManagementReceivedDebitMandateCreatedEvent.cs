@@ -6,7 +6,8 @@ namespace Stripe.Events
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// Occurs when a ReceivedDebitMandate is created by an external party.
+    /// Deprecated: Use v2.money_management.spending_mandate.created instead. Occurs when a
+    /// ReceivedDebitMandate is created by an external party.
     /// </summary>
     public class V2MoneyManagementReceivedDebitMandateCreatedEvent : V2.Core.Event
     {

@@ -31,6 +31,7 @@ namespace Stripe.V2
         private V2.MoneyManagement.RecipientVerificationService recipientVerifications;
         private V2.MoneyManagement.RewardProgramService rewardPrograms;
         private V2.MoneyManagement.RewardProgramEnrollmentService rewardProgramEnrollments;
+        private V2.MoneyManagement.SpendingMandateService spendingMandates;
         private V2.MoneyManagement.TestHelperService testHelpers;
         private V2.MoneyManagement.TransactionService transactions;
         private V2.MoneyManagement.TransactionEntryService transactionEntries;
@@ -115,6 +116,9 @@ namespace Stripe.V2
             this.Requestor);
 
         public virtual V2.MoneyManagement.RewardProgramEnrollmentService RewardProgramEnrollments => this.rewardProgramEnrollments ??= new V2.MoneyManagement.RewardProgramEnrollmentService(
+            this.Requestor);
+
+        public virtual V2.MoneyManagement.SpendingMandateService SpendingMandates => this.spendingMandates ??= new V2.MoneyManagement.SpendingMandateService(
             this.Requestor);
 
         public virtual V2.MoneyManagement.TestHelperService TestHelpers => this.testHelpers ??= new V2.MoneyManagement.TestHelperService(

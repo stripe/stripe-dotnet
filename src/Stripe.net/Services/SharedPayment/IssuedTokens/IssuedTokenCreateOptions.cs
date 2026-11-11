@@ -17,6 +17,13 @@ namespace Stripe.SharedPayment
         public string PaymentMethod { get; set; }
 
         /// <summary>
+        /// Referral fee details for this SharedPaymentToken.
+        /// </summary>
+        [JsonProperty("referral_fee_details")]
+        [STJS.JsonPropertyName("referral_fee_details")]
+        public IssuedTokenReferralFeeDetailsOptions ReferralFeeDetails { get; set; }
+
+        /// <summary>
         /// If the customer does not exit their browser while authenticating, they will be
         /// redirected to this specified URL after completion.
         /// </summary>

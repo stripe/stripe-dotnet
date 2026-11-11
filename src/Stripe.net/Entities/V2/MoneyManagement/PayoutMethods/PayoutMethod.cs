@@ -74,6 +74,13 @@ namespace Stripe.V2.MoneyManagement
         public PayoutMethodCard Card { get; set; }
 
         /// <summary>
+        /// The PayoutMethodCheckSend object details.
+        /// </summary>
+        [JsonProperty("check_send")]
+        [STJS.JsonPropertyName("check_send")]
+        public PayoutMethodCheckSend CheckSend { get; set; }
+
+        /// <summary>
         /// Created timestamp.
         /// </summary>
         [JsonProperty("created")]
@@ -126,8 +133,8 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. The type of payout method.
-        /// One of: <c>apple_pay</c>, <c>bank_account</c>, <c>card</c>, <c>crypto_wallet</c>,
-        /// <c>network_business_profile_wallet</c>, or <c>pix</c>.
+        /// One of: <c>apple_pay</c>, <c>bank_account</c>, <c>card</c>, <c>check_send</c>,
+        /// <c>crypto_wallet</c>, <c>network_business_profile_wallet</c>, or <c>pix</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

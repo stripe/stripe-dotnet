@@ -547,6 +547,13 @@ namespace Stripe.Checkout
         public SessionPhoneNumberCollectionOptions PhoneNumberCollection { get; set; }
 
         /// <summary>
+        /// Token used to resolve the presentment currency for this Checkout Session.
+        /// </summary>
+        [JsonProperty("pricing_token")]
+        [STJS.JsonPropertyName("pricing_token")]
+        public string PricingToken { get; set; }
+
+        /// <summary>
         /// This parameter applies to <c>ui_mode: embedded_page</c>. Learn more about the <a
         /// href="https://docs.stripe.com/payments/checkout/custom-success-page?payment-ui=embedded-form">redirect
         /// behavior</a> of embedded sessions. Defaults to <c>always</c>.

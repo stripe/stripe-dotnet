@@ -116,6 +116,10 @@ namespace Stripe
         [STJS.JsonPropertyName("stripe_balance")]
         public SetupAttemptPaymentMethodDetailsStripeBalance StripeBalance { get; set; }
 
+        [JsonProperty("toss_pay")]
+        [STJS.JsonPropertyName("toss_pay")]
+        public SetupAttemptPaymentMethodDetailsTossPay TossPay { get; set; }
+
         [JsonProperty("twint")]
         [STJS.JsonPropertyName("twint")]
         public SetupAttemptPaymentMethodDetailsTwint Twint { get; set; }

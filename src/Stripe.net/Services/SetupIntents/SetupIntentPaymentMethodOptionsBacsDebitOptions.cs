@@ -9,6 +9,13 @@ namespace Stripe
     public class SetupIntentPaymentMethodOptionsBacsDebitOptions : INestedOptions
     {
         /// <summary>
+        /// Additional fields for Financial Connections session creation.
+        /// </summary>
+        [JsonProperty("financial_connections")]
+        [STJS.JsonPropertyName("financial_connections")]
+        public SetupIntentPaymentMethodOptionsBacsDebitFinancialConnectionsOptions FinancialConnections { get; set; }
+
+        /// <summary>
         /// Additional fields for Mandate creation.
         /// </summary>
         [JsonProperty("mandate_options")]

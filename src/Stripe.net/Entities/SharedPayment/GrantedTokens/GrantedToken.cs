@@ -82,6 +82,15 @@ namespace Stripe.SharedPayment
         public GrantedTokenPaymentMethodDetails PaymentMethodDetails { get; set; }
 
         /// <summary>
+        /// Referral fees may be charged when a SharedPaymentGrantedToken is used. This behavior is
+        /// controlled by the issuer of the token. This field provides details about the referral
+        /// fee rate.
+        /// </summary>
+        [JsonProperty("referral_fee_details")]
+        [STJS.JsonPropertyName("referral_fee_details")]
+        public GrantedTokenReferralFeeDetails ReferralFeeDetails { get; set; }
+
+        /// <summary>
         /// Risk details of the SharedPaymentGrantedToken.
         /// </summary>
         [JsonProperty("risk_details")]

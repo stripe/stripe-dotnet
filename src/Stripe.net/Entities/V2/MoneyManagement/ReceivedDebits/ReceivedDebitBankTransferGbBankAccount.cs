@@ -40,7 +40,8 @@ namespace Stripe.V2.MoneyManagement
         public string Network { get; set; }
 
         /// <summary>
-        /// The ID of the mandate associated with this debit.
+        /// The ID of the mandate associated with this debit. Deprecated: use
+        /// <c>bank_transfer.spending_mandate</c> instead.
         /// </summary>
         [JsonProperty("received_debit_mandate")]
         [STJS.JsonPropertyName("received_debit_mandate")]

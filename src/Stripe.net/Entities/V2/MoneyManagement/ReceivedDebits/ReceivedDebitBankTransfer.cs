@@ -51,6 +51,13 @@ namespace Stripe.V2.MoneyManagement
         public string PaymentMethodType { get; set; }
 
         /// <summary>
+        /// The ID of the SpendingMandate associated with this debit.
+        /// </summary>
+        [JsonProperty("spending_mandate")]
+        [STJS.JsonPropertyName("spending_mandate")]
+        public string SpendingMandate { get; set; }
+
+        /// <summary>
         /// The statement descriptor set by the originator of the debit.
         /// </summary>
         [JsonProperty("statement_descriptor")]

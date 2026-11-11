@@ -42,13 +42,26 @@ namespace Stripe
 
         /// <summary>
         /// Indicates the outcome of 3D Secure authentication.
-        /// One of: <c>attempt_acknowledged</c>, <c>authenticated</c>, or <c>exempted</c>.
+        /// One of: <c>attempt_acknowledged</c>, <c>authenticated</c>, <c>exempted</c>,
+        /// <c>failed</c>, <c>not_supported</c>, or <c>processing_error</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("result")]
         [STJS.JsonPropertyName("result")]
         public string Result { get; set; }
+
+        /// <summary>
+        /// Additional information about why 3D Secure succeeded or failed, based on the
+        /// <c>result</c>.
+        /// One of: <c>abandoned</c>, <c>canceled</c>, <c>card_not_enrolled</c>,
+        /// <c>network_not_supported</c>, <c>protocol_error</c>, or <c>rejected</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("result_reason")]
+        [STJS.JsonPropertyName("result_reason")]
+        public string ResultReason { get; set; }
 
         /// <summary>
         /// The version of 3D Secure that was used.
