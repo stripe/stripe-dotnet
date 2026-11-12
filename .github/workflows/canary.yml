@@ -1,0 +1,112 @@
+name: Canary CI
+
+# Runs the same checks as CI against code generated from the canary specs.
+# sdk-codegen force-pushes these branches; they are never released, so there is
+# no pack or publish job. Compat is skipped because it checks a pull request
+# against its base.
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - canary-ga
+      - canary-beta
+      - canary-private-preview
+
+permissions: {}
+
+concurrency:
+  # Each push replaces the branch, so an older run's result is stale.
+  group: canary-ci-${{ github.ref_name }}
+  cancel-in-progress: true
+
+env:
+  # Map each canary branch to the channel stripe-mock serves.
+  CANARY_CHANNEL: >-
+    ${{
+      github.ref_name == 'canary-ga' && 'ga' ||
+      github.ref_name == 'canary-beta' && 'beta' ||
+      github.ref_name == 'canary-private-preview' && 'private-preview' ||
+      'unsupported'
+    }}
+
+jobs:
+  prepare-dotnet-versions:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      latest-dotnet-version: ${{ steps.prepare.outputs.latest-dotnet-version }}
+      test-matrix: ${{ steps.prepare.outputs.test-matrix }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - id: prepare
+        uses: ./.github/actions/prepare
+
+  test:
+    name: Test (${{ matrix.framework }}, ubuntu)
+    needs: [prepare-dotnet-versions]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        # Keep in sync with the test matrix in ci.yml.
+        framework: ${{ fromJson(needs.prepare-dotnet-versions.outputs.test-matrix) }}
+        exclude:
+          - framework: net462
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/test
+        with:
+          framework: ${{ matrix.framework }}
+          latest-dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
+          canary_channel: ${{ env.CANARY_CHANNEL }}
+
+  test-net462:
+    name: Test (net462, windows)
+    needs: [prepare-dotnet-versions]
+    runs-on: windows-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/test
+        with:
+          framework: net462
+          latest-dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
+          canary_channel: ${{ env.CANARY_CHANNEL }}
+
+  build:
+    name: Build
+    needs: [test, test-net462, prepare-dotnet-versions]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/build
+        with:
+          latest-dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
+
+  build-examples:
+    name: Build examples
+    needs: prepare-dotnet-versions
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/build-examples
+        with:
+          latest-dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}

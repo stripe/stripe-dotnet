@@ -40,6 +40,21 @@ namespace Stripe
 
         public StripeResponse StripeResponse { get; set; }
 
+        // prefix with the request ID if available.
+        public override string Message
+        {
+            get
+            {
+                var requestId = this.StripeResponse?.RequestId;
+                if (string.IsNullOrEmpty(requestId))
+                {
+                    return base.Message;
+                }
+
+                return $"[{requestId}] {base.Message}";
+            }
+        }
+
         internal static StripeException ParseV2Exception(string type, StripeResponse response, JsonElement body)
         {
             var httpStatusCode = response.StatusCode;

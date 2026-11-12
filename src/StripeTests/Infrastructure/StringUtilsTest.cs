@@ -1,10 +1,18 @@
 namespace StripeTests
 {
+    using System;
     using Stripe.Infrastructure;
     using Xunit;
 
     public class StringUtilsTest : BaseStripeTest
     {
+        [Fact]
+        public void ToHexString()
+        {
+            Assert.Equal("00010a7f80ff", StringUtils.ToHexString(new byte[] { 0, 1, 10, 127, 128, 255 }));
+            Assert.Equal(string.Empty, StringUtils.ToHexString(Array.Empty<byte>()));
+        }
+
         [Fact]
         public void ToSnakeCase()
         {
