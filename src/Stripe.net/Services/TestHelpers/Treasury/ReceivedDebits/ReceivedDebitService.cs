@@ -24,8 +24,8 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Use this endpoint to simulate a test mode ReceivedDebit initiated by a third party.
-        /// In live mode, you can’t directly create ReceivedDebits initiated by third parties.</p>.
+        /// <p>Simulates a test <c>ReceivedDebit</c> initiated by a third party. In live mode, you
+        /// can’t directly create <c>ReceivedDebit</c> objects initiated by third parties.</p>.
         /// </summary>
         public virtual Stripe.Treasury.ReceivedDebit Create(ReceivedDebitCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -33,8 +33,8 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Use this endpoint to simulate a test mode ReceivedDebit initiated by a third party.
-        /// In live mode, you can’t directly create ReceivedDebits initiated by third parties.</p>.
+        /// <p>Simulates a test <c>ReceivedDebit</c> initiated by a third party. In live mode, you
+        /// can’t directly create <c>ReceivedDebit</c> objects initiated by third parties.</p>.
         /// </summary>
         public virtual Task<Stripe.Treasury.ReceivedDebit> CreateAsync(ReceivedDebitCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

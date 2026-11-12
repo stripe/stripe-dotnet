@@ -10,11 +10,18 @@ namespace Stripe
     public class InvoiceListOptions : ListOptions
     {
         /// <summary>
-        /// Only return invoices for the cadence specified by this billing cadence ID.
+        /// Only return invoices for the billing cadence specified by this billing cadence ID.
         /// </summary>
         [JsonProperty("billing_cadence")]
         [STJS.JsonPropertyName("billing_cadence")]
         public string BillingCadence { get; set; }
+
+        /// <summary>
+        /// Only return invoices for the billing group specified by this billing group ID.
+        /// </summary>
+        [JsonProperty("billing_group")]
+        [STJS.JsonPropertyName("billing_group")]
+        public string BillingGroup { get; set; }
 
         /// <summary>
         /// The collection method of the invoice to retrieve. Either <c>charge_automatically</c> or

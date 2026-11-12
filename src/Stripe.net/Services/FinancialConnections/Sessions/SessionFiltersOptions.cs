@@ -23,7 +23,7 @@ namespace Stripe.FinancialConnections
         public List<string> AccountSubcategories { get; set; }
 
         /// <summary>
-        /// Country from which to collect accounts.
+        /// Country from which to collect accounts. Supported values are <c>US</c> and <c>CA</c>.
         /// </summary>
         [JsonProperty("country")]
         [STJS.JsonPropertyName("country")]

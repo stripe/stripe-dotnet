@@ -25,8 +25,8 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Transitions a test mode created InboundTransfer to the <c>failed</c> status. The
-        /// InboundTransfer must already be in the <c>processing</c> state.</p>.
+        /// <p>Transitions a test <c>InboundTransfer</c> to the <c>failed</c> status. The
+        /// <c>InboundTransfer</c> must already be in the <c>processing</c> state.</p>.
         /// </summary>
         public virtual Stripe.Treasury.InboundTransfer Fail(string id, InboundTransferFailOptions options = null, RequestOptions requestOptions = null)
         {
@@ -34,8 +34,8 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Transitions a test mode created InboundTransfer to the <c>failed</c> status. The
-        /// InboundTransfer must already be in the <c>processing</c> state.</p>.
+        /// <p>Transitions a test <c>InboundTransfer</c> to the <c>failed</c> status. The
+        /// <c>InboundTransfer</c> must already be in the <c>processing</c> state.</p>.
         /// </summary>
         public virtual Task<Stripe.Treasury.InboundTransfer> FailAsync(string id, InboundTransferFailOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -43,9 +43,9 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Marks the test mode InboundTransfer object as returned and links the InboundTransfer
-        /// to a ReceivedDebit. The InboundTransfer must already be in the <c>succeeded</c>
-        /// state.</p>.
+        /// <p>Marks the test <c>InboundTransfer</c> object as returned and links the
+        /// <c>InboundTransfer</c> to a <c>ReceivedDebit</c>. The <c>InboundTransfer</c> must
+        /// already be in the <c>succeeded</c> state.</p>.
         /// </summary>
         public virtual Stripe.Treasury.InboundTransfer ReturnInboundTransfer(string id, InboundTransferReturnInboundTransferOptions options = null, RequestOptions requestOptions = null)
         {
@@ -53,9 +53,9 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Marks the test mode InboundTransfer object as returned and links the InboundTransfer
-        /// to a ReceivedDebit. The InboundTransfer must already be in the <c>succeeded</c>
-        /// state.</p>.
+        /// <p>Marks the test <c>InboundTransfer</c> object as returned and links the
+        /// <c>InboundTransfer</c> to a <c>ReceivedDebit</c>. The <c>InboundTransfer</c> must
+        /// already be in the <c>succeeded</c> state.</p>.
         /// </summary>
         public virtual Task<Stripe.Treasury.InboundTransfer> ReturnInboundTransferAsync(string id, InboundTransferReturnInboundTransferOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -63,8 +63,8 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Transitions a test mode created InboundTransfer to the <c>succeeded</c> status. The
-        /// InboundTransfer must already be in the <c>processing</c> state.</p>.
+        /// <p>Transitions a test <c>InboundTransfer</c> to the <c>succeeded</c> status. The
+        /// <c>InboundTransfer</c> must already be in the <c>processing</c> state.</p>.
         /// </summary>
         public virtual Stripe.Treasury.InboundTransfer Succeed(string id, InboundTransferSucceedOptions options = null, RequestOptions requestOptions = null)
         {
@@ -72,8 +72,8 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Transitions a test mode created InboundTransfer to the <c>succeeded</c> status. The
-        /// InboundTransfer must already be in the <c>processing</c> state.</p>.
+        /// <p>Transitions a test <c>InboundTransfer</c> to the <c>succeeded</c> status. The
+        /// <c>InboundTransfer</c> must already be in the <c>processing</c> state.</p>.
         /// </summary>
         public virtual Task<Stripe.Treasury.InboundTransfer> SucceedAsync(string id, InboundTransferSucceedOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

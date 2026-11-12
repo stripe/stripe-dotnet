@@ -202,6 +202,16 @@ namespace Stripe
         public PaymentMethodConfigurationCustomerBalanceOptions CustomerBalance { get; set; }
 
         /// <summary>
+        /// d-Barai is a single-use payment method that requires customers to authenticate their
+        /// payment. Customers pay by being redirected from your website or app, authorizing the
+        /// payment with d-Barai, then returning to your website or app. You get immediate
+        /// notification of whether the payment succeeded or failed.
+        /// </summary>
+        [JsonProperty("dbarai")]
+        [STJS.JsonPropertyName("dbarai")]
+        public PaymentMethodConfigurationDbaraiOptions Dbarai { get; set; }
+
+        /// <summary>
         /// EPS is an Austria-based payment method that allows customers to complete transactions
         /// online using their bank credentials. EPS is supported by all Austrian banks and is
         /// accepted by over 80% of Austrian online retailers. Check this <a

@@ -14,5 +14,12 @@ namespace Stripe
         [JsonProperty("billing_cadence")]
         [STJS.JsonPropertyName("billing_cadence")]
         public string BillingCadence { get; set; }
+
+        /// <summary>
+        /// The billing group that generated this invoice.
+        /// </summary>
+        [JsonProperty("billing_group")]
+        [STJS.JsonPropertyName("billing_group")]
+        public string BillingGroup { get; set; }
     }
 }

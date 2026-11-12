@@ -142,6 +142,10 @@ namespace Stripe
         [STJS.JsonPropertyName("customer_balance")]
         public PaymentMethodConfigurationCustomerBalance CustomerBalance { get; set; }
 
+        [JsonProperty("dbarai")]
+        [STJS.JsonPropertyName("dbarai")]
+        public PaymentMethodConfigurationDbarai Dbarai { get; set; }
+
         [JsonProperty("eps")]
         [STJS.JsonPropertyName("eps")]
         public PaymentMethodConfigurationEps Eps { get; set; }

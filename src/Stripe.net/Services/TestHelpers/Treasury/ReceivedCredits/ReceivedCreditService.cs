@@ -24,8 +24,8 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Use this endpoint to simulate a test mode ReceivedCredit initiated by a third party.
-        /// In live mode, you can’t directly create ReceivedCredits initiated by third parties.</p>.
+        /// <p>Simulates a test <c>ReceivedCredit</c> initiated by a third party. In live mode, you
+        /// can’t directly create <c>ReceivedCredit</c> objects initiated by third parties.</p>.
         /// </summary>
         public virtual Stripe.Treasury.ReceivedCredit Create(ReceivedCreditCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -33,8 +33,8 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Use this endpoint to simulate a test mode ReceivedCredit initiated by a third party.
-        /// In live mode, you can’t directly create ReceivedCredits initiated by third parties.</p>.
+        /// <p>Simulates a test <c>ReceivedCredit</c> initiated by a third party. In live mode, you
+        /// can’t directly create <c>ReceivedCredit</c> objects initiated by third parties.</p>.
         /// </summary>
         public virtual Task<Stripe.Treasury.ReceivedCredit> CreateAsync(ReceivedCreditCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

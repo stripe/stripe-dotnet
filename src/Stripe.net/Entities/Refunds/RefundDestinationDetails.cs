@@ -20,6 +20,10 @@ namespace Stripe
         [STJS.JsonPropertyName("alipay")]
         public RefundDestinationDetailsAlipay Alipay { get; set; }
 
+        [JsonProperty("alipay_plus")]
+        [STJS.JsonPropertyName("alipay_plus")]
+        public RefundDestinationDetailsAlipayPlus AlipayPlus { get; set; }
+
         [JsonProperty("alma")]
         [STJS.JsonPropertyName("alma")]
         public RefundDestinationDetailsAlma Alma { get; set; }

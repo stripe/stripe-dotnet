@@ -9,6 +9,13 @@ namespace Stripe
     public class SubscriptionPaymentSettingsPaymentMethodOptionsUpiOptions : INestedOptions
     {
         /// <summary>
+        /// Controls when the funds will be captured from the customer's account.
+        /// </summary>
+        [JsonProperty("debit_behavior")]
+        [STJS.JsonPropertyName("debit_behavior")]
+        public string DebitBehavior { get; set; }
+
+        /// <summary>
         /// Configuration options for setting up an eMandate.
         /// </summary>
         [JsonProperty("mandate_options")]

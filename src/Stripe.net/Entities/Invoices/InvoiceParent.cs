@@ -16,6 +16,13 @@ namespace Stripe
         public InvoiceParentBillingCadenceDetails BillingCadenceDetails { get; set; }
 
         /// <summary>
+        /// Details about the billing group that generated this invoice.
+        /// </summary>
+        [JsonProperty("billing_group_details")]
+        [STJS.JsonPropertyName("billing_group_details")]
+        public InvoiceParentBillingGroupDetails BillingGroupDetails { get; set; }
+
+        /// <summary>
         /// Details about the quote that generated this invoice.
         /// </summary>
         [JsonProperty("quote_details")]

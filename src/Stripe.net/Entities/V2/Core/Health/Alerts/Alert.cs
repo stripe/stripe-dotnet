@@ -57,6 +57,13 @@ namespace Stripe.V2.Core.Health
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// Populated when type is custom_payment_method_adapter_degraded.
+        /// </summary>
+        [JsonProperty("custom_payment_method_adapter_degraded")]
+        [STJS.JsonPropertyName("custom_payment_method_adapter_degraded")]
+        public AlertCustomPaymentMethodAdapterDegraded CustomPaymentMethodAdapterDegraded { get; set; }
+
+        /// <summary>
         /// Links to relevant documentation for diagnosing and resolving the alert.
         /// </summary>
         [JsonProperty("documentation_links")]
@@ -210,8 +217,9 @@ namespace Stripe.V2.Core.Health
         /// <summary>
         /// The type of the alert. Determines which sub-hash field is populated.
         /// One of: <c>api_error</c>, <c>api_latency</c>, <c>authorization_rate_drop</c>,
-        /// <c>elements_error</c>, <c>event_generation_failure</c>, <c>fraud_rate</c>,
-        /// <c>invoice_count_dropped</c>, <c>issuing_authorization_request_errors</c>,
+        /// <c>custom_payment_method_adapter_degraded</c>, <c>elements_error</c>,
+        /// <c>event_generation_failure</c>, <c>fraud_rate</c>, <c>invoice_count_dropped</c>,
+        /// <c>issuing_authorization_request_errors</c>,
         /// <c>issuing_authorization_request_timeout</c>, <c>meter_event_summaries_delayed</c>,
         /// <c>metronome_notification_latency</c>, <c>payment_method_error</c>,
         /// <c>sepa_debit_delayed</c>, <c>traffic_volume_drop</c>, or <c>webhook_latency</c>.
