@@ -17,8 +17,10 @@ namespace Stripe.V2.Iam
 
         /// <summary>
         /// Type of the object.
-        /// One of: <c>balance_transfer</c>, <c>bank_account</c>, <c>blockchain_address</c>,
-        /// <c>card</c>, <c>issuing.card</c>, <c>issuing.cardholder</c>, or <c>issuing.dispute</c>.
+        /// One of: <c>apps.install</c>, <c>balance_transfer</c>, <c>bank_account</c>,
+        /// <c>blockchain_address</c>, <c>card</c>, <c>v2.core.event_destination</c>,
+        /// <c>issuing.card</c>, <c>issuing.cardholder</c>, <c>issuing.dispute</c>, or
+        /// <c>webhook_endpoint</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

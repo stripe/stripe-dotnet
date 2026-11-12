@@ -16,6 +16,16 @@ namespace Stripe.V2.Billing
         public CadenceCreateBillingCycleDayOptions Day { get; set; }
 
         /// <summary>
+        /// When the anchor for the cadence should be set. Defaults to <c>now</c>.
+        /// One of: <c>now</c>, or <c>on_activation</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("effective_at")]
+        [STJS.JsonPropertyName("effective_at")]
+        public string EffectiveAt { get; set; }
+
+        /// <summary>
         /// The number of intervals (specified in the interval attribute) between cadence billings.
         /// For example, type=month and interval_count=3 bills every 3 months. If not provided, this
         /// defaults to 1.

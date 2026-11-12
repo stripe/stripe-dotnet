@@ -17,7 +17,8 @@ namespace Stripe
         internal SetTracker SetTracker { get; } = new SetTracker();
 
         /// <summary>
-        /// The discounts applied to this line item.
+        /// The discounts applied to this line item. Repeating coupons are only supported for
+        /// recurring prices.
         /// </summary>
         [JsonProperty("discounts", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("discounts")]

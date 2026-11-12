@@ -8,7 +8,9 @@ namespace Stripe.V2.Data.Reporting
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// The <c>QueryRun</c> object represents an ad-hoc SQL execution. Once created, Stripe
+    /// The <a href="https://stripe.com/data/api/query-runs">Queries and Reports API</a>
+    /// replaces this API. For new integrations, use <c>/v2/data/query_runs</c> instead. The
+    /// <c>QueryRun</c> object represents an ad-hoc SQL execution. Once created, Stripe
     /// processes the query. When the query has finished running, the object provides a
     /// reference to the results.
     /// </summary>

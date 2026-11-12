@@ -68,6 +68,13 @@ namespace Stripe.Reporting
         public string ReportingCategory { get; set; }
 
         /// <summary>
+        /// The tax invoice month in YYYY-MM format.
+        /// </summary>
+        [JsonProperty("tax_invoice_month")]
+        [STJS.JsonPropertyName("tax_invoice_month")]
+        public string TaxInvoiceMonth { get; set; }
+
+        /// <summary>
         /// Defaults to <c>Etc/UTC</c>. The output timezone for all timestamps in the report. A list
         /// of possible time zone values is maintained at the <a
         /// href="http://www.iana.org/time-zones">IANA Time Zone Database</a>. Has no effect on

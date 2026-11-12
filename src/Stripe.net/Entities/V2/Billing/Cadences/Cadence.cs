@@ -98,13 +98,20 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The current status of the cadence.
-        /// One of: <c>active</c>, or <c>canceled</c>.
+        /// One of: <c>active</c>, <c>canceled</c>, or <c>initializing</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
         public string Status { get; set; }
+
+        /// <summary>
+        /// Timestamps for billing cadence status transitions.
+        /// </summary>
+        [JsonProperty("status_transitions")]
+        [STJS.JsonPropertyName("status_transitions")]
+        public CadenceStatusTransitions StatusTransitions { get; set; }
 
         /// <summary>
         /// The ID of the Test Clock.

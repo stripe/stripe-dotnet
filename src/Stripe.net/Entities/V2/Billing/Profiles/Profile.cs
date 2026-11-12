@@ -44,7 +44,7 @@ namespace Stripe.V2.Billing
         public string Customer { get; set; }
 
         /// <summary>
-        /// The ID of the payment method object.
+        /// The ID of the payment method object. If set to nil, the customer payment method is used.
         /// </summary>
         [JsonProperty("default_payment_method")]
         [STJS.JsonPropertyName("default_payment_method")]

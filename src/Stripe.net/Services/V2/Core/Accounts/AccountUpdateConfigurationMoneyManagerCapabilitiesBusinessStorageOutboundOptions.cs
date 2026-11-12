@@ -23,6 +23,13 @@ namespace Stripe.V2.Core
         public AccountUpdateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundCadOptions Cad { get; set; }
 
         /// <summary>
+        /// Can send business storage-type funds on Stripe in DKK.
+        /// </summary>
+        [JsonProperty("dkk")]
+        [STJS.JsonPropertyName("dkk")]
+        public AccountUpdateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundDkkOptions Dkk { get; set; }
+
+        /// <summary>
         /// Can send business storage-type funds on Stripe in EUR.
         /// </summary>
         [JsonProperty("eur")]

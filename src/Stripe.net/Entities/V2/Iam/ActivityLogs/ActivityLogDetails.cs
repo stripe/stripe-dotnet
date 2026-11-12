@@ -30,6 +30,34 @@ namespace Stripe.V2.Iam
         public ActivityLogDetailsAuthentication Authentication { get; set; }
 
         /// <summary>
+        /// Details of a Connect action.
+        /// </summary>
+        [JsonProperty("connect")]
+        [STJS.JsonPropertyName("connect")]
+        public ActivityLogDetailsConnect Connect { get; set; }
+
+        /// <summary>
+        /// Details of a data export action.
+        /// </summary>
+        [JsonProperty("data_export")]
+        [STJS.JsonPropertyName("data_export")]
+        public ActivityLogDetailsDataExport DataExport { get; set; }
+
+        /// <summary>
+        /// Details of an event destination action.
+        /// </summary>
+        [JsonProperty("event_destination")]
+        [STJS.JsonPropertyName("event_destination")]
+        public ActivityLogDetailsEventDestination EventDestination { get; set; }
+
+        /// <summary>
+        /// Details of a Radar action.
+        /// </summary>
+        [JsonProperty("radar")]
+        [STJS.JsonPropertyName("radar")]
+        public ActivityLogDetailsRadar Radar { get; set; }
+
+        /// <summary>
         /// Details of a SCIM action.
         /// </summary>
         [JsonProperty("scim")]
@@ -44,16 +72,31 @@ namespace Stripe.V2.Iam
         public ActivityLogDetailsSso Sso { get; set; }
 
         /// <summary>
+        /// Details of a Stripe access action.
+        /// </summary>
+        [JsonProperty("stripe_access")]
+        [STJS.JsonPropertyName("stripe_access")]
+        public ActivityLogDetailsStripeAccess StripeAccess { get; set; }
+
+        /// <summary>
         /// The action group type of the activity log entry.
-        /// One of: <c>account_security</c>, <c>api_key</c>, <c>authentication</c>, <c>issuing</c>,
-        /// <c>payout</c>, <c>scim</c>, <c>sso</c>, <c>user_invite</c>, <c>user_profile</c>, or
-        /// <c>user_roles</c>.
+        /// One of: <c>account_security</c>, <c>api_key</c>, <c>app</c>, <c>authentication</c>,
+        /// <c>connect</c>, <c>data_export</c>, <c>event_destination</c>, <c>issuing</c>,
+        /// <c>payout</c>, <c>radar</c>, <c>scim</c>, <c>sso</c>, <c>stripe_access</c>,
+        /// <c>user_access</c>, <c>user_invite</c>, <c>user_profile</c>, or <c>user_roles</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// Details of a user access action.
+        /// </summary>
+        [JsonProperty("user_access")]
+        [STJS.JsonPropertyName("user_access")]
+        public ActivityLogDetailsUserAccess UserAccess { get; set; }
 
         /// <summary>
         /// Details of a user invite action.

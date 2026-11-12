@@ -53,6 +53,22 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
+        /// Create an OutboundSetupIntent object.
+        /// </summary>
+        public virtual OutboundSetupIntent FromFinancialConnections(OutboundSetupIntentFromFinancialConnectionsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<OutboundSetupIntent>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/outbound_setup_intents/from_financial_connections", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Create an OutboundSetupIntent object.
+        /// </summary>
+        public virtual Task<OutboundSetupIntent> FromFinancialConnectionsAsync(OutboundSetupIntentFromFinancialConnectionsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<OutboundSetupIntent>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/outbound_setup_intents/from_financial_connections", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// Retrieve an OutboundSetupIntent object.
         /// </summary>
         public virtual OutboundSetupIntent Get(string id, OutboundSetupIntentGetOptions options = null, RequestOptions requestOptions = null)

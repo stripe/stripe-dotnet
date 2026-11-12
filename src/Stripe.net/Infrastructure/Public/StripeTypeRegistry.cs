@@ -263,6 +263,7 @@ namespace Stripe
                 { "v2.core.account_token", typeof(V2.Core.AccountToken) },
                 { "v2.core.approval_request", typeof(V2.Core.ApprovalRequest) },
                 { "v2.core.batch_job", typeof(V2.Core.BatchJob) },
+                { "v2.core.claimable_sandbox", typeof(V2.Core.ClaimableSandbox) },
                 { "v2.core.event", typeof(V2.Core.Event) },
                 { "v2.core.event_destination", typeof(V2.Core.EventDestination) },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },
@@ -340,6 +341,7 @@ namespace Stripe
                     "v2.orchestrated_commerce.agreement", typeof(
                     V2.OrchestratedCommerce.Agreement)
                 },
+                { "v2.payments.off_session_payment", typeof(V2.Payments.OffSessionPayment) },
                 { "v2.signals.account_activity", typeof(V2.Signals.AccountActivity) },
                 { "v2.signals.account_evaluation", typeof(V2.Signals.AccountEvaluation) },
                 { "v2.signals.account_signal", typeof(V2.Signals.AccountSignal) },
@@ -378,6 +380,9 @@ namespace Stripe
                     Events.V1ApplicationFeeRefundUpdatedEvent)
                 },
                 { "v1.application_fee.refunded", typeof(Events.V1ApplicationFeeRefundedEvent) },
+                { "v1.apps.install.created", typeof(Events.V1AppsInstallCreatedEvent) },
+                { "v1.apps.install.deleted", typeof(Events.V1AppsInstallDeletedEvent) },
+                { "v1.apps.install.updated", typeof(Events.V1AppsInstallUpdatedEvent) },
                 { "v1.balance.available", typeof(Events.V1BalanceAvailableEvent) },
                 { "v1.balance_settings.updated", typeof(Events.V1BalanceSettingsUpdatedEvent) },
                 { "v1.billing.alert.triggered", typeof(Events.V1BillingAlertTriggeredEvent) },
@@ -490,64 +495,16 @@ namespace Stripe
                     Events.V1CustomerDiscountDeletedEvent)
                 },
                 {
-                    "v1.customer.discount.source_changed", typeof(
-                    Events.V1CustomerDiscountSourceChangedEvent)
-                },
-                {
                     "v1.customer.discount.updated", typeof(
                     Events.V1CustomerDiscountUpdatedEvent)
-                },
-                {
-                    "v1.customer.subscription.active", typeof(
-                    Events.V1CustomerSubscriptionActiveEvent)
-                },
-                {
-                    "v1.customer.subscription.cancel_at_changed", typeof(
-                    Events.V1CustomerSubscriptionCancelAtChangedEvent)
                 },
                 {
                     "v1.customer.subscription.created", typeof(
                     Events.V1CustomerSubscriptionCreatedEvent)
                 },
                 {
-                    "v1.customer.subscription.default_payment_method_changed", typeof(
-                    Events.V1CustomerSubscriptionDefaultPaymentMethodChangedEvent)
-                },
-                {
                     "v1.customer.subscription.deleted", typeof(
                     Events.V1CustomerSubscriptionDeletedEvent)
-                },
-                {
-                    "v1.customer.subscription.incomplete", typeof(
-                    Events.V1CustomerSubscriptionIncompleteEvent)
-                },
-                {
-                    "v1.customer.subscription.incomplete_expired", typeof(
-                    Events.V1CustomerSubscriptionIncompleteExpiredEvent)
-                },
-                {
-                    "v1.customer.subscription.item_added", typeof(
-                    Events.V1CustomerSubscriptionItemAddedEvent)
-                },
-                {
-                    "v1.customer.subscription.item_price_changed", typeof(
-                    Events.V1CustomerSubscriptionItemPriceChangedEvent)
-                },
-                {
-                    "v1.customer.subscription.item_quantity_changed", typeof(
-                    Events.V1CustomerSubscriptionItemQuantityChangedEvent)
-                },
-                {
-                    "v1.customer.subscription.item_removed", typeof(
-                    Events.V1CustomerSubscriptionItemRemovedEvent)
-                },
-                {
-                    "v1.customer.subscription.item_tax_rates_changed", typeof(
-                    Events.V1CustomerSubscriptionItemTaxRatesChangedEvent)
-                },
-                {
-                    "v1.customer.subscription.past_due", typeof(
-                    Events.V1CustomerSubscriptionPastDueEvent)
                 },
                 {
                     "v1.customer.subscription.paused", typeof(
@@ -570,14 +527,6 @@ namespace Stripe
                     Events.V1CustomerSubscriptionTrialWillEndEvent)
                 },
                 {
-                    "v1.customer.subscription.trialing", typeof(
-                    Events.V1CustomerSubscriptionTrialingEvent)
-                },
-                {
-                    "v1.customer.subscription.unpaid", typeof(
-                    Events.V1CustomerSubscriptionUnpaidEvent)
-                },
-                {
                     "v1.customer.subscription.updated", typeof(
                     Events.V1CustomerSubscriptionUpdatedEvent)
                 },
@@ -590,14 +539,6 @@ namespace Stripe
                     Events.V1CustomerCashBalanceTransactionCreatedEvent)
                 },
                 {
-                    "v1.entitlements.active_entitlement_summary.entitlement_added", typeof(
-                    Events.V1EntitlementsActiveEntitlementSummaryEntitlementAddedEvent)
-                },
-                {
-                    "v1.entitlements.active_entitlement_summary.entitlement_removed", typeof(
-                    Events.V1EntitlementsActiveEntitlementSummaryEntitlementRemovedEvent)
-                },
-                {
                     "v1.entitlements.active_entitlement_summary.updated", typeof(
                     Events.V1EntitlementsActiveEntitlementSummaryUpdatedEvent)
                 },
@@ -605,14 +546,6 @@ namespace Stripe
                 {
                     "v1.financial_connections.account.account_numbers_updated", typeof(
                     Events.V1FinancialConnectionsAccountAccountNumbersUpdatedEvent)
-                },
-                {
-                    "v1.financial_connections.account.balance_refresh_failed", typeof(
-                    Events.V1FinancialConnectionsAccountBalanceRefreshFailedEvent)
-                },
-                {
-                    "v1.financial_connections.account.balance_refresh_succeeded", typeof(
-                    Events.V1FinancialConnectionsAccountBalanceRefreshSucceededEvent)
                 },
                 {
                     "v1.financial_connections.account.created", typeof(
@@ -631,22 +564,6 @@ namespace Stripe
                     Events.V1FinancialConnectionsAccountExpectedDeactivationDateUpdatedEvent)
                 },
                 {
-                    "v1.financial_connections.account.inferred_balances_refresh_failed", typeof(
-                    Events.V1FinancialConnectionsAccountInferredBalancesRefreshFailedEvent)
-                },
-                {
-                    "v1.financial_connections.account.inferred_balances_refresh_succeeded", typeof(
-                    Events.V1FinancialConnectionsAccountInferredBalancesRefreshSucceededEvent)
-                },
-                {
-                    "v1.financial_connections.account.ownership_refresh_failed", typeof(
-                    Events.V1FinancialConnectionsAccountOwnershipRefreshFailedEvent)
-                },
-                {
-                    "v1.financial_connections.account.ownership_refresh_succeeded", typeof(
-                    Events.V1FinancialConnectionsAccountOwnershipRefreshSucceededEvent)
-                },
-                {
                     "v1.financial_connections.account.reactivated", typeof(
                     Events.V1FinancialConnectionsAccountReactivatedEvent)
                 },
@@ -663,24 +580,8 @@ namespace Stripe
                     Events.V1FinancialConnectionsAccountRefreshedTransactionsEvent)
                 },
                 {
-                    "v1.financial_connections.account.risk_intelligence_refresh_failed", typeof(
-                    Events.V1FinancialConnectionsAccountRiskIntelligenceRefreshFailedEvent)
-                },
-                {
-                    "v1.financial_connections.account.risk_intelligence_refresh_succeeded", typeof(
-                    Events.V1FinancialConnectionsAccountRiskIntelligenceRefreshSucceededEvent)
-                },
-                {
                     "v1.financial_connections.account.supported_payment_method_types_updated", typeof(
                     Events.V1FinancialConnectionsAccountSupportedPaymentMethodTypesUpdatedEvent)
-                },
-                {
-                    "v1.financial_connections.account.transactions_refresh_failed", typeof(
-                    Events.V1FinancialConnectionsAccountTransactionsRefreshFailedEvent)
-                },
-                {
-                    "v1.financial_connections.account.transactions_refresh_succeeded", typeof(
-                    Events.V1FinancialConnectionsAccountTransactionsRefreshSucceededEvent)
                 },
                 {
                     "v1.financial_connections.account.upcoming_account_number_expiry", typeof(
@@ -716,23 +617,11 @@ namespace Stripe
                 },
                 { "v1.invoice.created", typeof(Events.V1InvoiceCreatedEvent) },
                 { "v1.invoice.deleted", typeof(Events.V1InvoiceDeletedEvent) },
-                { "v1.invoice.discount_added", typeof(Events.V1InvoiceDiscountAddedEvent) },
-                { "v1.invoice.discount_removed", typeof(Events.V1InvoiceDiscountRemovedEvent) },
                 {
                     "v1.invoice.finalization_failed", typeof(
                     Events.V1InvoiceFinalizationFailedEvent)
                 },
                 { "v1.invoice.finalized", typeof(Events.V1InvoiceFinalizedEvent) },
-                { "v1.invoice.line_item_added", typeof(Events.V1InvoiceLineItemAddedEvent) },
-                {
-                    "v1.invoice.line_item_pricing_changed", typeof(
-                    Events.V1InvoiceLineItemPricingChangedEvent)
-                },
-                {
-                    "v1.invoice.line_item_quantity_changed", typeof(
-                    Events.V1InvoiceLineItemQuantityChangedEvent)
-                },
-                { "v1.invoice.line_item_removed", typeof(Events.V1InvoiceLineItemRemovedEvent) },
                 {
                     "v1.invoice.marked_uncollectible", typeof(
                     Events.V1InvoiceMarkedUncollectibleEvent)
@@ -758,30 +647,12 @@ namespace Stripe
                 { "v1.invoice.updated", typeof(Events.V1InvoiceUpdatedEvent) },
                 { "v1.invoice.voided", typeof(Events.V1InvoiceVoidedEvent) },
                 { "v1.invoice.will_be_due", typeof(Events.V1InvoiceWillBeDueEvent) },
-                { "v1.invoice_payment.canceled", typeof(Events.V1InvoicePaymentCanceledEvent) },
-                { "v1.invoice_payment.open", typeof(Events.V1InvoicePaymentOpenEvent) },
                 { "v1.invoice_payment.paid", typeof(Events.V1InvoicePaymentPaidEvent) },
-                {
-                    "v1.invoiceitem.amount_changed", typeof(
-                    Events.V1InvoiceitemAmountChangedEvent)
-                },
                 { "v1.invoiceitem.created", typeof(Events.V1InvoiceitemCreatedEvent) },
                 { "v1.invoiceitem.deleted", typeof(Events.V1InvoiceitemDeletedEvent) },
                 {
-                    "v1.invoiceitem.discount_added", typeof(
-                    Events.V1InvoiceitemDiscountAddedEvent)
-                },
-                {
-                    "v1.invoiceitem.discount_removed", typeof(
-                    Events.V1InvoiceitemDiscountRemovedEvent)
-                },
-                {
                     "v1.issuing_authorization.created", typeof(
                     Events.V1IssuingAuthorizationCreatedEvent)
-                },
-                {
-                    "v1.issuing_authorization.request", typeof(
-                    Events.V1IssuingAuthorizationRequestEvent)
                 },
                 {
                     "v1.issuing_authorization.updated", typeof(
@@ -890,31 +761,13 @@ namespace Stripe
                 { "v1.plan.created", typeof(Events.V1PlanCreatedEvent) },
                 { "v1.plan.deleted", typeof(Events.V1PlanDeletedEvent) },
                 { "v1.plan.updated", typeof(Events.V1PlanUpdatedEvent) },
-                { "v1.price.activated", typeof(Events.V1PriceActivatedEvent) },
                 { "v1.price.created", typeof(Events.V1PriceCreatedEvent) },
-                { "v1.price.deactivated", typeof(Events.V1PriceDeactivatedEvent) },
                 { "v1.price.deleted", typeof(Events.V1PriceDeletedEvent) },
-                { "v1.price.lookup_key_changed", typeof(Events.V1PriceLookupKeyChangedEvent) },
-                {
-                    "v1.price.tax_behavior_changed", typeof(
-                    Events.V1PriceTaxBehaviorChangedEvent)
-                },
                 { "v1.price.updated", typeof(Events.V1PriceUpdatedEvent) },
-                { "v1.product.activated", typeof(Events.V1ProductActivatedEvent) },
                 { "v1.product.created", typeof(Events.V1ProductCreatedEvent) },
-                { "v1.product.deactivated", typeof(Events.V1ProductDeactivatedEvent) },
-                {
-                    "v1.product.default_price_changed", typeof(
-                    Events.V1ProductDefaultPriceChangedEvent)
-                },
                 { "v1.product.deleted", typeof(Events.V1ProductDeletedEvent) },
-                { "v1.product.tax_code_changed", typeof(Events.V1ProductTaxCodeChangedEvent) },
                 { "v1.product.updated", typeof(Events.V1ProductUpdatedEvent) },
                 { "v1.promotion_code.created", typeof(Events.V1PromotionCodeCreatedEvent) },
-                {
-                    "v1.promotion_code.fully_redeemed", typeof(
-                    Events.V1PromotionCodeFullyRedeemedEvent)
-                },
                 { "v1.promotion_code.updated", typeof(Events.V1PromotionCodeUpdatedEvent) },
                 { "v1.quote.accepted", typeof(Events.V1QuoteAcceptedEvent) },
                 { "v1.quote.canceled", typeof(Events.V1QuoteCanceledEvent) },
@@ -971,26 +824,6 @@ namespace Stripe
                 {
                     "v1.subscription_schedule.expiring", typeof(
                     Events.V1SubscriptionScheduleExpiringEvent)
-                },
-                {
-                    "v1.subscription_schedule.phase_added", typeof(
-                    Events.V1SubscriptionSchedulePhaseAddedEvent)
-                },
-                {
-                    "v1.subscription_schedule.phase_default_tax_rates_changed", typeof(
-                    Events.V1SubscriptionSchedulePhaseDefaultTaxRatesChangedEvent)
-                },
-                {
-                    "v1.subscription_schedule.phase_end_date_changed", typeof(
-                    Events.V1SubscriptionSchedulePhaseEndDateChangedEvent)
-                },
-                {
-                    "v1.subscription_schedule.phase_removed", typeof(
-                    Events.V1SubscriptionSchedulePhaseRemovedEvent)
-                },
-                {
-                    "v1.subscription_schedule.phase_trial_end_changed", typeof(
-                    Events.V1SubscriptionSchedulePhaseTrialEndChangedEvent)
                 },
                 {
                     "v1.subscription_schedule.released", typeof(
@@ -1175,6 +1008,26 @@ namespace Stripe
                 {
                     "v2.core.batch_job.validation_failed", typeof(
                     Events.V2CoreBatchJobValidationFailedEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.claimed", typeof(
+                    Events.V2CoreClaimableSandboxClaimedEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.created", typeof(
+                    Events.V2CoreClaimableSandboxCreatedEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.expired", typeof(
+                    Events.V2CoreClaimableSandboxExpiredEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.expiring", typeof(
+                    Events.V2CoreClaimableSandboxExpiringEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.updated", typeof(
+                    Events.V2CoreClaimableSandboxUpdatedEvent)
                 },
                 {
                     "v2.core.event_destination.ping", typeof(
@@ -1425,6 +1278,38 @@ namespace Stripe
                     Events.V2OrchestratedCommerceAgreementTerminatedEvent)
                 },
                 {
+                    "v2.payments.off_session_payment.attempt_failed", typeof(
+                    Events.V2PaymentsOffSessionPaymentAttemptFailedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.attempt_started", typeof(
+                    Events.V2PaymentsOffSessionPaymentAttemptStartedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.canceled", typeof(
+                    Events.V2PaymentsOffSessionPaymentCanceledEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.created", typeof(
+                    Events.V2PaymentsOffSessionPaymentCreatedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.failed", typeof(
+                    Events.V2PaymentsOffSessionPaymentFailedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.paused", typeof(
+                    Events.V2PaymentsOffSessionPaymentPausedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.resumed", typeof(
+                    Events.V2PaymentsOffSessionPaymentResumedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.succeeded", typeof(
+                    Events.V2PaymentsOffSessionPaymentSucceededEvent)
+                },
+                {
                     "v2.signals.account_evaluation.complete", typeof(
                     Events.V2SignalsAccountEvaluationCompleteEvent)
                 },
@@ -1476,6 +1361,18 @@ namespace Stripe
                 {
                     "v1.application_fee.refunded", typeof(
                     Events.V1ApplicationFeeRefundedEventNotification)
+                },
+                {
+                    "v1.apps.install.created", typeof(
+                    Events.V1AppsInstallCreatedEventNotification)
+                },
+                {
+                    "v1.apps.install.deleted", typeof(
+                    Events.V1AppsInstallDeletedEventNotification)
+                },
+                {
+                    "v1.apps.install.updated", typeof(
+                    Events.V1AppsInstallUpdatedEventNotification)
                 },
                 { "v1.balance.available", typeof(Events.V1BalanceAvailableEventNotification) },
                 {
@@ -1637,64 +1534,16 @@ namespace Stripe
                     Events.V1CustomerDiscountDeletedEventNotification)
                 },
                 {
-                    "v1.customer.discount.source_changed", typeof(
-                    Events.V1CustomerDiscountSourceChangedEventNotification)
-                },
-                {
                     "v1.customer.discount.updated", typeof(
                     Events.V1CustomerDiscountUpdatedEventNotification)
-                },
-                {
-                    "v1.customer.subscription.active", typeof(
-                    Events.V1CustomerSubscriptionActiveEventNotification)
-                },
-                {
-                    "v1.customer.subscription.cancel_at_changed", typeof(
-                    Events.V1CustomerSubscriptionCancelAtChangedEventNotification)
                 },
                 {
                     "v1.customer.subscription.created", typeof(
                     Events.V1CustomerSubscriptionCreatedEventNotification)
                 },
                 {
-                    "v1.customer.subscription.default_payment_method_changed", typeof(
-                    Events.V1CustomerSubscriptionDefaultPaymentMethodChangedEventNotification)
-                },
-                {
                     "v1.customer.subscription.deleted", typeof(
                     Events.V1CustomerSubscriptionDeletedEventNotification)
-                },
-                {
-                    "v1.customer.subscription.incomplete", typeof(
-                    Events.V1CustomerSubscriptionIncompleteEventNotification)
-                },
-                {
-                    "v1.customer.subscription.incomplete_expired", typeof(
-                    Events.V1CustomerSubscriptionIncompleteExpiredEventNotification)
-                },
-                {
-                    "v1.customer.subscription.item_added", typeof(
-                    Events.V1CustomerSubscriptionItemAddedEventNotification)
-                },
-                {
-                    "v1.customer.subscription.item_price_changed", typeof(
-                    Events.V1CustomerSubscriptionItemPriceChangedEventNotification)
-                },
-                {
-                    "v1.customer.subscription.item_quantity_changed", typeof(
-                    Events.V1CustomerSubscriptionItemQuantityChangedEventNotification)
-                },
-                {
-                    "v1.customer.subscription.item_removed", typeof(
-                    Events.V1CustomerSubscriptionItemRemovedEventNotification)
-                },
-                {
-                    "v1.customer.subscription.item_tax_rates_changed", typeof(
-                    Events.V1CustomerSubscriptionItemTaxRatesChangedEventNotification)
-                },
-                {
-                    "v1.customer.subscription.past_due", typeof(
-                    Events.V1CustomerSubscriptionPastDueEventNotification)
                 },
                 {
                     "v1.customer.subscription.paused", typeof(
@@ -1715,14 +1564,6 @@ namespace Stripe
                 {
                     "v1.customer.subscription.trial_will_end", typeof(
                     Events.V1CustomerSubscriptionTrialWillEndEventNotification)
-                },
-                {
-                    "v1.customer.subscription.trialing", typeof(
-                    Events.V1CustomerSubscriptionTrialingEventNotification)
-                },
-                {
-                    "v1.customer.subscription.unpaid", typeof(
-                    Events.V1CustomerSubscriptionUnpaidEventNotification)
                 },
                 {
                     "v1.customer.subscription.updated", typeof(
@@ -1746,14 +1587,6 @@ namespace Stripe
                     Events.V1CustomerCashBalanceTransactionCreatedEventNotification)
                 },
                 {
-                    "v1.entitlements.active_entitlement_summary.entitlement_added", typeof(
-                    Events.V1EntitlementsActiveEntitlementSummaryEntitlementAddedEventNotification)
-                },
-                {
-                    "v1.entitlements.active_entitlement_summary.entitlement_removed", typeof(
-                    Events.V1EntitlementsActiveEntitlementSummaryEntitlementRemovedEventNotification)
-                },
-                {
                     "v1.entitlements.active_entitlement_summary.updated", typeof(
                     Events.V1EntitlementsActiveEntitlementSummaryUpdatedEventNotification)
                 },
@@ -1761,14 +1594,6 @@ namespace Stripe
                 {
                     "v1.financial_connections.account.account_numbers_updated", typeof(
                     Events.V1FinancialConnectionsAccountAccountNumbersUpdatedEventNotification)
-                },
-                {
-                    "v1.financial_connections.account.balance_refresh_failed", typeof(
-                    Events.V1FinancialConnectionsAccountBalanceRefreshFailedEventNotification)
-                },
-                {
-                    "v1.financial_connections.account.balance_refresh_succeeded", typeof(
-                    Events.V1FinancialConnectionsAccountBalanceRefreshSucceededEventNotification)
                 },
                 {
                     "v1.financial_connections.account.created", typeof(
@@ -1787,22 +1612,6 @@ namespace Stripe
                     Events.V1FinancialConnectionsAccountExpectedDeactivationDateUpdatedEventNotification)
                 },
                 {
-                    "v1.financial_connections.account.inferred_balances_refresh_failed", typeof(
-                    Events.V1FinancialConnectionsAccountInferredBalancesRefreshFailedEventNotification)
-                },
-                {
-                    "v1.financial_connections.account.inferred_balances_refresh_succeeded", typeof(
-                    Events.V1FinancialConnectionsAccountInferredBalancesRefreshSucceededEventNotification)
-                },
-                {
-                    "v1.financial_connections.account.ownership_refresh_failed", typeof(
-                    Events.V1FinancialConnectionsAccountOwnershipRefreshFailedEventNotification)
-                },
-                {
-                    "v1.financial_connections.account.ownership_refresh_succeeded", typeof(
-                    Events.V1FinancialConnectionsAccountOwnershipRefreshSucceededEventNotification)
-                },
-                {
                     "v1.financial_connections.account.reactivated", typeof(
                     Events.V1FinancialConnectionsAccountReactivatedEventNotification)
                 },
@@ -1819,24 +1628,8 @@ namespace Stripe
                     Events.V1FinancialConnectionsAccountRefreshedTransactionsEventNotification)
                 },
                 {
-                    "v1.financial_connections.account.risk_intelligence_refresh_failed", typeof(
-                    Events.V1FinancialConnectionsAccountRiskIntelligenceRefreshFailedEventNotification)
-                },
-                {
-                    "v1.financial_connections.account.risk_intelligence_refresh_succeeded", typeof(
-                    Events.V1FinancialConnectionsAccountRiskIntelligenceRefreshSucceededEventNotification)
-                },
-                {
                     "v1.financial_connections.account.supported_payment_method_types_updated", typeof(
                     Events.V1FinancialConnectionsAccountSupportedPaymentMethodTypesUpdatedEventNotification)
-                },
-                {
-                    "v1.financial_connections.account.transactions_refresh_failed", typeof(
-                    Events.V1FinancialConnectionsAccountTransactionsRefreshFailedEventNotification)
-                },
-                {
-                    "v1.financial_connections.account.transactions_refresh_succeeded", typeof(
-                    Events.V1FinancialConnectionsAccountTransactionsRefreshSucceededEventNotification)
                 },
                 {
                     "v1.financial_connections.account.upcoming_account_number_expiry", typeof(
@@ -1873,34 +1666,10 @@ namespace Stripe
                 { "v1.invoice.created", typeof(Events.V1InvoiceCreatedEventNotification) },
                 { "v1.invoice.deleted", typeof(Events.V1InvoiceDeletedEventNotification) },
                 {
-                    "v1.invoice.discount_added", typeof(
-                    Events.V1InvoiceDiscountAddedEventNotification)
-                },
-                {
-                    "v1.invoice.discount_removed", typeof(
-                    Events.V1InvoiceDiscountRemovedEventNotification)
-                },
-                {
                     "v1.invoice.finalization_failed", typeof(
                     Events.V1InvoiceFinalizationFailedEventNotification)
                 },
                 { "v1.invoice.finalized", typeof(Events.V1InvoiceFinalizedEventNotification) },
-                {
-                    "v1.invoice.line_item_added", typeof(
-                    Events.V1InvoiceLineItemAddedEventNotification)
-                },
-                {
-                    "v1.invoice.line_item_pricing_changed", typeof(
-                    Events.V1InvoiceLineItemPricingChangedEventNotification)
-                },
-                {
-                    "v1.invoice.line_item_quantity_changed", typeof(
-                    Events.V1InvoiceLineItemQuantityChangedEventNotification)
-                },
-                {
-                    "v1.invoice.line_item_removed", typeof(
-                    Events.V1InvoiceLineItemRemovedEventNotification)
-                },
                 {
                     "v1.invoice.marked_uncollectible", typeof(
                     Events.V1InvoiceMarkedUncollectibleEventNotification)
@@ -1930,20 +1699,8 @@ namespace Stripe
                 { "v1.invoice.voided", typeof(Events.V1InvoiceVoidedEventNotification) },
                 { "v1.invoice.will_be_due", typeof(Events.V1InvoiceWillBeDueEventNotification) },
                 {
-                    "v1.invoice_payment.canceled", typeof(
-                    Events.V1InvoicePaymentCanceledEventNotification)
-                },
-                {
-                    "v1.invoice_payment.open", typeof(
-                    Events.V1InvoicePaymentOpenEventNotification)
-                },
-                {
                     "v1.invoice_payment.paid", typeof(
                     Events.V1InvoicePaymentPaidEventNotification)
-                },
-                {
-                    "v1.invoiceitem.amount_changed", typeof(
-                    Events.V1InvoiceitemAmountChangedEventNotification)
                 },
                 {
                     "v1.invoiceitem.created", typeof(
@@ -1954,20 +1711,8 @@ namespace Stripe
                     Events.V1InvoiceitemDeletedEventNotification)
                 },
                 {
-                    "v1.invoiceitem.discount_added", typeof(
-                    Events.V1InvoiceitemDiscountAddedEventNotification)
-                },
-                {
-                    "v1.invoiceitem.discount_removed", typeof(
-                    Events.V1InvoiceitemDiscountRemovedEventNotification)
-                },
-                {
                     "v1.issuing_authorization.created", typeof(
                     Events.V1IssuingAuthorizationCreatedEventNotification)
-                },
-                {
-                    "v1.issuing_authorization.request", typeof(
-                    Events.V1IssuingAuthorizationRequestEventNotification)
                 },
                 {
                     "v1.issuing_authorization.updated", typeof(
@@ -2121,42 +1866,15 @@ namespace Stripe
                 { "v1.plan.created", typeof(Events.V1PlanCreatedEventNotification) },
                 { "v1.plan.deleted", typeof(Events.V1PlanDeletedEventNotification) },
                 { "v1.plan.updated", typeof(Events.V1PlanUpdatedEventNotification) },
-                { "v1.price.activated", typeof(Events.V1PriceActivatedEventNotification) },
                 { "v1.price.created", typeof(Events.V1PriceCreatedEventNotification) },
-                { "v1.price.deactivated", typeof(Events.V1PriceDeactivatedEventNotification) },
                 { "v1.price.deleted", typeof(Events.V1PriceDeletedEventNotification) },
-                {
-                    "v1.price.lookup_key_changed", typeof(
-                    Events.V1PriceLookupKeyChangedEventNotification)
-                },
-                {
-                    "v1.price.tax_behavior_changed", typeof(
-                    Events.V1PriceTaxBehaviorChangedEventNotification)
-                },
                 { "v1.price.updated", typeof(Events.V1PriceUpdatedEventNotification) },
-                { "v1.product.activated", typeof(Events.V1ProductActivatedEventNotification) },
                 { "v1.product.created", typeof(Events.V1ProductCreatedEventNotification) },
-                {
-                    "v1.product.deactivated", typeof(
-                    Events.V1ProductDeactivatedEventNotification)
-                },
-                {
-                    "v1.product.default_price_changed", typeof(
-                    Events.V1ProductDefaultPriceChangedEventNotification)
-                },
                 { "v1.product.deleted", typeof(Events.V1ProductDeletedEventNotification) },
-                {
-                    "v1.product.tax_code_changed", typeof(
-                    Events.V1ProductTaxCodeChangedEventNotification)
-                },
                 { "v1.product.updated", typeof(Events.V1ProductUpdatedEventNotification) },
                 {
                     "v1.promotion_code.created", typeof(
                     Events.V1PromotionCodeCreatedEventNotification)
-                },
-                {
-                    "v1.promotion_code.fully_redeemed", typeof(
-                    Events.V1PromotionCodeFullyRedeemedEventNotification)
                 },
                 {
                     "v1.promotion_code.updated", typeof(
@@ -2229,26 +1947,6 @@ namespace Stripe
                 {
                     "v1.subscription_schedule.expiring", typeof(
                     Events.V1SubscriptionScheduleExpiringEventNotification)
-                },
-                {
-                    "v1.subscription_schedule.phase_added", typeof(
-                    Events.V1SubscriptionSchedulePhaseAddedEventNotification)
-                },
-                {
-                    "v1.subscription_schedule.phase_default_tax_rates_changed", typeof(
-                    Events.V1SubscriptionSchedulePhaseDefaultTaxRatesChangedEventNotification)
-                },
-                {
-                    "v1.subscription_schedule.phase_end_date_changed", typeof(
-                    Events.V1SubscriptionSchedulePhaseEndDateChangedEventNotification)
-                },
-                {
-                    "v1.subscription_schedule.phase_removed", typeof(
-                    Events.V1SubscriptionSchedulePhaseRemovedEventNotification)
-                },
-                {
-                    "v1.subscription_schedule.phase_trial_end_changed", typeof(
-                    Events.V1SubscriptionSchedulePhaseTrialEndChangedEventNotification)
                 },
                 {
                     "v1.subscription_schedule.released", typeof(
@@ -2463,6 +2161,26 @@ namespace Stripe
                 {
                     "v2.core.batch_job.validation_failed", typeof(
                     Events.V2CoreBatchJobValidationFailedEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.claimed", typeof(
+                    Events.V2CoreClaimableSandboxClaimedEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.created", typeof(
+                    Events.V2CoreClaimableSandboxCreatedEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.expired", typeof(
+                    Events.V2CoreClaimableSandboxExpiredEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.expiring", typeof(
+                    Events.V2CoreClaimableSandboxExpiringEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.updated", typeof(
+                    Events.V2CoreClaimableSandboxUpdatedEventNotification)
                 },
                 {
                     "v2.core.event_destination.ping", typeof(
@@ -2735,6 +2453,38 @@ namespace Stripe
                 {
                     "v2.orchestrated_commerce.agreement.terminated", typeof(
                     Events.V2OrchestratedCommerceAgreementTerminatedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.attempt_failed", typeof(
+                    Events.V2PaymentsOffSessionPaymentAttemptFailedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.attempt_started", typeof(
+                    Events.V2PaymentsOffSessionPaymentAttemptStartedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.canceled", typeof(
+                    Events.V2PaymentsOffSessionPaymentCanceledEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.created", typeof(
+                    Events.V2PaymentsOffSessionPaymentCreatedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.failed", typeof(
+                    Events.V2PaymentsOffSessionPaymentFailedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.paused", typeof(
+                    Events.V2PaymentsOffSessionPaymentPausedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.resumed", typeof(
+                    Events.V2PaymentsOffSessionPaymentResumedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.succeeded", typeof(
+                    Events.V2PaymentsOffSessionPaymentSucceededEventNotification)
                 },
                 {
                     "v2.signals.account_evaluation.complete", typeof(

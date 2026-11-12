@@ -16,6 +16,7 @@ namespace Stripe
         private V2.MoneyManagementService moneyManagement;
         private V2.NetworkService network;
         private V2.OrchestratedCommerceService orchestratedCommerce;
+        private V2.PaymentsService payments;
         private V2.SignalsService signals;
         private V2.TestHelperService testHelpers;
 
@@ -54,6 +55,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual V2.OrchestratedCommerceService OrchestratedCommerce => this.orchestratedCommerce ??= new V2.OrchestratedCommerceService(
+            this.Requestor);
+
+        public virtual V2.PaymentsService Payments => this.payments ??= new V2.PaymentsService(
             this.Requestor);
 
         public virtual V2.SignalsService Signals => this.signals ??= new V2.SignalsService(

@@ -12,7 +12,7 @@ namespace Stripe.V2.MoneyManagement
     /// to a FinancialAccount belonging to the same user.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
-    public class InboundTransfer : StripeEntity<InboundTransfer>, IHasId, IHasObject
+    public class InboundTransfer : StripeEntity<InboundTransfer>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the InboundTransfer.
@@ -65,6 +65,14 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
+
+        /// <summary>
+        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
+        /// additional information about the object in a structured format.
+        /// </summary>
+        [JsonProperty("metadata")]
+        [STJS.JsonPropertyName("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A hosted transaction receipt URL that is provided when money movement is considered

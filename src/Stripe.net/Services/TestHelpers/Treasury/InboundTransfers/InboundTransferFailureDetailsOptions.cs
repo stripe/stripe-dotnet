@@ -22,5 +22,12 @@ namespace Stripe.TestHelpers.Treasury
         [JsonProperty("code")]
         [STJS.JsonPropertyName("code")]
         public string Code { get; set; }
+
+        /// <summary>
+        /// Network specific details for the failure.
+        /// </summary>
+        [JsonProperty("network_details")]
+        [STJS.JsonPropertyName("network_details")]
+        public InboundTransferFailureDetailsNetworkDetailsOptions NetworkDetails { get; set; }
     }
 }

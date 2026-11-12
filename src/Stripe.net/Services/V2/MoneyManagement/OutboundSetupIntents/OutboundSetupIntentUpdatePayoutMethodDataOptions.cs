@@ -24,7 +24,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. The type of payout method to be created/updated.
-        /// One of: <c>bank_account</c>, <c>card</c>, or <c>crypto_wallet</c>.
+        /// One of: <c>apple_pay</c>, <c>bank_account</c>, <c>card</c>, or <c>crypto_wallet</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

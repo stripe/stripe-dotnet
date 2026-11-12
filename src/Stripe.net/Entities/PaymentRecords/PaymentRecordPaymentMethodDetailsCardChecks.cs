@@ -20,7 +20,7 @@ namespace Stripe
         public string AddressLine1Check { get; set; }
 
         /// <summary>
-        /// If you provide a address postal code, the check result is one of <c>pass</c>,
+        /// If you provide an address postal code, the check result is one of <c>pass</c>,
         /// <c>fail</c>, <c>unavailable</c>, or <c>unchecked</c>.
         /// One of: <c>fail</c>, <c>pass</c>, <c>unavailable</c>, or <c>unchecked</c>.
         ///

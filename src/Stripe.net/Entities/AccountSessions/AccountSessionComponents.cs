@@ -44,6 +44,10 @@ namespace Stripe
         [STJS.JsonPropertyName("documents")]
         public AccountSessionComponentsDocuments Documents { get; set; }
 
+        [JsonProperty("export_tax_transactions")]
+        [STJS.JsonPropertyName("export_tax_transactions")]
+        public AccountSessionComponentsExportTaxTransactions ExportTaxTransactions { get; set; }
+
         [JsonProperty("financial_account")]
         [STJS.JsonPropertyName("financial_account")]
         public AccountSessionComponentsFinancialAccount FinancialAccount { get; set; }
@@ -100,6 +104,10 @@ namespace Stripe
         [STJS.JsonPropertyName("payouts_list")]
         public AccountSessionComponentsPayoutsList PayoutsList { get; set; }
 
+        [JsonProperty("product_tax_code_selector")]
+        [STJS.JsonPropertyName("product_tax_code_selector")]
+        public AccountSessionComponentsProductTaxCodeSelector ProductTaxCodeSelector { get; set; }
+
         [JsonProperty("reporting_chart")]
         [STJS.JsonPropertyName("reporting_chart")]
         public AccountSessionComponentsReportingChart ReportingChart { get; set; }
@@ -111,6 +119,10 @@ namespace Stripe
         [JsonProperty("tax_settings")]
         [STJS.JsonPropertyName("tax_settings")]
         public AccountSessionComponentsTaxSettings TaxSettings { get; set; }
+
+        [JsonProperty("tax_threshold_monitoring")]
+        [STJS.JsonPropertyName("tax_threshold_monitoring")]
+        public AccountSessionComponentsTaxThresholdMonitoring TaxThresholdMonitoring { get; set; }
 
         [JsonProperty("terminal_hardware_orders")]
         [STJS.JsonPropertyName("terminal_hardware_orders")]

@@ -22,9 +22,9 @@ namespace Stripe.V2.Core.Accounts
         /// <summary>
         /// Creates a single-use token that represents the details for a person. Use this when you
         /// create or update persons associated with an Account v2. Learn more about <a
-        /// href="https://docs.stripe.com/connect/account-tokens">account tokens</a>. You can only
-        /// create person tokens with your application's publishable key and in live mode. You can
-        /// use your application's secret key to create person tokens only in test mode.
+        /// href="https://docs.stripe.com/connect/account-tokens">account tokens</a>. In live mode,
+        /// you must create person tokens using a live publishable key. In a sandbox, you can create
+        /// person tokens with secret or publishable keys.
         /// </summary>
         public virtual V2.Core.AccountPersonToken Create(string id, PersonTokenCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -34,9 +34,9 @@ namespace Stripe.V2.Core.Accounts
         /// <summary>
         /// Creates a single-use token that represents the details for a person. Use this when you
         /// create or update persons associated with an Account v2. Learn more about <a
-        /// href="https://docs.stripe.com/connect/account-tokens">account tokens</a>. You can only
-        /// create person tokens with your application's publishable key and in live mode. You can
-        /// use your application's secret key to create person tokens only in test mode.
+        /// href="https://docs.stripe.com/connect/account-tokens">account tokens</a>. In live mode,
+        /// you must create person tokens using a live publishable key. In a sandbox, you can create
+        /// person tokens with secret or publishable keys.
         /// </summary>
         public virtual Task<V2.Core.AccountPersonToken> CreateAsync(string id, PersonTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

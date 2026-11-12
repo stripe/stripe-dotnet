@@ -36,9 +36,7 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationMoneyManagerOptions MoneyManager { get; set; }
 
         /// <summary>
-        /// The Recipient Configuration allows the Account to receive funds. Utilize this
-        /// configuration if the Account will not be the Merchant of Record, like with Separate
-        /// Charges &amp; Transfers, or Destination Charges without on_behalf_of set.
+        /// The Recipient Configuration allows the Account to receive funds from you.
         /// </summary>
         [JsonProperty("recipient")]
         [STJS.JsonPropertyName("recipient")]

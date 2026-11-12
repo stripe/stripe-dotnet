@@ -8,5 +8,11 @@ namespace Stripe.TestHelpers.Treasury
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InboundTransferReturnInboundTransferOptions : BaseOptions
     {
+        /// <summary>
+        /// Details about a returned InboundTransfer.
+        /// </summary>
+        [JsonProperty("failure_details")]
+        [STJS.JsonPropertyName("failure_details")]
+        public InboundTransferFailureDetailsOptions FailureDetails { get; set; }
     }
 }
