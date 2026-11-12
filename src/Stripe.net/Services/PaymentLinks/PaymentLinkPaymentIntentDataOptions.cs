@@ -9,6 +9,7 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentLinkPaymentIntentDataOptions : INestedOptions, IHasMetadata, IHasSetTracking
     {
+        private string captureMethod;
         private string description;
         private Dictionary<string, string> metadata;
         private string setupFutureUsage;
@@ -26,9 +27,18 @@ namespace Stripe
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
-        [JsonProperty("capture_method")]
+        [JsonProperty("capture_method", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("capture_method")]
-        public string CaptureMethod { get; set; }
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public string CaptureMethod
+        {
+            get => this.captureMethod;
+            set
+            {
+                this.captureMethod = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.

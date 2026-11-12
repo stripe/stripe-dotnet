@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -23,5 +24,12 @@ namespace Stripe
         [JsonProperty("funding_source_group")]
         [STJS.JsonPropertyName("funding_source_group")]
         public string FundingSourceGroup { get; set; }
+
+        /// <summary>
+        /// Details about the funding sources used for this Link payment.
+        /// </summary>
+        [JsonProperty("funding_sources")]
+        [STJS.JsonPropertyName("funding_sources")]
+        public List<ChargePaymentMethodDetailsLinkFundingSource> FundingSources { get; set; }
     }
 }

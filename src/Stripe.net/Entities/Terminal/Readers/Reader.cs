@@ -47,6 +47,25 @@ namespace Stripe.Terminal
         public bool? Deleted { get; set; }
 
         /// <summary>
+        /// The overall device health of the reader. <c>needs_attention</c> means the reader failed
+        /// a security requirement and can't accept payments until the issue is resolved.
+        /// One of: <c>needs_attention</c>, or <c>no_issues_detected</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("device_health")]
+        [STJS.JsonPropertyName("device_health")]
+        public string DeviceHealth { get; set; }
+
+        /// <summary>
+        /// The set of conditions affecting the reader's device health. Empty when there are no
+        /// conditions.
+        /// </summary>
+        [JsonProperty("device_health_details")]
+        [STJS.JsonPropertyName("device_health_details")]
+        public List<ReaderDeviceHealthDetail> DeviceHealthDetails { get; set; }
+
+        /// <summary>
         /// The current software version of the reader.
         /// </summary>
         [JsonProperty("device_sw_version")]

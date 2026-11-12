@@ -21,6 +21,13 @@ namespace Stripe.Treasury
         [STJS.JsonPropertyName("code")]
         public string Code { get; set; }
 
+        /// <summary>
+        /// Money movement network-specific details regarding the failure.
+        /// </summary>
+        [JsonProperty("network_details")]
+        [STJS.JsonPropertyName("network_details")]
+        public OutboundPaymentReturnedDetailsNetworkDetails NetworkDetails { get; set; }
+
         #region Expandable Transaction
 
         /// <summary>

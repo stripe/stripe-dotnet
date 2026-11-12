@@ -8,7 +8,8 @@ namespace Stripe.V2.Core
 
     /// <summary>
     /// Account Links let a platform create a temporary, single-use URL that an account can use
-    /// to access a Stripe-hosted flow for collecting or updating required information.
+    /// to access a Stripe-hosted flow for collecting or updating required information, or to
+    /// access its Stripe-hosted Dashboard.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountLink : StripeEntity<AccountLink>, IHasObject

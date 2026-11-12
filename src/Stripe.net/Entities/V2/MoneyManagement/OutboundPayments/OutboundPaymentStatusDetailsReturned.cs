@@ -10,7 +10,8 @@ namespace Stripe.V2.MoneyManagement
     {
         /// <summary>
         /// Open Enum. The <c>returned</c> status reason.
-        /// One of: <c>payout_method_canceled_by_customer</c>, <c>payout_method_closed</c>,
+        /// One of: <c>payout_method_account_type_incorrect</c>,
+        /// <c>payout_method_canceled_by_customer</c>, <c>payout_method_closed</c>,
         /// <c>payout_method_currency_unsupported</c>, <c>payout_method_does_not_exist</c>,
         /// <c>payout_method_holder_address_incorrect</c>,
         /// <c>payout_method_holder_details_incorrect</c>,
