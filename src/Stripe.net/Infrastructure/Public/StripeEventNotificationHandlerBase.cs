@@ -21,9 +21,6 @@ namespace Stripe
         protected readonly StripeClient client;
 #pragma warning restore SA1401 // Fields should be private
         private readonly HashSet<string> handledEventTypes = new HashSet<string>();
-#pragma warning disable SA1401 // Fields should be private
-        protected readonly StripeClientOptions clientOptions;
-#pragma warning restore SA1401 // Fields should be private
 
         // A private EventHandler for each EventNotification. We'll route notifications to the correct handler.
         // private-event-handlers: The beginning of the section generated from our OpenAPI spec
@@ -427,25 +424,13 @@ namespace Stripe
 
             this.FallbackCallback += new EventHandler<StripeUnhandledEventNotificationEventArgs>(fallbackCallback);
 
-            // Capture the client options to reuse configuration when creating new clients
-            var requestor = client.Requestor as LiveApiRequestor;
-            if (requestor == null)
+            // Fail fast if this client can't back a context-scoped client later (see
+            // DispatchEventWithContext/StripeClient.WithStripeContext), rather than only
+            // discovering it on first dispatch.
+            if (!(client.Requestor is LiveApiRequestor))
             {
                 throw new InvalidOperationException("StripeEventNotificationHandler requires a StripeClient with a LiveApiRequestor.");
             }
-
-            this.clientOptions = new StripeClientOptions
-            {
-                ApiKey = requestor.ApiKey,
-                ClientId = requestor.ClientId,
-                HttpClient = requestor.HttpClient,
-                ApiBase = requestor.ApiBase,
-                ConnectBase = requestor.ConnectBase,
-                FilesBase = requestor.FilesBase,
-                MeterEventsBase = requestor.MeterEventsBase,
-                StripeAccount = null, // Don't copy StripeAccount or StripeContext
-                StripeContext = null,
-            };
         }
 
         private event EventHandler<StripeUnhandledEventNotificationEventArgs> FallbackCallback;
@@ -2816,16 +2801,13 @@ namespace Stripe
                 throw new ArgumentNullException(nameof(eventNotification));
             }
 
-            // If client options somehow didn't get created, bail.
-            if (this.clientOptions == null)
-            {
-                throw new InvalidOperationException("Unable to create client with event context: client options not available.");
-            }
-
-            // Create a new client with the event's context
-            var eventClientOptions = this.clientOptions.Clone();
-            eventClientOptions.StripeContext = eventNotification.Context;
-            var eventClient = new StripeClient(eventClientOptions);
+            // Build a client scoped to this event's own context, with Stripe-Account cleared
+            // (see StripeClient.WithStripeContext). Rebind the notification's own Client to it
+            // too, so that callbacks can call eventNotification.FetchEvent()/FetchRelatedObject()
+            // directly and still get the same context-scoped behavior as the separate Client
+            // passed alongside it in the event args.
+            var eventClient = this.client.WithStripeContext(eventNotification.Context);
+            eventNotification.Client = eventClient;
 
             this.DispatchEvent(eventNotification, eventClient);
         }
