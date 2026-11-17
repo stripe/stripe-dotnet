@@ -32,6 +32,7 @@ namespace Stripe.Infrastructure
 
         // Versions without this converter wrote StripeContext as {"Segments": [...]}, and those
         // payloads may still be sitting in a queue or cache.
+        // TODO(DEVSDK-3426): remove this fallback in the next major release.
         private static StripeContext ReadSegmentsObject(ref Utf8JsonReader reader)
         {
             List<string> segments = null;
