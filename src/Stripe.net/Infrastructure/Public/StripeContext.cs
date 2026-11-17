@@ -3,6 +3,9 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
 
     /// <summary>
     /// The StripeContext class provides an immutable container and convenience methods for
@@ -11,6 +14,8 @@ namespace Stripe
     /// You can use it whenever you're initializing a <c>StripeClient</c> or sending <c>StripeContext</c> with a request.
     /// It's also found in the <c>EventNotification.context</c> property.
     /// </summary>
+    [JsonConverter(typeof(StripeContextConverter))]
+    [STJS.JsonConverter(typeof(STJStripeContextConverter))]
     public sealed class StripeContext : IEquatable<StripeContext>
     {
         private readonly IReadOnlyList<string> segments;
