@@ -36,6 +36,13 @@ namespace Stripe.V2.MoneyManagement
         public PayoutMethodAlternativeReference AlternativeReference { get; set; }
 
         /// <summary>
+        /// The PayoutMethodApplePay object details.
+        /// </summary>
+        [JsonProperty("apple_pay")]
+        [STJS.JsonPropertyName("apple_pay")]
+        public PayoutMethodApplePay ApplePay { get; set; }
+
+        /// <summary>
         /// Whether the payout method was archived. Payout methods can be archived through the
         /// /archive API, and they will not be automatically archived by Stripe. Archived payout
         /// methods cannot be used for outbound money movement.
@@ -105,7 +112,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. The type of payout method.
-        /// One of: <c>bank_account</c>, <c>card</c>, or <c>crypto_wallet</c>.
+        /// One of: <c>apple_pay</c>, <c>bank_account</c>, <c>card</c>, or <c>crypto_wallet</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

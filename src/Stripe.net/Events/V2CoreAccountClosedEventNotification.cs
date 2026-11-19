@@ -7,7 +7,7 @@ namespace Stripe.Events
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// This event occurs when an account is closed.
+    /// Occurs when an Account is closed.
     /// </summary>
     public class V2CoreAccountClosedEventNotification : V2.Core.EventNotification
     {

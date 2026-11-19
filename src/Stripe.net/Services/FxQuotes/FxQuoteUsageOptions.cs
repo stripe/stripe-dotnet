@@ -24,8 +24,6 @@ namespace Stripe
 
         /// <summary>
         /// Which transaction the FX Quote will be used for.
-        ///
-        /// Can be “payment” | “transfer”.
         /// One of: <c>payment</c>, or <c>transfer</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

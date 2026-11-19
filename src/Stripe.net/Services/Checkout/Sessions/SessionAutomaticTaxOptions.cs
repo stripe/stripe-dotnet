@@ -9,6 +9,25 @@ namespace Stripe.Checkout
     public class SessionAutomaticTaxOptions : INestedOptions
     {
         /// <summary>
+        /// Controls how much address information Checkout collects when <a
+        /// href="https://stripe.com/docs/api/checkout/sessions/object#checkout_session_object-automatic_tax-enabled">automatic_tax</a>
+        /// is enabled.
+        ///
+        /// Defaults to <c>full</c>, which collects the address fields needed for the most accurate
+        /// tax calculation. Set to <c>minimal</c> to collect only the fields required for tax in
+        /// the buyer's country, accepting potentially less precise tax calculation in exchange for
+        /// a streamlined form.
+        ///
+        /// Only honored when <c>automatic_tax.enabled</c> is <c>true</c>,
+        /// <c>billing_address_collection</c> is <c>auto</c>, the resolved tax address source is the
+        /// session billing address, and <c>ui_mode</c> is <c>form</c>.
+        /// One of: <c>full</c>, or <c>minimal</c>.
+        /// </summary>
+        [JsonProperty("address_collection_precision")]
+        [STJS.JsonPropertyName("address_collection_precision")]
+        public string AddressCollectionPrecision { get; set; }
+
+        /// <summary>
         /// Set to <c>true</c> to <a href="https://docs.stripe.com/tax">calculate tax
         /// automatically</a> using the customer's location.
         ///

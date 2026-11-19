@@ -30,7 +30,6 @@ namespace StripeTests.Wholesome
                 // Some classes have non-generated, non-nullable `Deleted` fields
                 // The beginning of the section generated from our OpenAPI spec
                 "Stripe.Apps.Secret",
-                "Stripe.CustomerTaxExemption",
 
                 // The end of the section generated from our OpenAPI spec
             };

@@ -93,7 +93,11 @@ namespace Stripe
 
         /// <summary>
         /// Number of webhooks that haven't been successfully delivered (for example, to return a
-        /// 20x response) to the URLs you specify.
+        /// 20x response). This count can include deliveries to endpoints that belong to Connect
+        /// platforms or apps with access to your account. These endpoints don't appear when you
+        /// list your account's webhook endpoints or event destinations. To see the delivery status
+        /// for each endpoint, view the event in <a
+        /// href="https://docs.stripe.com/workbench/overview#events">Workbench</a>.
         /// </summary>
         [JsonProperty("pending_webhooks")]
         [STJS.JsonPropertyName("pending_webhooks")]

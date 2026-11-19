@@ -242,7 +242,6 @@ namespace Stripe
                 // V2ObjectsToTypes: The beginning of the section generated from our OpenAPI spec
                 { "v2.billing.bill_setting", typeof(V2.Billing.BillSetting) },
                 { "v2.billing.bill_setting_version", typeof(V2.Billing.BillSettingVersion) },
-                { "v2.billing.cadence", typeof(V2.Billing.Cadence) },
                 { "v2.billing.collection_setting", typeof(V2.Billing.CollectionSetting) },
                 {
                     "v2.billing.collection_setting_version", typeof(
@@ -263,6 +262,7 @@ namespace Stripe
                 { "v2.core.account_token", typeof(V2.Core.AccountToken) },
                 { "v2.core.approval_request", typeof(V2.Core.ApprovalRequest) },
                 { "v2.core.batch_job", typeof(V2.Core.BatchJob) },
+                { "v2.core.claimable_sandbox", typeof(V2.Core.ClaimableSandbox) },
                 { "v2.core.event", typeof(V2.Core.Event) },
                 { "v2.core.event_destination", typeof(V2.Core.EventDestination) },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },
@@ -1175,6 +1175,26 @@ namespace Stripe
                 {
                     "v2.core.batch_job.validation_failed", typeof(
                     Events.V2CoreBatchJobValidationFailedEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.claimed", typeof(
+                    Events.V2CoreClaimableSandboxClaimedEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.created", typeof(
+                    Events.V2CoreClaimableSandboxCreatedEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.expired", typeof(
+                    Events.V2CoreClaimableSandboxExpiredEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.expiring", typeof(
+                    Events.V2CoreClaimableSandboxExpiringEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.updated", typeof(
+                    Events.V2CoreClaimableSandboxUpdatedEvent)
                 },
                 {
                     "v2.core.event_destination.ping", typeof(
@@ -2463,6 +2483,26 @@ namespace Stripe
                 {
                     "v2.core.batch_job.validation_failed", typeof(
                     Events.V2CoreBatchJobValidationFailedEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.claimed", typeof(
+                    Events.V2CoreClaimableSandboxClaimedEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.created", typeof(
+                    Events.V2CoreClaimableSandboxCreatedEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.expired", typeof(
+                    Events.V2CoreClaimableSandboxExpiredEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.expiring", typeof(
+                    Events.V2CoreClaimableSandboxExpiringEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.updated", typeof(
+                    Events.V2CoreClaimableSandboxUpdatedEventNotification)
                 },
                 {
                     "v2.core.event_destination.ping", typeof(
