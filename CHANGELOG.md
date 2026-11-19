@@ -7,6 +7,26 @@ Instead, edit a corresponding `.change.md` file and run `hark build`.
 
 > This changelog only covers the **public preview** releases. Each release builds on the most recent GA release; see those notes in [the GA changelog](https://github.com/stripe/stripe-dotnet/blob/master/CHANGELOG.md).
 
+## <a id="53-3-0-beta-1"></a>53.3.0-beta.1 - 2026-11-18
+This release changes the pinned API version to `2026-11-18.preview`.
+
+* ⚠️ [#3492](https://github.com/stripe/stripe-dotnet/pull/3492) Update generated code
+  * ⚠️ Remove support for resource `V2.Billing.Cadence`
+  * Add support for `Create` and `Refill` test helper methods on resource `Capital.FinancingOffer`
+  * ⚠️ Remove support for `Cancel`, `Create`, `Get`, `List`, and `Update` methods on resource `V2.Billing.Cadence`
+  * Add support for `ExportTaxTransactions`, `ProductTaxCodeSelector`, and `TaxThresholdMonitoring` on `AccountSession.Components`
+  * Add support for `Custom` on `CouponCreateOptions` and `Coupon`
+  * Add support for `Type` on `CouponCreateOptions` and `CustomerCustomerBalanceTransactionCreateOptions`
+  * Add support for `AppliedToInvoice` on `CustomerCustomerBalanceTransactionCreateOptions`
+  * Add support for `CustomerBalance` on `Invoice` and `QuotePreviewInvoice`
+  * ⚠️ Change type of `PaymentIntent.NextAction.VerifyWithMicrodeposits.ArrivalDate` and `SetupIntent.NextAction.VerifyWithMicrodeposits.ArrivalDate` from `DateTime` to `nullable(DateTime)`
+  * Add support for `Connect`, `DataExport`, `EventDestination`, `Radar`, and `UserAccess` on `V2.Iam.ActivityLog.Details`
+  * Add support for `ApplePay` on `V2.MoneyManagement.PayoutMethod` and `V2MoneyManagementOutboundSetupIntentPayoutMethodDataOptions`
+  * Add support for `Network` and `OriginatingBankAccount` on `V2.MoneyManagement.ReceivedDebit.BankTransfer`
+  * Add support for `Created` on `V2.MoneyManagement.ReceivedDebitListOptions`
+  * Add support for `LogsFrom` on `V2.Iam.ActivityLogListOptions`
+  * Add support for `Severity` on `EventsV2CoreHealthEventGenerationFailureResolvedEvent`
+
 ## <a id="53-2-0-beta-1"></a>53.2.0-beta.1 - 2026-10-29
 This release changes the pinned API version to `2026-10-28.preview`.
 
