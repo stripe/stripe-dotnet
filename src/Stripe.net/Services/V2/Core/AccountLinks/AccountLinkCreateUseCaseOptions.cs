@@ -9,6 +9,14 @@ namespace Stripe.V2.Core
     public class AccountLinkCreateUseCaseOptions : INestedOptions
     {
         /// <summary>
+        /// Hash containing configuration options for an Account Link that provides access to the
+        /// account's Stripe-hosted Dashboard.
+        /// </summary>
+        [JsonProperty("account_dashboard")]
+        [STJS.JsonPropertyName("account_dashboard")]
+        public AccountLinkCreateUseCaseAccountDashboardOptions AccountDashboard { get; set; }
+
+        /// <summary>
         /// Hash containing configuration options for an Account Link object that onboards a new
         /// account.
         /// </summary>
@@ -26,7 +34,7 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// Open Enum. The type of Account Link the user is requesting.
-        /// One of: <c>account_onboarding</c>, or <c>account_update</c>.
+        /// One of: <c>account_dashboard</c>, <c>account_onboarding</c>, or <c>account_update</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

@@ -9,7 +9,7 @@ namespace Stripe
     public class PaymentMethodCardChecks : StripeEntity<PaymentMethodCardChecks>
     {
         /// <summary>
-        /// If a address line1 was provided, results of the check, one of <c>pass</c>, <c>fail</c>,
+        /// If an address line1 was provided, results of the check, one of <c>pass</c>, <c>fail</c>,
         /// <c>unavailable</c>, or <c>unchecked</c>.
         /// </summary>
         [JsonProperty("address_line1_check")]
@@ -17,7 +17,7 @@ namespace Stripe
         public string AddressLine1Check { get; set; }
 
         /// <summary>
-        /// If a address postal code was provided, results of the check, one of <c>pass</c>,
+        /// If an address postal code was provided, results of the check, one of <c>pass</c>,
         /// <c>fail</c>, <c>unavailable</c>, or <c>unchecked</c>.
         /// </summary>
         [JsonProperty("address_postal_code_check")]

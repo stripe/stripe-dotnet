@@ -8,7 +8,6 @@ namespace Stripe.V2
     public class BillingService : Service
     {
         private V2.Billing.BillSettingService billSettings;
-        private V2.Billing.CadenceService cadences;
         private V2.Billing.CollectionSettingService collectionSettings;
         private V2.Billing.MeterEventService meterEvents;
         private V2.Billing.MeterEventAdjustmentService meterEventAdjustments;
@@ -27,9 +26,6 @@ namespace Stripe.V2
         }
 
         public virtual V2.Billing.BillSettingService BillSettings => this.billSettings ??= new V2.Billing.BillSettingService(
-            this.Requestor);
-
-        public virtual V2.Billing.CadenceService Cadences => this.cadences ??= new V2.Billing.CadenceService(
             this.Requestor);
 
         public virtual V2.Billing.CollectionSettingService CollectionSettings => this.collectionSettings ??= new V2.Billing.CollectionSettingService(

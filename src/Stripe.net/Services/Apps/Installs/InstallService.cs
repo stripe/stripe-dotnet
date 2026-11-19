@@ -33,9 +33,10 @@ namespace Stripe.Apps
         /// public and testing installs are made from the Dashboard. An app developer acting on a
         /// connected account through <c>Stripe-Account</c> installs or reinstalls its app there,
         /// and an embedding platform can do the same once the app’s developer approves its request
-        /// to embed the app. For a private app, creating an install installs the newest completed
-        /// upload; when that version is already installed with nothing pending, the existing
-        /// install is returned.</p>.
+        /// to embed the app and the platform has accepted the Embedding Platform Terms and
+        /// Conditions in the Dashboard. For a private app, creating an install installs the newest
+        /// completed upload; when that version is already installed with nothing pending, the
+        /// existing install is returned.</p>.
         /// </summary>
         public virtual Install Create(InstallCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -47,9 +48,10 @@ namespace Stripe.Apps
         /// public and testing installs are made from the Dashboard. An app developer acting on a
         /// connected account through <c>Stripe-Account</c> installs or reinstalls its app there,
         /// and an embedding platform can do the same once the app’s developer approves its request
-        /// to embed the app. For a private app, creating an install installs the newest completed
-        /// upload; when that version is already installed with nothing pending, the existing
-        /// install is returned.</p>.
+        /// to embed the app and the platform has accepted the Embedding Platform Terms and
+        /// Conditions in the Dashboard. For a private app, creating an install installs the newest
+        /// completed upload; when that version is already installed with nothing pending, the
+        /// existing install is returned.</p>.
         /// </summary>
         public virtual Task<Install> CreateAsync(InstallCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -84,7 +86,8 @@ namespace Stripe.Apps
         /// account sees only the installs it created there. Other callers see the installs on their
         /// own account. A live key lists live installs and a test key lists test installs; the key
         /// of an app’s managed sandbox filtering by <c>app</c> lists that app’s installs across
-        /// every sandbox.</p>.
+        /// every sandbox, and also that app’s legacy test mode installs when the developer has no
+        /// legacy test mode.</p>.
         /// </summary>
         public virtual StripeList<Install> List(InstallListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -99,7 +102,8 @@ namespace Stripe.Apps
         /// account sees only the installs it created there. Other callers see the installs on their
         /// own account. A live key lists live installs and a test key lists test installs; the key
         /// of an app’s managed sandbox filtering by <c>app</c> lists that app’s installs across
-        /// every sandbox.</p>.
+        /// every sandbox, and also that app’s legacy test mode installs when the developer has no
+        /// legacy test mode.</p>.
         /// </summary>
         public virtual Task<StripeList<Install>> ListAsync(InstallListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -114,7 +118,8 @@ namespace Stripe.Apps
         /// account sees only the installs it created there. Other callers see the installs on their
         /// own account. A live key lists live installs and a test key lists test installs; the key
         /// of an app’s managed sandbox filtering by <c>app</c> lists that app’s installs across
-        /// every sandbox.</p>.
+        /// every sandbox, and also that app’s legacy test mode installs when the developer has no
+        /// legacy test mode.</p>.
         /// </summary>
         public virtual IEnumerable<Install> ListAutoPaging(InstallListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -129,7 +134,8 @@ namespace Stripe.Apps
         /// account sees only the installs it created there. Other callers see the installs on their
         /// own account. A live key lists live installs and a test key lists test installs; the key
         /// of an app’s managed sandbox filtering by <c>app</c> lists that app’s installs across
-        /// every sandbox.</p>.
+        /// every sandbox, and also that app’s legacy test mode installs when the developer has no
+        /// legacy test mode.</p>.
         /// </summary>
         public virtual IAsyncEnumerable<Install> ListAutoPagingAsync(InstallListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

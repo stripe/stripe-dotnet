@@ -32,6 +32,10 @@ namespace Stripe
         [STJS.JsonPropertyName("au_bank_transfer")]
         public RefundDestinationDetailsAuBankTransfer AuBankTransfer { get; set; }
 
+        [JsonProperty("bizum")]
+        [STJS.JsonPropertyName("bizum")]
+        public RefundDestinationDetailsBizum Bizum { get; set; }
+
         [JsonProperty("blik")]
         [STJS.JsonPropertyName("blik")]
         public RefundDestinationDetailsBlik Blik { get; set; }
@@ -152,6 +156,10 @@ namespace Stripe
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
+
+        [JsonProperty("upi")]
+        [STJS.JsonPropertyName("upi")]
+        public RefundDestinationDetailsUpi Upi { get; set; }
 
         [JsonProperty("us_bank_transfer")]
         [STJS.JsonPropertyName("us_bank_transfer")]

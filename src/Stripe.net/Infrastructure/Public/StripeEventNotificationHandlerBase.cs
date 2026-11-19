@@ -333,6 +333,11 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobUploadTimeoutEventNotification>> v2CoreBatchJobUploadTimeout;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobValidatingEventNotification>> v2CoreBatchJobValidating;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobValidationFailedEventNotification>> v2CoreBatchJobValidationFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreClaimableSandboxClaimedEventNotification>> v2CoreClaimableSandboxClaimed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreClaimableSandboxCreatedEventNotification>> v2CoreClaimableSandboxCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreClaimableSandboxExpiredEventNotification>> v2CoreClaimableSandboxExpired;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreClaimableSandboxExpiringEventNotification>> v2CoreClaimableSandboxExpiring;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreClaimableSandboxUpdatedEventNotification>> v2CoreClaimableSandboxUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>> v2CoreEventDestinationPing;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification>> v2CoreHealthEventGenerationFailureResolved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2DataQueryRunCreatedEventNotification>> v2DataQueryRunCreated;
@@ -2291,6 +2296,36 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreClaimableSandboxClaimedEventNotification>> V2CoreClaimableSandboxClaimed
+        {
+            add { this.AddEventHandler(ref this.v2CoreClaimableSandboxClaimed, value, "v2.core.claimable_sandbox.claimed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreClaimableSandboxCreatedEventNotification>> V2CoreClaimableSandboxCreated
+        {
+            add { this.AddEventHandler(ref this.v2CoreClaimableSandboxCreated, value, "v2.core.claimable_sandbox.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreClaimableSandboxExpiredEventNotification>> V2CoreClaimableSandboxExpired
+        {
+            add { this.AddEventHandler(ref this.v2CoreClaimableSandboxExpired, value, "v2.core.claimable_sandbox.expired"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreClaimableSandboxExpiringEventNotification>> V2CoreClaimableSandboxExpiring
+        {
+            add { this.AddEventHandler(ref this.v2CoreClaimableSandboxExpiring, value, "v2.core.claimable_sandbox.expiring"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreClaimableSandboxUpdatedEventNotification>> V2CoreClaimableSandboxUpdated
+        {
+            add { this.AddEventHandler(ref this.v2CoreClaimableSandboxUpdated, value, "v2.core.claimable_sandbox.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>> V2CoreEventDestinationPing
         {
             add { this.AddEventHandler(ref this.v2CoreEventDestinationPing, value, "v2.core.event_destination.ping"); }
@@ -4110,6 +4145,26 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2CoreBatchJobValidationFailedEventNotification)
                 {
                     this.v2CoreBatchJobValidationFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobValidationFailedEventNotification>((Stripe.Events.V2CoreBatchJobValidationFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreClaimableSandboxClaimedEventNotification)
+                {
+                    this.v2CoreClaimableSandboxClaimed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreClaimableSandboxClaimedEventNotification>((Stripe.Events.V2CoreClaimableSandboxClaimedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreClaimableSandboxCreatedEventNotification)
+                {
+                    this.v2CoreClaimableSandboxCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreClaimableSandboxCreatedEventNotification>((Stripe.Events.V2CoreClaimableSandboxCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreClaimableSandboxExpiredEventNotification)
+                {
+                    this.v2CoreClaimableSandboxExpired.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreClaimableSandboxExpiredEventNotification>((Stripe.Events.V2CoreClaimableSandboxExpiredEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreClaimableSandboxExpiringEventNotification)
+                {
+                    this.v2CoreClaimableSandboxExpiring.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreClaimableSandboxExpiringEventNotification>((Stripe.Events.V2CoreClaimableSandboxExpiringEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreClaimableSandboxUpdatedEventNotification)
+                {
+                    this.v2CoreClaimableSandboxUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreClaimableSandboxUpdatedEventNotification>((Stripe.Events.V2CoreClaimableSandboxUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreEventDestinationPingEventNotification)
                 {

@@ -8,7 +8,9 @@ namespace Stripe.Reserve
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// ReserveHolds are used to place a temporary ReserveHold on a merchant's funds.
+    /// A ReserveHold holds a portion of an account's funds until it's released. Stripe or the
+    /// account's platform can create a ReserveHold directly, and a ReservePlan creates
+    /// ReserveHolds automatically from incoming Charges.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Hold : StripeEntity<Hold>, IHasId, IHasMetadata, IHasObject

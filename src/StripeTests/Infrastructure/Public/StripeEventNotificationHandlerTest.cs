@@ -1151,6 +1151,46 @@ namespace StripeTests
 
             Assert.IsType<StripeEventNotificationHandlerWithoutVerification>(handler);
         }
+
+        // Integrations may queue the parsed notification rather than the raw payload. The
+        // callback's client must still be scoped to the event's context afterwards, or its
+        // requests go to the platform account.
+        [Theory]
+        [InlineData("newtonsoft")]
+        [InlineData("stj")]
+        public void ReserializedNotificationKeepsStripeContext(string serializer)
+        {
+            var notification = this.stripeClient.ParseEventNotificationWithoutVerification(this.V1BillingMeterPayload);
+            var json = serializer == "stj"
+                ? System.Text.Json.JsonSerializer.Serialize(notification, notification.GetType())
+                : Newtonsoft.Json.JsonConvert.SerializeObject(notification);
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(new HttpResponseMessage
+                {
+                    Content = new StringContent(@"{""id"": ""prod_123"", ""object"": ""product"", ""deleted"": true}"),
+                });
+
+            var handler = StripeEventNotificationHandler.WithoutVerification(this.stripeClient, (s, e) => { });
+            handler.V1BillingMeterErrorReportTriggered += (s, e) => e.Client.V1.Products.Delete("prod_123");
+
+            handler.Handle(json);
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Method == HttpMethod.Delete &&
+                        !m.Headers.Contains("Stripe-Account") &&
+                        m.Headers.Contains("Stripe-Context") &&
+                        m.Headers.GetValues("Stripe-Context").First() == "event_context_456"),
+                    ItExpr.IsAny<CancellationToken>());
+        }
     }
 #pragma warning restore SA1402 // File may only contain a single type
 }

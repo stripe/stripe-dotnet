@@ -75,7 +75,8 @@ namespace Stripe.BillingPortal
 
         /// <summary>
         /// Determines how to handle prorations resulting from subscription updates. Valid values
-        /// are <c>none</c>, <c>create_prorations</c>, and <c>always_invoice</c>.
+        /// are <c>none</c>, <c>create_prorations</c>, and <c>always_invoice</c>. If omitted, the
+        /// proration behavior is unchanged.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
