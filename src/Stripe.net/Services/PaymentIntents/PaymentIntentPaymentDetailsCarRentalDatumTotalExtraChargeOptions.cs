@@ -1,0 +1,30 @@
+// File generated from our OpenAPI spec
+namespace Stripe
+{
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
+    public class PaymentIntentPaymentDetailsCarRentalDatumTotalExtraChargeOptions : INestedOptions
+    {
+        /// <summary>
+        /// Amount of the extra charge in cents.
+        /// </summary>
+        [JsonProperty("amount")]
+        [STJS.JsonPropertyName("amount")]
+        public long? Amount { get; set; }
+
+        /// <summary>
+        /// Type of extra charge.
+        /// One of: <c>extra_mileage</c>, <c>gas</c>, <c>gps</c>, <c>late_charge</c>,
+        /// <c>one_way_drop_off</c>, <c>other</c>, <c>parking</c>, <c>phone</c>,
+        /// <c>regular_mileage</c>, or <c>towing</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
+    }
+}

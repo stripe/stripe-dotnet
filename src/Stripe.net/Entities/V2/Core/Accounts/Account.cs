@@ -81,8 +81,10 @@ namespace Stripe.V2.Core
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// A value indicating the Stripe dashboard this Account has access to. This will depend on
-        /// which configurations are enabled for this account.
+        /// Specifies the account's Stripe-hosted Dashboard access. Available values depend on the
+        /// configurations enabled for the account. Learn more about <a
+        /// href="https://docs.stripe.com/connect/accounts-v2/connected-account-configuration#set-dashboard-access">configuring
+        /// Dashboard access</a>.
         /// One of: <c>express</c>, <c>full</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("dashboard")]

@@ -20,7 +20,8 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// Creates an AccountLink object that includes a single-use URL that an account can use to
-        /// access a Stripe-hosted flow for collecting or updating required information.
+        /// access a Stripe-hosted flow for collecting or updating required information, or to
+        /// access its Stripe-hosted Dashboard.
         /// </summary>
         public virtual AccountLink Create(AccountLinkCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -29,7 +30,8 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// Creates an AccountLink object that includes a single-use URL that an account can use to
-        /// access a Stripe-hosted flow for collecting or updating required information.
+        /// access a Stripe-hosted flow for collecting or updating required information, or to
+        /// access its Stripe-hosted Dashboard.
         /// </summary>
         public virtual Task<AccountLink> CreateAsync(AccountLinkCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

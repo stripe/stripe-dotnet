@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -8,6 +9,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentDetails : StripeEntity<PaymentIntentPaymentDetails>
     {
+        [JsonProperty("car_rental_data")]
+        [STJS.JsonPropertyName("car_rental_data")]
+        public List<PaymentIntentPaymentDetailsCarRentalDatum> CarRentalData { get; set; }
+
         /// <summary>
         /// A unique value to identify the customer. This field is available only for card payments.
         ///
@@ -17,6 +22,10 @@ namespace Stripe
         [JsonProperty("customer_reference")]
         [STJS.JsonPropertyName("customer_reference")]
         public string CustomerReference { get; set; }
+
+        [JsonProperty("lodging_data")]
+        [STJS.JsonPropertyName("lodging_data")]
+        public List<PaymentIntentPaymentDetailsLodgingDatum> LodgingData { get; set; }
 
         /// <summary>
         /// A unique value assigned by the business to identify the transaction. Required for L2 and

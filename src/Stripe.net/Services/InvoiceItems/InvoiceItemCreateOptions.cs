@@ -160,7 +160,8 @@ namespace Stripe
         /// is added to the next upcoming scheduled invoice. When set, scheduled invoices for
         /// subscriptions other than the specified subscription will ignore the invoice item. Use
         /// this when you want to express that an invoice item has been accrued within the context
-        /// of a particular subscription.
+        /// of a particular subscription. You can use this parameter with either <c>customer</c> or
+        /// <c>customer_account</c>. The subscription must belong to the customer you specify.
         /// </summary>
         [JsonProperty("subscription")]
         [STJS.JsonPropertyName("subscription")]

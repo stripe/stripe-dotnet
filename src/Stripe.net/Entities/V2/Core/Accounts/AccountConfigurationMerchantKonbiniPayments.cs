@@ -9,6 +9,13 @@ namespace Stripe.V2.Core
     public class AccountConfigurationMerchantKonbiniPayments : StripeEntity<AccountConfigurationMerchantKonbiniPayments>
     {
         /// <summary>
+        /// Information provided to support the onboarding process for Konbini payments.
+        /// </summary>
+        [JsonProperty("additional_material")]
+        [STJS.JsonPropertyName("additional_material")]
+        public string AdditionalMaterial { get; set; }
+
+        /// <summary>
         /// Support for Konbini payments.
         /// </summary>
         [JsonProperty("support")]
