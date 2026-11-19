@@ -47,26 +47,6 @@ namespace Stripe.Terminal
         public bool? Deleted { get; set; }
 
         /// <summary>
-        /// The overall device health of the reader: <c>healthy</c> or <c>unhealthy</c>. Renamed to
-        /// <c>no_issues_detected</c> and <c>needs_attention</c> respectively; see
-        /// <c>device_health_details</c> for the specific conditions.
-        /// One of: <c>healthy</c>, or <c>unhealthy</c>.
-        ///
-        /// This enum can grow over time; additional values may be added in the future.
-        /// </summary>
-        [JsonProperty("device_health")]
-        [STJS.JsonPropertyName("device_health")]
-        public string DeviceHealth { get; set; }
-
-        /// <summary>
-        /// The set of conditions affecting the reader's device health. Empty when there are no
-        /// conditions.
-        /// </summary>
-        [JsonProperty("device_health_details")]
-        [STJS.JsonPropertyName("device_health_details")]
-        public List<ReaderDeviceHealthDetail> DeviceHealthDetails { get; set; }
-
-        /// <summary>
         /// The current software version of the reader.
         /// </summary>
         [JsonProperty("device_sw_version")]
@@ -80,9 +60,10 @@ namespace Stripe.Terminal
         /// <c>simulated_stripe_t600</c>, <c>simulated_verifone_m425</c>,
         /// <c>simulated_verifone_p630</c>, <c>simulated_verifone_ux700</c>,
         /// <c>simulated_verifone_v660p</c>, <c>simulated_wisepos_e</c>, <c>stripe_m2</c>,
-        /// <c>stripe_s700</c>, <c>stripe_s710</c>, <c>stripe_t600</c>, <c>verifone_P400</c>,
-        /// <c>verifone_m425</c>, <c>verifone_p630</c>, <c>verifone_ux700</c>, or
-        /// <c>verifone_v660p</c>.
+        /// <c>stripe_s700</c>, <c>stripe_s700_devkit</c>, <c>stripe_s710</c>,
+        /// <c>stripe_s710_devkit</c>, <c>stripe_t600</c>, <c>stripe_t600_devkit</c>,
+        /// <c>verifone_P400</c>, <c>verifone_m425</c>, <c>verifone_p630</c>, <c>verifone_ux700</c>,
+        /// <c>verifone_ux700_devkit</c>, <c>verifone_v660p</c>, or <c>verifone_v660p_devkit</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

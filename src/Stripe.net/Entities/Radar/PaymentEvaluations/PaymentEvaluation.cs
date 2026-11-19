@@ -105,6 +105,19 @@ namespace Stripe.Radar
         public string RecommendedAction { get; set; }
 
         /// <summary>
+        /// The signals requested for this payment evaluation. Only returned when creating a payment
+        /// evaluation. Includes the default signal list when <c>requested_signals</c> is omitted
+        /// from the request.
+        /// One of: <c>bank_initiated_return</c>, <c>card_testing</c>, <c>early_fraud_warning</c>,
+        /// <c>fraudulent_dispute</c>, or <c>fraudulent_payment</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("requested_signals")]
+        [STJS.JsonPropertyName("requested_signals")]
+        public List<string> RequestedSignals { get; set; }
+
+        /// <summary>
         /// Details about Radar Rules associated with the payment evaluation.
         /// </summary>
         [JsonProperty("rules")]

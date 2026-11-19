@@ -38,18 +38,18 @@ namespace Stripe.V2.Billing
         public IntentAmountDetails AmountDetails { get; set; }
 
         /// <summary>
-        /// ID of an existing Cadence to use.
+        /// ID of an existing Billing Group to use.
         /// </summary>
-        [JsonProperty("cadence")]
-        [STJS.JsonPropertyName("cadence")]
-        public string Cadence { get; set; }
+        [JsonProperty("billing_group")]
+        [STJS.JsonPropertyName("billing_group")]
+        public string BillingGroup { get; set; }
 
         /// <summary>
-        /// Data for creating a new Cadence.
+        /// Data for creating a new Billing Group.
         /// </summary>
-        [JsonProperty("cadence_data")]
-        [STJS.JsonPropertyName("cadence_data")]
-        public IntentCadenceData CadenceData { get; set; }
+        [JsonProperty("billing_group_data")]
+        [STJS.JsonPropertyName("billing_group_data")]
+        public IntentBillingGroupData BillingGroupData { get; set; }
 
         /// <summary>
         /// Time at which the object was created.

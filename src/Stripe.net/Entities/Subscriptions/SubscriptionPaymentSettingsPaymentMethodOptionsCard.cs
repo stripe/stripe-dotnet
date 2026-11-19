@@ -8,6 +8,15 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SubscriptionPaymentSettingsPaymentMethodOptionsCard : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptionsCard>
     {
+        /// <summary>
+        /// Controls early collection for eligible recurring payments on India-issued cards.
+        /// Target-date billing aims to debit on the billing-cycle date but does not guarantee that
+        /// date.
+        /// </summary>
+        [JsonProperty("debit_behavior")]
+        [STJS.JsonPropertyName("debit_behavior")]
+        public string DebitBehavior { get; set; }
+
         [JsonProperty("mandate_options")]
         [STJS.JsonPropertyName("mandate_options")]
         public SubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptions MandateOptions { get; set; }

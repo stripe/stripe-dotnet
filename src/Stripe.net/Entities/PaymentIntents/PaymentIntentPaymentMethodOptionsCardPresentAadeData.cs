@@ -9,16 +9,7 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsCardPresentAadeData : StripeEntity<PaymentIntentPaymentMethodOptionsCardPresentAadeData>
     {
         /// <summary>
-        /// The canonical string that was signed by the e-invoicing provider to produce
-        /// <c>signed_mark</c>, formatted per Appendix A of A.1155/2023. Required when <c>mode</c>
-        /// is <c>standard</c>.
-        /// </summary>
-        [JsonProperty("mark_data")]
-        [STJS.JsonPropertyName("mark_data")]
-        public string MarkData { get; set; }
-
-        /// <summary>
-        /// The e-invoicing mode under which the mark was generated.
+        /// The e-invoicing mode under which the provider signature was generated.
         /// One of: <c>autonomous</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("mode")]
@@ -26,8 +17,8 @@ namespace Stripe
         public string Mode { get; set; }
 
         /// <summary>
-        /// The AADE-assigned approval number of the e-invoicing provider that generated the mark.
-        /// Required when <c>mode</c> is <c>standard</c>.
+        /// The AADE-assigned approval number of the e-invoicing provider that generated the
+        /// provider signature. Required when <c>mode</c> is <c>standard</c>.
         /// </summary>
         [JsonProperty("provider_id")]
         [STJS.JsonPropertyName("provider_id")]
@@ -37,9 +28,18 @@ namespace Stripe
         /// The cryptographic signature returned by the e-invoicing provider for this transaction,
         /// hex-encoded. Required when <c>mode</c> is <c>standard</c>.
         /// </summary>
-        [JsonProperty("signed_mark")]
-        [STJS.JsonPropertyName("signed_mark")]
-        public string SignedMark { get; set; }
+        [JsonProperty("provider_signature")]
+        [STJS.JsonPropertyName("provider_signature")]
+        public string ProviderSignature { get; set; }
+
+        /// <summary>
+        /// The canonical string that was signed by the e-invoicing provider to produce
+        /// <c>provider_signature</c>, formatted per Appendix A of A.1155/2023. Required when
+        /// <c>mode</c> is <c>standard</c>.
+        /// </summary>
+        [JsonProperty("provider_signature_data")]
+        [STJS.JsonPropertyName("provider_signature_data")]
+        public string ProviderSignatureData { get; set; }
 
         /// <summary>
         /// The reason for entering autonomous mode. Required when <c>mode</c> is <c>autonomous</c>.

@@ -10,7 +10,8 @@ namespace Stripe.V2.Core
     public class ClaimableSandboxOnboardingLinkDetails : StripeEntity<ClaimableSandboxOnboardingLinkDetails>
     {
         /// <summary>
-        /// The timestamp the onboarding link expires.
+        /// Time at which the onboarding link expires. Represented as an RFC 3339 timestamp in UTC
+        /// with millisecond precision, for example <c>2022-09-18T13:22:18.123Z</c>.
         /// </summary>
         [JsonProperty("expires_at")]
         [STJS.JsonPropertyName("expires_at")]
@@ -26,8 +27,15 @@ namespace Stripe.V2.Core
         public string RefreshUrl { get; set; }
 
         /// <summary>
-        /// URL that will redirect the user to either claim or onboard the claimable sandbox
-        /// depending on its status.
+        /// The URL offered to the user as a way back to your app after they claim the sandbox.
+        /// </summary>
+        [JsonProperty("return_url")]
+        [STJS.JsonPropertyName("return_url")]
+        public string ReturnUrl { get; set; }
+
+        /// <summary>
+        /// The URL that lets a user claim the sandbox or continue onboarding their Stripe account,
+        /// depending on the sandbox's status.
         /// </summary>
         [JsonProperty("url")]
         [STJS.JsonPropertyName("url")]

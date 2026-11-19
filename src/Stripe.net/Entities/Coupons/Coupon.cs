@@ -79,6 +79,10 @@ namespace Stripe
         [STJS.JsonPropertyName("currency_options")]
         public Dictionary<string, CouponCurrencyOptions> CurrencyOptions { get; set; }
 
+        [JsonProperty("custom")]
+        [STJS.JsonPropertyName("custom")]
+        public CouponCustom Custom { get; set; }
+
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
@@ -178,7 +182,7 @@ namespace Stripe
 
         /// <summary>
         /// The type of coupon logic used to calculate the discount.
-        /// One of: <c>amount_off</c>, <c>percent_off</c>, or <c>script</c>.
+        /// One of: <c>amount_off</c>, <c>custom</c>, <c>percent_off</c>, or <c>script</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

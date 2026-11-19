@@ -20,6 +20,17 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsVippsPaymentDetails PaymentDetails { get; set; }
 
         /// <summary>
+        /// Request ability to make <a href="https://docs.stripe.com/payments/multicapture">multiple
+        /// captures</a> for this PaymentIntent.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("request_multicapture")]
+        [STJS.JsonPropertyName("request_multicapture")]
+        public string RequestMulticapture { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///

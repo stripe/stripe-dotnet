@@ -8,7 +8,9 @@ namespace Stripe.V2.Reporting
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// The <c>ReportRun</c> object represents an instance of a <c>Report</c> generated with
+    /// The <a href="https://stripe.com/data/api/reports">Queries and Reports API</a> replaces
+    /// this API. For new integrations, use <c>/v2/data/report_runs</c> instead. The
+    /// <c>ReportRun</c> object represents an instance of a <c>Report</c> generated with
     /// specific run parameters. Once the object is created, Stripe begins processing the
     /// report. When the report has finished running, it will give you a reference to the
     /// results.

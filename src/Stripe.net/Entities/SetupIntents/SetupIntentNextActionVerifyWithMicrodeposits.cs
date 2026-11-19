@@ -17,7 +17,7 @@ namespace Stripe
         [JsonConverter(typeof(UnixDateTimeConverter))]
         [STJS.JsonPropertyName("arrival_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-        public DateTime ArrivalDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime? ArrivalDate { get; set; }
 
         /// <summary>
         /// The URL for the hosted verification page, which allows customers to verify their bank

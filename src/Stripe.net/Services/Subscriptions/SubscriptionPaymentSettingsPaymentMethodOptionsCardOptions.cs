@@ -9,6 +9,15 @@ namespace Stripe
     public class SubscriptionPaymentSettingsPaymentMethodOptionsCardOptions : INestedOptions
     {
         /// <summary>
+        /// Controls early collection for eligible recurring payments on India-issued cards.
+        /// Target-date billing aims to debit on the billing-cycle date but does not guarantee that
+        /// date.
+        /// </summary>
+        [JsonProperty("debit_behavior")]
+        [STJS.JsonPropertyName("debit_behavior")]
+        public string DebitBehavior { get; set; }
+
+        /// <summary>
         /// Configuration options for setting up an eMandate for cards issued in India.
         /// </summary>
         [JsonProperty("mandate_options")]

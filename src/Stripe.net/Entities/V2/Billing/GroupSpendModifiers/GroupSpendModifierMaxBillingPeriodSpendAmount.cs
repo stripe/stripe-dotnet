@@ -1,0 +1,28 @@
+// File generated from our OpenAPI spec
+namespace Stripe.V2.Billing
+{
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+    public class GroupSpendModifierMaxBillingPeriodSpendAmount : StripeEntity<GroupSpendModifierMaxBillingPeriodSpendAmount>
+    {
+        /// <summary>
+        /// The custom pricing unit amount. Present if type is <c>custom_pricing_unit</c>.
+        /// </summary>
+        [JsonProperty("custom_pricing_unit")]
+        [STJS.JsonPropertyName("custom_pricing_unit")]
+        public GroupSpendModifierMaxBillingPeriodSpendAmountCustomPricingUnit CustomPricingUnit { get; set; }
+
+        /// <summary>
+        /// The type of the spend modifier amount.
+        /// One of: <c>custom_pricing_unit</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
+    }
+}

@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing.Contracts
     {
         /// <summary>
         /// Filter terms by type.
-        /// One of: <c>ad_hoc_product</c>, <c>pricing_override</c>, or <c>recurring_price</c>.
+        /// One of: <c>pricing_override</c>, <c>recurring_price</c>, or <c>scheduled_fee</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

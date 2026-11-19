@@ -16,13 +16,6 @@ namespace Stripe.V2.Billing
         internal SetTracker SetTracker { get; } = new SetTracker();
 
         /// <summary>
-        /// Must match the existing term's type.
-        /// </summary>
-        [JsonProperty("ad_hoc_product")]
-        [STJS.JsonPropertyName("ad_hoc_product")]
-        public ContractUpdateActionUpdateTermAdHocProductOptions AdHocProduct { get; set; }
-
-        /// <summary>
         /// Metadata changes to apply immediately.
         /// </summary>
         [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
@@ -52,6 +45,13 @@ namespace Stripe.V2.Billing
         [JsonProperty("recurring_price")]
         [STJS.JsonPropertyName("recurring_price")]
         public ContractUpdateActionUpdateTermRecurringPriceOptions RecurringPrice { get; set; }
+
+        /// <summary>
+        /// Must match the existing term's type.
+        /// </summary>
+        [JsonProperty("scheduled_fee")]
+        [STJS.JsonPropertyName("scheduled_fee")]
+        public ContractUpdateActionUpdateTermScheduledFeeOptions ScheduledFee { get; set; }
 
         /// <summary>
         /// Select a term by ID or its unique lookup key.

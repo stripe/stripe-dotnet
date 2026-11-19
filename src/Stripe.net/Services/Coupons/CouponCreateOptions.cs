@@ -46,6 +46,13 @@ namespace Stripe
         public Dictionary<string, CouponCurrencyOptionsOptions> CurrencyOptions { get; set; }
 
         /// <summary>
+        /// The custom coupon calculation configuration.
+        /// </summary>
+        [JsonProperty("custom")]
+        [STJS.JsonPropertyName("custom")]
+        public CouponCustomOptions Custom { get; set; }
+
+        /// <summary>
         /// Specifies how long the discount will be in effect if used on a subscription. Defaults to
         /// <c>once</c>.
         /// One of: <c>forever</c>, <c>once</c>, <c>repeating</c>, or <c>service_period</c>.
@@ -143,5 +150,12 @@ namespace Stripe
         [JsonProperty("service_period")]
         [STJS.JsonPropertyName("service_period")]
         public CouponServicePeriodOptions ServicePeriod { get; set; }
+
+        /// <summary>
+        /// The coupon calculation type. Must be <c>custom</c> when <c>custom</c> is provided.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
     }
 }

@@ -18,8 +18,8 @@ namespace Stripe.V2.Core
         public string Country { get; set; }
 
         /// <summary>
-        /// Email that this sandbox is meant to be claimed by. Stripe will send an email to this
-        /// email address before the sandbox expires.
+        /// Email address of the user who will claim the sandbox. Stripe sends this address an
+        /// invitation to claim the sandbox and a reminder before the unclaimed sandbox expires.
         /// </summary>
         [JsonProperty("email")]
         [STJS.JsonPropertyName("email")]

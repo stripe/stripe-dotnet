@@ -7,8 +7,10 @@ namespace Stripe.V2.Reporting
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// The Report resource represents a customizable report template that provides insights
-    /// into various aspects of your Stripe integration.
+    /// The <a href="https://stripe.com/data/api/reports">Queries and Reports API</a> replaces
+    /// this API. For new integrations, use <c>/v2/data/reports</c> instead. The Report resource
+    /// represents a customizable report template that provides insights into various aspects of
+    /// your Stripe integration.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Report : StripeEntity<Report>, IHasId, IHasObject

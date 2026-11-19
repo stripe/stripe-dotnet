@@ -18,7 +18,7 @@ namespace Stripe.V2.Billing
         public List<ContractUpdateActionAddTermPricingOverrideCriterionTermOptions> Terms { get; set; }
 
         /// <summary>
-        /// Whether to include or exclude the selected recurring or ad_hoc_product terms.
+        /// Whether to include or exclude the selected recurring or scheduled_fee terms.
         /// One of: <c>exclude</c>, or <c>include</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

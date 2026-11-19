@@ -15,6 +15,15 @@ namespace Stripe
         internal SetTracker SetTracker { get; } = new SetTracker();
 
         /// <summary>
+        /// Whether this transaction starts a free trial. Set to <c>true</c> for a free trial or
+        /// <c>false</c> otherwise. If omitted, retains the previously set value. If never set,
+        /// Stripe uses Billing or metadata to determine trial status.
+        /// </summary>
+        [JsonProperty("is_free_trial_transaction")]
+        [STJS.JsonPropertyName("is_free_trial_transaction")]
+        public bool? IsFreeTrialTransaction { get; set; }
+
+        /// <summary>
         /// The referrer URL of the current checkout session. You can use this to supply
         /// session-level referrer data when a Radar Session isn't available or doesn't contain a
         /// referrer.

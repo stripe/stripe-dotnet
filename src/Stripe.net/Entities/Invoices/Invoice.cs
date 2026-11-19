@@ -204,6 +204,10 @@ namespace Stripe
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
 
+        [JsonProperty("applied_credit_memos")]
+        [STJS.JsonPropertyName("applied_credit_memos")]
+        public InvoiceAppliedCreditMemos AppliedCreditMemos { get; set; }
+
         /// <summary>
         /// Number of payment attempts made for this invoice, from the perspective of the payment
         /// retry schedule. Any payment attempt counts as the first attempt, and subsequently only

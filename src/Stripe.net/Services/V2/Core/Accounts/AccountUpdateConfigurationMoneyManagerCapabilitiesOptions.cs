@@ -16,6 +16,14 @@ namespace Stripe.V2.Core
         public AccountUpdateConfigurationMoneyManagerCapabilitiesBusinessCustodialStorageOptions BusinessCustodialStorage { get; set; }
 
         /// <summary>
+        /// Capabilities related to business storage FinancialAccounts backed by Fifth Third demand
+        /// deposit accounts.
+        /// </summary>
+        [JsonProperty("business_demand_deposit_account_fifth_third_storage")]
+        [STJS.JsonPropertyName("business_demand_deposit_account_fifth_third_storage")]
+        public AccountUpdateConfigurationMoneyManagerCapabilitiesBusinessDemandDepositAccountFifthThirdStorageOptions BusinessDemandDepositAccountFifthThirdStorage { get; set; }
+
+        /// <summary>
         /// Can send or receive business storage-type funds on Stripe.
         /// </summary>
         [JsonProperty("business_storage")]

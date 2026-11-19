@@ -252,7 +252,7 @@ namespace Stripe.V2.MoneyManagement
         /// is provided in the corresponding field.
         /// One of: <c>adjustment</c>, <c>application_fee</c>, <c>application_fee_refund</c>,
         /// <c>charge</c>, <c>currency_conversion</c>, <c>debit_dispute</c>, <c>dispute</c>,
-        /// <c>earned_credit</c>, <c>fee_batch</c>, <c>inbound_transfer</c>,
+        /// <c>earned_credit</c>, <c>fee_batch</c>, <c>inbound_funding</c>, <c>inbound_transfer</c>,
         /// <c>issuing_authorization</c>, <c>issuing_dispute</c>, <c>issuing_transaction</c>,
         /// <c>outbound_payment</c>, <c>outbound_transfer</c>, <c>payout</c>,
         /// <c>received_credit</c>, <c>received_debit</c>, <c>refund</c>, <c>reserve_hold</c>,

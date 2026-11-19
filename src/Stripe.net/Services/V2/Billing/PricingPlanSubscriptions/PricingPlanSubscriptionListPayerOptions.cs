@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     {
         /// <summary>
         /// The ID of the Customer object. If provided, only Pricing Plan Subscriptions that are
-        /// subscribed on the cadences with the specified payer will be returned.
+        /// subscribed on the Billing Groups with the specified payer will be returned.
         /// </summary>
         [JsonProperty("customer")]
         [STJS.JsonPropertyName("customer")]

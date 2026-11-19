@@ -9,6 +9,20 @@ namespace Stripe.Events
     public class V2PaymentsOffSessionPaymentAttemptFailedEventData : StripeEntity<V2PaymentsOffSessionPaymentAttemptFailedEventData>
     {
         /// <summary>
+        /// The ID of the Charge associated with this attempt.
+        /// </summary>
+        [JsonProperty("charge")]
+        [STJS.JsonPropertyName("charge")]
+        public string Charge { get; set; }
+
+        /// <summary>
+        /// The payment error from the failed attempt.
+        /// </summary>
+        [JsonProperty("last_attempt_error")]
+        [STJS.JsonPropertyName("last_attempt_error")]
+        public string LastAttemptError { get; set; }
+
+        /// <summary>
         /// The ID of the payment attempt record associated with this failed attempt.
         /// </summary>
         [JsonProperty("payment_attempt_record")]

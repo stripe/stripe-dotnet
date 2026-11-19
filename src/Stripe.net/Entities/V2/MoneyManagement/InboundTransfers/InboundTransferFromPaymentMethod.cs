@@ -9,6 +9,13 @@ namespace Stripe.V2.MoneyManagement
     public class InboundTransferFromPaymentMethod : StripeEntity<InboundTransferFromPaymentMethod>
     {
         /// <summary>
+        /// The Australian bank account credential used for AU BECS Direct Debit.
+        /// </summary>
+        [JsonProperty("au_becs_debit")]
+        [STJS.JsonPropertyName("au_becs_debit")]
+        public string AuBecsDebit { get; set; }
+
+        /// <summary>
         /// The Bacs Direct Debit PaymentMethod identifier.
         /// </summary>
         [JsonProperty("bacs_debit")]

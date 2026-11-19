@@ -10,8 +10,8 @@ namespace Stripe.V2.Billing
     public class ContractTermPricingOverride : StripeEntity<ContractTermPricingOverride>
     {
         /// <summary>
-        /// Recurring or ad_hoc_product terms selected by this override. An override without
-        /// criteria applies to all recurring and ad_hoc_product terms.
+        /// Recurring or scheduled_fee terms selected by this override. An override without criteria
+        /// applies to all recurring and scheduled_fee terms.
         /// </summary>
         [JsonProperty("criteria")]
         [STJS.JsonPropertyName("criteria")]

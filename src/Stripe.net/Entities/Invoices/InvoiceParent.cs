@@ -9,11 +9,11 @@ namespace Stripe
     public class InvoiceParent : StripeEntity<InvoiceParent>
     {
         /// <summary>
-        /// Details about the billing cadence that generated this invoice.
+        /// Details about the billing group that generated this invoice.
         /// </summary>
-        [JsonProperty("billing_cadence_details")]
-        [STJS.JsonPropertyName("billing_cadence_details")]
-        public InvoiceParentBillingCadenceDetails BillingCadenceDetails { get; set; }
+        [JsonProperty("billing_group_details")]
+        [STJS.JsonPropertyName("billing_group_details")]
+        public InvoiceParentBillingGroupDetails BillingGroupDetails { get; set; }
 
         /// <summary>
         /// Details about the quote that generated this invoice.
@@ -38,8 +38,8 @@ namespace Stripe
 
         /// <summary>
         /// The type of parent that generated this invoice.
-        /// One of: <c>billing_cadence_details</c>, <c>quote_details</c>, <c>schedule_details</c>,
-        /// or <c>subscription_details</c>.
+        /// One of: <c>billing_group_details</c>, <c>quote_details</c>, <c>schedule_details</c>, or
+        /// <c>subscription_details</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

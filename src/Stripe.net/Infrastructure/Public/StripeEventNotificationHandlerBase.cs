@@ -291,9 +291,6 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1TransferCreatedEventNotification>> v1TransferCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1TransferReversedEventNotification>> v1TransferReversed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1TransferUpdatedEventNotification>> v1TransferUpdated;
-        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingCadenceBilledEventNotification>> v2BillingCadenceBilled;
-        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingCadenceCanceledEventNotification>> v2BillingCadenceCanceled;
-        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingCadenceCreatedEventNotification>> v2BillingCadenceCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractActivatedEventNotification>> v2BillingContractActivated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCanceledEventNotification>> v2BillingContractCanceled;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractCollectionBlockedEventNotification>> v2BillingContractCollectionBlocked;
@@ -305,6 +302,12 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractUpdatedEventNotification>> v2BillingContractUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermCreatedEventNotification>> v2BillingContractTermCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermDeletedEventNotification>> v2BillingContractTermDeleted;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermPricingOverrideEndedEventNotification>> v2BillingContractTermPricingOverrideEnded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermPricingOverrideStartedEventNotification>> v2BillingContractTermPricingOverrideStarted;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermRecurringPriceEndedEventNotification>> v2BillingContractTermRecurringPriceEnded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermRecurringPriceStartedEventNotification>> v2BillingContractTermRecurringPriceStarted;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermScheduledFeeServicePeriodEndedEventNotification>> v2BillingContractTermScheduledFeeServicePeriodEnded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermScheduledFeeServicePeriodStartedEventNotification>> v2BillingContractTermScheduledFeeServicePeriodStarted;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermUpdatedEventNotification>> v2BillingContractTermUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingLicenseFeeCreatedEventNotification>> v2BillingLicenseFeeCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingLicenseFeeUpdatedEventNotification>> v2BillingLicenseFeeUpdated;
@@ -396,6 +399,8 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthApiLatencyResolvedEventNotification>> v2CoreHealthApiLatencyResolved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthAuthorizationRateDropFiringEventNotification>> v2CoreHealthAuthorizationRateDropFiring;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthAuthorizationRateDropResolvedEventNotification>> v2CoreHealthAuthorizationRateDropResolved;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthCustomPaymentMethodAdapterDegradedFiringEventNotification>> v2CoreHealthCustomPaymentMethodAdapterDegradedFiring;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthCustomPaymentMethodAdapterDegradedResolvedEventNotification>> v2CoreHealthCustomPaymentMethodAdapterDegradedResolved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthElementsErrorFiringEventNotification>> v2CoreHealthElementsErrorFiring;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthElementsErrorResolvedEventNotification>> v2CoreHealthElementsErrorResolved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification>> v2CoreHealthEventGenerationFailureResolved;
@@ -577,6 +582,11 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalFraudulentWebsiteReadyEventNotification>> v2SignalsAccountSignalFraudulentWebsiteReady;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification>> v2SignalsAccountSignalMerchantDelinquencyReady;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification>> v2SignalsAccountSignalPaymentDelinquencyExposureReady;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationCanceledEventNotification>> v2SignalsPaymentRetryEvaluationCanceled;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationCompletedEventNotification>> v2SignalsPaymentRetryEvaluationCompleted;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationCreatedEventNotification>> v2SignalsPaymentRetryEvaluationCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationExpiredEventNotification>> v2SignalsPaymentRetryEvaluationExpired;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationUpdatedEventNotification>> v2SignalsPaymentRetryEvaluationUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationsRetryRecommendedEventNotification>> v2SignalsPaymentRetryEvaluationsRetryRecommended;
 
         // private-event-handlers: The end of the section generated from our OpenAPI spec
@@ -2213,24 +2223,6 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
-        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingCadenceBilledEventNotification>> V2BillingCadenceBilled
-        {
-            add { this.AddEventHandler(ref this.v2BillingCadenceBilled, value, "v2.billing.cadence.billed"); }
-            remove { this.RemoveEventHandler(); }
-        }
-
-        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingCadenceCanceledEventNotification>> V2BillingCadenceCanceled
-        {
-            add { this.AddEventHandler(ref this.v2BillingCadenceCanceled, value, "v2.billing.cadence.canceled"); }
-            remove { this.RemoveEventHandler(); }
-        }
-
-        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingCadenceCreatedEventNotification>> V2BillingCadenceCreated
-        {
-            add { this.AddEventHandler(ref this.v2BillingCadenceCreated, value, "v2.billing.cadence.created"); }
-            remove { this.RemoveEventHandler(); }
-        }
-
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractActivatedEventNotification>> V2BillingContractActivated
         {
             add { this.AddEventHandler(ref this.v2BillingContractActivated, value, "v2.billing.contract.activated"); }
@@ -2294,6 +2286,42 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermDeletedEventNotification>> V2BillingContractTermDeleted
         {
             add { this.AddEventHandler(ref this.v2BillingContractTermDeleted, value, "v2.billing.contract_term.deleted"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermPricingOverrideEndedEventNotification>> V2BillingContractTermPricingOverrideEnded
+        {
+            add { this.AddEventHandler(ref this.v2BillingContractTermPricingOverrideEnded, value, "v2.billing.contract_term.pricing_override_ended"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermPricingOverrideStartedEventNotification>> V2BillingContractTermPricingOverrideStarted
+        {
+            add { this.AddEventHandler(ref this.v2BillingContractTermPricingOverrideStarted, value, "v2.billing.contract_term.pricing_override_started"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermRecurringPriceEndedEventNotification>> V2BillingContractTermRecurringPriceEnded
+        {
+            add { this.AddEventHandler(ref this.v2BillingContractTermRecurringPriceEnded, value, "v2.billing.contract_term.recurring_price_ended"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermRecurringPriceStartedEventNotification>> V2BillingContractTermRecurringPriceStarted
+        {
+            add { this.AddEventHandler(ref this.v2BillingContractTermRecurringPriceStarted, value, "v2.billing.contract_term.recurring_price_started"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermScheduledFeeServicePeriodEndedEventNotification>> V2BillingContractTermScheduledFeeServicePeriodEnded
+        {
+            add { this.AddEventHandler(ref this.v2BillingContractTermScheduledFeeServicePeriodEnded, value, "v2.billing.contract_term.scheduled_fee_service_period_ended"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermScheduledFeeServicePeriodStartedEventNotification>> V2BillingContractTermScheduledFeeServicePeriodStarted
+        {
+            add { this.AddEventHandler(ref this.v2BillingContractTermScheduledFeeServicePeriodStarted, value, "v2.billing.contract_term.scheduled_fee_service_period_started"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -2840,6 +2868,18 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthAuthorizationRateDropResolvedEventNotification>> V2CoreHealthAuthorizationRateDropResolved
         {
             add { this.AddEventHandler(ref this.v2CoreHealthAuthorizationRateDropResolved, value, "v2.core.health.authorization_rate_drop.resolved"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthCustomPaymentMethodAdapterDegradedFiringEventNotification>> V2CoreHealthCustomPaymentMethodAdapterDegradedFiring
+        {
+            add { this.AddEventHandler(ref this.v2CoreHealthCustomPaymentMethodAdapterDegradedFiring, value, "v2.core.health.custom_payment_method_adapter_degraded.firing"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthCustomPaymentMethodAdapterDegradedResolvedEventNotification>> V2CoreHealthCustomPaymentMethodAdapterDegradedResolved
+        {
+            add { this.AddEventHandler(ref this.v2CoreHealthCustomPaymentMethodAdapterDegradedResolved, value, "v2.core.health.custom_payment_method_adapter_degraded.resolved"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -3926,6 +3966,36 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification>> V2SignalsAccountSignalPaymentDelinquencyExposureReady
         {
             add { this.AddEventHandler(ref this.v2SignalsAccountSignalPaymentDelinquencyExposureReady, value, "v2.signals.account_signal.payment_delinquency_exposure_ready"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationCanceledEventNotification>> V2SignalsPaymentRetryEvaluationCanceled
+        {
+            add { this.AddEventHandler(ref this.v2SignalsPaymentRetryEvaluationCanceled, value, "v2.signals.payment_retry_evaluation.canceled"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationCompletedEventNotification>> V2SignalsPaymentRetryEvaluationCompleted
+        {
+            add { this.AddEventHandler(ref this.v2SignalsPaymentRetryEvaluationCompleted, value, "v2.signals.payment_retry_evaluation.completed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationCreatedEventNotification>> V2SignalsPaymentRetryEvaluationCreated
+        {
+            add { this.AddEventHandler(ref this.v2SignalsPaymentRetryEvaluationCreated, value, "v2.signals.payment_retry_evaluation.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationExpiredEventNotification>> V2SignalsPaymentRetryEvaluationExpired
+        {
+            add { this.AddEventHandler(ref this.v2SignalsPaymentRetryEvaluationExpired, value, "v2.signals.payment_retry_evaluation.expired"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationUpdatedEventNotification>> V2SignalsPaymentRetryEvaluationUpdated
+        {
+            add { this.AddEventHandler(ref this.v2SignalsPaymentRetryEvaluationUpdated, value, "v2.signals.payment_retry_evaluation.updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -5161,18 +5231,6 @@ namespace Stripe
                 {
                     this.v1TransferUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1TransferUpdatedEventNotification>((Stripe.Events.V1TransferUpdatedEventNotification)eventNotification, client));
                 }
-                else if (eventNotification is Stripe.Events.V2BillingCadenceBilledEventNotification)
-                {
-                    this.v2BillingCadenceBilled.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingCadenceBilledEventNotification>((Stripe.Events.V2BillingCadenceBilledEventNotification)eventNotification, client));
-                }
-                else if (eventNotification is Stripe.Events.V2BillingCadenceCanceledEventNotification)
-                {
-                    this.v2BillingCadenceCanceled.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingCadenceCanceledEventNotification>((Stripe.Events.V2BillingCadenceCanceledEventNotification)eventNotification, client));
-                }
-                else if (eventNotification is Stripe.Events.V2BillingCadenceCreatedEventNotification)
-                {
-                    this.v2BillingCadenceCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingCadenceCreatedEventNotification>((Stripe.Events.V2BillingCadenceCreatedEventNotification)eventNotification, client));
-                }
                 else if (eventNotification is Stripe.Events.V2BillingContractActivatedEventNotification)
                 {
                     this.v2BillingContractActivated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractActivatedEventNotification>((Stripe.Events.V2BillingContractActivatedEventNotification)eventNotification, client));
@@ -5216,6 +5274,30 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2BillingContractTermDeletedEventNotification)
                 {
                     this.v2BillingContractTermDeleted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermDeletedEventNotification>((Stripe.Events.V2BillingContractTermDeletedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2BillingContractTermPricingOverrideEndedEventNotification)
+                {
+                    this.v2BillingContractTermPricingOverrideEnded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermPricingOverrideEndedEventNotification>((Stripe.Events.V2BillingContractTermPricingOverrideEndedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2BillingContractTermPricingOverrideStartedEventNotification)
+                {
+                    this.v2BillingContractTermPricingOverrideStarted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermPricingOverrideStartedEventNotification>((Stripe.Events.V2BillingContractTermPricingOverrideStartedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2BillingContractTermRecurringPriceEndedEventNotification)
+                {
+                    this.v2BillingContractTermRecurringPriceEnded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermRecurringPriceEndedEventNotification>((Stripe.Events.V2BillingContractTermRecurringPriceEndedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2BillingContractTermRecurringPriceStartedEventNotification)
+                {
+                    this.v2BillingContractTermRecurringPriceStarted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermRecurringPriceStartedEventNotification>((Stripe.Events.V2BillingContractTermRecurringPriceStartedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2BillingContractTermScheduledFeeServicePeriodEndedEventNotification)
+                {
+                    this.v2BillingContractTermScheduledFeeServicePeriodEnded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermScheduledFeeServicePeriodEndedEventNotification>((Stripe.Events.V2BillingContractTermScheduledFeeServicePeriodEndedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2BillingContractTermScheduledFeeServicePeriodStartedEventNotification)
+                {
+                    this.v2BillingContractTermScheduledFeeServicePeriodStarted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2BillingContractTermScheduledFeeServicePeriodStartedEventNotification>((Stripe.Events.V2BillingContractTermScheduledFeeServicePeriodStartedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2BillingContractTermUpdatedEventNotification)
                 {
@@ -5580,6 +5662,14 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2CoreHealthAuthorizationRateDropResolvedEventNotification)
                 {
                     this.v2CoreHealthAuthorizationRateDropResolved.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthAuthorizationRateDropResolvedEventNotification>((Stripe.Events.V2CoreHealthAuthorizationRateDropResolvedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreHealthCustomPaymentMethodAdapterDegradedFiringEventNotification)
+                {
+                    this.v2CoreHealthCustomPaymentMethodAdapterDegradedFiring.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthCustomPaymentMethodAdapterDegradedFiringEventNotification>((Stripe.Events.V2CoreHealthCustomPaymentMethodAdapterDegradedFiringEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreHealthCustomPaymentMethodAdapterDegradedResolvedEventNotification)
+                {
+                    this.v2CoreHealthCustomPaymentMethodAdapterDegradedResolved.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthCustomPaymentMethodAdapterDegradedResolvedEventNotification>((Stripe.Events.V2CoreHealthCustomPaymentMethodAdapterDegradedResolvedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreHealthElementsErrorFiringEventNotification)
                 {
@@ -6304,6 +6394,26 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification)
                 {
                     this.v2SignalsAccountSignalPaymentDelinquencyExposureReady.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification>((Stripe.Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2SignalsPaymentRetryEvaluationCanceledEventNotification)
+                {
+                    this.v2SignalsPaymentRetryEvaluationCanceled.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationCanceledEventNotification>((Stripe.Events.V2SignalsPaymentRetryEvaluationCanceledEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2SignalsPaymentRetryEvaluationCompletedEventNotification)
+                {
+                    this.v2SignalsPaymentRetryEvaluationCompleted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationCompletedEventNotification>((Stripe.Events.V2SignalsPaymentRetryEvaluationCompletedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2SignalsPaymentRetryEvaluationCreatedEventNotification)
+                {
+                    this.v2SignalsPaymentRetryEvaluationCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationCreatedEventNotification>((Stripe.Events.V2SignalsPaymentRetryEvaluationCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2SignalsPaymentRetryEvaluationExpiredEventNotification)
+                {
+                    this.v2SignalsPaymentRetryEvaluationExpired.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationExpiredEventNotification>((Stripe.Events.V2SignalsPaymentRetryEvaluationExpiredEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2SignalsPaymentRetryEvaluationUpdatedEventNotification)
+                {
+                    this.v2SignalsPaymentRetryEvaluationUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2SignalsPaymentRetryEvaluationUpdatedEventNotification>((Stripe.Events.V2SignalsPaymentRetryEvaluationUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2SignalsPaymentRetryEvaluationsRetryRecommendedEventNotification)
                 {

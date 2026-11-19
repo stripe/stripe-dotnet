@@ -17,8 +17,8 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// Keys that can be used to set up an integration for this sandbox and operate on the
-        /// account. This will be present only in the create response, and will be null in
-        /// subsequent retrieve responses.
+        /// account. Present in the create response. To fetch this field in the retrieve response,
+        /// pass <c>sandbox_details.api_keys</c> in the <c>include</c> parameter.
         /// </summary>
         [JsonProperty("api_keys")]
         [STJS.JsonPropertyName("api_keys")]

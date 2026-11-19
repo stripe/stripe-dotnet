@@ -20,8 +20,8 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// Create an anonymous, claimable sandbox. This sandbox can be prefilled with data. The
-        /// response will include a claim URL that allow a user to claim the account.
+        /// Create a claimable sandbox with prefilled data. The response includes an onboarding link
+        /// that lets a user claim the sandbox into a new or existing Stripe account.
         /// </summary>
         public virtual ClaimableSandbox Create(ClaimableSandboxCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -29,8 +29,8 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// Create an anonymous, claimable sandbox. This sandbox can be prefilled with data. The
-        /// response will include a claim URL that allow a user to claim the account.
+        /// Create a claimable sandbox with prefilled data. The response includes an onboarding link
+        /// that lets a user claim the sandbox into a new or existing Stripe account.
         /// </summary>
         public virtual Task<ClaimableSandbox> CreateAsync(ClaimableSandboxCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -58,9 +58,9 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// Renew the claimable sandbox onboarding link. This will invalidate any existing
-        /// onboarding links. The endpoint only works on a claimable sandbox with status
-        /// <c>unclaimed</c> or <c>claimed</c>.
+        /// Renew the claimable sandbox onboarding link. This invalidates the existing onboarding
+        /// link. The endpoint only works on a claimable sandbox with status <c>unclaimed</c> or
+        /// <c>claimed</c>.
         /// </summary>
         public virtual ClaimableSandbox RenewOnboardingLink(string id, ClaimableSandboxRenewOnboardingLinkOptions options = null, RequestOptions requestOptions = null)
         {
@@ -68,9 +68,9 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// Renew the claimable sandbox onboarding link. This will invalidate any existing
-        /// onboarding links. The endpoint only works on a claimable sandbox with status
-        /// <c>unclaimed</c> or <c>claimed</c>.
+        /// Renew the claimable sandbox onboarding link. This invalidates the existing onboarding
+        /// link. The endpoint only works on a claimable sandbox with status <c>unclaimed</c> or
+        /// <c>claimed</c>.
         /// </summary>
         public virtual Task<ClaimableSandbox> RenewOnboardingLinkAsync(string id, ClaimableSandboxRenewOnboardingLinkOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

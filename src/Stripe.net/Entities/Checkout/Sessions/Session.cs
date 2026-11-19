@@ -499,6 +499,10 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("origin_context")]
         public string OriginContext { get; set; }
 
+        [JsonProperty("pass_through_fee_cost")]
+        [STJS.JsonPropertyName("pass_through_fee_cost")]
+        public SessionPassThroughFeeCost PassThroughFeeCost { get; set; }
+
         #region Expandable PaymentIntent
 
         /// <summary>

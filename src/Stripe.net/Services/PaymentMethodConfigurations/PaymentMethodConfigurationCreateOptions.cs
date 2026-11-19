@@ -18,6 +18,16 @@ namespace Stripe
         public PaymentMethodConfigurationAcssDebitOptions AcssDebit { get; set; }
 
         /// <summary>
+        /// AEON Pay is a single-use payment method that requires customers to authenticate their
+        /// payment. Customers pay by being redirected from your website or app, authorizing the
+        /// payment with AEON Pay, then returning to your website or app. You get immediate
+        /// notification of whether the payment succeeded or failed.
+        /// </summary>
+        [JsonProperty("aeon_pay")]
+        [STJS.JsonPropertyName("aeon_pay")]
+        public PaymentMethodConfigurationAeonPayOptions AeonPay { get; set; }
+
+        /// <summary>
         /// <a href="https://www.affirm.com/">Affirm</a> gives your customers a way to split
         /// purchases over a series of payments. Depending on the purchase, they can pay with four
         /// interest-free payments (Split Pay) or pay over a longer term (Installments), which might
@@ -92,6 +102,16 @@ namespace Stripe
         [JsonProperty("au_becs_debit")]
         [STJS.JsonPropertyName("au_becs_debit")]
         public PaymentMethodConfigurationAuBecsDebitOptions AuBecsDebit { get; set; }
+
+        /// <summary>
+        /// au PAY is a single-use payment method that requires customers to authenticate their
+        /// payment. Customers pay by being redirected from your website or app, authorizing the
+        /// payment with au PAY, then returning to your website or app. You get immediate
+        /// notification of whether the payment succeeded or failed.
+        /// </summary>
+        [JsonProperty("au_pay")]
+        [STJS.JsonPropertyName("au_pay")]
+        public PaymentMethodConfigurationAuPayOptions AuPay { get; set; }
 
         /// <summary>
         /// Stripe users in the UK can accept Bacs Direct Debit payments from customers with a UK
@@ -200,6 +220,16 @@ namespace Stripe
         [JsonProperty("customer_balance")]
         [STJS.JsonPropertyName("customer_balance")]
         public PaymentMethodConfigurationCustomerBalanceOptions CustomerBalance { get; set; }
+
+        /// <summary>
+        /// d-Barai is a single-use payment method that requires customers to authenticate their
+        /// payment. Customers pay by being redirected from your website or app, authorizing the
+        /// payment with d-Barai, then returning to your website or app. You get immediate
+        /// notification of whether the payment succeeded or failed.
+        /// </summary>
+        [JsonProperty("dbarai")]
+        [STJS.JsonPropertyName("dbarai")]
+        public PaymentMethodConfigurationDbaraiOptions Dbarai { get; set; }
 
         /// <summary>
         /// EPS is an Austria-based payment method that allows customers to complete transactions
@@ -362,6 +392,16 @@ namespace Stripe
         [JsonProperty("mb_way")]
         [STJS.JsonPropertyName("mb_way")]
         public PaymentMethodConfigurationMbWayOptions MbWay { get; set; }
+
+        /// <summary>
+        /// Merpay is a single-use payment method that requires customers to authenticate their
+        /// payment. Customers pay by being redirected from your website or app, authorizing the
+        /// payment with Merpay, then returning to your website or app. You get immediate
+        /// notification of whether the payment succeeded or failed.
+        /// </summary>
+        [JsonProperty("merpay")]
+        [STJS.JsonPropertyName("merpay")]
+        public PaymentMethodConfigurationMerpayOptions Merpay { get; set; }
 
         /// <summary>
         /// MobilePay is a <a

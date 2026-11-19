@@ -10,14 +10,6 @@ namespace Stripe.V2.Billing
     public class ContractCancelOptions : BaseOptions
     {
         /// <summary>
-        /// Per-pricing-line proration behavior overrides. Falls back to <c>proration_behavior</c>
-        /// if not specified for a given line.
-        /// </summary>
-        [JsonProperty("cancel_pricing_lines")]
-        [STJS.JsonPropertyName("cancel_pricing_lines")]
-        public List<ContractCancelCancelPricingLineOptions> CancelPricingLines { get; set; }
-
-        /// <summary>
         /// Additional fields to include in the response.
         /// One of: <c>billing_settings</c>, <c>one_time_fees</c>, <c>pricing_lines</c>,
         /// <c>pricing_overrides</c>, or <c>terms</c>.
@@ -40,7 +32,7 @@ namespace Stripe.V2.Billing
         public string ProrationBehavior { get; set; }
 
         /// <summary>
-        /// Per-term proration overrides. Cannot be combined with cancel_pricing_lines.
+        /// Per-term proration overrides.
         /// </summary>
         [JsonProperty("terms")]
         [STJS.JsonPropertyName("terms")]

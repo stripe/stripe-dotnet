@@ -9,16 +9,16 @@ namespace Stripe.V2.Billing
     public class RateCardSubscriptionListOptions : V2.ListOptions
     {
         /// <summary>
-        /// Optionally filter by a BillingCadence. Mutually exclusive with <c>payers</c>,
+        /// Optionally filter by a BillingGroup. Mutually exclusive with <c>payers</c>,
         /// <c>rate_card</c>, and <c>rate_card_version</c>.
         /// </summary>
-        [JsonProperty("billing_cadence")]
-        [STJS.JsonPropertyName("billing_cadence")]
-        public string BillingCadence { get; set; }
+        [JsonProperty("billing_group")]
+        [STJS.JsonPropertyName("billing_group")]
+        public string BillingGroup { get; set; }
 
         /// <summary>
-        /// Optionally filter by the payer associated with Billing Cadences which the Rate Card
-        /// Subscriptions are subscribed to. Mutually exclusive with <c>billing_cadence</c>,
+        /// Optionally filter by the payer associated with Billing Groups which the Rate Card
+        /// Subscriptions are subscribed to. Mutually exclusive with <c>billing_group</c>,
         /// <c>rate_card</c>, and <c>rate_card_version</c>.
         /// </summary>
         [JsonProperty("payer")]
@@ -26,7 +26,7 @@ namespace Stripe.V2.Billing
         public RateCardSubscriptionListPayerOptions Payer { get; set; }
 
         /// <summary>
-        /// Optionally filter by a RateCard. Mutually exclusive with <c>billing_cadence</c>,
+        /// Optionally filter by a RateCard. Mutually exclusive with <c>billing_group</c>,
         /// <c>payers</c>, and <c>rate_card_version</c>.
         /// </summary>
         [JsonProperty("rate_card")]
@@ -34,7 +34,7 @@ namespace Stripe.V2.Billing
         public string RateCard { get; set; }
 
         /// <summary>
-        /// Optionally filter by a RateCard version. Mutually exclusive with <c>billing_cadence</c>,
+        /// Optionally filter by a RateCard version. Mutually exclusive with <c>billing_group</c>,
         /// <c>payers</c>, and <c>rate_card</c>.
         /// </summary>
         [JsonProperty("rate_card_version")]

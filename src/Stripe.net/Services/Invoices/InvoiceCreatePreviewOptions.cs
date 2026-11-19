@@ -20,13 +20,13 @@ namespace Stripe
         public InvoiceAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
-        /// The identifier of the billing cadence for which you’d like to retrieve the upcoming
+        /// The identifier of the billing group for which you’d like to retrieve the upcoming
         /// invoice. Cannot be provided when <c>subscription</c>, <c>schedule</c>,
         /// <c>subscription_details</c> or <c>schedule_details</c> are provided.
         /// </summary>
-        [JsonProperty("billing_cadence")]
-        [STJS.JsonPropertyName("billing_cadence")]
-        public string BillingCadence { get; set; }
+        [JsonProperty("billing_group")]
+        [STJS.JsonPropertyName("billing_group")]
+        public string BillingGroup { get; set; }
 
         /// <summary>
         /// The currency to preview this invoice in. Defaults to that of <c>customer</c> if not

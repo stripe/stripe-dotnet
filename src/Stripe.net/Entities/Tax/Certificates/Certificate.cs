@@ -7,7 +7,9 @@ namespace Stripe.Tax
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// Tax exemption and resale certificates associated with tax exemptions.
+    /// A Tax Certificate associates an uploaded exemption or resale certificate file with a
+    /// customer's tax exemption. A tax exemption can have multiple certificates. Deleting a tax
+    /// exemption also deletes its certificates, but retains their uploaded files.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Certificate : StripeEntity<Certificate>, IHasId, IHasObject
@@ -36,7 +38,8 @@ namespace Stripe.Tax
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Whether the certificate has been deleted.
+        /// If <c>true</c>, the certificate has been deleted. If <c>false</c>, it hasn't been
+        /// deleted.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("deleted")]
@@ -46,7 +49,8 @@ namespace Stripe.Tax
 
         /// <summary>
         /// (ID of the File)
-        /// The uploaded certificate file.
+        /// The ID of the uploaded certificate <a
+        /// href="https://stripe.com/api/files/object">file</a>.
         /// </summary>
         [JsonIgnore]
         [STJS.JsonIgnore]
@@ -58,7 +62,8 @@ namespace Stripe.Tax
 
         /// <summary>
         /// (Expanded)
-        /// The uploaded certificate file.
+        /// The ID of the uploaded certificate <a
+        /// href="https://stripe.com/api/files/object">file</a>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -89,7 +94,8 @@ namespace Stripe.Tax
 
         /// <summary>
         /// (ID of the CustomerTaxExemption)
-        /// The tax exemption associated with this certificate.
+        /// The ID of the <a href="https://stripe.com/api/tax/exemptions/object">customer tax
+        /// exemption</a> associated with this certificate.
         /// </summary>
         [JsonIgnore]
         [STJS.JsonIgnore]
@@ -101,7 +107,8 @@ namespace Stripe.Tax
 
         /// <summary>
         /// (Expanded)
-        /// The tax exemption associated with this certificate.
+        /// The ID of the <a href="https://stripe.com/api/tax/exemptions/object">customer tax
+        /// exemption</a> associated with this certificate.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>

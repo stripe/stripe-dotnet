@@ -16,12 +16,23 @@ namespace Stripe.V2.MoneyManagement
         public string FinancialAddress { get; set; }
 
         /// <summary>
-        /// Object containing details of the GB Bank Account that originated the debit. Present when
-        /// the debit was originated via BACS.
+        /// Deprecated: Use <c>bank_transfer.originating_bank_account.sort_code</c> instead. Object
+        /// containing details of the GB Bank Account that originated the debit. Present when the
+        /// debit was originated via BACS.
         /// </summary>
         [JsonProperty("gb_bank_account")]
         [STJS.JsonPropertyName("gb_bank_account")]
         public ReceivedDebitBankTransferGbBankAccount GbBankAccount { get; set; }
+
+        /// <summary>
+        /// The bank network the debit was originated on.
+        /// One of: <c>ach</c>, or <c>bacs</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("network")]
+        [STJS.JsonPropertyName("network")]
+        public string Network { get; set; }
 
         /// <summary>
         /// Network-specific details about the bank transfer.
@@ -31,7 +42,8 @@ namespace Stripe.V2.MoneyManagement
         public ReceivedDebitBankTransferNetworkDetails NetworkDetails { get; set; }
 
         /// <summary>
-        /// Open Enum. Indicates the origin type through which this debit was initiated.
+        /// Deprecated: Use <c>bank_transfer.originating_bank_account.type</c> instead. Open Enum.
+        /// Indicates the origin type through which this debit was initiated.
         /// One of: <c>gb_bank_account</c>, or <c>us_bank_account</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
@@ -41,7 +53,15 @@ namespace Stripe.V2.MoneyManagement
         public string OriginType { get; set; }
 
         /// <summary>
-        /// Open Enum. The type of the payment method used to originate the debit.
+        /// The originating bank account's credential details.
+        /// </summary>
+        [JsonProperty("originating_bank_account")]
+        [STJS.JsonPropertyName("originating_bank_account")]
+        public ReceivedDebitBankTransferOriginatingBankAccount OriginatingBankAccount { get; set; }
+
+        /// <summary>
+        /// Deprecated: Use <c>bank_transfer.originating_bank_account.type</c> instead. Open Enum.
+        /// The type of the payment method used to originate the debit.
         /// One of: <c>gb_bank_account</c>, or <c>us_bank_account</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
@@ -65,8 +85,9 @@ namespace Stripe.V2.MoneyManagement
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// Object containing details of the US Bank Account that originated the debit. Present when
-        /// the debit was originated via ACH.
+        /// Deprecated: Use <c>bank_transfer.originating_bank_account.aba</c> instead. Object
+        /// containing details of the US Bank Account that originated the debit. Present when the
+        /// debit was originated via ACH.
         /// </summary>
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]

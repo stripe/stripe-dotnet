@@ -26,6 +26,17 @@ namespace Stripe.V2.MoneyManagement
         public List<FinancialAccountStorageDepositInsuranceEligibility> DepositInsuranceEligibility { get; set; }
 
         /// <summary>
+        /// How funds in this FinancialAccount are held. Defaults to <c>for_benefit_of</c> if not
+        /// specified.
+        /// One of: <c>demand_deposit_account</c>, or <c>for_benefit_of</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("funds_holding_structure")]
+        [STJS.JsonPropertyName("funds_holding_structure")]
+        public string FundsHoldingStructure { get; set; }
+
+        /// <summary>
         /// The usage type for funds in this FinancialAccount. Can be used to specify that the funds
         /// are for Consumer activity.
         /// One of: <c>business</c>, or <c>consumer</c>.

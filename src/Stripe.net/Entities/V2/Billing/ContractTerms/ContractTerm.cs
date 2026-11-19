@@ -28,13 +28,6 @@ namespace Stripe.V2.Billing
         public string Object { get; set; }
 
         /// <summary>
-        /// Present when type is ad_hoc_product.
-        /// </summary>
-        [JsonProperty("ad_hoc_product")]
-        [STJS.JsonPropertyName("ad_hoc_product")]
-        public ContractTermAdHocProduct AdHocProduct { get; set; }
-
-        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
@@ -71,8 +64,15 @@ namespace Stripe.V2.Billing
         public ContractTermRecurringPrice RecurringPrice { get; set; }
 
         /// <summary>
+        /// Present when type is scheduled_fee.
+        /// </summary>
+        [JsonProperty("scheduled_fee")]
+        [STJS.JsonPropertyName("scheduled_fee")]
+        public ContractTermScheduledFee ScheduledFee { get; set; }
+
+        /// <summary>
         /// The type of this term.
-        /// One of: <c>ad_hoc_product</c>, <c>pricing_override</c>, or <c>recurring_price</c>.
+        /// One of: <c>pricing_override</c>, <c>recurring_price</c>, or <c>scheduled_fee</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

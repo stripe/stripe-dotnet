@@ -13,6 +13,7 @@ namespace Stripe
         private List<SubscriptionScheduleDefaultSettingsInvoiceSettingsCustomFieldOptions> customFields;
         private string description;
         private string footer;
+        private SubscriptionScheduleDefaultSettingsInvoiceSettingsRenderingOptions rendering;
 
         [JsonIgnore]
         [STJS.JsonIgnore]
@@ -90,6 +91,23 @@ namespace Stripe
         [JsonProperty("issuer")]
         [STJS.JsonPropertyName("issuer")]
         public SubscriptionScheduleDefaultSettingsInvoiceSettingsIssuerOptions Issuer { get; set; }
+
+        /// <summary>
+        /// Settings that control how invoices render in customer-facing interfaces such as the PDF
+        /// or hosted invoice page.
+        /// </summary>
+        [JsonProperty("rendering", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("rendering")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public SubscriptionScheduleDefaultSettingsInvoiceSettingsRenderingOptions Rendering
+        {
+            get => this.rendering;
+            set
+            {
+                this.rendering = value;
+                this.SetTracker.Track();
+            }
+        }
 
         bool IHasSetTracking.IsPropertySet(string propertyName)
         {

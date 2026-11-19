@@ -49,8 +49,8 @@ namespace Stripe
         public long AmountToCounter { get; set; }
 
         /// <summary>
-        /// List of zero, one, or two balance transactions that show funds withdrawn and reinstated
-        /// to your Stripe account as a result of this dispute.
+        /// List of balance transactions that show funds withdrawn and reinstated to your Stripe
+        /// account as a result of this dispute.
         /// </summary>
         [JsonProperty("balance_transactions")]
         [STJS.JsonPropertyName("balance_transactions")]

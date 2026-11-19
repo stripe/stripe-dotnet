@@ -9,25 +9,25 @@ namespace Stripe.V2.Core
     public class ClaimableSandboxSandboxDetailsApiKeys : StripeEntity<ClaimableSandboxSandboxDetailsApiKeys>
     {
         /// <summary>
-        /// Used to communicate with <a href="https://docs.stripe.com/mcp">Stripe's MCP server</a>.
-        /// This allows LLM agents to securely operate on a Stripe account.
+        /// Object hash for the sandbox's MCP key. Null unless <c>enable_mcp_access: true</c> was
+        /// passed in the creation request.
         /// </summary>
         [JsonProperty("mcp")]
         [STJS.JsonPropertyName("mcp")]
-        public string Mcp { get; set; }
+        public ClaimableSandboxSandboxDetailsApiKeysMcp Mcp { get; set; }
 
         /// <summary>
-        /// Publicly accessible in a web or mobile app client-side code.
+        /// Object hash for the sandbox's publishable key.
         /// </summary>
         [JsonProperty("publishable")]
         [STJS.JsonPropertyName("publishable")]
-        public string Publishable { get; set; }
+        public ClaimableSandboxSandboxDetailsApiKeysPublishable Publishable { get; set; }
 
         /// <summary>
-        /// Should be stored securely in server-side code (such as an environment variable).
+        /// Object hash for the sandbox's secret key.
         /// </summary>
         [JsonProperty("secret")]
         [STJS.JsonPropertyName("secret")]
-        public string Secret { get; set; }
+        public ClaimableSandboxSandboxDetailsApiKeysSecret Secret { get; set; }
     }
 }

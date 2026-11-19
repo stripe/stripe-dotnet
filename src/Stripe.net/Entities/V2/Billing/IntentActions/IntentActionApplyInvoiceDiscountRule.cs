@@ -9,8 +9,8 @@ namespace Stripe.V2.Billing
     public class IntentActionApplyInvoiceDiscountRule : StripeEntity<IntentActionApplyInvoiceDiscountRule>
     {
         /// <summary>
-        /// The entity that the discount rule applies to, for example, the Billing Cadence.
-        /// One of: <c>cadence</c>.
+        /// The entity that the discount rule applies to, for example, the Billing Group.
+        /// One of: <c>cadence</c>, or <c>group</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

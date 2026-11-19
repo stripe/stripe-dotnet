@@ -11,7 +11,7 @@ namespace Stripe.V2.Billing
     /// A Pricing Plan Subscription represents a customer's active subscription to a Pricing
     /// Plan. It tracks both the servicing status (whether the customer is receiving service)
     /// and collection status (whether payments are current). Subscriptions are created through
-    /// Billing Intents and bill according to the associated Billing Cadence.
+    /// Billing Intents and bill according to the associated Billing Group.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PricingPlanSubscription : StripeEntity<PricingPlanSubscription>, IHasId, IHasMetadata, IHasObject
@@ -32,11 +32,11 @@ namespace Stripe.V2.Billing
         public string Object { get; set; }
 
         /// <summary>
-        /// The ID of the Billing Cadence this subscription is billed on.
+        /// The ID of the Billing Group this subscription is billed on.
         /// </summary>
-        [JsonProperty("billing_cadence")]
-        [STJS.JsonPropertyName("billing_cadence")]
-        public string BillingCadence { get; set; }
+        [JsonProperty("billing_group")]
+        [STJS.JsonPropertyName("billing_group")]
+        public string BillingGroup { get; set; }
 
         /// <summary>
         /// Details about why the subscription was canceled, if applicable. Includes
@@ -131,7 +131,7 @@ namespace Stripe.V2.Billing
         public PricingPlanSubscriptionServicingStatusTransitions ServicingStatusTransitions { get; set; }
 
         /// <summary>
-        /// The ID of the Test Clock of the associated Billing Cadence, if any.
+        /// The ID of the Test Clock of the associated Billing Group, if any.
         /// </summary>
         [JsonProperty("test_clock")]
         [STJS.JsonPropertyName("test_clock")]

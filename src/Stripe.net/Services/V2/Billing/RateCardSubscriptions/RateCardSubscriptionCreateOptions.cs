@@ -10,11 +10,11 @@ namespace Stripe.V2.Billing
     public class RateCardSubscriptionCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The ID of the Billing Cadence.
+        /// The ID of the Billing Group.
         /// </summary>
-        [JsonProperty("billing_cadence")]
-        [STJS.JsonPropertyName("billing_cadence")]
-        public string BillingCadence { get; set; }
+        [JsonProperty("billing_group")]
+        [STJS.JsonPropertyName("billing_group")]
+        public string BillingGroup { get; set; }
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can

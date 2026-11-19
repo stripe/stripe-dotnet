@@ -9,13 +9,6 @@ namespace Stripe.Billing
     public class AlertTriggeredGroupBy : StripeEntity<AlertTriggeredGroupBy>
     {
         /// <summary>
-        /// The billing cadence ID, populated when type is <c>billing_cadence</c>.
-        /// </summary>
-        [JsonProperty("billing_cadence")]
-        [STJS.JsonPropertyName("billing_cadence")]
-        public string BillingCadence { get; set; }
-
-        /// <summary>
         /// The billing group ID, populated when type is <c>billing_group</c>.
         /// </summary>
         [JsonProperty("billing_group")]
@@ -32,7 +25,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// The type of grouping used for this alert notification.
-        /// One of: <c>billing_cadence</c>, or <c>pricing_plan_subscription</c>.
+        /// One of: <c>billing_group</c>, or <c>pricing_plan_subscription</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
