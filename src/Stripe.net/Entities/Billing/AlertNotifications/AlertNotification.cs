@@ -85,14 +85,6 @@ namespace Stripe.Billing
         public string BillingGroup { get; set; }
 
         /// <summary>
-        /// The cadence associated with this notification. Only present for spend threshold alerts
-        /// grouped by cadence.
-        /// </summary>
-        [JsonProperty("cadence")]
-        [STJS.JsonPropertyName("cadence")]
-        public string Cadence { get; set; }
-
-        /// <summary>
         /// Three-letter ISO currency code for the value, in lowercase. Only present for spend and
         /// credit balance threshold alerts.
         /// </summary>

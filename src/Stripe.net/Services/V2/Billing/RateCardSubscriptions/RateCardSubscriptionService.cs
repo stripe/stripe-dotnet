@@ -37,7 +37,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a Rate Card Subscription to bill a Rate Card on a specified Billing Cadence.
+        /// Create a Rate Card Subscription to bill a Rate Card on a specified Billing Group.
         /// </summary>
         public virtual RateCardSubscription Create(RateCardSubscriptionCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -45,7 +45,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a Rate Card Subscription to bill a Rate Card on a specified Billing Cadence.
+        /// Create a Rate Card Subscription to bill a Rate Card on a specified Billing Group.
         /// </summary>
         public virtual Task<RateCardSubscription> CreateAsync(RateCardSubscriptionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

@@ -16,6 +16,15 @@ namespace Stripe.Reserve
         public long DaysAfterCharge { get; set; }
 
         /// <summary>
+        /// The number of days after the PaymentIntent's <c>fulfillment_date</c> to reserve funds
+        /// before releasing. Charges without a <c>fulfillment_date</c> use
+        /// <c>days_after_charge</c>.
+        /// </summary>
+        [JsonProperty("days_after_fulfillment")]
+        [STJS.JsonPropertyName("days_after_fulfillment")]
+        public long? DaysAfterFulfillment { get; set; }
+
+        /// <summary>
         /// The time at which the ReservePlan expires.
         /// </summary>
         [JsonProperty("expires_on")]

@@ -11,7 +11,7 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// The network associated with the fee.
         /// One of: <c>ach</c>, <c>becs</c>, <c>eft</c>, <c>fedwire</c>, <c>fps</c>, <c>local</c>,
-        /// <c>npp</c>, <c>rtp</c>, <c>sepa</c>, <c>sepa_instant</c>, or <c>swift</c>.
+        /// <c>npp</c>, <c>rtp</c>, <c>sepa</c>, <c>sepa_instant</c>, <c>swift</c>, or <c>tips</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

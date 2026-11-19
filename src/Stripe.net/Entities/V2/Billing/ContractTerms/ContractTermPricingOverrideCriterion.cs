@@ -10,14 +10,14 @@ namespace Stripe.V2.Billing
     public class ContractTermPricingOverrideCriterion : StripeEntity<ContractTermPricingOverrideCriterion>
     {
         /// <summary>
-        /// Resolved IDs of recurring or ad_hoc_product terms. Override terms are not valid targets.
+        /// Resolved IDs of recurring or scheduled_fee terms. Override terms are not valid targets.
         /// </summary>
         [JsonProperty("terms")]
         [STJS.JsonPropertyName("terms")]
         public List<string> Terms { get; set; }
 
         /// <summary>
-        /// Whether to include or exclude the selected recurring or ad_hoc_product terms.
+        /// Whether to include or exclude the selected recurring or scheduled_fee terms.
         /// One of: <c>exclude</c>, or <c>include</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

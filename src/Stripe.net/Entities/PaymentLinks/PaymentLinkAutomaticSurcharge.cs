@@ -27,7 +27,8 @@ namespace Stripe
 
         /// <summary>
         /// The surcharge provider used for this payment link.
-        /// One of: <c>daikin</c>, <c>interpayments</c>, <c>proserv</c>, or <c>yeeld</c>.
+        /// One of: <c>daikin</c>, <c>dealerfx</c>, <c>interpayments</c>, <c>proserv</c>, or
+        /// <c>yeeld</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

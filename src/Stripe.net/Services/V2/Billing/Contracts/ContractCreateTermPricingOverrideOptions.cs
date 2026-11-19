@@ -10,8 +10,8 @@ namespace Stripe.V2.Billing
     public class ContractCreateTermPricingOverrideOptions : INestedOptions
     {
         /// <summary>
-        /// Optional criteria selecting recurring or ad_hoc_product terms. If omitted, the override
-        /// applies to all recurring and ad_hoc_product terms.
+        /// Optional criteria selecting recurring or scheduled_fee terms. If omitted, the override
+        /// applies to all recurring and scheduled_fee terms.
         /// </summary>
         [JsonProperty("criteria")]
         [STJS.JsonPropertyName("criteria")]

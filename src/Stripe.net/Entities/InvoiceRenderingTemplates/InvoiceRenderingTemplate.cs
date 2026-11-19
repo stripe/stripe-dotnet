@@ -39,6 +39,13 @@ namespace Stripe
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// The policy that controls how individual line items are rendered.
+        /// </summary>
+        [JsonProperty("line_item_policy")]
+        [STJS.JsonPropertyName("line_item_policy")]
+        public InvoiceRenderingTemplateLineItemPolicy LineItemPolicy { get; set; }
+
+        /// <summary>
         /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
         /// test mode, the value is <c>false</c>.
         /// </summary>
@@ -62,6 +69,10 @@ namespace Stripe
         [STJS.JsonPropertyName("nickname")]
         public string Nickname { get; set; }
 
+        [JsonProperty("rendering_settings")]
+        [STJS.JsonPropertyName("rendering_settings")]
+        public InvoiceRenderingTemplateRenderingSettings RenderingSettings { get; set; }
+
         /// <summary>
         /// The status of the template, one of <c>active</c> or <c>archived</c>.
         /// One of: <c>active</c>, or <c>archived</c>.
@@ -71,6 +82,13 @@ namespace Stripe
         [JsonProperty("status")]
         [STJS.JsonPropertyName("status")]
         public string Status { get; set; }
+
+        /// <summary>
+        /// The policies that control how line items are grouped into summary items.
+        /// </summary>
+        [JsonProperty("summary_item_policies")]
+        [STJS.JsonPropertyName("summary_item_policies")]
+        public List<InvoiceRenderingTemplateSummaryItemPolicy> SummaryItemPolicies { get; set; }
 
         /// <summary>
         /// Version of this template; version increases by one when an update on the template

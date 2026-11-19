@@ -119,7 +119,9 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// Stripe’s assessment of whether this card’s details have been compromised. If this
-        /// property isn't null, cancel and reissue the card to prevent fraudulent activity risk.
+        /// property isn’t null, cancel and reissue the card to reduce the risk of fraudulent
+        /// activity. Stripe may remove a fraud warning if the cardholder confirms that the activity
+        /// on the card is legitimate.
         /// </summary>
         [JsonProperty("latest_fraud_warning")]
         [STJS.JsonPropertyName("latest_fraud_warning")]

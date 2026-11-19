@@ -7,19 +7,16 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// A claimable sandbox represents a Stripe sandbox that is anonymous. When it is created,
-    /// it can be prefilled with specific metadata, such as email, name, or country. Claimable
-    /// sandboxes can be claimed through a URL. When a user claims a sandbox through this URL,
-    /// it will prompt them to create a new Stripe account. Or, it will allow them to claim this
-    /// sandbox in their existing Stripe account. Claimable sandboxes have 60 days to be
-    /// claimed. After this expiration time has passed, if the sandbox is not claimed, it will
-    /// be deleted.
+    /// A claimable sandbox is a Stripe sandbox that a user can claim into a new or existing
+    /// Stripe account through an onboarding link. You can prefill it with an email address,
+    /// sandbox name, and country. Claimable sandboxes have 60 days to be claimed. After this
+    /// expiration time has passed, if the sandbox is not claimed, it will be deleted.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ClaimableSandbox : StripeEntity<ClaimableSandbox>, IHasId, IHasObject
     {
         /// <summary>
-        /// Unique identifier for the Claimable sandbox.
+        /// Unique identifier for the claimable sandbox.
         /// </summary>
         [JsonProperty("id")]
         [STJS.JsonPropertyName("id")]
@@ -34,31 +31,36 @@ namespace Stripe.V2.Core
         public string Object { get; set; }
 
         /// <summary>
-        /// The app channel that will be used when pre-installing your app on the claimable sandbox.
+        /// The distribution channel used to pre-install your Stripe App on the claimable sandbox.
+        /// Use <c>testing</c> to install your app's external test version or <c>public</c> to
+        /// install its published version.
         /// One of: <c>public</c>, or <c>testing</c>.
         /// </summary>
-        [JsonProperty("app_channel")]
-        [STJS.JsonPropertyName("app_channel")]
-        public string AppChannel { get; set; }
+        [JsonProperty("channel")]
+        [STJS.JsonPropertyName("channel")]
+        public string Channel { get; set; }
 
         /// <summary>
-        /// The timestamp the sandbox was claimed. The value will be null if the sandbox status is
-        /// not <c>claimed</c>.
+        /// Time at which the sandbox was claimed. Set when the status is <c>claimed</c> or
+        /// <c>live</c>. Represented as an RFC 3339 timestamp in UTC with millisecond precision, for
+        /// example <c>2022-09-18T13:22:18.123Z</c>.
         /// </summary>
         [JsonProperty("claimed_at")]
         [STJS.JsonPropertyName("claimed_at")]
         public DateTime? ClaimedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// When the sandbox is created.
+        /// Time at which the sandbox was created. Represented as an RFC 3339 timestamp in UTC with
+        /// millisecond precision, for example <c>2022-09-18T13:22:18.123Z</c>.
         /// </summary>
         [JsonProperty("created")]
         [STJS.JsonPropertyName("created")]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The timestamp the sandbox will expire. The value will be null if the sandbox is
-        /// <c>claimed</c>.
+        /// Time at which the unclaimed sandbox expires. Null when the status is <c>claimed</c> or
+        /// <c>live</c>. Represented as an RFC 3339 timestamp in UTC with millisecond precision, for
+        /// example <c>2022-09-18T13:22:18.123Z</c>.
         /// </summary>
         [JsonProperty("expires_at")]
         [STJS.JsonPropertyName("expires_at")]
@@ -73,14 +75,15 @@ namespace Stripe.V2.Core
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Details about the onboarding link.
+        /// Details about the onboarding link. Null when the sandbox status is <c>live</c> or
+        /// <c>expired</c>.
         /// </summary>
         [JsonProperty("onboarding_link_details")]
         [STJS.JsonPropertyName("onboarding_link_details")]
         public ClaimableSandboxOnboardingLinkDetails OnboardingLinkDetails { get; set; }
 
         /// <summary>
-        /// Details about the livemode owner account of the sandbox. This will be null until the
+        /// Details about the live mode owner account of the sandbox. This will be null until the
         /// sandbox is claimed.
         /// </summary>
         [JsonProperty("owner_details")]

@@ -16,5 +16,12 @@ namespace Stripe.V2.Core
         [JsonProperty("refresh_url")]
         [STJS.JsonPropertyName("refresh_url")]
         public string RefreshUrl { get; set; }
+
+        /// <summary>
+        /// The URL offered to the user as a way back to your app after they claim the sandbox.
+        /// </summary>
+        [JsonProperty("return_url")]
+        [STJS.JsonPropertyName("return_url")]
+        public string ReturnUrl { get; set; }
     }
 }

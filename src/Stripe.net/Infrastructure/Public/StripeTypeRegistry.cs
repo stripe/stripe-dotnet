@@ -282,24 +282,21 @@ namespace Stripe
                 // V2ObjectsToTypes: The beginning of the section generated from our OpenAPI spec
                 { "v2.billing.bill_setting", typeof(V2.Billing.BillSetting) },
                 { "v2.billing.bill_setting_version", typeof(V2.Billing.BillSettingVersion) },
-                { "v2.billing.cadence", typeof(V2.Billing.Cadence) },
-                { "v2.billing.cadence_spend_modifier", typeof(V2.Billing.CadenceSpendModifier) },
                 { "v2.billing.collection_setting", typeof(V2.Billing.CollectionSetting) },
                 {
                     "v2.billing.collection_setting_version", typeof(
                     V2.Billing.CollectionSettingVersion)
                 },
                 { "v2.billing.contract", typeof(V2.Billing.Contract) },
-                {
-                    "v2.billing.contract_pricing_line_quantity_change", typeof(
-                    V2.Billing.ContractPricingLineQuantityChange)
-                },
                 { "v2.billing.contract_term", typeof(V2.Billing.ContractTerm) },
                 {
                     "v2.billing.contract_term_quantity_change", typeof(
                     V2.Billing.ContractTermQuantityChange)
                 },
                 { "v2.billing.custom_pricing_unit", typeof(V2.Billing.CustomPricingUnit) },
+                { "v2.billing.group", typeof(V2.Billing.Group) },
+                { "v2.billing.group_invoice", typeof(V2.Billing.GroupInvoice) },
+                { "v2.billing.group_spend_modifier", typeof(V2.Billing.GroupSpendModifier) },
                 { "v2.billing.intent", typeof(V2.Billing.Intent) },
                 { "v2.billing.intent_action", typeof(V2.Billing.IntentAction) },
                 { "v2.billing.license_fee", typeof(V2.Billing.LicenseFee) },
@@ -1243,9 +1240,6 @@ namespace Stripe
                 { "v1.transfer.created", typeof(Events.V1TransferCreatedEvent) },
                 { "v1.transfer.reversed", typeof(Events.V1TransferReversedEvent) },
                 { "v1.transfer.updated", typeof(Events.V1TransferUpdatedEvent) },
-                { "v2.billing.cadence.billed", typeof(Events.V2BillingCadenceBilledEvent) },
-                { "v2.billing.cadence.canceled", typeof(Events.V2BillingCadenceCanceledEvent) },
-                { "v2.billing.cadence.created", typeof(Events.V2BillingCadenceCreatedEvent) },
                 {
                     "v2.billing.contract.activated", typeof(
                     Events.V2BillingContractActivatedEvent)
@@ -1280,6 +1274,30 @@ namespace Stripe
                 {
                     "v2.billing.contract_term.deleted", typeof(
                     Events.V2BillingContractTermDeletedEvent)
+                },
+                {
+                    "v2.billing.contract_term.pricing_override_ended", typeof(
+                    Events.V2BillingContractTermPricingOverrideEndedEvent)
+                },
+                {
+                    "v2.billing.contract_term.pricing_override_started", typeof(
+                    Events.V2BillingContractTermPricingOverrideStartedEvent)
+                },
+                {
+                    "v2.billing.contract_term.recurring_price_ended", typeof(
+                    Events.V2BillingContractTermRecurringPriceEndedEvent)
+                },
+                {
+                    "v2.billing.contract_term.recurring_price_started", typeof(
+                    Events.V2BillingContractTermRecurringPriceStartedEvent)
+                },
+                {
+                    "v2.billing.contract_term.scheduled_fee_service_period_ended", typeof(
+                    Events.V2BillingContractTermScheduledFeeServicePeriodEndedEvent)
+                },
+                {
+                    "v2.billing.contract_term.scheduled_fee_service_period_started", typeof(
+                    Events.V2BillingContractTermScheduledFeeServicePeriodStartedEvent)
                 },
                 {
                     "v2.billing.contract_term.updated", typeof(
@@ -1611,6 +1629,14 @@ namespace Stripe
                 {
                     "v2.core.health.authorization_rate_drop.resolved", typeof(
                     Events.V2CoreHealthAuthorizationRateDropResolvedEvent)
+                },
+                {
+                    "v2.core.health.custom_payment_method_adapter_degraded.firing", typeof(
+                    Events.V2CoreHealthCustomPaymentMethodAdapterDegradedFiringEvent)
+                },
+                {
+                    "v2.core.health.custom_payment_method_adapter_degraded.resolved", typeof(
+                    Events.V2CoreHealthCustomPaymentMethodAdapterDegradedResolvedEvent)
                 },
                 {
                     "v2.core.health.elements_error.firing", typeof(
@@ -2299,6 +2325,26 @@ namespace Stripe
                 {
                     "v2.signals.account_signal.payment_delinquency_exposure_ready", typeof(
                     Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEvent)
+                },
+                {
+                    "v2.signals.payment_retry_evaluation.canceled", typeof(
+                    Events.V2SignalsPaymentRetryEvaluationCanceledEvent)
+                },
+                {
+                    "v2.signals.payment_retry_evaluation.completed", typeof(
+                    Events.V2SignalsPaymentRetryEvaluationCompletedEvent)
+                },
+                {
+                    "v2.signals.payment_retry_evaluation.created", typeof(
+                    Events.V2SignalsPaymentRetryEvaluationCreatedEvent)
+                },
+                {
+                    "v2.signals.payment_retry_evaluation.expired", typeof(
+                    Events.V2SignalsPaymentRetryEvaluationExpiredEvent)
+                },
+                {
+                    "v2.signals.payment_retry_evaluation.updated", typeof(
+                    Events.V2SignalsPaymentRetryEvaluationUpdatedEvent)
                 },
                 {
                     "v2.signals.payment_retry_evaluations.retry_recommended", typeof(
@@ -3165,18 +3211,6 @@ namespace Stripe
                 { "v1.transfer.reversed", typeof(Events.V1TransferReversedEventNotification) },
                 { "v1.transfer.updated", typeof(Events.V1TransferUpdatedEventNotification) },
                 {
-                    "v2.billing.cadence.billed", typeof(
-                    Events.V2BillingCadenceBilledEventNotification)
-                },
-                {
-                    "v2.billing.cadence.canceled", typeof(
-                    Events.V2BillingCadenceCanceledEventNotification)
-                },
-                {
-                    "v2.billing.cadence.created", typeof(
-                    Events.V2BillingCadenceCreatedEventNotification)
-                },
-                {
                     "v2.billing.contract.activated", typeof(
                     Events.V2BillingContractActivatedEventNotification)
                 },
@@ -3219,6 +3253,30 @@ namespace Stripe
                 {
                     "v2.billing.contract_term.deleted", typeof(
                     Events.V2BillingContractTermDeletedEventNotification)
+                },
+                {
+                    "v2.billing.contract_term.pricing_override_ended", typeof(
+                    Events.V2BillingContractTermPricingOverrideEndedEventNotification)
+                },
+                {
+                    "v2.billing.contract_term.pricing_override_started", typeof(
+                    Events.V2BillingContractTermPricingOverrideStartedEventNotification)
+                },
+                {
+                    "v2.billing.contract_term.recurring_price_ended", typeof(
+                    Events.V2BillingContractTermRecurringPriceEndedEventNotification)
+                },
+                {
+                    "v2.billing.contract_term.recurring_price_started", typeof(
+                    Events.V2BillingContractTermRecurringPriceStartedEventNotification)
+                },
+                {
+                    "v2.billing.contract_term.scheduled_fee_service_period_ended", typeof(
+                    Events.V2BillingContractTermScheduledFeeServicePeriodEndedEventNotification)
+                },
+                {
+                    "v2.billing.contract_term.scheduled_fee_service_period_started", typeof(
+                    Events.V2BillingContractTermScheduledFeeServicePeriodStartedEventNotification)
                 },
                 {
                     "v2.billing.contract_term.updated", typeof(
@@ -3583,6 +3641,14 @@ namespace Stripe
                 {
                     "v2.core.health.authorization_rate_drop.resolved", typeof(
                     Events.V2CoreHealthAuthorizationRateDropResolvedEventNotification)
+                },
+                {
+                    "v2.core.health.custom_payment_method_adapter_degraded.firing", typeof(
+                    Events.V2CoreHealthCustomPaymentMethodAdapterDegradedFiringEventNotification)
+                },
+                {
+                    "v2.core.health.custom_payment_method_adapter_degraded.resolved", typeof(
+                    Events.V2CoreHealthCustomPaymentMethodAdapterDegradedResolvedEventNotification)
                 },
                 {
                     "v2.core.health.elements_error.firing", typeof(
@@ -4295,6 +4361,26 @@ namespace Stripe
                 {
                     "v2.signals.account_signal.payment_delinquency_exposure_ready", typeof(
                     Events.V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification)
+                },
+                {
+                    "v2.signals.payment_retry_evaluation.canceled", typeof(
+                    Events.V2SignalsPaymentRetryEvaluationCanceledEventNotification)
+                },
+                {
+                    "v2.signals.payment_retry_evaluation.completed", typeof(
+                    Events.V2SignalsPaymentRetryEvaluationCompletedEventNotification)
+                },
+                {
+                    "v2.signals.payment_retry_evaluation.created", typeof(
+                    Events.V2SignalsPaymentRetryEvaluationCreatedEventNotification)
+                },
+                {
+                    "v2.signals.payment_retry_evaluation.expired", typeof(
+                    Events.V2SignalsPaymentRetryEvaluationExpiredEventNotification)
+                },
+                {
+                    "v2.signals.payment_retry_evaluation.updated", typeof(
+                    Events.V2SignalsPaymentRetryEvaluationUpdatedEventNotification)
                 },
                 {
                     "v2.signals.payment_retry_evaluations.retry_recommended", typeof(

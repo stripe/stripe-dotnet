@@ -72,6 +72,10 @@ namespace Stripe
         [STJS.JsonPropertyName("gb_bank_transfer")]
         public RefundDestinationDetailsGbBankTransfer GbBankTransfer { get; set; }
 
+        [JsonProperty("gift_card")]
+        [STJS.JsonPropertyName("gift_card")]
+        public RefundDestinationDetailsGiftCard GiftCard { get; set; }
+
         [JsonProperty("giropay")]
         [STJS.JsonPropertyName("giropay")]
         public RefundDestinationDetailsGiropay Giropay { get; set; }

@@ -10,13 +10,6 @@ namespace Stripe.V2.Billing
     public class ContractUpdateActionAddTermOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
-        /// Required when type is ad_hoc_product.
-        /// </summary>
-        [JsonProperty("ad_hoc_product")]
-        [STJS.JsonPropertyName("ad_hoc_product")]
-        public ContractUpdateActionAddTermAdHocProductOptions AdHocProduct { get; set; }
-
-        /// <summary>
         /// Lookup key unique across all term types on the contract.
         /// </summary>
         [JsonProperty("lookup_key")]
@@ -45,8 +38,15 @@ namespace Stripe.V2.Billing
         public ContractUpdateActionAddTermRecurringPriceOptions RecurringPrice { get; set; }
 
         /// <summary>
+        /// Required when type is scheduled_fee.
+        /// </summary>
+        [JsonProperty("scheduled_fee")]
+        [STJS.JsonPropertyName("scheduled_fee")]
+        public ContractUpdateActionAddTermScheduledFeeOptions ScheduledFee { get; set; }
+
+        /// <summary>
         /// The term type. Production types require exactly one matching payload.
-        /// One of: <c>ad_hoc_product</c>, <c>pricing_override</c>, or <c>recurring_price</c>.
+        /// One of: <c>pricing_override</c>, <c>recurring_price</c>, or <c>scheduled_fee</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

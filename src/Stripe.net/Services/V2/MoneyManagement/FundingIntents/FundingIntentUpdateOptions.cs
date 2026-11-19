@@ -58,5 +58,12 @@ namespace Stripe.V2.MoneyManagement
                 this.SetTracker.Track();
             }
         }
+
+        /// <summary>
+        /// The updated settlement timing. Omit to retain the existing timing.
+        /// </summary>
+        [JsonProperty("settlement_timing")]
+        [STJS.JsonPropertyName("settlement_timing")]
+        public FundingIntentUpdateSettlementTimingOptions SettlementTiming { get; set; }
     }
 }

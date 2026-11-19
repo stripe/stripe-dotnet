@@ -27,13 +27,6 @@ namespace Stripe.Billing
         public string BillingGroup { get; set; }
 
         /// <summary>
-        /// Filter results to only include notifications for the given cadence.
-        /// </summary>
-        [JsonProperty("cadence")]
-        [STJS.JsonPropertyName("cadence")]
-        public string Cadence { get; set; }
-
-        /// <summary>
         /// The customer to list notifications for.
         /// </summary>
         [JsonProperty("customer")]

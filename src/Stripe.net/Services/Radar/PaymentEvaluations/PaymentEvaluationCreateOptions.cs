@@ -39,5 +39,17 @@ namespace Stripe.Radar
         [JsonProperty("payment_details")]
         [STJS.JsonPropertyName("payment_details")]
         public PaymentEvaluationPaymentDetailsOptions PaymentDetails { get; set; }
+
+        /// <summary>
+        /// The signals to return in the Payment Evaluation response. Must include
+        /// <c>fraudulent_payment</c>. If omitted, only <c>fraudulent_payment</c> is returned.
+        /// One of: <c>bank_initiated_return</c>, <c>card_testing</c>, <c>early_fraud_warning</c>,
+        /// <c>fraudulent_dispute</c>, or <c>fraudulent_payment</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("requested_signals")]
+        [STJS.JsonPropertyName("requested_signals")]
+        public List<string> RequestedSignals { get; set; }
     }
 }

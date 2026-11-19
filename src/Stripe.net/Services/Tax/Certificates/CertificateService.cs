@@ -29,7 +29,9 @@ namespace Stripe.Tax
         }
 
         /// <summary>
-        /// <p>Create a tax certificate associated with a tax exemption.</p>.
+        /// <p>Creates a Tax Certificate associated with a tax exemption. Before creating the
+        /// certificate, <a href="https://stripe.com/api/files/create">upload a file</a> with
+        /// purpose <c>tax_certificate</c>.</p>.
         /// </summary>
         public virtual Certificate Create(CertificateCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -37,7 +39,9 @@ namespace Stripe.Tax
         }
 
         /// <summary>
-        /// <p>Create a tax certificate associated with a tax exemption.</p>.
+        /// <p>Creates a Tax Certificate associated with a tax exemption. Before creating the
+        /// certificate, <a href="https://stripe.com/api/files/create">upload a file</a> with
+        /// purpose <c>tax_certificate</c>.</p>.
         /// </summary>
         public virtual Task<Certificate> CreateAsync(CertificateCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -45,7 +49,8 @@ namespace Stripe.Tax
         }
 
         /// <summary>
-        /// <p>Delete a tax certificate associated with a tax exemption.</p>.
+        /// <p>Deletes a Tax Certificate without deleting its uploaded file. You can reuse the file
+        /// to create another certificate, and you can still retrieve the deleted certificate.</p>.
         /// </summary>
         public virtual Certificate Delete(string id, CertificateDeleteOptions options = null, RequestOptions requestOptions = null)
         {
@@ -53,7 +58,8 @@ namespace Stripe.Tax
         }
 
         /// <summary>
-        /// <p>Delete a tax certificate associated with a tax exemption.</p>.
+        /// <p>Deletes a Tax Certificate without deleting its uploaded file. You can reuse the file
+        /// to create another certificate, and you can still retrieve the deleted certificate.</p>.
         /// </summary>
         public virtual Task<Certificate> DeleteAsync(string id, CertificateDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -61,7 +67,8 @@ namespace Stripe.Tax
         }
 
         /// <summary>
-        /// <p>Retrieve a tax certificate associated with a tax exemption.</p>.
+        /// <p>Retrieves a Tax Certificate. Deleted certificates remain retrievable with all their
+        /// fields and <c>deleted</c> set to <c>true</c>.</p>.
         /// </summary>
         public virtual Certificate Get(string id, CertificateGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -69,7 +76,8 @@ namespace Stripe.Tax
         }
 
         /// <summary>
-        /// <p>Retrieve a tax certificate associated with a tax exemption.</p>.
+        /// <p>Retrieves a Tax Certificate. Deleted certificates remain retrievable with all their
+        /// fields and <c>deleted</c> set to <c>true</c>.</p>.
         /// </summary>
         public virtual Task<Certificate> GetAsync(string id, CertificateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -77,7 +85,8 @@ namespace Stripe.Tax
         }
 
         /// <summary>
-        /// <p>List certificates for an existing tax exemption.</p>.
+        /// <p>Lists a tax exemption’s certificates, ordered from newest to oldest. The list
+        /// excludes deleted certificates.</p>.
         /// </summary>
         public virtual StripeList<Certificate> List(CertificateListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -85,7 +94,8 @@ namespace Stripe.Tax
         }
 
         /// <summary>
-        /// <p>List certificates for an existing tax exemption.</p>.
+        /// <p>Lists a tax exemption’s certificates, ordered from newest to oldest. The list
+        /// excludes deleted certificates.</p>.
         /// </summary>
         public virtual Task<StripeList<Certificate>> ListAsync(CertificateListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -93,7 +103,8 @@ namespace Stripe.Tax
         }
 
         /// <summary>
-        /// <p>List certificates for an existing tax exemption.</p>.
+        /// <p>Lists a tax exemption’s certificates, ordered from newest to oldest. The list
+        /// excludes deleted certificates.</p>.
         /// </summary>
         public virtual IEnumerable<Certificate> ListAutoPaging(CertificateListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -101,7 +112,8 @@ namespace Stripe.Tax
         }
 
         /// <summary>
-        /// <p>List certificates for an existing tax exemption.</p>.
+        /// <p>Lists a tax exemption’s certificates, ordered from newest to oldest. The list
+        /// excludes deleted certificates.</p>.
         /// </summary>
         public virtual IAsyncEnumerable<Certificate> ListAutoPagingAsync(CertificateListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

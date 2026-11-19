@@ -8,10 +8,10 @@ namespace Stripe.V2
     public class BillingService : Service
     {
         private V2.Billing.BillSettingService billSettings;
-        private V2.Billing.CadenceService cadences;
         private V2.Billing.CollectionSettingService collectionSettings;
         private V2.Billing.ContractService contracts;
         private V2.Billing.CustomPricingUnitService customPricingUnits;
+        private V2.Billing.GroupService groups;
         private V2.Billing.IntentService intents;
         private V2.Billing.LicenseFeeService licenseFees;
         private V2.Billing.LicensedItemService licensedItems;
@@ -41,9 +41,6 @@ namespace Stripe.V2
         public virtual V2.Billing.BillSettingService BillSettings => this.billSettings ??= new V2.Billing.BillSettingService(
             this.Requestor);
 
-        public virtual V2.Billing.CadenceService Cadences => this.cadences ??= new V2.Billing.CadenceService(
-            this.Requestor);
-
         public virtual V2.Billing.CollectionSettingService CollectionSettings => this.collectionSettings ??= new V2.Billing.CollectionSettingService(
             this.Requestor);
 
@@ -51,6 +48,9 @@ namespace Stripe.V2
             this.Requestor);
 
         public virtual V2.Billing.CustomPricingUnitService CustomPricingUnits => this.customPricingUnits ??= new V2.Billing.CustomPricingUnitService(
+            this.Requestor);
+
+        public virtual V2.Billing.GroupService Groups => this.groups ??= new V2.Billing.GroupService(
             this.Requestor);
 
         public virtual V2.Billing.IntentService Intents => this.intents ??= new V2.Billing.IntentService(

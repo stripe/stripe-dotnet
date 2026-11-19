@@ -29,7 +29,11 @@ namespace Stripe.Tax
 
         /// <summary>
         /// <p>Creates a correction for a filed tax form. Supply either payee details or numerical
-        /// values for the tax form type. Created correction forms are not filed automatically.</p>.
+        /// values for the tax form type.</p>.
+        ///
+        /// <p><strong>Private preview.</strong> API access is invite-only. Contact Stripe to
+        /// request access. Creating a correction doesn’t file it; review, attestation, and filing
+        /// remain in the Dashboard.</p>.
         /// </summary>
         public virtual FormCorrection Create(string id, FormCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -38,7 +42,11 @@ namespace Stripe.Tax
 
         /// <summary>
         /// <p>Creates a correction for a filed tax form. Supply either payee details or numerical
-        /// values for the tax form type. Created correction forms are not filed automatically.</p>.
+        /// values for the tax form type.</p>.
+        ///
+        /// <p><strong>Private preview.</strong> API access is invite-only. Contact Stripe to
+        /// request access. Creating a correction doesn’t file it; review, attestation, and filing
+        /// remain in the Dashboard.</p>.
         /// </summary>
         public virtual Task<FormCorrection> CreateAsync(string id, FormCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

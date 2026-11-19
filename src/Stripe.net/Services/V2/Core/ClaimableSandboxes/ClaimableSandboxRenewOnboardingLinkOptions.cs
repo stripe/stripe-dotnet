@@ -9,8 +9,8 @@ namespace Stripe.V2.Core
     public class ClaimableSandboxRenewOnboardingLinkOptions : BaseOptions
     {
         /// <summary>
-        /// Details about the onboarding link. If omitted, the existing onboarding link details will
-        /// be reused.
+        /// Details about the onboarding link. If omitted, existing details are reused. Omitted URL
+        /// fields retain their existing values.
         /// </summary>
         [JsonProperty("onboarding_link_details")]
         [STJS.JsonPropertyName("onboarding_link_details")]

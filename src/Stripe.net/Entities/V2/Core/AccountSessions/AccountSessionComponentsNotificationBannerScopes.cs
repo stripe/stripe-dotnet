@@ -9,7 +9,7 @@ namespace Stripe.V2.Core
     public class AccountSessionComponentsNotificationBannerScopes : StripeEntity<AccountSessionComponentsNotificationBannerScopes>
     {
         /// <summary>
-        /// Whether to disable Stripe user authentication in the enabled components.
+        /// Whether to disable Stripe user authentication in this component.
         /// One of: <c>disabled</c>, or <c>enabled</c>.
         /// </summary>
         [JsonProperty("disable_stripe_user_authentication")]

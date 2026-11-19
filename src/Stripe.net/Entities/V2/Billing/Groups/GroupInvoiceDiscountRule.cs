@@ -1,0 +1,35 @@
+// File generated from our OpenAPI spec
+namespace Stripe.V2.Billing
+{
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
+    public class GroupInvoiceDiscountRule : StripeEntity<GroupInvoiceDiscountRule>, IHasId
+    {
+        /// <summary>
+        /// Unique identifier for the object.
+        /// </summary>
+        [JsonProperty("id")]
+        [STJS.JsonPropertyName("id")]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Details if the discount is a percentage off.
+        /// </summary>
+        [JsonProperty("percent_off")]
+        [STJS.JsonPropertyName("percent_off")]
+        public GroupInvoiceDiscountRulePercentOff PercentOff { get; set; }
+
+        /// <summary>
+        /// The type of the discount.
+        /// One of: <c>percent_off</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("type")]
+        [STJS.JsonPropertyName("type")]
+        public string Type { get; set; }
+    }
+}

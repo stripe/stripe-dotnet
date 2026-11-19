@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing
     public class IntentCreateActionApplyInvoiceDiscountRulePercentOffOptions : INestedOptions
     {
         /// <summary>
-        /// The maximum number of times this discount can be applied for this cadence.
+        /// The maximum number of times this discount can be applied for this billing group.
         /// </summary>
         [JsonProperty("maximum_applications")]
         [STJS.JsonPropertyName("maximum_applications")]

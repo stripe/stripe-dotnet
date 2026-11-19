@@ -31,8 +31,8 @@ namespace Stripe
 
         /// <summary>
         /// The blockchain network that the transaction was sent on.
-        /// One of: <c>base</c>, <c>ethereum</c>, <c>polygon</c>, <c>solana</c>, <c>sui</c>, or
-        /// <c>tempo</c>.
+        /// One of: <c>base</c>, <c>ethereum</c>, <c>polygon</c>, <c>solana</c>, <c>sui</c>,
+        /// <c>tempo</c>, or <c>tron</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

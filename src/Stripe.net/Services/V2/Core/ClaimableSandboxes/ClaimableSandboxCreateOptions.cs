@@ -9,13 +9,14 @@ namespace Stripe.V2.Core
     public class ClaimableSandboxCreateOptions : BaseOptions
     {
         /// <summary>
-        /// The app channel that will be used when pre-installing your app on the claimable sandbox.
-        /// This field defaults to <c>public</c> if omitted.
+        /// The distribution channel used to pre-install your Stripe App on the claimable sandbox.
+        /// Use <c>testing</c> to install your app's external test version or <c>public</c> to
+        /// install its published version. This field defaults to <c>public</c> if omitted.
         /// One of: <c>public</c>, or <c>testing</c>.
         /// </summary>
-        [JsonProperty("app_channel")]
-        [STJS.JsonPropertyName("app_channel")]
-        public string AppChannel { get; set; }
+        [JsonProperty("channel")]
+        [STJS.JsonPropertyName("channel")]
+        public string Channel { get; set; }
 
         /// <summary>
         /// If true, returns a key that can be used with <a

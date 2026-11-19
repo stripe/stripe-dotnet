@@ -11,6 +11,13 @@ namespace Stripe.Events
     public class V2PaymentsOffSessionPaymentSucceededEvent : V2.Core.Event
     {
         /// <summary>
+        /// Data for the v2.payments.off_session_payment.succeeded event.
+        /// </summary>
+        [JsonProperty("data")]
+        [STJS.JsonPropertyName("data")]
+        public V2PaymentsOffSessionPaymentSucceededEventData Data { get; set; }
+
+        /// <summary>
         /// Object containing the reference to API resource relevant to the event.
         /// </summary>
         [JsonProperty("related_object")]

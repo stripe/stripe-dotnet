@@ -79,6 +79,13 @@ namespace Stripe.V2.Core
         public AccountConfigurationMerchantCapabilitiesBancontactPayments BancontactPayments { get; set; }
 
         /// <summary>
+        /// Allow the merchant to process Billie payments.
+        /// </summary>
+        [JsonProperty("billie_payments")]
+        [STJS.JsonPropertyName("billie_payments")]
+        public AccountConfigurationMerchantCapabilitiesBilliePayments BilliePayments { get; set; }
+
+        /// <summary>
         /// Allow the merchant to process BLIK payments.
         /// </summary>
         [JsonProperty("blik_payments")]
@@ -205,6 +212,13 @@ namespace Stripe.V2.Core
         public AccountConfigurationMerchantCapabilitiesLinkPayments LinkPayments { get; set; }
 
         /// <summary>
+        /// Allow the merchant to process MB WAY payments.
+        /// </summary>
+        [JsonProperty("mb_way_payments")]
+        [STJS.JsonPropertyName("mb_way_payments")]
+        public AccountConfigurationMerchantCapabilitiesMbWayPayments MbWayPayments { get; set; }
+
+        /// <summary>
         /// Allow the merchant to process MobilePay payments.
         /// </summary>
         [JsonProperty("mobilepay_payments")]
@@ -231,6 +245,13 @@ namespace Stripe.V2.Core
         [JsonProperty("naver_pay_payments")]
         [STJS.JsonPropertyName("naver_pay_payments")]
         public AccountConfigurationMerchantCapabilitiesNaverPayPayments NaverPayPayments { get; set; }
+
+        /// <summary>
+        /// Allow the merchant to process New Zealand BECS Direct Debit payments.
+        /// </summary>
+        [JsonProperty("nz_bank_account_becs_debit_payments")]
+        [STJS.JsonPropertyName("nz_bank_account_becs_debit_payments")]
+        public AccountConfigurationMerchantCapabilitiesNzBankAccountBecsDebitPayments NzBankAccountBecsDebitPayments { get; set; }
 
         /// <summary>
         /// Allow the merchant to process OXXO payments.
@@ -266,6 +287,20 @@ namespace Stripe.V2.Core
         [JsonProperty("paynow_payments")]
         [STJS.JsonPropertyName("paynow_payments")]
         public AccountConfigurationMerchantCapabilitiesPaynowPayments PaynowPayments { get; set; }
+
+        /// <summary>
+        /// Allow the merchant to process PayPay payments.
+        /// </summary>
+        [JsonProperty("paypay_payments")]
+        [STJS.JsonPropertyName("paypay_payments")]
+        public AccountConfigurationMerchantCapabilitiesPaypayPayments PaypayPayments { get; set; }
+
+        /// <summary>
+        /// Allow the merchant to process Pix payments.
+        /// </summary>
+        [JsonProperty("pix_payments")]
+        [STJS.JsonPropertyName("pix_payments")]
+        public AccountConfigurationMerchantCapabilitiesPixPayments PixPayments { get; set; }
 
         /// <summary>
         /// Allow the merchant to process PromptPay payments.
@@ -345,6 +380,20 @@ namespace Stripe.V2.Core
         public AccountConfigurationMerchantCapabilitiesSwishPayments SwishPayments { get; set; }
 
         /// <summary>
+        /// Allow the merchant to process Touch 'n Go payments.
+        /// </summary>
+        [JsonProperty("touch_n_go_payments")]
+        [STJS.JsonPropertyName("touch_n_go_payments")]
+        public AccountConfigurationMerchantCapabilitiesTouchNGoPayments TouchNGoPayments { get; set; }
+
+        /// <summary>
+        /// Allow the merchant to process TrueMoney payments.
+        /// </summary>
+        [JsonProperty("truemoney_payments")]
+        [STJS.JsonPropertyName("truemoney_payments")]
+        public AccountConfigurationMerchantCapabilitiesTruemoneyPayments TruemoneyPayments { get; set; }
+
+        /// <summary>
         /// Allow the merchant to process TWINT payments.
         /// </summary>
         [JsonProperty("twint_payments")]
@@ -371,6 +420,28 @@ namespace Stripe.V2.Core
         [JsonProperty("vipps_payments")]
         [STJS.JsonPropertyName("vipps_payments")]
         public AccountConfigurationMerchantCapabilitiesVippsPayments VippsPayments { get; set; }
+
+        /// <summary>
+        /// Allow the merchant to process WeChat Pay mobile web payments. Requires the
+        /// wechat_pay_payments capability.
+        /// </summary>
+        [JsonProperty("wechat_pay_mobile_web_payments")]
+        [STJS.JsonPropertyName("wechat_pay_mobile_web_payments")]
+        public AccountConfigurationMerchantCapabilitiesWechatPayMobileWebPayments WechatPayMobileWebPayments { get; set; }
+
+        /// <summary>
+        /// Allow the merchant to process WeChat Pay payments.
+        /// </summary>
+        [JsonProperty("wechat_pay_payments")]
+        [STJS.JsonPropertyName("wechat_pay_payments")]
+        public AccountConfigurationMerchantCapabilitiesWechatPayPayments WechatPayPayments { get; set; }
+
+        /// <summary>
+        /// Allow the merchant to process Wero payments.
+        /// </summary>
+        [JsonProperty("wero_payments")]
+        [STJS.JsonPropertyName("wero_payments")]
+        public AccountConfigurationMerchantCapabilitiesWeroPayments WeroPayments { get; set; }
 
         /// <summary>
         /// Allow the merchant to process Zip payments.

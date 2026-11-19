@@ -16,6 +16,13 @@ namespace Stripe.Checkout
         public long AmountDiscount { get; set; }
 
         /// <summary>
+        /// The pass-through fee added to the Checkout Session, before tax.
+        /// </summary>
+        [JsonProperty("amount_pass_through_fee")]
+        [STJS.JsonPropertyName("amount_pass_through_fee")]
+        public long AmountPassThroughFee { get; set; }
+
+        /// <summary>
         /// This is the sum of all the shipping amounts.
         /// </summary>
         [JsonProperty("amount_shipping")]

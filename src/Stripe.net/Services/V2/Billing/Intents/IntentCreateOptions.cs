@@ -17,18 +17,18 @@ namespace Stripe.V2.Billing
         public List<IntentCreateActionOptions> Actions { get; set; }
 
         /// <summary>
-        /// ID of an existing Cadence to use.
+        /// ID of an existing Billing Group to use.
         /// </summary>
-        [JsonProperty("cadence")]
-        [STJS.JsonPropertyName("cadence")]
-        public string Cadence { get; set; }
+        [JsonProperty("billing_group")]
+        [STJS.JsonPropertyName("billing_group")]
+        public string BillingGroup { get; set; }
 
         /// <summary>
-        /// Data for creating a new Cadence.
+        /// Data for creating a new Billing Group.
         /// </summary>
-        [JsonProperty("cadence_data")]
-        [STJS.JsonPropertyName("cadence_data")]
-        public IntentCreateCadenceDataOptions CadenceData { get; set; }
+        [JsonProperty("billing_group_data")]
+        [STJS.JsonPropertyName("billing_group_data")]
+        public IntentCreateBillingGroupDataOptions BillingGroupData { get; set; }
 
         /// <summary>
         /// Three-letter ISO currency code, in lowercase. Must be a supported currency.

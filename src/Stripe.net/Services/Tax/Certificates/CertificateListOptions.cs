@@ -9,7 +9,8 @@ namespace Stripe.Tax
     public class CertificateListOptions : ListOptions
     {
         /// <summary>
-        /// The ID of an existing tax exemption.
+        /// The ID of the <a href="https://stripe.com/api/tax/exemptions/object">customer tax
+        /// exemption</a> whose certificates to list. The tax exemption must not be deleted.
         /// </summary>
         [JsonProperty("tax_exemption")]
         [STJS.JsonPropertyName("tax_exemption")]

@@ -99,6 +99,10 @@ namespace Stripe
         [STJS.JsonPropertyName("prebilling_iterations")]
         public long? PrebillingIterations { get; set; }
 
+        [JsonProperty("presentment_details")]
+        [STJS.JsonPropertyName("presentment_details")]
+        public SubscriptionPendingUpdatePresentmentDetails PresentmentDetails { get; set; }
+
         /// <summary>
         /// List of subscription items, each with an attached plan, that will be set if the update
         /// is applied.

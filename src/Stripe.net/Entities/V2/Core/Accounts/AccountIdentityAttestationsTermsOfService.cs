@@ -16,6 +16,14 @@ namespace Stripe.V2.Core
         public AccountIdentityAttestationsTermsOfServiceAccount Account { get; set; }
 
         /// <summary>
+        /// Terms of service acceptances for financial accounts backed by Fifth Third demand deposit
+        /// accounts.
+        /// </summary>
+        [JsonProperty("business_demand_deposit_account_fifth_third")]
+        [STJS.JsonPropertyName("business_demand_deposit_account_fifth_third")]
+        public AccountIdentityAttestationsTermsOfServiceBusinessDemandDepositAccountFifthThird BusinessDemandDepositAccountFifthThird { get; set; }
+
+        /// <summary>
         /// Details on the Account's acceptance of Issuing-specific terms of service.
         /// </summary>
         [JsonProperty("card_creator")]

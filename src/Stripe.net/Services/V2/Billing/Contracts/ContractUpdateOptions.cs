@@ -12,7 +12,7 @@ namespace Stripe.V2.Billing
         private Dictionary<string, string> metadata;
 
         /// <summary>
-        /// Apply all actions atomically. Cannot be combined with the legacy child action arrays.
+        /// Apply all term actions atomically.
         /// </summary>
         [JsonProperty("actions")]
         [STJS.JsonPropertyName("actions")]
@@ -24,6 +24,14 @@ namespace Stripe.V2.Billing
         [JsonProperty("billing_settings")]
         [STJS.JsonPropertyName("billing_settings")]
         public ContractUpdateBillingSettingsOptions BillingSettings { get; set; }
+
+        /// <summary>
+        /// The unique user-provided contract number. This can only be changed while the contract is
+        /// in draft.
+        /// </summary>
+        [JsonProperty("contract_number")]
+        [STJS.JsonPropertyName("contract_number")]
+        public string ContractNumber { get; set; }
 
         /// <summary>
         /// Additional fields to include in the response.
@@ -52,26 +60,5 @@ namespace Stripe.V2.Billing
                 this.SetTracker.Track();
             }
         }
-
-        /// <summary>
-        /// One-time fee actions to apply.
-        /// </summary>
-        [JsonProperty("one_time_fee_actions")]
-        [STJS.JsonPropertyName("one_time_fee_actions")]
-        public List<ContractUpdateOneTimeFeeActionOptions> OneTimeFeeActions { get; set; }
-
-        /// <summary>
-        /// Pricing line actions to apply.
-        /// </summary>
-        [JsonProperty("pricing_line_actions")]
-        [STJS.JsonPropertyName("pricing_line_actions")]
-        public List<ContractUpdatePricingLineActionOptions> PricingLineActions { get; set; }
-
-        /// <summary>
-        /// Pricing override actions to apply.
-        /// </summary>
-        [JsonProperty("pricing_override_actions")]
-        [STJS.JsonPropertyName("pricing_override_actions")]
-        public List<ContractUpdatePricingOverrideActionOptions> PricingOverrideActions { get; set; }
     }
 }

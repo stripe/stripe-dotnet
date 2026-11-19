@@ -10,15 +10,15 @@ namespace Stripe.V2.Billing
     public class PricingPlanSubscriptionListOptions : V2.ListOptions
     {
         /// <summary>
-        /// Filter by Billing Cadence ID. Mutually exclusive with <c>payer</c>, <c>pricing_plan</c>,
+        /// Filter by Billing Group ID. Mutually exclusive with <c>payer</c>, <c>pricing_plan</c>,
         /// and <c>pricing_plan_version</c>.
         /// </summary>
-        [JsonProperty("billing_cadence")]
-        [STJS.JsonPropertyName("billing_cadence")]
-        public string BillingCadence { get; set; }
+        [JsonProperty("billing_group")]
+        [STJS.JsonPropertyName("billing_group")]
+        public string BillingGroup { get; set; }
 
         /// <summary>
-        /// Expand to include additional data such as discount_details, billing_cadence_details, or
+        /// Expand to include additional data such as discount_details or
         /// pricing_plan_component_details.
         /// One of: <c>discount_details</c>, or <c>pricing_plan_component_details</c>.
         ///
@@ -29,15 +29,15 @@ namespace Stripe.V2.Billing
         public List<string> Include { get; set; }
 
         /// <summary>
-        /// Filter by payer. Mutually exclusive with <c>billing_cadence</c>, <c>pricing_plan</c>,
-        /// and <c>pricing_plan_version</c>.
+        /// Filter by payer. Mutually exclusive with <c>billing_group</c>, <c>pricing_plan</c>, and
+        /// <c>pricing_plan_version</c>.
         /// </summary>
         [JsonProperty("payer")]
         [STJS.JsonPropertyName("payer")]
         public PricingPlanSubscriptionListPayerOptions Payer { get; set; }
 
         /// <summary>
-        /// Filter by PricingPlan ID. Mutually exclusive with <c>billing_cadence</c>, <c>payer</c>,
+        /// Filter by PricingPlan ID. Mutually exclusive with <c>billing_group</c>, <c>payer</c>,
         /// and <c>pricing_plan_version</c>.
         /// </summary>
         [JsonProperty("pricing_plan")]
@@ -45,7 +45,7 @@ namespace Stripe.V2.Billing
         public string PricingPlan { get; set; }
 
         /// <summary>
-        /// Filter by Pricing Plan Version ID. Mutually exclusive with <c>billing_cadence</c>,
+        /// Filter by Pricing Plan Version ID. Mutually exclusive with <c>billing_group</c>,
         /// <c>payer</c>, and <c>pricing_plan</c>.
         /// </summary>
         [JsonProperty("pricing_plan_version")]

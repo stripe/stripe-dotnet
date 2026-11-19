@@ -9,6 +9,13 @@ namespace Stripe
     public class SubscriptionPaymentSettingsPaymentMethodOptionsPixOptions : INestedOptions
     {
         /// <summary>
+        /// Timing configuration for collecting funds from the customer's account.
+        /// </summary>
+        [JsonProperty("debit_behavior")]
+        [STJS.JsonPropertyName("debit_behavior")]
+        public string DebitBehavior { get; set; }
+
+        /// <summary>
         /// The number of seconds after PaymentIntent confirmation when the Pix expires (between 60
         /// and 1209600, inclusive). If unspecified, defaults to 14400 seconds (4 hours).
         /// </summary>

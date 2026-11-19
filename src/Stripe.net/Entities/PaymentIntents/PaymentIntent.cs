@@ -633,6 +633,13 @@ namespace Stripe
         public PaymentIntentProcessing Processing { get; set; }
 
         /// <summary>
+        /// Options to configure Radar.
+        /// </summary>
+        [JsonProperty("radar_options")]
+        [STJS.JsonPropertyName("radar_options")]
+        public PaymentIntentRadarOptions RadarOptions { get; set; }
+
+        /// <summary>
         /// Email address that the receipt for the resulting payment will be sent to. If
         /// <c>receipt_email</c> is specified for a payment in live mode, a receipt will be sent
         /// regardless of your <a href="https://dashboard.stripe.com/account/emails">email

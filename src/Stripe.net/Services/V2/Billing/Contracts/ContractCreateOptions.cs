@@ -59,30 +59,7 @@ namespace Stripe.V2.Billing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// A list of one-time fees to create with the contract. Each fee is billed as individual
-        /// invoice items per its bill_schedule.
-        /// </summary>
-        [JsonProperty("one_time_fees")]
-        [STJS.JsonPropertyName("one_time_fees")]
-        public List<ContractCreateOneTimeFeeOptions> OneTimeFees { get; set; }
-
-        /// <summary>
-        /// A list of pricing lines to create with the contract.
-        /// </summary>
-        [JsonProperty("pricing_lines")]
-        [STJS.JsonPropertyName("pricing_lines")]
-        public List<ContractCreatePricingLineOptions> PricingLines { get; set; }
-
-        /// <summary>
-        /// A list of pricing overrides to create with the contract.
-        /// </summary>
-        [JsonProperty("pricing_overrides")]
-        [STJS.JsonPropertyName("pricing_overrides")]
-        public List<ContractCreatePricingOverrideOptions> PricingOverrides { get; set; }
-
-        /// <summary>
-        /// Terms to create. Cannot be combined with pricing_lines, pricing_overrides, or
-        /// one_time_fees.
+        /// Terms to create with the contract.
         /// </summary>
         [JsonProperty("terms")]
         [STJS.JsonPropertyName("terms")]

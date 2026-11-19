@@ -12,7 +12,7 @@ namespace Stripe.V2.Billing
     /// usage-based pricing. It tracks the servicing status (whether usage is being measured)
     /// and collection status (whether payments are current). Subscriptions bill according to
     /// the service interval defined in the Rate Card and are collected on the associated
-    /// Billing Cadence.
+    /// Billing Group.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class RateCardSubscription : StripeEntity<RateCardSubscription>, IHasId, IHasMetadata, IHasObject
@@ -33,11 +33,11 @@ namespace Stripe.V2.Billing
         public string Object { get; set; }
 
         /// <summary>
-        /// The ID of the Billing Cadence.
+        /// The ID of the Billing Group.
         /// </summary>
-        [JsonProperty("billing_cadence")]
-        [STJS.JsonPropertyName("billing_cadence")]
-        public string BillingCadence { get; set; }
+        [JsonProperty("billing_group")]
+        [STJS.JsonPropertyName("billing_group")]
+        public string BillingGroup { get; set; }
 
         /// <summary>
         /// The payment status of a Rate Card Subscription.

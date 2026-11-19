@@ -90,5 +90,13 @@ namespace Stripe.V2.Core
         [JsonProperty("swift")]
         [STJS.JsonPropertyName("swift")]
         public AccountCreateConfigurationRecipientCapabilitiesBankAccountsSwiftOptions Swift { get; set; }
+
+        /// <summary>
+        /// Enables this Account to receive OutboundPayments to linked bank accounts over TIPS
+        /// rails.
+        /// </summary>
+        [JsonProperty("tips")]
+        [STJS.JsonPropertyName("tips")]
+        public AccountCreateConfigurationRecipientCapabilitiesBankAccountsTipsOptions Tips { get; set; }
     }
 }

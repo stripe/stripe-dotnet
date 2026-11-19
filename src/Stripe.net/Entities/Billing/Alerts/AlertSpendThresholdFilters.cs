@@ -9,13 +9,6 @@ namespace Stripe.Billing
     public class AlertSpendThresholdFilters : StripeEntity<AlertSpendThresholdFilters>
     {
         /// <summary>
-        /// Filter by billing cadence ID.
-        /// </summary>
-        [JsonProperty("billing_cadence")]
-        [STJS.JsonPropertyName("billing_cadence")]
-        public string BillingCadence { get; set; }
-
-        /// <summary>
         /// Filter by billing group ID.
         /// </summary>
         [JsonProperty("billing_group")]

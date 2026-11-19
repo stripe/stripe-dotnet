@@ -47,5 +47,12 @@ namespace Stripe.Issuing
         [JsonProperty("token_risk_score")]
         [STJS.JsonPropertyName("token_risk_score")]
         public string TokenRiskScore { get; set; }
+
+        /// <summary>
+        /// The ID of the token service provider, specific to Visa.
+        /// </summary>
+        [JsonProperty("token_service_provider_id")]
+        [STJS.JsonPropertyName("token_service_provider_id")]
+        public string TokenServiceProviderId { get; set; }
     }
 }
