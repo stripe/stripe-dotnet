@@ -3,6 +3,7 @@ title: Update generated code
 pr_url: https://github.com/stripe/stripe-dotnet/pull/3493
 semver_level: minor
 is_stripe_api_change: true
+released_in_version: 53.2.0
 ---
 
 * Add support for new resource `V2.Core.ClaimableSandbox`

@@ -3,6 +3,7 @@ title: Keep `StripeContext` segments when serializing it with Newtonsoft.Json or
 semver_level: patch
 jira_tickets_closed:
 - RUN_DEVSDK-3730
+released_in_version: 53.2.0
 ---
 
 `StripeContext` now serializes as its `Stripe-Context` string (e.g. `"acct_123/acct_456"`), matching the API's wire format, instead of `{"Segments": [...]}`, which didn't deserialize correctly. Payloads previously serialized as `{"Segments": [...]}` still deserialize correctly.
