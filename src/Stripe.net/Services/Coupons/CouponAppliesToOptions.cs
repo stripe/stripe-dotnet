@@ -10,7 +10,7 @@ namespace Stripe
     public class CouponAppliesToOptions : INestedOptions
     {
         /// <summary>
-        /// An array of Product IDs that this Coupon will apply to.
+        /// An array of up to 100 Product IDs that this Coupon will apply to.
         /// </summary>
         [JsonProperty("products")]
         [STJS.JsonPropertyName("products")]

@@ -49,7 +49,7 @@ namespace Stripe
         /// <c>2025-12-15.clover</c>, <c>2026-01-28.clover</c>, <c>2026-02-25.clover</c>,
         /// <c>2026-03-25.dahlia</c>, <c>2026-04-22.dahlia</c>, <c>2026-05-27.dahlia</c>,
         /// <c>2026-06-24.dahlia</c>, <c>2026-07-29.dahlia</c>, <c>2026-08-26.dahlia</c>,
-        /// <c>2026-09-30.endive</c>, or <c>2026-10-28.endive</c>.
+        /// <c>2026-09-30.endive</c>, <c>2026-10-28.endive</c>, or <c>2026-11-18.endive</c>.
         /// </summary>
         [JsonProperty("api_version")]
         [STJS.JsonPropertyName("api_version")]

@@ -10,7 +10,7 @@ namespace Stripe
     {
         /// <summary>
         /// The name on the bank account. Only present if the account holder name is different from
-        /// the name of the authorized signatory collected in the PaymentMethod’s billing details.
+        /// the name of the authorized signatory collected in the PaymentMethod's billing details.
         /// </summary>
         [JsonProperty("account_holder_name")]
         [STJS.JsonPropertyName("account_holder_name")]

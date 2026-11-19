@@ -25,8 +25,8 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Transitions a test mode created OutboundPayment to the <c>failed</c> status. The
-        /// OutboundPayment must already be in the <c>processing</c> state.</p>.
+        /// <p>Transitions a test <c>OutboundPayment</c> to the <c>failed</c> status. The
+        /// <c>OutboundPayment</c> must already be in the <c>processing</c> state.</p>.
         /// </summary>
         public virtual Stripe.Treasury.OutboundPayment Fail(string id, OutboundPaymentFailOptions options = null, RequestOptions requestOptions = null)
         {
@@ -34,8 +34,8 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Transitions a test mode created OutboundPayment to the <c>failed</c> status. The
-        /// OutboundPayment must already be in the <c>processing</c> state.</p>.
+        /// <p>Transitions a test <c>OutboundPayment</c> to the <c>failed</c> status. The
+        /// <c>OutboundPayment</c> must already be in the <c>processing</c> state.</p>.
         /// </summary>
         public virtual Task<Stripe.Treasury.OutboundPayment> FailAsync(string id, OutboundPaymentFailOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -43,8 +43,8 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Transitions a test mode created OutboundPayment to the <c>posted</c> status. The
-        /// OutboundPayment must already be in the <c>processing</c> state.</p>.
+        /// <p>Transitions a test <c>OutboundPayment</c> to the <c>posted</c> status. The
+        /// <c>OutboundPayment</c> must already be in the <c>processing</c> state.</p>.
         /// </summary>
         public virtual Stripe.Treasury.OutboundPayment Post(string id, OutboundPaymentPostOptions options = null, RequestOptions requestOptions = null)
         {
@@ -52,8 +52,8 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Transitions a test mode created OutboundPayment to the <c>posted</c> status. The
-        /// OutboundPayment must already be in the <c>processing</c> state.</p>.
+        /// <p>Transitions a test <c>OutboundPayment</c> to the <c>posted</c> status. The
+        /// <c>OutboundPayment</c> must already be in the <c>processing</c> state.</p>.
         /// </summary>
         public virtual Task<Stripe.Treasury.OutboundPayment> PostAsync(string id, OutboundPaymentPostOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -61,8 +61,8 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Transitions a test mode created OutboundPayment to the <c>returned</c> status. The
-        /// OutboundPayment must already be in the <c>processing</c> state.</p>.
+        /// <p>Transitions a test <c>OutboundPayment</c> to the <c>returned</c> status. The
+        /// <c>OutboundPayment</c> must already be in the <c>posted</c> state.</p>.
         /// </summary>
         public virtual Stripe.Treasury.OutboundPayment ReturnOutboundPayment(string id, OutboundPaymentReturnOutboundPaymentOptions options = null, RequestOptions requestOptions = null)
         {
@@ -70,8 +70,8 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Transitions a test mode created OutboundPayment to the <c>returned</c> status. The
-        /// OutboundPayment must already be in the <c>processing</c> state.</p>.
+        /// <p>Transitions a test <c>OutboundPayment</c> to the <c>returned</c> status. The
+        /// <c>OutboundPayment</c> must already be in the <c>posted</c> state.</p>.
         /// </summary>
         public virtual Task<Stripe.Treasury.OutboundPayment> ReturnOutboundPaymentAsync(string id, OutboundPaymentReturnOutboundPaymentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -79,8 +79,8 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Updates a test mode created OutboundPayment with tracking details. The
-        /// OutboundPayment must not be cancelable, and cannot be in the <c>canceled</c> or
+        /// <p>Updates a test <c>OutboundPayment</c> with tracking details. The
+        /// <c>OutboundPayment</c> must not be cancelable, and can’t be in the <c>canceled</c> or
         /// <c>failed</c> states.</p>.
         /// </summary>
         public virtual Stripe.Treasury.OutboundPayment Update(string id, OutboundPaymentUpdateOptions options, RequestOptions requestOptions = null)
@@ -89,8 +89,8 @@ namespace Stripe.TestHelpers.Treasury
         }
 
         /// <summary>
-        /// <p>Updates a test mode created OutboundPayment with tracking details. The
-        /// OutboundPayment must not be cancelable, and cannot be in the <c>canceled</c> or
+        /// <p>Updates a test <c>OutboundPayment</c> with tracking details. The
+        /// <c>OutboundPayment</c> must not be cancelable, and can’t be in the <c>canceled</c> or
         /// <c>failed</c> states.</p>.
         /// </summary>
         public virtual Task<Stripe.Treasury.OutboundPayment> UpdateAsync(string id, OutboundPaymentUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)

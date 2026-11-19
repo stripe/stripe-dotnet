@@ -49,7 +49,11 @@ namespace Stripe
         /// Stripe API version at its creation time, specified in <a
         /// href="https://docs.stripe.com/api/events/object">event object</a> <c>api_version</c>
         /// attribute (not according to your current Stripe API version or <c>Stripe-Version</c>
-        /// header).</p>.
+        /// header). The list includes only events for the account that makes the request. A
+        /// platform’s list doesn’t include events from its connected accounts. To list a connected
+        /// account’s events, make the request <a
+        /// href="https://docs.stripe.com/connect/authentication">as the connected account</a> using
+        /// the <c>Stripe-Account</c> header.</p>.
         /// </summary>
         public virtual StripeList<Event> List(EventListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -61,7 +65,11 @@ namespace Stripe
         /// Stripe API version at its creation time, specified in <a
         /// href="https://docs.stripe.com/api/events/object">event object</a> <c>api_version</c>
         /// attribute (not according to your current Stripe API version or <c>Stripe-Version</c>
-        /// header).</p>.
+        /// header). The list includes only events for the account that makes the request. A
+        /// platform’s list doesn’t include events from its connected accounts. To list a connected
+        /// account’s events, make the request <a
+        /// href="https://docs.stripe.com/connect/authentication">as the connected account</a> using
+        /// the <c>Stripe-Account</c> header.</p>.
         /// </summary>
         public virtual Task<StripeList<Event>> ListAsync(EventListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -73,7 +81,11 @@ namespace Stripe
         /// Stripe API version at its creation time, specified in <a
         /// href="https://docs.stripe.com/api/events/object">event object</a> <c>api_version</c>
         /// attribute (not according to your current Stripe API version or <c>Stripe-Version</c>
-        /// header).</p>.
+        /// header). The list includes only events for the account that makes the request. A
+        /// platform’s list doesn’t include events from its connected accounts. To list a connected
+        /// account’s events, make the request <a
+        /// href="https://docs.stripe.com/connect/authentication">as the connected account</a> using
+        /// the <c>Stripe-Account</c> header.</p>.
         /// </summary>
         public virtual IEnumerable<Event> ListAutoPaging(EventListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -85,7 +97,11 @@ namespace Stripe
         /// Stripe API version at its creation time, specified in <a
         /// href="https://docs.stripe.com/api/events/object">event object</a> <c>api_version</c>
         /// attribute (not according to your current Stripe API version or <c>Stripe-Version</c>
-        /// header).</p>.
+        /// header). The list includes only events for the account that makes the request. A
+        /// platform’s list doesn’t include events from its connected accounts. To list a connected
+        /// account’s events, make the request <a
+        /// href="https://docs.stripe.com/connect/authentication">as the connected account</a> using
+        /// the <c>Stripe-Account</c> header.</p>.
         /// </summary>
         public virtual IAsyncEnumerable<Event> ListAutoPagingAsync(EventListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
