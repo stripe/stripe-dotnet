@@ -10,8 +10,9 @@ namespace Stripe.V2.MoneyManagement
     {
         /// <summary>
         /// Open Enum. The reason for the failure of the ReceivedDebit.
-        /// One of: <c>capability_inactive</c>, <c>financial_address_inactive</c>,
-        /// <c>insufficient_funds</c>, <c>no_mandate</c>, or <c>stripe_rejected</c>.
+        /// One of: <c>capability_inactive</c>, <c>debits_disabled</c>,
+        /// <c>financial_address_inactive</c>, <c>insufficient_funds</c>, <c>no_mandate</c>,
+        /// <c>stripe_rejected</c>, or <c>transaction_limit_exceeded</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

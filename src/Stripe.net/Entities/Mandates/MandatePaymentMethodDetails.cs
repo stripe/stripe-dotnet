@@ -12,6 +12,10 @@ namespace Stripe
         [STJS.JsonPropertyName("acss_debit")]
         public MandatePaymentMethodDetailsAcssDebit AcssDebit { get; set; }
 
+        [JsonProperty("aeon_pay")]
+        [STJS.JsonPropertyName("aeon_pay")]
+        public MandatePaymentMethodDetailsAeonPay AeonPay { get; set; }
+
         [JsonProperty("amazon_pay")]
         [STJS.JsonPropertyName("amazon_pay")]
         public MandatePaymentMethodDetailsAmazonPay AmazonPay { get; set; }
@@ -19,6 +23,10 @@ namespace Stripe
         [JsonProperty("au_becs_debit")]
         [STJS.JsonPropertyName("au_becs_debit")]
         public MandatePaymentMethodDetailsAuBecsDebit AuBecsDebit { get; set; }
+
+        [JsonProperty("au_pay")]
+        [STJS.JsonPropertyName("au_pay")]
+        public MandatePaymentMethodDetailsAuPay AuPay { get; set; }
 
         [JsonProperty("bacs_debit")]
         [STJS.JsonPropertyName("bacs_debit")]
@@ -36,6 +44,10 @@ namespace Stripe
         [STJS.JsonPropertyName("cashapp")]
         public MandatePaymentMethodDetailsCashapp Cashapp { get; set; }
 
+        [JsonProperty("dbarai")]
+        [STJS.JsonPropertyName("dbarai")]
+        public MandatePaymentMethodDetailsDbarai Dbarai { get; set; }
+
         [JsonProperty("kakao_pay")]
         [STJS.JsonPropertyName("kakao_pay")]
         public MandatePaymentMethodDetailsKakaoPay KakaoPay { get; set; }
@@ -51,6 +63,10 @@ namespace Stripe
         [JsonProperty("link")]
         [STJS.JsonPropertyName("link")]
         public MandatePaymentMethodDetailsLink Link { get; set; }
+
+        [JsonProperty("merpay")]
+        [STJS.JsonPropertyName("merpay")]
+        public MandatePaymentMethodDetailsMerpay Merpay { get; set; }
 
         [JsonProperty("naver_pay")]
         [STJS.JsonPropertyName("naver_pay")]
@@ -71,6 +87,10 @@ namespace Stripe
         [JsonProperty("pix")]
         [STJS.JsonPropertyName("pix")]
         public MandatePaymentMethodDetailsPix Pix { get; set; }
+
+        [JsonProperty("rakuten_pay")]
+        [STJS.JsonPropertyName("rakuten_pay")]
+        public MandatePaymentMethodDetailsRakutenPay RakutenPay { get; set; }
 
         [JsonProperty("revolut_pay")]
         [STJS.JsonPropertyName("revolut_pay")]

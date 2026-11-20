@@ -7,7 +7,9 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// A FeeEntry is the atomic, append-only record of an assessed fee.
+    /// A FeeEntry is an atomic record of an assessed fee. Its assessment attributes are
+    /// immutable, while its FeeBatch association and derived status can change as the fee
+    /// progresses through billing.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FeeEntry : StripeEntity<FeeEntry>, IHasId, IHasObject
@@ -49,7 +51,10 @@ namespace Stripe.V2.Core
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The ID of the FeeBatch that collected this fee, if any.
+        /// The ID of the FeeBatch currently assigned to collect this fee, if any. If Stripe cancels
+        /// the assigned FeeBatch before billing, Stripe reassigns the FeeEntry to a replacement
+        /// FeeBatch. During reassociation, this field can temporarily continue to reference the
+        /// canceled FeeBatch.
         /// </summary>
         [JsonProperty("fee_batch")]
         [STJS.JsonPropertyName("fee_batch")]
@@ -80,6 +85,19 @@ namespace Stripe.V2.Core
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]
         public string Reason { get; set; }
+
+        /// <summary>
+        /// The current billing status of the fee. Every FeeEntry eventually transitions from
+        /// <c>assessed</c> to <c>billed</c> when its associated FeeBatch is billed. While
+        /// <c>assessed</c>, its FeeBatch association can change if the assigned batch is canceled.
+        /// Once <c>billed</c>, the status and FeeBatch association are terminal.
+        /// One of: <c>assessed</c>, or <c>billed</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("status")]
+        [STJS.JsonPropertyName("status")]
+        public string Status { get; set; }
 
         /// <summary>
         /// The tax portion of the fee, if applicable.

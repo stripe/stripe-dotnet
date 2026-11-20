@@ -23,6 +23,13 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundCadOptions Cad { get; set; }
 
         /// <summary>
+        /// Can send business storage-type funds on Stripe in CHF.
+        /// </summary>
+        [JsonProperty("chf")]
+        [STJS.JsonPropertyName("chf")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundChfOptions Chf { get; set; }
+
+        /// <summary>
         /// Can send business storage-type funds on Stripe in CZK.
         /// </summary>
         [JsonProperty("czk")]
@@ -42,6 +49,27 @@ namespace Stripe.V2.Core
         [JsonProperty("gbp")]
         [STJS.JsonPropertyName("gbp")]
         public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundGbpOptions Gbp { get; set; }
+
+        /// <summary>
+        /// Can send business storage-type funds on Stripe in HKD.
+        /// </summary>
+        [JsonProperty("hkd")]
+        [STJS.JsonPropertyName("hkd")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundHkdOptions Hkd { get; set; }
+
+        /// <summary>
+        /// Can send business storage-type funds on Stripe in HUF.
+        /// </summary>
+        [JsonProperty("huf")]
+        [STJS.JsonPropertyName("huf")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundHufOptions Huf { get; set; }
+
+        /// <summary>
+        /// Can send business storage-type funds on Stripe in JPY.
+        /// </summary>
+        [JsonProperty("jpy")]
+        [STJS.JsonPropertyName("jpy")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundJpyOptions Jpy { get; set; }
 
         /// <summary>
         /// Can send business storage-type funds on Stripe in NOK.
@@ -65,6 +93,13 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundPlnOptions Pln { get; set; }
 
         /// <summary>
+        /// Can send business storage-type funds on Stripe in RON.
+        /// </summary>
+        [JsonProperty("ron")]
+        [STJS.JsonPropertyName("ron")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundRonOptions Ron { get; set; }
+
+        /// <summary>
         /// Can send business storage-type funds on Stripe in SEK.
         /// </summary>
         [JsonProperty("sek")]
@@ -84,5 +119,12 @@ namespace Stripe.V2.Core
         [JsonProperty("usdc")]
         [STJS.JsonPropertyName("usdc")]
         public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundUsdcOptions Usdc { get; set; }
+
+        /// <summary>
+        /// Can send business storage-type funds on Stripe in ZAR.
+        /// </summary>
+        [JsonProperty("zar")]
+        [STJS.JsonPropertyName("zar")]
+        public AccountCreateConfigurationMoneyManagerCapabilitiesBusinessStorageOutboundZarOptions Zar { get; set; }
     }
 }

@@ -17,6 +17,9 @@ namespace Stripe.Crypto
 
         /// <summary>
         /// The supported token currency. Supported token currencies include: <c>usdc</c>.
+        /// One of: <c>ousd</c>, <c>phantom_cash</c>, or <c>usdc</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("token_currency")]
         [STJS.JsonPropertyName("token_currency")]

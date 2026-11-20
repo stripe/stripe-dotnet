@@ -65,6 +65,13 @@ namespace Stripe.V2.MoneyManagement
         public string Dispute { get; set; }
 
         /// <summary>
+        /// If applicable, the ID of the DisputeAdjustment that created this Transaction.
+        /// </summary>
+        [JsonProperty("dispute_adjustment")]
+        [STJS.JsonPropertyName("dispute_adjustment")]
+        public string DisputeAdjustment { get; set; }
+
+        /// <summary>
         /// If applicable, the ID of the EarnedCredit that created this Transaction.
         /// </summary>
         [JsonProperty("earned_credit")]
@@ -252,16 +259,17 @@ namespace Stripe.V2.MoneyManagement
         /// is provided in the corresponding field.
         /// One of: <c>adjustment</c>, <c>application_fee</c>, <c>application_fee_refund</c>,
         /// <c>charge</c>, <c>currency_conversion</c>, <c>debit_dispute</c>, <c>dispute</c>,
-        /// <c>earned_credit</c>, <c>fee_batch</c>, <c>inbound_funding</c>, <c>inbound_transfer</c>,
-        /// <c>issuing_authorization</c>, <c>issuing_dispute</c>, <c>issuing_transaction</c>,
-        /// <c>outbound_payment</c>, <c>outbound_transfer</c>, <c>payout</c>,
-        /// <c>received_credit</c>, <c>received_debit</c>, <c>refund</c>, <c>reserve_hold</c>,
-        /// <c>reserve_release</c>, <c>tax_fund</c>, <c>topup</c>, <c>transfer</c>,
-        /// <c>transfer_reversal</c>, <c>treasury_credit_reversal</c>,
-        /// <c>treasury_debit_reversal</c>, <c>treasury_inbound_transfer</c>,
-        /// <c>treasury_issuing_authorization</c>, <c>treasury_other</c>,
-        /// <c>treasury_outbound_payment</c>, <c>treasury_outbound_transfer</c>,
-        /// <c>treasury_received_credit</c>, or <c>treasury_received_debit</c>.
+        /// <c>dispute_adjustment</c>, <c>earned_credit</c>, <c>fee_batch</c>,
+        /// <c>inbound_funding</c>, <c>inbound_transfer</c>, <c>issuing_authorization</c>,
+        /// <c>issuing_dispute</c>, <c>issuing_transaction</c>, <c>outbound_payment</c>,
+        /// <c>outbound_transfer</c>, <c>payout</c>, <c>received_credit</c>, <c>received_debit</c>,
+        /// <c>refund</c>, <c>reserve_hold</c>, <c>reserve_release</c>, <c>tax_fund</c>,
+        /// <c>topup</c>, <c>transfer</c>, <c>transfer_reversal</c>,
+        /// <c>treasury_credit_reversal</c>, <c>treasury_debit_reversal</c>,
+        /// <c>treasury_inbound_transfer</c>, <c>treasury_issuing_authorization</c>,
+        /// <c>treasury_other</c>, <c>treasury_outbound_payment</c>,
+        /// <c>treasury_outbound_transfer</c>, <c>treasury_received_credit</c>, or
+        /// <c>treasury_received_debit</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

@@ -21,7 +21,8 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Creates a new DebitDispute for a ReceivedDebit.
+        /// Deprecated: Use CreateDispute to create a Dispute instead. Creates a new DebitDispute
+        /// for a ReceivedDebit.
         /// </summary>
         public virtual DebitDispute Create(DebitDisputeCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -29,7 +30,8 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Creates a new DebitDispute for a ReceivedDebit.
+        /// Deprecated: Use CreateDispute to create a Dispute instead. Creates a new DebitDispute
+        /// for a ReceivedDebit.
         /// </summary>
         public virtual Task<DebitDispute> CreateAsync(DebitDisputeCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

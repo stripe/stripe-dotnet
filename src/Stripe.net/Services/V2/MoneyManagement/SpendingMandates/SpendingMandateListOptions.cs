@@ -17,6 +17,16 @@ namespace Stripe.V2.MoneyManagement
         public string FinancialAccount { get; set; }
 
         /// <summary>
+        /// Filter by bank transfer network. If omitted, returns mandates for all networks.
+        /// One of: <c>ach</c>, or <c>bacs</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("network")]
+        [STJS.JsonPropertyName("network")]
+        public string Network { get; set; }
+
+        /// <summary>
         /// Filter by mandate status.
         /// One of: <c>active</c>, <c>canceled</c>, <c>expired</c>, or <c>pending_cancellation</c>.
         ///

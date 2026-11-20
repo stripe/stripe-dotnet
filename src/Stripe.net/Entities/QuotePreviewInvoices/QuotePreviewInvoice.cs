@@ -173,10 +173,6 @@ namespace Stripe
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
 
-        [JsonProperty("applied_credit_memos")]
-        [STJS.JsonPropertyName("applied_credit_memos")]
-        public QuotePreviewInvoiceAppliedCreditMemos AppliedCreditMemos { get; set; }
-
         [JsonProperty("applies_to")]
         [STJS.JsonPropertyName("applies_to")]
         public QuotePreviewInvoiceAppliesTo AppliesTo { get; set; }

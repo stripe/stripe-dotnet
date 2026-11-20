@@ -111,6 +111,15 @@ namespace Stripe.Issuing
         public string FinancialAccount { get; set; }
 
         /// <summary>
+        /// Details about the flexible credential configuration for this card. This is only
+        /// populated when enrolled to flex credentials, and is omitted unless you explicitly
+        /// request it with <c>include[]=flexible_credential</c>.
+        /// </summary>
+        [JsonProperty("flexible_credential")]
+        [STJS.JsonPropertyName("flexible_credential")]
+        public CardFlexibleCredential FlexibleCredential { get; set; }
+
+        /// <summary>
         /// The last 4 digits of the card number.
         /// </summary>
         [JsonProperty("last4")]

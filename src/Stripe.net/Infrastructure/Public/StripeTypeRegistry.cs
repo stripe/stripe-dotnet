@@ -376,6 +376,11 @@ namespace Stripe
                     V2.MoneyManagement.CurrencyConversion)
                 },
                 { "v2.money_management.debit_dispute", typeof(V2.MoneyManagement.DebitDispute) },
+                { "v2.money_management.dispute", typeof(V2.MoneyManagement.Dispute) },
+                {
+                    "v2.money_management.dispute_adjustment", typeof(
+                    V2.MoneyManagement.DisputeAdjustment)
+                },
                 { "v2.money_management.earned_credit", typeof(V2.MoneyManagement.EarnedCredit) },
                 {
                     "v2.money_management.earned_credit_simulation", typeof(
@@ -533,6 +538,7 @@ namespace Stripe
                 },
                 { "v2.reporting.report", typeof(V2.Reporting.Report) },
                 { "v2.reporting.report_run", typeof(V2.Reporting.ReportRun) },
+                { "v2.risk.evaluation_outcome", typeof(V2.Risk.EvaluationOutcome) },
                 { "v2.risk.form", typeof(V2.Risk.Form) },
                 { "v2.signals.account_activity", typeof(V2.Signals.AccountActivity) },
                 { "v2.signals.account_evaluation", typeof(V2.Signals.AccountEvaluation) },
@@ -1847,6 +1853,26 @@ namespace Stripe
                     Events.V2MoneyManagementDebitDisputeSucceededEvent)
                 },
                 {
+                    "v2.money_management.dispute.created", typeof(
+                    Events.V2MoneyManagementDisputeCreatedEvent)
+                },
+                {
+                    "v2.money_management.dispute.lost", typeof(
+                    Events.V2MoneyManagementDisputeLostEvent)
+                },
+                {
+                    "v2.money_management.dispute.updated", typeof(
+                    Events.V2MoneyManagementDisputeUpdatedEvent)
+                },
+                {
+                    "v2.money_management.dispute.won", typeof(
+                    Events.V2MoneyManagementDisputeWonEvent)
+                },
+                {
+                    "v2.money_management.dispute_adjustment.created", typeof(
+                    Events.V2MoneyManagementDisputeAdjustmentCreatedEvent)
+                },
+                {
                     "v2.money_management.earned_credit.succeeded", typeof(
                     Events.V2MoneyManagementEarnedCreditSucceededEvent)
                 },
@@ -2301,6 +2327,10 @@ namespace Stripe
                 {
                     "v2.reporting.report_run.updated", typeof(
                     Events.V2ReportingReportRunUpdatedEvent)
+                },
+                {
+                    "v2.risk.evaluation_outcome.delinquency_ready", typeof(
+                    Events.V2RiskEvaluationOutcomeDelinquencyReadyEvent)
                 },
                 {
                     "v2.signals.account_evaluation.complete", typeof(
@@ -3883,6 +3913,26 @@ namespace Stripe
                     Events.V2MoneyManagementDebitDisputeSucceededEventNotification)
                 },
                 {
+                    "v2.money_management.dispute.created", typeof(
+                    Events.V2MoneyManagementDisputeCreatedEventNotification)
+                },
+                {
+                    "v2.money_management.dispute.lost", typeof(
+                    Events.V2MoneyManagementDisputeLostEventNotification)
+                },
+                {
+                    "v2.money_management.dispute.updated", typeof(
+                    Events.V2MoneyManagementDisputeUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.dispute.won", typeof(
+                    Events.V2MoneyManagementDisputeWonEventNotification)
+                },
+                {
+                    "v2.money_management.dispute_adjustment.created", typeof(
+                    Events.V2MoneyManagementDisputeAdjustmentCreatedEventNotification)
+                },
+                {
                     "v2.money_management.earned_credit.succeeded", typeof(
                     Events.V2MoneyManagementEarnedCreditSucceededEventNotification)
                 },
@@ -4337,6 +4387,10 @@ namespace Stripe
                 {
                     "v2.reporting.report_run.updated", typeof(
                     Events.V2ReportingReportRunUpdatedEventNotification)
+                },
+                {
+                    "v2.risk.evaluation_outcome.delinquency_ready", typeof(
+                    Events.V2RiskEvaluationOutcomeDelinquencyReadyEventNotification)
                 },
                 {
                     "v2.signals.account_evaluation.complete", typeof(

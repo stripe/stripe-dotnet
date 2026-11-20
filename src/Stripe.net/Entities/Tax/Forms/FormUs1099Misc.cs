@@ -103,5 +103,15 @@ namespace Stripe.Tax
         [JsonProperty("substitute_payments")]
         [STJS.JsonPropertyName("substitute_payments")]
         public FormUs1099MiscSubstitutePayments SubstitutePayments { get; set; }
+
+        /// <summary>
+        /// The Treasury Tipped Occupation Code stored on the form's payee identity, returned when
+        /// present regardless of reporting year. Contains one three-digit code or two codes
+        /// separated by <c>|</c>, preserving leading zeros. Uses the selected identity for draft
+        /// forms and the identity snapshot for finalized forms. Omitted when no code is recorded.
+        /// </summary>
+        [JsonProperty("treasury_tipped_occupation_code")]
+        [STJS.JsonPropertyName("treasury_tipped_occupation_code")]
+        public string TreasuryTippedOccupationCode { get; set; }
     }
 }

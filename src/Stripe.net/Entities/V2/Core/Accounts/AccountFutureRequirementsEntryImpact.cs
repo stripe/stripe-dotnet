@@ -10,6 +10,14 @@ namespace Stripe.V2.Core
     public class AccountFutureRequirementsEntryImpact : StripeEntity<AccountFutureRequirementsEntryImpact>
     {
         /// <summary>
+        /// Details about funds reserved if the requirement is not collected or satisfactory to
+        /// Stripe.
+        /// </summary>
+        [JsonProperty("reserves_funds")]
+        [STJS.JsonPropertyName("reserves_funds")]
+        public List<AccountFutureRequirementsEntryImpactReservesFund> ReservesFunds { get; set; }
+
+        /// <summary>
         /// The Capabilities that will be restricted if the requirement is not collected and
         /// satisfactory to Stripe.
         /// </summary>

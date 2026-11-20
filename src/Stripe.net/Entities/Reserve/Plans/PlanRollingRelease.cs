@@ -16,9 +16,9 @@ namespace Stripe.Reserve
         public long DaysAfterCharge { get; set; }
 
         /// <summary>
-        /// The number of days after the PaymentIntent's <c>fulfillment_date</c> to reserve funds
-        /// before releasing. Charges without a <c>fulfillment_date</c> use
-        /// <c>days_after_charge</c>.
+        /// The number of days after a payment's <c>fulfillment_date</c> to reserve funds before
+        /// releasing them. The hold releases at midnight UTC that many days after the fulfillment
+        /// date. Charges without a <c>fulfillment_date</c> use <c>days_after_charge</c>.
         /// </summary>
         [JsonProperty("days_after_fulfillment")]
         [STJS.JsonPropertyName("days_after_fulfillment")]

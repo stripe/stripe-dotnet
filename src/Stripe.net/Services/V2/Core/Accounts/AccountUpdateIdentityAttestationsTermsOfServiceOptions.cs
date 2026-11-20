@@ -58,5 +58,12 @@ namespace Stripe.V2.Core
         [JsonProperty("money_manager")]
         [STJS.JsonPropertyName("money_manager")]
         public AccountUpdateIdentityAttestationsTermsOfServiceMoneyManagerOptions MoneyManager { get; set; }
+
+        /// <summary>
+        /// Partial updates to the Account's self-custodial wallet terms of service acceptances.
+        /// </summary>
+        [JsonProperty("self_custodial_wallet")]
+        [STJS.JsonPropertyName("self_custodial_wallet")]
+        public AccountUpdateIdentityAttestationsTermsOfServiceSelfCustodialWalletOptions SelfCustodialWallet { get; set; }
     }
 }

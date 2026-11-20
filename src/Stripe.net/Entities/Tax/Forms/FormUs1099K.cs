@@ -56,5 +56,15 @@ namespace Stripe.Tax
         [JsonProperty("state_income_tax_withheld")]
         [STJS.JsonPropertyName("state_income_tax_withheld")]
         public FormUs1099KStateIncomeTaxWithheld StateIncomeTaxWithheld { get; set; }
+
+        /// <summary>
+        /// The Treasury Tipped Occupation Code stored on the form's payee identity, returned when
+        /// present regardless of reporting year. Contains one three-digit code or two codes
+        /// separated by <c>|</c>, preserving leading zeros. Uses the selected identity for draft
+        /// forms and the identity snapshot for finalized forms. Omitted when no code is recorded.
+        /// </summary>
+        [JsonProperty("treasury_tipped_occupation_code")]
+        [STJS.JsonPropertyName("treasury_tipped_occupation_code")]
+        public string TreasuryTippedOccupationCode { get; set; }
     }
 }

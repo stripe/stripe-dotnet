@@ -48,6 +48,10 @@ namespace Stripe
         [STJS.JsonPropertyName("cashapp")]
         public SetupAttemptPaymentMethodDetailsCashapp Cashapp { get; set; }
 
+        [JsonProperty("getflex")]
+        [STJS.JsonPropertyName("getflex")]
+        public SetupAttemptPaymentMethodDetailsGetflex Getflex { get; set; }
+
         [JsonProperty("id_bank_transfer")]
         [STJS.JsonPropertyName("id_bank_transfer")]
         public SetupAttemptPaymentMethodDetailsIdBankTransfer IdBankTransfer { get; set; }
@@ -95,6 +99,10 @@ namespace Stripe
         [JsonProperty("pix")]
         [STJS.JsonPropertyName("pix")]
         public SetupAttemptPaymentMethodDetailsPix Pix { get; set; }
+
+        [JsonProperty("rakuten_pay")]
+        [STJS.JsonPropertyName("rakuten_pay")]
+        public SetupAttemptPaymentMethodDetailsRakutenPay RakutenPay { get; set; }
 
         [JsonProperty("revolut_pay")]
         [STJS.JsonPropertyName("revolut_pay")]

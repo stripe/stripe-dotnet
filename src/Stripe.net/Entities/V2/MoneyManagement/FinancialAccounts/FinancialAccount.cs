@@ -79,6 +79,13 @@ namespace Stripe.V2.MoneyManagement
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// Settings that control behavior for money movement flows.
+        /// </summary>
+        [JsonProperty("flow_settings")]
+        [STJS.JsonPropertyName("flow_settings")]
+        public FinancialAccountFlowSettings FlowSettings { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>

@@ -19,13 +19,17 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("metronome_commit")]
         public SessionItemMetronomeCommit MetronomeCommit { get; set; }
 
+        [JsonProperty("one_time_price")]
+        [STJS.JsonPropertyName("one_time_price")]
+        public SessionItemOneTimePrice OneTimePrice { get; set; }
+
         [JsonProperty("subscription")]
         [STJS.JsonPropertyName("subscription")]
         public SessionItemSubscription Subscription { get; set; }
 
         /// <summary>
         /// The type of the item.
-        /// One of: <c>metronome_commit</c>, or <c>subscription</c>.
+        /// One of: <c>metronome_commit</c>, <c>one_time_price</c>, or <c>subscription</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

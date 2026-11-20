@@ -20,6 +20,13 @@ namespace Stripe.V2.MoneyManagement
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// Sparse flow setting updates. Omitting a field leaves its current value unchanged.
+        /// </summary>
+        [JsonProperty("flow_settings")]
+        [STJS.JsonPropertyName("flow_settings")]
+        public FinancialAccountUpdateFlowSettingsOptions FlowSettings { get; set; }
+
+        /// <summary>
         /// Forwarding settings for a closed FinancialAccount. Post-close forwarding updates are not
         /// yet implemented.
         /// </summary>

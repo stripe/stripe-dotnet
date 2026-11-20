@@ -8,6 +8,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class InvoiceRenderingTemplateRenderingSettingsInvoicePdfBlock : StripeEntity<InvoiceRenderingTemplateRenderingSettingsInvoicePdfBlock>
     {
+        [JsonProperty("custom_plain_text")]
+        [STJS.JsonPropertyName("custom_plain_text")]
+        public InvoiceRenderingTemplateRenderingSettingsInvoicePdfBlockCustomPlainText CustomPlainText { get; set; }
+
         [JsonProperty("custom_plain_text_cel")]
         [STJS.JsonPropertyName("custom_plain_text_cel")]
         public InvoiceRenderingTemplateRenderingSettingsInvoicePdfBlockCustomPlainTextCel CustomPlainTextCel { get; set; }
@@ -21,9 +25,10 @@ namespace Stripe
 
         /// <summary>
         /// The type of content block.
-        /// One of: <c>custom_plain_text_cel</c>, <c>footer_content</c>, <c>invoice_details</c>,
-        /// <c>line_items</c>, <c>parties</c>, <c>payment_remittance_instructions</c>,
-        /// <c>status_and_memo</c>, <c>tax_footnotes</c>, or <c>title_and_logo</c>.
+        /// One of: <c>custom_plain_text</c>, <c>custom_plain_text_cel</c>, <c>footer_content</c>,
+        /// <c>invoice_details</c>, <c>line_items</c>, <c>parties</c>,
+        /// <c>payment_remittance_instructions</c>, <c>status_and_memo</c>, <c>tax_footnotes</c>, or
+        /// <c>title_and_logo</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

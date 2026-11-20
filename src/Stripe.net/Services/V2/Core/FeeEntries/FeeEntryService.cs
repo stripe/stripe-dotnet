@@ -37,8 +37,9 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// List FeeEntries optionally filtered by incurred_by, fee_batch, or collection_record (at
-        /// most one filter at a time).
+        /// Lists FeeEntries, optionally filtered by <c>incurred_by</c>, <c>fee_batch</c>, or
+        /// <c>collection_record</c>. When filtering by <c>fee_batch</c>, results reflect current
+        /// membership; historical membership is unavailable.
         /// </summary>
         public virtual V2.StripeList<FeeEntry> List(FeeEntryListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -46,8 +47,9 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// List FeeEntries optionally filtered by incurred_by, fee_batch, or collection_record (at
-        /// most one filter at a time).
+        /// Lists FeeEntries, optionally filtered by <c>incurred_by</c>, <c>fee_batch</c>, or
+        /// <c>collection_record</c>. When filtering by <c>fee_batch</c>, results reflect current
+        /// membership; historical membership is unavailable.
         /// </summary>
         public virtual Task<V2.StripeList<FeeEntry>> ListAsync(FeeEntryListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -55,8 +57,9 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// List FeeEntries optionally filtered by incurred_by, fee_batch, or collection_record (at
-        /// most one filter at a time).
+        /// Lists FeeEntries, optionally filtered by <c>incurred_by</c>, <c>fee_batch</c>, or
+        /// <c>collection_record</c>. When filtering by <c>fee_batch</c>, results reflect current
+        /// membership; historical membership is unavailable.
         /// </summary>
         public virtual IEnumerable<FeeEntry> ListAutoPaging(FeeEntryListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -64,8 +67,9 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// List FeeEntries optionally filtered by incurred_by, fee_batch, or collection_record (at
-        /// most one filter at a time).
+        /// Lists FeeEntries, optionally filtered by <c>incurred_by</c>, <c>fee_batch</c>, or
+        /// <c>collection_record</c>. When filtering by <c>fee_batch</c>, results reflect current
+        /// membership; historical membership is unavailable.
         /// </summary>
         public virtual IAsyncEnumerable<FeeEntry> ListAutoPagingAsync(FeeEntryListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

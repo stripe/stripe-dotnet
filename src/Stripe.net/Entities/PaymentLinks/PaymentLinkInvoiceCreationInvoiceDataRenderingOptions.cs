@@ -21,5 +21,13 @@ namespace Stripe
         [JsonProperty("template")]
         [STJS.JsonPropertyName("template")]
         public string Template { get; set; }
+
+        /// <summary>
+        /// The version of the invoice rendering template to be used for the generated invoice. If
+        /// null, the latest version of the template will be used. Only available in unified mode.
+        /// </summary>
+        [JsonProperty("template_version")]
+        [STJS.JsonPropertyName("template_version")]
+        public long? TemplateVersion { get; set; }
     }
 }

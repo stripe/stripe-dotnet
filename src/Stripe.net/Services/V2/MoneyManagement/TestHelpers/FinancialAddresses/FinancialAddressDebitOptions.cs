@@ -27,6 +27,14 @@ namespace Stripe.V2.MoneyManagement.TestHelpers
         public string Network { get; set; }
 
         /// <summary>
+        /// Network-specific details for the simulated debit. Only used for ACH debits; supplied
+        /// details must be valid.
+        /// </summary>
+        [JsonProperty("network_details")]
+        [STJS.JsonPropertyName("network_details")]
+        public FinancialAddressDebitNetworkDetailsOptions NetworkDetails { get; set; }
+
+        /// <summary>
         /// String explaining funds flow. Use this field to populate the statement descriptor of the
         /// ReceivedDebit created as an eventual result of this simulation.
         /// </summary>
