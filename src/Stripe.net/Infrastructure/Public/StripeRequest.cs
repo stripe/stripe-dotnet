@@ -155,6 +155,16 @@ namespace Stripe
         /// bodies), we have to be a little defensive. So, we require that a path starts with a
         /// leading slash.
         /// </para>
+        /// <para>
+        /// We also reject <c>"."</c> and <c>".."</c> segments. <see cref="System.Uri"/>, which the
+        /// default <see cref="SystemNetHttpClient"/> sends and every <see cref="IHttpClient"/>
+        /// receives as <see cref="StripeRequest.Uri"/>, removes them, so an ID of <c>"."</c> or
+        /// <c>".."</c> changes which endpoint is called: retrieving payment method
+        /// <c>"pm_123"</c> of customer <c>".."</c> requests <c>/v1/payment_methods/pm_123</c>
+        /// instead. IDs are escaped with <see cref="System.Net.WebUtility.UrlEncode"/>, which
+        /// leaves dots alone, and <see cref="System.Uri"/> also decodes <c>"%2E"</c> to
+        /// <c>"."</c> first, so we check the decoded segments of the raw path.
+        /// </para>
         /// </remarks>
         /// <param name="path">The relative request path.</param>
         internal static void ValidatePath(string path)
@@ -166,6 +176,28 @@ namespace Stripe
                 throw new ArgumentException(
                     $"Request path must begin with a single \"/\", got: {path}",
                     nameof(path));
+            }
+
+            var pathEnd = path.IndexOfAny(new[] { '?', '#' });
+            var pathOnly = pathEnd < 0 ? path : path.Substring(0, pathEnd);
+            foreach (var segment in pathOnly.Split('/'))
+            {
+                var decoded = segment.ToLowerInvariant().Replace("%2e", ".");
+                if (decoded == "." || decoded == "..")
+                {
+                    // Raised as a StripeException with an invalid_request_error, rather than an
+                    // ArgumentException, so callers' existing handling for API errors keeps
+                    // working.
+                    var message = $"Request path may not contain a \".\" or \"..\" segment, got: {path}";
+                    throw new StripeException(message)
+                    {
+                        StripeError = new StripeError
+                        {
+                            Type = "invalid_request_error",
+                            Message = message,
+                        },
+                    };
+                }
             }
         }
 
