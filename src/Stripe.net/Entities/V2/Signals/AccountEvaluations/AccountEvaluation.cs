@@ -8,7 +8,8 @@ namespace Stripe.V2.Signals
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// Account Evaluation resource for the Signals API.
+    /// Account Evaluation resource for the Signals API. Account evaluations are available
+    /// through the API for 180 days after creation.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountEvaluation : StripeEntity<AccountEvaluation>, IHasId, IHasObject

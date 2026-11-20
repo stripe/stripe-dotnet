@@ -1,0 +1,45 @@
+// File generated from our OpenAPI spec
+namespace Stripe.Events
+{
+    using System.Threading.Tasks;
+    using Newtonsoft.Json;
+    using STJS = System.Text.Json.Serialization;
+
+    /// <summary>
+    /// Sent after a failed attempt if there are still retries available on the
+    /// OffSessionPayment.
+    /// </summary>
+    public class V2PaymentsOffSessionPaymentAttemptFailedEvent : V2.Core.Event
+    {
+        /// <summary>
+        /// Data for the v2.payments.off_session_payment.attempt_failed event.
+        /// </summary>
+        [JsonProperty("data")]
+        [STJS.JsonPropertyName("data")]
+        public V2PaymentsOffSessionPaymentAttemptFailedEventData Data { get; set; }
+
+        /// <summary>
+        /// Object containing the reference to API resource relevant to the event.
+        /// </summary>
+        [JsonProperty("related_object")]
+        [STJS.JsonPropertyName("related_object")]
+        public V2.Core.EventRelatedObject RelatedObject { get; set; }
+
+        /// <summary>
+        /// Asynchronously retrieves the related object from the API. Make an API request on every
+        /// call.
+        /// </summary>
+        public Task<V2.Payments.OffSessionPayment> FetchRelatedObjectAsync()
+        {
+            return this.FetchRelatedObjectAsync<V2.Payments.OffSessionPayment>(this.RelatedObject);
+        }
+
+        /// <summary>
+        /// Retrieves the related object from the API. Make an API request on every call.
+        /// </summary>
+        public V2.Payments.OffSessionPayment FetchRelatedObject()
+        {
+            return this.FetchRelatedObject<V2.Payments.OffSessionPayment>(this.RelatedObject);
+        }
+    }
+}

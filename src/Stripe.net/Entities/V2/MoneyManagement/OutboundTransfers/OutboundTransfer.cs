@@ -100,15 +100,6 @@ namespace Stripe.V2.MoneyManagement
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// A link to the Stripe-hosted receipt for this OutboundTransfer. The receipt link remains
-        /// active for 60 days from the OutboundTransfer creation date. After this period, the link
-        /// will expire and the receipt url value will be null.
-        /// </summary>
-        [JsonProperty("receipt_url")]
-        [STJS.JsonPropertyName("receipt_url")]
-        public string ReceiptUrl { get; set; }
-
-        /// <summary>
         /// The description that appears on the receiving end for an OutboundTransfer (for example,
         /// bank statement for external bank transfer). It will default to <c>STRIPE</c> if not set
         /// on the account settings.

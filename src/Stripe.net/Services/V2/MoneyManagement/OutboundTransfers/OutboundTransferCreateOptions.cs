@@ -10,7 +10,7 @@ namespace Stripe.V2.MoneyManagement
     public class OutboundTransferCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The "presentment amount" for the OutboundPayment.
+        /// The "presentment amount" for the OutboundTransfer.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
@@ -25,7 +25,9 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// An arbitrary string attached to the OutboundTransfer. Often useful for displaying to
-        /// users.
+        /// users. The description can not be longer than 100 characters and can only contain basic
+        /// Latin characters and spaces. The following special characters are not allowed:
+        /// &lt;&gt;'"* .
         /// </summary>
         [JsonProperty("description")]
         [STJS.JsonPropertyName("description")]

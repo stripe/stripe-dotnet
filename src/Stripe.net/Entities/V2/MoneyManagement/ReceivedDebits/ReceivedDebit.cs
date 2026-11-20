@@ -74,13 +74,6 @@ namespace Stripe.V2.MoneyManagement
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// A link to the Stripe-hosted receipt for this ReceivedDebit.
-        /// </summary>
-        [JsonProperty("receipt_url")]
-        [STJS.JsonPropertyName("receipt_url")]
-        public string ReceiptUrl { get; set; }
-
-        /// <summary>
         /// Open Enum. The status of the ReceivedDebit.
         /// One of: <c>canceled</c>, <c>failed</c>, <c>pending</c>, <c>returned</c>, or
         /// <c>succeeded</c>.

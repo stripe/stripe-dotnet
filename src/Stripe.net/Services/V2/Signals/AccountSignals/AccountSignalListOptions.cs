@@ -18,6 +18,22 @@ namespace Stripe.V2.Signals
         public AccountSignalListAccountDetailsOptions AccountDetails { get; set; }
 
         /// <summary>
+        /// Filter signals by their creation timestamp before latest-per-type selection and
+        /// pagination.
+        /// </summary>
+        [JsonProperty("created")]
+        [STJS.JsonPropertyName("created")]
+        public AccountSignalListCreatedOptions Created { get; set; }
+
+        /// <summary>
+        /// Whether to return only the latest matching signal for each requested type. Defaults to
+        /// true. Set to false to include matching historical signals.
+        /// </summary>
+        [JsonProperty("latest_per_type")]
+        [STJS.JsonPropertyName("latest_per_type")]
+        public bool? LatestPerType { get; set; }
+
+        /// <summary>
         /// Signal types to filter by.
         /// One of: <c>fraudulent_merchant</c>, <c>fraudulent_website</c>,
         /// <c>user_account_sharing</c>, or <c>user_multi_accounting</c>.

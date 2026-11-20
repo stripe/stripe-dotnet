@@ -29,13 +29,21 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// The action that was requested.
-        /// One of: <c>charge.create</c>, <c>dispute.close</c>,
+        /// One of: <c>api_key.create</c>, <c>api_key.delete</c>, <c>api_key.rotate</c>,
+        /// <c>api_key.update</c>, <c>approval_rule.create</c>, <c>approval_rule.delete</c>,
+        /// <c>approval_rule.update</c>, <c>charge.create</c>, <c>connected_account.create</c>,
+        /// <c>credit_note.create</c>, <c>currency_conversions.money_management.create</c>,
+        /// <c>customer_balance_transaction.create</c>, <c>dispute.close</c>,
         /// <c>inbound_transfers.money_management.create</c>, <c>invoice.create</c>,
         /// <c>outbound_payments.money_management.create</c>,
         /// <c>outbound_transfers.money_management.create</c>, <c>payment_intent.create</c>,
         /// <c>payment_intent.update</c>, <c>payout.create</c>, <c>price.update</c>,
         /// <c>refund.create</c>, <c>setup_intent.create</c>, <c>subscription.create</c>,
-        /// <c>subscription.update</c>, <c>topup.create</c>, or <c>transfer.create</c>.
+        /// <c>subscription.update</c>, <c>tax.customization.create</c>,
+        /// <c>tax.customization.delete</c>, <c>tax.customization.update</c>,
+        /// <c>tax.registration_application.submit</c>, <c>tax.registration.create</c>,
+        /// <c>tax.registration.delete</c>, <c>tax.registration.update</c>, <c>topup.create</c>, or
+        /// <c>transfer.create</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

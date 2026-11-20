@@ -75,15 +75,5 @@ namespace Stripe.V2.MoneyManagement
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
         public bool Livemode { get; set; }
-
-        /// <summary>
-        /// A link to the Stripe-hosted receipt provided when money movement is regulated under
-        /// Stripe's money transmission licenses. You can use this link to view the receipt for 60
-        /// days after the Adjustment is created. After that, the link expires and
-        /// <c>receipt_url</c> is <c>null</c>.
-        /// </summary>
-        [JsonProperty("receipt_url")]
-        [STJS.JsonPropertyName("receipt_url")]
-        public string ReceiptUrl { get; set; }
     }
 }

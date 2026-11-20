@@ -10,7 +10,8 @@ namespace Stripe.V2.Signals
     /// An automatically evaluated signal on an account. Each Account Signal object corresponds
     /// to exactly one signal type, indicated by type. Only the type-specific field is
     /// populated; other type-specific payload fields are null. If an account has multiple
-    /// signals, Stripe creates separate account signal objects.
+    /// signals, Stripe creates separate account signal objects. Account signals are available
+    /// through the API for 180 days after creation.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountSignal : StripeEntity<AccountSignal>, IHasId, IHasObject

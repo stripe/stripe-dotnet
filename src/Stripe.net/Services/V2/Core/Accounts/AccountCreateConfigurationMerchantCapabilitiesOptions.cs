@@ -58,6 +58,14 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationMerchantCapabilitiesAuBecsDebitPaymentsOptions AuBecsDebitPayments { get; set; }
 
         /// <summary>
+        /// Allow the merchant to be a "tax-only" merchant, enabling a reduced set of KYC
+        /// requirements strictly focused on enabling Stripe Tax.
+        /// </summary>
+        [JsonProperty("automatic_indirect_tax")]
+        [STJS.JsonPropertyName("automatic_indirect_tax")]
+        public AccountCreateConfigurationMerchantCapabilitiesAutomaticIndirectTaxOptions AutomaticIndirectTax { get; set; }
+
+        /// <summary>
         /// Allow the merchant to process BACS Direct Debit payments.
         /// </summary>
         [JsonProperty("bacs_debit_payments")]
