@@ -7,11 +7,10 @@ namespace Stripe.Events
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// Represents a synchronous request for authorization, see <a
-    /// href="https://docs.stripe.com/issuing/purchases/authorizations#authorization-handling">Using
-    /// your integration to handle authorization requests</a>.
+    /// Occurs whenever a user uninstalls a Stripe app. Sent to the app developer, embedding
+    /// platform, and installing merchant.
     /// </summary>
-    public class V1IssuingAuthorizationRequestEventNotification : V2.Core.EventNotification
+    public class V1AppsInstallDeletedEventNotification : V2.Core.EventNotification
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -24,27 +23,27 @@ namespace Stripe.Events
         /// Asynchronously retrieves the related object from the API. Make an API request on every
         /// call.
         /// </summary>
-        public Task<Issuing.Authorization> FetchRelatedObjectAsync()
+        public Task<Apps.Install> FetchRelatedObjectAsync()
         {
-            return this.FetchRelatedObjectAsync<Issuing.Authorization>(this.RelatedObject);
+            return this.FetchRelatedObjectAsync<Apps.Install>(this.RelatedObject);
         }
 
         /// <summary>
         /// Retrieves the related object from the API. Make an API request on every call.
         /// </summary>
-        public Issuing.Authorization FetchRelatedObject()
+        public Apps.Install FetchRelatedObject()
         {
-            return this.FetchRelatedObject<Issuing.Authorization>(this.RelatedObject);
+            return this.FetchRelatedObject<Apps.Install>(this.RelatedObject);
         }
 
-        public V1IssuingAuthorizationRequestEvent FetchEvent()
+        public V1AppsInstallDeletedEvent FetchEvent()
         {
-            return this.FetchEvent<V1IssuingAuthorizationRequestEvent>();
+            return this.FetchEvent<V1AppsInstallDeletedEvent>();
         }
 
-        public Task<V1IssuingAuthorizationRequestEvent> FetchEventAsync()
+        public Task<V1AppsInstallDeletedEvent> FetchEventAsync()
         {
-            return this.FetchEventAsync<V1IssuingAuthorizationRequestEvent>();
+            return this.FetchEventAsync<V1AppsInstallDeletedEvent>();
         }
     }
 }

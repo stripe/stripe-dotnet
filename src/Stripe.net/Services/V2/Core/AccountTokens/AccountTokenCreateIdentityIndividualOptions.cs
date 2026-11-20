@@ -110,7 +110,11 @@ namespace Stripe.V2.Core
         public List<string> Nationalities { get; set; }
 
         /// <summary>
-        /// The individual's phone number.
+        /// The individual's phone number. You can include a country calling code prefixed with
+        /// <c>+</c>, for example <c>+12025550123</c>, or omit it, for example <c>2025550123</c>.
+        /// Spaces, hyphens, periods, and parentheses are optional and accepted. Numbers beginning
+        /// with <c>+</c> are checked against the numbering rules for their country calling code,
+        /// including valid prefixes and number lengths.
         /// </summary>
         [JsonProperty("phone")]
         [STJS.JsonPropertyName("phone")]

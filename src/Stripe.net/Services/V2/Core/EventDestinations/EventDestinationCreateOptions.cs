@@ -92,6 +92,16 @@ namespace Stripe.V2.Core
         public string SnapshotApiVersion { get; set; }
 
         /// <summary>
+        /// The initial status of the destination. Defaults to <c>enabled</c>. A destination created
+        /// as <c>disabled</c> receives no delivery attempts until it is enabled. After creation,
+        /// use the enable and disable actions to change the status.
+        /// One of: <c>disabled</c>, or <c>enabled</c>.
+        /// </summary>
+        [JsonProperty("status")]
+        [STJS.JsonPropertyName("status")]
+        public string Status { get; set; }
+
+        /// <summary>
         /// The delivery transport. Chosen when the destination is created and cannot be changed by
         /// update.
         /// One of: <c>amazon_eventbridge</c>, <c>azure_event_grid</c>, or <c>webhook_endpoint</c>.

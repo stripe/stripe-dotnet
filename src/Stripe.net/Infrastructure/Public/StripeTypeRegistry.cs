@@ -295,6 +295,9 @@ namespace Stripe
                     Events.V1ApplicationFeeRefundUpdatedEvent)
                 },
                 { "v1.application_fee.refunded", typeof(Events.V1ApplicationFeeRefundedEvent) },
+                { "v1.apps.install.created", typeof(Events.V1AppsInstallCreatedEvent) },
+                { "v1.apps.install.deleted", typeof(Events.V1AppsInstallDeletedEvent) },
+                { "v1.apps.install.updated", typeof(Events.V1AppsInstallUpdatedEvent) },
                 { "v1.balance.available", typeof(Events.V1BalanceAvailableEvent) },
                 { "v1.balance_settings.updated", typeof(Events.V1BalanceSettingsUpdatedEvent) },
                 { "v1.billing.alert.triggered", typeof(Events.V1BillingAlertTriggeredEvent) },
@@ -695,10 +698,6 @@ namespace Stripe
                 {
                     "v1.issuing_authorization.created", typeof(
                     Events.V1IssuingAuthorizationCreatedEvent)
-                },
-                {
-                    "v1.issuing_authorization.request", typeof(
-                    Events.V1IssuingAuthorizationRequestEvent)
                 },
                 {
                     "v1.issuing_authorization.updated", typeof(
@@ -1240,6 +1239,18 @@ namespace Stripe
                     "v1.application_fee.refunded", typeof(
                     Events.V1ApplicationFeeRefundedEventNotification)
                 },
+                {
+                    "v1.apps.install.created", typeof(
+                    Events.V1AppsInstallCreatedEventNotification)
+                },
+                {
+                    "v1.apps.install.deleted", typeof(
+                    Events.V1AppsInstallDeletedEventNotification)
+                },
+                {
+                    "v1.apps.install.updated", typeof(
+                    Events.V1AppsInstallUpdatedEventNotification)
+                },
                 { "v1.balance.available", typeof(Events.V1BalanceAvailableEventNotification) },
                 {
                     "v1.balance_settings.updated", typeof(
@@ -1727,10 +1738,6 @@ namespace Stripe
                 {
                     "v1.issuing_authorization.created", typeof(
                     Events.V1IssuingAuthorizationCreatedEventNotification)
-                },
-                {
-                    "v1.issuing_authorization.request", typeof(
-                    Events.V1IssuingAuthorizationRequestEventNotification)
                 },
                 {
                     "v1.issuing_authorization.updated", typeof(

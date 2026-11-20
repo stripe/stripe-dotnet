@@ -10,6 +10,8 @@ namespace Stripe.V2.Core
     {
         /// <summary>
         /// Enables this Account to receive /v1/transfers into their Stripe Balance (/v1/balance).
+        /// Use this capability if the Account will not be the Merchant of Record, like with
+        /// Separate Charges &amp; Transfers, or Destination Charges without on_behalf_of set.
         /// </summary>
         [JsonProperty("stripe_transfers")]
         [STJS.JsonPropertyName("stripe_transfers")]
