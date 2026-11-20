@@ -20,6 +20,26 @@ namespace StripeTests
                 apiBase: "https://client.example.com");
         }
 
+        public static TheoryData<string> DotSegmentPaths => new TheoryData<string>
+        {
+            // System.Uri removes these segments, so each request would reach a different
+            // endpoint than the one the path was built for.
+            "/v1/checkout/sessions/.",
+            "/v1/checkout/sessions/..",
+            "/v1/customers/../payment_methods/pm_123",
+            "/v1/customers/./payment_methods/pm_123",
+            "/v1/customers/cus_123/sources/..?expand[]=customer",
+            "/v2/core/accounts/.",
+
+            // System.Uri treats everything after a '#' as a fragment, so the ".." is still a segment.
+            "/v1/checkout/sessions/..#fragment",
+
+            // System.Uri decodes "%2E" to "." before removing dot segments.
+            "/v1/checkout/sessions/%2E",
+            "/v1/checkout/sessions/%2e%2E",
+            "/v1/checkout/sessions/.%2E",
+        };
+
         [Fact]
         public void Ctor_GetRequest()
         {
@@ -320,6 +340,16 @@ namespace StripeTests
 
         // A backslash does not open an authority: the '/' already closed it.
         [InlineData("/v1/\\evil.example")]
+
+        // Dots are fine anywhere other than a whole "." or ".." segment.
+        [InlineData("/v1/reporting/report_types/balance.summary.1")]
+        [InlineData("/v1/customers/...")]
+        [InlineData("/v1/customers/.cus_123")]
+        [InlineData("/v1/customers/cus_123..")]
+        [InlineData("/v1/customers?email=a..b%40example.com")]
+
+        // A double-encoded dot reaches the API as the literal "%2E".
+        [InlineData("/v1/customers/%252E")]
         public void AssertOriginRelativePath_AcceptsOriginRelativePaths(string path)
         {
             StripeRequest.ValidatePath(path);
@@ -345,6 +375,19 @@ namespace StripeTests
         {
             Assert.Throws<ArgumentException>(() =>
                 StripeRequest.ValidatePath(path));
+        }
+
+        [Theory]
+        [MemberData(nameof(DotSegmentPaths))]
+        public void ValidatePath_RejectsDotSegmentPaths(string path)
+        {
+            var exception = Assert.Throws<StripeException>(() =>
+                StripeRequest.ValidatePath(path));
+
+            Assert.Equal("invalid_request_error", exception.StripeError.Type);
+            Assert.Equal(
+                $"Request path may not contain a \".\" or \"..\" segment, got: {path}",
+                exception.Message);
         }
 
         [Fact]

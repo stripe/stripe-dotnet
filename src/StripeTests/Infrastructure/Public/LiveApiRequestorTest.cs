@@ -654,6 +654,85 @@ namespace StripeTests
             Assert.Throws<InvalidOperationException>(() => this.apiRequestor.RawRequest(HttpMethod.Get, "/", "abc"));
         }
 
+        [Theory]
+        [MemberData(nameof(StripeRequestTest.DotSegmentPaths), MemberType = typeof(StripeRequestTest))]
+        public async Task RequestAsync_RejectsDotSegmentPathWithoutSendingRequest(string path)
+        {
+            var exception = await Assert.ThrowsAsync<StripeException>(() =>
+                this.apiRequestor.RequestAsync<Charge>(
+                    BaseAddress.Api,
+                    HttpMethod.Get,
+                    path,
+                    null,
+                    this.requestOptions));
+
+            Assert.Equal("invalid_request_error", exception.StripeError.Type);
+            Assert.Null(this.httpClient.LastRequest);
+        }
+
+        [Fact]
+        public void RawRequest_RejectsDotSegmentPathWithoutSendingRequest()
+        {
+            var exception = Assert.Throws<StripeException>(() =>
+                this.apiRequestor.RawRequest(HttpMethod.Get, "/v1/checkout/sessions/.."));
+
+            Assert.Equal("invalid_request_error", exception.StripeError.Type);
+            Assert.Null(this.httpClient.LastRequest);
+        }
+
+        [Theory]
+        [InlineData(".")]
+        [InlineData("..")]
+        public void ServiceGet_RejectsDotIdWithoutSendingRequest(string id)
+        {
+            var client = this.BuildStripeClient();
+
+            var exception = Assert.Throws<StripeException>(() =>
+                client.V1.Checkout.Sessions.Get(id));
+
+            Assert.Equal("invalid_request_error", exception.StripeError.Type);
+            Assert.Null(this.httpClient.LastRequest);
+        }
+
+        [Theory]
+        [InlineData(".")]
+        [InlineData("..")]
+        public async Task ServiceGetAsync_RejectsDotIdWithoutSendingRequest(string id)
+        {
+            var client = this.BuildStripeClient();
+
+            var exception = await Assert.ThrowsAsync<StripeException>(() =>
+                client.V1.Checkout.Sessions.GetAsync(id));
+
+            Assert.Equal("invalid_request_error", exception.StripeError.Type);
+            Assert.Null(this.httpClient.LastRequest);
+        }
+
+        [Fact]
+        public void NestedServiceGet_RejectsDotParentIdWithoutSendingRequest()
+        {
+            var client = this.BuildStripeClient();
+
+            var exception = Assert.Throws<StripeException>(() =>
+                client.V1.Customers.PaymentMethods.Get("..", "pm_123"));
+
+            Assert.Equal("invalid_request_error", exception.StripeError.Type);
+            Assert.Null(this.httpClient.LastRequest);
+        }
+
+        [Theory]
+        [InlineData(".")]
+        [InlineData("..")]
+        public void LegacyServiceGet_RejectsDotIdWithoutSendingRequest(string id)
+        {
+            var service = new Stripe.Checkout.SessionService(this.BuildStripeClient());
+
+            var exception = Assert.Throws<StripeException>(() => service.Get(id));
+
+            Assert.Equal("invalid_request_error", exception.StripeError.Type);
+            Assert.Null(this.httpClient.LastRequest);
+        }
+
         [Fact]
         public void Deserialize()
         {
@@ -894,6 +973,15 @@ namespace StripeTests
             var message = new HttpResponseMessage();
             message.Headers.Add(name, value);
             return message.Headers;
+        }
+
+        private StripeClient BuildStripeClient()
+        {
+            return new StripeClient(new StripeClientOptions
+            {
+                ApiKey = "sk_test_123",
+                HttpClient = this.httpClient,
+            });
         }
 
         private class Foo : StripeEntity<Foo>
