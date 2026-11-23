@@ -187,8 +187,9 @@ namespace Stripe
                 {
                     // Raised as a StripeException with an invalid_request_error, rather than an
                     // ArgumentException, so callers' existing handling for API errors keeps
-                    // working.
-                    var message = $"Request path may not contain a \".\" or \"..\" segment, got: {path}";
+                    // working. The message leaves out the query string, which can carry secrets
+                    // such as a client_secret.
+                    var message = $"Request path may not contain a \".\" or \"..\" segment, got: {pathOnly}";
                     throw new StripeException(message)
                     {
                         StripeError = new StripeError

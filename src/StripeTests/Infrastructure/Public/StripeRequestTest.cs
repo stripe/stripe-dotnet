@@ -386,8 +386,18 @@ namespace StripeTests
 
             Assert.Equal("invalid_request_error", exception.StripeError.Type);
             Assert.Equal(
-                $"Request path may not contain a \".\" or \"..\" segment, got: {path}",
+                $"Request path may not contain a \".\" or \"..\" segment, got: {path.Split('?', '#')[0]}",
                 exception.Message);
+        }
+
+        [Fact]
+        public void ValidatePath_DotSegmentErrorOmitsQueryString()
+        {
+            var exception = Assert.Throws<StripeException>(() =>
+                StripeRequest.ValidatePath("/v1/payment_intents/..?client_secret=pi_123_secret_456"));
+
+            Assert.Contains("/v1/payment_intents/..", exception.Message);
+            Assert.DoesNotContain("pi_123_secret_456", exception.Message);
         }
 
         [Fact]
