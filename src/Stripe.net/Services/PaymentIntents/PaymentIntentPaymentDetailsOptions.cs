@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -8,12 +9,30 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentPaymentDetailsOptions : INestedOptions, IHasSetTracking
     {
+        private List<PaymentIntentPaymentDetailsCarRentalDatumOptions> carRentalData;
         private string customerReference;
+        private List<PaymentIntentPaymentDetailsLodgingDatumOptions> lodgingData;
         private string orderReference;
 
         [JsonIgnore]
         [STJS.JsonIgnore]
         internal SetTracker SetTracker { get; } = new SetTracker();
+
+        /// <summary>
+        /// Car rental data for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("car_rental_data", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("car_rental_data")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public List<PaymentIntentPaymentDetailsCarRentalDatumOptions> CarRentalData
+        {
+            get => this.carRentalData;
+            set
+            {
+                this.carRentalData = value;
+                this.SetTracker.Track();
+            }
+        }
 
         /// <summary>
         /// A unique value to identify the customer. This field is available only for card payments.
@@ -30,6 +49,22 @@ namespace Stripe
             set
             {
                 this.customerReference = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// Lodging data for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("lodging_data", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("lodging_data")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public List<PaymentIntentPaymentDetailsLodgingDatumOptions> LodgingData
+        {
+            get => this.lodgingData;
+            set
+            {
+                this.lodgingData = value;
                 this.SetTracker.Track();
             }
         }

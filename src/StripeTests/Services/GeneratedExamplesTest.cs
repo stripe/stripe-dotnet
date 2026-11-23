@@ -15898,12 +15898,16 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/account_links",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.account_link\",\"account\":\"account\",\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":\"1970-01-10T15:36:51.170Z\",\"livemode\":true,\"url\":\"url\",\"use_case\":{\"type\":\"account_onboarding\"}}");
+                "{\"object\":\"v2.core.account_link\",\"account\":\"account\",\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":\"1970-01-10T15:36:51.170Z\",\"livemode\":true,\"url\":\"url\",\"use_case\":{\"type\":\"account_dashboard\"}}");
             var options = new Stripe.V2.Core.AccountLinkCreateOptions
             {
                 Account = "account",
                 UseCase = new Stripe.V2.Core.AccountLinkCreateUseCaseOptions
                 {
+                    AccountDashboard = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountDashboardOptions
+                    {
+                        RefreshUrl = "refresh_url",
+                    },
                     AccountOnboarding = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountOnboardingOptions
                     {
                         CollectionOptions = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountOnboardingCollectionOptionsOptions
@@ -15924,7 +15928,7 @@ namespace StripeTests
                         RefreshUrl = "refresh_url",
                         ReturnUrl = "return_url",
                     },
-                    Type = "account_onboarding",
+                    Type = "account_dashboard",
                 },
             };
             var client = new StripeClient(this.Requestor);
@@ -15940,12 +15944,16 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/account_links",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.core.account_link\",\"account\":\"account\",\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":\"1970-01-10T15:36:51.170Z\",\"livemode\":true,\"url\":\"url\",\"use_case\":{\"type\":\"account_onboarding\"}}");
+                "{\"object\":\"v2.core.account_link\",\"account\":\"account\",\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":\"1970-01-10T15:36:51.170Z\",\"livemode\":true,\"url\":\"url\",\"use_case\":{\"type\":\"account_dashboard\"}}");
             var options = new Stripe.V2.Core.AccountLinkCreateOptions
             {
                 Account = "account",
                 UseCase = new Stripe.V2.Core.AccountLinkCreateUseCaseOptions
                 {
+                    AccountDashboard = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountDashboardOptions
+                    {
+                        RefreshUrl = "refresh_url",
+                    },
                     AccountOnboarding = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountOnboardingOptions
                     {
                         CollectionOptions = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountOnboardingCollectionOptionsOptions
@@ -15966,7 +15974,7 @@ namespace StripeTests
                         RefreshUrl = "refresh_url",
                         ReturnUrl = "return_url",
                     },
-                    Type = "account_onboarding",
+                    Type = "account_dashboard",
                 },
             };
             var client = new StripeClient(this.Requestor);
@@ -16038,6 +16046,134 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v2/core/account_tokens/id_123");
+        }
+
+        [Fact]
+        public void TestV2CoreClaimableSandboxPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/claimable_sandboxes",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.core.claimable_sandbox\",\"channel\":\"testing\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"prefill\":{\"country\":\"country\",\"email\":\"email\",\"name\":\"name\"},\"sandbox_details\":{\"account\":\"account\"},\"status\":\"live\"}");
+            var options = new Stripe.V2.Core.ClaimableSandboxCreateOptions
+            {
+                EnableMcpAccess = true,
+                OnboardingLinkDetails = new Stripe.V2.Core.ClaimableSandboxCreateOnboardingLinkDetailsOptions
+                {
+                    RefreshUrl = "refresh_url",
+                    ReturnUrl = "return_url",
+                },
+                Prefill = new Stripe.V2.Core.ClaimableSandboxCreatePrefillOptions
+                {
+                    Country = "country",
+                    Email = "email",
+                    Name = "name",
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.ClaimableSandboxes;
+            Stripe.V2.Core.ClaimableSandbox claimableSandbox = service.Create(
+                options);
+            this.AssertRequest(HttpMethod.Post, "/v2/core/claimable_sandboxes");
+        }
+
+        [Fact]
+        public async Task TestV2CoreClaimableSandboxPostAsync()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/claimable_sandboxes",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.core.claimable_sandbox\",\"channel\":\"testing\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"prefill\":{\"country\":\"country\",\"email\":\"email\",\"name\":\"name\"},\"sandbox_details\":{\"account\":\"account\"},\"status\":\"live\"}");
+            var options = new Stripe.V2.Core.ClaimableSandboxCreateOptions
+            {
+                EnableMcpAccess = true,
+                OnboardingLinkDetails = new Stripe.V2.Core.ClaimableSandboxCreateOnboardingLinkDetailsOptions
+                {
+                    RefreshUrl = "refresh_url",
+                    ReturnUrl = "return_url",
+                },
+                Prefill = new Stripe.V2.Core.ClaimableSandboxCreatePrefillOptions
+                {
+                    Country = "country",
+                    Email = "email",
+                    Name = "name",
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.ClaimableSandboxes;
+            Stripe.V2.Core.ClaimableSandbox claimableSandbox = await service
+                .CreateAsync(options);
+            this.AssertRequest(HttpMethod.Post, "/v2/core/claimable_sandboxes");
+        }
+
+        [Fact]
+        public void TestV2CoreClaimableSandboxGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/claimable_sandboxes/id_123",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.core.claimable_sandbox\",\"channel\":\"testing\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"prefill\":{\"country\":\"country\",\"email\":\"email\",\"name\":\"name\"},\"sandbox_details\":{\"account\":\"account\"},\"status\":\"live\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.ClaimableSandboxes;
+            Stripe.V2.Core.ClaimableSandbox claimableSandbox = service.Get(
+                "id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/claimable_sandboxes/id_123");
+        }
+
+        [Fact]
+        public async Task TestV2CoreClaimableSandboxGetAsync()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/claimable_sandboxes/id_123",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.core.claimable_sandbox\",\"channel\":\"testing\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"prefill\":{\"country\":\"country\",\"email\":\"email\",\"name\":\"name\"},\"sandbox_details\":{\"account\":\"account\"},\"status\":\"live\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.ClaimableSandboxes;
+            Stripe.V2.Core.ClaimableSandbox claimableSandbox = await service
+                .GetAsync("id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/claimable_sandboxes/id_123");
+        }
+
+        [Fact]
+        public void TestV2CoreClaimableSandboxPost2()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/claimable_sandboxes/id_123/renew_onboarding_link",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.core.claimable_sandbox\",\"channel\":\"testing\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"prefill\":{\"country\":\"country\",\"email\":\"email\",\"name\":\"name\"},\"sandbox_details\":{\"account\":\"account\"},\"status\":\"live\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.ClaimableSandboxes;
+            Stripe.V2.Core.ClaimableSandbox claimableSandbox = service
+                .RenewOnboardingLink("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/claimable_sandboxes/id_123/renew_onboarding_link");
+        }
+
+        [Fact]
+        public async Task TestV2CoreClaimableSandboxPost2Async()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/claimable_sandboxes/id_123/renew_onboarding_link",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.core.claimable_sandbox\",\"channel\":\"testing\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"prefill\":{\"country\":\"country\",\"email\":\"email\",\"name\":\"name\"},\"sandbox_details\":{\"account\":\"account\"},\"status\":\"live\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.ClaimableSandboxes;
+            Stripe.V2.Core.ClaimableSandbox claimableSandbox = await service
+                .RenewOnboardingLinkAsync("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/claimable_sandboxes/id_123/renew_onboarding_link");
         }
 
         [Fact]
