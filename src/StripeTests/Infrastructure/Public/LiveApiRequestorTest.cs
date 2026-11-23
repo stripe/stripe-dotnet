@@ -658,7 +658,7 @@ namespace StripeTests
         [MemberData(nameof(StripeRequestTest.DotSegmentPaths), MemberType = typeof(StripeRequestTest))]
         public async Task RequestAsync_RejectsDotSegmentPathWithoutSendingRequest(string path)
         {
-            var exception = await Assert.ThrowsAsync<StripeException>(() =>
+            var exception = await Assert.ThrowsAsync<ArgumentException>(() =>
                 this.apiRequestor.RequestAsync<Charge>(
                     BaseAddress.Api,
                     HttpMethod.Get,
@@ -666,17 +666,17 @@ namespace StripeTests
                     null,
                     this.requestOptions));
 
-            Assert.Equal("invalid_request_error", exception.StripeError.Type);
+            Assert.Contains("may not contain a \".\" or \"..\" segment", exception.Message);
             Assert.Null(this.httpClient.LastRequest);
         }
 
         [Fact]
         public void RawRequest_RejectsDotSegmentPathWithoutSendingRequest()
         {
-            var exception = Assert.Throws<StripeException>(() =>
+            var exception = Assert.Throws<ArgumentException>(() =>
                 this.apiRequestor.RawRequest(HttpMethod.Get, "/v1/checkout/sessions/.."));
 
-            Assert.Equal("invalid_request_error", exception.StripeError.Type);
+            Assert.Contains("may not contain a \".\" or \"..\" segment", exception.Message);
             Assert.Null(this.httpClient.LastRequest);
         }
 
@@ -687,10 +687,10 @@ namespace StripeTests
         {
             var client = this.BuildStripeClient();
 
-            var exception = Assert.Throws<StripeException>(() =>
+            var exception = Assert.Throws<ArgumentException>(() =>
                 client.V1.Checkout.Sessions.Get(id));
 
-            Assert.Equal("invalid_request_error", exception.StripeError.Type);
+            Assert.Contains("may not contain a \".\" or \"..\" segment", exception.Message);
             Assert.Null(this.httpClient.LastRequest);
         }
 
@@ -701,10 +701,10 @@ namespace StripeTests
         {
             var client = this.BuildStripeClient();
 
-            var exception = await Assert.ThrowsAsync<StripeException>(() =>
+            var exception = await Assert.ThrowsAsync<ArgumentException>(() =>
                 client.V1.Checkout.Sessions.GetAsync(id));
 
-            Assert.Equal("invalid_request_error", exception.StripeError.Type);
+            Assert.Contains("may not contain a \".\" or \"..\" segment", exception.Message);
             Assert.Null(this.httpClient.LastRequest);
         }
 
@@ -713,10 +713,10 @@ namespace StripeTests
         {
             var client = this.BuildStripeClient();
 
-            var exception = Assert.Throws<StripeException>(() =>
+            var exception = Assert.Throws<ArgumentException>(() =>
                 client.V1.Customers.PaymentMethods.Get("..", "pm_123"));
 
-            Assert.Equal("invalid_request_error", exception.StripeError.Type);
+            Assert.Contains("may not contain a \".\" or \"..\" segment", exception.Message);
             Assert.Null(this.httpClient.LastRequest);
         }
 
@@ -727,9 +727,9 @@ namespace StripeTests
         {
             var service = new Stripe.Checkout.SessionService(this.BuildStripeClient());
 
-            var exception = Assert.Throws<StripeException>(() => service.Get(id));
+            var exception = Assert.Throws<ArgumentException>(() => service.Get(id));
 
-            Assert.Equal("invalid_request_error", exception.StripeError.Type);
+            Assert.Contains("may not contain a \".\" or \"..\" segment", exception.Message);
             Assert.Null(this.httpClient.LastRequest);
         }
 

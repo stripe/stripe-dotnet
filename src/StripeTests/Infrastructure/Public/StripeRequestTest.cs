@@ -381,11 +381,10 @@ namespace StripeTests
         [MemberData(nameof(DotSegmentPaths))]
         public void ValidatePath_RejectsDotSegmentPaths(string path)
         {
-            var exception = Assert.Throws<StripeException>(() =>
+            var exception = Assert.Throws<ArgumentException>(() =>
                 StripeRequest.ValidatePath(path));
 
-            Assert.Equal("invalid_request_error", exception.StripeError.Type);
-            Assert.Equal(
+            Assert.StartsWith(
                 $"Request path may not contain a \".\" or \"..\" segment, got: {path.Split('?', '#')[0]}",
                 exception.Message);
         }
@@ -393,7 +392,7 @@ namespace StripeTests
         [Fact]
         public void ValidatePath_DotSegmentErrorOmitsQueryString()
         {
-            var exception = Assert.Throws<StripeException>(() =>
+            var exception = Assert.Throws<ArgumentException>(() =>
                 StripeRequest.ValidatePath("/v1/payment_intents/..?client_secret=pi_123_secret_456"));
 
             Assert.Contains("/v1/payment_intents/..", exception.Message);

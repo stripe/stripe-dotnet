@@ -185,19 +185,11 @@ namespace Stripe
                 var decoded = segment.ToLowerInvariant().Replace("%2e", ".");
                 if (decoded == "." || decoded == "..")
                 {
-                    // Raised as a StripeException with an invalid_request_error, rather than an
-                    // ArgumentException, so callers' existing handling for API errors keeps
-                    // working. The message leaves out the query string, which can carry secrets
-                    // such as a client_secret.
-                    var message = $"Request path may not contain a \".\" or \"..\" segment, got: {pathOnly}";
-                    throw new StripeException(message)
-                    {
-                        StripeError = new StripeError
-                        {
-                            Type = "invalid_request_error",
-                            Message = message,
-                        },
-                    };
+                    // The message leaves out the query string, which can carry secrets such as a
+                    // client_secret.
+                    throw new ArgumentException(
+                        $"Request path may not contain a \".\" or \"..\" segment, got: {pathOnly}",
+                        nameof(path));
                 }
             }
         }
