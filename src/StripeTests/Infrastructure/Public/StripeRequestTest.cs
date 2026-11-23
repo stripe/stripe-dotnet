@@ -38,6 +38,12 @@ namespace StripeTests
             "/v1/checkout/sessions/%2E",
             "/v1/checkout/sessions/%2e%2E",
             "/v1/checkout/sessions/.%2E",
+
+            // A proxy that decodes "%2F" before removing dot segments turns these into real path
+            // separators.
+            "/v1/coupons/x%2F..%2F..%2Fcustomers%2Fcus_B",
+            "/v1/customers/cus_123/sources/..%2F..%2Fcus_B",
+            "/v1/coupons/..%2fsummer",
         };
 
         [Fact]
@@ -350,6 +356,9 @@ namespace StripeTests
 
         // A double-encoded dot reaches the API as the literal "%2E".
         [InlineData("/v1/customers/%252E")]
+
+        // An encoded slash is fine as long as no piece around it is a dot segment.
+        [InlineData("/v1/coupons/summer%2F2017")]
         public void AssertOriginRelativePath_AcceptsOriginRelativePaths(string path)
         {
             StripeRequest.ValidatePath(path);

@@ -709,6 +709,18 @@ namespace StripeTests
         }
 
         [Fact]
+        public void ServiceGet_RejectsIdWithEncodedDotSegmentsWithoutSendingRequest()
+        {
+            var client = this.BuildStripeClient();
+
+            var exception = Assert.Throws<ArgumentException>(() =>
+                client.V1.Coupons.Get("x/../../customers/cus_B"));
+
+            Assert.Contains("may not contain a \".\" or \"..\" segment", exception.Message);
+            Assert.Null(this.httpClient.LastRequest);
+        }
+
+        [Fact]
         public void NestedServiceGet_RejectsDotParentIdWithoutSendingRequest()
         {
             var client = this.BuildStripeClient();
