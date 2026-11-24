@@ -155,6 +155,19 @@ namespace Stripe
         /// bodies), we have to be a little defensive. So, we require that a path starts with a
         /// leading slash.
         /// </para>
+        /// <para>
+        /// We also reject <c>"."</c> and <c>".."</c> segments. <see cref="System.Uri"/>, which the
+        /// default <see cref="SystemNetHttpClient"/> sends and every <see cref="IHttpClient"/>
+        /// receives as <see cref="StripeRequest.Uri"/>, removes them, so an ID of <c>"."</c> or
+        /// <c>".."</c> changes which endpoint is called: retrieving payment method
+        /// <c>"pm_123"</c> of customer <c>".."</c> requests <c>/v1/payment_methods/pm_123</c>
+        /// instead. IDs are escaped with <see cref="System.Net.WebUtility.UrlEncode"/>, which
+        /// leaves dots alone, and <see cref="System.Uri"/> also decodes <c>"%2E"</c> to
+        /// <c>"."</c> first, so we check the decoded segments of the raw path. An encoded slash
+        /// (<c>"%2F"</c>) also counts as a separator for this check, because a proxy that decodes
+        /// the path before normalizing it (nginx's <c>proxy_pass</c>, for example) turns it into
+        /// a real one.
+        /// </para>
         /// </remarks>
         /// <param name="path">The relative request path.</param>
         internal static void ValidatePath(string path)
@@ -166,6 +179,21 @@ namespace Stripe
                 throw new ArgumentException(
                     $"Request path must begin with a single \"/\", got: {path}",
                     nameof(path));
+            }
+
+            var pathEnd = path.IndexOfAny(new[] { '?', '#' });
+            var pathOnly = pathEnd < 0 ? path : path.Substring(0, pathEnd);
+            foreach (var segment in pathOnly.ToLowerInvariant().Replace("%2f", "/").Split('/'))
+            {
+                var decoded = segment.Replace("%2e", ".");
+                if (decoded == "." || decoded == "..")
+                {
+                    // The message leaves out the query string, which can carry secrets such as a
+                    // client_secret.
+                    throw new ArgumentException(
+                        $"Request path may not contain a \".\" or \"..\" segment, got: {pathOnly}",
+                        nameof(path));
+                }
             }
         }
 
