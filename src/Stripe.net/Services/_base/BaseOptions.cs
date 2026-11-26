@@ -18,12 +18,19 @@ namespace Stripe
         [STJS.JsonIgnore]
         internal SetTracker SetTracker { get; } = new SetTracker();
 
+#nullable enable annotations
         /// <summary>Specifies which fields in the response should be expanded.</summary>
+        /// <remarks>
+        /// This property is null by default. When setting it in an object initializer,
+        /// create a new list: <c>Expand = new List&lt;string&gt; { "discounts" }</c>.
+        /// You can also call <see cref="AddExpand(string)"/> on an existing options object.
+        /// </remarks>
         [JsonProperty("expand", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("expand")]
 
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
-        public List<string> Expand { get; set; }
+        public List<string>? Expand { get; set; }
+#nullable restore annotations
 
         /// <summary>Dictionary containing extra request parameters.</summary>
         [JsonExtensionData]
