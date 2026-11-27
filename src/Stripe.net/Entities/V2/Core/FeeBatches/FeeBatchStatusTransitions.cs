@@ -15,5 +15,13 @@ namespace Stripe.V2.Core
         [JsonProperty("billed_at")]
         [STJS.JsonPropertyName("billed_at")]
         public DateTime? BilledAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// Present only when <c>status=canceled</c>; <c>billed_at</c> and <c>canceled_at</c> are
+        /// mutually exclusive.
+        /// </summary>
+        [JsonProperty("canceled_at")]
+        [STJS.JsonPropertyName("canceled_at")]
+        public DateTime? CanceledAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

@@ -9,6 +9,10 @@ namespace Stripe
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ConfirmationTokenPaymentMethodPreviewCardPresent : StripeEntity<ConfirmationTokenPaymentMethodPreviewCardPresent>
     {
+        [JsonProperty("benefits")]
+        [STJS.JsonPropertyName("benefits")]
+        public ConfirmationTokenPaymentMethodPreviewCardPresentBenefits Benefits { get; set; }
+
         /// <summary>
         /// Card brand. Can be <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,
         /// <c>eftpos_au</c>, <c>jcb</c>, <c>link</c>, <c>mastercard</c>, <c>unionpay</c>,

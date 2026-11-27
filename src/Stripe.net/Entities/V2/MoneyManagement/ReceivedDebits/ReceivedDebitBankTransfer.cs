@@ -26,7 +26,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// The bank network the debit was originated on.
-        /// One of: <c>ach</c>, or <c>bacs</c>.
+        /// One of: <c>ach</c>, <c>bacs</c>, or <c>sepa</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -44,7 +44,7 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Deprecated: Use <c>bank_transfer.originating_bank_account.type</c> instead. Open Enum.
         /// Indicates the origin type through which this debit was initiated.
-        /// One of: <c>gb_bank_account</c>, or <c>us_bank_account</c>.
+        /// One of: <c>gb_bank_account</c>, <c>sepa_bank_account</c>, or <c>us_bank_account</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Deprecated: Use <c>bank_transfer.originating_bank_account.type</c> instead. Open Enum.
         /// The type of the payment method used to originate the debit.
-        /// One of: <c>gb_bank_account</c>, or <c>us_bank_account</c>.
+        /// One of: <c>gb_bank_account</c>, <c>sepa_bank_account</c>, or <c>us_bank_account</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

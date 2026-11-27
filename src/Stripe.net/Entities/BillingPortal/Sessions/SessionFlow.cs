@@ -20,6 +20,13 @@ namespace Stripe.BillingPortal
         public SessionFlowCustomerUpdate CustomerUpdate { get; set; }
 
         /// <summary>
+        /// Configuration when <c>flow.type=payment_method_update</c>.
+        /// </summary>
+        [JsonProperty("payment_method_update")]
+        [STJS.JsonPropertyName("payment_method_update")]
+        public SessionFlowPaymentMethodUpdate PaymentMethodUpdate { get; set; }
+
+        /// <summary>
         /// Configuration when <c>flow.type=subscription_cancel</c>.
         /// </summary>
         [JsonProperty("subscription_cancel")]

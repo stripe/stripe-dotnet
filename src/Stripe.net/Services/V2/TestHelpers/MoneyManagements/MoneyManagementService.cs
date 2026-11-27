@@ -9,6 +9,8 @@ namespace Stripe.V2.TestHelpers
 
     public class MoneyManagementService : Service
     {
+        private V2.TestHelpers.MoneyManagement.InboundTransferService inboundTransfers;
+
         internal MoneyManagementService(ApiRequestor requestor)
             : base(requestor)
         {
@@ -18,6 +20,9 @@ namespace Stripe.V2.TestHelpers
             : base(client)
         {
         }
+
+        public virtual V2.TestHelpers.MoneyManagement.InboundTransferService InboundTransfers => this.inboundTransfers ??= new V2.TestHelpers.MoneyManagement.InboundTransferService(
+            this.Requestor);
 
         /// <summary>
         /// Creates a RecipientVerification with a specified match result for testing purposes in a

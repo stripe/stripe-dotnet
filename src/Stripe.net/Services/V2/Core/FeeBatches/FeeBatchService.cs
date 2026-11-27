@@ -37,7 +37,10 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// List FeeBatches optionally filtered by collection_record.
+        /// Lists FeeBatches, optionally filtered by <c>collection_record</c>, <c>statuses</c>, or
+        /// creation time. If <c>statuses</c> is omitted or empty, only pending and billed
+        /// FeeBatches are returned. Canceled FeeBatches are returned only when explicitly
+        /// requested.
         /// </summary>
         public virtual V2.StripeList<FeeBatch> List(FeeBatchListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -45,7 +48,10 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// List FeeBatches optionally filtered by collection_record.
+        /// Lists FeeBatches, optionally filtered by <c>collection_record</c>, <c>statuses</c>, or
+        /// creation time. If <c>statuses</c> is omitted or empty, only pending and billed
+        /// FeeBatches are returned. Canceled FeeBatches are returned only when explicitly
+        /// requested.
         /// </summary>
         public virtual Task<V2.StripeList<FeeBatch>> ListAsync(FeeBatchListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -53,7 +59,10 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// List FeeBatches optionally filtered by collection_record.
+        /// Lists FeeBatches, optionally filtered by <c>collection_record</c>, <c>statuses</c>, or
+        /// creation time. If <c>statuses</c> is omitted or empty, only pending and billed
+        /// FeeBatches are returned. Canceled FeeBatches are returned only when explicitly
+        /// requested.
         /// </summary>
         public virtual IEnumerable<FeeBatch> ListAutoPaging(FeeBatchListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -61,7 +70,10 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// List FeeBatches optionally filtered by collection_record.
+        /// Lists FeeBatches, optionally filtered by <c>collection_record</c>, <c>statuses</c>, or
+        /// creation time. If <c>statuses</c> is omitted or empty, only pending and billed
+        /// FeeBatches are returned. Canceled FeeBatches are returned only when explicitly
+        /// requested.
         /// </summary>
         public virtual IAsyncEnumerable<FeeBatch> ListAutoPagingAsync(FeeBatchListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

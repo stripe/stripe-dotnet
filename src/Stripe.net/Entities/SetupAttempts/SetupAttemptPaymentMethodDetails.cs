@@ -12,6 +12,10 @@ namespace Stripe
         [STJS.JsonPropertyName("acss_debit")]
         public SetupAttemptPaymentMethodDetailsAcssDebit AcssDebit { get; set; }
 
+        [JsonProperty("aeon_pay")]
+        [STJS.JsonPropertyName("aeon_pay")]
+        public SetupAttemptPaymentMethodDetailsAeonPay AeonPay { get; set; }
+
         [JsonProperty("amazon_pay")]
         [STJS.JsonPropertyName("amazon_pay")]
         public SetupAttemptPaymentMethodDetailsAmazonPay AmazonPay { get; set; }
@@ -19,6 +23,10 @@ namespace Stripe
         [JsonProperty("au_becs_debit")]
         [STJS.JsonPropertyName("au_becs_debit")]
         public SetupAttemptPaymentMethodDetailsAuBecsDebit AuBecsDebit { get; set; }
+
+        [JsonProperty("au_pay")]
+        [STJS.JsonPropertyName("au_pay")]
+        public SetupAttemptPaymentMethodDetailsAuPay AuPay { get; set; }
 
         [JsonProperty("bacs_debit")]
         [STJS.JsonPropertyName("bacs_debit")]
@@ -44,9 +52,21 @@ namespace Stripe
         [STJS.JsonPropertyName("card_present")]
         public SetupAttemptPaymentMethodDetailsCardPresent CardPresent { get; set; }
 
+        [JsonProperty("carecredit")]
+        [STJS.JsonPropertyName("carecredit")]
+        public SetupAttemptPaymentMethodDetailsCarecredit Carecredit { get; set; }
+
         [JsonProperty("cashapp")]
         [STJS.JsonPropertyName("cashapp")]
         public SetupAttemptPaymentMethodDetailsCashapp Cashapp { get; set; }
+
+        [JsonProperty("dbarai")]
+        [STJS.JsonPropertyName("dbarai")]
+        public SetupAttemptPaymentMethodDetailsDbarai Dbarai { get; set; }
+
+        [JsonProperty("getflex")]
+        [STJS.JsonPropertyName("getflex")]
+        public SetupAttemptPaymentMethodDetailsGetflex Getflex { get; set; }
 
         [JsonProperty("id_bank_transfer")]
         [STJS.JsonPropertyName("id_bank_transfer")]
@@ -72,6 +92,10 @@ namespace Stripe
         [STJS.JsonPropertyName("link")]
         public SetupAttemptPaymentMethodDetailsLink Link { get; set; }
 
+        [JsonProperty("merpay")]
+        [STJS.JsonPropertyName("merpay")]
+        public SetupAttemptPaymentMethodDetailsMerpay Merpay { get; set; }
+
         [JsonProperty("naver_pay")]
         [STJS.JsonPropertyName("naver_pay")]
         public SetupAttemptPaymentMethodDetailsNaverPay NaverPay { get; set; }
@@ -95,6 +119,10 @@ namespace Stripe
         [JsonProperty("pix")]
         [STJS.JsonPropertyName("pix")]
         public SetupAttemptPaymentMethodDetailsPix Pix { get; set; }
+
+        [JsonProperty("rakuten_pay")]
+        [STJS.JsonPropertyName("rakuten_pay")]
+        public SetupAttemptPaymentMethodDetailsRakutenPay RakutenPay { get; set; }
 
         [JsonProperty("revolut_pay")]
         [STJS.JsonPropertyName("revolut_pay")]

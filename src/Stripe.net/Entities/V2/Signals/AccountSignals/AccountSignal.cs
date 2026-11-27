@@ -108,7 +108,7 @@ namespace Stripe.V2.Signals
         /// One of: <c>account_takeover</c>, <c>customer_risk</c>, <c>fraudulent_merchant</c>,
         /// <c>fraudulent_website</c>, <c>merchant_delinquency</c>,
         /// <c>payment_delinquency_exposure</c>, <c>user_account_sharing</c>, <c>user_affinity</c>,
-        /// or <c>user_multi_accounting</c>.
+        /// <c>user_buyer_classification</c>, or <c>user_multi_accounting</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -130,6 +130,14 @@ namespace Stripe.V2.Signals
         [JsonProperty("user_affinity")]
         [STJS.JsonPropertyName("user_affinity")]
         public AccountSignalUserAffinity UserAffinity { get; set; }
+
+        /// <summary>
+        /// Data for the user buyer classification signal. Present only when type is
+        /// user_buyer_classification.
+        /// </summary>
+        [JsonProperty("user_buyer_classification")]
+        [STJS.JsonPropertyName("user_buyer_classification")]
+        public AccountSignalUserBuyerClassification UserBuyerClassification { get; set; }
 
         /// <summary>
         /// Data for the user multi-accounting signal. Present only when type is

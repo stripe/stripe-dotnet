@@ -44,6 +44,15 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("template")]
         public string Template { get; set; }
 
+        /// <summary>
+        /// The specific version of the invoice rendering template to use for this invoice. If not
+        /// specified, the latest version of the template will be used. Only available in unified
+        /// mode.
+        /// </summary>
+        [JsonProperty("template_version")]
+        [STJS.JsonPropertyName("template_version")]
+        public long? TemplateVersion { get; set; }
+
         bool IHasSetTracking.IsPropertySet(string propertyName)
         {
             return this.SetTracker.IsSet(propertyName);

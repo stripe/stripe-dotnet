@@ -9,12 +9,14 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsOptions : INestedOptions, IHasSetTracking
     {
         private PaymentIntentPaymentMethodOptionsAcssDebitOptions acssDebit;
+        private PaymentIntentPaymentMethodOptionsAeonPayOptions aeonPay;
         private PaymentIntentPaymentMethodOptionsAffirmOptions affirm;
         private PaymentIntentPaymentMethodOptionsAfterpayClearpayOptions afterpayClearpay;
         private PaymentIntentPaymentMethodOptionsAlipayOptions alipay;
         private PaymentIntentPaymentMethodOptionsAlmaOptions alma;
         private PaymentIntentPaymentMethodOptionsAmazonPayOptions amazonPay;
         private PaymentIntentPaymentMethodOptionsAuBecsDebitOptions auBecsDebit;
+        private PaymentIntentPaymentMethodOptionsAuPayOptions auPay;
         private PaymentIntentPaymentMethodOptionsBacsDebitOptions bacsDebit;
         private PaymentIntentPaymentMethodOptionsBancontactOptions bancontact;
         private PaymentIntentPaymentMethodOptionsBillieOptions billie;
@@ -26,6 +28,7 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsCashappOptions cashapp;
         private PaymentIntentPaymentMethodOptionsCryptoOptions crypto;
         private PaymentIntentPaymentMethodOptionsCustomerBalanceOptions customerBalance;
+        private PaymentIntentPaymentMethodOptionsDbaraiOptions dbarai;
         private PaymentIntentPaymentMethodOptionsEpsOptions eps;
         private PaymentIntentPaymentMethodOptionsFpxOptions fpx;
         private PaymentIntentPaymentMethodOptionsGetflexOptions getflex;
@@ -42,6 +45,7 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsKrCardOptions krCard;
         private PaymentIntentPaymentMethodOptionsLinkOptions link;
         private PaymentIntentPaymentMethodOptionsMbWayOptions mbWay;
+        private PaymentIntentPaymentMethodOptionsMerpayOptions merpay;
         private PaymentIntentPaymentMethodOptionsMobilepayOptions mobilepay;
         private PaymentIntentPaymentMethodOptionsMultibancoOptions multibanco;
         private PaymentIntentPaymentMethodOptionsNaverPayOptions naverPay;
@@ -57,6 +61,7 @@ namespace Stripe
         private PaymentIntentPaymentMethodOptionsPixOptions pix;
         private PaymentIntentPaymentMethodOptionsPromptpayOptions promptpay;
         private PaymentIntentPaymentMethodOptionsQrisOptions qris;
+        private PaymentIntentPaymentMethodOptionsRakutenPayOptions rakutenPay;
         private PaymentIntentPaymentMethodOptionsRechnungOptions rechnung;
         private PaymentIntentPaymentMethodOptionsRevolutPayOptions revolutPay;
         private PaymentIntentPaymentMethodOptionsSamsungPayOptions samsungPay;
@@ -95,6 +100,23 @@ namespace Stripe
             set
             {
                 this.acssDebit = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If this is a <c>aeon_pay</c> PaymentMethod, this sub-hash contains details about the
+        /// AEON Pay payment method options.
+        /// </summary>
+        [JsonProperty("aeon_pay", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("aeon_pay")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsAeonPayOptions AeonPay
+        {
+            get => this.aeonPay;
+            set
+            {
+                this.aeonPay = value;
                 this.SetTracker.Track();
             }
         }
@@ -197,6 +219,23 @@ namespace Stripe
             set
             {
                 this.auBecsDebit = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If this is a <c>au_pay</c> PaymentMethod, this sub-hash contains details about the au
+        /// PAY payment method options.
+        /// </summary>
+        [JsonProperty("au_pay", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("au_pay")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsAuPayOptions AuPay
+        {
+            get => this.auPay;
+            set
+            {
+                this.auPay = value;
                 this.SetTracker.Track();
             }
         }
@@ -391,6 +430,23 @@ namespace Stripe
             set
             {
                 this.customerBalance = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If this is a <c>dbarai</c> PaymentMethod, this sub-hash contains details about the
+        /// d-Barai payment method options.
+        /// </summary>
+        [JsonProperty("dbarai", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("dbarai")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsDbaraiOptions Dbarai
+        {
+            get => this.dbarai;
+            set
+            {
+                this.dbarai = value;
                 this.SetTracker.Track();
             }
         }
@@ -668,6 +724,23 @@ namespace Stripe
         }
 
         /// <summary>
+        /// If this is a <c>merpay</c> PaymentMethod, this sub-hash contains details about the
+        /// Merpay payment method options.
+        /// </summary>
+        [JsonProperty("merpay", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("merpay")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsMerpayOptions Merpay
+        {
+            get => this.merpay;
+            set
+            {
+                this.merpay = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
         /// If this is a <c>MobilePay</c> PaymentMethod, this sub-hash contains details about the
         /// MobilePay payment method options.
         /// </summary>
@@ -918,6 +991,23 @@ namespace Stripe
             set
             {
                 this.qris = value;
+                this.SetTracker.Track();
+            }
+        }
+
+        /// <summary>
+        /// If this is a <c>rakuten_pay</c> PaymentMethod, this sub-hash contains details about the
+        /// Rakuten Pay payment method options.
+        /// </summary>
+        [JsonProperty("rakuten_pay", NullValueHandling = NullValueHandling.Ignore)]
+        [STJS.JsonPropertyName("rakuten_pay")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+        public PaymentIntentPaymentMethodOptionsRakutenPayOptions RakutenPay
+        {
+            get => this.rakutenPay;
+            set
+            {
+                this.rakutenPay = value;
                 this.SetTracker.Track();
             }
         }

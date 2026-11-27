@@ -125,7 +125,9 @@ namespace Stripe.TestHelpers.Issuing
 
         /// <summary>
         /// Details about the seller (grocery store, e-commerce website, etc.) where the card
-        /// authorization happened.
+        /// authorization happened. Provide <c>merchant_data.state</c> and
+        /// <c>merchant_data.postal_code</c> only if <c>merchant_data.country</c> is <c>US</c> or
+        /// <c>CA</c>, or they will be ignored.
         /// </summary>
         [JsonProperty("merchant_data")]
         [STJS.JsonPropertyName("merchant_data")]

@@ -134,6 +134,10 @@ namespace Stripe
         [STJS.JsonPropertyName("card")]
         public PaymentMethodConfigurationCard Card { get; set; }
 
+        [JsonProperty("carecredit")]
+        [STJS.JsonPropertyName("carecredit")]
+        public PaymentMethodConfigurationCarecredit Carecredit { get; set; }
+
         [JsonProperty("cartes_bancaires")]
         [STJS.JsonPropertyName("cartes_bancaires")]
         public PaymentMethodConfigurationCartesBancaires CartesBancaires { get; set; }
@@ -161,6 +165,10 @@ namespace Stripe
         [JsonProperty("fpx")]
         [STJS.JsonPropertyName("fpx")]
         public PaymentMethodConfigurationFpx Fpx { get; set; }
+
+        [JsonProperty("getflex")]
+        [STJS.JsonPropertyName("getflex")]
+        public PaymentMethodConfigurationGetflex Getflex { get; set; }
 
         [JsonProperty("giropay")]
         [STJS.JsonPropertyName("giropay")]
@@ -335,6 +343,10 @@ namespace Stripe
         [JsonProperty("sequra")]
         [STJS.JsonPropertyName("sequra")]
         public PaymentMethodConfigurationSequra Sequra { get; set; }
+
+        [JsonProperty("sezzle")]
+        [STJS.JsonPropertyName("sezzle")]
+        public PaymentMethodConfigurationSezzle Sezzle { get; set; }
 
         [JsonProperty("shopeepay")]
         [STJS.JsonPropertyName("shopeepay")]

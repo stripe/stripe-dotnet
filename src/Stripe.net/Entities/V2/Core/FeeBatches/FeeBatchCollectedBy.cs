@@ -10,7 +10,8 @@ namespace Stripe.V2.Core
     {
         /// <summary>
         /// The type of entity that collected this batch.
-        /// One of: <c>application</c>, <c>network</c>, or <c>stripe</c>.
+        /// One of: <c>application</c>, <c>network</c>, <c>shared_payment_token_issuer</c>, or
+        /// <c>stripe</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

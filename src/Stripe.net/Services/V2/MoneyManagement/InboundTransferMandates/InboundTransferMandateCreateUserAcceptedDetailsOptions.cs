@@ -10,7 +10,7 @@ namespace Stripe.V2.MoneyManagement
     public class InboundTransferMandateCreateUserAcceptedDetailsOptions : INestedOptions
     {
         /// <summary>
-        /// When the merchant accepted the mandate. Must be a past timestamp. For direct account
+        /// When the account holder accepted the mandate. Must be in the past. For direct account
         /// requests, defaults to the mandate's creation time when not supplied.
         /// </summary>
         [JsonProperty("accepted_at")]

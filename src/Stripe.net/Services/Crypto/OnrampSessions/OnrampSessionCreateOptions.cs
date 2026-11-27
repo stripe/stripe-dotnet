@@ -140,6 +140,14 @@ namespace Stripe.Crypto
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// ID of a card PaymentMethod (pm_...) owned by the authenticated merchant. Only supported
+        /// for headless sessions. Mutually exclusive with <c>payment_token</c>.
+        /// </summary>
+        [JsonProperty("payment_method")]
+        [STJS.JsonPropertyName("payment_method")]
+        public string PaymentMethod { get; set; }
+
+        /// <summary>
         /// Speed at which the cryptocurrency is delivered to the wallet One of: <c>instant</c>
         /// (default): crypto is delivered when payment is confirmed <c>standard</c>: crypto is
         /// delivered when payment settles.

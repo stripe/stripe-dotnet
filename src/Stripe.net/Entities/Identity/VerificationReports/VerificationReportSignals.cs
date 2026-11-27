@@ -27,5 +27,9 @@ namespace Stripe.Identity
         [JsonProperty("fraudulent_selfie")]
         [STJS.JsonPropertyName("fraudulent_selfie")]
         public VerificationReportSignalsFraudulentSelfie FraudulentSelfie { get; set; }
+
+        [JsonProperty("suspicious_behavior")]
+        [STJS.JsonPropertyName("suspicious_behavior")]
+        public VerificationReportSignalsSuspiciousBehavior SuspiciousBehavior { get; set; }
     }
 }

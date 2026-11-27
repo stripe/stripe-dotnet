@@ -16,6 +16,13 @@ namespace Stripe.V2.MoneyManagement
         public ReceivedDebitBankTransferOriginatingBankAccountAba Aba { get; set; }
 
         /// <summary>
+        /// Creditor details. Present when type is <c>iban</c>.
+        /// </summary>
+        [JsonProperty("iban")]
+        [STJS.JsonPropertyName("iban")]
+        public ReceivedDebitBankTransferOriginatingBankAccountIban Iban { get; set; }
+
+        /// <summary>
         /// Details of the originating account. Present when type is <c>sort_code</c>.
         /// </summary>
         [JsonProperty("sort_code")]
@@ -24,7 +31,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// The credential type identifying the originating bank account.
-        /// One of: <c>aba</c>, or <c>sort_code</c>.
+        /// One of: <c>aba</c>, <c>iban</c>, or <c>sort_code</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

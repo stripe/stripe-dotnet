@@ -2,6 +2,7 @@
 namespace Stripe.V2.Core
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -50,5 +51,17 @@ namespace Stripe.V2.Core
         [JsonProperty("created_lte")]
         [STJS.JsonPropertyName("created_lte")]
         public DateTime? CreatedLte { get; set; }
+
+        /// <summary>
+        /// Filters FeeBatches by status. Multiple values use OR semantics. When omitted or empty,
+        /// returns <c>pending</c> and <c>billed</c> FeeBatches. To return canceled FeeBatches,
+        /// include <c>canceled</c>.
+        /// One of: <c>billed</c>, <c>canceled</c>, or <c>pending</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
+        /// </summary>
+        [JsonProperty("statuses")]
+        [STJS.JsonPropertyName("statuses")]
+        public List<string> Statuses { get; set; }
     }
 }

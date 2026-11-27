@@ -30,14 +30,15 @@ namespace Stripe
 
         /// <summary>
         /// For automatic Stripe payouts only, only returns transactions that were paid out on the
-        /// specified payout ID.
+        /// specified payout ID. You can't combine this parameter with <c>source</c>.
         /// </summary>
         [JsonProperty("payout")]
         [STJS.JsonPropertyName("payout")]
         public string Payout { get; set; }
 
         /// <summary>
-        /// Only returns transactions associated with the given object.
+        /// Only returns transactions associated with the given object. You can't combine this
+        /// parameter with <c>payout</c>.
         /// </summary>
         [JsonProperty("source")]
         [STJS.JsonPropertyName("source")]

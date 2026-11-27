@@ -82,6 +82,14 @@ namespace Stripe.V2.MoneyManagement
         public ReceivedDebitDisputeDetails DisputeDetails { get; set; }
 
         /// <summary>
+        /// Has the value <c>true</c> if the object has an associated Dispute otherwise or the value
+        /// <c>false</c>. Use the Disputes List API with <c>target</c> to see details.
+        /// </summary>
+        [JsonProperty("disputed")]
+        [STJS.JsonPropertyName("disputed")]
+        public bool Disputed { get; set; }
+
+        /// <summary>
         /// The amount and currency of the original/external debit request.
         /// </summary>
         [JsonProperty("external_amount")]

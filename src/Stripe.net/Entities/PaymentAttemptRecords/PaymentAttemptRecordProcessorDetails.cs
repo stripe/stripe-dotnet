@@ -32,6 +32,13 @@ namespace Stripe
         public PaymentAttemptRecordProcessorDetailsGivex Givex { get; set; }
 
         /// <summary>
+        /// Represents the Stripe processor. This resource consists of details specific to Stripe.
+        /// </summary>
+        [JsonProperty("stripe")]
+        [STJS.JsonPropertyName("stripe")]
+        public PaymentAttemptRecordProcessorDetailsStripe Stripe { get; set; }
+
+        /// <summary>
         /// Represents the SVS gift card processor.
         /// </summary>
         [JsonProperty("svs")]
@@ -40,7 +47,8 @@ namespace Stripe
 
         /// <summary>
         /// The processor used for this payment attempt.
-        /// One of: <c>custom</c>, <c>fiserv_valuelink</c>, <c>givex</c>, or <c>svs</c>.
+        /// One of: <c>custom</c>, <c>fiserv_valuelink</c>, <c>givex</c>, <c>stripe</c>, or
+        /// <c>svs</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

@@ -41,9 +41,11 @@ namespace Stripe.V2.MoneyManagement
         public string Type { get; set; }
 
         /// <summary>
-        /// Optional acceptance evidence collected from the merchant. Direct account calls can omit
-        /// details that are derived from request metadata. Platform calls creating a mandate for a
-        /// connected account must provide accepted_at, online.ip_address, and online.user_agent.
+        /// Acceptance evidence collected from the account holder. Required when a platform creates
+        /// a mandate for a connected account. Include that account's ID in the <a
+        /// href="https://stripe.com/context">Stripe-Context header</a>, and provide accepted_at,
+        /// online.ip_address, and online.user_agent. Direct account calls can omit details that
+        /// Stripe derives from request metadata.
         /// </summary>
         [JsonProperty("user_accepted_details")]
         [STJS.JsonPropertyName("user_accepted_details")]

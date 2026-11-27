@@ -23,6 +23,13 @@ namespace Stripe.V2.Core
         public FeeEntryChargedByNetwork Network { get; set; }
 
         /// <summary>
+        /// Details for a referral fee charged by a Shared Payment Token issuer.
+        /// </summary>
+        [JsonProperty("shared_payment_token_issuer")]
+        [STJS.JsonPropertyName("shared_payment_token_issuer")]
+        public FeeEntryChargedBySharedPaymentTokenIssuer SharedPaymentTokenIssuer { get; set; }
+
+        /// <summary>
         /// Details for a fee charged by Stripe.
         /// </summary>
         [JsonProperty("stripe")]
@@ -31,7 +38,8 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// The type of entity that charged this fee.
-        /// One of: <c>application</c>, <c>network</c>, or <c>stripe</c>.
+        /// One of: <c>application</c>, <c>network</c>, <c>shared_payment_token_issuer</c>, or
+        /// <c>stripe</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

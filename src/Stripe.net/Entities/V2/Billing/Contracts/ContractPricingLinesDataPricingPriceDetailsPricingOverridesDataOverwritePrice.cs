@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Billing
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
@@ -8,6 +9,37 @@ namespace Stripe.V2.Billing
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ContractPricingLinesDataPricingPriceDetailsPricingOverridesDataOverwritePrice : StripeEntity<ContractPricingLinesDataPricingPriceDetailsPricingOverridesDataOverwritePrice>
     {
+        /// <summary>
+        /// Defines whether the price override is billed per unit or by tiers.
+        /// One of: <c>per_unit</c>, or <c>tiered</c>.
+        /// </summary>
+        [JsonProperty("billing_scheme")]
+        [STJS.JsonPropertyName("billing_scheme")]
+        public string BillingScheme { get; set; }
+
+        /// <summary>
+        /// Defines whether the tiered price should be graduated or volume-based.
+        /// One of: <c>graduated</c>, or <c>volume</c>.
+        /// </summary>
+        [JsonProperty("tiering_mode")]
+        [STJS.JsonPropertyName("tiering_mode")]
+        public string TieringMode { get; set; }
+
+        /// <summary>
+        /// Each element represents a pricing tier.
+        /// </summary>
+        [JsonProperty("tiers")]
+        [STJS.JsonPropertyName("tiers")]
+        public List<ContractPricingLinesDataPricingPriceDetailsPricingOverridesDataOverwritePriceTier> Tiers { get; set; }
+
+        /// <summary>
+        /// Defines whether the tiered price should be graduated or volume-based.
+        /// One of: <c>graduated</c>, or <c>volume</c>.
+        /// </summary>
+        [JsonProperty("tiers_mode")]
+        [STJS.JsonPropertyName("tiers_mode")]
+        public string TiersMode { get; set; }
+
         /// <summary>
         /// The per-unit amount to be charged, represented as a decimal string in minor currency
         /// units.

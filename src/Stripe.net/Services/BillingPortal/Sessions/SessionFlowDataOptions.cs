@@ -16,6 +16,13 @@ namespace Stripe.BillingPortal
         public SessionFlowDataAfterCompletionOptions AfterCompletion { get; set; }
 
         /// <summary>
+        /// Configuration when <c>flow_data.type=payment_method_update</c>.
+        /// </summary>
+        [JsonProperty("payment_method_update")]
+        [STJS.JsonPropertyName("payment_method_update")]
+        public SessionFlowDataPaymentMethodUpdateOptions PaymentMethodUpdate { get; set; }
+
+        /// <summary>
         /// Configuration when <c>flow_data.type=subscription_cancel</c>.
         /// </summary>
         [JsonProperty("subscription_cancel")]

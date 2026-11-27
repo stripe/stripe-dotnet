@@ -14,5 +14,12 @@ namespace Stripe.Terminal
         [JsonProperty("enable_customer_cancellation")]
         [STJS.JsonPropertyName("enable_customer_cancellation")]
         public bool EnableCustomerCancellation { get; set; }
+
+        /// <summary>
+        /// Represents the destination gift card configuration for a refund.
+        /// </summary>
+        [JsonProperty("gift_card")]
+        [STJS.JsonPropertyName("gift_card")]
+        public ReaderActionRefundPaymentRefundPaymentConfigGiftCard GiftCard { get; set; }
     }
 }

@@ -58,5 +58,13 @@ namespace Stripe.V2.Core
         [JsonProperty("money_manager")]
         [STJS.JsonPropertyName("money_manager")]
         public AccountIdentityAttestationsTermsOfServiceMoneyManager MoneyManager { get; set; }
+
+        /// <summary>
+        /// Details on the Account's acceptance of self-custodial wallet terms of service. Absent
+        /// when neither acceptance is recorded.
+        /// </summary>
+        [JsonProperty("self_custodial_wallet")]
+        [STJS.JsonPropertyName("self_custodial_wallet")]
+        public AccountIdentityAttestationsTermsOfServiceSelfCustodialWallet SelfCustodialWallet { get; set; }
     }
 }

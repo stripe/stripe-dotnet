@@ -16,6 +16,13 @@ namespace Stripe.V2.MoneyManagement
         public string AccountHolderName { get; set; }
 
         /// <summary>
+        /// ACH-specific authorization details. Present when <c>network</c> is <c>ach</c>.
+        /// </summary>
+        [JsonProperty("ach")]
+        [STJS.JsonPropertyName("ach")]
+        public SpendingMandateBankTransferAch Ach { get; set; }
+
+        /// <summary>
         /// The financial address associated with this mandate.
         /// </summary>
         [JsonProperty("financial_address")]
@@ -24,7 +31,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// The bank transfer network for this mandate.
-        /// One of: <c>bacs</c>.
+        /// One of: <c>ach</c>, <c>bacs</c>, or <c>sepa</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -33,8 +40,8 @@ namespace Stripe.V2.MoneyManagement
         public string Network { get; set; }
 
         /// <summary>
-        /// The bank transfer reference provided by the bank. Only present when <c>network</c> is
-        /// <c>bacs</c>.
+        /// The mandate reference provided by the bank for Bacs or the creditor's unique mandate
+        /// reference (UMR) for SEPA.
         /// </summary>
         [JsonProperty("reference")]
         [STJS.JsonPropertyName("reference")]

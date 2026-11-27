@@ -462,6 +462,11 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDebitDisputeFailedEventNotification>> v2MoneyManagementDebitDisputeFailed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDebitDisputeSubmittedEventNotification>> v2MoneyManagementDebitDisputeSubmitted;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDebitDisputeSucceededEventNotification>> v2MoneyManagementDebitDisputeSucceeded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDisputeCreatedEventNotification>> v2MoneyManagementDisputeCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDisputeLostEventNotification>> v2MoneyManagementDisputeLost;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDisputeUpdatedEventNotification>> v2MoneyManagementDisputeUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDisputeWonEventNotification>> v2MoneyManagementDisputeWon;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDisputeAdjustmentCreatedEventNotification>> v2MoneyManagementDisputeAdjustmentCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementEarnedCreditSucceededEventNotification>> v2MoneyManagementEarnedCreditSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification>> v2MoneyManagementFinancialAccountCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification>> v2MoneyManagementFinancialAccountUpdated;
@@ -576,6 +581,7 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ReportingReportRunFailedEventNotification>> v2ReportingReportRunFailed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ReportingReportRunSucceededEventNotification>> v2ReportingReportRunSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ReportingReportRunUpdatedEventNotification>> v2ReportingReportRunUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2RiskEvaluationOutcomeDelinquencyReadyEventNotification>> v2RiskEvaluationOutcomeDelinquencyReady;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountEvaluationCompleteEventNotification>> v2SignalsAccountEvaluationComplete;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalCustomerRiskReadyEventNotification>> v2SignalsAccountSignalCustomerRiskReady;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2SignalsAccountSignalFraudulentMerchantReadyEventNotification>> v2SignalsAccountSignalFraudulentMerchantReady;
@@ -3249,6 +3255,36 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDisputeCreatedEventNotification>> V2MoneyManagementDisputeCreated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementDisputeCreated, value, "v2.money_management.dispute.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDisputeLostEventNotification>> V2MoneyManagementDisputeLost
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementDisputeLost, value, "v2.money_management.dispute.lost"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDisputeUpdatedEventNotification>> V2MoneyManagementDisputeUpdated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementDisputeUpdated, value, "v2.money_management.dispute.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDisputeWonEventNotification>> V2MoneyManagementDisputeWon
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementDisputeWon, value, "v2.money_management.dispute.won"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDisputeAdjustmentCreatedEventNotification>> V2MoneyManagementDisputeAdjustmentCreated
+        {
+            add { this.AddEventHandler(ref this.v2MoneyManagementDisputeAdjustmentCreated, value, "v2.money_management.dispute_adjustment.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementEarnedCreditSucceededEventNotification>> V2MoneyManagementEarnedCreditSucceeded
         {
             add { this.AddEventHandler(ref this.v2MoneyManagementEarnedCreditSucceeded, value, "v2.money_management.earned_credit.succeeded"); }
@@ -3930,6 +3966,12 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2ReportingReportRunUpdatedEventNotification>> V2ReportingReportRunUpdated
         {
             add { this.AddEventHandler(ref this.v2ReportingReportRunUpdated, value, "v2.reporting.report_run.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2RiskEvaluationOutcomeDelinquencyReadyEventNotification>> V2RiskEvaluationOutcomeDelinquencyReady
+        {
+            add { this.AddEventHandler(ref this.v2RiskEvaluationOutcomeDelinquencyReady, value, "v2.risk.evaluation_outcome.delinquency_ready"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -5915,6 +5957,26 @@ namespace Stripe
                 {
                     this.v2MoneyManagementDebitDisputeSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDebitDisputeSucceededEventNotification>((Stripe.Events.V2MoneyManagementDebitDisputeSucceededEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementDisputeCreatedEventNotification)
+                {
+                    this.v2MoneyManagementDisputeCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDisputeCreatedEventNotification>((Stripe.Events.V2MoneyManagementDisputeCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementDisputeLostEventNotification)
+                {
+                    this.v2MoneyManagementDisputeLost.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDisputeLostEventNotification>((Stripe.Events.V2MoneyManagementDisputeLostEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementDisputeUpdatedEventNotification)
+                {
+                    this.v2MoneyManagementDisputeUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDisputeUpdatedEventNotification>((Stripe.Events.V2MoneyManagementDisputeUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementDisputeWonEventNotification)
+                {
+                    this.v2MoneyManagementDisputeWon.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDisputeWonEventNotification>((Stripe.Events.V2MoneyManagementDisputeWonEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2MoneyManagementDisputeAdjustmentCreatedEventNotification)
+                {
+                    this.v2MoneyManagementDisputeAdjustmentCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementDisputeAdjustmentCreatedEventNotification>((Stripe.Events.V2MoneyManagementDisputeAdjustmentCreatedEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementEarnedCreditSucceededEventNotification)
                 {
                     this.v2MoneyManagementEarnedCreditSucceeded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementEarnedCreditSucceededEventNotification>((Stripe.Events.V2MoneyManagementEarnedCreditSucceededEventNotification)eventNotification, client));
@@ -6370,6 +6432,10 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2ReportingReportRunUpdatedEventNotification)
                 {
                     this.v2ReportingReportRunUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2ReportingReportRunUpdatedEventNotification>((Stripe.Events.V2ReportingReportRunUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2RiskEvaluationOutcomeDelinquencyReadyEventNotification)
+                {
+                    this.v2RiskEvaluationOutcomeDelinquencyReady.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2RiskEvaluationOutcomeDelinquencyReadyEventNotification>((Stripe.Events.V2RiskEvaluationOutcomeDelinquencyReadyEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2SignalsAccountEvaluationCompleteEventNotification)
                 {

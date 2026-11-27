@@ -12,6 +12,10 @@ namespace Stripe
         [STJS.JsonPropertyName("acss_debit")]
         public PaymentIntentPaymentMethodOptionsAcssDebit AcssDebit { get; set; }
 
+        [JsonProperty("aeon_pay")]
+        [STJS.JsonPropertyName("aeon_pay")]
+        public PaymentIntentPaymentMethodOptionsAeonPay AeonPay { get; set; }
+
         [JsonProperty("affirm")]
         [STJS.JsonPropertyName("affirm")]
         public PaymentIntentPaymentMethodOptionsAffirm Affirm { get; set; }
@@ -35,6 +39,10 @@ namespace Stripe
         [JsonProperty("au_becs_debit")]
         [STJS.JsonPropertyName("au_becs_debit")]
         public PaymentIntentPaymentMethodOptionsAuBecsDebit AuBecsDebit { get; set; }
+
+        [JsonProperty("au_pay")]
+        [STJS.JsonPropertyName("au_pay")]
+        public PaymentIntentPaymentMethodOptionsAuPay AuPay { get; set; }
 
         [JsonProperty("bacs_debit")]
         [STJS.JsonPropertyName("bacs_debit")]
@@ -83,6 +91,10 @@ namespace Stripe
         [JsonProperty("customer_balance")]
         [STJS.JsonPropertyName("customer_balance")]
         public PaymentIntentPaymentMethodOptionsCustomerBalance CustomerBalance { get; set; }
+
+        [JsonProperty("dbarai")]
+        [STJS.JsonPropertyName("dbarai")]
+        public PaymentIntentPaymentMethodOptionsDbarai Dbarai { get; set; }
 
         [JsonProperty("eps")]
         [STJS.JsonPropertyName("eps")]
@@ -148,6 +160,10 @@ namespace Stripe
         [STJS.JsonPropertyName("mb_way")]
         public PaymentIntentPaymentMethodOptionsMbWay MbWay { get; set; }
 
+        [JsonProperty("merpay")]
+        [STJS.JsonPropertyName("merpay")]
+        public PaymentIntentPaymentMethodOptionsMerpay Merpay { get; set; }
+
         [JsonProperty("mobilepay")]
         [STJS.JsonPropertyName("mobilepay")]
         public PaymentIntentPaymentMethodOptionsMobilepay Mobilepay { get; set; }
@@ -207,6 +223,10 @@ namespace Stripe
         [JsonProperty("qris")]
         [STJS.JsonPropertyName("qris")]
         public PaymentIntentPaymentMethodOptionsQris Qris { get; set; }
+
+        [JsonProperty("rakuten_pay")]
+        [STJS.JsonPropertyName("rakuten_pay")]
+        public PaymentIntentPaymentMethodOptionsRakutenPay RakutenPay { get; set; }
 
         [JsonProperty("rechnung")]
         [STJS.JsonPropertyName("rechnung")]

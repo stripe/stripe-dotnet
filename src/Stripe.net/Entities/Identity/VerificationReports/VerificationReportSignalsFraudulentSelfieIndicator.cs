@@ -29,7 +29,7 @@ namespace Stripe.Identity
         /// <summary>
         /// The name of the specific indicator used in the risk assessment.
         /// One of: <c>duplicate_selfie</c>, <c>duplicate_selfie_mismatched_data</c>,
-        /// <c>face_mismatch</c>, <c>other</c>, or <c>static_selfie</c>.
+        /// <c>face_mismatch</c>, <c>other</c>, or <c>presentation_attack</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

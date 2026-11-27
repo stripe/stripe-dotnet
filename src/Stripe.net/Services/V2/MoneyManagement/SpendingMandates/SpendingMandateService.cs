@@ -37,6 +37,24 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
+        /// Creates an active SpendingMandate authorizing an ACH originator to debit a Financial
+        /// Account.
+        /// </summary>
+        public virtual SpendingMandate Create(SpendingMandateCreateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request<SpendingMandate>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/spending_mandates", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Creates an active SpendingMandate authorizing an ACH originator to debit a Financial
+        /// Account.
+        /// </summary>
+        public virtual Task<SpendingMandate> CreateAsync(SpendingMandateCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<SpendingMandate>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/spending_mandates", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// Retrieves the details of an existing SpendingMandate.
         /// </summary>
         public virtual SpendingMandate Get(string id, SpendingMandateGetOptions options = null, RequestOptions requestOptions = null)
@@ -82,6 +100,22 @@ namespace Stripe.V2.MoneyManagement
         public virtual IAsyncEnumerable<SpendingMandate> ListAutoPagingAsync(SpendingMandateListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<SpendingMandate>($"/v2/money_management/spending_mandates", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Updates an active ACH SpendingMandate.
+        /// </summary>
+        public virtual SpendingMandate Update(string id, SpendingMandateUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request<SpendingMandate>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/spending_mandates/{WebUtility.UrlEncode(id)}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Updates an active ACH SpendingMandate.
+        /// </summary>
+        public virtual Task<SpendingMandate> UpdateAsync(string id, SpendingMandateUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<SpendingMandate>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/spending_mandates/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

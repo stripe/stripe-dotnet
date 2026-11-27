@@ -29,7 +29,7 @@ namespace Stripe.Identity
         /// <summary>
         /// The name of the specific indicator used in the risk assessment.
         /// One of: <c>dob_mismatch</c>, <c>forged_document</c>, <c>name_mismatch</c>, <c>other</c>,
-        /// or <c>static_document</c>.
+        /// or <c>presentation_attack</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

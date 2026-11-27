@@ -22,8 +22,9 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// A hash of all cash balances available to this customer. You cannot delete a customer
-        /// with any cash balances, even if the balance is 0. Amounts are represented in the <a
+        /// A hash of all cash balances available to this customer. You can't delete a customer that
+        /// has a positive cash balance in any currency. You can delete it after all of its cash
+        /// balances are 0. Amounts are represented in the <a
         /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("available")]

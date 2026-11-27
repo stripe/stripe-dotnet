@@ -17,6 +17,10 @@ namespace Stripe
         [STJS.JsonPropertyName("amount_authorized")]
         public long? AmountAuthorized { get; set; }
 
+        [JsonProperty("benefits")]
+        [STJS.JsonPropertyName("benefits")]
+        public PaymentAttemptRecordPaymentMethodDetailsCardPresentBenefits Benefits { get; set; }
+
         /// <summary>
         /// Card brand. Can be <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,
         /// <c>eftpos_au</c>, <c>jcb</c>, <c>link</c>, <c>mastercard</c>, <c>unionpay</c>,

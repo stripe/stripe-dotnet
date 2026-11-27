@@ -191,6 +191,18 @@ namespace Stripe
         public PaymentMethodConfigurationCardOptions Card { get; set; }
 
         /// <summary>
+        /// CareCredit is a health and wellness credit card that customers can use to pay for
+        /// eligible purchases, including with promotional financing. Customers are redirected from
+        /// your website or app, authorize the payment with CareCredit, then return to your website
+        /// or app. You get <a
+        /// href="https://docs.stripe.com/payments/payment-methods#payment-notification">immediate
+        /// notification</a> of whether the payment succeeded or failed.
+        /// </summary>
+        [JsonProperty("carecredit")]
+        [STJS.JsonPropertyName("carecredit")]
+        public PaymentMethodConfigurationCarecreditOptions Carecredit { get; set; }
+
+        /// <summary>
         /// Cartes Bancaires is France's local card network. More than 95% of these cards are
         /// co-branded with either Visa or Mastercard, meaning you can process these cards over
         /// either Cartes Bancaires or the Visa or Mastercard networks. Check this <a
@@ -271,6 +283,17 @@ namespace Stripe
         [JsonProperty("fr_meal_voucher_conecs")]
         [STJS.JsonPropertyName("fr_meal_voucher_conecs")]
         public PaymentMethodConfigurationFrMealVoucherConecsOptions FrMealVoucherConecs { get; set; }
+
+        /// <summary>
+        /// Flex is a buy now, pay later payment method for recurring bills, such as rent, where
+        /// customers split a bill into smaller payments. Customers are redirected from your website
+        /// or app, authorize the payment with Flex, then return to your website or app. You get <a
+        /// href="https://docs.stripe.com/payments/payment-methods#payment-notification">immediate
+        /// notification</a> of whether the payment succeeded or failed.
+        /// </summary>
+        [JsonProperty("getflex")]
+        [STJS.JsonPropertyName("getflex")]
+        public PaymentMethodConfigurationGetflexOptions Getflex { get; set; }
 
         /// <summary>
         /// giropay is a German payment method based on online banking, introduced in 2006. It
@@ -633,6 +656,17 @@ namespace Stripe
         [JsonProperty("sequra")]
         [STJS.JsonPropertyName("sequra")]
         public PaymentMethodConfigurationSequraOptions Sequra { get; set; }
+
+        /// <summary>
+        /// Sezzle is a buy now, pay later payment method where customers split their purchase into
+        /// installments. Customers are redirected from your website or app, authorize the payment
+        /// with Sezzle, then return to your website or app. You get <a
+        /// href="https://docs.stripe.com/payments/payment-methods#payment-notification">immediate
+        /// notification</a> of whether the payment succeeded or failed.
+        /// </summary>
+        [JsonProperty("sezzle")]
+        [STJS.JsonPropertyName("sezzle")]
+        public PaymentMethodConfigurationSezzleOptions Sezzle { get; set; }
 
         /// <summary>
         /// ShopeePay is a <a href="https://docs.stripe.com/payments/payment-methods#usage">single

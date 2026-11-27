@@ -37,6 +37,13 @@ namespace Stripe.V2.Signals
         public AccountEvaluationEvaluatedSignalsUserAffinity UserAffinity { get; set; }
 
         /// <summary>
+        /// User buyer classification result for the evaluation, when available.
+        /// </summary>
+        [JsonProperty("user_buyer_classification")]
+        [STJS.JsonPropertyName("user_buyer_classification")]
+        public AccountEvaluationEvaluatedSignalsUserBuyerClassification UserBuyerClassification { get; set; }
+
+        /// <summary>
         /// User multi-accounting result for the evaluation, when available.
         /// </summary>
         [JsonProperty("user_multi_accounting")]

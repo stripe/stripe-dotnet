@@ -14,5 +14,12 @@ namespace Stripe.Crypto
         [JsonProperty("mandate_data")]
         [STJS.JsonPropertyName("mandate_data")]
         public OnrampSessionMandateDataOptions MandateData { get; set; }
+
+        /// <summary>
+        /// Payment method-specific configuration for this checkout.
+        /// </summary>
+        [JsonProperty("payment_method_options")]
+        [STJS.JsonPropertyName("payment_method_options")]
+        public OnrampSessionPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
     }
 }

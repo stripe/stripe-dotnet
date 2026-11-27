@@ -16,7 +16,10 @@ namespace Stripe
         internal SetTracker SetTracker { get; } = new SetTracker();
 
         /// <summary>
-        /// Ordered invoice PDF blocks. A maximum of 20 blocks is allowed.
+        /// The complete replacement order of at most 20 invoice PDF blocks. Keys retain saved
+        /// configuration when its hash is omitted. Omitted custom blocks are removed; include every
+        /// default type exactly once. Omit blocks to preserve settings, or supply an empty string
+        /// to reset to defaults.
         /// </summary>
         [JsonProperty("blocks", NullValueHandling = NullValueHandling.Ignore)]
         [STJS.JsonPropertyName("blocks")]
