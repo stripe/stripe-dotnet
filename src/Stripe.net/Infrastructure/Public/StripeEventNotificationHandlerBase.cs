@@ -33,6 +33,9 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1ApplicationFeeCreatedEventNotification>> v1ApplicationFeeCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1ApplicationFeeRefundUpdatedEventNotification>> v1ApplicationFeeRefundUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1ApplicationFeeRefundedEventNotification>> v1ApplicationFeeRefunded;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1AppsInstallCreatedEventNotification>> v1AppsInstallCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1AppsInstallDeletedEventNotification>> v1AppsInstallDeleted;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1AppsInstallUpdatedEventNotification>> v1AppsInstallUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1BalanceAvailableEventNotification>> v1BalanceAvailable;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1BalanceSettingsUpdatedEventNotification>> v1BalanceSettingsUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1BillingAlertTriggeredEventNotification>> v1BillingAlertTriggered;
@@ -176,7 +179,6 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceitemDiscountAddedEventNotification>> v1InvoiceitemDiscountAdded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1InvoiceitemDiscountRemovedEventNotification>> v1InvoiceitemDiscountRemoved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1IssuingAuthorizationCreatedEventNotification>> v1IssuingAuthorizationCreated;
-        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1IssuingAuthorizationRequestEventNotification>> v1IssuingAuthorizationRequest;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1IssuingAuthorizationUpdatedEventNotification>> v1IssuingAuthorizationUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1IssuingCardCreatedEventNotification>> v1IssuingCardCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1IssuingCardUpdatedEventNotification>> v1IssuingCardUpdated;
@@ -298,7 +300,9 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CommerceProductCatalogImportsSucceededEventNotification>> v2CommerceProductCatalogImportsSucceeded;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CommerceProductCatalogImportsSucceededWithErrorsEventNotification>> v2CommerceProductCatalogImportsSucceededWithErrors;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountClosedEventNotification>> v2CoreAccountClosed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountConnectedEventNotification>> v2CoreAccountConnected;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountCreatedEventNotification>> v2CoreAccountCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountDisconnectedEventNotification>> v2CoreAccountDisconnected;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountUpdatedEventNotification>> v2CoreAccountUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification>> v2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification>> v2CoreAccountIncludingConfigurationCustomerUpdated;
@@ -439,6 +443,24 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1ApplicationFeeRefundedEventNotification>> V1ApplicationFeeRefunded
         {
             add { this.AddEventHandler(ref this.v1ApplicationFeeRefunded, value, "v1.application_fee.refunded"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1AppsInstallCreatedEventNotification>> V1AppsInstallCreated
+        {
+            add { this.AddEventHandler(ref this.v1AppsInstallCreated, value, "v1.apps.install.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1AppsInstallDeletedEventNotification>> V1AppsInstallDeleted
+        {
+            add { this.AddEventHandler(ref this.v1AppsInstallDeleted, value, "v1.apps.install.deleted"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1AppsInstallUpdatedEventNotification>> V1AppsInstallUpdated
+        {
+            add { this.AddEventHandler(ref this.v1AppsInstallUpdated, value, "v1.apps.install.updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -1300,12 +1322,6 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
-        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1IssuingAuthorizationRequestEventNotification>> V1IssuingAuthorizationRequest
-        {
-            add { this.AddEventHandler(ref this.v1IssuingAuthorizationRequest, value, "v1.issuing_authorization.request"); }
-            remove { this.RemoveEventHandler(); }
-        }
-
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1IssuingAuthorizationUpdatedEventNotification>> V1IssuingAuthorizationUpdated
         {
             add { this.AddEventHandler(ref this.v1IssuingAuthorizationUpdated, value, "v1.issuing_authorization.updated"); }
@@ -2032,9 +2048,21 @@ namespace Stripe
             remove { this.RemoveEventHandler(); }
         }
 
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountConnectedEventNotification>> V2CoreAccountConnected
+        {
+            add { this.AddEventHandler(ref this.v2CoreAccountConnected, value, "v2.core.account.connected"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountCreatedEventNotification>> V2CoreAccountCreated
         {
             add { this.AddEventHandler(ref this.v2CoreAccountCreated, value, "v2.core.account.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountDisconnectedEventNotification>> V2CoreAccountDisconnected
+        {
+            add { this.AddEventHandler(ref this.v2CoreAccountDisconnected, value, "v2.core.account.disconnected"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -2567,6 +2595,18 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V1ApplicationFeeRefundedEventNotification)
                 {
                     this.v1ApplicationFeeRefunded.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1ApplicationFeeRefundedEventNotification>((Stripe.Events.V1ApplicationFeeRefundedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1AppsInstallCreatedEventNotification)
+                {
+                    this.v1AppsInstallCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1AppsInstallCreatedEventNotification>((Stripe.Events.V1AppsInstallCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1AppsInstallDeletedEventNotification)
+                {
+                    this.v1AppsInstallDeleted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1AppsInstallDeletedEventNotification>((Stripe.Events.V1AppsInstallDeletedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V1AppsInstallUpdatedEventNotification)
+                {
+                    this.v1AppsInstallUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1AppsInstallUpdatedEventNotification>((Stripe.Events.V1AppsInstallUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V1BalanceAvailableEventNotification)
                 {
@@ -3140,10 +3180,6 @@ namespace Stripe
                 {
                     this.v1IssuingAuthorizationCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1IssuingAuthorizationCreatedEventNotification>((Stripe.Events.V1IssuingAuthorizationCreatedEventNotification)eventNotification, client));
                 }
-                else if (eventNotification is Stripe.Events.V1IssuingAuthorizationRequestEventNotification)
-                {
-                    this.v1IssuingAuthorizationRequest.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1IssuingAuthorizationRequestEventNotification>((Stripe.Events.V1IssuingAuthorizationRequestEventNotification)eventNotification, client));
-                }
                 else if (eventNotification is Stripe.Events.V1IssuingAuthorizationUpdatedEventNotification)
                 {
                     this.v1IssuingAuthorizationUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1IssuingAuthorizationUpdatedEventNotification>((Stripe.Events.V1IssuingAuthorizationUpdatedEventNotification)eventNotification, client));
@@ -3628,9 +3664,17 @@ namespace Stripe
                 {
                     this.v2CoreAccountClosed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountClosedEventNotification>((Stripe.Events.V2CoreAccountClosedEventNotification)eventNotification, client));
                 }
+                else if (eventNotification is Stripe.Events.V2CoreAccountConnectedEventNotification)
+                {
+                    this.v2CoreAccountConnected.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountConnectedEventNotification>((Stripe.Events.V2CoreAccountConnectedEventNotification)eventNotification, client));
+                }
                 else if (eventNotification is Stripe.Events.V2CoreAccountCreatedEventNotification)
                 {
                     this.v2CoreAccountCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountCreatedEventNotification>((Stripe.Events.V2CoreAccountCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreAccountDisconnectedEventNotification)
+                {
+                    this.v2CoreAccountDisconnected.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountDisconnectedEventNotification>((Stripe.Events.V2CoreAccountDisconnectedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountUpdatedEventNotification)
                 {

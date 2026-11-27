@@ -94,6 +94,10 @@ namespace Stripe
                     ret = Stripe.V2.FxQuoteNeedsRefreshException.Parse(httpStatusCode, body);
                     break;
 
+                case "inactive_api_operation_confirmation_required":
+                    ret = Stripe.V2.InactiveApiOperationConfirmationRequiredException.Parse(httpStatusCode, body);
+                    break;
+
                 case "insufficient_funds":
                     ret = Stripe.V2.InsufficientFundsException.Parse(httpStatusCode, body);
                     break;

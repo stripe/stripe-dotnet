@@ -23,6 +23,13 @@ namespace Stripe.V2.Core
         public AccountUpdateIdentityAttestationsTermsOfServiceCryptoMoneyManagerOptions CryptoMoneyManager { get; set; }
 
         /// <summary>
+        /// Details on the Account's acceptance of ZeroHash recipient-specific terms of service.
+        /// </summary>
+        [JsonProperty("crypto_transfers_zerohash_recipient")]
+        [STJS.JsonPropertyName("crypto_transfers_zerohash_recipient")]
+        public AccountUpdateIdentityAttestationsTermsOfServiceCryptoTransfersZerohashRecipientOptions CryptoTransfersZerohashRecipient { get; set; }
+
+        /// <summary>
         /// Details on the Account's acceptance of Treasury-specific terms of service.
         /// </summary>
         [JsonProperty("money_manager")]

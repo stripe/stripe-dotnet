@@ -23,8 +23,9 @@ namespace Stripe.V2.MoneyManagement
         public string FinancialAccount { get; set; }
 
         /// <summary>
-        /// The type of FinancialAddress to create. Must agree with which branch of
-        /// financial_address_type_properties is set.
+        /// The type of FinancialAddress to create: bank_account or crypto_wallet. Must agree with
+        /// which branch of financial_address_type_properties is set. Cash FinancialAddresses are
+        /// managed by FundingIntents and cannot be created through this endpoint.
         /// One of: <c>bank_account</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

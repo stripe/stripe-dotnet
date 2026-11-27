@@ -7,11 +7,9 @@ namespace Stripe.Events
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// Represents a synchronous request for authorization, see <a
-    /// href="https://docs.stripe.com/issuing/purchases/authorizations#authorization-handling">Using
-    /// your integration to handle authorization requests</a>.
+    /// Occurs when an existing Account connects to your platform or app.
     /// </summary>
-    public class V1IssuingAuthorizationRequestEventNotification : V2.Core.EventNotification
+    public class V2CoreAccountConnectedEventNotification : V2.Core.EventNotification
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -24,27 +22,27 @@ namespace Stripe.Events
         /// Asynchronously retrieves the related object from the API. Make an API request on every
         /// call.
         /// </summary>
-        public Task<Issuing.Authorization> FetchRelatedObjectAsync()
+        public Task<V2.Core.Account> FetchRelatedObjectAsync()
         {
-            return this.FetchRelatedObjectAsync<Issuing.Authorization>(this.RelatedObject);
+            return this.FetchRelatedObjectAsync<V2.Core.Account>(this.RelatedObject);
         }
 
         /// <summary>
         /// Retrieves the related object from the API. Make an API request on every call.
         /// </summary>
-        public Issuing.Authorization FetchRelatedObject()
+        public V2.Core.Account FetchRelatedObject()
         {
-            return this.FetchRelatedObject<Issuing.Authorization>(this.RelatedObject);
+            return this.FetchRelatedObject<V2.Core.Account>(this.RelatedObject);
         }
 
-        public V1IssuingAuthorizationRequestEvent FetchEvent()
+        public V2CoreAccountConnectedEvent FetchEvent()
         {
-            return this.FetchEvent<V1IssuingAuthorizationRequestEvent>();
+            return this.FetchEvent<V2CoreAccountConnectedEvent>();
         }
 
-        public Task<V1IssuingAuthorizationRequestEvent> FetchEventAsync()
+        public Task<V2CoreAccountConnectedEvent> FetchEventAsync()
         {
-            return this.FetchEventAsync<V1IssuingAuthorizationRequestEvent>();
+            return this.FetchEventAsync<V2CoreAccountConnectedEvent>();
         }
     }
 }

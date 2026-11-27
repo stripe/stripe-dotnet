@@ -23,7 +23,7 @@ namespace Stripe.TestHelpers
         }
 
         /// <summary>
-        /// <p>Creates a test mode Confirmation Token server side for your integration tests.</p>.
+        /// <p>Creates a test Confirmation Token server side for your integration tests.</p>.
         /// </summary>
         public virtual ConfirmationToken Create(ConfirmationTokenCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -31,7 +31,7 @@ namespace Stripe.TestHelpers
         }
 
         /// <summary>
-        /// <p>Creates a test mode Confirmation Token server side for your integration tests.</p>.
+        /// <p>Creates a test Confirmation Token server side for your integration tests.</p>.
         /// </summary>
         public virtual Task<ConfirmationToken> CreateAsync(ConfirmationTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
