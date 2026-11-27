@@ -7,7 +7,8 @@ namespace Stripe.V2.Signals
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// Account Activity resource for the Signals API.
+    /// Account Activity resource for the Signals API. Account activities are available through
+    /// the API for 180 days after creation.
     /// </summary>
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountActivity : StripeEntity<AccountActivity>, IHasId, IHasObject

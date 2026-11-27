@@ -16,6 +16,13 @@ namespace Stripe
         public string ChargebackLossReasonCode { get; set; }
 
         /// <summary>
+        /// The ID of the dispute in Klarna.
+        /// </summary>
+        [JsonProperty("dispute_id")]
+        [STJS.JsonPropertyName("dispute_id")]
+        public string DisputeId { get; set; }
+
+        /// <summary>
         /// The reason for the dispute as defined by Klarna.
         /// </summary>
         [JsonProperty("reason_code")]

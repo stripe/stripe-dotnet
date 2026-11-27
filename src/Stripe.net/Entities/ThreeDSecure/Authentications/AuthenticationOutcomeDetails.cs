@@ -77,8 +77,8 @@ namespace Stripe.ThreeDSecure
         /// <summary>
         /// The indicator provided to the issuer by Stripe in the AReq that indicates whether a
         /// challenge is requested for this Authentication. This indicator should match the
-        /// flow_preference you specified but may be overridden (for compliance reasons for
-        /// example).
+        /// flow_preference you specified but may be overridden (for compliance reasons or protocol
+        /// version supportability for example).
         /// One of: <c>01</c>, <c>02</c>, <c>03</c>, <c>04</c>, <c>05</c>, or <c>06</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.

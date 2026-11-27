@@ -18,7 +18,17 @@ namespace Stripe
         public PaymentAttemptRecordProcessorDetailsCustom Custom { get; set; }
 
         /// <summary>
+        /// Represents the Stripe processor. This resource consists of details specific to Stripe.
+        /// </summary>
+        [JsonProperty("stripe")]
+        [STJS.JsonPropertyName("stripe")]
+        public PaymentAttemptRecordProcessorDetailsStripe Stripe { get; set; }
+
+        /// <summary>
         /// The processor used for this payment attempt.
+        /// One of: <c>custom</c>, or <c>stripe</c>.
+        ///
+        /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

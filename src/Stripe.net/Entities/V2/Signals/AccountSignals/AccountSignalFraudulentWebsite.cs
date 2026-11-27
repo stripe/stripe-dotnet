@@ -9,11 +9,11 @@ namespace Stripe.V2.Signals
     public class AccountSignalFraudulentWebsite : StripeEntity<AccountSignalFraudulentWebsite>
     {
         /// <summary>
-        /// Human-readable details about the fraudulent website evaluation.
+        /// Additional information about the fraudulent website evaluation, when available.
         /// </summary>
-        [JsonProperty("details")]
-        [STJS.JsonPropertyName("details")]
-        public string Details { get; set; }
+        [JsonProperty("additional_details")]
+        [STJS.JsonPropertyName("additional_details")]
+        public AccountSignalFraudulentWebsiteAdditionalDetails AdditionalDetails { get; set; }
 
         /// <summary>
         /// Categorical assessment of the fraudulent website risk.

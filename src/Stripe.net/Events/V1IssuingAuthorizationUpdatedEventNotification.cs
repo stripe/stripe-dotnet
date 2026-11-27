@@ -7,7 +7,8 @@ namespace Stripe.Events
     using STJS = System.Text.Json.Serialization;
 
     /// <summary>
-    /// Occurs whenever an authorization is updated.
+    /// Occurs whenever an authorization is updated. For verification authorizations, this event
+    /// is only accessible via private preview.
     /// </summary>
     public class V1IssuingAuthorizationUpdatedEventNotification : V2.Core.EventNotification
     {

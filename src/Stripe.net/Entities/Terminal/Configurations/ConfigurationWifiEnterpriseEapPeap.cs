@@ -9,7 +9,9 @@ namespace Stripe.Terminal
     public class ConfigurationWifiEnterpriseEapPeap : StripeEntity<ConfigurationWifiEnterpriseEapPeap>
     {
         /// <summary>
-        /// A File ID representing a PEM file containing the server certificate.
+        /// A File ID representing a PEM file containing the server certificate. The certificate is
+        /// not currently used to validate the identity of the server, but will be used in a future
+        /// device update.
         /// </summary>
         [JsonProperty("ca_certificate_file")]
         [STJS.JsonPropertyName("ca_certificate_file")]

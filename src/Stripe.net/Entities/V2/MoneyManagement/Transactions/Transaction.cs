@@ -46,8 +46,8 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. A category used to classify the Transaction.
-        /// One of: <c>adjustment</c>, <c>currency_conversion</c>, <c>inbound_transfer</c>,
-        /// <c>inbound_transfer_reversal</c>, <c>outbound_payment</c>,
+        /// One of: <c>adjustment</c>, <c>currency_conversion</c>, <c>hold</c>,
+        /// <c>inbound_transfer</c>, <c>inbound_transfer_reversal</c>, <c>outbound_payment</c>,
         /// <c>outbound_payment_reversal</c>, <c>outbound_transfer</c>,
         /// <c>outbound_transfer_reversal</c>, <c>received_credit</c>,
         /// <c>received_credit_reversal</c>, <c>received_debit</c>, <c>received_debit_reversal</c>,

@@ -240,17 +240,9 @@ namespace Stripe
             new Dictionary<string, Type>
             {
                 // V2ObjectsToTypes: The beginning of the section generated from our OpenAPI spec
-                { "v2.billing.bill_setting", typeof(V2.Billing.BillSetting) },
-                { "v2.billing.bill_setting_version", typeof(V2.Billing.BillSettingVersion) },
-                { "v2.billing.collection_setting", typeof(V2.Billing.CollectionSetting) },
-                {
-                    "v2.billing.collection_setting_version", typeof(
-                    V2.Billing.CollectionSettingVersion)
-                },
                 { "v2.billing.meter_event", typeof(V2.Billing.MeterEvent) },
                 { "v2.billing.meter_event_adjustment", typeof(V2.Billing.MeterEventAdjustment) },
                 { "v2.billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
-                { "v2.billing.profile", typeof(V2.Billing.Profile) },
                 {
                     "v2.commerce.product_catalog_import", typeof(
                     V2.Commerce.ProductCatalogImport)
@@ -340,6 +332,7 @@ namespace Stripe
                     "v2.orchestrated_commerce.agreement", typeof(
                     V2.OrchestratedCommerce.Agreement)
                 },
+                { "v2.payments.off_session_payment", typeof(V2.Payments.OffSessionPayment) },
                 { "v2.signals.account_activity", typeof(V2.Signals.AccountActivity) },
                 { "v2.signals.account_evaluation", typeof(V2.Signals.AccountEvaluation) },
                 { "v2.signals.account_signal", typeof(V2.Signals.AccountSignal) },
@@ -378,6 +371,9 @@ namespace Stripe
                     Events.V1ApplicationFeeRefundUpdatedEvent)
                 },
                 { "v1.application_fee.refunded", typeof(Events.V1ApplicationFeeRefundedEvent) },
+                { "v1.apps.install.created", typeof(Events.V1AppsInstallCreatedEvent) },
+                { "v1.apps.install.deleted", typeof(Events.V1AppsInstallDeletedEvent) },
+                { "v1.apps.install.updated", typeof(Events.V1AppsInstallUpdatedEvent) },
                 { "v1.balance.available", typeof(Events.V1BalanceAvailableEvent) },
                 { "v1.balance_settings.updated", typeof(Events.V1BalanceSettingsUpdatedEvent) },
                 { "v1.billing.alert.triggered", typeof(Events.V1BillingAlertTriggeredEvent) },
@@ -780,10 +776,6 @@ namespace Stripe
                     Events.V1IssuingAuthorizationCreatedEvent)
                 },
                 {
-                    "v1.issuing_authorization.request", typeof(
-                    Events.V1IssuingAuthorizationRequestEvent)
-                },
-                {
                     "v1.issuing_authorization.updated", typeof(
                     Events.V1IssuingAuthorizationUpdatedEvent)
                 },
@@ -1060,7 +1052,12 @@ namespace Stripe
                     Events.V2CommerceProductCatalogImportsSucceededWithErrorsEvent)
                 },
                 { "v2.core.account.closed", typeof(Events.V2CoreAccountClosedEvent) },
+                { "v2.core.account.connected", typeof(Events.V2CoreAccountConnectedEvent) },
                 { "v2.core.account.created", typeof(Events.V2CoreAccountCreatedEvent) },
+                {
+                    "v2.core.account.disconnected", typeof(
+                    Events.V2CoreAccountDisconnectedEvent)
+                },
                 { "v2.core.account.updated", typeof(Events.V2CoreAccountUpdatedEvent) },
                 {
                     "v2.core.account[configuration.customer].capability_status_updated", typeof(
@@ -1445,6 +1442,38 @@ namespace Stripe
                     Events.V2OrchestratedCommerceAgreementTerminatedEvent)
                 },
                 {
+                    "v2.payments.off_session_payment.attempt_failed", typeof(
+                    Events.V2PaymentsOffSessionPaymentAttemptFailedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.attempt_started", typeof(
+                    Events.V2PaymentsOffSessionPaymentAttemptStartedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.canceled", typeof(
+                    Events.V2PaymentsOffSessionPaymentCanceledEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.created", typeof(
+                    Events.V2PaymentsOffSessionPaymentCreatedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.failed", typeof(
+                    Events.V2PaymentsOffSessionPaymentFailedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.paused", typeof(
+                    Events.V2PaymentsOffSessionPaymentPausedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.resumed", typeof(
+                    Events.V2PaymentsOffSessionPaymentResumedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.succeeded", typeof(
+                    Events.V2PaymentsOffSessionPaymentSucceededEvent)
+                },
+                {
                     "v2.signals.account_evaluation.complete", typeof(
                     Events.V2SignalsAccountEvaluationCompleteEvent)
                 },
@@ -1496,6 +1525,18 @@ namespace Stripe
                 {
                     "v1.application_fee.refunded", typeof(
                     Events.V1ApplicationFeeRefundedEventNotification)
+                },
+                {
+                    "v1.apps.install.created", typeof(
+                    Events.V1AppsInstallCreatedEventNotification)
+                },
+                {
+                    "v1.apps.install.deleted", typeof(
+                    Events.V1AppsInstallDeletedEventNotification)
+                },
+                {
+                    "v1.apps.install.updated", typeof(
+                    Events.V1AppsInstallUpdatedEventNotification)
                 },
                 { "v1.balance.available", typeof(Events.V1BalanceAvailableEventNotification) },
                 {
@@ -1986,10 +2027,6 @@ namespace Stripe
                     Events.V1IssuingAuthorizationCreatedEventNotification)
                 },
                 {
-                    "v1.issuing_authorization.request", typeof(
-                    Events.V1IssuingAuthorizationRequestEventNotification)
-                },
-                {
                     "v1.issuing_authorization.updated", typeof(
                     Events.V1IssuingAuthorizationUpdatedEventNotification)
                 },
@@ -2345,8 +2382,16 @@ namespace Stripe
                     Events.V2CoreAccountClosedEventNotification)
                 },
                 {
+                    "v2.core.account.connected", typeof(
+                    Events.V2CoreAccountConnectedEventNotification)
+                },
+                {
                     "v2.core.account.created", typeof(
                     Events.V2CoreAccountCreatedEventNotification)
+                },
+                {
+                    "v2.core.account.disconnected", typeof(
+                    Events.V2CoreAccountDisconnectedEventNotification)
                 },
                 {
                     "v2.core.account.updated", typeof(
@@ -2775,6 +2820,38 @@ namespace Stripe
                 {
                     "v2.orchestrated_commerce.agreement.terminated", typeof(
                     Events.V2OrchestratedCommerceAgreementTerminatedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.attempt_failed", typeof(
+                    Events.V2PaymentsOffSessionPaymentAttemptFailedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.attempt_started", typeof(
+                    Events.V2PaymentsOffSessionPaymentAttemptStartedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.canceled", typeof(
+                    Events.V2PaymentsOffSessionPaymentCanceledEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.created", typeof(
+                    Events.V2PaymentsOffSessionPaymentCreatedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.failed", typeof(
+                    Events.V2PaymentsOffSessionPaymentFailedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.paused", typeof(
+                    Events.V2PaymentsOffSessionPaymentPausedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.resumed", typeof(
+                    Events.V2PaymentsOffSessionPaymentResumedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.succeeded", typeof(
+                    Events.V2PaymentsOffSessionPaymentSucceededEventNotification)
                 },
                 {
                     "v2.signals.account_evaluation.complete", typeof(

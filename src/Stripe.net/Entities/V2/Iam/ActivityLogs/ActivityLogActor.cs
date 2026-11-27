@@ -16,6 +16,13 @@ namespace Stripe.V2.Iam
         public ActivityLogActorApiKey ApiKey { get; set; }
 
         /// <summary>
+        /// Set when a display name is available for an action performed by Stripe.
+        /// </summary>
+        [JsonProperty("stripe_action")]
+        [STJS.JsonPropertyName("stripe_action")]
+        public ActivityLogActorStripeAction StripeAction { get; set; }
+
+        /// <summary>
         /// The type of actor.
         /// One of: <c>api_key</c>, <c>stripe_action</c>, or <c>user</c>.
         /// </summary>

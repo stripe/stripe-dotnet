@@ -90,14 +90,6 @@ namespace Stripe.V2.MoneyManagement
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// A hosted transaction receipt URL that is provided when money movement is considered
-        /// regulated under Stripe’s money transmission licenses.
-        /// </summary>
-        [JsonProperty("receipt_url")]
-        [STJS.JsonPropertyName("receipt_url")]
-        public string ReceiptUrl { get; set; }
-
-        /// <summary>
         /// Open Enum. The status of the ReceivedCredit.
         /// One of: <c>failed</c>, <c>pending</c>, <c>returned</c>, or <c>succeeded</c>.
         ///

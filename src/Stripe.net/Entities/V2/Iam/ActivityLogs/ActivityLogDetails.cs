@@ -72,11 +72,18 @@ namespace Stripe.V2.Iam
         public ActivityLogDetailsSso Sso { get; set; }
 
         /// <summary>
+        /// Details of a Stripe access action.
+        /// </summary>
+        [JsonProperty("stripe_access")]
+        [STJS.JsonPropertyName("stripe_access")]
+        public ActivityLogDetailsStripeAccess StripeAccess { get; set; }
+
+        /// <summary>
         /// The action group type of the activity log entry.
         /// One of: <c>account_security</c>, <c>api_key</c>, <c>app</c>, <c>authentication</c>,
         /// <c>connect</c>, <c>data_export</c>, <c>event_destination</c>, <c>issuing</c>,
-        /// <c>payout</c>, <c>radar</c>, <c>scim</c>, <c>sso</c>, <c>user_access</c>,
-        /// <c>user_invite</c>, <c>user_profile</c>, or <c>user_roles</c>.
+        /// <c>payout</c>, <c>radar</c>, <c>scim</c>, <c>sso</c>, <c>stripe_access</c>,
+        /// <c>user_access</c>, <c>user_invite</c>, <c>user_profile</c>, or <c>user_roles</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>

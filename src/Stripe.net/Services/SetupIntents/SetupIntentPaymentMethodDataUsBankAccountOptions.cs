@@ -55,5 +55,13 @@ namespace Stripe
         [JsonProperty("routing_number")]
         [STJS.JsonPropertyName("routing_number")]
         public string RoutingNumber { get; set; }
+
+        /// <summary>
+        /// The ID of a bank account <a href="https://stripe.com/api/tokens/object">Token</a> to use
+        /// as a payment method.
+        /// </summary>
+        [JsonProperty("token")]
+        [STJS.JsonPropertyName("token")]
+        public string Token { get; set; }
     }
 }

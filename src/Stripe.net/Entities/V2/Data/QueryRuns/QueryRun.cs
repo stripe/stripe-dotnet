@@ -109,5 +109,12 @@ namespace Stripe.V2.Data
         [JsonProperty("status_details")]
         [STJS.JsonPropertyName("status_details")]
         public QueryRunStatusDetails StatusDetails { get; set; }
+
+        /// <summary>
+        /// Timestamps of when the <c>QueryRun</c> entered each terminal status.
+        /// </summary>
+        [JsonProperty("status_transitions")]
+        [STJS.JsonPropertyName("status_transitions")]
+        public QueryRunStatusTransitions StatusTransitions { get; set; }
     }
 }

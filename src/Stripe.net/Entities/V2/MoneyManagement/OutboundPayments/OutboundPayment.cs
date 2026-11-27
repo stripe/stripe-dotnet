@@ -125,15 +125,6 @@ namespace Stripe.V2.MoneyManagement
         public string Purpose { get; set; }
 
         /// <summary>
-        /// A link to the Stripe-hosted receipt for this OutboundPayment. The receipt link remains
-        /// active for 60 days from the OutboundPayment creation date. After this period, the link
-        /// will expire and the receipt url value will be null.
-        /// </summary>
-        [JsonProperty("receipt_url")]
-        [STJS.JsonPropertyName("receipt_url")]
-        public string ReceiptUrl { get; set; }
-
-        /// <summary>
         /// Details about the OutboundPayment notification settings for recipient.
         /// </summary>
         [JsonProperty("recipient_notification")]

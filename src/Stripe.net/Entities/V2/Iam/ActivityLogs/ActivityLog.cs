@@ -103,7 +103,7 @@ namespace Stripe.V2.Iam
         /// <c>radar_rule_updated</c>, <c>scim_group_deleted</c>, <c>scim_group_member_added</c>,
         /// <c>scim_group_member_removed</c>, <c>scim_group_roles_updated</c>,
         /// <c>scim_group_updated</c>, <c>sso_domain_verified</c>, <c>sso_settings_created</c>,
-        /// <c>sso_settings_deleted</c>, <c>sso_settings_updated</c>,
+        /// <c>sso_settings_deleted</c>, <c>sso_settings_updated</c>, <c>stripe_access_started</c>,
         /// <c>two_step_authentication_mandate_disabled</c>,
         /// <c>two_step_authentication_mandate_enabled</c>, <c>user_access_started</c>,
         /// <c>user_auth_challenge_failed</c>, <c>user_email_changed</c>,

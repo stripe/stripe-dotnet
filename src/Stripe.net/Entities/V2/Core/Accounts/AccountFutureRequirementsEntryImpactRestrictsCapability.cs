@@ -26,7 +26,7 @@ namespace Stripe.V2.Core
         /// <c>financial_addresses.bank_accounts</c>, <c>fpx_payments</c>,
         /// <c>gb_bank_transfer_payments</c>, <c>grabpay_payments</c>, <c>holds_currencies.eur</c>,
         /// <c>holds_currencies.gbp</c>, <c>holds_currencies.usd</c>, <c>ideal_payments</c>,
-        /// <c>inbound_transfers.financial_accounts</c>, <c>jcb_payments</c>,
+        /// <c>inbound_transfers.bank_accounts</c>, <c>jcb_payments</c>,
         /// <c>jp_bank_transfer_payments</c>, <c>kakao_pay_payments</c>, <c>klarna_payments</c>,
         /// <c>konbini_payments</c>, <c>kr_card_payments</c>, <c>link_payments</c>,
         /// <c>mb_way_payments</c>, <c>mobilepay_payments</c>, <c>multibanco_payments</c>,

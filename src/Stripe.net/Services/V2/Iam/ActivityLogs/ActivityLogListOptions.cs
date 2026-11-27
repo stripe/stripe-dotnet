@@ -13,8 +13,8 @@ namespace Stripe.V2.Iam
         /// Filter results to only include activity logs for the specified action group types.
         /// One of: <c>account_security</c>, <c>api_key</c>, <c>app</c>, <c>authentication</c>,
         /// <c>connect</c>, <c>data_export</c>, <c>event_destination</c>, <c>issuing</c>,
-        /// <c>payout</c>, <c>radar</c>, <c>scim</c>, <c>sso</c>, <c>user_access</c>,
-        /// <c>user_invite</c>, <c>user_profile</c>, or <c>user_roles</c>.
+        /// <c>payout</c>, <c>radar</c>, <c>scim</c>, <c>sso</c>, <c>stripe_access</c>,
+        /// <c>user_access</c>, <c>user_invite</c>, <c>user_profile</c>, or <c>user_roles</c>.
         ///
         /// This enum can grow over time; additional values may be added in the future.
         /// </summary>
@@ -49,7 +49,7 @@ namespace Stripe.V2.Iam
         /// <c>radar_rule_updated</c>, <c>scim_group_deleted</c>, <c>scim_group_member_added</c>,
         /// <c>scim_group_member_removed</c>, <c>scim_group_roles_updated</c>,
         /// <c>scim_group_updated</c>, <c>sso_domain_verified</c>, <c>sso_settings_created</c>,
-        /// <c>sso_settings_deleted</c>, <c>sso_settings_updated</c>,
+        /// <c>sso_settings_deleted</c>, <c>sso_settings_updated</c>, <c>stripe_access_started</c>,
         /// <c>two_step_authentication_mandate_disabled</c>,
         /// <c>two_step_authentication_mandate_enabled</c>, <c>user_access_started</c>,
         /// <c>user_auth_challenge_failed</c>, <c>user_email_changed</c>,

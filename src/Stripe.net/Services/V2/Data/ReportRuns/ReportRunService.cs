@@ -2,6 +2,7 @@
 namespace Stripe.V2.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
@@ -59,6 +60,46 @@ namespace Stripe.V2.Data
         public virtual Task<ReportRun> GetAsync(string id, ReportRunGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<ReportRun>(BaseAddress.Api, HttpMethod.Get, $"/v2/data/report_runs/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Returns a list of <c>ReportRun</c> objects created through the API, most recent first.
+        /// Listed <c>ReportRun</c> objects don't include <c>result</c> or <c>sql</c>. Retrieve a
+        /// <c>ReportRun</c> to access them.
+        /// </summary>
+        public virtual V2.StripeList<ReportRun> List(ReportRunListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<V2.StripeList<ReportRun>>(BaseAddress.Api, HttpMethod.Get, $"/v2/data/report_runs", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Returns a list of <c>ReportRun</c> objects created through the API, most recent first.
+        /// Listed <c>ReportRun</c> objects don't include <c>result</c> or <c>sql</c>. Retrieve a
+        /// <c>ReportRun</c> to access them.
+        /// </summary>
+        public virtual Task<V2.StripeList<ReportRun>> ListAsync(ReportRunListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<V2.StripeList<ReportRun>>(BaseAddress.Api, HttpMethod.Get, $"/v2/data/report_runs", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Returns a list of <c>ReportRun</c> objects created through the API, most recent first.
+        /// Listed <c>ReportRun</c> objects don't include <c>result</c> or <c>sql</c>. Retrieve a
+        /// <c>ReportRun</c> to access them.
+        /// </summary>
+        public virtual IEnumerable<ReportRun> ListAutoPaging(ReportRunListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<ReportRun>($"/v2/data/report_runs", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Returns a list of <c>ReportRun</c> objects created through the API, most recent first.
+        /// Listed <c>ReportRun</c> objects don't include <c>result</c> or <c>sql</c>. Retrieve a
+        /// <c>ReportRun</c> to access them.
+        /// </summary>
+        public virtual IAsyncEnumerable<ReportRun> ListAutoPagingAsync(ReportRunListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<ReportRun>($"/v2/data/report_runs", options, requestOptions, cancellationToken);
         }
     }
 }
